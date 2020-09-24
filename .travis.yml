@@ -1,0 +1,27 @@
+language: r
+r:
+  - release
+  - devel
+  - oldrel
+
+sudo: required
+
+dist: xenial
+
+before_install:
+  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
+  - sudo apt-get --yes --force-yes update -qq
+  - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev
+  - sudo ldconfig
+
+
+warnings_are_errors: true
+
+r_packages:
+  - knitr
+  - rmarkdown
+  - tinytest
+  - covr
+
+after_success:
+  - R -q -e 'covr::codecov(quiet = FALSE)'
