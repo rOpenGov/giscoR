@@ -1,0 +1,27 @@
+Package: giscoR
+Type: Package
+Title: Download geospatial data from GISCO API - Eurostat
+Version: 0.1.0
+Authors@R: c(
+  person("Diego", "Hernangomez", role=c("aut", "cre"), email="diego.hernangomezherrero@gmail.com", comment=c(ORCID="0000-0001-8457-4658")))
+Description: Tools to download data from the GISCO 
+    (Geographic Information System of the COmmission) Eurostat database
+    <https://ec.europa.eu/eurostat/web/gisco>.
+    This package is in no way officially related to or endorsed by Eurostat.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+BugReports: https://github.com/dieghernan/giscoR/issues
+Depends: 
+    R (>= 3.3.0)
+Imports: 
+    sf (>= 0.9),
+    countrycode
+Suggests: 
+    cartography (>= 2.0.0),
+    eurostat,
+    leaflet,
+    tmap,
+    tinytest
+Date: 2020-09-21

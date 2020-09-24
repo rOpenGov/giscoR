@@ -1,0 +1,14 @@
+citHeader("To cite the 'giscoR' package in publications use:")
+
+year = sub('.*(2[[:digit:]]{3})-.*', '\\1', meta$Date, perl = TRUE)
+vers = paste('R package version', meta$Version)
+auth = Filter(function(p) 'aut' %in% p$role, as.person(meta$Author))
+citEntry(
+  entry = 'manual',
+  title = paste('giscoR:', meta$Title),
+  author = auth,
+  year = year,
+  note = vers,
+  url = meta$URL,
+  textVersion = paste('Hernangomez, D. (', year, '). giscoR: ', meta$Title, '. ', vers, '.', sep = '')
+)

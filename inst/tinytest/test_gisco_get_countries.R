@@ -1,0 +1,21 @@
+library(tinytest)
+
+expect_silent(gisco_get_countries())
+expect_error(gisco_get_countries(year = 2001, resolution = 60))
+expect_error(gisco_get_countries(year = 2011))
+expect_error(gisco_get_countries(crs = 2819))
+expect_error(gisco_get_countries(spatialtype = "aa"))
+expect_error(gisco_get_countries(res = 15))
+cachetest <- paste0(tempdir(),"_tinytest_get_countries")
+expect_silent(gisco_get_countries(spatialtype = "LB", cache_dir = cachetest))
+expect_silent(gisco_get_countries(spatialtype = "LB"))
+expect_silent(gisco_get_countries(spatialtype = "COASTL"))
+expect_silent(gisco_get_countries(spatialtype = "COASTL", year = 2020))
+expect_silent(gisco_get_countries(spatialtype = "COASTL",
+                                  country = c("ITA", "POL")))
+expect_silent(gisco_get_countries(country = c("ITA", "POL")))
+expect_silent(gisco_get_countries(region = c("Africa", "Americas")))
+expect_silent(gisco_get_countries(
+  update_cache = TRUE,
+  region = c("Africa", "Americas")
+))
