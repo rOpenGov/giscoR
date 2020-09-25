@@ -52,10 +52,34 @@
 #' please contact EuroGeographics for
 #' information regarding their licence agreements.
 #' @examples
-#' \dontrun{
-#' communes2013 <- gisco_get_communes(year = "2013",
-#'                                    crs = "3857",
-#'                                    spatialtype = "COASTL")
+#' \donttest{
+#' library(sf)
+#' library(cartography)
+#'
+#' communes <- gisco_get_communes(spatialtype = "COASTL")
+#' world <- gisco_countries_20M_2016
+#' opar <- par(no.readonly = TRUE)
+#' par(mar = c(2, 2, 2, 2))
+#' plot(
+#'   st_geometry(world),
+#'   axes = TRUE,
+#'   xlim = c(-20, 40),
+#'   ylim = c(40, 75),
+#'   bg = "aliceblue",
+#'   col = "antiquewhite"
+#' )
+#' box()
+#' typoLayer(
+#'   communes,
+#'   var = "EFTA_FLAG",
+#'   col = c(NA, "red"),
+#'   legend.pos = "n",
+#'   lwd = 2,
+#'   add = TRUE
+#' )
+#' layoutLayer("EFTA Coastlines",
+#'             col = "red",
+#'             sources = gisco_attributions(copyright = FALSE))
 #' }
 #' @export
 gisco_get_communes <- function(year = "2016",
@@ -99,7 +123,7 @@ gisco_get_communes <- function(year = "2016",
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <-
       countrycode::countrycode(country, origin = "iso3c", destination = "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

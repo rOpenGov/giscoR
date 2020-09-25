@@ -4,6 +4,6 @@
 ^codecov\.yml$
 ^devel$
 ^README\.Rmd$
+^.*\.yml$
+^docs$
 ^LICENSE
-^appveyor\.yml$
-^\.travis\.yml$

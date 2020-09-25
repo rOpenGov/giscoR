@@ -23,8 +23,8 @@ options(gisco_cache_dir = "~/R/mapslib/GISCO")
 # giscoR
 
 <!-- badges: start -->
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
-[![Travis build status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
+<!--[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
+[![Travis build status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR) -->
 <!-- badges: end -->
 
 giscoR is a API package that helps to retrieve data from [Eurostat - GISCO (the Geographic Information System of the COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides some lightweight data sets ready to use without downloading. Currently only the [Administrative Units / Statistical Units](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units) data sets are supported.
@@ -69,7 +69,7 @@ countrycode(eurostat,"eurostat","fips")
 You can install the developing version of `giscoR` with:
 
 ``` r
-require(remotes)
+library(remotes)
 install_github("dieghernan/giscoR")
 ```
 
@@ -97,7 +97,7 @@ countries <- gisco_get_countries(10, crs = 3857)
 countriescoast <-
   gisco_get_countries(10, spatialtype = "COASTL", crs = 3857)
 countries <-
-  merge(countries, M49_regions, all.x = TRUE)
+  merge(countries, gisco_countrycode, all.x = TRUE)
 
 
 library(cartography)
@@ -115,7 +115,7 @@ pal <- carto.pal("multi.pal", 20)
 typoLayer(
   countries,
   border = NA,
-  var = "SUBREGION",
+  var = "un.regionsub.name",
   col = pal,
   legend.pos = "n",
   add = TRUE

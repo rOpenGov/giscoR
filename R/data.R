@@ -1,8 +1,8 @@
 #' @title World countries \code{POLYGON} object
-#' @name gisco_countries_60M_2016
+#' @name gisco_countries_20M_2016
 #' @description A \code{sf} object including all
 #' countries as provided by GISCO (2016 version).
-#' @format A \code{MULTIPOLYGON} data frame (resolution: 1:60million, EPSG:4326) object with 257 rows and 7 variables:
+#' @format A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 257 rows and 7 variables:
 #' \describe{
 #'   \item{id}{row ID}
 #'   \item{CNTR_NAME}{Official country name on local language}
@@ -12,15 +12,16 @@
 #'   \item{FID}{FID}
 #'   \item{geometry}{geometry field}
 #' }
-#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_60M_2016_4326.geojson}.
+#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}.
 #' @docType data
+#' @seealso \link{gisco_get_countries}
 NULL
 
 #' @title World coastal lines \code{LINESTRING} object
-#' @name gisco_coastallines_60M_2016
+#' @name gisco_coastallines_20M_2016
 #' @description A \code{sf} object including the coast lines
 #' as provided by GISCO (2016 version).
-#' @format A \code{LINESTRING} data frame (resolution: 1:60million, EPSG:4326) object with 8 variables:
+#' @format A \code{LINESTRING} data frame (resolution: 1:20million, EPSG:4326) object with 8 variables:
 #' \describe{
 #'   \item{EFTA_FLAG}{Coast belonging to EFTA countries}
 #'   \item{OTHR_FLAG}{Coast belonging to other countries}
@@ -31,26 +32,54 @@ NULL
 #'   \item{FID}{FID}
 #'   \item{geometry}{geometry field}
 #' }
-#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_BN_60M_2016_4326_COASTL.geojson}.
+#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_BN_20M_2016_4326_COASTL.geojson}.
 #' @docType data
+#' @seealso \link{gisco_get_countries}
 NULL
 
-#' @title Dataframe including United Nations M49 geographic regions
-#' @name M49_regions
-#' @description A dataframe containing geographic regions information, as provided by the UN Standard Country or Area Codes for Statistical Use (M49).
-#' @format A data frame object with 250 rows and 9 variables:
+#' @title All NUTS \code{POLYGON} object
+#' @name gisco_nuts_20M_2016
+#' @description A \code{sf} object including all
+#' NUTS levels as provided by GISCO (2016 version).
+#' @format A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 11 variables:
 #' \describe{
-#'   \item{ISO3_CODE}{\href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3}{ISO 3166-1 alpha-3 code} of each country, as provided by GISCO}
-#'   \item{NAME}{Country name}
-#'   \item{REGION_CODE}{Numeric region code}
-#'   \item{REGION}{Region}
-#'   \item{SUBREGION_CODE}{Numeric sub-region code}
-#'   \item{SUBREGION}{Sub-Region}
-#'   \item{INTERREGION_CODE}{Numeric intermediate Region code}
-#'   \item{INTERREGION}{Intermediate Region}
-#'   \item{DEVELOPED}{Indicates wheter a country is considered "Developed" of "Developing"}
+#'   \item{id}{row ID}
+#'   \item{COAST_TYPE}{COAST_TYPE}
+#'   \item{MOUNT_TYPE}{MOUNT_TYPE}
+#'   \item{NAME_LATN}{Name on Latin characters}
+#'   \item{CNTR_CODE}{Eurostat Country code}
+#'   \item{FID}{FID}
+#'   \item{NUTS_ID}{NUTS identifier}
+#'   \item{NUTS_NAME}{NUTS name on local alphabet}
+#'   \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
+#'   \item{URBN_TYPE}{URBN_TYPE}
+#'   \item{geometry}{geometry field}
 #' }
-#' @source \url{https://unstats.un.org/unsd/methodology/m49/#geo-regions}
-#' @note This data was extracted on 29Jan2020 using the reop \url{https://github.com/dieghernan/Country-Codes-and-International-Organizations/}
+#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_20M_2016_4326.geojson}.
+#' @docType data
+#' @seealso \link{gisco_get_nuts}
+NULL
+
+
+#' @title Dataframe including Eurostat and ISO2 and ISO3 codes for countries and world regions
+#' @name gisco_countrycode
+#' @description A dataframe containing conversions between different country codification systems (Eurostat/ISO2 and 3) as well as geographic regions as provided by the World Bank and the UN (M49).
+#' @format A data frame object with 249 rows and 12 variables:
+#' \describe{
+#'   \item{CNTR_CODE}{Eurostat code of each country}
+#'   \item{iso2c}{ISO 3166-1 alpha-2 code of each country}
+#'   \item{ISO3_CODE}{ISO 3166-1 alpha-3 code of each country}
+#'   \item{iso.name.en}{ISO English short name}
+#'   \item{cldr.short.en}{English short name as provided by the \href{http://cldr.unicode.org/translation/displaynames/country-names}{Unicode Common Locale Data Repository}}
+#'   \item{continent}{As provided by the World Bank}
+#'   \item{un.region.code}{Numeric region code UN (M49)}
+#'   \item{un.region.name}{Region name UN (M49)}
+#'   \item{un.regionintermediate.code}{Numeric intermediate Region code UN (M49)}
+#'   \item{un.regionintermediate.name}{Intermediate Region name UN (M49)}
+#'   \item{un.regionsub.code}{Numeric sub-region code UN (M49)}
+#'   \item{un.regionsub.name}{Sub-Region name UN (M49)}
+#' }
+#' @source \code{codelist} dataset from the \code{countrycode v1.2.0} package.
+#' @seealso \link[countrycode]{codelist}
 #' @docType data
 NULL

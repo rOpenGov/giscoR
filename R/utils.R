@@ -2,7 +2,6 @@
 #' @importFrom utils download.file
 NULL
 
-
 #' @name gsc_helper_communes_url
 #' @title Helper function communes_url
 #' @description Get url for communes
@@ -180,7 +179,6 @@ gsc_helper_urau_url <- function(year, crs, spatialtype, level) {
   }
   return(filename)
 }
-
 
 #' @name gsc_helper_dwnl_nocaching
 #' @title Helper function download with no caching

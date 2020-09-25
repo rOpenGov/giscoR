@@ -28,14 +28,14 @@
 #' @param update_cache a logical whether to update cache.
 #' @param cache_dir a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>)}.
 #' @param country Optional. A character vector of ISO-3 country codes. See Details
-#' @param region Optional. A character vector of UN M49 region codes. Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania". See Details and \link{M49_regions}
+#' @param region Optional. A character vector of UN M49 region codes. Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania". See Details and \link{gisco_countrycode}
 #' @export
 #' @details \code{country} and \code{region} only available when applicable.
 #' Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 #' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/countries/}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.
-#' @seealso \link{M49_regions}
+#' @seealso \link{gisco_countrycode}
 #' @note COPYRIGHT NOTICE
 #'
 #' When data downloaded from this page
@@ -63,23 +63,23 @@
 #' @examples
 #' library(sf)
 #'
-#' # Change crs and resolution
-#' cntries2020 <-
-#'   gisco_get_countries(year = 2020,
-#'                       crs = 3035,
-#'                       resolution = 20)
-#' plot(st_geometry(cntries2020), bg = "#C6ECFF", col = "#E0E0E0")
-#'
 #' # Some data are already available for speed up the process
 #' africa2016 <-  gisco_get_countries(region = "Africa")
 #' angola_namibia <-  gisco_get_countries(country = c("AGO", "NAM"))
 #'
 #' plot(st_geometry(africa2016), bg = "#C6ECFF", col = NA)
-#' plot(st_geometry(gisco_countries_60M_2016),
+#' plot(st_geometry(gisco_countries_20M_2016),
 #'      col = "#E0E0E0",
 #'      add = TRUE)
 #' plot(st_geometry(africa2016), col = "#F6E1B9", add = TRUE)
 #' plot(st_geometry(angola_namibia), col = "#FEFEE9", add = TRUE)
+#' # Change crs and resolution
+#' \donttest{
+#' cntries2020 <-
+#'   gisco_get_countries(year = 2020,
+#'                       crs = 3035,
+#'                       resolution = 20)
+#' plot(st_geometry(cntries2020), bg = "#C6ECFF", col = "#E0E0E0")
 #'
 #' # Several geometry types
 #' coastl <-
@@ -100,8 +100,9 @@
 #'      add = TRUE,
 #'      pch = 19)
 #' par(opar)
+#' }
 #' @export
-gisco_get_countries <- function(resolution = "60",
+gisco_get_countries <- function(resolution = "20",
                                 year = "2016",
                                 crs = "4326",
                                 cache = TRUE,
@@ -142,13 +143,13 @@ gisco_get_countries <- function(resolution = "60",
   # Check if data is already available
   if (isFALSE(update_cache)) {
     if (year == "2016" &
-        resolution == "60" &
+        resolution == "20" &
         crs == "4326" & spatialtype %in% c("RG", "COASTL")) {
       dwnload <- FALSE
       if (spatialtype == "RG") {
-        data.sf <- giscoR::gisco_countries_60M_2016
+        data.sf <- giscoR::gisco_countries_20M_2016
       } else if (spatialtype == "COASTL") {
-        data.sf <- giscoR::gisco_coastallines_60M_2016
+        data.sf <- giscoR::gisco_coastallines_20M_2016
       }
     } else {
       dwnload <- TRUE
@@ -206,12 +207,12 @@ gisco_get_countries <- function(resolution = "60",
                                 url)
   }
   if (!is.null(country) & "ISO3_CODE" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$ISO3_CODE %in% country,]
+    data.sf <- data.sf[data.sf$ISO3_CODE %in% country, ]
   }
   if (!is.null(region) & "ISO3_CODE" %in% names(data.sf)) {
-    M49 <- giscoR::M49_regions
-    M49 <- M49[M49$REGION %in% region,]
-    data.sf <- data.sf[data.sf$ISO3_CODE %in% M49$ISO3_CODE,]
+    region.df <- giscoR::gisco_countrycode
+    region.df <- region.df[region.df$un.region.name %in% region, ]
+    data.sf <- data.sf[data.sf$ISO3_CODE %in% region.df$ISO3_CODE, ]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

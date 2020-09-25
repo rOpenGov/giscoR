@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_coastallines(
-  resolution = "60",
+  resolution = "20",
   year = "2016",
   crs = "4326",
   cache = TRUE,
@@ -76,13 +76,14 @@ information regarding their licence agreements.
 }
 \examples{
 library(sf)
-
+\donttest{
 coastlines <- gisco_get_coastallines(resolution = 60)
 plot(st_geometry(coastlines), col = "red", border = "orange")
 
 coastlinesrobin <- gisco_get_coastallines(crs = 3857)
 coastlinesrobin <- st_transform(coastlinesrobin, "+proj=robin")
 plot(st_geometry(coastlinesrobin), col = "black", bg = "grey", border = "white")
+}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

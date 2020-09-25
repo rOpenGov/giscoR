@@ -44,7 +44,7 @@
 #' please contact EuroGeographics for
 #' information regarding their licence agreements.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' lau2019 <-
 #'   gisco_get_lau(year = 2019,
 #'                 country = c("ESP", "FRA", "POL"))
@@ -101,11 +101,11 @@ gisco_get_lau <- function(year = "2016",
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <-
       countrycode::countrycode(country, origin = "iso3c", destination = "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
 
   if (!is.null(gisco_id) & "GISCO_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id,]
+    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id, ]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

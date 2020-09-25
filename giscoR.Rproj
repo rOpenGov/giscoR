@@ -19,4 +19,5 @@ BuildType: Package
 PackageUseDevtools: Yes
 PackageInstallArgs: --no-multiarch --with-keep.source
 PackageBuildArgs: --resave-data
+PackageCheckArgs: --run-donttest
 PackageRoxygenize: rd,collate,namespace,vignette

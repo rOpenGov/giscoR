@@ -73,7 +73,7 @@ please contact EuroGeographics for
 information regarding their licence agreements.
 }
 \examples{
-\dontrun{
+\donttest{
 lau2019 <-
   gisco_get_lau(year = 2019,
                 country = c("ESP", "FRA", "POL"))

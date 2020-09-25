@@ -46,13 +46,75 @@
 #' please contact EuroGeographics for
 #' information regarding their licence agreements.
 #' @examples
-#' labels <-
-#'   gisco_get_urban_audit(
-#'   year = 2020,
-#'   crs = 3857,
-#'   spatialtype = "LB",
-#'   level = "GREATER_CITIES"
+#' \donttest{
+#' library(sf)
+#' library(cartography)
+#' europe <-
+#'   gisco_get_countries(
+#'     crs = 3857,
+#'     year = "2020",
+#'     region = "Europe",
+#'     resolution = "03"
 #'   )
+#' cities <-
+#'   gisco_get_urban_audit(
+#'     year = 2020,
+#'     crs = 3857,
+#'     level = "GREATER_CITIES",
+#'     country = "BEL"
+#'   )
+#'
+#' # Focus on Belgium
+#' bbox <-
+#'   st_bbox(c(
+#'     xmin = 150000,
+#'     xmax = 950000,
+#'     ymax = 6900000,
+#'     ymin = 6300000
+#'   ),
+#'   crs = st_crs(europe))
+#' bbox <- st_bbox(cities)
+#'
+#' # Plot
+#' opar <- par(no.readonly = TRUE)
+#' par(mar = c(1, 1, 1, 1))
+#' plot(
+#'   st_geometry(europe),
+#'   xlim = bbox[c(1, 3)],
+#'   ylim = bbox[c(2, 4)],
+#'   col = "antiquewhite",
+#'   graticule = TRUE
+#' )
+#' box()
+#' plot(st_geometry(cities),
+#'      col = "darkblue",
+#'      border = "white",
+#'      add = TRUE)
+#'
+#' # Labels
+#' labelLayer(
+#'   st_crop(europe, bbox),
+#'   txt = "NAME_ENGL",
+#'   family = "serif",
+#'   font = 3,
+#'   cex = 0.8
+#' )
+#' labelLayer(
+#'   cities,
+#'   txt = "URAU_NAME",
+#'   overlap = FALSE,
+#'   col = "darkblue",
+#'   halo = TRUE
+#' )
+#' layoutLayer(
+#'   "Greater Cities of Belgium - Eurostat (2020)",
+#'   col = "darkblue",
+#'   sources = gisco_attributions(copyright = FALSE),
+#'   horiz = FALSE,
+#'   posscale = "bottomleft"
+#' )
+#' par(opar)
+#' }
 #' @export
 gisco_get_urban_audit <- function(year = "2018",
                                   crs = "4326",
@@ -102,7 +164,7 @@ gisco_get_urban_audit <- function(year = "2018",
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <-
       countrycode::countrycode(country, origin = "iso3c", destination = "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

@@ -5,6 +5,9 @@
 
 <!-- badges: start -->
 
+<!--[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
+[![Travis build status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR) -->
+
 <!-- badges: end -->
 
 giscoR is a API package that helps to retrieve data from [Eurostat -
@@ -41,22 +44,58 @@ package(<http://ropengov.github.io/eurostat/>):
 Some other packages recommended for visualization are:
 
   - [`tmap`](https://mtennekes.github.io/tmap)  
-  - [`ggplot2`](https://ggplot2.tidyverse.org/) +
-    [`ggspatial`](https://paleolimbot.github.io/ggspatial/index.html)
   - [`cartography`](http://riatelab.github.io/cartography/docs/)
+  - [`leaflet`](https://rstudio.github.io/leaflet/)
+
+Some of the datasets identify the countries by using the [Eurostat
+Country
+Code](https://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Country_codes).
+The equivalence on ISO-3 (and another codification systems) could be
+done using the `countrycode`
+[package](https://vincentarelbundock.github.io/countrycode):
+
+``` r
+library(countrycode)
+eurostat <- c("ES","UK","EL")
+countrycode(eurostat,"eurostat","cldr.name.en")
+#> [1] "Spain"          "United Kingdom" "Greece"
+countrycode(eurostat,"eurostat","cldr.name.fr")
+#> [1] "Espagne"     "Royaume-Uni" "Grèce"
+countrycode(eurostat,"eurostat","iso3c")
+#> [1] "ESP" "GBR" "GRC"
+countrycode(eurostat,"eurostat","iso2c")
+#> [1] "ES" "GB" "GR"
+countrycode(eurostat,"eurostat","fips")
+#> [1] "SP" "UK" "GR"
+```
 
 ## Installation
 
 You can install the developing version of `giscoR` with:
 
 ``` r
-require(remotes)
+library(remotes)
 install_github("dieghernan/giscoR")
 ```
 
-## Example
+## A note on caching
 
-This is a basic example which shows you how to solve a common problem:
+Some data sets (as Local Administrative Units - LAU, or high-resolution
+files) may have a size larger than 50MB. You can use `giscoR` to create
+your own local repository at a given location passing the following
+option:
+
+``` r
+options(gisco_cache_dir = "./path/to/location")
+```
+
+When this option is set, `giscoR` would look for the cached file and it
+will load it, speeding up the process.
+
+You can also download manually the files (`.geojson` format) and stored
+on that library.
+
+## Example
 
 ``` r
 library(giscoR)
@@ -67,7 +106,7 @@ countries <- gisco_get_countries(10, crs = 3857)
 countriescoast <-
   gisco_get_countries(10, spatialtype = "COASTL", crs = 3857)
 countries <-
-  merge(countries, M49_regions, all.x = TRUE)
+  merge(countries, gisco_countrycode, all.x = TRUE)
 
 
 library(cartography)
@@ -85,20 +124,18 @@ pal <- carto.pal("multi.pal", 20)
 typoLayer(
   countries,
   border = NA,
-  var = "SUBREGION",
+  var = "un.regionsub.name",
   col = pal,
   legend.pos = "n",
   add = TRUE
 )
 plot(st_geometry(countriescoast),
-  border = "black",
-  add = TRUE
-)
+     border = "black",
+     add = TRUE)
 
 layoutLayer("UN Subregions, 2016",
-  sources = gisco_attributions(copyright = FALSE),
-  theme = "blue.pal",
-)
+            sources = gisco_attributions(copyright = FALSE),
+            theme = "blue.pal",)
 ```
 
 ![](man/figures/README-example-1.png)<!-- -->
@@ -119,8 +156,7 @@ tm_shape(coast) +
   tm_shape(grat) + tm_lines(col = "grey60") +
   tm_layout(attr.outside = TRUE, frame = FALSE) +
   tm_credits(gisco_attributions(copyright = FALSE),
-    position = c("LEFT", "BOTTOM")
-  )
+             position = c("LEFT", "BOTTOM"))
 ```
 
 ![](man/figures/README-example-2.png)<!-- -->
