@@ -20,11 +20,11 @@ knitr::knit_hooks$set(
 #options(gisco_cache_dir = "~/R/mapslib/GISCO")
 ```
 
-# giscoR
+# giscoR <img src="man/figures/logo.png" align="right" />
 
 <!-- badges: start -->
-<!--[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
-[![Travis build status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR) -->
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
+[![Travis build status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
 <!-- badges: end -->
 
 giscoR is a API package that helps to retrieve data from [Eurostat - GISCO (the Geographic Information System of the COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides some lightweight data sets ready to use without downloading. Currently only the [Administrative Units / Statistical Units](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units) data sets are supported.

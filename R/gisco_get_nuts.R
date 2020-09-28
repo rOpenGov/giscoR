@@ -146,6 +146,12 @@ gisco_get_nuts <- function(resolution = "20",
   resolution <- gsub("^1$", "01", resolution)
   resolution <- gsub("^3$", "03", resolution)
 
+  # Check crs is of correct format
+  crs <- as.character(crs)
+  if (!as.numeric(crs) %in% c(4326, 3035, 3857)) {
+    stop("crs should be one of 4326, 3035 or 3857")
+  }
+
   # Check nuts level
 
   nuts_level <- as.character(nuts_level)
@@ -178,7 +184,7 @@ gisco_get_nuts <- function(resolution = "20",
       if (nuts_level == "all") {
         data.sf <- nuts_aux
       } else {
-        data.sf <- nuts_aux[nuts_aux$LEVL_CODE == as.integer(nuts_level), ]
+        data.sf <- nuts_aux[nuts_aux$LEVL_CODE == as.integer(nuts_level),]
       }
     } else {
       dwnload <- TRUE
@@ -225,11 +231,11 @@ gisco_get_nuts <- function(resolution = "20",
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <-
       countrycode::countrycode(country, origin = "iso3c", destination = "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
   }
 
   if (!is.null(nuts_id) & "NUTS_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$NUTS_ID %in% nuts_id, ]
+    data.sf <- data.sf[data.sf$NUTS_ID %in% nuts_id,]
   }
 
   data.sf <- sf::st_make_valid(data.sf)

@@ -1,0 +1,39 @@
+url: https://dieghernan.github.io/giscoR
+
+reference:
+  - title: "API functions"
+    desc: These functions downloads data from GISCO
+    contents:
+      - gisco_get_coastallines
+      - gisco_get_communes
+      - gisco_get_countries
+      - gisco_get_lau
+      - gisco_get_nuts
+      - gisco_get_urban_audit
+  - title: "Attributions"
+    desc: Helper function to quickly add Attributions
+    contents:
+      - gisco_attributions
+  - title: "Datasets"
+    desc: These objects are datasets already included in the package.
+    contents:
+      - gisco_nuts_20M_2016
+      - gisco_countries_20M_2016
+      - gisco_coastallines_20M_2016
+      - gisco_countrycode
+
+figures:
+  dev: grDevices::svg
+dpi: 72
+dev.args: []
+fig.ext: svg
+fig.retina: 2
+
+development:
+  mode: unreleased
+  version_label: warning
+  version_tooltip: "On development"
+
+template:
+  params:
+    bootswatch: flatly

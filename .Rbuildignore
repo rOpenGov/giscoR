@@ -6,6 +6,7 @@
 ^README\.Rmd$
 ^.*\.yml$
 ^docs$
+^pkgdown$
 ^LICENSE
 ^giscoR\.Rcheck$
 ^giscoR.*\.tar\.gz$

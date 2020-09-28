@@ -26,8 +26,6 @@ vignettes/*.pdf
 *.knit.md
 # R Environment Variables
 .Renviron
-_pkgdown.yml
-docs/
 giscoR.Rcheck/
 giscoR*.tar.gz
 giscoR*.tgz
