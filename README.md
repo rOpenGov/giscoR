@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# giscoR <img src="man/figures/logo.png" align="right" />
+# giscoR <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 
