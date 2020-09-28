@@ -4,7 +4,7 @@
 \alias{gisco_get_communes}
 \title{Download Geospatial Communes Data from GISCO}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/communes/}
+\href{https://gisco-services.ec.europa.eu/distribution/v2/communes/}{GISCO Communes}
 }
 \usage{
 gisco_get_communes(

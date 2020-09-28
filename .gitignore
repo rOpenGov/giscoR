@@ -28,3 +28,6 @@ vignettes/*.pdf
 .Renviron
 _pkgdown.yml
 docs/
+giscoR.Rcheck/
+giscoR*.tar.gz
+giscoR*.tgz

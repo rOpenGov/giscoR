@@ -17,7 +17,7 @@ A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object wit
 }
 }
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}{GISCO .geojson source}
 }
 \description{
 A \code{sf} object including all

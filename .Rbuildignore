@@ -7,3 +7,6 @@
 ^.*\.yml$
 ^docs$
 ^LICENSE
+^giscoR\.Rcheck$
+^giscoR.*\.tar\.gz$
+^giscoR.*\.tgz$

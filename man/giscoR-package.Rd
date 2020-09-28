@@ -6,7 +6,7 @@
 \alias{giscoR}
 \title{Download geospatial data from GISCO API - Eurostat}
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}
+\href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{GISCO webpage}
 }
 \description{
 giscoR is a API package that helps to retrieve data from Eurostat - GISCO (the Geographic Information System of the COmmission)
@@ -22,6 +22,32 @@ Date: \tab 2020\cr
 License: \tab GPL-3\cr
 LazyLoad: \tab yes\cr
 }
+}
+\note{
+COPYRIGHT NOTICE
+
+When data downloaded from this page
+\url{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}
+is used in any printed or electronic publication,
+in addition to any other provisions
+applicable to the whole Eurostat website,
+data source will have to be acknowledged
+in the legend of the map and
+in the introductory page of the publication
+with the following copyright notice:
+\itemize{
+	\item EN: (C) EuroGeographics for the administrative boundaries
+	\item FR: (C) EuroGeographics pour les limites administratives
+	\item DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
+}
+For publications in languages other than
+English, French or German,
+the translation of the copyright notice
+in the language of the publication shall be used.
+
+If you intend to use the data commercially,
+please contact EuroGeographics for
+information regarding their licence agreements.
 }
 \examples{
 library(giscoR)

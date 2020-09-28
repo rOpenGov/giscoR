@@ -12,7 +12,7 @@
 #'   \item{FID}{FID}
 #'   \item{geometry}{geometry field}
 #' }
-#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}.
+#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}{GISCO .geojson source}
 #' @docType data
 #' @seealso \link{gisco_get_countries}
 NULL
@@ -32,7 +32,7 @@ NULL
 #'   \item{FID}{FID}
 #'   \item{geometry}{geometry field}
 #' }
-#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_BN_20M_2016_4326_COASTL.geojson}.
+#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_BN_20M_2016_4326_COASTL.geojson}{GISCO .geojson source}
 #' @docType data
 #' @seealso \link{gisco_get_countries}
 NULL
@@ -55,7 +55,7 @@ NULL
 #'   \item{URBN_TYPE}{URBN_TYPE}
 #'   \item{geometry}{geometry field}
 #' }
-#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_20M_2016_4326.geojson}.
+#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
 #' @docType data
 #' @seealso \link{gisco_get_nuts}
 NULL

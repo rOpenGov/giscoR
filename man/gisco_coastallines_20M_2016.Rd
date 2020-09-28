@@ -18,7 +18,7 @@ A \code{LINESTRING} data frame (resolution: 1:20million, EPSG:4326) object with 
 }
 }
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_BN_20M_2016_4326_COASTL.geojson}.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_BN_20M_2016_4326_COASTL.geojson}{GISCO .geojson source}
 }
 \description{
 A \code{sf} object including the coast lines

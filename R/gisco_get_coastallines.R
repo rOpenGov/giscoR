@@ -20,7 +20,7 @@
 #' @param update_cache a logical whether to update cache.
 #' @param cache_dir a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>}.
 #' @export
-#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/coas/}
+#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/coas/}{GISCO Coastal Lines}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{POLYGON} object on \code{sf} format.
 #' @note COPYRIGHT NOTICE
@@ -50,10 +50,10 @@
 #' @examples
 #' library(sf)
 #' \donttest{
-#' coastlines <- gisco_get_coastallines(resolution = 60)
+#' coastlines <- gisco_get_coastallines(resolution = "60")
 #' plot(st_geometry(coastlines), col = "red", border = "orange")
 #'
-#' coastlinesrobin <- gisco_get_coastallines(crs = 3857)
+#' coastlinesrobin <- gisco_get_coastallines(crs = "3857")
 #' coastlinesrobin <- st_transform(coastlinesrobin, "+proj=robin")
 #' plot(st_geometry(coastlinesrobin), col = "black", bg = "grey", border = "white")
 #' }

@@ -4,7 +4,7 @@
 \alias{gisco_get_lau}
 \title{Download Geospatial Local Administrative Units Data from GISCO}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/lau/}
+\href{https://gisco-services.ec.europa.eu/distribution/v2/lau/}{GISCO Local Administrative Units}
 }
 \usage{
 gisco_get_lau(
@@ -74,22 +74,7 @@ information regarding their licence agreements.
 }
 \examples{
 \donttest{
-lau2019 <-
-  gisco_get_lau(year = 2019,
-                country = c("ESP", "FRA", "POL"))
-
-lau2018_3857 <-
-  gisco_get_lau(
-    year = 2018,
-    crs = 3857,
-    gisco_id = c("FR_11076", "FR_11077", "FR_11078",
-    "FR_11079")
-    )
-
-lau_2017_3035 <-
-  gisco_get_lau(year = 2017,
-                crs = 3035,
-                country = "MLT")
+lau <-  gisco_get_lau(year = "2019")
 }
 }
 \author{

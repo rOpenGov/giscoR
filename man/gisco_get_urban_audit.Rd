@@ -4,7 +4,7 @@
 \alias{gisco_get_urban_audit}
 \title{Download Geospatial Urban Audit Data from GISCO}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/urau/}
+\href{https://gisco-services.ec.europa.eu/distribution/v2/urau/}{GISCO Urban Audit}
 }
 \usage{
 gisco_get_urban_audit(

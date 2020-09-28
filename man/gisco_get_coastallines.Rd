@@ -4,7 +4,7 @@
 \alias{gisco_get_coastallines}
 \title{Download Coastal Lines from GISCO}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/coas/}
+\href{https://gisco-services.ec.europa.eu/distribution/v2/coas/}{GISCO Coastal Lines}
 }
 \usage{
 gisco_get_coastallines(
@@ -77,10 +77,10 @@ information regarding their licence agreements.
 \examples{
 library(sf)
 \donttest{
-coastlines <- gisco_get_coastallines(resolution = 60)
+coastlines <- gisco_get_coastallines(resolution = "60")
 plot(st_geometry(coastlines), col = "red", border = "orange")
 
-coastlinesrobin <- gisco_get_coastallines(crs = 3857)
+coastlinesrobin <- gisco_get_coastallines(crs = "3857")
 coastlinesrobin <- st_transform(coastlinesrobin, "+proj=robin")
 plot(st_geometry(coastlinesrobin), col = "black", bg = "grey", border = "white")
 }

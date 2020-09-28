@@ -4,7 +4,7 @@
 \alias{gisco_get_nuts}
 \title{Download Geospatial NUTS Data from GISCO}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}
+\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}{GISCO NUTS}
 }
 \usage{
 gisco_get_nuts(
@@ -100,14 +100,14 @@ information regarding their licence agreements.
 library(eurostat)
 library(sf)
 map <- gisco_get_nuts(year = "2016",
-                      nuts_level = 2,
+                      nuts_level = "2",
                       crs = "3035")
 
 #For the borders only
 brds <- gisco_get_nuts(
   year = "2016",
   spatialtype = "BN",
-  nuts_level = 0,
+  nuts_level = "0",
   crs = "3035"
 )
 

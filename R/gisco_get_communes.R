@@ -24,7 +24,7 @@
 #'
 #' Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 #' If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
-#' @source \url{https://gisco-services.ec.europa.eu/distribution/v2/communes/}
+#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/communes/}{GISCO Communes}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.
 #' @note COPYRIGHT NOTICE

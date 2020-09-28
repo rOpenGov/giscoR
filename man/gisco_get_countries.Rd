@@ -4,7 +4,7 @@
 \alias{gisco_get_countries}
 \title{Download Geospatial Country Data from GISCO}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/countries/}
+\href{https://gisco-services.ec.europa.eu/distribution/v2/countries/}{GISCO Countries}
 }
 \usage{
 gisco_get_countries(
@@ -98,6 +98,8 @@ information regarding their licence agreements.
 library(sf)
 
 # Some data are already available for speed up the process
+opar <- par(no.readonly = TRUE)
+par(mar = c(2, 0, 0, 0))
 africa2016 <-  gisco_get_countries(region = "Africa")
 angola_namibia <-  gisco_get_countries(country = c("AGO", "NAM"))
 
@@ -107,34 +109,25 @@ plot(st_geometry(gisco_countries_20M_2016),
      add = TRUE)
 plot(st_geometry(africa2016), col = "#F6E1B9", add = TRUE)
 plot(st_geometry(angola_namibia), col = "#FEFEE9", add = TRUE)
+
+mtext(gisco_attributions(), side = 1, cex = 0.8)
+
 # Change crs and resolution
-\donttest{
+
 cntries2020 <-
-  gisco_get_countries(year = 2020,
-                      crs = 3035,
-                      resolution = 20)
+  gisco_get_countries(year = "2020",
+                      crs = "3035",
+                      resolution = "60")
 plot(st_geometry(cntries2020), bg = "#C6ECFF", col = "#E0E0E0")
+mtext(gisco_attributions(), side = 1, cex = 0.8)
+par(opar)
 
 # Several geometry types
 coastl <-
-  gisco_get_countries(spatialtype = "COASTL")
+  gisco_get_countries(spatialtype = "COASTL", resolution = "60")
 
 inland <-
-  gisco_get_countries(spatialtype = "INLAND")
-
-labl <-
-  gisco_get_countries(spatialtype = "LB")
-
-opar <- par(no.readonly = TRUE)
-par(bg = "black", mar = c(0, 0, 0, 0))
-plot(st_geometry(coastl), col = "blue")
-plot(st_geometry(inland), col = "green", add = TRUE)
-plot(st_geometry(labl),
-     col = "red",
-     add = TRUE,
-     pch = 19)
-par(opar)
-}
+  gisco_get_countries(spatialtype = "INLAND", resolution = "60")
 }
 \seealso{
 \link{gisco_countrycode}
