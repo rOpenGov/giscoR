@@ -39,3 +39,4 @@ development:
 template:
   params:
     bootswatch: yeti
+    
