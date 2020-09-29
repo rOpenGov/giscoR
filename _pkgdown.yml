@@ -29,6 +29,7 @@ figures:
   fig.ext: png
   fig.retina: 2
   fig.height: 7
+  
 
 development:
   mode: unreleased
