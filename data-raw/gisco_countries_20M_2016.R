@@ -11,6 +11,10 @@ gisco_countries_20M_2016 <- gisco_get_countries(
   country = NULL,
   region = NULL
 )
+
+gisco_countries_20M_2016 <- st_transform(gisco_countries_20M_2016, 4326)
+
+
 usethis::use_data(gisco_countries_20M_2016,
                   overwrite = TRUE,
                   compress = "xz")

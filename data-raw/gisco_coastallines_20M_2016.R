@@ -12,6 +12,10 @@ gisco_coastallines_20M_2016 <- gisco_get_countries(
   country = NULL,
   region = NULL
 )
+
+gisco_coastallines_20M_2016 <- st_transform(gisco_coastallines_20M_2016, 4326)
+
+
 usethis::use_data(gisco_coastallines_20M_2016,
                   overwrite = TRUE,
                   compress = "xz")

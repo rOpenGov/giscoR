@@ -10,6 +10,10 @@ gisco_nuts_20M_2016 <- gisco_get_nuts(
   cache_dir = NULL,
   spatialtype = "RG"
 )
+
+gisco_nuts_20M_2016 <- st_transform(gisco_nuts_20M_2016, 4326)
+
+
 usethis::use_data(gisco_nuts_20M_2016,
                   overwrite = TRUE,
                   compress = "xz")
