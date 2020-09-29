@@ -9,9 +9,10 @@
 status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
 [![Travis build
 status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
-![R-CMD-check](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)
 ![GitHub](https://img.shields.io/github/license/dieghernan/giscoR?color=blue)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg?token=FO78KU9ONI)](undefined)
+[![R build
+status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 <!-- badges: end -->
 
 giscoR is a API package that helps to retrieve data from [Eurostat -
@@ -103,70 +104,98 @@ on that library.
 
 ``` r
 library(giscoR)
-library(sf)
 
-# Mapping with cartography
-countries <- gisco_get_countries(10, crs = 3857)
-countriescoast <-
-  gisco_get_countries(10, spatialtype = "COASTL", crs = 3857)
-countries <-
-  merge(countries, gisco_countrycode, all.x = TRUE)
+countries <- gisco_get_countries(crs = 3035)
 
+nuts2 <- gisco_get_nuts(crs = 3035, nuts_level = 2)
 
-library(cartography)
-par(mar = c(1, 0, 1, 1), bg = NA)
-plot(
-  st_geometry(countries),
-  col = "#f7cb99",
-  border = NA,
-  bg = "grey90",
-  ylim = (c(-10, 11) * 1000000)
-)
-
-pal <- carto.pal("multi.pal", 20)
-
-typoLayer(
-  countries,
-  border = NA,
-  var = "un.regionsub.name",
-  col = pal,
-  legend.pos = "n",
-  add = TRUE
-)
-plot(st_geometry(countriescoast),
-  border = "black",
-  add = TRUE
-)
-
-layoutLayer("UN Subregions, 2016",
-  sources = gisco_attributions(copyright = FALSE),
-  theme = "blue.pal",
-)
+# With ggplot2
+library(ggplot2)
+ggplot(countries) +
+  geom_sf(
+    colour = "grey50",
+    fill = "cornsilk",
+    size = 0.1
+  ) +
+  geom_sf(
+    data = nuts2,
+    colour = "darkblue",
+    fill = NA,
+    size = 0.05
+  ) +
+  coord_sf(
+    xlim = c(2200000, 7150000),
+    ylim = c(1380000, 5500000),
+    expand = TRUE
+  ) +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  ggtitle("NUTS2 Regions (2016)") +
+  theme(
+    panel.grid.major = element_line(
+      color = gray(.5),
+      linetype = "dashed",
+      size = 0.5
+    ),
+    panel.background = element_rect(fill = "aliceblue")
+  ) +
+  labs(caption = gisco_attributions(copyright = FALSE))
 ```
 
 ![](man/figures/README-example-1.png)<!-- -->
 
 ``` r
 
+# With tmap
 
-# Example with tmap
 library(tmap)
 
-coast <- gisco_get_coastallines(crs = 3035)
-grat <- st_transform(st_graticule(), st_crs(coast))
+cities <-
+  gisco_get_urban_audit(
+    year = "2020",
+    level = "GREATER_CITIES",
+    country = "BEL"
+  )
+#> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
+#> [1] "Loading from cache dir: /tmp/Rtmp55sIs8/gisco"
+#> 312 Kb
+countries <- gisco_get_countries(country = "BEL", resolution = "10")
 
-
-tm_shape(coast) +
-  tm_fill() +
-  tm_borders(col = "#0978AB", lwd = 2, alpha = 0.5) +
-  tm_shape(grat) + tm_lines(col = "grey60") +
-  tm_layout(attr.outside = TRUE, frame = FALSE) +
+tm_shape(countries) + tm_fill("cornsilk2") + tm_borders("grey50") + tm_shape(cities) + tm_fill("purple4") +
   tm_credits(gisco_attributions(copyright = FALSE),
     position = c("LEFT", "BOTTOM")
+  ) + tm_layout(
+    main.title = "Urban Audit 2020: Greater Cities of Belgium",
+    frame = TRUE,
+    attr.outside = TRUE,
+    main.title.size = 1
   )
 ```
 
 ![](man/figures/README-example-2.png)<!-- -->
+
+``` r
+
+# With cartography
+library(cartography)
+globe <- gisco_get_countries(crs = "3035")
+globe <- merge(globe, gisco_countrycode, all.x = TRUE)
+opar <- par(no.readonly = TRUE)
+par(mar = c(2, 2, 2, 2))
+typoLayer(globe, var = "un.region.name", legend.pos = "n")
+layoutLayer(
+  "Regions of the World (UN)",
+  sources = gisco_attributions(copyright = FALSE),
+  scale = FALSE,
+  horiz = TRUE
+)
+```
+
+![](man/figures/README-example-3.png)<!-- -->
+
+``` r
+par(opar)
+```
 
 ## Contribute
 

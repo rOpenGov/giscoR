@@ -22,7 +22,7 @@
     (Geographic Information System of the COmmission) Eurostat database
     &lt;https://ec.europa.eu/eurostat/web/gisco&gt;.
     This package is in no way officially related to or endorsed by Eurostat.">
-<meta property="og:image" content="https://dieghernan.github.io/giscoR/logo.svg">
+<meta property="og:image" content="https://dieghernan.github.io/giscoR/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -139,65 +139,88 @@
 <a href="#example" class="anchor"></a>Example</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/giscoR">giscoR</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
 
-<span class="co"># Mapping with cartography</span>
-<span class="va">countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get_countries.html">gisco_get_countries</a></span><span class="op">(</span><span class="fl">10</span>, crs <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span>
-<span class="va">countriescoast</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="reference/gisco_get_countries.html">gisco_get_countries</a></span><span class="op">(</span><span class="fl">10</span>, spatialtype <span class="op">=</span> <span class="st">"COASTL"</span>, crs <span class="op">=</span> <span class="fl">3857</span><span class="op">)</span>
-<span class="va">countries</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">countries</span>, <span class="va">gisco_countrycode</span>, all.x <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get_countries.html">gisco_get_countries</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">3035</span><span class="op">)</span>
 
+<span class="va">nuts2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get_nuts.html">gisco_get_nuts</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">3035</span>, nuts_level <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/cartography/">cartography</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>, bg <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">countries</span><span class="op">)</span>,
-  col <span class="op">=</span> <span class="st">"#f7cb99"</span>,
-  border <span class="op">=</span> <span class="cn">NA</span>,
-  bg <span class="op">=</span> <span class="st">"grey90"</span>,
-  ylim <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>, <span class="fl">11</span><span class="op">)</span> <span class="op">*</span> <span class="fl">1000000</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/cartography/man/carto.pal.html">carto.pal</a></span><span class="op">(</span><span class="st">"multi.pal"</span>, <span class="fl">20</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/typoLayer.html">typoLayer</a></span><span class="op">(</span>
-  <span class="va">countries</span>,
-  border <span class="op">=</span> <span class="cn">NA</span>,
-  var <span class="op">=</span> <span class="st">"un.regionsub.name"</span>,
-  col <span class="op">=</span> <span class="va">pal</span>,
-  legend.pos <span class="op">=</span> <span class="st">"n"</span>,
-  add <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">countriescoast</span><span class="op">)</span>,
-  border <span class="op">=</span> <span class="st">"black"</span>,
-  add <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/layoutLayer.html">layoutLayer</a></span><span class="op">(</span><span class="st">"UN Subregions, 2016"</span>,
-  sources <span class="op">=</span> <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>copyright <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
-  theme <span class="op">=</span> <span class="st">"blue.pal"</span>,
-<span class="op">)</span></pre></div>
+<span class="co"># With ggplot2</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">countries</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>
+    colour <span class="op">=</span> <span class="st">"grey50"</span>,
+    fill <span class="op">=</span> <span class="st">"cornsilk"</span>,
+    size <span class="op">=</span> <span class="fl">0.1</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>
+    data <span class="op">=</span> <span class="va">nuts2</span>,
+    colour <span class="op">=</span> <span class="st">"darkblue"</span>,
+    fill <span class="op">=</span> <span class="cn">NA</span>,
+    size <span class="op">=</span> <span class="fl">0.05</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span>
+    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2200000</span>, <span class="fl">7150000</span><span class="op">)</span>,
+    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1380000</span>, <span class="fl">5500000</span><span class="op">)</span>,
+    expand <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">"Longitude"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"Latitude"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"NUTS2 Regions (2016)"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
+    panel.grid.major <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>
+      color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/gray.html">gray</a></span><span class="op">(</span><span class="fl">.5</span><span class="op">)</span>,
+      linetype <span class="op">=</span> <span class="st">"dashed"</span>,
+      size <span class="op">=</span> <span class="fl">0.5</span>
+    <span class="op">)</span>,
+    panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"aliceblue"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>copyright <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-example-1.png"><!-- --></p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 
+<span class="co"># With tmap</span>
 
-<span class="co"># Example with tmap</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/mtennekes/tmap">tmap</a></span><span class="op">)</span>
 
-<span class="va">coast</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get_coastallines.html">gisco_get_coastallines</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">3035</span><span class="op">)</span>
-<span class="va">grat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_graticule.html">st_graticule</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="va">coast</span><span class="op">)</span><span class="op">)</span>
+<span class="va">cities</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="reference/gisco_get_urban_audit.html">gisco_get_urban_audit</a></span><span class="op">(</span>
+    year <span class="op">=</span> <span class="st">"2020"</span>,
+    level <span class="op">=</span> <span class="st">"GREATER_CITIES"</span>,
+    country <span class="op">=</span> <span class="st">"BEL"</span>
+  <span class="op">)</span>
+<span class="co">#&gt; [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"</span>
+<span class="co">#&gt; [1] "Loading from cache dir: /tmp/Rtmp55sIs8/gisco"</span>
+<span class="co">#&gt; 312 Kb</span>
+<span class="va">countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get_countries.html">gisco_get_countries</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"BEL"</span>, resolution <span class="op">=</span> <span class="st">"10"</span><span class="op">)</span>
 
-
-<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">coast</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_fill</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_borders</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"#0978AB"</span>, lwd <span class="op">=</span> <span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">grat</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_lines.html">tm_lines</a></span><span class="op">(</span>col <span class="op">=</span> <span class="st">"grey60"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_layout.html">tm_layout</a></span><span class="op">(</span>attr.outside <span class="op">=</span> <span class="cn">TRUE</span>, frame <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+<span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">countries</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_fill</a></span><span class="op">(</span><span class="st">"cornsilk2"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_borders</a></span><span class="op">(</span><span class="st">"grey50"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_shape.html">tm_shape</a></span><span class="op">(</span><span class="va">cities</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_polygons.html">tm_fill</a></span><span class="op">(</span><span class="st">"purple4"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_credits.html">tm_credits</a></span><span class="op">(</span><span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>copyright <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
     position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"LEFT"</span>, <span class="st">"BOTTOM"</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/pkg/tmap/man/tm_layout.html">tm_layout</a></span><span class="op">(</span>
+    main.title <span class="op">=</span> <span class="st">"Urban Audit 2020: Greater Cities of Belgium"</span>,
+    frame <span class="op">=</span> <span class="cn">TRUE</span>,
+    attr.outside <span class="op">=</span> <span class="cn">TRUE</span>,
+    main.title.size <span class="op">=</span> <span class="fl">1</span>
   <span class="op">)</span></pre></div>
 <p><img src="reference/figures/README-example-2.png"><!-- --></p>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+
+<span class="co"># With cartography</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/cartography/">cartography</a></span><span class="op">)</span>
+<span class="va">globe</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get_countries.html">gisco_get_countries</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="st">"3035"</span><span class="op">)</span>
+<span class="va">globe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">globe</span>, <span class="va">gisco_countrycode</span>, all.x <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">opar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/typoLayer.html">typoLayer</a></span><span class="op">(</span><span class="va">globe</span>, var <span class="op">=</span> <span class="st">"un.region.name"</span>, legend.pos <span class="op">=</span> <span class="st">"n"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/layoutLayer.html">layoutLayer</a></span><span class="op">(</span>
+  <span class="st">"Regions of the World (UN)"</span>,
+  sources <span class="op">=</span> <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>copyright <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+  scale <span class="op">=</span> <span class="cn">FALSE</span>,
+  horiz <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span></pre></div>
+<p><img src="reference/figures/README-example-3.png"><!-- --></p>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></pre></div>
 </div>
 <div id="contribute" class="section level2">
 <h2 class="hasAnchor">
@@ -265,6 +288,7 @@
 <li><a href="https://ci.appveyor.com/project/dieghernan/giscoR"><img src="https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://travis-ci.com/dieghernan/giscoR"><img src="https://travis-ci.com/dieghernan/giscoR.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="undefined"><img src="https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg?token=FO78KU9ONI" alt="codecov"></a></li>
+<li><a href="https://github.com/dieghernan/giscoR/actions"><img src="https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
 </div>

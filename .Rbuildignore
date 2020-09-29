@@ -12,3 +12,4 @@
 ^giscoR\.Rcheck$
 ^giscoR.*\.tar\.gz$
 ^giscoR.*\.tgz$
+^\.github$
