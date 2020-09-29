@@ -23,10 +23,10 @@ reference:
       - gisco_countrycode
 
 figures:
-  dev: grDevices::svg
-dpi: 72
+  dev: grDevices::png
+dpi: 90
 dev.args: []
-fig.ext: svg
+fig.ext: png
 fig.retina: 2
 
 development:
