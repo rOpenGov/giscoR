@@ -16,6 +16,9 @@ dt,
 .navbar {
 font-family: 'Noto Serif', serif;
 }
+.section-desc{
+  font-family: 'Roboto', sans;    
+}
 .navbar{
   background-color: 	#00688b;
 }
