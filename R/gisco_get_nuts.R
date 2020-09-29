@@ -214,6 +214,10 @@ gisco_get_nuts <- function(resolution = "20",
   if (!is.null(nuts_id) & "NUTS_ID" %in% names(data.sf)) {
     data.sf <- data.sf[data.sf$NUTS_ID %in% nuts_id,]
   }
+  if (is.na(sf::st_crs(data.sf)$epsg)) {
+    # Sometimes data saved does not have epsg - investigate
+    data.sf <- sf::st_set_crs(data.sf, as.integer(crs))
+  }
 
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

@@ -184,6 +184,10 @@ gisco_get_countries <- function(resolution = "20",
     region.df <- region.df[region.df$un.region.name %in% region, ]
     data.sf <- data.sf[data.sf$ISO3_CODE %in% region.df$ISO3_CODE, ]
   }
+  if (is.na(sf::st_crs(data.sf)$epsg)) {
+    # Sometimes data saved does not have epsg - investigate
+    data.sf <- sf::st_set_crs(data.sf, as.integer(crs))
+  }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)
 }
