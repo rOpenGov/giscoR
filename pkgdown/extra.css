@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Noto+Serif&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+.navbar {
+font-family: 'Noto Serif', serif;
+}
+
+body{
+ font-family: 'Open Sans', sans;
+}
+
+.navbar{
+  background-color: 	#00688b;
+}
+
+.navbar .navbar-toggle .icon-bar {
+    background-color: #d7dc0a;
+}
+.navbar .navbar-toggle{
+  border-color: #d7dc0a;
+}
