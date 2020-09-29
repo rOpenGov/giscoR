@@ -38,5 +38,5 @@ development:
 
 template:
   params:
-    bootswatch: yeti
+    bootswatch: flatly
     

@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Noto+Serif&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro&family=Noto+Serif&display=swap');
+body{
+ font-family: 'Roboto', sans;
+}
 h1,
 h2,
 h3,
@@ -7,21 +9,23 @@ h4,
 h5,
 h6,
 blockquote,
+th,
+dt,
+.copyright,
+.pkgdown,
 .navbar {
 font-family: 'Noto Serif', serif;
 }
-
-body{
- font-family: 'Open Sans', sans;
-}
-
 .navbar{
   background-color: 	#00688b;
 }
-
 .navbar .navbar-toggle .icon-bar {
     background-color: #d7dc0a;
 }
 .navbar .navbar-toggle{
-  border-color: #d7dc0a;
+  border-color: transparent;
+}
+
+code,pre{
+  font-family: 'Source Code Pro', monospace;
 }
