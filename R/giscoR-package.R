@@ -12,19 +12,27 @@
 #' @name giscoR-package
 #' @aliases giscoR
 #' @docType package
-#' @description giscoR is a API package that helps to retrieve data from Eurostat - GISCO (the Geographic Information System of the COmmission)
+#' @description \if{html}{\figure{logo.png}{options: width=120 alt="giscoR logo" align='right'}}
+#'
+#' giscoR is a API package that helps to retrieve data from Eurostat - GISCO (the Geographic Information System of the COmmission)
 #' @title Download geospatial data from GISCO API - Eurostat
 #'
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @source \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{GISCO webpage}
 #' @references
 #' See \code{citation("giscoR")}
-#' @examples library(giscoR)
+#' @seealso
+#' Useful links:
+#'  \itemize{
+#'  \item \url{https://dieghernan.github.io/giscoR/}
+#'  \item \url{https://github.com/dieghernan/giscoR}
+#'  \item Report bugs at \url{https://github.com/dieghernan/giscoR/issues}
+#'  }
 #' @keywords package
 #' @note COPYRIGHT NOTICE
 #'
-#' When data downloaded from
-#' \href{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
+#' When data downloaded from this page
+#' \url{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}
 #' is used in any printed or electronic publication,
 #' in addition to any other provisions
 #' applicable to the whole Eurostat website,

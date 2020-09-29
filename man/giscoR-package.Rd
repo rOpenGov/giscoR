@@ -9,6 +9,8 @@
 \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{GISCO webpage}
 }
 \description{
+\if{html}{\figure{logo.png}{options: width=120 alt="giscoR logo" align='right'}}
+
 giscoR is a API package that helps to retrieve data from Eurostat - GISCO (the Geographic Information System of the COmmission)
 }
 \details{
@@ -26,8 +28,8 @@ LazyLoad: \tab yes\cr
 \note{
 COPYRIGHT NOTICE
 
-When data downloaded from
-\href{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
+When data downloaded from this page
+\url{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}
 is used in any printed or electronic publication,
 in addition to any other provisions
 applicable to the whole Eurostat website,
@@ -49,11 +51,16 @@ If you intend to use the data commercially,
 please contact EuroGeographics for
 information regarding their licence agreements.
 }
-\examples{
-library(giscoR)
-}
 \references{
 See \code{citation("giscoR")}
+}
+\seealso{
+Useful links:
+ \itemize{
+ \item \url{https://dieghernan.github.io/giscoR/}
+ \item \url{https://github.com/dieghernan/giscoR}
+ \item Report bugs at \url{https://github.com/dieghernan/giscoR/issues}
+ }
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

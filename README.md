@@ -142,7 +142,7 @@ ggplot(countries) +
   labs(caption = gisco_attributions(copyright = FALSE))
 ```
 
-![](man/figures/README-example-1.png)<!-- -->
+![](devel/figures/README-example-1.png)<!-- -->
 
 ``` r
 
@@ -157,7 +157,7 @@ cities <-
     country = "BEL"
   )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /tmp/Rtmp55sIs8/gisco"
+#> [1] "Loading from cache dir: /tmp/RtmpRtFtEG/gisco"
 #> 312 Kb
 countries <- gisco_get_countries(country = "BEL", resolution = "10")
 
@@ -172,7 +172,7 @@ tm_shape(countries) + tm_fill("cornsilk2") + tm_borders("grey50") + tm_shape(cit
   )
 ```
 
-![](man/figures/README-example-2.png)<!-- -->
+![](devel/figures/README-example-2.png)<!-- -->
 
 ``` r
 
@@ -191,7 +191,7 @@ layoutLayer(
 )
 ```
 
-![](man/figures/README-example-3.png)<!-- -->
+![](devel/figures/README-example-3.png)<!-- -->
 
 ``` r
 par(opar)
