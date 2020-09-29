@@ -3,6 +3,7 @@
 ^data-raw$
 ^codecov\.yml$
 ^devel$
+^.github$
 ^README\.Rmd$
 ^.*\.yml$
 ^docs$

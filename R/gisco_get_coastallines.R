@@ -23,30 +23,7 @@
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/coas/}{GISCO Coastal Lines}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{POLYGON} object on \code{sf} format.
-#' @note COPYRIGHT NOTICE
-#'
-#' When data downloaded from this page
-#' \url{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}
-#' is used in any printed or electronic publication,
-#' in addition to any other provisions
-#' applicable to the whole Eurostat website,
-#' data source will have to be acknowledged
-#' in the legend of the map and
-#' in the introductory page of the publication
-#' with the following copyright notice:
-#' \itemize{
-#' 	\item EN: (C) EuroGeographics for the administrative boundaries
-#' 	\item FR: (C) EuroGeographics pour les limites administratives
-#' 	\item DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
-#' }
-#' For publications in languages other than
-#' English, French or German,
-#' the translation of the copyright notice
-#' in the language of the publication shall be used.
-#'
-#' If you intend to use the data commercially,
-#' please contact EuroGeographics for
-#' information regarding their licence agreements.
+#' @note Please check the download and usage provisions on \link{gisco_attributions}.
 #' @examples
 #' library(sf)
 #' \donttest{

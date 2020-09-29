@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# giscoR <img src="man/figures/logo.png" align="right" width="120" />
+# giscoR <img src="man/figures/logo.svg" align="right" width="120" />
 
 <!-- badges: start -->
 
@@ -9,6 +9,7 @@
 status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
 [![Travis build
 status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
+![GitHub](https://img.shields.io/github/license/dieghernan/giscoR?color=blue)
 <!-- badges: end -->
 
 giscoR is a API package that helps to retrieve data from [Eurostat -

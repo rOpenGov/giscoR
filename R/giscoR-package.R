@@ -23,8 +23,8 @@
 #' @keywords package
 #' @note COPYRIGHT NOTICE
 #'
-#' When data downloaded from this page
-#' \url{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}
+#' When data downloaded from
+#' \href{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
 #' is used in any printed or electronic publication,
 #' in addition to any other provisions
 #' applicable to the whole Eurostat website,
@@ -35,7 +35,7 @@
 #' \itemize{
 #' 	\item EN: (C) EuroGeographics for the administrative boundaries
 #' 	\item FR: (C) EuroGeographics pour les limites administratives
-#' 	\item DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
+#' 	\item DE: (C) EuroGeographics bezüglich der Verwaltungsgrenzen
 #' }
 #' For publications in languages other than
 #' English, French or German,
