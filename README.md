@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# giscoR <img src="man/figures/logo.svg" align="right" width="120" />
+# giscoR <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
 
@@ -11,6 +11,7 @@ status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?bra
 status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
 ![R-CMD-check](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)
 ![GitHub](https://img.shields.io/github/license/dieghernan/giscoR?color=blue)
+[![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg?token=FO78KU9ONI)](undefined)
 <!-- badges: end -->
 
 giscoR is a API package that helps to retrieve data from [Eurostat -
@@ -59,16 +60,16 @@ done using the `countrycode`
 
 ``` r
 library(countrycode)
-eurostat <- c("ES","UK","EL")
-countrycode(eurostat,"eurostat","cldr.name.en")
+eurostat <- c("ES", "UK", "EL")
+countrycode(eurostat, "eurostat", "cldr.name.en")
 #> [1] "Spain"          "United Kingdom" "Greece"
-countrycode(eurostat,"eurostat","cldr.name.fr")
+countrycode(eurostat, "eurostat", "cldr.name.fr")
 #> [1] "Espagne"     "Royaume-Uni" "Grèce"
-countrycode(eurostat,"eurostat","iso3c")
+countrycode(eurostat, "eurostat", "iso3c")
 #> [1] "ESP" "GBR" "GRC"
-countrycode(eurostat,"eurostat","iso2c")
+countrycode(eurostat, "eurostat", "iso2c")
 #> [1] "ES" "GB" "GR"
-countrycode(eurostat,"eurostat","fips")
+countrycode(eurostat, "eurostat", "fips")
 #> [1] "SP" "UK" "GR"
 ```
 
@@ -133,12 +134,14 @@ typoLayer(
   add = TRUE
 )
 plot(st_geometry(countriescoast),
-     border = "black",
-     add = TRUE)
+  border = "black",
+  add = TRUE
+)
 
 layoutLayer("UN Subregions, 2016",
-            sources = gisco_attributions(copyright = FALSE),
-            theme = "blue.pal",)
+  sources = gisco_attributions(copyright = FALSE),
+  theme = "blue.pal",
+)
 ```
 
 ![](man/figures/README-example-1.png)<!-- -->
@@ -159,7 +162,8 @@ tm_shape(coast) +
   tm_shape(grat) + tm_lines(col = "grey60") +
   tm_layout(attr.outside = TRUE, frame = FALSE) +
   tm_credits(gisco_attributions(copyright = FALSE),
-             position = c("LEFT", "BOTTOM"))
+    position = c("LEFT", "BOTTOM")
+  )
 ```
 
 ![](man/figures/README-example-2.png)<!-- -->
