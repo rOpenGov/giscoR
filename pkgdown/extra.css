@@ -30,7 +30,13 @@ code,
 pre {
 	font-family: 'Source Code Pro', monospace;
 }
-
+/* Links */
+a{
+  color: #00688b;
+}
+a:visited, a:hover, a:active{
+  color: #d7dc0a;
+}
 /* Modify navbar */
 .navbar {
 	background-color: #00688b;
@@ -48,7 +54,7 @@ pre {
 }
 .navbar .navbar-brand .navbar-link {
 	color: #d7dc0a;
-	font-size: 1.3em;
+	font-size: 1.15em;
 }
 .navbar .navbar-brand .label-default {
 	background-color: #fff;
