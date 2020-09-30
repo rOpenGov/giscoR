@@ -104,10 +104,26 @@ cntr_3035 <- gisco_get_countries(epsg = "3035")
 opar <- par(no.readonly = TRUE)
 par(mfrow = c(1, 3), mar = c(3, 0, 0, 0))
 plot(st_geometry(cntr_4326), graticule = TRUE)
-plot(st_geometry(cntr_3857), graticule = TRUE)
+plot(
+  st_geometry(cntr_3857),
+  graticule = TRUE,
+  ylim = c(-13000000, 13000000)
+)
 plot(st_geometry(cntr_3035), graticule = TRUE)
 title(sub = gisco_attributions(), line = 1)
 par(opar)
+
+# Labels and Lines available
+coast <- gisco_get_countries(spatialtype = "COASTL")
+labs <- gisco_get_countries(spatialtype = "LB")
+
+plot(st_geometry(coast), col = "blue1")
+plot(st_geometry(labs),
+     col = "red",
+     add = TRUE,
+     pch = 19)
+
+title(sub = gisco_attributions(copyright = FALSE), line = 1)
 }
 \seealso{
 \link{gisco_countrycode}
