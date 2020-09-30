@@ -38,7 +38,7 @@ Note that the package does not provide metadata on the downloaded files, the inf
 
 ## Recommended packages
 
-It is recommended also to install the `eurostat` package(<http://ropengov.github.io/eurostat/>):
+It is recommended also to install the `eurostat` package (<http://ropengov.github.io/eurostat/>):
 
 > Leo Lahti, Przemyslaw Biecek, Markus Kainu and Janne Huovari.
 >
@@ -50,6 +50,7 @@ Some other packages recommended for visualization are:
 
 * [`tmap`](https://mtennekes.github.io/tmap)    
 * [`cartography`](http://riatelab.github.io/cartography/docs/)
+* [ggplot2](https://github.com/tidyverse/ggplot2) + [ggspatial](https://github.com/paleolimbot/ggspatial)
 * [`leaflet`](https://rstudio.github.io/leaflet/)
 
 Some of the datasets identify the countries by using the [Eurostat Country Code](https://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Country_codes). The equivalence on ISO-3 (and another codification systems) could be done using the `countrycode` [package](https://vincentarelbundock.github.io/countrycode):
@@ -89,7 +90,9 @@ When this option is set, `giscoR` would look for the cached file and it will loa
 You can also download manually the files (`.geojson` format) and stored on that library.
 
 
-## Example
+## Demo
+
+This script quickly shows how the data retrieved with giscoR can be represented with a sample of complementary packages:
 
 ```{r example, message=FALSE, warning=FALSE, dpi=90}
 library(giscoR)
