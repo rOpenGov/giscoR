@@ -60,7 +60,7 @@ plot(
   axes = TRUE,
   xlim = c(0, 4),
   ylim = c(39, 42),
-  bg = "lightblue1",
+  bg = "lightskyblue1",
   col = "wheat",
   border = "grey50"
 )
