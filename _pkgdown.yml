@@ -38,3 +38,9 @@ development:
   mode: unreleased
   version_label: danger
   version_tooltip: "On active development"
+  
+navbar:
+  components:
+    about:
+     text: About
+     href: "reference/giscoR-package.html"
