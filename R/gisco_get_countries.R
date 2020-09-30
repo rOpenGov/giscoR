@@ -68,7 +68,7 @@
 #' cntr_3035 <- gisco_get_countries(epsg = "3035")
 #'
 #' opar <- par(no.readonly = TRUE)
-#' par(mfrow = c(1, 3), mar = c(3, 0, 0, 0))
+#' par(mfrow = c(3, 1), mar = c(3, 0, 0, 0))
 #' plot(st_geometry(cntr_4326), graticule = TRUE)
 #' plot(
 #'   st_geometry(cntr_3857),

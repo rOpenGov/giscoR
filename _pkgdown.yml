@@ -28,6 +28,7 @@ figures:
   dev.args: []
   fig.ext: png
   fig.retina: 2
+  fig.height: 7
 
 template:
   params:
