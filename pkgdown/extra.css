@@ -21,8 +21,8 @@ dt,
 .navbar {
 	font-family: 'Noto Serif', serif;
 }
-.section-desc {
-	font-family: 'Roboto', sans;
+.section-desc + p{
+	font-family: Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 /* Code on Source Code Pro */
