@@ -35,8 +35,3 @@ development:
   mode: unreleased
   version_label: warning
   version_tooltip: "On development"
-
-template:
-  params:
-    bootswatch: flatly
-    
