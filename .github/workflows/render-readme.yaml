@@ -16,8 +16,12 @@ jobs:
       - name: Install rmarkdown, remotes, and the local package
         run: |
           install.packages("remotes")
-          # remotes::install_local(".") - Modified to include all dependencies of the package
-          remotes::install_local(".", dependencies = TRUE)
+          remotes::install_local(".") 
+          #  Additional packages
+          install.packages("styler")
+          install.packages("tmap")
+          install.packages("ggplot2")
+          install.packages("cartography")
           remotes::install_cran("rmarkdown")
         shell: Rscript {0}
       - name: Render README
