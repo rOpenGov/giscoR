@@ -31,7 +31,7 @@
 #'   axes = TRUE,
 #'   xlim = c(0, 4),
 #'   ylim = c(39, 42),
-#'   bg = "lightblue1",
+#'   bg = "skyblue1",
 #'   col = "wheat",
 #'   border = "grey50"
 #' )
