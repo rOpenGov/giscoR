@@ -10,7 +10,7 @@
 #'    }
 #' @param year Release year. One of
 #'    "2003", "2006", "2010", "2013", "2016" or "2021".
-#' @param crs projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
+#' @param epsg projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
 #' \itemize{
 #' \item "4326" - WGS84
 #' \item "3035" - ETRS89 / ETRS-LAEA
@@ -42,14 +42,14 @@
 #' library(sf)
 #' map <- gisco_get_nuts(year = "2016",
 #'                       nuts_level = "2",
-#'                       crs = "3035")
+#'                       epsg = "3035")
 #'
 #' #For the borders only
 #' brds <- gisco_get_nuts(
 #'   year = "2016",
 #'   spatialtype = "BN",
 #'   nuts_level = "0",
-#'   crs = "3035"
+#'   epsg = "3035"
 #' )
 #'
 #' pps <- get_eurostat("tgs00026")
@@ -106,7 +106,7 @@
 #' @export
 gisco_get_nuts <- function(resolution = "20",
                            year = "2016",
-                           crs = "4326",
+                           epsg = "4326",
                            nuts_level = "all",
                            cache = TRUE,
                            update_cache = FALSE,
@@ -124,9 +124,9 @@ gisco_get_nuts <- function(resolution = "20",
   resolution <- gsub("^3$", "03", resolution)
 
   # Check crs is of correct format
-  crs <- as.character(crs)
+  crs <- as.character(epsg)
   if (!as.numeric(crs) %in% c(4326, 3035, 3857)) {
-    stop("crs should be one of 4326, 3035 or 3857")
+    stop("epsg should be one of 4326, 3035 or 3857")
   }
 
   # Check nuts level

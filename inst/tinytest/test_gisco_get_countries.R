@@ -3,7 +3,7 @@ library(tinytest)
 expect_silent(gisco_get_countries())
 expect_error(gisco_get_countries(year = 2001, resolution = 60))
 expect_error(gisco_get_countries(year = 2011))
-expect_error(gisco_get_countries(crs = 2819))
+expect_error(gisco_get_countries(epsg = 2819))
 expect_error(gisco_get_countries(spatialtype = "aa"))
 expect_error(gisco_get_countries(res = 15))
 cachetest <- paste0(tempdir(),"_tinytest_get_countries")
@@ -19,3 +19,14 @@ expect_silent(gisco_get_countries(
   update_cache = TRUE,
   region = c("Africa", "Americas")
 ))
+
+
+#Test internal data
+library(sf)
+cntr <- gisco_get_countries()
+expect_true(sf::st_crs(cntr)$epsg == 4326)
+
+coast <- gisco_get_countries(spatialtype = "COASTL")
+expect_true(sf::st_crs(coast)$epsg == 4326)
+
+

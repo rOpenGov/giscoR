@@ -2,7 +2,7 @@
 #' @description Downloads a simple feature (\code{sf}) object.
 #' @param year Release year. One of
 #'    "2014", "2018" or "2020"
-#' @param crs projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
+#' @param epsg projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
 #' \itemize{
 #' \item "4326" - WGS84
 #' \item "3035" - ETRS89 / ETRS-LAEA
@@ -28,7 +28,7 @@
 #' library(cartography)
 #' europe <-
 #'   gisco_get_countries(
-#'     crs = 3857,
+#'     epsg = 3857,
 #'     year = "2020",
 #'     region = "Europe",
 #'     resolution = "03"
@@ -36,7 +36,7 @@
 #' cities <-
 #'   gisco_get_urban_audit(
 #'     year = 2020,
-#'     crs = 3857,
+#'     epsg = 3857,
 #'     level = "GREATER_CITIES",
 #'     country = "BEL"
 #'   )
@@ -94,7 +94,7 @@
 #' }
 #' @export
 gisco_get_urban_audit <- function(year = "2018",
-                                  crs = "4326",
+                                  epsg = "4326",
                                   update_cache = FALSE,
                                   cache_dir = NULL,
                                   spatialtype = "RG",
@@ -106,16 +106,16 @@ gisco_get_urban_audit <- function(year = "2018",
     stop("Year should be one of 2014, 2018 or 2020")
   }
   # Check crs is of correct format
-  crs <- as.character(crs)
+  crs <- as.character(epsg)
   if (!as.numeric(crs) %in% c(4326, 3035, 3857)) {
-    stop("crs should be one of 4326, 3035 or 3857")
+    stop("epsg should be one of 4326, 3035 or 3857")
   }
   if (is.null(level)) {
     level <- ""
   }
   # Check level is of correct format
   if (!level %in% c("", "CITIES", "FUA", "GREATER_CITIES")) {
-    stop("crs should be one of 'CITIES', 'FUA', 'GREATER_CITIES' or NULL")
+    stop("level should be one of 'CITIES', 'FUA', 'GREATER_CITIES' or NULL")
   }
 
   # Check spatialtype

@@ -10,7 +10,7 @@
 #'    }
 #' @param year Release year. One of
 #'    "2006", "2010", "2013" or "2016"
-#' @param crs projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
+#' @param epsg projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
 #' \itemize{
 #' \item "4326" - WGS84
 #' \item "3035" - ETRS89 / ETRS-LAEA
@@ -30,14 +30,14 @@
 #' coastlines <- gisco_get_coastallines(resolution = "60")
 #' plot(st_geometry(coastlines), col = "red", border = "orange")
 #'
-#' coastlinesrobin <- gisco_get_coastallines(crs = "3857")
+#' coastlinesrobin <- gisco_get_coastallines(epsg = "3857")
 #' coastlinesrobin <- st_transform(coastlinesrobin, "+proj=robin")
 #' plot(st_geometry(coastlinesrobin), col = "black", bg = "grey", border = "white")
 #' }
 #' @export
 gisco_get_coastallines <- function(resolution = "20",
                                    year = "2016",
-                                   crs = "4326",
+                                   epsg = "4326",
                                    cache = TRUE,
                                    update_cache = FALSE,
                                    cache_dir = NULL) {
@@ -56,9 +56,9 @@ gisco_get_coastallines <- function(resolution = "20",
     stop("Year should be one of 2006, 2010, 2013 or 2016")
   }
   # Check crs is of correct format
-  crs <- as.character(crs)
+  crs <- as.character(epsg)
   if (!as.numeric(crs) %in% c(4326, 3035, 3857)) {
-    stop("crs should be one of 4326, 3035 or 3857")
+    stop("epsg should be one of 4326, 3035 or 3857")
   }
 
   # Downloading data

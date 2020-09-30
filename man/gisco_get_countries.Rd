@@ -10,7 +10,7 @@
 gisco_get_countries(
   resolution = "20",
   year = "2016",
-  crs = "4326",
+  epsg = "4326",
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
@@ -32,7 +32,7 @@ gisco_get_countries(
 \item{year}{Release year. One of
 "2001", "2006", "2010", "2013", "2016" or "2020"}
 
-\item{crs}{projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
+\item{epsg}{projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
 \itemize{
 \item "4326" - WGS84
 \item "3035" - ETRS89 / ETRS-LAEA
@@ -89,11 +89,11 @@ plot(st_geometry(angola_namibia), col = "#FEFEE9", add = TRUE)
 
 mtext(gisco_attributions(), side = 1, cex = 0.8)
 
-# Change crs and resolution
+# Change epsg and resolution
 
 cntries2020 <-
   gisco_get_countries(year = "2020",
-                      crs = "3035",
+                      epsg = "3035",
                       resolution = "60")
 plot(st_geometry(cntries2020), bg = "#C6ECFF", col = "#E0E0E0")
 mtext(gisco_attributions(), side = 1, cex = 0.8)

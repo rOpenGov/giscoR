@@ -2,7 +2,7 @@
 #' @description Downloads a simple feature (\code{sf}) object.
 #' @param year Release year. One of
 #'    "2016", "2017", "2018" or "2019"
-#' @param crs projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
+#' @param epsg projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
 #' \itemize{
 #' \item "4326" - WGS84
 #' \item "3035" - ETRS89 / ETRS-LAEA
@@ -26,7 +26,7 @@
 #' }
 #' @export
 gisco_get_lau <- function(year = "2016",
-                          crs = "4326",
+                          epsg = "4326",
                           update_cache = FALSE,
                           cache_dir = NULL,
                           country = NULL,
@@ -37,9 +37,9 @@ gisco_get_lau <- function(year = "2016",
     stop("Year should be one of 2016, 2017, 2018 or 2019")
   }
   # Check crs is of correct format
-  crs <- as.character(crs)
+  crs <- as.character(epsg)
   if (!as.numeric(crs) %in% c(4326, 3035, 3857)) {
-    stop("crs should be one of 4326, 3035 or 3857")
+    stop("epsg should be one of 4326, 3035 or 3857")
   }
   # nocov start
 

@@ -5,7 +5,7 @@ library(sf)
 gisco_coastallines_20M_2016 <- gisco_get_countries(
   resolution = "20",
   year = "2016",
-  crs = "4326",
+  epsg = "4326",
   update_cache = TRUE,
   cache_dir = NULL,
   spatialtype = "COASTL",

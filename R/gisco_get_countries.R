@@ -10,7 +10,7 @@
 #'    }
 #' @param year Release year. One of
 #'    "2001", "2006", "2010", "2013", "2016" or "2020"
-#' @param crs projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
+#' @param epsg projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
 #' \itemize{
 #' \item "4326" - WGS84
 #' \item "3035" - ETRS89 / ETRS-LAEA
@@ -55,11 +55,11 @@
 #'
 #' mtext(gisco_attributions(), side = 1, cex = 0.8)
 #'
-#' # Change crs and resolution
+#' # Change epsg and resolution
 #'
 #' cntries2020 <-
 #'   gisco_get_countries(year = "2020",
-#'                       crs = "3035",
+#'                       epsg = "3035",
 #'                       resolution = "60")
 #' plot(st_geometry(cntries2020), bg = "#C6ECFF", col = "#E0E0E0")
 #' mtext(gisco_attributions(), side = 1, cex = 0.8)
@@ -74,7 +74,7 @@
 #' @export
 gisco_get_countries <- function(resolution = "20",
                                 year = "2016",
-                                crs = "4326",
+                                epsg = "4326",
                                 cache = TRUE,
                                 update_cache = FALSE,
                                 cache_dir = NULL,
@@ -101,9 +101,9 @@ gisco_get_countries <- function(resolution = "20",
     )
   }
   # Check crs is of correct format
-  crs <- as.character(crs)
+  crs <- as.character(epsg)
   if (!as.numeric(crs) %in% c(4326, 3035, 3857)) {
-    stop("crs should be one of 4326, 3035 or 3857")
+    stop("epsg should be one of 4326, 3035 or 3857")
   }
   # Check spatialtype
   if (!spatialtype %in% c("RG", "LB", "BN", "COASTL", "INLAND")) {

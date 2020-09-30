@@ -3,7 +3,7 @@ library(tinytest)
 expect_silent(gisco_get_nuts())
 expect_error(gisco_get_nuts(year = 2003, resolution = 60))
 expect_error(gisco_get_nuts(year = 2011))
-expect_error(gisco_get_nuts(crs = 2819))
+expect_error(gisco_get_nuts(epsg = 2819))
 expect_error(gisco_get_nuts(spatialtype = "aa"))
 expect_error(gisco_get_nuts(res = 15))
 expect_error(gisco_get_nuts(spatialtype = "COASTL"))
@@ -31,3 +31,8 @@ expect_silent(gisco_get_nuts(
   nuts_level = 0,
   update_cache = TRUE
 ))
+
+#Test internal data
+library(sf)
+nuts <- gisco_get_nuts()
+expect_true(sf::st_crs(nuts)$epsg == 4326)

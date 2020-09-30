@@ -9,7 +9,7 @@
 \usage{
 gisco_get_urban_audit(
   year = "2018",
-  crs = "4326",
+  epsg = "4326",
   update_cache = FALSE,
   cache_dir = NULL,
   spatialtype = "RG",
@@ -21,7 +21,7 @@ gisco_get_urban_audit(
 \item{year}{Release year. One of
 "2014", "2018" or "2020"}
 
-\item{crs}{projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
+\item{epsg}{projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
 \itemize{
 \item "4326" - WGS84
 \item "3035" - ETRS89 / ETRS-LAEA
@@ -60,7 +60,7 @@ library(sf)
 library(cartography)
 europe <-
   gisco_get_countries(
-    crs = 3857,
+    epsg = 3857,
     year = "2020",
     region = "Europe",
     resolution = "03"
@@ -68,7 +68,7 @@ europe <-
 cities <-
   gisco_get_urban_audit(
     year = 2020,
-    crs = 3857,
+    epsg = 3857,
     level = "GREATER_CITIES",
     country = "BEL"
   )
