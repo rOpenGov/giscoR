@@ -1,7 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Source+Code+Pro&family=Noto+Serif&display=swap');
-body{
- font-family: 'Roboto', sans;
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Noto+Serif&family=Roboto&display=swap');
+
+/* General typography of Bootstrap 4 */
+body {
+	font-family: Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
+
+/* Headings on serif - Noto Serif */
 h1,
 h2,
 h3,
@@ -14,21 +19,59 @@ dt,
 .copyright,
 .pkgdown,
 .navbar {
-font-family: 'Noto Serif', serif;
+	font-family: 'Noto Serif', serif;
 }
-.section-desc{
-  font-family: 'Roboto', sans;    
-}
-.navbar{
-  background-color: 	#00688b;
-}
-.navbar .navbar-toggle .icon-bar {
-    background-color: #d7dc0a;
-}
-.navbar .navbar-toggle{
-  border-color: transparent;
+.section-desc {
+	font-family: 'Roboto', sans;
 }
 
-code,pre{
-  font-family: 'Source Code Pro', monospace;
+/* Code on Source Code Pro */
+code,
+pre {
+	font-family: 'Source Code Pro', monospace;
+}
+
+/* Modify navbar */
+.navbar {
+	background-color: #00688b;
+}
+.navbar .navbar-toggle {
+	border-color: transparent;
+}
+.navbar .navbar-toggle .icon-bar {
+	background-color: #d7dc0a;
+}
+
+/* Navbar brand */
+.navbar .navbar-brand {
+	margin-right: 1em;
+}
+.navbar .navbar-brand .navbar-link {
+	color: #d7dc0a;
+	font-size: 1.3em;
+}
+.navbar .navbar-brand .label-default {
+	background-color: #fff;
+	color: #00688b;
+}
+/* Active link */
+.navbar .navbar-nav>.active>a {
+	color: #00688b;
+	background-color: #d7dc0a;
+}
+/* Hovers */
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+	background-color: #d7dc0a;
+}
+.navbar .navbar-toggle:hover span,
+.navbar .navbar-toggle:focus span {
+	background-color: #00688b;
+}
+.navbar .navbar-nav>li>a:hover,
+.navbar .navbar-nav>li>a:focus,
+.navbar .navbar-nav>.active>a:hover,
+.navbar .navbar-nav>.active>a:focus {
+	color: #d7dc0a;
+	background-color: transparent;
 }
