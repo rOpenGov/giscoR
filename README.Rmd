@@ -8,7 +8,7 @@ output: github_document
 knitr::opts_chunk$set(collapse = TRUE,
                       tidy = "styler",
                       comment = "#>",
-                      fig.path = "devel/figures/README-")
+                      fig.path = "man/figures/README-")
 
 knitr::knit_hooks$set(
   margin = function(before, options, envir) {
