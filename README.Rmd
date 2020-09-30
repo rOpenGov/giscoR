@@ -50,7 +50,7 @@ Some other packages recommended for visualization are:
 
 * [`tmap`](https://mtennekes.github.io/tmap)    
 * [`cartography`](http://riatelab.github.io/cartography/docs/)
-* [ggplot2](https://github.com/tidyverse/ggplot2) + [ggspatial](https://github.com/paleolimbot/ggspatial)
+* [`ggplot2`](https://github.com/tidyverse/ggplot2) + [`ggspatial`](https://github.com/paleolimbot/ggspatial)
 * [`leaflet`](https://rstudio.github.io/leaflet/)
 
 Some of the datasets identify the countries by using the [Eurostat Country Code](https://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Country_codes). The equivalence on ISO-3 (and another codification systems) could be done using the `countrycode` [package](https://vincentarelbundock.github.io/countrycode):

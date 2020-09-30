@@ -12,7 +12,7 @@ gisco_get_lau(
   epsg = "4326",
   update_cache = FALSE,
   cache_dir = NULL,
-  country = NULL,
+  country_iso3 = NULL,
   gisco_id = NULL
 )
 }
@@ -31,7 +31,7 @@ gisco_get_lau(
 
 \item{cache_dir}{a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>)}.}
 
-\item{country}{Optional. A character vector of ISO-3 country codes. See Details.}
+\item{country_iso3}{Optional. A character vector of ISO-3 country codes.}
 
 \item{gisco_id}{Optional. A character vector of GISCO_ID LAU values.}
 }
@@ -51,7 +51,27 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 }
 \examples{
 \donttest{
-lau <-  gisco_get_lau(year = "2019")
+library(sf)
+
+lau_esp <- gisco_get_lau(country = "ESP")
+
+plot(
+  st_geometry(lau_esp),
+  axes = TRUE,
+  xlim = c(0, 4),
+  ylim = c(39, 42),
+  bg = "lightblue1",
+  col = "wheat",
+  border = "grey50"
+)
+box()
+title(
+  main = "Spain LAU",
+  sub = gisco_attributions(copyright = FALSE),
+  line = 3,
+  cex.sub = 0.8,
+  font.sub = 3
+)
 }
 }
 \author{

@@ -50,8 +50,8 @@ Some other packages recommended for visualization are:
 
   - [`tmap`](https://mtennekes.github.io/tmap)  
   - [`cartography`](http://riatelab.github.io/cartography/docs/)
-  - [ggplot2](https://github.com/tidyverse/ggplot2) +
-    [ggspatial](https://github.com/paleolimbot/ggspatial)
+  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+    [`ggspatial`](https://github.com/paleolimbot/ggspatial)
   - [`leaflet`](https://rstudio.github.io/leaflet/)
 
 Some of the datasets identify the countries by using the [Eurostat
@@ -191,7 +191,7 @@ cities <-
     country = "BEL"
   )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /tmp/RtmprJux9x/gisco"
+#> [1] "Loading from cache dir: /tmp/Rtmpfih6jr/gisco"
 #> 312 Kb
 countries <- gisco_get_countries(country = "BEL", resolution = "10")
 

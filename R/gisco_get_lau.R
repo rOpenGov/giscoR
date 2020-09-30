@@ -10,7 +10,7 @@
 #' }
 #' @param update_cache a logical whether to update cache.
 #' @param cache_dir a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>)}.
-#' @param country Optional. A character vector of ISO-3 country codes. See Details.
+#' @param country_iso3 Optional. A character vector of ISO-3 country codes.
 #' @param gisco_id Optional. A character vector of GISCO_ID LAU values.
 #' @export
 #' @details See \url{https://ec.europa.eu/eurostat/web/nuts/local-administrative-units} for more detail about LAUs.
@@ -22,14 +22,34 @@
 #' @note Please check the download and usage provisions on \link{gisco_attributions}.
 #' @examples
 #' \donttest{
-#' lau <-  gisco_get_lau(year = "2019")
+#' library(sf)
+#'
+#' lau_esp <- gisco_get_lau(country = "ESP")
+#'
+#' plot(
+#'   st_geometry(lau_esp),
+#'   axes = TRUE,
+#'   xlim = c(0, 4),
+#'   ylim = c(39, 42),
+#'   bg = "lightblue1",
+#'   col = "wheat",
+#'   border = "grey50"
+#' )
+#' box()
+#' title(
+#'   main = "Spain LAU",
+#'   sub = gisco_attributions(copyright = FALSE),
+#'   line = 3,
+#'   cex.sub = 0.8,
+#'   font.sub = 3
+#' )
 #' }
 #' @export
 gisco_get_lau <- function(year = "2016",
                           epsg = "4326",
                           update_cache = FALSE,
                           cache_dir = NULL,
-                          country = NULL,
+                          country_iso3 = NULL,
                           gisco_id = NULL) {
   # Check year is of correct format
   year <- as.character(year)
@@ -59,15 +79,15 @@ gisco_get_lau <- function(year = "2016",
                                      filename,
                                      url)
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country_iso3) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <-
-      countrycode::countrycode(country, origin = "iso3c", destination = "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+      countrycode::countrycode(country_iso3, origin = "iso3c", destination = "eurostat")
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
   }
 
   if (!is.null(gisco_id) & "GISCO_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id, ]
+    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id,]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

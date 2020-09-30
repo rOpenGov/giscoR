@@ -26,16 +26,14 @@
 #' @note Please check the download and usage provisions on \link{gisco_attributions}.
 #' @examples
 #' library(sf)
-#' \donttest{
-#' coastlines <- gisco_get_coastallines(resolution = "60")
-#' plot(st_geometry(coastlines), col = "red", border = "orange")
 #'
-#' coastlinesrobin <- gisco_get_coastallines(epsg = "3857")
-#' coastlinesrobin <- st_transform(coastlinesrobin, "+proj=robin")
-#' plot(st_geometry(coastlinesrobin), col = "black", bg = "grey", border = "white")
-#' }
+#' coastlines <- gisco_get_coastallines()
+#' plot(st_geometry(coastlines), bg = "grey80", col = "black")
+#' title(main = "Coastal Lines",
+#'       sub = gisco_attributions(copyright = FALSE),
+#'       line = 1)
 #' @export
-gisco_get_coastallines <- function(resolution = "20",
+gisco_get_coastallines <- function(resolution = "60",
                                    year = "2016",
                                    epsg = "4326",
                                    cache = TRUE,
