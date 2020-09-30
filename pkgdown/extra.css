@@ -34,8 +34,8 @@ pre {
 a{
   color: #00688b;
 }
-a:visited, a:hover, a:active{
-  color: #d7dc0a;
+a:hover, a:active{
+  color: #cdcd00;
 }
 /* Modify navbar */
 .navbar {
@@ -45,7 +45,7 @@ a:visited, a:hover, a:active{
 	border-color: transparent;
 }
 .navbar .navbar-toggle .icon-bar {
-	background-color: #d7dc0a;
+	background-color: #cdcd00;
 }
 
 /* Navbar brand */
@@ -53,7 +53,7 @@ a:visited, a:hover, a:active{
 	margin-right: 1em;
 }
 .navbar .navbar-brand .navbar-link {
-	color: #d7dc0a;
+	color: #cdcd00;
 	font-size: 1.15em;
 }
 .navbar .navbar-brand .label-default {
@@ -63,12 +63,12 @@ a:visited, a:hover, a:active{
 /* Active link */
 .navbar .navbar-nav>.active>a {
 	color: #00688b;
-	background-color: #d7dc0a;
+	background-color: #cdcd00;
 }
 /* Hovers */
 .navbar .navbar-toggle:hover,
 .navbar .navbar-toggle:focus {
-	background-color: #d7dc0a;
+	background-color: #cdcd00;
 }
 .navbar .navbar-toggle:hover span,
 .navbar .navbar-toggle:focus span {
@@ -78,6 +78,6 @@ a:visited, a:hover, a:active{
 .navbar .navbar-nav>li>a:focus,
 .navbar .navbar-nav>.active>a:hover,
 .navbar .navbar-nav>.active>a:focus {
-	color: #d7dc0a;
+	color: #cdcd00;
 	background-color: transparent;
 }
