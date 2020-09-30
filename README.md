@@ -63,17 +63,46 @@ done using the `countrycode`
 
 ``` r
 library(countrycode)
-eurostat <- c("ES","UK","EL")
-countrycode(eurostat,"eurostat","cldr.name.en")
-#> [1] "Spain"          "United Kingdom" "Greece"
-countrycode(eurostat,"eurostat","cldr.name.fr")
-#> [1] "Espagne"     "Royaume-Uni" "Grèce"
-countrycode(eurostat,"eurostat","iso3c")
-#> [1] "ESP" "GBR" "GRC"
-countrycode(eurostat,"eurostat","iso2c")
-#> [1] "ES" "GB" "GR"
-countrycode(eurostat,"eurostat","fips")
-#> [1] "SP" "UK" "GR"
+
+# Names to ISO3 - Spanish
+names.es <- c("Portugal", "Egipto", "Peru", "Polonia")
+iso3_1 <- countryname(names.es, destination = "iso3c")
+
+cbind(names.es, iso3_1)
+#>      names.es   iso3_1
+#> [1,] "Portugal" "PRT" 
+#> [2,] "Egipto"   "EGY" 
+#> [3,] "Peru"     "PER" 
+#> [4,] "Polonia"  "POL"
+
+# Names to ISO3 - mixed languages
+names.mix <-
+  c("Greece", "Espagne", "Reino Unido", "Frankreich", "Brasilien")
+iso3_2 <- countryname(names.mix, destination = "iso3c")
+
+cbind(names.mix, iso3_2)
+#>      names.mix     iso3_2
+#> [1,] "Greece"      "GRC" 
+#> [2,] "Espagne"     "ESP" 
+#> [3,] "Reino Unido" "GBR" 
+#> [4,] "Frankreich"  "FRA" 
+#> [5,] "Brasilien"   "BRA"
+
+# Translate from ISO3 to eurostat codes
+iso3_3 <- c(iso3_1, iso3_2)
+eurostat <- countrycode(iso3_3, "iso3c", "eurostat")
+
+cbind(iso3_3, eurostat)
+#>       iso3_3 eurostat
+#>  [1,] "PRT"  "PT"    
+#>  [2,] "EGY"  "EG"    
+#>  [3,] "PER"  "PE"    
+#>  [4,] "POL"  "PL"    
+#>  [5,] "GRC"  "EL"    
+#>  [6,] "ESP"  "ES"    
+#>  [7,] "GBR"  "UK"    
+#>  [8,] "FRA"  "FR"    
+#>  [9,] "BRA"  "BR"
 ```
 
 ## Installation
@@ -116,27 +145,35 @@ nuts2 <- gisco_get_nuts(epsg = 3035, nuts_level = 2)
 
 # With ggplot2
 library(ggplot2)
-ggplot(countries) + geom_sf(colour = "grey50",
-                            fill = "cornsilk",
-                            size = 0.1)  +
+ggplot(countries) +
+  geom_sf(
+    colour = "grey50",
+    fill = "cornsilk",
+    size = 0.1
+  ) +
   geom_sf(
     data = nuts2,
     colour = "darkblue",
     fill = NA,
     size = 0.05
-  )   + coord_sf(
+  ) +
+  coord_sf(
     xlim = c(2200000, 7150000),
     ylim = c(1380000, 5500000),
     expand = TRUE
-  ) + xlab("Longitude") + ylab("Latitude") + ggtitle("NUTS2 Regions (2016)") +
+  ) +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  ggtitle("NUTS2 Regions (2016)") +
   theme(
     panel.grid.major = element_line(
       color = gray(.5),
-      linetype =  "dashed",
+      linetype = "dashed",
       size = 0.5
     ),
-    panel.background = element_rect(fill =  "aliceblue")
-  ) + labs(caption = gisco_attributions(copyright = FALSE))
+    panel.background = element_rect(fill = "aliceblue")
+  ) +
+  labs(caption = gisco_attributions(copyright = FALSE))
 ```
 
 ![](devel/figures/README-example-1.png)<!-- -->
@@ -148,22 +185,25 @@ ggplot(countries) + geom_sf(colour = "grey50",
 library(tmap)
 
 cities <-
-  gisco_get_urban_audit(year = "2020",
-                        level = "GREATER_CITIES",
-                        country = "BEL")
+  gisco_get_urban_audit(
+    year = "2020",
+    level = "GREATER_CITIES",
+    country = "BEL"
+  )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpbyDRO4/gisco"
+#> [1] "Loading from cache dir: /tmp/RtmprJux9x/gisco"
 #> 312 Kb
 countries <- gisco_get_countries(country = "BEL", resolution = "10")
 
 tm_shape(countries) + tm_fill("cornsilk2") + tm_borders("grey50") + tm_shape(cities) + tm_fill("purple4") +
   tm_credits(gisco_attributions(copyright = FALSE),
-             position = c("LEFT", "BOTTOM")) + tm_layout(
-               main.title = "Urban Audit 2020: Greater Cities of Belgium",
-               frame = TRUE,
-               attr.outside = TRUE,
-               main.title.size = 1
-             )
+    position = c("LEFT", "BOTTOM")
+  ) + tm_layout(
+    main.title = "Urban Audit 2020: Greater Cities of Belgium",
+    frame = TRUE,
+    attr.outside = TRUE,
+    main.title.size = 1
+  )
 ```
 
 ![](devel/figures/README-example-2.png)<!-- -->

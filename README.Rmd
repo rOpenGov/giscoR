@@ -57,12 +57,25 @@ Some of the datasets identify the countries by using the [Eurostat Country Code]
 
 ```{r countrycode}
 library(countrycode)
-eurostat <- c("ES","UK","EL")
-countrycode(eurostat,"eurostat","cldr.name.en")
-countrycode(eurostat,"eurostat","cldr.name.fr")
-countrycode(eurostat,"eurostat","iso3c")
-countrycode(eurostat,"eurostat","iso2c")
-countrycode(eurostat,"eurostat","fips")
+
+# Names to ISO3 - Spanish
+names.es <- c("Portugal", "Egipto", "Peru", "Polonia")
+iso3_1 <- countryname(names.es, destination = "iso3c")
+
+cbind(names.es, iso3_1)
+
+# Names to ISO3 - mixed languages
+names.mix <-
+  c("Greece", "Espagne", "Reino Unido", "Frankreich", "Brasilien")
+iso3_2 <- countryname(names.mix, destination = "iso3c")
+
+cbind(names.mix, iso3_2)
+
+# Translate from ISO3 to eurostat codes
+iso3_3 <- c(iso3_1, iso3_2)
+eurostat <- countrycode(iso3_3, "iso3c", "eurostat")
+
+cbind(iso3_3, eurostat)
 ```
 
 
