@@ -10,6 +10,7 @@ knitr::opts_chunk$set(collapse = TRUE,
                       comment = "#>",
                       fig.path = "man/figures/README-")
 
+
 knitr::knit_hooks$set(
   margin = function(before, options, envir) {
     if (before) {
