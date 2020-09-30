@@ -1,5 +1,5 @@
 /* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Noto+Serif&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Noto+Serif&family=Roboto&display=swap');
 
 /* General typography of Bootstrap 4 */
 body {
@@ -28,7 +28,7 @@ dt,
 /* Code on Source Code Pro */
 code,
 pre {
-	font-family: 'Source Code Pro', monospace;
+	font-family: 'Fira Mono', monospace;
 }
 /* Links */
 a{

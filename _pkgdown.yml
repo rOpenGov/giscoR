@@ -28,7 +28,6 @@ figures:
   dev.args: []
   fig.ext: png
   fig.retina: 2
-  fig.width: 7
 
 template:
   params:
@@ -36,5 +35,5 @@ template:
     
 development:
   mode: unreleased
-  version_label: warning
-  version_tooltip: "On development"
+  version_label: danger
+  version_tooltip: "On active development"
