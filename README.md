@@ -145,35 +145,27 @@ nuts2 <- gisco_get_nuts(epsg = 3035, nuts_level = 2)
 
 # With ggplot2
 library(ggplot2)
-ggplot(countries) +
-  geom_sf(
-    colour = "grey50",
-    fill = "cornsilk",
-    size = 0.1
-  ) +
+ggplot(countries) + geom_sf(colour = "grey50",
+                            fill = "cornsilk",
+                            size = 0.1)  +
   geom_sf(
     data = nuts2,
     colour = "darkblue",
     fill = NA,
     size = 0.05
-  ) +
-  coord_sf(
+  )   + coord_sf(
     xlim = c(2200000, 7150000),
     ylim = c(1380000, 5500000),
     expand = TRUE
-  ) +
-  xlab("Longitude") +
-  ylab("Latitude") +
-  ggtitle("NUTS2 Regions (2016)") +
+  ) + xlab("Longitude") + ylab("Latitude") + ggtitle("NUTS2 Regions (2016)") +
   theme(
     panel.grid.major = element_line(
       color = gray(.5),
-      linetype = "dashed",
+      linetype =  "dashed",
       size = 0.5
     ),
-    panel.background = element_rect(fill = "aliceblue")
-  ) +
-  labs(caption = gisco_attributions(copyright = FALSE))
+    panel.background = element_rect(fill =  "aliceblue")
+  ) + labs(caption = gisco_attributions(copyright = FALSE))
 ```
 
 ![](devel/figures/README-example-1.png)<!-- -->
@@ -185,25 +177,22 @@ ggplot(countries) +
 library(tmap)
 
 cities <-
-  gisco_get_urban_audit(
-    year = "2020",
-    level = "GREATER_CITIES",
-    country = "BEL"
-  )
+  gisco_get_urban_audit(year = "2020",
+                        level = "GREATER_CITIES",
+                        country = "BEL")
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /tmp/Rtmpfih6jr/gisco"
+#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpSNMUvs/gisco"
 #> 312 Kb
 countries <- gisco_get_countries(country = "BEL", resolution = "10")
 
 tm_shape(countries) + tm_fill("cornsilk2") + tm_borders("grey50") + tm_shape(cities) + tm_fill("purple4") +
   tm_credits(gisco_attributions(copyright = FALSE),
-    position = c("LEFT", "BOTTOM")
-  ) + tm_layout(
-    main.title = "Urban Audit 2020: Greater Cities of Belgium",
-    frame = TRUE,
-    attr.outside = TRUE,
-    main.title.size = 1
-  )
+             position = c("LEFT", "BOTTOM")) + tm_layout(
+               main.title = "Urban Audit 2020: Greater Cities of Belgium",
+               frame = TRUE,
+               attr.outside = TRUE,
+               main.title.size = 1
+             )
 ```
 
 ![](devel/figures/README-example-2.png)<!-- -->
