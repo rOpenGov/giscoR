@@ -13,7 +13,7 @@ gisco_get_communes(
   update_cache = FALSE,
   cache_dir = NULL,
   spatialtype = "RG",
-  country = NULL
+  country_iso3 = NULL
 )
 }
 \arguments{
@@ -40,7 +40,7 @@ gisco_get_communes(
  \item INLAND: inland boundaries - Multilines
 }}
 
-\item{country}{Optional. A character vector of ISO-3 country codes. See Details.}
+\item{country_iso3}{Optional. A character vector of ISO-3 country codes. See Details.}
 }
 \value{
 a \code{sf} object.
@@ -49,9 +49,15 @@ a \code{sf} object.
 Downloads a simple feature (\code{sf}) object.
 }
 \details{
-\code{country} only available when applicable.
+\code{country_iso3} only available on specific datasets. Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 
-Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
+You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
+
+\code{eurostat_codes <- c("ES","UK","EL","PL","PT")}
+
+\code{countrycode::countrycode(eurostat_codes,origin = "eurostat", destination = "iso3c")}
+
+
 If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
 }
 \note{
@@ -60,32 +66,18 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 \examples{
 \donttest{
 library(sf)
-library(cartography)
 
-communes <- gisco_get_communes(spatialtype = "COASTL")
-world <- gisco_countries_20M_2016
-opar <- par(no.readonly = TRUE)
-par(mar = c(2, 2, 2, 2))
+benelux <- c("BEL", "NLD", "LUX")
+communes <- gisco_get_communes(country_iso3 = benelux)
+
 plot(
-  st_geometry(world),
-  axes = TRUE,
-  xlim = c(-20, 40),
-  ylim = c(40, 75),
-  bg = "aliceblue",
-  col = "antiquewhite"
+  communes[, "CNTR_ID"],
+  pal = c("black", "#00A3E0", "orange"),
+  border = "grey90",
+  main = "Communes on Benelux (2016)",
+  key.pos = NULL
 )
-box()
-typoLayer(
-  communes,
-  var = "EFTA_FLAG",
-  col = c(NA, "red"),
-  legend.pos = "n",
-  lwd = 2,
-  add = TRUE
-)
-layoutLayer("EFTA Coastlines",
-            col = "red",
-            sources = gisco_attributions(copyright = FALSE))
+title(sub = gisco_attributions())
 }
 }
 \author{

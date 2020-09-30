@@ -18,11 +18,17 @@
 #'  \item COASTL: coastlines - Multilines
 #'  \item INLAND: inland boundaries - Multilines
 #' }
-#' @param country Optional. A character vector of ISO-3 country codes. See Details.
+#' @param country_iso3 Optional. A character vector of ISO-3 country codes. See Details.
 #' @export
-#' @details \code{country} only available when applicable.
+#' @details \code{country_iso3} only available on specific datasets. Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 #'
-#' Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
+#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
+#'
+#' \code{eurostat_codes <- c("ES","UK","EL","PL","PT")}
+#'
+#' \code{countrycode::countrycode(eurostat_codes,origin = "eurostat", destination = "iso3c")}
+#'
+#'
 #' If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/communes/}{GISCO Communes}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
@@ -31,32 +37,18 @@
 #' @examples
 #' \donttest{
 #' library(sf)
-#' library(cartography)
 #'
-#' communes <- gisco_get_communes(spatialtype = "COASTL")
-#' world <- gisco_countries_20M_2016
-#' opar <- par(no.readonly = TRUE)
-#' par(mar = c(2, 2, 2, 2))
+#' benelux <- c("BEL", "NLD", "LUX")
+#' communes <- gisco_get_communes(country_iso3 = benelux)
+#'
 #' plot(
-#'   st_geometry(world),
-#'   axes = TRUE,
-#'   xlim = c(-20, 40),
-#'   ylim = c(40, 75),
-#'   bg = "aliceblue",
-#'   col = "antiquewhite"
+#'   communes[, "CNTR_ID"],
+#'   pal = c("black", "#00A3E0", "orange"),
+#'   border = "grey90",
+#'   main = "Communes on Benelux (2016)",
+#'   key.pos = NULL
 #' )
-#' box()
-#' typoLayer(
-#'   communes,
-#'   var = "EFTA_FLAG",
-#'   col = c(NA, "red"),
-#'   legend.pos = "n",
-#'   lwd = 2,
-#'   add = TRUE
-#' )
-#' layoutLayer("EFTA Coastlines",
-#'             col = "red",
-#'             sources = gisco_attributions(copyright = FALSE))
+#' title(sub = gisco_attributions())
 #' }
 #' @export
 gisco_get_communes <- function(year = "2016",
@@ -64,7 +56,7 @@ gisco_get_communes <- function(year = "2016",
                                update_cache = FALSE,
                                cache_dir = NULL,
                                spatialtype = "RG",
-                               country = NULL) {
+                               country_iso3 = NULL) {
   # Check year is of correct format
   year <- as.character(year)
   if (!as.numeric(year) %in% c(2001, 2004, 2006, 2008, 2010, 2013, 2016)) {
@@ -96,11 +88,11 @@ gisco_get_communes <- function(year = "2016",
                                      filename,
                                      url)
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country_iso3) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
-    country <-
-      countrycode::countrycode(country, origin = "iso3c", destination = "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    country_eustat <-
+      countrycode::countrycode(country_iso3, origin = "iso3c", destination = "eurostat")
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country_eustat,]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

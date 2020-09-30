@@ -27,11 +27,15 @@
 #' @param cache a logical whether to do caching. Default is \code{TRUE}.
 #' @param update_cache a logical whether to update cache.
 #' @param cache_dir a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>)}.
-#' @param country Optional. A character vector of ISO-3 country codes. See Details
+#' @param country_iso3 Optional. A character vector of ISO-3 country codes. See Details
 #' @param region Optional. A character vector of UN M49 region codes. Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania". See Details and \link{gisco_countrycode}
 #' @export
-#' @details \code{country} and \code{region} only available when applicable.
-#' Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
+#' @details \code{country_iso3} and \code{region} only available when applicable.
+#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
+#'
+#' \code{eurostat_codes <- c("ES","UK","EL","PL","PT")}
+#'
+#' \code{countrycode::countrycode(eurostat_codes,origin = "eurostat", destination = "iso3c")}
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/}{GISCO Countries}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.
@@ -40,46 +44,45 @@
 #' @examples
 #' library(sf)
 #'
-#' # Some data are already available for speed up the process
+#' # Different resolutions
+#' DNK_res60 <- gisco_get_countries(country_iso3 = "DNK")
+#' DNK_res20 <-
+#'   gisco_get_countries(resolution = "20", country_iso3 = "DNK")
+#' DNK_res10 <-
+#'   gisco_get_countries(resolution = "10", country_iso3 = "DNK")
+#' DNK_res03 <-
+#'   gisco_get_countries(resolution = "03", country_iso3 = "DNK")
+#'
 #' opar <- par(no.readonly = TRUE)
-#' par(mar = c(2, 0, 0, 0))
-#' africa2016 <-  gisco_get_countries(region = "Africa")
-#' angola_namibia <-  gisco_get_countries(country = c("AGO", "NAM"))
-#'
-#' plot(st_geometry(africa2016), bg = "#C6ECFF", col = NA)
-#' plot(st_geometry(gisco_countries_20M_2016),
-#'      col = "#E0E0E0",
-#'      add = TRUE)
-#' plot(st_geometry(africa2016), col = "#F6E1B9", add = TRUE)
-#' plot(st_geometry(angola_namibia), col = "#FEFEE9", add = TRUE)
-#'
-#' mtext(gisco_attributions(), side = 1, cex = 0.8)
-#'
-#' # Change epsg and resolution
-#'
-#' cntries2020 <-
-#'   gisco_get_countries(year = "2020",
-#'                       epsg = "3035",
-#'                       resolution = "60")
-#' plot(st_geometry(cntries2020), bg = "#C6ECFF", col = "#E0E0E0")
-#' mtext(gisco_attributions(), side = 1, cex = 0.8)
+#' par(mfrow = c(2, 2), mar = c(3, 0, 2, 0))
+#' plot(st_geometry(DNK_res60), col = "red", main = "60M")
+#' plot(st_geometry(DNK_res20), col = "blue", main = "20M")
+#' plot(st_geometry(DNK_res10), col = "grey50", main = "10M")
+#' plot(st_geometry(DNK_res03), col = "black", main = "03M")
+#' title(sub = gisco_attributions(), line = 1)
 #' par(opar)
 #'
-#' # Several geometry types
-#' coastl <-
-#'   gisco_get_countries(spatialtype = "COASTL", resolution = "60")
+#' # Different projections
+#' cntr_4326 <- gisco_get_countries(epsg = "4326")
+#' cntr_3857 <- gisco_get_countries(epsg = "3857")
+#' cntr_3035 <- gisco_get_countries(epsg = "3035")
 #'
-#' inland <-
-#'   gisco_get_countries(spatialtype = "INLAND", resolution = "60")
+#' opar <- par(no.readonly = TRUE)
+#' par(mfrow = c(1, 3), mar = c(3, 0, 0, 0))
+#' plot(st_geometry(cntr_4326), graticule = TRUE)
+#' plot(st_geometry(cntr_3857), graticule = TRUE)
+#' plot(st_geometry(cntr_3035), graticule = TRUE)
+#' title(sub = gisco_attributions(), line = 1)
+#' par(opar)
 #' @export
-gisco_get_countries <- function(resolution = "20",
+gisco_get_countries <- function(resolution = "60",
                                 year = "2016",
                                 epsg = "4326",
                                 cache = TRUE,
                                 update_cache = FALSE,
                                 cache_dir = NULL,
                                 spatialtype = "RG",
-                                country = NULL,
+                                country_iso3 = NULL,
                                 region = NULL) {
   # Check resolution is of correct format
   resolution <- as.character(resolution)
@@ -176,13 +179,13 @@ gisco_get_countries <- function(resolution = "20",
                                 filename,
                                 url)
   }
-  if (!is.null(country) & "ISO3_CODE" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$ISO3_CODE %in% country, ]
+  if (!is.null(country_iso3) & "ISO3_CODE" %in% names(data.sf)) {
+    data.sf <- data.sf[data.sf$ISO3_CODE %in% country_iso3,]
   }
   if (!is.null(region) & "ISO3_CODE" %in% names(data.sf)) {
     region.df <- giscoR::gisco_countrycode
-    region.df <- region.df[region.df$un.region.name %in% region, ]
-    data.sf <- data.sf[data.sf$ISO3_CODE %in% region.df$ISO3_CODE, ]
+    region.df <- region.df[region.df$un.region.name %in% region,]
+    data.sf <- data.sf[data.sf$ISO3_CODE %in% region.df$ISO3_CODE,]
   }
   if (is.na(sf::st_crs(data.sf)$epsg)) {
     # Sometimes data saved does not have epsg - investigate
