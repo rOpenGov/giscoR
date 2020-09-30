@@ -9,7 +9,7 @@
 status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
 [![Travis build
 status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
-![GitHub](https://img.shields.io/github/license/dieghernan/giscoR?color=blue)
+[![GitHub](https://img.shields.io/github/license/dieghernan/giscoR?color=blue)](https://github.com/dieghernan/giscoR/blob/master/LICENSE)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
 [![R build
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
