@@ -20,7 +20,7 @@ gisco_get_lau(
 \item{year}{Release year. One of
 "2016", "2017", "2018" or "2019"}
 
-\item{epsg}{projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
+\item{epsg}{projection of the map: 4-digit \href{https://spatialreference.org/ref/epsg/}{EPSG code}. One of:
 \itemize{
 \item "4326" - WGS84
 \item "3035" - ETRS89 / ETRS-LAEA

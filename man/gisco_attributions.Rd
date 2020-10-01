@@ -26,7 +26,7 @@ Consider contributing if you spot any mistake or want to add a new language.
 \note{
 COPYRIGHT NOTICE
 
-When data downloaded from \href{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
+When data downloaded from \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
 is used in any printed or electronic publication,
 in addition to any other provisions
 applicable to the whole Eurostat website,
