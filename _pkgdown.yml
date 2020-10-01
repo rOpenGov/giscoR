@@ -25,6 +25,8 @@ reference:
 figure:
   dev: "svglite::svglite"
   fig.ext: "svg"
+  fig.width: 7
+  fig.retina: 2
   dev.args: 
     pointsize: 12
 
