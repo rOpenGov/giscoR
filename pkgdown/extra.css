@@ -14,8 +14,6 @@ h4,
 h5,
 h6,
 blockquote,
-th,
-dt,
 .copyright,
 .pkgdown {
 	font-family: 'Noto Serif', serif;
@@ -26,7 +24,9 @@ dt,
 
 /* Code on Source Code Pro */
 code,
-pre {
+pre,
+.ref-arguments th,
+dt{
 	font-family: 'Fira Mono', monospace;
 }
 /* Links */
