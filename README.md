@@ -50,56 +50,111 @@ install_github("dieghernan/giscoR")
 This script quickly shows how the data retrieved with giscoR can be
 represented with a sample of complementary packages:
 
-\`\`\`{r example, message=FALSE, warning=FALSE, dpi= library(giscoR)
+``` r
 
-countries \<- gisco\_get\_countries(epsg = “3035”)
+library(giscoR)
 
-nuts2 \<- gisco\_get\_nuts(epsg = “3035”, nuts\_level = “2”)
+countries <- gisco_get_countries(epsg = "3035")
+
+nuts2 <- gisco_get_nuts(epsg = "3035", nuts_level = "2")
 
 # With ggplot2
+library(ggplot2)
+ggplot(countries) +
+  geom_sf(
+    colour = "grey50",
+    fill = "cornsilk",
+    size = 0.1
+  ) +
+  geom_sf(
+    data = nuts2,
+    colour = "darkblue",
+    fill = NA,
+    size = 0.05
+  ) +
+  coord_sf(
+    xlim = c(2200000, 7150000),
+    ylim = c(1380000, 5500000),
+    expand = TRUE
+  ) +
+  xlab("Longitude") +
+  ylab("Latitude") +
+  ggtitle("NUTS2 Regions (2016)") +
+  theme(
+    panel.grid.major = element_line(
+      color = gray(.5),
+      linetype = "dashed",
+      size = 0.5
+    ),
+    panel.background = element_rect(fill = "aliceblue")
+  ) +
+  labs(caption = gisco_attributions(copyright = FALSE))
+```
 
-library(ggplot2) ggplot(countries) + geom\_sf( colour = “grey50”, fill =
-“cornsilk”, size = 0.1 ) + geom\_sf( data = nuts2, colour = “darkblue”,
-fill = NA, size = 0.05 ) + coord\_sf( xlim = c(2200000, 7150000), ylim =
-c(1380000, 5500000), expand = TRUE ) + xlab(“Longitude”) +
-ylab(“Latitude”) + ggtitle(“NUTS2 Regions (2016)”) + theme(
-panel.grid.major = element\_line( color = gray(.5), linetype = “dashed”,
-size = 0.5 ), panel.background = element\_rect(fill = “aliceblue”) ) +
-labs(caption = gisco\_attributions(copyright = FALSE))
+![](man/figures/README-example-1.png)<!-- -->
+
+``` r
+
 
 # With tmap
 
 library(tmap)
 
-cities \<- gisco\_get\_urban\_audit( year = “2020”, level =
-“GREATER\_CITIES”, country = “BEL” )
+cities <-
+  gisco_get_urban_audit(
+    year = "2020",
+    level = "GREATER_CITIES",
+    country = "BEL"
+  )
+#> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
+#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpevMU9X/gisco"
+#> 312 Kb
 
-countries \<- gisco\_get\_countries(country = “BEL”, resolution = “10”)
+countries <- gisco_get_countries(country = "BEL", resolution = "10")
 
-tm\_shape(countries) + tm\_fill(“cornsilk2”) + tm\_borders(“grey50”) +
-tm\_shape(cities) + tm\_fill(“purple4”) +
-tm\_credits(gisco\_attributions(copyright = FALSE), position = c(“LEFT”,
-“BOTTOM”) ) + tm\_layout( main.title = “Urban Audit 2020: Greater Cities
-of Belgium”, frame = TRUE, attr.outside = TRUE, main.title.size = 1 )
+tm_shape(countries) + tm_fill("cornsilk2") + tm_borders("grey50") + tm_shape(cities) + tm_fill("purple4") +
+  tm_credits(gisco_attributions(copyright = FALSE),
+    position = c("LEFT", "BOTTOM")
+  ) + tm_layout(
+    main.title = "Urban Audit 2020: Greater Cities of Belgium",
+    frame = TRUE,
+    attr.outside = TRUE,
+    main.title.size = 1
+  )
+```
+
+![](man/figures/README-example-2.png)<!-- -->
+
+``` r
+
 
 # With cartography
+library(cartography)
+globe <- gisco_get_countries(epsg = "3035")
+globe <- merge(globe, gisco_countrycode, all.x = TRUE)
+opar <- par(no.readonly = TRUE)
+par(mar = c(2, 2, 2, 2))
+typoLayer(globe, var = "un.region.name", legend.pos = "n")
+layoutLayer(
+  "Regions of the World (UN)",
+  sources = gisco_attributions(copyright = FALSE),
+  scale = FALSE,
+  horiz = TRUE
+)
+```
 
-library(cartography) globe \<- gisco\_get\_countries(epsg = “3035”)
-globe \<- merge(globe, gisco\_countrycode, all.x = TRUE) opar \<-
-par(no.readonly = TRUE) par(mar = c(2, 2, 2, 2)) typoLayer(globe, var =
-“un.region.name”, legend.pos = “n”) layoutLayer( “Regions of the World
-(UN)”, sources = gisco\_attributions(copyright = FALSE), scale = FALSE,
-horiz = TRUE )
-
-```` 
+![](man/figures/README-example-3.png)<!-- -->
 
 ### A note on caching
 
-Some data sets (as Local Administrative Units - LAU, or high-resolution files) may have a size larger than 50MB. You can use `giscoR` to create your own local repository at a given local directory passing the following option:
+Some data sets (as Local Administrative Units - LAU, or high-resolution
+files) may have a size larger than 50MB. You can use `giscoR` to create
+your own local repository at a given local directory passing the
+following option:
 
-```r
+``` r
 options(gisco_cache_dir = "./path/to/location")
-````
+```
 
 When this option is set, `giscoR` would look for the cached file and it
 will load it, speeding up the process.
