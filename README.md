@@ -139,9 +139,9 @@ represented with a sample of complementary packages:
 ``` r
 library(giscoR)
 
-countries <- gisco_get_countries(epsg = 3035)
+countries <- gisco_get_countries(epsg = "3035")
 
-nuts2 <- gisco_get_nuts(epsg = 3035, nuts_level = 2)
+nuts2 <- gisco_get_nuts(epsg = "3035", nuts_level = "2")
 
 # With ggplot2
 library(ggplot2)
@@ -191,7 +191,7 @@ cities <-
     country = "BEL"
   )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp2qLiDK/gisco"
+#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpq77tXR/gisco"
 #> 312 Kb
 countries <- gisco_get_countries(country = "BEL", resolution = "10")
 
