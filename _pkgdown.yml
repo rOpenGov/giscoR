@@ -21,6 +21,10 @@ reference:
       - gisco_countries_20M_2016
       - gisco_coastallines_20M_2016
       - gisco_countrycode
+  - title: "About the package"
+    contents:
+      - giscoR-package
+      
 
 figure:
   dev: "svglite::svglite"
@@ -48,7 +52,9 @@ development:
   version_tooltip: "On active development"
   
 navbar:
+  structure:
+    right: [github, blog]
   components:
-    about:
-     text: About
-     href: "reference/giscoR-package.html"
+    blog:
+     icon: "fas fa-blog fa-lg"
+     href: "https://dieghernan.github.io/"
