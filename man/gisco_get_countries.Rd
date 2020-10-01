@@ -77,7 +77,7 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 }
 \examples{
 library(sf)
-
+\donttest{
 # Different resolutions
 DNK_res60 <- gisco_get_countries(country_iso3 = "DNK")
 DNK_res20 <-
@@ -112,7 +112,7 @@ plot(
 plot(st_geometry(cntr_3035), graticule = TRUE)
 title(sub = gisco_attributions(), line = 1)
 par(opar)
-
+}
 # Labels and Lines available
 coast <- gisco_get_countries(spatialtype = "COASTL")
 labs <- gisco_get_countries(spatialtype = "LB")
