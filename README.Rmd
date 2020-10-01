@@ -38,6 +38,7 @@ GISCO [(FAQ)](https://ec.europa.eu/eurostat/web/gisco/faq) is a geospatial open 
 
 Note that the package does not provide metadata on the downloaded files, the information is available on the [API webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
 
+
 ## Installation
 
 You can install the developing version of `giscoR` with:
@@ -52,7 +53,9 @@ install_github("dieghernan/giscoR")
 
 This script quickly shows how the data retrieved with giscoR can be represented with a sample of complementary packages:
 
-```{r example, message=FALSE, warning=FALSE, dpi= library(giscoR)
+```{r example, message=FALSE, warning=FALSE, dpi= 90}
+
+library(giscoR)
 
 countries <- gisco_get_countries(epsg = "3035")
 
