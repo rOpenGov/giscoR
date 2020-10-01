@@ -2,7 +2,7 @@
 #' @description Downloads a simple feature (\code{sf}) object.
 #' @param year Release year. One of
 #'    "2001", "2004", "2006", "2008", "2010", "2013" or 2016
-#' @param epsg projection of the map: 4-digit \href{http://spatialreference.org/ref/epsg/}{EPSG code}. One of:
+#' @param epsg projection of the map: 4-digit \href{https://spatialreference.org/ref/epsg/}{EPSG code}. One of:
 #' \itemize{
 #' \item "4326" - WGS84
 #' \item "3035" - ETRS89 / ETRS-LAEA

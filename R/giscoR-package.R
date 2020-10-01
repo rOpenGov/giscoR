@@ -31,8 +31,8 @@
 #' @keywords package
 #' @note COPYRIGHT NOTICE
 #'
-#' When data downloaded from this page
-#' \url{http://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}
+#' When data downloaded from 
+#' \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
 #' is used in any printed or electronic publication,
 #' in addition to any other provisions
 #' applicable to the whole Eurostat website,
