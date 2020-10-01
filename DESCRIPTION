@@ -23,5 +23,6 @@ Suggests:
     cartography (>= 2.0.0),
     colorspace,
     eurostat,
+    lwgeom,
     tinytest
 Date: 2020-09-21
