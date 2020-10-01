@@ -17,8 +17,7 @@ blockquote,
 th,
 dt,
 .copyright,
-.pkgdown,
-.navbar {
+.pkgdown {
 	font-family: 'Noto Serif', serif;
 }
 .section-desc + p{
@@ -51,10 +50,10 @@ a:hover, a:active{
 /* Navbar brand */
 .navbar .navbar-brand {
 	margin-right: 1em;
+	font-family: 'Noto Serif', serif;
 }
 .navbar .navbar-brand .navbar-link {
 	color: #cdcd00;
-	font-size: 1.15em;
 }
 .navbar .navbar-brand .label-default {
 	background-color: #fff;
