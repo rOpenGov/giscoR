@@ -2,11 +2,11 @@ on:
   push:
     branches: master
 
-name: Render Manual
+name: Roxygen2
 
 jobs:
   render:
-    name: Render Manual
+    name: Roxygenise package
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
@@ -14,15 +14,15 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Install packages
         run: |
-          install.packages("remotes")
           install.packages("roxygen2")
+          install.packages("remotes")
           remotes::install_local(".", dependencies = TRUE)
         shell: Rscript {0}
-      - name: Render manual
+      - name: Roxygenise
         run: Rscript -e 'roxygen2::roxygenise()'
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git commit . -m 'Re-build manual' || echo "No changes to commit"
+          git commit . -m 'Update man' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
