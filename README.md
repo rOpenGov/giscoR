@@ -4,10 +4,14 @@
 # giscoR <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
-[![Travis build status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
-[![R build status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
-[![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/dieghernan/giscoR/blob/master/LICENSE.md)
+
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
+[![Travis build
+status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
+[![R build
+status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
+[![License](https://img.shields.io/badge/license-GPL—3.0-blue)](https://github.com/dieghernan/giscoR/blob/master/LICENSE.md)
 ![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
 <!-- badges: end -->
@@ -115,8 +119,8 @@ install_github("dieghernan/giscoR")
 
 Some data sets (as Local Administrative Units - LAU, or high-resolution
 files) may have a size larger than 50MB. You can use `giscoR` to create
-your own local repository at a given location passing the following
-option:
+your own local repository at a given local directory passing the
+following option:
 
 ``` r
 options(gisco_cache_dir = "./path/to/location")
@@ -125,8 +129,8 @@ options(gisco_cache_dir = "./path/to/location")
 When this option is set, `giscoR` would look for the cached file and it
 will load it, speeding up the process.
 
-You can also download manually the files (`.geojson` format) and stored
-on that library.
+You can also download manually the files (`.geojson` format) and store
+them on your local directory.
 
 ## Demo
 
@@ -188,7 +192,7 @@ cities <-
     country = "BEL"
   )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpLfjNi2/gisco"
+#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp582Xki/gisco"
 #> 312 Kb
 countries <- gisco_get_countries(country = "BEL", resolution = "10")
 
