@@ -13,4 +13,8 @@
 ^giscoR.*\.tar\.gz$
 ^giscoR.*\.tgz$
 ^\.github$
-README-example-
+^LICENSE\.md$
+^\./man/figures/README-example-1\.png$
+^\./man/figures/README-example-2\.png$
+^\./man/figures/README-example-3\.png$
+^revdep$

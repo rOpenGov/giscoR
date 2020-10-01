@@ -23,8 +23,5 @@ Suggests:
     cartography (>= 2.0.0),
     colorspace,
     eurostat,
-    ggplot2,
-    leaflet,
-    tmap,
     tinytest
 Date: 2020-09-21
