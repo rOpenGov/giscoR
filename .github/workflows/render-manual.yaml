@@ -1,0 +1,27 @@
+on:
+  push:
+
+name: Render Manual
+
+jobs:
+  render:
+    name: Render Manual
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Install packages
+        run: |
+          install.packages("remotes")
+          install.packages("roxygen2")
+          remotes::install_local(".", dependencies = TRUE)
+        shell: Rscript {0}
+      - name: Render manual
+        run: Rscript -e 'roxygen2::roxygenise()'
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git commit . -m 'Re-build manual' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
