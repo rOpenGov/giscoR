@@ -4,15 +4,12 @@
 # giscoR <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
-[![Travis build
-status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
+[![Travis build status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
+[![R build status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](https://github.com/dieghernan/giscoR/blob/master/LICENSE.md)
+![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
-[![R build
-status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 <!-- badges: end -->
 
 giscoR is a API package that helps to retrieve data from [Eurostat -
