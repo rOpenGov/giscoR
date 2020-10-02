@@ -97,7 +97,7 @@ plot(st_geometry(sf_africa),
 title(sub = gisco_attributions(), line = 1)
 
 plot(st_geometry(sf_benelux),
-     col = c("grey10", "deepskyblue2", "orange"))
+     col = c("grey10", "orange", "deepskyblue2"))
 title(sub = gisco_attributions(), line = 1)
 }
 \seealso{
