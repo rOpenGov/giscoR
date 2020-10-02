@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
 [![R build
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![License](https://img.shields.io/badge/license-GPL—3.0-blue)](https://github.com/dieghernan/giscoR/blob/master/LICENSE.md)
@@ -30,7 +32,6 @@ The data sets are usually provided at several resolution levels
 Note that the package does not provide metadata on the downloaded files,
 the information is available on the [API
 webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
-
 
 ## Installation
 
@@ -104,7 +105,7 @@ cities <-
     country = "BEL"
   )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpR5IoYE/gisco"
+#> [1] "Loading from cache dir: /tmp/RtmpNcyL4g/gisco"
 #> 312 Kb
 
 countries <- gisco_get_countries(country = "BEL", resolution = "10")

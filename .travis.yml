@@ -1,7 +1,11 @@
 language: r
 r:
+  - release
+  - devel
   - oldrel
   - 3.5
+
+os: linux
 
 sudo: required
 

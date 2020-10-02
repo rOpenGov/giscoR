@@ -113,6 +113,7 @@ tinytest::test_package("giscoR")
 
 covr::report()
 
+devtools::check_win_release()
 
 citation("eurostat")
 
