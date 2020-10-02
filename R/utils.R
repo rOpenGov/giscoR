@@ -217,11 +217,9 @@ gsc_helper_dwnl_nocaching <-
         download.file(url, filepath, quiet = TRUE)
 
       }
-      data.sf <- sf::st_read(filepath,   stringsAsFactors = FALSE,
-                             quiet = TRUE)
+      geojsonsf::geojson_sf(filepath)
     } else {
-      data.sf <- sf::st_read(url,   stringsAsFactors = FALSE,
-                             quiet = TRUE)
+      geojsonsf::geojson_sf(url)
     }
   }
 
@@ -265,8 +263,6 @@ gsc_helper_dwnl_caching <- function(cache_dir,
   print(paste0("Loading from cache dir: ", cache_dir))
   print(size, units = "auto")
 
-  data.sf <- sf::st_read(filepath,
-                         stringsAsFactors = FALSE,
-                         quiet = TRUE)
+  data.sf <- geojsonsf::geojson_sf(filepath)
 
 }
