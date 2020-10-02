@@ -19,6 +19,8 @@
 #' GBR <- subset(cntry, ISO3_CODE == "GBR")
 #'
 #' plot(st_geometry(GBR), col = "red3", border = "blue4")
+#' title(sub = gisco_attributions(), line = 1)
+#'
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}{GISCO .geojson source}
 #' @docType data
 #' @seealso \link{gisco_get_countries}
@@ -86,6 +88,9 @@ NULL
 #'   \item{un.regionsub.code}{Numeric sub-region code UN (M49)}
 #'   \item{un.regionsub.name}{Sub-Region name UN (M49)}
 #' }
+#' @examples
+#' # Selected columns
+#' head(gisco_countrycode[,c(1:3,5,8)],nrow(gisco_countrycode))
 #' @source \code{codelist} dataset from the \code{countrycode v1.2.0} package.
 #' @seealso \link[countrycode]{codelist}
 #' @docType data

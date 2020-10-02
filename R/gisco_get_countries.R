@@ -65,7 +65,6 @@
 #' plot(st_geometry(sf_benelux),
 #'      col = c("grey10", "deepskyblue2", "orange"))
 #' title(sub = gisco_attributions(), line = 1)
-#' library(sf)
 #' @export
 gisco_get_countries <- function(resolution = "60",
                                 year = "2016",

@@ -99,7 +99,6 @@ title(sub = gisco_attributions(), line = 1)
 plot(st_geometry(sf_benelux),
      col = c("grey10", "deepskyblue2", "orange"))
 title(sub = gisco_attributions(), line = 1)
-library(sf)
 }
 \seealso{
 \link{gisco_countrycode}

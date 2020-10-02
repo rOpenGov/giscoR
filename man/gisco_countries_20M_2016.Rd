@@ -30,6 +30,8 @@ cntry <- gisco_countries_20M_2016
 GBR <- subset(cntry, ISO3_CODE == "GBR")
 
 plot(st_geometry(GBR), col = "red3", border = "blue4")
+title(sub = gisco_attributions(), line = 1)
+
 }
 \seealso{
 \link{gisco_get_countries}

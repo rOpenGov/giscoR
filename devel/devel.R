@@ -6,6 +6,7 @@ a <- "Diego Hernangomez [aut, cre] (<https://orcid.org/0000-0001-8457-4658>)"
 
 options(gisco_cache_dir = "~/R/mapslib/GISCO")
 
+gisc
 
 meta$author
 
