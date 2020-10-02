@@ -12,6 +12,13 @@
 #'   \item{FID}{FID}
 #'   \item{geometry}{geometry field}
 #' }
+#' @examples
+#' library(sf)
+#'
+#' cntry <- gisco_countries_20M_2016
+#' GBR <- subset(cntry, ISO3_CODE == "GBR")
+#'
+#' plot(st_geometry(GBR), col = "red3", border = "blue4")
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}{GISCO .geojson source}
 #' @docType data
 #' @seealso \link{gisco_get_countries}

@@ -16,6 +16,15 @@
 #' @details See \url{https://ec.europa.eu/eurostat/web/nuts/local-administrative-units} for more detail about LAUs.
 #'
 #' If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
+#'
+#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
+#'
+#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
+#' countrycode::countrycode(\cr
+#'   eurostat_codes,\cr
+#'   origin = "eurostat",\cr
+#'   destination = "iso3c"\cr
+#' )
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/lau/}{GISCO Local Administrative Units}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{POLYGON} object on \code{sf} format.
@@ -24,23 +33,22 @@
 #' \donttest{
 #' library(sf)
 #'
-#' lau_esp <- gisco_get_lau(country = "ESP")
+#' lau_esp <- gisco_get_lau(country_iso3 = "ESP")
 #'
 #' plot(
 #'   st_geometry(lau_esp),
-#'   axes = TRUE,
 #'   xlim = c(0, 4),
 #'   ylim = c(39, 42),
 #'   bg = "lightskyblue1",
 #'   col = "wheat",
 #'   border = "grey50"
 #' )
-#' box()
+#'
 #' title(
 #'   main = "Spain LAU",
 #'   sub = gisco_attributions(copyright = FALSE),
-#'   line = 3,
-#'   cex.sub = 0.8,
+#'   line = 1,
+#'   font.cex = 0.8,
 #'   font.sub = 3
 #' )
 #' }

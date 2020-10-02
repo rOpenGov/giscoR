@@ -24,5 +24,8 @@ Suggests:
     colorspace,
     eurostat,
     lwgeom,
-    tinytest
+    tinytest,
+    knitr,
+    rmarkdown
 Date: 2020-09-21
+VignetteBuilder: knitr

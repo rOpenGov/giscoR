@@ -18,6 +18,16 @@
 #' @param level Level of Urban Audit. Possible values are 'CITIES', 'FUA', 'GREATER_CITIES' or \code{NULL}. See Details.
 #' @param country Optional. A character vector of ISO-3 country codes.
 #' @details \code{level = NULL} would download the whole dataset including all levels
+#'
+#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
+#'
+#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
+#' \cr
+#' countrycode::countrycode(\cr
+#'   eurostat_codes,\cr
+#'   origin = "eurostat",\cr
+#'   destination = "iso3c"\cr
+#' )
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/urau/}{GISCO Urban Audit}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.

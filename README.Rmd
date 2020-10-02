@@ -18,7 +18,6 @@ knitr::knit_hooks$set(
     }
   }
 )
-#options(gisco_cache_dir = "~/R/mapslib/GISCO")
 ```
 
 # giscoR <img src="man/figures/logo.png" align="right" width="120" />

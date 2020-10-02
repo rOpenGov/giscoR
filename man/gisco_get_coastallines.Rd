@@ -55,7 +55,7 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 library(sf)
 
 coastlines <- gisco_get_coastallines()
-plot(st_geometry(coastlines), bg = "grey80", col = "black")
+plot(st_geometry(coastlines), col = "seagreen2", border = "lightblue3")
 title(main = "Coastal Lines",
       sub = gisco_attributions(copyright = FALSE),
       line = 1)

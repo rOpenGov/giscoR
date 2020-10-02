@@ -33,63 +33,39 @@
 #' @details \code{country_iso3} and \code{region} only available when applicable.
 #' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
 #'
-#' \code{eurostat_codes <- c("ES","UK","EL","PL","PT")}
-#'
-#' \code{countrycode::countrycode(eurostat_codes,origin = "eurostat", destination = "iso3c")}
+#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
+#' \cr
+#' countrycode::countrycode(\cr
+#'   eurostat_codes,\cr
+#'   origin = "eurostat",\cr
+#'   destination = "iso3c"\cr
+#' )
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/}{GISCO Countries}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.
 #' @seealso \link{gisco_countrycode}
 #' @note Please check the download and usage provisions on \link{gisco_attributions}.
 #' @examples
+#'
 #' library(sf)
-#' \donttest{
-#' # Different resolutions
-#' DNK_res60 <- gisco_get_countries(country_iso3 = "DNK")
-#' DNK_res20 <-
-#'   gisco_get_countries(resolution = "20", country_iso3 = "DNK")
-#' DNK_res10 <-
-#'   gisco_get_countries(resolution = "10", country_iso3 = "DNK")
-#' DNK_res03 <-
-#'   gisco_get_countries(resolution = "03", country_iso3 = "DNK")
 #'
-#' opar <- par(no.readonly = TRUE)
-#' par(mfrow = c(2, 2), mar = c(3, 0, 2, 0))
-#' plot(st_geometry(DNK_res60), col = "red", main = "60M")
-#' plot(st_geometry(DNK_res20), col = "blue", main = "20M")
-#' plot(st_geometry(DNK_res10), col = "grey50", main = "10M")
-#' plot(st_geometry(DNK_res03), col = "black", main = "03M")
+#' sf_world <- gisco_get_countries()
+#' sf_africa <- gisco_get_countries(region = 'Africa')
+#' sf_benelux <-
+#'   gisco_get_countries(resolution = "20",
+#'                       country_iso3 = c('BEL', 'NLD', 'LUX'))
+#'
+#' plot(st_geometry(sf_world), col = "seagreen2")
 #' title(sub = gisco_attributions(), line = 1)
-#' par(opar)
 #'
-#' # Different projections
-#' cntr_4326 <- gisco_get_countries(epsg = "4326")
-#' cntr_3857 <- gisco_get_countries(epsg = "3857")
-#' cntr_3035 <- gisco_get_countries(epsg = "3035")
-#'
-#' opar <- par(no.readonly = TRUE)
-#' par(mfrow = c(3, 1), mar = c(3, 0, 0, 0))
-#' plot(st_geometry(cntr_4326), graticule = TRUE)
-#' plot(
-#'   st_geometry(cntr_3857),
-#'   graticule = TRUE,
-#'   ylim = c(-13000000, 13000000)
-#' )
-#' plot(st_geometry(cntr_3035), graticule = TRUE)
+#' plot(st_geometry(sf_africa),
+#'      col = c("springgreen4", "darkgoldenrod1", "red2"))
 #' title(sub = gisco_attributions(), line = 1)
-#' par(opar)
-#' }
-#' # Labels and Lines available
-#' coast <- gisco_get_countries(spatialtype = "COASTL")
-#' labs <- gisco_get_countries(spatialtype = "LB")
 #'
-#' plot(st_geometry(coast), col = "blue1")
-#' plot(st_geometry(labs),
-#'      col = "red",
-#'      add = TRUE,
-#'      pch = 19)
-#'
-#' title(sub = gisco_attributions(copyright = FALSE), line = 1)
+#' plot(st_geometry(sf_benelux),
+#'      col = c("grey10", "deepskyblue2", "orange"))
+#' title(sub = gisco_attributions(), line = 1)
+#' library(sf)
 #' @export
 gisco_get_countries <- function(resolution = "60",
                                 year = "2016",

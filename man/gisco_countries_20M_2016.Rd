@@ -23,6 +23,14 @@ A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object wit
 A \code{sf} object including all
 countries as provided by GISCO (2016 version).
 }
+\examples{
+library(sf)
+
+cntry <- gisco_countries_20M_2016
+GBR <- subset(cntry, ISO3_CODE == "GBR")
+
+plot(st_geometry(GBR), col = "red3", border = "blue4")
+}
 \seealso{
 \link{gisco_get_countries}
 }

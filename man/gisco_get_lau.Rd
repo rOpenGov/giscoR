@@ -45,6 +45,15 @@ Downloads a simple feature (\code{sf}) object.
 See \url{https://ec.europa.eu/eurostat/web/nuts/local-administrative-units} for more detail about LAUs.
 
 If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
+
+You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
+
+eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
+countrycode::countrycode(\cr
+  eurostat_codes,\cr
+  origin = "eurostat",\cr
+  destination = "iso3c"\cr
+)
 }
 \note{
 Please check the download and usage provisions on \link{gisco_attributions}.
@@ -53,23 +62,22 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 \donttest{
 library(sf)
 
-lau_esp <- gisco_get_lau(country = "ESP")
+lau_esp <- gisco_get_lau(country_iso3 = "ESP")
 
 plot(
   st_geometry(lau_esp),
-  axes = TRUE,
   xlim = c(0, 4),
   ylim = c(39, 42),
   bg = "lightskyblue1",
   col = "wheat",
   border = "grey50"
 )
-box()
+
 title(
   main = "Spain LAU",
   sub = gisco_attributions(copyright = FALSE),
-  line = 3,
-  cex.sub = 0.8,
+  line = 1,
+  font.cex = 0.8,
   font.sub = 3
 )
 }

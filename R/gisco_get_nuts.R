@@ -31,6 +31,16 @@
 #' @export
 #' @details \code{country} only available when applicable.
 #' Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
+#'
+#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
+#'
+#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
+#' \cr
+#' countrycode::countrycode(\cr
+#'   eurostat_codes,\cr
+#'   origin = "eurostat",\cr
+#'   destination = "iso3c"\cr
+#' )
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}{GISCO NUTS}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.

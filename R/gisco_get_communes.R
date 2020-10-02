@@ -24,10 +24,13 @@
 #'
 #' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
 #'
-#' \code{eurostat_codes <- c("ES","UK","EL","PL","PT")}
-#'
-#' \code{countrycode::countrycode(eurostat_codes,origin = "eurostat", destination = "iso3c")}
-#'
+#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
+#' \cr
+#' countrycode::countrycode(\cr
+#'   eurostat_codes,\cr
+#'   origin = "eurostat",\cr
+#'   destination = "iso3c"\cr
+#' )
 #'
 #' If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/communes/}{GISCO Communes}
@@ -43,7 +46,7 @@
 #'
 #' plot(
 #'   communes[, "CNTR_ID"],
-#'   pal = c("black", "#00A3E0", "orange"),
+#'   pal = c("black", "deepskyblue2", "orange"),
 #'   border = "grey90",
 #'   main = "Communes on Benelux (2016)",
 #'   key.pos = NULL
