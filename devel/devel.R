@@ -48,3 +48,5 @@ citation("eurostat")
 
 Sys.getenv("_R_CHECK_DONTTEST_EXAMPLES_")
 Sys.setenv("_R_CHECK_DONTTEST_EXAMPLES_" = FALSE)
+
+devtools::build_manual(path = "./devel/")

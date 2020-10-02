@@ -24,6 +24,26 @@ A \code{LINESTRING} data frame (resolution: 1:20million, EPSG:4326) object with 
 A \code{sf} object including the coast lines
 as provided by GISCO (2016 version).
 }
+\examples{
+library(sf)
+
+coasts <- gisco_coastallines_20M_2016
+
+plot(
+  st_geometry(coasts),
+  xlim = c(100, 120),
+  ylim = c(-24, 24),
+  col = "deepskyblue4",
+  lwd = 2
+)
+box()
+title(
+  main = "Coasts on Southeastern Asia",
+  sub = gisco_attributions(copyright = FALSE),
+  cex.sub = 0.7,
+  line = 1
+)
+}
 \seealso{
 \link{gisco_get_countries}
 }

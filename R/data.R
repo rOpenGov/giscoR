@@ -44,6 +44,25 @@ NULL
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_BN_20M_2016_4326_COASTL.geojson}{GISCO .geojson source}
 #' @docType data
 #' @seealso \link{gisco_get_countries}
+#' @examples
+#' library(sf)
+#'
+#' coasts <- gisco_coastallines_20M_2016
+#'
+#' plot(
+#'   st_geometry(coasts),
+#'   xlim = c(100, 120),
+#'   ylim = c(-24, 24),
+#'   col = "deepskyblue4",
+#'   lwd = 2
+#' )
+#' box()
+#' title(
+#'   main = "Coasts on Southeastern Asia",
+#'   sub = gisco_attributions(copyright = FALSE),
+#'   cex.sub = 0.7,
+#'   line = 1
+#' )
 NULL
 
 #' @title All NUTS \code{POLYGON} object
@@ -67,6 +86,19 @@ NULL
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
 #' @docType data
 #' @seealso \link{gisco_get_nuts}
+#' @examples
+#' library(sf)
+#'
+#' nuts <- gisco_nuts_20M_2016
+#'
+#' italy <- subset(nuts, CNTR_CODE == "IT" & LEVL_CODE == 3)
+#'
+#' plot(st_geometry(italy), col = c("springgreen4", "ivory", "red2"))
+#' title(
+#'   sub = gisco_attributions(copyright = FALSE),
+#'   cex.sub = 0.7,
+#'   font.sub = 3
+#' )
 NULL
 
 

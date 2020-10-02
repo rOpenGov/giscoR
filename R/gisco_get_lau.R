@@ -45,6 +45,8 @@
 #'   border = "grey50"
 #' )
 #'
+#' box()
+#'
 #' title(
 #'   main = "Spain LAU",
 #'   sub = gisco_attributions(copyright = FALSE),

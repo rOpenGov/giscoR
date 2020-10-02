@@ -27,6 +27,20 @@ A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 11 
 A \code{sf} object including all
 NUTS levels as provided by GISCO (2016 version).
 }
+\examples{
+library(sf)
+
+nuts <- gisco_nuts_20M_2016
+
+italy <- subset(nuts, CNTR_CODE == "IT" & LEVL_CODE == 3)
+
+plot(st_geometry(italy), col = c("springgreen4", "ivory", "red2"))
+title(
+  sub = gisco_attributions(copyright = FALSE),
+  cex.sub = 0.7,
+  font.sub = 3
+)
+}
 \seealso{
 \link{gisco_get_nuts}
 }
