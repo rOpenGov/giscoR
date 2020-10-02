@@ -17,10 +17,11 @@ reference:
   - title: "Datasets"
     desc: These objects are datasets already included in the package.
     contents:
-      - gisco_nuts_20M_2016
-      - gisco_countries_20M_2016
-      - gisco_coastallines_20M_2016
+      - gisco_coastallines
+      - gisco_countries
       - gisco_countrycode
+      - gisco_nuts
+
   - title: "About the package"
     contents:
       - giscoR-package
@@ -31,7 +32,7 @@ figures:
   fig.ext: png
   fig.width: 7.3
   fig.retina: 2
-  fig.asp: 
+  fig.asp:
 
 
 template:
