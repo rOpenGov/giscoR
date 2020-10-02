@@ -81,7 +81,7 @@ plot(
   key.pos = NULL
 )
 title(sub = gisco_attributions(copyright = FALSE),
-      line = 3,
+      line = 1,
       cex.sub = 0.8)
 }
 }
