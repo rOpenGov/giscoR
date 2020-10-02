@@ -26,10 +26,12 @@ reference:
       - giscoR-package
 
 
-figure:
-  fig.width: 7
+figures:
+  dev: grDevices::png
+  fig.ext: png
+  fig.width: 7.3
   fig.retina: 2
-  bg: ~
+  fig.asp: 
 
 
 template:
