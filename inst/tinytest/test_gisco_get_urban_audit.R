@@ -35,3 +35,9 @@ expect_silent(
   )
 )
 
+
+a <- gisco_get_urban_audit(epsg = '3035', level = "GREATER_CITIES")
+b <- gisco_get_urban_audit(epsg = '3857', level = "GREATER_CITIES")      
+
+expect_false(sf::st_is_longlat(a))
+expect_false(sf::st_is_longlat(b))

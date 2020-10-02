@@ -24,6 +24,13 @@ expect_silent(gisco_get_nuts(
   nuts_level = "all"
 ))
 
+
+a <- gisco_get_nuts(epsg = '3035')
+b <- gisco_get_nuts(epsg = '3857')      
+
+expect_false(sf::st_is_longlat(a))
+expect_false(sf::st_is_longlat(b))
+
 expect_silent(gisco_get_nuts(spatialtype = "LB"))
 expect_silent(gisco_get_nuts(
   year = 2010,

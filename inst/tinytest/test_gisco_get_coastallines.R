@@ -13,3 +13,9 @@ expect_silent(gisco_get_coastallines(
   cache_dir = cachetest,
   update_cache = TRUE
 ))
+
+a <- gisco_get_coastallines(epsg = '3035')
+b <- gisco_get_coastallines(epsg = '3857')      
+
+expect_false(sf::st_is_longlat(a))
+expect_false(sf::st_is_longlat(b))
