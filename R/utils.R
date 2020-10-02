@@ -277,3 +277,37 @@ gsc_helper_dwnl_caching <- function(cache_dir,
 
 }
 
+#' @name gsc_helper_countrynames
+#' @title Helper function to convert country na,es
+#' @description Convert country codes
+#' @param names names
+#' @param out out
+#' @return a vector of names
+#' @noRd
+gsc_helper_countrynames <- function(names, out = "eurostat") {
+  maxname <- max(nchar(names))
+  if (maxname > 3) {
+    outnames <- countrycode::countryname(names, out)
+  } else if (maxname == 3) {
+    outnames <- countrycode::countrycode(names, "iso3c", out)
+  } else if (maxname == 2) {
+    outnames <- countrycode::countrycode(names, "eurostat", out)
+  } else {
+    stop("Invalid country names. Try a vector of names, ISO3 codes or Eurostat codes")
+  }
+  linit <- length(outnames)
+  outnames2 <- outnames[!is.na(outnames)]
+  lend <- length(outnames2)
+  if (linit != lend) {
+    f <- paste(names[is.na(outnames)], sep = ",", collapse = ",")
+    warning(
+      paste(
+        "Countries ommited: ",
+        f,
+        ". Review the names of switch to ISO3 or Eurostat codes.",
+        sep = " "
+      )
+    )
+  }
+  return(outnames2)
+}

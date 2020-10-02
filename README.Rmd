@@ -30,7 +30,7 @@ knitr::knit_hooks$set(
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
 <!-- badges: end -->
 
-giscoR is a API package that helps to retrieve data from [Eurostat - GISCO (the Geographic Information System of the COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides some lightweight data sets ready to use without downloading. Currently only the [Administrative Units / Statistical Units](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units) data sets are supported.
+[giscoR](https://dieghernan.github.io/giscoR/) is a API package that helps to retrieve data from [Eurostat - GISCO (the Geographic Information System of the COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides some lightweight data sets ready to use without downloading. Currently only the [Administrative Units / Statistical Units](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units) data sets are supported.
 
 GISCO [(FAQ)](https://ec.europa.eu/eurostat/web/gisco/faq) is a geospatial open data repository including several data sets as countries, coastal lines, labels or [NUTS levels](https://ec.europa.eu/eurostat/web/regions-and-cities/overview). The data sets are usually provided at several resolution levels (60M/20M/10M/03M/01M) and in 3 different projections (4326/3035/3857).
 
@@ -129,7 +129,7 @@ layoutLayer(
   scale = FALSE,
   horiz = TRUE
 )
-
+par(opar)
 ```
 
 ### A note on caching
@@ -146,46 +146,26 @@ You can also download manually the files (`.geojson` format) and store them on y
 
 ## Recommended packages
 
-Some of the datasets identify the countries by using the [Eurostat Country Code](https://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Country_codes). The equivalence on ISO-3 (and another codification systems) could be done using the `countrycode` [package](https://vincentarelbundock.github.io/countrycode):
+### API data packages
 
-```{r countrycode}
+It is recommended to install the `eurostat` package (<https://ropengov.github.io/eurostat>), that is another API package that queries [Eurostat](https://ec.europa.eu/eurostat/) for statistical information:
 
-library(countrycode)
+> (C) Leo Lahti, Janne Huovari, Markus Kainu, Przemyslaw Biecek. Retrieval and analysis of Eurostat open data with the eurostat package. 
+> R Journal  9(1):385-392, 2017. Version 3.6.5 
+> Package URL: http://ropengov.github.io/eurostat
+> Manuscript URL: https://journal.r-project.org/archive/2017/RJ-2017-019/index.html
 
-# Names to ISO3 - Spanish
-names.es <- c("Portugal", "Egipto", "Peru", "Polonia")
-iso3_1 <- countryname(names.es, destination = "iso3c")
+`wbstats `(<https://nset-ornl.github.io/wbstats/>) is another interesting R API packages that provides access to [The World Bank Data](https://data.worldbank.org/) API:
 
-cbind(names.es, iso3_1)
-
-# Names to ISO3 - mixed languages
-names.mix <-
-  c("Greece", "Espagne", "Reino Unido", "Frankreich", "Brasilien")
-iso3_2 <- countryname(names.mix, destination = "iso3c")
-
-cbind(names.mix, iso3_2)
-
-# Translate from ISO3 to eurostat codes
-iso3_3 <- c(iso3_1, iso3_2)
-eurostat <- countrycode(iso3_3, "iso3c", "eurostat")
-
-cbind(iso3_3, eurostat)
-
-```
-
-It is recommended also to install the `eurostat` package (<https://ropengov.github.io/eurostat/>):
-
-> Leo Lahti, Przemyslaw Biecek, Markus Kainu and Janne Huovari.
->
-> Retrieval and analysis of Eurostat open data with the eurostat package. R Journal 9(1):385-392, 2017. R package version 3.6.5.
->
-> URL: http://ropengov.github.io/eurostat
+> Jesse Piburn (2018). wbstats: Programmatic Access to the World Bank API. Oak
+> Ridge National Laboratory. Oak Ridge, Tennessee. URL
+> https://www.ornl.gov/division/csed/gist
 
 ### Plotting `sf` objects
 
 Some packages recommended for visualization are:
 
-* [`tmap`](https://mtennekes.github.io/tmap)    
+* [`tmap`](https://mtennekes.github.io/tmap/)    
 * [`cartography`](http://riatelab.github.io/cartography/docs/)
 * [`ggplot2`](https://github.com/tidyverse/ggplot2) + [`ggspatial`](https://github.com/paleolimbot/ggspatial)
 * [`leaflet`](https://rstudio.github.io/leaflet/)

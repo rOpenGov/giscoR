@@ -1,5 +1,5 @@
 #' @title World countries \code{POLYGON} object
-#' @name gisco_countries_20M_2016
+#' @name gisco_countries
 #' @description A \code{sf} object including all
 #' countries as provided by GISCO (2016 version).
 #' @format A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 257 rows and 7 variables:
@@ -15,7 +15,7 @@
 #' @examples
 #' library(sf)
 #'
-#' cntry <- gisco_countries_20M_2016
+#' cntry <- gisco_countries
 #' GBR <- subset(cntry, ISO3_CODE == "GBR")
 #'
 #' plot(st_geometry(GBR), col = "red3", border = "blue4")
@@ -27,7 +27,7 @@
 NULL
 
 #' @title World coastal lines \code{LINESTRING} object
-#' @name gisco_coastallines_20M_2016
+#' @name gisco_coastallines
 #' @description A \code{sf} object including the coast lines
 #' as provided by GISCO (2016 version).
 #' @format A \code{LINESTRING} data frame (resolution: 1:20million, EPSG:4326) object with 8 variables:
@@ -47,7 +47,7 @@ NULL
 #' @examples
 #' library(sf)
 #'
-#' coasts <- gisco_coastallines_20M_2016
+#' coasts <- gisco_coastallines
 #'
 #' plot(
 #'   st_geometry(coasts),
@@ -66,7 +66,7 @@ NULL
 NULL
 
 #' @title All NUTS \code{POLYGON} object
-#' @name gisco_nuts_20M_2016
+#' @name gisco_nuts
 #' @description A \code{sf} object including all
 #' NUTS levels as provided by GISCO (2016 version).
 #' @format A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 11 variables:
@@ -89,7 +89,7 @@ NULL
 #' @examples
 #' library(sf)
 #'
-#' nuts <- gisco_nuts_20M_2016
+#' nuts <- gisco_nuts
 #'
 #' italy <- subset(nuts, CNTR_CODE == "IT" & LEVL_CODE == 3)
 #'

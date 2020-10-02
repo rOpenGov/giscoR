@@ -44,7 +44,7 @@
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}{GISCO NUTS}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.
-#' @seealso \link{gisco_countrycode}, \link{gisco_nuts_20M_2016}
+#' @seealso \link{gisco_countrycode}, \link{gisco_nuts}
 #' @note Please check the download and usage provisions on \link{gisco_attributions}.
 #' @examples
 #' \donttest{
@@ -167,7 +167,7 @@ gisco_get_nuts <- function(resolution = "20",
         resolution == "20" &
         crs == "4326" & spatialtype %in% c("RG")) {
       dwnload <- FALSE
-      nuts_aux <- giscoR::gisco_nuts_20M_2016
+      nuts_aux <- giscoR::gisco_nuts
       if (nuts_level == "all") {
         data.sf <- nuts_aux
       } else {

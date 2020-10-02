@@ -1,9 +1,10 @@
 Package: giscoR
 Type: Package
 Title: Download Geospatial Data from GISCO API - Eurostat
-Version: 0.1.0-9005
+Version: 0.1.0-9006
 Authors@R: c(
   person("Diego", "Hernangómez", role=c("aut", "cre"), email="diego.hernangomezherrero@gmail.com", comment=c(ORCID="0000-0001-8457-4658")))
+Maintainer: Diego Hernangomez <diego.hernangomezherrero@gmail.com>
 Description: Tools to download data from the GISCO 
     (Geographic Information System of the COmmission) Eurostat database
     <https://ec.europa.eu/eurostat/web/gisco>.

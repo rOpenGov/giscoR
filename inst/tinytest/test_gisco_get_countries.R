@@ -13,9 +13,9 @@ expect_silent(gisco_get_countries(spatialtype = "COASTL"))
 expect_silent(gisco_get_countries(spatialtype = "COASTL", year = 2020))
 expect_silent(gisco_get_countries(
   spatialtype = "COASTL",
-  country_iso3 = c("ITA", "POL")
+  country = c("ITA", "POL")
 ))
-expect_silent(gisco_get_countries(country_iso3 = c("ITA", "POL")))
+expect_silent(gisco_get_countries(country = c("ITA", "POL")))
 expect_silent(gisco_get_countries(region = c("Africa", "Americas")))
 expect_silent(gisco_get_countries(
   update_cache = TRUE,
@@ -28,7 +28,7 @@ expect_silent(gisco_get_countries(spatialtype = "COASTL",
 expect_silent(gisco_get_countries(resolution = "20"))
 
 a <- gisco_get_countries(epsg = '3035')
-b <- gisco_get_countries(epsg = '3857')      
+b <- gisco_get_countries(epsg = '3857')
 
 expect_false(sf::st_is_longlat(a))
 expect_false(sf::st_is_longlat(b))
@@ -41,3 +41,11 @@ expect_true(sf::st_crs(cntr)$epsg == 4326)
 coast <-
   gisco_get_countries(spatialtype = "COASTL", resolution = "20")
 expect_true(sf::st_crs(coast)$epsg == 4326)
+
+expect_error(gisco_get_countries(country = "Z"))
+expect_warning(gisco_get_countries(country = "ZZ"))
+
+expect_silent(gisco_get_countries(country = "ES"))
+expect_true(nrow(gisco_get_countries(country = "Spain"))==1)
+expect_true(nrow(gisco_get_countries(country = "ES"))==1)
+

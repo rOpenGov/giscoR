@@ -151,7 +151,7 @@ par(opar)
 }
 }
 \seealso{
-\link{gisco_countrycode}, \link{gisco_nuts_20M_2016}
+\link{gisco_countrycode}, \link{gisco_nuts}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

@@ -2,6 +2,11 @@ rm(list = ls())
 par(mar=c(0,0,0,0))
 roxygen2::roxygenize()
 
+
+devtools::check_win_release()
+
+tinytest::test_all()
+
 example("gisco_countries_20M_2016","giscoR")
 gisco_coastallines_20M_2016
 
@@ -112,6 +117,9 @@ title(sub = gisco_attributions(), line = 1)
 tinytest::test_package("giscoR")
 
 covr::report()
+
+gisco_countries$CNTR_NAME
+iconv(gisco_countries$CNTR_NAME, "ISO_8859-2", "UTF-8")
 
 devtools::check_win_release()
 

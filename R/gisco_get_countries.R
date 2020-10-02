@@ -27,19 +27,14 @@
 #' @param cache a logical whether to do caching. Default is \code{TRUE}.
 #' @param update_cache a logical whether to update cache.
 #' @param cache_dir a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>)}.
-#' @param country_iso3 Optional. A character vector of ISO-3 country codes. See Details
+#' @param country Optional. A character vector of countries. See Details
 #' @param region Optional. A character vector of UN M49 region codes. Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania". See Details and \link{gisco_countrycode}
 #' @export
-#' @details \code{country_iso3} and \code{region} only available when applicable.
-#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
+#' @details \code{country} and \code{region} only available when applicable.
 #'
-#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-#' \cr
-#' countrycode::countrycode(\cr
-#'   eurostat_codes,\cr
-#'   origin = "eurostat",\cr
-#'   destination = "iso3c"\cr
-#' )
+#' \code{country} could be either a vector of country names, a vector of ISO3 country codes or
+#' a vector of Eurostat country codes.
+#'
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/}{GISCO Countries}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.
@@ -50,18 +45,19 @@
 #' library(sf)
 #'
 #' sf_world <- gisco_get_countries()
-#' sf_africa <- gisco_get_countries(region = 'Africa')
-#' sf_benelux <-
-#'   gisco_get_countries(resolution = "20",
-#'                       country_iso3 = c('BEL', 'NLD', 'LUX'))
-#'
 #' plot(st_geometry(sf_world), col = "seagreen2")
 #' title(sub = gisco_attributions(), line = 1)
 #'
+#'
+#' sf_africa <- gisco_get_countries(region = 'Africa')
 #' plot(st_geometry(sf_africa),
 #'      col = c("springgreen4", "darkgoldenrod1", "red2"))
 #' title(sub = gisco_attributions(), line = 1)
 #'
+#'
+#' sf_benelux <-
+#'   gisco_get_countries(resolution = "20",
+#'                       country = c('Belgium', 'Netherlands', 'Luxembourg'))
 #' plot(st_geometry(sf_benelux),
 #'      col = c("grey10", "orange", "deepskyblue2"))
 #' title(sub = gisco_attributions(), line = 1)
@@ -73,7 +69,7 @@ gisco_get_countries <- function(resolution = "60",
                                 update_cache = FALSE,
                                 cache_dir = NULL,
                                 spatialtype = "RG",
-                                country_iso3 = NULL,
+                                country = NULL,
                                 region = NULL) {
   # Check resolution is of correct format
   resolution <- as.character(resolution)
@@ -111,9 +107,9 @@ gisco_get_countries <- function(resolution = "60",
         crs == "4326" & spatialtype %in% c("RG", "COASTL")) {
       dwnload <- FALSE
       if (spatialtype == "RG") {
-        data.sf <- giscoR::gisco_countries_20M_2016
+        data.sf <- giscoR::gisco_countries
       } else if (spatialtype == "COASTL") {
-        data.sf <- giscoR::gisco_coastallines_20M_2016
+        data.sf <- giscoR::gisco_coastallines
       }
     } else {
       dwnload <- TRUE
@@ -170,13 +166,14 @@ gisco_get_countries <- function(resolution = "60",
                                 filename,
                                 url, epsg)
   }
-  if (!is.null(country_iso3) & "ISO3_CODE" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$ISO3_CODE %in% country_iso3,]
+  if (!is.null(country) & "ISO3_CODE" %in% names(data.sf)) {
+    country <- gsc_helper_countrynames(country, "iso3c")
+    data.sf <- data.sf[data.sf$ISO3_CODE %in% country, ]
   }
   if (!is.null(region) & "ISO3_CODE" %in% names(data.sf)) {
     region.df <- giscoR::gisco_countrycode
-    region.df <- region.df[region.df$un.region.name %in% region,]
-    data.sf <- data.sf[data.sf$ISO3_CODE %in% region.df$ISO3_CODE,]
+    region.df <- region.df[region.df$un.region.name %in% region, ]
+    data.sf <- data.sf[data.sf$ISO3_CODE %in% region.df$ISO3_CODE, ]
   }
   if (is.na(sf::st_crs(data.sf)$epsg)) {
     # Sometimes data saved does not have epsg - investigate

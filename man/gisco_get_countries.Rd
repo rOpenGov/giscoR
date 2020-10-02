@@ -15,7 +15,7 @@ gisco_get_countries(
   update_cache = FALSE,
   cache_dir = NULL,
   spatialtype = "RG",
-  country_iso3 = NULL,
+  country = NULL,
   region = NULL
 )
 }
@@ -54,7 +54,7 @@ gisco_get_countries(
  \item INLAND: inland boundaries - Multilines
 }}
 
-\item{country_iso3}{Optional. A character vector of ISO-3 country codes. See Details}
+\item{country}{Optional. A character vector of countries. See Details}
 
 \item{region}{Optional. A character vector of UN M49 region codes. Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania". See Details and \link{gisco_countrycode}}
 }
@@ -65,16 +65,10 @@ a \code{sf} object.
 Downloads a simple feature (\code{sf}) object.
 }
 \details{
-\code{country_iso3} and \code{region} only available when applicable.
-You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
+\code{country} and \code{region} only available when applicable.
 
-eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-\cr
-countrycode::countrycode(\cr
-  eurostat_codes,\cr
-  origin = "eurostat",\cr
-  destination = "iso3c"\cr
-)
+\code{country} could be either a vector of country names, a vector of ISO3 country codes or
+a vector of Eurostat country codes.
 }
 \note{
 Please check the download and usage provisions on \link{gisco_attributions}.
@@ -84,18 +78,19 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 library(sf)
 
 sf_world <- gisco_get_countries()
-sf_africa <- gisco_get_countries(region = 'Africa')
-sf_benelux <-
-  gisco_get_countries(resolution = "20",
-                      country_iso3 = c('BEL', 'NLD', 'LUX'))
-
 plot(st_geometry(sf_world), col = "seagreen2")
 title(sub = gisco_attributions(), line = 1)
 
+
+sf_africa <- gisco_get_countries(region = 'Africa')
 plot(st_geometry(sf_africa),
      col = c("springgreen4", "darkgoldenrod1", "red2"))
 title(sub = gisco_attributions(), line = 1)
 
+
+sf_benelux <-
+  gisco_get_countries(resolution = "20",
+                      country = c('Belgium', 'Netherlands', 'Luxembourg'))
 plot(st_geometry(sf_benelux),
      col = c("grey10", "orange", "deepskyblue2"))
 title(sub = gisco_attributions(), line = 1)

@@ -1,7 +1,7 @@
-## code to prepare `gisco_countries_20M_2016` dataset goes here
+## code to prepare `gisco_countries` dataset goes here
 library(giscoR)
 library(sf)
-gisco_countries_20M_2016 <- gisco_get_countries(
+gisco_countries <- gisco_get_countries(
   resolution = "20",
   year = "2016",
   epsg = "4326",
@@ -12,10 +12,10 @@ gisco_countries_20M_2016 <- gisco_get_countries(
   region = NULL
 )
 
-gisco_countries_20M_2016 <- st_transform(gisco_countries_20M_2016, 4326)
+gisco_countries <- st_transform(gisco_countries_20M_2016, 4326)
 
 
-usethis::use_data(gisco_countries_20M_2016,
+usethis::use_data(gisco_countries,
                   overwrite = TRUE,
                   compress = "xz")
 

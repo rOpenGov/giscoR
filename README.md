@@ -14,8 +14,9 @@ status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](h
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
 <!-- badges: end -->
 
-giscoR is a API package that helps to retrieve data from [Eurostat -
-GISCO (the Geographic Information System of the
+[giscoR](https://dieghernan.github.io/giscoR/) is a API package that
+helps to retrieve data from [Eurostat - GISCO (the Geographic
+Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides
 some lightweight data sets ready to use without downloading. Currently
 only the [Administrative Units / Statistical
@@ -105,7 +106,7 @@ cities <-
     country = "BEL"
   )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /tmp/RtmpNcyL4g/gisco"
+#> [1] "Loading from cache dir: /tmp/RtmprflFHY/gisco"
 #> 312 Kb
 
 countries <- gisco_get_countries(country = "BEL", resolution = "10")
@@ -143,6 +144,10 @@ layoutLayer(
 
 ![](man/figures/README-example-3.png)<!-- -->
 
+``` r
+par(opar)
+```
+
 ### A note on caching
 
 Some data sets (as Local Administrative Units - LAU, or high-resolution
@@ -162,67 +167,26 @@ them on your local directory.
 
 ## Recommended packages
 
-Some of the datasets identify the countries by using the [Eurostat
-Country
-Code](https://ec.europa.eu/eurostat/statistics-explained/index.php/Glossary:Country_codes).
-The equivalence on ISO-3 (and another codification systems) could be
-done using the `countrycode`
-[package](https://vincentarelbundock.github.io/countrycode):
+### API data packages
 
-``` r
+It is recommended to install the `eurostat` package
+(<https://ropengov.github.io/eurostat/>), that is another API package
+that queries [Eurostat](https://ec.europa.eu/eurostat/) for statistical
+information:
 
-library(countrycode)
+> 3)  Leo Lahti, Janne Huovari, Markus Kainu, Przemyslaw Biecek.
+>     Retrieval and analysis of Eurostat open data with the eurostat
+>     package. R Journal 9(1):385-392, 2017. Version 3.6.5 Package URL:
+>     <http://ropengov.github.io/eurostat> Manuscript URL:
+>     <https://journal.r-project.org/archive/2017/RJ-2017-019/index.html>
 
-# Names to ISO3 - Spanish
-names.es <- c("Portugal", "Egipto", "Peru", "Polonia")
-iso3_1 <- countryname(names.es, destination = "iso3c")
+`wbstats`(<https://nset-ornl.github.io/wbstats/>) is another interesting
+R API packages that provides access to [The World Bank
+Data](https://data.worldbank.org/) API:
 
-cbind(names.es, iso3_1)
-#>      names.es   iso3_1
-#> [1,] "Portugal" "PRT" 
-#> [2,] "Egipto"   "EGY" 
-#> [3,] "Peru"     "PER" 
-#> [4,] "Polonia"  "POL"
-
-# Names to ISO3 - mixed languages
-names.mix <-
-  c("Greece", "Espagne", "Reino Unido", "Frankreich", "Brasilien")
-iso3_2 <- countryname(names.mix, destination = "iso3c")
-
-cbind(names.mix, iso3_2)
-#>      names.mix     iso3_2
-#> [1,] "Greece"      "GRC" 
-#> [2,] "Espagne"     "ESP" 
-#> [3,] "Reino Unido" "GBR" 
-#> [4,] "Frankreich"  "FRA" 
-#> [5,] "Brasilien"   "BRA"
-
-# Translate from ISO3 to eurostat codes
-iso3_3 <- c(iso3_1, iso3_2)
-eurostat <- countrycode(iso3_3, "iso3c", "eurostat")
-
-cbind(iso3_3, eurostat)
-#>       iso3_3 eurostat
-#>  [1,] "PRT"  "PT"    
-#>  [2,] "EGY"  "EG"    
-#>  [3,] "PER"  "PE"    
-#>  [4,] "POL"  "PL"    
-#>  [5,] "GRC"  "EL"    
-#>  [6,] "ESP"  "ES"    
-#>  [7,] "GBR"  "UK"    
-#>  [8,] "FRA"  "FR"    
-#>  [9,] "BRA"  "BR"
-```
-
-It is recommended also to install the `eurostat` package
-(<https://ropengov.github.io/eurostat/>):
-
-> Leo Lahti, Przemyslaw Biecek, Markus Kainu and Janne Huovari.
-> 
-> Retrieval and analysis of Eurostat open data with the eurostat
-> package. R Journal 9(1):385-392, 2017. R package version 3.6.5.
-> 
-> URL: <http://ropengov.github.io/eurostat>
+> Jesse Piburn (2018). wbstats: Programmatic Access to the World Bank
+> API. Oak Ridge National Laboratory. Oak Ridge, Tennessee. URL
+> <https://www.ornl.gov/division/csed/gist>
 
 ### Plotting `sf` objects
 
