@@ -53,7 +53,7 @@
 #'   key.pos = NULL
 #' )
 #' title(sub = gisco_attributions(copyright = FALSE),
-#'       line = 1,
+#'       line = 1.2,
 #'       cex.sub = 0.8)
 #' }
 #' @export

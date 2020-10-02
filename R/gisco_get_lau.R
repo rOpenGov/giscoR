@@ -49,7 +49,7 @@
 #'   main = "Spain LAU",
 #'   sub = gisco_attributions(copyright = FALSE),
 #'   line = 1,
-#'   font.cex = 0.8,
+#'   cex.sub = 0.8,
 #'   font.sub = 3
 #' )
 #' }
