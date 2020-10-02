@@ -82,6 +82,9 @@ title(
 )
 }
 }
+\seealso{
+\link{gisco_get_communes}
+}
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }

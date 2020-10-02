@@ -89,8 +89,8 @@ NULL
 #'   \item{un.regionsub.name}{Sub-Region name UN (M49)}
 #' }
 #' @examples
-#' # Selected columns
-#' head(gisco_countrycode[,c(1:3,5,8)],nrow(gisco_countrycode))
+#' # Head
+#' head(gisco_countrycode)
 #' @source \code{codelist} dataset from the \code{countrycode v1.2.0} package.
 #' @seealso \link[countrycode]{codelist}
 #' @docType data

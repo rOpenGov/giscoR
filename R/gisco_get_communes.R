@@ -20,6 +20,7 @@
 #' }
 #' @param country_iso3 Optional. A character vector of ISO-3 country codes. See Details.
 #' @export
+#' @seealso \link{gisco_get_lau}
 #' @details \code{country_iso3} only available on specific datasets. Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 #'
 #' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
@@ -48,11 +49,9 @@
 #'   communes[, "CNTR_ID"],
 #'   pal = c("black", "deepskyblue2", "orange"),
 #'   border = "grey90",
+#'   main = "Communes on Benelux (2016)",
 #'   key.pos = NULL
 #' )
-#' title(main = "Communes on Benelux (2016)",
-#'       sub = gisco_attributions(copyright = FALSE),
-#'       line = 1)
 #' title(sub = gisco_attributions(copyright = FALSE),
 #'       line = 3,
 #'       cex.sub = 0.8)

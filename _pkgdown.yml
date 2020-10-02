@@ -24,15 +24,13 @@ reference:
   - title: "About the package"
     contents:
       - giscoR-package
-      
+
 
 figure:
-  dev: "svglite::svglite"
-  fig.ext: "svg"
   fig.width: 7
   fig.retina: 2
-  dev.args: 
-    pointsize: 12
+  bg: ~
+
 
 template:
   params:
@@ -41,16 +39,16 @@ template:
     twitter:
       creator: "@dhernangomez"
       card: summary_large_image
-    
+
 home:
   title: giscoR | R package for download geodata from GISCO - Eurostat
   description: giscoR is a R API package that helps to retrieve data from Eurostat - GISCO (the Geographic Information System of the COmmission). It also provides some lightweight data sets ready to use without downloading. Currently only the Administrative Units / Statistical Units data sets are supported
-    
+
 development:
   mode: unreleased
   version_label: danger
   version_tooltip: "On active development"
-  
+
 navbar:
   structure:
     right: [github, blog]

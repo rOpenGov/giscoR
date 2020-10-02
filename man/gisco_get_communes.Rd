@@ -77,15 +77,16 @@ plot(
   communes[, "CNTR_ID"],
   pal = c("black", "deepskyblue2", "orange"),
   border = "grey90",
+  main = "Communes on Benelux (2016)",
   key.pos = NULL
 )
-title(main = "Communes on Benelux (2016)",
-      sub = gisco_attributions(copyright = FALSE),
-      line = 1)
 title(sub = gisco_attributions(copyright = FALSE),
       line = 3,
       cex.sub = 0.8)
 }
+}
+\seealso{
+\link{gisco_get_lau}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

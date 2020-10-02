@@ -2,11 +2,13 @@ rm(list = ls())
 par(mar=c(0,0,0,0))
 roxygen2::roxygenize()
 
+pkgdown::build_a
+
 a <- "Diego Hernangomez [aut, cre] (<https://orcid.org/0000-0001-8457-4658>)"
 
 options(gisco_cache_dir = "~/R/mapslib/GISCO")
 
-gisc
+gisco_g
 
 meta$author
 

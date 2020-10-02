@@ -29,6 +29,7 @@
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{POLYGON} object on \code{sf} format.
 #' @note Please check the download and usage provisions on \link{gisco_attributions}.
+#' @seealso \link{gisco_get_communes}
 #' @examples
 #' \donttest{
 #' library(sf)
