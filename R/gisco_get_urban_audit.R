@@ -16,7 +16,7 @@
 #'  \item LB: Labels - Point
 #' }
 #' @param level Level of Urban Audit. Possible values are 'CITIES', 'FUA', 'GREATER_CITIES' or \code{NULL}. See Details.
-#' @param country Optional. A character vector of ISO-3 country codes.
+#' @param country_iso3 Optional. A character vector of ISO-3 country codes.
 #' @details \code{level = NULL} would download the whole dataset including all levels
 #'
 #' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
@@ -109,7 +109,7 @@ gisco_get_urban_audit <- function(year = "2018",
                                   cache_dir = NULL,
                                   spatialtype = "RG",
                                   level = NULL,
-                                  country = NULL) {
+                                  country_iso3 = NULL) {
   # Check year is of correct format
   year <- as.character(year)
   if (!as.numeric(year) %in% c(2014, 2018, 2020)) {
@@ -145,12 +145,12 @@ gisco_get_urban_audit <- function(year = "2018",
   data.sf <- gsc_helper_dwnl_caching(cache_dir,
                                      update_cache,
                                      filename,
-                                     url)
+                                     url, epsg)
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country_iso3) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <-
-      countrycode::countrycode(country, origin = "iso3c", destination = "eurostat")
+      countrycode::countrycode(country_iso3, origin = "iso3c", destination = "eurostat")
     data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
   data.sf <- sf::st_make_valid(data.sf)

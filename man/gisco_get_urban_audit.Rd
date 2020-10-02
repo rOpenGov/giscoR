@@ -14,7 +14,7 @@ gisco_get_urban_audit(
   cache_dir = NULL,
   spatialtype = "RG",
   level = NULL,
-  country = NULL
+  country_iso3 = NULL
 )
 }
 \arguments{
@@ -40,7 +40,7 @@ gisco_get_urban_audit(
 
 \item{level}{Level of Urban Audit. Possible values are 'CITIES', 'FUA', 'GREATER_CITIES' or \code{NULL}. See Details.}
 
-\item{country}{Optional. A character vector of ISO-3 country codes.}
+\item{country_iso3}{Optional. A character vector of ISO-3 country codes.}
 }
 \value{
 a \code{sf} object.

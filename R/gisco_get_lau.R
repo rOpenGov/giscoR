@@ -88,7 +88,7 @@ gisco_get_lau <- function(year = "2016",
   data.sf <- gsc_helper_dwnl_caching(cache_dir,
                                      update_cache,
                                      filename,
-                                     url)
+                                     url, epsg)
 
   if (!is.null(country_iso3) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)

@@ -168,7 +168,7 @@ gisco_get_countries <- function(resolution = "60",
                                 cache_dir,
                                 update_cache,
                                 filename,
-                                url)
+                                url, epsg)
   }
   if (!is.null(country_iso3) & "ISO3_CODE" %in% names(data.sf)) {
     data.sf <- data.sf[data.sf$ISO3_CODE %in% country_iso3,]

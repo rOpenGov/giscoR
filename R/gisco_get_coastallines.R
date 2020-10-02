@@ -77,7 +77,7 @@ gisco_get_coastallines <- function(resolution = "60",
                               cache_dir,
                               update_cache,
                               filename,
-                              url)
+                              url, epsg)
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)
 }

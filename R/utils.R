@@ -195,7 +195,11 @@ gsc_helper_dwnl_nocaching <-
            cache_dir,
            update_cache,
            filename,
-           url) {
+           url,
+           epsg) {
+    num <- sf::st_crs(as.integer(epsg))
+
+
     if (cache) {
       if (is.null(cache_dir)) {
         cache_dir <- getOption("gisco_cache_dir", NULL)
@@ -217,9 +221,11 @@ gsc_helper_dwnl_nocaching <-
         download.file(url, filepath, quiet = TRUE)
 
       }
-      geojsonsf::geojson_sf(filepath)
+      geojsonsf::geojson_sf(filepath, input = num$input,
+                            wkt = num$wkt)
     } else {
-      geojsonsf::geojson_sf(url)
+      geojsonsf::geojson_sf(url, input = num$input,
+                            wkt = num$wkt)
     }
   }
 
@@ -235,7 +241,10 @@ gsc_helper_dwnl_nocaching <-
 gsc_helper_dwnl_caching <- function(cache_dir,
                                     update_cache,
                                     filename,
-                                    url) {
+                                    url,
+                                    epsg) {
+  num <- sf::st_crs(as.integer(epsg))
+
   # Always cache on this function given the large size of the files
   if (is.null(cache_dir)) {
     cache_dir <- getOption("gisco_cache_dir", NULL)
@@ -263,6 +272,8 @@ gsc_helper_dwnl_caching <- function(cache_dir,
   print(paste0("Loading from cache dir: ", cache_dir))
   print(size, units = "auto")
 
-  data.sf <- geojsonsf::geojson_sf(filepath)
+  data.sf <- geojsonsf::geojson_sf(filepath, input = num$input,
+                                   wkt = num$wkt)
 
 }
+

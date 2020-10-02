@@ -211,7 +211,7 @@ gisco_get_nuts <- function(resolution = "20",
                                 cache_dir,
                                 update_cache,
                                 filename,
-                                url)
+                                url, epsg)
 
   }
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
