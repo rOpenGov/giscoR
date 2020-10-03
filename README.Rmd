@@ -148,18 +148,10 @@ You can also download manually the files (`.geojson` format) and store them on y
 
 ### API data packages
 
-It is recommended to install the `eurostat` package (<https://ropengov.github.io/eurostat>), that is another API package that queries [Eurostat](https://ec.europa.eu/eurostat/) for statistical information:
+It is recommended to install the `eurostat` package (<https://ropengov.github.io/eurostat>), that is another API package that queries [Eurostat](https://ec.europa.eu/eurostat/) for statistical information.
 
-> (C) Leo Lahti, Janne Huovari, Markus Kainu, Przemyslaw Biecek. Retrieval and analysis of Eurostat open data with the eurostat package. 
-> R Journal  9(1):385-392, 2017. Version 3.6.5 
-> Package URL: http://ropengov.github.io/eurostat
-> Manuscript URL: https://journal.r-project.org/archive/2017/RJ-2017-019/index.html
+`wbstats `(<https://nset-ornl.github.io/wbstats/>) is another interesting R API packages that provides access to [The World Bank Data](https://data.worldbank.org/) API.
 
-`wbstats `(<https://nset-ornl.github.io/wbstats/>) is another interesting R API packages that provides access to [The World Bank Data](https://data.worldbank.org/) API:
-
-> Jesse Piburn (2018). wbstats: Programmatic Access to the World Bank API. Oak
-> Ridge National Laboratory. Oak Ridge, Tennessee. URL
-> https://www.ornl.gov/division/csed/gist
 
 ### Plotting `sf` objects
 

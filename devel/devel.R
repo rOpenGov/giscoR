@@ -2,7 +2,7 @@ rm(list = ls())
 par(mar=c(0,0,0,0))
 roxygen2::roxygenize()
 
-
+citation("giscoR")
 devtools::check_win_release()
 
 tinytest::test_all()

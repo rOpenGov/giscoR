@@ -106,7 +106,7 @@ cities <-
     country = "BEL"
   )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpqsaBfL/gisco"
+#> [1] "Loading from cache dir: /tmp/RtmpJzWHP8/gisco"
 #> 312 Kb
 
 countries <- gisco_get_countries(country = "BEL", resolution = "10")
@@ -172,21 +172,11 @@ them on your local directory.
 It is recommended to install the `eurostat` package
 (<https://ropengov.github.io/eurostat>), that is another API package
 that queries [Eurostat](https://ec.europa.eu/eurostat/) for statistical
-information:
-
-> 3)  Leo Lahti, Janne Huovari, Markus Kainu, Przemyslaw Biecek.
->     Retrieval and analysis of Eurostat open data with the eurostat
->     package. R Journal 9(1):385-392, 2017. Version 3.6.5 Package URL:
->     <http://ropengov.github.io/eurostat> Manuscript URL:
->     <https://journal.r-project.org/archive/2017/RJ-2017-019/index.html>
+information.
 
 `wbstats`(<https://nset-ornl.github.io/wbstats/>) is another interesting
 R API packages that provides access to [The World Bank
-Data](https://data.worldbank.org/) API:
-
-> Jesse Piburn (2018). wbstats: Programmatic Access to the World Bank
-> API. Oak Ridge National Laboratory. Oak Ridge, Tennessee. URL
-> <https://www.ornl.gov/division/csed/gist>
+Data](https://data.worldbank.org/) API.
 
 ### Plotting `sf` objects
 
