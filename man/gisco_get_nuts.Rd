@@ -69,7 +69,8 @@ Downloads a simple feature (\code{sf}) object.
 \code{country} only available when applicable.
 Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 
-\code{country} could be either a vector of country names, a vector of ISO3 country codes or a vector of Eurostat country codes.
+\code{country} could be either a vector of country names, a vector of ISO3 country codes or
+a vector of Eurostat country codes.
 }
 \note{
 Please check the download and usage provisions on \link{gisco_attributions}.
