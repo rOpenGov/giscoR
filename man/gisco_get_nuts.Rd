@@ -40,7 +40,7 @@ gisco_get_nuts(
 \item "3857" - Pseudo-Mercator
 }}
 
-\item{nuts_level}{NUTS level. One of "0" (Country-level), "1", "2" or "3". See \url{https://ec.europa.eu/eurostat/web/nuts/background}.#'}
+\item{nuts_level}{NUTS level. One of "0" (Country-level), "1", "2" or "3". See \url{https://ec.europa.eu/eurostat/web/nuts/background}.}
 
 \item{cache}{a logical whether to do caching. Default is \code{TRUE}.}
 

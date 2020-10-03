@@ -22,7 +22,7 @@
 #'  \item LB: Labels - Point
 #'  \item BN: Boundaries - Multilines
 #' }
-#' @param nuts_level NUTS level. One of "0" (Country-level), "1", "2" or "3". See \url{https://ec.europa.eu/eurostat/web/nuts/background}.#'
+#' @param nuts_level NUTS level. One of "0" (Country-level), "1", "2" or "3". See \url{https://ec.europa.eu/eurostat/web/nuts/background}.
 #' @param cache a logical whether to do caching. Default is \code{TRUE}.
 #' @param update_cache a logical whether to update cache.
 #' @param cache_dir a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>)}.
