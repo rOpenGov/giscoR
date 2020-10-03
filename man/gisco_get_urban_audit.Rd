@@ -51,7 +51,8 @@ Downloads a simple feature (\code{sf}) object.
 \details{
 \code{level = NULL} would download the whole dataset including all levels
 
-\code{country} could be either a vector of country names, a vector of ISO3 country codes or a vector of Eurostat country codes.
+\code{country} could be either a vector of country names, a vector of ISO3 country codes or
+a vector of Eurostat country codes.
 }
 \note{
 Please check the download and usage provisions on \link{gisco_attributions}.
