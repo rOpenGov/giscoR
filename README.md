@@ -102,20 +102,20 @@ library(tmap)
 cities <-
   gisco_get_urban_audit(
     year = "2020",
-    level = "FUA", # Functional Urban Areas
+    level = "GREATER_CITIES",
     country = c("BEL", "NLD", "LUX")
   )
-#> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_FUA.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp4zp4nT/gisco"
-#> 6.2 Mb
+#> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
+#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp36tb6y/gisco"
+#> 312 Kb
 
 countries <- gisco_get_countries(country = c("BEL", "NLD", "LUX"), resolution = "01")
 
-tm_shape(countries) + tm_fill("black") + tm_borders("grey50") + tm_shape(cities) + tm_fill("chartreuse1") +
+tm_shape(countries) + tm_fill("black") + tm_borders("grey10") + tm_shape(cities) + tm_fill("chartreuse1") +
   tm_credits(gisco_attributions(copyright = FALSE),
     position = c("LEFT", "BOTTOM")
   ) + tm_layout(
-    main.title = "Urban Audit 2020: Functional Urban Areas of Benelux",
+    main.title = "Urban Audit 2020: Greater cities of Benelux",
     frame = TRUE,
     attr.outside = TRUE,
     main.title.size = 1,
