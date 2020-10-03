@@ -24,7 +24,3 @@ r_packages:
   - knitr
   - rmarkdown
   - tinytest
-  - covr
-
-after_success:
-  - R -q -e 'covr::codecov(quiet = FALSE)'
