@@ -112,7 +112,7 @@ tm_shape(countries) + tm_fill("black") + tm_borders("grey10") + tm_shape(cities)
     main.title = "Urban Audit 2020: Greater cities of Benelux",
     frame = TRUE,
     attr.outside = TRUE,
-    main.title.size = 1,
+    main.title.size = 0.75,
     bg.color = 'grey85'
   )
 
