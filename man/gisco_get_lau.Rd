@@ -12,7 +12,7 @@ gisco_get_lau(
   epsg = "4326",
   update_cache = FALSE,
   cache_dir = NULL,
-  country_iso3 = NULL,
+  country = NULL,
   gisco_id = NULL
 )
 }
@@ -31,7 +31,7 @@ gisco_get_lau(
 
 \item{cache_dir}{a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>)}.}
 
-\item{country_iso3}{Optional. A character vector of ISO-3 country codes.}
+\item{country}{Optional. A character vector of country codes. See details}
 
 \item{gisco_id}{Optional. A character vector of GISCO_ID LAU values.}
 }
@@ -46,13 +46,7 @@ See \url{https://ec.europa.eu/eurostat/web/nuts/local-administrative-units} for 
 
 If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
 
-You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
-
-eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-countrycode::countrycode(\cr
-  eurostat_codes,\cr
-  origin = "eurostat",\cr
-  destination = "iso3c"\cr
+\code{country} could be either a vector of country names, a vector of ISO3 country codes or a vector of Eurostat country codes.
 )
 }
 \note{
@@ -62,7 +56,7 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 \donttest{
 library(sf)
 
-lau_esp <- gisco_get_lau(country_iso3 = "ESP")
+lau_esp <- gisco_get_lau(country = "España")
 
 plot(
   st_geometry(lau_esp),

@@ -10,21 +10,15 @@
 #' }
 #' @param update_cache a logical whether to update cache.
 #' @param cache_dir a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>)}.
-#' @param country_iso3 Optional. A character vector of ISO-3 country codes.
+#' @param country Optional. A character vector of country codes. See details
 #' @param gisco_id Optional. A character vector of GISCO_ID LAU values.
 #' @export
 #' @details See \url{https://ec.europa.eu/eurostat/web/nuts/local-administrative-units} for more detail about LAUs.
 #'
 #' If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
 #'
-#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
-#'
-#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-#' countrycode::countrycode(\cr
-#'   eurostat_codes,\cr
-#'   origin = "eurostat",\cr
-#'   destination = "iso3c"\cr
-#' )
+#' \code{country} could be either a vector of country names, a vector of ISO3 country codes or
+#' a vector of Eurostat country codes.
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/lau/}{GISCO Local Administrative Units}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{POLYGON} object on \code{sf} format.
@@ -34,7 +28,7 @@
 #' \donttest{
 #' library(sf)
 #'
-#' lau_esp <- gisco_get_lau(country_iso3 = "ESP")
+#' lau_esp <- gisco_get_lau(country = "España")
 #'
 #' plot(
 #'   st_geometry(lau_esp),
@@ -60,7 +54,7 @@ gisco_get_lau <- function(year = "2016",
                           epsg = "4326",
                           update_cache = FALSE,
                           cache_dir = NULL,
-                          country_iso3 = NULL,
+                          country = NULL,
                           gisco_id = NULL) {
   # Check year is of correct format
   year <- as.character(year)
@@ -90,10 +84,9 @@ gisco_get_lau <- function(year = "2016",
                                      filename,
                                      url, epsg)
 
-  if (!is.null(country_iso3) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
-    country <-
-      countrycode::countrycode(country_iso3, origin = "iso3c", destination = "eurostat")
+    country <- gsc_helper_countrynames(country, "eurostat")
     data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
   }
 
