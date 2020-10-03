@@ -57,6 +57,7 @@ countries <- gisco_get_countries(epsg = "3035")
 nuts2 <- gisco_get_nuts(epsg = "3035", nuts_level = "2")
 
 # With ggplot2
+
 library(ggplot2)
 ggplot(countries) +
   geom_sf(
@@ -105,7 +106,7 @@ cities <-
     country = c("BEL", "NLD", "LUX")
   )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_FUA.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpso5rOR/gisco"
+#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp4zp4nT/gisco"
 #> 6.2 Mb
 
 countries <- gisco_get_countries(country = c("BEL", "NLD", "LUX"), resolution = "01")
@@ -128,6 +129,7 @@ tm_shape(countries) + tm_fill("black") + tm_borders("grey50") + tm_shape(cities)
 
 
 # With cartography
+
 library(cartography)
 globe <- gisco_get_countries(epsg = "3035")
 globe <- merge(globe, gisco_countrycode, all.x = TRUE)
