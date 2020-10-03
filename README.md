@@ -11,7 +11,6 @@ status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://trav
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![License](https://img.shields.io/badge/license-GPL—3.0-blue)](https://github.com/dieghernan/giscoR/blob/master/LICENSE.md)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
 <!-- badges: end -->
 
 [giscoR](https://dieghernan.github.io/giscoR/) is a API package that
@@ -102,23 +101,24 @@ library(tmap)
 cities <-
   gisco_get_urban_audit(
     year = "2020",
-    level = "GREATER_CITIES",
-    country = "BEL"
+    level = "FUA", # Functional Urban Areas
+    country = c("BEL", "NLD", "LUX")
   )
-#> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp8UjOlC/gisco"
-#> 312 Kb
+#> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_FUA.geojson"
+#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmpso5rOR/gisco"
+#> 6.2 Mb
 
-countries <- gisco_get_countries(country = "BEL", resolution = "10")
+countries <- gisco_get_countries(country = c("BEL", "NLD", "LUX"), resolution = "01")
 
-tm_shape(countries) + tm_fill("cornsilk2") + tm_borders("grey50") + tm_shape(cities) + tm_fill("purple4") +
+tm_shape(countries) + tm_fill("black") + tm_borders("grey50") + tm_shape(cities) + tm_fill("chartreuse1") +
   tm_credits(gisco_attributions(copyright = FALSE),
     position = c("LEFT", "BOTTOM")
   ) + tm_layout(
-    main.title = "Urban Audit 2020: Greater Cities of Belgium",
+    main.title = "Urban Audit 2020: Functional Urban Areas of Benelux",
     frame = TRUE,
     attr.outside = TRUE,
-    main.title.size = 1
+    main.title.size = 1,
+    bg.color = "grey85"
   )
 ```
 
