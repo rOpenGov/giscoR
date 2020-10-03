@@ -46,8 +46,8 @@ See \url{https://ec.europa.eu/eurostat/web/nuts/local-administrative-units} for 
 
 If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
 
-\code{country} could be either a vector of country names, a vector of ISO3 country codes or a vector of Eurostat country codes.
-)
+\code{country} could be either a vector of country names, a vector of ISO3 country codes or
+a vector of Eurostat country codes.
 }
 \note{
 Please check the download and usage provisions on \link{gisco_attributions}.
