@@ -106,7 +106,7 @@ cities <-
     country = c("BEL", "NLD", "LUX")
   )
 #> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp36tb6y/gisco"
+#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmpGabqlm/gisco"
 #> 312 Kb
 
 countries <- gisco_get_countries(country = c("BEL", "NLD", "LUX"), resolution = "01")
@@ -118,7 +118,7 @@ tm_shape(countries) + tm_fill("black") + tm_borders("grey10") + tm_shape(cities)
     main.title = "Urban Audit 2020: Greater cities of Benelux",
     frame = TRUE,
     attr.outside = TRUE,
-    main.title.size = 1,
+    main.title.size = 0.75,
     bg.color = "grey85"
   )
 ```
