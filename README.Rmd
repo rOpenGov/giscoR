@@ -99,20 +99,21 @@ library(tmap)
 cities <-
   gisco_get_urban_audit(
     year = "2020",
-    level = "GREATER_CITIES",
-    country = "BEL"
+    level = "FUA", # Functional Urban Areas
+    country = c('BEL', 'NLD', 'LUX')
   )
 
-countries <- gisco_get_countries(country = "BEL", resolution = "10")
+countries <- gisco_get_countries(country = c('BEL', 'NLD', 'LUX') resolution = "01")
 
-tm_shape(countries) + tm_fill("cornsilk2") + tm_borders("grey50") + tm_shape(cities) + tm_fill("purple4") +
+tm_shape(countries) + tm_fill("black") + tm_borders("grey50") + tm_shape(cities) + tm_fill("chartreuse1") +
   tm_credits(gisco_attributions(copyright = FALSE),
     position = c("LEFT", "BOTTOM")
   ) + tm_layout(
-    main.title = "Urban Audit 2020: Greater Cities of Belgium",
+    main.title = "Urban Audit 2020: Functional Urban Areas of Benelux",
     frame = TRUE,
     attr.outside = TRUE,
-    main.title.size = 1
+    main.title.size = 1,
+    bg.color = 'grey85'
   )
 
 
