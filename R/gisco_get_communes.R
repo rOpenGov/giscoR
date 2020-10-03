@@ -18,20 +18,13 @@
 #'  \item COASTL: coastlines - Multilines
 #'  \item INLAND: inland boundaries - Multilines
 #' }
-#' @param country_iso3 Optional. A character vector of ISO-3 country codes. See Details.
+#' @param country Optional. A character vector of country codes. See Details.
 #' @export
 #' @seealso \link{gisco_get_lau}
-#' @details \code{country_iso3} only available on specific datasets. Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
+#' @details \code{country} only available on specific datasets. Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 #'
-#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
-#'
-#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-#' \cr
-#' countrycode::countrycode(\cr
-#'   eurostat_codes,\cr
-#'   origin = "eurostat",\cr
-#'   destination = "iso3c"\cr
-#' )
+#' \code{country} could be either a vector of country names, a vector of ISO3 country codes or
+#' a vector of Eurostat country codes.
 #'
 #' If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/communes/}{GISCO Communes}
@@ -42,8 +35,7 @@
 #' \donttest{
 #' library(sf)
 #'
-#' benelux <- c("BEL", "NLD", "LUX")
-#' communes <- gisco_get_communes(country_iso3 = benelux)
+#' communes <- gisco_get_communes(country = c("BEL", "NLD", "LUX"))
 #'
 #' plot(
 #'   communes[, "CNTR_ID"],
@@ -62,7 +54,7 @@ gisco_get_communes <- function(year = "2016",
                                update_cache = FALSE,
                                cache_dir = NULL,
                                spatialtype = "RG",
-                               country_iso3 = NULL) {
+                               country = NULL) {
   # Check year is of correct format
   year <- as.character(year)
   if (!as.numeric(year) %in% c(2001, 2004, 2006, 2008, 2010, 2013, 2016)) {
@@ -95,11 +87,10 @@ gisco_get_communes <- function(year = "2016",
                                      url,
                                      epsg)
 
-  if (!is.null(country_iso3) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
-    country_eustat <-
-      countrycode::countrycode(country_iso3, origin = "iso3c", destination = "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country_eustat,]
+    country <- gsc_helper_countrynames(country, "eurostat")
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)
