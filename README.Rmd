@@ -103,7 +103,7 @@ cities <-
     country = c('BEL', 'NLD', 'LUX')
   )
 
-countries <- gisco_get_countries(country = c('BEL', 'NLD', 'LUX') resolution = "01")
+countries <- gisco_get_countries(country = c('BEL', 'NLD', 'LUX'), resolution = "01")
 
 tm_shape(countries) + tm_fill("black") + tm_borders("grey50") + tm_shape(cities) + tm_fill("chartreuse1") +
   tm_credits(gisco_attributions(copyright = FALSE),
