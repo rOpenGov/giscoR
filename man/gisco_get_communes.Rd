@@ -13,7 +13,7 @@ gisco_get_communes(
   update_cache = FALSE,
   cache_dir = NULL,
   spatialtype = "RG",
-  country_iso3 = NULL
+  country = NULL
 )
 }
 \arguments{
@@ -40,7 +40,7 @@ gisco_get_communes(
  \item INLAND: inland boundaries - Multilines
 }}
 
-\item{country_iso3}{Optional. A character vector of ISO-3 country codes. See Details.}
+\item{country}{Optional. A character vector of country codes. See Details.}
 }
 \value{
 a \code{sf} object.
@@ -49,17 +49,10 @@ a \code{sf} object.
 Downloads a simple feature (\code{sf}) object.
 }
 \details{
-\code{country_iso3} only available on specific datasets. Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
+\code{country} only available on specific datasets. Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 
-You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
-
-eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-\cr
-countrycode::countrycode(\cr
-  eurostat_codes,\cr
-  origin = "eurostat",\cr
-  destination = "iso3c"\cr
-)
+\code{country} could be either a vector of country names, a vector of ISO3 country codes or
+a vector of Eurostat country codes.
 
 If you experience any problem on download, try to download the file by any other method and set \code{cache_dir = <folder>}.
 }
@@ -70,8 +63,7 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 \donttest{
 library(sf)
 
-benelux <- c("BEL", "NLD", "LUX")
-communes <- gisco_get_communes(country_iso3 = benelux)
+communes <- gisco_get_communes(country = c("BEL", "NLD", "LUX"))
 
 plot(
   communes[, "CNTR_ID"],
