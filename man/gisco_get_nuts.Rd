@@ -55,7 +55,7 @@ gisco_get_nuts(
  \item BN: Boundaries - Multilines
 }}
 
-\item{country}{Optional. A character vector of ISO-3 country codes. See Details}
+\item{country}{Optional. A character vector of country codes. See Details}
 
 \item{nuts_id}{Optional. A character vector of NUTS IDs.}
 }
@@ -69,15 +69,7 @@ Downloads a simple feature (\code{sf}) object.
 \code{country} only available when applicable.
 Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 
-You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
-
-eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-\cr
-countrycode::countrycode(\cr
-  eurostat_codes,\cr
-  origin = "eurostat",\cr
-  destination = "iso3c"\cr
-)
+\code{country} could be either a vector of country names, a vector of ISO3 country codes or a vector of Eurostat country codes.
 }
 \note{
 Please check the download and usage provisions on \link{gisco_attributions}.

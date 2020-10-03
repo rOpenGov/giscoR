@@ -26,21 +26,14 @@
 #' @param cache a logical whether to do caching. Default is \code{TRUE}.
 #' @param update_cache a logical whether to update cache.
 #' @param cache_dir a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = <path>)}.
-#' @param country Optional. A character vector of ISO-3 country codes. See Details
+#' @param country Optional. A character vector of country codes. See Details
 #' @param nuts_id Optional. A character vector of NUTS IDs.
 #' @export
 #' @details \code{country} only available when applicable.
 #' Some \code{spatialtype} datasets (as Multilines data-types) may not have country-level identifies.
 #'
-#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
-#'
-#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-#' \cr
-#' countrycode::countrycode(\cr
-#'   eurostat_codes,\cr
-#'   origin = "eurostat",\cr
-#'   destination = "iso3c"\cr
-#' )
+#' \code{country} could be either a vector of country names, a vector of ISO3 country codes or
+#' a vector of Eurostat country codes.
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}{GISCO NUTS}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.
@@ -216,8 +209,7 @@ gisco_get_nuts <- function(resolution = "20",
   }
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
-    country <-
-      countrycode::countrycode(country, origin = "iso3c", destination = "eurostat")
+    country <- gsc_helper_countrynames(country, "eurostat")
     data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
   }
 
