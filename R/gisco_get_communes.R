@@ -80,7 +80,6 @@ gisco_get_communes <- function(year = "2016",
       "https://gisco-services.ec.europa.eu/distribution/v2/communes/geojson/",
       filename
     )
-
   data.sf <- gsc_helper_dwnl_caching(cache_dir,
                                      update_cache,
                                      filename,
