@@ -14,7 +14,7 @@ gisco_get_urban_audit(
   cache_dir = NULL,
   spatialtype = "RG",
   level = NULL,
-  country_iso3 = NULL
+  country = NULL
 )
 }
 \arguments{
@@ -40,7 +40,7 @@ gisco_get_urban_audit(
 
 \item{level}{Level of Urban Audit. Possible values are 'CITIES', 'FUA', 'GREATER_CITIES' or \code{NULL}. See Details.}
 
-\item{country_iso3}{Optional. A character vector of ISO-3 country codes.}
+\item{country}{Optional. A character vector of country codes. See details.}
 }
 \value{
 a \code{sf} object.
@@ -51,15 +51,7 @@ Downloads a simple feature (\code{sf}) object.
 \details{
 \code{level = NULL} would download the whole dataset including all levels
 
-You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
-
-eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-\cr
-countrycode::countrycode(\cr
-  eurostat_codes,\cr
-  origin = "eurostat",\cr
-  destination = "iso3c"\cr
-)
+\code{country} could be either a vector of country names, a vector of ISO3 country codes or a vector of Eurostat country codes.
 }
 \note{
 Please check the download and usage provisions on \link{gisco_attributions}.

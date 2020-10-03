@@ -16,18 +16,11 @@
 #'  \item LB: Labels - Point
 #' }
 #' @param level Level of Urban Audit. Possible values are 'CITIES', 'FUA', 'GREATER_CITIES' or \code{NULL}. See Details.
-#' @param country_iso3 Optional. A character vector of ISO-3 country codes.
+#' @param country Optional. A character vector of country codes. See details.
 #' @details \code{level = NULL} would download the whole dataset including all levels
 #'
-#' You can convert Eurostat country codes to ISO3 codes using the \code{\link[countrycode]{countrycode}} function:
-#'
-#' eurostat_codes <- c("ES","UK","EL","PL","PT")\cr
-#' \cr
-#' countrycode::countrycode(\cr
-#'   eurostat_codes,\cr
-#'   origin = "eurostat",\cr
-#'   destination = "iso3c"\cr
-#' )
+#' \code{country} could be either a vector of country names, a vector of ISO3 country codes or
+#' a vector of Eurostat country codes.
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/urau/}{GISCO Urban Audit}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @return a \code{sf} object.
@@ -109,7 +102,7 @@ gisco_get_urban_audit <- function(year = "2018",
                                   cache_dir = NULL,
                                   spatialtype = "RG",
                                   level = NULL,
-                                  country_iso3 = NULL) {
+                                  country = NULL) {
   # Check year is of correct format
   year <- as.character(year)
   if (!as.numeric(year) %in% c(2014, 2018, 2020)) {
@@ -147,10 +140,9 @@ gisco_get_urban_audit <- function(year = "2018",
                                      filename,
                                      url, epsg)
 
-  if (!is.null(country_iso3) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
-    country <-
-      countrycode::countrycode(country_iso3, origin = "iso3c", destination = "eurostat")
+    country <- gsc_helper_countrynames(country, "eurostat")
     data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
   data.sf <- sf::st_make_valid(data.sf)
