@@ -7,7 +7,7 @@ expect_error(gisco_get_urban_audit(level = "9999"))
 cachetest <- paste0(tempdir(), "_tinytest_get_urau")
 expect_silent(gisco_get_urban_audit(spatialtype = "LB", cache_dir = cachetest))
 
-
+if (at_home()){
 expect_silent(gisco_get_urban_audit(spatialtype = "LB", level = "GREATER_CITIES"))
 expect_silent(
   gisco_get_urban_audit(
@@ -41,3 +41,4 @@ b <- gisco_get_urban_audit(epsg = '3857', level = "GREATER_CITIES")
 
 expect_false(sf::st_is_longlat(a))
 expect_false(sf::st_is_longlat(b))
+}

@@ -11,6 +11,8 @@ expect_error(gisco_get_nuts(spatialtype = "INLAND"))
 expect_error(gisco_get_nuts(nuts_level = 4))
 
 cachetest <- paste0(tempdir(), "_tinytest_get_nuts")
+
+if (at_home()){
 expect_silent(gisco_get_nuts(spatialtype = "LB", cache_dir = cachetest))
 expect_silent(gisco_get_nuts(spatialtype = "LB"))
 expect_silent(gisco_get_nuts(year = 2021))
@@ -38,6 +40,7 @@ expect_silent(gisco_get_nuts(
   nuts_level = 0,
   update_cache = TRUE
 ))
+}
 
 #Test internal data
 library(sf)

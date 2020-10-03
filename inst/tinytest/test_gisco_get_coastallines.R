@@ -8,6 +8,7 @@ expect_error(gisco_get_coastallines(spatialtype = "aa"))
 expect_error(gisco_get_coastallines(res = 15))
 cachetest <- paste0(tempdir(), "_tinytest")
 expect_silent(gisco_get_coastallines(resolution = 60, cache_dir = cachetest))
+if (at_home()){
 expect_silent(gisco_get_coastallines(
   resolution = 60,
   cache_dir = cachetest,
@@ -19,3 +20,4 @@ b <- gisco_get_coastallines(epsg = '3857')
 
 expect_false(sf::st_is_longlat(a))
 expect_false(sf::st_is_longlat(b))
+}
