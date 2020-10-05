@@ -1,7 +1,7 @@
 #' @title Attribution when publishing GISCO data
 #' @description Get the legal text to be used along with the data downloaded with this package
 #' @param lang Language (two-letter \href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO_639-1} code). See details.
-#' @param copyright Boolean. Wheter to display the copyright notice or not on the console.
+#' @param copyright Boolean. Whether to display the copyright notice or not on the console.
 #' @return A string with the attribution to be used.
 #' @details Current languages supported are "en" (English), "da" (Danish), "de" (German),
 #' "es" (Spanish), "fi" (Finish), "fr" (French), "no" (Norwegian) and "sv" (Swedish).

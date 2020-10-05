@@ -9,6 +9,6 @@ citEntry(
   author = auth,
   year = year,
   note = vers,
-  url = meta$URL,
+  url = 'https://dieghernan.github.io/giscoR/',
   textVersion = paste('Hernangomez, D. (', year, '). giscoR: ', meta$Title, '. ', vers, '.', sep = '')
 )

@@ -151,7 +151,7 @@ You can also download manually the files (`.geojson` format) and store them on y
 
 ### API data packages
 
-It is recommended to install the `eurostat` package (<https://ropengov.github.io/eurostat>), that is another API package that queries [Eurostat](https://ec.europa.eu/eurostat/) for statistical information.
+It is recommended to install the `eurostat` package (<https://ropengov.github.io/eurostat/>), that is another API package that queries [Eurostat](https://ec.europa.eu/eurostat/) for statistical information.
 
 `wbstats `(<https://nset-ornl.github.io/wbstats/>) is another interesting R API packages that provides access to [The World Bank Data](https://data.worldbank.org/) API.
 

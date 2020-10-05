@@ -1,6 +1,28 @@
 usethis::use_cran_comments()
 usethis::use_news_md()
 
+devtools::install(build_vignettes = TRUE)
+
+citation("giscoR")
+
+
+roxygen2::roxygenise()
+
+
+devtools::check_rhub()
+
+
+
+roxygen2::roxygenise()
+
+devtools::release()
+
+devtools::spell_check()
+
+devtools::spe
+
+lau_esp <- gisco_get_lau(country = "Espagne")
+
 devtools::check_win_release()
 
 devtools::install(build_vignettes = TRUE)

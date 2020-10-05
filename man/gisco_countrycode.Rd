@@ -27,10 +27,6 @@ A data frame object with 249 rows and 12 variables:
 \description{
 A dataframe containing conversions between different country codification systems (Eurostat/ISO2 and 3) as well as geographic regions as provided by the World Bank and the UN (M49).
 }
-\examples{
-# Head
-head(gisco_countrycode)
-}
 \seealso{
 \link[countrycode]{codelist}
 }

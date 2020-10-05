@@ -28,7 +28,7 @@
 #' \donttest{
 #' library(sf)
 #'
-#' lau_esp <- gisco_get_lau(country = "España")
+#' lau_esp <- gisco_get_lau(country = "Espagne")
 #'
 #' plot(
 #'   st_geometry(lau_esp),

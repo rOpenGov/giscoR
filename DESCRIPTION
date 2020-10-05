@@ -5,7 +5,7 @@ Version: 0.1.0
 Authors@R: c(
   person("Diego", "Hernangómez", role=c("aut", "cre"), email="diego.hernangomezherrero@gmail.com", comment=c(ORCID="0000-0001-8457-4658")))
 Description: Tools to download data from the GISCO 
-    (Geographic Information System of the COmmission) Eurostat database
+    (Geographic Information System of the Commission) Eurostat database
     <https://ec.europa.eu/eurostat/web/gisco>.
     This package is in no way officially related to or endorsed by Eurostat.
 License: GPL-3
@@ -30,3 +30,4 @@ Suggests:
     rmarkdown
 Date: 2020-10-05
 VignetteBuilder: knitr
+SystemRequirements:	GDAL (>= 2.0.1), GEOS (>= 3.4.0), PROJ.4 (>= 4.8.0)

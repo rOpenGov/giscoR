@@ -120,9 +120,6 @@ NULL
 #'   \item{un.regionsub.code}{Numeric sub-region code UN (M49)}
 #'   \item{un.regionsub.name}{Sub-Region name UN (M49)}
 #' }
-#' @examples
-#' # Head
-#' head(gisco_countrycode)
 #' @source \code{codelist} dataset from the \code{countrycode v1.2.0} package.
 #' @seealso \link[countrycode]{codelist}
 #' @docType data
