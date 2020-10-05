@@ -168,12 +168,12 @@ gisco_get_countries <- function(resolution = "60",
   }
   if (!is.null(country) & "ISO3_CODE" %in% names(data.sf)) {
     country <- gsc_helper_countrynames(country, "iso3c")
-    data.sf <- data.sf[data.sf$ISO3_CODE %in% country, ]
+    data.sf <- data.sf[data.sf$ISO3_CODE %in% country,]
   }
   if (!is.null(region) & "ISO3_CODE" %in% names(data.sf)) {
     region.df <- giscoR::gisco_countrycode
-    region.df <- region.df[region.df$un.region.name %in% region, ]
-    data.sf <- data.sf[data.sf$ISO3_CODE %in% region.df$ISO3_CODE, ]
+    region.df <- region.df[region.df$un.region.name %in% region,]
+    data.sf <- data.sf[data.sf$ISO3_CODE %in% region.df$ISO3_CODE,]
   }
   if (is.na(sf::st_crs(data.sf)$epsg)) {
     # Sometimes data saved does not have epsg - investigate

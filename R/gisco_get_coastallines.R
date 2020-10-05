@@ -28,7 +28,7 @@
 #' library(sf)
 #'
 #' coastlines <- gisco_get_coastallines()
-#' plot(st_geometry(coastlines), col = "seagreen2", border = "lightblue3")
+#' plot(st_geometry(coastlines), col = "palegreen", border = "lightblue3")
 #' title(main = "Coastal Lines",
 #'       sub = gisco_attributions(copyright = FALSE),
 #'       line = 1)

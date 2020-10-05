@@ -60,72 +60,39 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 \examples{
 \donttest{
 library(sf)
-library(cartography)
-europe <-
-  gisco_get_countries(
-    epsg = 3857,
-    year = "2020",
-    region = "Europe",
-    resolution = "03"
-  )
-cities <-
-  gisco_get_urban_audit(
-    year = 2020,
-    epsg = 3857,
-    level = "GREATER_CITIES",
-    country = "BEL"
-  )
 
-# Focus on Belgium
-bbox <-
-  st_bbox(c(
-    xmin = 150000,
-    xmax = 950000,
-    ymax = 6900000,
-    ymin = 6300000
-  ),
-  crs = st_crs(europe))
-bbox <- st_bbox(cities)
+FUA <-
+  gisco_get_urban_audit(year = "2020",
+                        epsg = "3035",
+                        level = "FUA")
 
-# Plot
-opar <- par(no.readonly = TRUE)
-par(mar = c(1, 1, 1, 1))
+
+
+
+
+countries <- gisco_get_countries(year = "2020",
+                                 epsg = "3035")
+
 plot(
-  st_geometry(europe),
-  xlim = bbox[c(1, 3)],
-  ylim = bbox[c(2, 4)],
-  col = "antiquewhite",
-  graticule = TRUE
+  st_geometry(countries)  ,
+  xlim = c(2200000, 7150000),
+  ylim = c(1380000, 5500000),
+  col = "grey10",
+  bgc = "grey30",
+  border = NA,
 )
 box()
-plot(st_geometry(cities),
-     col = "darkblue",
-     border = "white",
-     add = TRUE)
-
-# Labels
-labelLayer(
-  st_crop(europe, bbox),
-  txt = "NAME_ENGL",
-  family = "serif",
-  font = 3,
-  cex = 0.8
+plot(st_geometry(FUA),
+     add = TRUE,
+     col = "darkgoldenrod3",
+     border = NA,)
+title(
+  main = "FUA (Functional Urban Areas) \non Europe (2020)",
+  sub = gisco_attributions(copyright = FALSE),
+  cex.main = 0.8,
+  cex.sub = 0.7,
+  line = 1
 )
-labelLayer(
-  cities,
-  txt = "URAU_NAME",
-  overlap = FALSE,
-  col = "darkblue",
-  halo = TRUE
-)
-layoutLayer(
-  "Greater Cities of Belgium - Eurostat (2020)",
-  col = "darkblue",
-  sources = gisco_attributions(copyright = FALSE),
-  horiz = FALSE,
-  posscale = "bottomleft"
-)
-par(opar)
 }
 }
 \author{

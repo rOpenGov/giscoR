@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_nuts(
-  resolution = "20",
+  resolution = "60",
   year = "2016",
   epsg = "4326",
   nuts_level = "all",
@@ -76,72 +76,69 @@ a vector of Eurostat country codes.
 Please check the download and usage provisions on \link{gisco_attributions}.
 }
 \examples{
-\donttest{
-library(eurostat)
 library(sf)
-map <- gisco_get_nuts(year = "2016",
-                      nuts_level = "2",
-                      epsg = "3035")
 
-#For the borders only
-brds <- gisco_get_nuts(
-  year = "2016",
-  spatialtype = "BN",
-  nuts_level = "0",
-  epsg = "3035"
+nuts0 <- gisco_get_nuts(nuts_level = "0", epsg = "3035")
+plot(
+  st_geometry(nuts0),
+  xlim = c(2200000, 7150000),
+  ylim = c(1380000, 5500000),
+  lwd = 2
+)
+title(
+  main = "NUTS0 (Countries)",
+  sub = gisco_attributions(copyright = FALSE),
+  cex.sub = 0.7,
+  line = 1
 )
 
-pps <- get_eurostat("tgs00026")
-pps <- pps[grep("2016", pps$time),]
-
-map.join <- merge(map,
-                  pps,
-                  by.x = "NUTS_ID",
-                  by.y = "geo",
-                  all.x = TRUE)
-
-library(cartography)
-br <- getBreaks(map.join$values, method = "jenks")
-
-library(colorspace)
-pal <- sequential_hcl(n = (length(br) - 1),
-                      pal = "Inferno",
-                      rev = TRUE)
-opar <- par(no.readonly = TRUE)
-par(mar = c(1, 1, 1, 1))
+nuts1 <- gisco_get_nuts(nuts_level = "1", epsg = "3035")
 plot(
-  st_geometry(map.join),
-  col = NA,
-  bg = "aliceblue",
+  st_geometry(nuts1),
   xlim = c(2200000, 7150000),
   ylim = c(1380000, 5500000)
 )
-choroLayer(
-  map.join,
-  var = "values",
-  border = "grey60",
-  breaks = br,
-  col = pal,
-  add = TRUE,
-  legend.pos = "n"
+plot(st_geometry(nuts0),
+     lwd = 2,
+     add = TRUE)
+title(
+  main = "NUTS1 Levels on Europe",
+  sub = gisco_attributions(copyright = FALSE),
+  cex.sub = 0.7,
+  line = 1
 )
-plot(st_geometry(brds),
-     col = "black",
-     add = TRUE,
-     lwd = 1.2)
-att <- paste0("Data extracted from package eurostat \n",
-              gisco_attributions(copyright = FALSE))
 
-legendChoro(
-  title.txt = NA,
-  breaks = paste0(br / 1000, "K EUR"),
-  col = pal
+nuts2 <- gisco_get_nuts(nuts_level = "2", epsg = "3035")
+plot(
+  st_geometry(nuts2),
+  xlim = c(2200000, 7150000),
+  ylim = c(1380000, 5500000)
 )
-layoutLayer("Purchase Parity Power, NUTS 2 regions (2016)",
-            col = pal[3],
-            sources = att)
-par(opar)
-}
+plot(st_geometry(nuts0),
+     lwd = 2,
+     add = TRUE)
+title(
+  main = "NUTS2 Levels on Europe",
+  sub = gisco_attributions(copyright = FALSE),
+  cex.sub = 0.7,
+  line = 1
+)
+
+nuts3 <- gisco_get_nuts(nuts_level = "3", epsg = "3035")
+plot(
+  st_geometry(nuts3),
+  xlim = c(2200000, 7150000),
+  ylim = c(1380000, 5500000)
+)
+plot(st_geometry(nuts0),
+     lwd = 2,
+     add = TRUE)
+title(
+  main = "NUTS3 Levels on Europe",
+  sub = gisco_attributions(copyright = FALSE),
+  cex.sub = 0.7,
+  line = 1
+)
 }
 \seealso{
 \link{gisco_countrycode}, \link{gisco_nuts}

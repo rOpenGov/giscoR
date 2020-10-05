@@ -65,4 +65,73 @@ library(giscoR)
       pch = 19)
 
  title(sub = gisco_attributions(copyright = FALSE), line = 1)
+ 
+ library(eurostat)
+library(sf)
+map <- gisco_get_nuts(year = "2016",
+                      nuts_level = "2",
+                      epsg = "3035")
+
+#For the borders only
+brds <- gisco_get_nuts(
+  year = "2016",
+  spatialtype = "BN",
+  nuts_level = "0",
+  epsg = "3035"
+)
+
+pps <- get_eurostat("tgs00026")
+pps <- pps[grep("2016", pps$time),]
+
+map.join <- merge(map,
+                  pps,
+                  by.x = "NUTS_ID",
+                  by.y = "geo",
+                  all.x = TRUE)
+
+library(cartography)
+br <- getBreaks(map.join$values, method = "jenks")
+
+library(colorspace)
+pal <- sequential_hcl(n = (length(br) - 1),
+                      pal = "Inferno",
+                      rev = TRUE)
+opar <- par(no.readonly = TRUE)
+par(mar = c(1, 1, 1, 1))
+plot(
+  st_geometry(map.join),
+  col = NA,
+  bg = "aliceblue",
+  xlim = c(2200000, 7150000),
+  ylim = c(1380000, 5500000)
+)
+choroLayer(
+  map.join,
+  var = "values",
+  border = "grey60",
+  breaks = br,
+  col = pal,
+  add = TRUE,
+  legend.pos = "n"
+)
+plot(st_geometry(brds),
+     col = "black",
+     add = TRUE,
+     lwd = 1.2)
+att <- paste0("Data extracted from package eurostat \n",
+              gisco_attributions(copyright = FALSE))
+
+legendChoro(
+  title.txt = NA,
+  breaks = paste0(br / 1000, "K EUR"),
+  col = pal
+)
+layoutLayer("Purchase Parity Power, NUTS 2 regions (2016)",
+            col = pal[3],
+            sources = att)
+par(opar)
+
+
+
+ 
 ```

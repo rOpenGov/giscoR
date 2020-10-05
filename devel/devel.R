@@ -2,6 +2,9 @@ rm(list = ls())
 par(mar=c(0,0,0,0))
 roxygen2::roxygenize()
 
+
+devtools::check_win_release()
+
 citation("giscoR")
 devtools::check_win_release()
 

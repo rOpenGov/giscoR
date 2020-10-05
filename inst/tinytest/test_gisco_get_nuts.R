@@ -12,34 +12,37 @@ expect_error(gisco_get_nuts(nuts_level = 4))
 
 cachetest <- paste0(tempdir(), "_tinytest_get_nuts")
 
-if (at_home()){
-expect_silent(gisco_get_nuts(spatialtype = "LB", cache_dir = cachetest))
-expect_silent(gisco_get_nuts(spatialtype = "LB"))
-expect_silent(gisco_get_nuts(year = 2021))
-expect_silent(gisco_get_nuts(country = c("ITA", "POL")))
-expect_silent(gisco_get_nuts(nuts_level = 3))
-expect_silent(gisco_get_nuts(nuts_id = "ES05"))
-expect_silent(gisco_get_nuts(update_cache = TRUE))
-expect_silent(gisco_get_nuts(
-  update_cache = TRUE,
-  year = 2021,
-  nuts_level = "all"
-))
+
+v <- length(as.character(unlist(packageVersion("giscoR"))))
+
+if (v > 3) {
+  expect_silent(gisco_get_nuts(spatialtype = "LB", cache_dir = cachetest))
+  expect_silent(gisco_get_nuts(spatialtype = "LB"))
+  expect_silent(gisco_get_nuts(year = 2021))
+  expect_silent(gisco_get_nuts(country = c("ITA", "POL")))
+  expect_silent(gisco_get_nuts(nuts_level = 3))
+  expect_silent(gisco_get_nuts(nuts_id = "ES05"))
+  expect_silent(gisco_get_nuts(update_cache = TRUE))
+  expect_silent(gisco_get_nuts(
+    update_cache = TRUE,
+    year = 2021,
+    nuts_level = "all"
+  ))
 
 
-a <- gisco_get_nuts(epsg = '3035')
-b <- gisco_get_nuts(epsg = '3857')      
+  a <- gisco_get_nuts(epsg = '3035')
+  b <- gisco_get_nuts(epsg = '3857')
 
-expect_false(sf::st_is_longlat(a))
-expect_false(sf::st_is_longlat(b))
+  expect_false(sf::st_is_longlat(a))
+  expect_false(sf::st_is_longlat(b))
 
-expect_silent(gisco_get_nuts(spatialtype = "LB"))
-expect_silent(gisco_get_nuts(
-  year = 2010,
-  resolution = "60",
-  nuts_level = 0,
-  update_cache = TRUE
-))
+  expect_silent(gisco_get_nuts(spatialtype = "LB"))
+  expect_silent(gisco_get_nuts(
+    year = 2010,
+    resolution = "60",
+    nuts_level = 0,
+    update_cache = TRUE
+  ))
 }
 
 #Test internal data

@@ -34,7 +34,7 @@
 #'   st_geometry(lau_esp),
 #'   xlim = c(0, 4),
 #'   ylim = c(39, 42),
-#'   bg = "lightskyblue1",
+#'   bgc = "lightskyblue1",
 #'   col = "wheat",
 #'   border = "grey50"
 #' )
@@ -87,11 +87,11 @@ gisco_get_lau <- function(year = "2016",
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
 
   if (!is.null(gisco_id) & "GISCO_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id,]
+    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id, ]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)
