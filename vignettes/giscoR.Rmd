@@ -97,7 +97,7 @@ title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
 
 Different resolutions are suitable for different purposes:
 
-```{r benelux, fig.width=7, fig.asp=0.5}
+```{r benelux, fig.width=7, fig.height=10}
 
 benelux_60 <- gisco_get_countries(resolution = "60", country = c("BE","NL","LU"))
 benelux_20 <- gisco_get_countries(resolution = "20", country = c("Belgique","Pays-Bas","Luxembourg"))
