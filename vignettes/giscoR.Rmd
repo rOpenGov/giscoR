@@ -74,7 +74,7 @@ Some examples on data downloads
 
 library(sf)
 
-countries <- gisco_get_countries(resolution = "20", region = "Asia")
+countries <- gisco_get_countries(region = "Asia")
 
 plot(st_geometry(countries), axes = TRUE)
 title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
@@ -86,7 +86,7 @@ You can select specific countries by name (in any language), ISO 3 codes or Euro
 
 ```{r africa_north, fig.width=7, fig.asp=1}
 
-africa_north <- gisco_get_countries(resolution = "10", country = c("Argelia","Morocco", "Egipto","Tunisia","Libia"))
+africa_north <- gisco_get_countries(country = c("Argelia","Morocco", "Egipto","Tunisia","Libia"))
 
 plot(st_geometry(africa_north), axes = TRUE)
 title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
@@ -97,20 +97,16 @@ title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
 
 Different resolutions are suitable for different purposes:
 
-```{r benelux, fig.width=7, fig.asp=1}
+```{r benelux, fig.width=7, fig.asp=0.5}
 
 benelux_60 <- gisco_get_countries(resolution = "60", country = c("BE","NL","LU"))
 benelux_20 <- gisco_get_countries(resolution = "20", country = c("Belgique","Pays-Bas","Luxembourg"))
-benelux_10 <- gisco_get_countries(resolution = "10", country = c("BEL","NLD","LUX"))
-benelux_03 <- gisco_get_countries(resolution = "03", country = c("Belgium","Holanda","Luxembourg"))
 
 opar <- par(no.readonly = TRUE)
-par(mfrow = c(2, 2))
+par(mfrow = c(2, 1))
 plot(st_geometry(benelux_60), main = "60M")
 plot(st_geometry(benelux_20), main = "20M")
-plot(st_geometry(benelux_10), main = "10M")
-plot(st_geometry(benelux_03), main = "03M")
-title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
+title(sub = gisco_attributions(), cex.sub = 0.7)
 par(opar)
 
 ```
@@ -119,30 +115,23 @@ par(opar)
 
 This is an example on how `giscoR` can play nicely with `eurostat`. For plotting purposes we would use the [`cartography`](https://riatelab.github.io/cartography/docs/index.html) package, however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). Also `colorspace` package is used.
 
-```{r giscoR_eurostat, fig.width=6.5,fig.asp=1, message=FALSE, warning=FALSE}
+```{r giscoR_eurostat, fig.width=6.5,fig.asp=0.9, message=FALSE, warning=FALSE}
 library(eurostat)
 library(cartography)
 library(colorspace)
 
 nuts2 <- gisco_get_nuts(
-  resolution = "10",
   year = "2016",
   nuts_level = "2",
-  epsg = "3035"
+  country = "Italy"
 )
 
-# Basemap
-basemap <- gisco_get_coastallines(resolution = "10",
-                                  year = "2016",
-                                  epsg = "3035")
 
 #Borders
 borders <- gisco_get_nuts(
-  resolution = "10",
   nuts_level = "0",
   spatialtype = "BN",
-  year = "2016",
-  epsg = "3035"
+  year = "2016"
 )
 
 # Eurostat data - Purchase parity power
@@ -166,20 +155,13 @@ pal <- sequential_hcl(n = (length(br) - 1),
 
 opar <- par(no.readonly = TRUE)
 par(mar = c(1, 1, 1, 1))
-plot(
-  st_geometry(basemap),
-  col = "wheat1",
-  bg = "skyblue",
-  xlim = c(2200000, 7150000),
-  ylim = c(1380000, 5500000)
-)
+
 choroLayer(
   nuts2.sf,
   var = "values",
   border = "grey60",
   breaks = br,
   col = pal,
-  add = TRUE,
   legend.pos = "n",
   colNA = "grey80"
 )
@@ -187,6 +169,7 @@ plot(st_geometry(borders),
      border = "black",
      add = TRUE,
      lwd = 1.5)
+     
 att <- paste0("Data extracted from package eurostat \n",
               gisco_attributions(copyright = FALSE))
 

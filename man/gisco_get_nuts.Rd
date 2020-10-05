@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_nuts(
-  resolution = "60",
+  resolution = "20",
   year = "2016",
   epsg = "4326",
   nuts_level = "all",

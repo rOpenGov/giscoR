@@ -62,7 +62,7 @@
 #'   line = 1
 #' )
 #' @export
-gisco_get_nuts <- function(resolution = "60",
+gisco_get_nuts <- function(resolution = "20",
                            year = "2016",
                            epsg = "4326",
                            nuts_level = "all",
