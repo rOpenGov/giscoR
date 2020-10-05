@@ -1,7 +1,7 @@
 Package: giscoR
 Type: Package
 Title: Download Geospatial Data from GISCO API - Eurostat
-Version: 0.1.0-9007
+Version: 0.1.0
 Authors@R: c(
   person("Diego", "Hernangómez", role=c("aut", "cre"), email="diego.hernangomezherrero@gmail.com", comment=c(ORCID="0000-0001-8457-4658")))
 Description: Tools to download data from the GISCO 
@@ -28,5 +28,5 @@ Suggests:
     tinytest,
     knitr,
     rmarkdown
-Date: 2020-09-21
+Date: 2020-10-05
 VignetteBuilder: knitr

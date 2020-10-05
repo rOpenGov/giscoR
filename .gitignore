@@ -30,3 +30,5 @@ giscoR.Rcheck/
 giscoR*.tar.gz
 giscoR*.tgz
 inst/doc
+doc
+Meta

@@ -74,14 +74,14 @@ Some examples on data downloads
 
 library(sf)
 
-countries <- gisco_get_countries(region = "Asia")
+countries <- gisco_get_countries(resolution = "20", region = "Asia")
 
 plot(st_geometry(countries), axes = TRUE)
 title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
 ```
 
 
-You can select specific countries by name (in any language), ISO 3 codes or Eurostat codes. The only restriction is that you can't miss country names, ISO3 and Eurostat codes on one single call.
+You can select specific countries by name (in any language), ISO 3 codes or Eurostat codes. The only restriction is that you can't mix country names, ISO3 and Eurostat codes on one single call.
 
 
 ```{r africa_north, fig.width=7, fig.asp=1}
@@ -97,19 +97,19 @@ title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
 
 Different resolutions are suitable for different purposes:
 
-```{r belgium, fig.width=7, fig.asp=1}
+```{r benelux, fig.width=7, fig.asp=1}
 
-bel_60 <- gisco_get_countries(resolution = "60", country = "Belgique")
-bel_20 <- gisco_get_countries(resolution = "20", country = "Belgique")
-bel_10 <- gisco_get_countries(resolution = "10", country = "Belgique")
-bel_03 <- gisco_get_countries(resolution = "03", country = "Belgique")
+benelux_60 <- gisco_get_countries(resolution = "60", country = c("BE","NL","LU"))
+benelux_20 <- gisco_get_countries(resolution = "20", country = c("Belgique","Pays-Bas","Luxembourg"))
+benelux_10 <- gisco_get_countries(resolution = "10", country = c("BEL","NLD","LUX"))
+benelux_03 <- gisco_get_countries(resolution = "03", country = c("Belgium","Holanda","Luxembourg"))
 
 opar <- par(no.readonly = TRUE)
 par(mfrow = c(2, 2))
-plot(st_geometry(bel_60), main = "60M")
-plot(st_geometry(bel_20), main = "20M")
-plot(st_geometry(bel_10), main = "10M")
-plot(st_geometry(bel_03), main = "03M")
+plot(st_geometry(benelux_60), main = "60M")
+plot(st_geometry(benelux_20), main = "20M")
+plot(st_geometry(benelux_10), main = "10M")
+plot(st_geometry(benelux_03), main = "03M")
 title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
 par(opar)
 
@@ -119,26 +119,35 @@ par(opar)
 
 This is an example on how `giscoR` can play nicely with `eurostat`. For plotting purposes we would use the [`cartography`](https://riatelab.github.io/cartography/docs/index.html) package, however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). Also `colorspace` package is used.
 
-```{r giscoR_eurostat, fig.height=8, fig.width=8, message=FALSE, warning=FALSE}
+```{r giscoR_eurostat, fig.width=6.5,fig.asp=1, message=FALSE, warning=FALSE}
 library(eurostat)
 library(cartography)
 library(colorspace)
 
-nuts2 <- gisco_get_nuts(year = "2016",
-                        nuts_level = "2",
-                        epsg = "3035")
-
-# Borders only
-brds <- gisco_get_nuts(
+nuts2 <- gisco_get_nuts(
+  resolution = "10",
   year = "2016",
-  spatialtype = "BN",
+  nuts_level = "2",
+  epsg = "3035"
+)
+
+# Basemap
+basemap <- gisco_get_coastallines(resolution = "10",
+                                  year = "2016",
+                                  epsg = "3035")
+
+#Borders
+borders <- gisco_get_nuts(
+  resolution = "10",
   nuts_level = "0",
+  spatialtype = "BN",
+  year = "2016",
   epsg = "3035"
 )
 
 # Eurostat data - Purchase parity power
 pps <- get_eurostat("tgs00026")
-pps <- pps[grep("2016", pps$time), ]
+pps <- pps[grep("2016", pps$time),]
 
 nuts2.sf <- merge(nuts2,
                   pps,
@@ -158,9 +167,9 @@ pal <- sequential_hcl(n = (length(br) - 1),
 opar <- par(no.readonly = TRUE)
 par(mar = c(1, 1, 1, 1))
 plot(
-  st_geometry(nuts2.sf),
-  col = NA,
-  bg = "aliceblue",
+  st_geometry(basemap),
+  col = "wheat1",
+  bg = "skyblue",
   xlim = c(2200000, 7150000),
   ylim = c(1380000, 5500000)
 )
@@ -171,19 +180,22 @@ choroLayer(
   breaks = br,
   col = pal,
   add = TRUE,
-  legend.pos = "n"
+  legend.pos = "n",
+  colNA = "grey80"
 )
-plot(st_geometry(brds),
-     col = "black",
+plot(st_geometry(borders),
+     border = "black",
      add = TRUE,
-     lwd = 1.2)
+     lwd = 1.5)
 att <- paste0("Data extracted from package eurostat \n",
               gisco_attributions(copyright = FALSE))
 
 legendChoro(
   title.txt = NA,
   breaks = paste0(br / 1000, "K EUR"),
-  col = pal
+  col = pal,
+  nodata.col = "grey80",
+  frame = TRUE
 )
 layoutLayer("Purchase Parity Power, NUTS 2 regions (2016)",
             col = pal[3],

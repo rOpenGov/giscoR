@@ -1,3 +1,3 @@
-# giscoR 0.1.0-9006
+# giscoR 0.1.0
 
-* Added a `NEWS.md` file to track changes to the package.
+* First stable release and submission to CRAN

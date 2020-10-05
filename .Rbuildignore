@@ -17,3 +17,5 @@
 ^README-.*\.png$
 ^revdep$
 ^cran-comments\.md$
+^doc$
+^Meta$

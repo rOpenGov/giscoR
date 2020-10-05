@@ -1,8 +1,14 @@
 usethis::use_cran_comments()
 usethis::use_news_md()
 
+devtools::check_win_release()
+
+devtools::install(build_vignettes = TRUE)
+
 usethis::use_vignette("a")
 
+devtools::build_vignettes()
+devtools::document()
 
 pkgdown::build_favicons()
 
