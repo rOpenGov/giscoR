@@ -177,6 +177,7 @@ legendChoro(
   title.txt = NA,
   breaks = paste0(br / 1000, "K EUR"),
   col = pal,
+  scale = false,
   nodata.col = "grey80",
   frame = TRUE
 )
