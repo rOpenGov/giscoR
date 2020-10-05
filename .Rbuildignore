@@ -16,3 +16,4 @@
 ^LICENSE\.md$
 ^README-.*\.png$
 ^revdep$
+^cran-comments\.md$

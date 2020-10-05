@@ -1,3 +1,6 @@
+usethis::use_cran_comments()
+usethis::use_news_md()
+
 rm(list = ls())
 par(mar=c(0,0,0,0))
 roxygen2::roxygenize()

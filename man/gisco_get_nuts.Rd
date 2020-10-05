@@ -79,52 +79,8 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 library(sf)
 
 nuts0 <- gisco_get_nuts(nuts_level = "0", epsg = "3035")
-plot(
-  st_geometry(nuts0),
-  xlim = c(2200000, 7150000),
-  ylim = c(1380000, 5500000),
-  lwd = 2
-)
-title(
-  main = "NUTS0 (Countries)",
-  sub = gisco_attributions(copyright = FALSE),
-  cex.sub = 0.7,
-  line = 1
-)
-
-nuts1 <- gisco_get_nuts(nuts_level = "1", epsg = "3035")
-plot(
-  st_geometry(nuts1),
-  xlim = c(2200000, 7150000),
-  ylim = c(1380000, 5500000)
-)
-plot(st_geometry(nuts0),
-     lwd = 2,
-     add = TRUE)
-title(
-  main = "NUTS1 Levels on Europe",
-  sub = gisco_attributions(copyright = FALSE),
-  cex.sub = 0.7,
-  line = 1
-)
-
-nuts2 <- gisco_get_nuts(nuts_level = "2", epsg = "3035")
-plot(
-  st_geometry(nuts2),
-  xlim = c(2200000, 7150000),
-  ylim = c(1380000, 5500000)
-)
-plot(st_geometry(nuts0),
-     lwd = 2,
-     add = TRUE)
-title(
-  main = "NUTS2 Levels on Europe",
-  sub = gisco_attributions(copyright = FALSE),
-  cex.sub = 0.7,
-  line = 1
-)
-
 nuts3 <- gisco_get_nuts(nuts_level = "3", epsg = "3035")
+
 plot(
   st_geometry(nuts3),
   xlim = c(2200000, 7150000),
