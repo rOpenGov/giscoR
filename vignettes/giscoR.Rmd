@@ -154,7 +154,7 @@ pal <- sequential_hcl(n = (length(br) - 1),
 
 
 opar <- par(no.readonly = TRUE)
-par(mar = c(1, 1, 1, 1))
+par(mar = c(2, 2, 2, 2))
 
 choroLayer(
   nuts2.sf,
@@ -177,11 +177,11 @@ legendChoro(
   title.txt = NA,
   breaks = paste0(br / 1000, "K EUR"),
   col = pal,
-  scale = false,
   nodata.col = "grey80",
   frame = TRUE
 )
 layoutLayer("Purchase Parity Power, NUTS 2 regions (2016)",
+            scale = false,
             col = pal[3],
             sources = att)
 par(opar)
