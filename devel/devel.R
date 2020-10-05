@@ -1,6 +1,8 @@
 usethis::use_cran_comments()
 usethis::use_news_md()
 
+usethis::use_vignette("a")
+
 
 pkgdown::build_favicons()
 
@@ -131,7 +133,11 @@ covr::report()
 gisco_countries$CNTR_NAME
 iconv(gisco_countries$CNTR_NAME, "ISO_8859-2", "UTF-8")
 
+install.packages("qpdf")
+
 devtools::check_win_release()
+
+vignette("giscoR")
 
 citation("eurostat")
 

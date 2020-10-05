@@ -1,0 +1,193 @@
+---
+title: "Get started with giscoR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Get started with giscoR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+knitr::knit_hooks$set(margin = function(before, options, envir){
+  if (before){
+    par(mar=c(0.1,0.1,1.3,0.1))
+  } 
+})
+```
+
+
+# Introduction
+
+[**`giscoR`**](https://dieghernan.github.io/giscoR/) is a package designed to provide a clean interaction with the [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/). 
+
+Within Eurostat, GISCO is responsible for meeting the European Commission's geographical information needs at 3 levels: the European Union, its member countries, and its regions. GISCO also provides a variety of shapefiles on different formats, focusing specially in the European Union area, but providing also some worldwide shapefiles, as country polygons, labels or borders and coastal lines.
+
+GISCO provides data on different resolutions suitable for representing small areas (01M, 03M) as well as lightweight datasets specially useful for representing wider areas (10M, 20M, 60M). Shapefiles are provided on 3 different projections: EPSG 4326, 3035 or 3857. 
+
+`giscoR` returns `sf` objects, so the `sf` package is necessary.
+
+# Caching
+
+Just as the [`eurostat` package](http://ropengov.github.io/eurostat/), that inspired largely the development of this package, `giscoR` provides a dataset caching capability, that could be set as:
+
+```r
+options(gisco_cache_dir = "~/path/to/dir")
+```
+
+When this option is set, `giscoR` just load first the requested shapefile from the local directory, speeding up the loading process. If the file is not available locally, it would be downloaded to that directory so the next time you need the corresponding data it would be loaded from the local directory. 
+
+If you experience any problems on downloading, you can also manually download the file from the [GISCO API website](https://gisco-services.ec.europa.eu/distribution/v2/) and stored it on your local directory.
+
+
+# Installation
+
+Development version ([Github](https://github.com/dieghernan/giscoR/)):
+
+```r
+library(remotes)
+install_github("dieghernan/giscoR")
+```
+
+**CRAN submission pending**
+
+
+# Downloading data
+
+Please be aware that [downloading provisions apply](https://ec.europa.eu/eurostat/web/gisco/geodata) when using GISCO data. There is a function, `gisco_attributions` that would guide you on this topic. It also provides attributions on several languages.
+
+```{r attributions}
+library(giscoR)
+gisco_attributions()
+
+```
+
+# Basic example
+
+Some examples on data downloads
+
+```{r country_reg, fig.width=7, fig.asp=1}
+
+library(sf)
+
+countries <- gisco_get_countries(region = "Asia")
+
+plot(st_geometry(countries), axes = TRUE)
+title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
+```
+
+
+You can select specific countries by name (in any language), ISO 3 codes or Eurostat codes. The only restriction is that you can't miss country names, ISO3 and Eurostat codes on one single call.
+
+
+```{r africa_north, fig.width=7, fig.asp=1}
+
+africa_north <- gisco_get_countries(resolution = "10", country = c("Argelia","Morocco", "Egipto","Tunisia","Libia"))
+
+plot(st_geometry(africa_north), axes = TRUE)
+title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
+```
+
+
+## Different resolutions
+
+Different resolutions are suitable for different purposes:
+
+```{r belgium, fig.width=7, fig.asp=1}
+
+bel_60 <- gisco_get_countries(resolution = "60", country = "Belgique")
+bel_20 <- gisco_get_countries(resolution = "20", country = "Belgique")
+bel_10 <- gisco_get_countries(resolution = "10", country = "Belgique")
+bel_03 <- gisco_get_countries(resolution = "03", country = "Belgique")
+
+opar <- par(no.readonly = TRUE)
+par(mfrow = c(2, 2))
+plot(st_geometry(bel_60), main = "60M")
+plot(st_geometry(bel_20), main = "20M")
+plot(st_geometry(bel_10), main = "10M")
+plot(st_geometry(bel_03), main = "03M")
+title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
+par(opar)
+
+```
+
+# `giscoR` and another packages
+
+This is an example on how `giscoR` can play nicely with `eurostat`. For plotting purposes we would use the [`cartography`](https://riatelab.github.io/cartography/docs/index.html) package, however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). Also `colorspace` package is used.
+
+```{r giscoR_eurostat, fig.height=8, fig.width=8, message=FALSE, warning=FALSE}
+library(eurostat)
+library(cartography)
+library(colorspace)
+
+nuts2 <- gisco_get_nuts(year = "2016",
+                        nuts_level = "2",
+                        epsg = "3035")
+
+# Borders only
+brds <- gisco_get_nuts(
+  year = "2016",
+  spatialtype = "BN",
+  nuts_level = "0",
+  epsg = "3035"
+)
+
+# Eurostat data - Purchase parity power
+pps <- get_eurostat("tgs00026")
+pps <- pps[grep("2016", pps$time), ]
+
+nuts2.sf <- merge(nuts2,
+                  pps,
+                  by.x = "NUTS_ID",
+                  by.y = "geo",
+                  all.x = TRUE)
+
+# Prepare mapping
+br <- getBreaks(nuts2.sf$values, method = "jenks")
+
+# Palette
+pal <- sequential_hcl(n = (length(br) - 1),
+                      pal = "Inferno",
+                      rev = TRUE)
+
+
+opar <- par(no.readonly = TRUE)
+par(mar = c(1, 1, 1, 1))
+plot(
+  st_geometry(nuts2.sf),
+  col = NA,
+  bg = "aliceblue",
+  xlim = c(2200000, 7150000),
+  ylim = c(1380000, 5500000)
+)
+choroLayer(
+  nuts2.sf,
+  var = "values",
+  border = "grey60",
+  breaks = br,
+  col = pal,
+  add = TRUE,
+  legend.pos = "n"
+)
+plot(st_geometry(brds),
+     col = "black",
+     add = TRUE,
+     lwd = 1.2)
+att <- paste0("Data extracted from package eurostat \n",
+              gisco_attributions(copyright = FALSE))
+
+legendChoro(
+  title.txt = NA,
+  breaks = paste0(br / 1000, "K EUR"),
+  col = pal
+)
+layoutLayer("Purchase Parity Power, NUTS 2 regions (2016)",
+            col = pal[3],
+            sources = att)
+par(opar)
+
+```
