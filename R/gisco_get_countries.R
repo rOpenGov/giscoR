@@ -56,13 +56,12 @@
 #'
 #'
 #' sf_benelux <-
-#'   gisco_get_countries(resolution = "20",
-#'                       country = c('Belgium', 'Netherlands', 'Luxembourg'))
+#'   gisco_get_countries(country = c('Belgium', 'Netherlands', 'Luxembourg'))
 #' plot(st_geometry(sf_benelux),
 #'      col = c("grey10", "orange", "deepskyblue2"))
 #' title(sub = gisco_attributions(), line = 1)
 #' @export
-gisco_get_countries <- function(resolution = "60",
+gisco_get_countries <- function(resolution = "20",
                                 year = "2016",
                                 epsg = "4326",
                                 cache = TRUE,
@@ -104,13 +103,9 @@ gisco_get_countries <- function(resolution = "60",
   if (isFALSE(update_cache)) {
     if (year == "2016" &
         resolution == "20" &
-        crs == "4326" & spatialtype %in% c("RG", "COASTL")) {
+        crs == "4326" & spatialtype == "RG") {
       dwnload <- FALSE
-      if (spatialtype == "RG") {
-        data.sf <- giscoR::gisco_countries
-      } else if (spatialtype == "COASTL") {
-        data.sf <- giscoR::gisco_coastallines
-      }
+      data.sf <- giscoR::gisco_countries
     } else {
       dwnload <- TRUE
     }
