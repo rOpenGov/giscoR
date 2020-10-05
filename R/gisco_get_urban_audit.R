@@ -30,32 +30,27 @@
 #' library(sf)
 #'
 #' FUA <-
-#'   gisco_get_urban_audit(year = "2020",
-#'                         epsg = "3035",
-#'                         level = "FUA")
+#'   gisco_get_urban_audit(
+#'     year = "2020",
+#'     epsg = "3035",
+#'     level = "FUA",
+#'     country = "Deutschland"
+#'   )
 #'
-#'
-#'
-#'
-#'
-#' countries <- gisco_get_countries(year = "2020",
-#'                                  epsg = "3035")
-#'
-#' plot(
-#'   st_geometry(countries)  ,
-#'   xlim = c(2200000, 7150000),
-#'   ylim = c(1380000, 5500000),
-#'   col = "grey10",
-#'   bgc = "grey30",
-#'   border = NA,
+#' countries <- gisco_get_countries(
+#'   resolution = "20",
+#'   year = "2020",
+#'   epsg = "3035",
+#'   country = "Deutschland"
 #' )
-#' box()
+#'
+#' plot(st_geometry(countries)  ,
+#'      col = "grey10", )
 #' plot(st_geometry(FUA),
 #'      add = TRUE,
-#'      col = "darkgoldenrod3",
-#'      border = NA,)
+#'      col = "darkgoldenrod3")
 #' title(
-#'   main = "FUA (Functional Urban Areas) \non Europe (2020)",
+#'   main = "FUA (Functional Urban Areas) \non Germany (2020)",
 #'   sub = gisco_attributions(copyright = FALSE),
 #'   cex.main = 0.8,
 #'   cex.sub = 0.7,

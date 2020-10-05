@@ -34,7 +34,6 @@
 #'   st_geometry(lau_esp),
 #'   xlim = c(0, 4),
 #'   ylim = c(39, 42),
-#'   bgc = "lightskyblue1",
 #'   col = "wheat",
 #'   border = "grey50"
 #' )

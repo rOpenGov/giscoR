@@ -46,7 +46,7 @@ coast <-
   gisco_get_countries(spatialtype = "COASTL", resolution = "20")
 expect_true(sf::st_crs(coast)$epsg == 4326)
 
-if (at_home()) {
+if (v > 3) {
   expect_error(gisco_get_countries(country = "Z"))
   expect_warning(gisco_get_countries(country = "ZZ"))
 

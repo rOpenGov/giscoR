@@ -18,6 +18,7 @@ v <- length(as.character(unlist(packageVersion("giscoR"))))
 if (v > 3) {
   expect_silent(gisco_get_nuts(spatialtype = "LB", cache_dir = cachetest))
   expect_silent(gisco_get_nuts(spatialtype = "LB"))
+  expect_silent(gisco_get_nuts(resolution = "20" ))
   expect_silent(gisco_get_nuts(year = 2021))
   expect_silent(gisco_get_nuts(country = c("ITA", "POL")))
   expect_silent(gisco_get_nuts(nuts_level = 3))
@@ -47,5 +48,5 @@ if (v > 3) {
 
 #Test internal data
 library(sf)
-nuts <- gisco_get_nuts()
+nuts <- gisco_get_nuts(resolution = "20")
 expect_true(sf::st_crs(nuts)$epsg == 4326)
