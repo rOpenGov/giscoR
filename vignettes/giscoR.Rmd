@@ -145,7 +145,7 @@ nuts2.sf <- merge(nuts2,
                   all.x = TRUE)
 
 # Prepare mapping
-br <- getBreaks(nuts2.sf$values, method = "jenks")
+br <- getBreaks(nuts2.sf$values, method = "pretty")
 
 # Palette
 pal <- sequential_hcl(n = (length(br) - 1),
@@ -180,7 +180,7 @@ legendChoro(
   nodata.col = "grey80",
   frame = TRUE
 )
-layoutLayer("Purchase Parity Power, NUTS 2 regions (2016)",
+layoutLayer("Purchase Parity Power, Italy NUTS 2 regions (2016)",
             scale = FALSE,
             col = pal[3],
             sources = att)
