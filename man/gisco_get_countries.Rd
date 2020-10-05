@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_countries(
-  resolution = "60",
+  resolution = "20",
   year = "2016",
   epsg = "4326",
   cache = TRUE,
@@ -89,8 +89,7 @@ title(sub = gisco_attributions(), line = 1)
 
 
 sf_benelux <-
-  gisco_get_countries(resolution = "20",
-                      country = c('Belgium', 'Netherlands', 'Luxembourg'))
+  gisco_get_countries(country = c('Belgium', 'Netherlands', 'Luxembourg'))
 plot(st_geometry(sf_benelux),
      col = c("grey10", "orange", "deepskyblue2"))
 title(sub = gisco_attributions(), line = 1)
