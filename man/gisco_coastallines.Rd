@@ -3,47 +3,42 @@
 \docType{data}
 \name{gisco_coastallines}
 \alias{gisco_coastallines}
-\title{World coastal lines \code{LINESTRING} object}
+\title{World coastal lines \code{POLYGON} object}
 \format{
-A \code{LINESTRING} data frame (resolution: 1:20million, EPSG:4326) object with 8 variables:
+A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 8 variables:
 \describe{
-  \item{EFTA_FLAG}{Coast belonging to EFTA countries}
-  \item{OTHR_FLAG}{Coast belonging to other countries}
-  \item{EU_FLAG}{Coast belonging to EU countries}
-  \item{COAS_FLAG}{Coast flag}
-  \item{CNTR_BN_ID}{CNTR_BN_ID}
-  \item{CC_FLAG}{Coast belonging to EU candidate countries}
   \item{FID}{FID}
+  \item{COAS_ID}{COAS_ID}
   \item{geometry}{geometry field}
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_BN_20M_2016_4326_COASTL.geojson}{GISCO .geojson source}
+\href{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/COAS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
 }
 \description{
-A \code{sf} object including the coast lines
-as provided by GISCO (2016 version).
+A \code{sf} object as provided by GISCO (2016 version).
 }
 \examples{
-library(sf)
+ library(sf)
 
-coasts <- gisco_coastallines
+ coasts <- gisco_coastallines
 
-plot(
-  st_geometry(coasts),
-  xlim = c(100, 120),
-  ylim = c(-24, 24),
-  col = "deepskyblue4",
-  lwd = 2
-)
-box()
-title(
-  main = "Coasts on Southeastern Asia",
-  sub = gisco_attributions(copyright = FALSE),
-  cex.sub = 0.7,
-  line = 1
-)
+ plot(
+   st_geometry(coasts),
+   xlim = c(100, 120),
+   ylim = c(-24, 24),
+   col = "grey90",
+   border = "deepskyblue4",
+   lwd = 2
+ )
+ box()
+ title(
+   main = "Coasts on Southeastern Asia",
+   sub = gisco_attributions(),
+   cex.sub = 0.7,
+   line = 1
+ )
 }
 \seealso{
-\link{gisco_get_countries}
+\link{gisco_get_coastallines}
 }

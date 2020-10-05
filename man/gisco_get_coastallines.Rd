@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_coastallines(
-  resolution = "60",
+  resolution = "20",
   year = "2016",
   epsg = "4326",
   cache = TRUE,

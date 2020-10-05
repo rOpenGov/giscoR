@@ -33,7 +33,7 @@
 #'       sub = gisco_attributions(copyright = FALSE),
 #'       line = 1)
 #' @export
-gisco_get_coastallines <- function(resolution = "60",
+gisco_get_coastallines <- function(resolution = "20",
                                    year = "2016",
                                    epsg = "4326",
                                    cache = TRUE,
@@ -59,25 +59,43 @@ gisco_get_coastallines <- function(resolution = "60",
     stop("epsg should be one of 4326, 3035 or 3857")
   }
 
-  # Downloading data
-  filename <-
-    paste0("COAS_RG_",
-           resolution,
-           "M_",
-           year,
-           "_",
-           crs,
-           ".geojson")
-  url <-
-    paste0("https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/",
-           filename)
+  # Check if data is already available
+  if (isFALSE(update_cache)) {
+    if (year == "2016" &
+        resolution == "20" &
+        crs == "4326") {
+      dwnload <- FALSE
+      data.sf <- giscoR::gisco_coastallines
+    } else {
+      dwnload <- TRUE
+    }
+  } else {
+    dwnload <- TRUE
+  }
 
-  data.sf <-
-    gsc_helper_dwnl_nocaching(cache,
-                              cache_dir,
-                              update_cache,
-                              filename,
-                              url, epsg)
+  if (dwnload) {
+    # Downloading data
+    filename <-
+      paste0("COAS_RG_",
+             resolution,
+             "M_",
+             year,
+             "_",
+             crs,
+             ".geojson")
+    url <-
+      paste0(
+        "https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/",
+        filename
+      )
+
+    data.sf <-
+      gsc_helper_dwnl_nocaching(cache,
+                                cache_dir,
+                                update_cache,
+                                filename,
+                                url, epsg)
+  }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)
 }

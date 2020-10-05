@@ -4,7 +4,7 @@
 \alias{gisco_attributions}
 \title{Attribution when publishing GISCO data}
 \usage{
-gisco_attributions(lang = "en", copyright = TRUE)
+gisco_attributions(lang = "en", copyright = FALSE)
 }
 \arguments{
 \item{lang}{Language (two-letter \href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO_639-1} code). See details.}
@@ -50,6 +50,6 @@ information regarding their licence agreements.
 }
 \examples{
 en <- gisco_attributions()
-gisco_attributions(lang = "es", copyright = FALSE )
+gisco_attributions(lang = "es", copyright = TRUE )
 gisco_attributions(lang = "XXX")
 }
