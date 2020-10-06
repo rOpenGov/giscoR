@@ -10,11 +10,22 @@ tinytest::test_all()
 
 roxygen2::roxygenise()
 
+options(gisco_cache_dir = "./devel")
+
+tinytest::test_all()
 
 devtools::check_rhub()
 
-
-
+example("gisco_attributions","giscoR")
+example("gisco_coastallines","giscoR")
+example("gisco_countries","giscoR")
+example("gisco_countrycode","giscoR")
+example("gisco_get_coastallines","giscoR")
+example("gisco_get_countries","giscoR")
+example("gisco_get_lau","giscoR")
+example("gisco_get_nuts","giscoR")
+example("gisco_get_urban_audit","giscoR")
+example("gisco_nuts","giscoR")
 
 roxygen2::roxygenise()
 

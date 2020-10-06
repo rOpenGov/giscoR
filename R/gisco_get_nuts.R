@@ -51,7 +51,6 @@
 #'   border = "grey40"
 #' )
 #' plot(st_geometry(nuts2),
-#'      lwd = 2,
 #'      add = TRUE)
 #' title(
 #'   main = "NUTS2 and 3 Levels on Italy",

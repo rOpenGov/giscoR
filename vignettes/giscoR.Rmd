@@ -18,6 +18,9 @@ knitr::knit_hooks$set(margin = function(before, options, envir){
     par(mar=c(0.1,0.1,1.3,0.1))
   } 
 })
+
+options(gisco_cache_dir = "./devel/")
+
 ```
 
 
@@ -83,13 +86,32 @@ title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
 
 You can select specific countries by name (in any language), ISO 3 codes or Eurostat codes. The only restriction is that you can't mix country names, ISO3 and Eurostat codes on one single call.
 
+It is possible also to combine different shapefiles, just set `resolution` and `epsg` (and optionally `year`) to the same value:
+
 
 ```{r africa_north, fig.width=7, fig.asp=1}
 
-africa_north <- gisco_get_countries(country = c("Argelia","Morocco", "Egipto","Tunisia","Libia"))
+africa_north <-
+  gisco_get_countries(
+    country = c("Argelia", "Morocco", "Egipto", "Tunisia", "Libia"),
+    resolution = "20",
+    epsg = "4326",
+    year = "2016"
+  )
 
-plot(st_geometry(africa_north), axes = TRUE)
-title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
+# Coastal lines
+
+coast <- gisco_get_coastallines(resolution = "20",
+                                epsg = "4326",
+                                year = "2016")
+
+plot(
+  st_geometry(africa_north),
+  axes = TRUE,
+  border = "grey50"
+)
+plot(st_geometry(coast), border = "grey50", add = TRUE)
+title(sub = gisco_attributions(), cex.sub = 0.7)
 ```
 
 # `giscoR` and another packages
@@ -148,8 +170,7 @@ choroLayer(
 plot(st_geometry(borders),
      border = "black",
      col = NA,
-     add = TRUE,
-     lwd = 1.5)
+     add = TRUE)
      
 att <- paste0("Data extracted from package eurostat \n",
               gisco_attributions(copyright = FALSE))
