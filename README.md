@@ -106,9 +106,6 @@ cities <-
     level = "GREATER_CITIES",
     country = c("BEL", "NLD", "LUX")
   )
-#> [1] "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/URAU_RG_100K_2020_4326_GREATER_CITIES.geojson"
-#> [1] "Loading from cache dir: /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//RtmppL28xX/gisco"
-#> 312 Kb
 
 countries <- gisco_get_countries(country = c("BEL", "NLD", "LUX"), resolution = "01")
 

@@ -38,6 +38,8 @@ devtools::spe
 lau_esp <- gisco_get_lau(country = "Espagne")
 
 devtools::check_win_release()
+devtools::check_win_devel()
+devtools::check_rhub()
 
 devtools::install(build_vignettes = TRUE)
 

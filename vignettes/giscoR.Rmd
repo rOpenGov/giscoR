@@ -137,7 +137,7 @@ borders <- gisco_get_nuts(
 )
 
 # Eurostat data - Purchase parity power
-pps <- get_eurostat("tgs00026")
+pps <- eurostat::tgs00026
 pps <- pps[grep("2016", pps$time),]
 
 nuts2.sf <- merge(nuts2,

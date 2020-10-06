@@ -1,3 +1,5 @@
+* This the resubmission of a new release.
+
 ## Test environments
 * local R installation, R 3.6.3 on Windows 10 x64
 * Mac OS X (on github actions), R 4.0.2 - release
@@ -14,13 +16,14 @@
 
 There is a note on github actions related with CRAN incoming feasibility 
 
-2020-10-05T12:43:32.8375420Z * checking CRAN incoming feasibility ... Note_to_CRAN_maintainers
-2020-10-05T12:43:32.8376315Z 
-2020-10-05T12:43:32.8377489Z Maintainer: 'Diego Hernang�mez <diego.hernangomezherrero@gmail.com>'
+* checking CRAN incoming feasibility ... Note_to_CRAN_maintainers
+Maintainer: 'Diego Hernangomez <diego.hernangomezherrero@gmail.com>'
 
-This is just because of my family name, Hernangómez, where ó may fail under specific encodings.
+## What I have done
 
+- Failures on test were due to inability of reaching the gisco-servicer server when checking on win-builder-release. This failure was not present on any other environment tests.
 
+I have created internal datasets on sysdata.rda to avoid this failure and moved functions, examples and test to these datasets.
 
+Full test suite works fine downloading datasets when server is reachable.
 
-* This is a new release.
