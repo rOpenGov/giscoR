@@ -25,29 +25,22 @@
 #' @note Please check the download and usage provisions on \link{gisco_attributions}.
 #' @seealso \link{gisco_get_communes}
 #' @examples
-#' \donttest{
 #' library(sf)
 #'
-#' lau_esp <- gisco_get_lau(country = "Espagne")
+#' lau <- gisco_get_lau(country = "Belgique")
 #'
 #' plot(
-#'   st_geometry(lau_esp),
-#'   xlim = c(0, 4),
-#'   ylim = c(39, 42),
-#'   col = "wheat",
-#'   border = "grey50"
+#'   st_geometry(lau),
+#'   col = c("black", "gold", "brown2"),
+#'   border = "grey90"
 #' )
-#'
-#' box()
 #'
 #' title(
-#'   main = "Spain LAU",
+#'   main = "Local Administrative Units on Benelux (2016)",
 #'   sub = gisco_attributions(copyright = FALSE),
 #'   line = 1,
-#'   cex.sub = 0.8,
-#'   font.sub = 3
+#'   cex.sub = 0.8
 #' )
-#' }
 #' @export
 gisco_get_lau <- function(year = "2016",
                           epsg = "4326",
@@ -65,32 +58,51 @@ gisco_get_lau <- function(year = "2016",
   if (!as.numeric(crs) %in% c(4326, 3035, 3857)) {
     stop("epsg should be one of 4326, 3035 or 3857")
   }
+
+  # Try internal data
+  if (!is.null(country) & length(country == 1)) {
+    country_test <- gsc_helper_countrynames(country, "eurostat")
+    if (year == "2016" &
+        epsg == "4326" &
+        country_test == "BE") {
+      data.sf <- gisco_lau_BE.sf
+      dwnload <- FALSE
+    } else {
+      dwnload <- TRUE
+    }
+  } else {
+    dwnload <- TRUE
+  }
+
   # nocov start
 
   # Downloading data
-  filename <-
-    paste0("LAU_RG_01M_",
-           year,
-           "_",
-           crs,
-           ".geojson")
-  url <-
-    paste0("https://gisco-services.ec.europa.eu/distribution/v2/lau/geojson/",
-           filename)
+  if (dwnload) {
+    filename <-
+      paste0("LAU_RG_01M_",
+             year,
+             "_",
+             crs,
+             ".geojson")
+    url <-
+      paste0(
+        "https://gisco-services.ec.europa.eu/distribution/v2/lau/geojson/",
+        filename
+      )
 
-  data.sf <- gsc_helper_dwnl_caching(cache_dir,
-                                     update_cache,
-                                     filename,
-                                     url, epsg)
+    data.sf <- gsc_helper_dwnl_caching(cache_dir,
+                                       update_cache,
+                                       filename,
+                                       url, epsg)
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
-    # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
-    country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+      # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
+      country <- gsc_helper_countrynames(country, "eurostat")
+      data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    }
   }
-
   if (!is.null(gisco_id) & "GISCO_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id, ]
+    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id,]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

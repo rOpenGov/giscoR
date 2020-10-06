@@ -60,22 +60,21 @@ If you experience any problem on download, try to download the file by any other
 Please check the download and usage provisions on \link{gisco_attributions}.
 }
 \examples{
-\donttest{
 library(sf)
 
-communes <- gisco_get_communes(country = c("BEL", "NLD", "LUX"))
-
+communes <- gisco_get_communes(country = "Belgique")
 plot(
-  communes[, "CNTR_ID"],
-  pal = c("black", "deepskyblue2", "orange"),
-  border = "grey90",
+  st_geometry(communes),
+  col = c("black", "gold", "brown2"),
+  border = "grey90"
+  )
+
+title(
   main = "Communes on Benelux (2016)",
-  key.pos = NULL
-)
-title(sub = gisco_attributions(copyright = FALSE),
-      line = 1.2,
-      cex.sub = 0.8)
-}
+  sub = gisco_attributions(copyright = FALSE),
+  line = 1,
+  cex.sub = 0.8
+  )
 }
 \seealso{
 \link{gisco_get_lau}

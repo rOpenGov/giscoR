@@ -53,29 +53,22 @@ a vector of Eurostat country codes.
 Please check the download and usage provisions on \link{gisco_attributions}.
 }
 \examples{
-\donttest{
 library(sf)
 
-lau_esp <- gisco_get_lau(country = "Espagne")
+lau <- gisco_get_lau(country = "Belgique")
 
 plot(
-  st_geometry(lau_esp),
-  xlim = c(0, 4),
-  ylim = c(39, 42),
-  col = "wheat",
-  border = "grey50"
+  st_geometry(lau),
+  col = c("black", "gold", "brown2"),
+  border = "grey90"
 )
-
-box()
 
 title(
-  main = "Spain LAU",
+  main = "Local Administrative Units on Benelux (2016)",
   sub = gisco_attributions(copyright = FALSE),
   line = 1,
-  cex.sub = 0.8,
-  font.sub = 3
+  cex.sub = 0.8
 )
-}
 }
 \seealso{
 \link{gisco_get_communes}

@@ -123,6 +123,8 @@ gisco_g
 a <- "Diego Hernangomez [aut, cre] (<https://orcid.org/0000-0001-8457-4658>)"
 
 options(gisco_cache_dir = "~/R/mapslib/GISCO")
+options(gisco_cache_dir = tempdir())
+options(gisco_cache_dir = "./devel")
 
 gisco_g
 
@@ -169,6 +171,7 @@ vignette("giscoR")
 
 citation("eurostat")
 
+install.packages("qpdf")
 
 Sys.getenv("_R_CHECK_DONTTEST_EXAMPLES_")
 Sys.setenv("_R_CHECK_DONTTEST_EXAMPLES_" = FALSE)

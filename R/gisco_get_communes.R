@@ -32,22 +32,21 @@
 #' @return a \code{sf} object.
 #' @note Please check the download and usage provisions on \link{gisco_attributions}.
 #' @examples
-#' \donttest{
 #' library(sf)
 #'
-#' communes <- gisco_get_communes(country = c("BEL", "NLD", "LUX"))
-#'
+#' communes <- gisco_get_communes(country = "Belgique")
 #' plot(
-#'   communes[, "CNTR_ID"],
-#'   pal = c("black", "deepskyblue2", "orange"),
-#'   border = "grey90",
+#'   st_geometry(communes),
+#'   col = c("black", "gold", "brown2"),
+#'   border = "grey90"
+#'   )
+#'
+#' title(
 #'   main = "Communes on Benelux (2016)",
-#'   key.pos = NULL
-#' )
-#' title(sub = gisco_attributions(copyright = FALSE),
-#'       line = 1.2,
-#'       cex.sub = 0.8)
-#' }
+#'   sub = gisco_attributions(copyright = FALSE),
+#'   line = 1,
+#'   cex.sub = 0.8
+#'   )
 #' @export
 gisco_get_communes <- function(year = "2016",
                                epsg = "4326",
@@ -71,25 +70,44 @@ gisco_get_communes <- function(year = "2016",
     stop("spatialtype should be one of 'RG', 'LB', 'BN', 'COASTL', 'INLAND'")
   }
 
+  # Try internal data
+  if (!is.null(country) & length(country == 1)) {
+    country_test <- gsc_helper_countrynames(country, "eurostat")
+    if (year == "2016" &
+        epsg == "4326" &
+        spatialtype == "RG" & country_test == "BE") {
+      data.sf <- gisco_communes_BE.sf
+      dwnload <- FALSE
+    } else {
+      dwnload <- TRUE
+    }
+  } else {
+    dwnload <- TRUE
+  }
+
+
+
   # nocov start
 
   # Downloading data
-  filename <- gsc_helper_communes_url(year, crs, spatialtype)
-  url <-
-    paste0(
-      "https://gisco-services.ec.europa.eu/distribution/v2/communes/geojson/",
-      filename
-    )
-  data.sf <- gsc_helper_dwnl_caching(cache_dir,
-                                     update_cache,
-                                     filename,
-                                     url,
-                                     epsg)
+  if (dwnload) {
+    filename <- gsc_helper_communes_url(year, crs, spatialtype)
+    url <-
+      paste0(
+        "https://gisco-services.ec.europa.eu/distribution/v2/communes/geojson/",
+        filename
+      )
+    data.sf <- gsc_helper_dwnl_caching(cache_dir,
+                                       update_cache,
+                                       filename,
+                                       url,
+                                       epsg)
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
-    # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
-    country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+      # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
+      country <- gsc_helper_countrynames(country, "eurostat")
+      data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    }
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

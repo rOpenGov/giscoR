@@ -10,12 +10,13 @@ expect_error(gisco_get_nuts(spatialtype = "COASTL"))
 expect_error(gisco_get_nuts(spatialtype = "INLAND"))
 expect_error(gisco_get_nuts(nuts_level = 4))
 
-cachetest <- paste0(tempdir(), "_tinytest_get_nuts")
+
 
 
 v <- length(as.character(unlist(packageVersion("giscoR"))))
 
 if (v > 3) {
+  cachetest <- paste0(tempdir(), "/tinytest_get_nuts")
   expect_silent(gisco_get_nuts(spatialtype = "LB", cache_dir = cachetest))
   expect_silent(gisco_get_nuts(spatialtype = "LB"))
   expect_silent(gisco_get_nuts(resolution = "20" ))
