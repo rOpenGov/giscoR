@@ -62,7 +62,7 @@ Please be aware that [downloading provisions apply](https://ec.europa.eu/eurosta
 
 ```{r attributions}
 library(giscoR)
-gisco_attributions()
+gisco_attributions(copyright = TRUE)
 
 ```
 
@@ -92,25 +92,6 @@ plot(st_geometry(africa_north), axes = TRUE)
 title(sub = gisco_attributions(copyright = "FALSE"), cex.sub = 0.7)
 ```
 
-
-## Different resolutions
-
-Different resolutions are suitable for different purposes:
-
-```{r benelux, fig.width=7, fig.height=10}
-
-benelux_60 <- gisco_get_countries(resolution = "60", country = c("BE","NL","LU"))
-benelux_20 <- gisco_get_countries(resolution = "20", country = c("Belgique","Pays-Bas","Luxembourg"))
-
-opar <- par(no.readonly = TRUE)
-par(mfrow = c(2, 1))
-plot(st_geometry(benelux_60), main = "60M")
-plot(st_geometry(benelux_20), main = "20M")
-title(sub = gisco_attributions(), cex.sub = 0.7)
-par(opar)
-
-```
-
 # `giscoR` and another packages
 
 This is an example on how `giscoR` can play nicely with `eurostat`. For plotting purposes we would use the [`cartography`](https://riatelab.github.io/cartography/docs/index.html) package, however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). Also `colorspace` package is used.
@@ -130,7 +111,6 @@ nuts2 <- gisco_get_nuts(
 #Borders
 borders <- gisco_get_nuts(
   nuts_level = "0",
-  spatialtype = "BN",
   year = "2016"
 )
 
@@ -167,6 +147,7 @@ choroLayer(
 )
 plot(st_geometry(borders),
      border = "black",
+     col = NA,
      add = TRUE,
      lwd = 1.5)
      

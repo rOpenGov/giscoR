@@ -78,13 +78,13 @@ Please check the download and usage provisions on \link{gisco_attributions}.
 \examples{
 library(sf)
 
-nuts0 <- gisco_get_nuts(nuts_level = "0", epsg = "3035")
-nuts3 <- gisco_get_nuts(nuts_level = "3", epsg = "3035")
+nuts0 <- gisco_get_nuts(nuts_level = "0")
+nuts3 <- gisco_get_nuts(nuts_level = "3")
 
 plot(
   st_geometry(nuts3),
-  xlim = c(2200000, 7150000),
-  ylim = c(1380000, 5500000),
+  xlim = c(-20, 45),
+  ylim = c(35, 65),
   lwd = 0.05,
   border = "grey40"
 )
