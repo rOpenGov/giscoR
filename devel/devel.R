@@ -5,6 +5,8 @@ devtools::install(build_vignettes = TRUE)
 
 citation("giscoR")
 
+tinytest::test_all()
+
 
 roxygen2::roxygenise()
 
@@ -174,6 +176,6 @@ citation("eurostat")
 install.packages("qpdf")
 
 Sys.getenv("_R_CHECK_DONTTEST_EXAMPLES_")
-Sys.setenv("_R_CHECK_DONTTEST_EXAMPLES_" = FALSE)
+Sys.setenv("_R_CHECK_DONTTEST_EXAMPLES_" = TRUE)
 
 devtools::build_manual(path = "./devel/")

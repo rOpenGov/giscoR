@@ -60,13 +60,18 @@ gisco_get_lau <- function(year = "2016",
   }
 
   # Try internal data
-  if (!is.null(country) & length(country == 1)) {
-    country_test <- gsc_helper_countrynames(country, "eurostat")
-    if (year == "2016" &
-        epsg == "4326" &
-        country_test == "BE") {
-      data.sf <- gisco_lau_BE.sf
-      dwnload <- FALSE
+
+  if (isFALSE(update_cache)) {
+    if (!is.null(country) & length(country == 1)) {
+      country_test <- gsc_helper_countrynames(country, "eurostat")
+      if (year == "2016" &
+          epsg == "4326" &
+          country_test == "BE") {
+        data.sf <- gisco_lau_BE.sf
+        dwnload <- FALSE
+      } else {
+        dwnload <- TRUE
+      }
     } else {
       dwnload <- TRUE
     }
@@ -98,11 +103,11 @@ gisco_get_lau <- function(year = "2016",
     if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
       # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
       country <- gsc_helper_countrynames(country, "eurostat")
-      data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+      data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
     }
   }
   if (!is.null(gisco_id) & "GISCO_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id,]
+    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id, ]
   }
   data.sf <- sf::st_make_valid(data.sf)
   return(data.sf)

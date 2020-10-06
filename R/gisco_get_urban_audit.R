@@ -26,39 +26,34 @@
 #' @return a \code{sf} object.
 #' @note Please check the download and usage provisions on \link{gisco_attributions}.
 #' @examples
-#' \donttest{
 #' library(sf)
 #'
-#' FUA <-
-#'   gisco_get_urban_audit(
-#'     year = "2020",
-#'     epsg = "3035",
-#'     level = "FUA",
-#'     country = "Deutschland"
-#'   )
+#' GreatCities <-
+#'   gisco_get_urban_audit(level = "GREATER_CITIES")
 #'
-#' countries <- gisco_get_countries(
-#'   resolution = "20",
-#'   year = "2020",
-#'   epsg = "3035",
-#'   country = "Deutschland"
+#' unique(GreatCities$CNTR_CODE)
+#'
+#' countries <- gisco_get_countries()
+#'
+#' plot(
+#'   st_geometry(countries)  ,
+#'   col = "grey10",
+#'   xlim = c(-15, 25),
+#'   ylim = c(35, 60)
 #' )
-#'
-#' plot(st_geometry(countries)  ,
-#'      col = "grey10", )
-#' plot(st_geometry(FUA),
+#' plot(st_geometry(GreatCities),
 #'      add = TRUE,
 #'      col = "darkgoldenrod3")
+#' box()
 #' title(
-#'   main = "FUA (Functional Urban Areas) \non Germany (2020)",
+#'   main = "Greater Cities on Europe (2020)",
 #'   sub = gisco_attributions(copyright = FALSE),
 #'   cex.main = 0.8,
 #'   cex.sub = 0.7,
 #'   line = 1
 #' )
-#' }
 #' @export
-gisco_get_urban_audit <- function(year = "2018",
+gisco_get_urban_audit <- function(year = "2020",
                                   epsg = "4326",
                                   update_cache = FALSE,
                                   cache_dir = NULL,
@@ -88,20 +83,37 @@ gisco_get_urban_audit <- function(year = "2018",
     stop("spatialtype should be 'RG' or 'LB'")
   }
 
+  # Try internal data
+  if (isFALSE(update_cache)) {
+    if (year == "2020" &
+        epsg == "4326" &
+        spatialtype == "RG" &
+        level == "GREATER_CITIES") {
+      data.sf <- gisco_urban_audit_GC.sf
+      dwnload <- FALSE
+    } else {
+      dwnload <- TRUE
+    }
+  } else {
+    dwnload <- TRUE
+  }
 
-  # Downloading data
-  filename <-
-    gsc_helper_urau_url(year, crs, spatialtype, level)
+  if (dwnload) {
+    # Downloading data
+    filename <-
+      gsc_helper_urau_url(year, crs, spatialtype, level)
 
-  url <-
-    paste0("https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/",
-           filename)
+    url <-
+      paste0(
+        "https://gisco-services.ec.europa.eu/distribution/v2/urau/geojson/",
+        filename
+      )
 
-  data.sf <- gsc_helper_dwnl_caching(cache_dir,
-                                     update_cache,
-                                     filename,
-                                     url, epsg)
-
+    data.sf <- gsc_helper_dwnl_caching(cache_dir,
+                                       update_cache,
+                                       filename,
+                                       url, epsg)
+  }
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")

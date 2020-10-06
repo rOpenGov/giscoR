@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_urban_audit(
-  year = "2018",
+  year = "2020",
   epsg = "4326",
   update_cache = FALSE,
   cache_dir = NULL,
@@ -58,37 +58,32 @@ a vector of Eurostat country codes.
 Please check the download and usage provisions on \link{gisco_attributions}.
 }
 \examples{
-\donttest{
 library(sf)
 
-FUA <-
-  gisco_get_urban_audit(
-    year = "2020",
-    epsg = "3035",
-    level = "FUA",
-    country = "Deutschland"
-  )
+GreatCities <-
+  gisco_get_urban_audit(level = "GREATER_CITIES")
 
-countries <- gisco_get_countries(
-  resolution = "20",
-  year = "2020",
-  epsg = "3035",
-  country = "Deutschland"
+unique(GreatCities$CNTR_CODE)
+
+countries <- gisco_get_countries()
+
+plot(
+  st_geometry(countries)  ,
+  col = "grey10",
+  xlim = c(-15, 25),
+  ylim = c(35, 60)
 )
-
-plot(st_geometry(countries)  ,
-     col = "grey10", )
-plot(st_geometry(FUA),
+plot(st_geometry(GreatCities),
      add = TRUE,
      col = "darkgoldenrod3")
+box()
 title(
-  main = "FUA (Functional Urban Areas) \non Germany (2020)",
+  main = "Greater Cities on Europe (2020)",
   sub = gisco_attributions(copyright = FALSE),
   cex.main = 0.8,
   cex.sub = 0.7,
   line = 1
 )
-}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

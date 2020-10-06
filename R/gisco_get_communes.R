@@ -71,13 +71,17 @@ gisco_get_communes <- function(year = "2016",
   }
 
   # Try internal data
-  if (!is.null(country) & length(country == 1)) {
-    country_test <- gsc_helper_countrynames(country, "eurostat")
-    if (year == "2016" &
-        epsg == "4326" &
-        spatialtype == "RG" & country_test == "BE") {
-      data.sf <- gisco_communes_BE.sf
-      dwnload <- FALSE
+  if (isFALSE(update_cache)) {
+    if (!is.null(country) & length(country == 1)) {
+      country_test <- gsc_helper_countrynames(country, "eurostat")
+      if (year == "2016" &
+          epsg == "4326" &
+          spatialtype == "RG" & country_test == "BE") {
+        data.sf <- gisco_communes_BE.sf
+        dwnload <- FALSE
+      } else {
+        dwnload <- TRUE
+      }
     } else {
       dwnload <- TRUE
     }
