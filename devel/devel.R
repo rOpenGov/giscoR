@@ -7,6 +7,7 @@ citation("giscoR")
 
 tinytest::test_all()
 
+covr::report()
 
 roxygen2::roxygenise()
 
@@ -39,6 +40,7 @@ lau_esp <- gisco_get_lau(country = "Espagne")
 
 devtools::check_win_release()
 devtools::check_win_devel()
+devtools::check_win_oldrelease()
 devtools::check_rhub()
 
 devtools::install(build_vignettes = TRUE)
