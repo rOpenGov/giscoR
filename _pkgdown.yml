@@ -48,9 +48,7 @@ home:
   description: giscoR is a R API package that helps to retrieve data from Eurostat - GISCO (the Geographic Information System of the COmmission). It also provides some lightweight data sets ready to use without downloading. Currently only the Administrative Units / Statistical Units data sets are supported
 
 development:
-  mode: unreleased
-  version_label: danger
-  version_tooltip: "On active development"
+  version_tooltip: "Submitted to CRAN"
 
 navbar:
   structure:
