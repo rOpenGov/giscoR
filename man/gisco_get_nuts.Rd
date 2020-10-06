@@ -83,8 +83,8 @@ nuts3 <- gisco_get_nuts(nuts_level = "3")
 
 plot(
   st_geometry(nuts3),
-  xlim = c(-20, 45),
-  ylim = c(35, 65),
+  xlim = c(-20, 60),
+  ylim = c(35, 75),
   lwd = 0.05,
   border = "grey40"
 )

@@ -70,7 +70,7 @@ plot(
   )
 
 title(
-  main = "Communes on Benelux (2016)",
+  main = "Communes on Belgium (2016)",
   sub = gisco_attributions(copyright = FALSE),
   line = 1,
   cex.sub = 0.8

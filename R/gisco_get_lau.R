@@ -36,7 +36,7 @@
 #' )
 #'
 #' title(
-#'   main = "Local Administrative Units on Benelux (2016)",
+#'   main = "Local Administrative Units on Belgium (2016)",
 #'   sub = gisco_attributions(copyright = FALSE),
 #'   line = 1,
 #'   cex.sub = 0.8
