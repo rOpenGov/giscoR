@@ -42,22 +42,20 @@
 #' @examples
 #' library(sf)
 #'
-#' nuts0 <- gisco_get_nuts(nuts_level = "0")
-#' nuts3 <- gisco_get_nuts(nuts_level = "3")
+#' nuts2 <- gisco_get_nuts(nuts_level = "2", country = "ITA")
+#' nuts3 <- gisco_get_nuts(nuts_level = "3", country = "ITA")
 #'
 #' plot(
 #'   st_geometry(nuts3),
-#'   xlim = c(-20, 60),
-#'   ylim = c(35, 75),
-#'   lwd = 0.05,
+#'   lwd = 1,
 #'   border = "grey40"
 #' )
-#' plot(st_geometry(nuts0),
+#' plot(st_geometry(nuts2),
 #'      lwd = 2,
 #'      add = TRUE)
 #' title(
-#'   main = "NUTS3 Levels on Europe",
-#'   sub = gisco_attributions(copyright = FALSE),
+#'   main = "NUTS2 and 3 Levels on Italy",
+#'   sub = gisco_attributions(),
 #'   cex.sub = 0.7,
 #'   line = 1
 #' )
