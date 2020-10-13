@@ -37,6 +37,7 @@ figures:
 
 template:
   params:
+    ganalytics: UA-139034853-6
     bootswatch: flatly
     docsearch:
       api_key: 43dc96a03af10866ccbce1720b69b127
