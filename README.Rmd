@@ -23,11 +23,13 @@ knitr::knit_hooks$set(
 # giscoR <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
+[![CRAN/METACRAN](https://img.shields.io/cran/v/giscoR)](https://cran.r-project.org/web/packages/giscoR/index.html)
+![CRAN/METACRAN](https://img.shields.io/cran/l/giscoR)
 [![Travis build status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
 [![R build status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
-[![License](https://img.shields.io/badge/license-GPL—3.0-blue)](https://github.com/dieghernan/giscoR/blob/master/LICENSE.md)
-[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/dieghernan/giscoR?branch=master&svg=true)](https://ci.appveyor.com/project/dieghernan/giscoR)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
 [giscoR](https://dieghernan.github.io/giscoR/) is a API package that helps to retrieve data from [Eurostat - GISCO (the Geographic Information System of the COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides some lightweight data sets ready to use without downloading. Currently only the [Administrative Units / Statistical Units](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units) data sets are supported.
@@ -38,6 +40,13 @@ Note that the package does not provide metadata on the downloaded files, the inf
 
 
 ## Installation
+
+Install `giscoR` from [**CRAN**](https://cran.r-project.org/web/packages/giscoR/index.html):
+
+``` r
+install.packages("giscoR")
+```
+
 
 You can install the developing version of `giscoR` with:
 
@@ -90,7 +99,7 @@ ggplot(countries) +
     ),
     panel.background = element_rect(fill = "aliceblue")
   ) +
-  labs(caption = gisco_attributions(copyright = FALSE))
+  labs(caption = gisco_attributions())
 
 
 # With tmap
@@ -107,7 +116,7 @@ cities <-
 countries <- gisco_get_countries(country = c('BEL', 'NLD', 'LUX'), resolution = "01")
 
 tm_shape(countries) + tm_fill("black") + tm_borders("grey10") + tm_shape(cities) + tm_fill("chartreuse1") +
-  tm_credits(gisco_attributions(copyright = FALSE),
+  tm_credits(gisco_attributions(),
     position = c("LEFT", "BOTTOM")
   ) + tm_layout(
     main.title = "Urban Audit 2020: Greater cities of Benelux",
@@ -121,14 +130,23 @@ tm_shape(countries) + tm_fill("black") + tm_borders("grey10") + tm_shape(cities)
 # With cartography
 
 library(cartography)
+library (colorspace)
 globe <- gisco_get_countries(epsg = "3035")
 globe <- merge(globe, gisco_countrycode, all.x = TRUE)
+
+# Palette
+
+ncat <- length(unique(globe$un.regionsub.name))
+
+pal <- qualitative_hcl(ncat, palette = "Dynamic")
+
 opar <- par(no.readonly = TRUE)
 par(mar = c(2, 2, 2, 2))
-typoLayer(globe, var = "un.region.name", legend.pos = "n")
+typoLayer(globe, var = "un.regionsub.name", col = pal, legend.pos = "n")
+
 layoutLayer(
   "Regions of the World (UN)",
-  sources = gisco_attributions(copyright = FALSE),
+  sources = gisco_attributions(),
   scale = FALSE,
   horiz = TRUE
 )

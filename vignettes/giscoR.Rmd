@@ -49,15 +49,18 @@ If you experience any problems on downloading, you can also manually download th
 
 # Installation
 
+Install `giscoR` from [**CRAN**](https://cran.r-project.org/web/packages/giscoR/index.html):
+
+``` r
+install.packages(“giscoR”)
+```
+
 Development version ([Github](https://github.com/dieghernan/giscoR/)):
 
 ```r
 library(remotes)
 install_github("dieghernan/giscoR")
 ```
-
-**CRAN submission pending**
-
 
 # Downloading data
 
@@ -108,15 +111,18 @@ coast <- gisco_get_coastallines(resolution = "20",
 plot(
   st_geometry(africa_north),
   axes = TRUE,
-  border = "grey50"
+  col = "grey30",
+  border = "grey80"
 )
-plot(st_geometry(coast), border = "grey50", add = TRUE)
+plot(st_geometry(coast), lwd = 2, add = TRUE)
 title(sub = gisco_attributions(), cex.sub = 0.7)
 ```
 
-# `giscoR` and another packages
+# Plotting `giscoR`
 
-This is an example on how `giscoR` can play nicely with `eurostat`. For plotting purposes we would use the [`cartography`](https://riatelab.github.io/cartography/docs/index.html) package, however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). Also `colorspace` package is used.
+This is an example on how `giscoR` can play nicely with `eurostat`. For plotting purposes we would use the [`cartography` package](https://riatelab.github.io/cartography/docs/index.html), however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). 
+
+Also `colorspace` and `rcartocolor` packages are recommended, as they provide great color palettes.
 
 ```{r giscoR_eurostat, fig.width=6.5,fig.asp=0.9, message=FALSE, warning=FALSE}
 library(eurostat)
@@ -125,15 +131,18 @@ library(colorspace)
 
 nuts2 <- gisco_get_nuts(
   year = "2016",
+  epsg = "4326",
+  resolution = "20",
   nuts_level = "2",
   country = "Italy"
 )
 
-
 #Borders
-borders <- gisco_get_nuts(
-  nuts_level = "0",
-  year = "2016"
+borders <- gisco_get_countries(
+  epsg = "4326",
+  year = "2016",
+  resolution = "20",
+  region = c("Europe","Africa")
 )
 
 # Eurostat data - Purchase parity power
@@ -152,20 +161,32 @@ br <- getBreaks(nuts2.sf$values, method = "pretty")
 # Palette
 pal <- sequential_hcl(n = (length(br) - 1),
                       pal = "Inferno",
+                      alpha = 0.8,
                       rev = TRUE)
 
 
 opar <- par(no.readonly = TRUE)
 par(mar = c(2, 2, 2, 2))
 
+# Basemap
+plot(st_geometry(nuts2), col = "grey80")
+
+# Surrounding countries
+plot(st_geometry(borders),
+     border = "black",
+     lwd = 3,
+     col = "grey80",
+     add = TRUE)
+
 choroLayer(
   nuts2.sf,
   var = "values",
-  border = "grey60",
+  border = "grey80",
   breaks = br,
   col = pal,
   legend.pos = "n",
-  colNA = "grey80"
+  colNA = "grey80",
+  add = TRUE
 )
 plot(st_geometry(borders),
      border = "black",
