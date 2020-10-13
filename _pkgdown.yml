@@ -38,6 +38,9 @@ figures:
 template:
   params:
     bootswatch: flatly
+    docsearch:
+      api_key: 43dc96a03af10866ccbce1720b69b127
+      index_name: dieghernan_giscor
   opengraph:
     twitter:
       creator: "@dhernangomez"
