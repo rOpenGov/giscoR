@@ -73,10 +73,10 @@ DNK_res03 <-
 
 opar <- par(no.readonly = TRUE)
 par(mfrow = c(2, 2), mar = c(3, 0, 2, 0))
-plot(st_geometry(DNK_res60), main = "60M")
-plot(st_geometry(DNK_res20), main = "20M")
-plot(st_geometry(DNK_res10), main = "10M")
-plot(st_geometry(DNK_res03), main = "03M")
+plot(st_geometry(DNK_res60), main = "60M", col = "tomato")
+plot(st_geometry(DNK_res20), main = "20M", col = "tomato")
+plot(st_geometry(DNK_res10), main = "10M", col = "tomato")
+plot(st_geometry(DNK_res03), main = "03M", col = "tomato")
 title(sub = gisco_attributions(), line = 1)
 ```
 
@@ -96,7 +96,7 @@ par(mar = c(3, 0, 0, 0))
 # epsg 4326
 g1 <- st_graticule(cntr_4326, lon = seq(-180, 180, 20), lat = seq(-90, 90, 20))
 
-plot(st_geometry(cntr_4326), graticule = g1)
+plot(st_geometry(cntr_4326), col = "bisque", graticule = g1)
 title(sub = gisco_attributions(), line = 1)
 ```
 
@@ -109,6 +109,7 @@ title(sub = gisco_attributions(), line = 1)
 g2 <- st_graticule(cntr_3857, lon = seq(-180, 180, 20), lat = seq(-90, 90, 20))
 plot(
   st_geometry(cntr_3857),
+  col = "bisque",
   graticule = g2,
   ylim = c(-13000000, 13000000)
 )
@@ -121,7 +122,7 @@ title(sub = gisco_attributions(), line = 1)
 
 # epsg 3035
 g3 <- st_graticule(cntr_3035, lon = seq(-180, 180, 20), lat = seq(-90, 90, 20))
-plot(st_geometry(cntr_3035), graticule = g3)
+plot(st_geometry(cntr_3035), col = "bisque", graticule = g3)
 title(sub = gisco_attributions(), line = 1)
 ```
 
@@ -141,7 +142,7 @@ plot(st_geometry(labs),
   col = c("springgreen4", "darkgoldenrod1", "red2"), cex = 2,
   pch = 19
 )
-plot(st_geometry(coast), col = "deepskyblue4", lwd = 4, add = TRUE)
+plot(st_geometry(coast), col = "deepskyblue4", lwd = 6, add = TRUE)
 title(sub = gisco_attributions(), line = 1)
 ```
 
