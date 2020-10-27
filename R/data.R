@@ -123,7 +123,7 @@ NULL
 
 #' @title Disposable income of private households by NUTS 2 regions
 #' @name tgs00026
-#' @source \url{https://ec.europa.eu/eurostat/web/products-datasets?p_l_id=4566731&p_v_l_s_g_id=0}
+#' @source \url{https://ec.europa.eu/eurostat}
 #' @description Auxiliary Data Sets
 #' @format data_frame
 #' @note Ported from \code{eurostat} package.

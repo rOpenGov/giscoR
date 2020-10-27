@@ -8,7 +8,7 @@
 data_frame
 }
 \source{
-\url{https://ec.europa.eu/eurostat/web/products-datasets?p_l_id=4566731&p_v_l_s_g_id=0}
+\url{https://ec.europa.eu/eurostat}
 }
 \description{
 Auxiliary Data Sets
