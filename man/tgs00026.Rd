@@ -3,17 +3,16 @@
 \docType{data}
 \name{tgs00026}
 \alias{tgs00026}
-\title{Auxiliary Data}
+\title{Disposable income of private households by NUTS 2 regions}
 \format{
 data_frame
 }
-\usage{
-tgs00026
+\source{
+\url{https://ec.europa.eu/eurostat/web/products-datasets?p_l_id=4566731&p_v_l_s_g_id=0}
 }
 \description{
 Auxiliary Data Sets
 }
-\details{
-Retrieved with: \code{tgs00026 <- get_eurostat("tgs00026", time_format = "raw") }
+\note{
+Ported from \code{eurostat} package.
 }
-\keyword{datasets}
