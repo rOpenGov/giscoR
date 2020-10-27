@@ -36,7 +36,7 @@ GISCO provides data on different resolutions suitable for representing small are
 
 # Caching
 
-Just as the [`eurostat` package](http://ropengov.github.io/eurostat/), that inspired largely the development of this package, `giscoR` provides a dataset caching capability, that could be set as:
+`giscoR` provides a dataset caching capability, that could be set as:
 
 ```r
 options(gisco_cache_dir = "~/path/to/dir")
@@ -120,12 +120,12 @@ title(sub = gisco_attributions(), cex.sub = 0.7)
 
 # Plotting `giscoR`
 
-This is an example on how `giscoR` can play nicely with `eurostat`. For plotting purposes we would use the [`cartography` package](https://riatelab.github.io/cartography/docs/index.html), however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). 
+This is an example on how `giscoR` can play nicely with some Eurostat data. For plotting purposes we would use the [`cartography` package](https://riatelab.github.io/cartography/docs/index.html), however any package that handles `sf` objects (e.g. `ggplot2`, `tmap`, `leaflet`, etc. could be used). 
 
 Also `colorspace` and `rcartocolor` packages are recommended, as they provide great color palettes.
 
 ```{r giscoR_eurostat, fig.width=6.5,fig.asp=0.9, message=FALSE, warning=FALSE}
-library(eurostat)
+
 library(cartography)
 library(colorspace)
 
@@ -146,7 +146,7 @@ borders <- gisco_get_countries(
 )
 
 # Eurostat data - Purchase parity power
-pps <- eurostat::tgs00026
+pps <- giscoR::tgs00026
 pps <- pps[grep("2016", pps$time),]
 
 nuts2.sf <- merge(nuts2,
