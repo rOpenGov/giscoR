@@ -19,8 +19,6 @@ knitr::knit_hooks$set(margin = function(before, options, envir){
   } 
 })
 
-options(gisco_cache_dir = "./devel/")
-
 ```
 
 
