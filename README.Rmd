@@ -41,7 +41,7 @@ Note that the package does not provide metadata on the downloaded files, the inf
 
 ## Installation
 
-Install `giscoR` from [**CRAN**](https://cran.r-project.org/web/packages/giscoR/index.html):
+Install `giscoR` from [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
 ``` r
 install.packages("giscoR")
@@ -145,9 +145,9 @@ You can also download manually the files (`.geojson` format) and store them on y
 
 ### API data packages
 
-It is recommended to install the `eurostat` package (<https://ropengov.github.io/eurostat/>), that is another API package that queries [Eurostat](https://ec.europa.eu/eurostat/) for statistical information.
-
-`wbstats` (<https://nset-ornl.github.io/wbstats/>) is another interesting R API packages that provides access to [The World Bank Data](https://data.worldbank.org/) API.
+`wbstats` (<https://nset-ornl.github.io/wbstats/>) is an
+interesting R API packages that provides access to [The World Bank
+Data](https://data.worldbank.org/) API.
 
 
 ### Plotting `sf` objects

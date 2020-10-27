@@ -39,7 +39,7 @@ webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
 ## Installation
 
 Install `giscoR` from
-[**CRAN**](https://cran.r-project.org/web/packages/giscoR/index.html):
+[**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
 ``` r
 install.packages("giscoR")
@@ -173,12 +173,8 @@ them on your local directory.
 
 ### API data packages
 
-It is recommended to install the `eurostat` package
-(<https://ropengov.github.io/eurostat/>), that is another API package
-that queries [Eurostat](https://ec.europa.eu/eurostat/) for statistical
-information.
 
-`wbstats` (<https://nset-ornl.github.io/wbstats/>) is another
+`wbstats` (<https://nset-ornl.github.io/wbstats/>) is an
 interesting R API packages that provides access to [The World Bank
 Data](https://data.worldbank.org/) API.
 
