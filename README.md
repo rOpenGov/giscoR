@@ -173,9 +173,8 @@ them on your local directory.
 
 ### API data packages
 
-
-`wbstats` (<https://nset-ornl.github.io/wbstats/>) is an
-interesting R API packages that provides access to [The World Bank
+`wbstats` (<https://nset-ornl.github.io/wbstats/>) is an interesting R
+API packages that provides access to [The World Bank
 Data](https://data.worldbank.org/) API.
 
 ### Plotting `sf` objects
