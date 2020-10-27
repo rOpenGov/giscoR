@@ -49,7 +49,7 @@ If you experience any problems on downloading, you can also manually download th
 
 # Installation
 
-Install `giscoR` from [**CRAN**](https://cran.r-project.org/web/packages/giscoR/index.html):
+Install `giscoR` from [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
 ``` r
 install.packages(“giscoR”)

@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![CRAN/METACRAN](https://www.r-pkg.org/badges/version/giscoR)](https://cran.r-project.org/web/packages/giscoR/index.html)
+[![CRAN/METACRAN](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 ![CRAN/METACRAN](https://img.shields.io/cran/l/giscoR) [![Travis build
 status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
 [![R build

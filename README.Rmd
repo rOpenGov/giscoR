@@ -23,7 +23,7 @@ knitr::knit_hooks$set(
 # giscoR <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-[![CRAN/METACRAN](https://www.r-pkg.org/badges/version/giscoR)](https://cran.r-project.org/web/packages/giscoR/index.html)
+[![CRAN/METACRAN](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 ![CRAN/METACRAN](https://img.shields.io/cran/l/giscoR)
 [![Travis build status](https://travis-ci.com/dieghernan/giscoR.svg?branch=master)](https://travis-ci.com/dieghernan/giscoR)
 [![R build status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
