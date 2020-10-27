@@ -138,7 +138,9 @@ iso3 <- neur[!is.na(neur$CNTR_CODE),]$ISO3_CODE
 # Add some more countries
 
 iso3 <-
-  c(iso3, "POL", "DEU", "AUT", "CZE", "BEL", "NLD", "LUX", "ISL")
+  c(iso3, "POL", "DEU", "AUT", 
+  "CZE", "BEL", "NLD", "LUX", 
+  "SVK", "HUN", "ROU")
 
 nuts2 <- gisco_get_nuts(
   year = "2016",
@@ -182,8 +184,7 @@ br <-
 pal <- sequential_hcl(
   n = (length(br) - 1),
   pal = "Inferno",
-  alpha = 0.8,
-  rev = TRUE
+  alpha = 0.8
 )
 
 
@@ -205,7 +206,7 @@ plot(
 choroLayer(
   nuts2.sf,
   var = "values",
-  border = "grey80",
+  border = "grey50",
   breaks = br,
   col = pal,
   legend.pos = "n",
@@ -217,8 +218,7 @@ plot(st_geometry(borders),
      col = NA,
      add = TRUE)
 
-att <- paste0("Data extracted from package eurostat \n",
-              gisco_attributions(copyright = FALSE))
+att <- gisco_attributions()
 
 legendChoro(
   title.txt = NA,
