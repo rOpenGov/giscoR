@@ -179,8 +179,8 @@ par(mar = c(2, 2, 2, 2))
 # Basemap - BENELUX
 plot(st_geometry(nuts2), 
   col = "grey80",
-  xlim = c(2.4, 7.2),
-  ylim = c(51, 54)
+  xlim = c(2, 8),
+  ylim = c(48, 54)
   )
 
 choroLayer(
