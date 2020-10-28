@@ -128,26 +128,14 @@ Also `colorspace` and `rcartocolor` packages are recommended, as they provide gr
 library(cartography)
 library(colorspace)
 
-# Northen Europe
-
-neur <-
-  gisco_countrycode[gisco_countrycode$un.regionsub.name == "Northern Europe", ]
-
-iso3 <- neur[!is.na(neur$CNTR_CODE),]$ISO3_CODE
-
-# Add some more countries
-
-iso3 <-
-  c(iso3, "POL", "DEU", "AUT", 
-  "CZE", "BEL", "NLD", "LUX", 
-  "SVK", "HUN", "ROU")
+# Benelux
 
 nuts2 <- gisco_get_nuts(
   year = "2016",
   epsg = "4326",
   resolution = "20",
   nuts_level = "2",
-  country = iso3
+  country = c("BE", "NL", "LU")
 )
 
 #Borders
@@ -155,7 +143,7 @@ borders <- gisco_get_countries(
   epsg = "4326",
   year = "2016",
   resolution = "20",
-  region = c("Europe", "Africa")
+  region = c("Europe")
 )
 
 # Eurostat data - Purchase parity power
@@ -184,10 +172,10 @@ br <-
 pal <- sequential_hcl(
   n = (length(br) - 1),
   pal = "Inferno",
-  alpha = 0.8
+  alpha = 0.75
 )
 
-
+# Plot
 opar <- par(no.readonly = TRUE)
 par(mar = c(2, 2, 2, 2))
 
@@ -213,12 +201,12 @@ choroLayer(
   colNA = "grey80",
   add = TRUE
 )
+
+# Add borders
 plot(st_geometry(borders),
      border = "black",
      col = NA,
      add = TRUE)
-
-att <- gisco_attributions()
 
 legendChoro(
   title.txt = NA,
@@ -227,11 +215,12 @@ legendChoro(
   nodata.col = "grey80",
   frame = TRUE
 )
+
 layoutLayer(
-  "Purchase Parity Power, NUTS 2 regions of selected countries (2016)",
+  "Purchase Parity Power, NUTS 2 regions BENELUX (2016)",
   scale = FALSE,
   col = pal[3],
-  sources = att
+  sources = gisco_attributions()
 )
 par(opar)
 ```
