@@ -128,14 +128,11 @@ Also `colorspace` and `rcartocolor` packages are recommended, as they provide gr
 library(cartography)
 library(colorspace)
 
-# Benelux
-
 nuts2 <- gisco_get_nuts(
   year = "2016",
   epsg = "4326",
   resolution = "20",
-  nuts_level = "2",
-  country = c("BE", "NL", "LU")
+  nuts_level = "2"
 )
 
 #Borders
@@ -179,17 +176,12 @@ pal <- sequential_hcl(
 opar <- par(no.readonly = TRUE)
 par(mar = c(2, 2, 2, 2))
 
-# Basemap
-plot(st_geometry(nuts2), col = "grey80")
-
-# Surrounding countries
-plot(
-  st_geometry(borders),
-  border = "black",
-  lwd = 3,
+# Basemap - BENELUX
+plot(st_geometry(nuts2), 
   col = "grey80",
-  add = TRUE
-)
+  xlim = c(2.4, 7.2),
+  ylim = c(51, 54)
+  )
 
 choroLayer(
   nuts2.sf,
@@ -217,7 +209,7 @@ legendChoro(
 )
 
 layoutLayer(
-  "Purchase Parity Power, NUTS 2 regions BENELUX (2016)",
+  "Purchase Parity Power, NUTS 2 regions (BENELUX focus) (2016)",
   scale = FALSE,
   col = pal[3],
   sources = gisco_attributions()
