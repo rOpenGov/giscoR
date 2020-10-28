@@ -56,8 +56,7 @@ deploy:
   install_metadata: true
 
 development:
-  version_label: warning
-  version_tooltip: "Version not released"
+  version_tooltip: "Available on CRAN"
 
 
 navbar:
