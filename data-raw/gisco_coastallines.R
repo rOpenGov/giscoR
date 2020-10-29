@@ -9,11 +9,10 @@ gisco_coastallines <- gisco_get_coastallines(
   epsg = "4326",
   update_cache = TRUE,
   cache_dir = NULL,
+  verbose = TRUE
 )
-
-gisco_coastallines <- st_transform(gisco_coastallines, 4326)
-
 
 usethis::use_data(gisco_coastallines,
                   overwrite = TRUE,
                   compress = "xz")
+
