@@ -17,7 +17,7 @@
 #' library(sf)
 #'
 #' grid <- gisco_get_grid()
-#' breaks <- unique(quantile(grid$TOT_P_2006, probs = seq(0, 1, 0.01)))
+#' breaks <- unique(quantile(grid$TOT_P_2011, probs = seq(0, 1, 0.01)))
 #'
 #' # Remove coastal grids
 #' grid <- grid[grid$LAND_PC > 0.2, ]
