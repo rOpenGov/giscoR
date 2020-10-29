@@ -200,7 +200,7 @@ plot(st_geometry(borders),
      col = NA,
      add = TRUE)
      
-labs <- paste0(br / 1000, “K EUR”)
+labs <- paste0(br / 1000, "K EUR")
 labs[1] <- ""
 labs[length(labs)] <- ""
 
