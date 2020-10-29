@@ -31,7 +31,7 @@
 #' @keywords package
 #' @note COPYRIGHT NOTICE
 #'
-#' When data downloaded from 
+#' When data downloaded from
 #' \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
 #' is used in any printed or electronic publication,
 #' in addition to any other provisions
@@ -53,4 +53,8 @@
 #' If you intend to use the data commercially,
 #' please contact EuroGeographics for
 #' information regarding their licence agreements.
+NULL
+
+# import stuffs
+#' @importFrom utils download.file unzip read.csv2 menu
 NULL

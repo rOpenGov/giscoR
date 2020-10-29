@@ -7,6 +7,10 @@ citation("giscoR")
 
 tinytest::test_all()
 
+a <- gisco_get_grid(100)
+
+plot(st_geometry(a))
+
 covr::report()
 
 roxygen2::roxygenise()

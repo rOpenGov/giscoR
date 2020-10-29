@@ -1,4 +1,5 @@
 ## code to prepare `gisco_countries` dataset goes here
+
 library(giscoR)
 library(sf)
 gisco_countries <- gisco_get_countries(
@@ -9,13 +10,14 @@ gisco_countries <- gisco_get_countries(
   cache_dir = NULL,
   spatialtype = "RG",
   country = NULL,
-  region = NULL
+  region = NULL,
+  verbose = TRUE
 )
-
-gisco_countries <- st_transform(gisco_countries_20M_2016, 4326)
 
 
 usethis::use_data(gisco_countries,
                   overwrite = TRUE,
                   compress = "xz")
+
+
 

@@ -17,4 +17,4 @@ tgs00026 <- as.data.frame(tgs00026)
 
 usethis::use_data(tgs00026, overwrite = TRUE)
 
-unique(tgs00026$time)
+

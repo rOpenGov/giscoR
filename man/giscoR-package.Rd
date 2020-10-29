@@ -28,7 +28,7 @@ LazyLoad: \tab yes\cr
 \note{
 COPYRIGHT NOTICE
 
-When data downloaded from 
+When data downloaded from
 \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
 is used in any printed or electronic publication,
 in addition to any other provisions

@@ -1,3 +1,14 @@
+#' @title GISCO database
+#' @name gisco_db
+#' @docType data
+#' @description Database with the list of files that the package can load.
+#' @format A data frame
+#' @details This dataframe is used to check the validity of the API calls.
+#' @source GISCO API \code{datasets.json}.
+#' @examples
+#' data(gisco_db)
+NULL
+
 #' @title World countries \code{POLYGON} object
 #' @name gisco_countries
 #' @description A \code{sf} object including all
@@ -24,6 +35,7 @@
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}{GISCO .geojson source}
 #' @docType data
 #' @seealso \link{gisco_get_countries}
+#' @encoding UTF-8
 NULL
 
 #' @title World coastal lines \code{POLYGON} object
@@ -90,16 +102,18 @@ NULL
 #'
 #' plot(st_geometry(italy), col = c("springgreen4", "ivory", "red2"))
 #' title(
-#'   sub = gisco_attributions(copyright = FALSE),
+#'   sub = gisco_attributions(),
+#'   line = 1,
 #'   cex.sub = 0.7,
 #'   font.sub = 3
 #' )
+#' @encoding UTF-8
 NULL
 
 
 #' @title Dataframe including Eurostat and ISO2 and ISO3 codes for countries and world regions
 #' @name gisco_countrycode
-#' @description A dataframe containing conversions between different country codification systems (Eurostat/ISO2 and 3) as well as geographic regions as provided by the World Bank and the UN (M49).
+#' @description A dataframe containing conversions between different country codification systems (Eurostat/ISO2 and 3) as well as geographic regions as provided by the World Bank and the UN (M49). This dataset is extracted from \pkg{countrycode}.
 #' @format A data frame object with 249 rows and 12 variables:
 #' \describe{
 #'   \item{CNTR_CODE}{Eurostat code of each country}
@@ -115,11 +129,12 @@ NULL
 #'   \item{un.regionsub.code}{Numeric sub-region code UN (M49)}
 #'   \item{un.regionsub.name}{Sub-Region name UN (M49)}
 #' }
-#' @source \code{codelist} dataset from the \code{countrycode v1.2.0} package.
-#' @seealso \link[countrycode]{codelist}
+#' @examples
+#' data(gisco_countrycode)
+#' @source \code{codelist} dataset from \pkg{countrycode} (\code{v1.2.0}).
+#' @seealso \link[countrycode]{codelist}, \link[countrycode]{countrycode-package}.
 #' @docType data
 NULL
-
 
 #' @title Disposable income of private households by NUTS 2 regions
 #' @name tgs00026
