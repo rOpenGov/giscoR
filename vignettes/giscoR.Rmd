@@ -214,7 +214,7 @@ legendChoro(
 )
 
 layoutLayer(
-  "Purchase Parity Power, NUTS 2 regions (BENELUX focus) (2016)",
+  "Disposable Incoming Households 2016 (BENELUX focus)",
   scale = FALSE,
   col = pal[3],
   sources = gisco_attributions()
