@@ -126,7 +126,6 @@ Also `colorspace` and `rcartocolor` packages are recommended, as they provide gr
 
 
 library(cartography)
-library(colorspace)
 
 nuts2 <- gisco_get_nuts(
   year = "2016",
@@ -145,7 +144,7 @@ borders <- gisco_get_countries(
 
 # Eurostat data - Purchase parity power
 pps <- giscoR::tgs00026
-pps <- pps[pps$time == 2016, ]
+pps <- pps[pps$time == 2016,]
 
 nuts2.sf <- merge(nuts2,
                   pps,
@@ -154,34 +153,23 @@ nuts2.sf <- merge(nuts2,
                   all.x = TRUE)
 
 # Prepare mapping
-br <-
-  1000 * c(0,
-           10,
-           12.5,
-           15,
-           17.5,
-           20,
-           22.5,
-           25,
-           max(nuts2.sf$values, na.rm = TRUE) / 1000 + 1)
-
-# Palette
-pal <- sequential_hcl(
-  n = (length(br) - 1),
-  pal = "Inferno",
-  alpha = 0.75
-)
+br <- getBreaks(nuts2.sf$values, method = "fisher")
+pal <-
+  hcl.colors(n = (length(br) - 1),
+             palette = "inferno",
+             alpha = 0.75)
 
 # Plot
 opar <- par(no.readonly = TRUE)
 par(mar = c(2, 2, 2, 2))
 
 # Basemap - BENELUX
-plot(st_geometry(nuts2), 
+plot(
+  st_geometry(nuts2),
   col = "grey80",
   xlim = c(1, 9),
   ylim = c(47, 55)
-  )
+)
 
 choroLayer(
   nuts2.sf,
@@ -199,8 +187,9 @@ plot(st_geometry(borders),
      border = "black",
      col = NA,
      add = TRUE)
-     
-labs <- paste0(br / 1000, "K EUR")
+
+
+labs <- paste0(round((br / 1000), 1), "K EUR")
 labs[1] <- ""
 labs[length(labs)] <- ""
 
@@ -220,4 +209,6 @@ layoutLayer(
   sources = gisco_attributions()
 )
 par(opar)
+
+
 ```

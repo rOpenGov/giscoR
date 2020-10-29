@@ -3,7 +3,7 @@ r:
   - release
   - devel
   - oldrel
-  - 3.5
+  - 3.6
 
 os: linux
 
