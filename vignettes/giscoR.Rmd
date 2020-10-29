@@ -179,8 +179,8 @@ par(mar = c(2, 2, 2, 2))
 # Basemap - BENELUX
 plot(st_geometry(nuts2), 
   col = "grey80",
-  xlim = c(2, 8),
-  ylim = c(48, 54)
+  xlim = c(1, 9),
+  ylim = c(47, 55)
   )
 
 choroLayer(
@@ -199,10 +199,15 @@ plot(st_geometry(borders),
      border = "black",
      col = NA,
      add = TRUE)
+     
+labs <- paste0(br / 1000, “K EUR”)
+labs[1] <- ""
+labs[length(labs)] <- ""
 
 legendChoro(
+  pos = "bottomright",
   title.txt = NA,
-  breaks = paste0(br / 1000, "K EUR"),
+  breaks = labs,
   col = pal,
   nodata.col = "grey80",
   frame = TRUE
