@@ -1,7 +1,7 @@
 Package: giscoR
 Type: Package
 Title: Download Geospatial Data from GISCO API - Eurostat
-Version: 0.1.1
+Version: 0.1.2.9050
 Authors@R: c(
   person("Diego", "Hernangómez", role=c("aut", "cre"), email="diego.hernangomezherrero@gmail.com", comment=c(ORCID="0000-0001-8457-4658")))
 Description: Tools to download data from the GISCO 
@@ -15,14 +15,13 @@ RoxygenNote: 7.1.1
 BugReports: https://github.com/dieghernan/giscoR/issues
 URL: https://dieghernan.github.io/giscoR/, https://github.com/dieghernan/giscoR
 Depends: 
-    R (>= 3.3.0)
+    R (>= 3.6.0)
 Imports: 
     sf (>= 0.9),
     countrycode (>= 1.2.0),
     geojsonsf (>= 2.0)
 Suggests: 
     cartography (>= 2.0.0),
-    colorspace,
     lwgeom,
     tinytest,
     knitr,
