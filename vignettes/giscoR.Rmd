@@ -42,7 +42,7 @@ options(gisco_cache_dir = "~/path/to/dir")
 
 When this option is set, `giscoR` just load first the requested shapefile from the local directory, speeding up the loading process. If the file is not available locally, it would be downloaded to that directory so the next time you need the corresponding data it would be loaded from the local directory. 
 
-If you experience any problems on downloading, you can also manually download the file from the [GISCO API website](https://gisco-services.ec.europa.eu/distribution/v2/) and stored it on your local directory.
+If you experience any problems on downloading, you can also manually download the file from the [GISCO API website](https://gisco-services.ec.europa.eu/distribution/v2/) and store it on your local directory.
 
 
 # Installation
