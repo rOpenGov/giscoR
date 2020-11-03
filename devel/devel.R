@@ -1,6 +1,11 @@
 usethis::use_cran_comments()
 usethis::use_news_md()
 
+
+devtools::check()
+
+gisco_ge
+
 roxygen2::roxygenise()
 
 devtools::install(build_vignettes = TRUE)

@@ -61,14 +61,14 @@ plot(
   cex = 1.2
 )
 legend(
-  x = 2,
-  y = 53.5,
+  "topright",
   legend = c("Port", "Airport"),
   col = c("forestgreen", "steelblue"),
   cex = 0.9,
   bty = "n",
   pch = c(22, 20),
-  pt.cex = c(1, 1.5)
+  pt.cex = c(1, 1.5),
+  y.intersp = 2
 )
 
 title(
