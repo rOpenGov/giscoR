@@ -1,11 +1,11 @@
 on:
   push:
 
-name: Resabe data
+name: Resave data
 
 jobs:
   render:
-    name: Render README
+    name: Resave dats
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
@@ -31,6 +31,8 @@ jobs:
         shell: Rscript {0}
       - name: Resave data
         run: Rscript -e 'tools::resaveRdaFiles("./data/", compress = "auto")'
+      - name: Resave internal data
+        run: Rscript -e 'tools::resaveRdaFiles("./R/", compress = "auto")'
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
