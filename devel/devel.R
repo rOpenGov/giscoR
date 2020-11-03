@@ -1,6 +1,8 @@
 usethis::use_cran_comments()
 usethis::use_news_md()
 
+roxygen2::roxygenise()
+
 devtools::install(build_vignettes = TRUE)
 
 citation("giscoR")

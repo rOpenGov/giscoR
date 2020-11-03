@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../ISO_GISCO.xsl"?>
+<gisco:MD_Metadata xsi:schemaLocation="http://www.gisco.eurostat.cec/metadataModel/gisco_LN.xsd" xmlns:gisco="http://www.gisco.eurostat.cec/metadataModel/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<gmd:fileIdentifier xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">{53FAAC6D-D66F-42B2-BBD7-7FBB759C812B}</gco:CharacterString>
+</gmd:fileIdentifier>
+<gmd:language xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:language>
+<gmd:characterSet xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:MD_CharacterSetCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_CharacterSetCode" codeListValue="utf16">utf16</gmd:MD_CharacterSetCode>
+</gmd:characterSet>
+<gmd:parentIdentifier xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">{5F0D2655-C25E-40E6-AF08-A575DB684F3F}</gco:CharacterString>
+</gmd:parentIdentifier>
+<gmd:hierarchyLevel xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:MD_ScopeCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_ScopeCode" codeListValue="dataset">dataset</gmd:MD_ScopeCode>
+</gmd:hierarchyLevel>
+<gmd:hierarchyLevelName xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Geodatabase attribute table</gco:CharacterString>
+</gmd:hierarchyLevelName>
+<gmd:contact xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:CI_ResponsibleParty>
+<gmd:role>
+<gmd:CI_RoleCode codeList="./resources/Codelist/GiscoCodelists.xml#CI_RoleCode" codeListValue="none">none</gmd:CI_RoleCode>
+</gmd:role>
+</gmd:CI_ResponsibleParty>
+</gmd:contact>
+<gmd:dateStamp xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gco:Date xmlns:gco="http://www.isotc211.org/2005/gco">2009-10-06</gco:Date>
+</gmd:dateStamp>
+<gmd:metadataStandardName xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">   ISO19115:2003   </gco:CharacterString>
+</gmd:metadataStandardName>
+<gmd:metadataStandardVersion xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">   GISCO 1.0   </gco:CharacterString>
+</gmd:metadataStandardVersion>
+<gmd:dataSetURI xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Server=musk.cc.cec.eu.int; Service=port:5153; User=giscoread; Version=SDE.DEFAULT</gco:CharacterString>
+</gmd:dataSetURI>
+<gmd:spatialRepresentationInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:MD_VectorSpatialRepresentation>
+<gmd:topologyLevel>
+<gmd:MD_TopologyLevelCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_TopologyLevelCode" codeListValue="geometryOnly">geometryOnly</gmd:MD_TopologyLevelCode>
+</gmd:topologyLevel>
+<gmd:geometricObjects>
+<gmd:MD_GeometricObjects uuid="GISCO.PORT_RG_2009">
+<gmd:geometricObjectType>
+<gmd:MD_GeometricObjectTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_GeometricObjectTypeCode" codeListValue="complex">complex</gmd:MD_GeometricObjectTypeCode>
+</gmd:geometricObjectType>
+<gmd:geometricObjectCount>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">604</gco:Integer>
+</gmd:geometricObjectCount>
+</gmd:MD_GeometricObjects>
+</gmd:geometricObjects>
+<gmd:geometricObjects>
+<gmd:MD_GeometricObjects uuid="GISCO.PORT_PT_2009">
+<gmd:geometricObjectType>
+<gmd:MD_GeometricObjectTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_GeometricObjectTypeCode" codeListValue="point">point</gmd:MD_GeometricObjectTypeCode>
+</gmd:geometricObjectType>
+<gmd:geometricObjectCount>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">2201</gco:Integer>
+</gmd:geometricObjectCount>
+</gmd:MD_GeometricObjects>
+</gmd:geometricObjects>
+</gmd:MD_VectorSpatialRepresentation>
+</gmd:spatialRepresentationInfo>
+<gmd:referenceSystemInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:MD_ReferenceSystem>
+<gmd:referenceSystemIdentifier>
+<gmd:RS_Identifier>
+<gmd:code>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">ETRS89</gco:CharacterString>
+</gmd:code>
+</gmd:RS_Identifier>
+</gmd:referenceSystemIdentifier>
+</gmd:MD_ReferenceSystem>
+</gmd:referenceSystemInfo>
+<gmd:identificationInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:MD_DataIdentification xsi:type="gmd:MD_DataIdentification_Type">
+<gmd:citation>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">GISCO.PORT_COOR_RELI_DOM</gco:CharacterString>
+</gmd:title>
+<gmd:alternateTitle>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">GISCO.PORT_COOR_RELI_DOM</gco:CharacterString>
+</gmd:alternateTitle>
+<gmd:date>
+<gmd:CI_Date>
+<gmd:date>
+<gco:Date xmlns:gco="http://www.isotc211.org/2005/gco">2009-10-05</gco:Date>
+</gmd:date>
+<gmd:dateType>
+<gmd:CI_DateTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#CI_DateCode" codeListValue="creation">creation</gmd:CI_DateTypeCode>
+</gmd:dateType>
+</gmd:CI_Date>
+</gmd:date>
+<gmd:date>
+<gmd:CI_Date>
+<gmd:date>
+<gco:Date xmlns:gco="http://www.isotc211.org/2005/gco">2009-11-01</gco:Date>
+</gmd:date>
+<gmd:dateType>
+<gmd:CI_DateTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#CI_DateCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+</gmd:dateType>
+</gmd:CI_Date>
+</gmd:date>
+<gmd:edition>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:edition>
+<gmd:editionDate>
+<gco:Date xmlns:gco="http://www.isotc211.org/2005/gco">2009-10-05</gco:Date>
+</gmd:editionDate>
+<gmd:identifier>
+</gmd:identifier>
+<gmd:citedResponsibleParty>
+<gmd:CI_ResponsibleParty>
+<gmd:organisationName>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Eurostat GISCO - European Commission</gco:CharacterString>
+</gmd:organisationName>
+<gmd:contactInfo>
+<gmd:CI_Contact>
+<gmd:phone>
+<gmd:CI_Telephone>
+<gmd:voice>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">+352 4301 32076</gco:CharacterString>
+</gmd:voice>
+<gmd:facsimile>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">+352 4301 34029</gco:CharacterString>
+</gmd:facsimile>
+</gmd:CI_Telephone>
+</gmd:phone>
+<gmd:address>
+<gmd:CI_Address>
+<gmd:deliveryPoint>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">5, rue Alphonse Weicker</gco:CharacterString>
+</gmd:deliveryPoint>
+<gmd:city>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Luxembourg</gco:CharacterString>
+</gmd:city>
+<gmd:administrativeArea>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Luxembourg</gco:CharacterString>
+</gmd:administrativeArea>
+<gmd:postalCode>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">2721</gco:CharacterString>
+</gmd:postalCode>
+<gmd:country>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">lu</gco:CharacterString>
+</gmd:country>
+<gmd:electronicMailAddress>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">estat-gisco@ec.europa.eu</gco:CharacterString>
+</gmd:electronicMailAddress>
+</gmd:CI_Address>
+</gmd:address>
+</gmd:CI_Contact>
+</gmd:contactInfo>
+<gmd:role>
+<gmd:CI_RoleCode codeList="./resources/Codelist/GiscoCodelists.xml#CI_RoleCode" codeListValue="originator">originator</gmd:CI_RoleCode>
+</gmd:role>
+</gmd:CI_ResponsibleParty>
+</gmd:citedResponsibleParty>
+<gmd:citedResponsibleParty>
+<gmd:CI_ResponsibleParty>
+<gmd:organisationName>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Lovell Johns Ltd.</gco:CharacterString>
+</gmd:organisationName>
+<gmd:contactInfo>
+<gmd:CI_Contact>
+<gmd:phone>
+<gmd:CI_Telephone>
+<gmd:voice>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">+44 1993 883 161</gco:CharacterString>
+</gmd:voice>
+<gmd:facsimile>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">+44 1993 883 096</gco:CharacterString>
+</gmd:facsimile>
+</gmd:CI_Telephone>
+</gmd:phone>
+<gmd:address>
+<gmd:CI_Address>
+<gmd:deliveryPoint>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">10 Hanborough Business Park</gco:CharacterString>
+</gmd:deliveryPoint>
+<gmd:city>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Long Hanborough</gco:CharacterString>
+</gmd:city>
+<gmd:administrativeArea>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Witney</gco:CharacterString>
+</gmd:administrativeArea>
+<gmd:postalCode>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">OX29 8RU</gco:CharacterString>
+</gmd:postalCode>
+<gmd:country>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">gb</gco:CharacterString>
+</gmd:country>
+<gmd:electronicMailAddress>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">enquiries@lovelljohns.com</gco:CharacterString>
+</gmd:electronicMailAddress>
+</gmd:CI_Address>
+</gmd:address>
+</gmd:CI_Contact>
+</gmd:contactInfo>
+<gmd:role>
+<gmd:CI_RoleCode codeList="./resources/Codelist/GiscoCodelists.xml#CI_RoleCode" codeListValue="processor">processor</gmd:CI_RoleCode>
+</gmd:role>
+</gmd:CI_ResponsibleParty>
+</gmd:citedResponsibleParty>
+<gmd:presentationForm>
+<gmd:CI_PresentationFormCode codeList="./resources/Codelist/GiscoCodelists.xml#CI_PresentationFormCode" codeListValue="tableDigital">tableDigital</gmd:CI_PresentationFormCode>
+</gmd:presentationForm>
+</gmd:CI_Citation>
+</gmd:citation>
+<gmd:abstract>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">This dataset should be bibliographically referred to as the “GISCO Ports 2009 dataset”. It contains 2 feature classes with the location of 2201 pan-European ports, plus one attribute table and 3 domain tables. The ports are identified following the UN Locode list. The dataset is based on the list “Ports Estat 2009” from Eurostat, and the port polygons from CLC2000 and ERM.
+
+All ports are represented by a point location in PORT_PT_2009. PORT_RG_2009 contains polygonal topology for 604 of the ports. Polygons represent the port area devoted to ship traffic as defined in Corine Land Cover 2000 or the EuroRegionalMap (ERM) v3.0 Pier / Wharf / Quay feature. Point coordinates and Locodes are derived from several input sources, including ports lists from EMSA, Lloyds, Norie’s Seaports of the World, the GISCO Ports 2008 dataset and the UN/LOCODE 2007 list. Point locations are harmonised to be inside a polygonal representation, where provided, inside the CNTR_RG_100K_2006 land mask, and in some cases coincident with a STTL_V3 settlement feature.  Attributes in PORT_AT_2009 include the port name, Locode Status Indicator, and reliability flags for the positional and Locode accuracy. 
+
+Dataset coverage is geographical Europe plus territories administrated by European countries. 
+</gco:CharacterString>
+</gmd:abstract>
+<gmd:purpose>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">The dataset has been created for cartographic purposes and for appropriate analysis. Port statistics can be geo-referenced to this high quality pan-European dataset, especially when based on UN Locode.</gco:CharacterString>
+</gmd:purpose>
+<gmd:status>
+<gmd:MD_ProgressCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_ProgressCode" codeListValue="completed">completed</gmd:MD_ProgressCode>
+</gmd:status>
+<gmd:descriptiveKeywords>
+<gmd:MD_Keywords>
+<gmd:keyword>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Ports</gco:CharacterString>
+</gmd:keyword>
+<gmd:type>
+<gmd:MD_KeywordTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+</gmd:type>
+<gmd:thesaurusName>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Directive 2007/2/EC of the European Parliament and of the Council of 14 March 2007 establishing an Infrastructure for Spatial Information in the European Community (INSPIRE)</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+<gmd:CI_Date>
+<gmd:date>
+<gco:Date xmlns:gco="http://www.isotc211.org/2005/gco">2007-03-14</gco:Date>
+</gmd:date>
+<gmd:dateType>
+<gmd:CI_DateTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#CI_DateCode" codeListValue="publication">publication</gmd:CI_DateTypeCode>
+</gmd:dateType>
+</gmd:CI_Date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:thesaurusName>
+</gmd:MD_Keywords>
+</gmd:descriptiveKeywords>
+<gmd:descriptiveKeywords>
+<gmd:MD_Keywords>
+<gmd:keyword>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Europe</gco:CharacterString>
+</gmd:keyword>
+<gmd:type>
+<gmd:MD_KeywordTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_KeywordTypeCode" codeListValue="place">place</gmd:MD_KeywordTypeCode>
+</gmd:type>
+</gmd:MD_Keywords>
+</gmd:descriptiveKeywords>
+<gmd:descriptiveKeywords>
+<gmd:MD_Keywords>
+<gmd:keyword>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">European transportation</gco:CharacterString>
+</gmd:keyword>
+<gmd:keyword>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Transport networks</gco:CharacterString>
+</gmd:keyword>
+<gmd:keyword>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Quays</gco:CharacterString>
+</gmd:keyword>
+<gmd:keyword>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Harbours</gco:CharacterString>
+</gmd:keyword>
+<gmd:keyword>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Shipping</gco:CharacterString>
+</gmd:keyword>
+<gmd:keyword>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Ferry links</gco:CharacterString>
+</gmd:keyword>
+<gmd:type>
+<gmd:MD_KeywordTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_KeywordTypeCode" codeListValue="theme">theme</gmd:MD_KeywordTypeCode>
+</gmd:type>
+</gmd:MD_Keywords>
+</gmd:descriptiveKeywords>
+<gmd:resourceConstraints>
+<gmd:MD_Constraints>
+<gmd:useLimitation>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">The datasets have been created for cartographic purposes. Not to be used for navigation.</gco:CharacterString>
+</gmd:useLimitation>
+</gmd:MD_Constraints>
+</gmd:resourceConstraints>
+<gmd:resourceConstraints>
+<gmd:MD_LegalConstraints>
+<gmd:useConstraints>
+<gmd:MD_RestrictionCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_RestrictionCode" codeListValue="copyright">copyright</gmd:MD_RestrictionCode>
+</gmd:useConstraints>
+<gmd:otherConstraints>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Usage of data is public</gco:CharacterString>
+</gmd:otherConstraints>
+<gmd:otherConstraints>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Source should be acknowledged: "Source: GISCO - Eurostat (European Commission)"</gco:CharacterString>
+</gmd:otherConstraints>
+</gmd:MD_LegalConstraints>
+</gmd:resourceConstraints>
+<gmd:spatialRepresentationType>
+<gmd:MD_SpatialRepresentationTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_SpatialRepresentationTypeCode" codeListValue="vector">vector</gmd:MD_SpatialRepresentationTypeCode>
+</gmd:spatialRepresentationType>
+<gmd:spatialResolution>
+<gmd:MD_Resolution>
+<gmd:equivalentScale>
+<gmd:MD_RepresentativeFraction uuid="100000/3000000">
+<gmd:denominator>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:Integer>
+</gmd:denominator>
+</gmd:MD_RepresentativeFraction>
+</gmd:equivalentScale>
+</gmd:MD_Resolution>
+</gmd:spatialResolution>
+<gmd:language>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:language>
+<gmd:characterSet>
+<gmd:MD_CharacterSetCode codeList="./resources/Codelist/GiscoCodelists.xml#MD_CharacterSetCode" codeListValue="utf16">utf16</gmd:MD_CharacterSetCode>
+</gmd:characterSet>
+<gmd:topicCategory>
+<gmd:MD_TopicCategoryCode>transportation</gmd:MD_TopicCategoryCode>
+</gmd:topicCategory>
+<gmd:extent>
+<gmd:EX_Extent>
+<gmd:temporalElement>
+<gmd:EX_TemporalExtent>
+<gmd:extent>
+<gml:AbstractTimePrimitive xsi:type="gml:TimePeriodType" gml:id="TimePeriod" xmlns:gml="http://www.opengis.net/gml">
+<gml:beginPosition>19990101</gml:beginPosition>
+<gml:endPosition>20090921</gml:endPosition>
+</gml:AbstractTimePrimitive>
+</gmd:extent>
+</gmd:EX_TemporalExtent>
+</gmd:temporalElement>
+</gmd:EX_Extent>
+</gmd:extent>
+</gmd:MD_DataIdentification>
+</gmd:identificationInfo>
+<gmd:distributionInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:MD_Distribution>
+<gmd:distributor>
+<gmd:MD_Distributor>
+<gmd:distributorContact>
+<gmd:CI_ResponsibleParty>
+<gmd:individualName>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Eurostat GISCO</gco:CharacterString>
+</gmd:individualName>
+<gmd:organisationName>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Eurostat GISCO - European Commission (EC)</gco:CharacterString>
+</gmd:organisationName>
+<gmd:positionName>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Responsible of reference geodatabase for the EC</gco:CharacterString>
+</gmd:positionName>
+<gmd:contactInfo>
+<gmd:CI_Contact>
+<gmd:phone>
+<gmd:CI_Telephone>
+<gmd:voice>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">+352 4301 32076</gco:CharacterString>
+</gmd:voice>
+<gmd:facsimile>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">+352 4301 34029</gco:CharacterString>
+</gmd:facsimile>
+</gmd:CI_Telephone>
+</gmd:phone>
+<gmd:address>
+<gmd:CI_Address>
+<gmd:deliveryPoint>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">5, rue Alphonse Weicker</gco:CharacterString>
+</gmd:deliveryPoint>
+<gmd:city>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Luxembourg</gco:CharacterString>
+</gmd:city>
+<gmd:administrativeArea>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Luxembourg</gco:CharacterString>
+</gmd:administrativeArea>
+<gmd:postalCode>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">2721</gco:CharacterString>
+</gmd:postalCode>
+<gmd:country>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">lu</gco:CharacterString>
+</gmd:country>
+<gmd:electronicMailAddress>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">estat-gisco@ec.europa.eu</gco:CharacterString>
+</gmd:electronicMailAddress>
+</gmd:CI_Address>
+</gmd:address>
+</gmd:CI_Contact>
+</gmd:contactInfo>
+<gmd:role>
+<gmd:CI_RoleCode codeList="./resources/Codelist/GiscoCodelists.xml#CI_RoleCode" codeListValue="distributor">distributor</gmd:CI_RoleCode>
+</gmd:role>
+</gmd:CI_ResponsibleParty>
+</gmd:distributorContact>
+<gmd:distributorFormat>
+<gmd:MD_Format>
+<gmd:name>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">SDE Table</gco:CharacterString>
+</gmd:name>
+<gmd:version>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">9.3</gco:CharacterString>
+</gmd:version>
+</gmd:MD_Format>
+</gmd:distributorFormat>
+<gmd:distributorTransferOptions>
+<gmd:MD_DigitalTransferOptions>
+<gmd:onLine>
+<gmd:CI_OnlineResource>
+<gmd:linkage>
+<gmd:URL>file://\\s-troi\gisco\dissemination\Public (free download)\PORT_2009\PGDB\data\PORT_2009.mdb</gmd:URL>
+</gmd:linkage>
+<gmd:protocol>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Local Area Network</gco:CharacterString>
+</gmd:protocol>
+<gmd:description>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">002</gco:CharacterString>
+</gmd:description>
+<gmd:function>
+<gmd:CI_OnLineFunctionCode codeList="./resources/Codelist/GiscoCodelists.xml#CI_OnLineFunctionCode" codeListValue="download">download</gmd:CI_OnLineFunctionCode>
+</gmd:function>
+</gmd:CI_OnlineResource>
+</gmd:onLine>
+<gmd:offLine>
+<gmd:MD_Medium>
+</gmd:MD_Medium>
+</gmd:offLine>
+</gmd:MD_DigitalTransferOptions>
+</gmd:distributorTransferOptions>
+</gmd:MD_Distributor>
+</gmd:distributor>
+</gmd:MD_Distribution>
+</gmd:distributionInfo>
+<gmd:dataQualityInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:DQ_DataQuality>
+<gmd:scope>
+</gmd:scope>
+<gmd:report>
+<gmd:DQ_ConceptualConsistency>
+<gmd:nameOfMeasure>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Completeness of Dataset</gco:CharacterString>
+</gmd:nameOfMeasure>
+<gmd:measureIdentification>
+<gmd:MD_Identifier>
+<gmd:authority>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:authority>
+<gmd:code>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:code>
+</gmd:MD_Identifier>
+</gmd:measureIdentification>
+<gmd:measureDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">All feature classes and attribute tables should be present</gco:CharacterString>
+</gmd:measureDescription>
+<gmd:evaluationMethodType>
+<gmd:DQ_EvaluationMethodTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#DQ_EvaluationMethodTypeCode" codeListValue="">
+</gmd:DQ_EvaluationMethodTypeCode>
+</gmd:evaluationMethodType>
+<gmd:evaluationMethodDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Re-application of schema to dataset</gco:CharacterString>
+</gmd:evaluationMethodDescription>
+<gmd:evaluationProcedure>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:evaluationProcedure>
+<gmd:dateTime>
+<gco:DateTime xmlns:gco="http://www.isotc211.org/2005/gco">2009-09-29T00:00:00</gco:DateTime>
+</gmd:dateTime>
+<gmd:result>
+<gmd:DQ_ConformanceResult>
+<gmd:specification>
+</gmd:specification>
+<gmd:explanation>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">All feature classes and attribute tables are present</gco:CharacterString>
+</gmd:explanation>
+<gmd:pass>
+<gco:Boolean xmlns:gco="http://www.isotc211.org/2005/gco">1</gco:Boolean>
+</gmd:pass>
+</gmd:DQ_ConformanceResult>
+</gmd:result>
+</gmd:DQ_ConceptualConsistency>
+</gmd:report>
+<gmd:report>
+<gmd:DQ_DomainConsistency>
+<gmd:nameOfMeasure>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Referential Integrity of Dataset</gco:CharacterString>
+</gmd:nameOfMeasure>
+<gmd:measureIdentification>
+<gmd:MD_Identifier>
+<gmd:authority>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:authority>
+<gmd:code>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:code>
+</gmd:MD_Identifier>
+</gmd:measureIdentification>
+<gmd:measureDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">The integrity and cardinality of the relationships (conceptual and implemented) were checked by enforcing primary and foreign key integrity constraints in Oracle. The constraints referencing domain tables were a test of domain consistency.</gco:CharacterString>
+</gmd:measureDescription>
+<gmd:evaluationMethodType>
+<gmd:DQ_EvaluationMethodTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#DQ_EvaluationMethodTypeCode" codeListValue="">
+</gmd:DQ_EvaluationMethodTypeCode>
+</gmd:evaluationMethodType>
+<gmd:evaluationMethodDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Errors during creation of integrity constraints.</gco:CharacterString>
+</gmd:evaluationMethodDescription>
+<gmd:evaluationProcedure>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:evaluationProcedure>
+<gmd:dateTime>
+<gco:DateTime xmlns:gco="http://www.isotc211.org/2005/gco">2009-09-29T00:00:00</gco:DateTime>
+</gmd:dateTime>
+<gmd:result>
+<gmd:DQ_ConformanceResult>
+<gmd:specification>
+</gmd:specification>
+<gmd:explanation>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">No errors occurred, so the integrity of all primary and foreign keys was confirmed. All coded values are compliant to the relevant domains (except for any NULL values). The cardinality can only be confirmed where it is strict enough for this test to detect errors.</gco:CharacterString>
+</gmd:explanation>
+<gmd:pass>
+<gco:Boolean xmlns:gco="http://www.isotc211.org/2005/gco">1</gco:Boolean>
+</gmd:pass>
+</gmd:DQ_ConformanceResult>
+</gmd:result>
+</gmd:DQ_DomainConsistency>
+</gmd:report>
+<gmd:report>
+<gmd:DQ_ConceptualConsistency>
+<gmd:nameOfMeasure>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Semantic consistency of Port IDs</gco:CharacterString>
+</gmd:nameOfMeasure>
+<gmd:measureIdentification>
+<gmd:MD_Identifier>
+<gmd:authority>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:authority>
+<gmd:code>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:code>
+</gmd:MD_Identifier>
+</gmd:measureIdentification>
+<gmd:measureDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">CNTR_CODE must be coincident to the first two character of PORT_ID except for GB, GF, GP, MQ, RE, XC and XL.</gco:CharacterString>
+</gmd:measureDescription>
+<gmd:evaluationMethodType>
+<gmd:DQ_EvaluationMethodTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#DQ_EvaluationMethodTypeCode" codeListValue="">
+</gmd:DQ_EvaluationMethodTypeCode>
+</gmd:evaluationMethodType>
+<gmd:evaluationMethodDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">SQL query</gco:CharacterString>
+</gmd:evaluationMethodDescription>
+<gmd:evaluationProcedure>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:evaluationProcedure>
+<gmd:dateTime>
+<gco:DateTime xmlns:gco="http://www.isotc211.org/2005/gco">2009-09-29T00:00:00</gco:DateTime>
+</gmd:dateTime>
+<gmd:result>
+<gmd:DQ_ConformanceResult>
+<gmd:specification>
+</gmd:specification>
+<gmd:explanation>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Only the valid exceptions were returned by the query, so otherwise the dataset conforms to this rule</gco:CharacterString>
+</gmd:explanation>
+<gmd:pass>
+<gco:Boolean xmlns:gco="http://www.isotc211.org/2005/gco">1</gco:Boolean>
+</gmd:pass>
+</gmd:DQ_ConformanceResult>
+</gmd:result>
+</gmd:DQ_ConceptualConsistency>
+</gmd:report>
+<gmd:report>
+<gmd:DQ_TopologicalConsistency>
+<gmd:nameOfMeasure>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Consistency within Port region dataset</gco:CharacterString>
+</gmd:nameOfMeasure>
+<gmd:measureIdentification>
+<gmd:MD_Identifier>
+<gmd:authority>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:authority>
+<gmd:code>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:code>
+</gmd:MD_Identifier>
+</gmd:measureIdentification>
+<gmd:measureDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Port regions must not overlap.</gco:CharacterString>
+</gmd:measureDescription>
+<gmd:evaluationMethodType>
+<gmd:DQ_EvaluationMethodTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#DQ_EvaluationMethodTypeCode" codeListValue="">
+</gmd:DQ_EvaluationMethodTypeCode>
+</gmd:evaluationMethodType>
+<gmd:evaluationMethodDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Topology rule validation (cluster tolerance 0.000000000000177635683941 degrees)</gco:CharacterString>
+</gmd:evaluationMethodDescription>
+<gmd:evaluationProcedure>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:evaluationProcedure>
+<gmd:dateTime>
+<gco:DateTime xmlns:gco="http://www.isotc211.org/2005/gco">2009-09-29T00:00:00</gco:DateTime>
+</gmd:dateTime>
+<gmd:result>
+<gmd:DQ_ConformanceResult>
+<gmd:specification>
+</gmd:specification>
+<gmd:explanation>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">No errors were found, so port regions do not overlap</gco:CharacterString>
+</gmd:explanation>
+<gmd:pass>
+<gco:Boolean xmlns:gco="http://www.isotc211.org/2005/gco">1</gco:Boolean>
+</gmd:pass>
+</gmd:DQ_ConformanceResult>
+</gmd:result>
+</gmd:DQ_TopologicalConsistency>
+</gmd:report>
+<gmd:report>
+<gmd:DQ_TopologicalConsistency>
+<gmd:nameOfMeasure>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Consistency between Port points and regions</gco:CharacterString>
+</gmd:nameOfMeasure>
+<gmd:measureIdentification>
+<gmd:MD_Identifier>
+<gmd:authority>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:authority>
+<gmd:code>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:code>
+</gmd:MD_Identifier>
+</gmd:measureIdentification>
+<gmd:measureDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Every Port region must cover a Port point with the same PORT_ID</gco:CharacterString>
+</gmd:measureDescription>
+<gmd:evaluationMethodType>
+<gmd:DQ_EvaluationMethodTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#DQ_EvaluationMethodTypeCode" codeListValue="">
+</gmd:DQ_EvaluationMethodTypeCode>
+</gmd:evaluationMethodType>
+<gmd:evaluationMethodDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Spatial join and Selection</gco:CharacterString>
+</gmd:evaluationMethodDescription>
+<gmd:evaluationProcedure>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:evaluationProcedure>
+<gmd:dateTime>
+<gco:DateTime xmlns:gco="http://www.isotc211.org/2005/gco">2009-09-29T00:00:00</gco:DateTime>
+</gmd:dateTime>
+<gmd:result>
+<gmd:DQ_ConformanceResult>
+<gmd:specification>
+</gmd:specification>
+<gmd:explanation>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">No errors were found, so all Port regions contain a Port point with the same PORT_ID</gco:CharacterString>
+</gmd:explanation>
+<gmd:pass>
+<gco:Boolean xmlns:gco="http://www.isotc211.org/2005/gco">1</gco:Boolean>
+</gmd:pass>
+</gmd:DQ_ConformanceResult>
+</gmd:result>
+</gmd:DQ_TopologicalConsistency>
+</gmd:report>
+<gmd:report>
+<gmd:DQ_TopologicalConsistency>
+<gmd:nameOfMeasure>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Consistency between Port points and Country regions</gco:CharacterString>
+</gmd:nameOfMeasure>
+<gmd:measureIdentification>
+<gmd:MD_Identifier>
+<gmd:authority>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:authority>
+<gmd:code>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:code>
+</gmd:MD_Identifier>
+</gmd:measureIdentification>
+<gmd:measureDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Every Port point must be properly inside a polygon in CNTR_RG_100K_2006 with the same country code.</gco:CharacterString>
+</gmd:measureDescription>
+<gmd:evaluationMethodType>
+<gmd:DQ_EvaluationMethodTypeCode codeList="./resources/Codelist/GiscoCodelists.xml#DQ_EvaluationMethodTypeCode" codeListValue="">
+</gmd:DQ_EvaluationMethodTypeCode>
+</gmd:evaluationMethodType>
+<gmd:evaluationMethodDescription>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Spatial join and Selection</gco:CharacterString>
+</gmd:evaluationMethodDescription>
+<gmd:evaluationProcedure>
+<gmd:CI_Citation>
+<gmd:title>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">
+</gco:CharacterString>
+</gmd:title>
+<gmd:date>
+</gmd:date>
+<gmd:identifier>
+</gmd:identifier>
+</gmd:CI_Citation>
+</gmd:evaluationProcedure>
+<gmd:dateTime>
+<gco:DateTime xmlns:gco="http://www.isotc211.org/2005/gco">2009-09-29T00:00:00</gco:DateTime>
+</gmd:dateTime>
+<gmd:result>
+<gmd:DQ_ConformanceResult>
+<gmd:specification>
+</gmd:specification>
+<gmd:explanation>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">No errors were found so all Port points are located inside a CNTR_2006 Country region with the same code</gco:CharacterString>
+</gmd:explanation>
+<gmd:pass>
+<gco:Boolean xmlns:gco="http://www.isotc211.org/2005/gco">1</gco:Boolean>
+</gmd:pass>
+</gmd:DQ_ConformanceResult>
+</gmd:result>
+</gmd:DQ_TopologicalConsistency>
+</gmd:report>
+<gmd:lineage>
+<gmd:LI_Lineage>
+<gmd:statement>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Port names and Locodes were mainly taken from the Eurostat list "Ports Estat 2009", or the UN/LOCODE 2007 list.
+
+Port regions were derived from Corine Land Cover 2000 vector version (CLC class "1.2.3") or EuroRegionalMap v3.0 (HarbourA class).
+
+Point location sources were, in decreasing order of preference:
+1. European Maritime Safety Agency (EMSA) list of ports by calls
+2. Lloyds MIU list of European ports
+3. GISCO Ports 2008 dataset (PORT_2008). This was derived from some of the same sources used for this dataset, plus Norie’s Seaports of the World list (in Norie’s Nautical Tables, Imray, 2007)
+4. UN/LOCODE 2007 list (UNECE, 2007)
+The point location may then have been moved inside a port polygon, inside the land polygon (GISCO CNTR_RG_100K_2006), inside a settlement polygon (STTL_RG_250K_V3) or made coincident with a settlement point (STTL_PT_V3).
+
+Port polygons within 200m of a STTL_RG_250K_V3 were named according to the settlement. The named port polygons were matched to port points within 1 arc minute based on name and coordinate coincidence (fuzzy matching), in order of source preference. Some named polygons not near a point were assigned Locodes by name match with the UN list. The unnamed port polygons were matched to points within 1 arc minute, considering the agreement between the different point sources. These steps created initial point and polygon datasets that were harmonised with each other. Port points were added from PORT_PT_2008, the EMSA dataset or the Estat 2009 list (where possible) where the Locode was not already represented, and these additional points were harmonised with nearby STTL_V3.
+
+Many of the processing steps included some manual matching, editing or checking steps to improve data quality. Reference sources used included port organisation websites, online port lists, and aerial imagery. The busiest 60 ports according to the "EU Energy and Transport in Figures: Statistical Pocketbook 2009" were visually checked against input and reference sources. Effort was also focussed on Eurostat statistical ports. All matching steps included manual checks of join tables or the spatial data to help overcome naming or conceptual differences between sources. Some expected errors were manually fixed.
+
+LOCD_STTS_CODE port attributes derived from UN/LOCODE 2007, and LOCD_STTS_DOM table copied from the StatusIndicator table of the UN database. PORT_COOR_RELI_CODE positional reliability attributes were calculated for port points based on the process for reaching the final point coordinate. PORT_LOCD_RELI_CODE attributes were derived depending on the port’s proximity to settlement features that verify the port name (and hence Locode). TEN_CODE and PROC_TEN_CODE attributes provided by GISCO. STAT_PORT_CODE and REMK are Eurostat attributes from the "Ports Estat 2009" list.  
+</gco:CharacterString>
+</gmd:statement>
+<gmd:processStep>
+<gmd:LI_ProcessStep>
+<gmd:description>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Create Working Ports Polygon dataset with Names Assigned: Ports polygons created from CLC2000 + ERM HarbourA. Names allocated from STTL_RG_250K_V3 by intersect or 200m buffer and intersect. Visual checks where port overlays several settlements. Preparation of point data sources, such as conversion of lists with coordinate attributes into point datasets.
+
+Allocate LOCODEs to Named Port Polygons: Removal of ERM geometry where polygons from both sources. Dissolve to create multipart PORT_RG. Match named RG to PT datasets within 1 arc minute based on location and name coincidence (fuzzy matching with Levenshtein algorithm). Automated selection steps, in order of source confidence, then visual matching. Join remaining unmatched RG to UN list by name to allocate LOCODEs where possible.
+
+Allocate LOCODEs to Unnamed Port Polygons: Match unnamed PL to PT with 1 arc minute based on location. Automated steps in order of source confidence, but not where disagreement between point sources. Visual matching step.
+
+Create First instance of PORT_2009 Dataset: Manual correction of known errors. Creation of single PORT_RG dataset with unique Locodes. First PORT_PT dataset created from source points that had been matched to RG. Points outside the RG or the land moved to Near point 10m inside the inland port polygon relative to CNTR_RG_100K_2006. Where no source PT feature, new PT created inside RG at or near centroid. Port name attributes filled from input sources in priority order.
+
+Add Port Points with no Polygon: Unused port points selected from GISCO_PT_2008 and EMSA where the Locode is not already used in the working ports dataset. Some new points also created for ports added to the Estat list since 2008 but not yet represented. Matching unused port points to STTL_V3, again based on proximity (within 1 arc minute) and fuzzy name matches. PT matched to but outside STTL_RG were moved just inside RG. PT matched to STTL_PT (but not to STTL_RG) were moved to the settlement location.  Any new offshore PORT_PT were moved inland relative to CNTR_RG_100K_2006
+
+Complete Attribution, Tables and Checking: Deletion of some points with incorrect Locode. Check PORT_PT don’t overlay unused port polygons. Attributes completed and domain tables created. Visual checks of busiest EU ports. Check against Estat lists of deleted ports. Checks of polygons overlapping several points, to ensure the polygon was linked to the point for the most important port.</gco:CharacterString>
+</gmd:description>
+</gmd:LI_ProcessStep>
+</gmd:processStep>
+<gmd:source>
+<gmd:LI_Source>
+<gmd:description>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Eurostat “Ports Estat 2009” list; CLC2000 vector dataset; ERM v3.0 HarbourA dataset; GISCO STTL_V3 dataset (from ERM v3.0); UN/LOCODE 2007 list; GISCO Ports 2008 dataset; EMSA list of ports by calls; Lloyds MIU list of European ports; Norie’s Seaports of the World list; internet reference sources</gco:CharacterString>
+</gmd:description>
+</gmd:LI_Source>
+</gmd:source>
+</gmd:LI_Lineage>
+</gmd:lineage>
+</gmd:DQ_DataQuality>
+</gmd:dataQualityInfo>
+<gmd:entityAttributeInformation xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:entityType>
+<gmd:AT_EntityType>
+<gmd:label>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">GISCO.PORT_COOR_RELI_DOM</gco:CharacterString>
+</gmd:label>
+<gmd:definition>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Port point positional reliability category lookup table</gco:CharacterString>
+</gmd:definition>
+</gmd:AT_EntityType>
+</gmd:entityType>
+<gmd:language>
+<gmd:AT_Attribute>
+<gmd:valueType>
+<gmd:AT_TypeNameCode>OID</gmd:AT_TypeNameCode>
+</gmd:valueType>
+<gmd:valueDomain>
+</gmd:valueDomain>
+<gmd:cardinality>
+</gmd:cardinality>
+<gmd:label>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">OBJECTID</gco:CharacterString>
+</gmd:label>
+<gmd:definition>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Internal feature number.</gco:CharacterString>
+</gmd:definition>
+<gmd:source>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">ESRI</gco:CharacterString>
+</gmd:source>
+<gmd:binaryWidth>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">4</gco:Integer>
+</gmd:binaryWidth>
+<gmd:precision>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">10</gco:Integer>
+</gmd:precision>
+<gmd:scale>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">0</gco:Integer>
+</gmd:scale>
+</gmd:AT_Attribute>
+</gmd:language>
+<gmd:language>
+<gmd:AT_Attribute>
+<gmd:valueType>
+<gmd:AT_TypeNameCode>String</gmd:AT_TypeNameCode>
+</gmd:valueType>
+<gmd:valueDomain>
+</gmd:valueDomain>
+<gmd:cardinality>
+</gmd:cardinality>
+<gmd:label>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">PORT_COOR_RELI_ID</gco:CharacterString>
+</gmd:label>
+<gmd:definition>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Primary key. Port positional reliability identification code.</gco:CharacterString>
+</gmd:definition>
+<gmd:source>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">GISCO</gco:CharacterString>
+</gmd:source>
+<gmd:binaryWidth>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">1</gco:Integer>
+</gmd:binaryWidth>
+<gmd:precision>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">0</gco:Integer>
+</gmd:precision>
+<gmd:scale>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">0</gco:Integer>
+</gmd:scale>
+</gmd:AT_Attribute>
+</gmd:language>
+<gmd:language>
+<gmd:AT_Attribute>
+<gmd:valueType>
+<gmd:AT_TypeNameCode>String</gmd:AT_TypeNameCode>
+</gmd:valueType>
+<gmd:valueDomain>
+</gmd:valueDomain>
+<gmd:cardinality>
+</gmd:cardinality>
+<gmd:label>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">PORT_COOR_RELI_DESC</gco:CharacterString>
+</gmd:label>
+<gmd:definition>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Description of the port positional reliability category.</gco:CharacterString>
+</gmd:definition>
+<gmd:source>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">GISCO</gco:CharacterString>
+</gmd:source>
+<gmd:binaryWidth>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">250</gco:Integer>
+</gmd:binaryWidth>
+<gmd:precision>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">0</gco:Integer>
+</gmd:precision>
+<gmd:scale>
+<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">0</gco:Integer>
+</gmd:scale>
+</gmd:AT_Attribute>
+</gmd:language>
+</gmd:entityAttributeInformation>
+<gmd:entityAttributeInformation xmlns:gmd="http://www.isotc211.org/2005/gmd">
+<gmd:entityType>
+<gmd:AT_EntityType>
+<gmd:label>
+<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">GISCO.PORT_PT_2009</gco:CharacterString>
+</gmd:label>
+</gmd:AT_EntityType>
+</gmd:entityType>
+<gmd:language>
+</gmd:language>
+</gmd:entityAttributeInformation>
+</gisco:MD_Metadata>

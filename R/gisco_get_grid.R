@@ -64,7 +64,14 @@ gisco_get_grid <- function(resolution = "20",
     filename <- paste0("grid_", resolution, "km_", ftrans, ".gpkg")
     api_entry <- "https://gisco-services.ec.europa.eu/grid"
     url <- file.path(api_entry, filename)
-    if (resolution %in% c("1" , "2")) {
+
+    local <- file.path(gsc_helper_cachedir(cache_dir),filename)
+    exist_local <- file.exists(local)
+
+    if (verbose & exist_local)
+      message("File exits on local cache dir")
+
+    if (resolution %in% c("1" , "2") & isFALSE(exist_local)) {
       sel <-
         menu(c("Yes", "No"), title = "You are about to download a large file (>500M). Proceed?")
       if (sel != 1) {
@@ -76,7 +83,11 @@ gisco_get_grid <- function(resolution = "20",
     localfile <-
       gsc_api_cache(url, filename, cache_dir, update_cache, verbose)
 
-
+    if (verbose) {
+      size <- file.size(localfile)
+      class(size) <- 'object_size'
+      message(format(size, units = "auto"))
+    }
     load <- tryCatch(
       sf::st_read(
         localfile,

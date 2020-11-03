@@ -43,14 +43,12 @@ however other formats are already available on GISCO.
 
 This function helps building a personal shape library on \code{cache_dir}
 (or \code{options(gisco_cache_dir = "path/to/dir")}, if set by the user).
-
-Run \code{example("gisco_bulk_download")} to download some basic files on your \code{gisco_cache_dir} folder.
 }
 \note{
 For downloading specific files use \link{gisco_get} functions.
 }
 \examples{
-if (gisco_check_access()) {
+\dontrun{
 # This example would populate your cache_dir with a selection of geojson files
 # Set options(gisco_cache_dir = "path/to/dir") first
 # It may take a couple of minutes

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?><gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<gmd:fileIdentifier xmlns:gmd="http://www.isotc211.org/2005/gmd"><CharacterString xmlns="http://www.isotc211.org/2005/gco">{72E0E3E0-C231-4214-B763-D33D05B07E76}</CharacterString></gmd:fileIdentifier>
+	<gmd:language xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gmd:LanguageCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#LanguageCode" codeListValue="eng" xmlns:gmd="http://www.isotc211.org/2005/gmd">eng</gmd:LanguageCode>
+	</gmd:language>
+	<gmd:hierarchyLevel xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset" xmlns:gmd="http://www.isotc211.org/2005/gmd">dataset</gmd:MD_ScopeCode>
+	</gmd:hierarchyLevel>
+	<gmd:contact xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gmd:CI_ResponsibleParty xmlns:gmd="http://www.isotc211.org/2005/gmd">
+			<gmd:organisationName xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">European Commission, Eurostat (ESTAT), GISCO</gco:CharacterString>
+			</gmd:organisationName>
+			<gmd:contactInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:CI_Contact xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:address xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:CI_Address xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:electronicMailAddress xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">estat-gisco@ec.europa.eu</gco:CharacterString>
+							</gmd:electronicMailAddress>
+						</gmd:CI_Address>
+					</gmd:address>
+				</gmd:CI_Contact>
+			</gmd:contactInfo>
+			<gmd:role xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact" xmlns:gmd="http://www.isotc211.org/2005/gmd"/>
+			</gmd:role>
+		</gmd:CI_ResponsibleParty>
+	</gmd:contact>
+	<gmd:dateStamp xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gco:Date xmlns:gco="http://www.isotc211.org/2005/gco">2012-03-26</gco:Date>
+	</gmd:dateStamp>
+	<gmd:metadataStandardName xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">INSPIRE Metadata Commission Regulation (EC) No 1205/2008</gco:CharacterString>
+	</gmd:metadataStandardName>
+	<gmd:metadataStandardVersion xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">03.12.2008</gco:CharacterString>
+	</gmd:metadataStandardVersion>
+	<gmd:locale xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gmd:PT_Locale id="eng" xmlns:gmd="http://www.isotc211.org/2005/gmd">
+			<gmd:languageCode xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:LanguageCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#LanguageCode" codeListValue="eng" xmlns:gmd="http://www.isotc211.org/2005/gmd">English</gmd:LanguageCode>
+			</gmd:languageCode>
+			<gmd:characterEncoding xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" xmlns:gmd="http://www.isotc211.org/2005/gmd">UTF-8</gmd:MD_CharacterSetCode>
+			</gmd:characterEncoding>
+		</gmd:PT_Locale>
+	</gmd:locale>
+	<gmd:identificationInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gmd:MD_DataIdentification xmlns:gmd="http://www.isotc211.org/2005/gmd">
+			<gmd:citation xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:CI_Citation xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:title xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Airports - Transport Networks - Dataset</gco:CharacterString>
+					</gmd:title>
+					
+					<gmd:date xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:CI_Date xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:date xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:Date xmlns:gco="http://www.isotc211.org/2005/gco">2009-09-18</gco:Date>
+							</gmd:date>
+							<gmd:dateType xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation" xmlns:gmd="http://www.isotc211.org/2005/gmd"/>
+							</gmd:dateType>
+						</gmd:CI_Date>
+					</gmd:date>
+					
+					<gmd:identifier xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:MD_Identifier xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:code xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">{0A71DC1B-8F95-40D5-A3BA-5A3C73BE615D}</gco:CharacterString>
+							</gmd:code>
+						</gmd:MD_Identifier>
+					</gmd:identifier>
+				</gmd:CI_Citation>
+			</gmd:citation>
+			<gmd:abstract xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">This dataset contains the over 4000 Pan European airports and heliports. Most of the Airport points (c. 85%) were derived from the EuroControl database. Supplementary sources included EuroRegionalMap (ERM) v3.0 from EuroGeographics , Eurostat, IATA, and the IVAO online database, notably for the EU territories not covered by EuroControl. 
+All the airports listed in Regulation 1358/2003 (statistical returns in respect of the carriage of passengers, freight and mail by air) are included. For around half of the airports also the area is depicted. More than 500 airport runways are depicted as lines.    
+The airports are identified using the International Civil Aviation Organisation (ICAO) airport codes, furthermore the &amp;quot;TEN_CODE&amp;quot; is provided, which provides the link to DG MOVE its &amp;quot;GETIS&amp;quot; (Geographic Energy and Transport Information System) database.
+The attribute &amp;quot;PASS_2004&amp;quot; contains the classification of the airports by number of passengers in 2004 in 4 classes, while the attribute &amp;quot;PASS_2007&amp;quot; contains the classification for 2007.
+Dataset coverage is geographical Europe plus territories administrated by European countries.
+The full data set is accessible via the &amp;quot;EC restricted download link&amp;quot; under &amp;quot;GISCO.AIRP&amp;quot;. A subset (airport points and airport polygons) is publicly available under the &amp;quot;Download link&amp;quot;.
+    
+The scale of the polygons is 1:100.000 (except for a few cases were it is 1:250.000).
+The scale of the line features and heliports is 1:250.000.
+The scale of the airport points is down to 1:4.000.000. The positional accuracy for each point is specified as an attribute.</gco:CharacterString>
+			</gmd:abstract>
+			<gmd:pointOfContact xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:CI_ResponsibleParty xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:organisationName xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">European Commission, Eurostat (ESTAT), GISCO</gco:CharacterString>
+					</gmd:organisationName>
+					<gmd:contactInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:CI_Contact xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:address xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:CI_Address xmlns:gmd="http://www.isotc211.org/2005/gmd">
+									<gmd:electronicMailAddress xmlns:gmd="http://www.isotc211.org/2005/gmd">
+										<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">estat-gisco@ec.europa.eu</gco:CharacterString>
+									</gmd:electronicMailAddress>
+								</gmd:CI_Address>
+							</gmd:address>
+						</gmd:CI_Contact>
+					</gmd:contactInfo>
+					<gmd:role xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact" xmlns:gmd="http://www.isotc211.org/2005/gmd">pointOfContact</gmd:CI_RoleCode>
+					</gmd:role>
+				</gmd:CI_ResponsibleParty>
+			</gmd:pointOfContact>
+			
+			<gmd:descriptiveKeywords xlink:title="inspire-data-theme-keywords" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<gmd:MD_Keywords xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:keyword xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Transport networks</gco:CharacterString>
+					</gmd:keyword>
+					<gmd:thesaurusName xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:CI_Citation xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:title xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">GEMET - INSPIRE themes, version 1.0</gco:CharacterString>
+							</gmd:title>
+							<gmd:date xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:CI_Date xmlns:gmd="http://www.isotc211.org/2005/gmd">
+									<gmd:date xmlns:gmd="http://www.isotc211.org/2005/gmd">
+										<gco:Date xmlns:gco="http://www.isotc211.org/2005/gco">2008-06-01</gco:Date>
+									</gmd:date>
+									<gmd:dateType xmlns:gmd="http://www.isotc211.org/2005/gmd">
+										<gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" xmlns:gmd="http://www.isotc211.org/2005/gmd">publication</gmd:CI_DateTypeCode>
+									</gmd:dateType>
+								</gmd:CI_Date>
+							</gmd:date>
+						</gmd:CI_Citation>
+					</gmd:thesaurusName>
+				</gmd:MD_Keywords>
+			</gmd:descriptiveKeywords>
+			<gmd:descriptiveKeywords xlink:title="custom-keywords" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xlink="http://www.w3.org/1999/xlink">
+				<gmd:MD_Keywords xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:keyword xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">INSPIREGEOPORTAL</gco:CharacterString>
+					</gmd:keyword>
+					
+				</gmd:MD_Keywords>
+			</gmd:descriptiveKeywords>
+			
+			<gmd:resourceConstraints xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_Constraints xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:useLimitation xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Three data producers need to be specifically acknowledged: the European Environmental Agency (EEA) for the airport polygons derived from Corine Land Cover 2000 and Eurogeographics for the heliports, runways and polygons derived from EuroRegionalMap v3.0, Eurocontrol for the airport locations.
+
+The source should always be acknowledged: European Commission â&#128;&#147; Eurostat/GISCO 
+
+Acknowledgement notice, depending on the language used in the publication: 
+
+English: 
+Â© EEA, Â© EuroGeographics 
+Source: European Commission â&#128;&#147; Eurostat/GISCO 
+
+French: 
+Â© EEA, Â© EuroGeographics 
+Source: Commission europÃ©enne â&#128;&#147; Eurostat/GISCO
+
+German: 
+Â© EEA, Â© EuroGeographics 
+Quelle: EuropÃ¤ische Kommission - Eurostat/GISCO 
+
+For publications in languages other than English, French or German, the translation of the Acknowledgement notice in the language of the publication must be used.
+
+An overview of the EuroGeographics use conditions is given below. The detailed use conditions are available here: https://circabc.europa.eu/d/d/workspace/SpacesStore/6f5186f3-908b-413a-8687-191604976751/EuroGeographics%20Use%20Conditions%20-%20From%20Contract.pdf .
+Access to the detailed data is restricted to the personnel of the European Commission, the Executive Agencies and contractors, due to intellectual property rights. The contractors can access the data after signing an agreement form. The agreement form can be requested by the responsible service from European Commission - Eurostat/GISCO (ESTAT-GISCO@ec.europa.eu). Once the form has been signed, access will be provided by European Commission - Eurostat/GISCO. Data can be published in the form of electronic images, statistical tables and on paper. Subsets of this data can be made available to the general public for non commercial use, only if the data covered either has a spatial resolution of 1:3.000.000 or smaller, or less than 20% of the original EuroGeographics data is shown for the extent selected. The source and intellectual property have always to be acknowledged. To this end, an acknowledgement as specified below must be visible on any printed or electronic publication using the data. 
+
+While the EEA states as follows: Unless otherwise indicated, re-use of content on the EEA website for commercial or non-commercial purposes is permitted free of charge, provided that the source is acknowledged. The EEA re-use policy follows Directive 2003/98/EC of the European Parliament and the Council on the re-use of public sector information throughout the European Union and Commission Decision 2006/291/EC, Euratom on the re-use of Commission information. The EEA accepts no responsibility or liability whatsoever for the re-use of content accessible on its website. Any inquiries about re-use of content on the EEA website should be addressed to Ove Caspersen, EEA, Kongens Nytorv 6, DK-1050 Copenhagen K, Tel +45 33 36 71 00, Fax +45 33 36 71 99, e-mail copyrights at .europa.eu</gco:CharacterString>
+					</gmd:useLimitation>
+				</gmd:MD_Constraints>
+			</gmd:resourceConstraints>
+			<gmd:resourceConstraints xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_LegalConstraints xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:accessConstraints xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:MD_RestrictionCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_RestrictionCode" codeListValue="otherRestrictions" xmlns:gmd="http://www.isotc211.org/2005/gmd">otherRestrictions</gmd:MD_RestrictionCode>
+					</gmd:accessConstraints>
+					<gmd:otherConstraints xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">(e) intellectual property rights</gco:CharacterString>
+					</gmd:otherConstraints>
+				</gmd:MD_LegalConstraints>
+			</gmd:resourceConstraints>
+			<gmd:spatialResolution xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_Resolution xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:equivalentScale xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:MD_RepresentativeFraction xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:denominator xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">100000</gco:Integer>
+							</gmd:denominator>
+						</gmd:MD_RepresentativeFraction>
+					</gmd:equivalentScale>
+				</gmd:MD_Resolution>
+			</gmd:spatialResolution>
+			<gmd:spatialResolution xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_Resolution xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:equivalentScale xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:MD_RepresentativeFraction xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:denominator xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:Integer xmlns:gco="http://www.isotc211.org/2005/gco">1000000</gco:Integer>
+							</gmd:denominator>
+						</gmd:MD_RepresentativeFraction>
+					</gmd:equivalentScale>
+				</gmd:MD_Resolution>
+			</gmd:spatialResolution>
+			
+			
+			<gmd:language xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">eng</gco:CharacterString>
+			</gmd:language>
+			<gmd:topicCategory xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_TopicCategoryCode xmlns:gmd="http://www.isotc211.org/2005/gmd">transportation</gmd:MD_TopicCategoryCode>
+			</gmd:topicCategory>
+			<gmd:extent xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:EX_Extent xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:geographicElement xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:EX_GeographicBoundingBox xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:westBoundLongitude xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:Decimal xmlns:gco="http://www.isotc211.org/2005/gco">-69.39</gco:Decimal>
+							</gmd:westBoundLongitude>
+							<gmd:eastBoundLongitude xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:Decimal xmlns:gco="http://www.isotc211.org/2005/gco">102.49</gco:Decimal>
+							</gmd:eastBoundLongitude>
+							<gmd:southBoundLatitude xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:Decimal xmlns:gco="http://www.isotc211.org/2005/gco">-21.33</gco:Decimal>
+							</gmd:southBoundLatitude>
+							<gmd:northBoundLatitude xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:Decimal xmlns:gco="http://www.isotc211.org/2005/gco">78.93</gco:Decimal>
+							</gmd:northBoundLatitude>
+						</gmd:EX_GeographicBoundingBox>
+					</gmd:geographicElement>
+					
+				</gmd:EX_Extent>
+			</gmd:extent>
+		</gmd:MD_DataIdentification>
+	</gmd:identificationInfo>
+
+
+	<gmd:distributionInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gmd:MD_Distribution xmlns:gmd="http://www.isotc211.org/2005/gmd">
+			<gmd:transferOptions xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_DigitalTransferOptions xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:onLine xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:CI_OnlineResource xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:linkage xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:URL xmlns:gmd="http://www.isotc211.org/2005/gmd">http://www.gisco.eurostat.cec/gisco/cfm/mapservices.cfm</gmd:URL>
+							</gmd:linkage>
+							<gmd:function xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="search" xmlns:gmd="http://www.isotc211.org/2005/gmd"/>
+							</gmd:function>
+						</gmd:CI_OnlineResource>
+					</gmd:onLine>
+				</gmd:MD_DigitalTransferOptions>
+			</gmd:transferOptions>
+			<gmd:transferOptions xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_DigitalTransferOptions xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:onLine xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:CI_OnlineResource xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:linkage xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:URL xmlns:gmd="http://www.isotc211.org/2005/gmd">https://circabc.europa.eu/d/d/workspace/SpacesStore/475ee0bc-5a40-447f-97ab-94c8e1464d72/GISCO%20DB%20Manual%20v2.2.1.pdf</gmd:URL>
+							</gmd:linkage>
+							<gmd:function xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="information" xmlns:gmd="http://www.isotc211.org/2005/gmd"/>
+							</gmd:function>
+						</gmd:CI_OnlineResource>
+					</gmd:onLine>
+				</gmd:MD_DigitalTransferOptions>
+			</gmd:transferOptions>
+			<gmd:transferOptions xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_DigitalTransferOptions xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:onLine xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:CI_OnlineResource xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:linkage xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:URL xmlns:gmd="http://www.isotc211.org/2005/gmd">http://epp.eurostat.ec.europa.eu/portal/page/portal/gisco_Geographical_information_maps/popups/references/transport_networks</gmd:URL>
+							</gmd:linkage>
+							<gmd:function xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" xmlns:gmd="http://www.isotc211.org/2005/gmd"/>
+							</gmd:function>
+						</gmd:CI_OnlineResource>
+					</gmd:onLine>
+				</gmd:MD_DigitalTransferOptions>
+			</gmd:transferOptions>
+			<gmd:transferOptions xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:MD_DigitalTransferOptions xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:onLine xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:CI_OnlineResource xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:linkage xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:URL xmlns:gmd="http://www.isotc211.org/2005/gmd">http://myintracomm.ec.europa.eu/dg/ESTAT/6-tools/GISCO/AccessGeographicalRef%20Database/Pages/AccessGeographicalRefDatabase.aspx</gmd:URL>
+							</gmd:linkage>
+							<gmd:function xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="offlineAccess" xmlns:gmd="http://www.isotc211.org/2005/gmd"/>
+							</gmd:function>
+						</gmd:CI_OnlineResource>
+					</gmd:onLine>
+				</gmd:MD_DigitalTransferOptions>
+			</gmd:transferOptions>
+			
+		</gmd:MD_Distribution>
+	</gmd:distributionInfo>
+
+	<gmd:dataQualityInfo xmlns:gmd="http://www.isotc211.org/2005/gmd">
+		<gmd:DQ_DataQuality xmlns:gmd="http://www.isotc211.org/2005/gmd">
+			<gmd:scope xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:DQ_Scope xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:level xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="" xmlns:gmd="http://www.isotc211.org/2005/gmd"/>
+					</gmd:level>
+				</gmd:DQ_Scope>
+			</gmd:scope>
+			<gmd:report xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:DQ_DomainConsistency xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="DQ_DomainConsistency_Type">
+					<gmd:measureIdentification xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:RS_Identifier xmlns:gmd="http://www.isotc211.org/2005/gmd">
+							<gmd:code xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Conformity_001</gco:CharacterString>
+							</gmd:code>
+							<gmd:codeSpace xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">INSPIRE</gco:CharacterString>
+							</gmd:codeSpace>
+						</gmd:RS_Identifier>
+					</gmd:measureIdentification>
+					<gmd:result xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gmd:DQ_ConformanceResult xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="DQ_ConformanceResult_Type">
+							<gmd:specification xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gmd:CI_Citation xmlns:gmd="http://www.isotc211.org/2005/gmd">
+									<gmd:title xmlns:gmd="http://www.isotc211.org/2005/gmd">
+										<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">Commission Regulation (EU) No 1089/2010 of 23 November 2010 implementing Directive 2007/2/EC of the European Parliament and of the Council as regards interoperability of spatial data sets and services</gco:CharacterString>
+									</gmd:title>
+									<gmd:date xmlns:gmd="http://www.isotc211.org/2005/gmd">
+										<gmd:CI_Date xmlns:gmd="http://www.isotc211.org/2005/gmd">
+											<gmd:date xmlns:gmd="http://www.isotc211.org/2005/gmd">
+												<gco:Date xmlns:gco="http://www.isotc211.org/2005/gco">2010-11-23</gco:Date>
+											</gmd:date>
+											<gmd:dateType xmlns:gmd="http://www.isotc211.org/2005/gmd">
+												<gmd:CI_DateTypeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#CI_DateTypeCode" codeListValue="creation" xmlns:gmd="http://www.isotc211.org/2005/gmd">creation</gmd:CI_DateTypeCode>
+											</gmd:dateType>
+										</gmd:CI_Date>
+									</gmd:date>
+								</gmd:CI_Citation>
+							</gmd:specification>
+							<gmd:explanation xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">See the referenced specification</gco:CharacterString>
+							</gmd:explanation>
+							<gmd:pass xmlns:gmd="http://www.isotc211.org/2005/gmd">
+								
+							</gmd:pass>
+						</gmd:DQ_ConformanceResult>
+					</gmd:result>
+				</gmd:DQ_DomainConsistency>
+			</gmd:report>
+			
+			
+			<gmd:lineage xmlns:gmd="http://www.isotc211.org/2005/gmd">
+				<gmd:LI_Lineage xmlns:gmd="http://www.isotc211.org/2005/gmd">
+					<gmd:statement xmlns:gmd="http://www.isotc211.org/2005/gmd">
+						<gco:CharacterString xmlns:gco="http://www.isotc211.org/2005/gco">This dataset hosts four related feature classes:
+- AIRP_ICAO_PT: All airports and some heliports are represented as points. The point coordinates and most of the attributes are based on the Eurocontrol database, complemented with other sources for the EU territories not covered by Eurocontrol. Positional accuracy varies from 0 to 2 km
+- AIRP_LCOV_RG: Around half the airports are also represented by polygons, extracted from Corine Land Cover 2000  (CLC) and/or ERM v3.0. New polygons were digitised from aerial imagery to complete the polygonal representation of all but a few of the airports included in EU regulation 1358/2003.  It is a common practice that airport facilities and infrastructure are shared by military and civil airports, having a different ICAO code. In these cases one polygon in AIRP_LCOV_RG can overlap one or more points in AIRP_ICAO_PT. Scale 1:100.000
+- AIRP_RUNW_LI: 574 runways are represented with polyline topology, sourced from EuroRegional Map (ERM) v3.0 by EuroGeoGraphics (Scale 1:250.000). All features have been harmonised to be inside polygon extents. 
+- AIRP_HELI_PT is a heliport feature class extracted from ERM v3.0 (Scale 1:250.000). Features lack an official identification code. 
+There are a number of basic attributes for each airport, such as different identification codes, airport name and altitude. 
+Most of the Airport points (c. 85%) were derived from the EuroControl database. Supplementary sources included EuroRegionalMap (ERM) v3.0 from EuroGeographics , Eurostat, IATA, and the IVAO online database, notably for the EU territories not covered by EuroControl. The Airport point sources provided the point coordinates and many attributes. 
+Other attribute sources were:
+- the DG TREN GETIS database of 453 TEN airports 2001
+- the 2004 and 2007 lists of  airports relating to EU regulation 1358/2003 (statistical returns in respect of the carriage of passengers, freight and mail by air)
+- altitudes from the SRTM 90m DEM
+Most polygonal features were derived from CLC2000,  in a few cases from ERM, or combined from both sources. Some 30 new polygons were digitised from IMAGE 2000, NASA Landsat 2000 and Bing Maps to complete the polygonal depiction of most airports on the &amp;apos;regulation&amp;apos; lists.
+During the initial dataset creation, points and polygons were matched by a multi-step process with a spatial join. Initially, points located 0-5km from the edge of a polygon were checked and, where applicable, moved inside the polygon. After the join, matched points were moved to the centre of the polygon. CLC2000 polygons were only included in the dataset if they had been matched to an airport point.
+During an update, ERM geometry or features were added to the previous version of the AIRPORT dataset as follows. Where an ERM polygon overlapped an existing polygon, the areas were merged to give the combined extent. A new airport polygon was created where an ERM polygon did not match an existing polygon. A new airport point was created at the centre of a new polygon if needed. New points were also created where ERM airfield points did not match an existing feature.
+Runway lines overlaying AIRP_LCOV_RG were imported from ERM and clipped to the extent of the airfield polygons. Heliport points were imported from ERM but not integrated with the other feature classes.
+A number of processing steps during the data creation and update were concerned with assuring data quality. The &amp;apos;regulation&amp;apos; and TEN airports were most closely checked. Points from the lower-reliability supplemental sources were most likely to be deleted if there was any reason to doubt their validity. Manual correction of some particularly obvious positional or attribute errors also occurred during data preparation. The update process showed certain inconsistencies between ERM v3.0 and previous versions of this dataset. Internet airport listings and aerial imagery were often consulted before deciding how to resolve errors.</gco:CharacterString>
+					</gmd:statement>
+				</gmd:LI_Lineage>
+			</gmd:lineage>
+		</gmd:DQ_DataQuality>
+	</gmd:dataQualityInfo>
+</gmd:MD_Metadata>
