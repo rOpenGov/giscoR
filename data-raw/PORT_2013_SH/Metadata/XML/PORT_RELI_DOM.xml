@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmd:MD_Metadata xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<gmd:fileIdentifier>
+		<gco:CharacterString>{53FAAC6D-D66F-42B2-BBD7-7FBB759C812B}</gco:CharacterString>
+	</gmd:fileIdentifier>
+	<gmd:language>
+		<gmd:LanguageCode codeList="http://www.loc.gov/standards/iso639-2/php/code_list.php" codeListValue="eng" codeSpace="ISO639-2">eng</gmd:LanguageCode>
+	</gmd:language>
+	<gmd:characterSet>
+		<gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</gmd:MD_CharacterSetCode>
+	</gmd:characterSet>
+	<gmd:parentIdentifier>
+		<gco:CharacterString>{5F0D2655-C25E-40E6-AF08-A575DB684F3F}</gco:CharacterString>
+	</gmd:parentIdentifier>
+	<gmd:hierarchyLevel>
+		<gmd:MD_ScopeCode codeList="http://standards.iso.org/ittf/PubliclyAvailableStandards/ISO_19139_Schemas/resources/Codelist/ML_gmxCodelists.xml#MD_ScopeCode" codeListValue="nonGeographicDataset" codeSpace="ISOTC211/19115">nonGeographicDataset</gmd:MD_ScopeCode>
+	</gmd:hierarchyLevel>
+	<gmd:hierarchyLevelName>
+		<gco:CharacterString>dataset</gco:CharacterString>
+	</gmd:hierarchyLevelName>
+	<gmd:contact>
+		<gmd:CI_ResponsibleParty>
+			<gmd:role>
+				<gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact" codeSpace="ISOTC211/19115">pointOfContact</gmd:CI_RoleCode>
+			</gmd:role>
+		</gmd:CI_ResponsibleParty>
+	</gmd:contact>
+	<gmd:dateStamp>
+		<gco:Date>2015-01-14</gco:Date>
+	</gmd:dateStamp>
+	<gmd:metadataStandardName>
+		<gco:CharacterString>ISO 19139 Geographic Information - Metadata - Implementation Specification</gco:CharacterString>
+	</gmd:metadataStandardName>
+	<gmd:metadataStandardVersion>
+		<gco:CharacterString>2007</gco:CharacterString>
+	</gmd:metadataStandardVersion>
+	<gmd:dataSetURI>
+		<gco:CharacterString>Server=musk.cc.cec.eu.int; Service=port:5153; User=giscoread; Version=SDE.DEFAULT</gco:CharacterString>
+	</gmd:dataSetURI>
+	<gmd:spatialRepresentationInfo>
+		<gmd:MD_VectorSpatialRepresentation>
+			<gmd:topologyLevel>
+				<gmd:MD_TopologyLevelCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_TopologyLevelCode" codeListValue="geometryOnly" codeSpace="ISOTC211/19115">geometryOnly</gmd:MD_TopologyLevelCode>
+			</gmd:topologyLevel>
+			<gmd:geometricObjects>
+				<gmd:MD_GeometricObjects>
+					<gmd:geometricObjectType>
+						<gmd:MD_GeometricObjectTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_GeometricObjectTypeCode" codeListValue="point" codeSpace="ISOTC211/19115">point</gmd:MD_GeometricObjectTypeCode>
+					</gmd:geometricObjectType>
+					<gmd:geometricObjectCount>
+						<gco:Integer>1945</gco:Integer>
+					</gmd:geometricObjectCount>
+				</gmd:MD_GeometricObjects>
+			</gmd:geometricObjects>
+			<gmd:geometricObjects>
+				<gmd:MD_GeometricObjects>
+					<gmd:geometricObjectType>
+						<gmd:MD_GeometricObjectTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_GeometricObjectTypeCode" codeListValue="complex" codeSpace="ISOTC211/19115">complex</gmd:MD_GeometricObjectTypeCode>
+					</gmd:geometricObjectType>
+					<gmd:geometricObjectCount>
+						<gco:Integer>263</gco:Integer>
+					</gmd:geometricObjectCount>
+				</gmd:MD_GeometricObjects>
+			</gmd:geometricObjects>
+		</gmd:MD_VectorSpatialRepresentation>
+	</gmd:spatialRepresentationInfo>
+	<gmd:referenceSystemInfo>
+		<gmd:MD_ReferenceSystem>
+			<gmd:referenceSystemIdentifier>
+				<gmd:RS_Identifier>
+					<gmd:code>
+						<gco:CharacterString>ETRS89</gco:CharacterString>
+					</gmd:code>
+				</gmd:RS_Identifier>
+			</gmd:referenceSystemIdentifier>
+		</gmd:MD_ReferenceSystem>
+	</gmd:referenceSystemInfo>
+	<gmd:identificationInfo>
+		<gmd:MD_DataIdentification>
+			<gmd:citation>
+				<gmd:CI_Citation>
+					<gmd:title>
+						<gco:CharacterString>Port positional reliability domain</gco:CharacterString>
+					</gmd:title>
+					<gmd:alternateTitle>
+						<gco:CharacterString>GISCO.PORT_RELI_DOM</gco:CharacterString>
+					</gmd:alternateTitle>
+					<gmd:date gco:nilReason="missing"/>
+					<gmd:editionDate>
+						<gco:Date>2008-05-23</gco:Date>
+					</gmd:editionDate>
+					<gmd:citedResponsibleParty>
+						<gmd:CI_ResponsibleParty>
+							<gmd:organisationName>
+								<gco:CharacterString>Eurostat GISCO - European Commission</gco:CharacterString>
+							</gmd:organisationName>
+							<gmd:contactInfo>
+								<gmd:CI_Contact>
+									<gmd:phone>
+										<gmd:CI_Telephone>
+											<gmd:voice>
+												<gco:CharacterString>+352 4301 32076</gco:CharacterString>
+											</gmd:voice>
+											<gmd:facsimile>
+												<gco:CharacterString>+352 4301 34029</gco:CharacterString>
+											</gmd:facsimile>
+										</gmd:CI_Telephone>
+									</gmd:phone>
+									<gmd:address>
+										<gmd:CI_Address>
+											<gmd:deliveryPoint>
+												<gco:CharacterString>5, rue Alphonse Weicker</gco:CharacterString>
+											</gmd:deliveryPoint>
+											<gmd:city>
+												<gco:CharacterString>Luxembourg</gco:CharacterString>
+											</gmd:city>
+											<gmd:administrativeArea>
+												<gco:CharacterString>Luxembourg</gco:CharacterString>
+											</gmd:administrativeArea>
+											<gmd:postalCode>
+												<gco:CharacterString>2721</gco:CharacterString>
+											</gmd:postalCode>
+											<gmd:country>
+												<gmd:Country codeList="http://www.iso.org/iso/country_codes/iso_3166_code_lists.htm" codeListValue="LU" codeSpace="ISO3166-1">LU</gmd:Country>
+											</gmd:country>
+											<gmd:electronicMailAddress>
+												<gco:CharacterString>estat-gisco@ec.europa.eu</gco:CharacterString>
+											</gmd:electronicMailAddress>
+										</gmd:CI_Address>
+									</gmd:address>
+								</gmd:CI_Contact>
+							</gmd:contactInfo>
+							<gmd:role>
+								<gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="originator" codeSpace="ISOTC211/19115">originator</gmd:CI_RoleCode>
+							</gmd:role>
+						</gmd:CI_ResponsibleParty>
+					</gmd:citedResponsibleParty>
+					<gmd:citedResponsibleParty>
+						<gmd:CI_ResponsibleParty>
+							<gmd:organisationName>
+								<gco:CharacterString>Lovell Johns Ltd.</gco:CharacterString>
+							</gmd:organisationName>
+							<gmd:contactInfo>
+								<gmd:CI_Contact>
+									<gmd:phone>
+										<gmd:CI_Telephone>
+											<gmd:voice>
+												<gco:CharacterString>+44 1993 883 161</gco:CharacterString>
+											</gmd:voice>
+											<gmd:facsimile>
+												<gco:CharacterString>+44 1993 883 096</gco:CharacterString>
+											</gmd:facsimile>
+										</gmd:CI_Telephone>
+									</gmd:phone>
+									<gmd:address>
+										<gmd:CI_Address>
+											<gmd:deliveryPoint>
+												<gco:CharacterString>10 Hanborough Business Park</gco:CharacterString>
+											</gmd:deliveryPoint>
+											<gmd:city>
+												<gco:CharacterString>Long Hanborough</gco:CharacterString>
+											</gmd:city>
+											<gmd:administrativeArea>
+												<gco:CharacterString>Witney</gco:CharacterString>
+											</gmd:administrativeArea>
+											<gmd:postalCode>
+												<gco:CharacterString>OX29 8RU</gco:CharacterString>
+											</gmd:postalCode>
+											<gmd:country>
+												<gmd:Country codeList="http://www.iso.org/iso/country_codes/iso_3166_code_lists.htm" codeListValue="GB" codeSpace="ISO3166-1">GB</gmd:Country>
+											</gmd:country>
+											<gmd:electronicMailAddress>
+												<gco:CharacterString>enquiries@lovelljohns.com</gco:CharacterString>
+											</gmd:electronicMailAddress>
+										</gmd:CI_Address>
+									</gmd:address>
+								</gmd:CI_Contact>
+							</gmd:contactInfo>
+							<gmd:role>
+								<gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="processor" codeSpace="ISOTC211/19115">processor</gmd:CI_RoleCode>
+							</gmd:role>
+						</gmd:CI_ResponsibleParty>
+					</gmd:citedResponsibleParty>
+					<gmd:presentationForm>
+						<gmd:CI_PresentationFormCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_PresentationFormCode" codeListValue="tableDigital" codeSpace="ISOTC211/19115">tableDigital</gmd:CI_PresentationFormCode>
+					</gmd:presentationForm>
+				</gmd:CI_Citation>
+			</gmd:citation>
+			<gmd:abstract>
+				<gco:CharacterString>This dataset should be bibliographically referred to as the "GISCO Ports 2008 dataset". It contains 2 feature classes with the location of 1940 pan-European ports, plus one attribute table and 2 domain tables. The ports are identified following the UN Locode list. The dataset is based on the list "Ports Estat 2008" from Eurostat.
+
+All ports are represented by a point location in PORT_PT_2008. Point coordinates are derived by comparing several input sources, most commonly Norie's Seaports of the World, the GISCO European Settlements (STTL) dataset and the UN/LOCODE 2006-2 list. PORT_RG_2008 contains polygonal topology for 264 of the ports. Polygons represent the port area devoted to ship traffic as defined in Corine Land Cover 2000. Point locations are harmonised to be inside a polygonal representation, where provided, and inside the land mask COAS_PL_100K_2004.  Attributes in PORT_AT_2008 include the port name, Locode Status Indicator, and a positional reliability flag. 
+
+Dataset coverage is geographical Europe plus territories administrated by European countries. Ports are included from 26 countries, as there are no ports from land-locked countries, nor from some states with a coastline.</gco:CharacterString>
+			</gmd:abstract>
+			<gmd:purpose>
+				<gco:CharacterString>The dataset has been created for cartographic purposes and for appropriate analysis. Port statistics can be geo-referenced to this high quality pan-European dataset, especially when based on UN Locode.</gco:CharacterString>
+			</gmd:purpose>
+			<gmd:resourceConstraints>
+				<gmd:MD_Constraints>
+					<gmd:useLimitation>
+						<gco:CharacterString>The datasets have been created for cartographic purposes.</gco:CharacterString>
+					</gmd:useLimitation>
+				</gmd:MD_Constraints>
+			</gmd:resourceConstraints>
+			<gmd:spatialRepresentationType>
+				<gmd:MD_SpatialRepresentationTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_SpatialRepresentationTypeCode" codeListValue="textTable" codeSpace="ISOTC211/19115">textTable</gmd:MD_SpatialRepresentationTypeCode>
+			</gmd:spatialRepresentationType>
+			<gmd:language>
+				<gco:CharacterString>multiple</gco:CharacterString>
+			</gmd:language>
+			<gmd:characterSet>
+				<gmd:MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</gmd:MD_CharacterSetCode>
+			</gmd:characterSet>
+			<gmd:topicCategory>
+				<gmd:MD_TopicCategoryCode>transportation</gmd:MD_TopicCategoryCode>
+			</gmd:topicCategory>
+			<gmd:environmentDescription>
+				<gco:CharacterString>Microsoft Windows 7 Version 6.1 (Build 7601) Service Pack 1; ESRI ArcGIS 10.0.5.4400</gco:CharacterString>
+			</gmd:environmentDescription>
+			<gmd:extent>
+				<gmd:EX_Extent/>
+			</gmd:extent>
+		</gmd:MD_DataIdentification>
+	</gmd:identificationInfo>
+	<gmd:distributionInfo>
+		<gmd:MD_Distribution>
+			<gmd:distributionFormat>
+				<gmd:MD_Format>
+					<gmd:name>
+						<gco:CharacterString>File Geodatabase Table</gco:CharacterString>
+					</gmd:name>
+					<gmd:version gco:nilReason="missing"/>
+				</gmd:MD_Format>
+			</gmd:distributionFormat>
+			<gmd:distributor>
+				<gmd:MD_Distributor>
+					<gmd:distributorContact>
+						<gmd:CI_ResponsibleParty>
+							<gmd:organisationName>
+								<gco:CharacterString>Eurostat GISCO - European Commission</gco:CharacterString>
+							</gmd:organisationName>
+							<gmd:contactInfo>
+								<gmd:CI_Contact>
+									<gmd:phone>
+										<gmd:CI_Telephone>
+											<gmd:voice>
+												<gco:CharacterString>+352 4301 32076</gco:CharacterString>
+											</gmd:voice>
+											<gmd:facsimile>
+												<gco:CharacterString>+352 4301 34029</gco:CharacterString>
+											</gmd:facsimile>
+										</gmd:CI_Telephone>
+									</gmd:phone>
+									<gmd:address>
+										<gmd:CI_Address>
+											<gmd:deliveryPoint>
+												<gco:CharacterString>5, rue Alphonse Weicker</gco:CharacterString>
+											</gmd:deliveryPoint>
+											<gmd:city>
+												<gco:CharacterString>Luxembourg</gco:CharacterString>
+											</gmd:city>
+											<gmd:administrativeArea>
+												<gco:CharacterString>Luxembourg</gco:CharacterString>
+											</gmd:administrativeArea>
+											<gmd:postalCode>
+												<gco:CharacterString>2721</gco:CharacterString>
+											</gmd:postalCode>
+											<gmd:country>
+												<gmd:Country codeList="http://www.iso.org/iso/country_codes/iso_3166_code_lists.htm" codeListValue="LU" codeSpace="ISO3166-1">LU</gmd:Country>
+											</gmd:country>
+											<gmd:electronicMailAddress>
+												<gco:CharacterString>estat-gisco@ec.europa.eu</gco:CharacterString>
+											</gmd:electronicMailAddress>
+										</gmd:CI_Address>
+									</gmd:address>
+								</gmd:CI_Contact>
+							</gmd:contactInfo>
+							<gmd:role>
+								<gmd:CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="distributor" codeSpace="ISOTC211/19115">distributor</gmd:CI_RoleCode>
+							</gmd:role>
+						</gmd:CI_ResponsibleParty>
+					</gmd:distributorContact>
+					<gmd:distributorFormat>
+						<gmd:MD_Format>
+							<gmd:name>
+								<gco:CharacterString>ESRI geodatabase</gco:CharacterString>
+							</gmd:name>
+							<gmd:version>
+								<gco:CharacterString>9.2</gco:CharacterString>
+							</gmd:version>
+						</gmd:MD_Format>
+					</gmd:distributorFormat>
+					<gmd:distributorTransferOptions>
+						<gmd:MD_DigitalTransferOptions>
+							<gmd:onLine>
+								<gmd:CI_OnlineResource>
+									<gmd:linkage>
+										<gmd:URL>http://epp.eurostat.ec.europa.eu</gmd:URL>
+									</gmd:linkage>
+									<gmd:protocol>
+										<gco:CharacterString>http</gco:CharacterString>
+									</gmd:protocol>
+									<gmd:description>
+										<gco:CharacterString>002</gco:CharacterString>
+									</gmd:description>
+									<gmd:function>
+										<gmd:CI_OnLineFunctionCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_OnLineFunctionCode" codeListValue="download" codeSpace="ISOTC211/19115">download</gmd:CI_OnLineFunctionCode>
+									</gmd:function>
+								</gmd:CI_OnlineResource>
+							</gmd:onLine>
+						</gmd:MD_DigitalTransferOptions>
+					</gmd:distributorTransferOptions>
+				</gmd:MD_Distributor>
+			</gmd:distributor>
+		</gmd:MD_Distribution>
+	</gmd:distributionInfo>
+	<gmd:dataQualityInfo>
+		<gmd:DQ_DataQuality>
+			<gmd:scope>
+				<gmd:DQ_Scope>
+					<gmd:level gco:nilReason="missing"/>
+				</gmd:DQ_Scope>
+			</gmd:scope>
+			<gmd:lineage>
+				<gmd:LI_Lineage>
+					<gmd:statement>
+						<gco:CharacterString>Port names and Locodes were taken from the Eurostat list "Ports Estat 2008".
+
+Port regions were derived from Corine Land Cover 2000 vector version (CLC class "1.2.3").
+
+Point location sources were, in decreasing order of preference:
+1. Norie's Seaports of the World list (in Norie's Nautical Tables, Imray, 2007)
+2. GISCO European Settlements (STTL) dataset
+3. UN/LOCODE 2006-2 Access database (UNECE, 2006)
+4. Port features from GISCO Transport version 1 (2005) dataset
+5. Coordinates supplied by national delegates to Eurostat
+The point location may then have been moved inside the nearest land polygon (GISCO COAS_PL_100K_2004) and/or CLC2000 port polygon.
+
+A number of processing steps were concerned with data quality. Ports located using just the least reliable sources were most closely checked. Most ports were matched to locations from more than one source, so checks were made where these coordinates were more than 0.1 degrees (c. 10km) apart. Manual correction of some particularly obvious positional or attribute errors also occurred during data preparation. 
+
+Port points were spatially joined to the inland centroids of CLC2000 polygons. An 8km search radius was used, and a join cardinality calculated showing the number of join features within that 8km radius. Matches were identified under a variety of carefully selected scenarios. In each scenario, a maximum distance was specified between the joined point and polygon centroid (never &gt; 5km), and a larger minimum distance was specified between each feature and any others of the same type (never &gt; 8km). CLC2000 polygons were only included in the dataset if they had been matched to a port point. Some polygons &lt; 0.6km apart were merged into multipart regions.
+(Matching scenarios were:
+a) 1:1 join (no other features within 8km of either point or centroid), join distance &lt; 5km;
+b) 1:M join (pt:centrds), all join distances &lt; 5km, all polygons within 0.6km of another (multipart polygon created);
+c) 1:M join (pt:centrds), single join distance &lt; 1km (match), all others &gt; 4km (not matches);
+d) 1:M join (centrd:pts), single join distance &lt; 1km (match), all others &gt; 4km (not matches);
+e) M:N join (centrds:pts), single join distance &lt; 1km (match), all others &gt; 4km (not matches))
+
+LOCD_STTS_CODE port attributes derived from UN/LOCODE 2006-2, and LOCD_STTS_DOM table copied from the StatusIndicator table of the UN database. PORT_RELI_CODE positional reliability attributes were calculated depending on the number and proximity of the input sources, and the distance the point was moved in later steps.
+(Reliability code criteria were:
+1 (Most):
+a) matched to 3+ point sources, all within 0.02° (~2km) of each other, and moved &lt; 1km subsequently;
+b) matched to 2 point sources, within 0.02° (~2km) of each other, and the chosen point was moved &lt; 1km to a CLC polygon centroid;
+2 (High):
+a) matched to 3+ point sources, all within 0.04° (~4km) of each other, and moved &lt; 2km subsequently;
+b) matched to 2 point sources, within 0.04° (~4km) of each other, and the chosen point was moved &lt; 2km to a CLC polygon centroid;
+c) matched to 2 point sources, within 0.02° (~2km) of each other, and moved &lt; 1km subsequently;
+3 (Good):
+a) matched to 3+ point sources where no reliability issues encountered (e.g. no sources &gt; 0.1° away) and moved &lt; 2km subsequently;
+b) matched to 2 point sources, within 0.04° (~4km) of each other, and moved &lt; 2km subsequently;
+c) matched to one source, and then moved &lt; 1km to a CLC polygon centroid;
+d) matched to 2 sources, with the best source manually selected;
+4 (Standard): all other ports.)
+</gco:CharacterString>
+					</gmd:statement>
+					<gmd:processStep>
+						<gmd:LI_ProcessStep>
+							<gmd:description gco:nilReason="missing"/>
+						</gmd:LI_ProcessStep>
+					</gmd:processStep>
+					<gmd:source>
+						<gmd:LI_Source>
+							<gmd:description>
+								<gco:CharacterString>Eurostat "Ports Estat 2008" list; Norie's Seaports of the World list; GISCO STTL dataset; UN/LOCODE 2006-2 list; GISCO TRAN_V1 dataset; Lists of port coordinates from national delegates; CLC2000 vector dataset</gco:CharacterString>
+							</gmd:description>
+						</gmd:LI_Source>
+					</gmd:source>
+				</gmd:LI_Lineage>
+			</gmd:lineage>
+		</gmd:DQ_DataQuality>
+	</gmd:dataQualityInfo>
+	<Esri><CreaDate>20150114</CreaDate><CreaTime>14271900</CreaTime><ArcGISstyle>GISCO Metadata Editor 2012</ArcGISstyle><SyncOnce>TRUE</SyncOnce><DataProperties><itemProps><itemLocation><linkage Sync="TRUE">file://\\s-tlar\development\develop\Database-Updates\PORTS\2014-DEC-PORTS_2013\PORT_2013_SH\Metadata\XML\PORT_RELI_DOM</linkage><protocol Sync="TRUE">Local Area Network</protocol></itemLocation></itemProps><copyHistory><copy source="J:\develop\Database-Updates\PORTS\2014-DEC-PORTS_2013\PORT_2013\Metadata\XML\PORT_RELI_DOM" dest="\\s-tlar\development\develop\Database-Updates\PORTS\2014-DEC-PORTS_2013\PORT_2013_SH\Metadata\XML\PORT_RELI_DOM" date="20150114" time="14271900"></copy></copyHistory></DataProperties></Esri></gmd:MD_Metadata>
