@@ -1,6 +1,7 @@
 on:
   push:
-    branches: master
+    paths:
+      - _pkgdown.yml
 
 name: pkgdown
 
