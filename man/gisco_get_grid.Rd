@@ -42,22 +42,36 @@ There are specific downloading provisions, please see \url{https://ec.europa.eu/
 \examples{
 library(sf)
 
-grid <- gisco_get_grid()
-breaks <- unique(quantile(grid$TOT_P_2011, probs = seq(0, 1, 0.01)))
+grid <- gisco_get_grid(resolution = 20)
+grid$popdens <- grid$TOT_P_2011/20
 
-# Remove coastal grids
-grid <- grid[grid$LAND_PC > 0.2, ]
+breaks <-
+  c(0,
+    500,
+    1000,
+    2500,
+    5000,
+    10000,
+    25000,
+    50000,
+    max(grid$popdens) + 1)
 
+pal <- hcl.colors(length(breaks)-2, palette = "inferno", alpha = 0.7)
+pal <- c("black",pal)
+
+opar <- par(no.readonly = TRUE)
+par(mar=c(0,0,0,0), bg = "grey2")
 plot(
-        grid[, "TOT_P_2011"],
-        pal = hcl.colors(length(breaks), "ag_Sunset"),
-        key.pos = NULL,
-        main = "[Grid] Population on Europe (2011)",
-        breaks = breaks,
-        xlim = c(2636691, 7315863),
-        ylim = c(1422800 , 5410788),
-        border = NA
+  grid[, "popdens"],
+  pal = pal,
+  key.pos = NULL,
+  breaks = breaks,
+  main = NA,
+  xlim = c(2500000, 7000000),
+  ylim = c(1500000 , 5200000),
+  border = NA
 )
+par(opar)
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
