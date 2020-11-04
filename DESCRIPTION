@@ -1,9 +1,21 @@
 Package: giscoR
 Type: Package
 Title: Download Geospatial Data from GISCO API - Eurostat
-Version: 0.1.2.9050
-Authors@R: c(
-  person("Diego", "Hernangómez", role=c("aut", "cre"), email="diego.hernangomezherrero@gmail.com", comment=c(ORCID="0000-0001-8457-4658")))
+Version: 0.2.0-9501
+Authors@R: 
+    c(person(given = "Diego",
+             family = "Hernangómez",
+             role = c("aut", "cre", "cph"),
+             email = "diego.hernangomezherrero@gmail.com",
+             comment = c(ORCID = "0000-0001-8457-4658")),
+      person(given = "EuroGraphics",
+             role = "cph",
+             comment = "for the administrative boundaries."),
+      person(given = "Vincent",
+             family = "Arel-Bundock",
+             role = "cph",
+             comment = c(ORCID = "0000-0003-2042-7063","for the gisco_countrycode dataset."))
+             )
 Description: Tools to download data from the GISCO 
     (Geographic Information System of the Commission) Eurostat database
     <https://ec.europa.eu/eurostat/web/gisco>.
@@ -21,11 +33,9 @@ Imports:
     countrycode (>= 1.2.0),
     geojsonsf (>= 2.0)
 Suggests: 
-    cartography (>= 2.0.0),
+    cartography (>= 2.4),
     lwgeom,
     tinytest,
     knitr,
     rmarkdown
-Date: 2020-10-05
 VignetteBuilder: knitr
-SystemRequirements:	GDAL (>= 2.0.1), GEOS (>= 3.4.0), PROJ.4 (>= 4.8.0)
