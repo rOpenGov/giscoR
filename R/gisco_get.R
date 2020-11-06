@@ -304,6 +304,8 @@ gisco_get_lau <- function(year = "2016",
     level = NULL,
     verbose = verbose
   )
+  
+  # nocov start
   # There are not data file on this
   dwnload <- TRUE
   if (dwnload) {
@@ -333,7 +335,7 @@ gisco_get_lau <- function(year = "2016",
     data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id,]
   }
   return(data.sf)
-  #nocov end
+  # nocov end
 }
 
 #' @rdname gisco_get

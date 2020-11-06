@@ -14,12 +14,13 @@ gisco_check_access <- function() {
         return(FALSE)
       }
     )
-
+  # nocov start
   if (isFALSE(access)) {
     return(FALSE)
   } else {
     return(TRUE)
   }
+  # nocov end
 }
 
 
@@ -374,7 +375,9 @@ gsc_api_load <- function(file = NULL,
       stop("\nExecution halted")
     }
   } else {
+    # nocov start
     stop("\nExtension ", ext, " not supported yet")
+    # nocov end
   }
 }
 
