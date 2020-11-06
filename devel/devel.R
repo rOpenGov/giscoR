@@ -1,5 +1,35 @@
-devtools::load_all()
+options(gisco_cache_dir = "~/R/mapslib/GISCO")
+tinytest::test_all()
 
+
+library(giscoR)
+
+## Not run:
+# This example would populate your cache_dir with a selection of geojson files
+# Set options(gisco_cache_dir = "path/to/dir") first
+# It may take a couple of minutes
+
+# Countries 2016
+gisco_bulk_download(id_giscoR = "countries", resolution = "60", verbose = TRUE)
+
+gisco_bulk_download(id_giscoR = "countries", resolution = "20")
+gisco_bulk_download(id_giscoR = "countries", resolution = "10")
+gisco_bulk_download(id_giscoR = "countries", resolution = "03")
+
+
+# NUTS 2016
+gisco_bulk_download(id_giscoR = "nuts", resolution = "60")
+gisco_bulk_download(id_giscoR = "nuts", resolution = "20")
+gisco_bulk_download(id_giscoR = "nuts", resolution = "10")
+gisco_bulk_download(id_giscoR = "nuts", resolution = "03")
+
+# NUTS 2021
+gisco_bulk_download(id_giscoR = "nuts", resolution = "60", year = "2021")
+gisco_bulk_download(id_giscoR = "nuts", resolution = "20", year = "2021")
+gisco_bulk_download(id_giscoR = "nuts", resolution = "10", year = "2021")
+gisco_bulk_download(id_giscoR = "nuts", resolution = "03", year = "2021")
+
+## End(Not run)
 
 
 f <- sf::st_read("./devel/gisco_healthcare.gpkg")
@@ -10,6 +40,9 @@ usethis::use_cran_comments()
 usethis::use_news_md()
 
 
+library(giscoR)
+
+gisco_bulk_downloa
 
 devtools::check()
 
