@@ -31,11 +31,11 @@ gisco_get_healthcare <- function(cache = TRUE,
                                  country = NULL) {
   # Given vars
   epsg = "4326"
-  ext <- "geojson"
+  ext <- "gpkg"
 
   geturl <-
-    list(api.url = "https://gisco-services.ec.europa.eu/pub/healthcare/geojson/all.geojson",
-         namefile = "gisco_healthcare.geojson")
+    list(api.url = "https://gisco-services.ec.europa.eu/pub/healthcare/gpkg/all.gpkg",
+         namefile = "gisco_healthcare.gpkg")
 
 
   if (cache) {

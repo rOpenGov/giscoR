@@ -1,3 +1,11 @@
+devtools::load_all()
+
+
+
+f <- sf::st_read("./devel/gisco_healthcare.gpkg")
+
+a <- gisco_get_healthcare(verbose= TRUE, cache_dir = "./devel/a2", update_cache = TRUE)
+
 usethis::use_cran_comments()
 usethis::use_news_md()
 

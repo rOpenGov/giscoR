@@ -300,7 +300,7 @@ gsc_api_load <- function(file = NULL,
   num <- sf::st_crs(as.integer(epsg))
 
   # Currently only supported this ext
-  if (ext == "geojson") {
+  if (ext %in% c("geojson", "gpkg")) {
     if (verbose & isTRUE(cache)) {
       message("Reading from local file ", file)
       size <- file.size(file)
@@ -310,25 +310,50 @@ gsc_api_load <- function(file = NULL,
       if (verbose)
         message("Reading from url ", file)
     }
-    err_onload <- tryCatch(
-      data.sf <- geojsonsf::geojson_sf(file,
-                                       input = num$input,
-                                       wkt = num$wkt),
-      warning = function(e) {
-        message("\n\nFile couldn't be loaded from \n\n",
-                file,
-                "\n\n Please try cache = TRUE")
-        return(TRUE)
-      },
-      error = function(e) {
-        message(
-          "File :\n",
-          file,
-          "\nmay be corrupt. Please try again using cache = TRUE and update_cache = TRUE"
-        )
-        return(TRUE)
-      }
-    )
+    if (ext == "geojson") {
+      err_onload <- tryCatch(
+        data.sf <- geojsonsf::geojson_sf(file,
+                                         input = num$input,
+                                         wkt = num$wkt),
+        warning = function(e) {
+          message("\n\nFile couldn't be loaded from \n\n",
+                  file,
+                  "\n\n Please try cache = TRUE")
+          return(TRUE)
+        },
+        error = function(e) {
+          message(
+            "File :\n",
+            file,
+            "\nmay be corrupt. Please try again using cache = TRUE and update_cache = TRUE"
+          )
+          return(TRUE)
+        }
+      )
+    } else {
+      err_onload <- tryCatch(
+        data.sf <-
+          sf::st_read(
+            file,
+            stringsAsFactors = FALSE,
+            quiet = !verbose
+          ),
+        warning = function(e) {
+          message("\n\nFile couldn't be loaded from \n\n",
+                  file,
+                  "\n\n Please try cache = TRUE")
+          return(TRUE)
+        },
+        error = function(e) {
+          message(
+            "File :\n",
+            file,
+            "\nmay be corrupt. Please try again using cache = TRUE and update_cache = TRUE"
+          )
+          return(TRUE)
+        }
+      )
+    }
 
     if (isTRUE(err_onload)) {
       loaded <- FALSE
