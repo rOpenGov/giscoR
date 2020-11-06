@@ -49,9 +49,9 @@ if (gisco_check_access()) {
     update_cache = TRUE
   ))
   r <-
-    gisco_get_units(id_giscoR = "countries", unit = c("FR", "ES", "xt", "PT"))
+    gisco_get_units(id_giscoR = "nuts", unit = c("FR", "ES", "xt", "PT"))
   expect_true(nrow(r) == 3)
-  expect_message(gisco_get_units(id_giscoR = "countries", unit = c("FR", "ES", "xt", "PT")))
+  expect_message(gisco_get_units(id_giscoR = "nuts", unit = c("FR", "ES", "xt", "PT")))
   expect_message(gisco_get_units(verbose = TRUE))
   df <- gisco_get_units(mode = "df")
   expect_true(class(df) == "data.frame")
@@ -93,7 +93,7 @@ if (gisco_check_access()) {
   ))
 
   expect_error(gisco_get_units(
-    id_giscoR = "countries",
+    id_giscoR = "nuts",
     year = "2016",
     verbose = TRUE,
     unit = c("XXXXX")
