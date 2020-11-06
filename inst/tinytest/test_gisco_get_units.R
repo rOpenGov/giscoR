@@ -13,12 +13,12 @@ if (gisco_check_access()) {
   expect_silent(gisco_get_units(
     year = "2001",
     id_giscoR = "countries",
-    unit = "ES"
+    unit = "Spain"
   ))
   expect_silent(gisco_get_units(
     year = "2001",
     id_giscoR = "countries",
-    unit = "ES",
+    unit = "ESP",
     spatialtype = "LB"
   ))
 
@@ -47,7 +47,7 @@ if (gisco_check_access()) {
   r <-
     gisco_get_units(id_giscoR = "countries", unit = c("FR", "ES", "xt", "PT"))
   expect_true(nrow(r) == 3)
-  expect_message(gisco_get_units(id_giscoR = "countries", unit = c("FR", "ES", "xt", "PT")))
+  expect_message(gisco_get_units(id_giscoR = "countries", unit = c("FRA", "ESP", "xrt")))
   expect_message(gisco_get_units(verbose = TRUE))
   df <- gisco_get_units(mode = "df")
   expect_true(class(df) == "data.frame")

@@ -24,6 +24,10 @@ if (gisco_check_access()) {
     expect_silent(gisco_get_nuts(resolution = "60", nuts_level = "0" ))
     expect_silent(gisco_get_nuts(resolution = "60", nuts_level = "0", update_cache = TRUE, verbose = TRUE))
     expect_silent(gisco_get_nuts(resolution = "60", nuts_level = "0" , nuts_id = "ES5"))
+    
+    expect_silent(gisco_get_nuts(resolution = "60", nuts_id = "ES5", spatialtype = "LB"))
+    
+expect_silent(gisco_get_nuts(resolution = "60", nuts_id = "ES5", spatialtype = "COASTL"))
     expect_silent(gisco_get_nuts(resolution = "60",country = c("ITA", "POL")))
 
       a <- gisco_get_nuts(resolution = "60", epsg = '3035')

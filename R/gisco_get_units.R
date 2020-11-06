@@ -103,8 +103,12 @@ gisco_get_units <-  function(id_giscoR = "nuts",
   }
 
   #Convert to iso3c for countries 2001
-  if (year == "2001" & mode == "sf" & id_giscoR == "countries") {
-    unit <- gsc_helper_countrynames(unit, "iso3c")
+  if (mode == "sf" & id_giscoR == "countries") {
+    if (year == "2001") {
+      unit <- gsc_helper_countrynames(unit, "iso3c")
+      } else {
+      unit <- gsc_helper_countrynames(unit, "eurostat")
+      }
   }
 
   # Start getting urls and routes

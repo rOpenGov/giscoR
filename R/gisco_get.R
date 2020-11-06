@@ -232,7 +232,7 @@ gisco_get_countries <- function(year = "2016",
   }
   if (dwnload) {
     # Speed up if requesting units
-    if (!is.null(country)) {
+    if (!is.null(country) & spatialtype %in% c("RG", "LB")) {
       data.sf <- gisco_get_units(
         id_giscoR = "countries",
         unit = country,
@@ -263,8 +263,6 @@ gisco_get_countries <- function(year = "2016",
         gsc_api_load(namefileload, epsg, ext, cache, verbose)
     }
   }
-
-
 
   if (!is.null(country) & "CNTR_ID" %in% names(data.sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
@@ -446,7 +444,7 @@ gisco_get_nuts <- function(year = "2016",
   }
   if (dwnload) {
     # Speed up if requesting units
-    if (!is.null(nuts_id)) {
+    if (!is.null(nuts_id) & spatialtype %in% c("RG", "LB")) {
       data.sf <- gisco_get_units(
         id_giscoR = "nuts",
         unit = nuts_id,
