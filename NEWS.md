@@ -1,4 +1,4 @@
-# giscoR 0.1.2.9501
+# giscoR 0.1.2.9601
 
 - Remove `colorspace` as dependency.
 - Bump R minimal version to 3.6.0.

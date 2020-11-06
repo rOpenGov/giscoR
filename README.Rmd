@@ -66,7 +66,6 @@ library(giscoR)
 library(sf)
 
  # Different resolutions
- 
  DNK_res60 <- gisco_get_countries(resolution = '60', country = 'DNK')
  DNK_res20 <-
    gisco_get_countries(resolution = '20', country = 'DNK')
