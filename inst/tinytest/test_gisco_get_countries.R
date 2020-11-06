@@ -30,11 +30,13 @@ expect_true(sf::st_is_longlat(gisco_get_countries()))
 
 # See if there is access
 if (gisco_check_access()) {
-  expect_silent(gisco_get_countries(spatialtype = "LB", country = c("ESP", "Italia")))
+  expect_silent(gisco_get_countries(spatialtype = "LB", country = c("Spain", "Italia")))
   
-expect_silent(gisco_get_countries(spatialtype = "COASTL", country = c("ESP", "Italia")))
+expect_silent(gisco_get_countries(spatialtype = "COASTL", country = c("ESP", "ITA")))
 
-expect_silent(gisco_get_countries(resolution = 60, country = c("ESP", "Italia")))
+expect_silent(gisco_get_countries(resolution = "10", country = c("ESP", "ITA")))
+
+expect_silent(gisco_get_countries(resolution = 60, country = c("ES", "IT")))
   expect_silent(gisco_get_countries(spatialtype = "COASTL", resolution = "60"))
 
 expect_silent(gisco_get_countries(resolution = '60', country = 'DNK'))
