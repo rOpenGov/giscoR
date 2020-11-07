@@ -93,8 +93,10 @@ gsc_api_url <- function(id_giscoR = "nuts",
   rm(av.epsg)
 
   # Available ext
+  # nocov start
   av.ext <- paste(db$ext, collapse = ",")
   av.ext  <- sort(unique(unlist(strsplit(av.ext , ","))))
+  # nocov end
 
 
   if (!(ext %in% av.ext))
@@ -185,6 +187,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
 
   # Sanity check
+  # nocov start
   if (nrow(db) > 1) {
     message(
       "Several options selected. ",
@@ -197,6 +200,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
     message("\n Consider opening an issue.")
     db <- db[1,]
   }
+  # nocov end
 
 
   gisco.path <- db$api_file
@@ -332,6 +336,7 @@ gsc_api_load <- function(file = NULL,
         }
       )
     } else {
+      # nocov start
       err_onload <- tryCatch(
         data.sf <-
           sf::st_read(
@@ -354,6 +359,7 @@ gsc_api_load <- function(file = NULL,
           return(TRUE)
         }
       )
+      # nocov end
     }
 
     if (isTRUE(err_onload)) {
