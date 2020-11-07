@@ -24,7 +24,7 @@
 #' }
 #' @seealso \link{gisco_get}
 #' @export
-gisco_get_healthcare <- function(cache = TRUE,
+gisco_get_healthcare <- function(cache = FALSE,
                                  update_cache = FALSE,
                                  cache_dir = NULL,
                                  verbose = FALSE,
