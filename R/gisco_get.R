@@ -331,6 +331,12 @@ gisco_get_lau <- function(year = "2016",
     country <- gsc_helper_countrynames(country, "eurostat")
     data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
   }
+  
+  if (!is.null(country) & "CNTR_ID" %in% names(data.sf)) {
+    country <- gsc_helper_countrynames(country, "eurostat")
+    data.sf <- data.sf[data.sf$CNTR_ID %in% country, ]
+  }
+  
   if (!is.null(gisco_id) & "GISCO_ID" %in% names(data.sf)) {
     data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id,]
   }
