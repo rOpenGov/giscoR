@@ -4,6 +4,7 @@
 - Bump R minimal version to 3.6.0.
 - Change order on parameters for `gisco_get()` functions.
 - Rewriting of internal functions and utils.
+- Add `verbose` parameter to functions.
 - Rewriting of `giscoR::gisco_db`.
 - Functions added:
   - `gisco_bulk_download()`
