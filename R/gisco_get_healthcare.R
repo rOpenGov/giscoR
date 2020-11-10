@@ -35,7 +35,7 @@ gisco_get_healthcare <- function(cache = FALSE,
 
   geturl <-
     list(api.url = "https://gisco-services.ec.europa.eu/pub/healthcare/gpkg/all.gpkg",
-         namefile = "gisco_healthcare.gpkg")
+         namefile = "all.gpkg")
 
 
   if (cache) {
