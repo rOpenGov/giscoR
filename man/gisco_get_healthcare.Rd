@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_healthcare(
-  cache = FALSE,
+  cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
