@@ -273,7 +273,7 @@ gsc_api_cache <-
       if (verbose)
         message("Downloading from ", url, "\n")
       err_dwnload <- tryCatch(
-        download.file(url, file.local, quiet = isFALSE(verbose)),
+        download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
         warning = function(e) {
           message(
             "\nurl \n ",
