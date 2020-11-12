@@ -1,5 +1,5 @@
 #' @title Check access to GISCO API
-#' @description Check if R has access to resources at \url{https://gisco-services.ec.europa.eu/distribution/v2}.
+#' @description Check if R has access to resources at \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 #' @return a logical.
 #' @examples
 #' gisco_check_access()
