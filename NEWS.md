@@ -1,4 +1,11 @@
-# giscoR 0.1.2.9601
+# giscoR 0.2.1-dev9000
+
+- Remove CRAN notes.
+- Improve docs.
+
+
+
+# giscoR 0.2.0
 
 - Remove `colorspace` as dependency.
 - Bump R minimal version to 3.6.0.
