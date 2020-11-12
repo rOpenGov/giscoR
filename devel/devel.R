@@ -1,4 +1,5 @@
 options(gisco_cache_dir = "~/R/mapslib/GISCO")
+
 tinytest::test_all()
 
 
