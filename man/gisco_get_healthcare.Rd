@@ -22,10 +22,12 @@ gisco_get_healthcare(
 A \code{POINT} object.
 }
 \description{
-The dataset contains information on main healthcare services considered to be 'hospitals' by Member States.
+The dataset contains information on main healthcare services
+considered to be 'hospitals' by Member States.
 }
 \details{
-Files are distributed on EPSG:4326. \href{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}{Link to metadata}
+Files are distributed on EPSG:4326.
+\href{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}{Link to metadata}
 }
 \examples{
 library(sf)

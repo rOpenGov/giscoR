@@ -2,25 +2,33 @@
 #' @description Download individual shapefiles of units. Unlike
 #' \link{gisco_get_countries}, \link{gisco_get_nuts} or
 #' \link{gisco_get_urban_audit}, that downloads a full dataset
-#' and applies filters, \code{gisco_get_units} downloads a single shapefiles for each unit.
+#' and applies filters, \code{gisco_get_units} downloads a single shapefiles
+#' for each unit.
 #' @return A \code{sf} object on \code{mode = "sf"} or a dataframe on
 #' \code{mode = "df"}.
 #' @param id_giscoR Select the \code{unit} type to be downloaded.
 #' Accepted values are \code{'nuts','countries'} or \code{'urban_audit'}.
 #' @param unit Unit ID to be downloaded. See Details.
-#' @param mode Controls the output of the function. Possible values are \code{"sf"} or \code{"df"}. See Value and Details.
-#' @param year,epsg,cache,update_cache,cache_dir,verbose,resolution See \link{gisco_get}.
-#' @param spatialtype Type of geometry to be returned: \code{"RG"} for \code{POLYGON} and \code{"LB"} for \code{POINT}.
-#' @details The function can return a dataframe on \code{mode = "df"}  or a \code{sf} object on \code{mode = "sf"}
+#' @param mode Controls the output of the function. Possible values
+#' are \code{"sf"} or \code{"df"}. See Value and Details.
+#' @param year,epsg,cache,update_cache,cache_dir,verbose,resolution See
+#'  \link{gisco_get}.
+#' @param spatialtype Type of geometry to be returned: \code{"RG"}
+#' for \code{POLYGON} and \code{"LB"} for \code{POINT}.
+#' @details The function can return a dataframe on \code{mode = "df"}
+#' or a \code{sf} object on \code{mode = "sf"}
 #'
 #' In order to see the available \code{unit} ids with the required
-#' combination of \code{what,year}, first run the function on \code{"df"} mode. Once that you get the data frame you can select the required ids on the \code{unit} parameter.
+#' combination of \code{what,year}, first run the function on \code{"df"}
+#' mode. Once that you get the data frame you can select the required ids
+#' on the \code{unit} parameter.
 #'
 #' On \code{mode = "df"} the only relevant parameters are \code{what, year}.
 #' @note \code{countries} file would be renamed on your \code{cache_dir}
-#' to avoid naming conflictions with \code{nuts} datasets.
+#' to avoid naming conflicts with \code{nuts} datasets.
 #' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
+#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/}{
+#' GISCO API}
 #' @seealso \link{gisco_get}
 #' @examples
 #' library(sf)
@@ -106,9 +114,9 @@ gisco_get_units <-  function(id_giscoR = "nuts",
   if (mode == "sf" & id_giscoR == "countries") {
     if (year == "2001") {
       unit <- gsc_helper_countrynames(unit, "iso3c")
-      } else {
+    } else {
       unit <- gsc_helper_countrynames(unit, "eurostat")
-      }
+    }
   }
 
   # Start getting urls and routes
@@ -189,7 +197,7 @@ gisco_get_units <-  function(id_giscoR = "nuts",
     # Slice path
     remain <- gsub(paste0("_", level), "", remain)
     filepattern <- tolower(gsub(".geojson", "", remain))
-    slice <- (unlist(strsplit(filepattern, "_")))[c(-1, -2)]
+    slice <- (unlist(strsplit(filepattern, "_")))[c(-1,-2)]
 
     # Remove year epsg and spatial type
     slice <- slice[-grep(year, slice)]

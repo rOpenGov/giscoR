@@ -3,7 +3,8 @@
 \docType{data}
 \name{gisco_countrycode}
 \alias{gisco_countrycode}
-\title{Dataframe including Eurostat and ISO2 and ISO3 codes for countries and world regions}
+\title{Dataframe including Eurostat and ISO2 and ISO3 codes for countries
+and world regions}
 \format{
 A data frame object with 249 rows and 12 variables:
 \describe{
@@ -11,11 +12,13 @@ A data frame object with 249 rows and 12 variables:
   \item{iso2c}{ISO 3166-1 alpha-2 code of each country}
   \item{ISO3_CODE}{ISO 3166-1 alpha-3 code of each country}
   \item{iso.name.en}{ISO English short name}
-  \item{cldr.short.en}{English short name as provided by the \href{http://cldr.unicode.org/translation/displaynames/country-names}{Unicode Common Locale Data Repository}}
+  \item{cldr.short.en}{English short name as provided by the
+  \href{http://cldr.unicode.org/translation/displaynames/country-names}{Unicode Common Locale Data Repository}}
   \item{continent}{As provided by the World Bank}
   \item{un.region.code}{Numeric region code UN (M49)}
   \item{un.region.name}{Region name UN (M49)}
-  \item{un.regionintermediate.code}{Numeric intermediate Region code UN (M49)}
+  \item{un.regionintermediate.code}{Numeric intermediate Region
+   code UN (M49)}
   \item{un.regionintermediate.name}{Intermediate Region name UN (M49)}
   \item{un.regionsub.code}{Numeric sub-region code UN (M49)}
   \item{un.regionsub.name}{Sub-Region name UN (M49)}
@@ -25,11 +28,16 @@ A data frame object with 249 rows and 12 variables:
 \code{codelist} dataset from \pkg{countrycode} (\code{v1.2.0}).
 }
 \description{
-A dataframe containing conversions between different country codification systems (Eurostat/ISO2 and 3) as well as geographic regions as provided by the World Bank and the UN (M49). This dataset is extracted from \pkg{countrycode}.
+A dataframe containing
+conversions between different country codification systems
+(Eurostat/ISO2 and 3) as well as geographic
+regions as provided by the World Bank and the UN (M49). This dataset
+is extracted from \pkg{countrycode}.
 }
 \examples{
 data(gisco_countrycode)
 }
 \seealso{
-\link[countrycode]{codelist}, \link[countrycode]{countrycode-package}.
+\link[countrycode]{codelist},
+\link[countrycode]{countrycode-package}.
 }

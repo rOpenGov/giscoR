@@ -21,7 +21,8 @@ gisco_get_ports(year = "2013")
 A \code{POINT} object on EPSG:4326.
 }
 \description{
-Loads a simple feature (\code{sf}) object from GISCO API entry point or your local library.
+Loads a simple feature (\code{sf}) object from GISCO API
+entry point or your local library.
 }
 \details{
 \code{year} available:
@@ -44,7 +45,7 @@ Ports <- gisco_get_ports()
 PortsNL <- st_intersection(Ports, NL)
 
 
-plot(st_geometry(NL), bg = "lightblue1", col = "wheat")
+plot(st_geometry(NL), col = "wheat")
 plot(
   st_geometry(PortsNL),
   pch = 22,

@@ -2,26 +2,28 @@ url: https://dieghernan.github.io/giscoR
 
 reference:
   - title: "API functions"
-    desc: These functions downloads data from GISCO
+    desc: These functions check and download data from GISCO
     contents:
-      - gisco_get_coastallines
-      - gisco_get_communes
-      - gisco_get_countries
-      - gisco_get_lau
-      - gisco_get_nuts
-      - gisco_get_urban_audit
-  - title: "Attributions"
-    desc: Helper function to quickly add Attributions
+      - gisco_bulk_download
+      - gisco_check_access
+      - gisco_get
+      - gisco_get_airports
+      - gisco_get_grid
+      - gisco_get_healthcare
+      - gisco_get_units
+  - title: "Helpers"
+    desc: A collection of helper functions
     contents:
       - gisco_attributions
+      - gisco_bulk_download
   - title: "Datasets"
     desc: These objects are datasets already included in the package.
     contents:
       - gisco_coastallines
       - gisco_countries
       - gisco_countrycode
+      - gisco_db
       - gisco_nuts
-      - tgs00026
 
   - title: "About the package"
     contents:
@@ -55,14 +57,14 @@ home:
 deploy:
   install_metadata: true
 
-development:
-  version_tooltip: "Available on CRAN"
-
-
 navbar:
   structure:
+    left:  [home, intro, reference, articles, news, authors]
     right: [github, blog]
   components:
+    authors:
+     text: Authors
+     href: authors.html
     blog:
      icon: "fas fa-blog fa-lg"
      href: "https://dieghernan.github.io/"

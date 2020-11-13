@@ -1,17 +1,27 @@
 #' @title Get geospatial data from GISCO API
 #' @name gisco_get
-#' @description Loads a simple feature (\code{sf}) object from GISCO API entry point or your local library.
+#' @description Loads a simple feature (\code{sf})
+#' object from GISCO API entry point or your local library.
 #' @param year Release year. See Details.
-#' @param epsg projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}. One of:
+#' @param epsg projection of the map:
+#' 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 #' \itemize{
 #' \item \code{"4326"} - \href{https://epsg.io/4326}{WGS84}
 #' \item \code{"3035"} - \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}
 #' \item \code{"3857"} - \href{https://epsg.io/3857}{Pseudo-Mercator}
 #' }
 #' @param cache a logical whether to do caching. Default is \code{TRUE}.
-#' @param update_cache a logical whether to update cache. Default is \code{FALSE}. When set to \code{TRUE} it would force a fresh download of the source \code{.geojson} file.
-#' @param cache_dir a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = "path/to/dir")}.
-#' @param verbose Display information. Useful for debugging, default if \code{FALSE}.
+#' @param update_cache a logical whether
+#' to update cache. Default is \code{FALSE}. When set
+#' to \code{TRUE} it would force a fresh download
+#' of the source \code{.geojson} file.
+#' @param cache_dir a path to a cache directory.
+#' The directory have to exist.  The \code{NULL} (default) uses
+#' and creates \code{/gisco} directory in the temporary directory
+#' from \code{\link{tempdir}}. The directory can also be
+#' set with \code{options(gisco_cache_dir = "path/to/dir")}.
+#' @param verbose Display information. Useful
+#' for debugging, default if \code{FALSE}.
 #' @param resolution Resolution of the geospatial data. One of
 #' \itemize{
 #'    \item \code{"60"} (1:60million),
@@ -22,11 +32,13 @@
 #'    }
 #' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
 #' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @details \code{country} only available on specific datasets. Some \code{spatialtype} options (as \code{BN, COASTL, INLAND}) may not present country-level identifies.
+#' @details \code{country} only available on
+#' specific datasets. Some \code{spatialtype} options
+#' (as \code{BN, COASTL, INLAND}) may not present country-level identifies.
 #'
 #' \code{country} could be either a vector of country names, a vector of ISO3 country codes or a vector of Eurostat country codes. Mixed types (as \code{c("Turkey","US","FRA")}) would not work.
 #'
-#' Sometimes cached files may be corrupt. On that case, try redownloading the data setting \code{update_cache = TRUE}.
+#' Sometimes cached files may be corrupt. On that case, try re-downloading the data setting \code{update_cache = TRUE}.
 #'
 #' If you experience any problem on download, try to download the corresponding \code{.geojson} file by any other method and set \code{cache_dir = "path/to/dir"} or \code{options(gisco_cache_dir = "path/to/dir)"}.
 #'
@@ -163,7 +175,7 @@ gisco_get_communes <- function(year = "2016",
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
   }
   return(data.sf)
 }
@@ -267,12 +279,12 @@ gisco_get_countries <- function(year = "2016",
 
   if (!is.null(country) & "CNTR_ID" %in% names(data.sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_ID %in% country, ]
+    data.sf <- data.sf[data.sf$CNTR_ID %in% country,]
   }
   if (!is.null(region) & "CNTR_ID" %in% names(data.sf)) {
     region.df <- giscoR::gisco_countrycode
-    region.df <- region.df[region.df$un.region.name %in% region, ]
-    data.sf <- data.sf[data.sf$CNTR_ID %in% region.df$CNTR_CODE, ]
+    region.df <- region.df[region.df$un.region.name %in% region,]
+    data.sf <- data.sf[data.sf$CNTR_ID %in% region.df$CNTR_CODE,]
   }
 
   return(data.sf)
@@ -305,7 +317,7 @@ gisco_get_lau <- function(year = "2016",
     level = NULL,
     verbose = verbose
   )
-  
+
   # nocov start
   # There are not data file on this
   dwnload <- TRUE
@@ -330,16 +342,16 @@ gisco_get_lau <- function(year = "2016",
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
-  
+
   if (!is.null(country) & "CNTR_ID" %in% names(data.sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_ID %in% country, ]
+    data.sf <- data.sf[data.sf$CNTR_ID %in% country,]
   }
-  
+
   if (!is.null(gisco_id) & "GISCO_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id,]
+    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id, ]
   }
   return(data.sf)
   # nocov end
@@ -446,7 +458,7 @@ gisco_get_nuts <- function(year = "2016",
         "Loaded from gisco_nuts dataset. Use update_cache = TRUE to load the shapefile from the .geojson file"
       )
     if (nuts_level %in% c('0', '1', '2', '3')) {
-      data.sf <- data.sf[data.sf$LEVL_CODE == nuts_level,]
+      data.sf <- data.sf[data.sf$LEVL_CODE == nuts_level, ]
     }
   } else {
     dwnload <- TRUE
@@ -488,11 +500,11 @@ gisco_get_nuts <- function(year = "2016",
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
 
   if (!is.null(nuts_id) & "NUTS_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$NUTS_ID %in% nuts_id,]
+    data.sf <- data.sf[data.sf$NUTS_ID %in% nuts_id, ]
   }
   return(data.sf)
 }
@@ -547,7 +559,7 @@ gisco_get_urban_audit <- function(year = "2020",
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
   return(data.sf)
 }

@@ -16,9 +16,14 @@ if (gisco_check_access()) {
   expect_silent(gisco_get_coastallines(resolution = "60"))
   expect_silent(gisco_get_coastallines(resolution = 3))
   expect_message(gisco_get_coastallines(resolution = "60", verbose = TRUE))
-  expect_silent(gisco_get_coastallines(resolution = "60", verbose = TRUE, update_cache = TRUE))
+  expect_silent(gisco_get_coastallines(
+    resolution = "60",
+    verbose = TRUE,
+    update_cache = TRUE
+  ))
   cachetest <- paste0(tempdir(), "/coast")
-  expect_silent(gisco_get_coastallines(resolution = "60", cache_dir = cachetest))
+  expect_silent(gisco_get_coastallines(resolution = "60",
+                                       cache_dir = cachetest))
 
   a <- gisco_get_coastallines(resolution = "60", epsg = '3035')
   b <- gisco_get_coastallines(resolution = "60", epsg = '3857')
@@ -32,5 +37,3 @@ if (gisco_check_access()) {
   expect_equal(epsg3857, sf::st_crs(b))
   expect_equal(epsg4326, sf::st_crs(c))
 }
-
-

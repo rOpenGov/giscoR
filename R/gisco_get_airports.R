@@ -1,6 +1,7 @@
 #' @title Get location of airports and ports from GISCO API
 #' @name gisco_get_airports
-#' @description Loads a simple feature (\code{sf}) object from GISCO API entry point or your local library.
+#' @description Loads a simple feature (\code{sf}) object from GISCO API
+#' entry point or your local library.
 #' @return A \code{POINT} object on EPSG:4326.
 #' @param year Year of reference.
 #' @param country A list of countries, see \link{gisco_get_countries}
@@ -25,7 +26,7 @@
 #' PortsNL <- st_intersection(Ports, NL)
 #'
 #'
-#' plot(st_geometry(NL), bg = "lightblue1", col = "wheat")
+#' plot(st_geometry(NL), col = "wheat")
 #' plot(
 #'   st_geometry(PortsNL),
 #'   pch = 22,
@@ -74,7 +75,7 @@ gisco_get_airports <- function(year = "2013", country = NULL) {
 
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
   return(data.sf)
 }

@@ -6,11 +6,13 @@
 \alias{gisco_countries}
 \title{World countries \code{POLYGON} object}
 \format{
-A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 257 rows and 7 variables:
+A \code{MULTIPOLYGON} data frame
+(resolution: 1:20million, EPSG:4326) object with 257 rows and 7 variables:
 \describe{
   \item{id}{row ID}
   \item{CNTR_NAME}{Official country name on local language}
-  \item{ISO3_CODE}{\href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3}{ISO 3166-1 alpha-3 code} of each country, as provided by GISCO}
+  \item{ISO3_CODE}{\href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3}{ISO 3166-1 alpha-3 code} of
+  each country, as provided by GISCO}
   \item{CNTR_ID}{Country ID}
   \item{NAME_ENGL}{Country name in English}
   \item{FID}{FID}

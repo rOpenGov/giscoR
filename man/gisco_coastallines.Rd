@@ -5,7 +5,8 @@
 \alias{gisco_coastallines}
 \title{World coastal lines \code{POLYGON} object}
 \format{
-A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 8 variables:
+A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326)
+ object with 8 variables:
 \describe{
   \item{FID}{FID}
   \item{COAS_ID}{COAS_ID}

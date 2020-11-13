@@ -10,7 +10,8 @@ gisco_check_access()
 a logical.
 }
 \description{
-Check if R has access to resources at \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
+Check if R has access to resources
+at \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 }
 \examples{
 gisco_check_access()

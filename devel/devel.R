@@ -2,8 +2,15 @@ options(gisco_cache_dir = "~/R/mapslib/GISCO")
 
 tinytest::test_all()
 
+roxygen2::roxygenise()
 
 library(giscoR)
+
+library(goodpractice)
+
+gp()
+
+devtools::build_manual(path = "./devel")
 
 ## Not run:
 # This example would populate your cache_dir with a selection of geojson files

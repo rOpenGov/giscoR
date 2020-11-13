@@ -17,9 +17,13 @@ data_frame
 }
 \description{
 The disposable income of private households is the balance
-of primary income (operating surplus/mixed income plus compensation of employees
-plus property income received minus property income paid) and the redistribution
-of income in cash. These transactions comprise social contributions paid, social benefits in cash received, current taxes on income and wealth paid, as well as other current transfers. Disposable income does not include social transfers in kind coming from public administrations or non-profit institutions serving households.
+of primary income (operating surplus/mixed income plus compensation of
+employees plus property income received minus property income paid) and
+the redistribution of income in cash. These transactions comprise social
+ contributions paid, social benefits in cash received, current taxes on
+ income and wealth paid, as well as other current transfers. Disposable
+ income does not include social transfers in kind coming from public
+  administrations or non-profit institutions serving households.
 }
 \examples{
 data(tgs00026)

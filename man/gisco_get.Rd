@@ -87,7 +87,8 @@ gisco_get_urban_audit(
 \arguments{
 \item{year}{Release year. See Details.}
 
-\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{projection of the map:
+4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"} - \href{https://epsg.io/4326}{WGS84}
 \item \code{"3035"} - \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}
@@ -96,11 +97,19 @@ gisco_get_urban_audit(
 
 \item{cache}{a logical whether to do caching. Default is \code{TRUE}.}
 
-\item{update_cache}{a logical whether to update cache. Default is \code{FALSE}. When set to \code{TRUE} it would force a fresh download of the source \code{.geojson} file.}
+\item{update_cache}{a logical whether
+to update cache. Default is \code{FALSE}. When set
+to \code{TRUE} it would force a fresh download
+of the source \code{.geojson} file.}
 
-\item{cache_dir}{a path to a cache directory. The directory have to exist.  The \code{NULL} (default) uses and creates \code{/gisco} directory in the temporary directory from \code{\link{tempdir}}. The directory can also be set with \code{options(gisco_cache_dir = "path/to/dir")}.}
+\item{cache_dir}{a path to a cache directory.
+The directory have to exist.  The \code{NULL} (default) uses
+and creates \code{/gisco} directory in the temporary directory
+from \code{\link{tempdir}}. The directory can also be
+set with \code{options(gisco_cache_dir = "path/to/dir")}.}
 
-\item{verbose}{Display information. Useful for debugging, default if \code{FALSE}.}
+\item{verbose}{Display information. Useful
+for debugging, default if \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
@@ -138,14 +147,17 @@ gisco_get_urban_audit(
 \code{gisco_get_lau} returns a \code{POLYGON} object.
 }
 \description{
-Loads a simple feature (\code{sf}) object from GISCO API entry point or your local library.
+Loads a simple feature (\code{sf})
+object from GISCO API entry point or your local library.
 }
 \details{
-\code{country} only available on specific datasets. Some \code{spatialtype} options (as \code{BN, COASTL, INLAND}) may not present country-level identifies.
+\code{country} only available on
+specific datasets. Some \code{spatialtype} options
+(as \code{BN, COASTL, INLAND}) may not present country-level identifies.
 
 \code{country} could be either a vector of country names, a vector of ISO3 country codes or a vector of Eurostat country codes. Mixed types (as \code{c("Turkey","US","FRA")}) would not work.
 
-Sometimes cached files may be corrupt. On that case, try redownloading the data setting \code{update_cache = TRUE}.
+Sometimes cached files may be corrupt. On that case, try re-downloading the data setting \code{update_cache = TRUE}.
 
 If you experience any problem on download, try to download the corresponding \code{.geojson} file by any other method and set \code{cache_dir = "path/to/dir"} or \code{options(gisco_cache_dir = "path/to/dir)"}.
 

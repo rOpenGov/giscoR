@@ -65,7 +65,8 @@ gsc_helper_utf8 <- function(data.sf) {
   nm <- names(which.geom)
 
   data.utf8 <-
-    as.data.frame(set_utf8(sf::st_drop_geometry(data.sf)), stringsAsFactors = FALSE)
+    as.data.frame(set_utf8(sf::st_drop_geometry(data.sf)),
+                  stringsAsFactors = FALSE)
 
   # Regenerate with right encoding
   data.sf <- sf::st_as_sf(data.utf8, g)

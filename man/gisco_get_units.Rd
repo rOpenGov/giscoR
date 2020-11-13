@@ -4,7 +4,8 @@
 \alias{gisco_get_units}
 \title{Get geospatial units data from GISCO API}
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
+\href{https://gisco-services.ec.europa.eu/distribution/v2/}{
+GISCO API}
 }
 \usage{
 gisco_get_units(
@@ -27,11 +28,14 @@ Accepted values are \code{'nuts','countries'} or \code{'urban_audit'}.}
 
 \item{unit}{Unit ID to be downloaded. See Details.}
 
-\item{mode}{Controls the output of the function. Possible values are \code{"sf"} or \code{"df"}. See Value and Details.}
+\item{mode}{Controls the output of the function. Possible values
+are \code{"sf"} or \code{"df"}. See Value and Details.}
 
-\item{year, epsg, cache, update_cache, cache_dir, verbose, resolution}{See \link{gisco_get}.}
+\item{year, epsg, cache, update_cache, cache_dir, verbose, resolution}{See
+\link{gisco_get}.}
 
-\item{spatialtype}{Type of geometry to be returned: \code{"RG"} for \code{POLYGON} and \code{"LB"} for \code{POINT}.}
+\item{spatialtype}{Type of geometry to be returned: \code{"RG"}
+for \code{POLYGON} and \code{"LB"} for \code{POINT}.}
 }
 \value{
 A \code{sf} object on \code{mode = "sf"} or a dataframe on
@@ -41,19 +45,23 @@ A \code{sf} object on \code{mode = "sf"} or a dataframe on
 Download individual shapefiles of units. Unlike
 \link{gisco_get_countries}, \link{gisco_get_nuts} or
 \link{gisco_get_urban_audit}, that downloads a full dataset
-and applies filters, \code{gisco_get_units} downloads a single shapefiles for each unit.
+and applies filters, \code{gisco_get_units} downloads a single shapefiles
+for each unit.
 }
 \details{
-The function can return a dataframe on \code{mode = "df"}  or a \code{sf} object on \code{mode = "sf"}
+The function can return a dataframe on \code{mode = "df"}
+or a \code{sf} object on \code{mode = "sf"}
 
 In order to see the available \code{unit} ids with the required
-combination of \code{what,year}, first run the function on \code{"df"} mode. Once that you get the data frame you can select the required ids on the \code{unit} parameter.
+combination of \code{what,year}, first run the function on \code{"df"}
+mode. Once that you get the data frame you can select the required ids
+on the \code{unit} parameter.
 
 On \code{mode = "df"} the only relevant parameters are \code{what, year}.
 }
 \note{
 \code{countries} file would be renamed on your \code{cache_dir}
-to avoid naming conflictions with \code{nuts} datasets.
+to avoid naming conflicts with \code{nuts} datasets.
 }
 \examples{
 library(sf)

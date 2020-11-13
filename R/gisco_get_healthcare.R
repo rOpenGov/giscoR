@@ -1,10 +1,12 @@
 #' @title Get the healthcare services in Europe.
-#' @description The dataset contains information on main healthcare services considered to be 'hospitals' by Member States.
+#' @description The dataset contains information on main healthcare services
+#' considered to be 'hospitals' by Member States.
 #' @return A \code{POINT} object.
 #' @author dieghernan, \url{https://github.com/dieghernan/}
 #' @source \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services}{GISCO Healthcare services}
 #' @param cache,update_cache,cache_dir,verbose,country See \link{gisco_get}
-#' @details Files are distributed on EPSG:4326. \href{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}{Link to metadata}
+#' @details Files are distributed on EPSG:4326.
+#' \href{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}{Link to metadata}
 #' @examples
 #' library(sf)
 #'
@@ -30,11 +32,12 @@ gisco_get_healthcare <- function(cache = TRUE,
                                  verbose = FALSE,
                                  country = NULL) {
   # Given vars
-  epsg = "4326"
+  epsg <- "4326"
   ext <- "gpkg"
 
   geturl <-
-    list(api.url = "https://gisco-services.ec.europa.eu/pub/healthcare/gpkg/all.gpkg",
+    list(api.url =
+           "https://gisco-services.ec.europa.eu/pub/healthcare/gpkg/all.gpkg",
          namefile = "all.gpkg")
 
 
@@ -54,7 +57,7 @@ gisco_get_healthcare <- function(cache = TRUE,
 
   if (!is.null(country) & "cc" %in% names(data.sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$cc %in% country, ]
+    data.sf <- data.sf[data.sf$cc %in% country,]
   }
   return(data.sf)
 }

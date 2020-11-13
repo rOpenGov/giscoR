@@ -1,5 +1,6 @@
 #' @title Check access to GISCO API
-#' @description Check if R has access to resources at \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
+#' @description Check if R has access to resources
+#' at \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 #' @return a logical.
 #' @examples
 #' gisco_check_access()
@@ -273,7 +274,12 @@ gsc_api_cache <-
       if (verbose)
         message("Downloading from ", url, "\n")
       err_dwnload <- tryCatch(
-        download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
+        download.file(
+          url,
+          file.local,
+          quiet = isFALSE(verbose),
+          mode = "wb"
+        ),
         warning = function(e) {
           message(
             "\nurl \n ",

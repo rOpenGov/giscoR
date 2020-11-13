@@ -20,11 +20,9 @@ if (gisco_check_access()) {
     unit = "Spain",
     spatialtype = "LB"
   ))
-  
-  expect_silent(gisco_get_units(
-    id_giscoR = "countries",
-    unit = "ESP"
-  ))
+
+  expect_silent(gisco_get_units(id_giscoR = "countries",
+                                unit = "ESP"))
 
   expect_silent(
     gisco_get_units(
@@ -35,12 +33,14 @@ if (gisco_check_access()) {
       spatialtype = "LB"
     )
   )
-  expect_error(gisco_get_units(
-    year = "2001",
-    id_giscoR = "countries",
-    unit = "Spain",
-    resolution = "60"
-  ))
+  expect_error(
+    gisco_get_units(
+      year = "2001",
+      id_giscoR = "countries",
+      unit = "Spain",
+      resolution = "60"
+    )
+  )
   expect_silent(gisco_get_units(id_giscoR = "nuts", unit = "ES"))
   expect_silent(gisco_get_units(
     id_giscoR = "nuts",
@@ -49,9 +49,13 @@ if (gisco_check_access()) {
     update_cache = TRUE
   ))
   r <-
-    gisco_get_units(id_giscoR = "nuts", unit = c("FR", "ES", "xt", "PT"))
+    gisco_get_units(id_giscoR = "nuts",
+                    unit = c("FR", "ES", "xt", "PT"))
   expect_true(nrow(r) == 3)
-  expect_message(gisco_get_units(id_giscoR = "nuts", unit = c("FR", "ES", "xt", "PT")))
+  expect_message(gisco_get_units(
+    id_giscoR = "nuts",
+    unit = c("FR", "ES", "xt", "PT")
+  ))
   expect_message(gisco_get_units(verbose = TRUE))
   df <- gisco_get_units(mode = "df")
   expect_true(class(df) == "data.frame")
@@ -99,11 +103,14 @@ if (gisco_check_access()) {
     unit = c("XXXXX")
   ))
 
-  expect_silent(gisco_get_units(id_giscoR = "countries",
-                                year = 2016,
-                                mode = "df"))
-  expect_silent(gisco_get_units(id_giscoR = "urban_audit",
-                                year = 2018,
-                                mode = "df"))
+  expect_silent(gisco_get_units(
+    id_giscoR = "countries",
+    year = 2016,
+    mode = "df"
+  ))
+  expect_silent(gisco_get_units(
+    id_giscoR = "urban_audit",
+    year = 2018,
+    mode = "df"
+  ))
 }
-

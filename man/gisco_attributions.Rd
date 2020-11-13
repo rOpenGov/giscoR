@@ -7,26 +7,33 @@
 gisco_attributions(lang = "en", copyright = FALSE)
 }
 \arguments{
-\item{lang}{Language (two-letter \href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO_639-1} code). See details.}
+\item{lang}{Language (two-letter
+\href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO_639-1} code).
+See details.}
 
-\item{copyright}{Boolean. Whether to display the copyright notice or not on the console.}
+\item{copyright}{Boolean. Whether to display the copyright notice or
+not on the console.}
 }
 \value{
 A string with the attribution to be used.
 }
 \description{
-Get the legal text to be used along with the data downloaded with this package
+Get the legal text to be used along with the data
+downloaded with this package
 }
 \details{
-Current languages supported are "en" (English), "da" (Danish), "de" (German),
-"es" (Spanish), "fi" (Finish), "fr" (French), "no" (Norwegian) and "sv" (Swedish).
+Current languages supported are "en" (English), "da"
+(Danish), "de" (German),
+"es" (Spanish), "fi" (Finish), "fr" (French), "no" (Norwegian) and
+ "sv" (Swedish).
 
 Consider contributing if you spot any mistake or want to add a new language.
 }
 \note{
 COPYRIGHT NOTICE
 
-When data downloaded from \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
+When data downloaded from
+ \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}{this page}
 is used in any printed or electronic publication,
 in addition to any other provisions
 applicable to the whole Eurostat website,

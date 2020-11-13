@@ -2,7 +2,8 @@
 % Please edit documentation in R/gisco_get_grid.R
 \name{gisco_get_grid}
 \alias{gisco_get_grid}
-\title{Get the grid cells covering the European land territory, for various resolutions.}
+\title{Get the grid cells covering the European
+land territory, for various resolutions.}
 \source{
 \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}{GISCO API Grids}
 }
@@ -27,7 +28,9 @@ gisco_get_grid(
 A \code{POLYGON/POINT} object.
 }
 \description{
-These datasets contain grid cells covering the European land territory, for various resolutions from 1km to 100km. Base statistics such as population figures are provided for these cells.
+These datasets contain grid cells covering the European land
+territory, for various resolutions from 1km to 100km. Base statistics such
+as population figures are provided for these cells.
 }
 \details{
 Files are distributed on EPSG:3035.
@@ -37,7 +40,8 @@ to 1.7G \code{resolution = "1"}. For resolutions 1km and 2km you would
 need to confirm the download.
 }
 \note{
-There are specific downloading provisions, please see \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}
+There are specific downloading provisions, please see
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}
 }
 \examples{
 library(sf)

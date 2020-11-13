@@ -9,7 +9,8 @@ expect_error(gisco_get_urban_audit(year = 2001))
 # See if there is access
 if (gisco_check_access()) {
   expect_silent(gisco_get_urban_audit(level = "GREATER_CITIES"))
-  expect_silent(gisco_get_urban_audit(spatialtype = "LB", level = "GREATER_CITIES"))
+  expect_silent(gisco_get_urban_audit(spatialtype = "LB",
+                                      level = "GREATER_CITIES"))
 
   expect_silent(
     gisco_get_urban_audit(
