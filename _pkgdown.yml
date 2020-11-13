@@ -24,6 +24,7 @@ reference:
       - gisco_countrycode
       - gisco_db
       - gisco_nuts
+      - tgs00026
 
   - title: "About the package"
     contents:
