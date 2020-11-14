@@ -1,6 +1,5 @@
 url: https://dieghernan.github.io/giscoR
 
-
 reference:
   - title: "API functions"
     desc: These functions check and download data from GISCO
