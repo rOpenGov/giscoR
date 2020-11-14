@@ -8,6 +8,7 @@ library(giscoR)
 
 library(goodpractice)
 
+
 gp()
 
 devtools::build_manual(path = "./devel")
