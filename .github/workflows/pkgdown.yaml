@@ -1,5 +1,6 @@
 on:
-  paths:
+  push:
+    paths:
       - _pkgdown.yml
       
 name: Build site
