@@ -31,7 +31,7 @@ jobs:
         run: R CMD INSTALL .
         
       - name: Pkgdown
-        run: Rscript -e 'pkgdown::build_site(devel = TRUE, lazy = TRUE)'
+        run: Rscript -e 'pkgdown::build_site()'
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
