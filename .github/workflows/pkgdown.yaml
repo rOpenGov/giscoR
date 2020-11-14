@@ -2,8 +2,9 @@ on:
   push:
     paths:
       - _pkgdown.yml
-      
-name: Build site
+
+name: Update docs
+
 jobs:
   render:
     name: Update docs
@@ -15,11 +16,9 @@ jobs:
       
       - name: Query dependencies
         run: |
-        
-          install.packages('pkgdown')
-          install.packages('pkgload')
           install.packages('remotes')
-
+          install.packages('pkgdown')
+          install.packages("pkgload")
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
@@ -32,7 +31,7 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
       - name: Install package
         run: R CMD INSTALL .
-        
+
       - name: Pkgdown
         run: Rscript -e 'pkgdown::build_site(devel = TRUE, lazy = TRUE)'
       - name: Commit results
