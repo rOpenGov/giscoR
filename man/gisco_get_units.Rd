@@ -64,6 +64,7 @@ On \code{mode = "df"} the only relevant parameters are \code{what, year}.
 to avoid naming conflicts with \code{nuts} datasets.
 }
 \examples{
+\dontrun{
 library(sf)
 
 if (gisco_check_access()) {
@@ -112,6 +113,7 @@ if (gisco_check_access()) {
     line = 1,
     cex.sub = 0.7
   )
+}
 }
 }
 \seealso{
