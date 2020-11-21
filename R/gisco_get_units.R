@@ -31,6 +31,7 @@
 #' GISCO API}
 #' @seealso \link{gisco_get}
 #' @examples
+#' \dontrun{
 #' library(sf)
 #'
 #' if (gisco_check_access()) {
@@ -79,6 +80,7 @@
 #'     line = 1,
 #'     cex.sub = 0.7
 #'   )
+#' }
 #' }
 #' @export
 gisco_get_units <-  function(id_giscoR = "nuts",
