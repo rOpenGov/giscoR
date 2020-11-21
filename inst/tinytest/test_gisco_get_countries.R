@@ -28,37 +28,3 @@ expect_identical(giscoR:::gsc_helper_countrynames(c("ESP", "ITA")),
 expect_silent(gisco_get_countries())
 expect_message(gisco_get_countries(verbose = TRUE))
 expect_true(sf::st_is_longlat(gisco_get_countries()))
-
-# See if there is access
-if (gisco_check_access()) {
-  expect_silent(gisco_get_countries(
-    spatialtype = "LB",
-    country = c("Spain", "Italia")
-  ))
-
-  expect_silent(gisco_get_countries(spatialtype = "COASTL",
-                                    country = c("ESP", "ITA")))
-
-  expect_silent(gisco_get_countries(resolution = "10",
-                                    country = c("ESP", "ITA")))
-
-  expect_silent(gisco_get_countries(resolution = 60, country = c("ES", "IT")))
-  expect_silent(gisco_get_countries(spatialtype = "COASTL", resolution = "60"))
-
-  expect_silent(gisco_get_countries(resolution = '60', country = 'DNK'))
-
-  expect_silent(gisco_get_countries(spatialtype = "COASTL", resolution = 3))
-  expect_silent(gisco_get_countries(
-    spatialtype = "COASTL",
-    resolution = "60",
-    update_cache = TRUE
-  ))
-
-
-  expect_silent(gisco_get_countries(
-    year = "2013",
-    resolution = "60",
-    spatialtype = "RG"
-  ))
-
-}

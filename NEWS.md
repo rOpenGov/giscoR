@@ -1,7 +1,8 @@
-# giscoR 0.2.1-dev9000
+# giscoR 0.2.1
 
 - Remove CRAN notes.
 - Improve docs.
+- Fix cran checks.
 
 
 

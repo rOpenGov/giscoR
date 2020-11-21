@@ -29,24 +29,6 @@ considered to be 'hospitals' by Member States.
 Files are distributed on EPSG:4326.
 \href{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}{Link to metadata}
 }
-\examples{
-library(sf)
-
-if (gisco_check_access()) {
-  HospitalBENELUX <- gisco_get_healthcare(country = c("BE", "NL", "LU"))
-  BENELUX <- gisco_get_countries(country = c("BE", "NL", "LU"))
-  plot(st_geometry(BENELUX))
-  plot(
-    st_geometry(HospitalBENELUX),
-    pch = 20,
-    col = "steelblue1",
-    add = TRUE
-  )
-  title(main = "Hospitals in Benelux",
-        sub = gisco_attributions(),
-        line = 1)
-}
-}
 \seealso{
 \link{gisco_get}
 }

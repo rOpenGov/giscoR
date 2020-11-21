@@ -18,47 +18,4 @@ expect_silent(gisco_get_nuts(nuts_level = "0"))
 
 expect_message(gisco_get_nuts(verbose = TRUE))
 
-# See if there is access
-if (gisco_check_access()) {
-  expect_silent(gisco_get_nuts(spatialtype = "LB"))
-  expect_silent(gisco_get_nuts(resolution = "60", nuts_level = "0"))
-  expect_silent(
-    gisco_get_nuts(
-      resolution = "60",
-      nuts_level = "0",
-      update_cache = TRUE,
-      verbose = TRUE
-    )
-  )
-  expect_silent(gisco_get_nuts(
-    resolution = "60",
-    nuts_level = "0" ,
-    nuts_id = "ES5"
-  ))
 
-  expect_silent(gisco_get_nuts(
-    resolution = "60",
-    nuts_id = "ES5",
-    spatialtype = "LB"
-  ))
-
-  expect_silent(gisco_get_nuts(
-    resolution = "60",
-    nuts_id = "ES5",
-    spatialtype = "BN"
-  ))
-  expect_silent(gisco_get_nuts(resolution = "60", country = c("ITA", "POL")))
-
-  a <- gisco_get_nuts(resolution = "60", epsg = '3035')
-  b <- gisco_get_nuts(resolution = "60", epsg = '3857')
-  c <- gisco_get_nuts(resolution = "60", epsg = "4326")
-
-  epsg3035 <- sf::st_crs(3035)
-  epsg3857 <- sf::st_crs(3857)
-  epsg4326 <- sf::st_crs(4326)
-
-  expect_equal(epsg3035, sf::st_crs(a))
-  expect_equal(epsg3857, sf::st_crs(b))
-  expect_equal(epsg4326, sf::st_crs(c))
-
-}
