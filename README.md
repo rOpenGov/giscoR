@@ -122,6 +122,8 @@ them on your local directory.
 
 ### API data packages
 
+`eurostat` package (<https://ropengov.github.io/eurostat/>). This is another API package that provides access to open data from Eurostat.
+
 `wbstats` (<https://nset-ornl.github.io/wbstats/>) is an interesting R
 API packages that provides access to [The World Bank
 Data](https://data.worldbank.org/) API.
