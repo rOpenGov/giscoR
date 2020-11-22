@@ -1,7 +1,7 @@
 Package: giscoR
 Type: Package
 Title: Download Map Data from GISCO API - Eurostat
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: 
     c(person(given = "Diego",
              family = "Hernangómez",
@@ -35,7 +35,4 @@ Imports:
 Suggests: 
     cartography (>= 2.4),
     lwgeom,
-    tinytest,
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
+    tinytest

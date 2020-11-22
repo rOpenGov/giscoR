@@ -1,3 +1,7 @@
+# giscoR 0.2.2
+
+- Remove vignette
+
 # giscoR 0.2.1
 
 - Remove CRAN notes.
