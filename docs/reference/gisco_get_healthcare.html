@@ -102,7 +102,7 @@ considered to be 'hospitals' by Member States." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">giscoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -203,24 +203,6 @@ considered to be 'hospitals' by Member States.</p>
 
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
-
-<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='gisco_check_access.html'>gisco_check_access</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='va'>HospitalBENELUX</span> <span class='op'>&lt;-</span> <span class='fu'>gisco_get_healthcare</span><span class='op'>(</span>country <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"BE"</span>, <span class='st'>"NL"</span>, <span class='st'>"LU"</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='va'>BENELUX</span> <span class='op'>&lt;-</span> <span class='fu'><a href='gisco_get.html'>gisco_get_countries</a></span><span class='op'>(</span>country <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"BE"</span>, <span class='st'>"NL"</span>, <span class='st'>"LU"</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>BENELUX</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>HospitalBENELUX</span><span class='op'>)</span>,
-    pch <span class='op'>=</span> <span class='fl'>20</span>,
-    col <span class='op'>=</span> <span class='st'>"steelblue1"</span>,
-    add <span class='op'>=</span> <span class='cn'>TRUE</span>
-  <span class='op'>)</span>
-  <span class='fu'><a href='https://rdrr.io/r/graphics/title.html'>title</a></span><span class='op'>(</span>main <span class='op'>=</span> <span class='st'>"Hospitals in Benelux"</span>,
-        sub <span class='op'>=</span> <span class='fu'><a href='gisco_attributions.html'>gisco_attributions</a></span><span class='op'>(</span><span class='op'>)</span>,
-        line <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='img'><img src='gisco_get_healthcare-1.png' alt='' width='701' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

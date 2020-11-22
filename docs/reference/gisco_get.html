@@ -102,7 +102,7 @@ object from GISCO API entry point or your local library." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">giscoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -306,7 +306,9 @@ for debugging, default if <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>region</th>
-      <td><p>Optional. A character vector of UN M49 region codes. Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania". See Details and <a href='gisco_countrycode.html'>gisco_countrycode</a></p></td>
+      <td><p>Optional. A character vector of UN M49 region codes.
+Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania".
+ See Details and <a href='gisco_countrycode.html'>gisco_countrycode</a></p></td>
     </tr>
     <tr>
       <th>gisco_id</th>
@@ -318,11 +320,15 @@ for debugging, default if <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>nuts_level</th>
-      <td><p>NUTS level. One of <code>"0"</code> (Country-level), <code>"1", "2"</code> or <code>"3"</code>. See <a href='https://ec.europa.eu/eurostat/web/nuts/background'>https://ec.europa.eu/eurostat/web/nuts/background</a>.</p></td>
+      <td><p>NUTS level. One of <code>"0"</code> (Country-level),
+<code>"1", "2"</code> or <code>"3"</code>.
+See <a href='https://ec.europa.eu/eurostat/web/nuts/background'>https://ec.europa.eu/eurostat/web/nuts/background</a>.</p></td>
     </tr>
     <tr>
       <th>level</th>
-      <td><p>Level of Urban Audit. Possible values are <code>"CITIES", "FUA", "GREATER_CITIES"</code> or <code>NULL</code>. <code>NULL</code> would download the full dataset.</p></td>
+      <td><p>Level of Urban Audit. Possible values are
+<code>"CITIES", "FUA", "GREATER_CITIES"</code> or <code>NULL</code>.
+<code>NULL</code> would download the full dataset.</p></td>
     </tr>
     </table>
 
@@ -338,24 +344,37 @@ for debugging, default if <code>FALSE</code>.</p></td>
     <p><code>country</code> only available on
 specific datasets. Some <code>spatialtype</code> options
 (as <code>BN, COASTL, INLAND</code>) may not present country-level identifies.</p>
-<p><code>country</code> could be either a vector of country names, a vector of ISO3 country codes or a vector of Eurostat country codes. Mixed types (as <code><a href='https://rdrr.io/r/base/c.html'>c("Turkey","US","FRA")</a></code>) would not work.</p>
-<p>Sometimes cached files may be corrupt. On that case, try re-downloading the data setting <code>update_cache = TRUE</code>.</p>
-<p>If you experience any problem on download, try to download the corresponding <code>.geojson</code> file by any other method and set <code>cache_dir = "path/to/dir"</code> or <code>options(gisco_cache_dir = "path/to/dir)"</code>.</p>
+<p><code>country</code> could be either a vector of country names, a vector of ISO3
+country codes or a vector of Eurostat country codes. Mixed types
+(as <code><a href='https://rdrr.io/r/base/c.html'>c("Turkey","US","FRA")</a></code>) would not work.</p>
+<p>Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting <code>update_cache = TRUE</code>.</p>
+<p>If you experience any problem on download, try to download
+the corresponding <code>.geojson</code> file by any other method and
+set <code>cache_dir = "path/to/dir"</code> or
+<code>options(gisco_cache_dir = "path/to/dir)"</code>.</p>
 <p>For a complete list of files available check
 <a href='gisco_db.html'>gisco_db</a>.</p>
 <p><strong>Release years available</strong></p>
-<p><code>gisco_get_coastallines</code>: one of <code>"2006", "2010", "2013"</code> or <code>"2016"</code>.</p>
-<p><code>gisco_get_communes</code>: one of <code>"2001", "2004", "2006", "2008", "2010", "2013"</code> or <code>"2016"</code>.</p>
-<p><code>gisco_get_countries</code>: one of <code>"2001", "2006", "2010", "2013", "2016"</code> or <code>"2020"</code>.</p>
+<p><code>gisco_get_coastallines</code>: one of
+<code>"2006", "2010", "2013"</code> or <code>"2016"</code>.</p>
+<p><code>gisco_get_communes</code>: one of
+<code>"2001", "2004", "2006", "2008", "2010", "2013"</code> or <code>"2016"</code>.</p>
+<p><code>gisco_get_countries</code>:
+one of <code>"2001", "2006", "2010", "2013", "2016"</code> or <code>"2020"</code>.</p>
 <p><code>gisco_get_lau</code>: one of <code>"2016", "2017", "2018"</code> or <code>"2019"</code>.</p>
-<p><code>gisco_get_nuts</code>: one of <code>"2003", "2006", "2010", "2013", "2016"</code> or <code>"2021"</code>.</p>
-<p><code>gisco_get_urban_audit</code>: one of <code>"2001", "2004", "2014", "2018"</code> or <code>"2020"</code>.</p>
+<p><code>gisco_get_nuts</code>: one of
+<code>"2003", "2006", "2010", "2013", "2016"</code> or <code>"2021"</code>.</p>
+<p><code>gisco_get_urban_audit</code>:
+one of <code>"2001", "2004", "2014", "2018"</code> or <code>"2020"</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Please check the download and usage provisions on <a href='gisco_attributions.html'>gisco_attributions</a>.</p>
+    <p>Please check the download and usage provisions
+on <a href='gisco_attributions.html'>gisco_attributions</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='gisco_db.html'>gisco_db</a>, <a href='gisco_attributions.html'>gisco_attributions</a>, <a href='gisco_coastallines.html'>gisco_coastallines</a></p>
+    <div class='dont-index'><p><a href='gisco_db.html'>gisco_db</a>, <a href='gisco_attributions.html'>gisco_attributions</a>,
+<a href='gisco_coastallines.html'>gisco_coastallines</a></p>
 <p><a href='gisco_countrycode.html'>gisco_countrycode</a>, <a href='gisco_countries.html'>gisco_countries</a></p>
 <p><a href='gisco_nuts.html'>gisco_nuts</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
