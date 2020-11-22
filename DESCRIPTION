@@ -22,7 +22,6 @@ Description: Tools to download data from the GISCO
     This package is in no way officially related to or endorsed by Eurostat.
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 RoxygenNote: 7.1.1
 BugReports: https://github.com/dieghernan/giscoR/issues
 URL: https://dieghernan.github.io/giscoR/, https://github.com/dieghernan/giscoR
@@ -36,3 +35,4 @@ Suggests:
     cartography (>= 2.4),
     lwgeom,
     tinytest
+LazyData: true
