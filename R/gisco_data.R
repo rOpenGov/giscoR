@@ -79,7 +79,8 @@ NULL
 #' @name gisco_nuts
 #' @description A \code{sf} object including all
 #' NUTS levels as provided by GISCO (2016 version).
-#' @format A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 11 variables:
+#' @format A \code{POLYGON} data frame
+#' (resolution: 1:20million, EPSG:4326) object with 11 variables:
 #' \describe{
 #'   \item{id}{row ID}
 #'   \item{COAST_TYPE}{COAST_TYPE}

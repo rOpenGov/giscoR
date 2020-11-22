@@ -8,8 +8,8 @@ gisco_attributions(lang = "en", copyright = FALSE)
 }
 \arguments{
 \item{lang}{Language (two-letter
-\href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO_639-1} code).
-See details.}
+\href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO_639-1}
+code). See details.}
 
 \item{copyright}{Boolean. Whether to display the copyright notice or
 not on the console.}

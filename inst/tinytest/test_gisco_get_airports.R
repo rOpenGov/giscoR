@@ -11,4 +11,3 @@ expect_silent(gisco_get_ports())
 expect_silent(gisco_get_ports(year = 2013))
 expect_silent(gisco_get_ports(year = 2009))
 expect_error(gisco_get_ports(year = 2020))
-

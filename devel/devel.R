@@ -9,6 +9,10 @@ library(giscoR)
 library(goodpractice)
 
 
+lintr::lint_package()
+
+sessionInfo()
+
 gp()
 
 devtools::build_manual(path = "./devel")

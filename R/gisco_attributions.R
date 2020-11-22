@@ -2,8 +2,8 @@
 #' @description Get the legal text to be used along with the data
 #' downloaded with this package
 #' @param lang Language (two-letter
-#' \href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO_639-1} code).
-#' See details.
+#' \href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO_639-1}
+#' code). See details.
 #' @param copyright Boolean. Whether to display the copyright notice or
 #' not on the console.
 #' @return A string with the attribution to be used.
@@ -96,7 +96,7 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     attr <-
       "\u00a9 EuroGeographics f\u00f6r administrativa gr\u00e4nser"
   } else {
-    print("This language is not supported, switching to English. Consider contributing")
+    print("Language not supported, switching to English. Consider contributing")
     attr <-
       "\u00a9 EuroGeographics for the administrative boundaries"
   }

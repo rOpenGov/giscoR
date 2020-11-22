@@ -5,7 +5,6 @@
 - Fix cran checks.
 
 
-
 # giscoR 0.2.0
 
 - Remove `colorspace` as dependency.

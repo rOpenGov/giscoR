@@ -6,7 +6,8 @@
 \alias{gisco_nuts}
 \title{All NUTS \code{POLYGON} object}
 \format{
-A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with 11 variables:
+A \code{POLYGON} data frame
+(resolution: 1:20million, EPSG:4326) object with 11 variables:
 \describe{
   \item{id}{row ID}
   \item{COAST_TYPE}{COAST_TYPE}

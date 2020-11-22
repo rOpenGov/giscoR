@@ -40,7 +40,7 @@ gisco_get_healthcare <- function(cache = TRUE,
 
   if (!is.null(country) & "cc" %in% names(data.sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$cc %in% country,]
+    data.sf <- data.sf[data.sf$cc %in% country, ]
   }
   return(data.sf)
 }

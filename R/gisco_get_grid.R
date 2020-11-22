@@ -89,7 +89,7 @@ gisco_get_grid <- function(resolution = "20",
     if (verbose & exist_local)
       message("File exits on local cache dir")
 
-    if (resolution %in% c("1" , "2") & isFALSE(exist_local)) {
+    if (resolution %in% c("1", "2") & isFALSE(exist_local)) {
       sel <-
         menu(c("Yes", "No"),
              title = "You are about to download a large file (>500M). Proceed?")
@@ -104,7 +104,7 @@ gisco_get_grid <- function(resolution = "20",
 
     if (verbose) {
       size <- file.size(localfile)
-      class(size) <- 'object_size'
+      class(size) <- "object_size"
       message(format(size, units = "auto"))
     }
     load <- tryCatch(

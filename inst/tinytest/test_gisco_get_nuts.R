@@ -17,5 +17,3 @@ expect_silent(gisco_get_nuts(nuts_level = "0"))
 
 
 expect_message(gisco_get_nuts(verbose = TRUE))
-
-

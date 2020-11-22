@@ -159,7 +159,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
   # NUTS LEVEL
   if (id_giscoR == "nuts") {
     av.nuts <- paste(db$nuts_level, collapse = ",")
-    av.nuts  <- sort(unique(unlist(strsplit(av.nuts , ","))))
+    av.nuts  <- sort(unique(unlist(strsplit(av.nuts, ","))))
 
     if (is.null((nuts_level)))
       nuts_level <- "error"
@@ -174,7 +174,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
   # Urban Audit Level
   if (id_giscoR == "urban_audit") {
     av.ualevel <- paste(db$level, collapse = ",")
-    av.ualevel  <- sort(unique(unlist(strsplit(av.ualevel , ","))))
+    av.ualevel  <- sort(unique(unlist(strsplit(av.ualevel, ","))))
 
     if (is.null((level)))
       level <- "all"
@@ -315,7 +315,7 @@ gsc_api_load <- function(file = NULL,
     if (verbose & isTRUE(cache)) {
       message("Reading from local file ", file)
       size <- file.size(file)
-      class(size) <- 'object_size'
+      class(size) <- "object_size"
       message(format(size, units = "auto"))
     } else{
       if (verbose)

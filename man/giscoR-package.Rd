@@ -11,7 +11,8 @@
 \description{
 \if{html}{\figure{logo.png}{options: width=120 alt="giscoR logo" align='right'}}
 
-giscoR is a API package that helps to retrieve data from Eurostat - GISCO (the Geographic Information System of the COmmission)
+giscoR is a API package that helps to retrieve data from Eurostat - GISCO
+ (the Geographic Information System of the COmmission)
 }
 \details{
 giscoR package
