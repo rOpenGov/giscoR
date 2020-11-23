@@ -8,6 +8,7 @@ library(giscoR)
 
 library(goodpractice)
 
+pkgdown::build_site(lazy=FALSE)
 
 lintr::lint_package()
 
@@ -96,7 +97,9 @@ example("gisco_nuts","giscoR")
 
 roxygen2::roxygenise()
 
+
 devtools::release()
+devtools::release(check = FALSE)
 
 devtools::spell_check()
 

@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   giscoR: giscoR.html
-last_built: 2020-11-22T01:01Z
+last_built: 2020-11-23T15:22Z
 urls:
   reference: https://dieghernan.github.io/giscoR/reference
   article: https://dieghernan.github.io/giscoR/articles
