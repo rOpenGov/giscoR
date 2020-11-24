@@ -32,6 +32,9 @@ Note that the package does not provide metadata on the downloaded files,
 the information is available on the [API
 webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
 
+Full site with examples and vignettes on
+<https://dieghernan.github.io/giscoR/>
+
 ## Installation
 
 Install `giscoR` from
