@@ -65,6 +65,7 @@ a:hover, a:active{
 	background-color: #cdcd00;
 }
 /* Hovers */
+
 .navbar .navbar-toggle:hover,
 .navbar .navbar-toggle:focus {
 	background-color: #cdcd00;
@@ -75,8 +76,26 @@ a:hover, a:active{
 }
 .navbar .navbar-nav>li>a:hover,
 .navbar .navbar-nav>li>a:focus,
+.navbar .dropdown-menu>li>a:hover,
+.navbar .dropdown-menu>li>a:focus,
 .navbar .navbar-nav>.active>a:hover,
 .navbar .navbar-nav>.active>a:focus {
 	color: #cdcd00;
 	background-color: transparent;
+}
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:hover,
+.navbar-default .navbar-nav>.open>a:focus {
+	background-color: #00688b;
+	color: #cdcd00;
+}
+.navbar .dropdown-menu {
+	background-color: #00688b;
+}
+.navbar .dropdown-menu>li>a {
+	color: #fff;
+}
+.navbar .dropdown-menu .active>a {
+	background-color: #cdcd00;
+	color: #00688b;
 }
