@@ -50,7 +50,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">giscoR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.3-9001</span>
       </span>
     </div>
 
@@ -158,6 +158,7 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span>
 
 <span class="co"># Labels and Lines available</span>
+
 <span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>spatialtype <span class="op">=</span> <span class="st">"LB"</span>, region <span class="op">=</span> <span class="st">"Africa"</span>, epsg <span class="op">=</span> <span class="st">"3857"</span><span class="op">)</span>
 <span class="va">coast</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>spatialtype <span class="op">=</span> <span class="st">"COASTL"</span>, epsg <span class="op">=</span> <span class="st">"3857"</span><span class="op">)</span>
 
@@ -171,12 +172,127 @@
 <span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>sub <span class="op">=</span> <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>, line <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-2.png"><!-- --></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span>
+
+
+<span class="co"># A thematic map with ggplot</span>
+
+
+
+<span class="va">countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="st">"3035"</span><span class="op">)</span>
+
+<span class="va">nuts2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get.html">gisco_get_nuts</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="st">"3035"</span>, nuts_level <span class="op">=</span> <span class="st">"2"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="thematic-maps" class="section level2">
+<h2 class="hasAnchor">
+<a href="#thematic-maps" class="anchor"></a>Thematic maps</h2>
+<p>An example of a thematic map plotted with the <code>cartography</code> package. The information is extracted via the <code>eurostat</code> package:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+
+<span class="va">nuts3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get.html">gisco_get_nuts</a></span><span class="op">(</span>
+  year <span class="op">=</span> <span class="st">"2016"</span>,
+  epsg <span class="op">=</span> <span class="st">"3035"</span>,
+  resolution <span class="op">=</span> <span class="st">"10"</span>,
+  nuts_level <span class="op">=</span> <span class="st">"3"</span>
+<span class="op">)</span>
+
+<span class="co"># Countries</span>
+<span class="va">countries</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>
+    year <span class="op">=</span> <span class="st">"2016"</span>,
+    epsg <span class="op">=</span> <span class="st">"3035"</span>,
+    resolution <span class="op">=</span> <span class="st">"10"</span>
+  <span class="op">)</span>
+
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/eurostat/">eurostat</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/cartography/">cartography</a></span><span class="op">)</span>
+
+<span class="va">popdens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html">get_eurostat</a></span><span class="op">(</span><span class="st">"demo_r_d3dens"</span><span class="op">)</span>
+<span class="va">popdens</span> <span class="op">&lt;-</span> <span class="va">popdens</span><span class="op">[</span><span class="va">popdens</span><span class="op">$</span><span class="va">time</span> <span class="op">==</span> <span class="st">"2018-01-01"</span>, <span class="op">]</span>
+
+
+
+<span class="va">nuts3.sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html">merge</a></span><span class="op">(</span><span class="va">nuts3</span>,
+  <span class="va">popdens</span>,
+  by.x <span class="op">=</span> <span class="st">"NUTS_ID"</span>,
+  by.y <span class="op">=</span> <span class="st">"geo"</span>,
+  all.x <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+
+<span class="co"># Prepare mapping</span>
+
+<span class="va">br</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">25</span>, <span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">200</span>, <span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2500</span>, <span class="fl">5000</span>, <span class="fl">10000</span>, <span class="fl">30000</span><span class="op">)</span>
+<span class="va">pal</span> <span class="op">&lt;-</span>
+  <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span>
+    n <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">br</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span>,
+    palette <span class="op">=</span> <span class="st">"inferno"</span>,
+    alpha <span class="op">=</span> <span class="fl">0.7</span>,
+    rev <span class="op">=</span> <span class="cn">TRUE</span>
+  <span class="op">)</span>
+
+
+<span class="co"># Plot</span>
+<span class="va">opar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>no.readonly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mar <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, bg <span class="op">=</span> <span class="st">"#C6ECFF"</span><span class="op">)</span>
+
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">countries</span><span class="op">)</span>,
+  col <span class="op">=</span> <span class="st">"#E0E0E0"</span>,
+  lwd <span class="op">=</span> <span class="fl">0.1</span>,
+  bg <span class="op">=</span> <span class="st">"#C6ECFF"</span>,
+  xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2300000</span>, <span class="fl">7050000</span><span class="op">)</span>,
+  ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1390000</span>, <span class="fl">5400000</span><span class="op">)</span>,
+<span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/choroLayer.html">choroLayer</a></span><span class="op">(</span>
+  <span class="va">nuts3.sf</span>,
+  var <span class="op">=</span> <span class="st">"values"</span>,
+  border <span class="op">=</span> <span class="cn">NA</span>,
+  breaks <span class="op">=</span> <span class="va">br</span>,
+  col <span class="op">=</span> <span class="va">pal</span>,
+  legend.pos <span class="op">=</span> <span class="st">"n"</span>,
+  colNA <span class="op">=</span> <span class="st">"#E0E0E0"</span>,
+  add <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+
+
+<span class="co"># Add borders</span>
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">countries</span><span class="op">)</span>,
+  lwd <span class="op">=</span> <span class="fl">0.25</span>,
+  col <span class="op">=</span> <span class="cn">NA</span>,
+  add <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+
+
+<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/legendChoro.html">legendChoro</a></span><span class="op">(</span>
+  pos <span class="op">=</span> <span class="st">"topright"</span>,
+  title.txt <span class="op">=</span> <span class="st">"Population density (km2)\nNUTS3 (2018)"</span>,
+  breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">""</span>, <span class="fu"><a href="https://rdrr.io/r/base/format.html">format</a></span><span class="op">(</span><span class="va">br</span>, big.mark <span class="op">=</span> <span class="st">","</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">br</span><span class="op">)</span><span class="op">)</span><span class="op">]</span>, <span class="st">""</span><span class="op">)</span>,
+  col <span class="op">=</span> <span class="va">pal</span>,
+  nodata <span class="op">=</span> <span class="cn">T</span>,
+  nodata.txt <span class="op">=</span> <span class="st">"n.d."</span>,
+  nodata.col <span class="op">=</span> <span class="st">"#E0E0E0"</span>,
+  frame <span class="op">=</span> <span class="cn">TRUE</span>
+<span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/pkg/cartography/man/layoutLayer.html">layoutLayer</a></span><span class="op">(</span>
+  title <span class="op">=</span> <span class="st">"Population density"</span>,
+  scale <span class="op">=</span> <span class="fl">1000</span>,
+  col <span class="op">=</span> <span class="va">pal</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>,
+  sources <span class="op">=</span> <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>,
+  author <span class="op">=</span> <span class="st">"dieghernan, 2020"</span>
+<span class="op">)</span></code></pre></div>
+<p><img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/README-thematic-1.svg"><!-- --></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></code></pre></div>
 <div id="a-note-on-caching" class="section level3">
 <h3 class="hasAnchor">
 <a href="#a-note-on-caching" class="anchor"></a>A note on caching</h3>
 <p>Some data sets (as Local Administrative Units - LAU, or high-resolution files) may have a size larger than 50MB. You can use <code>giscoR</code> to create your own local repository at a given local directory passing the following option:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>gisco_cache_dir <span class="op">=</span> <span class="st">"./path/to/location"</span><span class="op">)</span></code></pre></div>
 <p>When this option is set, <code>giscoR</code> would look for the cached file and it will load it, speeding up the process.</p>
 <p>You can also download manually the files (<code>.geojson</code> format) and store them on your local directory.</p>
@@ -275,6 +391,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=giscoR"><img src="https://www.r-pkg.org/badges/version/giscoR" alt="CRAN status"></a></li>
+<li><a href="https://cran.r-project.org/web/checks/check_results_giscoR.html"><img src="https://cranchecks.info/badges/worst/giscoR" alt="CRAN results"></a></li>
 <li><a href="https://github.com/dieghernan/giscoR/actions"><img src="https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/gh/dieghernan/giscoR"><img src="https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg" alt="codecov"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>

@@ -1,3 +1,7 @@
+# On dev
+
+- Update on docs
+
 # giscoR 0.2.2
 
 - Remove vignette

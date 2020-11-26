@@ -4,17 +4,32 @@ tinytest::test_all()
 
 roxygen2::roxygenise()
 
+
+devtools::check()
+
+tinytest::test_all()
+
+pkgdown::build_site(lazy = TRUE)
+
 library(giscoR)
 
 library(goodpractice)
 
-pkgdown::build_site(lazy=FALSE)
+devtools::spell_check()
+
+giscor
 
 lintr::lint_package()
 
+usethis::use_cran_badge()
+
 sessionInfo()
 
-gp()
+pkgdown::clean_site()
+pkgdown::build_favicons(overwrite = TRUE)
+pkgdown::build_site()
+
+devtools::build_readme()
 
 devtools::build_manual(path = "./devel")
 

@@ -26,15 +26,16 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
-      
+
       - name: Install packages
         run: |
-          
-          remotes::install_local(".") 
+
+          remotes::install_local(".")
           #  Additional packages
           install.packages("styler")
           install.packages("tmap")
-          install.packages("ggplot2")
+          install.packages("eurostat")
+          install.packages("svglite")
           install.packages("cartography")
           remotes::install_cran("rmarkdown")
         shell: Rscript {0}

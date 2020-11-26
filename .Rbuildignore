@@ -2,7 +2,7 @@
 ^\.Rproj\.user$
 ^data-raw$
 ^codecov\.yml$
-^devel$
+^dev$
 ^.github$
 ^README\.Rmd$
 ^.*\.yml$
@@ -15,6 +15,7 @@
 ^\.github$
 ^LICENSE\.md$
 ^README-.*\.png$
+^README-.*\.svg$
 ^revdep$
 ^cran-comments\.md$
 ^doc$

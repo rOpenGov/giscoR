@@ -1,12 +1,14 @@
 /* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Noto+Serif&family=Roboto&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Open+Sans&display=swap');
 
 /* General typography of Bootstrap 4 */
-body {
-	font-family: Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
 
+body {
+	font-family: "Open Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
 /* Headings on serif - Noto Serif */
+
 h1,
 h2,
 h3,
@@ -16,27 +18,30 @@ h6,
 blockquote,
 .copyright,
 .pkgdown {
-	font-family: 'Noto Serif', serif;
+	font-family: 'Open Sans', sans-serif;
 }
-.section-desc + p{
-	font-family: Roboto, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+.section-desc + p {
+	font-family: "Open Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
-
 /* Code on Source Code Pro */
+
 code,
 pre,
 .ref-arguments th,
-dt{
+dt {
 	font-family: 'Fira Mono', monospace;
 }
 /* Links */
-a{
-  color: #0085b2;
+
+a {
+	color: #0085b2;
 }
-a:hover, a:active{
-  color: #cdcd00;
+a:hover,
+a:active {
+	color: #cdcd00;
 }
 /* Modify navbar */
+
 .navbar {
 	background-color: #00688b;
 }
@@ -46,11 +51,14 @@ a:hover, a:active{
 .navbar .navbar-toggle .icon-bar {
 	background-color: #cdcd00;
 }
-
+.pkg {
+	font-weight: bold;
+}
 /* Navbar brand */
+
 .navbar .navbar-brand {
 	margin-right: 1em;
-	font-family: 'Noto Serif', serif;
+	font-family: 'Open Sans', sans-serif;
 }
 .navbar .navbar-brand .navbar-link {
 	color: #cdcd00;
@@ -60,6 +68,7 @@ a:hover, a:active{
 	color: #00688b;
 }
 /* Active link */
+
 .navbar .navbar-nav>.active>a {
 	color: #00688b;
 	background-color: #cdcd00;
@@ -77,15 +86,31 @@ a:hover, a:active{
 .navbar .navbar-nav>li>a:hover,
 .navbar .navbar-nav>li>a:focus,
 .navbar .dropdown-menu>li>a:hover,
-.navbar .dropdown-menu>li>a:focus,
-.navbar .navbar-nav>.active>a:hover,
-.navbar .navbar-nav>.active>a:focus {
+.navbar .dropdown-menu>li>a:focus {
 	color: #cdcd00;
 	background-color: transparent;
 }
-.navbar-default .navbar-nav>.open>a,
-.navbar-default .navbar-nav>.open>a:hover,
+
+.navbar .navbar-nav>.active>a:hover,
+.navbar .navbar-nav>.active>a:focus {
+	color: #fff;
+	background-color: #cdcd00;
+}
+
+/* Dropdowns */
+
+.navbar-default .navbar-nav>.open>a
+.navbar-default .navbar-nav>.open>a:hover, 
 .navbar-default .navbar-nav>.open>a:focus {
+	color: #cdcd00;
+	background-color: #00688b;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+	color: #fff;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
 	background-color: #00688b;
 	color: #cdcd00;
 }
@@ -95,7 +120,13 @@ a:hover, a:active{
 .navbar .dropdown-menu>li>a {
 	color: #fff;
 }
-.navbar .dropdown-menu .active>a {
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a {
 	background-color: #cdcd00;
 	color: #00688b;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+	color: #fff;
+	background-color: #cdcd00;
 }
