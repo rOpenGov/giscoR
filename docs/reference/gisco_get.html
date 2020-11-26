@@ -393,7 +393,7 @@ on <a href='gisco_attributions.html'>gisco_attributions</a>.</p>
 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/title.html'>title</a></span><span class='op'>(</span>main <span class='op'>=</span> <span class='st'>"Coastal Lines"</span>,
       sub <span class='op'>=</span> <span class='fu'><a href='gisco_attributions.html'>gisco_attributions</a></span><span class='op'>(</span><span class='op'>)</span>,
       line <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='img'><img src='gisco_get-1.png' alt='' width='701' height='433' /></div><div class='input'>
+</div><div class='img'><img src='gisco_get-1.svg' alt='' width='701' height='433' /></div><div class='input'>
 
 <span class='co'>###############################</span>
 <span class='co'># Example - gisco_get_countries</span>
@@ -402,19 +402,19 @@ on <a href='gisco_attributions.html'>gisco_attributions</a>.</p>
 <span class='va'>sf_world</span> <span class='op'>&lt;-</span> <span class='fu'>gisco_get_countries</span><span class='op'>(</span><span class='op'>)</span>
 <span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>sf_world</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"seagreen2"</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/title.html'>title</a></span><span class='op'>(</span>sub <span class='op'>=</span> <span class='fu'><a href='gisco_attributions.html'>gisco_attributions</a></span><span class='op'>(</span><span class='op'>)</span>, line <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='img'><img src='gisco_get-2.png' alt='' width='701' height='433' /></div><div class='input'>
+</div><div class='img'><img src='gisco_get-2.svg' alt='' width='701' height='433' /></div><div class='input'>
 
 <span class='va'>sf_africa</span> <span class='op'>&lt;-</span> <span class='fu'>gisco_get_countries</span><span class='op'>(</span>region <span class='op'>=</span> <span class='st'>'Africa'</span><span class='op'>)</span>
 <span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>sf_africa</span><span class='op'>)</span>,
      col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"springgreen4"</span>, <span class='st'>"darkgoldenrod1"</span>, <span class='st'>"red2"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/title.html'>title</a></span><span class='op'>(</span>sub <span class='op'>=</span> <span class='fu'><a href='gisco_attributions.html'>gisco_attributions</a></span><span class='op'>(</span><span class='op'>)</span>, line <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='img'><img src='gisco_get-3.png' alt='' width='701' height='433' /></div><div class='input'>
+</div><div class='img'><img src='gisco_get-3.svg' alt='' width='701' height='433' /></div><div class='input'>
 <span class='va'>sf_benelux</span> <span class='op'>&lt;-</span>
   <span class='fu'>gisco_get_countries</span><span class='op'>(</span>country <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'Belgium'</span>, <span class='st'>'Netherlands'</span>, <span class='st'>'Luxembourg'</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://r-spatial.github.io/sf/reference/plot.html'>plot</a></span><span class='op'>(</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_geometry.html'>st_geometry</a></span><span class='op'>(</span><span class='va'>sf_benelux</span><span class='op'>)</span>,
      col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"grey10"</span>, <span class='st'>"orange"</span>, <span class='st'>"deepskyblue2"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/title.html'>title</a></span><span class='op'>(</span>sub <span class='op'>=</span> <span class='fu'><a href='gisco_attributions.html'>gisco_attributions</a></span><span class='op'>(</span><span class='op'>)</span>, line <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='img'><img src='gisco_get-4.png' alt='' width='701' height='433' /></div><div class='input'>
+</div><div class='img'><img src='gisco_get-4.svg' alt='' width='701' height='433' /></div><div class='input'>
 <span class='co'>##########################</span>
 <span class='co'># Example - gisco_get_nuts</span>
 <span class='co'>##########################</span>
@@ -471,7 +471,7 @@ on <a href='gisco_attributions.html'>gisco_attributions</a>.</p>
   bty <span class='op'>=</span> <span class='st'>"n"</span>,
   y.intersp <span class='op'>=</span> <span class='fl'>2</span>
 <span class='op'>)</span>
-</div><div class='img'><img src='gisco_get-5.png' alt='' width='701' height='433' /></div></pre>
+</div><div class='img'><img src='gisco_get-5.svg' alt='' width='701' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

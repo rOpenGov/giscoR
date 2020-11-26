@@ -1,9 +1,9 @@
-pandoc: 2.7.3
+pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   giscoR: giscoR.html
-last_built: 2020-11-26T12:44Z
+last_built: 2020-11-26T22:53Z
 urls:
   reference: https://dieghernan.github.io/giscoR/reference
   article: https://dieghernan.github.io/giscoR/articles

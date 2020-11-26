@@ -62,7 +62,7 @@ install_github("dieghernan/giscoR")
 
 This script highlights some features of `giscoR`:
 
-```{r example, message=FALSE, warning=FALSE, dpi= 90}
+```{r example, message=FALSE, warning=FALSE, dpi= 90, dev='svg'}
 
 library(giscoR)
 library(sf)

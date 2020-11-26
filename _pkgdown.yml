@@ -34,8 +34,8 @@ reference:
 
 
 figures:
-  dev: grDevices::png
-  fig.ext: png
+  dev: grDevices::svg
+  fig.ext: svg
   fig.width: 7.3
   fig.retina: 2
   fig.asp:

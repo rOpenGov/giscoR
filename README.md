@@ -50,7 +50,6 @@ install.packages("giscoR")
 You can install the developing version of `giscoR` with:
 
 ``` r
-
 library(remotes)
 install_github("dieghernan/giscoR")
 ```
@@ -60,7 +59,6 @@ install_github("dieghernan/giscoR")
 This script highlights some features of `giscoR`:
 
 ``` r
-
 library(giscoR)
 library(sf)
 
@@ -82,7 +80,7 @@ plot(st_geometry(DNK_res03), main = "03M", col = "tomato")
 title(sub = gisco_attributions(), line = 1)
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-1.png)<!-- -->
+![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-1.svg)<!-- -->
 
 ``` r
 par(opar)
@@ -102,7 +100,7 @@ plot(st_geometry(coast), col = "deepskyblue4", lwd = 6, add = TRUE)
 title(sub = gisco_attributions(), line = 1)
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-2.png)<!-- -->
+![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-2.svg)<!-- -->
 
 ``` r
 par(opar)
@@ -123,7 +121,6 @@ An example of a thematic map plotted with the `cartography` package. The
 information is extracted via the `eurostat` package:
 
 ``` r
-
 
 nuts3 <- gisco_get_nuts(
   year = "2016",
@@ -224,7 +221,6 @@ layoutLayer(
 
 ``` r
 
-
 par(opar)
 ```
 
@@ -260,11 +256,11 @@ Data](https://data.worldbank.org/) API.
 
 Some packages recommended for visualization are:
 
-  - [`tmap`](https://mtennekes.github.io/tmap/)  
-  - [`cartography`](http://riatelab.github.io/cartography/docs/)
-  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+-   [`tmap`](https://mtennekes.github.io/tmap/)  
+-   [`cartography`](http://riatelab.github.io/cartography/docs/)
+-   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-  - [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 
@@ -273,14 +269,14 @@ code](https://github.com/dieghernan/giscoR/).
 
 Contributions are very welcome:
 
-  - [Use issue tracker](https://github.com/dieghernan/giscoR/issues) for
+-   [Use issue tracker](https://github.com/dieghernan/giscoR/issues) for
     feedback and bug reports.
-  - [Send pull requests](https://github.com/dieghernan/giscoR/)
-  - [Star us on the Github page](https://github.com/dieghernan/giscoR)
+-   [Send pull requests](https://github.com/dieghernan/giscoR/)
+-   [Star us on the Github page](https://github.com/dieghernan/giscoR)
 
 ## Copyright notice
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 When data downloaded from this page is used in any printed or electronic

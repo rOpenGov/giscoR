@@ -3,7 +3,16 @@ options(gisco_cache_dir = "~/R/mapslib/GISCO")
 tinytest::test_all()
 
 roxygen2::roxygenise()
+devtools::build_readme()
 
+pkgdown::build_reference()
+
+pkgdown::clean_site()
+pkgdown::build_site()
+
+
+ragg::agg
+dev: ragg::agg_png
 
 devtools::check()
 
@@ -260,7 +269,13 @@ title(sub = gisco_attributions(), line = 1)
 
 tinytest::test_package("giscoR")
 
+s <- colors()
+s["deepskyblue4"]
 covr::report()
+
+devtools::build_readme()
+
+pkgdown::clean_site()
 
 gisco_countries$CNTR_NAME
 iconv(gisco_countries$CNTR_NAME, "ISO_8859-2", "UTF-8")
