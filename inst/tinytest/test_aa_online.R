@@ -1,13 +1,11 @@
 library(tinytest)
 
-
-go <- FALSE
-
-
-if (go) {
+test <- FALSE
 
 
-expect_silent(gisco_bulk_download(resolution = 60))
+if (test) {
+
+  expect_silent(gisco_bulk_download(resolution = 60))
   expect_message(gisco_bulk_download(resolution = 60, verbose = TRUE))
   expect_message(gisco_bulk_download(
     resolution = 60 ,
@@ -40,7 +38,7 @@ expect_silent(gisco_bulk_download(resolution = 60))
     verbose = TRUE,
     resolution = 60
   ))
-  
+
   expect_silent(gisco_get_coastallines(resolution = "60"))
   expect_silent(gisco_get_coastallines(resolution = 3))
   expect_message(gisco_get_coastallines(resolution = "60", verbose = TRUE))
@@ -64,12 +62,12 @@ expect_silent(gisco_bulk_download(resolution = 60))
   expect_equal(epsg3035, sf::st_crs(a))
   expect_equal(epsg3857, sf::st_crs(b))
   expect_equal(epsg4326, sf::st_crs(c))
-  
+
   expect_silent(gisco_get_communes(spatialtype = "COASTL"))
   expect_silent(gisco_get_communes(spatialtype = "LB", country = "LU"))
   expect_silent(gisco_get_communes(spatialtype = "COASTL"))
-  
-  
+
+
   expect_silent(gisco_get_countries(
     spatialtype = "LB",
     country = c("Spain", "Italia")
@@ -100,15 +98,15 @@ expect_silent(gisco_bulk_download(resolution = 60))
     spatialtype = "RG"
   ))
 
-expect_silent(gisco_get_grid(100))
- expect_silent(gisco_get_grid(100, verbose = TRUE))
- expect_message(gisco_get_grid(100, spatialtype = "POINT", verbose = TRUE))
- 
- expect_silent(gisco_get_healthcare())
-expect_message(gisco_get_healthcare(verbose = TRUE))
- 
- 
- expect_silent(gisco_get_nuts(spatialtype = "LB"))
+  expect_silent(gisco_get_grid(100))
+  expect_silent(gisco_get_grid(100, verbose = TRUE))
+  expect_message(gisco_get_grid(100, spatialtype = "POINT", verbose = TRUE))
+
+  expect_silent(gisco_get_healthcare())
+  expect_message(gisco_get_healthcare(verbose = TRUE))
+
+
+  expect_silent(gisco_get_nuts(spatialtype = "LB"))
   expect_silent(gisco_get_nuts(resolution = "60", nuts_level = "0"))
   expect_silent(
     gisco_get_nuts(
@@ -149,7 +147,7 @@ expect_message(gisco_get_healthcare(verbose = TRUE))
   expect_equal(epsg3857, sf::st_crs(b))
   expect_equal(epsg4326, sf::st_crs(c))
 
-expect_silent(gisco_get_units(
+  expect_silent(gisco_get_units(
     year = "2001",
     id_giscoR = "countries",
     unit = "ES"
@@ -252,7 +250,7 @@ expect_silent(gisco_get_units(
     year = 2018,
     mode = "df"
   ))
-  
+
   expect_silent(gisco_get_urban_audit(level = "GREATER_CITIES"))
   expect_silent(gisco_get_urban_audit(spatialtype = "LB",
                                       level = "GREATER_CITIES"))
@@ -302,8 +300,8 @@ expect_silent(gisco_get_units(
       country = c("ITA", "POL")
     )
   )
-  
-  
+
+
 
 
 

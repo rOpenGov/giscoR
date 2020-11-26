@@ -130,8 +130,8 @@
 <h1 class="hasAnchor">
 <a href="#caching" class="anchor"></a>Caching</h1>
 <p><code>giscoR</code> provides a dataset caching capability, that could be set as:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>gisco_cache_dir <span class="op">=</span> <span class="st">"~/path/to/dir"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>gisco_cache_dir <span class="op">=</span> <span class="st">"~/path/to/dir"</span><span class="op">)</span></code></pre></div>
 <p>When this option is set, <code>giscoR</code> just load first the requested shapefile from the local directory, speeding up the loading process. If the file is not available locally, it would be downloaded to that directory so the next time you need the corresponding data it would be loaded from the local directory.</p>
 <p>If you experience any problems on downloading, you can also manually download the file from the <a href="https://gisco-services.ec.europa.eu/distribution/v2/">GISCO API website</a> and store it on your local directory.</p>
 </div>
@@ -141,16 +141,16 @@
 <p>Install <code>giscoR</code> from <a href="https://CRAN.R-project.org/package=giscoR"><strong>CRAN</strong></a>:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">install.packages</span>(“giscoR”)</span></code></pre></div>
 <p>Development version (<a href="https://github.com/dieghernan/giscoR/">Github</a>):</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span>
-<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dieghernan/giscoR"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span>
+<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dieghernan/giscoR"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="downloading-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#downloading-data" class="anchor"></a>Downloading data</h1>
 <p>Please be aware that <a href="https://ec.europa.eu/eurostat/web/gisco/geodata">downloading provisions apply</a> when using GISCO data. There is a function, <code>gisco_attributions</code> that would guide you on this topic. It also provides attributions on several languages.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/giscoR/">giscoR</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/giscoR/">giscoR</a></span><span class="op">)</span>
 <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>copyright <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     COPYRIGHT NOTICE</span>
@@ -178,26 +178,26 @@
 <span class="co">#&gt;     their licence agreements.</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; [1] "© EuroGeographics for the administrative boundaries"</span></pre></div>
+<span class="co">#&gt; [1] "© EuroGeographics for the administrative boundaries"</span></code></pre></div>
 </div>
 <div id="basic-example" class="section level1">
 <h1 class="hasAnchor">
 <a href="#basic-example" class="anchor"></a>Basic example</h1>
 <p>Some examples on data downloads</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
 <span class="co">#&gt; Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1</span>
 
 <span class="va">countries</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Asia"</span><span class="op">)</span>
 
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">countries</span><span class="op">)</span>, axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>sub <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>copyright <span class="op">=</span> <span class="st">"FALSE"</span><span class="op">)</span>, cex.sub <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>sub <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>copyright <span class="op">=</span> <span class="st">"FALSE"</span><span class="op">)</span>, cex.sub <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></code></pre></div>
 <p><img src="giscoR_files/figure-html/country_reg-1.png" width="672"></p>
 <p>You can select specific countries by name (in any language), ISO 3 codes or Eurostat codes. The only restriction is that you can’t mix country names, ISO3 and Eurostat codes on one single call.</p>
 <p>It is possible also to combine different shapefiles, just set <code>resolution</code> and <code>epsg</code> (and optionally <code>year</code>) to the same value:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="va">africa_north</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="../reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>
     country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Argelia"</span>, <span class="st">"Morocco"</span>, <span class="st">"Egipto"</span>, <span class="st">"Tunisia"</span>, <span class="st">"Libia"</span><span class="op">)</span>,
@@ -219,7 +219,7 @@
   border <span class="op">=</span> <span class="st">"grey80"</span>
 <span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">coast</span><span class="op">)</span>, lwd <span class="op">=</span> <span class="fl">2</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>sub <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>, cex.sub <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>sub <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>, cex.sub <span class="op">=</span> <span class="fl">0.7</span><span class="op">)</span></code></pre></div>
 <p><img src="giscoR_files/figure-html/africa_north-1.png" width="672"></p>
 </div>
 <div id="plotting-giscor" class="section level1">
@@ -228,8 +228,8 @@
 </h1>
 <p>This is an example on how <code>giscoR</code> can play nicely with some Eurostat data. For plotting purposes we would use the <a href="https://riatelab.github.io/cartography/docs/index.html"><code>cartography</code> package</a>, however any package that handles <code>sf</code> objects (e.g. <code>ggplot2</code>, <code>tmap</code>, <code>leaflet</code>, etc. could be used).</p>
 <p>Also <code>colorspace</code> and <code>rcartocolor</code> packages are recommended, as they provide great color palettes.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit">
-
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/riatelab/cartography/">cartography</a></span><span class="op">)</span>
 
@@ -313,10 +313,10 @@
   scale <span class="op">=</span> <span class="cn">FALSE</span>,
   col <span class="op">=</span> <span class="va">pal</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>,
   sources <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span></pre></div>
+<span class="op">)</span></code></pre></div>
 <p><img src="giscoR_files/figure-html/giscoR_eurostat-1.png" width="624"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></code></pre></div>
 </div>
   </div>
 

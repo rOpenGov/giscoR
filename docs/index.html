@@ -115,24 +115,25 @@
 <p><a href="https://dieghernan.github.io/giscoR/">giscoR</a> is a API package that helps to retrieve data from <a href="https://ec.europa.eu/eurostat/web/gisco">Eurostat - GISCO (the Geographic Information System of the COmmission)</a>. It also provides some lightweight data sets ready to use without downloading. Currently only the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units">Administrative Units / Statistical Units</a> data sets are supported.</p>
 <p>GISCO <a href="https://ec.europa.eu/eurostat/web/gisco/faq">(FAQ)</a> is a geospatial open data repository including several data sets as countries, coastal lines, labels or <a href="https://ec.europa.eu/eurostat/web/regions-and-cities/overview">NUTS levels</a>. The data sets are usually provided at several resolution levels (60M/20M/10M/03M/01M) and in 3 different projections (4326/3035/3857).</p>
 <p>Note that the package does not provide metadata on the downloaded files, the information is available on the <a href="https://gisco-services.ec.europa.eu/distribution/v2/">API webpage</a>.</p>
+<p>Full site with examples and vignettes on <a href="https://dieghernan.github.io/giscoR/" class="uri">https://dieghernan.github.io/giscoR/</a></p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Install <code>giscoR</code> from <a href="https://CRAN.R-project.org/package=giscoR"><strong>CRAN</strong></a>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"giscoR"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"giscoR"</span><span class="op">)</span></code></pre></div>
 <p>You can install the developing version of <code>giscoR</code> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org">remotes</a></span><span class="op">)</span>
-<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dieghernan/giscoR"</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"dieghernan/giscoR"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>This script highlights some features of <code>giscoR</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dieghernan.github.io/giscoR/">giscoR</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
 
@@ -151,10 +152,10 @@
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">DNK_res20</span><span class="op">)</span>, main <span class="op">=</span> <span class="st">"20M"</span>, col <span class="op">=</span> <span class="st">"tomato"</span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">DNK_res10</span><span class="op">)</span>, main <span class="op">=</span> <span class="st">"10M"</span>, col <span class="op">=</span> <span class="st">"tomato"</span><span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">DNK_res03</span><span class="op">)</span>, main <span class="op">=</span> <span class="st">"03M"</span>, col <span class="op">=</span> <span class="st">"tomato"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>sub <span class="op">=</span> <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>, line <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></pre></div>
-<p><img src="reference/figures/README-example-1.png"><!-- --></p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>sub <span class="op">=</span> <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>, line <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<p><img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-1.png"><!-- --></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span>
 
 <span class="co"># Labels and Lines available</span>
 <span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>spatialtype <span class="op">=</span> <span class="st">"LB"</span>, region <span class="op">=</span> <span class="st">"Africa"</span>, epsg <span class="op">=</span> <span class="st">"3857"</span><span class="op">)</span>
@@ -167,16 +168,16 @@
   pch <span class="op">=</span> <span class="fl">19</span>
 <span class="op">)</span>
 <span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="va">coast</span><span class="op">)</span>, col <span class="op">=</span> <span class="st">"deepskyblue4"</span>, lwd <span class="op">=</span> <span class="fl">6</span>, add <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>sub <span class="op">=</span> <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>, line <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></pre></div>
-<p><img src="reference/figures/README-example-2.png"><!-- --></p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span>sub <span class="op">=</span> <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>, line <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<p><img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-2.png"><!-- --></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span><span class="va">opar</span><span class="op">)</span></code></pre></div>
 <div id="a-note-on-caching" class="section level3">
 <h3 class="hasAnchor">
 <a href="#a-note-on-caching" class="anchor"></a>A note on caching</h3>
 <p>Some data sets (as Local Administrative Units - LAU, or high-resolution files) may have a size larger than 50MB. You can use <code>giscoR</code> to create your own local repository at a given local directory passing the following option:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>gisco_cache_dir <span class="op">=</span> <span class="st">"./path/to/location"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>gisco_cache_dir <span class="op">=</span> <span class="st">"./path/to/location"</span><span class="op">)</span></code></pre></div>
 <p>When this option is set, <code>giscoR</code> would look for the cached file and it will load it, speeding up the process.</p>
 <p>You can also download manually the files (<code>.geojson</code> format) and store them on your local directory.</p>
 </div>
@@ -273,7 +274,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=giscoR"><img src="https://www.r-pkg.org/badges/version/giscoR" alt="CRAN/METACRAN"></a></li>
+<li><a href="https://CRAN.R-project.org/package=giscoR"><img src="https://www.r-pkg.org/badges/version/giscoR" alt="CRAN status"></a></li>
 <li><a href="https://github.com/dieghernan/giscoR/actions"><img src="https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/gh/dieghernan/giscoR"><img src="https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg" alt="codecov"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>

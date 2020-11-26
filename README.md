@@ -5,7 +5,9 @@
 
 <!-- badges: start -->
 
-[![CRAN/METACRAN](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
+![CRAN results](https://cranchecks.info/badges/worst/giscoR)
 ![CRAN/METACRAN](https://img.shields.io/cran/l/giscoR) [![R build
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
@@ -79,7 +81,7 @@ plot(st_geometry(DNK_res03), main = "03M", col = "tomato")
 title(sub = gisco_attributions(), line = 1)
 ```
 
-![](man/figures/README-example-1.png)<!-- -->
+![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-1.png)<!-- -->
 
 ``` r
 par(opar)
@@ -98,7 +100,7 @@ plot(st_geometry(coast), col = "deepskyblue4", lwd = 6, add = TRUE)
 title(sub = gisco_attributions(), line = 1)
 ```
 
-![](man/figures/README-example-2.png)<!-- -->
+![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-2.png)<!-- -->
 
 ``` r
 par(opar)

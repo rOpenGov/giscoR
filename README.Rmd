@@ -5,10 +5,13 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
+knitr::opts_knit$set(progress = TRUE,
+                     base.url = "https://raw.githubusercontent.com/dieghernan/giscoR/master/")
+
 knitr::opts_chunk$set(collapse = TRUE,
                       tidy = "styler",
                       comment = "#>",
-                      fig.path = "man/figures/README-")
+                      fig.path = "README-")
 
 
 knitr::knit_hooks$set(
@@ -23,7 +26,8 @@ knitr::knit_hooks$set(
 # giscoR <img src="man/figures/logo.png" align="right" width="120" />
 
 <!-- badges: start -->
-[![CRAN/METACRAN](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
+[![CRAN status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
+![CRAN results](https://cranchecks.info/badges/worst/giscoR)
 ![CRAN/METACRAN](https://img.shields.io/cran/l/giscoR)
 [![R build status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
