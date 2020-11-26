@@ -32,55 +32,57 @@
 #' @seealso \link{gisco_get}
 #' @examples
 #' \dontrun{
-#' library(sf)
+#'   library(sf)
 #'
-#' if (gisco_check_access()) {
-#'   cities <- gisco_get_units(id_giscoR = "urban_audit",
-#'                             mode = "df",
-#'                             year = "2020")
-#'   VAL <- cities[grep("Valencia", cities$URAU_NAME),]
-#'   # Order from big to small
-#'   VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing =  TRUE), ]
+#'   if (gisco_check_access()) {
+#'     cities <- gisco_get_units(id_giscoR = "urban_audit",
+#'                               mode = "df",
+#'                               year = "2020")
+#'     VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
+#'     #'   Order from big to small
+#'     VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing =  TRUE),]
 #'
-#'   VAL.sf <- gisco_get_units(id_giscoR = "urban_audit",
-#'                             year = "2020",
-#'                             unit = VAL$URAU_CODE)
-#'   # Provincia
-#'   Provincia <-
-#'     gisco_get_units(id_giscoR = "nuts",
-#'                     unit = c("ES523"),
-#'                     resolution = "01")
+#'     VAL.sf <- gisco_get_units(id_giscoR = "urban_audit",
+#'                               year = "2020",
+#'                               unit = VAL$URAU_CODE)
+#'     # Provincia
+#'     Provincia <-
+#'       gisco_get_units(
+#'         id_giscoR = "nuts",
+#'         unit = c("ES523"),
+#'         resolution = "01"
+#'       )
 #'
-#'   # Surrounding area
-#'   NUTS1 <-
-#'     gisco_get_units(id_giscoR = "nuts",
-#'                     unit = c("ES5"),
-#'                     resolution = "01")
+#'     # Surrounding area
+#'     NUTS1 <-
+#'       gisco_get_units(id_giscoR = "nuts",
+#'                       unit = c("ES5"),
+#'                       resolution = "01")
 #'
-#'   # Plot
-#'   plot(
-#'     st_geometry(Provincia),
-#'     col = "gray1",
-#'     border = "grey50",
-#'     lwd = 3
-#'   )
-#'   plot(st_geometry(NUTS1),
-#'        border = "grey50",
-#'        lwd = 3,
-#'        add = TRUE)
-#'   plot(
-#'     st_geometry(VAL.sf),
-#'     col = c("deeppink4", "brown2", "khaki1"),
-#'     add = TRUE
-#'   )
-#'   box()
-#'   title(
-#'     "Urban Audit - Valencia (ES)",
-#'     sub = gisco_attributions("es"),
-#'     line = 1,
-#'     cex.sub = 0.7
-#'   )
-#' }
+#'     # Plot
+#'     plot(
+#'       st_geometry(Provincia),
+#'       col = "gray1",
+#'       border = "grey50",
+#'       lwd = 3
+#'     )
+#'     plot(st_geometry(NUTS1),
+#'          border = "grey50",
+#'          lwd = 3,
+#'          add = TRUE)
+#'     plot(
+#'       st_geometry(VAL.sf),
+#'       col = c("deeppink4", "brown2", "khaki1"),
+#'       add = TRUE
+#'     )
+#'     box()
+#'     title(
+#'       "Urban Audit - Valencia (ES)",
+#'       sub = gisco_attributions("es"),
+#'       line = 1,
+#'       cex.sub = 0.7
+#'     )
+#'   }
 #' }
 #' @export
 gisco_get_units <-  function(id_giscoR = "nuts",
