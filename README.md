@@ -102,18 +102,6 @@ title(sub = gisco_attributions(), line = 1)
 
 ![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-2.svg)<!-- -->
 
-``` r
-par(opar)
-
-
-# A thematic map with ggplot
-
-
-
-countries <- gisco_get_countries(epsg = "3035")
-
-nuts2 <- gisco_get_nuts(epsg = "3035", nuts_level = "2")
-```
 
 ## Thematic maps
 
