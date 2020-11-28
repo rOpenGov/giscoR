@@ -1,16 +1,30 @@
 options(gisco_cache_dir = "~/R/mapslib/GISCO")
 
 tinytest::test_all()
+citation("giscoR")
+
+
+devtools::check()
 
 roxygen2::roxygenise()
+
+citation("giscoR")
 devtools::build_readme()
 
+citation("eurostat")
 pkgdown::build_reference()
 
 pkgdown::clean_site()
-pkgdown::build_site()
+pkgdown::build_site(lazy = TRUE)
 
 
+pkgdown::build_news()
+
+format(Sys.time(), "%Y")
+
+devtools::check()
+
+options(citation.bibtex.max=999)
 ragg::agg
 dev: ragg::agg_png
 
