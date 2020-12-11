@@ -13,6 +13,7 @@ results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.or
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![DOI](https://zenodo.org/badge/298076366.svg)](https://zenodo.org/badge/latestdoi/298076366)
 <!-- badges: end -->
 
 [giscoR](https://dieghernan.github.io/giscoR/) is a API package that
