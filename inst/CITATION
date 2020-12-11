@@ -12,3 +12,15 @@ citEntry(
   url = url,
   textVersion = paste0('Hernangomez, D. (', year, '). giscoR: ', meta$Title, '. ', vers, '. Package url: ', url)
 )
+
+citEntry(
+  entry = 'software',
+  author = 'Hernangómez, Diego',
+  title = 'giscoR’,
+  month = 'dec',
+  year  = '2020',
+  publisher  = 'Zenodo',
+  version      = 'v0.2.3',
+  doi          = '10.5281/zenodo.4317947',
+  url          = 'https://doi.org/10.5281/zenodo.4317947'
+)
