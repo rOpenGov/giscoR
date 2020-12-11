@@ -16,7 +16,7 @@ citEntry(
 citEntry(
   entry = 'software',
   author = 'Hernangómez, Diego',
-  title = 'giscoR’,
+  title = 'giscoR',
   month = 'dec',
   year  = '2020',
   publisher  = 'Zenodo',
