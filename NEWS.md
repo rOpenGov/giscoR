@@ -1,6 +1,7 @@
-# On dev
+# giscoR 0.2.3
 
 - Update on docs
+- Release for DOI
 
 # giscoR 0.2.2
 

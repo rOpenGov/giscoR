@@ -1,7 +1,7 @@
 Package: giscoR
 Type: Package
 Title: Download Map Data from GISCO API - Eurostat
-Version: 0.2.3-9001
+Version: 0.2.3
 Authors@R: 
     c(person(given = "Diego",
              family = "Hernangómez",
