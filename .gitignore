@@ -32,3 +32,5 @@ giscoR*.tgz
 inst/doc
 doc
 Meta
+CRAN-RELEASE
+cran-comments.md
