@@ -55,17 +55,8 @@ home:
   title: giscoR | R package for download geodata from GISCO - Eurostat
   description: giscoR is a R API package that helps to retrieve data from Eurostat - GISCO (the Geographic Information System of the COmmission). It also provides some lightweight data sets ready to use without downloading. Currently only the Administrative Units / Statistical Units data sets are supported
 
-deploy:
-  install_metadata: true
 
-navbar:
-  structure:
-    left:  [home, intro, reference, articles, news, authors]
-    right: [github, blog]
-  components:
-    authors:
-     text: Authors
-     href: authors.html
-    blog:
-     icon: "fas fa-blog fa-lg"
-     href: "https://dieghernan.github.io/"
+authors:
+  Diego Hernangómez:
+    href: https://dieghernan.github.io/
+    
