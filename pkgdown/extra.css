@@ -64,6 +64,28 @@ h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:500;}
 code{font-size:87.5%;color:#e83e8c;word-wrap:break-word}
 code a{color:inherit}
 
+/* Footer */
+
+footer {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: teal;
+  color: #79bdbd;
+}
+
+footer a {
+  color: #f2f9f9;
+}
+
+footer div {
+ margin-left: 5vw;
+ margin-right: 5vw;
+}
+
 /* Modify navbar */
 
 .navbar {
