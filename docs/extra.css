@@ -1,46 +1,162 @@
 /* Import fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+/* Highlighter */
+
+pre {
+  color: #505050;
+}
+
+pre a {
+  color: inherit;
+  font-weight: inherit
+}
+
+/* Keyword */
+
+.kw {
+  font-weight: bold
+}
+
+/* String */
+
+.st,
+.an,
+.ch,
+.cn {
+  color: #800080;
+}
+
+.cn {
+  font-weight: bold
+}
+
+/* Function */
+
+.fu {
+  color: #008b45;
+  font-weight: bold
+}
+
+/* Float */
+
+.fl {
+  color: #B452CD;
+}
+
+/* comment */
+
+.co {
+  color: #888888;
+}
+
 
 /* General typography of Bootstrap 4 */
 
-body {
-	font-family: "Open Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
-/* Headings on serif - Noto Serif */
+body{font-family:Roboto,sans-serif;font-weight:400;color:#1c3336;background-color:#f2f9f9}
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-blockquote,
-.copyright,
-.pkgdown {
-	font-family: 'Open Sans', sans-serif;
-}
-.section-desc + p {
-	font-family: "Open Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
-/* Code on Source Code Pro */
+a{color:teal;text-decoration:none;background-color:transparent}a:hover{color:#003434;text-decoration:underline}a:not([href]){color:inherit;text-decoration:none}a:not([href]):hover{color:inherit;text-decoration:none}
 
-code,
-pre,
-.ref-arguments th,
-dt {
-	font-family: 'Fira Mono', monospace;
-}
-/* Links */
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-weight:500;}
 
-a {
-	color: #0085b2;
-}
-a:hover,
-a:active {
-	color: #cdcd00;
-}
+code{font-size:87.5%;color:#e83e8c;word-wrap:break-word}
+code a{color:inherit}
+
 /* Modify navbar */
+
+.navbar {
+	background-color: teal;
+}
+.navbar .navbar-toggle {
+	color:#f2f9f9;
+	border-color:transparent;
+	background-color:transparent
+}
+.navbar .navbar-toggle .icon-bar {
+	background-color: #f2f9f9;
+}
+.pkg {
+	font-weight: bold;
+}
+
+/* Navbar brand */
+
+.navbar .navbar-brand .navbar-link {
+	color: #f2f9f9;
+}
+
+.navbar .navbar-nav a {
+	color: #f2f9f9 !important;
+}
+.navbar .navbar-brand .label-default {
+	background-color: #f2f9f9;
+	color: teal;
+}
+
+/* Active link */
+
+.navbar .navbar-nav>.active>a {
+	color: #f2f9f9 !important;
+	background-color: #79bdbd !important;
+	font-weight:bold;
+}
+
+/* Hovers */
+
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+	background-color: teal;
+}
+.navbar .navbar-toggle:hover span,
+.navbar .navbar-toggle:focus span {
+	background-color: #79bdbd;
+}
+.navbar .navbar-nav>li>a:hover,
+.navbar .navbar-nav>li>a:focus,
+.navbar .dropdown-menu>li>a:hover,
+.navbar .dropdown-menu>li>a:focus {
+	color: #79bdbd;
+	background-color: transparent;
+}
+
+.navbar .navbar-nav>.active>a:hover,
+.navbar .navbar-nav>.active>a:focus {
+	color: #f2f9f9;
+	background-color: #79bdbd;
+}
+
+/* Dropdowns */
+
+.navbar-default .navbar-nav>.open>a
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus {
+	color: teal !important;
+	background-color: #79bdbd;
+}
+
+
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus {
+	background-color: #79bdbd;
+	color: teal;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a {
+	background-color: #79bdbd;
+	color: #f2f9f9;
+}
+
+
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus {
+    font-weight: bold;
+	color: #f2f9f9;
+	background-color: #79bdbd;
+}
+
+/* Modify navbar *
 
 .navbar {
 	background-color: #00688b;
@@ -54,7 +170,7 @@ a:active {
 .pkg {
 	font-weight: bold;
 }
-/* Navbar brand */
+/* Navbar brand *
 
 .navbar .navbar-brand {
 	margin-right: 1em;
@@ -67,13 +183,13 @@ a:active {
 	background-color: #fff;
 	color: #00688b;
 }
-/* Active link */
+/* Active link *
 
 .navbar .navbar-nav>.active>a {
 	color: #00688b;
 	background-color: #cdcd00;
 }
-/* Hovers */
+/* Hovers *
 
 .navbar .navbar-toggle:hover,
 .navbar .navbar-toggle:focus {
@@ -97,7 +213,7 @@ a:active {
 	background-color: #cdcd00;
 }
 
-/* Dropdowns */
+/* Dropdowns *
 
 .navbar-default .navbar-nav>.open>a
 .navbar-default .navbar-nav>.open>a:hover, 
@@ -130,3 +246,8 @@ a:active {
 	color: #fff;
 	background-color: #cdcd00;
 }
+
+*/
+
+
+
