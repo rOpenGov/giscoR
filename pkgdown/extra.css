@@ -62,6 +62,16 @@ a:hover,
 a:focus {
   color: #003434;
 }
+
+code{
+  font-size:87.5%;
+  color:#e83e8c;
+  word-wrap:break-word;
+}
+code a{
+  color:inherit
+}
+
 /* Footer */
 
 footer {
