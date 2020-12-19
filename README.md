@@ -81,7 +81,7 @@ plot(st_geometry(DNK_res03), main = "03M", col = "tomato")
 title(sub = gisco_attributions(), line = 1)
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-1.svg)<!-- -->
+![](https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-1.svg)<!-- -->
 
 ``` r
 par(opar)
@@ -101,8 +101,11 @@ plot(st_geometry(coast), col = "deepskyblue4", lwd = 6, add = TRUE)
 title(sub = gisco_attributions(), line = 1)
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-example-2.svg)<!-- -->
+![](https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-2.svg)<!-- -->
 
+``` r
+par(opar)
+```
 
 ## Thematic maps
 
@@ -206,7 +209,7 @@ layoutLayer(
 )
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/giscoR/master/README-thematic-1.svg)<!-- -->
+![](https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-thematic-1.svg)<!-- -->
 
 ``` r
 

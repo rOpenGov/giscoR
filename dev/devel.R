@@ -4,11 +4,12 @@ tinytest::test_all()
 citation("giscoR")
 
 
+devtools::document()
 devtools::check()
 
 roxygen2::roxygenise()
 
-citation("giscoR")
+citation("mapSpain")
 devtools::build_readme()
 
 citation("eurostat")
