@@ -11,7 +11,7 @@ knitr::opts_knit$set(progress = TRUE,
 knitr::opts_chunk$set(collapse = TRUE,
                       tidy = "styler",
                       comment = "#>",
-                      fig.path = "README-")
+                      fig.path = "img/README-")
 
 
 knitr::knit_hooks$set(
