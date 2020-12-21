@@ -1,0 +1,174 @@
+{
+  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@type": "SoftwareSourceCode",
+  "identifier": "giscoR",
+  "description": "Tools to download data from the GISCO \n    (Geographic Information System of the Commission) Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available.\n    This package is in no way officially related to or endorsed by Eurostat.",
+  "name": "giscoR: Download Map Data from GISCO API - Eurostat",
+  "codeRepository": "https://github.com/dieghernan/giscoR",
+  "relatedLink": ["https://dieghernan.github.io/giscoR/", "https://CRAN.R-project.org/package=giscoR"],
+  "issueTracker": "https://github.com/dieghernan/giscoR/issues",
+  "license": "https://spdx.org/licenses/GPL-3.0",
+  "version": "0.2.3",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Diego",
+      "familyName": "Hernangómez",
+      "email": "diego.hernangomezherrero@gmail.com",
+      "@id": "https://orcid.org/0000-0001-8457-4658"
+    }
+  ],
+  "contributor": {},
+  "copyrightHolder": [
+    {
+      "@type": "Person",
+      "givenName": "Diego",
+      "familyName": "Hernangómez",
+      "email": "diego.hernangomezherrero@gmail.com",
+      "@id": "https://orcid.org/0000-0001-8457-4658"
+    },
+    {
+      "@type": "Organization",
+      "name": "EuroGraphics"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Vincent",
+      "familyName": "Arel-Bundock",
+      "@id": "https://orcid.org/0000-0003-2042-7063"
+    }
+  ],
+  "funder": {},
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Diego",
+      "familyName": "Hernangómez",
+      "email": "diego.hernangomezherrero@gmail.com",
+      "@id": "https://orcid.org/0000-0001-8457-4658"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "cartography",
+      "name": "cartography",
+      "version": ">= 2.4",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=cartography"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "lwgeom",
+      "name": "lwgeom",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lwgeom"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tinytest",
+      "name": "tinytest",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tinytest"
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 3.6.0"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "sf",
+      "name": "sf",
+      "version": ">= 0.9",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=sf"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "countrycode",
+      "name": "countrycode",
+      "version": ">= 1.2.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=countrycode"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "geojsonsf",
+      "name": "geojsonsf",
+      "version": ">= 2.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=geojsonsf"
+    }
+  ],
+  "releaseNotes": "https://github.com/dieghernan/giscoR/blob/master/NEWS.md",
+  "readme": "https://github.com/dieghernan/giscoR/blob/master/README.md",
+  "fileSize": "0KB",
+  "contIntegration": "https://codecov.io/gh/dieghernan/giscoR",
+  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
+  "keywords": ["r", "gisco", "eurostat-data", "api-wrapper"],
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2020",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Diego",
+          "familyName": "Hernangómez"
+        }
+      ],
+      "name": "giscoR: ",
+      "identifier": "10.5281/zenodo.4317947",
+      "url": "https://CRAN.R-project.org/package=giscoR",
+      "description": "R package version ",
+      "@id": "https://doi.org/10.5281/zenodo.4317947",
+      "sameAs": "https://doi.org/10.5281/zenodo.4317947"
+    }
+  ]
+}
