@@ -8,7 +8,7 @@ Authors@R:
              role = c("aut", "cre", "cph"),
              email = "diego.hernangomezherrero@gmail.com",
              comment = c(ORCID = "0000-0001-8457-4658")),
-      person(given = "EuroGraphics",
+      person(given = "EuroGeographics",
              role = "cph",
              comment = "for the administrative boundaries."),
       person(given = "Vincent",
