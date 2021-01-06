@@ -12,5 +12,5 @@ citEntry(
   note = vers,
   url = url,
   doi = '10.5281/zenodo.4317946',
-  textVersion = paste0('D. Hernangómez (', year, '). giscoR: ', meta$Title, '. ', vers, '. http://doi.org/10.5281/zenodo.4317947. Package url: ', url)
+  textVersion = paste0('D. Hernangómez (', year, '). giscoR: ', meta$Title, '. ', vers, '. http://doi.org/10.5281/zenodo.4317946. Package url: ', url)
 )
