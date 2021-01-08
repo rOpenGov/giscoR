@@ -2,7 +2,7 @@ library(tinytest)
 
 # Test only in dev mode
 
-test <- length(unclass(packageVersion("giscoR"))[[1]]) == 4
+test <- length(grep("-", packageVersion("giscoR"))) > 0
 
 
 if (test & gisco_check_access()) {
