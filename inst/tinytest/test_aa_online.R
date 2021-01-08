@@ -2,11 +2,9 @@ library(tinytest)
 
 # Test only in dev mode
 
-test <- length(grep("-", packageVersion("giscoR"))) > 0
+test <- TRUE
 
-
-if (test & gisco_check_access()) {
-
+if (test) {
   expect_silent(gisco_bulk_download(resolution = 60))
   expect_message(gisco_bulk_download(resolution = 60, verbose = TRUE))
   expect_message(gisco_bulk_download(
