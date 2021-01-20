@@ -1,0 +1,103 @@
+---
+title: "NUTS codes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{NUTS codes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r knitropts, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 6, 
+  fig.height = 4,
+  out.width = "100%",
+  out.height = "60%"
+)
+
+if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
+  install.packages("reactable")
+}
+
+```
+
+
+Annex with the NUTS codes (version **2021**, 
+**2016** and **2013**) included on this package.
+
+## NUTS 2021
+
+```{r nuts21, echo=FALSE}
+
+library(giscoR)
+library(reactable)
+
+df <- gisco_get_nuts(year = 2021, resolution = 60)
+df <- sf::st_drop_geometry(df)
+reactable(df,
+          filterable = TRUE,
+          searchable = TRUE,
+          showPageSizeOptions = TRUE,
+          striped = TRUE,
+          paginationType = "jump",
+          defaultSorted = c("LEVL_CODE", "CNTR_CODE")
+          )
+
+```
+
+
+## NUTS 2016
+
+```{r nuts16, echo=FALSE}
+
+library(giscoR)
+library(reactable)
+
+df <- gisco_get_nuts(year = 2016, resolution = 60)
+df <- sf::st_drop_geometry(df)
+reactable(df,
+          filterable = TRUE,
+          searchable = TRUE,
+          showPageSizeOptions = TRUE,
+          striped = TRUE,
+          paginationType = "jump",
+          defaultSorted = c("LEVL_CODE", "CNTR_CODE")
+          )
+
+```
+
+## NUTS 2013
+
+```{r nuts13, echo=FALSE}
+
+library(giscoR)
+library(reactable)
+
+df <- gisco_get_nuts(year = 2013, resolution = 60)
+df <- sf::st_drop_geometry(df)
+reactable(df,
+          filterable = TRUE,
+          searchable = TRUE,
+          showPageSizeOptions = TRUE,
+          striped = TRUE,
+          paginationType = "jump",
+          defaultSorted = c("LEVL_CODE", "CNTR_CODE")
+          )
+
+```
+
+## Session Info
+
+<details>
+  <summary><strong>Details</strong></summary>
+```{r session_info, echo=FALSE}
+sessionInfo()
+
+```
+</details>
+
+

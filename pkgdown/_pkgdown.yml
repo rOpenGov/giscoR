@@ -1,9 +1,6 @@
-url: https://dieghernan.github.io/giscoR
-
-
-
+url: 'https://dieghernan.github.io/giscoR'
 reference:
-  - title: "API functions"
+  - title: API functions
     desc: These functions check and download data from GISCO
     contents:
       - gisco_bulk_download
@@ -13,12 +10,12 @@ reference:
       - gisco_get_grid
       - gisco_get_healthcare
       - gisco_get_units
-  - title: "Helpers"
+  - title: Helpers
     desc: A collection of helper functions
     contents:
       - gisco_attributions
       - gisco_bulk_download
-  - title: "Datasets"
+  - title: Datasets
     desc: These objects are datasets already included in the package.
     contents:
       - gisco_coastallines
@@ -27,18 +24,13 @@ reference:
       - gisco_db
       - gisco_nuts
       - tgs00026
-
-  - title: "About the package"
+  - title: About the package
     contents:
       - giscoR-package
-
-
 figures:
   fig.width: 7.3
   fig.retina: 2
-  fig.asp:
-
-
+  fig.asp: null
 template:
   path: inst/pkgdown/templates
   params:
@@ -48,20 +40,20 @@ template:
       index_name: dieghernan_giscor
   opengraph:
     twitter:
-      creator: "@dhernangomez"
+      creator: '@dhernangomez'
       card: summary_large_image
-
 home:
   title: giscoR | R package for download geodata from GISCO - Eurostat
-  description: giscoR is a R API package that helps to retrieve data from Eurostat - GISCO (the Geographic Information System of the COmmission). It also provides some lightweight data sets ready to use without downloading. Currently only the Administrative Units / Statistical Units data sets are supported
-
-
+  description: >-
+    giscoR is a R API package that helps to retrieve data from Eurostat - GISCO
+    (the Geographic Information System of the COmmission). It also provides some
+    lightweight data sets ready to use without downloading. Currently only the
+    Administrative Units / Statistical Units data sets are supported
 authors:
   Diego Hernangómez:
-    href: https://dieghernan.github.io/
+    href: 'https://dieghernan.github.io/'
   EuroGeographics:
-    href: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
+    href: >-
+      https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
   Vincent Arel-Bundock:
-    href: https://vincentarelbundock.github.io/countrycode/
-  
-    
+    href: 'https://vincentarelbundock.github.io/countrycode/'
