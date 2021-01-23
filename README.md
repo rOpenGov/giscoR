@@ -12,7 +12,6 @@ results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.or
 [![R build
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/giscor/badge/master)](https://www.codefactor.io/repository/github/dieghernan/giscor/overview/master)
 ![](https://cranlogs.r-pkg.org/badges/giscoR)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
