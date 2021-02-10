@@ -51,6 +51,14 @@
 #' For a complete list of files available check
 #' \link{gisco_db}.
 #'
+#'\strong{About world regions}
+#'
+#' Regions are defined as per the geographic regions defined by the
+#' UN (see
+#' \href{https://unstats.un.org/unsd/methodology/m49/}{M49 region codes}.
+#' Note that under this scheme Cyprus is assigned to Asia. You may use
+#' \code{region = "EU"} to get the EU members (reference date: 2021).
+#'
 #'\strong{Release years available}
 #'
 #' \code{gisco_get_coastallines}: one of
@@ -192,8 +200,10 @@ gisco_get_communes <- function(year = "2016",
 }
 
 #' @rdname gisco_get
-#' @param region Optional. A character vector of UN M49 region codes.
-#' Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania".
+#' @param region Optional. A character vector of UN M49 region codes or
+#' European Union membership.
+#' Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania" or
+#' "EU" for countries belonging to the European Union (as per 2021).
 #'  See Details and \link{gisco_countrycode}
 #' @details \code{gisco_get_countries}:
 #' one of \code{"2001", "2006", "2010", "2013", "2016"} or \code{"2020"}.
@@ -298,8 +308,14 @@ gisco_get_countries <- function(year = "2016",
   }
   if (!is.null(region) & "CNTR_ID" %in% names(data.sf)) {
     region.df <- giscoR::gisco_countrycode
-    region.df <- region.df[region.df$un.region.name %in% region, ]
-    data.sf <- data.sf[data.sf$CNTR_ID %in% region.df$CNTR_CODE, ]
+    cntryregion <- region.df[region.df$un.region.name %in% region, ]
+
+    if ("EU" %in% region) {
+      eu <- region.df[region.df$eu, ]
+      cntryregion <- unique(rbind(cntryregion, eu))
+    }
+
+    data.sf <- data.sf[data.sf$CNTR_ID %in% cntryregion$CNTR_CODE, ]
   }
 
   return(data.sf)
@@ -357,7 +373,7 @@ gisco_get_lau <- function(year = "2016",
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
 
   if (!is.null(country) & "CNTR_ID" %in% names(data.sf)) {
@@ -366,7 +382,7 @@ gisco_get_lau <- function(year = "2016",
   }
 
   if (!is.null(gisco_id) & "GISCO_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id,]
+    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id, ]
   }
   return(data.sf)
   # nocov end
@@ -477,7 +493,7 @@ gisco_get_nuts <- function(year = "2016",
         " the shapefile from the .geojson file"
       )
     if (nuts_level %in% c("0", "1", "2", "3")) {
-      data.sf <- data.sf[data.sf$LEVL_CODE == nuts_level,]
+      data.sf <- data.sf[data.sf$LEVL_CODE == nuts_level, ]
     }
   } else {
     dwnload <- TRUE
@@ -519,11 +535,11 @@ gisco_get_nuts <- function(year = "2016",
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
 
   if (!is.null(nuts_id) & "NUTS_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$NUTS_ID %in% nuts_id,]
+    data.sf <- data.sf[data.sf$NUTS_ID %in% nuts_id, ]
   }
   return(data.sf)
 }
@@ -581,7 +597,7 @@ gisco_get_urban_audit <- function(year = "2020",
   if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country,]
+    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
   }
   return(data.sf)
 }

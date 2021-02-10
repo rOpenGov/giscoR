@@ -8,12 +8,12 @@ if (test) {
   expect_silent(gisco_bulk_download(resolution = 60))
   expect_message(gisco_bulk_download(resolution = 60, verbose = TRUE))
   expect_message(gisco_bulk_download(
-    resolution = 60 ,
+    resolution = 60,
     verbose = TRUE,
     ext = "json"
   ))
   expect_message(gisco_bulk_download(
-    resolution = 60 ,
+    resolution = 60,
     verbose = TRUE,
     ext = "shp"
   ))
@@ -51,8 +51,8 @@ if (test) {
   expect_silent(gisco_get_coastallines(resolution = "60",
                                        cache_dir = cachetest))
 
-  a <- gisco_get_coastallines(resolution = "60", epsg = '3035')
-  b <- gisco_get_coastallines(resolution = "60", epsg = '3857')
+  a <- gisco_get_coastallines(resolution = "60", epsg = "3035")
+  b <- gisco_get_coastallines(resolution = "60", epsg = "3857")
   c <- gisco_get_coastallines(resolution = "60", epsg = "4326")
 
   epsg3035 <- sf::st_crs(3035)
@@ -82,7 +82,7 @@ if (test) {
   expect_silent(gisco_get_countries(resolution = 60, country = c("ES", "IT")))
   expect_silent(gisco_get_countries(spatialtype = "COASTL", resolution = "60"))
 
-  expect_silent(gisco_get_countries(resolution = '60', country = 'DNK'))
+  expect_silent(gisco_get_countries(resolution = "60", country = "DNK"))
 
   expect_silent(gisco_get_countries(spatialtype = "COASTL", resolution = 3))
   expect_silent(gisco_get_countries(
@@ -118,7 +118,7 @@ if (test) {
   )
   expect_silent(gisco_get_nuts(
     resolution = "60",
-    nuts_level = "0" ,
+    nuts_level = "0",
     nuts_id = "ES5"
   ))
 
@@ -135,8 +135,8 @@ if (test) {
   ))
   expect_silent(gisco_get_nuts(resolution = "60", country = c("ITA", "POL")))
 
-  a <- gisco_get_nuts(resolution = "60", epsg = '3035')
-  b <- gisco_get_nuts(resolution = "60", epsg = '3857')
+  a <- gisco_get_nuts(resolution = "60", epsg = "3035")
+  b <- gisco_get_nuts(resolution = "60", epsg = "3857")
   c <- gisco_get_nuts(resolution = "60", epsg = "4326")
 
   epsg3035 <- sf::st_crs(3035)

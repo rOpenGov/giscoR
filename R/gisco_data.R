@@ -139,6 +139,7 @@ NULL
 #'   \item{un.regionintermediate.name}{Intermediate Region name UN (M49)}
 #'   \item{un.regionsub.code}{Numeric sub-region code UN (M49)}
 #'   \item{un.regionsub.name}{Sub-Region name UN (M49)}
+#'   \item{eu}{Logical indicating if the country belongs to the European Union as per February 2021.}
 #' }
 #' @examples
 #' data(gisco_countrycode)

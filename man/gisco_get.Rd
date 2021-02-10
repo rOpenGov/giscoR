@@ -131,8 +131,10 @@ for debugging, default if \code{FALSE}.}
 
 \item{country}{Optional. A character vector of country codes. See Details.}
 
-\item{region}{Optional. A character vector of UN M49 region codes.
-Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania".
+\item{region}{Optional. A character vector of UN M49 region codes or
+European Union membership.
+Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania" or
+"EU" for countries belonging to the European Union (as per 2021).
  See Details and \link{gisco_countrycode}}
 
 \item{gisco_id}{Optional. A character vector of GISCO_ID LAU values.}
@@ -175,6 +177,14 @@ set \code{cache_dir = "path/to/dir"} or
 
 For a complete list of files available check
 \link{gisco_db}.
+
+\strong{About world regions}
+
+Regions are defined as per the geographic regions defined by the
+UN (see
+\href{https://unstats.un.org/unsd/methodology/m49/}{M49 region codes}.
+Note that under this scheme Cyprus is assigned to Asia. You may use
+\code{region = "EU"} to get the EU members (reference date: 2021).
 
 \strong{Release years available}
 

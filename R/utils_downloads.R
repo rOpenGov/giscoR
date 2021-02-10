@@ -65,7 +65,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
   # Available years
   av.years <- paste(db$year, collapse = ",")
-  av.years  <- sort(unique(unlist(strsplit(av.years , ","))))
+  av.years  <- sort(unique(unlist(strsplit(av.years, ","))))
 
   if (!(year %in% av.years))
     stop("Year ",
@@ -73,14 +73,14 @@ gsc_api_url <- function(id_giscoR = "nuts",
          " not available. Try ",
          paste0("'", av.years, "'", collapse = ","))
 
-  db <- db[grep(year, db$year),]
+  db <- db[grep(year, db$year), ]
 
 
   rm(av.years)
 
   # Available epsg
   av.epsg <- paste(db$epsg, collapse = ",")
-  av.epsg  <- sort(unique(unlist(strsplit(av.epsg , ","))))
+  av.epsg  <- sort(unique(unlist(strsplit(av.epsg, ","))))
 
 
   if (!(epsg %in% av.epsg))
@@ -90,13 +90,13 @@ gsc_api_url <- function(id_giscoR = "nuts",
          paste0("'", av.epsg, "'", collapse = ","))
 
 
-  db <- db[grep(epsg, db$epsg),]
+  db <- db[grep(epsg, db$epsg), ]
   rm(av.epsg)
 
   # Available ext
   # nocov start
   av.ext <- paste(db$ext, collapse = ",")
-  av.ext  <- sort(unique(unlist(strsplit(av.ext , ","))))
+  av.ext  <- sort(unique(unlist(strsplit(av.ext, ","))))
   # nocov end
 
 
@@ -107,13 +107,13 @@ gsc_api_url <- function(id_giscoR = "nuts",
          paste0("'", av.ext, "'", collapse = ","))
 
 
-  db <- db[grep(ext, db$ext),]
+  db <- db[grep(ext, db$ext), ]
   rm(av.ext)
 
 
   # Available spatialtype
   av.sptype <- paste(db$spatialtype, collapse = ",")
-  av.sptype  <- sort(unique(unlist(strsplit(av.sptype , ","))))
+  av.sptype  <- sort(unique(unlist(strsplit(av.sptype, ","))))
 
   if (length(av.sptype) == 1) {
     if (verbose)
@@ -135,7 +135,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
   # Available resolution
   av.res <- paste(db$resolution, collapse = ",")
-  av.res  <- sort(unique(unlist(strsplit(av.res , ","))))
+  av.res  <- sort(unique(unlist(strsplit(av.res, ","))))
 
   if (length(av.res) == 1) {
     if (verbose)
@@ -196,10 +196,10 @@ gsc_api_url <- function(id_giscoR = "nuts",
       paste0(rownames(db), collapse = ","),
       " matches your selection. ",
       "Selecting row ",
-      rownames(db[1,])
+      rownames(db[1, ])
     )
     message("\n Consider opening an issue.")
-    db <- db[1,]
+    db <- db[1, ]
   }
   # nocov end
 

@@ -201,7 +201,7 @@ gisco_get_units <-  function(id_giscoR = "nuts",
     # Slice path
     remain <- gsub(paste0("_", level), "", remain)
     filepattern <- tolower(gsub(".geojson", "", remain))
-    slice <- (unlist(strsplit(filepattern, "_")))[c(-1,-2)]
+    slice <- (unlist(strsplit(filepattern, "_")))[c(-1, -2)]
 
     # Remove year epsg and spatial type
     slice <- slice[-grep(year, slice)]

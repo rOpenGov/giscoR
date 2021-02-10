@@ -1,11 +1,20 @@
 options(gisco_cache_dir = "~/R/mapslib/GISCO")
-
 tinytest::test_all()
+
+citation("giscoR")
+citation("igoR")
+
+codemetar::write_codemeta(write_minimeta = TRUE)
+codemetar::give_opinions()
+devtools::document()
+devtools::build_readme()
+devtools::check()
+
 citation("giscoR")
 
+goodpractice::gp()
 
-devtools::document()
-devtools::check()
+lintr::lint_package()
 
 roxygen2::roxygenise()
 

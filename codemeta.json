@@ -1,14 +1,20 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "giscoR",
   "description": "Tools to download data from the GISCO \n    (Geographic Information System of the Commission) Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available.\n    This package is in no way officially related to or endorsed by Eurostat.",
   "name": "giscoR: Download Map Data from GISCO API - Eurostat",
   "codeRepository": "https://github.com/dieghernan/giscoR",
-  "relatedLink": ["https://dieghernan.github.io/giscoR/", "https://CRAN.R-project.org/package=giscoR"],
+  "relatedLink": [
+    "https://dieghernan.github.io/giscoR/",
+    "https://CRAN.R-project.org/package=giscoR"
+  ],
   "issueTracker": "https://github.com/dieghernan/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.3",
+  "version": "0.2.4.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -41,7 +47,7 @@
     },
     {
       "@type": "Organization",
-      "name": "EuroGraphics"
+      "name": "EuroGeographics"
     },
     {
       "@type": "Person",
@@ -148,14 +154,22 @@
   ],
   "releaseNotes": "https://github.com/dieghernan/giscoR/blob/master/NEWS.md",
   "readme": "https://github.com/dieghernan/giscoR/blob/master/README.md",
-  "fileSize": "0KB",
+  "fileSize": "26201.715KB",
   "contIntegration": "https://codecov.io/gh/dieghernan/giscoR",
-  "developmentStatus": "https://www.tidyverse.org/lifecycle/#maturing",
-  "keywords": ["r", "gisco", "eurostat-data", "api-wrapper"],
+  "keywords": [
+    "r",
+    "gisco",
+    "eurostat-data",
+    "api-wrapper",
+    "eurostat",
+    "cran",
+    "thematic-maps",
+    "r-package"
+  ],
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2020",
+      "datePublished": "2021",
       "author": [
         {
           "@type": "Person",
@@ -164,11 +178,12 @@
         }
       ],
       "name": "giscoR: ",
-      "identifier": "10.5281/zenodo.4317947",
+      "identifier": "10.5281/zenodo.4317946",
       "url": "https://CRAN.R-project.org/package=giscoR",
       "description": "R package version ",
-      "@id": "https://doi.org/10.5281/zenodo.4317947",
-      "sameAs": "https://doi.org/10.5281/zenodo.4317947"
+      "@id": "https://doi.org/10.5281/zenodo.4317946",
+      "sameAs": "https://doi.org/10.5281/zenodo.4317946"
     }
-  ]
+  ],
+  "developmentStatus": "https://www.repostatus.org/#active"
 }

@@ -13,7 +13,9 @@ results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.or
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
 [![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/giscor/badge/master)](https://www.codefactor.io/repository/github/dieghernan/giscor/overview/master)
-![](https://cranlogs.r-pkg.org/badges/giscoR)
+![](https://cranlogs.r-pkg.org/badges/giscoR) [![Project Status: Active
+– The project has reached a stable, usable state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
 <!-- badges: end -->
 
@@ -118,7 +120,7 @@ information is extracted via the `eurostat` package:
 nuts3 <- gisco_get_nuts(
   year = "2016",
   epsg = "3035",
-  resolution = "10",
+  resolution = "3",
   nuts_level = "3"
 )
 
