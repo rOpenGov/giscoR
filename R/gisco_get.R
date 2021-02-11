@@ -63,7 +63,8 @@
 #'
 #' \code{gisco_get_coastallines}: one of
 #' \code{"2006", "2010", "2013"} or \code{"2016"}.
-#' @return \code{gisco_get_coastallines} returns a \code{POLYGON} object.
+#' @return A \code{sf} object specified by \code{spatialtype}.
+#' See Details.
 #' @note Please check the download and usage provisions
 #' on \link{gisco_attributions}.
 #' @examples
@@ -324,7 +325,6 @@ gisco_get_countries <- function(year = "2016",
 #' @rdname gisco_get
 #' @param gisco_id Optional. A character vector of GISCO_ID LAU values.
 #' @details \code{gisco_get_lau}: one of \code{"2016", "2017", "2018"} or \code{"2019"}.
-#' @return \code{gisco_get_lau} returns a \code{POLYGON} object.
 #' @export
 gisco_get_lau <- function(year = "2016",
                           epsg = "4326",

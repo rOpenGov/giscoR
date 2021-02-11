@@ -150,9 +150,8 @@ See \url{https://ec.europa.eu/eurostat/web/nuts/background}.}
 \code{NULL} would download the full dataset.}
 }
 \value{
-\code{gisco_get_coastallines} returns a \code{POLYGON} object.
-
-\code{gisco_get_lau} returns a \code{POLYGON} object.
+A \code{sf} object specified by \code{spatialtype}. 
+See Details.
 }
 \description{
 Loads a simple feature (\code{sf})
