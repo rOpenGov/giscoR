@@ -23,6 +23,7 @@ Description: Tools to download data from the GISCO
 License: GPL-3
 Encoding: UTF-8
 RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)
 BugReports: https://github.com/dieghernan/giscoR/issues
 URL: https://dieghernan.github.io/giscoR/, https://github.com/dieghernan/giscoR
 Depends: 
