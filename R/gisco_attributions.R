@@ -40,7 +40,7 @@
 #' information regarding their licence agreements.
 #' @examples
 #' en <- gisco_attributions()
-#' gisco_attributions(lang = "es", copyright = TRUE )
+#' gisco_attributions(lang = "es", copyright = TRUE)
 #' gisco_attributions(lang = "XXX")
 #' @export
 gisco_attributions <- function(lang = "en", copyright = FALSE) {

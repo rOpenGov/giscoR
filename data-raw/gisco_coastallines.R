@@ -13,6 +13,6 @@ gisco_coastallines <- gisco_get_coastallines(
 )
 
 usethis::use_data(gisco_coastallines,
-                  overwrite = TRUE,
-                  compress = "xz")
-
+  overwrite = TRUE,
+  compress = "xz"
+)

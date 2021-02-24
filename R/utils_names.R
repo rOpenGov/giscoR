@@ -46,8 +46,9 @@ gsc_helper_utf8 <- function(data.sf) {
     n <- names(x)
     Encoding(n) <- "UTF-8"
     to_utf8 <- function(x) {
-      if (is.character(x))
+      if (is.character(x)) {
         Encoding(x) <- "UTF-8"
+      }
       x
     }
     structure(lapply(x, to_utf8), names = n)
@@ -59,14 +60,16 @@ gsc_helper_utf8 <- function(data.sf) {
   g <- sf::st_geometry(data.sf)
 
   which.geom <-
-    which(vapply(data.sf, function(f)
-      inherits(f, "sfc"), TRUE))
+    which(vapply(data.sf, function(f) {
+      inherits(f, "sfc")
+    }, TRUE))
 
   nm <- names(which.geom)
 
   data.utf8 <-
     as.data.frame(set_utf8(sf::st_drop_geometry(data.sf)),
-                  stringsAsFactors = FALSE)
+      stringsAsFactors = FALSE
+    )
 
   # Regenerate with right encoding
   data.sf <- sf::st_as_sf(data.utf8, g)

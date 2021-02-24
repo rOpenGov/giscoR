@@ -7,11 +7,11 @@ library(jsonlite)
 library(dplyr)
 library(stringr)
 
-name = "coastallines"
-api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/coas"
-clean = "coastline-"
-dataset = "datasets.json"
-ext = "geojson"
+name <- "coastallines"
+api_entry <- "https://gisco-services.ec.europa.eu/distribution/v2/coas"
+clean <- "coastline-"
+dataset <- "datasets.json"
+ext <- "geojson"
 
 # Function----
 dwndata <- function(name = "coastallines",
@@ -31,7 +31,7 @@ dwndata <- function(name = "coastallines",
 
   master <- fromJSON(tmp)
   years <- names(master) %>% str_replace_all(clean, "")
-  #years <- years[1:2]
+  # years <- years[1:2]
 
   for (i in 1:length(years)) {
     datapath <- file.path(api_entry, master[[i]]$files)
@@ -42,7 +42,9 @@ dwndata <- function(name = "coastallines",
     ext.year <- names(master.year)
     ext.year <- ext.year[ext.year != "csv"]
     data.year <-
-      master.year[[ext]] %>% unlist() %>% as.data.frame(stringsAsFactors = FALSE)
+      master.year[[ext]] %>%
+      unlist() %>%
+      as.data.frame(stringsAsFactors = FALSE)
 
     names(data.year) <- "api_file"
     data.year$api_file <- gsub(ext, "{ext}", data.year$api_file)
@@ -63,32 +65,46 @@ dwndata <- function(name = "coastallines",
 }
 
 # Get data----
-coast.json <- dwndata(name = "coastallines",
-                      api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/coas")
+coast.json <- dwndata(
+  name = "coastallines",
+  api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/coas"
+)
 
 
-comm.json <- dwndata(name = "communes",
-                     api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/communes")
-countries.json <- dwndata(name = "countries",
-                          api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/countries")
-lau.json <- dwndata(name = "lau",
-                    api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/lau")
-nuts.json <- dwndata(name = "nuts",
-                     api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/nuts")
-urau.json <- dwndata(name = "urban_audit",
-                     api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/urau")
+comm.json <- dwndata(
+  name = "communes",
+  api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/communes"
+)
+countries.json <- dwndata(
+  name = "countries",
+  api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/countries"
+)
+lau.json <- dwndata(
+  name = "lau",
+  api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/lau"
+)
+nuts.json <- dwndata(
+  name = "nuts",
+  api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/nuts"
+)
+urau.json <- dwndata(
+  name = "urban_audit",
+  api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/urau"
+)
 
 # Join all----
-df <- bind_rows(coast.json,
-                comm.json,
-                countries.json,
-                lau.json,
-                nuts.json,
-                urau.json)
+df <- bind_rows(
+  coast.json,
+  comm.json,
+  countries.json,
+  lau.json,
+  nuts.json,
+  urau.json
+)
 
 # Assign values--
 
-#EPSG
+# EPSG
 df$epsg <- NA
 df[grep("3857", df$api_file), ]$epsg <- "3857"
 df[grep("4326", df$api_file), ]$epsg <- "4326"
@@ -99,8 +115,12 @@ for (i in seq_len(length(allepsg))) {
   df$api_file <- gsub(allepsg[i], "{epsg}", df$api_file)
 }
 
-df <- df %>% group_by(api_file, api_entry, id_giscoR,
-                      ext) %>% summarise(epsg = paste(epsg, collapse = ','))
+df <- df %>%
+  group_by(
+    api_file, api_entry, id_giscoR,
+    ext
+  ) %>%
+  summarise(epsg = paste(epsg, collapse = ","))
 
 
 df <- as.data.frame(df)
@@ -121,9 +141,15 @@ for (i in seq_len(length(allyear))) {
 }
 
 
-df <- df %>% group_by(api_file, api_entry, id_giscoR,
-                      ext, epsg) %>% summarise(year = paste(year, collapse =
-                                                              ','))
+df <- df %>%
+  group_by(
+    api_file, api_entry, id_giscoR,
+    ext, epsg
+  ) %>%
+  summarise(year = paste(year,
+    collapse =
+      ","
+  ))
 
 df <- as.data.frame(df)
 # Resolution--
@@ -150,7 +176,7 @@ for (i in seq_len(length(allres))) {
 
 df <- df %>%
   group_by(api_file, api_entry, id_giscoR, ext, epsg, year) %>%
-  summarise(resolution = paste(resolution, collapse = ','))
+  summarise(resolution = paste(resolution, collapse = ","))
 
 df <- as.data.frame(df)
 df[df$resolution == "NA", ]$resolution <- NA
@@ -160,7 +186,7 @@ df <- as.data.frame(df)
 
 
 
-#Order matters - spatialtype
+# Order matters - spatialtype
 avspatialtype <- c("BN", "RG", "LB", "COASTL", "INLAND")
 df$spatialtype <- NA
 for (i in 1:length(avspatialtype)) {
@@ -177,7 +203,7 @@ for (i in 1:length(avspatialtype)) {
 
 df <- df %>%
   group_by(api_file, api_entry, id_giscoR, ext, epsg, year, resolution) %>%
-  summarise(spatialtype = paste(spatialtype, collapse = ','))
+  summarise(spatialtype = paste(spatialtype, collapse = ","))
 
 df <- as.data.frame(df)
 # Different for NUTS and URBAN AUDIT
@@ -207,22 +233,24 @@ for (j in seq_len(length(nums))) {
 }
 
 nuts <- nuts %>%
-  group_by(api_file,
-           api_entry,
-           id_giscoR,
-           ext,
-           epsg,
-           year,
-           resolution,
-           spatialtype) %>%
-  summarise(nuts_level = paste(nuts_level, collapse = ','))
+  group_by(
+    api_file,
+    api_entry,
+    id_giscoR,
+    ext,
+    epsg,
+    year,
+    resolution,
+    spatialtype
+  ) %>%
+  summarise(nuts_level = paste(nuts_level, collapse = ","))
 nuts <- as.data.frame(nuts)
 
 # URBAN AUDIT
 
 urau$level <- "all"
 uraulev <-
-  c("CITIES","GREATER_CITIES", "FUA", "CITY", "KERN", "LUZ")
+  c("CITIES", "GREATER_CITIES", "FUA", "CITY", "KERN", "LUZ")
 for (i in 1:length(uraulev)) {
   char <- uraulev[i]
   r <- grep(char, urau$api_file)
@@ -232,7 +260,7 @@ for (i in 1:length(uraulev)) {
 }
 
 uraulev <-
-  c("GREATER_CITIES","CITIES", "FUA", "CITY", "KERN", "LUZ")
+  c("GREATER_CITIES", "CITIES", "FUA", "CITY", "KERN", "LUZ")
 
 for (j in seq_len(length(uraulev))) {
   urau$api_file <- gsub(uraulev[j], "{level}", urau$api_file)
@@ -246,7 +274,8 @@ gisco_db <- bind_rows(clean, nuts, urau)
 gisco_db <- as.data.frame(gisco_db)
 
 gisco_db <-
-  gisco_db %>% select(
+  gisco_db %>%
+  select(
     id_giscoR,
     year,
     epsg,
@@ -257,7 +286,8 @@ gisco_db <-
     ext,
     api_file,
     api_entry
-  ) %>% arrange(id_giscoR, year, resolution, spatialtype, api_file)
+  ) %>%
+  arrange(id_giscoR, year, resolution, spatialtype, api_file)
 
 
 usethis::use_data(gisco_db, overwrite = TRUE)

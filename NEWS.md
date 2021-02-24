@@ -1,7 +1,7 @@
-# giscoR 0.2.4-9000
+# giscoR (development version)
 
 - New `eu` field on `giscoR::gisco_countrycode`.
-- 
+- Fix typos on documentation
 
 # giscoR 0.2.3
 

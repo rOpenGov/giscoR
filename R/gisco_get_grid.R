@@ -21,10 +21,11 @@
 #' library(sf)
 #'
 #' grid <- gisco_get_grid(resolution = 20)
-#' grid$popdens <- grid$TOT_P_2011/20
+#' grid$popdens <- grid$TOT_P_2011 / 20
 #'
 #' breaks <-
-#'   c(0,
+#'   c(
+#'     0,
 #'     500,
 #'     1000,
 #'     2500,
@@ -32,13 +33,14 @@
 #'     10000,
 #'     25000,
 #'     50000,
-#'     max(grid$popdens) + 1)
+#'     max(grid$popdens) + 1
+#'   )
 #'
-#' pal <- hcl.colors(length(breaks)-2, palette = "inferno", alpha = 0.7)
-#' pal <- c("black",pal)
+#' pal <- hcl.colors(length(breaks) - 2, palette = "inferno", alpha = 0.7)
+#' pal <- c("black", pal)
 #'
 #' opar <- par(no.readonly = TRUE)
-#' par(mar=c(0,0,0,0), bg = "grey2")
+#' par(mar = c(0, 0, 0, 0), bg = "grey2")
 #' plot(
 #'   grid[, "popdens"],
 #'   pal = pal,
@@ -46,7 +48,7 @@
 #'   breaks = breaks,
 #'   main = NA,
 #'   xlim = c(2500000, 7000000),
-#'   ylim = c(1500000 , 5200000),
+#'   ylim = c(1500000, 5200000),
 #'   border = NA
 #' )
 #' par(opar)
@@ -60,8 +62,10 @@ gisco_get_grid <- function(resolution = "20",
   validres <- as.character(c(1, 2, 5, 10, 20, 50, 100))
 
   if (!resolution %in% validres) {
-    stop("resolution should be one of ",
-         paste0(validres, collapse = ", "))
+    stop(
+      "resolution should be one of ",
+      paste0(validres, collapse = ", ")
+    )
   }
 
   valid <- c("REGION", "POINT")
@@ -86,13 +90,15 @@ gisco_get_grid <- function(resolution = "20",
     local <- file.path(gsc_helper_cachedir(cache_dir), filename)
     exist_local <- file.exists(local)
 
-    if (verbose & exist_local)
+    if (verbose & exist_local) {
       message("File exits on local cache dir")
+    }
 
     if (resolution %in% c("1", "2") & isFALSE(exist_local)) {
       sel <-
         menu(c("Yes", "No"),
-             title = "You are about to download a large file (>500M). Proceed?")
+          title = "You are about to download a large file (>500M). Proceed?"
+        )
       if (sel != 1) {
         stop("Execution halted")
       }

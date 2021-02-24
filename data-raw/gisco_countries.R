@@ -16,8 +16,6 @@ gisco_countries <- gisco_get_countries(
 
 
 usethis::use_data(gisco_countries,
-                  overwrite = TRUE,
-                  compress = "xz")
-
-
-
+  overwrite = TRUE,
+  compress = "xz"
+)

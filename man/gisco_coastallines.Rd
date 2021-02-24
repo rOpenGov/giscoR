@@ -20,25 +20,25 @@ A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326)
 A \code{sf} object as provided by GISCO (2016 version).
 }
 \examples{
- library(sf)
+library(sf)
 
- coasts <- gisco_coastallines
+coasts <- gisco_coastallines
 
- plot(
-   st_geometry(coasts),
-   xlim = c(100, 120),
-   ylim = c(-24, 24),
-   col = "grey90",
-   border = "deepskyblue4",
-   lwd = 2
- )
- box()
- title(
-   main = "Coasts on Southeastern Asia",
-   sub = gisco_attributions(),
-   cex.sub = 0.7,
-   line = 1
- )
+plot(
+  st_geometry(coasts),
+  xlim = c(100, 120),
+  ylim = c(-24, 24),
+  col = "grey90",
+  border = "deepskyblue4",
+  lwd = 2
+)
+box()
+title(
+  main = "Coasts on Southeastern Asia",
+  sub = gisco_attributions(),
+  cex.sub = 0.7,
+  line = 1
+)
 }
 \seealso{
 \link{gisco_get_coastallines}

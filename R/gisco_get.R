@@ -51,7 +51,7 @@
 #' For a complete list of files available check
 #' \link{gisco_db}.
 #'
-#'\strong{About world regions}
+#' \strong{About world regions}
 #'
 #' Regions are defined as per the geographic regions defined by the
 #' UN (see
@@ -59,7 +59,7 @@
 #' Note that under this scheme Cyprus is assigned to Asia. You may use
 #' \code{region = "EU"} to get the EU members (reference date: 2021).
 #'
-#'\strong{Release years available}
+#' \strong{Release years available}
 #'
 #' \code{gisco_get_coastallines}: one of
 #' \code{"2006", "2010", "2013"} or \code{"2016"}.
@@ -76,10 +76,11 @@
 #'
 #' coastlines <- gisco_get_coastallines()
 #' plot(st_geometry(coastlines), col = "palegreen", border = "lightblue3")
-#' title(main = "Coastal Lines",
-#'       sub = gisco_attributions(),
-#'       line = 1)
-#'
+#' title(
+#'   main = "Coastal Lines",
+#'   sub = gisco_attributions(),
+#'   line = 1
+#' )
 #' @seealso \link{gisco_db}, \link{gisco_attributions},
 #' \link{gisco_coastallines}
 #' @export
@@ -92,7 +93,7 @@ gisco_get_coastallines <- function(year = "2016",
                                    resolution = "20") {
   ext <- "geojson"
 
-  geturl <-   gsc_api_url(
+  geturl <- gsc_api_url(
     id_giscoR = "coastallines",
     year = year,
     epsg = epsg,
@@ -109,11 +110,12 @@ gisco_get_coastallines <- function(year = "2016",
   if (isFALSE(update_cache) & length(checkdata)) {
     dwnload <- FALSE
     data.sf <- giscoR::gisco_coastallines
-    if (verbose)
+    if (verbose) {
       message(
         "Loaded from gisco_coastallines dataset. Use update_cache = TRUE",
         " to load the shapefile from the .geojson file"
       )
+    }
   } else {
     dwnload <- TRUE
   }
@@ -121,11 +123,13 @@ gisco_get_coastallines <- function(year = "2016",
     if (cache) {
       # Guess source to load
       namefileload <-
-        gsc_api_cache(geturl$api.url,
-                      geturl$namefile,
-                      cache_dir,
-                      update_cache,
-                      verbose)
+        gsc_api_cache(
+          geturl$api.url,
+          geturl$namefile,
+          cache_dir,
+          update_cache,
+          verbose
+        )
     } else {
       namefileload <- geturl$api.url
     }
@@ -160,7 +164,7 @@ gisco_get_communes <- function(year = "2016",
                                country = NULL) {
   ext <- "geojson"
 
-  geturl <-   gsc_api_url(
+  geturl <- gsc_api_url(
     id_giscoR = "communes",
     year = year,
     epsg = epsg,
@@ -178,11 +182,13 @@ gisco_get_communes <- function(year = "2016",
     if (cache) {
       # Guess source to load
       namefileload <-
-        gsc_api_cache(geturl$api.url,
-                      geturl$namefile,
-                      cache_dir,
-                      update_cache,
-                      verbose)
+        gsc_api_cache(
+          geturl$api.url,
+          geturl$namefile,
+          cache_dir,
+          update_cache,
+          verbose
+        )
     } else {
       namefileload <- geturl$api.url
     }
@@ -219,15 +225,17 @@ gisco_get_communes <- function(year = "2016",
 #' title(sub = gisco_attributions(), line = 1)
 #'
 #'
-#' sf_africa <- gisco_get_countries(region = 'Africa')
+#' sf_africa <- gisco_get_countries(region = "Africa")
 #' plot(st_geometry(sf_africa),
-#'      col = c("springgreen4", "darkgoldenrod1", "red2"))
+#'   col = c("springgreen4", "darkgoldenrod1", "red2")
+#' )
 #' title(sub = gisco_attributions(), line = 1)
 #'
 #' sf_benelux <-
-#'   gisco_get_countries(country = c('Belgium', 'Netherlands', 'Luxembourg'))
+#'   gisco_get_countries(country = c("Belgium", "Netherlands", "Luxembourg"))
 #' plot(st_geometry(sf_benelux),
-#'      col = c("grey10", "orange", "deepskyblue2"))
+#'   col = c("grey10", "orange", "deepskyblue2")
+#' )
 #' title(sub = gisco_attributions(), line = 1)
 #' @seealso \link{gisco_countrycode}, \link{gisco_countries}
 #' @export
@@ -243,7 +251,7 @@ gisco_get_countries <- function(year = "2016",
                                 region = NULL) {
   ext <- "geojson"
 
-  geturl <-   gsc_api_url(
+  geturl <- gsc_api_url(
     id_giscoR = "countries",
     year = year,
     epsg = epsg,
@@ -260,11 +268,12 @@ gisco_get_countries <- function(year = "2016",
   if (isFALSE(update_cache) & length(checkdata)) {
     dwnload <- FALSE
     data.sf <- giscoR::gisco_countries
-    if (verbose)
+    if (verbose) {
       message(
         "Loaded from gisco_countries dataset. Use update_cache = TRUE
         to load the shapefile from the .geojson file"
       )
+    }
   } else {
     dwnload <- TRUE
   }
@@ -288,11 +297,13 @@ gisco_get_countries <- function(year = "2016",
       if (cache) {
         # Guess source to load
         namefileload <-
-          gsc_api_cache(geturl$api.url,
-                        geturl$namefile,
-                        cache_dir,
-                        update_cache,
-                        verbose)
+          gsc_api_cache(
+            geturl$api.url,
+            geturl$namefile,
+            cache_dir,
+            update_cache,
+            verbose
+          )
       } else {
         namefileload <- geturl$api.url
       }
@@ -336,7 +347,7 @@ gisco_get_lau <- function(year = "2016",
                           gisco_id = NULL) {
   ext <- "geojson"
 
-  geturl <-   gsc_api_url(
+  geturl <- gsc_api_url(
     id_giscoR = "lau",
     year = year,
     epsg = epsg,
@@ -356,11 +367,13 @@ gisco_get_lau <- function(year = "2016",
     if (cache) {
       # Guess source to load
       namefileload <-
-        gsc_api_cache(geturl$api.url,
-                      geturl$namefile,
-                      cache_dir,
-                      update_cache,
-                      verbose)
+        gsc_api_cache(
+          geturl$api.url,
+          geturl$namefile,
+          cache_dir,
+          update_cache,
+          verbose
+        )
     } else {
       namefileload <- geturl$api.url
     }
@@ -424,18 +437,21 @@ gisco_get_lau <- function(year = "2016",
 #' )
 #'
 #' plot(st_geometry(nuts3),
-#'      border = "grey60",
-#'      lty = 3)
+#'   border = "grey60",
+#'   lty = 3
+#' )
 #'
 #' plot(st_geometry(nuts2),
-#'      lwd = 2,
-#'      border = "red2",
-#'      add = TRUE)
+#'   lwd = 2,
+#'   border = "red2",
+#'   add = TRUE
+#' )
 #'
 #' plot(st_geometry(nuts1),
-#'      lwd = 3,
-#'      border = "springgreen4",
-#'      add = TRUE)
+#'   lwd = 3,
+#'   border = "springgreen4",
+#'   add = TRUE
+#' )
 #'
 #' box()
 #' title(
@@ -470,7 +486,7 @@ gisco_get_nuts <- function(year = "2016",
 
   nuts_level <- as.character(nuts_level)
 
-  geturl <-   gsc_api_url(
+  geturl <- gsc_api_url(
     id_giscoR = "nuts",
     year = year,
     epsg = epsg,
@@ -487,11 +503,12 @@ gisco_get_nuts <- function(year = "2016",
   if (isFALSE(update_cache) & length(checkdata)) {
     dwnload <- FALSE
     data.sf <- giscoR::gisco_nuts
-    if (verbose)
+    if (verbose) {
       message(
         "Loaded from gisco_nuts dataset. Use update_cache = TRUE to load",
         " the shapefile from the .geojson file"
       )
+    }
     if (nuts_level %in% c("0", "1", "2", "3")) {
       data.sf <- data.sf[data.sf$LEVL_CODE == nuts_level, ]
     }
@@ -518,11 +535,13 @@ gisco_get_nuts <- function(year = "2016",
       if (cache) {
         # Guess source to load
         namefileload <-
-          gsc_api_cache(geturl$api.url,
-                        geturl$namefile,
-                        cache_dir,
-                        update_cache,
-                        verbose)
+          gsc_api_cache(
+            geturl$api.url,
+            geturl$namefile,
+            cache_dir,
+            update_cache,
+            verbose
+          )
       } else {
         namefileload <- geturl$api.url
       }
@@ -562,7 +581,7 @@ gisco_get_urban_audit <- function(year = "2020",
                                   level = NULL) {
   ext <- "geojson"
 
-  geturl <-   gsc_api_url(
+  geturl <- gsc_api_url(
     id_giscoR = "urban_audit",
     year = year,
     epsg = epsg,
@@ -580,11 +599,13 @@ gisco_get_urban_audit <- function(year = "2020",
     if (cache) {
       # Guess source to load
       namefileload <-
-        gsc_api_cache(geturl$api.url,
-                      geturl$namefile,
-                      cache_dir,
-                      update_cache,
-                      verbose)
+        gsc_api_cache(
+          geturl$api.url,
+          geturl$namefile,
+          cache_dir,
+          update_cache,
+          verbose
+        )
     } else {
       namefileload <- geturl$api.url
     }

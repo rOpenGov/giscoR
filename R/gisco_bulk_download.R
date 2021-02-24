@@ -24,7 +24,7 @@
 #' \dontrun{
 #' # Countries 2016
 #' gisco_bulk_download(id_giscoR = "countries", resolution = "60")
-#'  }
+#' }
 #' @export
 gisco_bulk_download <- function(id_giscoR = "countries",
                                 year = "2016",
@@ -34,18 +34,22 @@ gisco_bulk_download <- function(id_giscoR = "countries",
                                 resolution = "10",
                                 ext = "geojson",
                                 recursive = TRUE) {
-  valid <- c("coastallines",
-             "communes",
-             "countries",
-             "lau",
-             "nuts",
-             "urban_audit")
+  valid <- c(
+    "coastallines",
+    "communes",
+    "countries",
+    "lau",
+    "nuts",
+    "urban_audit"
+  )
   alias <-
     c("coastline", "communes", "countries", "lau", "nuts", "urau")
 
   if (!(id_giscoR %in% valid)) {
-    stop("id_giscoR values should be one of ",
-         paste0("'", sort(valid), "'", collapse = ","))
+    stop(
+      "id_giscoR values should be one of ",
+      paste0("'", sort(valid), "'", collapse = ",")
+    )
   }
 
   availext <- c("geojson", "shp", "svg", "json", "gdb")
@@ -90,15 +94,17 @@ gisco_bulk_download <- function(id_giscoR = "countries",
   remain2 <- tolower(paste0(remain2, collapse = ""))
 
   # Create url
-  zipname <- paste0("ref-",
-                    getalias,
-                    "-",
-                    year,
-                    "-",
-                    remain2,
-                    ".",
-                    ext,
-                    ".zip")
+  zipname <- paste0(
+    "ref-",
+    getalias,
+    "-",
+    year,
+    "-",
+    remain2,
+    ".",
+    ext,
+    ".zip"
+  )
   url <- file.path(api_entry, zipname)
 
 
@@ -109,7 +115,8 @@ gisco_bulk_download <- function(id_giscoR = "countries",
   unzip_dir <- gsub(paste0("/", zipname), "", destfile)
 
   # Unzip
-  gsc_unzip(destfile,
-            unzip_dir, ext, recursive, verbose, update_cache)
-
+  gsc_unzip(
+    destfile,
+    unzip_dir, ext, recursive, verbose, update_cache
+  )
 }

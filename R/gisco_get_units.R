@@ -32,70 +32,77 @@
 #' @seealso \link{gisco_get}
 #' @examples
 #' \dontrun{
-#'   library(sf)
+#' library(sf)
 #'
-#'   if (gisco_check_access()) {
-#'     cities <- gisco_get_units(id_giscoR = "urban_audit",
-#'                               mode = "df",
-#'                               year = "2020")
-#'     VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
-#'     #'   Order from big to small
-#'     VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing =  TRUE),]
+#' if (gisco_check_access()) {
+#'   cities <- gisco_get_units(
+#'     id_giscoR = "urban_audit",
+#'     mode = "df",
+#'     year = "2020"
+#'   )
+#'   VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
+#'   #'   Order from big to small
+#'   VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
 #'
-#'     VAL.sf <- gisco_get_units(id_giscoR = "urban_audit",
-#'                               year = "2020",
-#'                               unit = VAL$URAU_CODE)
-#'     # Provincia
-#'     Provincia <-
-#'       gisco_get_units(
-#'         id_giscoR = "nuts",
-#'         unit = c("ES523"),
-#'         resolution = "01"
-#'       )
-#'
-#'     # Surrounding area
-#'     NUTS1 <-
-#'       gisco_get_units(id_giscoR = "nuts",
-#'                       unit = c("ES5"),
-#'                       resolution = "01")
-#'
-#'     # Plot
-#'     plot(
-#'       st_geometry(Provincia),
-#'       col = "gray1",
-#'       border = "grey50",
-#'       lwd = 3
+#'   VAL.sf <- gisco_get_units(
+#'     id_giscoR = "urban_audit",
+#'     year = "2020",
+#'     unit = VAL$URAU_CODE
+#'   )
+#'   # Provincia
+#'   Provincia <-
+#'     gisco_get_units(
+#'       id_giscoR = "nuts",
+#'       unit = c("ES523"),
+#'       resolution = "01"
 #'     )
-#'     plot(st_geometry(NUTS1),
-#'          border = "grey50",
-#'          lwd = 3,
-#'          add = TRUE)
-#'     plot(
-#'       st_geometry(VAL.sf),
-#'       col = c("deeppink4", "brown2", "khaki1"),
-#'       add = TRUE
+#'
+#'   # Surrounding area
+#'   NUTS1 <-
+#'     gisco_get_units(
+#'       id_giscoR = "nuts",
+#'       unit = c("ES5"),
+#'       resolution = "01"
 #'     )
-#'     box()
-#'     title(
-#'       "Urban Audit - Valencia (ES)",
-#'       sub = gisco_attributions("es"),
-#'       line = 1,
-#'       cex.sub = 0.7
-#'     )
-#'   }
+#'
+#'   # Plot
+#'   plot(
+#'     st_geometry(Provincia),
+#'     col = "gray1",
+#'     border = "grey50",
+#'     lwd = 3
+#'   )
+#'   plot(st_geometry(NUTS1),
+#'     border = "grey50",
+#'     lwd = 3,
+#'     add = TRUE
+#'   )
+#'   plot(
+#'     st_geometry(VAL.sf),
+#'     col = c("deeppink4", "brown2", "khaki1"),
+#'     add = TRUE
+#'   )
+#'   box()
+#'   title(
+#'     "Urban Audit - Valencia (ES)",
+#'     sub = gisco_attributions("es"),
+#'     line = 1,
+#'     cex.sub = 0.7
+#'   )
+#' }
 #' }
 #' @export
-gisco_get_units <-  function(id_giscoR = "nuts",
-                             unit = "ES4",
-                             mode = "sf",
-                             year = "2016",
-                             epsg = "4326",
-                             cache = TRUE,
-                             update_cache = FALSE,
-                             cache_dir = NULL,
-                             verbose = FALSE,
-                             resolution = "20",
-                             spatialtype = "RG") {
+gisco_get_units <- function(id_giscoR = "nuts",
+                            unit = "ES4",
+                            mode = "sf",
+                            year = "2016",
+                            epsg = "4326",
+                            cache = TRUE,
+                            update_cache = FALSE,
+                            cache_dir = NULL,
+                            verbose = FALSE,
+                            resolution = "20",
+                            spatialtype = "RG") {
   year <- as.character(year)
 
   if (!(id_giscoR %in% c("countries", "nuts", "urban_audit"))) {
@@ -114,7 +121,7 @@ gisco_get_units <-  function(id_giscoR = "nuts",
     stop("Select unit(s) to download with unit = c('unit_id1','unit_id2')")
   }
 
-  #Convert to iso3c for countries 2001
+  # Convert to iso3c for countries 2001
   if (mode == "sf" & id_giscoR == "countries") {
     if (year == "2001") {
       unit <- gsc_helper_countrynames(unit, "iso3c")
@@ -192,7 +199,7 @@ gisco_get_units <-  function(id_giscoR = "nuts",
       }
       return(df.csv)
     }
-  }  else {
+  } else {
     unit <- unique(unit)
     filename <- unit
 
@@ -216,13 +223,12 @@ gisco_get_units <-  function(id_giscoR = "nuts",
         paste0(paste("-region", slice, epsg, year, sep = "-"), ".geojson")
       filepattern <- gsub("-rg", "", filepattern)
       filename <- paste0(filename, filepattern)
-
     }
 
     for (i in seq_len(length(filename))) {
       fn <- filename[i]
       if (id_giscoR == "countries") {
-        #Modify name for countries
+        # Modify name for countries
         fn <- gsub(unit[i], paste0(unit[i], "-cntry"), fn)
       }
 
@@ -245,8 +251,7 @@ gisco_get_units <-  function(id_giscoR = "nuts",
       }
 
       iter.sf <- tryCatch(
-        gsc_api_load(path, epsg, "geojson", cache, verbose)
-        ,
+        gsc_api_load(path, epsg, "geojson", cache, verbose),
         error = function(e) {
           return(NULL)
         }

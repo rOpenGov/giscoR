@@ -10,6 +10,9 @@ devtools::document()
 devtools::build_readme()
 devtools::check()
 
+
+a <- testthat::skip_on_cran()
+
 citation("giscoR")
 
 goodpractice::gp()

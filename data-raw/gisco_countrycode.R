@@ -19,7 +19,7 @@ df$eurostat <- ifelse(df$iso3c == "NAM", "NA", df$eurostat)
 
 # Delete records without id
 gisco_countrycode <-
-  df[!(is.na(df$eurostat) & is.na(df$iso2c) & is.na(df$iso3c)),]
+  df[!(is.na(df$eurostat) & is.na(df$iso2c) & is.na(df$iso3c)), ]
 
 # Change names to Eurostat and ISO to ease joins on giscoR
 

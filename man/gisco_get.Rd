@@ -217,10 +217,11 @@ library(sf)
 
 coastlines <- gisco_get_coastallines()
 plot(st_geometry(coastlines), col = "palegreen", border = "lightblue3")
-title(main = "Coastal Lines",
-      sub = gisco_attributions(),
-      line = 1)
-
+title(
+  main = "Coastal Lines",
+  sub = gisco_attributions(),
+  line = 1
+)
 
 ###############################
 # Example - gisco_get_countries
@@ -231,15 +232,17 @@ plot(st_geometry(sf_world), col = "seagreen2")
 title(sub = gisco_attributions(), line = 1)
 
 
-sf_africa <- gisco_get_countries(region = 'Africa')
+sf_africa <- gisco_get_countries(region = "Africa")
 plot(st_geometry(sf_africa),
-     col = c("springgreen4", "darkgoldenrod1", "red2"))
+  col = c("springgreen4", "darkgoldenrod1", "red2")
+)
 title(sub = gisco_attributions(), line = 1)
 
 sf_benelux <-
-  gisco_get_countries(country = c('Belgium', 'Netherlands', 'Luxembourg'))
+  gisco_get_countries(country = c("Belgium", "Netherlands", "Luxembourg"))
 plot(st_geometry(sf_benelux),
-     col = c("grey10", "orange", "deepskyblue2"))
+  col = c("grey10", "orange", "deepskyblue2")
+)
 title(sub = gisco_attributions(), line = 1)
 
 ##########################
@@ -269,18 +272,21 @@ nuts3 <- gisco_get_nuts(
 )
 
 plot(st_geometry(nuts3),
-     border = "grey60",
-     lty = 3)
+  border = "grey60",
+  lty = 3
+)
 
 plot(st_geometry(nuts2),
-     lwd = 2,
-     border = "red2",
-     add = TRUE)
+  lwd = 2,
+  border = "red2",
+  add = TRUE
+)
 
 plot(st_geometry(nuts1),
-     lwd = 3,
-     border = "springgreen4",
-     add = TRUE)
+  lwd = 3,
+  border = "springgreen4",
+  add = TRUE
+)
 
 box()
 title(

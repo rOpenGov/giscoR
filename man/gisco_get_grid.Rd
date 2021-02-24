@@ -47,10 +47,11 @@ There are specific downloading provisions, please see
 library(sf)
 
 grid <- gisco_get_grid(resolution = 20)
-grid$popdens <- grid$TOT_P_2011/20
+grid$popdens <- grid$TOT_P_2011 / 20
 
 breaks <-
-  c(0,
+  c(
+    0,
     500,
     1000,
     2500,
@@ -58,13 +59,14 @@ breaks <-
     10000,
     25000,
     50000,
-    max(grid$popdens) + 1)
+    max(grid$popdens) + 1
+  )
 
-pal <- hcl.colors(length(breaks)-2, palette = "inferno", alpha = 0.7)
-pal <- c("black",pal)
+pal <- hcl.colors(length(breaks) - 2, palette = "inferno", alpha = 0.7)
+pal <- c("black", pal)
 
 opar <- par(no.readonly = TRUE)
-par(mar=c(0,0,0,0), bg = "grey2")
+par(mar = c(0, 0, 0, 0), bg = "grey2")
 plot(
   grid[, "popdens"],
   pal = pal,
@@ -72,7 +74,7 @@ plot(
   breaks = breaks,
   main = NA,
   xlim = c(2500000, 7000000),
-  ylim = c(1500000 , 5200000),
+  ylim = c(1500000, 5200000),
   border = NA
 )
 par(opar)

@@ -37,7 +37,7 @@ gsc_helper_cachedir <- function(cache_dir = NULL) {
     cache_dir <- file.path(tempdir(), "gisco")
   }
 
-  #Create cache dir if needed
+  # Create cache dir if needed
   if (isFALSE(dir.exists(cache_dir))) {
     dir.create(cache_dir)
   }
@@ -65,13 +65,16 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
   # Available years
   av.years <- paste(db$year, collapse = ",")
-  av.years  <- sort(unique(unlist(strsplit(av.years, ","))))
+  av.years <- sort(unique(unlist(strsplit(av.years, ","))))
 
-  if (!(year %in% av.years))
-    stop("Year ",
-         year,
-         " not available. Try ",
-         paste0("'", av.years, "'", collapse = ","))
+  if (!(year %in% av.years)) {
+    stop(
+      "Year ",
+      year,
+      " not available. Try ",
+      paste0("'", av.years, "'", collapse = ",")
+    )
+  }
 
   db <- db[grep(year, db$year), ]
 
@@ -80,14 +83,17 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
   # Available epsg
   av.epsg <- paste(db$epsg, collapse = ",")
-  av.epsg  <- sort(unique(unlist(strsplit(av.epsg, ","))))
+  av.epsg <- sort(unique(unlist(strsplit(av.epsg, ","))))
 
 
-  if (!(epsg %in% av.epsg))
-    stop("EPSG ",
-         epsg,
-         " not available. Try ",
-         paste0("'", av.epsg, "'", collapse = ","))
+  if (!(epsg %in% av.epsg)) {
+    stop(
+      "EPSG ",
+      epsg,
+      " not available. Try ",
+      paste0("'", av.epsg, "'", collapse = ",")
+    )
+  }
 
 
   db <- db[grep(epsg, db$epsg), ]
@@ -96,15 +102,18 @@ gsc_api_url <- function(id_giscoR = "nuts",
   # Available ext
   # nocov start
   av.ext <- paste(db$ext, collapse = ",")
-  av.ext  <- sort(unique(unlist(strsplit(av.ext, ","))))
+  av.ext <- sort(unique(unlist(strsplit(av.ext, ","))))
   # nocov end
 
 
-  if (!(ext %in% av.ext))
-    stop("\n",
-         ext,
-         " format not available. Try one of ",
-         paste0("'", av.ext, "'", collapse = ","))
+  if (!(ext %in% av.ext)) {
+    stop(
+      "\n",
+      ext,
+      " format not available. Try one of ",
+      paste0("'", av.ext, "'", collapse = ",")
+    )
+  }
 
 
   db <- db[grep(ext, db$ext), ]
@@ -113,14 +122,15 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
   # Available spatialtype
   av.sptype <- paste(db$spatialtype, collapse = ",")
-  av.sptype  <- sort(unique(unlist(strsplit(av.sptype, ","))))
+  av.sptype <- sort(unique(unlist(strsplit(av.sptype, ","))))
 
   if (length(av.sptype) == 1) {
-    if (verbose)
+    if (verbose) {
       message("[Auto] Selecting spatialtype = '", av.sptype, "'\n")
+    }
     spatialtype <- av.sptype
   } else {
-    if (!(spatialtype %in% av.sptype))
+    if (!(spatialtype %in% av.sptype)) {
       stop(
         "spatialtype '",
         spatialtype,
@@ -128,6 +138,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
         paste0("'", av.sptype, "'", collapse = ","),
         "\n"
       )
+    }
     db <- db[grep(spatialtype, db$spatialtype), ]
   }
 
@@ -135,14 +146,15 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
   # Available resolution
   av.res <- paste(db$resolution, collapse = ",")
-  av.res  <- sort(unique(unlist(strsplit(av.res, ","))))
+  av.res <- sort(unique(unlist(strsplit(av.res, ","))))
 
   if (length(av.res) == 1) {
-    if (verbose)
+    if (verbose) {
       message("[Auto] Selecting resolution = '", av.res, "'\n")
+    }
     resolution <- av.res
   } else {
-    if (!(resolution %in% av.res))
+    if (!(resolution %in% av.res)) {
       stop(
         "resolution '",
         resolution,
@@ -152,6 +164,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
         paste0("'", av.res, "'", collapse = ","),
         "\n"
       )
+    }
     db <- db[grep(resolution, db$resolution), ]
   }
   rm(av.res)
@@ -159,30 +172,38 @@ gsc_api_url <- function(id_giscoR = "nuts",
   # NUTS LEVEL
   if (id_giscoR == "nuts") {
     av.nuts <- paste(db$nuts_level, collapse = ",")
-    av.nuts  <- sort(unique(unlist(strsplit(av.nuts, ","))))
+    av.nuts <- sort(unique(unlist(strsplit(av.nuts, ","))))
 
-    if (is.null((nuts_level)))
+    if (is.null((nuts_level))) {
       nuts_level <- "error"
+    }
 
 
-    if (!(nuts_level %in% av.nuts))
-      stop("Select one nuts level of ",
-           paste0("'", av.nuts, "'", collapse = ","))
+    if (!(nuts_level %in% av.nuts)) {
+      stop(
+        "Select one nuts level of ",
+        paste0("'", av.nuts, "'", collapse = ",")
+      )
+    }
     db <- db[grep(nuts_level, db$nuts_level), ]
   }
 
   # Urban Audit Level
   if (id_giscoR == "urban_audit") {
     av.ualevel <- paste(db$level, collapse = ",")
-    av.ualevel  <- sort(unique(unlist(strsplit(av.ualevel, ","))))
+    av.ualevel <- sort(unique(unlist(strsplit(av.ualevel, ","))))
 
-    if (is.null((level)))
+    if (is.null((level))) {
       level <- "all"
+    }
 
 
-    if (!(level %in% av.ualevel))
-      stop("Select one level of ",
-           paste0("'", av.ualevel, "'", collapse = ","))
+    if (!(level %in% av.ualevel)) {
+      stop(
+        "Select one level of ",
+        paste0("'", av.ualevel, "'", collapse = ",")
+      )
+    }
     db <- db[grep(level, db$level), ]
   }
 
@@ -207,20 +228,23 @@ gsc_api_url <- function(id_giscoR = "nuts",
   gisco.path <- db$api_file
   # Create api call
   params <-
-    c("year",
+    c(
+      "year",
       "epsg",
       "resolution",
       "spatialtype",
       "nuts_level",
       "level",
-      "ext")
+      "ext"
+    )
 
 
   for (i in seq_len(length(params))) {
     patt <- paste0("\\{", params[i], "\\}")
     repl <- eval(parse(text = params[i]))
-    if (is.null(repl))
+    if (is.null(repl)) {
       repl <- "ERR"
+    }
     gisco.path <- gsub(patt, repl, x = gisco.path)
   }
 
@@ -237,8 +261,10 @@ gsc_api_url <- function(id_giscoR = "nuts",
   namefile <- gsub(paste0(ext, "/"), "", gisco.path)
   api.url <- file.path(db$api_entry, gisco.path)
 
-  output <- list(api.url = api.url,
-                 namefile = namefile)
+  output <- list(
+    api.url = api.url,
+    namefile = namefile
+  )
 
   return(output)
 }
@@ -257,22 +283,28 @@ gsc_api_cache <-
     file.local <- file.path(cache_dir, name)
     file.local <- gsub("//", "/", file.local)
 
-    if (verbose)
+    if (verbose) {
       message("\nCache dir is ", cache_dir, "\n")
+    }
 
     # Check if file already exists
     fileoncache <- file.exists(file.local)
 
     if (isFALSE(update_cache) & fileoncache) {
-      if (verbose)
-        message("\nFile already cached\n",
-                file.local)
+      if (verbose) {
+        message(
+          "\nFile already cached\n",
+          file.local
+        )
+      }
     } else {
-      if (fileoncache & verbose)
+      if (fileoncache & verbose) {
         message("\nUpdating cached file\n")
+      }
 
-      if (verbose)
+      if (verbose) {
         message("Downloading from ", url, "\n")
+      }
       err_dwnload <- tryCatch(
         download.file(
           url,
@@ -317,19 +349,23 @@ gsc_api_load <- function(file = NULL,
       size <- file.size(file)
       class(size) <- "object_size"
       message(format(size, units = "auto"))
-    } else{
-      if (verbose)
+    } else {
+      if (verbose) {
         message("Reading from url ", file)
+      }
     }
     if (ext == "geojson") {
       err_onload <- tryCatch(
         data.sf <- geojsonsf::geojson_sf(file,
-                                         input = num$input,
-                                         wkt = num$wkt),
+          input = num$input,
+          wkt = num$wkt
+        ),
         warning = function(e) {
-          message("\n\nFile couldn't be loaded from \n\n",
-                  file,
-                  "\n\n Please try cache = TRUE")
+          message(
+            "\n\nFile couldn't be loaded from \n\n",
+            file,
+            "\n\n Please try cache = TRUE"
+          )
           return(TRUE)
         },
         error = function(e) {
@@ -351,9 +387,11 @@ gsc_api_load <- function(file = NULL,
             quiet = !verbose
           ),
         warning = function(e) {
-          message("\n\nFile couldn't be loaded from \n\n",
-                  file,
-                  "\n\n Please try cache = TRUE")
+          message(
+            "\n\nFile couldn't be loaded from \n\n",
+            file,
+            "\n\n Please try cache = TRUE"
+          )
           return(TRUE)
         },
         error = function(e) {
@@ -372,13 +410,15 @@ gsc_api_load <- function(file = NULL,
       loaded <- FALSE
     } else {
       loaded <- TRUE
-      if (verbose)
+      if (verbose) {
         message("File loaded")
+      }
     }
 
     if (loaded) {
-      if (verbose)
+      if (verbose) {
         message("Encoding characters")
+      }
       # To UTF-8
       data.sf <- gsc_helper_utf8(data.sf)
       data.sf <- sf::st_make_valid(data.sf)
@@ -426,12 +466,13 @@ gsc_unzip <-
 
 
 
-    #Extract files
+    # Extract files
     if (continue) {
       outfiles <- infiles[grep(ext, infiles$Name), ]$Name
 
-      if (verbose)
+      if (verbose) {
         message("Extracting files: ", paste0(outfiles, collapse = "\n"), "\n")
+      }
       tryCatch(
         unzip(
           destfile,
@@ -467,16 +508,20 @@ gsc_unzip <-
       rec <- (length(loopzip) > 0)
     }
     if (rec) {
-      if (verbose)
-        message("Extracting recursively files ",
-                paste0(loopzip, collapse = "\n"),
-                "\n")
+      if (verbose) {
+        message(
+          "Extracting recursively files ",
+          paste0(loopzip, collapse = "\n"),
+          "\n"
+        )
+      }
       for (i in seq_len(length(loopzip))) {
         fpath <- file.path(cache_dir, loopzip[i])
         tryCatch(
           unzip(fpath,
-                exdir = cache_dir,
-                overwrite = update_cache),
+            exdir = cache_dir,
+            overwrite = update_cache
+          ),
           warning = function(e) {
             message(
               "\nSome files of ",

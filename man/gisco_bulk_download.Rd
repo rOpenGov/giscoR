@@ -53,5 +53,5 @@ For downloading specific files use \link{gisco_get} functions.
 \dontrun{
 # Countries 2016
 gisco_bulk_download(id_giscoR = "countries", resolution = "60")
- }
+}
 }

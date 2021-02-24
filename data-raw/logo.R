@@ -1,5 +1,5 @@
 rm(list = ls())
-#options(gisco_cache_dir = "~/R/mapslib/GISCO/")
+# options(gisco_cache_dir = "~/R/mapslib/GISCO/")
 
 library(giscoR)
 library(sf)
@@ -7,8 +7,8 @@ library(countrycode)
 library(dplyr)
 library(ggplot2)
 
-#sysfonts::font_add_google("Noto Serif")
-#sysfonts::font_families_google()
+# sysfonts::font_add_google("Noto Serif")
+# sysfonts::font_families_google()
 
 
 map <- gisco_get_nuts(
@@ -19,34 +19,45 @@ map <- gisco_get_nuts(
 )
 
 f <-
-  codelist %>% select(eurostat, eu28) %>% filter(!is.na(eu28), eurostat != "UK")
+  codelist %>%
+  select(eurostat, eu28) %>%
+  filter(!is.na(eu28), eurostat != "UK")
 
 map <- inner_join(map, f, by = c("CNTR_CODE" = "eurostat"))
 
-wrld <- gisco_get_countries(year = "2016",
-                            resolution = "10",
-                            epsg = "3035")
+wrld <- gisco_get_countries(
+  year = "2016",
+  resolution = "10",
+  epsg = "3035"
+)
 
 wrld <- wrld[!wrld$CNTR_ID %in% unique(map$CNTR_CODE), ]
 
-a <- ggplot(map) + geom_sf(fill = "yellow1",
-                           colour = "yellow3",
-                           size = 0.05)   +
+a <- ggplot(map) +
+  geom_sf(
+    fill = "yellow1",
+    colour = "yellow3",
+    size = 0.05
+  ) +
   geom_sf(
     data = wrld,
     colour = "yellow3",
     fill = NA,
     size = 0.1
-  ) +  theme_void() +
+  ) +
+  theme_void() +
   theme(
-    panel.grid.major = element_line(color = "yellow3",
-                                    size = 0.1),
+    panel.grid.major = element_line(
+      color = "yellow3",
+      size = 0.1
+    ),
     rect = element_rect(
       colour = "yellow3",
       fill = NA,
       size = 2
     )
-  ) + coord_sf(
+  ) +
+  coord_sf(
     xlim = c(1400000, 7650000),
     ylim = c(-1500000, 5500000),
     expand = TRUE
@@ -56,8 +67,8 @@ a
 
 library(hexSticker)
 
-#fontinit <- as.character(windowsFonts("serif"))
-#windowsFonts(serif = windowsFont("Noto Serif"))
+# fontinit <- as.character(windowsFonts("serif"))
+# windowsFonts(serif = windowsFont("Noto Serif"))
 
 
 sticker(

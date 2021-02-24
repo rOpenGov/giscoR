@@ -19,19 +19,23 @@ gisco_get_healthcare <- function(cache = TRUE,
   ext <- "gpkg"
 
   geturl <-
-    list(api.url =
-           "https://gisco-services.ec.europa.eu/pub/healthcare/gpkg/all.gpkg",
-         namefile = "all.gpkg")
+    list(
+      api.url =
+        "https://gisco-services.ec.europa.eu/pub/healthcare/gpkg/all.gpkg",
+      namefile = "all.gpkg"
+    )
 
 
   if (cache) {
     # Guess source to load
     namefileload <-
-      gsc_api_cache(geturl$api.url,
-                    geturl$namefile,
-                    cache_dir,
-                    update_cache,
-                    verbose)
+      gsc_api_cache(
+        geturl$api.url,
+        geturl$namefile,
+        cache_dir,
+        update_cache,
+        verbose
+      )
   } else {
     namefileload <- geturl$api.url
   }
