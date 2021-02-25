@@ -24,6 +24,9 @@ knitr::knit_hooks$set(margin = function(before, options, envir){
 
 # Introduction
 
+*Full site with more examples and vignettes on
+<https://dieghernan.github.io/giscoR/>*
+
 [**`giscoR`**](https://dieghernan.github.io/giscoR/) is a package designed to provide a clean interaction with the [GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/). 
 
 Within Eurostat, GISCO is responsible for meeting the European Commission's geographical information needs at 3 levels: the European Union, its member countries, and its regions. GISCO also provides a variety of shapefiles on different formats, focusing specially in the European Union area, but providing also some worldwide shapefiles, as country polygons, labels or borders and coastal lines.

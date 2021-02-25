@@ -35,5 +35,8 @@ Imports:
     geojsonsf (>= 2.0)
 Suggests: 
     cartography (>= 2.4),
-    tinytest
+    tinytest,
+    knitr,
+    rmarkdown
 LazyData: true
+VignetteBuilder: knitr

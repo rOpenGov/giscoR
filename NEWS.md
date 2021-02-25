@@ -2,6 +2,7 @@
 
 - New `eu` field on `giscoR::gisco_countrycode`.
 - Fix typos on documentation
+- Include vignette on the package
 - Move docs to markdown/roxygen
 - `lwgeom` moved to Import field 
 
