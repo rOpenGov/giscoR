@@ -3,27 +3,15 @@ reference:
   - title: API functions
     desc: These functions check and download data from GISCO
     contents:
-      - gisco_bulk_download
-      - gisco_check_access
-      - gisco_get
-      - gisco_get_airports
-      - gisco_get_grid
-      - gisco_get_healthcare
-      - gisco_get_units
+      - has_concept("api")
   - title: Helpers
     desc: A collection of helper functions
     contents:
-      - gisco_attributions
-      - gisco_bulk_download
+      - has_concept("helper")
   - title: Datasets
     desc: These objects are datasets already included in the package.
     contents:
-      - gisco_coastallines
-      - gisco_countries
-      - gisco_countrycode
-      - gisco_db
-      - gisco_nuts
-      - tgs00026
+      - has_concept("dataset")
   - title: About the package
     contents:
       - giscoR-package
