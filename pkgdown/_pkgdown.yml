@@ -4,11 +4,11 @@ reference:
     desc: These functions return sf objects with political boundaries
     contents:
       - has_concept("political")
-  - title: Infrastructures:
+  - title: Infrastructures
     desc: These functions return sf objects with man-made features
     contents:
       - has_concept("infrastructure")
-  - title: Misc:
+  - title: Misc
     desc: Thse functions return other sf objects
     contents:
       - has_concept("infrastructure")
