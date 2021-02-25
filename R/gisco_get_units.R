@@ -1,36 +1,49 @@
-#' @title Get geospatial units data from GISCO API
-#' @concept api
-#' @description Download individual shapefiles of units. Unlike
-#' \link{gisco_get_countries}, \link{gisco_get_nuts} or
-#' \link{gisco_get_urban_audit}, that downloads a full dataset
-#' and applies filters, \code{gisco_get_units} downloads a single shapefiles
-#' for each unit.
-#' @return A \code{sf} object on \code{mode = "sf"} or a dataframe on
-#' \code{mode = "df"}.
-#' @param id_giscoR Select the \code{unit} type to be downloaded.
-#' Accepted values are \code{'nuts','countries'} or \code{'urban_audit'}.
+#' Get geospatial units data from GISCO API
+#'
+#' @description
+#' Download individual shapefiles of units. Unlike [gisco_get_countries()],
+#' [gisco_get_nuts()] or [gisco_get_urban_audit()], that downloads a full
+#' dataset and applies filters, [gisco_get_units()] downloads a single
+#' shapefile for each unit.
+#'
+#' @concept political
+#'
+#' @return
+#' A `sf` object on `mode = "sf"` or a dataframe on `mode = "df"`.
+#'
+#' @param id_giscoR Select the `unit` type to be downloaded.
+#' Accepted values are "nuts", "countries" or "urban_audit".
+#'
 #' @param unit Unit ID to be downloaded. See Details.
-#' @param mode Controls the output of the function. Possible values
-#' are \code{"sf"} or \code{"df"}. See Value and Details.
-#' @param year,epsg,cache,update_cache,cache_dir,verbose,resolution See
-#'  \link{gisco_get}.
-#' @param spatialtype Type of geometry to be returned: \code{"RG"}
-#' for \code{POLYGON} and \code{"LB"} for \code{POINT}.
-#' @details The function can return a dataframe on \code{mode = "df"}
-#' or a \code{sf} object on \code{mode = "sf"}
 #'
-#' In order to see the available \code{unit} ids with the required
-#' combination of \code{what,year}, first run the function on \code{"df"}
+#' @param mode Controls the output of the function. Possible values are "sf"
+#' or "df". See Value and Details.
+#'
+#' @param spatialtype Type of geometry to be returned: "RG", for `POLYGON` and
+#' "LB" for `POINT`.
+#'
+#' @inheritParams gisco_get
+#'
+#' @details
+#' The function can return a dataframe on `mode = "df"` or a `sf` object
+#' on `mode = "sf"`.
+#'
+#' In order to see the available `unit` ids with the required
+#' combination of `spatialtype, year`, first run the function on "df"
 #' mode. Once that you get the data frame you can select the required ids
-#' on the \code{unit} parameter.
+#' on the `unit` parameter.
 #'
-#' On \code{mode = "df"} the only relevant parameters are \code{what, year}.
-#' @note \code{countries} file would be renamed on your \code{cache_dir}
-#' to avoid naming conflicts with \code{nuts} datasets.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/}{
-#' GISCO API}
-#' @seealso \link{gisco_get}
+#' On `mode = "df"` the only relevant parameters are `spatialtype, year`.
+#'
+#' @note
+#' Country-level files would be renamed on your `cache_dir`
+#' to avoid naming conflicts with NUTS-0 datasets.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
+#'
+#' @seealso [gisco_get]
+#'
 #' @examples
 #' \dontrun{
 #' library(sf)

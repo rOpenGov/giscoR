@@ -29,29 +29,24 @@ gisco_bulk_download(
 \item "urban_audit"
 }}
 
-\item{year}{Release year. See Details.}
+\item{year}{Release year. See \strong{Release years available} on \link{gisco_get}.}
 
-\item{cache_dir}{a path to a cache directory.
-The directory have to exist.  The \code{NULL} (default) uses
-and creates \code{/gisco} directory in the temporary directory
-from \code{\link{tempdir}}. The directory can also be
-set with \code{options(gisco_cache_dir = "path/to/dir")}.}
+\item{cache_dir}{A path to a cache directory. See Details on \link{gisco_get}.}
 
-\item{update_cache}{a logical whether
-to update cache. Default is \code{FALSE}. When set
-to \code{TRUE} it would force a fresh download
-of the source \code{.geojson} file.}
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
 
-\item{verbose}{Display information. Useful
-for debugging, default if \code{FALSE}.}
+\item{verbose}{Display information. Useful for debugging,
+default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
-\item \code{"60"} (1:60million),
-\item \code{"20"} (1:20million)
-\item \code{"10"} (1:10million)
-\item \code{"03"} (1:3million) or
-\item \code{"01"} (1:1million).
+\item "60": 1:60million
+\item "20": 1:20million
+\item "10": 1:10million
+\item "03": 1:3million
+\item "01": 1:1million
 }}
 
 \item{ext}{Extension of the file(s) to be downloaded. Available formats are
@@ -85,4 +80,4 @@ For downloading specific files use \link{gisco_get} functions.
 gisco_bulk_download(id_giscoR = "countries", resolution = "60")
 }
 }
-\concept{api}
+\concept{political}

@@ -1,6 +1,6 @@
 #' Check access to GISCO API
 #'
-#' @concept api
+#' @concept helper
 #'
 #' @description
 #' Check if R has access to resources at

@@ -1,14 +1,26 @@
-#' @title Get the healthcare services in Europe.
-#' @concept api
-#' @description The dataset contains information on main healthcare services
-#' considered to be 'hospitals' by Member States.
-#' @return A \code{POINT} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @source \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services}{GISCO Healthcare services}
-#' @param cache,update_cache,cache_dir,verbose,country See \link{gisco_get}
-#' @details Files are distributed on EPSG:4326.
-#' \href{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}{Link to metadata}
-#' @seealso \link{gisco_get}
+#' Get the healthcare services in Europe.
+#'
+#' @concept infrastructure
+#'
+#' @description
+#' The dataset contains information on main healthcare services considered to
+#' be 'hospitals' by Member States.
+#'
+#' @return A `POINT` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @source
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services>
+#'
+#' @inheritParams gisco_get
+#'
+#' @details
+#' Files are distributed on EPSG:4326. Metadata available on
+#' <https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf>.
+#'
+#' @seealso [gisco_get]
+#'
 #' @export
 gisco_get_healthcare <- function(cache = TRUE,
                                  update_cache = FALSE,

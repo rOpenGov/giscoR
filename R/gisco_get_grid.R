@@ -1,23 +1,38 @@
-#' @title Get the grid cells covering the European
-#' land territory, for various resolutions.
-#' @concept api
-#' @description These datasets contain grid cells covering the European land
+#' Get the grid cells covering the European land territory
+#'
+#' @description
+#' These datasets contain grid cells covering the European land
 #' territory, for various resolutions from 1km to 100km. Base statistics such
 #' as population figures are provided for these cells.
-#' @return A \code{POLYGON/POINT} object.
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @source \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}{GISCO API Grids}
-#' @param resolution Resolution of the grid cells on kms. Available values are
-#' \code{1, 2, 5, 10, 20, 50, 100}. See Details
-#' @param spatialtype Select one of \code{REGION,POINT}
-#' @param cache_dir,update_cache,verbose See \link{gisco_get}
-#' @details Files are distributed on EPSG:3035.
 #'
-#'   The file sizes range is from 428K (\code{resolution = "100"})
-#' to 1.7G \code{resolution = "1"}. For resolutions 1km and 2km you would
+#' @concept grid
+#'
+#' @return A `POLYGON/POINT` object.
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @source
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids>
+#'
+#' @param resolution Resolution of the grid cells on kms. Available values are
+#' "1", "2", "5", "10", "20", "50", "100". See Details
+#'
+#' @param spatialtype Select one of `REGION,POINT`
+#'
+#' @inheritParams gisco_get
+#'
+#' @details
+#'
+#' Files are distributed on EPSG:3035.
+#'
+#' The file sizes range is from 428Kb (`resolution = "100"`)
+#' to 1.7Gb `resolution = "1"`. For resolutions 1km and 2km you would
 #' need to confirm the download.
-#' @note There are specific downloading provisions, please see
-#' \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}
+#'
+#' @note
+#' There are specific downloading provisions, please see
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids>
+#'
 #' @examples
 #' library(sf)
 #'
