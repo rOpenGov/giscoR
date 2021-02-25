@@ -55,11 +55,10 @@
   
 
 <meta property="og:title" content="Get geospatial units data from GISCO API — gisco_get_units" />
-<meta property="og:description" content="Download individual shapefiles of units. Unlike
-gisco_get_countries, gisco_get_nuts or
-gisco_get_urban_audit, that downloads a full dataset
-and applies filters, gisco_get_units downloads a single shapefiles
-for each unit." />
+<meta property="og:description" content="Download individual shapefiles of units. Unlike gisco_get_countries(),
+gisco_get_nuts() or gisco_get_urban_audit(), that downloads a full
+dataset and applies filters, gisco_get_units() downloads a single
+shapefile for each unit." />
 <meta property="og:image" content="https://dieghernan.github.io/giscoR/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -171,11 +170,10 @@ for each unit." />
     </div>
 
     <div class="ref-description">
-    <p>Download individual shapefiles of units. Unlike
-<a href='gisco_get.html'>gisco_get_countries</a>, <a href='gisco_get.html'>gisco_get_nuts</a> or
-<a href='gisco_get.html'>gisco_get_urban_audit</a>, that downloads a full dataset
-and applies filters, <code>gisco_get_units</code> downloads a single shapefiles
-for each unit.</p>
+    <p>Download individual shapefiles of units. Unlike <code><a href='gisco_get.html'>gisco_get_countries()</a></code>,
+<code><a href='gisco_get.html'>gisco_get_nuts()</a></code> or <code><a href='gisco_get.html'>gisco_get_urban_audit()</a></code>, that downloads a full
+dataset and applies filters, <code>gisco_get_units()</code> downloads a single
+shapefile for each unit.</p>
     </div>
 
     <pre class="usage"><span class='fu'>gisco_get_units</span><span class='op'>(</span>
@@ -198,7 +196,7 @@ for each unit.</p>
     <tr>
       <th>id_giscoR</th>
       <td><p>Select the <code>unit</code> type to be downloaded.
-Accepted values are <code>'nuts','countries'</code> or <code>'urban_audit'</code>.</p></td>
+Accepted values are "nuts", "countries" or "urban_audit".</p></td>
     </tr>
     <tr>
       <th>unit</th>
@@ -206,42 +204,78 @@ Accepted values are <code>'nuts','countries'</code> or <code>'urban_audit'</code
     </tr>
     <tr>
       <th>mode</th>
-      <td><p>Controls the output of the function. Possible values
-are <code>"sf"</code> or <code>"df"</code>. See Value and Details.</p></td>
+      <td><p>Controls the output of the function. Possible values are "sf"
+or "df". See Value and Details.</p></td>
     </tr>
     <tr>
-      <th>year, epsg, cache, update_cache, cache_dir, verbose, resolution</th>
-      <td><p>See
-<a href='gisco_get.html'>gisco_get</a>.</p></td>
+      <th>year</th>
+      <td><p>Release year. See <strong>Release years available</strong> on <a href='gisco_get.html'>gisco_get</a>.</p></td>
+    </tr>
+    <tr>
+      <th>epsg</th>
+      <td><p>projection of the map: 4-digit <a href='https://epsg.io/'>EPSG code</a>.
+One of:</p><ul>
+<li><p>"4258": ETRS89</p></li>
+<li><p>"4326": WGS84</p></li>
+<li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
+<li><p>"3857": Pseudo-Mercator</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>cache</th>
+      <td><p>A logical whether to do caching. Default is <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>update_cache</th>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
+    </tr>
+    <tr>
+      <th>cache_dir</th>
+      <td><p>A path to a cache directory. See Details on <a href='gisco_get.html'>gisco_get</a>.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>resolution</th>
+      <td><p>Resolution of the geospatial data. One of</p><ul>
+<li><p>"60": 1:60million</p></li>
+<li><p>"20": 1:20million</p></li>
+<li><p>"10": 1:10million</p></li>
+<li><p>"03": 1:3million</p></li>
+<li><p>"01": 1:1million</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>spatialtype</th>
-      <td><p>Type of geometry to be returned: <code>"RG"</code>
-for <code>POLYGON</code> and <code>"LB"</code> for <code>POINT</code>.</p></td>
+      <td><p>Type of geometry to be returned: "RG", for <code>POLYGON</code> and
+"LB" for <code>POINT</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://gisco-services.ec.europa.eu/distribution/v2/'>
-GISCO API</a></p>
+    <p><a href='https://gisco-services.ec.europa.eu/distribution/v2/'>https://gisco-services.ec.europa.eu/distribution/v2/</a></p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>sf</code> object on <code>mode = "sf"</code> or a dataframe on
-<code>mode = "df"</code>.</p>
+    <p>A <code>sf</code> object on <code>mode = "sf"</code> or a dataframe on <code>mode = "df"</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function can return a dataframe on <code>mode = "df"</code>
-or a <code>sf</code> object on <code>mode = "sf"</code></p>
+    <p>The function can return a dataframe on <code>mode = "df"</code> or a <code>sf</code> object
+on <code>mode = "sf"</code>.</p>
 <p>In order to see the available <code>unit</code> ids with the required
-combination of <code>what,year</code>, first run the function on <code>"df"</code>
+combination of <code>spatialtype, year</code>, first run the function on "df"
 mode. Once that you get the data frame you can select the required ids
 on the <code>unit</code> parameter.</p>
-<p>On <code>mode = "df"</code> the only relevant parameters are <code>what, year</code>.</p>
+<p>On <code>mode = "df"</code> the only relevant parameters are <code>spatialtype, year</code>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p><code>countries</code> file would be renamed on your <code>cache_dir</code>
-to avoid naming conflicts with <code>nuts</code> datasets.</p>
+    <p>Country-level files would be renamed on your <code>cache_dir</code>
+to avoid naming conflicts with NUTS-0 datasets.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='gisco_get.html'>gisco_get</a></p></div>

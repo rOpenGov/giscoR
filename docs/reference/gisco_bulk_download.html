@@ -197,36 +197,31 @@
     </tr>
     <tr>
       <th>year</th>
-      <td><p>Release year. See Details.</p></td>
+      <td><p>Release year. See <strong>Release years available</strong> on <a href='gisco_get.html'>gisco_get</a>.</p></td>
     </tr>
     <tr>
       <th>cache_dir</th>
-      <td><p>a path to a cache directory.
-The directory have to exist.  The <code>NULL</code> (default) uses
-and creates <code>/gisco</code> directory in the temporary directory
-from <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></code>. The directory can also be
-set with <code><a href='https://rdrr.io/r/base/options.html'>options(gisco_cache_dir = "path/to/dir")</a></code>.</p></td>
+      <td><p>A path to a cache directory. See Details on <a href='gisco_get.html'>gisco_get</a>.</p></td>
     </tr>
     <tr>
       <th>update_cache</th>
-      <td><p>a logical whether
-to update cache. Default is <code>FALSE</code>. When set
-to <code>TRUE</code> it would force a fresh download
-of the source <code>.geojson</code> file.</p></td>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Display information. Useful
-for debugging, default if <code>FALSE</code>.</p></td>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>resolution</th>
       <td><p>Resolution of the geospatial data. One of</p><ul>
-<li><p><code>"60"</code> (1:60million),</p></li>
-<li><p><code>"20"</code> (1:20million)</p></li>
-<li><p><code>"10"</code> (1:10million)</p></li>
-<li><p><code>"03"</code> (1:3million) or</p></li>
-<li><p><code>"01"</code> (1:1million).</p></li>
+<li><p>"60": 1:60million</p></li>
+<li><p>"20": 1:20million</p></li>
+<li><p>"10": 1:10million</p></li>
+<li><p>"03": 1:3million</p></li>
+<li><p>"01": 1:1million</p></li>
 </ul></td>
     </tr>
     <tr>

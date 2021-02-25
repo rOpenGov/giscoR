@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the grid cells covering the European
-land territory, for various resolutions. — gisco_get_grid • giscoR</title>
+<title>Get the grid cells covering the European land territory — gisco_get_grid • giscoR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -55,8 +54,7 @@ land territory, for various resolutions. — gisco_get_grid • giscoR</title>
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Get the grid cells covering the European
-land territory, for various resolutions. — gisco_get_grid" />
+<meta property="og:title" content="Get the grid cells covering the European land territory — gisco_get_grid" />
 <meta property="og:description" content="These datasets contain grid cells covering the European land
 territory, for various resolutions from 1km to 100km. Base statistics such
 as population figures are provided for these cells." />
@@ -165,8 +163,7 @@ as population figures are provided for these cells." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get the grid cells covering the European
-land territory, for various resolutions.</h1>
+    <h1>Get the grid cells covering the European land territory</h1>
     <small class="dont-index">Source: <a href='https://github.com/dieghernan/giscoR/blob/master/R/gisco_get_grid.R'><code>R/gisco_get_grid.R</code></a></small>
     <div class="hidden name"><code>gisco_get_grid.Rd</code></div>
     </div>
@@ -191,29 +188,40 @@ as population figures are provided for these cells.</p>
     <tr>
       <th>resolution</th>
       <td><p>Resolution of the grid cells on kms. Available values are
-<code>1, 2, 5, 10, 20, 50, 100</code>. See Details</p></td>
+"1", "2", "5", "10", "20", "50", "100". See Details</p></td>
     </tr>
     <tr>
       <th>spatialtype</th>
       <td><p>Select one of <code>REGION,POINT</code></p></td>
     </tr>
     <tr>
-      <th>cache_dir, update_cache, verbose</th>
-      <td><p>See <a href='gisco_get.html'>gisco_get</a></p></td>
+      <th>cache_dir</th>
+      <td><p>A path to a cache directory. See Details on <a href='gisco_get.html'>gisco_get</a>.</p></td>
+    </tr>
+    <tr>
+      <th>update_cache</th>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids'>GISCO API Grids</a></p>
+    <p><a href='https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids'>https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids</a></p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>POLYGON/POINT</code> object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Files are distributed on EPSG:3035.</p>
-<p>The file sizes range is from 428K (<code>resolution = "100"</code>)
-to 1.7G <code>resolution = "1"</code>. For resolutions 1km and 2km you would
+<p>The file sizes range is from 428Kb (<code>resolution = "100"</code>)
+to 1.7Gb <code>resolution = "1"</code>. For resolutions 1km and 2km you would
 need to confirm the download.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 

@@ -55,8 +55,8 @@
   
 
 <meta property="og:title" content="Get geospatial data from GISCO API — gisco_get" />
-<meta property="og:description" content="Loads a simple feature (sf)
-object from GISCO API entry point or your local library." />
+<meta property="og:description" content="Loads a simple feature (sf) object from GISCO API entry point or your
+local library." />
 <meta property="og:image" content="https://dieghernan.github.io/giscoR/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -168,8 +168,8 @@ object from GISCO API entry point or your local library." />
     </div>
 
     <div class="ref-description">
-    <p>Loads a simple feature (<code>sf</code>)
-object from GISCO API entry point or your local library.</p>
+    <p>Loads a simple feature (<code>sf</code>) object from GISCO API entry point or your
+local library.</p>
     </div>
 
     <pre class="usage"><span class='fu'>gisco_get_coastallines</span><span class='op'>(</span>
@@ -248,72 +248,68 @@ object from GISCO API entry point or your local library.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>year</th>
-      <td><p>Release year. See Details.</p></td>
+      <td><p>Release year. See <strong>Release years available</strong> on gisco_get.</p></td>
     </tr>
     <tr>
       <th>epsg</th>
-      <td><p>projection of the map:
-4-digit <a href='https://epsg.io/'>EPSG code</a>. One of:</p><ul>
-<li><p><code>"4326"</code> - <a href='https://epsg.io/4326'>WGS84</a></p></li>
-<li><p><code>"3035"</code> - <a href='https://epsg.io/3035'>ETRS89 / ETRS-LAEA</a></p></li>
-<li><p><code>"3857"</code> - <a href='https://epsg.io/3857'>Pseudo-Mercator</a></p></li>
+      <td><p>projection of the map: 4-digit <a href='https://epsg.io/'>EPSG code</a>.
+One of:</p><ul>
+<li><p>"4258": ETRS89</p></li>
+<li><p>"4326": WGS84</p></li>
+<li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
+<li><p>"3857": Pseudo-Mercator</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>cache</th>
-      <td><p>a logical whether to do caching. Default is <code>TRUE</code>.</p></td>
+      <td><p>A logical whether to do caching. Default is <code>TRUE</code>.</p></td>
     </tr>
     <tr>
       <th>update_cache</th>
-      <td><p>a logical whether
-to update cache. Default is <code>FALSE</code>. When set
-to <code>TRUE</code> it would force a fresh download
-of the source <code>.geojson</code> file.</p></td>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
     </tr>
     <tr>
       <th>cache_dir</th>
-      <td><p>a path to a cache directory.
-The directory have to exist.  The <code>NULL</code> (default) uses
-and creates <code>/gisco</code> directory in the temporary directory
-from <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir</a></code>. The directory can also be
-set with <code><a href='https://rdrr.io/r/base/options.html'>options(gisco_cache_dir = "path/to/dir")</a></code>.</p></td>
+      <td><p>A path to a cache directory. See Details on gisco_get.</p></td>
     </tr>
     <tr>
       <th>verbose</th>
-      <td><p>Display information. Useful
-for debugging, default if <code>FALSE</code>.</p></td>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>resolution</th>
       <td><p>Resolution of the geospatial data. One of</p><ul>
-<li><p><code>"60"</code> (1:60million),</p></li>
-<li><p><code>"20"</code> (1:20million)</p></li>
-<li><p><code>"10"</code> (1:10million)</p></li>
-<li><p><code>"03"</code> (1:3million) or</p></li>
-<li><p><code>"01"</code> (1:1million).</p></li>
+<li><p>"60": 1:60million</p></li>
+<li><p>"20": 1:20million</p></li>
+<li><p>"10": 1:10million</p></li>
+<li><p>"03": 1:3million</p></li>
+<li><p>"01": 1:1million</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>spatialtype</th>
       <td><p>Type of geometry to be returned:</p><ul>
-<li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
-<li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
-<li><p><code>"BN"</code>: Boundaries - <code>LINESTRING</code> object.</p></li>
-<li><p><code>"COASTL"</code>: coastlines - <code>LINESTRING</code> object.</p></li>
-<li><p><code>"INLAND"</code>: inland boundaries - <code>LINESTRING</code> object.</p></li>
+<li><p><strong>"RG"</strong>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+<li><p><strong>"LB"</strong>: Labels - <code>POINT</code> object.</p></li>
+<li><p><strong>"BN"</strong>: Boundaries - <code>LINESTRING</code> object.</p></li>
+<li><p><strong>"COASTL"</strong>: coastlines - <code>LINESTRING</code> object.</p></li>
+<li><p><strong>"INLAND"</strong>: inland boundaries - <code>LINESTRING</code> object.</p></li>
 </ul></td>
     </tr>
     <tr>
       <th>country</th>
-      <td><p>Optional. A character vector of country codes. See Details.</p></td>
+      <td><p>Optional. A character vector of country codes.
+See Details on gisco_get.</p></td>
     </tr>
     <tr>
       <th>region</th>
       <td><p>Optional. A character vector of UN M49 region codes or
-European Union membership.
-Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania" or
-"EU" for countries belonging to the European Union (as per 2021).
-See Details and <a href='gisco_countrycode.html'>gisco_countrycode</a></p></td>
+European Union membership. Possible values are "Africa", "Americas",
+"Asia", "Europe", "Oceania" or "EU" for countries belonging to the European
+Union (as per 2021). See <strong>About world regions</strong> and <a href='gisco_countrycode.html'>gisco_countrycode</a></p></td>
     </tr>
     <tr>
       <th>gisco_id</th>
@@ -325,75 +321,79 @@ See Details and <a href='gisco_countrycode.html'>gisco_countrycode</a></p></td>
     </tr>
     <tr>
       <th>nuts_level</th>
-      <td><p>NUTS level. One of <code>"0"</code> (Country-level),
-<code>"1", "2"</code> or <code>"3"</code>.
+      <td><p>NUTS level. One of "0" (Country-level), "1", "2" or "3".
 See <a href='https://ec.europa.eu/eurostat/web/nuts/background'>https://ec.europa.eu/eurostat/web/nuts/background</a>.</p></td>
     </tr>
     <tr>
       <th>level</th>
-      <td><p>Level of Urban Audit. Possible values are
-<code>"CITIES", "FUA", "GREATER_CITIES"</code> or <code>NULL</code>.
-<code>NULL</code> would download the full dataset.</p></td>
+      <td><p>Level of Urban Audit. Possible values are "CITIES", "FUA",
+"GREATER_CITIES" or <code>NULL</code>, that would download the full dataset.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://gisco-services.ec.europa.eu/distribution/v2/'>GISCO API</a></p>
+    <p><a href='https://gisco-services.ec.europa.eu/distribution/v2/'>https://gisco-services.ec.europa.eu/distribution/v2/</a></p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>sf</code> object specified by <code>spatialtype</code>.
-See Details.</p>
+    <p>A <code>sf</code> object specified by <code>spatialtype</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>country</code> only available on
-specific datasets. Some <code>spatialtype</code> options
-(as <code>BN, COASTL, INLAND</code>) may not present country-level identifies.</p>
+    <p><code>country</code> only available on specific datasets. Some <code>spatialtype</code> options
+(as "BN", "COASTL", "INLAND") may not include country-level identifiers.</p>
 <p><code>country</code> could be either a vector of country names, a vector of ISO3
 country codes or a vector of Eurostat country codes. Mixed types
 (as <code><a href='https://rdrr.io/r/base/c.html'>c("Turkey","US","FRA")</a></code>) would not work.</p>
 <p>Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting <code>update_cache = TRUE</code>.</p>
-<p>If you experience any problem on download, try to download
-the corresponding <code>.geojson</code> file by any other method and
-set <code>cache_dir = "path/to/dir"</code> or
-<code>options(gisco_cache_dir = "path/to/dir)"</code>.</p>
-<p>For a complete list of files available check
-<a href='gisco_db.html'>gisco_db</a>.</p>
-<p><strong>About world regions</strong></p>
-<p>Regions are defined as per the geographic regions defined by the
-UN (see
-<a href='https://unstats.un.org/unsd/methodology/m49/'>M49 region codes</a>.
-Note that under this scheme Cyprus is assigned to Asia. You may use
-<code>region = "EU"</code> to get the EU members (reference date: 2021).</p>
-<p><strong>Release years available</strong></p>
-<p><code>gisco_get_coastallines</code>: one of
-<code>"2006", "2010", "2013"</code> or <code>"2016"</code>.</p>
-<p><code>gisco_get_communes</code>: one of
-<code>"2001", "2004", "2006", "2008", "2010", "2013"</code> or <code>"2016"</code>.</p>
-<p><code>gisco_get_countries</code>:
-one of <code>"2001", "2006", "2010", "2013", "2016"</code> or <code>"2020"</code>.</p>
-<p><code>gisco_get_lau</code>: one of <code>"2016", "2017", "2018"</code> or <code>"2019"</code>.</p>
-<p><code>gisco_get_nuts</code>: one of
-<code>"2003", "2006", "2010", "2013", "2016"</code> or <code>"2021"</code>.</p>
-<p><code>gisco_get_urban_audit</code>:
-one of <code>"2001", "2004", "2014", "2018"</code> or <code>"2020"</code>.</p>
+<p>Set <code>cache_dir = "path/to/dir"</code> or <code>options(gisco_cache_dir = "path/to/dir)</code>.
+If you experience any problem on download, try to download
+the corresponding <code>.geojson</code> file by any other method and save it on
+your <code>cache_dir</code>.</p>
+<p>For a complete list of files available check <a href='gisco_db.html'>gisco_db</a>.</p>
     <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>Please check the download and usage provisions
-on <a href='gisco_attributions.html'>gisco_attributions</a>.</p>
+    <p>Please check the download and usage provisions on <code><a href='gisco_attributions.html'>gisco_attributions()</a></code>.</p>
+    <h2 class="hasAnchor" id="about-world-regions"><a class="anchor" href="#about-world-regions"></a>About world regions</h2>
+
+    <p>Regions are defined as per the geographic regions defined by the
+UN (see <a href='https://unstats.un.org/unsd/methodology/m49/'>https://unstats.un.org/unsd/methodology/m49/</a>.
+Under this scheme Cyprus is assigned to Asia. You may use
+<code>region = "EU"</code> to get the EU members (reference date: 2021).</p>
+    <h2 class="hasAnchor" id="release-years-available"><a class="anchor" href="#release-years-available"></a>Release years available</h2>
+
+    
+<ul>
+<li><p><strong><code>gisco_get_coastallines</code></strong>: one of "2006", "2010", "2013" or "2016".</p></li>
+<li><p><strong><code>gisco_get_communes</code></strong>: one of "2001", "2004", "2006", "2008", "2010",
+"2013" or "2016".</p></li>
+<li><p><strong><code>gisco_get_countries</code></strong>: one of "2001", "2006", "2010", "2013", "2016"
+or "2020".</p></li>
+<li><p><strong><code>gisco_get_lau</code></strong>: one of "2016", "2017", "2018" or "2019"</p></li>
+</ul>
+
+<ul>
+<li><p><strong><code>gisco_get_nuts</code></strong>: one of "2003", "2006", "2010", "2013", "2016"
+or "2021".</p></li>
+</ul>
+
+<ul>
+<li><p><strong><code>gisco_get_urban_audit</code></strong>: one of "2001", "2004", "2014", "2018"
+or "2020".</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='gisco_db.html'>gisco_db</a>, <a href='gisco_attributions.html'>gisco_attributions</a>,
-<a href='gisco_coastallines.html'>gisco_coastallines</a></p>
-<p><a href='gisco_countrycode.html'>gisco_countrycode</a>, <a href='gisco_countries.html'>gisco_countries</a></p>
+    <div class='dont-index'><p><a href='gisco_db.html'>gisco_db</a>, <code><a href='gisco_attributions.html'>gisco_attributions()</a></code>, <a href='gisco_coastallines.html'>gisco_coastallines</a></p>
+<p><code><a href='gisco_countrycode.html'>gisco_countrycode()</a></code>, <a href='gisco_countries.html'>gisco_countries</a></p>
 <p><a href='gisco_nuts.html'>gisco_nuts</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
 
 <span class='co'>##################################</span>
 <span class='co'># Example - gisco_get_coastallines</span>

@@ -55,8 +55,7 @@
   
 
 <meta property="og:title" content="Get location of airports and ports from GISCO API — gisco_get_airports" />
-<meta property="og:description" content="Loads a simple feature (sf) object from GISCO API
-entry point or your local library." />
+<meta property="og:description" content="Loads a simple feature (sf) object from GISCO API or your local library." />
 <meta property="og:image" content="https://dieghernan.github.io/giscoR/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -168,8 +167,7 @@ entry point or your local library." />
     </div>
 
     <div class="ref-description">
-    <p>Loads a simple feature (<code>sf</code>) object from GISCO API
-entry point or your local library.</p>
+    <p>Loads a simple feature (<code>sf</code>) object from GISCO API or your local library.</p>
     </div>
 
     <pre class="usage"><span class='fu'>gisco_get_airports</span><span class='op'>(</span>year <span class='op'>=</span> <span class='st'>"2013"</span>, country <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
@@ -185,21 +183,22 @@ entry point or your local library.</p>
     </tr>
     <tr>
       <th>country</th>
-      <td><p>A list of countries, see <a href='gisco_get.html'>gisco_get_countries</a></p></td>
+      <td><p>A list of countries, see <code><a href='gisco_get.html'>gisco_get_countries()</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks'>GISCO API</a></p>
+    <p><a href='https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks'>https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks</a></p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>POINT</code> object on EPSG:4326.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="years-available"><a class="anchor" href="#years-available"></a>Years available</h2>
 
-    <p><code>year</code> available:</p><ul>
-<li><p><code>gisco_get_airports</code> (<code>2006,2013</code>)</p></li>
-<li><p><code>gisco_get_ports</code> (<code>2009,2013</code>)</p></li>
+    
+<ul>
+<li><p><strong><code>gisco_get_airports</code></strong>:  "2006" and "2013"</p></li>
+<li><p><strong><code>gisco_get_ports</code></strong>: "2009" and "2013"</p></li>
 </ul>
 
 <p>Ports 2009 contains worldwide information, the rest of datasets refer
@@ -209,7 +208,8 @@ to Europe. All shapefiles provided in EPSG:4326</p>
     <p>dieghernan, <a href='https://github.com/dieghernan/'>https://github.com/dieghernan/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
+    <pre class="examples"><div class='input'>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-spatial.github.io/sf/'>sf</a></span><span class='op'>)</span>
 
 <span class='va'>NL</span> <span class='op'>&lt;-</span> <span class='fu'><a href='gisco_get.html'>gisco_get_countries</a></span><span class='op'>(</span>country <span class='op'>=</span> <span class='st'>"NL"</span><span class='op'>)</span>
 <span class='va'>AirP_NL</span> <span class='op'>&lt;-</span> <span class='fu'>gisco_get_airports</span><span class='op'>(</span>country <span class='op'>=</span> <span class='st'>"NL"</span><span class='op'>)</span>

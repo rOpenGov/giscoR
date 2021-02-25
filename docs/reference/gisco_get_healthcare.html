@@ -55,8 +55,8 @@
   
 
 <meta property="og:title" content="Get the healthcare services in Europe. — gisco_get_healthcare" />
-<meta property="og:description" content="The dataset contains information on main healthcare services
-considered to be 'hospitals' by Member States." />
+<meta property="og:description" content="The dataset contains information on main healthcare services considered to
+be 'hospitals' by Member States." />
 <meta property="og:image" content="https://dieghernan.github.io/giscoR/logo.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:creator" content="@dhernangomez" />
@@ -168,8 +168,8 @@ considered to be 'hospitals' by Member States." />
     </div>
 
     <div class="ref-description">
-    <p>The dataset contains information on main healthcare services
-considered to be 'hospitals' by Member States.</p>
+    <p>The dataset contains information on main healthcare services considered to
+be 'hospitals' by Member States.</p>
     </div>
 
     <pre class="usage"><span class='fu'>gisco_get_healthcare</span><span class='op'>(</span>
@@ -184,21 +184,41 @@ considered to be 'hospitals' by Member States.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>cache, update_cache, cache_dir, verbose, country</th>
-      <td><p>See <a href='gisco_get.html'>gisco_get</a></p></td>
+      <th>cache</th>
+      <td><p>A logical whether to do caching. Default is <code>TRUE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>update_cache</th>
+      <td><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+<code>.geojson</code> file.</p></td>
+    </tr>
+    <tr>
+      <th>cache_dir</th>
+      <td><p>A path to a cache directory. See Details on <a href='gisco_get.html'>gisco_get</a>.</p></td>
+    </tr>
+    <tr>
+      <th>verbose</th>
+      <td><p>Display information. Useful for debugging,
+default is <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>country</th>
+      <td><p>Optional. A character vector of country codes.
+See Details on <a href='gisco_get.html'>gisco_get</a>.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services'>GISCO Healthcare services</a></p>
+    <p><a href='https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services'>https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services</a></p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A <code>POINT</code> object.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Files are distributed on EPSG:4326.
-<a href='https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf'>Link to metadata</a></p>
+    <p>Files are distributed on EPSG:4326. Metadata available on
+<a href='https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf'>https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='gisco_get.html'>gisco_get</a></p></div>
