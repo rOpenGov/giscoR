@@ -27,12 +27,12 @@ entry point or your local library.
 \details{
 \code{year} available:
 \itemize{
-   \item \code{gisco_get_airports} (\code{2006,2013})
-   \item \code{gisco_get_ports} (\code{2009,2013})
-   }
+\item \code{gisco_get_airports} (\code{2006,2013})
+\item \code{gisco_get_ports} (\code{2009,2013})
+}
 
- Ports 2009 contains worldwide information, the rest of datasets refer
- to Europe. All shapefiles provided in EPSG:4326
+Ports 2009 contains worldwide information, the rest of datasets refer
+to Europe. All shapefiles provided in EPSG:4326
 }
 \examples{
 library(sf)
@@ -83,3 +83,4 @@ title(
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
+\concept{api}

@@ -6,30 +6,31 @@
 \alias{gisco_nuts}
 \title{All NUTS \code{POLYGON} object}
 \format{
-A \code{POLYGON} data frame
-(resolution: 1:20million, EPSG:4326) object with 11 variables:
-\describe{
-  \item{id}{row ID}
-  \item{COAST_TYPE}{COAST_TYPE}
-  \item{MOUNT_TYPE}{MOUNT_TYPE}
-  \item{NAME_LATN}{Name on Latin characters}
-  \item{CNTR_CODE}{Eurostat Country code}
-  \item{FID}{FID}
-  \item{NUTS_ID}{NUTS identifier}
-  \item{NUTS_NAME}{NUTS name on local alphabet}
-  \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
-  \item{URBN_TYPE}{URBN_TYPE}
-  \item{geometry}{geometry field}
+A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
+11 variables:
+\itemize{
+\item \strong{id}: row ID
+\item \strong{COAST_TYPE}: COAST_TYPE
+\item \strong{MOUNT_TYPE}: MOUNT_TYPE
+\item \strong{NAME_LATN}: Name on Latin characters
+\item \strong{CNTR_CODE}: Eurostat Country code
+\item \strong{FID}: FID
+\item \strong{NUTS_ID}: NUTS identifier
+\item \strong{NUTS_NAME}: NUTS name on local alphabet
+\item \strong{LEVL_CODE}: NUTS level code (0,1,2,3)
+\item \strong{URBN_TYPE}: URBN_TYPE
+\item \strong{geometry}: geometry field
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
+\url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/}
+\code{NUTS_RG_20M_2016_4326.geojson} file.
 }
 \description{
-A \code{sf} object including all
-NUTS levels as provided by GISCO (2016 version).
+A \code{sf} object including all NUTS levels as provided by GISCO (2016 version).
 }
 \examples{
+
 library(sf)
 
 nuts <- gisco_nuts
@@ -45,5 +46,6 @@ title(
 )
 }
 \seealso{
-\link{gisco_get_nuts}
+\code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
 }
+\concept{dataset}

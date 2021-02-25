@@ -1,4 +1,5 @@
 #' @title Get the healthcare services in Europe.
+#' @concept api
 #' @description The dataset contains information on main healthcare services
 #' considered to be 'hospitals' by Member States.
 #' @return A \code{POINT} object.
@@ -39,12 +40,12 @@ gisco_get_healthcare <- function(cache = TRUE,
   } else {
     namefileload <- geturl$api.url
   }
-  data.sf <-
+  data_sf <-
     gsc_api_load(namefileload, epsg, ext, cache, verbose)
 
-  if (!is.null(country) & "cc" %in% names(data.sf)) {
+  if (!is.null(country) & "cc" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$cc %in% country, ]
+    data_sf <- data_sf[data_sf$cc %in% country, ]
   }
-  return(data.sf)
+  return(data_sf)
 }

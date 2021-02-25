@@ -1,13 +1,24 @@
-#' @title Check access to GISCO API
-#' @description Check if R has access to resources
-#' at \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
+#' Check access to GISCO API
+#'
+#' @concept api
+#'
+#' @description
+#' Check if R has access to resources at
+#' <https://gisco-services.ec.europa.eu/distribution/v2/>.
+#'
 #' @return a logical.
+#'
 #' @examples
+#'
 #' gisco_check_access()
 #' @export
 gisco_check_access <- function() {
-  url <-
-    "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_LB_2016_4326_LEVL_0.geojson"
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/",
+    "distribution/v2/nuts/geojson/",
+    "NUTS_LB_2016_4326_LEVL_0.geojson"
+  )
+  # nocov start
   access <-
     tryCatch(
       download.file(url, destfile = tempfile(), quiet = TRUE),
@@ -15,7 +26,7 @@ gisco_check_access <- function() {
         return(FALSE)
       }
     )
-  # nocov start
+
   if (isFALSE(access)) {
     return(FALSE)
   } else {
@@ -25,7 +36,7 @@ gisco_check_access <- function() {
 }
 
 
-#' @name gsc_helper_cachedir
+#' gsc_helper_cachedir
 #' @noRd
 gsc_helper_cachedir <- function(cache_dir = NULL) {
   # Check cache dir from options if not set
@@ -36,10 +47,9 @@ gsc_helper_cachedir <- function(cache_dir = NULL) {
   if (is.null(cache_dir)) {
     cache_dir <- file.path(tempdir(), "gisco")
   }
-
   # Create cache dir if needed
   if (isFALSE(dir.exists(cache_dir))) {
-    dir.create(cache_dir)
+    dir.create(cache_dir, recursive = TRUE)
   }
   return(cache_dir)
 }
@@ -64,125 +74,125 @@ gsc_api_url <- function(id_giscoR = "nuts",
   db <- db[db$id_giscoR == id_giscoR, ]
 
   # Available years
-  av.years <- paste(db$year, collapse = ",")
-  av.years <- sort(unique(unlist(strsplit(av.years, ","))))
+  av_years <- paste(db$year, collapse = ",")
+  av_years <- sort(unique(unlist(strsplit(av_years, ","))))
 
-  if (!(year %in% av.years)) {
+  if (!(year %in% av_years)) {
     stop(
       "Year ",
       year,
       " not available. Try ",
-      paste0("'", av.years, "'", collapse = ",")
+      paste0("'", av_years, "'", collapse = ",")
     )
   }
 
   db <- db[grep(year, db$year), ]
 
 
-  rm(av.years)
+  rm(av_years)
 
   # Available epsg
-  av.epsg <- paste(db$epsg, collapse = ",")
-  av.epsg <- sort(unique(unlist(strsplit(av.epsg, ","))))
+  av_epsg <- paste(db$epsg, collapse = ",")
+  av_epsg <- sort(unique(unlist(strsplit(av_epsg, ","))))
 
 
-  if (!(epsg %in% av.epsg)) {
+  if (!(epsg %in% av_epsg)) {
     stop(
       "EPSG ",
       epsg,
       " not available. Try ",
-      paste0("'", av.epsg, "'", collapse = ",")
+      paste0("'", av_epsg, "'", collapse = ",")
     )
   }
 
 
   db <- db[grep(epsg, db$epsg), ]
-  rm(av.epsg)
+  rm(av_epsg)
 
   # Available ext
   # nocov start
-  av.ext <- paste(db$ext, collapse = ",")
-  av.ext <- sort(unique(unlist(strsplit(av.ext, ","))))
-  # nocov end
+  av_ext <- paste(db$ext, collapse = ",")
+  av_ext <- sort(unique(unlist(strsplit(av_ext, ","))))
 
 
-  if (!(ext %in% av.ext)) {
+
+  if (!(ext %in% av_ext)) {
     stop(
       "\n",
       ext,
       " format not available. Try one of ",
-      paste0("'", av.ext, "'", collapse = ",")
+      paste0("'", av_ext, "'", collapse = ",")
     )
   }
-
+  # nocov end
 
   db <- db[grep(ext, db$ext), ]
-  rm(av.ext)
+  rm(av_ext)
 
 
   # Available spatialtype
-  av.sptype <- paste(db$spatialtype, collapse = ",")
-  av.sptype <- sort(unique(unlist(strsplit(av.sptype, ","))))
+  av_sptype <- paste(db$spatialtype, collapse = ",")
+  av_sptype <- sort(unique(unlist(strsplit(av_sptype, ","))))
 
-  if (length(av.sptype) == 1) {
+  if (length(av_sptype) == 1) {
     if (verbose) {
-      message("[Auto] Selecting spatialtype = '", av.sptype, "'\n")
+      message("[Auto] Selecting spatialtype = '", av_sptype, "'\n")
     }
-    spatialtype <- av.sptype
+    spatialtype <- av_sptype
   } else {
-    if (!(spatialtype %in% av.sptype)) {
+    if (!(spatialtype %in% av_sptype)) {
       stop(
         "spatialtype '",
         spatialtype,
         "' not available. Try ",
-        paste0("'", av.sptype, "'", collapse = ","),
+        paste0("'", av_sptype, "'", collapse = ","),
         "\n"
       )
     }
     db <- db[grep(spatialtype, db$spatialtype), ]
   }
 
-  rm(av.sptype)
+  rm(av_sptype)
 
   # Available resolution
-  av.res <- paste(db$resolution, collapse = ",")
-  av.res <- sort(unique(unlist(strsplit(av.res, ","))))
+  av_res <- paste(db$resolution, collapse = ",")
+  av_res <- sort(unique(unlist(strsplit(av_res, ","))))
 
-  if (length(av.res) == 1) {
+  if (length(av_res) == 1) {
     if (verbose) {
-      message("[Auto] Selecting resolution = '", av.res, "'\n")
+      message("[Auto] Selecting resolution = '", av_res, "'\n")
     }
-    resolution <- av.res
+    resolution <- av_res
   } else {
-    if (!(resolution %in% av.res)) {
+    if (!(resolution %in% av_res)) {
       stop(
         "resolution '",
         resolution,
         "' not available for year ",
         year,
         ". Try ",
-        paste0("'", av.res, "'", collapse = ","),
+        paste0("'", av_res, "'", collapse = ","),
         "\n"
       )
     }
     db <- db[grep(resolution, db$resolution), ]
   }
-  rm(av.res)
+  rm(av_res)
 
   # NUTS LEVEL
   if (id_giscoR == "nuts") {
-    av.nuts <- paste(db$nuts_level, collapse = ",")
-    av.nuts <- sort(unique(unlist(strsplit(av.nuts, ","))))
+    av_nuts <- paste(db$nuts_level, collapse = ",")
+    av_nuts <- sort(unique(unlist(strsplit(av_nuts, ","))))
 
     if (is.null((nuts_level))) {
       nuts_level <- "error"
     }
 
 
-    if (!(nuts_level %in% av.nuts)) {
+    if (!(nuts_level %in% av_nuts)) {
       stop(
         "Select one nuts level of ",
-        paste0("'", av.nuts, "'", collapse = ",")
+        paste0("'", av_nuts, "'", collapse = ",")
       )
     }
     db <- db[grep(nuts_level, db$nuts_level), ]
@@ -190,18 +200,18 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
   # Urban Audit Level
   if (id_giscoR == "urban_audit") {
-    av.ualevel <- paste(db$level, collapse = ",")
-    av.ualevel <- sort(unique(unlist(strsplit(av.ualevel, ","))))
+    av_ualevel <- paste(db$level, collapse = ",")
+    av_ualevel <- sort(unique(unlist(strsplit(av_ualevel, ","))))
 
     if (is.null((level))) {
       level <- "all"
     }
 
 
-    if (!(level %in% av.ualevel)) {
+    if (!(level %in% av_ualevel)) {
       stop(
         "Select one level of ",
-        paste0("'", av.ualevel, "'", collapse = ",")
+        paste0("'", av_ualevel, "'", collapse = ",")
       )
     }
     db <- db[grep(level, db$level), ]
@@ -225,7 +235,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
   # nocov end
 
 
-  gisco.path <- db$api_file
+  gisco_path <- db$api_file
   # Create api call
   params <-
     c(
@@ -245,24 +255,24 @@ gsc_api_url <- function(id_giscoR = "nuts",
     if (is.null(repl)) {
       repl <- "ERR"
     }
-    gisco.path <- gsub(patt, repl, x = gisco.path)
+    gisco_path <- gsub(patt, repl, x = gisco_path)
   }
 
   # TopoJson has .json extension
   if (ext == "topojson") {
-    gisco.path <-
-      gsub(paste0(".", ext), ".json", gisco.path, fixed = TRUE)
+    gisco_path <-
+      gsub(paste0(".", ext), ".json", gisco_path, fixed = TRUE)
   }
 
   # Shp are zips
   if (ext %in% c("shp", "svg")) {
-    gisco.path <- paste0(gisco.path, ".zip")
+    gisco_path <- paste0(gisco_path, ".zip")
   }
-  namefile <- gsub(paste0(ext, "/"), "", gisco.path)
-  api.url <- file.path(db$api_entry, gisco.path)
+  namefile <- gsub(paste0(ext, "/"), "", gisco_path)
+  api_url <- file.path(db$api_entry, gisco_path)
 
   output <- list(
-    api.url = api.url,
+    api_url = api_url,
     namefile = namefile
   )
 
@@ -356,7 +366,7 @@ gsc_api_load <- function(file = NULL,
     }
     if (ext == "geojson") {
       err_onload <- tryCatch(
-        data.sf <- geojsonsf::geojson_sf(file,
+        data_sf <- geojsonsf::geojson_sf(file,
           input = num$input,
           wkt = num$wkt
         ),
@@ -380,7 +390,7 @@ gsc_api_load <- function(file = NULL,
     } else {
       # nocov start
       err_onload <- tryCatch(
-        data.sf <-
+        data_sf <-
           sf::st_read(
             file,
             stringsAsFactors = FALSE,
@@ -420,9 +430,9 @@ gsc_api_load <- function(file = NULL,
         message("Encoding characters")
       }
       # To UTF-8
-      data.sf <- gsc_helper_utf8(data.sf)
-      data.sf <- sf::st_make_valid(data.sf)
-      return(data.sf)
+      data_sf <- gsc_helper_utf8(data_sf)
+      data_sf <- sf::st_make_valid(data_sf)
+      return(data_sf)
     } else {
       stop("\nExecution halted")
     }

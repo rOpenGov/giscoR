@@ -1,31 +1,47 @@
-#' @title GISCO database
+#' GISCO database
+#'
+#' Database with the list of files that the package can load.
+#'
+#' @concept dataset
+#'
 #' @name gisco_db
+#'
 #' @docType data
-#' @description Database with the list of files that the package can load.
+#'
 #' @format A data frame
+#'
 #' @details This dataframe is used to check the validity of the API calls.
-#' @source GISCO API \code{datasets.json}.
+#'
+#' @source GISCO API `datasets.json`.
+#'
 #' @examples
+#'
 #' data(gisco_db)
 NULL
 
-#' @title World countries \code{POLYGON} object
+#' World countries `POLYGON` object
+#'
+#' @concept dataset
+#'
 #' @name gisco_countries
-#' @description A \code{sf} object including all
+#'
+#' @description A `sf` object including all
 #' countries as provided by GISCO (2016 version).
-#' @format A \code{MULTIPOLYGON} data frame
-#' (resolution: 1:20million, EPSG:4326) object with 257 rows and 7 variables:
-#' \describe{
-#'   \item{id}{row ID}
-#'   \item{CNTR_NAME}{Official country name on local language}
-#'   \item{ISO3_CODE}{\href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3}{ISO 3166-1 alpha-3 code} of
-#'   each country, as provided by GISCO}
-#'   \item{CNTR_ID}{Country ID}
-#'   \item{NAME_ENGL}{Country name in English}
-#'   \item{FID}{FID}
-#'   \item{geometry}{geometry field}
-#' }
+#'
+#' @format
+#' A `MULTIPOLYGON` data frame (resolution: 1:20million, EPSG:4326) object
+#' with 257 rows and 7 variables:
+#'   * **id**: row ID
+#'   * **CNTR_NAME**: Official country name on local language
+#'   * **ISO3_CODE**: ISO 3166-1 alpha-3 code of each country, as provided by
+#'   GISCO
+#'   * **CNTR_ID**: Country ID
+#'   * **NAME_ENGL**: Country name in English
+#'   * **FID**: FID
+#'   * **geometry**: geometry field
+#'
 #' @examples
+#'
 #' library(sf)
 #'
 #' cntry <- gisco_countries
@@ -33,26 +49,42 @@ NULL
 #'
 #' plot(st_geometry(GBR), col = "red3", border = "blue4")
 #' title(sub = gisco_attributions(), line = 1)
-#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}{GISCO .geojson source}
+#' @source
+#' <https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/>,
+#' `CNTR_RG_20M_2016_4326.geojson` file.
+#'
 #' @docType data
-#' @seealso \link{gisco_get_countries}
+#'
+#' @seealso [gisco_get_countries()]
+#'
 #' @encoding UTF-8
 NULL
 
-#' @title World coastal lines \code{POLYGON} object
+#' World coastal lines `POLYGON` object
+#'
+#' A `sf` object as provided by GISCO (2016 version).
+#'
+#' @concept dataset
+#'
 #' @name gisco_coastallines
-#' @description A \code{sf} object as provided by GISCO (2016 version).
-#' @format A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326)
-#'  object with 8 variables:
-#' \describe{
-#'   \item{FID}{FID}
-#'   \item{COAS_ID}{COAS_ID}
-#'   \item{geometry}{geometry field}
-#' }
-#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/COAS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
+#'
+#' @format
+#' A `POLYGON` data frame (resolution: 1:20million, EPSG:4326) object with
+#' 3 variables:
+#'   * **FID**
+#'   * **COAS_ID**
+#'   * **geometry**: geometry field
+#'
+#' @source
+#' <https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/>
+#' `COAS_RG_20M_2016_4326.geojson` file.
+#'
 #' @docType data
-#' @seealso \link{gisco_get_coastallines}
+#'
+#' @seealso [gisco_get_coastallines()]
+#'
 #' @examples
+#'
 #' library(sf)
 #'
 #' coasts <- gisco_coastallines
@@ -74,29 +106,39 @@ NULL
 #' )
 NULL
 
-#' @title All NUTS \code{POLYGON} object
+#' All NUTS `POLYGON` object
+#'
+#' A `sf` object including all NUTS levels as provided by GISCO (2016 version).
+#'
+#' @concept dataset
+#'
 #' @name gisco_nuts
-#' @description A \code{sf} object including all
-#' NUTS levels as provided by GISCO (2016 version).
-#' @format A \code{POLYGON} data frame
-#' (resolution: 1:20million, EPSG:4326) object with 11 variables:
-#' \describe{
-#'   \item{id}{row ID}
-#'   \item{COAST_TYPE}{COAST_TYPE}
-#'   \item{MOUNT_TYPE}{MOUNT_TYPE}
-#'   \item{NAME_LATN}{Name on Latin characters}
-#'   \item{CNTR_CODE}{Eurostat Country code}
-#'   \item{FID}{FID}
-#'   \item{NUTS_ID}{NUTS identifier}
-#'   \item{NUTS_NAME}{NUTS name on local alphabet}
-#'   \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
-#'   \item{URBN_TYPE}{URBN_TYPE}
-#'   \item{geometry}{geometry field}
-#' }
-#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
+#'
+#' @format
+#' A `POLYGON` data frame (resolution: 1:20million, EPSG:4326) object with
+#' 11 variables:
+#'   * **id**: row ID
+#'   * **COAST_TYPE**: COAST_TYPE
+#'   * **MOUNT_TYPE**: MOUNT_TYPE
+#'   * **NAME_LATN**: Name on Latin characters
+#'   * **CNTR_CODE**: Eurostat Country code
+#'   * **FID**: FID
+#'   * **NUTS_ID**: NUTS identifier
+#'   * **NUTS_NAME**: NUTS name on local alphabet
+#'   * **LEVL_CODE**: NUTS level code (0,1,2,3)
+#'   * **URBN_TYPE**: URBN_TYPE
+#'   * **geometry**: geometry field
+#'
+#' @source
+#' <https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/>
+#' `NUTS_RG_20M_2016_4326.geojson` file.
+#'
 #' @docType data
-#' @seealso \link{gisco_get_nuts}
+#'
+#' @seealso [gisco_get_nuts()]
+#'
 #' @examples
+#'
 #' library(sf)
 #'
 #' nuts <- gisco_nuts
@@ -114,58 +156,73 @@ NULL
 NULL
 
 
-#' @title Dataframe including Eurostat and ISO2 and ISO3 codes for countries
-#' and world regions
+#' Dataframe with different country code schemes and world regions
+#'
 #' @name gisco_countrycode
-#' @description A dataframe containing
-#' conversions between different country codification systems
-#' (Eurostat/ISO2 and 3) as well as geographic
-#' regions as provided by the World Bank and the UN (M49). This dataset
-#' is extracted from \pkg{countrycode}.
-#' @format A data frame object with 249 rows and 12 variables:
-#' \describe{
-#'   \item{CNTR_CODE}{Eurostat code of each country}
-#'   \item{iso2c}{ISO 3166-1 alpha-2 code of each country}
-#'   \item{ISO3_CODE}{ISO 3166-1 alpha-3 code of each country}
-#'   \item{iso.name.en}{ISO English short name}
-#'   \item{cldr.short.en}{English short name as provided by the
-#'   \href{http://cldr.unicode.org/translation/displaynames/country-names}{Unicode Common Locale Data Repository}}
-#'   \item{continent}{As provided by the World Bank}
-#'   \item{un.region.code}{Numeric region code UN (M49)}
-#'   \item{un.region.name}{Region name UN (M49)}
-#'   \item{un.regionintermediate.code}{Numeric intermediate Region
-#'    code UN (M49)}
-#'   \item{un.regionintermediate.name}{Intermediate Region name UN (M49)}
-#'   \item{un.regionsub.code}{Numeric sub-region code UN (M49)}
-#'   \item{un.regionsub.name}{Sub-Region name UN (M49)}
-#'   \item{eu}{Logical indicating if the country belongs to the European Union as per February 2021.}
-#' }
+#'
+#' @concept dataset
+#'
+#' @description
+#' A dataframe containing conversions between different country
+#' code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
+#' provided by the World Bank and the UN (M49). This dataset
+#' is extracted from **countrycode** package.
+#'
+#' @format
+#' A data frame object with 249 rows and 12 variables:
+#'   * **CNTR_CODE**: Eurostat code of each country
+#'   * **iso2c**: ISO 3166-1 alpha-2 code of each country
+#'   * **ISO3_CODE**: ISO 3166-1 alpha-3 code of each country
+#'   * **iso.name.en**: ISO English short name
+#'   * **cldr.short.en**: English short name as provided by the Unicode Common
+#'   Locale Data Repository
+#'   <http://cldr.unicode.org/translation/displaynames/country-names>
+#'   * **continent**: As provided by the World Bank
+#'   * **un.region.code**: Numeric region code UN (M49)
+#'   * **un.region.name**: Region name UN (M49)
+#'   * **un.regionintermediate.code**: Numeric intermediate Region
+#'    code UN (M49)
+#'   * **un.regionintermediate.name**: Intermediate Region name UN (M49)
+#'   * **un.regionsub.code**: Numeric sub-region code UN (M49)
+#'   * **un.regionsub.name**: Sub-Region name UN (M49)
+#'   * **eu**: Logical indicating if the country belongs to the European
+#'   Union as per February 2021.
+#'
 #' @examples
+#'
 #' data(gisco_countrycode)
-#' @source \code{codelist} dataset from \pkg{countrycode} (\code{v1.2.0}).
-#' @seealso \link[countrycode]{codelist},
-#' \link[countrycode]{countrycode-package}.
+#' @source [countrycode::codelist] **v1.2.0**.
+#'
+#' @seealso [countrycode::codelist], [countrycode::countrycode-package]
+#'
 #' @docType data
 NULL
 
-#' @title Disposable income of private households by NUTS 2 regions
+#' Disposable income of private households by NUTS 2 regions
+#'
 #' @name tgs00026
-#' @source \url{https://ec.europa.eu/eurostat}, extracted on 2020-10-27
-#' @description The disposable income of private households is the balance
+#'
+#' @concept dataset
+#'
+#' @source <https://ec.europa.eu/eurostat>, extracted on 2020-10-27
+#'
+#' @description
+#' The disposable income of private households is the balance
 #' of primary income (operating surplus/mixed income plus compensation of
 #' employees plus property income received minus property income paid) and
 #' the redistribution of income in cash. These transactions comprise social
-#'  contributions paid, social benefits in cash received, current taxes on
-#'  income and wealth paid, as well as other current transfers. Disposable
-#'  income does not include social transfers in kind coming from public
-#'   administrations or non-profit institutions serving households.
-#' @format data_frame
-#' \describe{
-#'   \item{geo}{NUTS2 identifier}
-#'   \item{time}{reference year (2007 to 2018)}
-#'   \item{values}{value in euros}
-#' }
+#' contributions paid, social benefits in cash received, current taxes on
+#' income and wealth paid, as well as other current transfers. Disposable
+#' income does not include social transfers in kind coming from public
+#' administrations or non-profit institutions serving households.
+#' @format
+#' data_frame:
+#'   * **geo**: NUTS2 identifier
+#'   * **time**: reference year (2007 to 2018)
+#'   * **values**: value in euros
+#'
 #' @examples
+#'
 #' data(tgs00026)
 #' @docType data
 NULL

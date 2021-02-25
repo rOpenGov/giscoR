@@ -1,28 +1,47 @@
-#' @title Bulk download from GISCO API
-#' @description Downloads zipped data from GISCO and extract them on the
-#' \code{cache_dir} folder.
+#' Bulk download from GISCO API
+#'
+#' @concept api
+#'
+#' @description
+#' Downloads zipped data from GISCO and extract them on the `cache_dir` folder.
+#'
 #' @return Silent function.
-#' @param id_giscoR Type of dataset to be downloaded. Values supported are
-#' \code{"coastallines", }
-#' \code{"communes", "countries", "lau", "nuts", "urban_audit"}.
-#' @param year,cache_dir,update_cache,verbose,resolution See \link{gisco_get}
-#' for details.
+#'
+#' @param id_giscoR Type of dataset to be downloaded. Values supported are:
+#' * "coastallines"
+#' * "communes"
+#' * "countries"
+#' * "lau"
+#' * "nuts"
+#' * "urban_audit"
+#'
+#' @inheritParams gisco_get
+#'
 #' @param ext Extension of the file(s) to be downloaded. Available formats are
-#' \code{"geojson",}\code{ "shp", "svg", "json", "gdb"}. See Details.
+#' "geojson", "shp", "svg", "json", "gdb". See Details.
+#'
 #' @param recursive Tries to unzip recursively the zip files (if any) included
-#' in the initial bulk download (case of \code{ext = "shp"}).
-#' @details The usual extension used across \pkg{giscoR} is \code{geojson},
+#' in the initial bulk download (case of `ext = "shp"`.
+#'
+#' @details
+#'
+#' See the years available in [gisco_get]
+#'
+#' The usual extension used across **giscoR** is "geojson",
 #' however other formats are already available on GISCO.
 #'
-#' This function helps building a personal shape library on \code{cache_dir}
-#' (or \code{options(gisco_cache_dir = "path/to/dir")}, if set by the user).
+#' This function helps building a personal shape library on `cache_dir`
+#' (or `options(gisco_cache_dir = "path/to/dir")`, if set by the user).
 #'
 #'
-#' @source \href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
-#' @note For downloading specific files use \link{gisco_get} functions.
+#' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
+#'
+#' @note For downloading specific files use [gisco_get] functions.
+#'
 #' @examples
 #' \dontrun{
-#' # Countries 2016
+#'
+#' # Countries 2016 - It would take some time
 #' gisco_bulk_download(id_giscoR = "countries", resolution = "60")
 #' }
 #' @export
@@ -78,8 +97,8 @@ gisco_bulk_download <- function(id_giscoR = "countries",
     verbose = verbose
   )
 
-  api_entry <- unlist(strsplit(routes$api.url, "/geojson/"))[1]
-  remain <- unlist(strsplit(routes$api.url, "/geojson/"))[2]
+  api_entry <- unlist(strsplit(routes$api_url, "/geojson/"))[1]
+  remain <- unlist(strsplit(routes$api_url, "/geojson/"))[2]
 
   api_entry <- file.path(api_entry, "download")
   getalias <- alias[valid == id_giscoR]

@@ -1,4 +1,5 @@
 #' @title Get location of airports and ports from GISCO API
+#' @concept api
 #' @name gisco_get_airports
 #' @description Loads a simple feature (\code{sf}) object from GISCO API
 #' entry point or your local library.
@@ -68,16 +69,16 @@ gisco_get_airports <- function(year = "2013", country = NULL) {
   }
 
   if (year == "2013") {
-    data.sf <- airports2013
+    data_sf <- airports2013
   } else if (year == "2006") {
-    data.sf <- airports2006
+    data_sf <- airports2006
   }
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
-  return(data.sf)
+  return(data_sf)
 }
 
 #' @rdname gisco_get_airports
@@ -89,9 +90,9 @@ gisco_get_ports <- function(year = "2013") {
   }
 
   if (year == "2013") {
-    data.sf <- ports2013
+    data_sf <- ports2013
   } else if (year == "2009") {
-    data.sf <- ports2009
+    data_sf <- ports2009
   }
-  return(data.sf)
+  return(data_sf)
 }

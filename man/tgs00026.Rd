@@ -5,11 +5,11 @@
 \alias{tgs00026}
 \title{Disposable income of private households by NUTS 2 regions}
 \format{
-data_frame
-\describe{
-  \item{geo}{NUTS2 identifier}
-  \item{time}{reference year (2007 to 2018)}
-  \item{values}{value in euros}
+data_frame:
+\itemize{
+\item \strong{geo}: NUTS2 identifier
+\item \strong{time}: reference year (2007 to 2018)
+\item \strong{values}: value in euros
 }
 }
 \source{
@@ -20,11 +20,13 @@ The disposable income of private households is the balance
 of primary income (operating surplus/mixed income plus compensation of
 employees plus property income received minus property income paid) and
 the redistribution of income in cash. These transactions comprise social
- contributions paid, social benefits in cash received, current taxes on
- income and wealth paid, as well as other current transfers. Disposable
- income does not include social transfers in kind coming from public
-  administrations or non-profit institutions serving households.
+contributions paid, social benefits in cash received, current taxes on
+income and wealth paid, as well as other current transfers. Disposable
+income does not include social transfers in kind coming from public
+administrations or non-profit institutions serving households.
 }
 \examples{
+
 data(tgs00026)
 }
+\concept{dataset}

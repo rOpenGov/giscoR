@@ -1,4 +1,5 @@
 #' @title Get geospatial data from GISCO API
+#' @concept api
 #' @name gisco_get
 #' @description Loads a simple feature (\code{sf})
 #' object from GISCO API entry point or your local library.
@@ -109,7 +110,7 @@ gisco_get_coastallines <- function(year = "2016",
   checkdata <- grep("COAS_RG_20M_2016_4326", geturl$namefile)
   if (isFALSE(update_cache) & length(checkdata)) {
     dwnload <- FALSE
-    data.sf <- giscoR::gisco_coastallines
+    data_sf <- giscoR::gisco_coastallines
     if (verbose) {
       message(
         "Loaded from gisco_coastallines dataset. Use update_cache = TRUE",
@@ -124,21 +125,21 @@ gisco_get_coastallines <- function(year = "2016",
       # Guess source to load
       namefileload <-
         gsc_api_cache(
-          geturl$api.url,
+          geturl$api_url,
           geturl$namefile,
           cache_dir,
           update_cache,
           verbose
         )
     } else {
-      namefileload <- geturl$api.url
+      namefileload <- geturl$api_url
     }
 
     # Load - geojson only so far
-    data.sf <-
+    data_sf <-
       gsc_api_load(namefileload, epsg, ext, cache, verbose)
   }
-  return(data.sf)
+  return(data_sf)
 }
 
 #' @rdname gisco_get
@@ -183,27 +184,27 @@ gisco_get_communes <- function(year = "2016",
       # Guess source to load
       namefileload <-
         gsc_api_cache(
-          geturl$api.url,
+          geturl$api_url,
           geturl$namefile,
           cache_dir,
           update_cache,
           verbose
         )
     } else {
-      namefileload <- geturl$api.url
+      namefileload <- geturl$api_url
     }
 
     # Load - geojson only so far
-    data.sf <-
+    data_sf <-
       gsc_api_load(namefileload, epsg, ext, cache, verbose)
   }
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
-  return(data.sf)
+  return(data_sf)
 }
 
 #' @rdname gisco_get
@@ -267,7 +268,7 @@ gisco_get_countries <- function(year = "2016",
   checkdata <- grep("CNTR_RG_20M_2016_4326", geturl$namefile)
   if (isFALSE(update_cache) & length(checkdata)) {
     dwnload <- FALSE
-    data.sf <- giscoR::gisco_countries
+    data_sf <- giscoR::gisco_countries
     if (verbose) {
       message(
         "Loaded from gisco_countries dataset. Use update_cache = TRUE
@@ -280,7 +281,7 @@ gisco_get_countries <- function(year = "2016",
   if (dwnload) {
     # Speed up if requesting units
     if (!is.null(country) & spatialtype %in% c("RG", "LB")) {
-      data.sf <- gisco_get_units(
+      data_sf <- gisco_get_units(
         id_giscoR = "countries",
         unit = country,
         mode = "sf",
@@ -298,39 +299,39 @@ gisco_get_countries <- function(year = "2016",
         # Guess source to load
         namefileload <-
           gsc_api_cache(
-            geturl$api.url,
+            geturl$api_url,
             geturl$namefile,
             cache_dir,
             update_cache,
             verbose
           )
       } else {
-        namefileload <- geturl$api.url
+        namefileload <- geturl$api_url
       }
 
       # Load - geojson only so far
-      data.sf <-
+      data_sf <-
         gsc_api_load(namefileload, epsg, ext, cache, verbose)
     }
   }
 
-  if (!is.null(country) & "CNTR_ID" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_ID" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_ID %in% country, ]
+    data_sf <- data_sf[data_sf$CNTR_ID %in% country, ]
   }
-  if (!is.null(region) & "CNTR_ID" %in% names(data.sf)) {
-    region.df <- giscoR::gisco_countrycode
-    cntryregion <- region.df[region.df$un.region.name %in% region, ]
+  if (!is.null(region) & "CNTR_ID" %in% names(data_sf)) {
+    region_df <- giscoR::gisco_countrycode
+    cntryregion <- region_df[region_df$un.region.name %in% region, ]
 
     if ("EU" %in% region) {
-      eu <- region.df[region.df$eu, ]
+      eu <- region_df[region_df$eu, ]
       cntryregion <- unique(rbind(cntryregion, eu))
     }
 
-    data.sf <- data.sf[data.sf$CNTR_ID %in% cntryregion$CNTR_CODE, ]
+    data_sf <- data_sf[data_sf$CNTR_ID %in% cntryregion$CNTR_CODE, ]
   }
 
-  return(data.sf)
+  return(data_sf)
 }
 
 #' @rdname gisco_get
@@ -368,36 +369,36 @@ gisco_get_lau <- function(year = "2016",
       # Guess source to load
       namefileload <-
         gsc_api_cache(
-          geturl$api.url,
+          geturl$api_url,
           geturl$namefile,
           cache_dir,
           update_cache,
           verbose
         )
     } else {
-      namefileload <- geturl$api.url
+      namefileload <- geturl$api_url
     }
 
     # Load - geojson only so far
-    data.sf <-
+    data_sf <-
       gsc_api_load(namefileload, epsg, ext, cache, verbose)
   }
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
 
-  if (!is.null(country) & "CNTR_ID" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_ID" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_ID %in% country, ]
+    data_sf <- data_sf[data_sf$CNTR_ID %in% country, ]
   }
 
-  if (!is.null(gisco_id) & "GISCO_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$GISCO_ID %in% gisco_id, ]
+  if (!is.null(gisco_id) & "GISCO_ID" %in% names(data_sf)) {
+    data_sf <- data_sf[data_sf$GISCO_ID %in% gisco_id, ]
   }
-  return(data.sf)
+  return(data_sf)
   # nocov end
 }
 
@@ -502,7 +503,7 @@ gisco_get_nuts <- function(year = "2016",
   checkdata <- grep("NUTS_RG_20M_2016_4326", geturl$namefile)
   if (isFALSE(update_cache) & length(checkdata)) {
     dwnload <- FALSE
-    data.sf <- giscoR::gisco_nuts
+    data_sf <- giscoR::gisco_nuts
     if (verbose) {
       message(
         "Loaded from gisco_nuts dataset. Use update_cache = TRUE to load",
@@ -510,7 +511,7 @@ gisco_get_nuts <- function(year = "2016",
       )
     }
     if (nuts_level %in% c("0", "1", "2", "3")) {
-      data.sf <- data.sf[data.sf$LEVL_CODE == nuts_level, ]
+      data_sf <- data_sf[data_sf$LEVL_CODE == nuts_level, ]
     }
   } else {
     dwnload <- TRUE
@@ -518,7 +519,7 @@ gisco_get_nuts <- function(year = "2016",
   if (dwnload) {
     # Speed up if requesting units
     if (!is.null(nuts_id) & spatialtype %in% c("RG", "LB")) {
-      data.sf <- gisco_get_units(
+      data_sf <- gisco_get_units(
         id_giscoR = "nuts",
         unit = nuts_id,
         mode = "sf",
@@ -536,31 +537,31 @@ gisco_get_nuts <- function(year = "2016",
         # Guess source to load
         namefileload <-
           gsc_api_cache(
-            geturl$api.url,
+            geturl$api_url,
             geturl$namefile,
             cache_dir,
             update_cache,
             verbose
           )
       } else {
-        namefileload <- geturl$api.url
+        namefileload <- geturl$api_url
       }
 
       # Load - geojson only so far
-      data.sf <-
+      data_sf <-
         gsc_api_load(namefileload, epsg, ext, cache, verbose)
     }
   }
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
 
-  if (!is.null(nuts_id) & "NUTS_ID" %in% names(data.sf)) {
-    data.sf <- data.sf[data.sf$NUTS_ID %in% nuts_id, ]
+  if (!is.null(nuts_id) & "NUTS_ID" %in% names(data_sf)) {
+    data_sf <- data_sf[data_sf$NUTS_ID %in% nuts_id, ]
   }
-  return(data.sf)
+  return(data_sf)
 }
 
 #' @rdname gisco_get
@@ -600,25 +601,25 @@ gisco_get_urban_audit <- function(year = "2020",
       # Guess source to load
       namefileload <-
         gsc_api_cache(
-          geturl$api.url,
+          geturl$api_url,
           geturl$namefile,
           cache_dir,
           update_cache,
           verbose
         )
     } else {
-      namefileload <- geturl$api.url
+      namefileload <- geturl$api_url
     }
 
     # Load - geojson only so far
-    data.sf <-
+    data_sf <-
       gsc_api_load(namefileload, epsg, ext, cache, verbose)
   }
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data.sf)) {
+  if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
-    data.sf <- data.sf[data.sf$CNTR_CODE %in% country, ]
+    data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
-  return(data.sf)
+  return(data_sf)
 }

@@ -1,9 +1,13 @@
-#' @name gsc_helper_countrynames
-#' @title Helper function to convert country names to codes
-#' @description Convert country codes
+#' Helper function to convert country names to codes
+#'
+#' Convert country codes
+#'
 #' @param names vector of names or codes
+#'
 #' @param out out code
+#'
 #' @return a vector of names
+#'
 #' @noRd
 gsc_helper_countrynames <- function(names, out = "eurostat") {
   maxname <- max(nchar(names))
@@ -33,14 +37,18 @@ gsc_helper_countrynames <- function(names, out = "eurostat") {
   return(outnames2)
 }
 
-#' @name gsc_helper_utf8
-#' @title Convert sf object to UTF-8
-#' @description Convert to UTF-8
-#' @param data.sf data.sf
-#' @return data.sf with UTF-8 encoding.
-#' @note Extracted from \code{sf}.
+#' Convert sf object to UTF-8
+#'
+#' Convert to UTF-8
+#'
+#' @param data_sf data_sf
+#'
+#' @return data_sf with UTF-8 encoding.
+#'
+#' @source Extracted from **sf** package.
+#'
 #' @noRd
-gsc_helper_utf8 <- function(data.sf) {
+gsc_helper_utf8 <- function(data_sf) {
   # From sf/read.R - https://github.com/r-spatial/sf/blob/master/R/read.R
   set_utf8 <- function(x) {
     n <- names(x)
@@ -56,29 +64,29 @@ gsc_helper_utf8 <- function(data.sf) {
   # end
 
   # To UTF-8
-  names <- names(data.sf)
-  g <- sf::st_geometry(data.sf)
+  names <- names(data_sf)
+  g <- sf::st_geometry(data_sf)
 
   which.geom <-
-    which(vapply(data.sf, function(f) {
+    which(vapply(data_sf, function(f) {
       inherits(f, "sfc")
     }, TRUE))
 
   nm <- names(which.geom)
 
-  data.utf8 <-
-    as.data.frame(set_utf8(sf::st_drop_geometry(data.sf)),
+  data_utf8 <-
+    as.data.frame(set_utf8(sf::st_drop_geometry(data_sf)),
       stringsAsFactors = FALSE
     )
 
   # Regenerate with right encoding
-  data.sf <- sf::st_as_sf(data.utf8, g)
+  data_sf <- sf::st_as_sf(data_utf8, g)
 
   # Rename geometry to original value
-  newnames <- names(data.sf)
+  newnames <- names(data_sf)
   newnames[newnames == "g"] <- nm
-  colnames(data.sf) <- newnames
-  data.sf <- sf::st_set_geometry(data.sf, nm)
+  colnames(data_sf) <- newnames
+  data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  return(data.sf)
+  return(data_sf)
 }

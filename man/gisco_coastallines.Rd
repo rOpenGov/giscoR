@@ -5,21 +5,23 @@
 \alias{gisco_coastallines}
 \title{World coastal lines \code{POLYGON} object}
 \format{
-A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326)
- object with 8 variables:
-\describe{
-  \item{FID}{FID}
-  \item{COAS_ID}{COAS_ID}
-  \item{geometry}{geometry field}
+A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
+3 variables:
+\itemize{
+\item \strong{FID}
+\item \strong{COAS_ID}
+\item \strong{geometry}: geometry field
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/COAS_RG_20M_2016_4326.geojson}{GISCO .geojson source}
+\url{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/}
+\code{COAS_RG_20M_2016_4326.geojson} file.
 }
 \description{
 A \code{sf} object as provided by GISCO (2016 version).
 }
 \examples{
+
 library(sf)
 
 coasts <- gisco_coastallines
@@ -41,5 +43,6 @@ title(
 )
 }
 \seealso{
-\link{gisco_get_coastallines}
+\code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}}
 }
+\concept{dataset}

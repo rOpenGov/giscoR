@@ -3,42 +3,43 @@
 \docType{data}
 \name{gisco_countrycode}
 \alias{gisco_countrycode}
-\title{Dataframe including Eurostat and ISO2 and ISO3 codes for countries
-and world regions}
+\title{Dataframe with different country code schemes and world regions}
 \format{
 A data frame object with 249 rows and 12 variables:
-\describe{
-  \item{CNTR_CODE}{Eurostat code of each country}
-  \item{iso2c}{ISO 3166-1 alpha-2 code of each country}
-  \item{ISO3_CODE}{ISO 3166-1 alpha-3 code of each country}
-  \item{iso.name.en}{ISO English short name}
-  \item{cldr.short.en}{English short name as provided by the
-  \href{http://cldr.unicode.org/translation/displaynames/country-names}{Unicode Common Locale Data Repository}}
-  \item{continent}{As provided by the World Bank}
-  \item{un.region.code}{Numeric region code UN (M49)}
-  \item{un.region.name}{Region name UN (M49)}
-  \item{un.regionintermediate.code}{Numeric intermediate Region
-   code UN (M49)}
-  \item{un.regionintermediate.name}{Intermediate Region name UN (M49)}
-  \item{un.regionsub.code}{Numeric sub-region code UN (M49)}
-  \item{un.regionsub.name}{Sub-Region name UN (M49)}
-  \item{eu}{Logical indicating if the country belongs to the European Union as per February 2021.}
+\itemize{
+\item \strong{CNTR_CODE}: Eurostat code of each country
+\item \strong{iso2c}: ISO 3166-1 alpha-2 code of each country
+\item \strong{ISO3_CODE}: ISO 3166-1 alpha-3 code of each country
+\item \strong{iso.name.en}: ISO English short name
+\item \strong{cldr.short.en}: English short name as provided by the Unicode Common
+Locale Data Repository
+\url{http://cldr.unicode.org/translation/displaynames/country-names}
+\item \strong{continent}: As provided by the World Bank
+\item \strong{un.region.code}: Numeric region code UN (M49)
+\item \strong{un.region.name}: Region name UN (M49)
+\item \strong{un.regionintermediate.code}: Numeric intermediate Region
+code UN (M49)
+\item \strong{un.regionintermediate.name}: Intermediate Region name UN (M49)
+\item \strong{un.regionsub.code}: Numeric sub-region code UN (M49)
+\item \strong{un.regionsub.name}: Sub-Region name UN (M49)
+\item \strong{eu}: Logical indicating if the country belongs to the European
+Union as per February 2021.
 }
 }
 \source{
-\code{codelist} dataset from \pkg{countrycode} (\code{v1.2.0}).
+\link[countrycode:codelist]{countrycode::codelist} \strong{v1.2.0}.
 }
 \description{
-A dataframe containing
-conversions between different country codification systems
-(Eurostat/ISO2 and 3) as well as geographic
-regions as provided by the World Bank and the UN (M49). This dataset
-is extracted from \pkg{countrycode}.
+A dataframe containing conversions between different country
+code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
+provided by the World Bank and the UN (M49). This dataset
+is extracted from \strong{countrycode} package.
 }
 \examples{
+
 data(gisco_countrycode)
 }
 \seealso{
-\link[countrycode]{codelist},
-\link[countrycode]{countrycode-package}.
+\link[countrycode:codelist]{countrycode::codelist}, \link[countrycode:countrycode-package]{countrycode::countrycode-package}
 }
+\concept{dataset}

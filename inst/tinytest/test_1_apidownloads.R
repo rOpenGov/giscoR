@@ -1,10 +1,10 @@
 library(tinytest)
 
-# Test only in dev mode
+# Test only in dev version - i.e. PKG version with 4 digits
 
-test <- TRUE
+home <- length(unclass(packageVersion("giscoR"))[[1]]) == 4
 
-if (test) {
+if (home) {
   expect_silent(gisco_bulk_download(resolution = 60))
   expect_message(gisco_bulk_download(resolution = 60, verbose = TRUE))
   expect_message(gisco_bulk_download(
@@ -300,10 +300,4 @@ if (test) {
       country = c("ITA", "POL")
     )
   )
-
-
-
-
-
-
 }

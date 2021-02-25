@@ -1,5 +1,6 @@
 #' @title Get the grid cells covering the European
 #' land territory, for various resolutions.
+#' @concept api
 #' @description These datasets contain grid cells covering the European land
 #' territory, for various resolutions from 1km to 100km. Base statistics such
 #' as population figures are provided for these cells.
@@ -77,7 +78,7 @@ gisco_get_grid <- function(resolution = "20",
   if (isFALSE(update_cache)) {
     if (resolution == "20" & spatialtype == "REGION") {
       dwnload <- FALSE
-      data.sf <- grid20km
+      data_sf <- grid20km
     }
   }
   if (dwnload) {
@@ -93,7 +94,7 @@ gisco_get_grid <- function(resolution = "20",
     if (verbose & exist_local) {
       message("File exits on local cache dir")
     }
-
+    # nocov start
     if (resolution %in% c("1", "2") & isFALSE(exist_local)) {
       sel <-
         menu(c("Yes", "No"),
@@ -103,6 +104,7 @@ gisco_get_grid <- function(resolution = "20",
         stop("Execution halted")
       }
     }
+    # nocov end
 
 
     localfile <-
@@ -126,6 +128,7 @@ gisco_get_grid <- function(resolution = "20",
         return(NULL)
       }
     )
+    # nocov start
     if (is.null(load)) {
       stop(
         "\n Malformed ",
@@ -135,8 +138,9 @@ gisco_get_grid <- function(resolution = "20",
         "\n to your cache_dir folder"
       )
     } else {
-      data.sf <- load
+      data_sf <- load
     }
+    # nocov end
   }
-  return(data.sf)
+  return(data_sf)
 }

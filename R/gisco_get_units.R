@@ -1,4 +1,5 @@
 #' @title Get geospatial units data from GISCO API
+#' @concept api
 #' @description Download individual shapefiles of units. Unlike
 #' \link{gisco_get_countries}, \link{gisco_get_nuts} or
 #' \link{gisco_get_urban_audit}, that downloads a full dataset
@@ -149,8 +150,8 @@ gisco_get_units <- function(id_giscoR = "nuts",
       verbose = verbose,
       level = level
     )
-  api_entry <- unlist(strsplit(routes$api.url, "/geojson/"))[1]
-  remain <- unlist(strsplit(routes$api.url, "/geojson/"))[2]
+  api_entry <- unlist(strsplit(routes$api_url, "/geojson/"))[1]
+  remain <- unlist(strsplit(routes$api_url, "/geojson/"))[2]
 
 
 
@@ -188,7 +189,7 @@ gisco_get_units <- function(id_giscoR = "nuts",
       }
     )
     if (!isTRUE(ondwn)) {
-      df.csv <- read.csv2(
+      df_csv <- read.csv2(
         tempf,
         sep = ",",
         stringsAsFactors = FALSE,
@@ -197,7 +198,7 @@ gisco_get_units <- function(id_giscoR = "nuts",
       if (verbose) {
         message("Load database succesfully")
       }
-      return(df.csv)
+      return(df_csv)
     }
   } else {
     unit <- unique(unit)
@@ -250,31 +251,31 @@ gisco_get_units <- function(id_giscoR = "nuts",
         next()
       }
 
-      iter.sf <- tryCatch(
+      iter_sf <- tryCatch(
         gsc_api_load(path, epsg, "geojson", cache, verbose),
         error = function(e) {
           return(NULL)
         }
       )
-      if (is.null(iter.sf)) {
+      if (is.null(iter_sf)) {
         message("\n Skipping unit = ", unit[i], "\n Corrupted file")
         next()
       }
 
 
-      if (exists("df.sf")) {
-        df.sf <- rbind(df.sf, iter.sf)
+      if (exists("df_sf")) {
+        df_sf <- rbind(df_sf, iter_sf)
       } else {
-        df.sf <- iter.sf
+        df_sf <- iter_sf
       }
     }
 
-    if (!exists("df.sf")) {
+    if (!exists("df_sf")) {
       stop("No results for ", paste0(unit, collapse = " "))
     }
 
     # Last check
-    df.sf <- sf::st_make_valid(df.sf)
-    return(df.sf)
+    df_sf <- sf::st_make_valid(df_sf)
+    return(df_sf)
   }
 }

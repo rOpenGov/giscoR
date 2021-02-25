@@ -1,5 +1,6 @@
 #' giscoR package
 #'
+#'
 #' \tabular{ll}{
 #' Package: \tab giscoR \cr
 #' Type: \tab Package\cr

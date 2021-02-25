@@ -4,7 +4,7 @@
 \alias{gisco_bulk_download}
 \title{Bulk download from GISCO API}
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/}{GISCO API}
+\url{https://gisco-services.ec.europa.eu/distribution/v2/}
 }
 \usage{
 gisco_bulk_download(
@@ -19,28 +19,57 @@ gisco_bulk_download(
 )
 }
 \arguments{
-\item{id_giscoR}{Type of dataset to be downloaded. Values supported are
-\code{"coastallines", }
-\code{"communes", "countries", "lau", "nuts", "urban_audit"}.}
+\item{id_giscoR}{Type of dataset to be downloaded. Values supported are:
+\itemize{
+\item "coastallines"
+\item "communes"
+\item "countries"
+\item "lau"
+\item "nuts"
+\item "urban_audit"
+}}
 
-\item{year, cache_dir, update_cache, verbose, resolution}{See \link{gisco_get}
-for details.}
+\item{year}{Release year. See Details.}
+
+\item{cache_dir}{a path to a cache directory.
+The directory have to exist.  The \code{NULL} (default) uses
+and creates \code{/gisco} directory in the temporary directory
+from \code{\link{tempdir}}. The directory can also be
+set with \code{options(gisco_cache_dir = "path/to/dir")}.}
+
+\item{update_cache}{a logical whether
+to update cache. Default is \code{FALSE}. When set
+to \code{TRUE} it would force a fresh download
+of the source \code{.geojson} file.}
+
+\item{verbose}{Display information. Useful
+for debugging, default if \code{FALSE}.}
+
+\item{resolution}{Resolution of the geospatial data. One of
+\itemize{
+\item \code{"60"} (1:60million),
+\item \code{"20"} (1:20million)
+\item \code{"10"} (1:10million)
+\item \code{"03"} (1:3million) or
+\item \code{"01"} (1:1million).
+}}
 
 \item{ext}{Extension of the file(s) to be downloaded. Available formats are
-\code{"geojson",}\code{ "shp", "svg", "json", "gdb"}. See Details.}
+"geojson", "shp", "svg", "json", "gdb". See Details.}
 
 \item{recursive}{Tries to unzip recursively the zip files (if any) included
-in the initial bulk download (case of \code{ext = "shp"}).}
+in the initial bulk download (case of \code{ext = "shp"}.}
 }
 \value{
 Silent function.
 }
 \description{
-Downloads zipped data from GISCO and extract them on the
-\code{cache_dir} folder.
+Downloads zipped data from GISCO and extract them on the \code{cache_dir} folder.
 }
 \details{
-The usual extension used across \pkg{giscoR} is \code{geojson},
+See the years available in \link{gisco_get}
+
+The usual extension used across \strong{giscoR} is "geojson",
 however other formats are already available on GISCO.
 
 This function helps building a personal shape library on \code{cache_dir}
@@ -51,7 +80,9 @@ For downloading specific files use \link{gisco_get} functions.
 }
 \examples{
 \dontrun{
-# Countries 2016
+
+# Countries 2016 - It would take some time
 gisco_bulk_download(id_giscoR = "countries", resolution = "60")
 }
 }
+\concept{api}

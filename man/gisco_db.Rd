@@ -17,5 +17,7 @@ Database with the list of files that the package can load.
 This dataframe is used to check the validity of the API calls.
 }
 \examples{
+
 data(gisco_db)
 }
+\concept{dataset}

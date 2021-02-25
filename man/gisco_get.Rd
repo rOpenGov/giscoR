@@ -113,20 +113,20 @@ for debugging, default if \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
-   \item \code{"60"} (1:60million),
-   \item \code{"20"} (1:20million)
-   \item \code{"10"} (1:10million)
-   \item \code{"03"} (1:3million) or
-   \item \code{"01"} (1:1million).
-   }}
+\item \code{"60"} (1:60million),
+\item \code{"20"} (1:20million)
+\item \code{"10"} (1:10million)
+\item \code{"03"} (1:3million) or
+\item \code{"01"} (1:1million).
+}}
 
 \item{spatialtype}{Type of geometry to be returned:
 \itemize{
- \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
- \item \code{"LB"}: Labels - \code{POINT} object.
- \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
- \item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
- \item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
+\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"BN"}: Boundaries - \code{LINESTRING} object.
+\item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
+\item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
 }}
 
 \item{country}{Optional. A character vector of country codes. See Details.}
@@ -135,7 +135,7 @@ for debugging, default if \code{FALSE}.}
 European Union membership.
 Possible values are "Africa", "Americas", "Asia", "Europe", "Oceania" or
 "EU" for countries belonging to the European Union (as per 2021).
- See Details and \link{gisco_countrycode}}
+See Details and \link{gisco_countrycode}}
 
 \item{gisco_id}{Optional. A character vector of GISCO_ID LAU values.}
 
@@ -150,7 +150,7 @@ See \url{https://ec.europa.eu/eurostat/web/nuts/background}.}
 \code{NULL} would download the full dataset.}
 }
 \value{
-A \code{sf} object specified by \code{spatialtype}. 
+A \code{sf} object specified by \code{spatialtype}.
 See Details.
 }
 \description{
@@ -316,3 +316,4 @@ legend(
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
+\concept{api}

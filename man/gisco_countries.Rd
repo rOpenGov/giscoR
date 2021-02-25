@@ -6,27 +6,29 @@
 \alias{gisco_countries}
 \title{World countries \code{POLYGON} object}
 \format{
-A \code{MULTIPOLYGON} data frame
-(resolution: 1:20million, EPSG:4326) object with 257 rows and 7 variables:
-\describe{
-  \item{id}{row ID}
-  \item{CNTR_NAME}{Official country name on local language}
-  \item{ISO3_CODE}{\href{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3}{ISO 3166-1 alpha-3 code} of
-  each country, as provided by GISCO}
-  \item{CNTR_ID}{Country ID}
-  \item{NAME_ENGL}{Country name in English}
-  \item{FID}{FID}
-  \item{geometry}{geometry field}
+A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object
+with 257 rows and 7 variables:
+\itemize{
+\item \strong{id}: row ID
+\item \strong{CNTR_NAME}: Official country name on local language
+\item \strong{ISO3_CODE}: ISO 3166-1 alpha-3 code of each country, as provided by
+GISCO
+\item \strong{CNTR_ID}: Country ID
+\item \strong{NAME_ENGL}: Country name in English
+\item \strong{FID}: FID
+\item \strong{geometry}: geometry field
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/CNTR_RG_20M_2016_4326.geojson}{GISCO .geojson source}
+\url{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/},
+\code{CNTR_RG_20M_2016_4326.geojson} file.
 }
 \description{
 A \code{sf} object including all
 countries as provided by GISCO (2016 version).
 }
 \examples{
+
 library(sf)
 
 cntry <- gisco_countries
@@ -36,5 +38,6 @@ plot(st_geometry(GBR), col = "red3", border = "blue4")
 title(sub = gisco_attributions(), line = 1)
 }
 \seealso{
-\link{gisco_get_countries}
+\code{\link[=gisco_get_countries]{gisco_get_countries()}}
 }
+\concept{dataset}

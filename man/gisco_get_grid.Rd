@@ -35,7 +35,7 @@ as population figures are provided for these cells.
 \details{
 Files are distributed on EPSG:3035.
 
-  The file sizes range is from 428K (\code{resolution = "100"})
+The file sizes range is from 428K (\code{resolution = "100"})
 to 1.7G \code{resolution = "1"}. For resolutions 1km and 2km you would
 need to confirm the download.
 }
@@ -82,3 +82,4 @@ par(opar)
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
+\concept{api}
