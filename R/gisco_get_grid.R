@@ -5,7 +5,7 @@
 #' territory, for various resolutions from 1km to 100km. Base statistics such
 #' as population figures are provided for these cells.
 #'
-#' @concept grid
+#' @concept misc
 #'
 #' @return A `POLYGON/POINT` object.
 #'

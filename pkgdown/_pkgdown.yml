@@ -11,7 +11,7 @@ reference:
   - title: Misc
     desc: Thse functions return other sf objects
     contents:
-      - has_concept("infrastructure")
+      - has_concept("misc")
   - title: Helpers
     desc: A collection of helper functions
     contents:
