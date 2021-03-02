@@ -5,7 +5,7 @@
 \alias{gisco_get_ports}
 \title{Get location of airports and ports from GISCO API}
 \source{
-\href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks}{GISCO API}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks}
 }
 \usage{
 gisco_get_airports(year = "2013", country = NULL)
@@ -15,26 +15,26 @@ gisco_get_ports(year = "2013")
 \arguments{
 \item{year}{Year of reference.}
 
-\item{country}{A list of countries, see \link{gisco_get_countries}}
+\item{country}{A list of countries, see \code{\link[=gisco_get_countries]{gisco_get_countries()}}}
 }
 \value{
 A \code{POINT} object on EPSG:4326.
 }
 \description{
-Loads a simple feature (\code{sf}) object from GISCO API
-entry point or your local library.
+Loads a simple feature (\code{sf}) object from GISCO API or your local library.
 }
-\details{
-\code{year} available:
+\section{Years available}{
 \itemize{
-\item \code{gisco_get_airports} (\code{2006,2013})
-\item \code{gisco_get_ports} (\code{2009,2013})
+\item \strong{\code{gisco_get_airports}}:  "2006" and "2013"
+\item \strong{\code{gisco_get_ports}}: "2009" and "2013"
 }
 
 Ports 2009 contains worldwide information, the rest of datasets refer
 to Europe. All shapefiles provided in EPSG:4326
 }
+
 \examples{
+
 library(sf)
 
 NL <- gisco_get_countries(country = "NL")
@@ -83,4 +83,4 @@ title(
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{api}
+\concept{infrastructure}

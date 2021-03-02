@@ -17,4 +17,4 @@ Check if R has access to resources at
 
 gisco_check_access()
 }
-\concept{api}
+\concept{helper}

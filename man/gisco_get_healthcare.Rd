@@ -4,7 +4,7 @@
 \alias{gisco_get_healthcare}
 \title{Get the healthcare services in Europe.}
 \source{
-\href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services}{GISCO Healthcare services}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services}
 }
 \usage{
 gisco_get_healthcare(
@@ -16,18 +16,30 @@ gisco_get_healthcare(
 )
 }
 \arguments{
-\item{cache, update_cache, cache_dir, verbose, country}{See \link{gisco_get}}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
+
+\item{cache_dir}{A path to a cache directory. See Details on \link{gisco_get}.}
+
+\item{verbose}{Display information. Useful for debugging,
+default is \code{FALSE}.}
+
+\item{country}{Optional. A character vector of country codes.
+See Details on \link{gisco_get}.}
 }
 \value{
 A \code{POINT} object.
 }
 \description{
-The dataset contains information on main healthcare services
-considered to be 'hospitals' by Member States.
+The dataset contains information on main healthcare services considered to
+be 'hospitals' by Member States.
 }
 \details{
-Files are distributed on EPSG:4326.
-\href{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}{Link to metadata}
+Files are distributed on EPSG:4326. Metadata available on
+\url{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}.
 }
 \seealso{
 \link{gisco_get}
@@ -35,4 +47,4 @@ Files are distributed on EPSG:4326.
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{api}
+\concept{infrastructure}

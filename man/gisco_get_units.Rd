@@ -4,8 +4,7 @@
 \alias{gisco_get_units}
 \title{Get geospatial units data from GISCO API}
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/}{
-GISCO API}
+\url{https://gisco-services.ec.europa.eu/distribution/v2/}
 }
 \usage{
 gisco_get_units(
@@ -24,44 +23,70 @@ gisco_get_units(
 }
 \arguments{
 \item{id_giscoR}{Select the \code{unit} type to be downloaded.
-Accepted values are \code{'nuts','countries'} or \code{'urban_audit'}.}
+Accepted values are "nuts", "countries" or "urban_audit".}
 
 \item{unit}{Unit ID to be downloaded. See Details.}
 
-\item{mode}{Controls the output of the function. Possible values
-are \code{"sf"} or \code{"df"}. See Value and Details.}
+\item{mode}{Controls the output of the function. Possible values are "sf"
+or "df". See Value and Details.}
 
-\item{year, epsg, cache, update_cache, cache_dir, verbose, resolution}{See
-\link{gisco_get}.}
+\item{year}{Release year. See \strong{Release years available} on \link{gisco_get}.}
 
-\item{spatialtype}{Type of geometry to be returned: \code{"RG"}
-for \code{POLYGON} and \code{"LB"} for \code{POINT}.}
+\item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
+One of:
+\itemize{
+\item "4258": ETRS89
+\item "4326": WGS84
+\item "3035": ETRS89 / ETRS-LAEA
+\item "3857": Pseudo-Mercator
+}}
+
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+\code{.geojson} file.}
+
+\item{cache_dir}{A path to a cache directory. See Details on \link{gisco_get}.}
+
+\item{verbose}{Display information. Useful for debugging,
+default is \code{FALSE}.}
+
+\item{resolution}{Resolution of the geospatial data. One of
+\itemize{
+\item "60": 1:60million
+\item "20": 1:20million
+\item "10": 1:10million
+\item "03": 1:3million
+\item "01": 1:1million
+}}
+
+\item{spatialtype}{Type of geometry to be returned: "RG", for \code{POLYGON} and
+"LB" for \code{POINT}.}
 }
 \value{
-A \code{sf} object on \code{mode = "sf"} or a dataframe on
-\code{mode = "df"}.
+A \code{sf} object on \code{mode = "sf"} or a dataframe on \code{mode = "df"}.
 }
 \description{
-Download individual shapefiles of units. Unlike
-\link{gisco_get_countries}, \link{gisco_get_nuts} or
-\link{gisco_get_urban_audit}, that downloads a full dataset
-and applies filters, \code{gisco_get_units} downloads a single shapefiles
-for each unit.
+Download individual shapefiles of units. Unlike \code{\link[=gisco_get_countries]{gisco_get_countries()}},
+\code{\link[=gisco_get_nuts]{gisco_get_nuts()}} or \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}, that downloads a full
+dataset and applies filters, \code{\link[=gisco_get_units]{gisco_get_units()}} downloads a single
+shapefile for each unit.
 }
 \details{
-The function can return a dataframe on \code{mode = "df"}
-or a \code{sf} object on \code{mode = "sf"}
+The function can return a dataframe on \code{mode = "df"} or a \code{sf} object
+on \code{mode = "sf"}.
 
 In order to see the available \code{unit} ids with the required
-combination of \code{what,year}, first run the function on \code{"df"}
+combination of \verb{spatialtype, year}, first run the function on "df"
 mode. Once that you get the data frame you can select the required ids
 on the \code{unit} parameter.
 
-On \code{mode = "df"} the only relevant parameters are \code{what, year}.
+On \code{mode = "df"} the only relevant parameters are \verb{spatialtype, year}.
 }
 \note{
-\code{countries} file would be renamed on your \code{cache_dir}
-to avoid naming conflicts with \code{nuts} datasets.
+Country-level files would be renamed on your \code{cache_dir}
+to avoid naming conflicts with NUTS-0 datasets.
 }
 \examples{
 \dontrun{
@@ -131,4 +156,4 @@ if (gisco_check_access()) {
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{api}
+\concept{political}

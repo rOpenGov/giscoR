@@ -21,7 +21,6 @@
 ^doc$
 ^Meta$
 ^CRAN-RELEASE$
-^vignettes$
 ^img$
 ^codemeta\.json$
 ^_pkgdown\.yml$

@@ -1,29 +1,25 @@
 url: 'https://dieghernan.github.io/giscoR'
 reference:
-  - title: API functions
-    desc: These functions check and download data from GISCO
+  - title: Political
+    desc: These functions return sf objects with political boundaries
     contents:
-      - gisco_bulk_download
-      - gisco_check_access
-      - gisco_get
-      - gisco_get_airports
-      - gisco_get_grid
-      - gisco_get_healthcare
-      - gisco_get_units
+      - has_concept("political")
+  - title: Infrastructures
+    desc: These functions return sf objects with man-made features
+    contents:
+      - has_concept("infrastructure")
+  - title: Misc
+    desc: Thse functions return other sf objects
+    contents:
+      - has_concept("misc")
   - title: Helpers
     desc: A collection of helper functions
     contents:
-      - gisco_attributions
-      - gisco_bulk_download
+      - has_concept("helper")
   - title: Datasets
     desc: These objects are datasets already included in the package.
     contents:
-      - gisco_coastallines
-      - gisco_countries
-      - gisco_countrycode
-      - gisco_db
-      - gisco_nuts
-      - tgs00026
+      - has_concept("dataset")
   - title: About the package
     contents:
       - giscoR-package

@@ -1,22 +1,31 @@
-#' @title Get location of airports and ports from GISCO API
-#' @concept api
-#' @name gisco_get_airports
-#' @description Loads a simple feature (\code{sf}) object from GISCO API
-#' entry point or your local library.
-#' @return A \code{POINT} object on EPSG:4326.
+#' Get location of airports and ports from GISCO API
+#'
+#' Loads a simple feature (`sf`) object from GISCO API or your local library.
+#'
+#' @concept infrastructure
+#'
+#' @return A `POINT` object on EPSG:4326.
+#'
 #' @param year Year of reference.
-#' @param country A list of countries, see \link{gisco_get_countries}
-#' @source \href{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks}{GISCO API}
-#' @author dieghernan, \url{https://github.com/dieghernan/}
-#' @details \code{year} available:
-#' \itemize{
-#'    \item \code{gisco_get_airports} (\code{2006,2013})
-#'    \item \code{gisco_get_ports} (\code{2009,2013})
-#'    }
+#'
+#' @param country A list of countries, see [gisco_get_countries()]
+#'
+#' @source
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks>
+#'
+#' @author dieghernan, <https://github.com/dieghernan/>
+#'
+#' @details
+#' # Years available
+#'
+#' * **`gisco_get_airports`**:  "2006" and "2013"
+#' * **`gisco_get_ports`**: "2009" and "2013"
 #'
 #'  Ports 2009 contains worldwide information, the rest of datasets refer
 #'  to Europe. All shapefiles provided in EPSG:4326
+#'
 #' @examples
+#'
 #' library(sf)
 #'
 #' NL <- gisco_get_countries(country = "NL")
@@ -82,6 +91,7 @@ gisco_get_airports <- function(year = "2013", country = NULL) {
 }
 
 #' @rdname gisco_get_airports
+#'
 #' @export
 gisco_get_ports <- function(year = "2013") {
   year <- as.character(year)

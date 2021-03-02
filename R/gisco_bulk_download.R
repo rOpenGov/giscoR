@@ -1,6 +1,6 @@
 #' Bulk download from GISCO API
 #'
-#' @concept api
+#' @concept political
 #'
 #' @description
 #' Downloads zipped data from GISCO and extract them on the `cache_dir` folder.
