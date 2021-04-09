@@ -142,7 +142,7 @@ information is extracted via the `eurostat` package:
 nuts3 <- gisco_get_nuts(
   year = "2016",
   epsg = "3035",
-  resolution = "3",
+  resolution = "1",
   nuts_level = "3"
 )
 
@@ -150,7 +150,7 @@ nuts3 <- gisco_get_nuts(
 countries <-
   gisco_get_countries(year = "2016",
                       epsg = "3035",
-                      resolution = "10")
+                      resolution = "1")
 
 # Use eurostat
 library(eurostat)
