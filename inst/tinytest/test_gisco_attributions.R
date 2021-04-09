@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_message(gisco_attributions(copyright = TRUE))
 expect_silent(gisco_attributions())
 expect_identical(class(gisco_attributions()), "character")

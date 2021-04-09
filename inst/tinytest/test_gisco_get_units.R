@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_error(gisco_get_units(year = "2001"))
 expect_error(gisco_get_units(unit = NULL))
 expect_error(gisco_get_units(epsg = 3456))

@@ -1,5 +1,3 @@
-library(tinytest)
-
 # Test only in dev version - i.e. PKG version with 4 digits
 
 home <- length(unclass(packageVersion("giscoR"))[[1]]) == 4
@@ -48,8 +46,10 @@ if (home) {
     update_cache = TRUE
   ))
   cachetest <- paste0(tempdir(), "/coast")
-  expect_silent(gisco_get_coastallines(resolution = "60",
-                                       cache_dir = cachetest))
+  expect_silent(gisco_get_coastallines(
+    resolution = "60",
+    cache_dir = cachetest
+  ))
 
   a <- gisco_get_coastallines(resolution = "60", epsg = "3035")
   b <- gisco_get_coastallines(resolution = "60", epsg = "3857")
@@ -73,11 +73,15 @@ if (home) {
     country = c("Spain", "Italia")
   ))
 
-  expect_silent(gisco_get_countries(spatialtype = "COASTL",
-                                    country = c("ESP", "ITA")))
+  expect_silent(gisco_get_countries(
+    spatialtype = "COASTL",
+    country = c("ESP", "ITA")
+  ))
 
-  expect_silent(gisco_get_countries(resolution = "10",
-                                    country = c("ESP", "ITA")))
+  expect_silent(gisco_get_countries(
+    resolution = "10",
+    country = c("ESP", "ITA")
+  ))
 
   expect_silent(gisco_get_countries(resolution = 60, country = c("ES", "IT")))
   expect_silent(gisco_get_countries(spatialtype = "COASTL", resolution = "60"))
@@ -158,8 +162,10 @@ if (home) {
     spatialtype = "LB"
   ))
 
-  expect_silent(gisco_get_units(id_giscoR = "countries",
-                                unit = "ESP"))
+  expect_silent(gisco_get_units(
+    id_giscoR = "countries",
+    unit = "ESP"
+  ))
 
   expect_silent(
     gisco_get_units(
@@ -186,8 +192,10 @@ if (home) {
     update_cache = TRUE
   ))
   r <-
-    gisco_get_units(id_giscoR = "nuts",
-                    unit = c("FR", "ES", "xt", "PT"))
+    gisco_get_units(
+      id_giscoR = "nuts",
+      unit = c("FR", "ES", "xt", "PT")
+    )
   expect_true(nrow(r) == 3)
   expect_message(gisco_get_units(
     id_giscoR = "nuts",
@@ -197,9 +205,11 @@ if (home) {
   df <- gisco_get_units(mode = "df")
   expect_true(class(df) == "data.frame")
   sf <-
-    gisco_get_units(id_giscoR = "urban_audit",
-                    year = "2020",
-                    unit = "ES002L2")
+    gisco_get_units(
+      id_giscoR = "urban_audit",
+      year = "2020",
+      unit = "ES002L2"
+    )
   expect_true(class(sf)[1] == "sf")
   expect_silent(gisco_get_units(unit = c("ES1", "ES345", "FFRE3")))
   expect_silent(gisco_get_units(
@@ -252,8 +262,10 @@ if (home) {
   ))
 
   expect_silent(gisco_get_urban_audit(level = "GREATER_CITIES"))
-  expect_silent(gisco_get_urban_audit(spatialtype = "LB",
-                                      level = "GREATER_CITIES"))
+  expect_silent(gisco_get_urban_audit(
+    spatialtype = "LB",
+    level = "GREATER_CITIES"
+  ))
 
   expect_silent(
     gisco_get_urban_audit(

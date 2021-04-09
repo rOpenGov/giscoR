@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_error(gisco_get_coastallines(year = 2001, res = 60))
 expect_error(gisco_get_coastallines(year = 2011))
 expect_error(gisco_get_coastallines(epsg = 2819))

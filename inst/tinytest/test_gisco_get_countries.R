@@ -1,6 +1,3 @@
-library(tinytest)
-
-
 expect_error(gisco_get_countries(year = 2001, resolution = 60))
 expect_error(gisco_get_countries(year = 2011))
 expect_error(gisco_get_countries(epsg = 2819))

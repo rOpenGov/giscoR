@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_error(gisco_get_nuts(year = 2003, resolution = 60))
 expect_error(gisco_get_nuts(year = 2011))
 expect_error(gisco_get_nuts(epsg = 2819))

@@ -1,5 +1,3 @@
-library(tinytest)
-
 expect_silent(gisco_get_airports())
 expect_silent(gisco_get_airports(year = 2013))
 expect_silent(gisco_get_airports(year = 2006))

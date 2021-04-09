@@ -34,7 +34,7 @@ Imports:
     countrycode (>= 1.2.0),
     geojsonsf (>= 2.0)
 Suggests: 
-    cartography (>= 2.4),
+    tmap (>= 3.0),
     tinytest,
     knitr,
     rmarkdown

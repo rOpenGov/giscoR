@@ -4,7 +4,8 @@
 - Fix typos on documentation
 - Include vignette on the package
 - Move docs to markdown/roxygen
-- `lwgeom` moved to Import field 
+- `lwgeom` moved to Import field.
+- `cartography` package replaced by `tmap` on vignettes.
 
 # giscoR 0.2.3
 

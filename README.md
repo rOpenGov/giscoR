@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# giscoR <img src="man/figures/logo.png" align="right" width="120" />
+# giscoR <img src="man/figures/logo.png" align="right" width="120"/>
 
 <!-- badges: start -->
 
@@ -12,11 +12,11 @@ results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.or
 [![R build
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
-[![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/giscor/badge/master)](https://www.codefactor.io/repository/github/dieghernan/giscor/overview/master)
 ![](https://cranlogs.r-pkg.org/badges/giscoR) [![Project Status: Active
 – The project has reached a stable, usable state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%252Fzenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
+
 <!-- badges: end -->
 
 [giscoR](https://dieghernan.github.io/giscoR/) is a API package that
@@ -75,40 +75,49 @@ DNK_res10 <-
 DNK_res03 <-
   gisco_get_countries(resolution = "03", country = "DNK")
 
-opar <- par(no.readonly = TRUE)
-par(mfrow = c(2, 2), mar = c(3, 0, 2, 0))
-plot(st_geometry(DNK_res60), main = "60M", col = "tomato")
-plot(st_geometry(DNK_res20), main = "20M", col = "tomato")
-plot(st_geometry(DNK_res10), main = "10M", col = "tomato")
-plot(st_geometry(DNK_res03), main = "03M", col = "tomato")
-title(sub = gisco_attributions(), line = 1)
+
+# Plot tmap
+
+library(tmap)
+
+plot60 <- qtm(DNK_res60, fill = "tomato", main.title = "60M")
+plot20 <- qtm(DNK_res20, fill = "tomato", main.title = "20M")
+plot10 <- qtm(DNK_res10, fill = "tomato", main.title = "10M")
+plot03 <- qtm(DNK_res03, fill = "tomato", main.title = "03M")
+
+tmap_arrange(plot60, plot20, plot10, plot03)
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-1.svg)<!-- -->
+<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-1.svg" width="100%" />
 
 ``` r
-par(opar)
-
 # Labels and Lines available
 
-labs <- gisco_get_countries(spatialtype = "LB", region = "Africa", epsg = "3857")
-coast <- gisco_get_countries(spatialtype = "COASTL", epsg = "3857")
-
-opar <- par(no.readonly = TRUE)
-par(mar = c(3, 0, 0, 0))
-plot(st_geometry(labs),
-  col = c("springgreen4", "darkgoldenrod1", "red2"), cex = 2,
-  pch = 19
+labs <- gisco_get_countries(
+  spatialtype = "LB",
+  region = "Africa",
+  epsg = "3857"
 )
-plot(st_geometry(coast), col = "deepskyblue4", lwd = 6, add = TRUE)
-title(sub = gisco_attributions(), line = 1)
+
+coast <- gisco_get_countries(
+  spatialtype = "COASTL",
+  epsg = "3857"
+)
+
+
+tm_shape(coast, bbox = labs) +
+  tm_lines("deepskyblue4") +
+  tm_shape(labs) +
+  tm_dots(
+    col = "springgreen4",
+    border.col = "darkgoldenrod1",
+    shape = 21,
+    border.lwd = 1,
+    size = 1
+  )
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-2.svg)<!-- -->
-
-``` r
-par(opar)
-```
+<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-2.svg" width="100%" />
 
 ## Thematic maps
 
@@ -116,7 +125,6 @@ An example of a thematic map plotted with the `cartography` package. The
 information is extracted via the `eurostat` package:
 
 ``` r
-
 nuts3 <- gisco_get_nuts(
   year = "2016",
   epsg = "3035",
@@ -132,8 +140,8 @@ countries <-
     resolution = "10"
   )
 
+# Use eurostat
 library(eurostat)
-library(cartography)
 
 popdens <- get_eurostat("demo_r_d3dens")
 popdens <- popdens[popdens$time == "2018-01-01", ]
@@ -147,77 +155,39 @@ nuts3.sf <- merge(nuts3,
   all.x = TRUE
 )
 
-# Prepare mapping
-
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
-pal <-
-  hcl.colors(
-    n = (length(br) - 1),
-    palette = "inferno",
-    alpha = 0.7,
-    rev = TRUE
-  )
-
 
 # Plot
-opar <- par(no.readonly = TRUE)
-par(mar = c(0, 0, 0, 0), bg = "#C6ECFF")
-
-plot(
-  st_geometry(countries),
-  col = "#E0E0E0",
-  lwd = 0.1,
-  bg = "#C6ECFF",
-  xlim = c(2300000, 7050000),
-  ylim = c(1390000, 5400000),
-)
-
-choroLayer(
-  nuts3.sf,
-  var = "values",
-  border = NA,
-  breaks = br,
-  col = pal,
-  legend.pos = "n",
-  colNA = "#E0E0E0",
-  add = TRUE
-)
-
-
-# Add borders
-plot(st_geometry(countries),
-  lwd = 0.25,
-  col = NA,
-  add = TRUE
-)
-
-
-legendChoro(
-  pos = "topright",
-  title.txt = "Population density (km2)\nNUTS3 (2018)",
-  breaks = c("", format(br, big.mark = ",")[-c(1, length(br))], ""),
-  col = pal,
-  nodata = T,
-  nodata.txt = "n.d.",
-  nodata.col = "#E0E0E0",
-  frame = TRUE
-)
-
-layoutLayer(
-  title = "Population density",
-  scale = 1000,
-  col = pal[3],
-  sources = gisco_attributions(),
-  author = "dieghernan, 2020"
-)
+tm_shape(countries, bbox = c(23, 14, 73, 54) * 10e4) +
+  tm_fill("#E0E0E0") +
+  tm_shape(nuts3.sf) +
+  tm_fill(
+    "values",
+    breaks = br,
+    palette = "-inferno",
+    alpha = .7,
+    title = "Population density (km2)\nNUTS3 (2018)"
+  ) +
+  tm_shape(countries) +
+  tm_borders() +
+  tm_credits(gisco_attributions(),
+    position = c("left", "bottom")
+  ) +
+  tm_layout(
+    bg.color = "#daf3ff",
+    outer.bg.color = "white",
+    legend.bg.color = "white",
+    legend.frame = "black",
+    legend.title.size = 0.8,
+    inner.margins = c(0, 0, 0, 0),
+    outer.margins = c(0, 0, 0, 0),
+    frame = TRUE,
+    frame.lwd = 0.01,
+    attr.outside = TRUE
+  )
 ```
 
-![](https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-thematic-1.svg)<!-- -->
-
-``` r
-
-par(opar)
-```
+<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-thematic-1.svg" width="100%" />
 
 ### A note on caching
 
@@ -240,21 +210,17 @@ them on your local directory.
 
 ### API data packages
 
-`eurostat` package (<https://ropengov.github.io/eurostat/>). This is
-another API package that provides access to open data from Eurostat.
-
-`wbstats` (<https://nset-ornl.github.io/wbstats/>) is an interesting R
-API packages that provides access to [The World Bank
-Data](https://data.worldbank.org/) API.
+-   `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
+    an API package that provides access to open data from Eurostat.
 
 ### Plotting `sf` objects
 
 Some packages recommended for visualization are:
 
--   [`tmap`](https://mtennekes.github.io/tmap/)  
--   [`cartography`](http://riatelab.github.io/cartography/docs/)
+-   [`tmap`](https://mtennekes.github.io/tmap/)
 -   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
+-   [`mapsf`](https://riatelab.github.io/mapsf/)
 -   [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute

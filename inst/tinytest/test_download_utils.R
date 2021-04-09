@@ -1,8 +1,7 @@
-library(tinytest)
-
 expect_silent(gisco_check_access())
 
-url <- "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson"
+url <-
+  "https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson"
 # Error
 expect_error(
   giscoR:::gsc_load(
