@@ -8,6 +8,10 @@ editor_options:
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
+# Caching for faster build
+options(gisco_cache_dir="~/R/mapslib/GISCO")
+options(eurostat_cache_dir="~/R/cache/eurostat")
+
 
 knitr::opts_knit$set(progress = TRUE,
                      base.url = "https://raw.githubusercontent.com/dieghernan/giscoR/master/")
@@ -142,7 +146,7 @@ information is extracted via the `eurostat` package:
 nuts3 <- gisco_get_nuts(
   year = "2016",
   epsg = "3035",
-  resolution = "1",
+  resolution = "3",
   nuts_level = "3"
 )
 
@@ -150,7 +154,7 @@ nuts3 <- gisco_get_nuts(
 countries <-
   gisco_get_countries(year = "2016",
                       epsg = "3035",
-                      resolution = "1")
+                      resolution = "3")
 
 # Use eurostat
 library(eurostat)
@@ -180,7 +184,7 @@ tm_shape(countries, bbox = c(23, 14, 73, 54) * 10e4) +
     title = "Population density (km2)\nNUTS3 (2018)"
   ) +
   tm_shape(countries) +
-  tm_borders() +
+  tm_borders(lwd = .25) +
   tm_credits(gisco_attributions(),
              position = c("left", "bottom"))  +
   tm_layout(
@@ -192,7 +196,7 @@ tm_shape(countries, bbox = c(23, 14, 73, 54) * 10e4) +
     inner.margins = c(0, 0, 0, 0),
     outer.margins = c(0, 0, 0, 0),
     frame = TRUE,
-    frame.lwd = 0.01,
+    frame.lwd = 0,
     attr.outside = TRUE
   )
 

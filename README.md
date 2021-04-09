@@ -137,7 +137,7 @@ countries <-
   gisco_get_countries(
     year = "2016",
     epsg = "3035",
-    resolution = "10"
+    resolution = "3"
   )
 
 # Use eurostat
@@ -169,7 +169,7 @@ tm_shape(countries, bbox = c(23, 14, 73, 54) * 10e4) +
     title = "Population density (km2)\nNUTS3 (2018)"
   ) +
   tm_shape(countries) +
-  tm_borders() +
+  tm_borders(lwd = .25) +
   tm_credits(gisco_attributions(),
     position = c("left", "bottom")
   ) +
@@ -182,7 +182,7 @@ tm_shape(countries, bbox = c(23, 14, 73, 54) * 10e4) +
     inner.margins = c(0, 0, 0, 0),
     outer.margins = c(0, 0, 0, 0),
     frame = TRUE,
-    frame.lwd = 0.01,
+    frame.lwd = 0,
     attr.outside = TRUE
   )
 ```
