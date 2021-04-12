@@ -124,21 +124,19 @@ tm_shape(coast, bbox = labs) +
 An example of a labeled map using `tmap`:
 
 ``` r
-ITA <- gisco_get_nuts(country = "Italy", nuts_level = 2)
+ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
 
 
 tm_shape(ITA, point.per = "feature") +
   tm_polygons() +
-  tm_text("NAME_LATN",
-    auto.placement = TRUE
-  )
+  tm_text("NAME_LATN")
 ```
 
 <img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-labels-1.svg" width="100%" />
 
 ## Thematic maps
 
-An example of a thematic map plotted with the `cartography` package. The
+An example of a thematic map plotted with the `tmap` package. The
 information is extracted via the `eurostat` package:
 
 ``` r
