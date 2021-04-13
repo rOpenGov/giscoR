@@ -50,8 +50,7 @@ NULL
 #' plot(st_geometry(GBR), col = "red3", border = "blue4")
 #' title(sub = gisco_attributions(), line = 1)
 #' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/>,
-#' `CNTR_RG_20M_2016_4326.geojson` file.
+#' [`CNTR_RG_20M_2016_4326.geojson`](https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/) file.
 #'
 #' @docType data
 #'
@@ -76,8 +75,7 @@ NULL
 #'   * **geometry**: geometry field
 #'
 #' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/>
-#' `COAS_RG_20M_2016_4326.geojson` file.
+#' [`COAS_RG_20M_2016_4326.geojson`](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/) file.
 #'
 #' @docType data
 #'
@@ -130,8 +128,7 @@ NULL
 #'   * **geometry**: geometry field
 #'
 #' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/>
-#' `NUTS_RG_20M_2016_4326.geojson` file.
+#' [`NUTS_RG_20M_2016_4326.geojson`](https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/) file.
 #'
 #' @docType data
 #'
@@ -191,9 +188,9 @@ NULL
 #' @examples
 #'
 #' data(gisco_countrycode)
-#' @source [countrycode::codelist] **v1.2.0**.
+#' @source [`countrycode::codelist`] **v1.2.0**.
 #'
-#' @seealso [countrycode::codelist], [countrycode::countrycode-package]
+#' @seealso [`countrycode::codelist`], [`countrycode::countrycode-package`]
 #'
 #' @docType data
 NULL

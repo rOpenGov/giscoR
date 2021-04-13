@@ -27,7 +27,7 @@ Union as per February 2021.
 }
 }
 \source{
-\link[countrycode:codelist]{countrycode::codelist} \strong{v1.2.0}.
+\code{\link[countrycode:codelist]{countrycode::codelist}} \strong{v1.2.0}.
 }
 \description{
 A dataframe containing conversions between different country
@@ -40,6 +40,6 @@ is extracted from \strong{countrycode} package.
 data(gisco_countrycode)
 }
 \seealso{
-\link[countrycode:codelist]{countrycode::codelist}, \link[countrycode:countrycode-package]{countrycode::countrycode-package}
+\code{\link[countrycode:codelist]{countrycode::codelist}}, \code{\link[countrycode:countrycode-package]{countrycode::countrycode-package}}
 }
 \concept{dataset}

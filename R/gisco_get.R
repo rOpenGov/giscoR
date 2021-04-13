@@ -8,7 +8,7 @@
 #' Loads a simple feature (`sf`) object from GISCO API entry point or your
 #' local library.
 #'
-#' @param year Release year. See **Release years available** on [gisco_get].
+#' @param year Release year. See **Release years available** on [`gisco_get`].
 #'
 #' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
 #'  One of:
@@ -23,7 +23,7 @@
 #'  When set to `TRUE` it would force a fresh download of the source
 #'  `.geojson` file.
 #'
-#' @param cache_dir A path to a cache directory. See Details on [gisco_get].
+#' @param cache_dir A path to a cache directory. See Details on [`gisco_get`].
 #'
 #' @param verbose Display information. Useful for debugging,
 #'  default is `FALSE`.
@@ -55,7 +55,7 @@
 #' the corresponding `.geojson` file by any other method and save it on
 #' your `cache_dir`.
 #'
-#' For a complete list of files available check [gisco_db].
+#' For a complete list of files available check [`gisco_db`].
 #'
 #' # About world regions
 #'
@@ -93,7 +93,7 @@
 #'   sub = gisco_attributions(),
 #'   line = 1
 #' )
-#' @seealso [gisco_db], [gisco_attributions()], [gisco_coastallines]
+#' @seealso [`gisco_db`], [gisco_attributions()], [`gisco_coastallines`]
 #'
 #' @export
 gisco_get_coastallines <- function(year = "2016",
@@ -163,7 +163,7 @@ gisco_get_coastallines <- function(year = "2016",
 #' * **"INLAND"**: inland boundaries - `LINESTRING` object.
 #'
 #' @param country Optional. A character vector of country codes.
-#' See Details on [gisco_get].
+#' See Details on [`gisco_get`].
 #'
 #' @export
 gisco_get_communes <- function(year = "2016",
@@ -223,9 +223,9 @@ gisco_get_communes <- function(year = "2016",
 #' @param region Optional. A character vector of UN M49 region codes or
 #' European Union membership. Possible values are "Africa", "Americas",
 #' "Asia", "Europe", "Oceania" or "EU" for countries belonging to the European
-#' Union (as per 2021). See **About world regions** and [gisco_countrycode]
+#' Union (as per 2021). See **About world regions** and [`gisco_countrycode`]
 #'
-#' @seealso [gisco_countrycode()], [gisco_countries]
+#' @seealso [gisco_countrycode()], [`gisco_countries`]
 #'
 #' @export
 #'
@@ -428,7 +428,7 @@ gisco_get_lau <- function(year = "2016",
 #' * **`gisco_get_nuts`**: one of "2003", "2006", "2010", "2013", "2016"
 #' or "2021".
 #'
-#' @seealso [gisco_nuts]
+#' @seealso [`gisco_nuts`]
 #'
 #' @export
 #'

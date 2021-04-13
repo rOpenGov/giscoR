@@ -22,13 +22,13 @@ gisco_get_healthcare(
 When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
-\item{cache_dir}{A path to a cache directory. See Details on \link{gisco_get}.}
+\item{cache_dir}{A path to a cache directory. See Details on \code{\link{gisco_get}}.}
 
 \item{verbose}{Display information. Useful for debugging,
 default is \code{FALSE}.}
 
 \item{country}{Optional. A character vector of country codes.
-See Details on \link{gisco_get}.}
+See Details on \code{\link{gisco_get}}.}
 }
 \value{
 A \code{POINT} object.

@@ -85,7 +85,7 @@ gisco_get_urban_audit(
 )
 }
 \arguments{
-\item{year}{Release year. See \strong{Release years available} on \link{gisco_get}.}
+\item{year}{Release year. See \strong{Release years available} on \code{\link{gisco_get}}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -102,7 +102,7 @@ One of:
 When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
-\item{cache_dir}{A path to a cache directory. See Details on \link{gisco_get}.}
+\item{cache_dir}{A path to a cache directory. See Details on \code{\link{gisco_get}}.}
 
 \item{verbose}{Display information. Useful for debugging,
 default is \code{FALSE}.}
@@ -126,12 +126,12 @@ default is \code{FALSE}.}
 }}
 
 \item{country}{Optional. A character vector of country codes.
-See Details on \link{gisco_get}.}
+See Details on \code{\link{gisco_get}}.}
 
 \item{region}{Optional. A character vector of UN M49 region codes or
 European Union membership. Possible values are "Africa", "Americas",
 "Asia", "Europe", "Oceania" or "EU" for countries belonging to the European
-Union (as per 2021). See \strong{About world regions} and \link{gisco_countrycode}}
+Union (as per 2021). See \strong{About world regions} and \code{\link{gisco_countrycode}}}
 
 \item{gisco_id}{Optional. A character vector of GISCO_ID LAU values.}
 
@@ -166,7 +166,7 @@ If you experience any problem on download, try to download
 the corresponding \code{.geojson} file by any other method and save it on
 your \code{cache_dir}.
 
-For a complete list of files available check \link{gisco_db}.
+For a complete list of files available check \code{\link{gisco_db}}.
 }
 \note{
 Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
@@ -298,11 +298,11 @@ legend(
 )
 }
 \seealso{
-\link{gisco_db}, \code{\link[=gisco_attributions]{gisco_attributions()}}, \link{gisco_coastallines}
+\code{\link{gisco_db}}, \code{\link[=gisco_attributions]{gisco_attributions()}}, \code{\link{gisco_coastallines}}
 
-\code{\link[=gisco_countrycode]{gisco_countrycode()}}, \link{gisco_countries}
+\code{\link[=gisco_countrycode]{gisco_countrycode()}}, \code{\link{gisco_countries}}
 
-\link{gisco_nuts}
+\code{\link{gisco_nuts}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

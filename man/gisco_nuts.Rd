@@ -23,8 +23,7 @@ A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
 }
 }
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/}
-\code{NUTS_RG_20M_2016_4326.geojson} file.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/}{\code{NUTS_RG_20M_2016_4326.geojson}} file.
 }
 \description{
 A \code{sf} object including all NUTS levels as provided by GISCO (2016 version).

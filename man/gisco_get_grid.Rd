@@ -21,7 +21,7 @@ gisco_get_grid(
 
 \item{spatialtype}{Select one of \verb{REGION,POINT}}
 
-\item{cache_dir}{A path to a cache directory. See Details on \link{gisco_get}.}
+\item{cache_dir}{A path to a cache directory. See Details on \code{\link{gisco_get}}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source

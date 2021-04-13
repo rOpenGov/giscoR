@@ -47,10 +47,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [giscoR](https://dieghernan.github.io/giscoR/) is a API package that helps to
 retrieve data from [Eurostat - GISCO (the Geographic Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides some
-lightweight data sets ready to use without downloading. Currently only the
-[Administrative Units / Statistical
-Units](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)
-data sets are supported.
+lightweight data sets ready to use without downloading.
 
 GISCO [(FAQ)](https://ec.europa.eu/eurostat/web/gisco/faq) is a geospatial open
 data repository including several data sets as countries, coastal lines, labels

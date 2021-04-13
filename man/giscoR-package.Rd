@@ -5,9 +5,6 @@
 \alias{giscoR-package}
 \alias{giscoR}
 \title{Download geospatial data from GISCO API - Eurostat}
-\source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}
-}
 \description{
 \if{html}{\figure{logo.png}{options: width=120 alt="giscoR logo" align='right'}}
 

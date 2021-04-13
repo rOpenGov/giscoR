@@ -30,7 +30,7 @@ Accepted values are "nuts", "countries" or "urban_audit".}
 \item{mode}{Controls the output of the function. Possible values are "sf"
 or "df". See Value and Details.}
 
-\item{year}{Release year. See \strong{Release years available} on \link{gisco_get}.}
+\item{year}{Release year. See \strong{Release years available} on \code{\link{gisco_get}}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -47,7 +47,7 @@ One of:
 When set to \code{TRUE} it would force a fresh download of the source
 \code{.geojson} file.}
 
-\item{cache_dir}{A path to a cache directory. See Details on \link{gisco_get}.}
+\item{cache_dir}{A path to a cache directory. See Details on \code{\link{gisco_get}}.}
 
 \item{verbose}{Display information. Useful for debugging,
 default is \code{FALSE}.}

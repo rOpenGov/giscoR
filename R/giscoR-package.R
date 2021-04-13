@@ -30,9 +30,6 @@
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
-#' @source
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units>
-#'
 #' @references
 #' See `citation("giscoR")`
 #'
