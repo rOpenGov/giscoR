@@ -30,10 +30,10 @@ Depends:
     R (>= 3.6.0)
 Imports: 
     sf (>= 0.9),
-    lwgeom (>= 0.2-2),
     countrycode (>= 1.2.0),
     geojsonsf (>= 2.0)
 Suggests: 
+    lwgeom (>= 0.2-2),
     tmap (>= 3.0),
     tinytest,
     knitr,
