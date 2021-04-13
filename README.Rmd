@@ -8,10 +8,6 @@ editor_options:
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
-# Caching for faster build
-options(gisco_cache_dir="~/R/mapslib/GISCO")
-options(eurostat_cache_dir="~/R/cache/eurostat")
-
 
 knitr::opts_knit$set(progress = TRUE,
                      base.url = "https://raw.githubusercontent.com/dieghernan/giscoR/master/")
@@ -44,7 +40,7 @@ status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](h
 ![](https://cranlogs.r-pkg.org/badges/giscoR) [![Project Status: Active – The
 project has reached a stable, usable state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%252Fzenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
 
 <!-- badges: end -->
 
@@ -151,12 +147,10 @@ tm_shape(ITA, point.per = "feature") +
 
 ```
 
-
-
 ## Thematic maps
 
-An example of a thematic map plotted with the `tmap` package. The
-information is extracted via the `eurostat` package:
+An example of a thematic map plotted with the `tmap` package. The information is
+extracted via the `eurostat` package:
 
 ```{r thematic, fig.asp=0.8}
 

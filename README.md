@@ -15,7 +15,7 @@ status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](h
 ![](https://cranlogs.r-pkg.org/badges/giscoR) [![Project Status: Active
 – The project has reached a stable, usable state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%252Fzenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
 
 <!-- badges: end -->
 
