@@ -149,6 +149,39 @@ A \code{sf} object specified by \code{spatialtype}.
 \description{
 Loads a simple feature (\code{sf}) object from GISCO API entry point or your
 local library.
+\itemize{
+\item \code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}} downloads coastlines of the whole world.
+}
+
+\itemize{
+\item \code{\link[=gisco_get_communes]{gisco_get_communes()}} and \code{\link[=gisco_get_lau]{gisco_get_lau()}} download shapes of Local
+Urban Areas, that correspond roughly with towns and cities.
+}
+
+\itemize{
+\item \code{\link[=gisco_get_countries]{gisco_get_countries()}} downloads shapes of countries and other areas on
+dispute. Also, specific areas as Gibraltar or Antarctica are presented
+separately. The definition of country used on GISCO correspond roughly with
+territories with an official
+\href{https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes}{ISO-3166}
+code.
+}
+
+\itemize{
+\item \code{\link[=gisco_get_nuts]{gisco_get_nuts()}} downloads shapes of
+\href{https://en.wikipedia.org/wiki/Nomenclature_of_Territorial_Units_for_Statistics}{NUTS}
+units. NUTS are provided at 3 different levels (0: country,
+1: Groups of states/regions, 2: States/regions,
+3: Counties/provinces/districts). NUTS-level definition vary across
+countries.
+}
+
+\itemize{
+\item \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}} downloads shapes of cities, greater cities and
+metropolitan areas included on the
+\href{https://ec.europa.eu/eurostat/web/regions-and-cities}{Urban Audit report}
+of Eurostat.
+}
 }
 \details{
 \code{country} only available on specific datasets. Some \code{spatialtype} options

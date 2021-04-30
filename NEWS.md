@@ -1,5 +1,8 @@
 # giscoR (development version)
 
+- Update on docs
+- `lwgeom` moved to `Suggests` due to CRAN Note.
+
 # giscoR 0.2.4
 
 - New `eu` field on `giscoR::gisco_countrycode`.

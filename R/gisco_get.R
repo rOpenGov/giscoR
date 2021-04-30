@@ -8,6 +8,8 @@
 #' Loads a simple feature (`sf`) object from GISCO API entry point or your
 #' local library.
 #'
+#' * [gisco_get_coastallines()] downloads coastlines of the whole world.
+#'
 #' @param year Release year. See **Release years available** on [`gisco_get`].
 #'
 #' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
@@ -155,6 +157,11 @@ gisco_get_coastallines <- function(year = "2016",
 
 #' @rdname gisco_get
 #'
+#' @description
+#'
+#' * [gisco_get_communes()] and [gisco_get_lau()] download shapes of Local
+#'   Urban Areas, that correspond roughly with towns and cities.
+#'
 #' @param spatialtype Type of geometry to be returned:
 #' * **"RG"**: Regions - `MULTIPOLYGON/POLYGON` object.
 #' * **"LB"**: Labels - `POINT` object.
@@ -219,6 +226,15 @@ gisco_get_communes <- function(year = "2016",
 }
 
 #' @rdname gisco_get
+#'
+#' @description
+#'
+#' * [gisco_get_countries()] downloads shapes of countries and other areas on
+#'  dispute. Also, specific areas as Gibraltar or Antarctica are presented
+#'  separately. The definition of country used on GISCO correspond roughly with
+#'  territories with an official
+#'  [ISO-3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
+#'  code.
 #'
 #' @param region Optional. A character vector of UN M49 region codes or
 #' European Union membership. Possible values are "Africa", "Americas",
@@ -416,6 +432,14 @@ gisco_get_lau <- function(year = "2016",
 }
 
 #' @rdname gisco_get
+#' @description
+#'
+#' * [gisco_get_nuts()] downloads shapes of
+#'   [NUTS](https://en.wikipedia.org/wiki/Nomenclature_of_Territorial_Units_for_Statistics)
+#'   units. NUTS are provided at 3 different levels (0: country,
+#'   1: Groups of states/regions, 2: States/regions,
+#'   3: Counties/provinces/districts). NUTS-level definition vary across
+#'   countries.
 #'
 #' @param nuts_level NUTS level. One of "0" (Country-level), "1", "2" or "3".
 #' See <https://ec.europa.eu/eurostat/web/nuts/background>.
@@ -586,6 +610,13 @@ gisco_get_nuts <- function(year = "2016",
 }
 
 #' @rdname gisco_get
+#'
+#' @description
+#'
+#' * [gisco_get_urban_audit()] downloads shapes of cities, greater cities and
+#'   metropolitan areas included on the
+#'   [Urban Audit report](https://ec.europa.eu/eurostat/web/regions-and-cities)
+#'   of Eurostat.
 #'
 #' @param level Level of Urban Audit. Possible values are "CITIES", "FUA",
 #' "GREATER_CITIES" or `NULL`, that would download the full dataset.
