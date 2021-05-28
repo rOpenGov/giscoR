@@ -14,13 +14,13 @@
   ],
   "issueTracker": "https://github.com/dieghernan/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.4",
+  "version": "0.2.4.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
+  "runtimePlatform": "R version 4.1.0 (2021-05-18)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -67,6 +67,19 @@
     }
   ],
   "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "lwgeom",
+      "name": "lwgeom",
+      "version": ">= 0.2-2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lwgeom"
+    },
     {
       "@type": "SoftwareApplication",
       "identifier": "tmap",
@@ -139,19 +152,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "lwgeom",
-      "name": "lwgeom",
-      "version": ">= 0.2-2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=lwgeom"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "countrycode",
       "name": "countrycode",
       "version": ">= 1.2.0",
@@ -179,7 +179,7 @@
   ],
   "releaseNotes": "https://github.com/dieghernan/giscoR/blob/master/NEWS.md",
   "readme": "https://github.com/dieghernan/giscoR/blob/master/README.md",
-  "fileSize": "367550.664KB",
+  "fileSize": "0KB",
   "contIntegration": "https://codecov.io/gh/dieghernan/giscoR",
   "keywords": [
     "r",
