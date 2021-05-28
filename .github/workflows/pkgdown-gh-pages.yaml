@@ -8,7 +8,7 @@ name: pkgdown-gh-pages
 
 jobs:
   pkgdown-gh-pages:
-    runs-on: windows-latest
+    runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
@@ -27,7 +27,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Cache R packages
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.6
         with:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
