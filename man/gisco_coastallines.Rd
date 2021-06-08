@@ -31,6 +31,8 @@ qtm(coasts) + tm_compass(
   position = c("left", "bottom"),
   color.dark = "chocolate"
 )
+
+tmap_options_reset()
 }
 \seealso{
 \code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}}

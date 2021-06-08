@@ -34,9 +34,7 @@ GBR <- subset(cntry, ISO3_CODE == "GBR")
 library(tmap)
 
 tm_shape(GBR) +
-  tm_polygons(col = "red3", border.col = "blue4") +
-  tm_credits(text = gisco_attributions()) +
-  tm_layout(attr.outside = TRUE)
+  tm_polygons(col = "red3", border.col = "blue4")
 }
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}

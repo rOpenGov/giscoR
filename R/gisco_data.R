@@ -48,9 +48,7 @@ NULL
 #' library(tmap)
 #'
 #' tm_shape(GBR) +
-#'   tm_polygons(col = "red3", border.col = "blue4") +
-#'   tm_credits(text = gisco_attributions()) +
-#'   tm_layout(attr.outside = TRUE)
+#'   tm_polygons(col = "red3", border.col = "blue4")
 #' @source
 #' [`CNTR_RG_20M_2016_4326.geojson`](https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/) file.
 #'
@@ -95,6 +93,8 @@ NULL
 #'   position = c("left", "bottom"),
 #'   color.dark = "chocolate"
 #' )
+#'
+#' tmap_options_reset()
 NULL
 
 #' All NUTS `POLYGON` object
