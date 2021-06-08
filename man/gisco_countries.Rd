@@ -28,13 +28,15 @@ countries as provided by GISCO (2016 version).
 }
 \examples{
 
-library(sf)
-
 cntry <- gisco_countries
 GBR <- subset(cntry, ISO3_CODE == "GBR")
 
-plot(st_geometry(GBR), col = "red3", border = "blue4")
-title(sub = gisco_attributions(), line = 1)
+library(tmap)
+
+tm_shape(GBR) +
+  tm_polygons(col = "red3", border.col = "blue4") +
+  tm_credits(text = gisco_attributions()) +
+  tm_layout(attr.outside = TRUE)
 }
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}

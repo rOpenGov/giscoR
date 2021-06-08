@@ -42,13 +42,15 @@ NULL
 #'
 #' @examples
 #'
-#' library(sf)
-#'
 #' cntry <- gisco_countries
 #' GBR <- subset(cntry, ISO3_CODE == "GBR")
 #'
-#' plot(st_geometry(GBR), col = "red3", border = "blue4")
-#' title(sub = gisco_attributions(), line = 1)
+#' library(tmap)
+#'
+#' tm_shape(GBR) +
+#'   tm_polygons(col = "red3", border.col = "blue4") +
+#'   tm_credits(text = gisco_attributions()) +
+#'   tm_layout(attr.outside = TRUE)
 #' @source
 #' [`CNTR_RG_20M_2016_4326.geojson`](https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/) file.
 #'
@@ -83,24 +85,15 @@ NULL
 #'
 #' @examples
 #'
-#' library(sf)
-#'
 #' coasts <- gisco_coastallines
 #'
-#' plot(
-#'   st_geometry(coasts),
-#'   xlim = c(100, 120),
-#'   ylim = c(-24, 24),
-#'   col = "grey90",
-#'   border = "deepskyblue4",
-#'   lwd = 2
-#' )
-#' box()
-#' title(
-#'   main = "Coasts on Southeastern Asia",
-#'   sub = gisco_attributions(),
-#'   cex.sub = 0.7,
-#'   line = 1
+#' library(tmap)
+#'
+#' tmap_style("classic")
+#'
+#' qtm(coasts) + tm_compass(
+#'   position = c("left", "bottom"),
+#'   color.dark = "chocolate"
 #' )
 NULL
 
