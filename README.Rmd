@@ -44,7 +44,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 
 <!-- badges: end -->
 
-[giscoR](https://dieghernan.github.io/giscoR/) is a API package that helps to
+[giscoR](https://dieghernan.github.io/giscoR/) is an API package that helps to
 retrieve data from [Eurostat - GISCO (the Geographic Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides some
 lightweight data sets ready to use without downloading.
