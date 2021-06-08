@@ -30,19 +30,14 @@ A \code{sf} object including all NUTS levels as provided by GISCO (2016 version)
 }
 \examples{
 
-library(sf)
-
 nuts <- gisco_nuts
 
 italy <- subset(nuts, CNTR_CODE == "IT" & LEVL_CODE == 3)
 
-plot(st_geometry(italy), col = c("springgreen4", "ivory", "red2"))
-title(
-  sub = gisco_attributions(),
-  line = 1,
-  cex.sub = 0.7,
-  font.sub = 3
-)
+library(tmap)
+
+tm_shape(italy) +
+  tm_polygons()
 }
 \seealso{
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
