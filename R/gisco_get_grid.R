@@ -34,7 +34,6 @@
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids>
 #'
 #' @examples
-#' library(sf)
 #'
 #' grid <- gisco_get_grid(resolution = 20)
 #' grid$popdens <- grid$TOT_P_2011 / 20
@@ -52,22 +51,27 @@
 #'     max(grid$popdens) + 1
 #'   )
 #'
-#' pal <- hcl.colors(length(breaks) - 2, palette = "inferno", alpha = 0.7)
-#' pal <- c("black", pal)
+#' pal <-
+#'   c("black", hcl.colors(length(breaks) - 2, palette = "inferno", alpha = 0.7))
 #'
-#' opar <- par(no.readonly = TRUE)
-#' par(mar = c(0, 0, 0, 0), bg = "grey2")
-#' plot(
-#'   grid[, "popdens"],
-#'   pal = pal,
-#'   key.pos = NULL,
-#'   breaks = breaks,
-#'   main = NA,
-#'   xlim = c(2500000, 7000000),
-#'   ylim = c(1500000, 5200000),
-#'   border = NA
-#' )
-#' par(opar)
+#' library(tmap)
+#'
+#' tm_shape(grid, bbox = c(2500000, 1500000, 7000000, 5200000)) +
+#'   tm_fill(
+#'     col = "popdens",
+#'     breaks = breaks,
+#'     palette = pal,
+#'     title = "Pop by km2"
+#'   ) +
+#'   tm_layout(
+#'     bg.color = "grey2",
+#'     outer.bg.color = "grey2",
+#'     legend.outside = TRUE,
+#'     main.title = "Population density in Europe",
+#'     main.title.color = "grey80",
+#'     legend.title.color = "grey80",
+#'     legend.text.color = "grey80"
+#'   )
 #' @export
 gisco_get_grid <- function(resolution = "20",
                            spatialtype = "REGION",
