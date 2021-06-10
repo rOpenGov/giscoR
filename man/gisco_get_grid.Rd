@@ -83,6 +83,7 @@ tm_shape(grid, bbox = c(2500000, 1500000, 7000000, 5200000)) +
     bg.color = "grey2",
     outer.bg.color = "grey2",
     legend.outside = TRUE,
+    legend.position = c("right", "center"),
     main.title = "Population density in Europe",
     main.title.color = "grey80",
     legend.title.color = "grey80",

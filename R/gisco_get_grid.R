@@ -67,6 +67,7 @@
 #'     bg.color = "grey2",
 #'     outer.bg.color = "grey2",
 #'     legend.outside = TRUE,
+#'     legend.position = c("right", "center"),
 #'     main.title = "Population density in Europe",
 #'     main.title.color = "grey80",
 #'     legend.title.color = "grey80",
