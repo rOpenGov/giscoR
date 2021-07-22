@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE,
   message = FALSE,
-  fig.width = 6, 
+  fig.width = 6,
   fig.height = 4,
   out.width = "100%",
   out.height = "60%"
@@ -22,7 +22,6 @@ knitr::opts_chunk$set(
 if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
   install.packages("reactable")
 }
-
 ```
 
 
@@ -39,14 +38,13 @@ library(reactable)
 df <- gisco_get_nuts(year = 2021, resolution = 60)
 df <- sf::st_drop_geometry(df)
 reactable(df,
-          filterable = TRUE,
-          searchable = TRUE,
-          showPageSizeOptions = TRUE,
-          striped = TRUE,
-          paginationType = "jump",
-          defaultSorted = c("LEVL_CODE", "CNTR_CODE")
-          )
-
+  filterable = TRUE,
+  searchable = TRUE,
+  showPageSizeOptions = TRUE,
+  striped = TRUE,
+  paginationType = "jump",
+  defaultSorted = c("LEVL_CODE", "CNTR_CODE")
+)
 ```
 
 
@@ -60,14 +58,13 @@ library(reactable)
 df <- gisco_get_nuts(year = 2016, resolution = 60)
 df <- sf::st_drop_geometry(df)
 reactable(df,
-          filterable = TRUE,
-          searchable = TRUE,
-          showPageSizeOptions = TRUE,
-          striped = TRUE,
-          paginationType = "jump",
-          defaultSorted = c("LEVL_CODE", "CNTR_CODE")
-          )
-
+  filterable = TRUE,
+  searchable = TRUE,
+  showPageSizeOptions = TRUE,
+  striped = TRUE,
+  paginationType = "jump",
+  defaultSorted = c("LEVL_CODE", "CNTR_CODE")
+)
 ```
 
 ## NUTS 2013
@@ -80,14 +77,13 @@ library(reactable)
 df <- gisco_get_nuts(year = 2013, resolution = 60)
 df <- sf::st_drop_geometry(df)
 reactable(df,
-          filterable = TRUE,
-          searchable = TRUE,
-          showPageSizeOptions = TRUE,
-          striped = TRUE,
-          paginationType = "jump",
-          defaultSorted = c("LEVL_CODE", "CNTR_CODE")
-          )
-
+  filterable = TRUE,
+  searchable = TRUE,
+  showPageSizeOptions = TRUE,
+  striped = TRUE,
+  paginationType = "jump",
+  defaultSorted = c("LEVL_CODE", "CNTR_CODE")
+)
 ```
 
 ## Session Info
@@ -99,5 +95,3 @@ sessionInfo()
 
 ```
 </details>
-
-

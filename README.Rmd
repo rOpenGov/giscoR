@@ -9,21 +9,22 @@ editor_options:
 
 ```{r, include = FALSE}
 
-knitr::opts_knit$set(progress = TRUE,
-                     base.url = "https://raw.githubusercontent.com/dieghernan/giscoR/master/")
+knitr::opts_knit$set(
+  progress = TRUE,
+  base.url = "https://raw.githubusercontent.com/dieghernan/giscoR/master/"
+)
 
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   warning = FALSE,
   message = FALSE,
-  tidy = 'styler',
+  tidy = "styler",
   dev = "svg",
   dpi = 90,
   fig.path = "img/README-",
   out.width = "100%"
 )
-
 ```
 
 # giscoR <img src="man/figures/logo.png" align="right" width="120"/>
@@ -85,37 +86,41 @@ This script highlights some features of `giscoR`:
 library(giscoR)
 library(sf)
 
- # Different resolutions
- DNK_res60 <- gisco_get_countries(resolution = '60', country = 'DNK')
- DNK_res20 <-
-   gisco_get_countries(resolution = '20', country = 'DNK')
- DNK_res10 <-
-   gisco_get_countries(resolution = '10', country = 'DNK')
- DNK_res03 <-
-   gisco_get_countries(resolution = '03', country = 'DNK')
- 
- 
- # Plot tmap
- 
- library(tmap)
- 
- plot60 <- qtm(DNK_res60, fill = "tomato", main.title = "60M")
- plot20 <- qtm(DNK_res20, fill = "tomato", main.title = "20M")
- plot10 <- qtm(DNK_res10, fill = "tomato", main.title = "10M")
- plot03 <- qtm(DNK_res03, fill = "tomato", main.title = "03M")
- 
- tmap_arrange(plot60, plot20, plot10, plot03)
+# Different resolutions
+DNK_res60 <- gisco_get_countries(resolution = "60", country = "DNK")
+DNK_res20 <-
+  gisco_get_countries(resolution = "20", country = "DNK")
+DNK_res10 <-
+  gisco_get_countries(resolution = "10", country = "DNK")
+DNK_res03 <-
+  gisco_get_countries(resolution = "03", country = "DNK")
 
- # Labels and Lines available
- 
- labs <- gisco_get_countries(spatialtype = "LB", 
-                             region = "Africa", 
-                             epsg = "3857")
- 
- coast <- gisco_get_countries(spatialtype = "COASTL", 
-                              epsg = "3857")
- 
- 
+
+# Plot tmap
+
+library(tmap)
+
+plot60 <- qtm(DNK_res60, fill = "tomato", main.title = "60M")
+plot20 <- qtm(DNK_res20, fill = "tomato", main.title = "20M")
+plot10 <- qtm(DNK_res10, fill = "tomato", main.title = "10M")
+plot03 <- qtm(DNK_res03, fill = "tomato", main.title = "03M")
+
+tmap_arrange(plot60, plot20, plot10, plot03)
+
+# Labels and Lines available
+
+labs <- gisco_get_countries(
+  spatialtype = "LB",
+  region = "Africa",
+  epsg = "3857"
+)
+
+coast <- gisco_get_countries(
+  spatialtype = "COASTL",
+  epsg = "3857"
+)
+
+
 tm_shape(coast, bbox = labs) +
   tm_lines("deepskyblue4") +
   tm_shape(labs) +
@@ -126,7 +131,6 @@ tm_shape(coast, bbox = labs) +
     border.lwd = 1,
     size = 1
   )
-
 ```
 
 ## Labels
@@ -141,7 +145,6 @@ ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
 tm_shape(ITA, point.per = "feature") +
   tm_polygons() +
   tm_text("NAME_LATN")
-
 ```
 
 ## Thematic maps
@@ -160,9 +163,11 @@ nuts3 <- gisco_get_nuts(
 
 # Countries
 countries <-
-  gisco_get_countries(year = "2016",
-                      epsg = "3035",
-                      resolution = "3")
+  gisco_get_countries(
+    year = "2016",
+    epsg = "3035",
+    resolution = "3"
+  )
 
 # Use eurostat
 library(eurostat)
@@ -173,10 +178,11 @@ popdens <- popdens[popdens$time == "2018-01-01", ]
 
 
 nuts3.sf <- merge(nuts3,
-                  popdens,
-                  by.x = "NUTS_ID",
-                  by.y = "geo",
-                  all.x = TRUE)
+  popdens,
+  by.x = "NUTS_ID",
+  by.y = "geo",
+  all.x = TRUE
+)
 
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
 
@@ -194,7 +200,8 @@ tm_shape(countries, bbox = c(23, 14, 74, 55) * 10e4) +
   tm_shape(countries) +
   tm_borders(lwd = .25) +
   tm_credits(gisco_attributions(),
-             position = c("left", "bottom"))  +
+    position = c("left", "bottom")
+  ) +
   tm_layout(
     bg.color = "#daf3ff",
     outer.bg.color = "white",
@@ -207,7 +214,6 @@ tm_shape(countries, bbox = c(23, 14, 74, 55) * 10e4) +
     frame.lwd = 0,
     attr.outside = TRUE
   )
-
 ```
 
 ### A note on caching

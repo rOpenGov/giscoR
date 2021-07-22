@@ -13,12 +13,11 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE,
   message = FALSE,
-  fig.width = 6, 
+  fig.width = 6,
   fig.height = 4,
   out.width = "100%",
   out.height = "60%"
 )
-
 ```
 
 
@@ -89,7 +88,6 @@ guide you on this topic. It also provides attributions on several languages.
 ```{r attributions}
 library(giscoR)
 gisco_attributions(copyright = TRUE)
-
 ```
 
 # Basic example
@@ -110,11 +108,12 @@ tm_shape(countries) +
   tm_graticules(lines = FALSE) +
   tm_polygons() +
   tm_credits(gisco_attributions(copyright = "FALSE")) +
-  tm_layout(main.title = "Countries of Asia",
-            attr.outside = TRUE)
+  tm_layout(
+    main.title = "Countries of Asia",
+    attr.outside = TRUE
+  )
 
 tmap_options_reset()
-
 ```
 
 
@@ -135,24 +134,26 @@ africa_north <-
 
 # Coastal lines
 
-coast <- gisco_get_coastallines(resolution = "20",
-                                epsg = "4326",
-                                year = "2016")
+coast <- gisco_get_coastallines(
+  resolution = "20",
+  epsg = "4326",
+  year = "2016"
+)
 
 # Plot
 
 # Coastline
 tm_shape(coast, bbox = c(-13, 18.5, 37, 40)) +
-  tm_fill(col = "grey80")  +
+  tm_fill(col = "grey80") +
   # Shape of Africa
   tm_shape(africa_north) +
-  tm_polygons(col = "grey30", border.col = "white")  +
+  tm_polygons(col = "grey30", border.col = "white") +
   # Facets
   tm_facets(by = "NAME_ENGL") +
   tm_credits(gisco_attributions(copyright = "FALSE"),
-             position = c("right", "bottom")) +
+    position = c("right", "bottom")
+  ) +
   tm_layout(attr.outside = TRUE)
-
 ```
 
 # Plotting `giscoR`
@@ -175,7 +176,7 @@ nuts2 <- gisco_get_nuts(
   nuts_level = "2"
 )
 
-#Borders
+# Borders
 borders <- gisco_get_countries(
   epsg = "4326",
   year = "2016",
@@ -188,10 +189,11 @@ pps <- giscoR::tgs00026
 pps <- pps[pps$time == 2016, ]
 
 nuts2.sf <- merge(nuts2,
-                  pps,
-                  by.x = "NUTS_ID",
-                  by.y = "geo",
-                  all.x = TRUE)
+  pps,
+  by.x = "NUTS_ID",
+  by.y = "geo",
+  all.x = TRUE
+)
 # Plot
 
 tm_shape(nuts2.sf, bbox = c(-1, 47, 10, 54)) +
@@ -211,7 +213,8 @@ tm_shape(nuts2.sf, bbox = c(-1, 47, 10, 54)) +
   tm_borders(col = "black") +
   # Credits and format
   tm_credits(gisco_attributions(),
-             position = c("right", "bottom")) +
+    position = c("right", "bottom")
+  ) +
   tm_layout(
     main.title = "Disposable Incoming Households 2016 (BENELUX Focus)",
     main.title.size = 0.8,
@@ -219,7 +222,6 @@ tm_shape(nuts2.sf, bbox = c(-1, 47, 10, 54)) +
     legend.outside = TRUE,
     attr.outside = TRUE
   )
-
 ```
 
 ## Session Info

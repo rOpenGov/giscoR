@@ -1,5 +1,5 @@
-Package: giscoR
 Type: Package
+Package: giscoR
 Title: Download Map Data from GISCO API - Eurostat
 Version: 0.2.4.9000
 Authors@R: 
@@ -14,29 +14,31 @@ Authors@R:
       person(given = "Vincent",
              family = "Arel-Bundock",
              role = "cph",
-             comment = c(ORCID = "0000-0003-2042-7063","for the gisco_countrycode dataset."))
-             )
-Description: Tools to download data from the GISCO 
-    (Geographic Information System of the Commission) Eurostat database
-    <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available.
-    This package is in no way officially related to or endorsed by Eurostat.
+             comment = c(ORCID = "0000-0003-2042-7063", "for the gisco_countrycode dataset.")))
+Description: Tools to download data from the GISCO (Geographic Information
+    System of the Commission) Eurostat database
+    <https://ec.europa.eu/eurostat/web/gisco>. Global and European map
+    data available.  This package is in no way officially related to or
+    endorsed by Eurostat.
 License: GPL-3
-Encoding: UTF-8
-RoxygenNote: 7.1.1
-Roxygen: list(markdown = TRUE)
+URL: https://dieghernan.github.io/giscoR/,
+    https://github.com/dieghernan/giscoR
 BugReports: https://github.com/dieghernan/giscoR/issues
-URL: https://dieghernan.github.io/giscoR/, https://github.com/dieghernan/giscoR
 Depends: 
     R (>= 3.6.0)
 Imports: 
-    sf (>= 0.9),
     countrycode (>= 1.2.0),
-    geojsonsf (>= 2.0)
+    geojsonsf (>= 2.0),
+    sf (>= 0.9),
+    utils
 Suggests: 
-    lwgeom (>= 0.2-2),
-    tmap (>= 3.0),
-    tinytest,
     knitr,
-    rmarkdown
+    rmarkdown,
+    tinytest,
+    tmap (>= 3.0)
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
 LazyData: true
-VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
