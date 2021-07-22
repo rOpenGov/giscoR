@@ -35,6 +35,7 @@ knitr::opts_chunk$set(
 status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![CRAN
 results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.org/web/checks/check_results_giscoR.html)
+[![r-universe](https://dieghernan.r-universe.dev/badges/giscoR)](https://dieghernan.r-universe.dev/)
 [![R build
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
@@ -75,6 +76,19 @@ You can install the developing version of `giscoR` with:
 ``` r
 library(remotes)
 install_github("dieghernan/giscoR")
+```
+
+Alternatively, you can install `giscoR` using the
+[r-universe](https://dieghernan.r-universe.dev/ui#builds):
+
+``` r
+# Enable this universe
+options(repos = c(
+    dieghernan = 'https://dieghernan.r-universe.dev',
+    CRAN = 'https://cloud.r-project.org'))
+
+
+install.packages('giscoR')
 ```
 
 ## Usage
