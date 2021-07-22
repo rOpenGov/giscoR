@@ -1,7 +1,7 @@
 # giscoR (development version)
 
 - Update on docs
-- `lwgeom` moved to `Suggests` due to CRAN Note.
+- `lwgeom` dependency removed.
 
 # giscoR 0.2.4
 
