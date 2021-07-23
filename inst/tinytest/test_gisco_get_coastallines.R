@@ -1,8 +1,0 @@
-expect_error(gisco_get_coastallines(year = 2001, res = 60))
-expect_error(gisco_get_coastallines(year = 2011))
-expect_error(gisco_get_coastallines(epsg = 2819))
-expect_error(gisco_get_coastallines(spatialtype = "aa"))
-expect_error(gisco_get_coastallines(res = 15))
-expect_silent(gisco_get_coastallines())
-expect_message(gisco_get_coastallines(verbose = TRUE))
-expect_true(sf::st_is_longlat(gisco_get_countries()))
