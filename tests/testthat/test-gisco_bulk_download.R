@@ -12,6 +12,10 @@ test_that("Bulk download online", {
   )
 
   expect_silent(gisco_bulk_download(resolution = 60))
+  expect_silent(gisco_bulk_download(resolution = 60, ext = "shp"))
+  expect_silent(gisco_bulk_download(resolution = 60, ext = "svg"))
+  expect_silent(gisco_bulk_download(resolution = 60, ext = "json"))
+  expect_silent(gisco_bulk_download(resolution = 60, ext = "gdb"))
   expect_silent(gisco_bulk_download(id_giscoR = "urban_audit", year = 2004))
   expect_message(gisco_bulk_download(resolution = 60, verbose = TRUE))
   expect_message(gisco_bulk_download(
