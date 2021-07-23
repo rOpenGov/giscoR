@@ -9,22 +9,24 @@
 status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![CRAN
 results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.org/web/checks/check_results_giscoR.html)
-[![r-universe](https://dieghernan.r-universe.dev/badges/giscoR)](https://dieghernan.r-universe.dev/)
 [![R build
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
 ![](https://cranlogs.r-pkg.org/badges/giscoR) [![Project Status: Active
 – The project has reached a stable, usable state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
-
+[![DOI](https://img.shields.io/badge/DOI-10.5281%252Fzenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
+[![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/giscor/badge)](https://www.codefactor.io/repository/github/dieghernan/giscor)
 <!-- badges: end -->
 
-[giscoR](https://dieghernan.github.io/giscoR/) is an API package that
+[giscoR](https://dieghernan.github.io/giscoR/) is a API package that
 helps to retrieve data from [Eurostat - GISCO (the Geographic
 Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides
-some lightweight data sets ready to use without downloading.
+some lightweight data sets ready to use without downloading. Currently
+only the [Administrative Units / Statistical
+Units](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)
+data sets are supported.
 
 GISCO [(FAQ)](https://ec.europa.eu/eurostat/web/gisco/faq) is a
 geospatial open data repository including several data sets as
@@ -54,19 +56,6 @@ You can install the developing version of `giscoR` with:
 ``` r
 library(remotes)
 install_github("dieghernan/giscoR")
-```
-
-Alternatively, you can install `giscoR` using the
-[r-universe](https://dieghernan.r-universe.dev/ui#builds):
-
-``` r
-# Enable this universe
-options(repos = c(
-    dieghernan = 'https://dieghernan.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
-
-
-install.packages('giscoR')
 ```
 
 ## Usage
