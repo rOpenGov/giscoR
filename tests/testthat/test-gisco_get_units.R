@@ -109,7 +109,7 @@ test_that("Units online", {
     id_giscoR = "nuts",
     year = "2016",
     verbose = TRUE,
-    unit = c("XXXXX")
+    unit = "XXXXX"
   ))
 
   expect_silent(gisco_get_units(
