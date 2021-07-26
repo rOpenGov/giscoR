@@ -34,6 +34,7 @@ to Europe. All shapefiles provided in EPSG:4326
 }
 
 \examples{
+\donttest{
 
 library(sf)
 
@@ -79,6 +80,8 @@ title(
   cex.sub = 0.7,
   font.sub = 3
 )
+}
+
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

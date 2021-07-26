@@ -25,6 +25,7 @@
 #'  to Europe. All shapefiles provided in EPSG:4326
 #'
 #' @examples
+#' \donttest{
 #'
 #' library(sf)
 #'
@@ -70,6 +71,8 @@
 #'   cex.sub = 0.7,
 #'   font.sub = 3
 #' )
+#' }
+#'
 #' @export
 gisco_get_airports <- function(year = "2013", country = NULL) {
   year <- as.character(year)
