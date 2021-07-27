@@ -4,10 +4,10 @@ on:
       - main
       - master
 
-name: pkgdown-gh-pages
+name: update-docs
 
 jobs:
-  pkgdown-gh-pages:
+  update-docs:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -22,6 +22,9 @@ jobs:
         run: |
           install.packages('remotes')
           install.packages('devtools')
+          remotes::install_cran("rcmdcheck")
+          install.packages("pkgdown", dependencies = TRUE)
+          
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
@@ -36,7 +39,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          install.packages("pkgdown", dependencies = TRUE)
+          devtools::install_github('dieghernan/pkgdev', dependencies = TRUE)
         shell: Rscript {0}
 
       - name: Install package
@@ -44,9 +47,40 @@ jobs:
           devtools::install()
 
         shell: Rscript {0}
+        
+      - name: Update docs
+        run: |
+          pkgdev::update_docs()
 
+        shell: Rscript {0}
+
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add -A
+          git commit -m 'Update docs with pkgdev' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
+          
+      - name: Check
+        env:
+          _R_CHECK_CRAN_INCOMING_REMOTE_: false
+        run: |
+          options(crayon.enabled = TRUE)
+          rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
+        shell: Rscript {0}
+
+      - name: Upload check results
+        if: failure()
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
+          path: check
+          
       - name: Deploy package
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+          
+
