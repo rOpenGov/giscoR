@@ -50,6 +50,7 @@ jobs:
         
       - name: Update docs
         run: |
+          install.packages('eurostat')
           pkgdev::update_docs()
 
         shell: Rscript {0}
