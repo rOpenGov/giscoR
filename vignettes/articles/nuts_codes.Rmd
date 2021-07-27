@@ -1,10 +1,5 @@
 ---
 title: "NUTS codes"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{NUTS codes}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r knitropts, include=FALSE}

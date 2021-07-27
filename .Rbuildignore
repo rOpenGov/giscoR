@@ -24,4 +24,4 @@
 ^img$
 ^codemeta\.json$
 ^_pkgdown\.yml$
-^vignettes/nuts_codes.Rmd$
+^vignettes/articles$
