@@ -68,13 +68,13 @@ Full site with examples and vignettes on <https://dieghernan.github.io/giscoR/>
 
 Install `giscoR` from [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
-``` r
+```{r, eval=FALSE}
 install.packages("giscoR")
 ```
 
 You can install the developing version of `giscoR` with:
 
-``` r
+```{r, eval=FALSE}
 library(remotes)
 install_github("dieghernan/giscoR")
 ```
@@ -82,7 +82,7 @@ install_github("dieghernan/giscoR")
 Alternatively, you can install `giscoR` using the
 [r-universe](https://dieghernan.r-universe.dev/ui#builds):
 
-``` r
+```{r, eval=FALSE}
 # Enable this universe
 options(repos = c(
     dieghernan = 'https://dieghernan.r-universe.dev',
@@ -166,6 +166,12 @@ tm_shape(ITA, point.per = "feature") +
 
 An example of a thematic map plotted with the `tmap` package. The information is
 extracted via the `eurostat` package:
+
+```{r, echo=FALSE}
+
+install.packages(‘eurostat’)
+
+```
 
 ```{r thematic, fig.asp=0.8}
 
