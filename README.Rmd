@@ -167,9 +167,11 @@ tm_shape(ITA, point.per = "feature") +
 An example of a thematic map plotted with the `tmap` package. The information is
 extracted via the `eurostat` package:
 
-```{r, echo=FALSE}
+```{r eurostat_install, echo=FALSE}
 
-install.packages(‘eurostat’)
+if (isFALSE(requireNamespace("eurostat", quietly = TRUE))) {
+  install.packages("eurostat")
+}
 
 ```
 
