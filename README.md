@@ -102,7 +102,7 @@ plot03 <- qtm(DNK_res03, fill = "tomato", main.title = "03M")
 tmap_arrange(plot60, plot20, plot10, plot03)
 ```
 
-<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-1.svg" width="100%" />
+<img src="man/figures/README-example-1.png" width="100%" />
 
 ``` r
 
@@ -132,7 +132,7 @@ tm_shape(coast, bbox = labs) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-2.svg" width="100%" />
+<img src="man/figures/README-example-2.png" width="100%" />
 
 ## Labels
 
@@ -148,7 +148,7 @@ tm_shape(ITA, point.per = "feature") +
   tm_text("NAME_LATN")
 ```
 
-<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-labels-1.svg" width="100%" />
+<img src="man/figures/README-labels-1.png" width="100%" />
 
 ## Thematic maps
 
@@ -219,7 +219,7 @@ tm_shape(countries, bbox = c(23, 14, 74, 55) * 10e4) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-thematic-1.svg" width="100%" />
+<img src="man/figures/README-thematic-1.png" width="100%" />
 
 ### A note on caching
 
