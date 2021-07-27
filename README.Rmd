@@ -9,10 +9,6 @@ editor_options:
 
 ```{r, include = FALSE}
 
-knitr::opts_knit$set(
-  progress = TRUE,
-  base.url = "https://raw.githubusercontent.com/dieghernan/giscoR/master/"
-)
 
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -20,9 +16,8 @@ knitr::opts_chunk$set(
   warning = FALSE,
   message = FALSE,
   tidy = "styler",
-  dev = "svg",
-  dpi = 90,
-  fig.path = "img/README-",
+  dpi = 300,
+  fig.path = "man/figures/README-",
   out.width = "100%"
 )
 ```
@@ -245,7 +240,7 @@ Some data sets (as Local Administrative Units - LAU, or high-resolution files)
 may have a size larger than 50MB. You can use `giscoR` to create your own local
 repository at a given local directory passing the following option:
 
-``` r
+```{r, eval=FALSE}
 options(gisco_cache_dir = "./path/to/location")
 ```
 
