@@ -25,3 +25,4 @@
 ^codemeta\.json$
 ^_pkgdown\.yml$
 ^vignettes/articles$
+^_pkgdown\.yaml$

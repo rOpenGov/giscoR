@@ -24,7 +24,7 @@ jobs:
           install.packages('devtools')
           remotes::install_cran("rcmdcheck")
           install.packages("pkgdown", dependencies = TRUE)
-          
+
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
@@ -47,9 +47,10 @@ jobs:
           devtools::install()
 
         shell: Rscript {0}
-        
+
       - name: Update docs
         run: |
+          pkgdown::build_favicons(overwrite = TRUE)
           pkgdev::update_docs()
 
         shell: Rscript {0}
@@ -61,7 +62,7 @@ jobs:
           git add -A
           git commit -m 'Update docs with pkgdev' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
-          
+
       - name: Check
         env:
           _R_CHECK_CRAN_INCOMING_REMOTE_: false
@@ -76,11 +77,11 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-          
+
       - name: Deploy package
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
-          
+
 
