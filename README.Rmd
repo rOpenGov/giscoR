@@ -85,11 +85,12 @@ Alternatively, you can install `giscoR` using the
 ```{r, eval=FALSE}
 # Enable this universe
 options(repos = c(
-    dieghernan = 'https://dieghernan.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
+  dieghernan = "https://dieghernan.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
 
 
-install.packages('giscoR')
+install.packages("giscoR")
 ```
 
 ## Usage
@@ -172,7 +173,6 @@ extracted via the `eurostat` package:
 if (isFALSE(requireNamespace("eurostat", quietly = TRUE))) {
   install.packages("eurostat")
 }
-
 ```
 
 ```{r thematic, fig.asp=0.8}

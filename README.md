@@ -63,11 +63,12 @@ Alternatively, you can install `giscoR` using the
 ``` r
 # Enable this universe
 options(repos = c(
-    dieghernan = 'https://dieghernan.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
+  dieghernan = "https://dieghernan.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
 
 
-install.packages('giscoR')
+install.packages("giscoR")
 ```
 
 ## Usage

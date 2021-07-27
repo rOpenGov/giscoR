@@ -61,7 +61,7 @@
   <path d="M 60.90625 10.082031 L 443.09375 10.082031 L 443.09375 493.917969 L 60.90625 493.917969 Z M 60.90625 10.082031 "/>
 </clipPath>
 </defs>
-<g id="surface24">
+<g id="surface39">
 <rect x="0" y="0" width="504" height="504" style="fill:rgb(100%,100%,100%);fill-opacity:1;stroke:none;"/>
 <g clip-path="url(#clip1)" clip-rule="nonzero">
 <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 60.90625 493.917969 L 443.09375 493.917969 L 443.09375 10.082031 L 60.90625 10.082031 Z M 60.90625 493.917969 "/>
