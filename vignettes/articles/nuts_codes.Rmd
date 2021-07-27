@@ -87,6 +87,5 @@ reactable(df,
   <summary><strong>Details</strong></summary>
 ```{r session_info, echo=FALSE}
 sessionInfo()
-
 ```
 </details>
