@@ -50,7 +50,7 @@ jobs:
 
       - name: Update docs
         run: |
-          pkgdown::build_favicons(overwrite = TRUE)
+          
           pkgdev::update_docs()
 
         shell: Rscript {0}
@@ -80,8 +80,8 @@ jobs:
 
       - name: Deploy package
         run: |
+          Rscript -e 'pkgdown::build_favicons(overwrite = TRUE)'
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
-
 
