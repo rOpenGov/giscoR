@@ -21,9 +21,10 @@ jobs:
       - name: Install sf libraries on macOs
         if: runner.os == 'macOS'
         run: | 
-          brew install proj
-          brew install geos
-          brew install gdal
+          brew ls --versions proj || brew install proj
+          brew ls --versions geos || brew install geos
+          brew ls --versions gdal || brew install gdal
+        
 
 
       - name: Query dependencies
