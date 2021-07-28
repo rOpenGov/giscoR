@@ -17,6 +17,14 @@ jobs:
       - uses: r-lib/actions/setup-r@master
 
       - uses: r-lib/actions/setup-pandoc@master
+      
+      - name: Install sf libraries on macOs
+        if: runner.os == 'macOS'
+        run: | 
+          brew install proj
+          brew install geos
+          brew install gdal
+
 
       - name: Query dependencies
         run: |
