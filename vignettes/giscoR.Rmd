@@ -44,7 +44,7 @@ projections: EPSG 4326, 3035 or 3857.
 
 `giscoR` provides a dataset caching capability, that could be set as:
 
-```{r, eval = FALSE}
+```r
 options(gisco_cache_dir = "~/path/to/dir")
 ```
 
@@ -57,35 +57,6 @@ If you experience any problems on downloading, you can also manually download
 the file from the [GISCO API
 website](https://gisco-services.ec.europa.eu/distribution/v2/) and store it on
 your local directory.
-
-# Installation
-
-Install `giscoR` from [**CRAN**](https://CRAN.R-project.org/package=giscoR):
-
-```{r, eval=FALSE}
-install.packages("giscoR")
-```
-
-Development version ([GitHub](https://github.com/dieghernan/giscoR/)):
-
-```{r, eval=FALSE}
-library(remotes)
-install_github("dieghernan/giscoR")
-```
-
-Alternatively, you can install `giscoR` using the
-[r-universe](https://dieghernan.r-universe.dev/ui#builds):
-
-```{r, eval=FALSE}
-# Enable this universe
-options(repos = c(
-  dieghernan = "https://dieghernan.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
-))
-
-
-install.packages("giscoR")
-```
 
 # Downloading data
 
