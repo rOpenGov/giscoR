@@ -2,6 +2,7 @@
 
 - Update on docs
 - `lwgeom` dependency removed.
+- Update internal grid object.
 
 # giscoR 0.2.4
 
