@@ -175,7 +175,7 @@ is extracted via the `eurostat` package. We would follow the fantastic approach
 presented by [Milos Popovic](https://twitter.com/milos_agathon) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
-```{r eurostat_install, fig.asp=1}
+```{r eurostat_install, include = FALSE}
 
 if (isFALSE(requireNamespace("eurostat", quietly = TRUE))) {
   install.packages("eurostat")
