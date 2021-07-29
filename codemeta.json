@@ -172,7 +172,7 @@
   ],
   "releaseNotes": "https://github.com/dieghernan/giscoR/blob/master/NEWS.md",
   "readme": "https://github.com/dieghernan/giscoR/blob/master/README.md",
-  "fileSize": "1812.984KB",
+  "fileSize": "1859.07KB",
   "contIntegration": ["https://github.com/dieghernan/giscoR/actions", "https://codecov.io/gh/dieghernan/giscoR"],
   "keywords": [
     "r",
