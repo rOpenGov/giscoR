@@ -13,34 +13,30 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE,
   message = FALSE,
-  fig.width = 6,
-  fig.height = 4,
-  out.width = "100%",
-  out.height = "60%"
+  out.width = "100%"
 )
 ```
-
 
 # Introduction
 
 *Full site with more examples and vignettes on
 <https://dieghernan.github.io/giscoR/>*
 
-[**`giscoR`**](https://dieghernan.github.io/giscoR/) is a package designed to 
-provide a clean interaction with the 
-[GISCO API](https://gisco-services.ec.europa.eu/distribution/v2/). 
+[**`giscoR`**](https://dieghernan.github.io/giscoR/) is a package designed to
+provide a clean interaction with the [GISCO
+API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-Within Eurostat, GISCO is responsible for meeting the European Commission's 
-geographical information needs at 3 levels: the European Union, its member 
-countries, and its regions. GISCO also provides a variety of shapefiles on 
-different formats, focusing specially in the European Union area, but providing 
-also some worldwide shapefiles, as country polygons, labels or borders and 
+Within Eurostat, GISCO is responsible for meeting the European Commission's
+geographical information needs at 3 levels: the European Union, its member
+countries, and its regions. GISCO also provides a variety of shapefiles on
+different formats, focusing specially in the European Union area, but providing
+also some worldwide shapefiles, as country polygons, labels or borders and
 coastal lines.
 
-GISCO provides data on different resolutions suitable for representing small 
-areas (01M, 03M) as well as lightweight datasets specially useful for 
-representing wider areas (10M, 20M, 60M). Shapefiles are provided on 3 
-different projections: EPSG 4326, 3035 or 3857. 
+GISCO provides data on different resolutions suitable for representing small
+areas (01M, 03M) as well as lightweight datasets specially useful for
+representing wider areas (10M, 20M, 60M). Shapefiles are provided on 3 different
+projections: EPSG 4326, 3035 or 3857.
 
 `giscoR` returns `sf` objects, so the `sf` package is necessary.
 
@@ -48,32 +44,31 @@ different projections: EPSG 4326, 3035 or 3857.
 
 `giscoR` provides a dataset caching capability, that could be set as:
 
-```r
+```{r, eval = FALSE}
 options(gisco_cache_dir = "~/path/to/dir")
 ```
 
-When this option is set, `giscoR` just load first the requested shapefile from 
-the local directory, speeding up the loading process. If the file is not 
-available locally, it would be downloaded to that directory so the next time 
-you need the corresponding data it would be loaded from the local directory. 
+When this option is set, `giscoR` just load first the requested shapefile from
+the local directory, speeding up the loading process. If the file is not
+available locally, it would be downloaded to that directory so the next time you
+need the corresponding data it would be loaded from the local directory.
 
-If you experience any problems on downloading, you can also manually download 
-the file from the 
-[GISCO API website](https://gisco-services.ec.europa.eu/distribution/v2/) and 
-store it on your local directory.
-
+If you experience any problems on downloading, you can also manually download
+the file from the [GISCO API
+website](https://gisco-services.ec.europa.eu/distribution/v2/) and store it on
+your local directory.
 
 # Installation
 
 Install `giscoR` from [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
-``` r
+```{r, eval=FALSE}
 install.packages("giscoR")
 ```
 
-Development version ([Github](https://github.com/dieghernan/giscoR/)):
+Development version ([GitHub](https://github.com/dieghernan/giscoR/)):
 
-```r
+```{r, eval=FALSE}
 library(remotes)
 install_github("dieghernan/giscoR")
 ```
@@ -81,24 +76,25 @@ install_github("dieghernan/giscoR")
 Alternatively, you can install `giscoR` using the
 [r-universe](https://dieghernan.r-universe.dev/ui#builds):
 
-``` r
+```{r, eval=FALSE}
 # Enable this universe
 options(repos = c(
-    dieghernan = 'https://dieghernan.r-universe.dev',
-    CRAN = 'https://cloud.r-project.org'))
+  dieghernan = "https://dieghernan.r-universe.dev",
+  CRAN = "https://cloud.r-project.org"
+))
 
 
-install.packages('giscoR')
+install.packages("giscoR")
 ```
 
 # Downloading data
 
-Please be aware that 
-[downloading provisions apply](https://ec.europa.eu/eurostat/web/gisco/geodata) 
-when using GISCO data. There is a function, `gisco_attributions` that would 
-guide you on this topic. It also provides attributions on several languages.
+Please be aware that [downloading provisions
+apply](https://ec.europa.eu/eurostat/web/gisco/geodata) when using GISCO data.
+There is a function, `gisco_attributions` that would guide you on this topic. It
+also provides attributions on several languages.
 
-```{r attributions}
+```{r, message=TRUE}
 library(giscoR)
 gisco_attributions(copyright = TRUE)
 ```
@@ -107,35 +103,40 @@ gisco_attributions(copyright = TRUE)
 
 Some examples on data downloads
 
-```{r country_reg}
+```{r country}
 
 library(sf)
-library(tmap) # Use tmap for plotting
+library(ggplot2) # Use ggplot for plotting
 
 
-countries <- gisco_get_countries(region = "Asia")
+Asia <- gisco_get_countries(region = "Asia")
 
-tmap_style("classic")
 
-tm_shape(countries) +
-  tm_graticules(lines = FALSE) +
-  tm_polygons() +
-  tm_credits(gisco_attributions(copyright = "FALSE")) +
-  tm_layout(
-    main.title = "Countries of Asia",
-    attr.outside = TRUE
+ggplot(Asia) +
+  geom_sf(fill = "cornsilk", color = "#887e6a") +
+  theme(
+    panel.background = element_rect(fill = "#fffff3"),
+    panel.border = element_rect(
+      colour = "#887e6a",
+      fill = NA,
+      size = 1.5
+    ),
+    axis.text = element_text(
+      family = "serif",
+      colour = "#887e6a",
+      face = "bold"
+    )
   )
-
-tmap_options_reset()
 ```
 
+You can select specific countries by name (in any language), ISO 3 codes or
+Eurostat codes. The only restriction is that you can't mix country names, ISO3
+and Eurostat codes on one single call.
 
-You can select specific countries by name (in any language), ISO 3 codes or Eurostat codes. The only restriction is that you can't mix country names, ISO3 and Eurostat codes on one single call.
+It is possible also to combine different shapefiles, just set `resolution` and
+`epsg` (and optionally `year`) to the same value:
 
-It is possible also to combine different shapefiles, just set `resolution` and `epsg` (and optionally `year`) to the same value:
-
-
-```{r africa_north}
+```{r africa}
 
 africa_north <-
   gisco_get_countries(
@@ -155,32 +156,30 @@ coast <- gisco_get_coastallines(
 
 # Plot
 
-# Coastline
-tm_shape(coast, bbox = c(-13, 18.5, 37, 40)) +
-  tm_fill(col = "grey80") +
-  # Shape of Africa
-  tm_shape(africa_north) +
-  tm_polygons(col = "grey30", border.col = "white") +
-  # Facets
-  tm_facets(by = "NAME_ENGL") +
-  tm_credits(gisco_attributions(copyright = "FALSE"),
-    position = c("right", "bottom")
+ggplot(coast) +
+  geom_sf(color = "grey80") +
+  geom_sf(data = africa_north, fill = "grey30", color = "white") +
+  coord_sf(
+    xlim = c(-13, 37),
+    ylim = c(18.5, 40)
   ) +
-  tm_layout(attr.outside = TRUE)
+  theme(
+    axis.ticks = element_blank(),
+    axis.text = element_blank()
+  ) +
+  facet_wrap(vars(NAME_ENGL), ncol = 2)
 ```
 
 # Plotting `giscoR`
 
-This is an example on how `giscoR` can play nicely with some Eurostat data. For 
-plotting purposes we would use the 
-[`tmap` package](https://mtennekes.github.io/tmap/), however any package that 
-handles `sf` objects (e.g. `ggplot2`, `mapsf`, `leaflet`, etc. could be used). 
+This is an example on how `giscoR` can play nicely with some Eurostat data. For
+plotting purposes we would use the `ggplot2` package however any package that
+handles `sf` objects (e.g. `tmap`, `mapsf`, `leaflet`, etc. could be used).
 
-Also `colorspace` and `rcartocolor` packages are recommended, as they provide 
+Also `colorspace` and `rcartocolor` packages are recommended, as they provide
 great color palettes.
 
-```{r giscoR_eurostat}
-
+```{r giscoR, fig.asp=1}
 
 nuts2 <- gisco_get_nuts(
   year = "2016",
@@ -201,48 +200,88 @@ borders <- gisco_get_countries(
 pps <- giscoR::tgs00026
 pps <- pps[pps$time == 2016, ]
 
+# Breaks
+br <- c(0, 14, 16, 18, 20, 22, 24, 26, 1000) * 1000
+
 nuts2.sf <- merge(nuts2,
   pps,
   by.x = "NUTS_ID",
   by.y = "geo",
   all.x = TRUE
 )
-# Plot
 
-tm_shape(nuts2.sf, bbox = c(-1, 47, 10, 54)) +
-  tm_polygons(
-    "values",
-    pal = "-inferno",
-    alpha = 0.6,
-    style = "headtails",
-    style.args = list(thr = 1),
-    showNA = FALSE,
-    border.alpha = 0.5,
-    border.col = "grey50",
-    title = "Euro (EUR)"
+# Cut
+nuts2.sf$values_groups <- cut(nuts2.sf$values, breaks = br)
+
+# Labels
+labels <- paste0(br / 1000, "k")[-1]
+labels[1] <- "<14K"
+labels[8] <- ">26k"
+
+
+
+# Plot
+pal <- hcl.colors(9, "Lajolla")
+
+ggplot(nuts2.sf) +
+  geom_sf(aes(fill = values_groups), color = NA, alpha = 0.9) +
+  geom_sf(data = borders, fill = NA, size = 0.5) +
+  coord_sf(
+    xlim = c(-1, 17),
+    ylim = c(46, 57)
   ) +
-  # Add borders
-  tm_shape(borders) +
-  tm_borders(col = "black") +
-  # Credits and format
-  tm_credits(gisco_attributions(),
-    position = c("right", "bottom")
+  labs(
+    title = "Disposable Incoming Households",
+    subtitle = "NUTS-2 level - 2016",
+    caption = paste0(
+      "Source: Eurostat\n ", gisco_attributions()
+    )
   ) +
-  tm_layout(
-    main.title = "Disposable Incoming Households 2016 (BENELUX Focus)",
-    main.title.size = 0.8,
-    main.title.fontface = "bold",
-    legend.outside = TRUE,
-    attr.outside = TRUE
+  scale_fill_manual(
+    name = "euros",
+    values = pal,
+    drop = FALSE,
+    labels = labels,
+    guide = guide_legend(
+      direction = "horizontal",
+      keyheight = 0.5,
+      keywidth = 1.5,
+      title.position = "top",
+      title.hjust = 0.5,
+      label.hjust = .5,
+      nrow = 1,
+      byrow = TRUE,
+      reverse = FALSE,
+      label.position = "bottom"
+    )
+  ) +
+  theme_void() +
+  # Theme
+  theme(
+    plot.title = element_text(
+      size = 16, color = pal[length(pal) - 1],
+      hjust = 0.5
+    ),
+    plot.subtitle = element_text(
+      size = 12,
+      color = pal[length(pal) - 1],
+      hjust = 0.5, face = "bold"
+    ),
+    plot.caption = element_text(
+      size = 8, color = "grey20",
+      hjust = 0.5,
+      margin = margin(t = 5, b = 5)
+    ),
+    legend.text = element_text(
+      size = 10,
+      color = "grey20"
+    ),
+    legend.title = element_text(
+      size = 11,
+      color = "grey20"
+    ),
+    legend.position = "bottom"
   )
 ```
 
-## Session Info
 
-<details>
-  <summary><strong>Details</strong></summary>
-  
-```{r session_info, echo=FALSE}
-sessionInfo()
-```
-</details>

@@ -78,32 +78,38 @@ This script highlights some features of `giscoR`:
 ``` r
 library(giscoR)
 library(sf)
+library(dplyr)
 
 # Different resolutions
-DNK_res60 <- gisco_get_countries(resolution = "60", country = "DNK")
+DNK_res60 <- gisco_get_countries(resolution = "60", country = "DNK") %>%
+  mutate(res = "60M")
 DNK_res20 <-
-  gisco_get_countries(resolution = "20", country = "DNK")
+  gisco_get_countries(resolution = "20", country = "DNK") %>%
+  mutate(res = "20M")
 DNK_res10 <-
-  gisco_get_countries(resolution = "10", country = "DNK")
+  gisco_get_countries(resolution = "10", country = "DNK") %>%
+  mutate(res = "10M")
 DNK_res03 <-
-  gisco_get_countries(resolution = "03", country = "DNK")
+  gisco_get_countries(resolution = "03", country = "DNK") %>%
+  mutate(res = "03M")
 
 
-# Plot tmap
+DNK_all <- bind_rows(DNK_res60, DNK_res20, DNK_res10, DNK_res03)
 
-library(tmap)
+# Plot ggplot2
 
-plot60 <- qtm(DNK_res60, fill = "tomato", main.title = "60M")
-plot20 <- qtm(DNK_res20, fill = "tomato", main.title = "20M")
-plot10 <- qtm(DNK_res10, fill = "tomato", main.title = "10M")
-plot03 <- qtm(DNK_res03, fill = "tomato", main.title = "03M")
+library(ggplot2)
 
-tmap_arrange(plot60, plot20, plot10, plot03)
+ggplot(DNK_all) +
+  geom_sf(fill = "tomato") +
+  facet_wrap(vars(res)) +
+  theme_minimal()
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
 
 ``` r
+
 # Labels and Lines available
 
 labs <- gisco_get_countries(
@@ -117,42 +123,51 @@ coast <- gisco_get_countries(
   epsg = "3857"
 )
 
+# For zooming
+afr_bbox <- st_bbox(labs)
 
-tm_shape(coast, bbox = labs) +
-  tm_lines("deepskyblue4") +
-  tm_shape(labs) +
-  tm_dots(
-    col = "springgreen4",
-    border.col = "darkgoldenrod1",
-    shape = 21,
-    border.lwd = 1,
-    size = 1
+ggplot(coast) +
+  geom_sf(col = "deepskyblue4", size = 3) +
+  geom_sf(data = labs, fill = "springgreen4", col = "darkgoldenrod1", size = 5, shape = 21) +
+  coord_sf(
+    xlim = afr_bbox[c("xmin", "xmax")],
+    ylim = afr_bbox[c("ymin", "ymax")]
   )
 ```
 
 <img src="man/figures/README-example-2.png" width="100%" />
 
-## Labels
+### Labels
 
-An example of a labeled map using `tmap`:
+An example of a labeled map using `ggplot2`:
 
 ``` r
 ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
 
-
-tm_shape(ITA, point.per = "feature") +
-  tm_polygons() +
-  tm_text("NAME_LATN")
+ggplot(ITA) +
+  geom_sf() +
+  geom_sf_text(aes(label = NAME_LATN)) +
+  theme(axis.title = element_blank())
 ```
 
 <img src="man/figures/README-labels-1.png" width="100%" />
 
-## Thematic maps
+### Thematic maps
 
-An example of a thematic map plotted with the `tmap` package. The
-information is extracted via the `eurostat` package:
+An example of a thematic map plotted with the `ggplot2` package. The
+information is extracted via the `eurostat` package. We would follow the
+fantastic approach presented by [Milos
+Popovic](https://twitter.com/milos_agathon) on [this
+post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
 ``` r
+if (isFALSE(requireNamespace("eurostat", quietly = TRUE))) {
+  install.packages("eurostat")
+}
+```
+
+``` r
+# Get shapes
 nuts3 <- gisco_get_nuts(
   year = "2016",
   epsg = "3035",
@@ -160,13 +175,14 @@ nuts3 <- gisco_get_nuts(
   nuts_level = "3"
 )
 
-# Countries
-countries <-
-  gisco_get_countries(
-    year = "2016",
-    epsg = "3035",
-    resolution = "3"
-  )
+# Group by NUTS by country and convert to lines
+country_lines <- nuts3 %>%
+  group_by(
+    CNTR_CODE
+  ) %>%
+  summarise(n = n()) %>%
+  st_cast("MULTILINESTRING")
+
 
 # Use eurostat
 library(eurostat)
@@ -175,7 +191,7 @@ popdens <- get_eurostat("demo_r_d3dens")
 popdens <- popdens[popdens$time == "2018-01-01", ]
 
 
-
+# Merge data
 nuts3.sf <- merge(nuts3,
   popdens,
   by.x = "NUTS_ID",
@@ -183,41 +199,90 @@ nuts3.sf <- merge(nuts3,
   all.x = TRUE
 )
 
+# Breaks and labels
+
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
 
+nuts3.sf$values_cut <- cut(nuts3.sf$values,
+  breaks = br,
+  dig.lab = 5
+)
+
+labs_plot <- prettyNum(br[-1], big.mark = ",")
+
+
+# Palette
+pal <- hcl.colors(length(br) - 1, "Lajolla")
+
+
 # Plot
-tm_shape(countries, bbox = c(23, 14, 74, 55) * 10e4) +
-  tm_fill("#E0E0E0") +
-  tm_shape(nuts3.sf) +
-  tm_fill(
-    "values",
-    breaks = br,
-    palette = "-inferno",
-    alpha = .7,
-    title = "Population density (km2)\nNUTS3 (2018)"
+
+ggplot(nuts3.sf) +
+  geom_sf(aes(fill = values_cut), size = 0, color = NA, alpha = 0.9) +
+  geom_sf(data = country_lines, col = "black", size = 0.1) +
+  # Center in Europe: EPSG 3035
+  coord_sf(
+    xlim = c(2377294, 7453440),
+    ylim = c(1313597, 5628510)
   ) +
-  tm_shape(countries) +
-  tm_borders(lwd = .25) +
-  tm_credits(gisco_attributions(),
-    position = c("left", "bottom")
+  labs(
+    title = "Population density in 2018",
+    subtitle = "NUTS-3 level",
+    caption = paste0(
+      "Source: Eurostat, ", gisco_attributions(),
+      "\nBased on Milos Popovic: https://milospopovic.net/how-to-make-choropleth-map-in-r/"
+    )
   ) +
-  tm_layout(
-    bg.color = "#daf3ff",
-    outer.bg.color = "white",
-    legend.bg.color = "white",
-    legend.frame = "black",
-    legend.title.size = 0.8,
-    inner.margins = c(0, 0, 0, 0),
-    outer.margins = c(0, 0, 0, 0),
-    frame = TRUE,
-    frame.lwd = 0,
-    attr.outside = TRUE
+  scale_fill_manual(
+    name = "people per sq. kilometer",
+    values = pal,
+    labels = labs_plot,
+    drop = FALSE,
+    guide = guide_legend(
+      direction = "horizontal",
+      keyheight = 0.5,
+      keywidth = 2.5,
+      title.position = "top",
+      title.hjust = 0.5,
+      label.hjust = .5,
+      nrow = 1,
+      byrow = TRUE,
+      reverse = FALSE,
+      label.position = "bottom"
+    )
+  ) +
+  theme_void() +
+  # Theme
+  theme(
+    plot.title = element_text(
+      size = 20, color = pal[length(pal) - 1],
+      hjust = 0.5, vjust = -10
+    ),
+    plot.subtitle = element_text(
+      size = 14,
+      color = pal[length(pal) - 1],
+      hjust = 0.5, vjust = -15, face = "bold"
+    ),
+    plot.caption = element_text(
+      size = 9, color = "grey60",
+      hjust = 0.5, vjust = 0,
+      margin = margin(t = 5, b = 10)
+    ),
+    legend.text = element_text(
+      size = 10,
+      color = "grey20"
+    ),
+    legend.title = element_text(
+      size = 11,
+      color = "grey20"
+    ),
+    legend.position = "bottom"
   )
 ```
 
 <img src="man/figures/README-thematic-1.png" width="100%" />
 
-### A note on caching
+## A note on caching
 
 Some data sets (as Local Administrative Units - LAU, or high-resolution
 files) may have a size larger than 50MB. You can use `giscoR` to create
@@ -253,7 +318,7 @@ Some packages recommended for visualization are:
 
 ## Contribute
 
-Check the Github page for [source
+Check the GitHub page for [source
 code](https://github.com/dieghernan/giscoR/).
 
 Contributions are very welcome:
@@ -261,7 +326,7 @@ Contributions are very welcome:
 -   [Use issue tracker](https://github.com/dieghernan/giscoR/issues) for
     feedback and bug reports.
 -   [Send pull requests](https://github.com/dieghernan/giscoR/)
--   [Star us on the Github page](https://github.com/dieghernan/giscoR)
+-   [Star us on the GitHub page](https://github.com/dieghernan/giscoR)
 
 ## Copyright notice
 

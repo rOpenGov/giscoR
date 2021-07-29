@@ -1,7 +1,7 @@
 Type: Package
 Package: giscoR
 Title: Download Map Data from GISCO API - Eurostat
-Version: 0.2.4.9000
+Version: 0.2.4.9004
 Authors@R: 
     c(person(given = "Diego",
              family = "Hernangómez",
@@ -32,10 +32,11 @@ Imports:
     sf (>= 0.9),
     utils
 Suggests: 
+    eurostat,
+    ggplot2 (>= 3.0.0),
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0),
-    tmap (>= 3.0)
+    testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3

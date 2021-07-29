@@ -45,10 +45,11 @@ NULL
 #' cntry <- gisco_countries
 #' GBR <- subset(cntry, ISO3_CODE == "GBR")
 #'
-#' library(tmap)
+#' library(ggplot2)
 #'
-#' tm_shape(GBR) +
-#'   tm_polygons(col = "red3", border.col = "blue4")
+#' ggplot(GBR) +
+#'   geom_sf(color = "red3", fill = "blue4") +
+#'   theme_void()
 #' @source
 #' [`CNTR_RG_20M_2016_4326.geojson`](https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/) file.
 #'
@@ -85,16 +86,12 @@ NULL
 #'
 #' coasts <- gisco_coastallines
 #'
-#' library(tmap)
+#' library(ggplot2)
 #'
-#' tmap_style("classic")
-#'
-#' qtm(coasts) + tm_compass(
-#'   position = c("left", "bottom"),
-#'   color.dark = "chocolate"
-#' )
-#'
-#' tmap_options_reset()
+#' ggplot(coasts) +
+#'   geom_sf(color = "blue", fill = "black") +
+#'   theme_minimal() +
+#'   theme(plot.background = element_rect(fill = "black", color = "black"))
 NULL
 
 #' All NUTS `POLYGON` object
@@ -133,10 +130,10 @@ NULL
 #'
 #' italy <- subset(nuts, CNTR_CODE == "IT" & LEVL_CODE == 3)
 #'
-#' library(tmap)
+#' library(ggplot2)
 #'
-#' tm_shape(italy) +
-#'   tm_polygons()
+#' ggplot(italy) +
+#'   geom_sf()
 #' @encoding UTF-8
 NULL
 

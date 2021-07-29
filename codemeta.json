@@ -69,6 +69,31 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
+      "identifier": "eurostat",
+      "name": "eurostat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=eurostat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "ggplot2",
+      "name": "ggplot2",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "knitr",
       "name": "knitr",
       "provider": {
@@ -103,19 +128,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "tmap",
-      "name": "tmap",
-      "version": ">= 3.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tmap"
     }
   ],
   "softwareRequirements": [
@@ -172,7 +184,7 @@
   ],
   "releaseNotes": "https://github.com/dieghernan/giscoR/blob/master/NEWS.md",
   "readme": "https://github.com/dieghernan/giscoR/blob/master/README.md",
-  "fileSize": "1859.07KB",
+  "fileSize": "1955.093KB",
   "contIntegration": ["https://github.com/dieghernan/giscoR/actions", "https://codecov.io/gh/dieghernan/giscoR"],
   "keywords": [
     "r",
