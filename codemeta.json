@@ -14,7 +14,7 @@
   ],
   "issueTracker": "https://github.com/dieghernan/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.4.9000",
+  "version": "0.2.4.9004",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -184,7 +184,7 @@
   ],
   "releaseNotes": "https://github.com/dieghernan/giscoR/blob/master/NEWS.md",
   "readme": "https://github.com/dieghernan/giscoR/blob/master/README.md",
-  "fileSize": "1955.093KB",
+  "fileSize": "1954.559KB",
   "contIntegration": ["https://github.com/dieghernan/giscoR/actions", "https://codecov.io/gh/dieghernan/giscoR"],
   "keywords": [
     "r",
