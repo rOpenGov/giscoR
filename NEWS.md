@@ -1,8 +1,10 @@
 # giscoR (development version)
 
 - Update on docs
+- Add `eurostat` package to `Suggests`.
 - `lwgeom` dependency removed.
 - Update internal grid object.
+- `tmap` package replaced by `ggplot2` on vignettes and examples.
 
 # giscoR 0.2.4
 
@@ -26,7 +28,7 @@
 
 - Remove CRAN notes.
 - Improve docs.
-- Fix cran checks.
+- Fix CRAN checks.
 
 
 # giscoR 0.2.0

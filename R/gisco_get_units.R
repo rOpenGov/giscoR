@@ -45,9 +45,6 @@
 #' @seealso [gisco_get]
 #'
 #' @examples
-#' \dontrun{
-#' library(sf)
-#'
 #' if (gisco_check_access()) {
 #'   cities <- gisco_get_units(
 #'     id_giscoR = "urban_audit",
@@ -55,7 +52,7 @@
 #'     year = "2020"
 #'   )
 #'   VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
-#'   #'   Order from big to small
+#'   #   Order from big to small
 #'   VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
 #'
 #'   VAL.sf <- gisco_get_units(
@@ -71,39 +68,21 @@
 #'       resolution = "01"
 #'     )
 #'
-#'   # Surrounding area
-#'   NUTS1 <-
-#'     gisco_get_units(
-#'       id_giscoR = "nuts",
-#'       unit = c("ES5"),
-#'       resolution = "01"
-#'     )
+#'   # Reorder
+#'   VAL.sf$URAU_CATG <- factor(VAL.sf$URAU_CATG, levels = c("F", "K", "C"))
 #'
 #'   # Plot
-#'   plot(
-#'     st_geometry(Provincia),
-#'     col = "gray1",
-#'     border = "grey50",
-#'     lwd = 3
-#'   )
-#'   plot(st_geometry(NUTS1),
-#'     border = "grey50",
-#'     lwd = 3,
-#'     add = TRUE
-#'   )
-#'   plot(
-#'     st_geometry(VAL.sf),
-#'     col = c("deeppink4", "brown2", "khaki1"),
-#'     add = TRUE
-#'   )
-#'   box()
-#'   title(
-#'     "Urban Audit - Valencia (ES)",
-#'     sub = gisco_attributions("es"),
-#'     line = 1,
-#'     cex.sub = 0.7
-#'   )
-#' }
+#'   library(ggplot2)
+#'
+#'   ggplot(Provincia) +
+#'     geom_sf(fill = "gray1") +
+#'     geom_sf(data = VAL.sf, aes(fill = URAU_CATG)) +
+#'     scale_fill_viridis_d() +
+#'     labs(
+#'       title = "Valencia",
+#'       subtitle = "Urban Audit",
+#'       fill = "Urban Audit\ncategory"
+#'     )
 #' }
 #' @export
 gisco_get_units <- function(id_giscoR = "nuts",
