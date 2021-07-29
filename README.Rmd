@@ -180,8 +180,6 @@ post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 if (isFALSE(requireNamespace("eurostat", quietly = TRUE))) {
   install.packages("eurostat")
 }
-
-
 ```
 
 ```{r thematic, fig.asp=1.1}
