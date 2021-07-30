@@ -25,7 +25,7 @@ test_that("NUTS online", {
   )
 
   expect_silent(gisco_get_nuts(spatialtype = "LB"))
-  
+
   expect_silent(gisco_get_nuts(resolution = "60", nuts_level = "0"))
   expect_message(
     gisco_get_nuts(
