@@ -44,7 +44,7 @@ projections: EPSG 4326, 3035 or 3857.
 
 `giscoR` provides a dataset caching capability, that could be set as:
 
-```r
+```{r, eval=FALSE}
 options(gisco_cache_dir = "~/path/to/dir")
 ```
 

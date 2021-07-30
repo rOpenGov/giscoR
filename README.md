@@ -9,15 +9,15 @@
 status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![CRAN
 results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.org/web/checks/check_results_giscoR.html)
+[![Downloads](https://cranlogs.r-pkg.org/badges/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![r-universe](https://dieghernan.r-universe.dev/badges/giscoR)](https://dieghernan.r-universe.dev/)
 [![R build
 status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
 [![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
-![](https://cranlogs.r-pkg.org/badges/giscoR) [![Project Status: Active
-– The project has reached a stable, usable state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
 [![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/giscor/badge)](https://www.codefactor.io/repository/github/dieghernan/giscor)
+[![Project Status:
+Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
 <!-- badges: end -->
 
@@ -76,7 +76,6 @@ install.packages("giscoR")
 This script highlights some features of `giscoR`:
 
 ``` r
-
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -111,7 +110,6 @@ ggplot(DNK_all) +
 
 ``` r
 
-
 # Labels and Lines available
 
 labs <- gisco_get_countries(
@@ -144,7 +142,6 @@ ggplot(coast) +
 An example of a labeled map using `ggplot2`:
 
 ``` r
-
 ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
 
 ggplot(ITA) +
@@ -164,7 +161,6 @@ Popovic](https://twitter.com/milos_agathon) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
 ``` r
-
 # Get shapes
 nuts3 <- gisco_get_nuts(
   year = "2016",
@@ -301,18 +297,18 @@ them on your local directory.
 
 ### API data packages
 
-  - `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
+-   `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
     an API package that provides access to open data from Eurostat.
 
 ### Plotting `sf` objects
 
 Some packages recommended for visualization are:
 
-  - [`tmap`](https://mtennekes.github.io/tmap/)
-  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+-   [`tmap`](https://mtennekes.github.io/tmap/)
+-   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-  - [`mapsf`](https://riatelab.github.io/mapsf/)
-  - [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [`mapsf`](https://riatelab.github.io/mapsf/)
+-   [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 
@@ -321,14 +317,14 @@ code](https://github.com/dieghernan/giscoR/).
 
 Contributions are very welcome:
 
-  - [Use issue tracker](https://github.com/dieghernan/giscoR/issues) for
+-   [Use issue tracker](https://github.com/dieghernan/giscoR/issues) for
     feedback and bug reports.
-  - [Send pull requests](https://github.com/dieghernan/giscoR/)
-  - [Star us on the GitHub page](https://github.com/dieghernan/giscoR)
+-   [Send pull requests](https://github.com/dieghernan/giscoR/)
+-   [Star us on the GitHub page](https://github.com/dieghernan/giscoR)
 
 ## Copyright notice
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 When data downloaded from this page is used in any printed or electronic
