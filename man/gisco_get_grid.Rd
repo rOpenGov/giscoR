@@ -50,6 +50,7 @@ There are specific downloading provisions, please see
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}
 }
 \examples{
+\donttest{
 grid <- gisco_get_grid(resolution = 20)
 grid$popdens <- grid$TOT_P_2011 / 20
 
@@ -137,6 +138,7 @@ ggplot(grid) +
     ),
     legend.position = "bottom"
   )
+}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
