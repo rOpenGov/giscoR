@@ -34,6 +34,7 @@
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids>
 #'
 #' @examples
+#' \donttest{
 #' grid <- gisco_get_grid(resolution = 20)
 #' grid$popdens <- grid$TOT_P_2011 / 20
 #'
@@ -121,6 +122,7 @@
 #'     ),
 #'     legend.position = "bottom"
 #'   )
+#' }
 #' @export
 gisco_get_grid <- function(resolution = "20",
                            spatialtype = "REGION",
