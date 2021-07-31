@@ -107,7 +107,7 @@ ggplot(DNK_all) +
   theme_minimal()
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-1.png" width="100%" />
 
 ``` r
 
@@ -137,7 +137,7 @@ ggplot(coast) +
   )
 ```
 
-<img src="man/figures/README-example-2.png" width="100%" />
+<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-2.png" width="100%" />
 
 ### Labels
 
@@ -153,7 +153,7 @@ ggplot(ITA) +
   theme(axis.title = element_blank())
 ```
 
-<img src="man/figures/README-labels-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-labels-1.png" width="100%" />
 
 ### Thematic maps
 
@@ -278,7 +278,7 @@ ggplot(nuts3.sf) +
   )
 ```
 
-<img src="man/figures/README-thematic-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-thematic-1.png" width="100%" />
 
 ## A note on caching
 
