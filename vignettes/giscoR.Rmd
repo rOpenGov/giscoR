@@ -77,7 +77,7 @@ gisco_attributions(copyright = TRUE)
 
 Some examples on data downloads
 
-```{r country, eval=FALSE}
+```{r country}
 
 library(sf)
 library(ggplot2) # Use ggplot for plotting
@@ -103,11 +103,6 @@ ggplot(Asia) +
   )
 ```
 
-```{r include_png1, echo=FALSE, out.width="100%"}
-# From cache
-knitr::include_graphics("country.png")
-```
-
 You can select specific countries by name (in any language), ISO 3 codes or
 Eurostat codes. The only restriction is that you can't mix country names, ISO3
 and Eurostat codes on one single call.
@@ -115,7 +110,7 @@ and Eurostat codes on one single call.
 It is possible also to combine different shapefiles, just set `resolution` and
 `epsg` (and optionally `year`) to the same value:
 
-```{r africa, eval=FALSE}
+```{r africa}
 
 africa_north <-
   gisco_get_countries(
@@ -147,12 +142,6 @@ ggplot(coast) +
     axis.text = element_blank()
   ) +
   facet_wrap(vars(NAME_ENGL), ncol = 2)
-```
-
-
-```{r include_png2, echo=FALSE, out.width="100%"}
-# From cache
-knitr::include_graphics("africa.png")
 ```
 
 # Plotting `giscoR`
@@ -278,6 +267,8 @@ ggplot(nuts2.sf) +
   )
 ```
 ```{r include_png3, echo=FALSE, out.width="100%"}
+
+# For better quality, including cache png
 # From cache
 knitr::include_graphics("choro.png")
 ```
