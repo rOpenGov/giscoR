@@ -20,8 +20,8 @@
 #' | :---         | :--      |
 #' | **Package**  | giscoR |
 #' | **Type**     | Package  |
-#' | **Version**  | See sessionInfo() or DESCRIPTION file |
-#' | **Date**     | 2021     |
+#' | **Version**  | `r packageVersion("giscoR")` |
+#' | **Date**     | `r format(Sys.Date(), "%Y")`     |
 #' | **License**  | GPL-3    |
 #' | **LazyLoad** | yes      |
 #'

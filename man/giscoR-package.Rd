@@ -16,7 +16,7 @@ giscoR package\tabular{ll}{
     \tab  \cr
    \strong{Package} \tab giscoR \cr
    \strong{Type} \tab Package \cr
-   \strong{Version} \tab See sessionInfo() or DESCRIPTION file \cr
+   \strong{Version} \tab 0.2.4.9004 \cr
    \strong{Date} \tab 2021 \cr
    \strong{License} \tab GPL-3 \cr
    \strong{LazyLoad} \tab yes \cr
