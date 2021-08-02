@@ -370,14 +370,17 @@ gsc_api_load <- function(file = NULL,
           input = num$input,
           wkt = num$wkt
         ),
-        warning = function(e) {
-          message(
-            "\n\nFile couldn't be loaded from \n\n",
-            file,
-            "\n\n Please try cache = TRUE"
-          )
-          return(TRUE)
-        },
+        # Commented. This cause an error due to an
+        # geojsonsf::geojson_sf warning
+        # v0.2.4.9005
+        # warning = function(e) {
+        #   message(
+        #     "\n\nFile couldn't be loaded from \n\n",
+        #     file,
+        #     "\n\n Please try cache = TRUE"
+        #   )
+        #   return(TRUE)
+        # },
         error = function(e) {
           message(
             "File :\n",

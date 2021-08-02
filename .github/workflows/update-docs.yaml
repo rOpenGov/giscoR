@@ -22,9 +22,7 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages('remotes')
-          remotes::install_cran('devtools')
-          remotes::install_cran("rcmdcheck")
-          remotes::install_cran("pkgdown", dependencies = TRUE)
+          remotes::install_cran(c("devtools", "rcmdcheck", "pkgdown"))
 
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
@@ -51,7 +49,7 @@ jobs:
 
       - name: Update docs
         run: |
-          
+
           pkgdev::update_docs()
 
         shell: Rscript {0}
@@ -85,4 +83,3 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
-

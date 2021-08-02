@@ -19,6 +19,12 @@ test_that("Units online", {
     unit = "ES"
   ))
   expect_silent(gisco_get_units(
+    year = "2001",
+    id_giscoR = "countries",
+    unit = "ES",
+    cache = FALSE
+  ))
+  expect_silent(gisco_get_units(
     id_giscoR = "countries",
     unit = "Spain",
     spatialtype = "LB"

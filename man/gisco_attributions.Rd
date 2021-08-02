@@ -61,7 +61,7 @@ please contact EuroGeographics for
 information regarding their licence agreements.
 }
 \examples{
-en <- gisco_attributions()
+gisco_attributions()
 
 gisco_attributions(lang = "es", copyright = TRUE)
 

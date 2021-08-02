@@ -13,6 +13,7 @@ test_that("Communes online", {
   )
 
   expect_silent(gisco_get_communes(spatialtype = "COASTL"))
+  expect_warning(gisco_get_communes(spatialtype = "LB", cache = FALSE))
   expect_silent(gisco_get_communes(spatialtype = "LB", country = "LU"))
   expect_silent(gisco_get_communes(spatialtype = "COASTL"))
 })

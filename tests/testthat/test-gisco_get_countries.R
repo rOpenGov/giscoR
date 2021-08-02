@@ -46,6 +46,11 @@ test_that("Countries online", {
     country = c("Spain", "Italia")
   ))
 
+  expect_warning(gisco_get_countries(
+    spatialtype = "LB",
+    cache = FALSE
+  ))
+
   expect_silent(gisco_get_countries(
     spatialtype = "COASTL",
     country = c("ESP", "ITA")

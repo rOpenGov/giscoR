@@ -13,6 +13,8 @@ test_that("Urban Audit online", {
   )
 
   expect_silent(gisco_get_urban_audit(level = "GREATER_CITIES"))
+  expect_warning(gisco_get_urban_audit(level = "GREATER_CITIES", cache = FALSE))
+
   expect_silent(gisco_get_urban_audit(
     spatialtype = "LB",
     level = "GREATER_CITIES"
