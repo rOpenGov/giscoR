@@ -26,7 +26,6 @@
 #' | **LazyLoad** | yes      |
 #'
 #'
-
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
