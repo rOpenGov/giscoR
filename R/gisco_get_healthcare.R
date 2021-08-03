@@ -23,6 +23,7 @@
 #'
 #' @seealso [gisco_get_countries()]
 #' @examples
+#' \donttest{
 #' if (gisco_check_access()) {
 #'   health_BEL <- gisco_get_healthcare(country = "Belgium")
 #'   health_BEL[health_BEL$public_private == "", ]$public_private <- "unknown"
@@ -42,6 +43,7 @@
 #'     ) +
 #'     scale_color_manual(name = "type", values = hcl.colors(3, "Berlin")) +
 #'     theme_minimal()
+#' }
 #' }
 #' @export
 gisco_get_healthcare <- function(cache = TRUE,

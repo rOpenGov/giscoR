@@ -57,6 +57,7 @@ For a complete list of files available check \link{gisco_db}.
 }
 
 \examples{
+\donttest{
 if (gisco_check_access()) {
   health_BEL <- gisco_get_healthcare(country = "Belgium")
   health_BEL[health_BEL$public_private == "", ]$public_private <- "unknown"
@@ -76,6 +77,7 @@ if (gisco_check_access()) {
     ) +
     scale_color_manual(name = "type", values = hcl.colors(3, "Berlin")) +
     theme_minimal()
+}
 }
 }
 \seealso{
