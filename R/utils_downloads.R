@@ -41,7 +41,7 @@ gisco_check_access <- function() {
 gsc_helper_cachedir <- function(cache_dir = NULL) {
   # Check cache dir from options if not set
   if (is.null(cache_dir)) {
-    cache_dir <- getOption("gisco_cache_dir", NULL)
+    cache_dir <- gsc_helper_detect_cache_dir()
   }
   # Reevaluate
   if (is.null(cache_dir)) {
@@ -402,14 +402,15 @@ gsc_api_load <- function(file = NULL,
             stringsAsFactors = FALSE,
             quiet = !verbose
           ),
-        warning = function(e) {
-          message(
-            "\n\nFile couldn't be loaded from \n\n",
-            file,
-            "\n\n Please try cache = TRUE"
-          )
-          return(TRUE)
-        },
+        # See fix of geojsonsf warning
+        # warning = function(e) {
+        #   message(
+        #     "\n\nFile couldn't be loaded from \n\n",
+        #     file,
+        #     "\n\n Please try cache = TRUE"
+        #   )
+        #   return(TRUE)
+        # },
         error = function(e) {
           message(
             "File :\n",

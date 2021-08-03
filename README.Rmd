@@ -305,14 +305,11 @@ ggplot(nuts3.sf) +
 
 Some data sets (as Local Administrative Units - LAU, or high-resolution files)
 may have a size larger than 50MB. You can use `giscoR` to create your own local
-repository at a given local directory passing the following option:
+repository at a given local directory passing the following function:
 
 ```{r, eval=FALSE}
-options(gisco_cache_dir = "./path/to/location")
+gisco_set_cache_dir("./path/to/location")
 ```
-
-When this option is set, `giscoR` would look for the cached file and it will
-load it, speeding up the process.
 
 You can also download manually the files (`.geojson` format) and store them on
 your local directory.

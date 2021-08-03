@@ -1,7 +1,7 @@
 Type: Package
 Package: giscoR
 Title: Download Map Data from GISCO API - Eurostat
-Version: 0.2.4.9006
+Version: 0.2.4.9008
 Authors@R: 
     c(person(given = "Diego",
              family = "Hernangómez",
@@ -28,8 +28,9 @@ Depends:
     R (>= 3.6.0)
 Imports: 
     countrycode (>= 1.2.0),
-    geojsonsf (>= 2.0),
-    sf (>= 0.9),
+    geojsonsf (>= 2.0.0),
+    rappdirs (>= 0.3.0),
+    sf (>= 0.9.0),
     utils
 Suggests: 
     eurostat,
