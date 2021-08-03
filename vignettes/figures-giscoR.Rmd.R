@@ -100,16 +100,16 @@ ggplot(nuts2.sf) +
     ),
     plot.caption = element_text(
       color = "grey90",
-      size=6,
+      size = 6,
       hjust = 0.5,
-      margin = margin(b = 2, t=13)
+      margin = margin(b = 2, t = 13)
     ),
     legend.text = element_text(
-      size=7,
+      size = 7,
       color = "grey90"
     ),
     legend.title = element_text(
-      size=7,
+      size = 7,
       color = "grey90"
     ),
     legend.position = c(0.5, 0.02)
