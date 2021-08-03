@@ -13,16 +13,19 @@
 #'
 #' @concept political
 #'
+#' @aliases gisco_get
+#'
 #' @details
 #' # About caching
+#'
+#' You can set your `cache_dir` with [gisco_set_cache_dir()].
 #'
 #' Sometimes cached files may be corrupt. On that case, try re-downloading
 #' the data setting `update_cache = TRUE`.
 #'
-#' Set `cache_dir = "path/to/dir"` or
-#' `options(gisco_cache_dir = "path/to/dir)`. If you experience any problem
-#' on download, try to download the corresponding .geojson file by any
-#' other method and save it on your `cache_dir`.
+#'  If you experience any problem on download, try to download the
+#'  corresponding .geojson file by any other method and save it on your
+#'  `cache_dir`. Use the option `verbose = TRUE` for debugging the API query.
 #'
 #' For a complete list of files available check [gisco_db].
 #'

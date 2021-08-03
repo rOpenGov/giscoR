@@ -11,42 +11,84 @@ test_that("Bulk download online", {
     "Skipping... GISCO not reachable."
   )
 
-  expect_silent(gisco_bulk_download(resolution = 60))
-  expect_silent(gisco_bulk_download(resolution = 60, ext = "shp"))
-  expect_silent(gisco_bulk_download(resolution = 60, ext = "svg"))
-  expect_silent(gisco_bulk_download(resolution = 60, ext = "json"))
-  expect_silent(gisco_bulk_download(resolution = 60, ext = "gdb"))
-  expect_silent(gisco_bulk_download(id_giscoR = "urban_audit", year = 2004))
-  expect_message(gisco_bulk_download(resolution = 60, verbose = TRUE))
-  expect_message(gisco_bulk_download(
+  expect_silent(gisco_bulk_download(resolution = 60, cache_dir = tempdir()))
+  expect_silent(gisco_bulk_download(
     resolution = 60,
-    verbose = TRUE,
+    cache_dir = tempdir(),
+    ext = "shp"
+  ))
+  expect_silent(gisco_bulk_download(
+    resolution = 60,
+    cache_dir = tempdir(),
+    ext = "svg"
+  ))
+  expect_silent(gisco_bulk_download(
+    resolution = 60,
+    cache_dir = tempdir(),
     ext = "json"
   ))
+  expect_silent(gisco_bulk_download(
+    resolution = 60,
+    cache_dir = tempdir(),
+    ext = "gdb"
+  ))
+  expect_silent(gisco_bulk_download(
+    id_giscoR = "urban_audit",
+    cache_dir = tempdir(),
+    year = 2004
+  ))
+  expect_message(gisco_bulk_download(
+    resolution = 60,
+    cache_dir = tempdir(),
+    verbose = TRUE
+  ))
+  expect_message(
+    gisco_bulk_download(
+      resolution = 60,
+      verbose = TRUE,
+      cache_dir = tempdir(),
+      ext = "json"
+    )
+  )
   expect_message(gisco_bulk_download(
     resolution = 60,
     verbose = TRUE,
+    cache_dir = tempdir(),
     ext = "shp"
   ))
   expect_message(gisco_bulk_download(
     resolution = 60,
     verbose = TRUE,
+    cache_dir = tempdir(),
     ext = "shp"
   ))
-  expect_silent(gisco_bulk_download(resolution = 60, update_cache = TRUE))
-  expect_message(gisco_bulk_download(
+  expect_silent(gisco_bulk_download(
     resolution = 60,
-    ext = "shp",
-    recursive = TRUE
+    update_cache = TRUE,
+    cache_dir = tempdir(),
   ))
-  expect_message(gisco_bulk_download(
-    resolution = 60,
-    ext = "shp",
-    recursive = FALSE
-  ))
-  expect_message(gisco_bulk_download(
-    id_giscoR = "countries",
-    verbose = TRUE,
-    resolution = 60
-  ))
+  expect_message(
+    gisco_bulk_download(
+      resolution = 60,
+      cache_dir = tempdir(),
+      ext = "shp",
+      recursive = TRUE
+    )
+  )
+  expect_message(
+    gisco_bulk_download(
+      resolution = 60,
+      cache_dir = tempdir(),
+      ext = "shp",
+      recursive = FALSE
+    )
+  )
+  expect_message(
+    gisco_bulk_download(
+      id_giscoR = "countries",
+      cache_dir = tempdir(),
+      verbose = TRUE,
+      resolution = 60
+    )
+  )
 })

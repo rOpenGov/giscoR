@@ -71,13 +71,14 @@ of Eurostat.
 Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
 \section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.
+
 Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting \code{update_cache = TRUE}.
 
-Set \code{cache_dir = "path/to/dir"} or
-\verb{options(gisco_cache_dir = "path/to/dir)}. If you experience any problem
-on download, try to download the corresponding .geojson file by any
-other method and save it on your \code{cache_dir}.
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 
 For a complete list of files available check \link{gisco_db}.
 }

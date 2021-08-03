@@ -48,11 +48,10 @@ projections: EPSG 4326, 3035 or 3857.
 `giscoR` provides a dataset caching capability, that could be set as:
 
 ```{r, eval=FALSE}
-options(gisco_cache_dir = "~/path/to/dir")
+gisco_set_cache_dir("./path/to/location")
 ```
 
-When this option is set, `giscoR` just load first the requested shapefile from
-the local directory, speeding up the loading process. If the file is not
+If the file is not
 available locally, it would be downloaded to that directory so the next time you
 need the corresponding data it would be loaded from the local directory.
 
