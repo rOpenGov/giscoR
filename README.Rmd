@@ -342,6 +342,15 @@ Contributions are very welcome:
 -   [Send pull requests](https://github.com/dieghernan/giscoR/)
 -   [Star us on the GitHub page](https://github.com/dieghernan/giscoR)
 
+## Citation 
+
+Please use the following when citing `giscoR`: 
+
+```{r}
+citation("giscoR")
+```
+
+
 ## Copyright notice
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units / Statistical
