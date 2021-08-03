@@ -323,6 +323,32 @@ Contributions are very welcome:
   - [Send pull requests](https://github.com/dieghernan/giscoR/)
   - [Star us on the GitHub page](https://github.com/dieghernan/giscoR)
 
+## Citation
+
+Please use the following when citing `giscoR`:
+
+``` r
+citation("giscoR")
+#> 
+#> To cite the 'giscoR' package in publications use:
+#> 
+#>   Hernangómez, D (2021). giscoR: Download Map Data from GISCO API -
+#>   Eurostat. R package version 0.2.4.9008.
+#>   http://doi.org/10.5281/zenodo.4317946. Package url:
+#>   https://CRAN.R-project.org/package=giscoR
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {giscoR: Download Map Data from GISCO API - Eurostat},
+#>     author = {Diego Hernangómez},
+#>     year = {2021},
+#>     note = {R package version 0.2.4.9008},
+#>     url = {https://CRAN.R-project.org/package=giscoR},
+#>     doi = {10.5281/zenodo.4317946},
+#>   }
+```
+
 ## Copyright notice
 
 *From GISCO \> Geodata \> Reference data \> Administrative Units /
