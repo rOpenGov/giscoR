@@ -1,6 +1,6 @@
 # giscoR (development version)
 
--   Update on docs
+-   Update on docs. New examples
 -   Add `eurostat` package to `Suggests`.
 -   `lwgeom` dependency removed.
 -   Update internal grid object.

@@ -14,7 +14,7 @@ A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/}{\code{COAS_RG_20M_2016_4326.geojson}} file.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/}{COAS_RG_20M_2016_4326.geojson} file.
 }
 \description{
 A \code{sf} object as provided by GISCO (2016 version).
@@ -26,9 +26,21 @@ coasts <- gisco_coastallines
 library(ggplot2)
 
 ggplot(coasts) +
-  geom_sf(color = "blue", fill = "black") +
+  geom_sf(color = "blue", fill = "blue", alpha = 0.2) +
+  # Zoom on Oceania
+  coord_sf(
+    xlim = c(96, 179),
+    ylim = c(-51, 11)
+  ) +
   theme_minimal() +
-  theme(plot.background = element_rect(fill = "black", color = "black"))
+  theme(
+    plot.background = element_rect(
+      fill = "black",
+      color = "black"
+    ),
+    panel.grid = element_blank(),
+    axis.text = element_text(colour = "grey90")
+  )
 }
 \seealso{
 \code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}}

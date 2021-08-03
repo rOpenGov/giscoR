@@ -22,7 +22,9 @@
 #' @param spatialtype Type of geometry to be returned: "RG", for `POLYGON` and
 #' "LB" for `POINT`.
 #'
-#' @inheritParams gisco_get
+#' @inheritParams gisco_get_countries
+#'
+#' @inheritSection gisco_get_countries About caching
 #'
 #' @details
 #' The function can return a dataframe on `mode = "df"` or a `sf` object
@@ -39,10 +41,12 @@
 #' Country-level files would be renamed on your `cache_dir`
 #' to avoid naming conflicts with NUTS-0 datasets.
 #'
+#' Please check the download and usage provisions on [gisco_attributions()].
+#'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
-#' @seealso [gisco_get]
+#' @seealso [gisco_get_countries()]
 #'
 #' @examples
 #' if (gisco_check_access()) {

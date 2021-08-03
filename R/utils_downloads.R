@@ -214,9 +214,12 @@ gsc_api_url <- function(id_giscoR = "nuts",
         paste0("'", av_ualevel, "'", collapse = ",")
       )
     }
-    db <- db[grep(level, db$level), ]
+    if (level == "CITIES") {
+      db <- db[db$level == "CITIES", ]
+    } else {
+      db <- db[grep(level, db$level), ]
+    }
   }
-
 
   # Sanity check
   # nocov start

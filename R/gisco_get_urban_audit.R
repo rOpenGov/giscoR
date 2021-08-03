@@ -1,0 +1,100 @@
+#' Get GISCO greater cities and metropolitan areas `sf` polygons and points
+#'
+#' @description
+#' Returns polygons and points corresponding to cities, greater cities and
+#' metropolitan areas included on the
+#' [Urban Audit report](https://ec.europa.eu/eurostat/web/regions-and-cities)
+#' of Eurostat.
+#'
+#' @concept political
+#'
+#' @return A `sf` object specified by `spatialtype`.
+#'
+#' @param year Release year of the file. One of "2001", "2004",
+#'   "2014", "2018" or "2020".
+#'
+#' @param spatialtype Type of geometry to be returned:
+#'  * **"LB"**: Labels - `POINT` object.
+#'  * **"RG"**: Regions - `MULTIPOLYGON/POLYGON` object.
+#'
+#' @param level Level of Urban Audit. Possible values are "CITIES", "FUA",
+#' "GREATER_CITIES" or `NULL`, that would download the full dataset.
+#'
+#' @inheritParams gisco_get_countries
+#'
+#' @inheritSection gisco_get_countries About caching
+#'
+#' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
+#'
+#' @seealso [gisco_get_communes()], [gisco_get_lau()]
+#'
+#' @export
+#'
+#' @note
+#' Please check the download and usage provisions on [gisco_attributions()].
+#'
+#' @examples
+#' \donttest{
+#' # If online
+#' if (gisco_check_access()) {
+#'   cities <- gisco_get_urban_audit(year = "2020", level = "CITIES")
+#'
+#'   bcn <- cities[cities$URAU_NAME == "Barcelona", ]
+#'
+#'   library(ggplot2)
+#'   ggplot(bcn) +
+#'     geom_sf()
+#' }
+#' }
+gisco_get_urban_audit <- function(year = "2020",
+                                  epsg = "4326",
+                                  cache = TRUE,
+                                  update_cache = FALSE,
+                                  cache_dir = NULL,
+                                  verbose = FALSE,
+                                  spatialtype = "RG",
+                                  country = NULL,
+                                  level = NULL) {
+  ext <- "geojson"
+
+  geturl <- gsc_api_url(
+    id_giscoR = "urban_audit",
+    year = year,
+    epsg = epsg,
+    resolution = 0,
+    # Not neccesary
+    spatialtype = spatialtype,
+    ext = ext,
+    nuts_level = NULL,
+    level = level,
+    verbose = verbose
+  )
+  # There are not data file on this
+  dwnload <- TRUE
+  if (dwnload) {
+    if (cache) {
+      # Guess source to load
+      namefileload <-
+        gsc_api_cache(
+          geturl$api_url,
+          geturl$namefile,
+          cache_dir,
+          update_cache,
+          verbose
+        )
+    } else {
+      namefileload <- geturl$api_url
+    }
+
+    # Load - geojson only so far
+    data_sf <-
+      gsc_api_load(namefileload, epsg, ext, cache, verbose)
+  }
+
+  if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
+    # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
+    country <- gsc_helper_countrynames(country, "eurostat")
+    data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
+  }
+  return(data_sf)
+}

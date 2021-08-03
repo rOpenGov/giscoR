@@ -30,7 +30,7 @@ NULL
 #'
 #' @format
 #' A `MULTIPOLYGON` data frame (resolution: 1:20million, EPSG:4326) object
-#' with 257 rows and 7 variables:
+#' with `r nrow(giscoR::gisco_countries)` rows and 7 variables:
 #'   * **id**: row ID
 #'   * **CNTR_NAME**: Official country name on local language
 #'   * **ISO3_CODE**: ISO 3166-1 alpha-3 code of each country, as provided by
@@ -51,7 +51,7 @@ NULL
 #'   geom_sf(color = "red3", fill = "blue4") +
 #'   theme_void()
 #' @source
-#' [`CNTR_RG_20M_2016_4326.geojson`](https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/) file.
+#' [CNTR_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/) file.
 #'
 #' @docType data
 #'
@@ -76,7 +76,7 @@ NULL
 #'   * **geometry**: geometry field
 #'
 #' @source
-#' [`COAS_RG_20M_2016_4326.geojson`](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/) file.
+#' [COAS_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/) file.
 #'
 #' @docType data
 #'
@@ -89,9 +89,21 @@ NULL
 #' library(ggplot2)
 #'
 #' ggplot(coasts) +
-#'   geom_sf(color = "blue", fill = "black") +
+#'   geom_sf(color = "blue", fill = "blue", alpha = 0.2) +
+#'   # Zoom on Oceania
+#'   coord_sf(
+#'     xlim = c(96, 179),
+#'     ylim = c(-51, 11)
+#'   ) +
 #'   theme_minimal() +
-#'   theme(plot.background = element_rect(fill = "black", color = "black"))
+#'   theme(
+#'     plot.background = element_rect(
+#'       fill = "black",
+#'       color = "black"
+#'     ),
+#'     panel.grid = element_blank(),
+#'     axis.text = element_text(colour = "grey90")
+#'   )
 NULL
 
 #' All NUTS `POLYGON` object
@@ -104,6 +116,7 @@ NULL
 #'
 #' @format
 #' A `POLYGON` data frame (resolution: 1:20million, EPSG:4326) object with
+#' `r prettyNum(nrow(giscoR::gisco_nuts), big.mark = ",")` rows and
 #' 11 variables:
 #'   * **id**: row ID
 #'   * **COAST_TYPE**: COAST_TYPE
@@ -118,7 +131,7 @@ NULL
 #'   * **geometry**: geometry field
 #'
 #' @source
-#' [`NUTS_RG_20M_2016_4326.geojson`](https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/) file.
+#' [NUTS_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/) file.
 #'
 #' @docType data
 #'
@@ -173,9 +186,10 @@ NULL
 #' @examples
 #'
 #' data(gisco_countrycode)
-#' @source [`countrycode::codelist`] **v1.2.0**.
+#' @source [countrycode::codelist] **v1.2.0**.
 #'
-#' @seealso [`countrycode::codelist`], [`countrycode::countrycode-package`]
+#' @seealso [gisco_get_countries()],
+#'  [countrycode::codelist], [countrycode::countrycode-package]
 #'
 #' @docType data
 NULL

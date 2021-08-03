@@ -16,19 +16,22 @@ gisco_get_healthcare(
 )
 }
 \arguments{
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+.geojson file.}
 
-\item{cache_dir}{A path to a cache directory. See Details on \code{\link{gisco_get}}.}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
-\item{country}{Optional. A character vector of country codes.
-See Details on \code{\link{gisco_get}}.}
+\item{country}{Optional. A character vector of country codes. It could be
+either a vector of country names, a vector of ISO3 country codes or a
+vector of Eurostat country codes. Mixed types (as \code{c("Turkey","US","FRA")})
+would not work. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
 A \code{POINT} object.
@@ -41,6 +44,18 @@ be 'hospitals' by Member States.
 Files are distributed on EPSG:4326. Metadata available on
 \url{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}.
 }
+\section{About caching}{
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+Set \code{cache_dir = "path/to/dir"} or
+\verb{options(gisco_cache_dir = "path/to/dir)}. If you experience any problem
+on download, try to download the corresponding .geojson file by any
+other method and save it on your \code{cache_dir}.
+
+For a complete list of files available check \link{gisco_db}.
+}
+
 \examples{
 if (gisco_check_access()) {
   health_BEL <- gisco_get_healthcare(country = "Belgium")
@@ -64,7 +79,7 @@ if (gisco_check_access()) {
 }
 }
 \seealso{
-\link{gisco_get}
+\code{\link[=gisco_get_countries]{gisco_get_countries()}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

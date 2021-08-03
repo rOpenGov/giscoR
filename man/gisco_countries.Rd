@@ -20,7 +20,7 @@ GISCO
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/}{\code{CNTR_RG_20M_2016_4326.geojson}} file.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/}{CNTR_RG_20M_2016_4326.geojson} file.
 }
 \description{
 A \code{sf} object including all

@@ -13,13 +13,15 @@
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services>
 #'
-#' @inheritParams gisco_get
+#' @inheritParams gisco_get_countries
+#'
+#' @inheritSection gisco_get_countries About caching
 #'
 #' @details
 #' Files are distributed on EPSG:4326. Metadata available on
 #' <https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf>.
 #'
-#' @seealso [gisco_get]
+#' @seealso [gisco_get_countries()]
 #' @examples
 #' if (gisco_check_access()) {
 #'   health_BEL <- gisco_get_healthcare(country = "Belgium")

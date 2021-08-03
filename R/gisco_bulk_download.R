@@ -7,6 +7,8 @@
 #'
 #' @return Silent function.
 #'
+#' @param year Release year of the file. See Details
+#'
 #' @param id_giscoR Type of dataset to be downloaded. Values supported are:
 #' * "coastallines"
 #' * "communes"
@@ -15,28 +17,33 @@
 #' * "nuts"
 #' * "urban_audit"
 #'
-#' @inheritParams gisco_get
+#' @inheritParams gisco_get_countries
+#'
+#' @inheritSection gisco_get_countries About caching
 #'
 #' @param ext Extension of the file(s) to be downloaded. Available formats are
 #' "geojson", "shp", "svg", "json", "gdb". See Details.
 #'
 #' @param recursive Tries to unzip recursively the zip files (if any) included
-#' in the initial bulk download (case of `ext = "shp"`.
+#' in the initial bulk download (case of `ext = "shp"`).
 #'
 #' @details
 #'
-#' See the years available in [gisco_get]
+#' See the years available in the corresponding functions:
+#'  * [gisco_get_coastallines()]
+#'  * [gisco_get_communes()]
+#'  * [gisco_get_countries()]
+#'  * [gisco_get_lau()]
+#'  * [gisco_get_nuts()]
+#'  * [gisco_get_urban_audit()]
+#'
 #'
 #' The usual extension used across **giscoR** is "geojson",
 #' however other formats are already available on GISCO.
 #'
-#' This function helps building a personal shape library on `cache_dir`
-#' (or `options(gisco_cache_dir = "path/to/dir")`, if set by the user).
-#'
 #'
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
-#' @note For downloading specific files use [gisco_get] functions.
 #'
 #' @examples
 #' \dontrun{

@@ -15,13 +15,16 @@ gisco_get_ports(year = "2013")
 \arguments{
 \item{year}{Year of reference.}
 
-\item{country}{A list of countries, see \code{\link[=gisco_get_countries]{gisco_get_countries()}}}
+\item{country}{Optional. A character vector of country codes. It could be
+either a vector of country names, a vector of ISO3 country codes or a
+vector of Eurostat country codes. Mixed types (as \code{c("Turkey","US","FRA")})
+would not work. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
 A \code{POINT} object on EPSG:4326.
 }
 \description{
-Loads a simple feature (\code{sf}) object from GISCO API or your local library.
+Loads a \code{sf} object from GISCO API or your local library.
 }
 \section{Years available}{
 \itemize{

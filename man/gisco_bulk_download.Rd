@@ -29,15 +29,15 @@ gisco_bulk_download(
 \item "urban_audit"
 }}
 
-\item{year}{Release year. See \strong{Release years available} on \code{\link{gisco_get}}.}
+\item{year}{Release year of the file. See Details}
 
-\item{cache_dir}{A path to a cache directory. See Details on \code{\link{gisco_get}}.}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+.geojson file.}
 
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
@@ -53,7 +53,7 @@ default is \code{FALSE}.}
 "geojson", "shp", "svg", "json", "gdb". See Details.}
 
 \item{recursive}{Tries to unzip recursively the zip files (if any) included
-in the initial bulk download (case of \code{ext = "shp"}.}
+in the initial bulk download (case of \code{ext = "shp"}).}
 }
 \value{
 Silent function.
@@ -62,17 +62,31 @@ Silent function.
 Downloads zipped data from GISCO and extract them on the \code{cache_dir} folder.
 }
 \details{
-See the years available in \link{gisco_get}
+See the years available in the corresponding functions:
+\itemize{
+\item \code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}}
+\item \code{\link[=gisco_get_communes]{gisco_get_communes()}}
+\item \code{\link[=gisco_get_countries]{gisco_get_countries()}}
+\item \code{\link[=gisco_get_lau]{gisco_get_lau()}}
+\item \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
+\item \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}
+}
 
 The usual extension used across \strong{giscoR} is "geojson",
 however other formats are already available on GISCO.
+}
+\section{About caching}{
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
 
-This function helps building a personal shape library on \code{cache_dir}
-(or \code{options(gisco_cache_dir = "path/to/dir")}, if set by the user).
+Set \code{cache_dir = "path/to/dir"} or
+\verb{options(gisco_cache_dir = "path/to/dir)}. If you experience any problem
+on download, try to download the corresponding .geojson file by any
+other method and save it on your \code{cache_dir}.
+
+For a complete list of files available check \link{gisco_db}.
 }
-\note{
-For downloading specific files use \link{gisco_get} functions.
-}
+
 \examples{
 \dontrun{
 

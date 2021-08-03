@@ -7,6 +7,7 @@
 \title{All NUTS \code{POLYGON} object}
 \format{
 A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
+2,016 rows and
 11 variables:
 \itemize{
 \item \strong{id}: row ID
@@ -23,7 +24,7 @@ A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/}{\code{NUTS_RG_20M_2016_4326.geojson}} file.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/}{NUTS_RG_20M_2016_4326.geojson} file.
 }
 \description{
 A \code{sf} object including all NUTS levels as provided by GISCO (2016 version).

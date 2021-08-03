@@ -1,6 +1,6 @@
 #' Get location of airports and ports from GISCO API
 #'
-#' Loads a simple feature (`sf`) object from GISCO API or your local library.
+#' Loads a `sf` object from GISCO API or your local library.
 #'
 #' @concept infrastructure
 #'
@@ -8,7 +8,8 @@
 #'
 #' @param year Year of reference.
 #'
-#' @param country A list of countries, see [gisco_get_countries()]
+#' @inheritParams gisco_get_countries
+#'
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks>

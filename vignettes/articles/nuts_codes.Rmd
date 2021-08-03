@@ -8,10 +8,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   warning = FALSE,
   message = FALSE,
-  fig.width = 6,
-  fig.height = 4,
-  out.width = "100%",
-  out.height = "60%"
+  out.width = "100%"
 )
 
 if (isFALSE(requireNamespace("reactable", quietly = TRUE))) {
@@ -33,6 +30,7 @@ library(reactable)
 df <- gisco_get_nuts(year = 2021, resolution = 60)
 df <- sf::st_drop_geometry(df)
 reactable(df,
+  elementId = "NUTS2021",
   filterable = TRUE,
   searchable = TRUE,
   showPageSizeOptions = TRUE,
@@ -53,6 +51,7 @@ library(reactable)
 df <- gisco_get_nuts(year = 2016, resolution = 60)
 df <- sf::st_drop_geometry(df)
 reactable(df,
+  elementId = "NUTS2016",
   filterable = TRUE,
   searchable = TRUE,
   showPageSizeOptions = TRUE,
@@ -72,6 +71,7 @@ library(reactable)
 df <- gisco_get_nuts(year = 2013, resolution = 60)
 df <- sf::st_drop_geometry(df)
 reactable(df,
+  elementId = "NUTS2013",
   filterable = TRUE,
   searchable = TRUE,
   showPageSizeOptions = TRUE,

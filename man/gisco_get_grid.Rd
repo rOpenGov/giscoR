@@ -19,15 +19,15 @@ gisco_get_grid(
 \item{resolution}{Resolution of the grid cells on kms. Available values are
 "1", "2", "5", "10", "20", "50", "100". See Details}
 
-\item{spatialtype}{Select one of \verb{REGION,POINT}}
+\item{spatialtype}{Select one of "REGION" or "POINT".}
 
-\item{cache_dir}{A path to a cache directory. See Details on \code{\link{gisco_get}}.}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+.geojson file.}
 
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 }
 \value{
@@ -49,6 +49,18 @@ need to confirm the download.
 There are specific downloading provisions, please see
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}
 }
+\section{About caching}{
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+Set \code{cache_dir = "path/to/dir"} or
+\verb{options(gisco_cache_dir = "path/to/dir)}. If you experience any problem
+on download, try to download the corresponding .geojson file by any
+other method and save it on your \code{cache_dir}.
+
+For a complete list of files available check \link{gisco_db}.
+}
+
 \examples{
 \donttest{
 grid <- gisco_get_grid(resolution = 20)

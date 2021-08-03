@@ -30,7 +30,8 @@ Accepted values are "nuts", "countries" or "urban_audit".}
 \item{mode}{Controls the output of the function. Possible values are "sf"
 or "df". See Value and Details.}
 
-\item{year}{Release year. See \strong{Release years available} on \code{\link{gisco_get}}.}
+\item{year}{Release year of the file. One of "2001", "2006",
+"2010", "2013", "2016" or "2020".}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -41,15 +42,16 @@ One of:
 \item "3857": Pseudo-Mercator
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}.}
+\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
+\strong{About caching}.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+.geojson file.}
 
-\item{cache_dir}{A path to a cache directory. See Details on \code{\link{gisco_get}}.}
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
-\item{verbose}{Display information. Useful for debugging,
+\item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
@@ -87,7 +89,21 @@ On \code{mode = "df"} the only relevant parameters are \verb{spatialtype, year}.
 \note{
 Country-level files would be renamed on your \code{cache_dir}
 to avoid naming conflicts with NUTS-0 datasets.
+
+Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
+\section{About caching}{
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+Set \code{cache_dir = "path/to/dir"} or
+\verb{options(gisco_cache_dir = "path/to/dir)}. If you experience any problem
+on download, try to download the corresponding .geojson file by any
+other method and save it on your \code{cache_dir}.
+
+For a complete list of files available check \link{gisco_db}.
+}
+
 \examples{
 if (gisco_check_access()) {
   cities <- gisco_get_units(
@@ -130,7 +146,7 @@ if (gisco_check_access()) {
 }
 }
 \seealso{
-\link{gisco_get}
+\code{\link[=gisco_get_countries]{gisco_get_countries()}}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

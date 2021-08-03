@@ -17,9 +17,11 @@
 #' @param resolution Resolution of the grid cells on kms. Available values are
 #' "1", "2", "5", "10", "20", "50", "100". See Details
 #'
-#' @param spatialtype Select one of `REGION,POINT`
+#' @param spatialtype Select one of "REGION" or "POINT".
 #'
-#' @inheritParams gisco_get
+#' @inheritParams gisco_get_countries
+#'
+#' @inheritSection gisco_get_countries About caching
 #'
 #' @details
 #'
