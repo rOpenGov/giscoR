@@ -13,7 +13,23 @@ test_that("Urban Audit online", {
   )
 
   expect_silent(gisco_get_urban_audit(level = "GREATER_CITIES"))
-  expect_warning(gisco_get_urban_audit(level = "GREATER_CITIES", cache = FALSE))
+  expect_warning(gisco_get_urban_audit(
+    level = "GREATER_CITIES",
+    cache = FALSE
+  ))
+
+  expect_silent(gisco_get_urban_audit(level = "CITIES", spatialtype = "LB"))
+
+  a <- gisco_get_urban_audit(
+    year = 2020, spatialtype = "LB",
+    level = "CITIES"
+  )
+  b <- gisco_get_urban_audit(
+    year = 2020, spatialtype = "LB",
+    level = "GREATER_CITIES"
+  )
+  expect_false(nrow(a) == nrow(b))
+
 
   expect_silent(gisco_get_urban_audit(
     spatialtype = "LB",
