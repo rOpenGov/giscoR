@@ -45,13 +45,13 @@
 #'   c(
 #'     0,
 #'     0.1, # For capturing 0
+#'     100,
 #'     500,
 #'     1000,
 #'     2500,
 #'     5000,
 #'     10000,
 #'     25000,
-#'     50000,
 #'     max(grid$popdens) + 1
 #'   )
 #'
@@ -60,7 +60,7 @@
 #' grid$popdens_cut <- cut(grid$popdens, breaks = breaks, include.lowest = TRUE)
 #' cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
 #' cut_labs[1] <- "0"
-#' cut_labs[9] <- "> 50 000"
+#' cut_labs[9] <- "> 25 000"
 #'
 #' pal <- c("black", hcl.colors(length(breaks) - 2,
 #'   palette = "Spectral",
