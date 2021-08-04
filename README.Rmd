@@ -48,6 +48,7 @@ status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](h
 [![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/giscor/badge)](https://www.codefactor.io/repository/github/dieghernan/giscor)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![status](https://tinyverse.netlify.com/badge/giscoR)](https://CRAN.R-project.org/package=giscoR)
 
 <!-- badges: end -->
 
