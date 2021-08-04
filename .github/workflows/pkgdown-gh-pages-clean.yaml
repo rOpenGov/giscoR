@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          remotes::install_deps(dependencies = TRUE)
+          remotes::install_deps(dependencies = TRUE, , type="binary")
           remotes::install_cran("pkgdown", dependencies = TRUE)
         shell: Rscript {0}
 

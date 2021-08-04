@@ -5,7 +5,7 @@ on:
       - master
   workflow_dispatch:
 
-name: update-docs
+name: macos-docs
 
 jobs:
   update-docs:
@@ -22,7 +22,7 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages('remotes')
-          remotes::install_cran(c("devtools", "rcmdcheck", "pkgdown"))
+          remotes::install_cran(c("devtools", "rcmdcheck", "pkgdown"), , type="binary")
 
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")

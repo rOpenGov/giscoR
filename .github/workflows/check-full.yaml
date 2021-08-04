@@ -86,8 +86,10 @@ jobs:
         if: runner.os != 'Linux'
         run: |
           remotes::install_deps(dependencies = TRUE, type="binary")
-          remotes::install_cran("rcmdcheck")
+          remotes::install_cran("rcmdcheck", type="binary")
+          
         shell: Rscript {0}
+        
 
       - name: Check
         env:
