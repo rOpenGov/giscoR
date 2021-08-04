@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco_get_grid.R
 \name{gisco_get_grid}
 \alias{gisco_get_grid}
-\title{Get the grid cells covering the European land territory}
+\title{Get grid cells covering covering Europe for various resolutions}
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}
 }
