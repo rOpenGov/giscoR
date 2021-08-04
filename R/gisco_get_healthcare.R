@@ -1,4 +1,4 @@
-#' Get the healthcare services in Europe.
+#' Get locations of healthcare services in Europe.
 #'
 #' @concept infrastructure
 #'

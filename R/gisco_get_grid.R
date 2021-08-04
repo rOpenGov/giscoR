@@ -1,4 +1,4 @@
-#' Get the grid cells covering the European land territory
+#' Get grid cells covering covering Europe for various resolutions
 #'
 #' @description
 #' These datasets contain grid cells covering the European land
