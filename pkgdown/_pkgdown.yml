@@ -1,15 +1,15 @@
 url: 'https://dieghernan.github.io/giscoR'
 reference:
   - title: Political
-    desc: These functions return sf objects with political boundaries
+    desc: These functions return `sf` objects with political boundaries
     contents:
       - has_concept("political")
   - title: Infrastructures
-    desc: These functions return sf objects with man-made features
+    desc: These functions return `sf` objects with man-made features
     contents:
       - has_concept("infrastructure")
   - title: Misc
-    desc: Thse functions return other sf objects
+    desc: Thse functions return other `sf` objects
     contents:
       - has_concept("misc")
   - title: Helpers
