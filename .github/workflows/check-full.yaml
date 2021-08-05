@@ -10,7 +10,7 @@ on:
       - master
       - main
   schedule:
-      - cron:  '0 7 * * 2,5'
+      - cron:  '30 12 * * 3,6'
 
 
 name: R-CMD-check
