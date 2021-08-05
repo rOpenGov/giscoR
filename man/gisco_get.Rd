@@ -2,7 +2,6 @@
 % Please edit documentation in R/gisco_get_countries.R
 \name{gisco_get_countries}
 \alias{gisco_get_countries}
-\alias{gisco_get}
 \title{Get GISCO world country \code{sf} polygons, points and lines}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
