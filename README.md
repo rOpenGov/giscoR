@@ -251,7 +251,7 @@ ggplot(nuts3.sf) +
   theme(
     plot.title = element_text(
       size = 20, color = pal[length(pal) - 1],
-      hjust = 0.5, vjust = -8
+      hjust = 0.5, vjust = -6
     ),
     plot.subtitle = element_text(
       size = 14,
@@ -329,8 +329,8 @@ citation("giscoR")
 #> 
 #> To cite the 'giscoR' package in publications use:
 #> 
-#>   Hernangómez, D (2021). giscoR: Download Map Data from GISCO API -
-#>   Eurostat. R package version 0.2.4.9008.
+#>   D. Hernangómez (2021). giscoR: Download Map Data from GISCO API -
+#>   Eurostat. R package version 0.2.4.
 #>   http://doi.org/10.5281/zenodo.4317946. Package url:
 #>   https://CRAN.R-project.org/package=giscoR
 #> 
@@ -340,7 +340,7 @@ citation("giscoR")
 #>     title = {giscoR: Download Map Data from GISCO API - Eurostat},
 #>     author = {Diego Hernangómez},
 #>     year = {2021},
-#>     note = {R package version 0.2.4.9008},
+#>     note = {R package version 0.2.4},
 #>     url = {https://CRAN.R-project.org/package=giscoR},
 #>     doi = {10.5281/zenodo.4317946},
 #>   }
