@@ -29,14 +29,12 @@
 #'
 #' @examples
 #'
-#' # Default location of the downloaded files on this machine
-#' rappdirs::user_cache_dir("giscoR", "R")
-#'
-#' # Don't run these examples! They would modify your current state
+#' # Don't run this! It would modify your current state
 #' \dontrun{
 #' gisco_set_cache_dir(verbose = TRUE)
 #' }
 #'
+#' Sys.getenv("GISCO_CACHE_DIR")
 #' @export
 gisco_set_cache_dir <- function(cache_dir = rappdirs::user_cache_dir("giscoR", "R"),
                                 overwrite = TRUE,
