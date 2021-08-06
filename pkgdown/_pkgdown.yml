@@ -33,6 +33,9 @@ template:
       api_key: 43dc96a03af10866ccbce1720b69b127
       index_name: dieghernan_giscor
   opengraph:
+    image:
+      src: https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-thematic-1.png
+      alt: "giscoR-thematic"
     twitter:
       creator: '@dhernangomez'
       card: summary_large_image

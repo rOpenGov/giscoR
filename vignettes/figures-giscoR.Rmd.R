@@ -90,12 +90,12 @@ ggplot(nuts2.sf) +
     plot.title = element_text(
       color = "grey90",
       hjust = 0.5,
-      vjust = -1,
+      vjust = 1,
     ),
     plot.subtitle = element_text(
       color = "grey90",
       hjust = 0.5,
-      vjust = -2,
+      vjust = 0,
       face = "bold"
     ),
     plot.caption = element_text(

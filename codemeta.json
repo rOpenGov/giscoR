@@ -1,17 +1,11 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "giscoR",
   "description": "Tools to download data from the GISCO (Geographic Information\n    System of the Commission) Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco>. Global and European map\n    data available.  This package is in no way officially related to or\n    endorsed by Eurostat.",
   "name": "giscoR: Download Map Data from GISCO API - Eurostat",
   "codeRepository": "https://github.com/dieghernan/giscoR",
-  "relatedLink": [
-    "https://dieghernan.github.io/giscoR/",
-    "https://CRAN.R-project.org/package=giscoR"
-  ],
+  "relatedLink": "https://dieghernan.github.io/giscoR/",
   "issueTracker": "https://github.com/dieghernan/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
   "version": "0.2.4.9008",
@@ -36,7 +30,6 @@
       "@id": "https://orcid.org/0000-0001-8457-4658"
     }
   ],
-  "contributor": {},
   "copyrightHolder": [
     {
       "@type": "Person",
@@ -56,7 +49,6 @@
       "@id": "https://orcid.org/0000-0003-2042-7063"
     }
   ],
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
@@ -130,14 +122,14 @@
       "sameAs": "https://CRAN.R-project.org/package=testthat"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
       "version": ">= 3.6.0"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "countrycode",
       "name": "countrycode",
@@ -150,7 +142,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=countrycode"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "geojsonsf",
       "name": "geojsonsf",
@@ -163,7 +155,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=geojsonsf"
     },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -176,7 +168,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -189,28 +181,14 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
-    }
-  ],
-  "releaseNotes": "https://github.com/dieghernan/giscoR/blob/master/NEWS.md",
-  "readme": "https://github.com/dieghernan/giscoR/blob/master/README.md",
-  "fileSize": "1818.719KB",
-  "contIntegration": ["https://github.com/dieghernan/giscoR/actions", "https://codecov.io/gh/dieghernan/giscoR"],
-  "keywords": [
-    "r",
-    "gisco",
-    "eurostat-data",
-    "api-wrapper",
-    "eurostat",
-    "cran",
-    "thematic-maps",
-    "r-package",
-    "rstats",
-    "spatial"
-  ],
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "34746.843KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -229,6 +207,5 @@
       "@id": "https://doi.org/10.5281/zenodo.4317946",
       "sameAs": "https://doi.org/10.5281/zenodo.4317946"
     }
-  ],
-  "developmentStatus": "https://www.repostatus.org/#active"
+  ]
 }

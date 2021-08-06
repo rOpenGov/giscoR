@@ -77,7 +77,6 @@ install.packages("giscoR")
 This script highlights some features of `giscoR`:
 
 ``` r
-
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -112,7 +111,6 @@ ggplot(DNK_all) +
 
 ``` r
 
-
 # Labels and Lines available
 
 labs <- gisco_get_countries(
@@ -145,7 +143,6 @@ ggplot(coast) +
 An example of a labeled map using `ggplot2`:
 
 ``` r
-
 ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
 
 ggplot(ITA) +
@@ -165,7 +162,6 @@ Popovic](https://twitter.com/milos_agathon) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
 ``` r
-
 # Get shapes
 nuts3 <- gisco_get_nuts(
   year = "2016",
@@ -255,12 +251,12 @@ ggplot(nuts3.sf) +
   theme(
     plot.title = element_text(
       size = 20, color = pal[length(pal) - 1],
-      hjust = 0.5, vjust = -10
+      hjust = 0.5, vjust = -8
     ),
     plot.subtitle = element_text(
       size = 14,
       color = pal[length(pal) - 1],
-      hjust = 0.5, vjust = -15, face = "bold"
+      hjust = 0.5, vjust = -10, face = "bold"
     ),
     plot.caption = element_text(
       size = 9, color = "grey60",
@@ -299,18 +295,18 @@ them on your local directory.
 
 ### API data packages
 
-  - `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
+-   `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
     an API package that provides access to open data from Eurostat.
 
 ### Plotting `sf` objects
 
 Some packages recommended for visualization are:
 
-  - [`tmap`](https://mtennekes.github.io/tmap/)
-  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+-   [`tmap`](https://mtennekes.github.io/tmap/)
+-   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-  - [`mapsf`](https://riatelab.github.io/mapsf/)
-  - [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [`mapsf`](https://riatelab.github.io/mapsf/)
+-   [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 
@@ -319,10 +315,10 @@ code](https://github.com/dieghernan/giscoR/).
 
 Contributions are very welcome:
 
-  - [Use issue tracker](https://github.com/dieghernan/giscoR/issues) for
+-   [Use issue tracker](https://github.com/dieghernan/giscoR/issues) for
     feedback and bug reports.
-  - [Send pull requests](https://github.com/dieghernan/giscoR/)
-  - [Star us on the GitHub page](https://github.com/dieghernan/giscoR)
+-   [Send pull requests](https://github.com/dieghernan/giscoR/)
+-   [Star us on the GitHub page](https://github.com/dieghernan/giscoR)
 
 ## Citation
 
@@ -352,7 +348,7 @@ citation("giscoR")
 
 ## Copyright notice
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or
@@ -360,13 +356,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
-> 
+>
 > EN: © EuroGeographics for the administrative boundaries
-> 
+>
 > FR: © EuroGeographics pour les limites administratives
-> 
+>
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
-> 
+>
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.

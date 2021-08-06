@@ -278,12 +278,12 @@ ggplot(nuts3.sf) +
   theme(
     plot.title = element_text(
       size = 20, color = pal[length(pal) - 1],
-      hjust = 0.5, vjust = -10
+      hjust = 0.5, vjust = -8
     ),
     plot.subtitle = element_text(
       size = 14,
       color = pal[length(pal) - 1],
-      hjust = 0.5, vjust = -15, face = "bold"
+      hjust = 0.5, vjust = -10, face = "bold"
     ),
     plot.caption = element_text(
       size = 9, color = "grey60",
