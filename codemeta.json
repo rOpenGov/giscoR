@@ -188,7 +188,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "28306.41KB",
+  "fileSize": "28306.298KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -203,7 +203,6 @@
       "name": "giscoR: ",
       "identifier": "10.5281/zenodo.4317946",
       "url": "https://CRAN.R-project.org/package=giscoR",
-      "description": "R package version ",
       "@id": "https://doi.org/10.5281/zenodo.4317946",
       "sameAs": "https://doi.org/10.5281/zenodo.4317946"
     }
