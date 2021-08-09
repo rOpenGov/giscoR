@@ -9,8 +9,7 @@ citEntry(
   title = paste('giscoR:', meta$Title),
   author = "Diego Hernangómez",
   year = year,
-  note = vers,
   url = url,
   doi = '10.5281/zenodo.4317946',
-  textVersion = paste0('Hernangómez, D (', year, '). giscoR: ', meta$Title, '. ', vers, '. http://doi.org/10.5281/zenodo.4317946. Package url: ', url)
+  textVersion = paste0('Hernangómez, D (', year, '). giscoR: ', meta$Title, '. http://doi.org/10.5281/zenodo.4317946. Package url: ', url)
 )
