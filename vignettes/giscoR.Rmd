@@ -1,5 +1,6 @@
 ---
 title: "Get started with giscoR"
+author: "Diego Hernangómez"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get started with giscoR}
