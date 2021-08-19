@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "To cite package 'giscoR' in publications use:"
+authors:
+- family-names: "Hernangómez"
+  given-names: "Diego"
+  orcid: "https://orcid.org/0000-0001-8457-4658"
+title: "giscoR"
+doi: 10.5281/zenodo.4317946
+repository-code: "https://github.com/dieghernan/giscoR"
+url: https://dieghernan.github.io/giscoR/
+license: GPL-3.0
+abstract: "Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat."

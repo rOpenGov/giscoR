@@ -2,14 +2,14 @@ citHeader("To cite the 'giscoR' package in publications use:")
 
 year = format(Sys.time(), "%Y")
 vers = paste('R package version', meta$Version)
-url = 'https://CRAN.R-project.org/package=giscoR'
-
+url = 'https://dieghernan.github.io/giscoR/'
 citEntry(
+  ,
   entry = 'manual',
-  title = paste('giscoR:', meta$Title),
+  title = paste('giscoR:', 'Download Map Data from GISCO API - Eurostat'),
   author = "Diego Hernangómez",
   year = year,
   url = url,
   doi = '10.5281/zenodo.4317946',
-  textVersion = paste0('Hernangómez, D (', year, '). giscoR: ', meta$Title, '. http://doi.org/10.5281/zenodo.4317946. Package url: ', url)
+  textVersion = paste0('Hernangómez, D. (', year, '). giscoR: Download Map Data from GISCO API - Eurostat. ', 'R package. ', 'http://doi.org/10.5281/zenodo.4317946')
 )
