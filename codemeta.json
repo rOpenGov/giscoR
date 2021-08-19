@@ -188,7 +188,8 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "28309.171KB",
+  "applicationCategory": "Cartography",
+  "fileSize": "28309.256KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
