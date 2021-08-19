@@ -333,9 +333,8 @@ citation("giscoR")
 #> 
 #> To cite the 'giscoR' package in publications use:
 #> 
-#>   Hernangómez, D (2021). giscoR: Download Map Data from GISCO API -
-#>   Eurostat. http://doi.org/10.5281/zenodo.4317946. Package url:
-#>   https://CRAN.R-project.org/package=giscoR
+#>   Hernangómez, D. (2021). giscoR: Download Map Data from GISCO API -
+#>   Eurostat. R package. http://doi.org/10.5281/zenodo.4317946
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -343,7 +342,7 @@ citation("giscoR")
 #>     title = {giscoR: Download Map Data from GISCO API - Eurostat},
 #>     author = {Diego Hernangómez},
 #>     year = {2021},
-#>     url = {https://CRAN.R-project.org/package=giscoR},
+#>     url = {https://dieghernan.github.io/giscoR/},
 #>     doi = {10.5281/zenodo.4317946},
 #>   }
 ```

@@ -188,7 +188,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "28308.533KB",
+  "fileSize": "28309.171KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -200,9 +200,9 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "giscoR: ",
+      "name": "giscoR: Download Map Data from GISCO API - Eurostat",
       "identifier": "10.5281/zenodo.4317946",
-      "url": "https://CRAN.R-project.org/package=giscoR",
+      "url": "https://dieghernan.github.io/giscoR/",
       "@id": "https://doi.org/10.5281/zenodo.4317946",
       "sameAs": "https://doi.org/10.5281/zenodo.4317946"
     }
