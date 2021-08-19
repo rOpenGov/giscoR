@@ -27,3 +27,4 @@
 ^vignettes/articles$
 ^_pkgdown\.yaml$
 ^vignettes/figures-giscoR\.Rmd\.R$
+^CITATION\.cff$
