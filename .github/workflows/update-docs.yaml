@@ -9,37 +9,27 @@ name: update-docs
 
 jobs:
   update-docs:
-    runs-on: windows-latest
+    runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-pandoc@v1
 
-      - uses: r-lib/actions/setup-pandoc@master
-
-      - name: Query dependencies
-        run: |
-          install.packages('remotes')
-          remotes::install_cran(c("devtools", "rcmdcheck", "pkgdown"), , type="binary")
-
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
-        shell: Rscript {0}
-
-      - name: Restore R package cache
-        uses: actions/cache@v2.1.6
+      - uses: r-lib/actions/setup-r@v1
         with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+          use-public-rspm: true
 
-      - name: Install dependencies
-        run: |
-          remotes::install_deps(dependencies = TRUE)
-          devtools::install_github('dieghernan/pkgdev', dependencies = TRUE)
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: |
+            devtools
+            remotes
+            rcmdcheck
+            pkgdown
+            dieghernan/pkgdev
+          needs: website
 
       - name: Install package
         run: |
@@ -49,26 +39,31 @@ jobs:
 
       - name: Update docs
         run: |
-
+          
           pkgdev::update_docs()
 
         shell: Rscript {0}
 
       - name: Commit results
         run: |
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git add -A
           git commit -m 'Update docs with pkgdev' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
       - name: Check
         env:
-          _R_CHECK_CRAN_INCOMING_REMOTE_: false
+          _R_CHECK_CRAN_INCOMING_: false
         run: |
           options(crayon.enabled = TRUE)
           rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
+
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash
 
       - name: Upload check results
         if: failure()
@@ -79,7 +74,7 @@ jobs:
 
       - name: Deploy package
         run: |
-          Rscript -e 'pkgdown::build_favicons(overwrite = TRUE)'
-          git config --local user.email "actions@github.com"
-          git config --local user.name "GitHub Actions"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = TRUE)'
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+
