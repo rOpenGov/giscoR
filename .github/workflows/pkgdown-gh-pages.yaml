@@ -20,13 +20,14 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
         with:
           use-public-rspm: true
+          install-r: false
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: |
             pkgdown
-            remotes
             devtools
+            reactable
           needs: website
 
       - name: Deploy package
