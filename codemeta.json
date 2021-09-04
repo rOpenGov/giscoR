@@ -189,7 +189,7 @@
     "SystemRequirements": null
   },
   "applicationCategory": "Cartography",
-  "fileSize": "1814.708KB",
+  "fileSize": "1814.686KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -204,6 +204,7 @@
       "name": "giscoR: Download Map Data from GISCO API - Eurostat",
       "identifier": "10.5281/zenodo.4317946",
       "url": "https://dieghernan.github.io/giscoR/",
+      "description": "R package version 0.2.4.9008",
       "@id": "https://doi.org/10.5281/zenodo.4317946",
       "sameAs": "https://doi.org/10.5281/zenodo.4317946"
     }
