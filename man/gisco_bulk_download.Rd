@@ -95,4 +95,13 @@ For a complete list of files available check \link{gisco_db}.
 gisco_bulk_download(id_giscoR = "countries", resolution = "60")
 }
 }
+\seealso{
+Other political: 
+\code{\link{gisco_get_coastallines}()},
+\code{\link{gisco_get_countries}()},
+\code{\link{gisco_get_lau}()},
+\code{\link{gisco_get_nuts}()},
+\code{\link{gisco_get_units}()},
+\code{\link{gisco_get_urban_audit}()}
+}
 \concept{political}

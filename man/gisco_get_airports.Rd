@@ -67,6 +67,10 @@ ggplot(NL) +
 }
 
 }
+\seealso{
+Other infrastructure: 
+\code{\link{gisco_get_healthcare}()}
+}
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }

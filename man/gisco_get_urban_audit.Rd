@@ -99,5 +99,13 @@ if (gisco_check_access()) {
 }
 \seealso{
 \code{\link[=gisco_get_communes]{gisco_get_communes()}}, \code{\link[=gisco_get_lau]{gisco_get_lau()}}
+
+Other political: 
+\code{\link{gisco_bulk_download}()},
+\code{\link{gisco_get_coastallines}()},
+\code{\link{gisco_get_countries}()},
+\code{\link{gisco_get_lau}()},
+\code{\link{gisco_get_nuts}()},
+\code{\link{gisco_get_units}()}
 }
 \concept{political}

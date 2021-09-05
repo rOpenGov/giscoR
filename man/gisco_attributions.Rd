@@ -67,4 +67,8 @@ gisco_attributions(lang = "es", copyright = TRUE)
 
 gisco_attributions(lang = "XXX")
 }
+\seealso{
+Other helper: 
+\code{\link{gisco_set_cache_dir}()}
+}
 \concept{helper}

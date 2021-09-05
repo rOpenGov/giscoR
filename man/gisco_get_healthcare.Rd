@@ -83,6 +83,9 @@ if (gisco_check_access()) {
 }
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
+
+Other infrastructure: 
+\code{\link{gisco_get_airports}()}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

@@ -133,5 +133,13 @@ if (gisco_check_access()) {
 \seealso{
 \code{\link[=gisco_countrycode]{gisco_countrycode()}}, \link{gisco_countries},
 \code{\link[countrycode:countrycode]{countrycode::countrycode()}}
+
+Other political: 
+\code{\link{gisco_bulk_download}()},
+\code{\link{gisco_get_coastallines}()},
+\code{\link{gisco_get_lau}()},
+\code{\link{gisco_get_nuts}()},
+\code{\link{gisco_get_units}()},
+\code{\link{gisco_get_urban_audit}()}
 }
 \concept{political}

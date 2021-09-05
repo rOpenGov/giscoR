@@ -54,5 +54,8 @@ Sys.getenv("GISCO_CACHE_DIR")
 }
 \seealso{
 \code{\link[rappdirs:user_cache_dir]{rappdirs::user_cache_dir()}}
+
+Other helper: 
+\code{\link{gisco_attributions}()}
 }
 \concept{helper}
