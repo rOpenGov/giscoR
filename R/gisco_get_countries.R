@@ -14,6 +14,7 @@
 #' Please check the download and usage provisions on [gisco_attributions()].
 #'
 #' @concept political
+#' @family political
 #'
 #' @details
 #' # About caching

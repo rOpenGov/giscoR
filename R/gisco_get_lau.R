@@ -9,6 +9,7 @@
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].
 #' @concept political
+#' @family political
 #'
 #' @return A `sf` object specified by `spatialtype`. In the case of
 #'   [gisco_get_lau()], a `POLYGON` object.

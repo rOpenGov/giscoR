@@ -1,6 +1,7 @@
 #' Attribution when publishing GISCO data
 #'
 #' @concept helper
+#' @family helper
 #'
 #' @description
 #' Get the legal text to be used along with the data downloaded with this

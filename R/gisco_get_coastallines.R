@@ -3,6 +3,7 @@
 #' Downloads worldwide coastlines
 #'
 #' @concept political
+#' @family political
 #'
 #' @param year Release year. One of "2006", "2010", "2013" or "2016"
 #'

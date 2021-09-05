@@ -7,6 +7,7 @@
 #' shapefile for each unit.
 #'
 #' @concept political
+#' @family political
 #'
 #' @return
 #' A `sf` object on `mode = "sf"` or a dataframe on `mode = "df"`.

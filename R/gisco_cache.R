@@ -1,6 +1,7 @@
 #' Set your GISCO cache dir
 #'
 #' @concept helper
+#' @family helper
 #'
 #' @return Invisible value
 #' @description

@@ -7,6 +7,7 @@
 #' of Eurostat.
 #'
 #' @concept political
+#' @family political
 #'
 #' @return A `sf` object specified by `spatialtype`.
 #'

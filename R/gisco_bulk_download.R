@@ -2,6 +2,8 @@
 #'
 #' @concept political
 #'
+#' @family political
+#'
 #' @description
 #' Downloads zipped data from GISCO and extract them on the `cache_dir` folder.
 #'

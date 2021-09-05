@@ -3,6 +3,7 @@
 #' Loads a `sf` object from GISCO API or your local library.
 #'
 #' @concept infrastructure
+#' @family infrastructure
 #'
 #' @return A `POINT` object on EPSG:4326.
 #'

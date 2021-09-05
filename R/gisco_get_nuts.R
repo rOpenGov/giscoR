@@ -15,6 +15,7 @@
 #' <https://ec.europa.eu/eurostat/web/nuts/background>.
 #'
 #' @concept political
+#' @family political
 #'
 #' @return A `sf` object specified by `spatialtype`.
 #'

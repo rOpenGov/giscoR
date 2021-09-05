@@ -1,6 +1,7 @@
 #' Get locations of healthcare services in Europe.
 #'
 #' @concept infrastructure
+#' @family infrastructure
 #'
 #' @description
 #' The dataset contains information on main healthcare services considered to
