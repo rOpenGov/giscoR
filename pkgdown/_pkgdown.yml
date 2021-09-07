@@ -25,8 +25,14 @@ reference:
       - giscoR-package
 
 
+navbar:
+  type: dark
+  bg: dark
+
 template:
   bootstrap: 4
+  bslib:
+    enable-responsive-font-sizes: true
   params:
     ganalytics: UA-139034853-6
     docsearch:
@@ -56,6 +62,4 @@ authors:
     href: 'https://vincentarelbundock.github.io/countrycode/'
 
 
-navbar:
-  type: dark
-  bg: primary
+
