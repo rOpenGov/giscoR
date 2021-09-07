@@ -2,7 +2,7 @@ citHeader("To cite the 'giscoR' package in publications use:")
 
 year = format(Sys.time(), "%Y")
 vers = paste('R package version', meta$Version)
-url = 'https://dieghernan.github.io/giscoR/'
+url = 'https://ropengov.github.io/giscoR/'
 citEntry(
   ,
   entry = 'manual',

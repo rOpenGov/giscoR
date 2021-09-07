@@ -35,9 +35,9 @@
 #' @seealso
 #'
 #' Useful links:
-#'  * <https://dieghernan.github.io/giscoR/>
-#'  * <https://github.com/dieghernan/giscoR>
-#'  * Report bugs at <https://github.com/dieghernan/giscoR/issues>
+#'  * <https://ropengov.github.io/giscoR/>
+#'  * <https://github.com/rOpenGov/giscoR>
+#'  * Report bugs at <https://github.com/rOpenGov/giscoR/issues>
 #'
 #'
 #'

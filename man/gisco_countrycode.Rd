@@ -13,7 +13,7 @@ A data frame object with 249 rows and 12 variables:
 \item \strong{iso.name.en}: ISO English short name
 \item \strong{cldr.short.en}: English short name as provided by the Unicode Common
 Locale Data Repository
-\url{http://cldr.unicode.org/translation/displaynames/country-names}
+\url{https://cldr.unicode.org/translation/displaynames/countryregion-territory-names}
 \item \strong{continent}: As provided by the World Bank
 \item \strong{un.region.code}: Numeric region code UN (M49)
 \item \strong{un.region.name}: Region name UN (M49)

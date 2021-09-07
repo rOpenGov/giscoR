@@ -13,10 +13,20 @@ authors:
   given-names: Diego
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
-repository-code: https://github.com/dieghernan/giscoR
-url: https://dieghernan.github.io/giscoR/
+repository-code: https://github.com/rOpenGov/giscoR
+url: https://ropengov.github.io/giscoR/
 contact:
 - family-names: Hernangómez
   given-names: Diego
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
+keywords:
+- r
+- spatial
+- api-wrapper
+- rstats
+- r-package
+- eurostat
+- gisco
+- thematic-maps
+- eurostat-data

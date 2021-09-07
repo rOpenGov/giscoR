@@ -1,4 +1,4 @@
-url: 'https://dieghernan.github.io/giscoR'
+url: 'https://ropengov.github.io/giscoR/'
 reference:
   - title: Political
     desc: These functions return `sf` objects with political boundaries
@@ -26,7 +26,7 @@ reference:
 
 
 template:
-  path: inst/pkgdown/templates
+  bootstrap: 4
   params:
     ganalytics: UA-139034853-6
     docsearch:
@@ -54,3 +54,8 @@ authors:
       https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
   Vincent Arel-Bundock:
     href: 'https://vincentarelbundock.github.io/countrycode/'
+
+
+navbar:
+  type: dark
+  bg: primary

@@ -171,7 +171,7 @@ NULL
 #'   * **iso.name.en**: ISO English short name
 #'   * **cldr.short.en**: English short name as provided by the Unicode Common
 #'   Locale Data Repository
-#'   <http://cldr.unicode.org/translation/displaynames/country-names>
+#'   <https://cldr.unicode.org/translation/displaynames/countryregion-territory-names>
 #'   * **continent**: As provided by the World Bank
 #'   * **un.region.code**: Numeric region code UN (M49)
 #'   * **un.region.name**: Region name UN (M49)

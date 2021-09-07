@@ -12,17 +12,17 @@ results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.or
 [![Downloads](https://cranlogs.r-pkg.org/badges/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![r-universe](https://dieghernan.r-universe.dev/badges/giscoR)](https://dieghernan.r-universe.dev/)
 [![R build
-status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
-[![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
+status](https://github.com/rOpenGov/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenGov/giscoR/actions)
+[![codecov](https://codecov.io/gh/ropengov/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/ropengov/giscoR)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
-[![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/giscor/badge)](https://www.codefactor.io/repository/github/dieghernan/giscor)
+[![CodeFactor](https://www.codefactor.io/repository/github/ropengov/giscor/badge)](https://www.codefactor.io/repository/github/ropengov/giscor)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![status](https://tinyverse.netlify.com/badge/giscoR)](https://CRAN.R-project.org/package=giscoR)
 
 <!-- badges: end -->
 
-[giscoR](https://dieghernan.github.io/giscoR/) is an API package that
+[giscoR](https://ropengov.github.io/giscoR/) is an API package that
 helps to retrieve data from [Eurostat - GISCO (the Geographic
 Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides
@@ -40,7 +40,7 @@ the information is available on the [API
 webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
 
 Full site with examples and vignettes on
-<https://dieghernan.github.io/giscoR/>
+<https://ropengov.github.io/giscoR/>
 
 ## Installation
 
@@ -77,7 +77,6 @@ install.packages("giscoR")
 This script highlights some features of `giscoR`:
 
 ``` r
-
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -108,10 +107,9 @@ ggplot(DNK_all) +
   theme_minimal()
 ```
 
-<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-example-1.png" width="100%" />
 
 ``` r
-
 
 # Labels and Lines available
 
@@ -138,14 +136,13 @@ ggplot(coast) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-example-2.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-example-2.png" width="100%" />
 
 ### Labels
 
 An example of a labeled map using `ggplot2`:
 
 ``` r
-
 ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
 
 ggplot(ITA) +
@@ -154,7 +151,7 @@ ggplot(ITA) +
   theme(axis.title = element_blank())
 ```
 
-<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-labels-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-labels-1.png" width="100%" />
 
 ### Thematic maps
 
@@ -165,7 +162,6 @@ Popovic](https://twitter.com/milos_agathon) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
 ``` r
-
 # Get shapes
 nuts3 <- gisco_get_nuts(
   year = "2016",
@@ -279,7 +275,7 @@ ggplot(nuts3.sf) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-thematic-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-thematic-1.png" width="100%" />
 
 ## A note on caching
 
@@ -299,30 +295,30 @@ them on your local directory.
 
 ### API data packages
 
-  - `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
+-   `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
     an API package that provides access to open data from Eurostat.
 
 ### Plotting `sf` objects
 
 Some packages recommended for visualization are:
 
-  - [`tmap`](https://mtennekes.github.io/tmap/)
-  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+-   [`tmap`](https://r-tmap.github.io/tmap/)
+-   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-  - [`mapsf`](https://riatelab.github.io/mapsf/)
-  - [`leaflet`](https://rstudio.github.io/leaflet/)
+-   [`mapsf`](https://riatelab.github.io/mapsf/)
+-   [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 
 Check the GitHub page for [source
-code](https://github.com/dieghernan/giscoR/).
+code](https://github.com/rOpenGov/giscoR/).
 
 Contributions are very welcome:
 
-  - [Use issue tracker](https://github.com/dieghernan/giscoR/issues) for
+-   [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
     feedback and bug reports.
-  - [Send pull requests](https://github.com/dieghernan/giscoR/)
-  - [Star us on the GitHub page](https://github.com/dieghernan/giscoR)
+-   [Send pull requests](https://github.com/rOpenGov/giscoR/)
+-   [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
 
 ## Citation
 
@@ -343,14 +339,14 @@ citation("giscoR")
 #>     author = {Diego Hernangómez},
 #>     year = {2021},
 #>     note = {R package version 0.2.4.9008},
-#>     url = {https://dieghernan.github.io/giscoR/},
+#>     url = {https://ropengov.github.io/giscoR/},
 #>     doi = {10.5281/zenodo.4317946},
 #>   }
 ```
 
 ## Copyright notice
 
-*From GISCO \> Geodata \> Reference data \> Administrative Units /
+*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or
@@ -358,13 +354,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
-> 
+>
 > EN: © EuroGeographics for the administrative boundaries
-> 
+>
 > FR: © EuroGeographics pour les limites administratives
-> 
+>
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
-> 
+>
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.

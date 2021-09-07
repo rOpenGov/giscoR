@@ -10,7 +10,7 @@ editor_options:
 ```{r, include = FALSE}
 knitr::opts_knit$set(
   progress = TRUE,
-  base.url = "https://raw.githubusercontent.com/dieghernan/giscoR/master/"
+  base.url = "https://raw.githubusercontent.com/ropengov/giscoR/master/"
 )
 
 knitr::opts_chunk$set(
@@ -42,17 +42,17 @@ results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.or
 [![Downloads](https://cranlogs.r-pkg.org/badges/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![r-universe](https://dieghernan.r-universe.dev/badges/giscoR)](https://dieghernan.r-universe.dev/)
 [![R build
-status](https://github.com/dieghernan/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/dieghernan/giscoR/actions)
-[![codecov](https://codecov.io/gh/dieghernan/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/dieghernan/giscoR)
+status](https://github.com/rOpenGov/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenGov/giscoR/actions)
+[![codecov](https://codecov.io/gh/ropengov/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/ropengov/giscoR)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
-[![CodeFactor](https://www.codefactor.io/repository/github/dieghernan/giscor/badge)](https://www.codefactor.io/repository/github/dieghernan/giscor)
+[![CodeFactor](https://www.codefactor.io/repository/github/ropengov/giscor/badge)](https://www.codefactor.io/repository/github/ropengov/giscor)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![status](https://tinyverse.netlify.com/badge/giscoR)](https://CRAN.R-project.org/package=giscoR)
 
 <!-- badges: end -->
 
-[giscoR](https://dieghernan.github.io/giscoR/) is an API package that helps to
+[giscoR](https://ropengov.github.io/giscoR/) is an API package that helps to
 retrieve data from [Eurostat - GISCO (the Geographic Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides some
 lightweight data sets ready to use without downloading.
@@ -67,7 +67,7 @@ Note that the package does not provide metadata on the downloaded files, the
 information is available on the [API
 webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-Full site with examples and vignettes on <https://dieghernan.github.io/giscoR/>
+Full site with examples and vignettes on <https://ropengov.github.io/giscoR/>
 
 ## Installation
 
@@ -81,7 +81,7 @@ You can install the developing version of `giscoR` with:
 
 ```{r, eval=FALSE}
 library(remotes)
-install_github("dieghernan/giscoR")
+install_github("rOpenGov/giscoR")
 ```
 
 Alternatively, you can install `giscoR` using the
@@ -326,7 +326,7 @@ your local directory.
 
 Some packages recommended for visualization are:
 
--   [`tmap`](https://mtennekes.github.io/tmap/)
+-   [`tmap`](https://r-tmap.github.io/tmap/)
 -   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
 -   [`mapsf`](https://riatelab.github.io/mapsf/)
@@ -334,14 +334,14 @@ Some packages recommended for visualization are:
 
 ## Contribute
 
-Check the GitHub page for [source code](https://github.com/dieghernan/giscoR/).
+Check the GitHub page for [source code](https://github.com/rOpenGov/giscoR/).
 
 Contributions are very welcome:
 
--   [Use issue tracker](https://github.com/dieghernan/giscoR/issues) for
+-   [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
     feedback and bug reports.
--   [Send pull requests](https://github.com/dieghernan/giscoR/)
--   [Star us on the GitHub page](https://github.com/dieghernan/giscoR)
+-   [Send pull requests](https://github.com/rOpenGov/giscoR/)
+-   [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
 
 ## Citation 
 

@@ -55,9 +55,9 @@ See \code{citation("giscoR")}
 \seealso{
 Useful links:
 \itemize{
-\item \url{https://dieghernan.github.io/giscoR/}
-\item \url{https://github.com/dieghernan/giscoR}
-\item Report bugs at \url{https://github.com/dieghernan/giscoR/issues}
+\item \url{https://ropengov.github.io/giscoR/}
+\item \url{https://github.com/rOpenGov/giscoR}
+\item Report bugs at \url{https://github.com/rOpenGov/giscoR/issues}
 }
 }
 \author{
