@@ -7,8 +7,8 @@ if (foot.length > 0) {
 
   text = '<p class="mt-4">Part of <a href="http://ropengov.org/">' +
     '<img src="http://ropengov.org/images/logo2020_white_orange.svg"' +
-    ' height="20" class="d-inline-block mx-1" alt="rOpenGov R packages for open government data analytics"' +
-    ' style="margin-bottom: 5px;"></a></p>';
+    ' height="20" class="d-inline-block mx-1 rog-logo" alt="rOpenGov R packages for open government data analytics"' +
+    '></a></p>';
 
   footdiv.innerHTML += text
   
