@@ -45,6 +45,15 @@ img[src$='#floatright'] {
 /*********************************/
 
 
+.pkg-logo {
+  float: right;
+  width: 100px;
+  margin-left: 30px;
+  margin-top: 25px;
+}
+
+
+
 /* Mono fonts */
 
 @import url('https://fonts.googleapis.com/css2?family=B612+Mono&display=swap');
@@ -54,6 +63,10 @@ code,
   font-family: 'B612 Mono', monospace;
 }
 
+.navbar-brand {
+  font-size: 2rem;
+
+}
 
 /* Position hack to get full width footer even though pkgdown puts it inside a container * See: https://css-tricks.com/full-width-containers-limited-width-parents/ */
 
