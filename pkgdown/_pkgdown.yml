@@ -40,7 +40,7 @@ template:
       index_name: dieghernan_giscor
   opengraph:
     image:
-      src: https://raw.githubusercontent.com/dieghernan/giscoR/master/img/README-thematic-1.png
+      src: https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-thematic-1.png
       alt: "giscoR-thematic"
     twitter:
       creator: '@dhernangomez'
