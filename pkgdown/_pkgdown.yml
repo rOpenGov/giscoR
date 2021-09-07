@@ -24,6 +24,8 @@ reference:
     contents:
       - giscoR-package
 
+development:
+  mode: auto
 
 navbar:
   type: dark
