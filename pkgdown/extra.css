@@ -68,6 +68,25 @@ code,
 
 }
 
+
+
+.rog-logo {
+  margin-bottom: 5px;
+}
+
+
+/* Footers anchors */
+
+footer a {
+  color: #dee2e6;
+}
+
+footer a:hover,
+footer a:focus {
+  color: #ff6600;
+}
+
+
 /* Position hack to get full width footer even though pkgdown puts it inside a container * See: https://css-tricks.com/full-width-containers-limited-width-parents/ */
 
 footer {
@@ -81,63 +100,61 @@ footer {
   color: white;
 }
 
-.rog-logo {
-  margin-bottom: 5px;
-}
-
-
-/* More footers */
-
-footer a {
-  color: #dee2e6;
-}
-
-footer a:hover,
-footer a:focus {
-  color: #ff6600;
-}
-
-@media screen and (max-width: 576px) {
+@media (min-width: 1200px) {
   footer .pkgdown-footer-right {
-    margin-right: 1rem;
+    margin-right: calc(50vw - 586px);
+	padding-right: 30px;
   }
   footer .pkgdown-footer-left {
-    margin-left: 1rem;
+    margin-left: calc(50vw - 586px);
+	padding-left: 30px;
   }
 }
 
-@media (max-width:768px) and (min-width:576px) {
+@media (max-width: 1200px) and (min-width:992px) {
   footer .pkgdown-footer-right {
-    margin-right: 2rem;
+    margin-right: calc(50vw - 496px);
+	padding-right: 30px;
+
   }
   footer .pkgdown-footer-left {
-    margin-left: 2rem;
+    margin-left: calc(50vw - 496px);
+	padding-left: 30px;
   }
 }
 
 @media (max-width: 992px) and (min-width:768px) {
   footer .pkgdown-footer-right {
-    margin-right: 4rem;
+    margin-right: calc(50vw - 376px);
+	padding-right: 15px;
+
   }
   footer .pkgdown-footer-left {
-    margin-left: 4rem;
+    margin-left: calc(50vw - 376px);
+	padding-left: 15px;
+  }
+}
+  
+
+@media (max-width:768px) and (min-width:576px) {
+  footer .pkgdown-footer-right {
+    margin-right: calc(50vw - 286px);
+	padding-right: 15px;
+
+  }
+  footer .pkgdown-footer-left {
+    margin-left: calc(50vw - 286px);
+	padding-left: 15px;
   }
 }
 
-@media (max-width: 1400px) and (min-width:992px) {
-  footer .pkgdown-footer-right {
-    margin-right: 6rem;
-  }
-  footer .pkgdown-footer-left {
-    margin-left: 6rem;
-  }
-}
 
-@media (min-width:1400px) {
+
+@media screen and (max-width: 576px) {
   footer .pkgdown-footer-right {
-    margin-right: 10rem;
+    padding-right: 16px;
   }
   footer .pkgdown-footer-left {
-    margin-left: 10rem;
+   padding-left: 16px;
   }
 }
