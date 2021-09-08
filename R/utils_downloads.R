@@ -329,7 +329,7 @@ gsc_api_cache <-
           message(
             "\nurl \n ",
             url,
-            " not reachable.\n\nPlease download manually. If you think this is a bug please consider opening an issue on https://github.com/dieghernan/giscoR/issues"
+            " not reachable.\n\nPlease download manually. If you think this is a bug please consider opening an issue on https://github.com/ropengov/giscoR/issues"
           )
           return(TRUE)
         }
