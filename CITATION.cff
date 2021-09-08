@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: If you use this software, please cite it using these metadata.
+message: 'To cite package giscoR in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'giscoR: Download Map Data from GISCO API - Eurostat'
