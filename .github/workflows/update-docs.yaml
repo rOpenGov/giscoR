@@ -33,7 +33,7 @@ jobs:
           extra-packages: |
             devtools
             rcmdcheck
-            r-lib/pkgdown
+            dieghernan/rogtemplate
             dieghernan/pkgdev
           needs: website
 

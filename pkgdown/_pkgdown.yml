@@ -32,9 +32,7 @@ navbar:
   bg: dark
 
 template:
-  bootstrap: 4
-  bslib:
-    enable-responsive-font-sizes: true
+  rogtemplate
   params:
     ganalytics: UA-139034853-6
     docsearch:
