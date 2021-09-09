@@ -32,7 +32,7 @@ navbar:
   bg: dark
 
 template:
-  rogtemplate
+  package: rogtemplate
   params:
     ganalytics: UA-139034853-6
     docsearch:
