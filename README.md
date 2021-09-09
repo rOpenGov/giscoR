@@ -77,7 +77,6 @@ install.packages("giscoR")
 This script highlights some features of `giscoR`:
 
 ``` r
-
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -111,8 +110,6 @@ ggplot(DNK_all) +
 <img src="https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-example-1.png" width="100%" />
 
 ``` r
-
-
 # Labels and Lines available
 
 labs <- gisco_get_countries(
@@ -145,7 +142,6 @@ ggplot(coast) +
 An example of a labeled map using `ggplot2`:
 
 ``` r
-
 ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
 
 ggplot(ITA) +
@@ -165,7 +161,6 @@ Popovic](https://twitter.com/milos_agathon) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
 ``` r
-
 # Get shapes
 nuts3 <- gisco_get_nuts(
   year = "2016",
