@@ -15,17 +15,14 @@ authors:
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
+  type: manual
   title: 'giscoR: Download Map Data from GISCO API - Eurostat'
   authors:
   - family-names: Hernangómez
     given-names: Diego
   year: '2021'
   url: https://ropengov.github.io/giscoR/
-  type: manual
   doi: 10.5281/zenodo.4317946
-  identifiers:
-  - type: doi
-    value: 10.5281/zenodo.4317946
 repository-code: https://github.com/rOpenGov/giscoR
 url: https://ropengov.github.io/giscoR/
 contact:
@@ -43,6 +40,3 @@ keywords:
 - gisco
 - thematic-maps
 - eurostat-data
-identifiers:
-- type: doi
-  value: 10.5281/zenodo.4317946
