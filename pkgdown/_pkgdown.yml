@@ -34,7 +34,7 @@ navbar:
 template:
   package: rogtemplate
   params:
-    ganalytics: UA-139034853-6
+    ganalytics: G-VGVFXGHWRL
     docsearch:
       api_key: 43dc96a03af10866ccbce1720b69b127
       index_name: dieghernan_giscor
