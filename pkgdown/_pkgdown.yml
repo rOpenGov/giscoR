@@ -27,10 +27,6 @@ reference:
 development:
   mode: auto
 
-navbar:
-  type: dark
-  bg: dark
-
 template:
   package: rogtemplate
   params:
