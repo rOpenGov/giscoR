@@ -1,3 +1,8 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.0.1.9003
+# See also: https://dieghernan.github.io/cffr/
+# -----------------------------------------------------------
+ 
 cff-version: 1.2.0
 message: 'To cite package "giscoR" in publications use:'
 type: software
@@ -23,6 +28,7 @@ preferred-citation:
   year: '2021'
   url: https://ropengov.github.io/giscoR/
   doi: 10.5281/zenodo.4317946
+repository: https://packagemanager.rstudio.com/all/__linux__/focal/latest/
 repository-code: https://github.com/rOpenGov/giscoR
 url: https://ropengov.github.io/giscoR/
 contact:

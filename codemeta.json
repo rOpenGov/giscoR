@@ -2,7 +2,7 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "giscoR",
-  "description": "Tools to download data from the GISCO (Geographic Information\n    System of the Commission) Eurostat database\n    <https://ec.europa.eu/eurostat/web/gisco>. Global and European map\n    data available.  This package is in no way officially related to or\n    endorsed by Eurostat.",
+  "description": "Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.",
   "name": "giscoR: Download Map Data from GISCO API - Eurostat",
   "codeRepository": "https://github.com/rOpenGov/giscoR",
   "relatedLink": "https://ropengov.github.io/giscoR/",
