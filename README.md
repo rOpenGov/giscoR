@@ -294,18 +294,18 @@ them on your local directory.
 
 ### API data packages
 
--   `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
+  - `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
     an API package that provides access to open data from Eurostat.
 
 ### Plotting `sf` objects
 
 Some packages recommended for visualization are:
 
--   [`tmap`](https://r-tmap.github.io/tmap/)
--   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+  - [`tmap`](https://r-tmap.github.io/tmap/)
+  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
--   [`mapsf`](https://riatelab.github.io/mapsf/)
--   [`leaflet`](https://rstudio.github.io/leaflet/)
+  - [`mapsf`](https://riatelab.github.io/mapsf/)
+  - [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 
@@ -314,10 +314,10 @@ code](https://github.com/rOpenGov/giscoR/).
 
 Contributions are very welcome:
 
--   [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
+  - [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
     feedback and bug reports.
--   [Send pull requests](https://github.com/rOpenGov/giscoR/)
--   [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
+  - [Send pull requests](https://github.com/rOpenGov/giscoR/)
+  - [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
 
 ## Citation
 
@@ -338,14 +338,14 @@ citation("giscoR")
 #>     author = {Diego Hernangómez},
 #>     year = {2021},
 #>     note = {R package version 0.2.4.9008},
-#>     url = {https://ropengov.github.io/giscoR//},
+#>     url = {https://ropengov.github.io/giscoR/},
 #>     doi = {10.5281/zenodo.4317946},
 #>   }
 ```
 
 ## Copyright notice
 
-*From GISCO &gt; Geodata &gt; Reference data &gt; Administrative Units /
+*From GISCO \> Geodata \> Reference data \> Administrative Units /
 Statistical Units*
 
 > When data downloaded from this page is used in any printed or
@@ -353,13 +353,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
->
+> 
 > EN: © EuroGeographics for the administrative boundaries
->
+> 
 > FR: © EuroGeographics pour les limites administratives
->
+> 
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
->
+> 
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.
