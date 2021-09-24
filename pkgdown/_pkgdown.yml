@@ -1,61 +1,43 @@
-url: 'https://ropengov.github.io/giscoR/'
+url: https://ropengov.github.io/giscoR/
 reference:
-  - title: Political
-    desc: These functions return `sf` objects with political boundaries
-    contents:
-      - has_concept("political")
-  - title: Infrastructures
-    desc: These functions return `sf` objects with man-made features
-    contents:
-      - has_concept("infrastructure")
-  - title: Misc
-    desc: Thse functions return other `sf` objects
-    contents:
-      - has_concept("misc")
-  - title: Helpers
-    desc: A collection of helper functions
-    contents:
-      - has_concept("helper")
-  - title: Datasets
-    desc: These objects are datasets already included in the package.
-    contents:
-      - has_concept("dataset")
-  - title: About the package
-    contents:
-      - giscoR-package
-
-development:
-  mode: auto
-
+- title: Political
+  desc: These functions return `sf` objects with political boundaries
+  contents: has_concept("political")
+- title: Infrastructures
+  desc: These functions return `sf` objects with man-made features
+  contents: has_concept("infrastructure")
+- title: Misc
+  desc: Thse functions return other `sf` objects
+  contents: has_concept("misc")
+- title: Helpers
+  desc: A collection of helper functions
+  contents: has_concept("helper")
+- title: Datasets
+  desc: These objects are datasets already included in the package.
+  contents: has_concept("dataset")
+- title: About the package
+  contents: giscoR-package
 template:
   package: rogtemplate
   params:
     ganalytics: G-VGVFXGHWRL
-    docsearch:
-      api_key: 43dc96a03af10866ccbce1720b69b127
-      index_name: dieghernan_giscor
   opengraph:
     image:
       src: https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-thematic-1.png
-      alt: "giscoR-thematic"
+      alt: giscoR-thematic
     twitter:
       creator: '@dhernangomez'
       card: summary_large_image
 home:
   title: giscoR | R package for download geodata from GISCO - Eurostat
-  description: >-
-    giscoR is a R API package that helps to retrieve data from Eurostat - GISCO
-    (the Geographic Information System of the COmmission). It also provides some
-    lightweight data sets ready to use without downloading. Currently only the
+  description: giscoR is a R API package that helps to retrieve data from Eurostat
+    - GISCO (the Geographic Information System of the COmmission). It also provides
+    some lightweight data sets ready to use without downloading. Currently only the
     Administrative Units / Statistical Units data sets are supported
 authors:
   Diego Hernangómez:
-    href: 'https://dieghernan.github.io/'
+    href: https://dieghernan.github.io/
   EuroGeographics:
-    href: >-
-      https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
+    href: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
   Vincent Arel-Bundock:
-    href: 'https://vincentarelbundock.github.io/countrycode/'
-
-
-
+    href: https://vincentarelbundock.github.io/countrycode/

@@ -31,10 +31,9 @@ if (isFALSE(requireNamespace("dplyr", quietly = TRUE))) {
 }
 ```
 
-# giscoR <img src="man/figures/logo.png" align="right" width="120"/>
-
+# giscoR <a href='https://ropengov.github.io/giscoR/'><img src='man/figures/logo.png' align="right" height="139" /></a>
 <!-- badges: start -->
-
+[![rOG-badge](https://dieghernan.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](http://ropengov.org/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![CRAN
@@ -49,10 +48,9 @@ status](https://github.com/rOpenGov/giscoR/workflows/R-CMD-check/badge.svg)](htt
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![status](https://tinyverse.netlify.com/badge/giscoR)](https://CRAN.R-project.org/package=giscoR)
-
 <!-- badges: end -->
 
-[giscoR](https://ropengov.github.io/giscoR/) is an API package that helps to
+[giscoR](https://ropengov.github.io/giscoR//) is an API package that helps to
 retrieve data from [Eurostat - GISCO (the Geographic Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides some
 lightweight data sets ready to use without downloading.
@@ -67,7 +65,7 @@ Note that the package does not provide metadata on the downloaded files, the
 information is available on the [API
 webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-Full site with examples and vignettes on <https://ropengov.github.io/giscoR/>
+Full site with examples and vignettes on <https://ropengov.github.io/giscoR//>
 
 ## Installation
 

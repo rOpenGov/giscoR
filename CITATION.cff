@@ -28,7 +28,7 @@ preferred-citation:
   year: '2021'
   url: https://ropengov.github.io/giscoR/
   doi: 10.5281/zenodo.4317946
-repository: https://packagemanager.rstudio.com/all/__linux__/focal/latest/
+repository: https://CRAN.R-project.org/package=giscoR
 repository-code: https://github.com/rOpenGov/giscoR
 url: https://ropengov.github.io/giscoR/
 contact:
