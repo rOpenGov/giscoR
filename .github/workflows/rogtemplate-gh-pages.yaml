@@ -26,7 +26,7 @@ jobs:
         with:
           extra-packages: |
             magick
-            dieghernan/rogtemplate
+            ropengov/rogtemplate
 
           needs: website
 

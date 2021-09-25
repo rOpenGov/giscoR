@@ -20,7 +20,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
           extra-packages: |
-            dieghernan/rogtemplate
+            ropengov/rogtemplate
             r-lib/pkgdown
           needs: website
           

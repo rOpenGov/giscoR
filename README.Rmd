@@ -83,12 +83,12 @@ install_github("rOpenGov/giscoR")
 ```
 
 Alternatively, you can install `giscoR` using the
-[r-universe](https://dieghernan.r-universe.dev/ui#builds):
+[r-universe](https://ropengov.r-universe.dev):
 
 ```{r, eval=FALSE}
 # Enable this universe
 options(repos = c(
-  dieghernan = "https://dieghernan.r-universe.dev",
+  ropengov = "https://ropengov.r-universe.dev",
   CRAN = "https://cloud.r-project.org"
 ))
 
