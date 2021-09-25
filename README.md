@@ -11,7 +11,7 @@ status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org
 [![CRAN
 results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.org/web/checks/check_results_giscoR.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/giscoR)](https://CRAN.R-project.org/package=giscoR)
-[![r-universe](https://dieghernan.r-universe.dev/badges/giscoR)](https://dieghernan.r-universe.dev/)
+[![r-universe](https://ropengov.r-universe.dev/badges/giscoR)](https://ropengov.r-universe.dev/)
 [![R build
 status](https://github.com/rOpenGov/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenGov/giscoR/actions)
 [![codecov](https://codecov.io/gh/ropengov/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/ropengov/giscoR)
