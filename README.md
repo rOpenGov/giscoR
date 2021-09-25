@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![rOG-badge](https://dieghernan.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](http://ropengov.org/)
+[![rOG-badge](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](http://ropengov.org/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![CRAN
@@ -59,12 +59,12 @@ install_github("rOpenGov/giscoR")
 ```
 
 Alternatively, you can install `giscoR` using the
-[r-universe](https://dieghernan.r-universe.dev/ui#builds):
+[r-universe](https://ropengov.r-universe.dev):
 
 ``` r
 # Enable this universe
 options(repos = c(
-  dieghernan = "https://dieghernan.r-universe.dev",
+  ropengov = "https://ropengov.r-universe.dev",
   CRAN = "https://cloud.r-project.org"
 ))
 
