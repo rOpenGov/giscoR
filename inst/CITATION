@@ -1,16 +1,13 @@
-citHeader("To cite the 'giscoR' package in publications use:")
+year <- format(Sys.time(), "%Y")
 
-year = format(Sys.time(), "%Y")
-vers = paste('R package version', meta$Version)
-url = 'https://ropengov.github.io/giscoR/'
-citEntry(
-  ,
-  entry = 'manual',
-  title = paste('giscoR:', meta$Title),
-  author = person("Diego", "Hernangómez"),
+bibentry(
+  "Manual",
+  header = "To cite the 'giscoR' package in publications use:",
+  title = paste("giscoR:", meta$Title),
   year = year,
-  note = vers,
-  url = url,
-  doi = '10.5281/zenodo.4317946',
-  textVersion = paste0('Hernangómez, D. (', year, '). giscoR: ', meta$Title, ' http://doi.org/10.5281/zenodo.4317946')
+  note = paste("R package version", meta$Version),
+  version = meta$Version,
+  author = person("Diego", "Hernangómez"),
+  doi = "10.5281/zenodo.4317946",
+  url = unlist(strsplit(meta$URL, ","))[1]
 )

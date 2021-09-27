@@ -8,7 +8,7 @@
   "relatedLink": "https://ropengov.github.io/giscoR/",
   "issueTracker": "https://github.com/rOpenGov/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.2.4.9008",
+  "version": "0.3.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -191,7 +191,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data"],
-  "fileSize": "1748.137KB",
+  "fileSize": "1748.752KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -206,7 +206,7 @@
       "name": "giscoR: Download Map Data from GISCO API - Eurostat",
       "identifier": "10.5281/zenodo.4317946",
       "url": "https://ropengov.github.io/giscoR/",
-      "description": "R package version 0.2.4.9008",
+      "description": "R package version 0.3.0",
       "@id": "https://doi.org/10.5281/zenodo.4317946",
       "sameAs": "https://doi.org/10.5281/zenodo.4317946"
     }

@@ -8,7 +8,7 @@ message: 'To cite package "giscoR" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'giscoR: Download Map Data from GISCO API - Eurostat'
-version: 0.2.4.9008
+version: 0.3.0
 doi: 10.5281/zenodo.4317946
 abstract: Tools to download data from the GISCO (Geographic Information System of
   the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global
@@ -19,6 +19,7 @@ authors:
   given-names: Diego
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
+  affiliation: rOpenGov
 preferred-citation:
   type: manual
   title: 'giscoR: Download Map Data from GISCO API - Eurostat'
@@ -26,8 +27,9 @@ preferred-citation:
   - family-names: Hernangómez
     given-names: Diego
   year: '2021'
-  url: https://ropengov.github.io/giscoR/
+  version: 0.3.0
   doi: 10.5281/zenodo.4317946
+  url: https://ropengov.github.io/giscoR/
 repository: https://CRAN.R-project.org/package=giscoR
 repository-code: https://github.com/rOpenGov/giscoR
 url: https://ropengov.github.io/giscoR/
@@ -36,6 +38,7 @@ contact:
   given-names: Diego
   email: diego.hernangomezherrero@gmail.com
   orcid: https://orcid.org/0000-0001-8457-4658
+  affiliation: rOpenGov
 keywords:
 - ropengov
 - r

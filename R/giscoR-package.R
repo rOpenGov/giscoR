@@ -22,7 +22,7 @@
 #' | **Type**     | Package  |
 #' | **Version**  | `r packageVersion("giscoR")` |
 #' | **Date**     | `r format(Sys.Date(), "%Y")`     |
-#' | **License**  | GPL-3    |
+#' | **License**  | `r as.character(utils::packageDescription("giscoR")["License"])`|
 #' | **LazyLoad** | yes      |
 #'
 #'

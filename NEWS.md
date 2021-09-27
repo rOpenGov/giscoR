@@ -1,4 +1,4 @@
-# giscoR (development version)
+# giscoR 0.3.0
 
 -   Now **giscoR** is part of [rOpenGov](http://ropengov.org/). Repo has been
     transferred.
