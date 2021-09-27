@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# giscoR <a href='https://ropengov.github.io/giscoR/'><img src='man/figures/logo.svg' align="right" height="139" /></a>
+# giscoR <a href='https://ropengov.github.io/giscoR/'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
