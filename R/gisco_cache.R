@@ -1,9 +1,9 @@
-#' Set your GISCO cache dir
+#' Set your **giscoR** cache dir
 #'
-#' @concept helper
-#' @family helper
+#' @family cache utilities
+#' @seealso [rappdirs::user_config_dir()]
 #'
-#' @return Invisible value
+#' @return An (invisible) character with the path to your `cache_dir`.
 #' @description
 #' This function will store your `cache_dir` path on your local machine and
 #' would load it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
@@ -14,19 +14,21 @@
 #'   * Run `Sys.setenv(GISCO_CACHE_DIR = "cache_dir")`. You would need to
 #'     run this command on each session (Similar to `install = FALSE`).
 #'   * Set `options(gisco_cache_dir = "cache_dir")`. Similar to the previous
-#'     option.
-#'   * Write this line on your .Renviron file: `GISCO_CACHE_DIR = "cache_dir"`
-#'     (same behavior than `install = TRUE`). This would store your `cache_dir`
-#'     permanently.
+#'     option. This is **not recommended any more**, and it is provided for
+#'     backwards compatibility purposes.
+#'   * Write this line on your .Renviron file:
+#'     `GISCO_CACHE_DIR = "value_for_cache_dir"` (same behavior than
+#'     `install = TRUE`). This would store your `cache_dir` permanently.
 #'
-#' @inheritParams gisco_get_countries
-#' @param cache_dir A path to a cache directory.
+#' @inheritParams gisco_get_nuts
+#' @param cache_dir A path to a cache directory. On missing value the function
+#'   would store the cached files on a temporary dir (See [base::tempdir()]).
 #' @param install if `TRUE`, will install the key in your local machine for
-#'   use in future sessions.  Defaults to `FALSE.`
+#'   use in future sessions.  Defaults to `FALSE.` If `cache_dir` is `FALSE`
+#'   this parameter is set to `FALSE` automatically.
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
 #'   `GISCO_CACHE_DIR` that you already have in local machine.
 #'
-#' @seealso [rappdirs::user_cache_dir()]
 #'
 #' @examples
 #'
@@ -37,12 +39,30 @@
 #'
 #' Sys.getenv("GISCO_CACHE_DIR")
 #' @export
-gisco_set_cache_dir <- function(cache_dir = rappdirs::user_cache_dir("giscoR", "R"),
-                                overwrite = TRUE,
-                                install = TRUE,
-                                verbose = FALSE) {
+gisco_set_cache_dir <- function(cache_dir,
+                                overwrite = FALSE,
+                                install = FALSE,
+                                verbose = TRUE) {
 
   # nocov start
+
+  # Default if not provided
+  if (missing(cache_dir) || cache_dir == "") {
+    if (verbose) {
+      message(
+        "Using a temporary cache dir. ",
+        "Set 'cache_dir' to a value for store permanently"
+      )
+    }
+    # Create a folder on tempdir
+    cache_dir <- file.path(tempdir(), "giscoR")
+    is_temp <- TRUE
+    install <- FALSE
+  } else {
+    is_temp <- FALSE
+  }
+
+
   # Validate
   stopifnot(
     is.character(cache_dir),
@@ -58,7 +78,7 @@ gisco_set_cache_dir <- function(cache_dir = rappdirs::user_cache_dir("giscoR", "
 
   if (verbose) {
     message(
-      "GISCO Cache dir is: ",
+      "giscoR cache dir is: ",
       cache_dir
     )
   }
@@ -67,40 +87,60 @@ gisco_set_cache_dir <- function(cache_dir = rappdirs::user_cache_dir("giscoR", "
   # Install path on environ var.
 
   if (install) {
-    config_dir <- rappdirs::user_cache_dir("giscoR", "R")
+    config_dir <- rappdirs::user_config_dir("giscoR", "R")
     # Create cache dir if not presente
     if (!dir.exists(config_dir)) {
       dir.create(config_dir, recursive = TRUE)
     }
 
-    gisco_file <- file.path(config_dir, "gisco_cache_dir")
+    giscor_file <- file.path(config_dir, "gisco_cache_dir")
 
-    if (!file.exists(gisco_file) || overwrite == TRUE) {
+    if (!file.exists(giscor_file) || overwrite == TRUE) {
       # Create file if it doesn't exist
-      writeLines(cache_dir, con = gisco_file)
+      writeLines(cache_dir, con = giscor_file)
     } else {
       stop(
-        "A cache_dir path already exists. You can overwrite it with the ",
-        "argument overwrite=TRUE",
+        "A cache_dir path already exists.\nYou can overwrite it with the ",
+        "argument overwrite = TRUE",
         call. = FALSE
       )
     }
   } else {
-    if (verbose) {
+    if (verbose && !is_temp) {
       message(
-        "To install your cache_dir path for use in future sessions, run this ",
-        "function with `install = TRUE`."
+        "To install your cache_dir path for use in future sessions,",
+        "\nrun this function with `install = TRUE`."
       )
     }
   }
 
   Sys.setenv(GISCO_CACHE_DIR = cache_dir)
-  return(invisible())
+  return(invisible(cache_dir))
   # nocov end
 }
 
+gisco_clear_cache <- function(config = TRUE,
+                              cached_data = TRUE,
+                              verbose = FALSE) {
+  config_dir <- rappdirs::user_config_dir("giscoR", "R")
+  data_dir <- gsc_helper_detect_cache_dir()
+  if (config && dir.exists(config_dir)) {
+    unlink(config_dir, recursive = TRUE, force = TRUE)
+    if (verbose) message("giscoR cache config deleted")
+  }
 
-#' Detect cache dir for GISCO
+  if (cached_data && dir.exists(data_dir)) {
+    unlink(data_dir, recursive = TRUE, force = TRUE, expand = TRUE)
+    if (verbose) message("giscoR cached data deleted: ", data_dir)
+  }
+
+
+  Sys.setenv(GISCO_CACHE_DIR = "")
+  options(gisco_cache_dir = NULL)
+  return(invisible())
+}
+
+#' Detect cache dir for giscoR
 #'
 #' @noRd
 gsc_helper_detect_cache_dir <- function() {
@@ -114,8 +154,8 @@ gsc_helper_detect_cache_dir <- function() {
   from_option <- getOption("gisco_cache_dir", NULL)
 
   if (!is.null(from_option) && (is.null(getvar) || getvar == "")) {
-    Sys.setenv(GISCO_CACHE_DIR = from_option)
-    return(from_option)
+    cache_dir <- gisco_set_cache_dir(from_option, install = FALSE)
+    return(cache_dir)
   }
 
 
@@ -123,20 +163,22 @@ gsc_helper_detect_cache_dir <- function() {
 
   if (is.null(getvar) || is.na(getvar) || getvar == "") {
     # Not set - tries to retrieve from cache
-    cachedir <- rappdirs::user_cache_dir("giscoR", "R")
-    gisco_cache_path <- file.path(cachedir, "gisco_cache_dir")
+    cache_config <- file.path(
+      rappdirs::user_config_dir("giscoR", "R"),
+      "GISCO_CACHE_DIR"
+    )
 
-    if (file.exists(gisco_cache_path)) {
-      cached_path <- readLines(gisco_cache_path)
+    if (file.exists(cache_config)) {
+      cached_path <- readLines(cache_config)
 
       # Case on empty cached path - would default
       if (is.null(cached_path) ||
         is.na(cached_path) || cached_path == "") {
-        gisco_set_cache_dir(
-          install = TRUE, overwrite = TRUE,
+        cache_dir <- gisco_set_cache_dir(
+          overwrite = TRUE,
           verbose = FALSE
         )
-        return(rappdirs::user_cache_dir("giscoR", "R"))
+        return(cache_dir)
       }
 
       # 3. Return from cached path
@@ -145,14 +187,37 @@ gsc_helper_detect_cache_dir <- function() {
     } else {
       # 4. Default cache location
 
-      gisco_set_cache_dir(
-        install = TRUE, overwrite = TRUE,
+      cache_dir <- gisco_set_cache_dir(
+        overwrite = TRUE,
         verbose = FALSE
       )
-      return(rappdirs::user_cache_dir("giscoR", "R"))
+      return(cache_dir)
     }
   } else {
     return(getvar)
   }
   # nocov end
+}
+
+#' Creates `cache_dir`
+#'
+#' @inheritParams gisco_get_countries
+#'
+#' @noRd
+gsc_helper_cachedir <- function(cache_dir = NULL) {
+  # Check cache dir from options if not set
+  if (is.null(cache_dir)) {
+    cache_dir <- gsc_helper_detect_cache_dir()
+  }
+
+  # Reevaluate
+  if (is.null(cache_dir)) {
+    cache_dir <- file.path(tempdir(), "giscoR")
+  }
+
+  # Create cache dir if needed
+  if (isFALSE(dir.exists(cache_dir))) {
+    dir.create(cache_dir, recursive = TRUE)
+  }
+  return(cache_dir)
 }

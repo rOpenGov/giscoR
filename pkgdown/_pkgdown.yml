@@ -9,6 +9,8 @@ reference:
 - title: Misc
   desc: Thse functions return other `sf` objects
   contents: has_concept("misc")
+- title: Cache management
+  contents: has_concept("cache utilities")
 - title: Helpers
   desc: A collection of helper functions
   contents: has_concept("helper")

@@ -47,5 +47,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 X-schema.org-applicationCategory: cartography
 X-schema.org-isPartOf: http://ropengov.org/
-X-schema.org-keywords: r, spatial, api-wrapper, rstats, r-package,
-    eurostat, gisco, thematic-maps, eurostat-data
+X-schema.org-keywords: ropengov, r, spatial, api-wrapper, rstats,
+    r-package, eurostat, gisco, thematic-maps, eurostat-data

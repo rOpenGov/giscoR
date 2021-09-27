@@ -28,3 +28,4 @@
 ^_pkgdown\.yaml$
 ^vignettes/figures-giscoR\.Rmd\.R$
 ^CITATION\.cff$
+^\._pkgdown\.yml$
