@@ -25,8 +25,8 @@ template:
     ganalytics: G-VGVFXGHWRL
   opengraph:
     image:
-      src: https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-thematic-1.png
-      alt: giscoR-thematic
+      src: https://ropengov.github.io/giscoR/articles/choro.png
+      alt: giscoR-choro
     twitter:
       creator: '@dhernangomez'
       card: summary_large_image
