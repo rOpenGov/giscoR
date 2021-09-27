@@ -10,7 +10,6 @@ knitr::opts_chunk$set(
   message = FALSE,
   out.width = "100%"
 )
-
 ```
 
 
