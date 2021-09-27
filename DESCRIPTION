@@ -21,7 +21,6 @@ Description: Tools to download data from the GISCO (Geographic Information
     data available.  This package is in no way officially related to or
     endorsed by Eurostat.
 License: GPL-3
-Copyright: EuroGeographics for the administrative boundaries.
 URL: https://ropengov.github.io/giscoR/,
     https://github.com/rOpenGov/giscoR
 BugReports: https://github.com/rOpenGov/giscoR/issues
@@ -42,6 +41,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
+Copyright: EuroGeographics for the administrative boundaries.
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
