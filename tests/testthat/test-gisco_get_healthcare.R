@@ -1,4 +1,5 @@
 test_that("Healthcare online", {
+  skip_on_cran()
   skip_if_not(
     gisco_check_access(),
     "Skipping... GISCO not reachable."

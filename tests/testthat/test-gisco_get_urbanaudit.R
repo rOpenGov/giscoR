@@ -7,6 +7,7 @@ test_that("Urban Audit offline", {
 })
 
 test_that("Urban Audit online", {
+  skip_on_cran()
   skip_if_not(
     gisco_check_access(),
     "Skipping... GISCO not reachable."

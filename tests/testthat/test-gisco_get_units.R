@@ -9,6 +9,7 @@ test_that("Errors on units", {
 })
 
 test_that("Units online", {
+  skip_on_cran()
   skip_if_not(
     gisco_check_access(),
     "Skipping... GISCO not reachable."

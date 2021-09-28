@@ -5,6 +5,7 @@ test_that("Grid offline", {
 })
 
 test_that("Grids online", {
+  skip_on_cran()
   skip_if_not(
     gisco_check_access(),
     "Skipping... GISCO not reachable."
