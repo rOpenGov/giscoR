@@ -1,4 +1,4 @@
-# giscoR (development version)
+# giscoR 0.3.1
 
 -   Add `Copyright` on DESCRIPTION.
 -   Add `lwgeom` on `Suggests`.

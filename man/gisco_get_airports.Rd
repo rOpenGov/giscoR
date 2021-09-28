@@ -41,16 +41,10 @@ to Europe. All shapefiles provided in EPSG:4326
 library(sf)
 
 NL <- gisco_get_countries(country = "NL")
-
 AirP_NL <- gisco_get_airports(country = "NL")
 
-AirP_NL <- st_transform(AirP_NL, st_crs(NL))
-
 Ports <- gisco_get_ports()
-# Transform an intersect with NL
-
-Ports <- st_transform(Ports, st_crs(NL))
-
+# Intersect with NL
 PortsNL <- st_intersection(Ports, NL)
 
 # Bind
