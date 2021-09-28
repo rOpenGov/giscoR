@@ -40,7 +40,7 @@ the information is available on the [API
 webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
 
 Full site with examples and vignettes on
-<https://ropengov.github.io/giscoR//>
+<https://ropengov.github.io/giscoR/>
 
 ## Installation
 
