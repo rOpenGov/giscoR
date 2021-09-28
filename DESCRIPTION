@@ -37,8 +37,8 @@ Suggests:
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
-Copyright: General Copyright: © European Union, 1995 - today. See file
-    COPYRIGHTS for specific provisions.
+Copyright: General Copyright © European Union, 1995 - today. See 
+    file COPYRIGHTS for specific provisions.
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
