@@ -1,3 +1,8 @@
+# giscoR (development version)
+
+-   Add `Copyright` on DESCRIPTION.
+-   Add `lwgeom` on `Suggests`.
+
 # giscoR 0.3.0
 
 -   Now **giscoR** is part of [rOpenGov](http://ropengov.org/). Repo has been

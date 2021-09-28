@@ -1,7 +1,7 @@
 Type: Package
 Package: giscoR
 Title: Download Map Data from GISCO API - Eurostat
-Version: 0.3.0
+Version: 0.3.0.9000
 Authors@R: 
     c(person(given = "Diego",
              family = "Hernangómez",
@@ -36,12 +36,14 @@ Suggests:
     eurostat,
     ggplot2 (>= 3.0.0),
     knitr,
+    lwgeom (>= 0.2-2),
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
-Copyright: EuroGeographics for the administrative boundaries.
+Copyright: General Copyright: © European Union, 1995 - today. See file
+    COPYRIGHTS for specific provisions.
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

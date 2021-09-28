@@ -106,6 +106,7 @@ For a complete list of files available check \link{gisco_db}.
 }
 
 \examples{
+\donttest{
 if (gisco_check_access()) {
   cities <- gisco_get_units(
     id_giscoR = "urban_audit",
@@ -144,6 +145,7 @@ if (gisco_check_access()) {
       subtitle = "Urban Audit",
       fill = "Urban Audit\ncategory"
     )
+}
 }
 }
 \seealso{

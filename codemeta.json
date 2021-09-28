@@ -8,7 +8,7 @@
   "relatedLink": "https://ropengov.github.io/giscoR/",
   "issueTracker": "https://github.com/rOpenGov/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.3.0",
+  "version": "0.3.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -95,6 +95,19 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "lwgeom",
+      "name": "lwgeom",
+      "version": ">= 0.2-2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=lwgeom"
     },
     {
       "@type": "SoftwareApplication",
@@ -191,7 +204,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data"],
-  "fileSize": "1751.417KB",
+  "fileSize": "2094.011KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -206,7 +219,7 @@
       "name": "giscoR: Download Map Data from GISCO API - Eurostat",
       "identifier": "10.5281/zenodo.4317946",
       "url": "https://ropengov.github.io/giscoR/",
-      "description": "R package version 0.3.0",
+      "description": "R package version 0.3.0.9000",
       "@id": "https://doi.org/10.5281/zenodo.4317946",
       "sameAs": "https://doi.org/10.5281/zenodo.4317946"
     }

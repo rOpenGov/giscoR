@@ -1,0 +1,112 @@
+GENERAL COPYRIGHT
+=================
+
+© European Union, 1995 - today
+
+Eurostat has a policy of encouraging free re-use of its data, both for
+non-commercial and commercial purposes. All statistical data, metadata, content
+of web pages or other dissemination tools, official publications and other
+documents published on its website, with the exceptions listed below, can be
+reused without any payment or written licence provided that:
+
+  - the source is indicated as Eurostat;
+  - when re-use involves modifications to the data or text, this must be stated
+  clearly to the end user of the information.
+
+
+Exceptions
+
+  1. The permission granted above does not extend to any material whose
+  copyright is identified as belonging to a third-party, such as photos or
+  illustrations from copyright holders other than the European Union. In these
+  circumstances, authorisation must be obtained from the relevant copyright
+  holder(s).
+
+  2. Logos and trademarks are excluded from the above mentioned general
+  permission, except if they are redistributed as an integral part of a
+  Eurostat publication and if the publication is redistributed unchanged.
+
+  3. When reuse involves translations of publications or modifications to the
+  data or text, this must be stated clearly to the end user of the information.
+  A disclaimer regarding the non-responsibility of Eurostat shall be included.
+
+  4. The following Eurostat data and documents may not be reused for commercial
+  purposes (but non-commercial reuse is possible without restriction):
+
+    a. Data identified as belonging to sources other than Eurostat; all data
+    published on Eurostat's website can be regarded as belonging to Eurostat
+    for the purpose of their reuse, with the exceptions stated below, or if it
+    is explicitly stated otherwise.
+
+    b. Publications or documents where the copyright belongs partly or wholly
+    to other organisations, for example concerning co-publications between
+    Eurostat and other publishers.
+
+    c. Data on countries other than
+      - Member States of the European Union (EU), and
+      - Member States of the European Free Trade Association (EFTA), and
+      - official EU acceding and candidate countries.
+
+    Examples are data on the United States of America, Japan or China. Often,
+    such data are included in Eurostat data tables. In such cases, a re-user
+    would need to eliminate such data from the tables before reusing them
+    commercially.
+
+    d. Trade data originating from Liechtenstein and Switzerland (as declaring
+    countries), from 1995 onwards, and concerning the following commodity
+    classifications: HS, SITC, BEC, NSTR and national commodity classifications.
+    Thus it is, for example, not allowed to sell export/import data declared by
+    Switzerland (concerning the above named commodity classifications). However,
+    it is allowed to sell Swiss export/import data declared by an EU Member
+    State (but see below a similar exception for Austria).
+
+    e. Trade data originating from Austria (as a declaring country) for a level
+    of detail of the Combined Nomenclature of 8 digits; again, it is not
+    allowed to sell export/import declared by Austria (concerning the above
+    named commodity classifications), but it is allowed to sell Austrian
+    export/import data declared by another EU Member State.
+
+
+
+
+
+ADMINISTRATIVE UNITS / STATISTICAL UNITS
+========================================
+
+When data downloaded from this page is used in any printed or electronic
+publication, in addition to any other provisions applicable to the whole
+Eurostat website, data source will have to be acknowledged in the legend of
+the map and in the introductory page of the publication with the following
+copyright notice:
+
+- EN: © EuroGeographics for the administrative boundaries
+
+- FR: © EuroGeographics pour les limites administratives
+
+- DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
+
+For publications in languages other than English, French or German, the
+translation of the copyright notice in the language of the publication shall
+be used.
+
+If you intend to use the data commercially, please contact
+EuroGeographics <https://eurogeographics.org/products-and-services/licensing/>
+for information regarding their licence agreements.
+
+GRIDS
+=====
+Download provisions for the population figures (attributes TOT_P_2006,
+TOT_P_2011 and TOT_P_2018)
+
+Users may freely copy, publish and distribute the GEOSTAT 2006 grid dataset
+within their own organisation (company, governmental authority, municipality).
+
+Users may not:
+
+- disseminate the dataset to clients outside their own organisation
+- sell the dataset – in whole or in part – to parties outside their organisation
+- use it for any other commercial purpose.
+
+For general information on content, lineage, access and conditions of use, see
+the metadata file the usage conditions file and the read-me fileincluded in the
+download zip package.

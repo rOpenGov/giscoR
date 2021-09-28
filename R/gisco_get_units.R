@@ -50,6 +50,7 @@
 #' @seealso [gisco_get_countries()]
 #'
 #' @examples
+#' \donttest{
 #' if (gisco_check_access()) {
 #'   cities <- gisco_get_units(
 #'     id_giscoR = "urban_audit",
@@ -88,6 +89,7 @@
 #'       subtitle = "Urban Audit",
 #'       fill = "Urban Audit\ncategory"
 #'     )
+#' }
 #' }
 #' @export
 gisco_get_units <- function(id_giscoR = "nuts",
