@@ -70,6 +70,8 @@ gisco_set_cache_dir <- function(cache_dir,
     is.logical(install)
   )
 
+   # Expand
+  cache_dir <- path.expand(cache_dir)
 
   # Create cache dir if it doesn't exists
   if (!dir.exists(cache_dir)) {
