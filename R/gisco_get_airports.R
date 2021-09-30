@@ -33,23 +33,15 @@
 #' NL <- gisco_get_countries(country = "NL")
 #' AirP_NL <- gisco_get_airports(country = "NL")
 #'
-#' Ports <- gisco_get_ports()
-#' # Intersect with NL
-#' PortsNL <- st_intersection(Ports, NL)
-#'
-#' # Bind
-#' PortsNL_bind <- st_as_sf(type = "Port", st_geometry(PortsNL))
-#' AirP_NL_bind <- st_as_sf(type = "Airport", st_geometry(AirP_NL))
-#'
-#' Full <- rbind(AirP_NL_bind, PortsNL_bind)
+#' AirP_NL$type <- "Airports"
 #'
 #' library(ggplot2)
 #'
 #' ggplot(NL) +
 #'   geom_sf(fill = "wheat") +
-#'   geom_sf(data = Full, aes(shape = type, color = type)) +
+#'   geom_sf(data = AirP_NL, aes(shape = type, color = type)) +
 #'   labs(
-#'     title = "Trasport network on the Netherlands",
+#'     title = "Airports on the Netherlands",
 #'     shape = NULL,
 #'     color = NULL,
 #'     caption = gisco_attributions()
