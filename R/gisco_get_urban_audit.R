@@ -34,18 +34,15 @@
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].
 #'
-#' @examples
+#' @examplesIf gisco_check_access()
 #' \donttest{
-#' # If online
-#' if (gisco_check_access()) {
-#'   cities <- gisco_get_urban_audit(year = "2020", level = "CITIES")
+#' cities <- gisco_get_urban_audit(year = "2020", level = "CITIES")
 #'
-#'   bcn <- cities[cities$URAU_NAME == "Barcelona", ]
+#' bcn <- cities[cities$URAU_NAME == "Barcelona", ]
 #'
-#'   library(ggplot2)
-#'   ggplot(bcn) +
-#'     geom_sf()
-#' }
+#' library(ggplot2)
+#' ggplot(bcn) +
+#'   geom_sf()
 #' }
 gisco_get_urban_audit <- function(year = "2020",
                                   epsg = "4326",

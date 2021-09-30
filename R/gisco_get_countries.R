@@ -109,7 +109,7 @@
 #'
 #' if (gisco_check_access()) {
 #'   # Extract points
-#'   asia_pol <- gisco_get_countries(region = "Asia")
+#'   asia_pol <- gisco_get_countries(region = "Asia", resolution = "3")
 #'   asia_lb <- gisco_get_countries(spatialtype = "LB", region = "Asia")
 #'   ggplot(asia_pol) +
 #'     geom_sf(fill = "gold3") +

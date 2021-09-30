@@ -26,28 +26,24 @@
 #'  Ports 2009 contains worldwide information, the rest of datasets refer
 #'  to Europe. All shapefiles provided in EPSG:4326
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf gisco_check_access()
 #' library(sf)
 #'
-#' NL <- gisco_get_countries(country = "NL")
+#' NL <- gisco_get_countries(country = "NL", resolution = "3")
 #' AirP_NL <- gisco_get_airports(country = "NL")
-#'
-#' AirP_NL$type <- "Airports"
+#' AirP_NL <- st_transform(AirP_NL, st_crs(NL))
 #'
 #' library(ggplot2)
 #'
 #' ggplot(NL) +
 #'   geom_sf(fill = "wheat") +
-#'   geom_sf(data = AirP_NL, aes(shape = type, color = type)) +
+#'   geom_sf(data = AirP_NL, color = "blue") +
 #'   labs(
 #'     title = "Airports on the Netherlands",
 #'     shape = NULL,
 #'     color = NULL,
 #'     caption = gisco_attributions()
 #'   )
-#' }
-#'
 #' @export
 gisco_get_airports <- function(year = "2013", country = NULL) {
   year <- as.character(year)

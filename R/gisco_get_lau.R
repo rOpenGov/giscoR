@@ -99,23 +99,22 @@ gisco_get_lau <- function(year = "2016",
 #'
 #' @order 1
 #'
-#' @examples
+#' @examplesIf gisco_check_access()
 #' \donttest{
-#' if (gisco_check_access()) {
-#'   ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 #'
-#'   library(ggplot2)
+#' ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 #'
-#'   ggplot(ire_lau) +
-#'     geom_sf(shape = 21, col = "#009A44", size = 0.5) +
-#'     labs(
-#'       title = "Communes in Ireland",
-#'       subtitle = "Year 2016",
-#'       caption = gisco_attributions()
-#'     ) +
-#'     theme_void() +
-#'     theme(text = element_text(colour = "#009A44", family = "serif", face = "bold"))
-#' }
+#' library(ggplot2)
+#'
+#' ggplot(ire_lau) +
+#'   geom_sf(shape = 21, col = "#009A44", size = 0.5) +
+#'   labs(
+#'     title = "Communes in Ireland",
+#'     subtitle = "Year 2016",
+#'     caption = gisco_attributions()
+#'   ) +
+#'   theme_void() +
+#'   theme(text = element_text(colour = "#009A44", family = "serif", face = "bold"))
 #' }
 #' @export
 gisco_get_communes <- function(year = "2016",
