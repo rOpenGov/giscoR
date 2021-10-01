@@ -10,7 +10,7 @@
 
     -   Now information is downloaded instead of using internal data.
 
--   New function: [`gisco_get_postalcodes()`]
+-   New function: `gisco_get_postalcodes()`.
 
 # giscoR 0.3.0
 
