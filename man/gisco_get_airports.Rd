@@ -8,17 +8,37 @@
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks}
 }
 \usage{
-gisco_get_airports(year = "2013", country = NULL)
+gisco_get_airports(
+  year = "2013",
+  country = NULL,
+  cache_dir = NULL,
+  update_cache = FALSE,
+  verbose = FALSE
+)
 
-gisco_get_ports(year = "2013")
+gisco_get_ports(
+  year = "2013",
+  cache_dir = NULL,
+  update_cache = FALSE,
+  verbose = FALSE
+)
 }
 \arguments{
-\item{year}{Year of reference.}
+\item{year}{Year of reference. Only year available right now is "2013".}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
 vector of Eurostat country codes. Mixed types (as \code{c("Turkey","US","FRA")})
 would not work. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+
+\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+
+\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
+When set to \code{TRUE} it would force a fresh download of the source
+.geojson file.}
+
+\item{verbose}{Logical, displays information. Useful for debugging,
+default is \code{FALSE}.}
 }
 \value{
 A \code{POINT} object on EPSG:4326.
@@ -26,31 +46,26 @@ A \code{POINT} object on EPSG:4326.
 \description{
 Loads a \code{sf} object from GISCO API or your local library.
 }
-\section{Years available}{
-\itemize{
-\item \strong{\code{gisco_get_airports}}:  "2006" and "2013"
-\item \strong{\code{gisco_get_ports}}: "2009" and "2013"
+\details{
+Datasets refer to Europe. All shapefiles provided in EPSG:4326
 }
-
-Ports 2009 contains worldwide information, the rest of datasets refer
-to Europe. All shapefiles provided in EPSG:4326
-}
-
 \examples{
 \dontshow{if (gisco_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
 library(sf)
 
-NL <- gisco_get_countries(country = "NL", resolution = "3")
-AirP_NL <- gisco_get_airports(country = "NL")
-AirP_NL <- st_transform(AirP_NL, st_crs(NL))
+Greece <- gisco_get_countries(country = "EL", resolution = "1")
+AirP_GC <- gisco_get_airports(country = "EL")
+AirP_GC <- st_transform(AirP_GC, st_crs(Greece))
 
 library(ggplot2)
 
-ggplot(NL) +
-  geom_sf(fill = "wheat") +
-  geom_sf(data = AirP_NL, color = "blue") +
+
+ggplot(Greece) +
+  geom_sf(fill = "grey80") +
+  geom_sf(data = AirP_GC, color = "blue") +
   labs(
-    title = "Airports on the Netherlands",
+    title = "Airports on Greece",
     shape = NULL,
     color = NULL,
     caption = gisco_attributions()

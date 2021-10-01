@@ -68,7 +68,7 @@ test_that("Bulk download online", {
     update_cache = TRUE,
     cache_dir = tempdir(),
   ))
-  expect_message(
+  expect_silent(
     gisco_bulk_download(
       resolution = 60,
       cache_dir = tempdir(),
@@ -76,7 +76,7 @@ test_that("Bulk download online", {
       recursive = TRUE
     )
   )
-  expect_message(
+  expect_silent(
     gisco_bulk_download(
       resolution = 60,
       cache_dir = tempdir(),

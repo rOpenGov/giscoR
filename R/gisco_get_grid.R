@@ -35,7 +35,7 @@
 #' There are specific downloading provisions, please see
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids>
 #'
-#' @examples
+#' @examplesIf gisco_check_access()
 #' \donttest{
 #' grid <- gisco_get_grid(resolution = 20)
 #' grid$popdens <- grid$TOT_P_2011 / 20
@@ -146,73 +146,65 @@ gisco_get_grid <- function(resolution = "20",
     stop("spatialtype should be 'REGION' or 'POINT'")
   }
 
-  dwnload <- TRUE
-  if (isFALSE(update_cache)) {
-    if (resolution == "20" & spatialtype == "REGION") {
-      dwnload <- FALSE
-      data_sf <- grid20km
-    }
+  translate <- c("surf", "point")
+  ftrans <- translate[valid == spatialtype]
+  filename <- paste0("grid_", resolution, "km_", ftrans, ".gpkg")
+  api_entry <- "https://gisco-services.ec.europa.eu/grid"
+  url <- file.path(api_entry, filename)
+
+  local <- file.path(gsc_helper_cachedir(cache_dir), filename)
+  exist_local <- file.exists(local)
+
+  if (verbose & exist_local) {
+    message("File exits on local cache dir")
   }
-  if (dwnload) {
-    translate <- c("surf", "point")
-    ftrans <- translate[valid == spatialtype]
-    filename <- paste0("grid_", resolution, "km_", ftrans, ".gpkg")
-    api_entry <- "https://gisco-services.ec.europa.eu/grid"
-    url <- file.path(api_entry, filename)
-
-    local <- file.path(gsc_helper_cachedir(cache_dir), filename)
-    exist_local <- file.exists(local)
-
-    if (verbose & exist_local) {
-      message("File exits on local cache dir")
-    }
-    # nocov start
-    if (resolution %in% c("1", "2") & isFALSE(exist_local)) {
-      sel <-
-        menu(c("Yes", "No"),
-          title = "You are about to download a large file (>500M). Proceed?"
-        )
-      if (sel != 1) {
-        stop("Execution halted")
-      }
-    }
-    # nocov end
-
-
-    localfile <-
-      gsc_api_cache(url, filename, cache_dir, update_cache, verbose)
-
-    if (verbose) {
-      size <- file.size(localfile)
-      class(size) <- "object_size"
-      message(format(size, units = "auto"))
-    }
-    load <- tryCatch(
-      sf::st_read(
-        localfile,
-        quiet = !verbose,
-        stringsAsFactors = FALSE
-      ),
-      warning = function(e) {
-        return(NULL)
-      },
-      error = function(e) {
-        return(NULL)
-      }
-    )
-    # nocov start
-    if (is.null(load)) {
-      stop(
-        "\n Malformed ",
-        localfile,
-        "\n Try downloading from: \n",
-        url,
-        "\n to your cache_dir folder"
+  # nocov start
+  if (resolution %in% c("1", "2") & isFALSE(exist_local)) {
+    sel <-
+      menu(c("Yes", "No"),
+        title = "You are about to download a large file (>500M). Proceed?"
       )
-    } else {
-      data_sf <- load
+    if (sel != 1) {
+      stop("Execution halted")
     }
-    # nocov end
   }
+  # nocov end
+
+
+  localfile <-
+    gsc_api_cache(url, filename, cache_dir, update_cache, verbose)
+
+  if (verbose) {
+    size <- file.size(localfile)
+    class(size) <- "object_size"
+    message(format(size, units = "auto"))
+  }
+  load <- tryCatch(
+    sf::st_read(
+      localfile,
+      quiet = !verbose,
+      stringsAsFactors = FALSE
+    ),
+    warning = function(e) {
+      return(NULL)
+    },
+    error = function(e) {
+      return(NULL)
+    }
+  )
+  # nocov start
+  if (is.null(load)) {
+    stop(
+      "\n Malformed ",
+      localfile,
+      "\n Try downloading from: \n",
+      url,
+      "\n to your cache_dir folder"
+    )
+  } else {
+    data_sf <- load
+  }
+  # nocov end
+
   return(data_sf)
 }

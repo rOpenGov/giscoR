@@ -459,8 +459,13 @@ gsc_unzip <-
            recursive = TRUE,
            verbose = TRUE,
            update_cache = TRUE) {
+
+
+    # Always update cache
+    update_cache <- TRUE
+
     infiles <- tryCatch(
-      unzip(destfile, list = TRUE),
+      unzip(destfile, list = TRUE, junkpaths = TRUE),
       warning = function(e) {
         message(
           "It was an error extracting the files. Try unzipping the file yourself \n",
@@ -481,20 +486,37 @@ gsc_unzip <-
 
     continue <- !isTRUE(infiles)
 
-
-
     # Extract files
     if (continue) {
       outfiles <- infiles[grep(ext, infiles$Name), ]$Name
 
       if (verbose) {
-        message("Extracting files: ", paste0(outfiles, collapse = "\n"), "\n")
+        message("Extracting files:\n", paste0(outfiles, collapse = "\n"), "\n")
       }
+
+
+      if (update_cache) {
+        allfiles <- list.files(cache_dir)
+
+        basenames <- basename(outfiles)
+
+        del <- basenames[basenames %in% allfiles]
+
+        if (length(del) > 1) {
+          s <- file.path(cache_dir, del)
+
+          file.remove(s)
+        }
+      }
+
+
+
       tryCatch(
         unzip(
           destfile,
           files = outfiles,
           exdir = cache_dir,
+          junkpaths = TRUE,
           overwrite = update_cache
         ),
         warning = function(e) {

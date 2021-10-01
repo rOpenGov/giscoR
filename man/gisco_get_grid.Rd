@@ -63,6 +63,7 @@ For a complete list of files available check \link{gisco_db}.
 }
 
 \examples{
+\dontshow{if (gisco_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 grid <- gisco_get_grid(resolution = 20)
 grid$popdens <- grid$TOT_P_2011 / 20
@@ -152,6 +153,7 @@ ggplot(grid) +
     legend.position = "bottom"
   )
 }
+\dontshow{\}) # examplesIf}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

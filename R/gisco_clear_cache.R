@@ -34,7 +34,7 @@
 #'
 #' Sys.getenv("GISCO_CACHE_DIR")
 #' @export
-gisco_clear_cache <- function(config = TRUE,
+gisco_clear_cache <- function(config = FALSE,
                               cached_data = TRUE,
                               verbose = FALSE) {
   # nocov start

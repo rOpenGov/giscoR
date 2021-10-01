@@ -1,3 +1,11 @@
+test_that("Display cache dir", {
+  d <- gsc_helper_detect_cache_dir()
+  expect_equal(Sys.getenv("GISCO_CACHE_DIR"), d)
+  cat("Cache dir on tests is\n", d)
+})
+
+
+
 
 test_that("Testing attributions", {
   expect_message(gisco_attributions(copyright = TRUE))

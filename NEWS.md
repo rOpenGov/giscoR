@@ -2,6 +2,9 @@
 
 -   Add `Copyright` on DESCRIPTION.
 -   Add `lwgeom` on `Suggests`.
+-   `gisco_get_airports()` and `gisco_get_ports()`:
+   - Only year available is 2013.
+   - Now information is downloaded instead of using internal data.
 
 # giscoR 0.3.0
 
