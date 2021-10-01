@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco_get_postalcodes.R
 \name{gisco_get_postalcodes}
 \alias{gisco_get_postalcodes}
-\title{Postal Codes}
+\title{Get postal code points from GISCO}
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/postal-codes}
 }

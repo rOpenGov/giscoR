@@ -1,4 +1,4 @@
-#' Postal Codes
+#' Get postal code points from GISCO
 #'
 #' Get postal codes points of the EU, EFTA and candidate countries.
 #'
