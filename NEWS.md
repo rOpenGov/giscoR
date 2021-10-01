@@ -1,15 +1,20 @@
 # giscoR 0.3.1
 
 -   Add `Copyright` on DESCRIPTION.
+
 -   Add `lwgeom` on `Suggests`.
+
 -   `gisco_get_airports()` and `gisco_get_ports()`:
-   - Only year available is 2013.
-   - Now information is downloaded instead of using internal data.
+
+    -   Only year available is 2013.
+
+    -   Now information is downloaded instead of using internal data.
+
+-   New function: [`gisco_get_postalcodes()`]
 
 # giscoR 0.3.0
 
--   Now **giscoR** is part of [rOpenGov](http://ropengov.org/). Repo has been
-    transferred.
+-   Now **giscoR** is part of [rOpenGov](http://ropengov.org/). Repo has been transferred.
 -   Caching improvements: new function `gisco_set_cache_dir()` based on `rappdirs::user_cache_dir()`. Now the `cache_dir` path is stored and it is not necessary to set it up again on a new session. Also added `gisco_clear_cache()`.
 -   Fix an error when `cache = FALSE`. Now files are loaded instead throwing an error.
 -   New tests with `testthat`.
@@ -47,18 +52,26 @@
 # giscoR 0.2.0
 
 -   Remove `colorspace` as dependency.
+
 -   Bump R minimal version to 3.6.0.
+
 -   Change order on parameters for `gisco_get()` functions.
+
 -   Rewriting of internal functions and utils.
+
 -   Add `verbose` parameter to functions.
+
 -   Rewriting of `giscoR::gisco_db`.
+
 -   Functions added:
+
     -   `gisco_bulk_download()`
     -   `gisco_check_access()`
     -   `gisco_get_airports()`
     -   `gisco_get_grid()`
     -   `gisco_get_ports()`
     -   `gisco_get_units()`
+
 -   Now `gisco_get_countries()` and `gisco_get_nuts()` uses `gisco_get_units()` for individual files, making the call much faster.
 
 # giscoR 0.1.1

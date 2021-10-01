@@ -105,6 +105,7 @@ Other political:
 \code{\link{gisco_get_countries}()},
 \code{\link{gisco_get_lau}()},
 \code{\link{gisco_get_nuts}()},
+\code{\link{gisco_get_postalcodes}()},
 \code{\link{gisco_get_units}()}
 }
 \concept{political}

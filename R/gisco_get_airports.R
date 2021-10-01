@@ -53,8 +53,6 @@ gisco_get_airports <- function(year = "2013",
 
   if (year == "2013") {
     url <- "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/Airports-2013-SHP.zip"
-  } else if (year == "2006") {
-    url <- "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/AIRP_SH.zip"
   }
 
   cache_dir <- gsc_helper_detect_cache_dir()
@@ -67,7 +65,10 @@ gisco_get_airports <- function(year = "2013",
   )
 
 
-  gsc_unzip(basename, cache_dir, ext = "*", verbose = verbose, update_cache = update_cache)
+  gsc_unzip(basename, cache_dir,
+    ext = "*", verbose = verbose,
+    update_cache = update_cache
+  )
 
   destfile <- basename
 
@@ -99,8 +100,6 @@ gisco_get_ports <- function(year = "2013", cache_dir = NULL,
 
   if (year == "2013") {
     url <- "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/PORT_2013_SH.zip"
-  } else if (year == "2009") {
-    url <- "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/PORT_2009_SH.zip"
   }
 
   cache_dir <- gsc_helper_detect_cache_dir()
@@ -113,7 +112,10 @@ gisco_get_ports <- function(year = "2013", cache_dir = NULL,
   )
 
 
-  gsc_unzip(basename, cache_dir, ext = "*", verbose = verbose, update_cache = update_cache)
+  gsc_unzip(basename, cache_dir,
+    ext = "*", verbose = verbose,
+    update_cache = update_cache
+  )
 
   destfile <- basename
 
