@@ -11,7 +11,7 @@
 #'
 #' @inheritParams gisco_get_countries
 #'
-#'
+#' @inheritSection gisco_get_countries About caching
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks>
 #'

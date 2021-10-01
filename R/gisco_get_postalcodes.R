@@ -5,6 +5,7 @@
 #' @param year Year of reference. Currently only "2020" is available.
 #'
 #' @inheritParams gisco_get_airports
+#' @inheritSection gisco_get_countries About caching
 #'
 #' @family political
 #'
