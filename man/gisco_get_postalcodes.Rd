@@ -54,6 +54,19 @@ CC-BY-SA 4.0 available at
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data}}
 }
 
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+
+For a complete list of files available check \link{gisco_db}.
+}
+
 \examples{
 
 # Heavy-weight download!

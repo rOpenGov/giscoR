@@ -49,6 +49,19 @@ Loads a \code{sf} object from GISCO API or your local library.
 \details{
 Datasets refer to Europe. All shapefiles provided in EPSG:4326
 }
+\section{About caching}{
+You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE}.
+
+If you experience any problem on download, try to download the
+corresponding .geojson file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
+
+For a complete list of files available check \link{gisco_db}.
+}
+
 \examples{
 \dontshow{if (gisco_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
