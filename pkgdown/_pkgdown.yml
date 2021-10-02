@@ -24,9 +24,6 @@ template:
   params:
     ganalytics: G-VGVFXGHWRL
   opengraph:
-    image:
-      src: https://ropengov.github.io/giscoR/articles/choro.png
-      alt: giscoR-choro
     twitter:
       creator: '@dhernangomez'
       card: summary_large_image
