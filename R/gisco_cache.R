@@ -85,10 +85,11 @@ gisco_set_cache_dir <- function(cache_dir,
     )
   }
 
-  # nocov start
+
   # Install path on environ var.
 
   if (install) {
+    # nocov start
     config_dir <- rappdirs::user_config_dir("giscoR", "R")
     # Create cache dir if not presente
     if (!dir.exists(config_dir)) {
@@ -107,6 +108,7 @@ gisco_set_cache_dir <- function(cache_dir,
         call. = FALSE
       )
     }
+    # nocov end
   } else {
     if (verbose && !is_temp) {
       message(
@@ -118,7 +120,6 @@ gisco_set_cache_dir <- function(cache_dir,
 
   Sys.setenv(GISCO_CACHE_DIR = cache_dir)
   return(invisible(cache_dir))
-  # nocov end
 }
 
 gisco_clear_cache <- function(config = TRUE,

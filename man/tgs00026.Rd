@@ -29,4 +29,11 @@ administrations or non-profit institutions serving households.
 
 data(tgs00026)
 }
+\seealso{
+Other dataset: 
+\code{\link{gisco_coastallines}},
+\code{\link{gisco_countries}},
+\code{\link{gisco_countrycode}},
+\code{\link{gisco_nuts}}
+}
 \concept{dataset}

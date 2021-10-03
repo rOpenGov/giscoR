@@ -1,5 +1,6 @@
+========================================
 GENERAL COPYRIGHT
-=================
+========================================
 
 © European Union, 1995 - today
 
@@ -69,7 +70,7 @@ Exceptions
 
 
 
-
+========================================
 ADMINISTRATIVE UNITS / STATISTICAL UNITS
 ========================================
 
@@ -93,8 +94,10 @@ If you intend to use the data commercially, please contact
 EuroGeographics <https://eurogeographics.org/products-and-services/licensing/>
 for information regarding their licence agreements.
 
+
+========================================
 GRIDS
-=====
+========================================
 Download provisions for the population figures (attributes TOT_P_2006,
 TOT_P_2011 and TOT_P_2018)
 
@@ -110,3 +113,11 @@ Users may not:
 For general information on content, lineage, access and conditions of use, see
 the metadata file the usage conditions file and the read-me fileincluded in the
 download zip package.
+
+
+========================================
+POSTAL CODES
+========================================
+
+© European Union - GISCO, 2021, postal code point dataset, Licence CC-BY-SA 4.0
+available at <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data>.

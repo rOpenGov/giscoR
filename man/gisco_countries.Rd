@@ -39,5 +39,11 @@ ggplot(GBR) +
 }
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
+
+Other dataset: 
+\code{\link{gisco_coastallines}},
+\code{\link{gisco_countrycode}},
+\code{\link{gisco_nuts}},
+\code{\link{tgs00026}}
 }
 \concept{dataset}

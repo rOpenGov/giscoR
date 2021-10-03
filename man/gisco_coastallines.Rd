@@ -44,5 +44,11 @@ ggplot(coasts) +
 }
 \seealso{
 \code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}}
+
+Other dataset: 
+\code{\link{gisco_countries}},
+\code{\link{gisco_countrycode}},
+\code{\link{gisco_nuts}},
+\code{\link{tgs00026}}
 }
 \concept{dataset}

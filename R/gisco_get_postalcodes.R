@@ -77,7 +77,11 @@ gisco_get_postalcodes <- function(year = "2020",
   )
 
 
-  gsc_unzip(basename, cache_dir, ext = "*", verbose = verbose, update_cache = update_cache)
+  gsc_unzip(basename, cache_dir,
+    ext = "*", verbose = verbose,
+    update_cache = update_cache,
+    recursive = FALSE
+  )
 
   destfile <- basename
 

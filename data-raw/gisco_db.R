@@ -287,7 +287,8 @@ gisco_db <-
     api_file,
     api_entry
   ) %>%
-  arrange(id_giscoR, year, resolution, spatialtype, api_file)
+  arrange(id_giscoR, year, resolution, spatialtype, api_file) %>%
+  as.data.frame()
 
 
 usethis::use_data(gisco_db, overwrite = TRUE)

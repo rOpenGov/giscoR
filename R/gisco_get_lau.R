@@ -24,9 +24,17 @@
 #'
 #' @details
 #' Valid years for eacg function are:
-#' * **`gisco_get_communes`**: one of "2001", "2004", "2006", "2008", "2010",
-#' "2013" or "2016".
-#' * **`gisco_get_lau`**: one of "2016", "2017", "2018" or "2019"
+#' * **`gisco_get_communes`**: one of '2001', '2004', '2006', '2008', '2010',
+#' '2013' or '2016'.
+#' * **`gisco_get_lau`**: one of
+#'
+#' ```{r, echo=FALSE, results= "asis"}
+#' cat(paste0(
+#'   paste0("'", (2011:2020), "'", collapse = ", "),
+#'   ".")
+#'   )
+#'
+#' ```
 #'
 #' @export
 gisco_get_lau <- function(year = "2016",
@@ -52,7 +60,6 @@ gisco_get_lau <- function(year = "2016",
     verbose = verbose
   )
 
-  # nocov start
   # There are not data file on this
   dwnload <- TRUE
   if (dwnload) {
@@ -90,7 +97,6 @@ gisco_get_lau <- function(year = "2016",
     data_sf <- data_sf[data_sf$GISCO_ID %in% gisco_id, ]
   }
   return(data_sf)
-  # nocov end
 }
 
 

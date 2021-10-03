@@ -42,5 +42,11 @@ data(gisco_countrycode)
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \link[countrycode:codelist]{countrycode::codelist}, \link[countrycode:countrycode-package]{countrycode::countrycode-package}
+
+Other dataset: 
+\code{\link{gisco_coastallines}},
+\code{\link{gisco_countries}},
+\code{\link{gisco_nuts}},
+\code{\link{tgs00026}}
 }
 \concept{dataset}

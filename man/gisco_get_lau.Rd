@@ -78,9 +78,10 @@ Urban Areas, that correspond roughly with towns and cities.
 \details{
 Valid years for eacg function are:
 \itemize{
-\item \strong{\code{gisco_get_communes}}: one of "2001", "2004", "2006", "2008", "2010",
-"2013" or "2016".
-\item \strong{\code{gisco_get_lau}}: one of "2016", "2017", "2018" or "2019"
+\item \strong{\code{gisco_get_communes}}: one of '2001', '2004', '2006', '2008', '2010',
+'2013' or '2016'.
+\item \strong{\code{gisco_get_lau}}: one of
+'2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'.
 }
 }
 \note{

@@ -42,5 +42,11 @@ ggplot(italy) +
 }
 \seealso{
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
+
+Other dataset: 
+\code{\link{gisco_coastallines}},
+\code{\link{gisco_countries}},
+\code{\link{gisco_countrycode}},
+\code{\link{tgs00026}}
 }
 \concept{dataset}
