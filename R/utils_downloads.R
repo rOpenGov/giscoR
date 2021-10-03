@@ -36,23 +36,6 @@ gisco_check_access <- function() {
 }
 
 
-#' gsc_helper_cachedir
-#' @noRd
-gsc_helper_cachedir <- function(cache_dir = NULL) {
-  # Check cache dir from options if not set
-  if (is.null(cache_dir)) {
-    cache_dir <- gsc_helper_detect_cache_dir()
-  }
-  # Reevaluate
-  if (is.null(cache_dir)) {
-    cache_dir <- file.path(tempdir(), "gisco")
-  }
-  # Create cache dir if needed
-  if (isFALSE(dir.exists(cache_dir))) {
-    dir.create(cache_dir, recursive = TRUE)
-  }
-  return(cache_dir)
-}
 #' @name gsc_api_url
 #' @noRd
 gsc_api_url <- function(id_giscoR = "nuts",
@@ -508,9 +491,7 @@ gsc_unzip <-
           file.remove(s)
         }
       }
-
-
-
+      
       tryCatch(
         unzip(
           destfile,
