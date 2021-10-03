@@ -1,5 +1,7 @@
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [trigger-pkgdown-workflow]
 
 name: Clean pkgdown manually
 
@@ -21,7 +23,7 @@ jobs:
         with:
           extra-packages: |
             ropengov/rogtemplate
-            r-lib/pkgdown
+            reactable
           needs: website
           
           

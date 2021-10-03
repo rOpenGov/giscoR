@@ -11,6 +11,10 @@ on:
     branches: [main, master]
   schedule:
     - cron:  '30 12 * * 3,6'
+  repository_dispatch:
+    types: [trigger-check-workflow]
+  workflow_dispatch:
+
 
 name: R-CMD-check
 
@@ -53,13 +57,7 @@ jobs:
         with:
           extra-packages: rcmdcheck
 
-      - name: Check
-        env:
-          _R_CHECK_CRAN_INCOMING_: false
-        run: |
-          options(crayon.enabled = TRUE)
-          rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
-        shell: Rscript {0}
+      - uses: r-lib/actions/check-r-package@master
 
       - name: Show testthat output
         if: always()
