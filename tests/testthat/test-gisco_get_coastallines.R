@@ -10,11 +10,8 @@ test_that("Coastallines", {
 })
 
 test_that("Coastal download online", {
+  skip_if_gisco_offline()
   skip_on_cran()
-  skip_if_not(
-    gisco_check_access(),
-    "Skipping... GISCO not reachable."
-  )
 
   expect_silent(gisco_get_coastallines(resolution = "60"))
   expect_warning(gisco_get_coastallines(resolution = "60", cache = FALSE))

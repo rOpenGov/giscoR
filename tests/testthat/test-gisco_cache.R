@@ -1,9 +1,6 @@
 test_that("Test cache", {
   skip_on_cran()
-  skip_if_not(
-    gisco_check_access(),
-    "Skipping... GISCO not reachable."
-  )
+  skip_if_gisco_offline()
 
   # Get current cache dir
   current <- gsc_helper_detect_cache_dir()

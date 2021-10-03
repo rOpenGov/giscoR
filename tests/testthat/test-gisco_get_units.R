@@ -9,11 +9,9 @@ test_that("Errors on units", {
 })
 
 test_that("Units online", {
+  skip_if_gisco_offline()
   skip_on_cran()
-  skip_if_not(
-    gisco_check_access(),
-    "Skipping... GISCO not reachable."
-  )
+  
   expect_silent(gisco_get_units(
     year = "2001",
     id_giscoR = "countries",
