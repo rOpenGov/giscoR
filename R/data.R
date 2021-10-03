@@ -13,7 +13,7 @@
 #' @details This dataframe is used to check the validity of the API calls.
 #'
 #' @source GISCO API `datasets.json`.
-#'
+#' @keywords internal
 #' @examples
 #'
 #' data(gisco_db)
@@ -21,7 +21,7 @@ NULL
 
 #' World countries `POLYGON` object
 #'
-#' @concept dataset
+#' @family dataset
 #'
 #' @name gisco_countries
 #'
@@ -64,7 +64,7 @@ NULL
 #'
 #' A `sf` object as provided by GISCO (2016 version).
 #'
-#' @concept dataset
+#' @family dataset
 #'
 #' @name gisco_coastallines
 #'
@@ -110,7 +110,7 @@ NULL
 #'
 #' A `sf` object including all NUTS levels as provided by GISCO (2016 version).
 #'
-#' @concept dataset
+#' @family dataset
 #'
 #' @name gisco_nuts
 #'
@@ -155,7 +155,7 @@ NULL
 #'
 #' @name gisco_countrycode
 #'
-#' @concept dataset
+#' @family dataset
 #'
 #' @description
 #' A dataframe containing conversions between different country
@@ -198,7 +198,7 @@ NULL
 #'
 #' @name tgs00026
 #'
-#' @concept dataset
+#' @family dataset
 #'
 #' @source <https://ec.europa.eu/eurostat>, extracted on 2020-10-27
 #'
