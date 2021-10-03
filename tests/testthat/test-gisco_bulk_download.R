@@ -6,7 +6,6 @@ test_that("Errors on bulk download", {
 })
 
 test_that("Bulk download online", {
-  
   skip_if_gisco_offline()
   skip_on_cran()
 

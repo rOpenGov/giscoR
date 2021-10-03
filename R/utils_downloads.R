@@ -453,7 +453,7 @@ gsc_unzip <-
           file.remove(s)
         }
       }
-      
+
       tryCatch(
         unzip(
           destfile,

@@ -5,6 +5,6 @@ test_that("Error on postal codes", {
 test_that("Postal codes online", {
   skip_if_gisco_offline()
   skip_on_cran()
-  
+
   expect_silent(gisco_get_postalcodes())
 })

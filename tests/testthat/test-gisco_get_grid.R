@@ -6,7 +6,7 @@ test_that("Grid offline", {
 test_that("Grids online", {
   skip_if_gisco_offline()
   skip_on_cran()
-  
+
   expect_silent(gisco_get_grid())
   expect_silent(gisco_get_grid(100))
   expect_message(gisco_get_grid(100, verbose = TRUE))
