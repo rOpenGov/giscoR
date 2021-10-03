@@ -32,10 +32,10 @@
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/postal-codes>
 #'
-#' @examplesIf gisco_check_access()
+#' @examples
 #'
 #' # Heavy-weight download!
-#' \donttest{
+#' \dontrun{
 #'
 #' pc_bel <- gisco_get_postalcodes(country = "BE")
 #'
