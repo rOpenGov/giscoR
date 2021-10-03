@@ -6,8 +6,8 @@ test_that("Test cache online", {
   cat("User cache dir is ", current, "\n")
 
   # Set a temp cache dir
-
-  testdir <- expect_message(gisco_set_cache_dir())
+  testdir <- file.path(tempdir(), "giscoR", "testthat")
+  expect_message(gisco_set_cache_dir(testdir))
 
   expect_false(current == Sys.getenv("GISCO_CACHE_DIR"))
   expect_equal(testdir, Sys.getenv("GISCO_CACHE_DIR"))

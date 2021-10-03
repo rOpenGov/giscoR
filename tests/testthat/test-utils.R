@@ -18,5 +18,4 @@ test_that("Internal utils", {
   expect_s3_class(s, "sf")
   expect_true(all(sf::st_is_valid(s)))
   expect_true(sf::st_is_longlat(s))
-
 })

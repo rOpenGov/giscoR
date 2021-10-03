@@ -1,3 +1,61 @@
+library(sf)
+library(ggplot2) # Use ggplot for plotting
+
+
+Asia <- gisco_get_countries(region = "Asia")
+
+
+ggplot(Asia) +
+  geom_sf(fill = "cornsilk", color = "#887e6a") +
+  theme(
+    panel.background = element_rect(fill = "#fffff3"),
+    panel.border = element_rect(
+      colour = "#887e6a",
+      fill = NA,
+      size = 1.5
+    ),
+    axis.text = element_text(
+      family = "serif",
+      colour = "#887e6a",
+      face = "bold"
+    )
+  )
+
+ggsave("vignettes/asia.png", width = 4)
+
+
+africa_north <-
+  gisco_get_countries(
+    country = c("Morocco", "Argelia", "Libia", "Tunisia", "Egypt"),
+    resolution = "20",
+    epsg = "4326",
+    year = "2016"
+  )
+
+# Coastal lines
+
+coast <- gisco_get_coastallines(
+  resolution = "20",
+  epsg = "4326",
+  year = "2016"
+)
+
+# Plot
+
+ggplot(coast) +
+  geom_sf(color = "grey80") +
+  geom_sf(data = africa_north, fill = "grey30", color = "white") +
+  coord_sf(
+    xlim = c(-13, 37),
+    ylim = c(18.5, 40)
+  ) +
+  theme(
+    axis.ticks = element_blank(),
+    axis.text = element_blank()
+  ) +
+  facet_wrap(vars(NAME_ENGL), ncol = 2)
+
+ggsave("vignettes/africa.png", width = 4)
 
 
 library(giscoR)
