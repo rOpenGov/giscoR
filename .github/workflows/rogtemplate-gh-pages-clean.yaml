@@ -27,17 +27,23 @@ jobs:
           needs: website
           
           
-      - name: pkgdown version
+      - name: Build logo if not present and prepare template
         run: |
-          library("pkgdown")
-          
-          sessionInfo()
-          
+          # Check that logo is not present
+          if (isFALSE(file.exists(file.path("man", "figures", "logo.png")) ||
+            file.exists(file.path("man", "figures", "logo.png")))) {
+            rogtemplate::rog_logo()
+          } else {
+
+            message("The package already has a logo")
+          }
+
+          rogtemplate::rog_add_template_pkgdown()
+
         shell: Rscript {0}
 
       - name: Deploy package
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          Rscript -e 'pkgdown::build_favicons(overwrite = TRUE)'
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, clean = TRUE, run_dont_run = TRUE)'
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = TRUE, lazy = TRUE)'

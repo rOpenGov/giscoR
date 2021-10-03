@@ -28,10 +28,10 @@ jobs:
         with:
           cache-version: 20
           extra-packages: |
-            devtools
             rcmdcheck
             ropengov/rogtemplate
             dieghernan/pkgdev
+            reactable
           needs: website
 
       - name: Update docs
@@ -49,21 +49,30 @@ jobs:
           git commit -m 'Update docs with pkgdev' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
 
-      - name: Trigger pkgdown workflow
-        if: success()
-        uses: peter-evans/repository-dispatch@v1.1.3
-        with:
-          token: ${{ secrets.REPO_GHA_PAT }}
-          repository: ${{ github.repository }}
-          event-type: trigger-check-workflow
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+      - uses: r-lib/actions/check-r-package@master
 
-      - name: Trigger pkgdown workflow
-        if: success()
-        uses: peter-evans/repository-dispatch@v1.1.3
-        with:
-          token: ${{ secrets.REPO_GHA_PAT }}
-          repository: ${{ github.repository }}
-          event-type: trigger-pkgdown-workflow
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash
 
+      - name: Build logo if not present and prepare template
+        run: |
+          # Check that logo is not present
+          if (isFALSE(file.exists(file.path("man", "figures", "logo.png")) ||
+            file.exists(file.path("man", "figures", "logo.png")))) {
+            rogtemplate::rog_logo()
+          } else {
+
+            message("The package already has a logo")
+          }
+
+          rogtemplate::rog_add_template_pkgdown()
+
+        shell: Rscript {0}
+
+      - name: Deploy package
+        run: |
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = TRUE, lazy = TRUE)'
