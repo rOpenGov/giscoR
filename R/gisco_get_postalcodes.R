@@ -32,10 +32,10 @@
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/postal-codes>
 #'
-#' @examples
+#' @examplesIf gisco_check_access()
 #'
 #' # Heavy-weight download!
-#' \dontrun{
+#' \donttest{
 #'
 #' pc_bel <- gisco_get_postalcodes(country = "BE")
 #'
@@ -63,7 +63,6 @@ gisco_get_postalcodes <- function(year = "2020",
     stop("Year should be 2020")
   }
 
-  # nocov start
   if (year == "2020") {
     url <- "https://gisco-services.ec.europa.eu/tercet/Various/PC_2020_PT_SH.zip"
   }
@@ -95,5 +94,4 @@ gisco_get_postalcodes <- function(year = "2020",
   }
 
   return(data_sf)
-  # nocov end
 }

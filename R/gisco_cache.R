@@ -44,7 +44,7 @@ gisco_set_cache_dir <- function(cache_dir,
                                 install = FALSE,
                                 verbose = TRUE) {
 
-  # nocov start
+
 
   # Default if not provided
   if (missing(cache_dir) || cache_dir == "") {
@@ -85,7 +85,7 @@ gisco_set_cache_dir <- function(cache_dir,
     )
   }
 
-
+  # nocov start
   # Install path on environ var.
 
   if (install) {
