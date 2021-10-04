@@ -39,9 +39,16 @@ as it you would never have installed and/or used \strong{giscoR}.
 # Don't run this! It would modify your current state
 \dontrun{
 gisco_clear_cache(verbose = TRUE)
-}
 
 Sys.getenv("GISCO_CACHE_DIR")
+
+# Set new cache on a temp dir
+newcache <- gisco_set_cache_dir(file.path(tempdir(), "giscoR", "pkgdown"))
+
+newcache
+
+Sys.getenv("GISCO_CACHE_DIR")
+}
 }
 \seealso{
 Other cache utilities: 
