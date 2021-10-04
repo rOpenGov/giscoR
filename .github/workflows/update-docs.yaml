@@ -26,7 +26,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
-          cache-version: 20
+          cache-version: 30
           extra-packages: |
             rcmdcheck
             ropengov/rogtemplate
@@ -80,4 +80,4 @@ jobs:
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = TRUE, lazy = TRUE)'
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE, run_dont_run = TRUE, lazy = FALSE, clean = TRUE)'
