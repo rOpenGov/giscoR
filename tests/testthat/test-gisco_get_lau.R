@@ -9,4 +9,5 @@ test_that("LAU online", {
   skip_on_cran()
 
   expect_silent(gisco_get_lau(country = "LU"))
+  expect_silent(gisco_get_lau(country = "LU", year = "2011"))
 })
