@@ -64,7 +64,7 @@ For a complete list of files available check \link{gisco_db}.
 
 \examples{
 \dontshow{if (gisco_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-
+\donttest{
 library(sf)
 
 Greece <- gisco_get_countries(country = "EL", resolution = "1")
@@ -83,6 +83,7 @@ ggplot(Greece) +
     color = NULL,
     caption = gisco_attributions()
   )
+}
 \dontshow{\}) # examplesIf}
 }
 \seealso{
