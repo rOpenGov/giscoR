@@ -38,6 +38,11 @@ jobs:
         run: |
 
           pkgdev::update_docs()
+          # Add local build - to be removed
+          pkgdown::build_site_github_pages(
+              clean = TRUE,
+              run_dont_run = TRUE
+          )
 
         shell: Rscript {0}
 

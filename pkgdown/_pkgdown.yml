@@ -40,3 +40,5 @@ authors:
     href: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
   Vincent Arel-Bundock:
     href: https://vincentarelbundock.github.io/countrycode/
+repo:
+  branch: main

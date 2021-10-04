@@ -43,9 +43,11 @@ gisco_clear_cache(verbose = TRUE)
 Sys.getenv("GISCO_CACHE_DIR")
 
 # Set new cache on a temp dir
-newcache <- gisco_set_cache_dir(file.path(tempdir(), "giscoR", "pkgdown"))
+newcache <- file.path(tempdir(), "giscoR", "pkgdown")
 
 newcache
+
+gisco_set_cache_dir(newcache)
 
 Sys.getenv("GISCO_CACHE_DIR")
 }
