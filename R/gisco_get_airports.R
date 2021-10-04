@@ -21,7 +21,7 @@
 #'  Datasets refer to Europe. All shapefiles provided in EPSG:4326
 #'
 #' @examplesIf gisco_check_access()
-#'
+#' \donttest{
 #' library(sf)
 #'
 #' Greece <- gisco_get_countries(country = "EL", resolution = "1")
@@ -40,6 +40,7 @@
 #'     color = NULL,
 #'     caption = gisco_attributions()
 #'   )
+#' }
 #' @export
 gisco_get_airports <- function(year = "2013",
                                country = NULL,
