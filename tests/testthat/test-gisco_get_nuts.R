@@ -20,10 +20,10 @@ test_that("NUTS offline", {
 
 test_that("NUTS online", {
   skip_if_gisco_offline()
-  skip_on_cran()
+  #  skip_on_cran()
 
   expect_silent(gisco_get_nuts(spatialtype = "LB"))
-  expect_warning(gisco_get_nuts(spatialtype = "LB", cache = FALSE))
+  expect_silent(gisco_get_nuts(spatialtype = "LB", cache = FALSE))
 
   expect_silent(gisco_get_nuts(resolution = "60", nuts_level = "0"))
   expect_message(

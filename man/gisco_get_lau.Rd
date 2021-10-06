@@ -116,7 +116,10 @@ ggplot(ire_lau) +
     caption = gisco_attributions()
   ) +
   theme_void() +
-  theme(text = element_text(colour = "#009A44", family = "serif", face = "bold"))
+  theme(text = element_text(
+    colour = "#009A44",
+    family = "serif", face = "bold"
+  ))
 }
 \dontshow{\}) # examplesIf}
 }

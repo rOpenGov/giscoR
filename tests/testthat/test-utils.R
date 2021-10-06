@@ -1,3 +1,11 @@
+test_that("Test message", {
+  var <- "example"
+
+  expect_silent(gsc_message(FALSE, "A", var, "here"))
+  expect_message(gsc_message(TRUE, "A", var, "here"), "A example here")
+})
+
+
 test_that("Internal utils", {
   test <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/",
@@ -6,9 +14,8 @@ test_that("Internal utils", {
 
   expect_error(gsc_api_load(file = test, ext = "error"))
 
-  skip_on_cran()
   skip_if_gisco_offline()
-
+  #  skip_on_cran()
 
   s <- suppressWarnings(gsc_api_load(
     file = test,
@@ -18,4 +25,57 @@ test_that("Internal utils", {
   expect_s3_class(s, "sf")
   expect_true(all(sf::st_is_valid(s)))
   expect_true(sf::st_is_longlat(s))
+})
+
+
+test_that("Errors on database", {
+  expect_error(gsc_api_url(ext = "error"))
+  expect_error(gsc_api_url(nuts_level = "5"))
+
+  expect_error(gsc_api_url("urban_audit",
+    year = 2020,
+    spatialtype = "LB",
+    level = "aaa"
+  ))
+
+  skip_if_gisco_offline()
+  #  skip_on_cran()
+
+
+
+  expect_error(
+    suppressWarnings(
+      gsc_api_cache("https://www.dhh.this.is.fake/",
+        verbose = FALSE
+      )
+    )
+  )
+
+  expect_message(gsc_api_url("urban_audit",
+    year = 2020,
+    spatialtype = "LB", ext = "topojson"
+  ))
+
+  dwn <- gsc_api_url("urban_audit",
+    year = 2020,
+    spatialtype = "LB", ext = "topojson"
+  )
+  expect_silent(gsc_api_cache(dwn, update_cache = FALSE, verbose = FALSE))
+
+  expect_message(gsc_api_url("urban_audit",
+    year = 2020,
+    spatialtype = "LB"
+  ))
+
+
+  dwn <- expect_silent(gsc_api_url(ext = "svg"))
+
+  expect_silent(gsc_api_cache(dwn, update_cache = FALSE, verbose = FALSE))
+
+  dwn <- expect_silent(gsc_api_url(ext = "shp"))
+
+  load <- expect_silent(gsc_load_shp(dwn,
+    update_cache = FALSE, verbose = FALSE
+  ))
+  expect_s3_class(load, "sf")
 })

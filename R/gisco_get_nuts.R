@@ -90,7 +90,7 @@ gisco_get_nuts <- function(year = "2016",
 
   nuts_level <- as.character(nuts_level)
 
-  geturl <- gsc_api_url(
+  api_entry <- gsc_api_url(
     id_giscoR = "nuts",
     year = year,
     epsg = epsg,
@@ -102,17 +102,20 @@ gisco_get_nuts <- function(year = "2016",
     verbose = verbose
   )
 
+  filename <- basename(api_entry)
+
   # Check if data is already available
-  checkdata <- grep("NUTS_RG_20M_2016_4326", geturl$namefile)
+  checkdata <- grep("NUTS_RG_20M_2016_4326", filename)
   if (isFALSE(update_cache) & length(checkdata)) {
     dwnload <- FALSE
     data_sf <- giscoR::gisco_nuts
-    if (verbose) {
-      message(
-        "Loaded from gisco_nuts dataset. Use update_cache = TRUE to load",
-        " the shapefile from the .geojson file"
-      )
-    }
+
+    gsc_message(
+      verbose,
+      "Loaded from gisco_nuts dataset. Use update_cache = TRUE to load",
+      " the shapefile from the .geojson file"
+    )
+
     if (nuts_level %in% c("0", "1", "2", "3")) {
       data_sf <- data_sf[data_sf$LEVL_CODE == nuts_level, ]
     }
@@ -140,14 +143,14 @@ gisco_get_nuts <- function(year = "2016",
         # Guess source to load
         namefileload <-
           gsc_api_cache(
-            geturl$api_url,
-            geturl$namefile,
+            api_entry,
+            filename,
             cache_dir,
             update_cache,
             verbose
           )
       } else {
-        namefileload <- geturl$api_url
+        namefileload <- api_entry
       }
 
       # Load - geojson only so far

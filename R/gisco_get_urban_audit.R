@@ -55,39 +55,44 @@ gisco_get_urban_audit <- function(year = "2020",
                                   level = NULL) {
   ext <- "geojson"
 
-  geturl <- gsc_api_url(
+  api_entry <- gsc_api_url(
     id_giscoR = "urban_audit",
     year = year,
     epsg = epsg,
     resolution = 0,
-    # Not neccesary
+    # Not necessary
     spatialtype = spatialtype,
     ext = ext,
     nuts_level = NULL,
     level = level,
     verbose = verbose
   )
-  # There are not data file on this
-  dwnload <- TRUE
-  if (dwnload) {
-    if (cache) {
-      # Guess source to load
-      namefileload <-
-        gsc_api_cache(
-          geturl$api_url,
-          geturl$namefile,
-          cache_dir,
-          update_cache,
-          verbose
-        )
-    } else {
-      namefileload <- geturl$api_url
-    }
 
-    # Load - geojson only so far
-    data_sf <-
-      gsc_api_load(namefileload, epsg, ext, cache, verbose)
+  filename <- basename(api_entry)
+
+  if (cache) {
+    # Guess source to load
+    namefileload <-
+      gsc_api_cache(
+        api_entry,
+        filename,
+        cache_dir,
+        update_cache,
+        verbose
+      )
+  } else {
+    namefileload <- api_entry
   }
+
+  # Load - geojson only so far
+  data_sf <- gsc_api_load(
+    namefileload,
+    epsg,
+    ext,
+    cache,
+    verbose
+  )
+
 
   if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)

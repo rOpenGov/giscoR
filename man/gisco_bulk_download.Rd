@@ -49,8 +49,8 @@ default is \code{FALSE}.}
 \item "01": 1:1million
 }}
 
-\item{ext}{Extension of the file(s) to be downloaded. Available formats are
-"geojson", "shp", "svg", "json", "gdb". See Details.}
+\item{ext}{Extension of the file(s) to be downloaded. Formats available are
+"geojson", "shp", "svg", "json", "gdb". See \strong{Details}.}
 
 \item{recursive}{Tries to unzip recursively the zip files (if any) included
 in the initial bulk download (case of \code{ext = "shp"}).}

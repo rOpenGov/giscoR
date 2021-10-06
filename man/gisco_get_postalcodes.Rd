@@ -52,6 +52,8 @@ following attribution whenever used:
 \emph{(c) European Union - GISCO, 2021, postal code point dataset, Licence
 CC-BY-SA 4.0 available at
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data}}
+
+Shapefiles provided in ETRS89 (\href{https://epsg.io/4258}{EPSG:4258}).
 }
 
 \section{About caching}{
@@ -82,7 +84,8 @@ ggplot(pc_bel) +
   labs(
     title = "Postcodes of Belgium",
     subtitle = "2020",
-    caption = paste("(c) European Union - GISCO, 2021, postal code point dataset",
+    caption = paste("(c) European Union - GISCO, 2021,",
+      "postal code point dataset",
       "Licence CC-BY-SA 4.0",
       sep = "\n"
     )

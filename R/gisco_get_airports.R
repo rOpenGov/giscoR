@@ -15,10 +15,10 @@
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks>
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
 #'
 #' @details
-#'  Datasets refer to Europe. All shapefiles provided in EPSG:4326
+#'  [gisco_get_airports()] refer to Europe. All shapefiles provided in
+#'  [EPSG:4326](https://epsg.io/4326).
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{
@@ -40,6 +40,36 @@
 #'     color = NULL,
 #'     caption = gisco_attributions()
 #'   )
+#'
+#'
+#' ##############################
+#' #         Plot ports         #
+#' ##############################
+#'
+#' ports <- gisco_get_ports()
+#' coast <- gisco_get_coastallines(year = 2013)
+#'
+#' # To Equal Earth projection :)
+#'
+#' library(sf)
+#' coast <- st_transform(coast, 8857)
+#' ports <- st_transform(ports, st_crs(coast))
+#'
+#'
+#' ggplot(coast) +
+#'   geom_sf(fill = "#F6E1B9", color = "#0978AB") +
+#'   geom_sf(data = ports, fill = "red", shape = 21) +
+#'   theme_void() +
+#'   theme(
+#'     panel.background = element_rect(fill = "#C6ECFF"),
+#'     panel.grid = element_blank(),
+#'     plot.title = element_text(face = "bold", hjust = 0.5),
+#'     plot.subtitle = element_text(face = "italic", hjust = 0.5)
+#'   ) +
+#'   labs(
+#'     title = "Ports Worldwide", subtitle = "Year 2013",
+#'     caption = "(c) European Union, 1995 - today"
+#'   )
 #' }
 #' @export
 gisco_get_airports <- function(year = "2013",
@@ -53,32 +83,17 @@ gisco_get_airports <- function(year = "2013",
   }
 
   if (year == "2013") {
-    url <- "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/Airports-2013-SHP.zip"
+    url <- paste0(
+      "https://ec.europa.eu/eurostat/cache/GISCO/",
+      "geodatafiles/Airports-2013-SHP.zip"
+    )
   }
 
-  cache_dir <- gsc_helper_detect_cache_dir()
-
-  name <- basename(url)
-
-  basename <- gsc_api_cache(
-    url = url, name = name, cache_dir = cache_dir,
-    update_cache = update_cache, verbose = verbose
-  )
-
-
-  gsc_unzip(basename, cache_dir,
-    ext = "*", verbose = verbose,
-    update_cache = update_cache
-  )
-
-  destfile <- basename
-
-  zipfiles <- unzip(destfile, list = TRUE)
-  shpfile <- basename(zipfiles[grep(".shp$", zipfiles[[1]]), 1])
-
-
-  data_sf <- sf::st_read(file.path(cache_dir, shpfile), quiet = !verbose)
+  data_sf <- gsc_load_shp(url, cache_dir, verbose, update_cache)
   data_sf <- sf::st_make_valid(data_sf)
+
+  # Normalize to lonlat
+  data_sf <- sf::st_transform(data_sf, 4326)
 
 
   if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
@@ -90,8 +105,17 @@ gisco_get_airports <- function(year = "2013",
 
 #' @rdname gisco_get_airports
 #'
+#' @details
+#'
+#' [gisco_get_ports()] adds a new field `CNTR_ISO2` to the original data
+#' identifying the country of the port. Worldwide information available.
+#' The port codes are aligned with
+#' [UN/LOCODE](https://unece.org/trade/uncefact/unlocode) standard.
+#'
 #' @export
-gisco_get_ports <- function(year = "2013", cache_dir = NULL,
+gisco_get_ports <- function(year = "2013",
+                            country = NULL,
+                            cache_dir = NULL,
                             update_cache = FALSE,
                             verbose = FALSE) {
   year <- as.character(year)
@@ -100,31 +124,24 @@ gisco_get_ports <- function(year = "2013", cache_dir = NULL,
   }
 
   if (year == "2013") {
-    url <- "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/PORT_2013_SH.zip"
+    url <- paste0(
+      "https://ec.europa.eu/eurostat/cache/GISCO/",
+      "geodatafiles/PORT_2013_SH.zip"
+    )
   }
 
-  cache_dir <- gsc_helper_detect_cache_dir()
-
-  name <- basename(url)
-
-  basename <- gsc_api_cache(
-    url = url, name = name, cache_dir = cache_dir,
-    update_cache = update_cache, verbose = verbose
-  )
-
-
-  gsc_unzip(basename, cache_dir,
-    ext = "*", verbose = verbose,
-    update_cache = update_cache
-  )
-
-  destfile <- basename
-
-  zipfiles <- unzip(destfile, list = TRUE)
-  shpfile <- basename(zipfiles[grep(".shp$", zipfiles[[1]]), 1])
-
-
-  data_sf <- sf::st_read(file.path(cache_dir, shpfile), quiet = !verbose)
+  data_sf <- gsc_load_shp(url, cache_dir, verbose, update_cache)
   data_sf <- sf::st_make_valid(data_sf)
+
+  # Normalize to lonlat
+  data_sf <- sf::st_transform(data_sf, 4326)
+
+  # Add ISO2 country
+  data_sf$CNTR_ISO2 <- substr(data_sf$PORT_ID, 1, 2)
+
+  if (!is.null(country) & "PORT_ID" %in% names(data_sf)) {
+    country <- gsc_helper_countrynames(country, "iso2c")
+    data_sf <- data_sf[data_sf$CNTR_ISO2 %in% country, ]
+  }
   return(data_sf)
 }

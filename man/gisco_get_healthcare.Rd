@@ -63,13 +63,19 @@ For a complete list of files available check \link{gisco_db}.
 
 health_BEL <- gisco_get_healthcare(country = "Belgium")
 health_BEL[health_BEL$public_private == "", ]$public_private <- "unknown"
-BEL <- gisco_get_nuts(country = "Belgium", nuts_level = 2)
+BEL <- gisco_get_nuts(
+  country = "Belgium", nuts_level = 2,
+  resolution = "01"
+)
 
 library(ggplot2)
 
 ggplot(BEL) +
   geom_sf(fill = "white", color = "grey80") +
-  geom_sf(data = health_BEL, aes(color = public_private), alpha = 0.5, size = 3) +
+  geom_sf(
+    data = health_BEL, aes(color = public_private),
+    alpha = 0.5, size = 3
+  ) +
   theme_bw() +
   labs(
     title = "Healthcare in Belgium",
