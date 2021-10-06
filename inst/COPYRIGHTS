@@ -2,7 +2,7 @@
 GENERAL COPYRIGHT
 ========================================
 
-© European Union, 1995 - today
+(c) European Union, 1995 - today
 
 Eurostat has a policy of encouraging free re-use of its data, both for
 non-commercial and commercial purposes. All statistical data, metadata, content
@@ -80,11 +80,11 @@ Eurostat website, data source will have to be acknowledged in the legend of
 the map and in the introductory page of the publication with the following
 copyright notice:
 
-- EN: © EuroGeographics for the administrative boundaries
+- EN: (c) EuroGeographics for the administrative boundaries
 
-- FR: © EuroGeographics pour les limites administratives
+- FR: (c) EuroGeographics pour les limites administratives
 
-- DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
+- DE: (c) EuroGeographics bezuglich der Verwaltungsgrenzen
 
 For publications in languages other than English, French or German, the
 translation of the copyright notice in the language of the publication shall
@@ -119,5 +119,5 @@ download zip package.
 POSTAL CODES
 ========================================
 
-© European Union - GISCO, 2021, postal code point dataset, Licence CC-BY-SA 4.0
+(c) European Union - GISCO, 2021, postal code point dataset, Licence CC-BY-SA 4.0
 available at <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data>.
