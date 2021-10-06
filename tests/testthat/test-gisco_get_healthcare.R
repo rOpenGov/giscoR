@@ -1,6 +1,6 @@
 test_that("Healthcare online", {
+  skip_on_cran()
   skip_if_gisco_offline()
-  # skip_on_cran()
 
   expect_silent(gisco_get_healthcare())
   # expect_silent(gisco_get_healthcare(cache = FALSE))

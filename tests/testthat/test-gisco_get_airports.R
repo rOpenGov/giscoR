@@ -3,8 +3,8 @@ test_that("Get airports", {
   expect_error(gisco_get_airports(year = 2020))
   expect_error(gisco_get_ports(year = 2020, country = "ES"))
 
+  skip_on_cran()
   skip_if_gisco_offline()
-  # skip_on_cran()
 
   all <- expect_silent(gisco_get_airports())
   expect_silent(gisco_get_airports(year = 2013))

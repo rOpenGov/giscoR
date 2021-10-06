@@ -20,8 +20,9 @@ test_that("Test cache online", {
 
   cat("Testing cache dir is ", Sys.getenv("GISCO_CACHE_DIR"), "\n")
 
-  # skip_on_cran()
-  # skip_if_gisco_offline()
+
+  skip_on_cran()
+  skip_if_gisco_offline()
 
   expect_message(gisco_get_countries(resolution = "60", verbose = TRUE))
 

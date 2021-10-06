@@ -14,8 +14,8 @@ test_that("Internal utils", {
 
   expect_error(gsc_api_load(file = test, ext = "error"))
 
+  skip_on_cran()
   skip_if_gisco_offline()
-  #  skip_on_cran()
 
   s <- suppressWarnings(gsc_api_load(
     file = test,
@@ -38,8 +38,8 @@ test_that("Errors on database", {
     level = "aaa"
   ))
 
+  skip_on_cran()
   skip_if_gisco_offline()
-  #  skip_on_cran()
 
 
 
