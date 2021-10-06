@@ -19,8 +19,8 @@ test_that("NUTS offline", {
 })
 
 test_that("NUTS online", {
+  skip_on_cran()
   skip_if_gisco_offline()
-  #  skip_on_cran()
 
   expect_silent(gisco_get_nuts(spatialtype = "LB"))
   expect_silent(gisco_get_nuts(spatialtype = "LB", cache = FALSE))

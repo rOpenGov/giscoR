@@ -7,8 +7,8 @@ test_that("Urban Audit offline", {
 })
 
 test_that("Urban Audit online", {
+  skip_on_cran()
   skip_if_gisco_offline()
-  #  skip_on_cran()
 
   expect_silent(gisco_get_urban_audit(level = "GREATER_CITIES"))
   fromurl <- expect_silent(gisco_get_urban_audit(

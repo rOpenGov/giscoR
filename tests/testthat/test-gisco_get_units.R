@@ -9,8 +9,8 @@ test_that("Errors on units", {
 })
 
 test_that("Units sf online", {
+  skip_on_cran()
   skip_if_gisco_offline()
-  # skip_on_cran()
 
   expect_silent(gisco_get_units(
     year = "2001",
@@ -157,6 +157,9 @@ test_that("Units sf online", {
 
 
 test_that("Units df online", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
   test <- expect_silent(gisco_get_units(
     year = "2001",
     id_giscoR = "countries",

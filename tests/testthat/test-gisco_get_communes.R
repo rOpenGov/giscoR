@@ -7,8 +7,8 @@ test_that("Communes offline", {
 })
 
 test_that("Communes online", {
+  skip_on_cran()
   skip_if_gisco_offline()
-  # skip_on_cran()
 
   expect_silent(gisco_get_communes(spatialtype = "COASTL"))
 
@@ -22,7 +22,7 @@ test_that("Communes online", {
   expect_message(gisco_get_communes(spatialtype = "LB", verbose = TRUE))
   LU <- expect_silent(gisco_get_communes(spatialtype = "LB", country = "LU"))
 
-  expect_equal(unique(LU$CNTR_CODE), "LU")
+  expect_equal(as.character(unique(LU$CNTR_CODE)), "LU")
 
   # Test selected years
   years <- c("2001", "2013")
@@ -34,6 +34,6 @@ test_that("Communes online", {
       verbose = FALSE
     )
 
-    expect_equal(unique(lb$CNTR_CODE), "LI")
+    expect_equal(as.character(unique(LU$CNTR_CODE)), "LU")
   }
 })

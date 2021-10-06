@@ -37,8 +37,8 @@ test_that("Countries offline", {
 })
 
 test_that("Countries online", {
+  skip_on_cran()
   skip_if_gisco_offline()
-  # skip_on_cran()
 
   expect_silent(gisco_get_countries(
     spatialtype = "LB",
