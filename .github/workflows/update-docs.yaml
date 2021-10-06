@@ -28,9 +28,9 @@ jobs:
         with:
           cache-version: 3000
           extra-packages: |
-            rcmdcheck
             ropengov/rogtemplate
             dieghernan/pkgdev
+            rcmdcheck
             reactable
           needs: website
 
