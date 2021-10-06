@@ -28,7 +28,9 @@
 #' * "no" - Norwegian
 #' * "sv" - Swedish
 #'
-#' Consider contributing if you spot any mistake or want to add a new language.
+#' Please consider
+#' [contributing](https://github.com/rOpenGov/giscoR/issues) if you spot any
+#' mistake or want to add a new language.
 #'
 #' @note
 #'
@@ -94,29 +96,28 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     )
   }
 
-  if (lang == "en") {
-    attr <- "\u00a9 EuroGeographics for the administrative boundaries"
-  } else if (lang == "da") {
-    attr <- "\u00a9 EuroGeographics for administrative gr\u00e6nser"
-  } else if (lang == "de") {
-    attr <- "\u00a9 EuroGeographics bezuglich der Verwaltungsgrenzen"
-  } else if (lang == "es") {
-    attr <-
-      "\u00a9 Eurogeographics para los l\u00edmites administrativos"
-  } else if (lang == "fi") {
-    attr <-
-      "\u00a9 EuroGeographics Association hallinnollisille rajoille"
-  } else if (lang == "fr") {
-    attr <- "\u00a9 EuroGeographics pour les limites administratives"
-  } else if (lang == "no") {
-    attr <- "\u00a9 EuroGeographics for administrative grenser"
-  } else if (lang == "sv") {
-    attr <-
-      "\u00a9 EuroGeographics f\u00f6r administrativa gr\u00e4nser"
-  } else {
-    print("Language not supported, switching to English. Consider contributing")
-    attr <-
-      "\u00a9 EuroGeographics for the administrative boundaries"
-  }
+  # Display message
+  verbose <- !lang %in% c("en", "da", "de", "es", "fi", "fr", "no", "sv")
+
+  gsc_message(
+    verbose, "Language", lang, "not supported,",
+    "switching to English.",
+    "\nConsider contributing:",
+    "\nhttps://github.com/rOpenGov/giscoR/issues"
+  )
+
+
+
+  attr <- switch(lang,
+    "en" = "\u00a9 EuroGeographics for the administrative boundaries",
+    "da" = "\u00a9 EuroGeographics for administrative gr\u00e6nser",
+    "de" = "\u00a9 EuroGeographics bezuglich der Verwaltungsgrenzen",
+    "es" = "\u00a9 Eurogeographics para los l\u00edmites administrativos",
+    "fi" = "\u00a9 EuroGeographics Association hallinnollisille rajoille",
+    "fr" = "\u00a9 EuroGeographics pour les limites administratives",
+    "no" = "\u00a9 EuroGeographics for administrative grenser",
+    "sv" = "\u00a9 EuroGeographics f\u00f6r administrativa gr\u00e4nser",
+    "\u00a9 EuroGeographics for the administrative boundaries"
+  )
   return(attr)
 }

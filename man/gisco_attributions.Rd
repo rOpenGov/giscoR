@@ -32,7 +32,9 @@ Current languages supported are:
 \item "sv" - Swedish
 }
 
-Consider contributing if you spot any mistake or want to add a new language.
+Please consider
+\href{https://github.com/rOpenGov/giscoR/issues}{contributing} if you spot any
+mistake or want to add a new language.
 }
 \note{
 COPYRIGHT NOTICE

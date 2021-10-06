@@ -103,6 +103,11 @@ gisco_get_units <- function(id_giscoR = "nuts",
                             spatialtype = "RG") {
   year <- as.character(year)
 
+  cache_dir <- gsc_helper_cachedir(cache_dir)
+  unit <- unique(unit)
+
+
+  # Validations
   if (!(id_giscoR %in% c("countries", "nuts", "urban_audit"))) {
     stop('id_giscoR should be one of "countries","nuts","urban_audit"')
   }
@@ -136,7 +141,7 @@ gisco_get_units <- function(id_giscoR = "nuts",
   }
 
 
-  routes <-
+  api_entry <-
     gsc_api_url(
       id_giscoR,
       year,
@@ -147,132 +152,219 @@ gisco_get_units <- function(id_giscoR = "nuts",
       verbose = verbose,
       level = level
     )
-  api_entry <- unlist(strsplit(routes$api_url, "/geojson/"))[1]
-  remain <- unlist(strsplit(routes$api_url, "/geojson/"))[2]
+  basename <- basename(api_entry)
 
-
-
+  api_url <- unlist(strsplit(api_entry, "/geojson/"))[1]
+  remain <- unlist(strsplit(api_entry, "/geojson/"))[2]
 
   # Compose depending of the mode
   if (mode == "df") {
-    if (id_giscoR == "countries") {
-      if (year < "2013") {
-        csv <- "csv/CNTR_AT.csv"
-      } else {
-        csv <- paste0("csv/CNTR_AT_", year, ".csv")
-      }
-    } else if (id_giscoR == "urban_audit") {
-      if (year <= "2004") {
-        csv <- paste0("csv/URAU_CITY_AT_", year, ".csv")
-      } else if (year < "2018") {
-        csv <- "csv/URAU_AT_2011_2014.csv"
-      } else {
-        csv <- paste0("csv/URAU_AT_", year, ".csv")
-      }
-    } else if (id_giscoR == "nuts") {
-      csv <- paste0("csv/NUTS_AT_", year, ".csv")
-    }
-    url <- file.path(api_entry, csv)
-    tempf <- tempfile(fileext = ".csv")
-    ondwn <- tryCatch(
-      download.file(url, tempf, quiet = isFALSE(verbose)),
-      warning = function(e) {
-        message(" url not reachable. Try again ")
-        return(TRUE)
-      },
-      error = function(e) {
-        message(" url not reachable. Try again ")
-        return(TRUE)
-      }
+    df <- gsc_units_df(id_giscoR, year, api_url, verbose)
+
+    return(df)
+  } else if (mode == "sf") {
+    sf <- gsc_units_sf(
+      id_giscoR,
+      unit,
+      year,
+      epsg,
+      cache,
+      update_cache,
+      cache_dir,
+      verbose,
+      spatialtype,
+      api_url,
+      remain,
+      level
     )
-    if (!isTRUE(ondwn)) {
-      df_csv <- read.csv2(
-        tempf,
-        sep = ",",
-        stringsAsFactors = FALSE,
-        encoding = "UTF-8"
-      )
-      if (verbose) {
-        message("Load database succesfully")
-      }
-      return(df_csv)
-    }
+    return(sf)
+  }
+}
+
+#' Download sf for units
+#' @noRd
+gsc_units_sf <- function(id_giscoR,
+                         unit,
+                         year,
+                         epsg,
+                         cache,
+                         update_cache,
+                         cache_dir,
+                         verbose,
+                         spatialtype,
+                         api_url,
+                         remain,
+                         level) {
+  cache_dir <- gsc_helper_cachedir(cache_dir)
+
+  filename <- unit
+
+  api_url <- file.path(api_url, "distribution")
+
+  # Slice path
+  remain <- gsub(paste0("_", level), "", remain)
+
+  filepattern <- tolower(gsub(".geojson", "", remain))
+
+  slice <- (unlist(strsplit(filepattern, "_")))[c(-1, -2)]
+
+  # Remove year epsg and spatial type
+  slice <- slice[-grep(year, slice)]
+  slice <- slice[-grep(epsg, slice)]
+
+  if (spatialtype == "LB") {
+    filepattern <-
+      paste0(paste("-label", epsg, year, sep = "-"), ".geojson")
+    filename <- paste0(filename, filepattern)
   } else {
-    unit <- unique(unit)
-    filename <- unit
+    filepattern <-
+      paste0(paste("-region", slice, epsg, year, sep = "-"), ".geojson")
+    filepattern <- gsub("-rg", "", filepattern)
+    filename <- paste0(filename, filepattern)
+  }
 
-    api_entry <- file.path(api_entry, "distribution")
-
-    # Slice path
-    remain <- gsub(paste0("_", level), "", remain)
-    filepattern <- tolower(gsub(".geojson", "", remain))
-    slice <- (unlist(strsplit(filepattern, "_")))[c(-1, -2)]
-
-    # Remove year epsg and spatial type
-    slice <- slice[-grep(year, slice)]
-    slice <- slice[-grep(epsg, slice)]
-
-    if (spatialtype == "LB") {
-      filepattern <-
-        paste0(paste("-label", epsg, year, sep = "-"), ".geojson")
-      filename <- paste0(filename, filepattern)
-    } else {
-      filepattern <-
-        paste0(paste("-region", slice, epsg, year, sep = "-"), ".geojson")
-      filepattern <- gsub("-rg", "", filepattern)
-      filename <- paste0(filename, filepattern)
+  for (i in seq_len(length(filename))) {
+    fn <- filename[i]
+    if (id_giscoR == "countries") {
+      # Modify name for countries
+      fn <- gsub(unit[i], paste0(unit[i], "-cntry"), fn)
     }
 
-    for (i in seq_len(length(filename))) {
-      fn <- filename[i]
-      if (id_giscoR == "countries") {
-        # Modify name for countries
-        fn <- gsub(unit[i], paste0(unit[i], "-cntry"), fn)
-      }
-
-      path <- tryCatch(
+    if (cache) {
+      path <- try(
         gsc_api_cache(
-          file.path(api_entry, filename[i]),
+          file.path(api_url, filename[i]),
           fn,
           cache_dir,
           update_cache,
           verbose
         ),
-        error = function(e) {
-          return("error")
-        }
+        silent = TRUE
       )
-
-      if (path == "error") {
-        message("\n Skipping unit = ", unit[i], "\n Not found")
-        next()
-      }
-
-      iter_sf <- tryCatch(
-        gsc_api_load(path, epsg, "geojson", cache, verbose),
-        error = function(e) {
-          return(NULL)
-        }
-      )
-      if (is.null(iter_sf)) {
-        message("\n Skipping unit = ", unit[i], "\n Corrupted file")
-        next()
-      }
-
-
-      if (exists("df_sf")) {
-        df_sf <- rbind(df_sf, iter_sf)
-      } else {
-        df_sf <- iter_sf
-      }
+    } else {
+      path <- file.path(api_url, filename[i])
     }
 
-    if (!exists("df_sf")) {
-      stop("No results for ", paste0(unit, collapse = " "))
+
+
+    if (inherits(path, "try-error")) {
+      gsc_message(
+        TRUE,
+        "\nSkipping unit = ", unit[i], "\nNot found"
+      )
+      next()
     }
 
-    # Last check
-    df_sf <- sf::st_make_valid(df_sf)
-    return(df_sf)
+
+    iter_sf <- try(
+      gsc_api_load(path, epsg, "geojson", cache, verbose),
+      silent = TRUE
+    )
+
+    if (inherits(iter_sf, "try-error")) {
+      gsc_message(
+        TRUE,
+        "\nSkipping unit = ", unit[i],
+        "\n Corrupted file"
+      )
+      next()
+    }
+
+
+    if (exists("df_sf")) {
+      df_sf <- rbind(df_sf, iter_sf)
+    } else {
+      df_sf <- iter_sf
+    }
   }
+
+  if (!exists("df_sf")) {
+    stop("No results for c(", paste0("'", unit, "'", collapse = ", "), ")",
+      call. = FALSE
+    )
+  }
+
+  # Last check
+  df_sf <- sf::st_make_valid(df_sf)
+  return(df_sf)
+}
+
+#' Download data frame for units
+#' @noRd
+gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
+  if (id_giscoR == "countries") {
+    if (year < "2013") {
+      csv <- "csv/CNTR_AT.csv"
+    } else {
+      csv <- paste0("csv/CNTR_AT_", year, ".csv")
+    }
+  } else if (id_giscoR == "urban_audit") {
+    if (year <= "2004") {
+      csv <- paste0("csv/URAU_CITY_AT_", year, ".csv")
+    } else if (year < "2018") {
+      csv <- "csv/URAU_AT_2011_2014.csv"
+    } else {
+      csv <- paste0("csv/URAU_AT_", year, ".csv")
+    }
+  } else if (id_giscoR == "nuts") {
+    csv <- paste0("csv/NUTS_AT_", year, ".csv")
+  }
+
+  url <- file.path(api_url, csv)
+
+  file.local <- tempfile(fileext = ".csv")
+
+  err_dwnload <- try(
+    download.file(
+      url,
+      file.local,
+      quiet = isFALSE(verbose),
+      mode = "wb"
+    ),
+    silent = TRUE
+  )
+
+  # If error then try again
+
+  # nocov start
+
+  if (inherits(err_dwnload, "try-error")) {
+    gsc_message(verbose, "Retry query")
+    Sys.sleep(1)
+    err_dwnload <- try(
+      download.file(
+        url,
+        file.local,
+        quiet = isFALSE(verbose),
+        mode = "wb"
+      ),
+      silent = TRUE
+    )
+  }
+
+  # If not then stop
+  if (inherits(err_dwnload, "try-error")) {
+    gsc_message(
+      TRUE,
+      "\nurl \n ",
+      url,
+      "not reachable.\n\nPlease download manually.",
+      "If you think this is a bug please consider opening an issue on ",
+      "https://github.com/ropengov/giscoR/issues"
+    )
+    stop("Download failed")
+  }
+
+  # nocov end
+
+  df_csv <- read.csv2(
+    file.local,
+    sep = ",",
+    stringsAsFactors = FALSE,
+    encoding = "UTF-8"
+  )
+
+
+  gsc_message(verbose, "Database loaded succesfully")
+  return(df_csv)
 }

@@ -51,12 +51,13 @@ gisco_clear_cache <- function(config = FALSE,
   data_dir <- gsc_helper_detect_cache_dir()
   if (config && dir.exists(config_dir)) {
     unlink(config_dir, recursive = TRUE, force = TRUE)
-    if (verbose) message("giscoR cache config deleted")
+
+    gsc_message(verbose, "giscoR cache config deleted")
   }
   # nocov end
   if (cached_data && dir.exists(data_dir)) {
     unlink(data_dir, recursive = TRUE, force = TRUE)
-    if (verbose) message("giscoR cached data deleted: ", data_dir)
+    gsc_message(verbose, "giscoR cached data deleted: ", data_dir)
   }
 
 

@@ -1,4 +1,4 @@
-#' @name gsc_api_url
+#' Extract downloading path
 #' @noRd
 gsc_api_url <- function(id_giscoR = "nuts",
                         year = "2016",
@@ -55,7 +55,7 @@ gsc_api_url <- function(id_giscoR = "nuts",
   rm(av_epsg)
 
   # Available ext
-  # nocov start
+
   av_ext <- paste(db$ext, collapse = ",")
   av_ext <- sort(unique(unlist(strsplit(av_ext, ","))))
 
@@ -69,7 +69,6 @@ gsc_api_url <- function(id_giscoR = "nuts",
       paste0("'", av_ext, "'", collapse = ",")
     )
   }
-  # nocov end
 
   db <- db[grep(ext, db$ext), ]
   rm(av_ext)
@@ -80,9 +79,12 @@ gsc_api_url <- function(id_giscoR = "nuts",
   av_sptype <- sort(unique(unlist(strsplit(av_sptype, ","))))
 
   if (length(av_sptype) == 1) {
-    if (verbose) {
-      message("[Auto] Selecting spatialtype = '", av_sptype, "'\n")
-    }
+    gsc_message(
+      verbose, "[Auto] Selecting spatialtype = '",
+      av_sptype, "'\n"
+    )
+
+
     spatialtype <- av_sptype
   } else {
     if (!(spatialtype %in% av_sptype)) {
@@ -104,9 +106,11 @@ gsc_api_url <- function(id_giscoR = "nuts",
   av_res <- sort(unique(unlist(strsplit(av_res, ","))))
 
   if (length(av_res) == 1) {
-    if (verbose) {
-      message("[Auto] Selecting resolution = '", av_res, "'\n")
-    }
+    gsc_message(
+      verbose,
+      "[Auto] Selecting resolution = '", av_res, "'\n"
+    )
+
     resolution <- av_res
   } else {
     if (!(resolution %in% av_res)) {
@@ -169,15 +173,16 @@ gsc_api_url <- function(id_giscoR = "nuts",
   # Sanity check
   # nocov start
   if (nrow(db) > 1) {
-    message(
+    gsc_message(
+      TRUE,
       "Several options selected. ",
       "On gisco_db, rows: ",
       paste0(rownames(db), collapse = ","),
       " matches your selection. ",
       "Selecting row ",
-      rownames(db[1, ])
+      rownames(db[1, ]),
+      "\n Consider opening an issue."
     )
-    message("\n Consider opening an issue.")
     db <- db[1, ]
   }
   # nocov end
@@ -216,22 +221,17 @@ gsc_api_url <- function(id_giscoR = "nuts",
   if (ext %in% c("shp", "svg")) {
     gisco_path <- paste0(gisco_path, ".zip")
   }
-  namefile <- gsub(paste0(ext, "/"), "", gisco_path)
+
   api_url <- file.path(db$api_entry, gisco_path)
 
-  output <- list(
-    api_url = api_url,
-    namefile = namefile
-  )
-
-  return(output)
+  return(api_url)
 }
 
 #' @name gsc_api_cache
 #' @noRd
 gsc_api_cache <-
   function(url = NULL,
-           name = NULL,
+           name = basename(url),
            cache_dir = NULL,
            update_cache = FALSE,
            verbose = TRUE) {
@@ -241,51 +241,77 @@ gsc_api_cache <-
     file.local <- file.path(cache_dir, name)
     file.local <- gsub("//", "/", file.local)
 
-    if (verbose) {
-      message("\nCache dir is ", cache_dir, "\n")
-    }
+
+    gsc_message(verbose, "\nCache dir is ", cache_dir, "\n")
+
 
     # Check if file already exists
     fileoncache <- file.exists(file.local)
 
+    # If already cached return
     if (isFALSE(update_cache) & fileoncache) {
-      if (verbose) {
-        message(
-          "\nFile already cached\n",
-          file.local
-        )
-      }
-    } else {
-      if (fileoncache & verbose) {
-        message("\nUpdating cached file\n")
-      }
+      gsc_message(
+        verbose,
+        "\nFile already cached\n",
+        file.local
+      )
 
-      if (verbose) {
-        message("Downloading from ", url, "\n")
-      }
-      err_dwnload <- tryCatch(
+
+      return(file.local)
+    }
+
+    if (fileoncache) {
+      gsc_message(verbose, "\nUpdating cached file\n")
+    }
+
+
+    gsc_message(verbose, "Downloading from ", url, "\n")
+
+    err_dwnload <- suppressWarnings(
+      try(
         download.file(
           url,
           file.local,
           quiet = isFALSE(verbose),
           mode = "wb"
         ),
-        warning = function(e) {
-          message(
-            "\nurl \n ",
-            url,
-            " not reachable.\n\nPlease download manually. If you think this is a bug please consider opening an issue on https://github.com/ropengov/giscoR/issues"
-          )
-          return(TRUE)
-        }
+        silent = TRUE
       )
+    )
 
-      if (isTRUE(err_dwnload)) {
-        stop("Download failed")
-      } else if (verbose) {
-        message("Download succesful on \n\n", file.local, "\n\n")
-      }
+    # If error then try again
+
+    if (inherits(err_dwnload, "try-error")) {
+      gsc_message(verbose, "Retry query")
+      Sys.sleep(1)
+      err_dwnload <- suppressWarnings(
+        try(
+          download.file(
+            url,
+            file.local,
+            quiet = isFALSE(verbose),
+            mode = "wb"
+          ),
+          silent = TRUE
+        )
+      )
     }
+
+    # If not then stop
+    if (inherits(err_dwnload, "try-error")) {
+      gsc_message(
+        TRUE,
+        "\nurl \n ",
+        url,
+        " not reachable.\n\nPlease download manually. ",
+        "If you think this is a bug please consider opening an issue on ",
+        "https://github.com/ropengov/giscoR/issues"
+      )
+      stop("Download failed")
+    }
+
+    gsc_message(verbose, "Download succesful on \n\n", file.local, "\n\n")
+
     return(file.local)
   }
 
@@ -310,55 +336,53 @@ gsc_api_load <- function(file = NULL,
   epsg <- as.character(epsg)
   num <- sf::st_crs(as.integer(epsg))
 
-  if (verbose & isTRUE(cache)) {
-    message("Reading from local file ", file)
+  if (isTRUE(cache)) {
+    gsc_message(verbose, "Reading from local file ", file)
     size <- file.size(file)
     class(size) <- "object_size"
-    message(format(size, units = "auto"))
+    gsc_message(verbose, format(size, units = "auto"))
   } else {
-    if (verbose) {
-      message("Reading from url ", file)
-    }
+    gsc_message(verbose, "Reading from url ", file)
   }
 
 
   if (ext == "geojson") {
-    err_onload <- tryCatch(
-      data_sf <- geojsonsf::geojson_sf(file,
-        input = num$input,
-        wkt = num$wkt
-      ),
-      error = function(e) {
-        message(
-          "File :\n",
-          file,
-          "\nmay be corrupt. Please try again using cache = TRUE and update_cache = TRUE"
-        )
-        return(TRUE)
-      }
+    data_sf <- suppressWarnings(
+      try(
+        geojsonsf::geojson_sf(file,
+          input = num$input,
+          wkt = num$wkt
+        ),
+        silent = TRUE
+      )
     )
   } else if (ext == "gpkg") {
-    err_onload <- tryCatch(
-      data_sf <-
+    data_sf <- suppressWarnings(
+      try(
         sf::st_read(
           file,
           stringsAsFactors = FALSE,
           quiet = !verbose
         ),
-      error = function(e) {
-        message(
-          "File :\n",
-          file,
-          "\nmay be corrupt. Please try again using cache = TRUE and update_cache = TRUE"
-        )
-        return(TRUE)
-      }
+        silent = TRUE
+      )
     )
   }
 
-  if (isTRUE(err_onload)) stop("\nExecution halted", call. = FALSE)
 
-  if (verbose) message("File loaded", "\n", "Encoding characters")
+  if (inherits(data_sf, "try-error")) {
+    message(
+      "File :\n",
+      file,
+      "\nmay be corrupt. ",
+      "Please try again using cache = TRUE and update_cache = TRUE"
+    )
+
+    stop("\nExecution halted", call. = FALSE)
+  }
+
+
+  gsc_message(verbose, "File loaded", "\n", "Encoding characters")
 
   # To UTF-8
   data_sf <- gsc_helper_utf8(data_sf)
@@ -366,68 +390,90 @@ gsc_api_load <- function(file = NULL,
   return(data_sf)
 }
 
-#' @name gsc_unzip
+
+#' Load shapefile "shp" from an online resource
+#' @noRd
+gsc_load_shp <- function(url, cache_dir = NULL, verbose, update_cache) {
+  cache_dir <- gsc_helper_cachedir(cache_dir)
+  basename <- basename(url)
+
+  # Download file
+  zipfile <- gsc_api_cache(
+    url, basename,
+    cache_dir,
+    update_cache,
+    verbose
+  )
+
+  # Unzip file
+  gsc_unzip(zipfile, cache_dir, "*",
+    recursive = TRUE,
+    verbose,
+    update_cache
+  )
+
+  zippedfiles <- unzip(zipfile, list = TRUE)
+
+  # Load shapefile
+  shpfile <- basename(zippedfiles[grep(".shp$", zippedfiles[[1]]), 1])
+
+  # Full path and load
+
+  data_sf <- sf::st_read(file.path(cache_dir, shpfile), quiet = !verbose)
+
+  return(data_sf)
+}
+
+#' Unzip a file
 #' @noRd
 gsc_unzip <-
   function(destfile,
            cache_dir,
            ext,
-           recursive = TRUE, # Deprecate
+           # Deprecate
+           recursive = TRUE,
            verbose = TRUE,
+           # Deprecate
            update_cache = TRUE) {
-
-
-    # Always update cache
-    update_cache <- TRUE
+    cache_dir <- gsc_helper_cachedir(cache_dir)
 
     infiles <- unzip(destfile, list = TRUE, junkpaths = TRUE)
 
     # Extract files
     outfiles <- infiles[grep(ext, infiles$Name), ]$Name
 
-    if (verbose) {
-      message("Extracting files:\n", paste0(outfiles, collapse = "\n"), "\n")
+    gsc_message(verbose, "Extracting files:\n", paste0(outfiles, collapse = "\n"), "\n")
+
+
+    allfiles <- list.files(cache_dir)
+
+    basenames <- basename(outfiles)
+
+    del <- basenames[basenames %in% allfiles]
+
+    if (length(del) > 1) {
+      s <- file.path(cache_dir, del)
+
+      s <- file.remove(s)
     }
 
+    result <- try(unzip(
+      destfile,
+      files = outfiles,
+      exdir = cache_dir,
+      junkpaths = TRUE,
+      overwrite = update_cache
+    ), silent = TRUE)
 
-    if (update_cache) {
-      allfiles <- list.files(cache_dir)
 
-      basenames <- basename(outfiles)
-
-      del <- basenames[basenames %in% allfiles]
-
-      if (length(del) > 1) {
-        s <- file.path(cache_dir, del)
-
-        file.remove(s)
-      }
+    # nocov start
+    if (inherits(result, "try-error")) {
+      message(
+        "It was an error unzipping the file,",
+        " try downloading manually. \n\n File on",
+        cache_dir,
+        "\n"
+      )
     }
-
-    tryCatch(
-      unzip(
-        destfile,
-        files = outfiles,
-        exdir = cache_dir,
-        junkpaths = TRUE,
-        overwrite = update_cache
-      ),
-      warning = function(e) {
-        message(
-          "Some files of ",
-          destfile,
-          " may have not been extracted. Please check folder ",
-          cache_dir,
-          "\n"
-        )
-      },
-      error = function(e) {
-        message(
-          "It was an error unzipping the file,",
-          "try downloading manually. \n\n File on",
-          cache_dir,
-          "\n"
-        )
-      }
-    )
+    # nocov end
   }

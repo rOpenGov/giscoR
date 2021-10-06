@@ -18,6 +18,7 @@ gisco_get_airports(
 
 gisco_get_ports(
   year = "2013",
+  country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE
@@ -47,7 +48,13 @@ A \code{POINT} object on EPSG:4326.
 Loads a \code{sf} object from GISCO API or your local library.
 }
 \details{
-Datasets refer to Europe. All shapefiles provided in EPSG:4326
+\code{\link[=gisco_get_airports]{gisco_get_airports()}} refer to Europe. All shapefiles provided in
+\href{https://epsg.io/4326}{EPSG:4326}.
+
+\code{\link[=gisco_get_ports]{gisco_get_ports()}} adds a new field \code{CNTR_ISO2} to the original data
+identifying the country of the port. Worldwide information available.
+The port codes are aligned with
+\href{https://unece.org/trade/uncefact/unlocode}{UN/LOCODE} standard.
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.
@@ -83,14 +90,41 @@ ggplot(Greece) +
     color = NULL,
     caption = gisco_attributions()
   )
+
+
+##############################
+#         Plot ports         #
+##############################
+
+ports <- gisco_get_ports()
+coast <- gisco_get_coastallines(year = 2013)
+
+# To Equal Earth projection :)
+
+library(sf)
+coast <- st_transform(coast, 8857)
+ports <- st_transform(ports, st_crs(coast))
+
+
+ggplot(coast) +
+  geom_sf(fill = "#F6E1B9", color = "#0978AB") +
+  geom_sf(data = ports, fill = "red", shape = 21) +
+  theme_void() +
+  theme(
+    panel.background = element_rect(fill = "#C6ECFF"),
+    panel.grid = element_blank(),
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(face = "italic", hjust = 0.5)
+  ) +
+  labs(
+    title = "Ports Worldwide", subtitle = "Year 2013",
+    caption = "(c) European Union, 1995 - today"
+  )
 }
 \dontshow{\}) # examplesIf}
 }
 \seealso{
 Other infrastructure: 
 \code{\link{gisco_get_healthcare}()}
-}
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
 }
 \concept{infrastructure}

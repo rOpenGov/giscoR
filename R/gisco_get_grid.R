@@ -57,7 +57,10 @@
 #'
 #' # Cut groups
 #'
-#' grid$popdens_cut <- cut(grid$popdens, breaks = breaks, include.lowest = TRUE)
+#' grid$popdens_cut <- cut(grid$popdens,
+#'   breaks = breaks,
+#'   include.lowest = TRUE
+#' )
 #' cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
 #' cut_labs[1] <- "0"
 #' cut_labs[9] <- "> 25 000"
@@ -155,9 +158,12 @@ gisco_get_grid <- function(resolution = "20",
   local <- file.path(gsc_helper_cachedir(cache_dir), filename)
   exist_local <- file.exists(local)
 
-  if (verbose & exist_local) {
-    message("File exits on local cache dir")
-  }
+
+  gsc_message(
+    verbose & exist_local,
+    "File exits on local cache dir"
+  )
+
   # nocov start
   if (resolution %in% c("1", "2") & isFALSE(exist_local)) {
     sel <-
@@ -174,26 +180,23 @@ gisco_get_grid <- function(resolution = "20",
   localfile <-
     gsc_api_cache(url, filename, cache_dir, update_cache, verbose)
 
-  if (verbose) {
-    size <- file.size(localfile)
-    class(size) <- "object_size"
-    message(format(size, units = "auto"))
-  }
-  load <- tryCatch(
+
+  size <- file.size(localfile)
+  class(size) <- "object_size"
+  gsc_message(verbose, format(size, units = "auto"))
+
+  data_sf <- try(
     sf::st_read(
       localfile,
       quiet = !verbose,
       stringsAsFactors = FALSE
     ),
-    warning = function(e) {
-      return(NULL)
-    },
-    error = function(e) {
-      return(NULL)
-    }
+    silent = TRUE
   )
+
+
   # nocov start
-  if (is.null(load)) {
+  if (inherits(data_sf, "try-error")) {
     stop(
       "\n Malformed ",
       localfile,
@@ -201,10 +204,10 @@ gisco_get_grid <- function(resolution = "20",
       url,
       "\n to your cache_dir folder"
     )
-  } else {
-    data_sf <- load
   }
   # nocov end
+
+  data_sf <- sf::st_make_valid(data_sf)
 
   return(data_sf)
 }

@@ -23,8 +23,8 @@
 #'
 #' @inheritSection gisco_get_countries About caching
 #'
-#' @param ext Extension of the file(s) to be downloaded. Available formats are
-#' "geojson", "shp", "svg", "json", "gdb". See Details.
+#' @param ext Extension of the file(s) to be downloaded. Formats available are
+#' "geojson", "shp", "svg", "json", "gdb". See **Details**.
 #'
 #' @param recursive Tries to unzip recursively the zip files (if any) included
 #' in the initial bulk download (case of `ext = "shp"`).
@@ -106,8 +106,8 @@ gisco_bulk_download <- function(id_giscoR = "countries",
     verbose = verbose
   )
 
-  api_entry <- unlist(strsplit(routes$api_url, "/geojson/"))[1]
-  remain <- unlist(strsplit(routes$api_url, "/geojson/"))[2]
+  api_entry <- unlist(strsplit(routes, "/geojson/"))[1]
+  remain <- unlist(strsplit(routes, "/geojson/"))[2]
 
   api_entry <- file.path(api_entry, "download")
   getalias <- alias[valid == id_giscoR]
@@ -136,8 +136,11 @@ gisco_bulk_download <- function(id_giscoR = "countries",
   url <- file.path(api_entry, zipname)
 
 
-  destfile <-
-    gsc_api_cache(url, zipname, cache_dir, update_cache, verbose)
+  destfile <- gsc_api_cache(
+    url,
+    zipname, cache_dir, update_cache,
+    verbose
+  )
 
   # Clean cache dir name for extracting
   unzip_dir <- gsub(paste0("/", zipname), "", destfile)
@@ -145,6 +148,9 @@ gisco_bulk_download <- function(id_giscoR = "countries",
   # Unzip
   gsc_unzip(
     destfile,
-    unzip_dir, ext, recursive, verbose, update_cache
+    unzip_dir, ext,
+    recursive,
+    verbose,
+    update_cache
   )
 }

@@ -90,3 +90,16 @@ gsc_helper_utf8 <- function(data_sf) {
 
   return(data_sf)
 }
+
+
+#' Helper for display messages on verbose
+#'
+#' @noRd
+gsc_message <- function(verbose, ...) {
+  dots <- list(...)
+  msg <- paste(dots, collapse = " ")
+
+  if (verbose) message(msg)
+
+  return(invisible())
+}

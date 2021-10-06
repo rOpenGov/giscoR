@@ -8,16 +8,19 @@ test_that("Urban Audit offline", {
 
 test_that("Urban Audit online", {
   skip_if_gisco_offline()
-  skip_on_cran()
+  #  skip_on_cran()
 
   expect_silent(gisco_get_urban_audit(level = "GREATER_CITIES"))
-  expect_warning(gisco_get_urban_audit(
+  fromurl <- expect_silent(gisco_get_urban_audit(
     level = "GREATER_CITIES",
     cache = FALSE
   ))
 
+  expect_s3_class(fromurl, "sf")
+
   expect_silent(gisco_get_urban_audit(level = "CITIES", spatialtype = "LB"))
 
+  # Test CITIES vs GREATER_CITIES for regex
   a <- gisco_get_urban_audit(
     year = 2020, spatialtype = "LB",
     level = "CITIES"
@@ -29,12 +32,7 @@ test_that("Urban Audit online", {
   expect_false(nrow(a) == nrow(b))
 
 
-  expect_silent(gisco_get_urban_audit(
-    spatialtype = "LB",
-    level = "GREATER_CITIES"
-  ))
-
-  expect_silent(
+  check <- expect_silent(
     gisco_get_urban_audit(
       level = "GREATER_CITIES",
       spatialtype = "LB",
@@ -43,7 +41,15 @@ test_that("Urban Audit online", {
     )
   )
 
-  expect_silent(
+  expect_identical(sf::st_crs(check), sf::st_crs(3857))
+
+  expect_length(
+    setdiff(unique(check$CNTR_CODE), c("IT", "PL")),
+    0
+  )
+
+
+  check <- expect_silent(
     gisco_get_urban_audit(
       year = 2014,
       spatialtype = "LB",
@@ -52,13 +58,27 @@ test_that("Urban Audit online", {
       country = c("ITA", "POL")
     )
   )
+  expect_identical(sf::st_crs(check), sf::st_crs(3857))
 
-  expect_silent(gisco_get_urban_audit(
+  expect_length(
+    setdiff(unique(check$CNTR_CODE), c("IT", "PL")),
+    0
+  )
+
+
+  check <- expect_silent(gisco_get_urban_audit(
     year = 2018,
     epsg = 3857,
     level = "GREATER_CITIES",
     country = c("ITA", "POL")
   ))
+
+  expect_identical(sf::st_crs(check), sf::st_crs(3857))
+
+  expect_length(
+    setdiff(unique(check$CNTR_CODE), c("IT", "PL")),
+    0
+  )
 
   expect_message(
     gisco_get_urban_audit(
@@ -70,7 +90,7 @@ test_that("Urban Audit online", {
     )
   )
 
-  expect_silent(
+  check <- expect_silent(
     gisco_get_urban_audit(
       year = 2020,
       spatialtype = "LB",
@@ -78,5 +98,12 @@ test_that("Urban Audit online", {
       epsg = 3857,
       country = c("ITA", "POL")
     )
+  )
+
+  expect_identical(sf::st_crs(check), sf::st_crs(3857))
+
+  expect_length(
+    setdiff(unique(check$CNTR_CODE), c("IT", "PL")),
+    0
   )
 })

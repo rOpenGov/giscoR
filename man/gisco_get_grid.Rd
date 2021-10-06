@@ -85,7 +85,10 @@ breaks <-
 
 # Cut groups
 
-grid$popdens_cut <- cut(grid$popdens, breaks = breaks, include.lowest = TRUE)
+grid$popdens_cut <- cut(grid$popdens,
+  breaks = breaks,
+  include.lowest = TRUE
+)
 cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
 cut_labs[1] <- "0"
 cut_labs[9] <- "> 25 000"

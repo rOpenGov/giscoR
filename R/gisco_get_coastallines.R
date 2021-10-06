@@ -44,7 +44,7 @@ gisco_get_coastallines <- function(year = "2016",
                                    resolution = "20") {
   ext <- "geojson"
 
-  geturl <- gsc_api_url(
+  api_entry <- gsc_api_url(
     id_giscoR = "coastallines",
     year = year,
     epsg = epsg,
@@ -56,17 +56,19 @@ gisco_get_coastallines <- function(year = "2016",
     verbose = verbose
   )
 
+  filename <- basename(api_entry)
+
   # Check if data is already available
-  checkdata <- grep("COAS_RG_20M_2016_4326", geturl$namefile)
+  checkdata <- grep("COAS_RG_20M_2016_4326", api_entry)
   if (isFALSE(update_cache) & length(checkdata)) {
     dwnload <- FALSE
     data_sf <- giscoR::gisco_coastallines
-    if (verbose) {
-      message(
-        "Loaded from gisco_coastallines dataset. Use update_cache = TRUE",
-        " to load the shapefile from the .geojson file"
-      )
-    }
+
+    gsc_message(
+      verbose,
+      "Loaded from gisco_coastallines dataset. Use update_cache = TRUE",
+      "to load the shapefile from the .geojson file"
+    )
   } else {
     dwnload <- TRUE
   }
@@ -75,14 +77,14 @@ gisco_get_coastallines <- function(year = "2016",
       # Guess source to load
       namefileload <-
         gsc_api_cache(
-          geturl$api_url,
-          geturl$namefile,
+          api_entry,
+          filename,
           cache_dir,
           update_cache,
           verbose
         )
     } else {
-      namefileload <- geturl$api_url
+      namefileload <- api_entry
     }
 
     # Load - geojson only so far
