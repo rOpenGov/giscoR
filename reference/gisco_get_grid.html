@@ -154,7 +154,10 @@ corresponding .geojson file by any other method and save it on your
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Cut groups</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="va">grid</span><span class="op">$</span><span class="va">popdens_cut</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">grid</span><span class="op">$</span><span class="va">popdens</span>, breaks <span class="op">=</span> <span class="va">breaks</span>, include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">grid</span><span class="op">$</span><span class="va">popdens_cut</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">grid</span><span class="op">$</span><span class="va">popdens</span>,</span>
+<span class="r-in">  breaks <span class="op">=</span> <span class="va">breaks</span>,</span>
+<span class="r-in">  include.lowest <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="va">cut_labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/formatc.html">prettyNum</a></span><span class="op">(</span><span class="va">breaks</span>, big.mark <span class="op">=</span> <span class="st">" "</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
 <span class="r-in"><span class="va">cut_labs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"0"</span></span>
 <span class="r-in"><span class="va">cut_labs</span><span class="op">[</span><span class="fl">9</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"&gt; 25 000"</span></span>

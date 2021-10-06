@@ -71,6 +71,7 @@
 
 <span class="fu">gisco_get_ports</span><span class="op">(</span>
   year <span class="op">=</span> <span class="st">"2013"</span>,
+  country <span class="op">=</span> <span class="cn">NULL</span>,
   cache_dir <span class="op">=</span> <span class="cn">NULL</span>,
   update_cache <span class="op">=</span> <span class="cn">FALSE</span>,
   verbose <span class="op">=</span> <span class="cn">FALSE</span>
@@ -107,7 +108,12 @@ default is <code>FALSE</code>.</p></dd>
     <div class="ref-section section level2" id="section-details">
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details" aria-hidden="true"></a>Details</h2>
 
-    <p>Datasets refer to Europe. All shapefiles provided in EPSG:4326</p>
+    <p><code>gisco_get_airports()</code> refer to Europe. All shapefiles provided in
+<a href="https://epsg.io/4326">EPSG:4326</a>.</p>
+<p><code>gisco_get_ports()</code> adds a new field <code>CNTR_ISO2</code> to the original data
+identifying the country of the port. Worldwide information available.
+The port codes are aligned with
+<a href="https://unece.org/trade/uncefact/unlocode">UN/LOCODE</a> standard.</p>
     </div>
     <div class="ref-section section level2" id="section-about-caching">
     <h2 class="hasAnchor" id="about-caching"><a class="anchor" href="#about-caching" aria-hidden="true"></a>About caching</h2>
@@ -125,11 +131,6 @@ corresponding .geojson file by any other method and save it on your
 
     <div class="dont-index"><p>Other infrastructure: 
 <code><a href="gisco_get_healthcare.html">gisco_get_healthcare</a>()</code></p></div>
-    </div>
-    <div class="ref-section section level2" id="section-author">
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author" aria-hidden="true"></a>Author</h2>
-
-    <p>dieghernan, <a href="https://github.com/dieghernan/">https://github.com/dieghernan/</a></p>
     </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples" aria-hidden="true"></a>Examples</h2>
@@ -154,6 +155,47 @@ corresponding .geojson file by any other method and save it on your
 <span class="r-in">    caption <span class="op">=</span> <span class="fu"><a href="gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in">  <span class="op">)</span></span>
 <span class="r-plt"><img src="gisco_get_airports-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co">##############################</span></span>
+<span class="r-in"><span class="co">#         Plot ports         #</span></span>
+<span class="r-in"><span class="co">##############################</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="va">ports</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_ports</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">coast</span> <span class="op">&lt;-</span> <span class="fu"><a href="gisco_get_coastallines.html">gisco_get_coastallines</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fl">2013</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># To Equal Earth projection :)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span class="r-in"><span class="va">coast</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="va">coast</span>, <span class="fl">8857</span><span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-in"><span class="va">ports</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_transform.html">st_transform</a></span><span class="op">(</span><span class="va">ports</span>, <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html">st_crs</a></span><span class="op">(</span><span class="va">coast</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-in"></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">coast</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#F6E1B9"</span>, color <span class="op">=</span> <span class="st">"#0978AB"</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">ports</span>, fill <span class="op">=</span> <span class="st">"red"</span>, shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span class="r-in">    panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#C6ECFF"</span><span class="op">)</span>,</span>
+<span class="r-in">    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span class="r-in">    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"bold"</span>, hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span class="r-in">    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>face <span class="op">=</span> <span class="st">"italic"</span>, hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span>
+<span class="r-in">  <span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span class="r-in">    title <span class="op">=</span> <span class="st">"Ports Worldwide"</span>, subtitle <span class="op">=</span> <span class="st">"Year 2013"</span>,</span>
+<span class="r-in">    caption <span class="op">=</span> <span class="st">"(c) European Union, 1995 - today"</span></span>
+<span class="r-in">  <span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Error 1: PROJ: proj_as_wkt: Unsupported conversion method: Equal Earth</span>
+<span class="r-plt"><img src="gisco_get_airports-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="co"># }</span></span>
 </code></pre></div>
   </div>
