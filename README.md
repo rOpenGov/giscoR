@@ -14,7 +14,7 @@ results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.or
 [![r-universe](https://ropengov.r-universe.dev/badges/giscoR)](https://ropengov.r-universe.dev/)
 [![R build
 status](https://github.com/rOpenGov/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenGov/giscoR/actions)
-[![codecov](https://codecov.io/gh/ropengov/giscoR/branch/master/graph/badge.svg)](https://codecov.io/gh/ropengov/giscoR)
+[![codecov](https://codecov.io/gh/ropengov/giscoR/branch/main/graph/badge.svg)](https://codecov.io/gh/ropengov/giscoR)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -106,7 +106,7 @@ ggplot(DNK_all) +
   theme_minimal()
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-example-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-1.png" width="100%" />
 
 ``` r
 
@@ -135,7 +135,7 @@ ggplot(coast) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-example-2.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-2.png" width="100%" />
 
 ### Labels
 
@@ -150,7 +150,7 @@ ggplot(ITA) +
   theme(axis.title = element_blank())
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-labels-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-labels-1.png" width="100%" />
 
 ### Thematic maps
 
@@ -274,7 +274,7 @@ ggplot(nuts3.sf) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/master/img/README-thematic-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-thematic-1.png" width="100%" />
 
 ## A note on caching
 
