@@ -70,7 +70,19 @@ shapefile for each unit.</p>
     </div>
 
     <div id="ref-usage" class="ref-usage section level2 sourceCode">
-    <pre class="sourceCode r"><code></code></pre>
+    <pre class="sourceCode r"><code><span class="fu">gisco_get_units</span><span class="op">(</span>
+  id_giscoR <span class="op">=</span> <span class="st">"nuts"</span>,
+  unit <span class="op">=</span> <span class="st">"ES4"</span>,
+  mode <span class="op">=</span> <span class="st">"sf"</span>,
+  year <span class="op">=</span> <span class="st">"2016"</span>,
+  epsg <span class="op">=</span> <span class="st">"4326"</span>,
+  cache <span class="op">=</span> <span class="cn">TRUE</span>,
+  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,
+  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,
+  verbose <span class="op">=</span> <span class="cn">FALSE</span>,
+  resolution <span class="op">=</span> <span class="st">"20"</span>,
+  spatialtype <span class="op">=</span> <span class="st">"RG"</span>
+<span class="op">)</span></code></pre>
     </div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments" aria-hidden="true"></a>Arguments</h2>
@@ -173,7 +185,47 @@ corresponding .geojson file by any other method and save it on your
     </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples" aria-hidden="true"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code></code></pre></div>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
+<span class="r-in"><span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_units</span><span class="op">(</span></span>
+<span class="r-in">  id_giscoR <span class="op">=</span> <span class="st">"urban_audit"</span>,</span>
+<span class="r-in">  mode <span class="op">=</span> <span class="st">"df"</span>,</span>
+<span class="r-in">  year <span class="op">=</span> <span class="st">"2020"</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span class="va">VAL</span> <span class="op">&lt;-</span> <span class="va">cities</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"Valencia"</span>, <span class="va">cities</span><span class="op">$</span><span class="va">URAU_NAME</span><span class="op">)</span>, <span class="op">]</span></span>
+<span class="r-in"><span class="co">#   Order from big to small</span></span>
+<span class="r-in"><span class="va">VAL</span> <span class="op">&lt;-</span> <span class="va">VAL</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/double.html">as.double</a></span><span class="op">(</span><span class="va">VAL</span><span class="op">$</span><span class="va">AREA_SQM</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="op">]</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="va">VAL.sf</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_units</span><span class="op">(</span></span>
+<span class="r-in">  id_giscoR <span class="op">=</span> <span class="st">"urban_audit"</span>,</span>
+<span class="r-in">  year <span class="op">=</span> <span class="st">"2020"</span>,</span>
+<span class="r-in">  unit <span class="op">=</span> <span class="va">VAL</span><span class="op">$</span><span class="va">URAU_CODE</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span class="co"># Provincia</span></span>
+<span class="r-in"><span class="va">Provincia</span> <span class="op">&lt;-</span></span>
+<span class="r-in">  <span class="fu">gisco_get_units</span><span class="op">(</span></span>
+<span class="r-in">    id_giscoR <span class="op">=</span> <span class="st">"nuts"</span>,</span>
+<span class="r-in">    unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ES523"</span><span class="op">)</span>,</span>
+<span class="r-in">    resolution <span class="op">=</span> <span class="st">"01"</span></span>
+<span class="r-in">  <span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Reorder</span></span>
+<span class="r-in"><span class="va">VAL.sf</span><span class="op">$</span><span class="va">URAU_CATG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">VAL.sf</span><span class="op">$</span><span class="va">URAU_CATG</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"K"</span>, <span class="st">"C"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Plot</span></span>
+<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Provincia</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gray1"</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">VAL.sf</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">URAU_CATG</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
+<span class="r-in">    title <span class="op">=</span> <span class="st">"Valencia"</span>,</span>
+<span class="r-in">    subtitle <span class="op">=</span> <span class="st">"Urban Audit"</span>,</span>
+<span class="r-in">    fill <span class="op">=</span> <span class="st">"Urban Audit\ncategory"</span></span>
+<span class="r-in">  <span class="op">)</span></span>
+<span class="r-plt"><img src="gisco_get_units-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span class="co"># }</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="sticky-top">
