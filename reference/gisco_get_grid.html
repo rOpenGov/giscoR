@@ -67,13 +67,7 @@ as population figures are provided for these cells.</p>
     </div>
 
     <div id="ref-usage" class="ref-usage section level2 sourceCode">
-    <pre class="sourceCode r"><code><span class="fu">gisco_get_grid</span><span class="op">(</span>
-  resolution <span class="op">=</span> <span class="st">"20"</span>,
-  spatialtype <span class="op">=</span> <span class="st">"REGION"</span>,
-  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,
-  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,
-  verbose <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre>
+    <pre class="sourceCode r"><code></code></pre>
     </div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments" aria-hidden="true"></a>Arguments</h2>
@@ -133,100 +127,7 @@ corresponding .geojson file by any other method and save it on your
     </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples" aria-hidden="true"></a>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
-<span class="r-in"><span class="va">grid</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_grid</span><span class="op">(</span>resolution <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">grid</span><span class="op">$</span><span class="va">popdens</span> <span class="op">&lt;-</span> <span class="va">grid</span><span class="op">$</span><span class="va">TOT_P_2011</span> <span class="op">/</span> <span class="fl">20</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">breaks</span> <span class="op">&lt;-</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="fl">0</span>,</span>
-<span class="r-in">    <span class="fl">0.1</span>, <span class="co"># For capturing 0</span></span>
-<span class="r-in">    <span class="fl">100</span>,</span>
-<span class="r-in">    <span class="fl">500</span>,</span>
-<span class="r-in">    <span class="fl">1000</span>,</span>
-<span class="r-in">    <span class="fl">2500</span>,</span>
-<span class="r-in">    <span class="fl">5000</span>,</span>
-<span class="r-in">    <span class="fl">10000</span>,</span>
-<span class="r-in">    <span class="fl">25000</span>,</span>
-<span class="r-in">    <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">grid</span><span class="op">$</span><span class="va">popdens</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Cut groups</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">grid</span><span class="op">$</span><span class="va">popdens_cut</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">grid</span><span class="op">$</span><span class="va">popdens</span>,</span>
-<span class="r-in">  breaks <span class="op">=</span> <span class="va">breaks</span>,</span>
-<span class="r-in">  include.lowest <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">cut_labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/formatc.html">prettyNum</a></span><span class="op">(</span><span class="va">breaks</span>, big.mark <span class="op">=</span> <span class="st">" "</span><span class="op">)</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span></span>
-<span class="r-in"><span class="va">cut_labs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"0"</span></span>
-<span class="r-in"><span class="va">cut_labs</span><span class="op">[</span><span class="fl">9</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"&gt; 25 000"</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">breaks</span><span class="op">)</span> <span class="op">-</span> <span class="fl">2</span>,</span>
-<span class="r-in">  palette <span class="op">=</span> <span class="st">"Spectral"</span>,</span>
-<span class="r-in">  alpha <span class="op">=</span> <span class="fl">0.9</span></span>
-<span class="r-in"><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">grid</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">popdens_cut</span><span class="op">)</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">coord_sf</a></span><span class="op">(</span></span>
-<span class="r-in">    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2500000</span>, <span class="fl">7000000</span><span class="op">)</span>,</span>
-<span class="r-in">    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1500000</span>, <span class="fl">5200000</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span></span>
-<span class="r-in">    values <span class="op">=</span> <span class="va">pal</span>, na.value <span class="op">=</span> <span class="st">"black"</span>,</span>
-<span class="r-in">    name <span class="op">=</span> <span class="st">"people per sq. kilometer"</span>,</span>
-<span class="r-in">    labels <span class="op">=</span> <span class="va">cut_labs</span>,</span>
-<span class="r-in">    guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html">guide_legend</a></span><span class="op">(</span></span>
-<span class="r-in">      direction <span class="op">=</span> <span class="st">"horizontal"</span>,</span>
-<span class="r-in">      keyheight <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span class="r-in">      keywidth <span class="op">=</span> <span class="fl">2</span>,</span>
-<span class="r-in">      title.position <span class="op">=</span> <span class="st">"top"</span>,</span>
-<span class="r-in">      title.hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span class="r-in">      label.hjust <span class="op">=</span> <span class="fl">.5</span>,</span>
-<span class="r-in">      nrow <span class="op">=</span> <span class="fl">1</span>,</span>
-<span class="r-in">      byrow <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span class="r-in">      reverse <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span class="r-in">      label.position <span class="op">=</span> <span class="st">"bottom"</span></span>
-<span class="r-in">    <span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span></span>
-<span class="r-in">    title <span class="op">=</span> <span class="st">"Population density in Europe"</span>,</span>
-<span class="r-in">    subtitle <span class="op">=</span> <span class="st">"Grid: 20 km."</span>,</span>
-<span class="r-in">    caption <span class="op">=</span> <span class="fu"><a href="gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in">  <span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
-<span class="r-in">    plot.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey2"</span><span class="op">)</span>,</span>
-<span class="r-in">    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span class="r-in">      size <span class="op">=</span> <span class="fl">18</span>, color <span class="op">=</span> <span class="st">"white"</span>,</span>
-<span class="r-in">      hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span class="r-in">      size <span class="op">=</span> <span class="fl">14</span>,</span>
-<span class="r-in">      color <span class="op">=</span> <span class="st">"white"</span>,</span>
-<span class="r-in">      hjust <span class="op">=</span> <span class="fl">0.5</span>,</span>
-<span class="r-in">      face <span class="op">=</span> <span class="st">"bold"</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    plot.caption <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span class="r-in">      size <span class="op">=</span> <span class="fl">9</span>, color <span class="op">=</span> <span class="st">"grey60"</span>,</span>
-<span class="r-in">      hjust <span class="op">=</span> <span class="fl">0.5</span>, vjust <span class="op">=</span> <span class="fl">0</span>,</span>
-<span class="r-in">      margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">margin</a></span><span class="op">(</span>t <span class="op">=</span> <span class="fl">5</span>, b <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    legend.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span class="r-in">      size <span class="op">=</span> <span class="fl">8</span>,</span>
-<span class="r-in">      color <span class="op">=</span> <span class="st">"white"</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    legend.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span></span>
-<span class="r-in">      color <span class="op">=</span> <span class="st">"white"</span></span>
-<span class="r-in">    <span class="op">)</span>,</span>
-<span class="r-in">    legend.position <span class="op">=</span> <span class="st">"bottom"</span></span>
-<span class="r-in">  <span class="op">)</span></span>
-<span class="r-plt"><img src="gisco_get_grid-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span class="co"># }</span></span>
-</code></pre></div>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code></code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="sticky-top">
