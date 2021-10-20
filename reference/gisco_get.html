@@ -4,7 +4,7 @@ provided by GISCO. Also, specific areas as Gibraltar or Antarctica are
 presented separately. The definition of country used on GISCO
 correspond roughly with territories with an official
 ISO-3166
-code."><title>Get GISCO world country sf polygons, points and lines — gisco_get_countries • giscoR</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="../deps/bs3compat-0.3.1/transition.js"></script><script src="../deps/bs3compat-0.3.1/tabs.js"></script><script src="../deps/bs3compat-0.3.1/bs3compat.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet"><link href="../syntax-highlighting.css" rel="stylesheet"><script src="../pkgdown.js"></script><meta property="og:title" content="Get GISCO world country sf polygons, points and lines — gisco_get_countries"><meta property="og:description" content="Returns world country polygons, lines and points at a specified scale, as
+code."><title>Get GISCO world country sf polygons, points and lines — gisco_get_countries • giscoR</title><!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png"><link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png"><link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png"><link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png"><link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png"><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.0.2/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.0.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get GISCO world country sf polygons, points and lines — gisco_get_countries"><meta property="og:description" content="Returns world country polygons, lines and points at a specified scale, as
 provided by GISCO. Also, specific areas as Gibraltar or Antarctica are
 presented separately. The definition of country used on GISCO
 correspond roughly with territories with an official
@@ -18,27 +18,28 @@ code."><meta property="og:image" content="https://ropengov.github.io/giscoR/logo
   gtag('js', new Date());
 
   gtag('config', 'G-VGVFXGHWRL');
-</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=B612+Mono&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../rogtemplate.css" rel="stylesheet"></head><body data-spy="scroll" data-target="#toc" data-headroom>
+</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=B612+Mono&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rogtemplate.css" rel="stylesheet"></head><body>
+    <a href="#container" class="visually-hidden-focusable">Skip to content</a>
     
 
-      <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark"><div class="container">
-    <a class="navbar-brand mb-0 h1" href="../index.html">giscoR</a>
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark"><div class="container">
+    <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <button type="button" id="version-badge" class="badge badge-default d-none d-lg-block" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="">0.3.1</button>
-
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto ml-3"><li class="nav-item">
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../articles/giscoR.html">Get started</a>
 </li>
 <li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/articles/nuts_codes.html">NUTS codes</a>
   </div>
@@ -47,22 +48,22 @@ code."><meta property="og:image" content="https://ropengov.github.io/giscoR/logo
   <a class="nav-link" href="../news/index.html">Changelog</a>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
-        <input type="search" class="form-control mr-sm-2" aria-label="Search" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search..." autocomplete="off"></form>
+        <input type="search" class="form-control me-sm-2" aria-label="Search" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search..." autocomplete="off"></form>
 
-      <ul class="navbar-nav ml-1"><li class="nav-item">
-  <a class="nav-link" href="https://github.com/rOpenGov/giscoR/" aria-label="github">
+      <ul class="navbar-nav"><li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/rOpenGov/giscoR/" aria-label="github">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
       </ul></div>
   </div>
-</nav><div class="container template-reference-topic">
+</nav><div class="container template-reference-topic" id="container">
 <div class="row">
   <div class="col-md-9 contents">
     <img src="../logo.png" class="pkg-logo" alt=""><div class="page-header pb-2 mt-4 mb-2 border-bottom toc-ignore">
-    <h1 class="display-4">Get GISCO world country <code>sf</code> polygons, points and lines</h1>
-    <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_get_countries.R"><code>R/gisco_get_countries.R</code></a></small>
+    <h1>Get GISCO world country <code>sf</code> polygons, points and lines</h1>
+    <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_get_countries.R" class="external-link"><code>R/gisco_get_countries.R</code></a></small>
     <div class="d-none name"><code>gisco_get.Rd</code></div>
     </div>
 
@@ -71,11 +72,11 @@ code."><meta property="og:image" content="https://ropengov.github.io/giscoR/logo
 provided by GISCO. Also, specific areas as Gibraltar or Antarctica are
 presented separately. The definition of country used on GISCO
 correspond roughly with territories with an official
-<a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">ISO-3166</a>
+<a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" class="external-link">ISO-3166</a>
 code.</p>
     </div>
 
-    <div id="ref-usage" class="ref-usage section level2 sourceCode">
+    <div class="ref-usage section level2 sourceCode">
     <pre class="sourceCode r"><code><span class="fu">gisco_get_countries</span><span class="op">(</span>
   year <span class="op">=</span> <span class="st">"2016"</span>,
   epsg <span class="op">=</span> <span class="st">"4326"</span>,
@@ -90,71 +91,71 @@ code.</p>
 <span class="op">)</span></code></pre>
     </div>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments" aria-hidden="true"></a>Arguments</h2>
-    <dl class="row" id="ref-arguments"><dt class="col-sm-3 section level2" id="pkg-arg-year">year</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>Release year of the file. One of "2001", "2006",
+    <div class="ref-arguments section level2">
+    <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
+    <dl><dt id="ref-argument-year">year</dt>
+      <dd><p>Release year of the file. One of "2001", "2006",
 "2010", "2013", "2016" or "2020".</p></dd>
-    <dt class="col-sm-3 section level2" id="pkg-arg-epsg">epsg</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>projection of the map: 4-digit <a href="https://epsg.io/">EPSG code</a>.
+      <dt id="ref-argument-epsg">epsg</dt>
+      <dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
 One of:</p><ul><li><p>"4258": ETRS89</p></li>
 <li><p>"4326": WGS84</p></li>
 <li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
 <li><p>"3857": Pseudo-Mercator</p></li>
 </ul></dd>
-    <dt class="col-sm-3 section level2" id="pkg-arg-cache">cache</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>A logical whether to do caching. Default is <code>TRUE</code>. See
+      <dt id="ref-argument-cache">cache</dt>
+      <dd><p>A logical whether to do caching. Default is <code>TRUE</code>. See
 <strong>About caching</strong>.</p></dd>
-    <dt class="col-sm-3 section level2" id="pkg-arg-update_cache">update_cache</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>A logical whether to update cache. Default is <code>FALSE</code>.
+      <dt id="ref-argument-update_cache">update_cache</dt>
+      <dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
 When set to <code>TRUE</code> it would force a fresh download of the source
 .geojson file.</p></dd>
-    <dt class="col-sm-3 section level2" id="pkg-arg-cache_dir">cache_dir</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
-    <dt class="col-sm-3 section level2" id="pkg-arg-verbose">verbose</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>Logical, displays information. Useful for debugging,
+      <dt id="ref-argument-cache_dir">cache_dir</dt>
+      <dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
+      <dt id="ref-argument-verbose">verbose</dt>
+      <dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
-    <dt class="col-sm-3 section level2" id="pkg-arg-resolution">resolution</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>Resolution of the geospatial data. One of</p><ul><li><p>"60": 1:60million</p></li>
+      <dt id="ref-argument-resolution">resolution</dt>
+      <dd><p>Resolution of the geospatial data. One of</p><ul><li><p>"60": 1:60million</p></li>
 <li><p>"20": 1:20million</p></li>
 <li><p>"10": 1:10million</p></li>
 <li><p>"03": 1:3million</p></li>
 <li><p>"01": 1:1million</p></li>
 </ul></dd>
-    <dt class="col-sm-3 section level2" id="pkg-arg-spatialtype">spatialtype</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>Type of geometry to be returned:</p><ul><li><p><strong>"BN"</strong>: Boundaries - <code>LINESTRING</code> object.</p></li>
+      <dt id="ref-argument-spatialtype">spatialtype</dt>
+      <dd><p>Type of geometry to be returned:</p><ul><li><p><strong>"BN"</strong>: Boundaries - <code>LINESTRING</code> object.</p></li>
 <li><p><strong>"COASTL"</strong>: coastlines - <code>LINESTRING</code> object.</p></li>
 <li><p><strong>"INLAND"</strong>: inland boundaries - <code>LINESTRING</code> object.</p></li>
 <li><p><strong>"LB"</strong>: Labels - <code>POINT</code> object.</p></li>
 <li><p><strong>"RG"</strong>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
 </ul></dd>
-    <dt class="col-sm-3 section level2" id="pkg-arg-country">country</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>Optional. A character vector of country codes. It could be
+      <dt id="ref-argument-country">country</dt>
+      <dd><p>Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
 vector of Eurostat country codes. Mixed types (as <code>c("Turkey","US","FRA")</code>)
-would not work. See also <code><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html">countrycode::countrycode()</a></code>.</p></dd>
-    <dt class="col-sm-3 section level2" id="pkg-arg-region">region</dt>
-      <dd class="col-sm-9" id="ref-arguments desc"><p>Optional. A character vector of UN M49 region codes or
+would not work. See also <code><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html" class="external-link">countrycode::countrycode()</a></code>.</p></dd>
+      <dt id="ref-argument-region">region</dt>
+      <dd><p>Optional. A character vector of UN M49 region codes or
 European Union membership. Possible values are "Africa", "Americas",
 "Asia", "Europe", "Oceania" or "EU" for countries belonging to the European
 Union (as per 2021). See <strong>About world regions</strong> and <a href="gisco_countrycode.html">gisco_countrycode</a></p></dd>
-    </dl><div class="ref-section section level2" id="section-source">
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source" aria-hidden="true"></a>Source</h2>
+    </dl></div>
 
-    <p><a href="https://gisco-services.ec.europa.eu/distribution/v2/">https://gisco-services.ec.europa.eu/distribution/v2/</a></p>
+    <div id="ref-sections">
+    <div class="section level2">
+    <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
+    <p><a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">https://gisco-services.ec.europa.eu/distribution/v2/</a></p>
     </div>
-    <div class="ref-section section level2" id="section-value">
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value" aria-hidden="true"></a>Value</h2>
-
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A <code>sf</code> object specified by <code>spatialtype</code>.</p>
     </div>
-    <div class="ref-section section level2" id="section-note">
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note" aria-hidden="true"></a>Note</h2>
-
+    <div class="section level2">
+    <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
     <p>Please check the download and usage provisions on <code><a href="gisco_attributions.html">gisco_attributions()</a></code>.</p>
     </div>
-    <div class="ref-section section level2" id="section-about-caching">
-    <h2 class="hasAnchor" id="about-caching"><a class="anchor" href="#about-caching" aria-hidden="true"></a>About caching</h2>
-
+    <div class="section level2">
+    <h2 id="about-caching">About caching<a class="anchor" aria-label="anchor" href="#about-caching"></a></h2>
     <p>You can set your <code>cache_dir</code> with <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p>
 <p>Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting <code>update_cache = TRUE</code>.</p>
@@ -163,19 +164,17 @@ corresponding .geojson file by any other method and save it on your
 <code>cache_dir</code>. Use the option <code>verbose = TRUE</code> for debugging the API query.</p>
 <p>For a complete list of files available check <a href="gisco_db.html">gisco_db</a>.</p>
     </div>
-    <div class="ref-section section level2" id="section-world-regions">
-    <h2 class="hasAnchor" id="world-regions"><a class="anchor" href="#world-regions" aria-hidden="true"></a>World Regions</h2>
-
+    <div class="section level2">
+    <h2 id="world-regions">World Regions<a class="anchor" aria-label="anchor" href="#world-regions"></a></h2>
     <p>Regions are defined as per the geographic regions defined by the
-UN (see <a href="https://unstats.un.org/unsd/methodology/m49/">https://unstats.un.org/unsd/methodology/m49/</a>.
+UN (see <a href="https://unstats.un.org/unsd/methodology/m49/" class="external-link">https://unstats.un.org/unsd/methodology/m49/</a>.
 Under this scheme Cyprus is assigned to Asia. You may use
 <code>region = "EU"</code> to get the EU members (reference date: 2021).</p>
     </div>
-    <div class="ref-section section level2" id="section-see-also">
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also" aria-hidden="true"></a>See also</h2>
-
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="gisco_countrycode.html">gisco_countrycode()</a></code>, <a href="gisco_countries.html">gisco_countries</a>,
-<code><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html">countrycode::countrycode()</a></code></p>
+<code><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html" class="external-link">countrycode::countrycode()</a></code></p>
 <p>Other political: 
 <code><a href="gisco_bulk_download.html">gisco_bulk_download</a>()</code>,
 <code><a href="gisco_get_coastallines.html">gisco_get_coastallines</a>()</code>,
@@ -185,45 +184,45 @@ Under this scheme Cyprus is assigned to Asia. You may use
 <code><a href="gisco_get_units.html">gisco_get_units</a>()</code>,
 <code><a href="gisco_get_urban_audit.html">gisco_get_urban_audit</a>()</code></p></div>
     </div>
+    </div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples" aria-hidden="true"></a>Examples</h2>
+    <div id="examples">
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">cntries</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_countries</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">cntries</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">cntries</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-plt"><img src="gisco_get-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Get a region</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">africa</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_countries</span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Africa"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">africa</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#078930"</span>, col <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">africa</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#078930"</span>, col <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-plt"><img src="gisco_get-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="co"># \donttest{</span></span>
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="gisco_check_access.html">gisco_check_access</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="co"># Extract points</span></span>
 <span class="r-in">  <span class="va">asia_pol</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_countries</span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Asia"</span>, resolution <span class="op">=</span> <span class="st">"3"</span><span class="op">)</span></span>
 <span class="r-in">  <span class="va">asia_lb</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_countries</span><span class="op">(</span>spatialtype <span class="op">=</span> <span class="st">"LB"</span>, region <span class="op">=</span> <span class="st">"Asia"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">asia_pol</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gold3"</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">asia_lb</span>, color <span class="op">=</span> <span class="st">"#007FFF"</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">asia_pol</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gold3"</span><span class="op">)</span> <span class="op">+</span></span>
+<span class="r-in">    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">asia_lb</span>, color <span class="op">=</span> <span class="st">"#007FFF"</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-plt"><img src="gisco_get-3.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span class="co"># }</span></span>
 </code></pre></div>
+    </div>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="sticky-top">
+  <div class="col-md-3" id="pkgdown-sidebar">
     <nav id="toc"><h2 data-toc-skip>Contents</h2>
-
     </nav></div>
-  </div>
 </div>
 
 
-      <footer><div class="pkgdown-footer-left">
+    <footer><div class="pkgdown-footer-left">
   <p></p><p>Developed by <a href="https://dieghernan.github.io/" class="external-link">Diego Hernangómez</a>.</p>
 </div>
 
@@ -231,10 +230,10 @@ Under this scheme Cyprus is assigned to Asia. You may use
   <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
 </div>
 
-      </footer></div>
+    </footer></div>
 
   
 
     <!-- Add ropengov logo -->
-  <script src="../logo.js"></script></body></html>
+  <script src="../BS5/logo.js"></script></body></html>
 
