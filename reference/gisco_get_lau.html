@@ -53,10 +53,10 @@ Urban Areas, that correspond roughly with towns and cities."><meta property="og:
 </nav><div class="container template-reference-topic" id="container">
 <div class="row">
   <div class="col-md-9 contents">
-    <img src="../logo.png" class="pkg-logo" alt=""><div class="page-header pb-2 mt-4 mb-2 border-bottom toc-ignore">
-    <h1>Get GISCO urban areas <code>sf</code> polygons, points and lines</h1>
-    <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_get_lau.R" class="external-link"><code>R/gisco_get_lau.R</code></a></small>
-    <div class="d-none name"><code>gisco_get_lau.Rd</code></div>
+    <div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>Get GISCO urban areas <code>sf</code> polygons, points and lines</h1>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_get_lau.R" class="external-link"><code>R/gisco_get_lau.R</code></a></small>
+      <div class="d-none name"><code>gisco_get_lau.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
@@ -88,46 +88,40 @@ Urban Areas, that correspond roughly with towns and cities.</p>
 <span class="op">)</span></code></pre>
     </div>
 
-    <div class="ref-arguments section level2">
+    <div id="ref-sections">
+    <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="ref-argument-year">year</dt>
-      <dd><p>Release year of the file. See Details.</p></dd>
-      <dt id="ref-argument-epsg">epsg</dt>
-      <dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
-One of:</p><ul><li><p>"4258": ETRS89</p></li>
+    
+
+<dl><dt>year</dt><dd><p>Release year of the file. See Details.</p></dd>
+</dl><dl><dt>epsg</dt><dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
+One of:
+</p><ul><li><p>"4258": ETRS89</p></li>
 <li><p>"4326": WGS84</p></li>
 <li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
 <li><p>"3857": Pseudo-Mercator</p></li>
 </ul></dd>
-      <dt id="ref-argument-cache">cache</dt>
-      <dd><p>A logical whether to do caching. Default is <code>TRUE</code>. See
+</dl><dl><dt>cache</dt><dd><p>A logical whether to do caching. Default is <code>TRUE</code>. See
 <strong>About caching</strong>.</p></dd>
-      <dt id="ref-argument-update_cache">update_cache</dt>
-      <dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
+</dl><dl><dt>update_cache</dt><dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
 When set to <code>TRUE</code> it would force a fresh download of the source
 .geojson file.</p></dd>
-      <dt id="ref-argument-cache_dir">cache_dir</dt>
-      <dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
-      <dt id="ref-argument-verbose">verbose</dt>
-      <dd><p>Logical, displays information. Useful for debugging,
+</dl><dl><dt>cache_dir</dt><dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
+</dl><dl><dt>verbose</dt><dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
-      <dt id="ref-argument-spatialtype">spatialtype</dt>
-      <dd><p>Type of geometry to be returned:</p><ul><li><p><strong>"BN"</strong>: Boundaries - <code>LINESTRING</code> object.</p></li>
+</dl><dl><dt>spatialtype</dt><dd><p>Type of geometry to be returned:
+</p><ul><li><p><strong>"BN"</strong>: Boundaries - <code>LINESTRING</code> object.</p></li>
 <li><p><strong>"COASTL"</strong>: coastlines - <code>LINESTRING</code> object.</p></li>
 <li><p><strong>"INLAND"</strong>: inland boundaries - <code>LINESTRING</code> object.</p></li>
 <li><p><strong>"LB"</strong>: Labels - <code>POINT</code> object.</p></li>
 <li><p><strong>"RG"</strong>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
 </ul></dd>
-      <dt id="ref-argument-country">country</dt>
-      <dd><p>Optional. A character vector of country codes. It could be
+</dl><dl><dt>country</dt><dd><p>Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
 vector of Eurostat country codes. Mixed types (as <code>c("Turkey","US","FRA")</code>)
 would not work. See also <code><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html" class="external-link">countrycode::countrycode()</a></code>.</p></dd>
-      <dt id="ref-argument-gisco_id">gisco_id</dt>
-      <dd><p>Optional. A character vector of GISCO_ID LAU values.</p></dd>
-    </dl></div>
-
-    <div id="ref-sections">
+</dl><dl><dt>gisco_id</dt><dd><p>Optional. A character vector of GISCO_ID LAU values.</p></dd>
+</dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A <code>sf</code> object specified by <code>spatialtype</code>. In the case of

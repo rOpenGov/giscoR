@@ -51,10 +51,10 @@
 </nav><div class="container template-reference-topic" id="container">
 <div class="row">
   <div class="col-md-9 contents">
-    <img src="../logo.png" class="pkg-logo" alt=""><div class="page-header pb-2 mt-4 mb-2 border-bottom toc-ignore">
-    <h1>Get postal code points from GISCO</h1>
-    <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_get_postalcodes.R" class="external-link"><code>R/gisco_get_postalcodes.R</code></a></small>
-    <div class="d-none name"><code>gisco_get_postalcodes.Rd</code></div>
+    <div class="page-header">
+      <img src="../logo.png" class="logo" alt=""><h1>Get postal code points from GISCO</h1>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_get_postalcodes.R" class="external-link"><code>R/gisco_get_postalcodes.R</code></a></small>
+      <div class="d-none name"><code>gisco_get_postalcodes.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
@@ -71,31 +71,27 @@
 <span class="op">)</span></code></pre>
     </div>
 
-    <div class="ref-arguments section level2">
-    <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="ref-argument-year">year</dt>
-      <dd><p>Year of reference. Currently only "2020" is available.</p></dd>
-      <dt id="ref-argument-country">country</dt>
-      <dd><p>Optional. A character vector of country codes. It could be
-either a vector of country names, a vector of ISO3 country codes or a
-vector of Eurostat country codes. Mixed types (as <code>c("Turkey","US","FRA")</code>)
-would not work. See also <code><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html" class="external-link">countrycode::countrycode()</a></code>.</p></dd>
-      <dt id="ref-argument-cache_dir">cache_dir</dt>
-      <dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
-      <dt id="ref-argument-update_cache">update_cache</dt>
-      <dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
-When set to <code>TRUE</code> it would force a fresh download of the source
-.geojson file.</p></dd>
-      <dt id="ref-argument-verbose">verbose</dt>
-      <dd><p>Logical, displays information. Useful for debugging,
-default is <code>FALSE</code>.</p></dd>
-    </dl></div>
-
     <div id="ref-sections">
     <div class="section level2">
     <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
     <p><a href="https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/postal-codes" class="external-link">https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/postal-codes</a></p>
     </div>
+    <div class="section level2">
+    <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
+    
+
+<dl><dt>year</dt><dd><p>Year of reference. Currently only "2020" is available.</p></dd>
+</dl><dl><dt>country</dt><dd><p>Optional. A character vector of country codes. It could be
+either a vector of country names, a vector of ISO3 country codes or a
+vector of Eurostat country codes. Mixed types (as <code>c("Turkey","US","FRA")</code>)
+would not work. See also <code><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html" class="external-link">countrycode::countrycode()</a></code>.</p></dd>
+</dl><dl><dt>cache_dir</dt><dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
+</dl><dl><dt>update_cache</dt><dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
+When set to <code>TRUE</code> it would force a fresh download of the source
+.geojson file.</p></dd>
+</dl><dl><dt>verbose</dt><dd><p>Logical, displays information. Useful for debugging,
+default is <code>FALSE</code>.</p></dd>
+</dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A <code>POINT</code> object on EPSG:4326.</p>
