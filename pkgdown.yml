@@ -4,7 +4,7 @@ pkgdown_sha: 8e6bd42603f7d913a8b5ff703c77a522160804a7
 articles:
   nuts_codes: articles/nuts_codes.html
   giscoR: giscoR.html
-last_built: 2021-10-27T13:16Z
+last_built: 2021-10-27T15:45Z
 urls:
   reference: https://ropengov.github.io/giscoR/reference
   article: https://ropengov.github.io/giscoR/articles
