@@ -112,16 +112,18 @@ backwards compatibility purposes.</p></li>
     <div id="ref-sections">
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    
-
-<dl><dt>cache_dir</dt><dd><p>A path to a cache directory. On missing value the function
+    <dl><dt>cache_dir</dt>
+<dd><p>A path to a cache directory. On missing value the function
 would store the cached files on a temporary dir (See <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code>).</p></dd>
-</dl><dl><dt>overwrite</dt><dd><p>If this is set to <code>TRUE</code>, it will overwrite an existing
+<dt>overwrite</dt>
+<dd><p>If this is set to <code>TRUE</code>, it will overwrite an existing
 <code>GISCO_CACHE_DIR</code> that you already have in local machine.</p></dd>
-</dl><dl><dt>install</dt><dd><p>if <code>TRUE</code>, will install the key in your local machine for
+<dt>install</dt>
+<dd><p>if <code>TRUE</code>, will install the key in your local machine for
 use in future sessions.  Defaults to <code>FALSE.</code> If <code>cache_dir</code> is <code>FALSE</code>
 this parameter is set to <code>FALSE</code> automatically.</p></dd>
-</dl><dl><dt>verbose</dt><dd><p>Logical, displays information. Useful for debugging,
+<dt>verbose</dt>
+<dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
 </dl></div>
     <div class="section level2">
@@ -143,11 +145,11 @@ default is <code>FALSE</code>.</p></dd>
 <span class="r-in"><span class="co"># \dontrun{</span></span>
 <span class="r-in"><span class="fu">gisco_set_cache_dir</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using a temporary cache dir.  Set 'cache_dir' to a value for store permanently</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cache dir is:  /tmp/Rtmpl3fd0t/giscoR</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cache dir is:  /tmp/RtmpxMbYZC/giscoR</span>
 <span class="r-in"><span class="co"># }</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"GISCO_CACHE_DIR"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmpl3fd0t/giscoR"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpxMbYZC/giscoR"</span>
 </code></pre></div>
     </div>
   </div>

@@ -93,38 +93,45 @@ shapefile for each unit.</p>
     </div>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    
-
-<dl><dt>id_giscoR</dt><dd><p>Select the <code>unit</code> type to be downloaded.
+    <dl><dt>id_giscoR</dt>
+<dd><p>Select the <code>unit</code> type to be downloaded.
 Accepted values are "nuts", "countries" or "urban_audit".</p></dd>
-</dl><dl><dt>unit</dt><dd><p>Unit ID to be downloaded. See Details.</p></dd>
-</dl><dl><dt>mode</dt><dd><p>Controls the output of the function. Possible values are "sf"
+<dt>unit</dt>
+<dd><p>Unit ID to be downloaded. See Details.</p></dd>
+<dt>mode</dt>
+<dd><p>Controls the output of the function. Possible values are "sf"
 or "df". See Value and Details.</p></dd>
-</dl><dl><dt>year</dt><dd><p>Release year of the file. One of "2001", "2006",
+<dt>year</dt>
+<dd><p>Release year of the file. One of "2001", "2006",
 "2010", "2013", "2016" or "2020".</p></dd>
-</dl><dl><dt>epsg</dt><dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
-One of:
-</p><ul><li><p>"4258": ETRS89</p></li>
+<dt>epsg</dt>
+<dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
+One of:</p><ul><li><p>"4258": ETRS89</p></li>
 <li><p>"4326": WGS84</p></li>
 <li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
 <li><p>"3857": Pseudo-Mercator</p></li>
 </ul></dd>
-</dl><dl><dt>cache</dt><dd><p>A logical whether to do caching. Default is <code>TRUE</code>. See
+<dt>cache</dt>
+<dd><p>A logical whether to do caching. Default is <code>TRUE</code>. See
 <strong>About caching</strong>.</p></dd>
-</dl><dl><dt>update_cache</dt><dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
+<dt>update_cache</dt>
+<dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
 When set to <code>TRUE</code> it would force a fresh download of the source
 .geojson file.</p></dd>
-</dl><dl><dt>cache_dir</dt><dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
-</dl><dl><dt>verbose</dt><dd><p>Logical, displays information. Useful for debugging,
+<dt>cache_dir</dt>
+<dd><p>A path to a cache directory. See <strong>About caching</strong>.</p></dd>
+<dt>verbose</dt>
+<dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
-</dl><dl><dt>resolution</dt><dd><p>Resolution of the geospatial data. One of
-</p><ul><li><p>"60": 1:60million</p></li>
+<dt>resolution</dt>
+<dd><p>Resolution of the geospatial data. One of</p><ul><li><p>"60": 1:60million</p></li>
 <li><p>"20": 1:20million</p></li>
 <li><p>"10": 1:10million</p></li>
 <li><p>"03": 1:3million</p></li>
 <li><p>"01": 1:1million</p></li>
 </ul></dd>
-</dl><dl><dt>spatialtype</dt><dd><p>Type of geometry to be returned: "RG", for <code>POLYGON</code> and
+<dt>spatialtype</dt>
+<dd><p>Type of geometry to be returned: "RG", for <code>POLYGON</code> and
 "LB" for <code>POINT</code>.</p></dd>
 </dl></div>
     <div class="section level2">

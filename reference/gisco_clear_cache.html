@@ -89,13 +89,14 @@ data and configuration, specifically:</p><ul><li><p>Deletes the <strong>giscoR</
     <div id="ref-sections">
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    
-
-<dl><dt>config</dt><dd><p>if <code>TRUE</code>, will delete the configuration folder of
+    <dl><dt>config</dt>
+<dd><p>if <code>TRUE</code>, will delete the configuration folder of
 <strong>giscoR</strong>.</p></dd>
-</dl><dl><dt>cached_data</dt><dd><p>If this is set to <code>TRUE</code>, it will delete your
+<dt>cached_data</dt>
+<dd><p>If this is set to <code>TRUE</code>, it will delete your
 <code>cache_dir</code> and all its content.</p></dd>
-</dl><dl><dt>verbose</dt><dd><p>Logical, displays information. Useful for debugging,
+<dt>verbose</dt>
+<dd><p>Logical, displays information. Useful for debugging,
 default is <code>FALSE</code>.</p></dd>
 </dl></div>
     <div class="section level2">
@@ -120,7 +121,7 @@ as it you would never have installed and/or used <strong>giscoR</strong>.</p>
 <span class="r-in"><span class="co"># Don't run this! It would modify your current state</span></span>
 <span class="r-in"><span class="co"># \dontrun{</span></span>
 <span class="r-in"><span class="fu">gisco_clear_cache</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cached data deleted:  /tmp/Rtmpl3fd0t/giscoR</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cached data deleted:  /tmp/RtmpxMbYZC/giscoR</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"GISCO_CACHE_DIR"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
@@ -129,15 +130,15 @@ as it you would never have installed and/or used <strong>giscoR</strong>.</p>
 <span class="r-in"><span class="va">newcache</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"giscoR"</span>, <span class="st">"pkgdown"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">newcache</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmpl3fd0t/giscoR/pkgdown"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpxMbYZC/giscoR/pkgdown"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="gisco_set_cache_dir.html">gisco_set_cache_dir</a></span><span class="op">(</span><span class="va">newcache</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cache dir is:  /tmp/Rtmpl3fd0t/giscoR/pkgdown</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cache dir is:  /tmp/RtmpxMbYZC/giscoR/pkgdown</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> To install your cache_dir path for use in future sessions, </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> run this function with `install = TRUE`.</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"GISCO_CACHE_DIR"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmpl3fd0t/giscoR/pkgdown"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpxMbYZC/giscoR/pkgdown"</span>
 <span class="r-in"><span class="co"># }</span></span>
 </code></pre></div>
     </div>
