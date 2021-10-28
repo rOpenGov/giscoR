@@ -1,10 +1,10 @@
 pandoc: 2.7.3
 pkgdown: 1.9000.9000.9000
-pkgdown_sha: a4003ae50bc9170830f1af1fb3193b07259fe07f
+pkgdown_sha: 7431157a6c9f9ed371e5b08246e5111e591df735
 articles:
   nuts_codes: articles/nuts_codes.html
   giscoR: giscoR.html
-last_built: 2021-10-28T07:20Z
+last_built: 2021-10-28T07:37Z
 urls:
   reference: https://ropengov.github.io/giscoR/reference
   article: https://ropengov.github.io/giscoR/articles
