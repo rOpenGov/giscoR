@@ -325,30 +325,24 @@ Contributions are very welcome:
 
 ## Citation
 
-Please use the following when citing `giscoR`:
+To cite the ‘giscoR’ package in publications use:
 
-``` r
-citation("giscoR")
-#> 
-#> To cite the 'giscoR' package in publications use:
-#> 
-#> Hernangómez D (2021). _giscoR: Download Map Data from GISCO API -
-#> Eurostat_. doi: 10.5281/zenodo.4317946 (URL:
-#> https://doi.org/10.5281/zenodo.4317946), R package version 0.3.1, <URL:
-#> https://ropengov.github.io/giscoR/>.
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Manual{,
-#>     title = {giscoR: Download Map Data from GISCO API - Eurostat},
-#>     year = {2021},
-#>     note = {R package version 0.3.1},
-#>     version = {0.3.1},
-#>     author = {Diego Hernangómez},
-#>     doi = {10.5281/zenodo.4317946},
-#>     url = {https://ropengov.github.io/giscoR/},
-#>   }
-```
+Hernangómez D (2021). *giscoR: Download Map Data from GISCO API -
+Eurostat*. doi: 10.5281/zenodo.4317946 (URL:
+<https://doi.org/10.5281/zenodo.4317946>), R package version 0.3.1,
+\<URL: <https://ropengov.github.io/giscoR/>\>.
+
+A BibTeX entry for LaTeX users is
+
+    #> @Manual{,
+    #>   title = {giscoR: Download Map Data from GISCO API - Eurostat},
+    #>   year = {2021},
+    #>   note = {R package version 0.3.1},
+    #>   version = {0.3.1},
+    #>   author = {Diego Hernangómez},
+    #>   doi = {10.5281/zenodo.4317946},
+    #>   url = {https://ropengov.github.io/giscoR/},
+    #> }
 
 ## Copyright notice
 
