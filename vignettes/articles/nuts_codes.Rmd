@@ -76,12 +76,3 @@ reactable(df,
   defaultSorted = c("LEVL_CODE", "CNTR_CODE")
 )
 ```
-
-## Session Info
-
-<details>
-  <summary><strong>Details</strong></summary>
-```{r session_info, echo=FALSE}
-sessionInfo()
-```
-</details>
