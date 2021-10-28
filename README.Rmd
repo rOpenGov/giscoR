@@ -340,12 +340,17 @@ Contributions are very welcome:
 -   [Send pull requests](https://github.com/rOpenGov/giscoR/)
 -   [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
 
-## Citation 
+## Citation
 
-Please use the following when citing `giscoR`: 
+```{r echo=FALSE, results='asis'}
+print(citation("giscoR"), bibtex = FALSE)
+```
 
-```{r}
-citation("giscoR")
+
+A BibTeX entry for LaTeX users is 
+
+```{r echo=FALSE}
+toBibtex(citation("giscoR"))
 ```
 
 
