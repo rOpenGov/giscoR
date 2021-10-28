@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
   dpi = 90,
   fig.path = "./",
   out.width = "100%"
+)
 ```
 
 # Introduction
