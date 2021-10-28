@@ -29,3 +29,4 @@
 ^vignettes/figures-giscoR\.Rmd\.R$
 ^CITATION\.cff$
 ^\._pkgdown\.yml$
+^vignettes/giscoR\.Rmd\.orig$
