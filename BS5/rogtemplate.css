@@ -156,13 +156,6 @@ footer .pkgdown-footer-left {
 }
 
 
-/* Temporal fix on toc */
-
-#toc {
-  overflow-y: hidden;
-}
-
-
 /* Navbar */
 
 .navbar-dark.bg-dark {
