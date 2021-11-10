@@ -1,6 +1,6 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.0.1.9004
-# See also: https://dieghernan.github.io/cffr/
+# CITATION file created with {cffr} R package, v0.1.1
+# See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
 cff-version: 1.2.0
@@ -50,3 +50,5 @@ keywords:
 - gisco
 - thematic-maps
 - eurostat-data
+- cran
+- ggplot2
