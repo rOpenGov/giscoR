@@ -9,5 +9,5 @@ bibentry(
   version = meta$Version,
   doi = "10.5281/zenodo.4317946",
   url = unlist(strsplit(meta$URL, ","))[1],
-  abstract = meta$Description
+  abstract = gsub("[\r\n]", "", meta$Description)
 )
