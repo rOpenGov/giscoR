@@ -4,10 +4,10 @@ bibentry(
   "Manual",
   header = "To cite the 'giscoR' package in publications use:",
   title = paste("giscoR:", meta$Title),
-  year = year,
-  note = paste("R package version", meta$Version),
-  version = meta$Version,
   author = person("Diego", "Hernangómez"),
+  year = year,
+  version = meta$Version,
   doi = "10.5281/zenodo.4317946",
-  url = unlist(strsplit(meta$URL, ","))[1]
+  url = unlist(strsplit(meta$URL, ","))[1],
+  abstract = meta$Description
 )
