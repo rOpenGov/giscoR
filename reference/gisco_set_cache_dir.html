@@ -37,14 +37,16 @@ install = TRUE). This would store your cache_dir permanently.
 
   gtag('config', 'G-VGVFXGHWRL');
 </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=B612+Mono&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rogtemplate.css" rel="stylesheet"></head><body>
-    <a href="#container" class="visually-hidden-focusable">Skip to contents</a>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark"><div class="container">
+    
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.1</small>
 
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -59,7 +61,7 @@ install = TRUE). This would store your cache_dir permanently.
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/articles/nuts_codes.html">NUTS codes</a>
+    <a class="dropdown-item" href="../articles/nuts_codes.html">NUTS codes</a>
   </div>
 </li>
 <li class="nav-item">
@@ -75,11 +77,12 @@ install = TRUE). This would store your cache_dir permanently.
   </a>
 </li>
       </ul></div>
+
+    
   </div>
-</nav><div class="container template-reference-topic" id="container">
+</nav><div class="container template-reference-topic">
 <div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Set your <strong>giscoR</strong> cache dir</h1>
       <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_cache.R" class="external-link"><code>R/gisco_cache.R</code></a></small>
       <div class="d-none name"><code>gisco_set_cache_dir.Rd</code></div>
@@ -100,17 +103,16 @@ backwards compatibility purposes.</p></li>
 <code>install = TRUE</code>). This would store your <code>cache_dir</code> permanently.</p></li>
 </ul></div>
 
-    <div class="ref-usage section level2 sourceCode">
-    <h2>Usage</h2>
-    <pre class="sourceCode r"><code><span class="fu">gisco_set_cache_dir</span><span class="op">(</span>
+    <div class="section level2">
+    <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">gisco_set_cache_dir</span><span class="op">(</span>
   <span class="va">cache_dir</span>,
   overwrite <span class="op">=</span> <span class="cn">FALSE</span>,
   install <span class="op">=</span> <span class="cn">FALSE</span>,
   verbose <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre>
+<span class="op">)</span></code></pre></div>
     </div>
 
-    <div id="ref-sections">
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>cache_dir</dt>
@@ -137,27 +139,23 @@ default is <code>FALSE</code>.</p></dd>
 <p>Other cache utilities: 
 <code><a href="gisco_clear_cache.html">gisco_clear_cache</a>()</code></p></div>
     </div>
-    </div>
 
-    <div id="examples">
-    <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in"><span class="co"># Don't run this! It would modify your current state</span></span>
 <span class="r-in"><span class="co"># \dontrun{</span></span>
 <span class="r-in"><span class="fu">gisco_set_cache_dir</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using a temporary cache dir.  Set 'cache_dir' to a value for store permanently</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cache dir is:  /tmp/RtmpfyWkVK/giscoR</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cache dir is:  /tmp/Rtmp8e8Ids/giscoR</span>
 <span class="r-in"><span class="co"># }</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"GISCO_CACHE_DIR"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpfyWkVK/giscoR"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmp8e8Ids/giscoR"</span>
 </code></pre></div>
     </div>
-  </div>
-  <div class="col-md-3" id="pkgdown-sidebar">
-    <nav id="toc"><h2>On this page</h2>
-    </nav></div>
-</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
@@ -165,7 +163,7 @@ default is <code>FALSE</code>.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
     </footer></div>

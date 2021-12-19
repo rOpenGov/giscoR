@@ -15,14 +15,16 @@ is extracted from countrycode package."><meta property="og:image" content="https
 
   gtag('config', 'G-VGVFXGHWRL');
 </script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=B612+Mono&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rogtemplate.css" rel="stylesheet"></head><body>
-    <a href="#container" class="visually-hidden-focusable">Skip to contents</a>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark"><div class="container">
+    
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.1</small>
 
+    
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,7 +39,7 @@ is extracted from countrycode package."><meta property="og:image" content="https
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/articles/nuts_codes.html">NUTS codes</a>
+    <a class="dropdown-item" href="../articles/nuts_codes.html">NUTS codes</a>
   </div>
 </li>
 <li class="nav-item">
@@ -53,11 +55,12 @@ is extracted from countrycode package."><meta property="og:image" content="https
   </a>
 </li>
       </ul></div>
+
+    
   </div>
-</nav><div class="container template-reference-topic" id="container">
+</nav><div class="container template-reference-topic">
 <div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Dataframe with different country code schemes and world regions</h1>
       <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/data.R" class="external-link"><code>R/data.R</code></a></small>
       <div class="d-none name"><code>gisco_countrycode.Rd</code></div>
@@ -71,7 +74,6 @@ is extracted from <strong>countrycode</strong> package.</p>
     </div>
 
 
-    <div id="ref-sections">
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
     <p>A data frame object with 249 rows and 12 variables:</p><ul><li><p><strong>CNTR_CODE</strong>: Eurostat code of each country</p></li>
@@ -106,19 +108,15 @@ Union as per February 2021.</p></li>
 <code><a href="gisco_nuts.html">gisco_nuts</a></code>,
 <code><a href="tgs00026.html">tgs00026</a></code></p></div>
     </div>
-    </div>
 
-    <div id="examples">
-    <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gisco_countrycode</span><span class="op">)</span></span>
 </code></pre></div>
     </div>
-  </div>
-  <div class="col-md-3" id="pkgdown-sidebar">
-    <nav id="toc"><h2>On this page</h2>
-    </nav></div>
-</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
@@ -126,7 +124,7 @@ Union as per February 2021.</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
     </footer></div>

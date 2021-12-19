@@ -10,13 +10,13 @@
     <loc>https://ropengov.github.io/giscoR/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://ropengov.github.io/giscoR/articles/articles/nuts_codes.html</loc>
-  </url>
-  <url>
     <loc>https://ropengov.github.io/giscoR/articles/giscoR.html</loc>
   </url>
   <url>
     <loc>https://ropengov.github.io/giscoR/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ropengov.github.io/giscoR/articles/nuts_codes.html</loc>
   </url>
   <url>
     <loc>https://ropengov.github.io/giscoR/authors.html</loc>
