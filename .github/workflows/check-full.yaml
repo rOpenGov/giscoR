@@ -42,7 +42,7 @@ jobs:
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
-     steps:
+    steps:
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-pandoc@v2-branch
