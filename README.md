@@ -76,6 +76,7 @@ install.packages("giscoR")
 This script highlights some features of `giscoR`:
 
 ``` r
+
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -110,6 +111,7 @@ ggplot(DNK_all) +
 
 ``` r
 
+
 # Labels and Lines available
 
 labs <- gisco_get_countries(
@@ -142,6 +144,7 @@ ggplot(coast) +
 An example of a labeled map using `ggplot2`:
 
 ``` r
+
 ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
 
 ggplot(ITA) +
@@ -161,6 +164,7 @@ Popovic](https://twitter.com/milos_agathon) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
 ``` r
+
 # Get shapes
 nuts3 <- gisco_get_nuts(
   year = "2016",
@@ -294,18 +298,18 @@ them on your local directory.
 
 ### API data packages
 
--   `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
+  - `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
     an API package that provides access to open data from Eurostat.
 
 ### Plotting `sf` objects
 
 Some packages recommended for visualization are:
 
--   [`tmap`](https://r-tmap.github.io/tmap/)
--   [`ggplot2`](https://github.com/tidyverse/ggplot2) +
+  - [`tmap`](https://r-tmap.github.io/tmap/)
+  - [`ggplot2`](https://github.com/tidyverse/ggplot2) +
     [`ggspatial`](https://github.com/paleolimbot/ggspatial)
--   [`mapsf`](https://riatelab.github.io/mapsf/)
--   [`leaflet`](https://rstudio.github.io/leaflet/)
+  - [`mapsf`](https://riatelab.github.io/mapsf/)
+  - [`leaflet`](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 
@@ -314,16 +318,16 @@ code](https://github.com/rOpenGov/giscoR/).
 
 Contributions are very welcome:
 
--   [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
+  - [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
     feedback and bug reports.
--   [Send pull requests](https://github.com/rOpenGov/giscoR/)
--   [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
+  - [Send pull requests](https://github.com/rOpenGov/giscoR/)
+  - [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
 
 ## Citation
 
 To cite the ‘giscoR’ package in publications use:
 
-Hernangómez D (2021). *giscoR: Download Map Data from GISCO API -
+Hernangómez D (2022). *giscoR: Download Map Data from GISCO API -
 Eurostat*. doi: 10.5281/zenodo.4317946 (URL:
 <https://doi.org/10.5281/zenodo.4317946>), \<URL:
 <https://ropengov.github.io/giscoR/>\>.
@@ -333,7 +337,7 @@ A BibTeX entry for LaTeX users is
     #> @Manual{,
     #>   title = {giscoR: Download Map Data from GISCO API - Eurostat},
     #>   author = {Diego Hernangómez},
-    #>   year = {2021},
+    #>   year = {2022},
     #>   version = {0.3.1},
     #>   doi = {10.5281/zenodo.4317946},
     #>   url = {https://ropengov.github.io/giscoR/},
@@ -350,13 +354,13 @@ Statistical Units*
 > to the whole Eurostat website, data source will have to be
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
->
+> 
 > EN: © EuroGeographics for the administrative boundaries
->
+> 
 > FR: © EuroGeographics pour les limites administratives
->
+> 
 > DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
->
+> 
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
 > publication shall be used.

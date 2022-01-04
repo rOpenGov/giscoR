@@ -17,7 +17,7 @@ giscoR package\tabular{ll}{
    \strong{Package} \tab giscoR \cr
    \strong{Type} \tab Package \cr
    \strong{Version} \tab 0.3.1 \cr
-   \strong{Date} \tab 2021 \cr
+   \strong{Date} \tab 2022 \cr
    \strong{License} \tab GPL-3 \cr
    \strong{LazyLoad} \tab yes \cr
 }

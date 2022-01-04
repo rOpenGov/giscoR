@@ -4,7 +4,7 @@
   "identifier": "giscoR",
   "description": "Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.",
   "name": "giscoR: Download Map Data from GISCO API - Eurostat",
-  "relatedLink": "https://ropengov.github.io/giscoR/",
+  "relatedLink": ["https://ropengov.github.io/giscoR/", "https://CRAN.R-project.org/package=giscoR"],
   "codeRepository": "https://github.com/rOpenGov/giscoR",
   "issueTracker": "https://github.com/rOpenGov/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
@@ -203,12 +203,12 @@
   },
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
-  "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data"],
-  "fileSize": "1311.696KB",
+  "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2"],
+  "fileSize": "1311.701KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2021",
+      "datePublished": "2022",
       "author": [
         {
           "@type": "Person",
@@ -222,5 +222,8 @@
       "@id": "https://doi.org/10.5281/zenodo.4317946",
       "sameAs": "https://doi.org/10.5281/zenodo.4317946"
     }
-  ]
+  ],
+  "readme": "https://github.com/rOpenGov/giscoR/blob/main/README.md",
+  "contIntegration": ["https://github.com/rOpenGov/giscoR/actions", "https://app.codecov.io/gh/ropengov/giscoR"],
+  "developmentStatus": "https://www.repostatus.org/#active"
 }
