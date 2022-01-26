@@ -39,3 +39,5 @@ revdep
 /Meta/
 /dev/
 docs
+CRAN-SUBMISSION
+.github/pkg.lock

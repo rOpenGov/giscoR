@@ -30,3 +30,4 @@
 ^CITATION\.cff$
 ^\._pkgdown\.yml$
 ^vignettes/giscoR\.Rmd\.orig$
+^CRAN-SUBMISSION$
