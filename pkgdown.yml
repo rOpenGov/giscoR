@@ -1,10 +1,10 @@
 pandoc: 2.7.3
-pkgdown: 2.0.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   nuts_codes: nuts_codes.html
   giscoR: giscoR.html
-last_built: 2022-01-04T14:00Z
+last_built: 2022-01-26T17:59Z
 urls:
   reference: https://ropengov.github.io/giscoR/reference
   article: https://ropengov.github.io/giscoR/articles

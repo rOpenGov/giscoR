@@ -53,7 +53,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="navbar" class="collapse navbar-collapse ms-2">
+    <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="active nav-item">
   <a class="nav-link" href="../articles/giscoR.html">Get started</a>
@@ -88,6 +88,9 @@
     
   </div>
 </nav><div class="container template-article">
+
+
+
 <script src="giscoR_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <main id="main"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get started with giscoR</h1>
@@ -100,27 +103,27 @@
 
     
     
-<div class="section level1">
-<h1 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-</h1>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p><em>Full site with more examples and vignettes on <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a></em></p>
 <p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is a package designed to provide a clean interaction with the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API</a>.</p>
 <p>Within Eurostat, GISCO is responsible for meeting the European Commission’s geographical information needs at 3 levels: the European Union, its member countries, and its regions. GISCO also provides a variety of shapefiles on different formats, focusing specially in the European Union area, but providing also some worldwide shapefiles, as country polygons, labels or borders and coastal lines.</p>
 <p>GISCO provides data on different resolutions suitable for representing small areas (01M, 03M) as well as lightweight datasets specially useful for representing wider areas (10M, 20M, 60M). Shapefiles are provided on 3 different projections: EPSG 4326, 3035 or 3857.</p>
 <p><strong>giscoR</strong> returns <code>sf</code> objects, so the <code>sf</code> package is necessary.</p>
 </div>
-<div class="section level1">
-<h1 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
-</h1>
+<div class="section level2">
+<h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
+</h2>
 <p><strong>giscoR</strong> provides a dataset caching capability, that could be set as:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/gisco_set_cache_dir.html">gisco_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></code></pre></div>
 <p>If the file is not available locally, it would be downloaded to that directory so the next time you need the corresponding data it would be loaded from the local directory.</p>
 <p>If you experience any problems on downloading, you can also manually download the file from the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API website</a> and store it on your local directory.</p>
 </div>
-<div class="section level1">
-<h1 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
-</h1>
+<div class="section level2">
+<h2 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
+</h2>
 <p>Please be aware that <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link">downloading provisions apply</a> when using GISCO data. There is a function, <code>gisco_attributions</code> that would guide you on this topic. It also provides attributions on several languages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span>
@@ -152,9 +155,9 @@
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [1] "© EuroGeographics for the administrative boundaries"</span></code></pre></div>
 </div>
-<div class="section level1">
-<h1 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
-</h1>
+<div class="section level2">
+<h2 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
+</h2>
 <p>Some examples on data downloads</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
@@ -217,9 +220,9 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">NAME_ENGL</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="africa-1.png" title="plot of chunk africa" alt="plot of chunk africa" width="100%"></p>
 </div>
-<div class="section level1">
-<h1 id="plotting-giscor">Plotting <strong>giscoR</strong><a class="anchor" aria-label="anchor" href="#plotting-giscor"></a>
-</h1>
+<div class="section level2">
+<h2 id="plotting-giscor">Plotting <strong>giscoR</strong><a class="anchor" aria-label="anchor" href="#plotting-giscor"></a>
+</h2>
 <p>This is an example on how <strong>giscoR</strong> can play nicely with some Eurostat data. For plotting purposes we would use the <code>ggplot2</code> package however any package that handles <code>sf</code> objects (e.g. <code>tmap</code>, <code>mapsf</code>, <code>leaflet</code>, etc. could be used).</p>
 <p>Also <code>colorspace</code> and <code>rcartocolor</code> packages are recommended, as they provide great color palettes.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -336,7 +339,8 @@
   <span class="op">)</span></code></pre></div>
 <p><img src="giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%"></p>
 </div>
-  </main>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
@@ -348,7 +352,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
     </footer>
