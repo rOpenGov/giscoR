@@ -8,6 +8,9 @@ test_that("Display cache dir", {
 
 
 test_that("Testing attributions", {
+  skip_on_cran()
+  skip_on_os("windows")
+
   expect_message(gisco_attributions(copyright = TRUE))
   expect_silent(gisco_attributions())
   expect_identical(class(gisco_attributions()), "character")
@@ -19,5 +22,5 @@ test_that("Testing attributions", {
   expect_snapshot_output(gisco_attributions("fi"))
   expect_snapshot_output(gisco_attributions("no"))
   expect_snapshot_output(gisco_attributions("sv"))
-  expect_snapshot(gisco_attributions("xx"))
+  expect_snapshot_output(gisco_attributions("xx"))
 })

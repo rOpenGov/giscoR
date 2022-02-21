@@ -28,12 +28,5 @@
 
 ---
 
-    Code
-      gisco_attributions("xx")
-    Message <simpleMessage>
-      Language xx not supported, switching to English. 
-      Consider contributing: 
-      https://github.com/rOpenGov/giscoR/issues
-    Output
-      [1] "© EuroGeographics for the administrative boundaries"
+    [1] "© EuroGeographics for the administrative boundaries"
 
