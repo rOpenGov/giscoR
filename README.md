@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![rOG-badge](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](http://ropengov.org/)
+[![rOG-badge](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](https://ropengov.org/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![CRAN
@@ -324,9 +324,9 @@ Contributions are very welcome:
 To cite the ‘giscoR’ package in publications use:
 
 Hernangómez D (2022). *giscoR: Download Map Data from GISCO API -
-Eurostat*. doi: 10.5281/zenodo.4317946 (URL:
-<https://doi.org/10.5281/zenodo.4317946>), \<URL:
-<https://ropengov.github.io/giscoR/>\>.
+Eurostat*. <doi:10.5281/zenodo.4317946>
+<https://doi.org/10.5281/zenodo.4317946>,
+<https://ropengov.github.io/giscoR/>.
 
 A BibTeX entry for LaTeX users is
 
