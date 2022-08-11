@@ -204,7 +204,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis"],
-  "fileSize": "1307.145KB",
+  "fileSize": "1307.379KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -216,7 +216,7 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "giscoR: Download Map Data from GISCO API - Eurostat",
+      "name": "{giscoR}: Download Map Data from GISCO API - Eurostat",
       "identifier": "10.5281/zenodo.4317946",
       "url": "https://ropengov.github.io/giscoR/",
       "@id": "https://doi.org/10.5281/zenodo.4317946",
