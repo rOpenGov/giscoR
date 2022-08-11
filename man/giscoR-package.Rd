@@ -2,65 +2,31 @@
 % Please edit documentation in R/giscoR-package.R
 \docType{package}
 \name{giscoR-package}
-\alias{giscoR-package}
 \alias{giscoR}
-\title{Download geospatial data from GISCO API - Eurostat}
+\alias{giscoR-package}
+\title{giscoR: Download Map Data from GISCO API - Eurostat}
 \description{
-\if{html}{\figure{logo.png}{options: width=120 alt="giscoR logo" align='right'}}
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-giscoR is a API package that helps to retrieve data from Eurostat - GISCO
-(the Geographic Information System of the COmmission)
-}
-\details{
-giscoR package\tabular{ll}{
-    \tab  \cr
-   \strong{Package} \tab giscoR \cr
-   \strong{Type} \tab Package \cr
-   \strong{Version} \tab 0.3.1 \cr
-   \strong{Date} \tab 2022 \cr
-   \strong{License} \tab GPL-3 \cr
-   \strong{LazyLoad} \tab yes \cr
-}
-}
-\note{
-COPYRIGHT NOTICE
-
-When data downloaded from
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units}
-is used in any printed or electronic publication,
-in addition to any other provisions
-applicable to the whole Eurostat website,
-data source will have to be acknowledged
-in the legend of the map and
-in the introductory page of the publication
-with the following copyright notice:
-\itemize{
-\item EN: (C) EuroGeographics for the administrative boundaries
-\item FR: (C) EuroGeographics pour les limites administratives
-\item DE: (C) EuroGeographics bezüglich der Verwaltungsgrenzen
-}
-
-For publications in languages other than
-English, French or German,
-the translation of the copyright notice
-in the language of the publication shall be used.
-
-If you intend to use the data commercially,
-please contact EuroGeographics for
-information regarding their licence agreements.
-}
-\references{
-See \code{citation("giscoR")}
+Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database \url{https://ec.europa.eu/eurostat/web/gisco}. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.
 }
 \seealso{
 Useful links:
 \itemize{
-\item \url{https://ropengov.github.io/giscoR/}
-\item \url{https://github.com/rOpenGov/giscoR}
-\item Report bugs at \url{https://github.com/rOpenGov/giscoR/issues}
+  \item \url{https://ropengov.github.io/giscoR/}
+  \item \url{https://github.com/rOpenGov/giscoR}
+  \item Report bugs at \url{https://github.com/rOpenGov/giscoR/issues}
 }
+
 }
 \author{
-dieghernan, \url{https://github.com/dieghernan/}
+\strong{Maintainer}: Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID}) (rOpenGov) [copyright holder]
+
+Other contributors:
+\itemize{
+  \item EuroGeographics (for the administrative boundaries.) [copyright holder]
+  \item Vincent Arel-Bundock (\href{https://orcid.org/0000-0003-2042-7063}{ORCID}) (for the gisco_countrycode dataset.) [copyright holder]
 }
-\keyword{package}
+
+}
+\keyword{internal}

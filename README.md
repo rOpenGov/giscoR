@@ -321,21 +321,20 @@ Contributions are very welcome:
 
 ## Citation
 
-To cite the ‘giscoR’ package in publications use:
+To cite ‘giscoR’ in publications use:
 
-Hernangómez D (2022). *giscoR: Download Map Data from GISCO API -
-Eurostat*. <doi:10.5281/zenodo.4317946>
-<https://doi.org/10.5281/zenodo.4317946>,
-<https://ropengov.github.io/giscoR/>.
+Hernangomez D (2022). giscoR: Download Map Data from GISCO API -
+Eurostat. <https://doi.org/10.5281/zenodo.4317946>,
+<https://ropengov.github.io/giscoR/>
 
 A BibTeX entry for LaTeX users is
 
-    @Manual{,
-      title = {giscoR: Download Map Data from GISCO API - Eurostat},
+    @Manual{R-giscoR,
+      title = {{giscoR}: Download Map Data from GISCO API - Eurostat},
+      doi = {10.5281/zenodo.4317946},
       author = {Diego Hernangómez},
       year = {2022},
-      version = {0.3.1},
-      doi = {10.5281/zenodo.4317946},
+      version = {0.3.2},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
     }
