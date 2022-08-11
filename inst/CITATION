@@ -1,14 +1,22 @@
 year <- format(Sys.time(), "%Y")
 abs <- trimws(gsub("\\s+", " ", meta$Description))
+abs <- gsub("'", "", abs)
+doi <- "10.5281/zenodo.4317946"
 
 bibentry(
   "Manual",
-  header = "To cite the 'giscoR' package in publications use:",
-  title = paste("giscoR:", meta$Title),
-  author = person("Diego", "Hernangómez"),
+  header = paste0("To cite '", meta$Package, "' in publications use:"),
+  title = paste("{giscoR}:", gsub("'", "", meta$Title)),
+  doi = doi,
+  author = c(person("Diego", "Hernangómez")),
   year = year,
   version = meta$Version,
-  doi = "10.5281/zenodo.4317946",
   url = unlist(strsplit(meta$URL, ","))[1],
-  abstract = abs
+  abstract = abs,
+  key = "R-giscoR",
+  textVersion = paste0(
+    "Hernangomez D (", year, "). giscoR: ",
+    gsub("'", "", meta$Title), ". <https://doi.org/", doi, ">, <",
+    unlist(strsplit(meta$URL, ","))[1], ">"
+  )
 )
