@@ -334,7 +334,7 @@ A BibTeX entry for LaTeX users is
       title = {giscoR: Download Map Data from GISCO API - Eurostat},
       author = {Diego Hernangómez},
       year = {2022},
-      version = {0.3.1},
+      version = {0.3.2},
       doi = {10.5281/zenodo.4317946},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
