@@ -1,3 +1,7 @@
+# giscoR 0.3.2
+
+-   Fix HTML5 issue as requested by CRAN.
+
 # giscoR 0.3.1
 
 -   Add `Copyright` on DESCRIPTION.
