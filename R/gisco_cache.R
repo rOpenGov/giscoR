@@ -43,9 +43,6 @@ gisco_set_cache_dir <- function(cache_dir,
                                 overwrite = FALSE,
                                 install = FALSE,
                                 verbose = TRUE) {
-
-
-
   # Default if not provided
   if (missing(cache_dir) || cache_dir == "") {
     gsc_message(
@@ -147,7 +144,6 @@ gisco_clear_cache <- function(config = TRUE,
 #'
 #' @noRd
 gsc_helper_detect_cache_dir <- function() {
-
   # Try from getenv
   getvar <- Sys.getenv("GISCO_CACHE_DIR")
 

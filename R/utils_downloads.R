@@ -323,7 +323,6 @@ gsc_api_load <- function(file = NULL,
                          ext = tools::file_ext(file),
                          cache = FALSE,
                          verbose = TRUE) {
-
   # Currently only supported these ext
   if (!ext %in% c("geojson", "gpkg")) {
     stop("\nExtension ",

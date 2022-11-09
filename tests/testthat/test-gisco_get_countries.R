@@ -7,7 +7,6 @@ test_that("Countries errors", {
 })
 
 test_that("Country names", {
-
   # Test names
   expect_error(gisco_get_countries(country = "Z"))
   expect_warning(expect_warning(gisco_get_countries(country = "ZZ")))

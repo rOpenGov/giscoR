@@ -1,5 +1,4 @@
 test_that("Test cache online", {
-
   # Get current cache dir
   current <- gsc_helper_detect_cache_dir()
 
