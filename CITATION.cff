@@ -120,7 +120,6 @@ references:
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2022'
-  url: https://CRAN.R-project.org/package=sf
   version: '>= 0.9.0'
 - type: software
   title: utils
