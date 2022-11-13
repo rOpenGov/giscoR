@@ -73,7 +73,7 @@
 #' library(ggplot2)
 #'
 #' ggplot(grid) +
-#'   geom_sf(aes(fill = popdens_cut), color = NA) +
+#'   geom_sf(aes(fill = popdens_cut), color = NA, linewidth = 0) +
 #'   coord_sf(
 #'     xlim = c(2500000, 7000000),
 #'     ylim = c(1500000, 5200000)

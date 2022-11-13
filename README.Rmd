@@ -148,7 +148,7 @@ coast <- gisco_get_countries(
 afr_bbox <- st_bbox(labs)
 
 ggplot(coast) +
-  geom_sf(col = "deepskyblue4", size = 3) +
+  geom_sf(col = "deepskyblue4", linewidth = 3) +
   geom_sf(data = labs, fill = "springgreen4", col = "darkgoldenrod1", size = 5, shape = 21) +
   coord_sf(
     xlim = afr_bbox[c("xmin", "xmax")],
@@ -237,8 +237,8 @@ pal <- hcl.colors(length(br) - 1, "Lajolla")
 # Plot
 
 ggplot(nuts3.sf) +
-  geom_sf(aes(fill = values_cut), size = 0, color = NA, alpha = 0.9) +
-  geom_sf(data = country_lines, col = "black", size = 0.1) +
+  geom_sf(aes(fill = values_cut), linewidth = 0, color = NA, alpha = 0.9) +
+  geom_sf(data = country_lines, col = "black", linewidth = 0.1) +
   # Center in Europe: EPSG 3035
   coord_sf(
     xlim = c(2377294, 7453440),
