@@ -95,7 +95,8 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get started with giscoR</h1>
-                        <h4 data-toc-skip class="author">Diego Hernangómez</h4>
+                        <h4 data-toc-skip class="author">Diego
+Hernangómez</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/vignettes/giscoR.Rmd" class="external-link"><code>vignettes/giscoR.Rmd</code></a></small>
@@ -108,24 +109,44 @@
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p><em>Full site with more examples and vignettes on <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a></em></p>
-<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is a package designed to provide a clean interaction with the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API</a>.</p>
-<p>Within Eurostat, GISCO is responsible for meeting the European Commission’s geographical information needs at 3 levels: the European Union, its member countries, and its regions. GISCO also provides a variety of shapefiles on different formats, focusing specially in the European Union area, but providing also some worldwide shapefiles, as country polygons, labels or borders and coastal lines.</p>
-<p>GISCO provides data on different resolutions suitable for representing small areas (01M, 03M) as well as lightweight datasets specially useful for representing wider areas (10M, 20M, 60M). Shapefiles are provided on 3 different projections: EPSG 4326, 3035 or 3857.</p>
-<p><strong>giscoR</strong> returns <code>sf</code> objects, so the <code>sf</code> package is necessary.</p>
+<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is
+a package designed to provide a clean interaction with the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO
+API</a>.</p>
+<p>Within Eurostat, GISCO is responsible for meeting the European
+Commission’s geographical information needs at 3 levels: the European
+Union, its member countries, and its regions. GISCO also provides a
+variety of shapefiles on different formats, focusing specially in the
+European Union area, but providing also some worldwide shapefiles, as
+country polygons, labels or borders and coastal lines.</p>
+<p>GISCO provides data on different resolutions suitable for
+representing small areas (01M, 03M) as well as lightweight datasets
+specially useful for representing wider areas (10M, 20M, 60M).
+Shapefiles are provided on 3 different projections: EPSG 4326, 3035 or
+3857.</p>
+<p><strong>giscoR</strong> returns <code>sf</code> objects, so the
+<code>sf</code> package is necessary.</p>
 </div>
 <div class="section level2">
 <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
-<p><strong>giscoR</strong> provides a dataset caching capability, that could be set as:</p>
+<p><strong>giscoR</strong> provides a dataset caching capability, that
+could be set as:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/gisco_set_cache_dir.html">gisco_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>If the file is not available locally, it would be downloaded to that directory so the next time you need the corresponding data it would be loaded from the local directory.</p>
-<p>If you experience any problems on downloading, you can also manually download the file from the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API website</a> and store it on your local directory.</p>
+<p>If the file is not available locally, it would be downloaded to that
+directory so the next time you need the corresponding data it would be
+loaded from the local directory.</p>
+<p>If you experience any problems on downloading, you can also manually
+download the file from the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API
+website</a> and store it on your local directory.</p>
 </div>
 <div class="section level2">
 <h2 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
 </h2>
-<p>Please be aware that <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link">downloading provisions apply</a> when using GISCO data. There is a function, <code>gisco_attributions</code> that would guide you on this topic. It also provides attributions on several languages.</p>
+<p>Please be aware that <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link">downloading
+provisions apply</a> when using GISCO data. There is a function,
+<code>gisco_attributions</code> that would guide you on this topic. It
+also provides attributions on several languages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>copyright <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -184,9 +205,13 @@
 <span>      face <span class="op">=</span> <span class="st">"bold"</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="country-1.png" title="plot of chunk country" alt="plot of chunk country" width="100%"></p>
-<p>You can select specific countries by name (in any language), ISO 3 codes or Eurostat codes. The only restriction is that you can’t mix country names, ISO3 and Eurostat codes on one single call.</p>
-<p>It is possible also to combine different shapefiles, just set <code>resolution</code> and <code>epsg</code> (and optionally <code>year</code>) to the same value:</p>
+<p><img src="country-1.png" alt="plot of chunk country" width="100%"></p>
+<p>You can select specific countries by name (in any language), ISO 3
+codes or Eurostat codes. The only restriction is that you can’t mix
+country names, ISO3 and Eurostat codes on one single call.</p>
+<p>It is possible also to combine different shapefiles, just set
+<code>resolution</code> and <code>epsg</code> (and optionally
+<code>year</code>) to the same value:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="va">africa_north</span> <span class="op">&lt;-</span></span>
@@ -219,13 +244,18 @@
 <span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">NAME_ENGL</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="africa-1.png" title="plot of chunk africa" alt="plot of chunk africa" width="100%"></p>
+<p><img src="africa-1.png" alt="plot of chunk africa" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="plotting-giscor">Plotting <strong>giscoR</strong><a class="anchor" aria-label="anchor" href="#plotting-giscor"></a>
 </h2>
-<p>This is an example on how <strong>giscoR</strong> can play nicely with some Eurostat data. For plotting purposes we would use the <code>ggplot2</code> package however any package that handles <code>sf</code> objects (e.g. <code>tmap</code>, <code>mapsf</code>, <code>leaflet</code>, etc. could be used).</p>
-<p>Also <code>colorspace</code> and <code>rcartocolor</code> packages are recommended, as they provide great color palettes.</p>
+<p>This is an example on how <strong>giscoR</strong> can play nicely
+with some Eurostat data. For plotting purposes we would use the
+<code>ggplot2</code> package however any package that handles
+<code>sf</code> objects (e.g. <code>tmap</code>, <code>mapsf</code>,
+<code>leaflet</code>, etc. could be used).</p>
+<p>Also <code>colorspace</code> and <code>rcartocolor</code> packages
+are recommended, as they provide great color palettes.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
 <span><span class="co"># EU members plus UK</span></span>
@@ -338,7 +368,7 @@
 <span>    <span class="op">)</span>,</span>
 <span>    legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0.02</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<p><img src="giscoR-1.png" title="plot of chunk giscoR" alt="plot of chunk giscoR" width="100%"></p>
+<p><img src="giscoR-1.png" alt="plot of chunk giscoR" width="100%"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
