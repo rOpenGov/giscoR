@@ -7,9 +7,9 @@
 
 [![rOG-badge](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](https://ropengov.org/)
 [![CRAN
-status](https://badges.cranchecks.info/worst/giscoR.svg)](https://CRAN.R-project.org/package=giscoR)
+status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![CRAN
-results](https://cranchecks.info/badges/worst/giscoR)](https://cran.r-project.org/web/checks/check_results_giscoR.html)
+results](https://badges.cranchecks.info/worst/giscoR.svg)](https://cran.r-project.org/web/checks/check_results_giscoR.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![r-universe](https://ropengov.r-universe.dev/badges/giscoR)](https://ropengov.r-universe.dev/)
 [![R build
