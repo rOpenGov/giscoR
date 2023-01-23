@@ -19,7 +19,6 @@ Annex with the NUTS codes (version **2021**,
 ## NUTS 2021
 
 ```{r nuts21, echo=FALSE}
-
 library(giscoR)
 library(reactable)
 
@@ -40,7 +39,6 @@ reactable(df,
 ## NUTS 2016
 
 ```{r nuts16, echo=FALSE}
-
 library(giscoR)
 library(reactable)
 
@@ -60,7 +58,6 @@ reactable(df,
 ## NUTS 2013
 
 ```{r nuts13, echo=FALSE}
-
 library(giscoR)
 library(reactable)
 

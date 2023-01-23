@@ -96,7 +96,6 @@ Some examples on data downloads
 
 
 ```r
-
 library(sf)
 library(ggplot2) # Use ggplot for plotting
 
@@ -132,7 +131,6 @@ It is possible also to combine different shapefiles, just set `resolution` and
 
 
 ```r
-
 africa_north <-
   gisco_get_countries(
     country = c("Morocco", "Argelia", "Libia", "Tunisia", "Egypt"),
@@ -178,7 +176,6 @@ great color palettes.
 
 
 ```r
-
 # EU members plus UK
 
 eu2016 <- c("UK", gisco_countrycode[gisco_countrycode$eu, ]$CNTR_CODE)

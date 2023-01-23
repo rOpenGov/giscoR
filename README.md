@@ -76,7 +76,6 @@ install.packages("giscoR")
 This script highlights some features of `giscoR`:
 
 ``` r
-
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -144,7 +143,6 @@ ggplot(coast) +
 An example of a labeled map using `ggplot2`:
 
 ``` r
-
 ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
 
 ggplot(ITA) +
@@ -164,7 +162,6 @@ Popovic](https://twitter.com/milos_agathon) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
 ``` r
-
 # Get shapes
 nuts3 <- gisco_get_nuts(
   year = "2016",
@@ -327,7 +324,7 @@ Contributions are very welcome:
 
 To cite ‘giscoR’ in publications use:
 
-Hernangomez D (2022). giscoR: Download Map Data from GISCO API -
+Hernangomez D (2023). giscoR: Download Map Data from GISCO API -
 Eurostat. <https://doi.org/10.5281/zenodo.4317946>,
 <https://ropengov.github.io/giscoR/>
 
@@ -337,7 +334,7 @@ A BibTeX entry for LaTeX users is
       title = {{giscoR}: Download Map Data from GISCO API - Eurostat},
       doi = {10.5281/zenodo.4317946},
       author = {Diego Hernangómez},
-      year = {2022},
+      year = {2023},
       version = {0.3.2},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},

@@ -1,4 +1,3 @@
-
 tools::checkRdaFiles("./data")
 tools::checkRdaFiles("./R")
 
