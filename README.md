@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# giscoR <a href='https://ropengov.github.io/giscoR/'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# giscoR <a href='https://ropengov.github.io/giscoR/'><img src="man/figures/logo.png" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -19,6 +19,7 @@ status](https://github.com/rOpenGov/giscoR/workflows/R-CMD-check/badge.svg)](htt
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![status](https://tinyverse.netlify.com/badge/giscoR)](https://CRAN.R-project.org/package=giscoR)
+
 <!-- badges: end -->
 
 [giscoR](https://ropengov.github.io/giscoR//) is an API package that
@@ -58,7 +59,7 @@ install_github("rOpenGov/giscoR")
 ```
 
 Alternatively, you can install `giscoR` using the
-[r-universe](https://ropengov.r-universe.dev):
+[r-universe](https://ropengov.r-universe.dev/giscoR):
 
 ``` r
 # Enable this universe

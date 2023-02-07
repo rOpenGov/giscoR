@@ -31,8 +31,10 @@ if (isFALSE(requireNamespace("dplyr", quietly = TRUE))) {
 }
 ```
 
-# giscoR <a href='https://ropengov.github.io/giscoR/'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# giscoR <a href='https://ropengov.github.io/giscoR/'><img src="man/figures/logo.png" align="right" height="139"/></a>
+
 <!-- badges: start -->
+
 [![rOG-badge](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](https://ropengov.org/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
@@ -47,6 +49,7 @@ status](https://github.com/rOpenGov/giscoR/workflows/R-CMD-check/badge.svg)](htt
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![status](https://tinyverse.netlify.com/badge/giscoR)](https://CRAN.R-project.org/package=giscoR)
+
 <!-- badges: end -->
 
 [giscoR](https://ropengov.github.io/giscoR//) is an API package that helps to
@@ -82,7 +85,7 @@ install_github("rOpenGov/giscoR")
 ```
 
 Alternatively, you can install `giscoR` using the
-[r-universe](https://ropengov.r-universe.dev):
+[r-universe](https://ropengov.r-universe.dev/giscoR):
 
 ```{r, eval=FALSE}
 # Enable this universe
@@ -331,8 +334,8 @@ Check the GitHub page for [source code](https://github.com/rOpenGov/giscoR/).
 
 Contributions are very welcome:
 
--   [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
-    feedback and bug reports.
+-   [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for feedback
+    and bug reports.
 -   [Send pull requests](https://github.com/rOpenGov/giscoR/)
 -   [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
 
@@ -342,13 +345,11 @@ Contributions are very welcome:
 print(citation("giscoR"), bibtex = FALSE)
 ```
 
-
-A BibTeX entry for LaTeX users is 
+A BibTeX entry for LaTeX users is
 
 ```{r echo=FALSE, comment=""}
 toBibtex(citation("giscoR"))
 ```
-
 
 ## Copyright notice
 

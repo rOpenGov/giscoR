@@ -34,10 +34,11 @@ doc
 Meta
 CRAN-RELEASE
 cran-comments.md
-revdep
 /doc/
 /Meta/
 /dev/
 docs
 CRAN-SUBMISSION
 .github/pkg.lock
+.Rproj.user
+.Rdata
