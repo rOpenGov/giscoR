@@ -61,7 +61,7 @@ gisco_get_healthcare <- function(cache = TRUE,
   epsg <- "4326"
   ext <- "gpkg"
 
-  api_entry <- "https://gisco-services.ec.europa.eu/pub/healthcare/gpkg/all.gpkg"
+  api_entry <- "https://gisco-services.ec.europa.eu/pub/healthcare/gpkg/EU/EU.gpkg"
   filename <- basename(api_entry)
 
 
