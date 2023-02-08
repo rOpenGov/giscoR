@@ -1,3 +1,9 @@
+# giscoR (development version)
+
+-   Fix broken urls on 
+    `gisco_get_healthcare()` (#51).
+
+
 # giscoR 0.3.2
 
 -   Fix HTML5 issue as requested by CRAN.
