@@ -60,7 +60,7 @@ gisco_get_coastallines <- function(year = "2016",
 
   # Check if data is already available
   checkdata <- grep("COAS_RG_20M_2016_4326", api_entry)
-  if (isFALSE(update_cache) & length(checkdata)) {
+  if (isFALSE(update_cache) && length(checkdata)) {
     dwnload <- FALSE
     data_sf <- giscoR::gisco_coastallines
 

@@ -116,16 +116,16 @@ gisco_get_units <- function(id_giscoR = "nuts",
     stop('mode should be one of "df","sf"')
   }
 
-  if (mode == "sf" & !(spatialtype %in% c("RG", "LB"))) {
+  if (mode == "sf" && !(spatialtype %in% c("RG", "LB"))) {
     stop('spatialtype should be one of "RG","LB"')
   }
 
-  if (is.null(unit) & mode == "sf") {
+  if (is.null(unit) && mode == "sf") {
     stop("Select unit(s) to download with unit = c('unit_id1','unit_id2')")
   }
 
   # Convert to iso3c for countries 2001
-  if (mode == "sf" & id_giscoR == "countries") {
+  if (mode == "sf" && id_giscoR == "countries") {
     if (year == "2001") {
       unit <- gsc_helper_countrynames(unit, "iso3c")
     } else {
@@ -136,7 +136,7 @@ gisco_get_units <- function(id_giscoR = "nuts",
   # Start getting urls and routes
   level <- "all"
 
-  if (id_giscoR == "urban_audit" & year < "2014") {
+  if (id_giscoR == "urban_audit" && year < "2014") {
     level <- "CITY"
   }
 

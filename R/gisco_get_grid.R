@@ -165,7 +165,7 @@ gisco_get_grid <- function(resolution = "20",
   )
 
   # nocov start
-  if (resolution %in% c("1", "2") & isFALSE(exist_local)) {
+  if (resolution %in% c("1", "2") && isFALSE(exist_local)) {
     sel <-
       menu(c("Yes", "No"),
         title = "You are about to download a large file (>500M). Proceed?"

@@ -82,7 +82,7 @@ gisco_get_healthcare <- function(cache = TRUE,
   data_sf <-
     gsc_api_load(namefileload, epsg, ext, cache, verbose)
 
-  if (!is.null(country) & "cc" %in% names(data_sf)) {
+  if (!is.null(country) && "cc" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$cc %in% country, ]
   }

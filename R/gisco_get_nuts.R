@@ -106,7 +106,7 @@ gisco_get_nuts <- function(year = "2016",
 
   # Check if data is already available
   checkdata <- grep("NUTS_RG_20M_2016_4326", filename)
-  if (isFALSE(update_cache) & length(checkdata)) {
+  if (isFALSE(update_cache) && length(checkdata)) {
     dwnload <- FALSE
     data_sf <- giscoR::gisco_nuts
 
@@ -124,7 +124,7 @@ gisco_get_nuts <- function(year = "2016",
   }
   if (dwnload) {
     # Speed up if requesting units
-    if (!is.null(nuts_id) & spatialtype %in% c("RG", "LB")) {
+    if (!is.null(nuts_id) && spatialtype %in% c("RG", "LB")) {
       data_sf <- gisco_get_units(
         id_giscoR = "nuts",
         unit = nuts_id,
@@ -158,13 +158,13 @@ gisco_get_nuts <- function(year = "2016",
         gsc_api_load(namefileload, epsg, ext, cache, verbose)
     }
   }
-  if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
+  if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
 
-  if (!is.null(nuts_id) & "NUTS_ID" %in% names(data_sf)) {
+  if (!is.null(nuts_id) && "NUTS_ID" %in% names(data_sf)) {
     data_sf <- data_sf[data_sf$NUTS_ID %in% nuts_id, ]
   }
   return(data_sf)

@@ -1,8 +1,5 @@
 ---
 output: github_document
-editor_options: 
-  markdown: 
-    wrap: 80
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->

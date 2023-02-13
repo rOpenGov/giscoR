@@ -90,7 +90,7 @@ gisco_bulk_download <- function(id_giscoR = "countries",
   epsg <- "4326"
   spatialtype <- "RG"
   level <- "all"
-  if (id_giscoR == "urban_audit" & year < "2014") {
+  if (id_giscoR == "urban_audit" && year < "2014") {
     level <- "CITY"
   }
 

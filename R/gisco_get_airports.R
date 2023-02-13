@@ -96,7 +96,7 @@ gisco_get_airports <- function(year = "2013",
   data_sf <- sf::st_transform(data_sf, 4326)
 
 
-  if (!is.null(country) & "CNTR_CODE" %in% names(data_sf)) {
+  if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
@@ -139,7 +139,7 @@ gisco_get_ports <- function(year = "2013",
   # Add ISO2 country
   data_sf$CNTR_ISO2 <- substr(data_sf$PORT_ID, 1, 2)
 
-  if (!is.null(country) & "PORT_ID" %in% names(data_sf)) {
+  if (!is.null(country) && "PORT_ID" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "iso2c")
     data_sf <- data_sf[data_sf$CNTR_ISO2 %in% country, ]
   }

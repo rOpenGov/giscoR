@@ -18,7 +18,10 @@ gsc_helper_countrynames <- function(names, out = "eurostat") {
   } else if (maxname == 2) {
     outnames <- countrycode::countrycode(names, "eurostat", out)
   } else {
-    stop("Invalid country names. Try a vector of names, ISO3 codes or Eurostat codes")
+    stop(paste0(
+      "Invalid country names. Try a vector of names,",
+      " ISO3 codes or Eurostat codes"
+    ))
   }
   linit <- length(outnames)
   outnames2 <- outnames[!is.na(outnames)]

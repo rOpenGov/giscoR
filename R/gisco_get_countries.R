@@ -144,7 +144,7 @@ gisco_get_countries <- function(year = "2016",
 
   # Check if data is already available
   checkdata <- grep("CNTR_RG_20M_2016_4326", filename)
-  if (isFALSE(update_cache) & length(checkdata)) {
+  if (isFALSE(update_cache) && length(checkdata)) {
     dwnload <- FALSE
     data_sf <- giscoR::gisco_countries
 
@@ -158,7 +158,7 @@ gisco_get_countries <- function(year = "2016",
   }
   if (dwnload) {
     # Speed up if requesting units
-    if (!is.null(country) & spatialtype %in% c("RG", "LB")) {
+    if (!is.null(country) && spatialtype %in% c("RG", "LB")) {
       data_sf <- gisco_get_units(
         id_giscoR = "countries",
         unit = country,
@@ -193,11 +193,11 @@ gisco_get_countries <- function(year = "2016",
     }
   }
 
-  if (!is.null(country) & "CNTR_ID" %in% names(data_sf)) {
+  if (!is.null(country) && "CNTR_ID" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_ID %in% country, ]
   }
-  if (!is.null(region) & "CNTR_ID" %in% names(data_sf)) {
+  if (!is.null(region) && "CNTR_ID" %in% names(data_sf)) {
     region_df <- giscoR::gisco_countrycode
     cntryregion <- region_df[region_df$un.region.name %in% region, ]
 
