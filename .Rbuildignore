@@ -31,3 +31,6 @@
 ^\._pkgdown\.yml$
 ^vignettes/giscoR\.Rmd\.orig$
 ^CRAN-SUBMISSION$
+^pkgdown\.yaml$
+^pkgdown\.yml$
+^\.imgbotconfig$
