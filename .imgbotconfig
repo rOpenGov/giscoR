@@ -1,0 +1,7 @@
+{
+    "ignoredFiles": [
+        "/tests/testthat/_snaps/*"
+    ],
+    "compressWiki": "true",
+    "aggressiveCompression": "true"
+}
