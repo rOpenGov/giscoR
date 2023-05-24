@@ -15,7 +15,7 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Roboto_Mono-0.4.5/font.css" rel="stylesheet">
+<script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="deps/Roboto_Mono-0.4.6/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="giscoR | R package for download geodata from GISCO - Eurostat">
@@ -47,7 +47,7 @@
     
     <a class="navbar-brand me-2" href="index.html">giscoR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.2.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.3.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -201,7 +201,8 @@
 <div class="section level3">
 <h3 id="thematic-maps">Thematic maps<a class="anchor" aria-label="anchor" href="#thematic-maps"></a>
 </h3>
-<p>An example of a thematic map plotted with the <code>ggplot2</code> package. The information is extracted via the <code>eurostat</code> package. We would follow the fantastic approach presented by <a href="https://twitter.com/milos_agathon" class="external-link">Milos Popovic</a> on <a href="https://milospopovic.net/how-to-make-choropleth-map-in-r/" class="external-link">this post</a>:</p>
+<p>An example of a thematic map plotted with the <code>ggplot2</code> package. The information is extracted via the <code>eurostat</code> package. We would follow the fantastic approach presented by <a href="https://milospopovic.net/" class="external-link">Milos Popovic</a> on <a href="https://milospopovic.net/how-to-make-choropleth-map-in-r/" class="external-link">this post</a>:</p>
+<p>We start by extracting the corresponding geographic data:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get shapes</span></span>
 <span><span class="va">nuts3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get_nuts.html">gisco_get_nuts</a></span><span class="op">(</span></span>
@@ -217,35 +218,29 @@
 <span>    <span class="va">CNTR_CODE</span></span>
 <span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_cast.html" class="external-link">st_cast</a></span><span class="op">(</span><span class="st">"MULTILINESTRING"</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># Use eurostat</span></span>
+<span>  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_cast.html" class="external-link">st_cast</a></span><span class="op">(</span><span class="st">"MULTILINESTRING"</span><span class="op">)</span></span></code></pre></div>
+<p>We now download the data from Eurostat:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Use eurostat</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/eurostat/" class="external-link">eurostat</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">popdens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span><span class="st">"demo_r_d3dens"</span><span class="op">)</span></span>
-<span><span class="va">popdens</span> <span class="op">&lt;-</span> <span class="va">popdens</span><span class="op">[</span><span class="va">popdens</span><span class="op">$</span><span class="va">time</span> <span class="op">==</span> <span class="st">"2018-01-01"</span>, <span class="op">]</span></span>
+<span><span class="va">popdens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span><span class="st">"demo_r_d3dens"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">time</span> <span class="op">==</span> <span class="st">"2018-01-01"</span><span class="op">)</span></span>
+<span>  </span></code></pre></div>
+<p>By last, we merge and manipulate the data for creating the final plot:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Merge data</span></span>
+<span><span class="va">nuts3.sf</span> <span class="op">&lt;-</span> <span class="va">nuts3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">popdens</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"NUTS_ID"</span> <span class="op">=</span> <span class="st">"geo"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span></span>
-<span><span class="co"># Merge data</span></span>
-<span><span class="va">nuts3.sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/merge.html" class="external-link">merge</a></span><span class="op">(</span><span class="va">nuts3</span>,</span>
-<span>  <span class="va">popdens</span>,</span>
-<span>  by.x <span class="op">=</span> <span class="st">"NUTS_ID"</span>,</span>
-<span>  by.y <span class="op">=</span> <span class="st">"geo"</span>,</span>
-<span>  all.x <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Breaks and labels</span></span>
 <span></span>
 <span><span class="va">br</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">25</span>, <span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">200</span>, <span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2500</span>, <span class="fl">5000</span>, <span class="fl">10000</span>, <span class="fl">30000</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">nuts3.sf</span><span class="op">$</span><span class="va">values_cut</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">nuts3.sf</span><span class="op">$</span><span class="va">values</span>,</span>
-<span>  breaks <span class="op">=</span> <span class="va">br</span>,</span>
-<span>  dig.lab <span class="op">=</span> <span class="fl">5</span></span>
-<span><span class="op">)</span></span>
+<span><span class="va">nuts3.sf</span> <span class="op">&lt;-</span> <span class="va">nuts3.sf</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>values_cut <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">values</span>, <span class="va">br</span>, dig.lab <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">labs_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/formatc.html" class="external-link">prettyNum</a></span><span class="op">(</span><span class="va">br</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>, big.mark <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span>
-<span></span>
 <span></span>
 <span><span class="co"># Palette</span></span>
 <span><span class="va">pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">br</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>, <span class="st">"Lajolla"</span><span class="op">)</span></span>
@@ -321,7 +316,7 @@
 <h2 id="a-note-on-caching">A note on caching<a class="anchor" aria-label="anchor" href="#a-note-on-caching"></a>
 </h2>
 <p>Some data sets (as Local Administrative Units - LAU, or high-resolution files) may have a size larger than 50MB. You can use <code>giscoR</code> to create your own local repository at a given local directory passing the following function:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/gisco_set_cache_dir.html">gisco_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
 <p>You can also download manually the files (<code>.geojson</code> format) and store them on your local directory.</p>
 </div>
@@ -368,15 +363,15 @@
 <p>To cite ‘giscoR’ in publications use:</p>
 <p>Hernangomez D (2023). giscoR: Download Map Data from GISCO API - Eurostat. <a href="https://doi.org/10.5281/zenodo.4317946" class="external-link uri">https://doi.org/10.5281/zenodo.4317946</a>, <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a></p>
 <p>A BibTeX entry for LaTeX users is</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>giscoR,</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {{giscoR}<span class="sc">:</span> Download Map Data from GISCO API <span class="sc">-</span> Eurostat},</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.4317946</span>},</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2023</span>},</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">3</span>.<span class="fl">2.9000</span>},</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropengov.github.io<span class="sc">/</span>giscoR<span class="sc">/</span>},</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools to download data from the <span class="fu">GISCO</span> (Geographic Information System of the Commission) Eurostat database <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span>. Global and European map data available. This package is <span class="cf">in</span> no way officially related to or endorsed by Eurostat.},</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>giscoR,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  title <span class="ot">=</span> {{giscoR}<span class="sc">:</span> Download Map Data from GISCO API <span class="sc">-</span> Eurostat},</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.5281</span><span class="sc">/</span>zenodo<span class="fl">.4317946</span>},</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2023</span>},</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">0</span>.<span class="dv">3</span>.<span class="fl">3.9000</span>},</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropengov.github.io<span class="sc">/</span>giscoR<span class="sc">/</span>},</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools to download data from the <span class="fu">GISCO</span> (Geographic Information System of the Commission) Eurostat database <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span>. Global and European map data available. This package is <span class="cf">in</span> no way officially related to or endorsed by Eurostat.},</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="copyright-notice">Copyright notice<a class="anchor" aria-label="anchor" href="#copyright-notice"></a>
