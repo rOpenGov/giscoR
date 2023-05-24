@@ -7,8 +7,15 @@ test_that("Grids online", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_silent(gisco_get_grid())
-  expect_silent(gisco_get_grid(100))
-  expect_message(gisco_get_grid(100, verbose = TRUE))
-  expect_message(gisco_get_grid(100, spatialtype = "POINT", verbose = TRUE))
+  # Warnings due to issues with the GPKG driver
+  gdef <- suppressWarnings(gisco_get_grid())
+  expect_s3_class(gdef, "sf")
+  expect_silent(g100 <- suppressWarnings(gisco_get_grid(100)))
+  expect_s3_class(g100, "sf")
+  expect_message(g100 <- suppressWarnings(gisco_get_grid(100, verbose = TRUE)))
+  expect_s3_class(g100, "sf")
+  expect_message(suppressWarnings(gisco_get_grid(100,
+    spatialtype = "POINT",
+    verbose = TRUE
+  )))
 })

@@ -159,8 +159,10 @@ ggplot(ITA) +
 An example of a thematic map plotted with the `ggplot2` package. The
 information is extracted via the `eurostat` package. We would follow the
 fantastic approach presented by [Milos
-Popovic](https://twitter.com/milos_agathon) on [this
+Popovic](https://milospopovic.net/) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
+
+We start by extracting the corresponding geographic data:
 
 ``` r
 # Get shapes
@@ -178,34 +180,34 @@ country_lines <- nuts3 %>%
   ) %>%
   summarise(n = n()) %>%
   st_cast("MULTILINESTRING")
+```
 
+We now download the data from Eurostat:
 
+``` r
 # Use eurostat
 library(eurostat)
 
-popdens <- get_eurostat("demo_r_d3dens")
-popdens <- popdens[popdens$time == "2018-01-01", ]
+popdens <- get_eurostat("demo_r_d3dens") %>%  filter(time == "2018-01-01")
+  
+```
 
+By last, we merge and manipulate the data for creating the final plot:
 
+``` r
 # Merge data
-nuts3.sf <- merge(nuts3,
-  popdens,
-  by.x = "NUTS_ID",
-  by.y = "geo",
-  all.x = TRUE
-)
+nuts3.sf <- nuts3 %>%
+  left_join(popdens, by = c("NUTS_ID" = "geo"))
+
 
 # Breaks and labels
 
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
 
-nuts3.sf$values_cut <- cut(nuts3.sf$values,
-  breaks = br,
-  dig.lab = 5
-)
+nuts3.sf <- nuts3.sf %>%
+  mutate(values_cut = cut(values, br, dig.lab = 5))
 
 labs_plot <- prettyNum(br[-1], big.mark = ",")
-
 
 # Palette
 pal <- hcl.colors(length(br) - 1, "Lajolla")
@@ -336,7 +338,7 @@ A BibTeX entry for LaTeX users is
       doi = {10.5281/zenodo.4317946},
       author = {Diego Hernangómez},
       year = {2023},
-      version = {0.3.3},
+      version = {0.3.3.9000},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
     }
