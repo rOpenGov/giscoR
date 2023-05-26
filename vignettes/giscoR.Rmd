@@ -120,7 +120,10 @@ ggplot(Asia) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/./country-1.png" alt="plot of chunk country" width="100%" />
+<div class="figure">
+<img src="./country-1.png" alt="plot of chunk country" width="100%" />
+<p class="caption">plot of chunk country</p>
+</div>
 
 You can select specific countries by name (in any language), ISO 3 codes or
 Eurostat codes. The only restriction is that you can't mix country names, ISO3
@@ -163,7 +166,10 @@ ggplot(coast) +
   facet_wrap(vars(NAME_ENGL), ncol = 2)
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/./africa-1.png" alt="plot of chunk africa" width="100%" />
+<div class="figure">
+<img src="./africa-1.png" alt="plot of chunk africa" width="100%" />
+<p class="caption">plot of chunk africa</p>
+</div>
 
 # Plotting **giscoR**
 
@@ -288,5 +294,8 @@ ggplot(nuts2.sf) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/./giscoR-1.png" alt="plot of chunk giscoR" width="100%" />
+<div class="figure">
+<img src="./giscoR-1.png" alt="plot of chunk giscoR" width="100%" />
+<p class="caption">plot of chunk giscoR</p>
+</div>
 

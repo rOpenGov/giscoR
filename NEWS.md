@@ -1,4 +1,4 @@
-# giscoR (development version)
+# giscoR 0.3.4
 
 -   Update tests and documentation.
 
