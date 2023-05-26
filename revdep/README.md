@@ -1,18 +1,17 @@
 # Platform
 
-|field    |value                                  |
-|:--------|:--------------------------------------|
-|version  |R version 4.3.0 (2023-04-21 ucrt)      |
-|os       |Windows 11 x64 (build 22621)           |
-|system   |x86_64, mingw32                        |
-|ui       |RStudio                                |
-|language |(EN)                                   |
-|collate  |Spanish_Spain.utf8                     |
-|ctype    |Spanish_Spain.utf8                     |
-|tz       |Europe/Madrid                          |
-|date     |2023-05-25                             |
-|rstudio  |2023.03.1+446 Cherry Blossom (desktop) |
-|pandoc   |2.19.2 @ C:\PROGRA~1\Pandoc\pandoc.exe |
+|field    |value                          |
+|:--------|:------------------------------|
+|version  |R version 4.3.0 (2023-04-21)   |
+|os       |macOS Monterey 12.6.5          |
+|system   |x86_64, darwin20               |
+|ui       |X11                            |
+|language |(EN)                           |
+|collate  |en_US.UTF-8                    |
+|ctype    |en_US.UTF-8                    |
+|tz       |UTC                            |
+|date     |2023-05-26                     |
+|pandoc   |2.19.2 @ /usr/local/bin/pandoc |
 
 # Dependencies
 
@@ -38,10 +37,4 @@
 |wk          |0.7.3  |0.7.3  |   |
 
 # Revdeps
-
-## New problems (1)
-
-|package  |version |error  |warning |note |
-|:--------|:-------|:------|:-------|:----|
-|[mapSpain](problems.md#mapspain)|0.7.0   |__+1__ |        |1    |
 
