@@ -205,8 +205,8 @@ also provides attributions on several languages.</p>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="country-1.png" alt="plot of chunk country" width="100%"><p class="caption">
-plot of chunk country
+<img src="country-1.png" alt="Political map of Asia" width="100%"><p class="caption">
+Political map of Asia
 </p>
 </div>
 <p>You can select specific countries by name (in any language), ISO 3
@@ -247,8 +247,8 @@ country names, ISO3 and Eurostat codes on one single call.</p>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">NAME_ENGL</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="africa-1.png" alt="plot of chunk africa" width="100%"><p class="caption">
-plot of chunk africa
+<img src="africa-1.png" alt="Political map of North Africa" width="100%"><p class="caption">
+Political map of North Africa
 </p>
 </div>
 </div>
@@ -283,7 +283,7 @@ are recommended, as they provide great color palettes.</p>
 <span>  country <span class="op">=</span> <span class="va">eu2016</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Eurostat data - Purchase parity power</span></span>
+<span><span class="co"># Eurostat data - Disposable income</span></span>
 <span><span class="va">pps</span> <span class="op">&lt;-</span> <span class="fu">giscoR</span><span class="fu">::</span><span class="va"><a href="../reference/tgs00026.html">tgs00026</a></span></span>
 <span><span class="va">pps</span> <span class="op">&lt;-</span> <span class="va">pps</span><span class="op">[</span><span class="va">pps</span><span class="op">$</span><span class="va">time</span> <span class="op">==</span> <span class="fl">2016</span>, <span class="op">]</span></span>
 <span></span>
@@ -317,7 +317,7 @@ are recommended, as they provide great color palettes.</p>
 <span>    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1413597</span>, <span class="fl">5228510</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Disposable Incoming Households (2016)"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Disposable income of private households (2016)"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="st">"NUTS-2 level"</span>,</span>
 <span>    caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
 <span>      <span class="st">"Source: Eurostat\n "</span>, <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -374,8 +374,8 @@ are recommended, as they provide great color palettes.</p>
 <span>    legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="fl">0.02</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="giscoR-1.png" alt="plot of chunk giscoR" width="100%"><p class="caption">
-plot of chunk giscoR
+<img src="giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2016)" width="100%"><p class="caption">
+Disposable income of private households by NUTS 2 regions (2016)
 </p>
 </div>
 </div>
