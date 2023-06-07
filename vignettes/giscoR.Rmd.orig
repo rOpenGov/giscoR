@@ -78,7 +78,7 @@ gisco_attributions(copyright = TRUE)
 
 Some examples on data downloads
 
-```{r country}
+```{r country, fig.cap="Political map of Asia"}
 
 library(sf)
 library(ggplot2) # Use ggplot for plotting
@@ -111,7 +111,7 @@ and Eurostat codes on one single call.
 It is possible also to combine different shapefiles, just set `resolution` and
 `epsg` (and optionally `year`) to the same value:
 
-```{r africa}
+```{r africa, fig.cap="Political map of North Africa"}
 
 africa_north <-
   gisco_get_countries(
@@ -154,7 +154,7 @@ handles `sf` objects (e.g. `tmap`, `mapsf`, `leaflet`, etc. could be used).
 Also `colorspace` and `rcartocolor` packages are recommended, as they provide
 great color palettes.
 
-```{r giscoR}
+```{r giscoR, fig.cap="Disposable income of private households by NUTS 2 regions (2016)"}
 
 # EU members plus UK
 
@@ -176,7 +176,7 @@ borders <- gisco_get_countries(
   country = eu2016
 )
 
-# Eurostat data - Purchase parity power
+# Eurostat data - Disposable income
 pps <- giscoR::tgs00026
 pps <- pps[pps$time == 2016, ]
 
@@ -210,7 +210,7 @@ ggplot(nuts2.sf) +
     ylim = c(1413597, 5228510)
   ) +
   labs(
-    title = "Disposable Incoming Households (2016)",
+    title = "Disposable income of private households (2016)",
     subtitle = "NUTS-2 level",
     caption = paste0(
       "Source: Eurostat\n ", gisco_attributions()
