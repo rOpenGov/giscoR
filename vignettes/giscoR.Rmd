@@ -121,8 +121,8 @@ ggplot(Asia) +
 ```
 
 <div class="figure">
-<img src="./country-1.png" alt="plot of chunk country" width="100%" />
-<p class="caption">plot of chunk country</p>
+<img src="./country-1.png" alt="Political map of Asia" width="100%" />
+<p class="caption">Political map of Asia</p>
 </div>
 
 You can select specific countries by name (in any language), ISO 3 codes or
@@ -167,8 +167,8 @@ ggplot(coast) +
 ```
 
 <div class="figure">
-<img src="./africa-1.png" alt="plot of chunk africa" width="100%" />
-<p class="caption">plot of chunk africa</p>
+<img src="./africa-1.png" alt="Political map of North Africa" width="100%" />
+<p class="caption">Political map of North Africa</p>
 </div>
 
 # Plotting **giscoR**
@@ -202,7 +202,7 @@ borders <- gisco_get_countries(
   country = eu2016
 )
 
-# Eurostat data - Purchase parity power
+# Eurostat data - Disposable income
 pps <- giscoR::tgs00026
 pps <- pps[pps$time == 2016, ]
 
@@ -236,7 +236,7 @@ ggplot(nuts2.sf) +
     ylim = c(1413597, 5228510)
   ) +
   labs(
-    title = "Disposable Incoming Households (2016)",
+    title = "Disposable income of private households (2016)",
     subtitle = "NUTS-2 level",
     caption = paste0(
       "Source: Eurostat\n ", gisco_attributions()
@@ -295,7 +295,7 @@ ggplot(nuts2.sf) +
 ```
 
 <div class="figure">
-<img src="./giscoR-1.png" alt="plot of chunk giscoR" width="100%" />
-<p class="caption">plot of chunk giscoR</p>
+<img src="./giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2016)" width="100%" />
+<p class="caption">Disposable income of private households by NUTS 2 regions (2016)</p>
 </div>
 
