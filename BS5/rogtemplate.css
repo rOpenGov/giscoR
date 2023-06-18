@@ -163,8 +163,10 @@ footer .pkgdown-footer-left {
 }
 
 /* ---Caption figure--- */
-.caption {
-    font-size: 0.85rem;
-    font-style: italic;
+.caption,.figure {
+	color: #6c757d;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0.5rem;
+	font-size: 85%;
 }
-
