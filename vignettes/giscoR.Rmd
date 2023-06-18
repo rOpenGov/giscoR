@@ -193,6 +193,7 @@ nuts2 <- gisco_get_nuts(
   nuts_level = "2",
   country = eu2016
 )
+#> Error in gsc_api_cache(api_entry, filename, cache_dir, update_cache, verbose): Download failed
 
 # Borders
 borders <- gisco_get_countries(
@@ -215,9 +216,11 @@ nuts2.sf <- merge(nuts2,
   by.y = "geo",
   all.x = TRUE
 )
+#> Error in eval(expr, envir, enclos): object 'nuts2' not found
 
 # Cut
 nuts2.sf$values_groups <- cut(nuts2.sf$values, breaks = br)
+#> Error in eval(expr, envir, enclos): object 'nuts2.sf' not found
 
 # Labels
 labels <- paste0(br / 1000, "k")[-1]
@@ -292,10 +295,6 @@ ggplot(nuts2.sf) +
     ),
     legend.position = c(0.5, 0.02)
   )
+#> Error in eval(expr, envir, enclos): object 'nuts2.sf' not found
 ```
-
-<div class="figure">
-<img src="./giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2016)" width="100%" />
-<p class="caption">Disposable income of private households by NUTS 2 regions (2016)</p>
-</div>
 
