@@ -238,3 +238,19 @@ test_that("Units df online", {
   expect_s3_class(test, "data.frame", exact = TRUE)
   expect_true(nrow(test) > 5)
 })
+
+test_that("Offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_units(
+      id_giscoR = "nuts", 
+      unit = "ES",
+      mode = "df",
+      update_cache = TRUE
+    ),
+    "not reachable"
+  )
+  expect_null(n)
+  options(giscoR_test_offline = FALSE)
+})
+

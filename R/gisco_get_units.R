@@ -241,6 +241,7 @@ gsc_units_sf <- function(id_giscoR,
       silent = TRUE
     )
 
+    # nocov start
     if (inherits(iter_sf, "try-error")) {
       gsc_message(
         TRUE,
@@ -249,7 +250,8 @@ gsc_units_sf <- function(id_giscoR,
       )
       next()
     }
-
+    
+    # nocov end
 
     if (exists("df_sf")) {
       df_sf <- rbind(df_sf, iter_sf)
