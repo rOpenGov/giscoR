@@ -44,10 +44,10 @@ test_that("Errors on database", {
 
 
   expect_message(
-      n <- gsc_api_cache("https://www.dhh.this.is.fake/",
-        verbose = FALSE
-      )
-    , "https://www.dhh.this.is.fake/  not reachable."
+    n <- gsc_api_cache("https://www.dhh.this.is.fake/",
+      verbose = FALSE
+    ),
+    "https://www.dhh.this.is.fake/  not reachable."
   )
 
   expect_null(n)

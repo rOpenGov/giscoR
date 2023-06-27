@@ -14,11 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-<<<<<<< HEAD
-  "runtimePlatform": "R version 4.3.0 (2023-04-21 ucrt)",
-=======
   "runtimePlatform": "R version 4.3.1 (2023-06-16)",
->>>>>>> main
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -208,11 +204,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis"],
-<<<<<<< HEAD
-  "fileSize": "1356.319KB",
-=======
-  "fileSize": "1341.421KB",
->>>>>>> main
+  "fileSize": "1344.889KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

@@ -137,9 +137,9 @@ gisco_get_units <- function(id_giscoR = c("nuts", "countries", "urban_audit"),
 
 
   api_entry <- gsc_api_url(id_giscoR, year, epsg, resolution,
-                           ext = "geojson", spatialtype, verbose = verbose,
-                           level = level
-                           )
+    ext = "geojson", spatialtype, verbose = verbose,
+    level = level
+  )
   basename <- basename(api_entry)
 
   api_url <- unlist(strsplit(api_entry, "/geojson/"))[1]
@@ -151,10 +151,12 @@ gisco_get_units <- function(id_giscoR = c("nuts", "countries", "urban_audit"),
 
     return(df)
   } else if (mode == "sf") {
-    sf <- gsc_units_sf(id_giscoR, unit, year,
+    sf <- gsc_units_sf(
+      id_giscoR, unit, year,
       epsg, cache, update_cache, cache_dir,
       verbose, spatialtype, api_url, remain,
-      level)
+      level
+    )
     return(sf)
   }
 }

@@ -173,8 +173,10 @@ gisco_get_grid <- function(resolution = "20",
   class(size) <- "object_size"
   gsc_message(verbose, format(size, units = "auto"))
 
-  data_sf <- try(sf::st_read(localfile, quiet = !verbose,
-                             stringsAsFactors = FALSE), silent = TRUE)
+  data_sf <- try(sf::st_read(localfile,
+    quiet = !verbose,
+    stringsAsFactors = FALSE
+  ), silent = TRUE)
 
 
   # nocov start
