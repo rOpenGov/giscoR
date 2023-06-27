@@ -198,6 +198,34 @@ gsc_helper_detect_cache_dir <- function() {
   # nocov end
 }
 
+
+#' Helper function to detect current `cache_dir`
+#'
+#' @keywords internal
+#' @export
+#'
+#' @description
+#' Detect the path to your current `cache_dir`. See [gisco_set_cache_dir()]
+#'
+#' @param ... Ignored
+#' @return The path to the `cache_dir` used in this session
+#'
+#' @name gisco_detect_cache_dir
+#' @rdname gisco_detect_cache_dir
+#' @examples
+#'
+#' gisco_detect_cache_dir()
+#'
+gisco_detect_cache_dir <- function(...) {
+  # nocov start
+  # This is just a wrapper
+
+  do_nothing_with_dots <- list(...)
+  cache <- gsc_helper_detect_cache_dir()
+
+  cache
+  # nocov end
+}
 #' Creates `cache_dir`
 #'
 #' @inheritParams gisco_get_countries
