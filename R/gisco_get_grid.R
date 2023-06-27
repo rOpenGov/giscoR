@@ -171,6 +171,9 @@ gisco_get_grid <- function(resolution = "20",
   localfile <-
     gsc_api_cache(url, filename, cache_dir, update_cache, verbose)
 
+  if (is.null(localfile)) {
+    return(NULL)
+  }
 
   size <- file.size(localfile)
   class(size) <- "object_size"

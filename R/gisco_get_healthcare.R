@@ -79,6 +79,10 @@ gisco_get_healthcare <- function(cache = TRUE,
     namefileload <- api_entry
   }
 
+  if (is.null(namefileload)) {
+    return(NULL)
+  }
+
   data_sf <-
     gsc_api_load(namefileload, epsg, ext, cache, verbose)
 

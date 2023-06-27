@@ -87,6 +87,10 @@ gisco_get_coastallines <- function(year = "2016",
       namefileload <- api_entry
     }
 
+    if (is.null(namefileload)) {
+      return(NULL)
+    }
+
     # Load - geojson only so far
     data_sf <-
       gsc_api_load(namefileload, epsg, ext, cache, verbose)

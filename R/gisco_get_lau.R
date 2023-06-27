@@ -80,6 +80,9 @@ gisco_get_lau <- function(year = "2016",
         update_cache,
         verbose
       )
+    if (is.null(namefileload)) {
+      return(NULL)
+    }
 
     # Get layer name
     layer <- tools::file_path_sans_ext(basename(namefileload))
@@ -152,6 +155,10 @@ gisco_get_lau <- function(year = "2016",
       )
   } else {
     namefileload <- api_entry
+  }
+
+  if (is.null(namefileload)) {
+    return(NULL)
   }
 
   # Load - geojson only so far
@@ -242,6 +249,10 @@ gisco_get_communes <- function(year = "2016",
         update_cache,
         verbose
       )
+
+    if (is.null(namefileload)) {
+      return(NULL)
+    }
 
     # Get layer name
     layer <- tools::file_path_sans_ext(basename(namefileload))

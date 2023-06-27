@@ -314,15 +314,10 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
 
   file.local <- tempfile(fileext = ".csv")
 
-  err_dwnload <- try(
-    download.file(
-      url,
-      file.local,
-      quiet = isFALSE(verbose),
-      mode = "wb"
-    ),
+  err_dwnload <- suppressWarnings(try(
+    download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
     silent = TRUE
-  )
+  ))
 
   # If error then try again
 
@@ -331,15 +326,10 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
   if (inherits(err_dwnload, "try-error")) {
     gsc_message(verbose, "Retry query")
     Sys.sleep(1)
-    err_dwnload <- try(
-      download.file(
-        url,
-        file.local,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ),
+    err_dwnload <- suppressWarnings(try(
+      download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
       silent = TRUE
-    )
+    ))
   }
 
   # If not then stop
@@ -352,7 +342,8 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
       "If you think this is a bug please consider opening an issue on ",
       "https://github.com/ropengov/giscoR/issues"
     )
-    stop("Download failed")
+    message("Returning `NULL`")
+    return(NULL)
   }
 
   # nocov end

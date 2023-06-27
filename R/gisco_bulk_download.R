@@ -142,6 +142,10 @@ gisco_bulk_download <- function(id_giscoR = "countries",
     verbose
   )
 
+  if (is.null(destfile)) {
+    return(NULL)
+  }
+
   # Clean cache dir name for extracting
   unzip_dir <- gsub(paste0("/", zipname), "", destfile)
 
