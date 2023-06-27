@@ -243,7 +243,7 @@ test_that("Offline", {
   options(giscoR_test_offline = TRUE)
   expect_message(
     n <- gisco_get_units(
-      id_giscoR = "nuts", 
+      id_giscoR = "nuts",
       unit = "ES",
       mode = "df",
       update_cache = TRUE
@@ -253,4 +253,3 @@ test_that("Offline", {
   expect_null(n)
   options(giscoR_test_offline = FALSE)
 })
-

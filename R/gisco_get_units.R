@@ -250,7 +250,7 @@ gsc_units_sf <- function(id_giscoR,
       )
       next()
     }
-    
+
     # nocov end
 
     if (exists("df_sf")) {
