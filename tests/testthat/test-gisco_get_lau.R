@@ -30,3 +30,21 @@ test_that("LAU online", {
     li_and_es[li_and_es$CNTR_CODE == "LI", ]
   ) > 5)
 })
+
+
+test_that("offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_lau(update_cache = TRUE),
+    "not reachable"
+  )
+  expect_null(n)
+
+  expect_message(
+    n <- gisco_get_communes(update_cache = TRUE),
+    "not reachable"
+  )
+  expect_null(n)
+
+  options(giscoR_test_offline = FALSE)
+})

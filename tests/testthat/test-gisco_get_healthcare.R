@@ -7,3 +7,13 @@ test_that("Healthcare online", {
   expect_silent(gisco_get_healthcare(country = "Spain"))
   expect_message(gisco_get_healthcare(verbose = TRUE))
 })
+
+test_that("Offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_healthcare(update_cache = TRUE),
+    "not reachable"
+  )
+  expect_null(n)
+  options(giscoR_test_offline = FALSE)
+})

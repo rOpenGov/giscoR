@@ -41,20 +41,22 @@
 #'
 #' pc_bel <- gisco_get_postalcodes(country = "BE")
 #'
-#' library(ggplot2)
+#' if (!is.null(pc_bel)) {
+#'   library(ggplot2)
 #'
-#' ggplot(pc_bel) +
-#'   geom_sf(color = "gold") +
-#'   theme_bw() +
-#'   labs(
-#'     title = "Postcodes of Belgium",
-#'     subtitle = "2020",
-#'     caption = paste("(c) European Union - GISCO, 2021,",
-#'       "postal code point dataset",
-#'       "Licence CC-BY-SA 4.0",
-#'       sep = "\n"
+#'   ggplot(pc_bel) +
+#'     geom_sf(color = "gold") +
+#'     theme_bw() +
+#'     labs(
+#'       title = "Postcodes of Belgium",
+#'       subtitle = "2020",
+#'       caption = paste("(c) European Union - GISCO, 2021,",
+#'         "postal code point dataset",
+#'         "Licence CC-BY-SA 4.0",
+#'         sep = "\n"
+#'       )
 #'     )
-#'   )
+#' }
 #' }
 gisco_get_postalcodes <- function(year = "2020",
                                   country = NULL,
@@ -65,7 +67,7 @@ gisco_get_postalcodes <- function(year = "2020",
   if (!(year %in% c("2020"))) {
     stop("Year should be 2020")
   }
-  cache_dir <- gsc_helper_detect_cache_dir()
+  cache_dir <- gsc_helper_cachedir(cache_dir)
 
   if (year == "2020") {
     url <- "https://gisco-services.ec.europa.eu/tercet/Various/PC_2020_PT_SH.zip"
@@ -79,11 +81,13 @@ gisco_get_postalcodes <- function(year = "2020",
     update_cache = update_cache, verbose = verbose
   )
 
+  if (is.null(basename)) {
+    return(NULL)
+  }
 
   gsc_unzip(basename, cache_dir,
     ext = "*", verbose = verbose,
-    update_cache = update_cache,
-    recursive = FALSE
+    update_cache = update_cache, recursive = FALSE
   )
 
   # Capture shp layer name
@@ -107,21 +111,16 @@ gisco_get_postalcodes <- function(year = "2020",
     # Construct query
     q <- paste0(
       "SELECT * from \"",
-      layer,
-      "\" WHERE CNTR_ID IN (",
-      paste0("'", country, "'", collapse = ", "),
+      layer, "\" WHERE CNTR_ID IN (", paste0("'", country, "'",
+        collapse = ", "
+      ),
       ")"
     )
 
     gsc_message(verbose, "Using query:\n   ", q)
-
-
     data_sf <- try(
       suppressWarnings(
-        sf::st_read(namefileload,
-          quiet = !verbose,
-          query = q
-        )
+        sf::st_read(namefileload, quiet = !verbose, query = q)
       ),
       silent = TRUE
     )

@@ -38,90 +38,95 @@
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #' grid <- gisco_get_grid(resolution = 20)
-#' grid$popdens <- grid$TOT_P_2011 / 20
+#'
+#' # If downloaded correctly proceed
+#'
+#' if (!is.null(grid)) {
+#'   grid$popdens <- grid$TOT_P_2011 / 20
 #'
 #'
-#' breaks <- c(
-#'   0, 0.1, 100, 500, 1000, 2500, 5000, 10000,
-#'   25000, max(grid$popdens) + 1
-#' )
-#'
-#' # Cut groups
-#'
-#' grid$popdens_cut <- cut(grid$popdens,
-#'   breaks = breaks,
-#'   include.lowest = TRUE
-#' )
-#' cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
-#' cut_labs[1] <- "0"
-#' cut_labs[9] <- "> 25 000"
-#'
-#' pal <- c("black", hcl.colors(length(breaks) - 2,
-#'   palette = "Spectral",
-#'   alpha = 0.9
-#' ))
-#'
-#' library(ggplot2)
-#'
-#' ggplot(grid) +
-#'   geom_sf(aes(fill = popdens_cut), color = NA, linewidth = 0) +
-#'   coord_sf(
-#'     xlim = c(2500000, 7000000),
-#'     ylim = c(1500000, 5200000)
-#'   ) +
-#'   scale_fill_manual(
-#'     values = pal, na.value = "black",
-#'     name = "people per sq. kilometer",
-#'     labels = cut_labs,
-#'     guide = guide_legend(
-#'       direction = "horizontal",
-#'       keyheight = 0.5,
-#'       keywidth = 2,
-#'       title.position = "top",
-#'       title.hjust = 0.5,
-#'       label.hjust = .5,
-#'       nrow = 1,
-#'       byrow = TRUE,
-#'       reverse = FALSE,
-#'       label.position = "bottom"
-#'     )
-#'   ) +
-#'   theme_void() +
-#'   labs(
-#'     title = "Population density in Europe",
-#'     subtitle = "Grid: 20 km.",
-#'     caption = gisco_attributions()
-#'   ) +
-#'   theme(
-#'     plot.background = element_rect(fill = "grey2"),
-#'     plot.title = element_text(
-#'       size = 18, color = "white",
-#'       hjust = 0.5,
-#'     ),
-#'     plot.subtitle = element_text(
-#'       size = 14,
-#'       color = "white",
-#'       hjust = 0.5,
-#'       face = "bold"
-#'     ),
-#'     plot.caption = element_text(
-#'       size = 9, color = "grey60",
-#'       hjust = 0.5, vjust = 0,
-#'       margin = margin(t = 5, b = 10)
-#'     ),
-#'     legend.text = element_text(
-#'       size = 8,
-#'       color = "white"
-#'     ),
-#'     legend.title = element_text(
-#'       color = "white"
-#'     ),
-#'     legend.position = "bottom"
+#'   breaks <- c(
+#'     0, 0.1, 100, 500, 1000, 2500, 5000, 10000,
+#'     25000, max(grid$popdens) + 1
 #'   )
+#'
+#'   # Cut groups
+#'
+#'   grid$popdens_cut <- cut(grid$popdens,
+#'     breaks = breaks,
+#'     include.lowest = TRUE
+#'   )
+#'   cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
+#'   cut_labs[1] <- "0"
+#'   cut_labs[9] <- "> 25 000"
+#'
+#'   pal <- c("black", hcl.colors(length(breaks) - 2,
+#'     palette = "Spectral",
+#'     alpha = 0.9
+#'   ))
+#'
+#'   library(ggplot2)
+#'
+#'   ggplot(grid) +
+#'     geom_sf(aes(fill = popdens_cut), color = NA, linewidth = 0) +
+#'     coord_sf(
+#'       xlim = c(2500000, 7000000),
+#'       ylim = c(1500000, 5200000)
+#'     ) +
+#'     scale_fill_manual(
+#'       values = pal, na.value = "black",
+#'       name = "people per sq. kilometer",
+#'       labels = cut_labs,
+#'       guide = guide_legend(
+#'         direction = "horizontal",
+#'         keyheight = 0.5,
+#'         keywidth = 2,
+#'         title.position = "top",
+#'         title.hjust = 0.5,
+#'         label.hjust = .5,
+#'         nrow = 1,
+#'         byrow = TRUE,
+#'         reverse = FALSE,
+#'         label.position = "bottom"
+#'       )
+#'     ) +
+#'     theme_void() +
+#'     labs(
+#'       title = "Population density in Europe",
+#'       subtitle = "Grid: 20 km.",
+#'       caption = gisco_attributions()
+#'     ) +
+#'     theme(
+#'       plot.background = element_rect(fill = "grey2"),
+#'       plot.title = element_text(
+#'         size = 18, color = "white",
+#'         hjust = 0.5,
+#'       ),
+#'       plot.subtitle = element_text(
+#'         size = 14,
+#'         color = "white",
+#'         hjust = 0.5,
+#'         face = "bold"
+#'       ),
+#'       plot.caption = element_text(
+#'         size = 9, color = "grey60",
+#'         hjust = 0.5, vjust = 0,
+#'         margin = margin(t = 5, b = 10)
+#'       ),
+#'       legend.text = element_text(
+#'         size = 8,
+#'         color = "white"
+#'       ),
+#'       legend.title = element_text(
+#'         color = "white"
+#'       ),
+#'       legend.position = "bottom"
+#'     )
+#' }
 #' }
 #' @export
 gisco_get_grid <- function(resolution = "20",
-                           spatialtype = "REGION",
+                           spatialtype = c("REGION", "POINT"),
                            cache_dir = NULL,
                            update_cache = FALSE,
                            verbose = FALSE) {
@@ -129,16 +134,11 @@ gisco_get_grid <- function(resolution = "20",
   validres <- as.character(c(1, 2, 5, 10, 20, 50, 100))
 
   if (!resolution %in% validres) {
-    stop(
-      "resolution should be one of ",
-      paste0(validres, collapse = ", ")
-    )
+    stop("resolution should be one of ", paste0(validres, collapse = ", "))
   }
 
+  spatialtype <- match.arg(spatialtype)
   valid <- c("REGION", "POINT")
-  if (!spatialtype %in% valid) {
-    stop("spatialtype should be 'REGION' or 'POINT'")
-  }
 
   translate <- c("surf", "point")
   ftrans <- translate[valid == spatialtype]
@@ -149,18 +149,13 @@ gisco_get_grid <- function(resolution = "20",
   local <- file.path(gsc_helper_cachedir(cache_dir), filename)
   exist_local <- file.exists(local)
 
-
-  gsc_message(
-    verbose & exist_local,
-    "File exits on local cache dir"
-  )
+  gsc_message(verbose & exist_local, "File exits on local cache dir")
 
   # nocov start
   if (resolution %in% c("1", "2") && isFALSE(exist_local)) {
-    sel <-
-      menu(c("Yes", "No"),
-        title = "You are about to download a large file (>500M). Proceed?"
-      )
+    sel <- menu(c("Yes", "No"),
+      title = "You are about to download a large file (>500M). Proceed?"
+    )
     if (sel != 1) {
       stop("Execution halted")
     }
@@ -168,22 +163,20 @@ gisco_get_grid <- function(resolution = "20",
   # nocov end
 
 
-  localfile <-
-    gsc_api_cache(url, filename, cache_dir, update_cache, verbose)
+  localfile <- gsc_api_cache(url, filename, cache_dir, update_cache, verbose)
 
+  if (is.null(localfile)) {
+    return(NULL)
+  }
 
   size <- file.size(localfile)
   class(size) <- "object_size"
   gsc_message(verbose, format(size, units = "auto"))
 
-  data_sf <- try(
-    sf::st_read(
-      localfile,
-      quiet = !verbose,
-      stringsAsFactors = FALSE
-    ),
-    silent = TRUE
-  )
+  data_sf <- try(sf::st_read(localfile,
+    quiet = !verbose,
+    stringsAsFactors = FALSE
+  ), silent = TRUE)
 
 
   # nocov start

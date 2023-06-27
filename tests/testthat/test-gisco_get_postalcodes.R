@@ -16,3 +16,13 @@ test_that("Postal codes online", {
   expect_length(unique(li$CNTR_ID), 1)
   expect_identical(as.character(unique(li$CNTR_ID)), "MT")
 })
+
+test_that("offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_postalcodes(update_cache = TRUE, country = "Malta"),
+    "not reachable"
+  )
+  expect_null(n)
+  options(giscoR_test_offline = FALSE)
+})

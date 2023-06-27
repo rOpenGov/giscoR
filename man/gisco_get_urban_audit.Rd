@@ -88,11 +88,13 @@ For a complete list of files available check \link{gisco_db}.
 \donttest{
 cities <- gisco_get_urban_audit(year = "2020", level = "CITIES")
 
-bcn <- cities[cities$URAU_NAME == "Barcelona", ]
+if (!is.null(cities)) {
+  bcn <- cities[cities$URAU_NAME == "Barcelona", ]
 
-library(ggplot2)
-ggplot(bcn) +
-  geom_sf()
+  library(ggplot2)
+  ggplot(bcn) +
+    geom_sf()
+}
 }
 \dontshow{\}) # examplesIf}
 }

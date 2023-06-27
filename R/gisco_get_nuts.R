@@ -91,15 +91,9 @@ gisco_get_nuts <- function(year = "2016",
   nuts_level <- as.character(nuts_level)
 
   api_entry <- gsc_api_url(
-    id_giscoR = "nuts",
-    year = year,
-    epsg = epsg,
-    resolution = resolution,
-    spatialtype = spatialtype,
-    ext = ext,
-    nuts_level = nuts_level,
-    level = NULL,
-    verbose = verbose
+    id_giscoR = "nuts", year = year, epsg = epsg,
+    resolution = resolution, spatialtype = spatialtype, ext = ext,
+    nuts_level = nuts_level, level = NULL, verbose = verbose
   )
 
   filename <- basename(api_entry)
@@ -126,36 +120,27 @@ gisco_get_nuts <- function(year = "2016",
     # Speed up if requesting units
     if (!is.null(nuts_id) && spatialtype %in% c("RG", "LB")) {
       data_sf <- gisco_get_units(
-        id_giscoR = "nuts",
-        unit = nuts_id,
-        mode = "sf",
-        year = year,
-        epsg = epsg,
-        cache = cache,
-        cache_dir = cache_dir,
-        update_cache = update_cache,
-        verbose = verbose,
-        resolution = resolution,
-        spatialtype = spatialtype
+        id_giscoR = "nuts", unit = nuts_id,
+        mode = "sf", year = year, epsg = epsg, cache = cache,
+        cache_dir = cache_dir, update_cache = update_cache, verbose = verbose,
+        resolution = resolution, spatialtype = spatialtype
       )
     } else {
       if (cache) {
         # Guess source to load
-        namefileload <-
-          gsc_api_cache(
-            api_entry,
-            filename,
-            cache_dir,
-            update_cache,
-            verbose
-          )
+        namefileload <- gsc_api_cache(
+          api_entry, filename, cache_dir,
+          update_cache, verbose
+        )
       } else {
         namefileload <- api_entry
       }
 
+      if (is.null(namefileload)) {
+        return(NULL)
+      }
       # Load - geojson only so far
-      data_sf <-
-        gsc_api_load(namefileload, epsg, ext, cache, verbose)
+      data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
     }
   }
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {

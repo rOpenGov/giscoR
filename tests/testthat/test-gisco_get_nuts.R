@@ -65,3 +65,14 @@ test_that("NUTS online", {
   expect_equal(epsg3857, sf::st_crs(b))
   expect_equal(epsg4326, sf::st_crs(c))
 })
+
+
+test_that("offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_nuts(update_cache = TRUE, resolution = 60),
+    "not reachable"
+  )
+  expect_null(n)
+  options(giscoR_test_offline = FALSE)
+})

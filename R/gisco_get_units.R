@@ -90,9 +90,9 @@
 #'   )
 #' }
 #' @export
-gisco_get_units <- function(id_giscoR = "nuts",
+gisco_get_units <- function(id_giscoR = c("nuts", "countries", "urban_audit"),
                             unit = "ES4",
-                            mode = "sf",
+                            mode = c("sf", "df"),
                             year = "2016",
                             epsg = "4326",
                             cache = TRUE,
@@ -108,13 +108,8 @@ gisco_get_units <- function(id_giscoR = "nuts",
 
 
   # Validations
-  if (!(id_giscoR %in% c("countries", "nuts", "urban_audit"))) {
-    stop('id_giscoR should be one of "countries","nuts","urban_audit"')
-  }
-
-  if (!(mode %in% c("df", "sf"))) {
-    stop('mode should be one of "df","sf"')
-  }
+  id_giscoR <- match.arg(id_giscoR)
+  mode <- match.arg(mode)
 
   if (mode == "sf" && !(spatialtype %in% c("RG", "LB"))) {
     stop('spatialtype should be one of "RG","LB"')
@@ -141,17 +136,10 @@ gisco_get_units <- function(id_giscoR = "nuts",
   }
 
 
-  api_entry <-
-    gsc_api_url(
-      id_giscoR,
-      year,
-      epsg,
-      resolution,
-      ext = "geojson",
-      spatialtype,
-      verbose = verbose,
-      level = level
-    )
+  api_entry <- gsc_api_url(id_giscoR, year, epsg, resolution,
+    ext = "geojson", spatialtype, verbose = verbose,
+    level = level
+  )
   basename <- basename(api_entry)
 
   api_url <- unlist(strsplit(api_entry, "/geojson/"))[1]
@@ -164,17 +152,9 @@ gisco_get_units <- function(id_giscoR = "nuts",
     return(df)
   } else if (mode == "sf") {
     sf <- gsc_units_sf(
-      id_giscoR,
-      unit,
-      year,
-      epsg,
-      cache,
-      update_cache,
-      cache_dir,
-      verbose,
-      spatialtype,
-      api_url,
-      remain,
+      id_giscoR, unit, year,
+      epsg, cache, update_cache, cache_dir,
+      verbose, spatialtype, api_url, remain,
       level
     )
     return(sf)
@@ -247,7 +227,7 @@ gsc_units_sf <- function(id_giscoR,
 
 
 
-    if (inherits(path, "try-error")) {
+    if (inherits(path, "try-error") || is.null(path)) {
       gsc_message(
         TRUE,
         "\nSkipping unit = ", unit[i], "\nNot found"
@@ -314,32 +294,39 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
 
   file.local <- tempfile(fileext = ".csv")
 
-  err_dwnload <- try(
-    download.file(
-      url,
-      file.local,
-      quiet = isFALSE(verbose),
-      mode = "wb"
-    ),
+  err_dwnload <- suppressWarnings(try(
+    download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
     silent = TRUE
-  )
+  ))
 
   # If error then try again
+
+  # Testing purposes only
+  # Mock the behavior of offline
+  test <- getOption("giscoR_test_offline", NULL)
+
+  if (isTRUE(test)) {
+    gsc_message(
+      TRUE,
+      "\nurl \n ",
+      url,
+      " not reachable.\n\nPlease download manually. ",
+      "If you think this is a bug please consider opening an issue on ",
+      "https://github.com/ropengov/giscoR/issues"
+    )
+    message("Returning `NULL`")
+    return(NULL)
+  }
 
   # nocov start
 
   if (inherits(err_dwnload, "try-error")) {
     gsc_message(verbose, "Retry query")
     Sys.sleep(1)
-    err_dwnload <- try(
-      download.file(
-        url,
-        file.local,
-        quiet = isFALSE(verbose),
-        mode = "wb"
-      ),
+    err_dwnload <- suppressWarnings(try(
+      download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
       silent = TRUE
-    )
+    ))
   }
 
   # If not then stop
@@ -352,7 +339,8 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
       "If you think this is a bug please consider opening an issue on ",
       "https://github.com/ropengov/giscoR/issues"
     )
-    stop("Download failed")
+    message("Returning `NULL`")
+    return(NULL)
   }
 
   # nocov end

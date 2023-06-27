@@ -78,3 +78,16 @@ test_that("Countries online", {
     spatialtype = "RG"
   ))
 })
+
+test_that("Offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_countries(
+      resolution = 60, cache_dir = tempdir(),
+      update_cache = TRUE
+    ),
+    "not reachable"
+  )
+  expect_null(n)
+  options(giscoR_test_offline = FALSE)
+})

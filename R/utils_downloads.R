@@ -267,34 +267,38 @@ gsc_api_cache <-
 
     gsc_message(verbose, "Downloading from ", url, "\n")
 
-    err_dwnload <- suppressWarnings(
-      try(
-        download.file(
-          url,
-          file.local,
-          quiet = isFALSE(verbose),
-          mode = "wb"
-        ),
-        silent = TRUE
+    # Testing purposes only
+    # Mock the behavior of offline
+    test <- getOption("giscoR_test_offline", NULL)
+
+    if (isTRUE(test)) {
+      gsc_message(
+        TRUE,
+        "\nurl \n ",
+        url,
+        " not reachable.\n\nPlease download manually. ",
+        "If you think this is a bug please consider opening an issue on ",
+        "https://github.com/ropengov/giscoR/issues"
       )
-    )
+      message("Returning `NULL`")
+      return(NULL)
+    }
+
+
+    err_dwnload <- suppressWarnings(try(
+      download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
+      silent = TRUE
+    ))
 
     # If error then try again
 
     if (inherits(err_dwnload, "try-error")) {
       gsc_message(verbose, "Retry query")
       Sys.sleep(1)
-      err_dwnload <- suppressWarnings(
-        try(
-          download.file(
-            url,
-            file.local,
-            quiet = isFALSE(verbose),
-            mode = "wb"
-          ),
-          silent = TRUE
-        )
-      )
+      err_dwnload <- suppressWarnings(try(
+        download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
+        silent = TRUE
+      ))
     }
 
     # If not then stop
@@ -307,7 +311,8 @@ gsc_api_cache <-
         "If you think this is a bug please consider opening an issue on ",
         "https://github.com/ropengov/giscoR/issues"
       )
-      stop("Download failed")
+      message("Returning `NULL`")
+      return(NULL)
     }
 
     gsc_message(verbose, "Download succesful on \n\n", file.local, "\n\n")

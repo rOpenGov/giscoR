@@ -62,29 +62,31 @@ For a complete list of files available check \link{gisco_db}.
 \donttest{
 
 health_BEL <- gisco_get_healthcare(country = "Belgium")
-health_BEL[health_BEL$public_private == "", ]$public_private <- "unknown"
-BEL <- gisco_get_nuts(
-  country = "Belgium", nuts_level = 2,
-  resolution = "01"
-)
+# If downloaded
 
-library(ggplot2)
+if (!is.null(health_BEL)) {
+  health_BEL[health_BEL$public_private == "", ]$public_private <- "unknown"
 
-ggplot(BEL) +
-  geom_sf(fill = "white", color = "grey80") +
-  geom_sf(
-    data = health_BEL, aes(color = public_private),
-    alpha = 0.5, size = 3
-  ) +
-  theme_bw() +
-  labs(
-    title = "Healthcare in Belgium",
-    subtitle = "NUTS 2",
-    fill = "type",
-    caption = paste0(gisco_attributions())
-  ) +
-  scale_color_manual(name = "type", values = hcl.colors(3, "Berlin")) +
-  theme_minimal()
+  BEL <- gisco_get_nuts(country = "Belgium", nuts_level = 2)
+
+  library(ggplot2)
+
+  ggplot(BEL) +
+    geom_sf(fill = "white", color = "grey80") +
+    geom_sf(
+      data = health_BEL, aes(color = public_private),
+      alpha = 0.5, size = 3
+    ) +
+    theme_bw() +
+    labs(
+      title = "Healthcare in Belgium",
+      subtitle = "NUTS 2",
+      fill = "type",
+      caption = paste0(gisco_attributions())
+    ) +
+    scale_color_manual(name = "type", values = hcl.colors(3, "Berlin")) +
+    theme_minimal()
+}
 }
 \dontshow{\}) # examplesIf}
 }

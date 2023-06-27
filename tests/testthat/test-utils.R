@@ -43,14 +43,14 @@ test_that("Errors on database", {
 
 
 
-  expect_error(
-    suppressWarnings(
-      gsc_api_cache("https://www.dhh.this.is.fake/",
-        verbose = FALSE
-      )
-    )
+  expect_message(
+    n <- gsc_api_cache("https://www.dhh.this.is.fake/",
+      verbose = FALSE
+    ),
+    "https://www.dhh.this.is.fake/  not reachable."
   )
 
+  expect_null(n)
   expect_message(gsc_api_url("urban_audit",
     year = 2020,
     spatialtype = "LB", ext = "topojson"

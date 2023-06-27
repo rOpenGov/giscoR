@@ -48,15 +48,9 @@ gisco_get_lau <- function(year = "2016",
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
-    id_giscoR = "lau",
-    year = year,
-    epsg = epsg,
-    resolution = 0,
-    spatialtype = "RG",
-    ext = ext,
-    nuts_level = NULL,
-    level = NULL,
-    verbose = verbose
+    id_giscoR = "lau", year = year, epsg = epsg,
+    resolution = 0, spatialtype = "RG", ext = ext, nuts_level = NULL,
+    level = NULL, verbose = verbose
   )
 
   filename <- basename(api_entry)
@@ -67,31 +61,26 @@ gisco_get_lau <- function(year = "2016",
   if ((!is.null(country) || !is.null(gisco_id)) && cache) {
     gsc_message(verbose, "Speed up using sf query")
     if (!is.null(country)) {
-      country <- gsc_helper_countrynames(
-        country, "eurostat"
-      )
+      country <- gsc_helper_countrynames(country, "eurostat")
     }
 
-    namefileload <-
-      gsc_api_cache(
-        api_entry,
-        filename,
-        cache_dir,
-        update_cache,
-        verbose
-      )
+    namefileload <- gsc_api_cache(
+      api_entry, filename, cache_dir, update_cache,
+      verbose
+    )
+
+    if (is.null(namefileload)) {
+      return(NULL)
+    }
 
     # Get layer name
     layer <- tools::file_path_sans_ext(basename(namefileload))
 
     # Construct query
-    q <- paste0(
-      "SELECT * from \"",
-      layer,
-      "\" WHERE"
-    )
+    q <- paste0("SELECT * from \"", layer, "\" WHERE")
 
     where <- NULL
+
     if (!is.null(country)) {
       where <- c(where, paste0(
         "CNTR_CODE IN (",
@@ -115,12 +104,9 @@ gisco_get_lau <- function(year = "2016",
 
 
     data_sf <- try(
-      suppressWarnings(
-        sf::st_read(namefileload,
-          quiet = !verbose,
-          query = q
-        )
-      ),
+      suppressWarnings(sf::st_read(namefileload,
+        quiet = !verbose, query = q
+      )),
       silent = TRUE
     )
 
@@ -142,21 +128,20 @@ gisco_get_lau <- function(year = "2016",
 
   if (cache) {
     # Guess source to load
-    namefileload <-
-      gsc_api_cache(
-        api_entry,
-        filename,
-        cache_dir,
-        update_cache,
-        verbose
-      )
+    namefileload <- gsc_api_cache(
+      api_entry, filename, cache_dir,
+      update_cache, verbose
+    )
   } else {
     namefileload <- api_entry
   }
 
+  if (is.null(namefileload)) {
+    return(NULL)
+  }
+
   # Load - geojson only so far
-  data_sf <-
-    gsc_api_load(namefileload, epsg, ext, cache, verbose)
+  data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
 
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
@@ -186,20 +171,22 @@ gisco_get_lau <- function(year = "2016",
 #'
 #' ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 #'
-#' library(ggplot2)
+#' if (!is.null(ire_lau)) {
+#'   library(ggplot2)
 #'
-#' ggplot(ire_lau) +
-#'   geom_sf(shape = 21, col = "#009A44", size = 0.5) +
-#'   labs(
-#'     title = "Communes in Ireland",
-#'     subtitle = "Year 2016",
-#'     caption = gisco_attributions()
-#'   ) +
-#'   theme_void() +
-#'   theme(text = element_text(
-#'     colour = "#009A44",
-#'     family = "serif", face = "bold"
-#'   ))
+#'   ggplot(ire_lau) +
+#'     geom_sf(shape = 21, col = "#009A44", size = 0.5) +
+#'     labs(
+#'       title = "Communes in Ireland",
+#'       subtitle = "Year 2016",
+#'       caption = gisco_attributions()
+#'     ) +
+#'     theme_void() +
+#'     theme(text = element_text(
+#'       colour = "#009A44",
+#'       family = "serif", face = "bold"
+#'     ))
+#' }
 #' }
 #' @export
 gisco_get_communes <- function(year = "2016",
@@ -213,16 +200,11 @@ gisco_get_communes <- function(year = "2016",
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
-    id_giscoR = "communes",
-    year = year,
-    epsg = epsg,
-    resolution = 0,
-    # Not neccesary
-    spatialtype = spatialtype,
-    ext = ext,
-    nuts_level = NULL,
-    level = NULL,
-    verbose = verbose
+    id_giscoR = "communes", year = year,
+    epsg = epsg, resolution = 0,
+    # Not needed
+    spatialtype = spatialtype, ext = ext, nuts_level = NULL,
+    level = NULL, verbose = verbose
   )
 
 
@@ -234,25 +216,22 @@ gisco_get_communes <- function(year = "2016",
   if (cache && !is.null(country)) {
     gsc_message(verbose, "Speed up using sf query")
     country <- gsc_helper_countrynames(country, "eurostat")
-    namefileload <-
-      gsc_api_cache(
-        api_entry,
-        filename,
-        cache_dir,
-        update_cache,
-        verbose
-      )
+    namefileload <- gsc_api_cache(
+      api_entry, filename,
+      cache_dir, update_cache, verbose
+    )
+
+    if (is.null(namefileload)) {
+      return(NULL)
+    }
 
     # Get layer name
     layer <- tools::file_path_sans_ext(basename(namefileload))
 
     # Construct query
     q <- paste0(
-      "SELECT * from \"",
-      layer,
-      "\" WHERE CNTR_CODE IN (",
-      paste0("'", country, "'", collapse = ", "),
-      ")"
+      "SELECT * from \"", layer, "\" WHERE CNTR_CODE IN (",
+      paste0("'", country, "'", collapse = ", "), ")"
     )
 
     gsc_message(verbose, "Using query:\n   ", q)
@@ -260,10 +239,7 @@ gisco_get_communes <- function(year = "2016",
 
     data_sf <- try(
       suppressWarnings(
-        sf::st_read(namefileload,
-          quiet = !verbose,
-          query = q
-        )
+        sf::st_read(namefileload, quiet = !verbose, query = q)
       ),
       silent = TRUE
     )
@@ -289,23 +265,20 @@ gisco_get_communes <- function(year = "2016",
 
   if (cache) {
     # Guess source to load
-    namefileload <-
-      gsc_api_cache(
-        api_entry,
-        filename,
-        cache_dir,
-        update_cache,
-        verbose
-      )
+    namefileload <- gsc_api_cache(
+      api_entry, filename,
+      cache_dir, update_cache, verbose
+    )
   } else {
     namefileload <- api_entry
   }
 
+  if (is.null(namefileload)) {
+    return(NULL)
+  }
+
   # Load - geojson only so far
-  data_sf <- gsc_api_load(
-    namefileload, epsg, ext, cache,
-    verbose
-  )
+  data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
 
 
   return(data_sf)
