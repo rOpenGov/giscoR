@@ -77,20 +77,22 @@ For a complete list of files available check \link{gisco_db}.
 
 pc_bel <- gisco_get_postalcodes(country = "BE")
 
-library(ggplot2)
+if (!is.null(pc_bel)) {
+  library(ggplot2)
 
-ggplot(pc_bel) +
-  geom_sf(color = "gold") +
-  theme_bw() +
-  labs(
-    title = "Postcodes of Belgium",
-    subtitle = "2020",
-    caption = paste("(c) European Union - GISCO, 2021,",
-      "postal code point dataset",
-      "Licence CC-BY-SA 4.0",
-      sep = "\n"
+  ggplot(pc_bel) +
+    geom_sf(color = "gold") +
+    theme_bw() +
+    labs(
+      title = "Postcodes of Belgium",
+      subtitle = "2020",
+      caption = paste("(c) European Union - GISCO, 2021,",
+        "postal code point dataset",
+        "Licence CC-BY-SA 4.0",
+        sep = "\n"
+      )
     )
-  )
+}
 }
 \dontshow{\}) # examplesIf}
 }

@@ -41,20 +41,22 @@
 #'
 #' pc_bel <- gisco_get_postalcodes(country = "BE")
 #'
-#' library(ggplot2)
+#' if (!is.null(pc_bel)) {
+#'   library(ggplot2)
 #'
-#' ggplot(pc_bel) +
-#'   geom_sf(color = "gold") +
-#'   theme_bw() +
-#'   labs(
-#'     title = "Postcodes of Belgium",
-#'     subtitle = "2020",
-#'     caption = paste("(c) European Union - GISCO, 2021,",
-#'       "postal code point dataset",
-#'       "Licence CC-BY-SA 4.0",
-#'       sep = "\n"
+#'   ggplot(pc_bel) +
+#'     geom_sf(color = "gold") +
+#'     theme_bw() +
+#'     labs(
+#'       title = "Postcodes of Belgium",
+#'       subtitle = "2020",
+#'       caption = paste("(c) European Union - GISCO, 2021,",
+#'         "postal code point dataset",
+#'         "Licence CC-BY-SA 4.0",
+#'         sep = "\n"
+#'       )
 #'     )
-#'   )
+#' }
 #' }
 gisco_get_postalcodes <- function(year = "2020",
                                   country = NULL,
@@ -85,8 +87,7 @@ gisco_get_postalcodes <- function(year = "2020",
 
   gsc_unzip(basename, cache_dir,
     ext = "*", verbose = verbose,
-    update_cache = update_cache,
-    recursive = FALSE
+    update_cache = update_cache, recursive = FALSE
   )
 
   # Capture shp layer name
@@ -110,21 +111,16 @@ gisco_get_postalcodes <- function(year = "2020",
     # Construct query
     q <- paste0(
       "SELECT * from \"",
-      layer,
-      "\" WHERE CNTR_ID IN (",
-      paste0("'", country, "'", collapse = ", "),
+      layer, "\" WHERE CNTR_ID IN (", paste0("'", country, "'",
+        collapse = ", "
+      ),
       ")"
     )
 
     gsc_message(verbose, "Using query:\n   ", q)
-
-
     data_sf <- try(
       suppressWarnings(
-        sf::st_read(namefileload,
-          quiet = !verbose,
-          query = q
-        )
+        sf::st_read(namefileload, quiet = !verbose, query = q)
       ),
       silent = TRUE
     )

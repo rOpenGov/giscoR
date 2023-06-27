@@ -4,6 +4,9 @@
 
 -   New helper function: `gisco_detect_cache_dir()`.
 
+-   Now the functions fail gracefully with an informative message, instead of
+    erroring, and return `NULL`.
+
 # giscoR 0.3.4
 
 -   Update tests and documentation.

@@ -28,7 +28,10 @@ test_that("Coastal download online", {
     cache_dir = cachetest
   ))
 
-  a <- gisco_get_coastallines(resolution = "60", epsg = "3035", verbose = TRUE)
+  expect_message(a <- gisco_get_coastallines(
+    resolution = "60", epsg = "3035",
+    verbose = TRUE
+  ))
   b <- gisco_get_coastallines(resolution = "60", epsg = "3857")
   c <- gisco_get_coastallines(resolution = "60", epsg = "4326")
 
@@ -39,4 +42,17 @@ test_that("Coastal download online", {
   expect_identical(epsg3035, sf::st_crs(a))
   expect_identical(epsg3857, sf::st_crs(b))
   expect_identical(epsg4326, sf::st_crs(c))
+})
+
+test_that("Offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_coastallines(
+      resolution = 60, cache_dir = tempdir(),
+      update_cache = TRUE
+    ),
+    "not reachable"
+  )
+  expect_null(n)
+  options(giscoR_test_offline = FALSE)
 })

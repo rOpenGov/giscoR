@@ -19,3 +19,13 @@ test_that("Grids online", {
     verbose = TRUE
   )))
 })
+
+test_that("Offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- suppressWarnings(gisco_get_grid(update_cache = TRUE)),
+    "not reachable"
+  )
+  expect_null(n)
+  options(giscoR_test_offline = FALSE)
+})

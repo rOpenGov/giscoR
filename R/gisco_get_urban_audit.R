@@ -38,11 +38,13 @@
 #' \donttest{
 #' cities <- gisco_get_urban_audit(year = "2020", level = "CITIES")
 #'
-#' bcn <- cities[cities$URAU_NAME == "Barcelona", ]
+#' if (!is.null(cities)) {
+#'   bcn <- cities[cities$URAU_NAME == "Barcelona", ]
 #'
-#' library(ggplot2)
-#' ggplot(bcn) +
-#'   geom_sf()
+#'   library(ggplot2)
+#'   ggplot(bcn) +
+#'     geom_sf()
+#' }
 #' }
 gisco_get_urban_audit <- function(year = "2020",
                                   epsg = "4326",
@@ -56,42 +58,31 @@ gisco_get_urban_audit <- function(year = "2020",
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
-    id_giscoR = "urban_audit",
-    year = year,
-    epsg = epsg,
-    resolution = 0,
+    id_giscoR = "urban_audit", year = year,
+    epsg = epsg, resolution = 0,
     # Not necessary
-    spatialtype = spatialtype,
-    ext = ext,
-    nuts_level = NULL,
-    level = level,
-    verbose = verbose
+    spatialtype = spatialtype, ext = ext, nuts_level = NULL,
+    level = level, verbose = verbose
   )
 
   filename <- basename(api_entry)
 
   if (cache) {
     # Guess source to load
-    namefileload <-
-      gsc_api_cache(
-        api_entry,
-        filename,
-        cache_dir,
-        update_cache,
-        verbose
-      )
+    namefileload <- gsc_api_cache(
+      api_entry, filename, cache_dir,
+      update_cache, verbose
+    )
   } else {
     namefileload <- api_entry
   }
 
+  if (is.null(namefileload)) {
+    return(NULL)
+  }
+
   # Load - geojson only so far
-  data_sf <- gsc_api_load(
-    namefileload,
-    epsg,
-    ext,
-    cache,
-    verbose
-  )
+  data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
 
 
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {

@@ -45,15 +45,9 @@ gisco_get_coastallines <- function(year = "2016",
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
-    id_giscoR = "coastallines",
-    year = year,
-    epsg = epsg,
-    resolution = resolution,
-    spatialtype = NULL,
-    ext = ext,
-    nuts_level = NULL,
-    level = NULL,
-    verbose = verbose
+    id_giscoR = "coastallines", year = year,
+    epsg = epsg, resolution = resolution, spatialtype = NULL, ext = ext,
+    nuts_level = NULL, level = NULL, verbose = verbose
   )
 
   filename <- basename(api_entry)
@@ -75,14 +69,10 @@ gisco_get_coastallines <- function(year = "2016",
   if (dwnload) {
     if (cache) {
       # Guess source to load
-      namefileload <-
-        gsc_api_cache(
-          api_entry,
-          filename,
-          cache_dir,
-          update_cache,
-          verbose
-        )
+      namefileload <- gsc_api_cache(
+        api_entry, filename, cache_dir,
+        update_cache, verbose
+      )
     } else {
       namefileload <- api_entry
     }
@@ -92,8 +82,7 @@ gisco_get_coastallines <- function(year = "2016",
     }
 
     # Load - geojson only so far
-    data_sf <-
-      gsc_api_load(namefileload, epsg, ext, cache, verbose)
+    data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
   }
   return(data_sf)
 }
