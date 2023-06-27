@@ -10,6 +10,7 @@
 #'
 #' @noRd
 gsc_helper_countrynames <- function(names, out = "eurostat") {
+  names <- as.character(names[!is.na(names)])
   maxname <- max(nchar(names))
   if (maxname > 3) {
     outnames <- countrycode::countryname(names, out)

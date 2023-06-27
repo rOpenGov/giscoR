@@ -94,6 +94,7 @@
 #' @export
 #'
 #' @examples
+#'
 #' cntries <- gisco_get_countries()
 #'
 #' library(ggplot2)
@@ -106,16 +107,7 @@
 #' ggplot(africa) +
 #'   geom_sf(fill = "#078930", col = "white") +
 #'   theme_minimal()
-#' \donttest{
-#' if (gisco_check_access()) {
-#'   # Extract points
-#'   asia_pol <- gisco_get_countries(region = "Asia", resolution = "3")
-#'   asia_lb <- gisco_get_countries(spatialtype = "LB", region = "Asia")
-#'   ggplot(asia_pol) +
-#'     geom_sf(fill = "gold3") +
-#'     geom_sf(data = asia_lb, color = "#007FFF")
-#' }
-#' }
+#'
 gisco_get_countries <- function(year = "2016",
                                 epsg = "4326",
                                 cache = TRUE,

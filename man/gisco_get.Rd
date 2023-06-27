@@ -108,6 +108,7 @@ Under this scheme Cyprus is assigned to Asia. You may use
 }
 
 \examples{
+
 cntries <- gisco_get_countries()
 
 library(ggplot2)
@@ -120,16 +121,7 @@ africa <- gisco_get_countries(region = "Africa")
 ggplot(africa) +
   geom_sf(fill = "#078930", col = "white") +
   theme_minimal()
-\donttest{
-if (gisco_check_access()) {
-  # Extract points
-  asia_pol <- gisco_get_countries(region = "Asia", resolution = "3")
-  asia_lb <- gisco_get_countries(spatialtype = "LB", region = "Asia")
-  ggplot(asia_pol) +
-    geom_sf(fill = "gold3") +
-    geom_sf(data = asia_lb, color = "#007FFF")
-}
-}
+
 }
 \seealso{
 \code{\link[=gisco_countrycode]{gisco_countrycode()}}, \link{gisco_countries},

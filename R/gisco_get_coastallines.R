@@ -20,7 +20,7 @@
 #'
 #' @seealso [gisco_coastallines]
 #'
-#' @examples
+#' @examplesIf gisco_check_access()
 #' coast <- gisco_get_coastallines()
 #'
 #' library(ggplot2)

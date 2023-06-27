@@ -73,6 +73,7 @@ For a complete list of files available check \link{gisco_db}.
 }
 
 \examples{
+\dontshow{if (gisco_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 coast <- gisco_get_coastallines()
 
 library(ggplot2)
@@ -86,6 +87,7 @@ ggplot(coast) +
   ) +
   theme_minimal() +
   theme(panel.background = element_rect(fill = "#C7E7FB", color = "black"))
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \link{gisco_coastallines}

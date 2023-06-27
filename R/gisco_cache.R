@@ -201,7 +201,6 @@ gsc_helper_detect_cache_dir <- function() {
 
 #' Helper function to detect current `cache_dir`
 #'
-#' @keywords internal
 #' @export
 #'
 #' @description
@@ -209,6 +208,9 @@ gsc_helper_detect_cache_dir <- function() {
 #'
 #' @param ... Ignored
 #' @return The path to the `cache_dir` used in this session
+#'
+#' @family cache utilities
+#' @seealso [gisco_set_cache_dir()]
 #'
 #' @name gisco_detect_cache_dir
 #' @rdname gisco_detect_cache_dir

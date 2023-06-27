@@ -69,19 +69,10 @@ grid <- gisco_get_grid(resolution = 20)
 grid$popdens <- grid$TOT_P_2011 / 20
 
 
-breaks <-
-  c(
-    0,
-    0.1, # For capturing 0
-    100,
-    500,
-    1000,
-    2500,
-    5000,
-    10000,
-    25000,
-    max(grid$popdens) + 1
-  )
+breaks <- c(
+  0, 0.1, 100, 500, 1000, 2500, 5000, 10000,
+  25000, max(grid$popdens) + 1
+)
 
 # Cut groups
 

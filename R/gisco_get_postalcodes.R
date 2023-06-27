@@ -34,7 +34,7 @@
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/postal-codes>
 #'
-#' @examples
+#' @examplesIf gisco_check_access()
 #'
 #' # Heavy-weight download!
 #' \dontrun{

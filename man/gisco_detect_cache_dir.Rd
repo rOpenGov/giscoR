@@ -20,4 +20,11 @@ Detect the path to your current \code{cache_dir}. See \code{\link[=gisco_set_cac
 gisco_detect_cache_dir()
 
 }
-\keyword{internal}
+\seealso{
+\code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}
+
+Other cache utilities: 
+\code{\link{gisco_clear_cache}()},
+\code{\link{gisco_set_cache_dir}()}
+}
+\concept{cache utilities}

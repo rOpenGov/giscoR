@@ -47,7 +47,7 @@
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
 #'
-#' @examples
+#' @examplesIf gisco_check_access()
 #' \dontrun{
 #'
 #' # Countries 2016 - It would take some time

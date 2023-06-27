@@ -1,3 +1,9 @@
+# giscoR (development version)
+
+-   Review examples to avoid CRAN errors and notes.
+
+-   New helper function: `gisco_detect_cache_dir()`.
+
 # giscoR 0.3.4
 
 -   Update tests and documentation.
@@ -13,17 +19,11 @@
 # giscoR 0.3.1
 
 -   Add `Copyright` on DESCRIPTION.
-
 -   Add `lwgeom` on `Suggests`.
-
 -   `gisco_get_airports()` and `gisco_get_ports()`:
-
     -   Only year available is 2013.
-
     -   Now information is downloaded instead of using internal data.
-
 -   New function: `gisco_get_postalcodes()`.
-
 -   Update `gisco_db`.
 
 # giscoR 0.3.0
@@ -71,26 +71,18 @@
 # giscoR 0.2.0
 
 -   Remove `colorspace` as dependency.
-
 -   Bump R minimal version to 3.6.0.
-
 -   Change order on parameters for `gisco_get()` functions.
-
 -   Rewriting of internal functions and utils.
-
 -   Add `verbose` parameter to functions.
-
 -   Rewriting of `giscoR::gisco_db`.
-
 -   Functions added:
-
     -   `gisco_bulk_download()`
     -   `gisco_check_access()`
     -   `gisco_get_airports()`
     -   `gisco_get_grid()`
     -   `gisco_get_ports()`
     -   `gisco_get_units()`
-
 -   Now `gisco_get_countries()` and `gisco_get_nuts()` uses `gisco_get_units()`
     for individual files, making the call much faster.
 
