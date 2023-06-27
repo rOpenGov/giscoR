@@ -20,7 +20,7 @@ as population figures are provided for these cells."><meta property="og:image" c
     
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.3.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.4.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -148,23 +148,14 @@ corresponding .geojson file by any other method and save it on your
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">grid</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_grid</span><span class="op">(</span>resolution <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Message 1: GPKG: unrecognized user_version=0x00000000 (0) on '/tmp/RtmpjLiWmI/giscoR/pkgdown/grid_20km_surf.gpkg'</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>GDAL Message 1: GPKG: unrecognized user_version=0x00000000 (0) on '/tmp/RtmpOC5dbZ/giscoR/pkgdown/grid_20km_surf.gpkg'</span>
 <span class="r-in"><span><span class="va">grid</span><span class="op">$</span><span class="va">popdens</span> <span class="op">&lt;-</span> <span class="va">grid</span><span class="op">$</span><span class="va">TOT_P_2011</span> <span class="op">/</span> <span class="fl">20</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">breaks</span> <span class="op">&lt;-</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="fl">0</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">0.1</span>, <span class="co"># For capturing 0</span></span></span>
-<span class="r-in"><span>    <span class="fl">100</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">500</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">1000</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">2500</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">5000</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">10000</span>,</span></span>
-<span class="r-in"><span>    <span class="fl">25000</span>,</span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">grid</span><span class="op">$</span><span class="va">popdens</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fl">0</span>, <span class="fl">0.1</span>, <span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2500</span>, <span class="fl">5000</span>, <span class="fl">10000</span>,</span></span>
+<span class="r-in"><span>  <span class="fl">25000</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">grid</span><span class="op">$</span><span class="va">popdens</span><span class="op">)</span> <span class="op">+</span> <span class="fl">1</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Cut groups</span></span></span>
 <span class="r-in"><span></span></span>
