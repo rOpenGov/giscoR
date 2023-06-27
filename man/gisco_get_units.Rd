@@ -8,9 +8,9 @@
 }
 \usage{
 gisco_get_units(
-  id_giscoR = "nuts",
+  id_giscoR = c("nuts", "countries", "urban_audit"),
   unit = "ES4",
-  mode = "sf",
+  mode = c("sf", "df"),
   year = "2016",
   epsg = "4326",
   cache = TRUE,
