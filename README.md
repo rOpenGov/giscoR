@@ -11,7 +11,7 @@ status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org
 [![CRAN
 results](https://badges.cranchecks.info/worst/giscoR.svg)](https://cran.r-project.org/web/checks/check_results_giscoR.html)
 [![Downloads](https://cranlogs.r-pkg.org/badges/giscoR)](https://CRAN.R-project.org/package=giscoR)
-[![r-universe](https://ropengov.r-universe.dev/badges/giscoR)](https://ropengov.r-universe.dev/)
+[![r-universe](https://ropengov.r-universe.dev/badges/giscoR)](https://ropengov.r-universe.dev/giscoR)
 [![R build
 status](https://github.com/rOpenGov/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenGov/giscoR/actions)
 [![codecov](https://codecov.io/gh/ropengov/giscoR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropengov/giscoR)
@@ -62,14 +62,9 @@ Alternatively, you can install `giscoR` using the
 [r-universe](https://ropengov.r-universe.dev/giscoR):
 
 ``` r
-# Enable this universe
-options(repos = c(
-  ropengov = "https://ropengov.r-universe.dev",
-  CRAN = "https://cloud.r-project.org"
-))
-
-
-install.packages("giscoR")
+install.packages("giscoR",
+  repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org")
+)
 ```
 
 ## Usage

@@ -85,8 +85,9 @@ Alternatively, you can install `giscoR` using the
 [r-universe](https://ropengov.r-universe.dev/giscoR):
 
 ```{r, eval=FALSE}
-install.packages("giscoR", 
-  repos = c('https://ropengov.r-universe.dev', 'https://cloud.r-project.org'))
+install.packages("giscoR",
+  repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org")
+)
 ```
 
 ## Usage
