@@ -1,11 +1,11 @@
-# giscoR (development version)
+# giscoR 0.3.5
 
 -   Review examples to avoid CRAN errors and notes.
 
 -   New helper function: `gisco_detect_cache_dir()`.
 
--   Now the functions fail gracefully with an informative message, instead of
-    erroring, and return `NULL`.
+-   Now the functions fail gracefully with an informative message, instead of an
+    error, and return `NULL`.
 
 # giscoR 0.3.4
 

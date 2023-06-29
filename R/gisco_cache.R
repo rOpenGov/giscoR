@@ -222,7 +222,7 @@ gisco_detect_cache_dir <- function(...) {
   # nocov start
   # This is just a wrapper
 
-  do_nothing_with_dots <- list(...)
+  list(...)
   cache <- gsc_helper_detect_cache_dir()
 
   cache
