@@ -16,7 +16,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,6 +60,12 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.5" id="giscor-035">giscoR 0.3.5<a class="anchor" aria-label="anchor" href="#giscor-035"></a></h2>
+<ul><li><p>Review examples to avoid CRAN errors and notes.</p></li>
+<li><p>New helper function: <code><a href="../reference/gisco_detect_cache_dir.html">gisco_detect_cache_dir()</a></code>.</p></li>
+<li><p>Now the functions fail gracefully with an informative message, instead of an error, and return <code>NULL</code>.</p></li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.4" id="giscor-034">giscoR 0.3.4<a class="anchor" aria-label="anchor" href="#giscor-034"></a></h2><p class="text-muted">CRAN release: 2023-05-26</p>
 <ul><li>Update tests and documentation.</li>
 </ul></div>
@@ -73,15 +79,15 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="giscor-031">giscoR 0.3.1<a class="anchor" aria-label="anchor" href="#giscor-031"></a></h2><p class="text-muted">CRAN release: 2021-10-06</p>
-<ul><li><p>Add <code>Copyright</code> on DESCRIPTION.</p></li>
-<li><p>Add <code>lwgeom</code> on <code>Suggests</code>.</p></li>
+<ul><li>Add <code>Copyright</code> on DESCRIPTION.</li>
+<li>Add <code>lwgeom</code> on <code>Suggests</code>.</li>
 <li>
-<p><code><a href="../reference/gisco_get_airports.html">gisco_get_airports()</a></code> and <code><a href="../reference/gisco_get_airports.html">gisco_get_ports()</a></code>:</p>
-<ul><li><p>Only year available is 2013.</p></li>
-<li><p>Now information is downloaded instead of using internal data.</p></li>
+<code><a href="../reference/gisco_get_airports.html">gisco_get_airports()</a></code> and <code><a href="../reference/gisco_get_airports.html">gisco_get_ports()</a></code>:
+<ul><li>Only year available is 2013.</li>
+<li>Now information is downloaded instead of using internal data.</li>
 </ul></li>
-<li><p>New function: <code><a href="../reference/gisco_get_postalcodes.html">gisco_get_postalcodes()</a></code>.</p></li>
-<li><p>Update <code>gisco_db</code>.</p></li>
+<li>New function: <code><a href="../reference/gisco_get_postalcodes.html">gisco_get_postalcodes()</a></code>.</li>
+<li>Update <code>gisco_db</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="giscor-030">giscoR 0.3.0<a class="anchor" aria-label="anchor" href="#giscor-030"></a></h2><p class="text-muted">CRAN release: 2021-09-27</p>
@@ -126,14 +132,13 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="giscor-020">giscoR 0.2.0<a class="anchor" aria-label="anchor" href="#giscor-020"></a></h2><p class="text-muted">CRAN release: 2020-11-12</p>
-<ul><li><p>Remove <code>colorspace</code> as dependency.</p></li>
-<li><p>Bump R minimal version to 3.6.0.</p></li>
-<li><p>Change order on parameters for <code>gisco_get()</code> functions.</p></li>
-<li><p>Rewriting of internal functions and utils.</p></li>
-<li><p>Add <code>verbose</code> parameter to functions.</p></li>
-<li><p>Rewriting of <code><a href="../reference/gisco_db.html">giscoR::gisco_db</a></code>.</p></li>
-<li>
-<p>Functions added:</p>
+<ul><li>Remove <code>colorspace</code> as dependency.</li>
+<li>Bump R minimal version to 3.6.0.</li>
+<li>Change order on parameters for <code>gisco_get()</code> functions.</li>
+<li>Rewriting of internal functions and utils.</li>
+<li>Add <code>verbose</code> parameter to functions.</li>
+<li>Rewriting of <code><a href="../reference/gisco_db.html">giscoR::gisco_db</a></code>.</li>
+<li>Functions added:
 <ul><li><code><a href="../reference/gisco_bulk_download.html">gisco_bulk_download()</a></code></li>
 <li><code><a href="../reference/gisco_check_access.html">gisco_check_access()</a></code></li>
 <li><code><a href="../reference/gisco_get_airports.html">gisco_get_airports()</a></code></li>
@@ -141,7 +146,7 @@
 <li><code><a href="../reference/gisco_get_airports.html">gisco_get_ports()</a></code></li>
 <li><code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code></li>
 </ul></li>
-<li><p>Now <code><a href="../reference/gisco_get.html">gisco_get_countries()</a></code> and <code><a href="../reference/gisco_get_nuts.html">gisco_get_nuts()</a></code> uses <code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code> for individual files, making the call much faster.</p></li>
+<li>Now <code><a href="../reference/gisco_get.html">gisco_get_countries()</a></code> and <code><a href="../reference/gisco_get_nuts.html">gisco_get_nuts()</a></code> uses <code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code> for individual files, making the call much faster.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.1" id="giscor-011">giscoR 0.1.1<a class="anchor" aria-label="anchor" href="#giscor-011"></a></h2><p class="text-muted">CRAN release: 2020-10-28</p>

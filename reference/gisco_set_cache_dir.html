@@ -44,7 +44,7 @@ install = TRUE). This would store your cache_dir permanently.
     
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,7 +146,8 @@ default is <code>FALSE</code>.</p></dd>
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code></p>
 <p>Other cache utilities: 
-<code><a href="gisco_clear_cache.html">gisco_clear_cache</a>()</code></p></div>
+<code><a href="gisco_clear_cache.html">gisco_clear_cache</a>()</code>,
+<code><a href="gisco_detect_cache_dir.html">gisco_detect_cache_dir</a>()</code></p></div>
     </div>
 
     <div class="section level2">
@@ -156,11 +157,11 @@ default is <code>FALSE</code>.</p></dd>
 <span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu">gisco_set_cache_dir</span><span class="op">(</span>verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Using a temporary cache dir.  Set 'cache_dir' to a value for store permanently</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cache dir is:  /tmp/RtmpvslDUK/giscoR</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> giscoR cache dir is:  /tmp/Rtmp1crxhK/giscoR</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"GISCO_CACHE_DIR"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmpvslDUK/giscoR"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmp1crxhK/giscoR"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
