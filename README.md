@@ -322,13 +322,14 @@ Contributions are very welcome:
 
 To cite ‘giscoR’ in publications use:
 
-Hernangomez D (2023). giscoR: Download Map Data from GISCO API -
-Eurostat. <https://doi.org/10.5281/zenodo.4317946>,
-<https://ropengov.github.io/giscoR/>
+Hernangómez D (2023). *giscoR: Download Map Data from GISCO API -
+Eurostat*. <doi:10.5281/zenodo.4317946>
+<https://doi.org/10.5281/zenodo.4317946>,
+<https://ropengov.github.io/giscoR/>.
 
 A BibTeX entry for LaTeX users is
 
-    @Manual{R-giscoR,
+    @Manual{,
       title = {{giscoR}: Download Map Data from GISCO API - Eurostat},
       doi = {10.5281/zenodo.4317946},
       author = {Diego Hernangómez},
