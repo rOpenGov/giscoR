@@ -12,11 +12,5 @@ bibentry(
   year = year,
   version = meta$Version,
   url = unlist(strsplit(meta$URL, ","))[1],
-  abstract = abs,
-  key = "R-giscoR",
-  textVersion = paste0(
-    "Hernangomez D (", year, "). giscoR: ",
-    gsub("'", "", meta$Title), ". <https://doi.org/", doi, ">, <",
-    unlist(strsplit(meta$URL, ","))[1], ">"
-  )
+  abstract = abs
 )
