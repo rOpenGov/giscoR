@@ -5,6 +5,7 @@ CNTR
 COAS
 COASTL
 COmmission
+CodeFactor
 DOI
 EFTA
 ENGL
@@ -16,7 +17,6 @@ FUA
 GISCO
 Gb
 Geodata
-Hernangomez
 LAEA
 LATN
 LAU
@@ -46,12 +46,13 @@ countrycode
 da
 de
 der
+dev
 df
 dieghernan
 dir
 eacg
-erroring
 eu
+eurostat
 fi
 gdb
 geo

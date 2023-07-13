@@ -26,8 +26,7 @@ jobs:
             any::reactable
             ropengov/rogtemplate
           needs: website
-          
-          
+
       - name: Build logo if not present and prepare template
         run: |
           # Check that logo is not present

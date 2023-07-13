@@ -64,7 +64,7 @@ gisco_get_postalcodes <- function(year = "2020",
                                   update_cache = FALSE,
                                   verbose = FALSE) {
   year <- as.character(year)
-  if (!(year %in% c("2020"))) {
+  if (year != "2020") {
     stop("Year should be 2020")
   }
   cache_dir <- gsc_helper_cachedir(cache_dir)

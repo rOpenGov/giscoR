@@ -17,7 +17,10 @@
 #' @concept political
 #' @family political
 #'
-#' @return A `sf` object specified by `spatialtype`.
+#' @return A `sf` object specified by `spatialtype`. The resulting `sf` object
+#' would present an additional column `geo` (equal to `NUTS_ID`) for
+#' improving compatibility with \pkg{eurostat} package. See
+#' [eurostat::get_eurostat_geospatial()]).
 #'
 #' @param year Release year of the file. One of "2003", "2006,
 #'   "2010", "2013", "2016" or "2021".
@@ -36,7 +39,8 @@
 #'
 #' @inheritSection gisco_get_countries About caching
 #'
-#' @seealso [gisco_nuts], [gisco_get_countries()]
+#' @seealso [gisco_nuts], [gisco_get_countries()],
+#' [eurostat::get_eurostat_geospatial()]
 #'
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
@@ -151,6 +155,11 @@ gisco_get_nuts <- function(year = "2016",
 
   if (!is.null(nuts_id) && "NUTS_ID" %in% names(data_sf)) {
     data_sf <- data_sf[data_sf$NUTS_ID %in% nuts_id, ]
+  }
+
+  # Add geo field for compatibility with eurostat
+  if ("NUTS_ID" %in% names(data_sf)) {
+    data_sf$geo <- data_sf$NUTS_ID
   }
   return(data_sf)
 }

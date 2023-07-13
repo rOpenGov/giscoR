@@ -78,7 +78,7 @@ gisco_get_airports <- function(year = "2013",
                                update_cache = FALSE,
                                verbose = FALSE) {
   year <- as.character(year)
-  if (!(year %in% c("2013"))) {
+  if (year != "2013") {
     stop("Year should be 2013")
   }
 
@@ -119,7 +119,7 @@ gisco_get_ports <- function(year = "2013",
                             update_cache = FALSE,
                             verbose = FALSE) {
   year <- as.character(year)
-  if (!(year %in% c("2013"))) {
+  if (year != "2013") {
     stop("Year should be 2013")
   }
 

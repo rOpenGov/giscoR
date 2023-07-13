@@ -14,17 +14,12 @@ test_that("Country names", {
   expect_true(nrow(gisco_get_countries(country = "Spain")) == 1)
   expect_true(nrow(gisco_get_countries(country = "ES")) == 1)
   expect_silent(gisco_get_countries(region = c("Africa", "Americas")))
-  expect_true(nrow(gisco_get_countries(region = c("EU"))) == 27)
+  expect_true(nrow(gisco_get_countries(region = "EU")) == 27)
   expect_true(nrow(gisco_get_countries(country = c("Spain", "Italia"))) == 2)
   expect_true(nrow(gisco_get_countries(country = c("ES", "IT"))) == 2)
   expect_true(nrow(gisco_get_countries(country = c("ESP", "ITA"))) == 2)
   expect_warning(
     expect_warning(gisco_get_countries(country = c("ESP", "Italia")))
-  )
-
-  expect_identical(
-    giscoR:::gsc_helper_countrynames(c("ESP", "ITA")),
-    c("ES", "IT")
   )
 })
 

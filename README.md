@@ -15,6 +15,7 @@ results](https://badges.cranchecks.info/worst/giscoR.svg)](https://cran.r-projec
 [![R build
 status](https://github.com/rOpenGov/giscoR/workflows/R-CMD-check/badge.svg)](https://github.com/rOpenGov/giscoR/actions)
 [![codecov](https://codecov.io/gh/ropengov/giscoR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropengov/giscoR)
+[![CodeFactor](https://www.codefactor.io/repository/github/ropengov/giscor/badge)](https://www.codefactor.io/repository/github/ropengov/giscor)
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -68,6 +69,9 @@ install.packages("giscoR",
 ```
 
 ## Usage
+
+You can have a look to the documentation of the dev version in
+<https://ropengov.github.io/giscoR/dev/>
 
 This script highlights some features of `giscoR`:
 
@@ -334,7 +338,7 @@ A BibTeX entry for LaTeX users is
       doi = {10.5281/zenodo.4317946},
       author = {Diego Hernangómez},
       year = {2023},
-      version = {0.3.5},
+      version = {0.3.5.9000},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
     }
