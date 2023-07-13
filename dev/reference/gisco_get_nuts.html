@@ -38,7 +38,7 @@ https://ec.europa.eu/eurostat/web/nuts/background.'><meta property="og:image" co
     
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.4.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.3.5.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,7 +187,10 @@ See Description.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code>sf</code> object specified by <code>spatialtype</code>.</p>
+<p>A <code>sf</code> object specified by <code>spatialtype</code>. The resulting <code>sf</code> object
+would present an additional column <code>geo</code> (equal to <code>NUTS_ID</code>) for
+improving compatibility with <span class="pkg">eurostat</span> package. See
+<code><a href="https://ropengov.github.io/eurostat/reference/get_eurostat_geospatial.html" class="external-link">eurostat::get_eurostat_geospatial()</a></code>).</p>
     </div>
     <div class="section level2">
     <h2 id="about-caching">About caching<a class="anchor" aria-label="anchor" href="#about-caching"></a></h2>
@@ -201,7 +204,8 @@ corresponding .geojson file by any other method and save it on your
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><a href="gisco_nuts.html">gisco_nuts</a>, <code><a href="gisco_get.html">gisco_get_countries()</a></code></p>
+    <div class="dont-index"><p><a href="gisco_nuts.html">gisco_nuts</a>, <code><a href="gisco_get.html">gisco_get_countries()</a></code>,
+<code><a href="https://ropengov.github.io/eurostat/reference/get_eurostat_geospatial.html" class="external-link">eurostat::get_eurostat_geospatial()</a></code></p>
 <p>Other political: 
 <code><a href="gisco_bulk_download.html">gisco_bulk_download</a>()</code>,
 <code><a href="gisco_get_coastallines.html">gisco_get_coastallines</a>()</code>,
