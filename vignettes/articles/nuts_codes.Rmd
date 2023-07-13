@@ -6,6 +6,8 @@ title: "NUTS codes"
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
+  tidy = "styler",
+  dev = "ragg_png",
   warning = FALSE,
   message = FALSE,
   out.width = "100%"

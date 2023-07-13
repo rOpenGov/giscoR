@@ -36,6 +36,7 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
+Config/Needs/website: ropengov/rogtemplate, ragg, reactable, styler
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Copyright: General Copyright © European Union, 1995 - today. See file
