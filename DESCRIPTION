@@ -1,7 +1,7 @@
 Type: Package
 Package: giscoR
 Title: Download Map Data from GISCO API - Eurostat
-Version: 0.3.5
+Version: 0.3.5.9000
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenGov")),
@@ -36,6 +36,7 @@ Suggests:
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
+Config/Needs/website: ropengov/rogtemplate, ragg, reactable, styler
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Copyright: General Copyright © European Union, 1995 - today. See file

@@ -73,7 +73,10 @@ would not work. See also \code{\link[countrycode:countrycode]{countrycode::count
 See Description.}
 }
 \value{
-A \code{sf} object specified by \code{spatialtype}.
+A \code{sf} object specified by \code{spatialtype}. The resulting \code{sf} object
+would present an additional column \code{geo} (equal to \code{NUTS_ID}) for
+improving compatibility with \pkg{eurostat} package. See
+\code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}).
 }
 \description{
 Returns
@@ -139,7 +142,8 @@ ggplot(select_nuts) +
 }
 }
 \seealso{
-\link{gisco_nuts}, \code{\link[=gisco_get_countries]{gisco_get_countries()}}
+\link{gisco_nuts}, \code{\link[=gisco_get_countries]{gisco_get_countries()}},
+\code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}
 
 Other political: 
 \code{\link{gisco_bulk_download}()},

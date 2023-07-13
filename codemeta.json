@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/rOpenGov/giscoR",
   "issueTracker": "https://github.com/rOpenGov/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.3.5",
+  "version": "0.3.5.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -204,7 +204,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis"],
-  "fileSize": "1344.701KB",
+  "fileSize": "1344.649KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
