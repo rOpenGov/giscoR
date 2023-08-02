@@ -80,7 +80,7 @@ gisco_attributions(copyright = TRUE)
 
 Some examples on data downloads
 
-```{r country, fig.cap="Political map of Asia"}
+```{r country, fig.cap="Political map of Asia", fig.asp=.7}
 
 library(sf)
 library(ggplot2) # Use ggplot for plotting
