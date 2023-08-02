@@ -75,7 +75,7 @@ See Description.}
 \value{
 A \code{sf} object specified by \code{spatialtype}. The resulting \code{sf} object
 would present an additional column \code{geo} (equal to \code{NUTS_ID}) for
-improving compatibility with \pkg{eurostat} package. See
+improving compatibility with \CRANpkg{eurostat} package. See
 \code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}).
 }
 \description{

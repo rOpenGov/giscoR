@@ -33,7 +33,7 @@ Union as per February 2021.
 A dataframe containing conversions between different country
 code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
 provided by the World Bank and the UN (M49). This dataset
-is extracted from \strong{countrycode} package.
+is extracted from \CRANpkg{countrycode} package.
 }
 \examples{
 
