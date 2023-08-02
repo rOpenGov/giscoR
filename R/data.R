@@ -161,7 +161,7 @@ NULL
 #' A dataframe containing conversions between different country
 #' code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
 #' provided by the World Bank and the UN (M49). This dataset
-#' is extracted from **countrycode** package.
+#' is extracted from \CRANpkg{countrycode} package.
 #'
 #' @format
 #' A data frame object with 249 rows and 12 variables:

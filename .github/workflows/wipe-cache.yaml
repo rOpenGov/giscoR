@@ -1,4 +1,4 @@
-name: Clear all Github actions caches manually
+name: Clear GHA caches manually
 on:
   workflow_dispatch:
 

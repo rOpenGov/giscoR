@@ -49,7 +49,7 @@ gsc_helper_countrynames <- function(names, out = "eurostat") {
 #'
 #' @return data_sf with UTF-8 encoding.
 #'
-#' @source Extracted from **sf** package.
+#' @source Extracted from \CRANpkg{sf} package.
 #'
 #' @noRd
 gsc_helper_utf8 <- function(data_sf) {

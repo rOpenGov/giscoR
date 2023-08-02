@@ -19,7 +19,7 @@
 #'
 #' @return A `sf` object specified by `spatialtype`. The resulting `sf` object
 #' would present an additional column `geo` (equal to `NUTS_ID`) for
-#' improving compatibility with \pkg{eurostat} package. See
+#' improving compatibility with \CRANpkg{eurostat} package. See
 #' [eurostat::get_eurostat_geospatial()]).
 #'
 #' @param year Release year of the file. One of "2003", "2006,
