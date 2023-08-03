@@ -8,7 +8,6 @@ COmmission
 CodeFactor
 DOI
 EFTA
-ENGL
 EPSG
 ETRS
 Eurostat
@@ -18,9 +17,7 @@ GISCO
 Gb
 Geodata
 LAEA
-LATN
 LAU
-LEVL
 LOCODE
 Licence
 Milos
@@ -37,7 +34,6 @@ WGS
 administratives
 bezuglich
 bezüglich
-cldr
 coastallines
 codecov
 codelist
@@ -51,16 +47,13 @@ df
 dieghernan
 dir
 eacg
-eu
 eurostat
 fi
 gdb
-geo
 geojson
 geospatial
 gisco
 giscoR’
-iso
 json
 kms
 lau
@@ -68,10 +61,6 @@ les
 licence
 limites
 rOG
-regionintermediate
-regionsub
-roxygen
 shp
 sv
 svg
-un

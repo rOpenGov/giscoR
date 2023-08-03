@@ -6,10 +6,10 @@
 \title{Disposable income of private households by NUTS 2 regions}
 \format{
 data_frame:
-\itemize{
-\item \strong{geo}: NUTS2 identifier
-\item \strong{time}: reference year (2007 to 2018)
-\item \strong{values}: value in euros
+\describe{
+\item{geo}{NUTS2 identifier}
+\item{time}{reference year (2007 to 2018)}
+\item{values}{value in euros}
 }
 }
 \source{

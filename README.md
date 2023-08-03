@@ -29,9 +29,9 @@ Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides
 some lightweight data sets ready to use without downloading.
 
-GISCO [(FAQ)](https://ec.europa.eu/eurostat/web/gisco/faq) is a
-geospatial open data repository including several data sets as
-countries, coastal lines, labels or [NUTS
+[GISCO](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
+data repository including several data sets as countries, coastal lines,
+labels or [NUTS
 levels](https://ec.europa.eu/eurostat/web/regions-and-cities/overview).
 The data sets are usually provided at several resolution levels
 (60M/20M/10M/03M/01M) and in 3 different projections (4326/3035/3857).

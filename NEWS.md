@@ -57,7 +57,7 @@
 -   New `eu` field on `giscoR::gisco_countrycode`.
 -   Fix typos on documentation
 -   Include vignette on the package
--   Move docs to markdown/roxygen
+-   Move docs to `roxygen2`
 -   `lwgeom` moved to Import field.
 -   `cartography` package replaced by `tmap` on vignettes.
 

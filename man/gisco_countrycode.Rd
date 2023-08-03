@@ -5,25 +5,22 @@
 \alias{gisco_countrycode}
 \title{Dataframe with different country code schemes and world regions}
 \format{
-A data frame object with 249 rows and 12 variables:
-\itemize{
-\item \strong{CNTR_CODE}: Eurostat code of each country
-\item \strong{iso2c}: ISO 3166-1 alpha-2 code of each country
-\item \strong{ISO3_CODE}: ISO 3166-1 alpha-3 code of each country
-\item \strong{iso.name.en}: ISO English short name
-\item \strong{cldr.short.en}: English short name as provided by the Unicode Common
-Locale Data Repository
-\url{https://cldr.unicode.org/translation/displaynames/countryregion-territory-names}
-\item \strong{continent}: As provided by the World Bank
-\item \strong{un.region.code}: Numeric region code UN (M49)
-\item \strong{un.region.name}: Region name UN (M49)
-\item \strong{un.regionintermediate.code}: Numeric intermediate Region
-code UN (M49)
-\item \strong{un.regionintermediate.name}: Intermediate Region name UN (M49)
-\item \strong{un.regionsub.code}: Numeric sub-region code UN (M49)
-\item \strong{un.regionsub.name}: Sub-Region name UN (M49)
-\item \strong{eu}: Logical indicating if the country belongs to the European
-Union as per February 2021.
+A data frame object with 249 rows and 13 variables:
+\describe{
+\item{ISO3_CODE}{Eurostat code of each country.}
+\item{CNTR_CODE}{ISO 3166-1 alpha-2 code of each country.}
+\item{iso2c}{ISO 3166-1 alpha-3 code of each country.}
+\item{iso.name.en}{ISO English short name.}
+\item{cldr.short.en}{English short name as provided by the Unicode Common
+Locale Data Repository.}
+\item{continent}{As provided by the World Bank.}
+\item{un.region.code}{Numeric region code UN (M49).}
+\item{un.region.name}{Region name UN (M49).}
+\item{un.regionintermediate.code}{Numeric intermediate Region.}
+\item{un.regionintermediate.name}{Intermediate Region name UN (M49).}
+\item{un.regionsub.code}{Numeric sub-region code UN (M49).}
+\item{un.regionsub.name}{Sub-Region name UN (M49).}
+\item{eu}{Logical indicating if the country belongs to the European.}
 }
 }
 \source{
@@ -42,6 +39,8 @@ data(gisco_countrycode)
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \link[countrycode:codelist]{countrycode::codelist}, \link[countrycode:countrycode-package]{countrycode::countrycode-package}
+
+See also the \href{https://cldr.unicode.org/translation/displaynames/countryregion-territory-names}{Unicode Common Locale Data Repository}.
 
 Other dataset: 
 \code{\link{gisco_coastallines}},

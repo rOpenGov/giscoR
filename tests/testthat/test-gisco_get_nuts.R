@@ -11,7 +11,8 @@ test_that("NUTS offline", {
   expect_error(gisco_get_nuts(nuts_level = NULL))
 
   expect_silent(aa <- gisco_get_nuts())
-  expect_true("geo" %in% names(aa))
+  # Position
+  expect_identical(rev(names(aa))[1:2], c("geometry", "geo"))
   expect_identical(aa$geo, aa$NUTS_ID)
 
   expect_true(sf::st_is_longlat(gisco_get_nuts()))
@@ -26,11 +27,13 @@ test_that("NUTS online", {
   skip_if_gisco_offline()
 
   expect_silent(aa <- gisco_get_nuts(spatialtype = "LB"))
+  expect_identical(rev(names(aa))[1:2], c("geometry", "geo"))
   expect_true("geo" %in% names(aa))
   expect_identical(aa$geo, aa$NUTS_ID)
   expect_silent(gisco_get_nuts(spatialtype = "LB", cache = FALSE))
 
   expect_silent(aa <- gisco_get_nuts(resolution = "60", nuts_level = "0"))
+  expect_identical(rev(names(aa))[1:2], c("geometry", "geo"))
   expect_true("geo" %in% names(aa))
   expect_identical(aa$geo, aa$NUTS_ID)
   expect_message(
@@ -41,12 +44,14 @@ test_that("NUTS online", {
       verbose = TRUE
     )
   )
-  expect_silent(aa <- gisco_get_nuts(
-    resolution = "60",
-    nuts_level = "0",
-    nuts_id = "ES5"
-  ))
+  expect_silent(aa <-
+    gisco_get_nuts(
+      resolution = "60",
+      nuts_level = "0",
+      nuts_id = "ES5"
+    ))
   expect_equal(nrow(aa), 1)
+  expect_identical(rev(names(aa))[1:2], c("geometry", "geo"))
   expect_true("geo" %in% names(aa))
   expect_identical(aa$geo, aa$NUTS_ID)
 

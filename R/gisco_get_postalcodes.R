@@ -70,7 +70,10 @@ gisco_get_postalcodes <- function(year = "2020",
   cache_dir <- gsc_helper_cachedir(cache_dir)
 
   if (year == "2020") {
-    url <- "https://gisco-services.ec.europa.eu/tercet/Various/PC_2020_PT_SH.zip"
+    url <- paste0(
+      "https://gisco-services.ec.europa.eu/tercet/Various/",
+      "PC_2020_PT_SH.zip"
+    )
   }
 
 

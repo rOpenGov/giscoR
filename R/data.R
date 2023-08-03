@@ -31,15 +31,16 @@ NULL
 #' @format
 #' A `MULTIPOLYGON` data frame (resolution: 1:20million, EPSG:4326) object
 #' with `r nrow(giscoR::gisco_countries)` rows and 7 variables:
-#'   * **id**: row ID
-#'   * **CNTR_NAME**: Official country name on local language
-#'   * **ISO3_CODE**: ISO 3166-1 alpha-3 code of each country, as provided by
-#'   GISCO
-#'   * **CNTR_ID**: Country ID
-#'   * **NAME_ENGL**: Country name in English
-#'   * **FID**: FID
-#'   * **geometry**: geometry field
-#'
+#' \describe{
+#'   \item{id}{row ID}
+#'   \item{CNTR_NAME}{Official country name on local language}
+#'   \item{ISO3_CODE}{ISO 3166-1 alpha-3 code of each country, as provided by
+#'   GISCO}
+#'   \item{CNTR_ID}{Country ID}
+#'   \item{NAME_ENGL}{Country name in English}
+#'   \item{FID}{FID}
+#'   \item{geometry}{geometry field}
+#' }
 #' @examples
 #'
 #' cntry <- gisco_countries
@@ -51,7 +52,8 @@ NULL
 #'   geom_sf(color = "red3", fill = "blue4") +
 #'   theme_void()
 #' @source
-#' [CNTR_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/) file.
+#' [CNTR_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/)
+#' file.
 #'
 #' @docType data
 #'
@@ -71,12 +73,15 @@ NULL
 #' @format
 #' A `POLYGON` data frame (resolution: 1:20million, EPSG:4326) object with
 #' 3 variables:
-#'   * **FID**
-#'   * **COAS_ID**
-#'   * **geometry**: geometry field
+#' \describe{
+#'   \item{COAS_ID}{Coast ID}
+#'   \item{FID}{FID}
+#'   \item{geometry}{geometry field}
+#' }
 #'
 #' @source
-#' [COAS_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/) file.
+#' [COAS_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/)
+#' file.
 #'
 #' @docType data
 #'
@@ -118,20 +123,50 @@ NULL
 #' A `POLYGON` data frame (resolution: 1:20million, EPSG:4326) object with
 #' `r prettyNum(nrow(giscoR::gisco_nuts), big.mark = ",")` rows and
 #' 11 variables:
-#'   * **id**: row ID
-#'   * **COAST_TYPE**: COAST_TYPE
-#'   * **MOUNT_TYPE**: MOUNT_TYPE
-#'   * **NAME_LATN**: Name on Latin characters
-#'   * **CNTR_CODE**: Eurostat Country code
-#'   * **FID**: FID
-#'   * **NUTS_ID**: NUTS identifier
-#'   * **NUTS_NAME**: NUTS name on local alphabet
-#'   * **LEVL_CODE**: NUTS level code (0,1,2,3)
-#'   * **URBN_TYPE**: URBN_TYPE
-#'   * **geometry**: geometry field
+#' \describe{
+#'   \item{NUTS_ID}{NUTS identifier}
+#'   \item{LEVL_CODE}{NUTS level code (0,1,2,3)}
+#'   \item{URBN_TYPE}{Urban Type, see Details}
+#'   \item{CNTR_CODE}{Eurostat Country code}
+#'   \item{NAME_LATN}{NUTS name on Latin characters}
+#'   \item{NUTS_NAME}{NUTS name on local alphabet}
+#'   \item{MOUNT_TYPE}{Mount Type, see Details}
+#'   \item{COAST_TYPE}{Coast Type, see Details}
+#'   \item{FID}{FID}
+#'   \item{geo}{Same as NUTS_ID, provided for compatibility with
+#'     \CRANpkg{eurostat}}
+#'   \item{geometry}{geometry field}
+#' }
+#'
+#' @details
+#'
+#' **MOUNT_TYPE**: Mountain typology:
+#'  - 1: More than 50 % of the surface is covered by topographic mountain areas.
+#'  - 2: More than 50 % of the regional population lives in topographic
+#'    mountain areas.
+#'  - 3: More than 50 % of the surface is covered by topographic mountain areas
+#'    and where more than 50 % of the regional population lives in these
+#'    mountain areas.
+#'  - 4: Non-mountain region / other regions.
+#'  - 0: No classification provided
+#'
+#' **URBN_TYPE**: Urban-rural typology:
+#'  - 1: Predominantly urban region.
+#'  - 2: Intermediate region.
+#'  - 3: Predominantly rural region.
+#'  - 0: No classification provided
+#'
+#' **COAST_TYPE**: Coastal typology:
+#'   - 1: Coastal (on coast).
+#'   - 2: Coastal (less than 50% of population living within 50 km. of the
+#'        coastline).
+#'   - 3: Non-coastal region.
+#'   - 0: No classification provided
+#'
 #'
 #' @source
-#' [NUTS_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/) file.
+#' [NUTS_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/)
+#' file.
 #'
 #' @docType data
 #'
@@ -164,24 +199,23 @@ NULL
 #' is extracted from \CRANpkg{countrycode} package.
 #'
 #' @format
-#' A data frame object with 249 rows and 12 variables:
-#'   * **CNTR_CODE**: Eurostat code of each country
-#'   * **iso2c**: ISO 3166-1 alpha-2 code of each country
-#'   * **ISO3_CODE**: ISO 3166-1 alpha-3 code of each country
-#'   * **iso.name.en**: ISO English short name
-#'   * **cldr.short.en**: English short name as provided by the Unicode Common
-#'   Locale Data Repository
-#'   <https://cldr.unicode.org/translation/displaynames/countryregion-territory-names>
-#'   * **continent**: As provided by the World Bank
-#'   * **un.region.code**: Numeric region code UN (M49)
-#'   * **un.region.name**: Region name UN (M49)
-#'   * **un.regionintermediate.code**: Numeric intermediate Region
-#'    code UN (M49)
-#'   * **un.regionintermediate.name**: Intermediate Region name UN (M49)
-#'   * **un.regionsub.code**: Numeric sub-region code UN (M49)
-#'   * **un.regionsub.name**: Sub-Region name UN (M49)
-#'   * **eu**: Logical indicating if the country belongs to the European
-#'   Union as per February 2021.
+#' A data frame object with 249 rows and 13 variables:
+#' \describe{
+#'   \item{ISO3_CODE}{Eurostat code of each country.}
+#'   \item{CNTR_CODE}{ISO 3166-1 alpha-2 code of each country.}
+#'   \item{iso2c}{ISO 3166-1 alpha-3 code of each country.}
+#'   \item{iso.name.en}{ISO English short name.}
+#'   \item{cldr.short.en}{English short name as provided by the Unicode Common
+#'     Locale Data Repository.}
+#'   \item{continent}{As provided by the World Bank.}
+#'   \item{un.region.code}{Numeric region code UN (M49).}
+#'   \item{un.region.name}{Region name UN (M49).}
+#'   \item{un.regionintermediate.code}{Numeric intermediate Region.}
+#'   \item{un.regionintermediate.name}{Intermediate Region name UN (M49).}
+#'   \item{un.regionsub.code}{Numeric sub-region code UN (M49).}
+#'   \item{un.regionsub.name}{Sub-Region name UN (M49).}
+#'   \item{eu}{Logical indicating if the country belongs to the European.}
+#' }
 #'
 #' @examples
 #'
@@ -190,6 +224,9 @@ NULL
 #'
 #' @seealso [gisco_get_countries()],
 #'  [countrycode::codelist], [countrycode::countrycode-package]
+#'
+#' See also the [Unicode Common Locale Data
+#' Repository](https://cldr.unicode.org/translation/displaynames/countryregion-territory-names).
 #'
 #' @docType data
 NULL
@@ -213,9 +250,11 @@ NULL
 #' administrations or non-profit institutions serving households.
 #' @format
 #' data_frame:
-#'   * **geo**: NUTS2 identifier
-#'   * **time**: reference year (2007 to 2018)
-#'   * **values**: value in euros
+#' \describe{
+#'   \item{geo}{NUTS2 identifier}
+#'   \item{time}{reference year (2007 to 2018)}
+#'   \item{values}{value in euros}
+#' }
 #'
 #' @examples
 #'

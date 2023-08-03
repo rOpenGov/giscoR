@@ -20,7 +20,8 @@
 #' @return A `sf` object specified by `spatialtype`. The resulting `sf` object
 #' would present an additional column `geo` (equal to `NUTS_ID`) for
 #' improving compatibility with \CRANpkg{eurostat} package. See
-#' [eurostat::get_eurostat_geospatial()]).
+#' [eurostat::get_eurostat_geospatial()]). See also [gisco_nuts] to
+#' understand the columns and values provided.
 #'
 #' @param year Release year of the file. One of "2003", "2006,
 #'   "2010", "2013", "2016" or "2021".
@@ -160,6 +161,14 @@ gisco_get_nuts <- function(year = "2016",
   # Add geo field for compatibility with eurostat
   if ("NUTS_ID" %in% names(data_sf)) {
     data_sf$geo <- data_sf$NUTS_ID
+
+    # Recompute position
+    allnams <- names(data_sf)
+    geo_col <- attr(data_sf, "sf_column")
+    # geo_col last
+    neword <- unique(c(setdiff(allnams, geo_col), geo_col))
+
+    data_sf <- data_sf[, neword]
   }
   return(data_sf)
 }

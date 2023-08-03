@@ -238,26 +238,26 @@ gsc_api_cache <-
     cache_dir <- gsc_helper_cachedir(cache_dir)
 
     # Create destfile and clean
-    file.local <- file.path(cache_dir, name)
-    file.local <- gsub("//", "/", file.local)
+    file_local <- file.path(cache_dir, name)
+    file_local <- gsub("//", "/", file_local)
 
 
     gsc_message(verbose, "\nCache dir is ", cache_dir, "\n")
 
 
     # Check if file already exists
-    fileoncache <- file.exists(file.local)
+    fileoncache <- file.exists(file_local)
 
     # If already cached return
     if (isFALSE(update_cache) && fileoncache) {
       gsc_message(
         verbose,
         "\nFile already cached\n",
-        file.local
+        file_local
       )
 
 
-      return(file.local)
+      return(file_local)
     }
 
     if (fileoncache) {
@@ -286,7 +286,7 @@ gsc_api_cache <-
 
 
     err_dwnload <- suppressWarnings(try(
-      download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
+      download.file(url, file_local, quiet = isFALSE(verbose), mode = "wb"),
       silent = TRUE
     ))
 
@@ -296,7 +296,7 @@ gsc_api_cache <-
       gsc_message(verbose, "Retry query")
       Sys.sleep(1)
       err_dwnload <- suppressWarnings(try(
-        download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
+        download.file(url, file_local, quiet = isFALSE(verbose), mode = "wb"),
         silent = TRUE
       ))
     }
@@ -315,9 +315,9 @@ gsc_api_cache <-
       return(NULL)
     }
 
-    gsc_message(verbose, "Download succesful on \n\n", file.local, "\n\n")
+    gsc_message(verbose, "Download succesful on \n\n", file_local, "\n\n")
 
-    return(file.local)
+    return(file_local)
   }
 
 

@@ -44,9 +44,9 @@ projections: EPSG 4326, 3035 or 3857.
 gisco_set_cache_dir("./path/to/location")
 ```
 
-If the file is not
-available locally, it would be downloaded to that directory so the next time you
-need the corresponding data it would be loaded from the local directory.
+If the file is not available locally, it would be downloaded to that directory
+so the next time you need the corresponding data it would be loaded from the
+local directory.
 
 If you experience any problems on downloading, you can also manually download
 the file from the [GISCO API
@@ -175,9 +175,9 @@ ggplot(coast) +
 
 # Plotting **giscoR**
 
-This is an example on how **giscoR** can play nicely with some Eurostat data. For
-plotting purposes we would use the `ggplot2` package however any package that
-handles `sf` objects (e.g. `tmap`, `mapsf`, `leaflet`, etc. could be used).
+This is an example on how **giscoR** can play nicely with some Eurostat data.
+For plotting purposes we would use the `ggplot2` package however any package
+that handles `sf` objects (e.g. `tmap`, `mapsf`, `leaflet`, etc. could be used).
 
 Also `colorspace` and `rcartocolor` packages are recommended, as they provide
 great color palettes.
@@ -300,4 +300,3 @@ ggplot(nuts2.sf) +
 <img src="./giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2016)" width="100%" />
 <p class="caption">Disposable income of private households by NUTS 2 regions (2016)</p>
 </div>
-

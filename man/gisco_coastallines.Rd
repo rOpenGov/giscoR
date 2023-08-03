@@ -7,14 +7,15 @@
 \format{
 A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
 3 variables:
-\itemize{
-\item \strong{FID}
-\item \strong{COAS_ID}
-\item \strong{geometry}: geometry field
+\describe{
+\item{COAS_ID}{Coast ID}
+\item{FID}{FID}
+\item{geometry}{geometry field}
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/}{COAS_RG_20M_2016_4326.geojson} file.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/}{COAS_RG_20M_2016_4326.geojson}
+file.
 }
 \description{
 A \code{sf} object as provided by GISCO (2016 version).

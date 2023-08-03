@@ -9,25 +9,57 @@
 A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
 2,016 rows and
 11 variables:
-\itemize{
-\item \strong{id}: row ID
-\item \strong{COAST_TYPE}: COAST_TYPE
-\item \strong{MOUNT_TYPE}: MOUNT_TYPE
-\item \strong{NAME_LATN}: Name on Latin characters
-\item \strong{CNTR_CODE}: Eurostat Country code
-\item \strong{FID}: FID
-\item \strong{NUTS_ID}: NUTS identifier
-\item \strong{NUTS_NAME}: NUTS name on local alphabet
-\item \strong{LEVL_CODE}: NUTS level code (0,1,2,3)
-\item \strong{URBN_TYPE}: URBN_TYPE
-\item \strong{geometry}: geometry field
+\describe{
+\item{NUTS_ID}{NUTS identifier}
+\item{LEVL_CODE}{NUTS level code (0,1,2,3)}
+\item{URBN_TYPE}{Urban Type, see Details}
+\item{CNTR_CODE}{Eurostat Country code}
+\item{NAME_LATN}{NUTS name on Latin characters}
+\item{NUTS_NAME}{NUTS name on local alphabet}
+\item{MOUNT_TYPE}{Mount Type, see Details}
+\item{COAST_TYPE}{Coast Type, see Details}
+\item{FID}{FID}
+\item{geo}{Same as NUTS_ID, provided for compatibility with
+\CRANpkg{eurostat}}
+\item{geometry}{geometry field}
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/}{NUTS_RG_20M_2016_4326.geojson} file.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/}{NUTS_RG_20M_2016_4326.geojson}
+file.
 }
 \description{
 A \code{sf} object including all NUTS levels as provided by GISCO (2016 version).
+}
+\details{
+\strong{MOUNT_TYPE}: Mountain typology:
+\itemize{
+\item 1: More than 50 \% of the surface is covered by topographic mountain areas.
+\item 2: More than 50 \% of the regional population lives in topographic
+mountain areas.
+\item 3: More than 50 \% of the surface is covered by topographic mountain areas
+and where more than 50 \% of the regional population lives in these
+mountain areas.
+\item 4: Non-mountain region / other regions.
+\item 0: No classification provided
+}
+
+\strong{URBN_TYPE}: Urban-rural typology:
+\itemize{
+\item 1: Predominantly urban region.
+\item 2: Intermediate region.
+\item 3: Predominantly rural region.
+\item 0: No classification provided
+}
+
+\strong{COAST_TYPE}: Coastal typology:
+\itemize{
+\item 1: Coastal (on coast).
+\item 2: Coastal (less than 50\% of population living within 50 km. of the
+coastline).
+\item 3: Non-coastal region.
+\item 0: No classification provided
+}
 }
 \examples{
 
