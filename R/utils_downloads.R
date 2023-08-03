@@ -446,9 +446,9 @@ gsc_unzip <-
     # Extract files
     outfiles <- infiles[grep(ext, infiles$Name), ]$Name
 
-    gsc_message(verbose, "Extracting files:\n", paste0(outfiles,
-      collapse = "\n"
-    ), "\n")
+    gsc_message(verbose, "Extracting files:\n", 
+    paste0(outfiles, collapse = "\n"), 
+    "\n")
 
 
     allfiles <- list.files(cache_dir)

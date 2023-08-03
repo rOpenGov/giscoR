@@ -54,7 +54,8 @@
 #' gisco_bulk_download(id_giscoR = "countries", resolution = "60")
 #' }
 #' @export
-gisco_bulk_download <- function(id_giscoR = c(
+gisco_bulk_download <- function(
+id_giscoR = c(
                                   "countries", "coastallines",
                                   "communes", "lau", "nuts",
                                   "urban_audit"

@@ -171,8 +171,8 @@ gsc_helper_detect_cache_dir <- function() {
       cached_path <- readLines(cache_config)
 
       # Case on empty cached path - would default
-      if (is.null(cached_path) ||
-        is.na(cached_path) || cached_path == "") {
+      if (any(is.null(cached_path),
+        is.na(cached_path), cached_path == "")) {
         cache_dir <- gisco_set_cache_dir(
           overwrite = TRUE,
           verbose = FALSE

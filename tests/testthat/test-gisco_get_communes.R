@@ -20,9 +20,9 @@ test_that("Communes online", {
   ))
 
   expect_message(gisco_get_communes(spatialtype = "LB", verbose = TRUE))
-  LU <- expect_silent(gisco_get_communes(spatialtype = "LB", country = "LU"))
+  lu <- expect_silent(gisco_get_communes(spatialtype = "LB", country = "LU"))
 
-  expect_equal(as.character(unique(LU$CNTR_CODE)), "LU")
+  expect_equal(as.character(unique(lu$CNTR_CODE)), "LU")
 
   # Test selected years
   years <- c("2001", "2013")
@@ -30,10 +30,10 @@ test_that("Communes online", {
   # Liechtenstein
   for (i in seq_len(length(years))) {
     lb <- gisco_get_communes(
-      spatialtype = "LB", country = "LI", year = years[i],
+      spatialtype = "LB", country = "LU", year = years[i],
       verbose = FALSE
     )
 
-    expect_equal(as.character(unique(LU$CNTR_CODE)), "LU")
+    expect_equal(as.character(unique(lb$CNTR_CODE)), "LU")
   }
 })

@@ -69,7 +69,10 @@ test_that("NUTS online", {
   expect_false("geo" %in% names(aa))
 
 
-  expect_silent(aa <- gisco_get_nuts(resolution = "60", country = c("ITA", "POL")))
+  expect_silent(
+  aa <- gisco_get_nuts(resolution = "60", 
+  country = c("ITA", "POL"))
+  )
 
   expect_true("geo" %in% names(aa))
   expect_identical(aa$geo, aa$NUTS_ID)
