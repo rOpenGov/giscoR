@@ -70,8 +70,10 @@ test_that("NUTS online", {
 
 
   expect_silent(
-  aa <- gisco_get_nuts(resolution = "60", 
-  country = c("ITA", "POL"))
+    aa <- gisco_get_nuts(
+      resolution = "60",
+      country = c("ITA", "POL")
+    )
   )
 
   expect_true("geo" %in% names(aa))

@@ -55,18 +55,18 @@
 #' }
 #' @export
 gisco_bulk_download <- function(
-id_giscoR = c(
-                                  "countries", "coastallines",
-                                  "communes", "lau", "nuts",
-                                  "urban_audit"
-                                ),
-                                year = "2016",
-                                cache_dir = NULL,
-                                update_cache = FALSE,
-                                verbose = FALSE,
-                                resolution = "10",
-                                ext = c("geojson", "shp", "svg", "json", "gdb"),
-                                recursive = TRUE) {
+    id_giscoR = c(
+      "countries", "coastallines",
+      "communes", "lau", "nuts",
+      "urban_audit"
+    ),
+    year = "2016",
+    cache_dir = NULL,
+    update_cache = FALSE,
+    verbose = FALSE,
+    resolution = "10",
+    ext = c("geojson", "shp", "svg", "json", "gdb"),
+    recursive = TRUE) {
   valid <- c(
     "coastallines", "communes", "countries", "lau", "nuts",
     "urban_audit"
