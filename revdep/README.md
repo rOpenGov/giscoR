@@ -3,14 +3,14 @@
 |field    |value                          |
 |:--------|:------------------------------|
 |version  |R version 4.3.1 (2023-06-16)   |
-|os       |macOS Monterey 12.6.7          |
+|os       |macOS Monterey 12.6.8          |
 |system   |x86_64, darwin20               |
 |ui       |X11                            |
 |language |(EN)                           |
 |collate  |en_US.UTF-8                    |
 |ctype    |en_US.UTF-8                    |
 |tz       |UTC                            |
-|date     |2023-08-04                     |
+|date     |2023-09-12                     |
 |pandoc   |2.19.2 @ /usr/local/bin/pandoc |
 
 # Dependencies
@@ -33,8 +33,8 @@
 |s2          |1.1.4  |1.1.4      |   |
 |sf          |1.0-14 |1.0-14     |   |
 |sfheaders   |0.4.3  |0.4.3      |   |
-|units       |0.8-2  |0.8-2      |   |
-|wk          |0.7.3  |0.7.3      |   |
+|units       |0.8-3  |0.8-3      |   |
+|wk          |0.8.0  |0.8.0      |   |
 
 # Revdeps
 
