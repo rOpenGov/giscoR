@@ -99,6 +99,17 @@ references:
   year: '2023'
   version: '>= 2.0.0'
 - type: software
+  title: httr
+  abstract: 'httr: Tools for Working with URLs and HTTP'
+  notes: Imports
+  url: https://httr.r-lib.org/
+  repository: https://CRAN.R-project.org/package=httr
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2023'
+- type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
     and Logs'

@@ -97,7 +97,7 @@ ggplot(Greece) +
 ##############################
 
 ports <- gisco_get_ports()
-coast <- gisco_get_coastallines(year = 2013)
+coast <- giscoR::gisco_coastallines
 
 # To Equal Earth projection :)
 

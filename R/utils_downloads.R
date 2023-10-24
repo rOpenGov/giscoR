@@ -301,6 +301,23 @@ gsc_api_cache <-
       ))
     }
 
+    # Last try with httr (#69)
+
+    if (inherits(err_dwnload, "try-error")) {
+      ops <- options()
+      options(timeout = 1000)
+      req <- httr::GET(url, httr::write_disk(file_local, overwrite = TRUE))
+      options(ops)
+
+      # Mock err download
+      if (httr::status_code(req) == 200) {
+        mock_er <- 200
+      } else {
+        mock_er <- "aaaa"
+      }
+
+      err_dwnload <- try(mock_er / 2, silent = TRUE)
+    }
     # If not then stop
     if (inherits(err_dwnload, "try-error")) {
       gsc_message(
