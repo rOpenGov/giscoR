@@ -294,13 +294,36 @@ gsc_api_cache <-
 
     if (inherits(err_dwnload, "try-error")) {
       gsc_message(verbose, "Retry query")
-      Sys.sleep(1)
+      Sys.sleep(1.5)
       err_dwnload <- suppressWarnings(try(
         download.file(url, file_local, quiet = isFALSE(verbose), mode = "wb"),
         silent = TRUE
       ))
     }
 
+    # Last try with httr (#69)
+
+    if (inherits(err_dwnload, "try-error")) {
+      ops <- options()
+      options(timeout = 1000)
+      req <- try(httr::GET(url, httr::write_disk(file_local, overwrite = TRUE)),
+        silent = TRUE
+      )
+      options(ops)
+
+      # Mock err download
+      if (inherits(req, "try-error")) {
+        mock_er <- "aaaa"
+        unlink(file_local)
+      } else if (httr::status_code(req) == 200) {
+        mock_er <- 200
+      } else {
+        mock_er <- "aaaa"
+        unlink(file_local)
+      }
+
+      err_dwnload <- try(mock_er / 2, silent = TRUE)
+    }
     # If not then stop
     if (inherits(err_dwnload, "try-error")) {
       gsc_message(

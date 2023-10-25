@@ -2,13 +2,13 @@
 
 -   `gisco_get_nuts()`: Add an additional `geo` column (identical to `NUTS_ID`)
     for enhanced compatibility with **eurostat** package (#62).
+-   Adjust examples for **CRAN**.
+-   Add dependency **httr**.
 
 # giscoR 0.3.5
 
 -   Review examples to avoid CRAN errors and notes.
-
 -   New helper function: `gisco_detect_cache_dir()`.
-
 -   Now the functions fail gracefully with an informative message, instead of an
     error, and return `NULL`.
 

@@ -24,6 +24,7 @@ Depends:
 Imports: 
     countrycode (>= 1.2.0),
     geojsonsf (>= 2.0.0),
+    httr,
     rappdirs (>= 0.3.0),
     sf (>= 0.9.0),
     utils
