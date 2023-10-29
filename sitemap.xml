@@ -4,12 +4,6 @@
     <loc>https://ropengov.github.io/giscoR/404.html</loc>
   </url>
   <url>
-    <loc>https://ropengov.github.io/giscoR/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://ropengov.github.io/giscoR/LICENSE.html</loc>
-  </url>
-  <url>
     <loc>https://ropengov.github.io/giscoR/articles/giscoR.html</loc>
   </url>
   <url>
@@ -22,7 +16,16 @@
     <loc>https://ropengov.github.io/giscoR/authors.html</loc>
   </url>
   <url>
+    <loc>https://ropengov.github.io/giscoR/CONTRIBUTING.html</loc>
+  </url>
+  <url>
     <loc>https://ropengov.github.io/giscoR/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ropengov.github.io/giscoR/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://ropengov.github.io/giscoR/LICENSE.html</loc>
   </url>
   <url>
     <loc>https://ropengov.github.io/giscoR/news/index.html</loc>
