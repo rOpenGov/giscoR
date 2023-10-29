@@ -1,4 +1,4 @@
-# giscoR (development version)
+# giscoR 0.4.0
 
 -   `gisco_get_nuts()`: Add an additional `geo` column (identical to `NUTS_ID`)
     for enhanced compatibility with **eurostat** package (#62).
