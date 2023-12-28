@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.1 (2023-06-16 ucrt)",
+  "runtimePlatform": "R version 4.3.2 (2023-10-31 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -216,7 +216,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis"],
-  "fileSize": "1419.969KB",
+  "fileSize": "1422.388KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -237,6 +237,6 @@
   ],
   "releaseNotes": "https://github.com/rOpenGov/giscoR/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenGov/giscoR/blob/main/README.md",
-  "contIntegration": ["https://github.com/rOpenGov/giscoR/actions", "https://app.codecov.io/gh/ropengov/giscoR"],
+  "contIntegration": ["https://github.com/rOpenGov/giscoR/actions/workflows/check-full.yaml", "https://app.codecov.io/gh/ropengov/giscoR"],
   "developmentStatus": "https://www.repostatus.org/#active"
 }
