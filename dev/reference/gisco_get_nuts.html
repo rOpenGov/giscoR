@@ -77,7 +77,7 @@ https://ec.europa.eu/eurostat/web/nuts/background.'><meta property="og:image" co
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Get GISCO NUTS <code>sf</code> polygons, points and lines</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Get GISCO NUTS <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> polygons, points and lines</h1>
       <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_get_nuts.R" class="external-link"><code>R/gisco_get_nuts.R</code></a></small>
       <div class="d-none name"><code>gisco_get_nuts.Rd</code></div>
     </div>
@@ -86,10 +86,10 @@ https://ec.europa.eu/eurostat/web/nuts/background.'><meta property="og:image" co
     <p>Returns
 <a href="https://en.wikipedia.org/wiki/Nomenclature_of_Territorial_Units_for_Statistics" class="external-link">NUTS regions</a>
 polygons, lines and points at a specified scale, as provided by GISCO.</p>
-<p>NUTS are provided at three different levels:</p><ul><li><p><strong>"0"</strong>: Country level</p></li>
-<li><p><strong>"1"</strong>: Groups of states/regions</p></li>
-<li><p><strong>"2"</strong>: States/regions</p></li>
-<li><p><strong>"3"</strong>: Counties/provinces/districts</p></li>
+<p>NUTS are provided at three different levels:</p><ul><li><p><code>"0"</code>: Country level</p></li>
+<li><p><code>"1"</code>: Groups of states/regions</p></li>
+<li><p><code>"2"</code>: States/regions</p></li>
+<li><p><code>"3"</code>: Counties/provinces/districts</p></li>
 </ul><p>Note that NUTS-level definition may vary across countries. See also
 <a href="https://ec.europa.eu/eurostat/web/nuts/background" class="external-link">https://ec.europa.eu/eurostat/web/nuts/background</a>.</p>
     </div>
@@ -118,8 +118,8 @@ polygons, lines and points at a specified scale, as provided by GISCO.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>year</dt>
-<dd><p>Release year of the file. One of "2003", "2006,
-"2010", "2013", "2016" or "2021".</p></dd>
+<dd><p>Release year of the file. One of <code>"2003"</code>, <code>"2006"</code>, <code>"2010"</code>,
+<code>"2013"</code>, <code>"2016"</code> or <code>"2021"</code>.</p></dd>
 
 
 <dt>epsg</dt>
@@ -161,10 +161,11 @@ default is <code>FALSE</code>.</p></dd>
 
 
 <dt>spatialtype</dt>
-<dd><p>Type of geometry to be returned:</p><ul><li><p><strong>"BN"</strong>: Boundaries - <code>LINESTRING</code> object.</p></li>
-<li><p><strong>"LB"</strong>: Labels - <code>POINT</code> object.</p></li>
-<li><p><strong>"RG"</strong>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
-</ul></dd>
+<dd><p>Type of geometry to be returned:</p><ul><li><p><code>"BN"</code>: Boundaries - <code>LINESTRING</code> object.</p></li>
+<li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
+<li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+</ul><p><strong>Note that</strong> parameters <code>country</code>, <code>nuts_level</code> and <code>nuts_id</code> would be only
+applied when <code>spatialtype</code> is <code>"BN"</code> or <code>"RG"</code>.</p></dd>
 
 
 <dt>country</dt>
@@ -179,19 +180,21 @@ would not work. See also <code><a href="https://rdrr.io/pkg/countrycode/man/coun
 
 
 <dt>nuts_level</dt>
-<dd><p>NUTS level. One of "0", "1", "2" or "3".
-See Description.</p></dd>
+<dd><p>NUTS level. One of <code>"0"</code>, <code>"1"</code>, <code>"2"</code> or <code>"3"</code>.
+See <strong>Description</strong>.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code>sf</code> object specified by <code>spatialtype</code>. The resulting <code>sf</code> object
-would present an additional column <code>geo</code> (equal to <code>NUTS_ID</code>) for
-improving compatibility with <a href="https://CRAN.R-project.org/package=eurostat" class="external-link"><span class="pkg">eurostat</span></a> package. See
-<code><a href="https://ropengov.github.io/eurostat/reference/get_eurostat_geospatial.html" class="external-link">eurostat::get_eurostat_geospatial()</a></code>). See also <a href="gisco_nuts.html">gisco_nuts</a> to
-understand the columns and values provided.</p>
+<p>A <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object specified by <code>spatialtype</code>. The resulting
+<a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object would present an additional column <code>geo</code> (equal to
+<code>NUTS_ID</code>) for improving compatibility with <a href="https://CRAN.R-project.org/package=eurostat" class="external-link"><span class="pkg">eurostat</span></a> package. See
+<code><a href="https://ropengov.github.io/eurostat/reference/get_eurostat_geospatial.html" class="external-link">eurostat::get_eurostat_geospatial()</a></code>).</p>
+
+
+<p>See also <a href="gisco_nuts.html">gisco_nuts</a> to understand the columns and values provided.</p>
     </div>
     <div class="section level2">
     <h2 id="about-caching">About caching<a class="anchor" aria-label="anchor" href="#about-caching"></a></h2>

@@ -97,17 +97,17 @@ shapefile for each unit.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>id_giscoR</dt>
-<dd><p>Select the <code>unit</code> type to be downloaded.
-Accepted values are "nuts", "countries" or "urban_audit".</p></dd>
+<dd><p>Select the <code>unit</code> type to be downloaded. Accepted values are
+<code>"nuts"</code>, <code>"countries"</code> or <code>"urban_audit"</code>.</p></dd>
 
 
 <dt>unit</dt>
-<dd><p>Unit ID to be downloaded. See Details.</p></dd>
+<dd><p>Unit ID to be downloaded. See <strong>Details</strong>.</p></dd>
 
 
 <dt>mode</dt>
-<dd><p>Controls the output of the function. Possible values are "sf"
-or "df". See Value and Details.</p></dd>
+<dd><p>Controls the output of the function. Possible values are <code>"sf"</code>
+or <code>"df"</code>. See <strong>Value</strong> and <strong>Details</strong>.</p></dd>
 
 
 <dt>year</dt>
@@ -154,22 +154,22 @@ default is <code>FALSE</code>.</p></dd>
 
 
 <dt>spatialtype</dt>
-<dd><p>Type of geometry to be returned: "RG", for <code>POLYGON</code> and
-"LB" for <code>POINT</code>.</p></dd>
+<dd><p>Type of geometry to be returned: <code>"RG"</code>, for <code>POLYGON</code> and
+<code>"LB"</code> for <code>POINT</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code>sf</code> object on <code>mode = "sf"</code> or a dataframe on <code>mode = "df"</code>.</p>
+<p>A <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object on <code>mode = "sf"</code> or a data frame on <code>mode = "df"</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The function can return a dataframe on <code>mode = "df"</code> or a <code>sf</code> object
-on <code>mode = "sf"</code>.</p>
+    <p>The function can return a data frame on <code>mode = "df"</code> or a <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a>
+object on <code>mode = "sf"</code>.</p>
 <p>In order to see the available <code>unit</code> ids with the required
-combination of <code>spatialtype, year</code>, first run the function on "df"
+combination of <code>spatialtype, year</code>, first run the function on <code>"df"</code>
 mode. Once that you get the data frame you can select the required ids
 on the <code>unit</code> parameter.</p>
 <p>On <code>mode = "df"</code> the only relevant parameters are <code>spatialtype, year</code>.</p>
