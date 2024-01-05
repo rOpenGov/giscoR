@@ -3,7 +3,7 @@
 \docType{data}
 \name{gisco_countrycode}
 \alias{gisco_countrycode}
-\title{Dataframe with different country code schemes and world regions}
+\title{Data frame with different country code schemes and world regions}
 \format{
 A data frame object with 249 rows and 13 variables:
 \describe{
@@ -27,9 +27,9 @@ Locale Data Repository.}
 \link[countrycode:codelist]{countrycode::codelist} \strong{v1.2.0}.
 }
 \description{
-A dataframe containing conversions between different country
+A data frame containing conversions between different country
 code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
-provided by the World Bank and the UN (M49). This dataset
+provided by the World Bank and the UN (M49). This data set
 is extracted from \CRANpkg{countrycode} package.
 }
 \examples{

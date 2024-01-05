@@ -22,14 +22,14 @@ package
 \details{
 Current languages supported are:
 \itemize{
-\item "en" - English
-\item "da" - Danish
-\item "de" - German
-\item "es" - Spanish
-\item "fi" - Finish
-\item "fr" - French
-\item "no" - Norwegian
-\item "sv" - Swedish
+\item \code{"en"} - English
+\item \code{"da"} - Danish
+\item \code{"de"} - German
+\item \code{"es"} - Spanish
+\item \code{"fi"} - Finish
+\item \code{"fr"} - French
+\item \code{"no"} - Norwegian
+\item \code{"sv"} - Swedish
 }
 
 Please consider

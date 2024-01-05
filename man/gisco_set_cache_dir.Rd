@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco_cache.R
 \name{gisco_set_cache_dir}
 \alias{gisco_set_cache_dir}
-\title{Set your \strong{giscoR} cache dir}
+\title{Set your \CRANpkg{giscoR} cache dir}
 \usage{
 gisco_set_cache_dir(
   cache_dir,

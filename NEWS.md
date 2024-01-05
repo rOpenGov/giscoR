@@ -1,3 +1,8 @@
+# giscoR (development version)
+
+-   Improve documentation, stating where the parameters `country` and `region`
+    applies (#50, #75)
+
 # giscoR 0.4.0
 
 -   `gisco_get_nuts()`: Add an additional `geo` column (identical to `NUTS_ID`)

@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{gisco_countries}
 \alias{gisco_countries}
-\title{World countries \code{POLYGON} object}
+\title{World countries \code{POLYGON} \CRANpkg{sf} object}
 \format{
 A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object
 with 257 rows and 7 variables:
@@ -24,8 +24,8 @@ GISCO}
 file.
 }
 \description{
-A \code{sf} object including all
-countries as provided by GISCO (2016 version).
+A \CRANpkg{sf} object including all countries as provided by
+GISCO (2016 version).
 }
 \examples{
 

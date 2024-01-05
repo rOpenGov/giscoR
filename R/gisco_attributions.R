@@ -19,14 +19,14 @@
 #'
 #' @details
 #' Current languages supported are:
-#' * "en" - English
-#' * "da" - Danish
-#' * "de" - German
-#' * "es" - Spanish
-#' * "fi" - Finish
-#' * "fr" - French
-#' * "no" - Norwegian
-#' * "sv" - Swedish
+#' * `"en"` - English
+#' * `"da"` - Danish
+#' * `"de"` - German
+#' * `"es"` - Spanish
+#' * `"fi"` - Finish
+#' * `"fr"` - French
+#' * `"no"` - Norwegian
+#' * `"sv"` - Swedish
 #'
 #' Please consider
 #' [contributing](https://github.com/rOpenGov/giscoR/issues) if you spot any

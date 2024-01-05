@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco_get_countries.R
 \name{gisco_get_countries}
 \alias{gisco_get_countries}
-\title{Get GISCO world country \code{sf} polygons, points and lines}
+\title{Get GISCO world country \CRANpkg{sf} polygons, points and lines}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 }
@@ -21,16 +21,16 @@ gisco_get_countries(
 )
 }
 \arguments{
-\item{year}{Release year of the file. One of "2001", "2006",
-"2010", "2013", "2016" or "2020".}
+\item{year}{Release year of the file. One of \code{"2001"}, \code{"2006"},
+\code{"2010"}, \code{"2013"}, \code{"2016"} or \code{"2020"}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item "4258": ETRS89
-\item "4326": WGS84
-\item "3035": ETRS89 / ETRS-LAEA
-\item "3857": Pseudo-Mercator
+\item \code{"4258"}: ETRS89
+\item \code{"4326"}: WGS84
+\item \code{"3035"}: ETRS89 / ETRS-LAEA
+\item \code{"3857"}: Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -47,21 +47,24 @@ default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
-\item "60": 1:60million
-\item "20": 1:20million
-\item "10": 1:10million
-\item "03": 1:3million
-\item "01": 1:1million
+\item \code{"60"}: 1:60million
+\item \code{"20"}: 1:20million
+\item \code{"10"}: 1:10million
+\item \code{"03"}: 1:3million
+\item \code{"01"}: 1:1million
 }}
 
 \item{spatialtype}{Type of geometry to be returned:
 \itemize{
-\item \strong{"BN"}: Boundaries - \code{LINESTRING} object.
-\item \strong{"COASTL"}: coastlines - \code{LINESTRING} object.
-\item \strong{"INLAND"}: inland boundaries - \code{LINESTRING} object.
-\item \strong{"LB"}: Labels - \code{POINT} object.
-\item \strong{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-}}
+\item \code{"BN"}: Boundaries - \code{LINESTRING} object.
+\item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
+\item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+}
+
+\strong{Note that} parameters \code{country} and \code{region} would be only applied
+when \code{spatialtype} is \code{"BN"} or \code{"RG"}.}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
@@ -69,12 +72,13 @@ vector of Eurostat country codes. Mixed types (as \code{c("Turkey","US","FRA")})
 would not work. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{region}{Optional. A character vector of UN M49 region codes or
-European Union membership. Possible values are "Africa", "Americas",
-"Asia", "Europe", "Oceania" or "EU" for countries belonging to the European
-Union (as per 2021). See \strong{About world regions} and \link{gisco_countrycode}}
+European Union membership. Possible values are \code{"Africa"}, \code{"Americas"},
+\code{"Asia"}, \code{"Europe"}, \code{"Oceania"} or \code{"EU"} for countries belonging to the
+European Union (as per 2021). See \strong{About world regions} and
+\link{gisco_countrycode}.}
 }
 \value{
-A \code{sf} object specified by \code{spatialtype}.
+A \CRANpkg{sf} object specified by \code{spatialtype}.
 }
 \description{
 Returns world country polygons, lines and points at a specified scale, as

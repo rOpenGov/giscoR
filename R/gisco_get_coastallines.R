@@ -1,11 +1,11 @@
-#' Get GISCO coastlines `sf` polygons
+#' Get GISCO coastlines \CRANpkg{sf} polygons
 #'
 #' Downloads worldwide coastlines
 #'
 #' @concept political
 #' @family political
 #'
-#' @param year Release year. One of "2006", "2010", "2013" or "2016"
+#' @param year Release year. One of `"2006"`, `"2010"`, `"2013"` or `"2016"`.
 #'
 #' @inheritParams gisco_get_countries
 #'
@@ -13,7 +13,7 @@
 #'
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
-#' @return A `sf` `POLYGON` object.
+#' @return A \CRANpkg{sf} `POLYGON` object.
 #'
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].

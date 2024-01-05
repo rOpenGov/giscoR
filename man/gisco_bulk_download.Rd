@@ -21,15 +21,15 @@ gisco_bulk_download(
 \arguments{
 \item{id_giscoR}{Type of dataset to be downloaded. Values supported are:
 \itemize{
-\item "coastallines"
-\item "communes"
-\item "countries"
-\item "lau"
-\item "nuts"
-\item "urban_audit"
+\item \code{"coastallines"}
+\item \code{"communes"}
+\item \code{"countries"}
+\item \code{"lau"}
+\item \code{"nuts"}
+\item \code{"urban_audit"}
 }}
 
-\item{year}{Release year of the file. See Details}
+\item{year}{Release year of the file. See \strong{Details}.}
 
 \item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
@@ -42,15 +42,15 @@ default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
-\item "60": 1:60million
-\item "20": 1:20million
-\item "10": 1:10million
-\item "03": 1:3million
-\item "01": 1:1million
+\item \code{"60"}: 1:60million
+\item \code{"20"}: 1:20million
+\item \code{"10"}: 1:10million
+\item \code{"03"}: 1:3million
+\item \code{"01"}: 1:1million
 }}
 
 \item{ext}{Extension of the file(s) to be downloaded. Formats available are
-"geojson", "shp", "svg", "json", "gdb". See \strong{Details}.}
+\code{"geojson"}, \code{"shp"}, \code{"svg"}, \code{"json"}, \code{"gdb"}. See \strong{Details}.}
 
 \item{recursive}{Tries to unzip recursively the zip files (if any) included
 in the initial bulk download (case of \code{ext = "shp"}).}
@@ -72,7 +72,7 @@ See the years available in the corresponding functions:
 \item \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}
 }
 
-The usual extension used across \strong{giscoR} is "geojson",
+The usual extension used across \CRANpkg{giscoR} is \code{"geojson"},
 however other formats are already available on GISCO.
 }
 \section{About caching}{

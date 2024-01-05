@@ -16,7 +16,7 @@ gisco_get_postalcodes(
 )
 }
 \arguments{
-\item{year}{Year of reference. Currently only "2020" is available.}
+\item{year}{Year of reference. Currently only \code{"2020"} is available.}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
@@ -33,7 +33,7 @@ When set to \code{TRUE} it would force a fresh download of the source
 default is \code{FALSE}.}
 }
 \value{
-A \code{POINT} object on EPSG:4326.
+A \code{POINT} \CRANpkg{sf} object on EPSG:4326.
 }
 \description{
 Get postal codes points of the EU, EFTA and candidate countries.

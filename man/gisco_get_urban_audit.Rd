@@ -2,7 +2,8 @@
 % Please edit documentation in R/gisco_get_urban_audit.R
 \name{gisco_get_urban_audit}
 \alias{gisco_get_urban_audit}
-\title{Get GISCO greater cities and metropolitan areas \code{sf} polygons and points}
+\title{Get GISCO greater cities and metropolitan areas \CRANpkg{sf} polygons and
+points}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 }
@@ -20,16 +21,16 @@ gisco_get_urban_audit(
 )
 }
 \arguments{
-\item{year}{Release year of the file. One of "2001", "2004",
-"2014", "2018" or "2020".}
+\item{year}{Release year of the file. One of \code{"2001"}, \code{"2004"}, \code{"2014"},
+\code{"2018"} or \code{"2020"}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item "4258": ETRS89
-\item "4326": WGS84
-\item "3035": ETRS89 / ETRS-LAEA
-\item "3857": Pseudo-Mercator
+\item \code{"4258"}: ETRS89
+\item \code{"4326"}: WGS84
+\item \code{"3035"}: ETRS89 / ETRS-LAEA
+\item \code{"3857"}: Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -46,8 +47,8 @@ default is \code{FALSE}.}
 
 \item{spatialtype}{Type of geometry to be returned:
 \itemize{
-\item \strong{"LB"}: Labels - \code{POINT} object.
-\item \strong{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 }}
 
 \item{country}{Optional. A character vector of country codes. It could be
@@ -55,11 +56,11 @@ either a vector of country names, a vector of ISO3 country codes or a
 vector of Eurostat country codes. Mixed types (as \code{c("Turkey","US","FRA")})
 would not work. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
-\item{level}{Level of Urban Audit. Possible values are "CITIES", "FUA",
-"GREATER_CITIES" or \code{NULL}, that would download the full dataset.}
+\item{level}{Level of Urban Audit. Possible values are \code{"CITIES"}, \code{"FUA"},
+\code{"GREATER_CITIES"} or \code{NULL}, that would download the full dataset.}
 }
 \value{
-A \code{sf} object specified by \code{spatialtype}.
+A \CRANpkg{sf} object specified by \code{spatialtype}.
 }
 \description{
 Returns polygons and points corresponding to cities, greater cities and

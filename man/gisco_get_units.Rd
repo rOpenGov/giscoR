@@ -22,24 +22,24 @@ gisco_get_units(
 )
 }
 \arguments{
-\item{id_giscoR}{Select the \code{unit} type to be downloaded.
-Accepted values are "nuts", "countries" or "urban_audit".}
+\item{id_giscoR}{Select the \code{unit} type to be downloaded. Accepted values are
+\code{"nuts"}, \code{"countries"} or \code{"urban_audit"}.}
 
-\item{unit}{Unit ID to be downloaded. See Details.}
+\item{unit}{Unit ID to be downloaded. See \strong{Details}.}
 
-\item{mode}{Controls the output of the function. Possible values are "sf"
-or "df". See Value and Details.}
+\item{mode}{Controls the output of the function. Possible values are \code{"sf"}
+or \code{"df"}. See \strong{Value} and \strong{Details}.}
 
-\item{year}{Release year of the file. One of "2001", "2006",
-"2010", "2013", "2016" or "2020".}
+\item{year}{Release year of the file. One of \code{"2001"}, \code{"2006"},
+\code{"2010"}, \code{"2013"}, \code{"2016"} or \code{"2020"}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item "4258": ETRS89
-\item "4326": WGS84
-\item "3035": ETRS89 / ETRS-LAEA
-\item "3857": Pseudo-Mercator
+\item \code{"4258"}: ETRS89
+\item \code{"4326"}: WGS84
+\item \code{"3035"}: ETRS89 / ETRS-LAEA
+\item \code{"3857"}: Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -56,18 +56,18 @@ default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
-\item "60": 1:60million
-\item "20": 1:20million
-\item "10": 1:10million
-\item "03": 1:3million
-\item "01": 1:1million
+\item \code{"60"}: 1:60million
+\item \code{"20"}: 1:20million
+\item \code{"10"}: 1:10million
+\item \code{"03"}: 1:3million
+\item \code{"01"}: 1:1million
 }}
 
-\item{spatialtype}{Type of geometry to be returned: "RG", for \code{POLYGON} and
-"LB" for \code{POINT}.}
+\item{spatialtype}{Type of geometry to be returned: \code{"RG"}, for \code{POLYGON} and
+\code{"LB"} for \code{POINT}.}
 }
 \value{
-A \code{sf} object on \code{mode = "sf"} or a dataframe on \code{mode = "df"}.
+A \CRANpkg{sf} object on \code{mode = "sf"} or a data frame on \code{mode = "df"}.
 }
 \description{
 Download individual shapefiles of units. Unlike \code{\link[=gisco_get_countries]{gisco_get_countries()}},
@@ -76,11 +76,11 @@ dataset and applies filters, \code{\link[=gisco_get_units]{gisco_get_units()}} d
 shapefile for each unit.
 }
 \details{
-The function can return a dataframe on \code{mode = "df"} or a \code{sf} object
-on \code{mode = "sf"}.
+The function can return a data frame on \code{mode = "df"} or a \CRANpkg{sf}
+object on \code{mode = "sf"}.
 
 In order to see the available \code{unit} ids with the required
-combination of \verb{spatialtype, year}, first run the function on "df"
+combination of \verb{spatialtype, year}, first run the function on \code{"df"}
 mode. Once that you get the data frame you can select the required ids
 on the \code{unit} parameter.
 
