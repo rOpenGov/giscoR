@@ -69,6 +69,9 @@ install.packages("giscoR",
 
 ## Usage
 
+You can have a look to the documentation of the dev version in
+<https://ropengov.github.io/giscoR/dev/>
+
 This script highlights some features of `giscoR`:
 
 ``` r
@@ -322,7 +325,7 @@ Contributions are very welcome:
 
 To cite ‘giscoR’ in publications use:
 
-Hernangómez D (2023). *giscoR: Download Map Data from GISCO API -
+Hernangómez D (2024). *giscoR: Download Map Data from GISCO API -
 Eurostat*. <doi:10.5281/zenodo.4317946>
 <https://doi.org/10.5281/zenodo.4317946>,
 <https://ropengov.github.io/giscoR/>.
@@ -333,8 +336,8 @@ A BibTeX entry for LaTeX users is
       title = {{giscoR}: Download Map Data from GISCO API - Eurostat},
       doi = {10.5281/zenodo.4317946},
       author = {Diego Hernangómez},
-      year = {2023},
-      version = {0.4.0},
+      year = {2024},
+      version = {0.4.0.9000},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
     }

@@ -25,7 +25,7 @@ gisco_get_ports(
 )
 }
 \arguments{
-\item{year}{Year of reference. Only year available right now is "2013".}
+\item{year}{Year of reference. Only year available right now is \code{"2013"}.}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
@@ -45,7 +45,7 @@ default is \code{FALSE}.}
 A \code{POINT} object on EPSG:4326.
 }
 \description{
-Loads a \code{sf} object from GISCO API or your local library.
+Loads a \CRANpkg{sf} object from GISCO API or your local library.
 }
 \details{
 \code{\link[=gisco_get_airports]{gisco_get_airports()}} refer to Europe. All shapefiles provided in

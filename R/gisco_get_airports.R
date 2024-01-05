@@ -1,13 +1,13 @@
 #' Get location of airports and ports from GISCO API
 #'
-#' Loads a `sf` object from GISCO API or your local library.
+#' Loads a \CRANpkg{sf} object from GISCO API or your local library.
 #'
 #' @concept infrastructure
 #' @family infrastructure
 #'
 #' @return A `POINT` object on EPSG:4326.
 #'
-#' @param year Year of reference. Only year available right now is "2013".
+#' @param year Year of reference. Only year available right now is `"2013"`.
 #'
 #' @inheritParams gisco_get_countries
 #'

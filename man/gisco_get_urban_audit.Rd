@@ -26,10 +26,10 @@ gisco_get_urban_audit(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item "4258": ETRS89
-\item "4326": WGS84
-\item "3035": ETRS89 / ETRS-LAEA
-\item "3857": Pseudo-Mercator
+\item \code{"4258"}: ETRS89
+\item \code{"4326"}: WGS84
+\item \code{"3035"}: ETRS89 / ETRS-LAEA
+\item \code{"3857"}: Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See

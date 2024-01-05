@@ -1,4 +1,4 @@
-#' Set your **giscoR** cache dir
+#' Set your \CRANpkg{giscoR} cache dir
 #'
 #' @family cache utilities
 #' @seealso [rappdirs::user_config_dir()]

@@ -10,7 +10,7 @@
 #'
 #' @format A data frame
 #'
-#' @details This dataframe is used to check the validity of the API calls.
+#' @details This data frame is used to check the validity of the API calls.
 #'
 #' @source GISCO API `datasets.json`.
 #' @keywords internal
@@ -19,14 +19,14 @@
 #' data(gisco_db)
 NULL
 
-#' World countries `POLYGON` object
+#' World countries `POLYGON` \CRANpkg{sf} object
 #'
 #' @family dataset
 #'
 #' @name gisco_countries
 #'
-#' @description A `sf` object including all
-#' countries as provided by GISCO (2016 version).
+#' @description A \CRANpkg{sf} object including all countries as provided by
+#' GISCO (2016 version).
 #'
 #' @format
 #' A `MULTIPOLYGON` data frame (resolution: 1:20million, EPSG:4326) object
@@ -64,14 +64,14 @@ NULL
 
 #' World coastal lines `POLYGON` object
 #'
-#' A `sf` object as provided by GISCO (2016 version).
+#' A \CRANpkg{sf} object as provided by GISCO (2016 version).
 #'
 #' @family dataset
 #'
 #' @name gisco_coastallines
 #'
 #' @format
-#' A `POLYGON` data frame (resolution: 1:20million, EPSG:4326) object with
+#' A `POLYGON` \CRANpkg{sf} object (resolution: 1:20million, EPSG:4326) with
 #' 3 variables:
 #' \describe{
 #'   \item{COAS_ID}{Coast ID}
@@ -113,7 +113,8 @@ NULL
 
 #' All NUTS `POLYGON` object
 #'
-#' A `sf` object including all NUTS levels as provided by GISCO (2016 version).
+#' A \CRANpkg{sf} object including all NUTS levels as provided by GISCO
+#' (2016 version).
 #'
 #' @family dataset
 #'
@@ -186,16 +187,16 @@ NULL
 NULL
 
 
-#' Dataframe with different country code schemes and world regions
+#' Data frame with different country code schemes and world regions
 #'
 #' @name gisco_countrycode
 #'
 #' @family dataset
 #'
 #' @description
-#' A dataframe containing conversions between different country
+#' A data frame containing conversions between different country
 #' code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
-#' provided by the World Bank and the UN (M49). This dataset
+#' provided by the World Bank and the UN (M49). This data set
 #' is extracted from \CRANpkg{countrycode} package.
 #'
 #' @format

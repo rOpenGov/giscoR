@@ -1,4 +1,4 @@
-#' Get GISCO urban areas `sf` polygons, points and lines
+#' Get GISCO urban areas \CRANpkg{sf} polygons, points and lines
 #'
 #' @description
 #' [gisco_get_communes()] and [gisco_get_lau()] download shapes of Local
@@ -11,10 +11,10 @@
 #' @concept political
 #' @family political
 #'
-#' @return A `sf` object specified by `spatialtype`. In the case of
+#' @return A \CRANpkg{sf} object specified by `spatialtype`. In the case of
 #'   [gisco_get_lau()], a `POLYGON` object.
 #'
-#' @param year Release year of the file. See Details.
+#' @param year Release year of the file. See **Details**.
 #'
 #' @param gisco_id Optional. A character vector of GISCO_ID LAU values.
 #'
@@ -23,14 +23,14 @@
 #' @inheritSection gisco_get_countries About caching
 #'
 #' @details
-#' Valid years for eacg function are:
-#' * **`gisco_get_communes`**: one of '2001', '2004', '2006', '2008', '2010',
-#' '2013' or '2016'.
+#' Valid years for each function are:
+#' * **`gisco_get_communes`**: one of `"2001"`, `"2004"`, `"2006"`, `"2008"`,
+#' `"2010"`, `"2013"` or `"2016"`.
 #' * **`gisco_get_lau`**: one of
 #'
 #' ```{r, echo=FALSE, results= "asis"}
 #' cat(paste0(
-#'   paste0("'", (2011:2020), "'", collapse = ", "),
+#'   paste0('`"', (2011:2020), '"`', collapse = ", "),
 #'   ".")
 #'   )
 #'

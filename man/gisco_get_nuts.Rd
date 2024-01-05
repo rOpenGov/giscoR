@@ -28,10 +28,10 @@ gisco_get_nuts(
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item "4258": ETRS89
-\item "4326": WGS84
-\item "3035": ETRS89 / ETRS-LAEA
-\item "3857": Pseudo-Mercator
+\item \code{"4258"}: ETRS89
+\item \code{"4326"}: WGS84
+\item \code{"3035"}: ETRS89 / ETRS-LAEA
+\item \code{"3857"}: Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -48,11 +48,11 @@ default is \code{FALSE}.}
 
 \item{resolution}{Resolution of the geospatial data. One of
 \itemize{
-\item "60": 1:60million
-\item "20": 1:20million
-\item "10": 1:10million
-\item "03": 1:3million
-\item "01": 1:1million
+\item \code{"60"}: 1:60million
+\item \code{"20"}: 1:20million
+\item \code{"10"}: 1:10million
+\item \code{"03"}: 1:3million
+\item \code{"01"}: 1:1million
 }}
 
 \item{spatialtype}{Type of geometry to be returned:

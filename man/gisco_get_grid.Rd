@@ -17,9 +17,9 @@ gisco_get_grid(
 }
 \arguments{
 \item{resolution}{Resolution of the grid cells on kms. Available values are
-"1", "2", "5", "10", "20", "50", "100". See Details}
+\code{"1"}, \code{"2"}, \code{"5"}, \code{"10"}, \code{"20"}, \code{"50"}, \code{"100"}. See \strong{Details}.}
 
-\item{spatialtype}{Select one of "REGION" or "POINT".}
+\item{spatialtype}{Select one of \code{"REGION"} or \code{"POINT"}.}
 
 \item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
@@ -31,7 +31,7 @@ When set to \code{TRUE} it would force a fresh download of the source
 default is \code{FALSE}.}
 }
 \value{
-A \code{POLYGON/POINT} object.
+A \code{POLYGON/POINT} \CRANpkg{sf} object.
 }
 \description{
 These datasets contain grid cells covering the European land

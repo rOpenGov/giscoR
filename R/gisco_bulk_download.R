@@ -9,22 +9,22 @@
 #'
 #' @return Silent function.
 #'
-#' @param year Release year of the file. See Details
+#' @param year Release year of the file. See **Details**.
 #'
 #' @param id_giscoR Type of dataset to be downloaded. Values supported are:
-#' * "coastallines"
-#' * "communes"
-#' * "countries"
-#' * "lau"
-#' * "nuts"
-#' * "urban_audit"
+#' * `"coastallines"`
+#' * `"communes"`
+#' * `"countries"`
+#' * `"lau"`
+#' * `"nuts"`
+#' * `"urban_audit"`
 #'
 #' @inheritParams gisco_get_countries
 #'
 #' @inheritSection gisco_get_countries About caching
 #'
 #' @param ext Extension of the file(s) to be downloaded. Formats available are
-#' "geojson", "shp", "svg", "json", "gdb". See **Details**.
+#' `"geojson"`, `"shp"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.
 #'
 #' @param recursive Tries to unzip recursively the zip files (if any) included
 #' in the initial bulk download (case of `ext = "shp"`).
@@ -40,7 +40,7 @@
 #'  * [gisco_get_urban_audit()]
 #'
 #'
-#' The usual extension used across **giscoR** is "geojson",
+#' The usual extension used across \CRANpkg{giscoR} is `"geojson"`,
 #' however other formats are already available on GISCO.
 #'
 #'

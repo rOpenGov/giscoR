@@ -29,7 +29,8 @@ A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
 file.
 }
 \description{
-A \code{sf} object including all NUTS levels as provided by GISCO (2016 version).
+A \CRANpkg{sf} object including all NUTS levels as provided by GISCO
+(2016 version).
 }
 \details{
 \strong{MOUNT_TYPE}: Mountain typology:

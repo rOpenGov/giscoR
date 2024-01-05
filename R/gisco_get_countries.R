@@ -1,4 +1,4 @@
-#' Get GISCO world country `sf` polygons, points and lines
+#' Get GISCO world country \CRANpkg{sf} polygons, points and lines
 #'
 #' @description
 #' Returns world country polygons, lines and points at a specified scale, as
@@ -39,17 +39,17 @@
 #' `region = "EU"` to get the EU members (reference date: 2021).
 #'
 #'
-#' @return A `sf` object specified by `spatialtype`.
+#' @return A \CRANpkg{sf} object specified by `spatialtype`.
 #'
-#' @param year Release year of the file. One of "2001", "2006",
-#'   "2010", "2013", "2016" or "2020".
+#' @param year Release year of the file. One of `"2001"`, `"2006"`,
+#'   `"2010"`, `"2013"`, `"2016"` or `"2020"`.
 #'
 #' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
 #'  One of:
-#'  * "4258": ETRS89
-#'  * "4326": WGS84
-#'  * "3035": ETRS89 / ETRS-LAEA
-#'  * "3857": Pseudo-Mercator
+#'  * `"4258"`: ETRS89
+#'  * `"4326"`: WGS84
+#'  * `"3035"`: ETRS89 / ETRS-LAEA
+#'  * `"3857"`: Pseudo-Mercator
 #'
 #' @param cache A logical whether to do caching. Default is `TRUE`. See
 #'   **About caching**.
@@ -61,11 +61,14 @@
 #' @param cache_dir A path to a cache directory. See **About caching**.
 #'
 #' @param spatialtype Type of geometry to be returned:
-#'  * **"BN"**: Boundaries - `LINESTRING` object.
-#'  * **"COASTL"**: coastlines - `LINESTRING` object.
-#'  * **"INLAND"**: inland boundaries - `LINESTRING` object.
-#'  * **"LB"**: Labels - `POINT` object.
-#'  * **"RG"**: Regions - `MULTIPOLYGON/POLYGON` object.
+#'  * `"BN"`: Boundaries - `LINESTRING` object.
+#'  * `"COASTL"`: coastlines - `LINESTRING` object.
+#'  * `"INLAND"`: inland boundaries - `LINESTRING` object.
+#'  * `"LB"`: Labels - `POINT` object.
+#'  * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#'
+#'  **Note that** parameters `country` and `region` would be only applied
+#'  when `spatialtype` is `"BN"` or `"RG"`.
 #'
 #' @param country Optional. A character vector of country codes. It could be
 #'  either a vector of country names, a vector of ISO3 country codes or a
@@ -76,16 +79,17 @@
 #'   default is `FALSE`.
 #'
 #' @param resolution Resolution of the geospatial data. One of
-#'  * "60": 1:60million
-#'  * "20": 1:20million
-#'  * "10": 1:10million
-#'  * "03": 1:3million
-#'  * "01": 1:1million
+#'  * `"60"`: 1:60million
+#'  * `"20"`: 1:20million
+#'  * `"10"`: 1:10million
+#'  * `"03"`: 1:3million
+#'  * `"01"`: 1:1million
 #'
 #' @param region Optional. A character vector of UN M49 region codes or
-#'  European Union membership. Possible values are "Africa", "Americas",
-#'  "Asia", "Europe", "Oceania" or "EU" for countries belonging to the European
-#'  Union (as per 2021). See **About world regions** and [gisco_countrycode]
+#'  European Union membership. Possible values are `"Africa"`, `"Americas"`,
+#'  `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
+#'  European Union (as per 2021). See **About world regions** and
+#'  [gisco_countrycode].
 #'
 #' @seealso [gisco_countrycode()], [gisco_countries],
 #'   [countrycode::countrycode()]

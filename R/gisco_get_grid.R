@@ -7,7 +7,7 @@
 #'
 #' @concept misc
 #'
-#' @return A `POLYGON/POINT` object.
+#' @return A `POLYGON/POINT` \CRANpkg{sf} object.
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
@@ -15,9 +15,9 @@
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids>
 #'
 #' @param resolution Resolution of the grid cells on kms. Available values are
-#' "1", "2", "5", "10", "20", "50", "100". See Details
+#' `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"`, `"100"`. See **Details**.
 #'
-#' @param spatialtype Select one of "REGION" or "POINT".
+#' @param spatialtype Select one of `"REGION"` or `"POINT"`.
 #'
 #' @inheritParams gisco_get_countries
 #'

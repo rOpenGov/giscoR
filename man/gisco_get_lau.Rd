@@ -3,7 +3,7 @@
 \name{gisco_get_lau}
 \alias{gisco_get_lau}
 \alias{gisco_get_communes}
-\title{Get GISCO urban areas \code{sf} polygons, points and lines}
+\title{Get GISCO urban areas \CRANpkg{sf} polygons, points and lines}
 \usage{
 gisco_get_communes(
   year = "2016",
@@ -28,15 +28,15 @@ gisco_get_lau(
 )
 }
 \arguments{
-\item{year}{Release year of the file. See Details.}
+\item{year}{Release year of the file. See \strong{Details}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item "4258": ETRS89
-\item "4326": WGS84
-\item "3035": ETRS89 / ETRS-LAEA
-\item "3857": Pseudo-Mercator
+\item \code{"4258"}: ETRS89
+\item \code{"4326"}: WGS84
+\item \code{"3035"}: ETRS89 / ETRS-LAEA
+\item \code{"3857"}: Pseudo-Mercator
 }}
 
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
@@ -53,12 +53,15 @@ default is \code{FALSE}.}
 
 \item{spatialtype}{Type of geometry to be returned:
 \itemize{
-\item \strong{"BN"}: Boundaries - \code{LINESTRING} object.
-\item \strong{"COASTL"}: coastlines - \code{LINESTRING} object.
-\item \strong{"INLAND"}: inland boundaries - \code{LINESTRING} object.
-\item \strong{"LB"}: Labels - \code{POINT} object.
-\item \strong{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-}}
+\item \code{"BN"}: Boundaries - \code{LINESTRING} object.
+\item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
+\item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+}
+
+\strong{Note that} parameters \code{country} and \code{region} would be only applied
+when \code{spatialtype} is \code{"BN"} or \code{"RG"}.}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
@@ -68,7 +71,7 @@ would not work. See also \code{\link[countrycode:countrycode]{countrycode::count
 \item{gisco_id}{Optional. A character vector of GISCO_ID LAU values.}
 }
 \value{
-A \code{sf} object specified by \code{spatialtype}. In the case of
+A \CRANpkg{sf} object specified by \code{spatialtype}. In the case of
 \code{\link[=gisco_get_lau]{gisco_get_lau()}}, a \code{POLYGON} object.
 }
 \description{
@@ -76,12 +79,12 @@ A \code{sf} object specified by \code{spatialtype}. In the case of
 Urban Areas, that correspond roughly with towns and cities.
 }
 \details{
-Valid years for eacg function are:
+Valid years for each function are:
 \itemize{
-\item \strong{\code{gisco_get_communes}}: one of '2001', '2004', '2006', '2008', '2010',
-'2013' or '2016'.
+\item \strong{\code{gisco_get_communes}}: one of \code{"2001"}, \code{"2004"}, \code{"2006"}, \code{"2008"},
+\code{"2010"}, \code{"2013"} or \code{"2016"}.
 \item \strong{\code{gisco_get_lau}}: one of
-'2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'.
+\code{"2011"}, \code{"2012"}, \code{"2013"}, \code{"2014"}, \code{"2015"}, \code{"2016"}, \code{"2017"}, \code{"2018"}, \code{"2019"}, \code{"2020"}.
 }
 }
 \note{

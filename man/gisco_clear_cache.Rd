@@ -2,13 +2,13 @@
 % Please edit documentation in R/gisco_clear_cache.R
 \name{gisco_clear_cache}
 \alias{gisco_clear_cache}
-\title{Clear your \strong{giscoR} cache dir}
+\title{Clear your \CRANpkg{giscoR} cache dir}
 \usage{
 gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
 \item{config}{if \code{TRUE}, will delete the configuration folder of
-\strong{giscoR}.}
+\CRANpkg{giscoR}.}
 
 \item{cached_data}{If this is set to \code{TRUE}, it will delete your
 \code{cache_dir} and all its content.}
@@ -23,7 +23,7 @@ Invisible. This function is called for its side effects.
 \strong{Use this function with caution}. This function would clear your cached
 data and configuration, specifically:
 \itemize{
-\item Deletes the \strong{giscoR} config directory
+\item Deletes the \CRANpkg{giscoR} config directory
 (\code{rappdirs::user_config_dir("giscoR", "R")}).
 \item Deletes the \code{cache_dir} directory.
 \item Deletes the values on stored on \code{Sys.getenv("GISCO_CACHE_DIR")} and
@@ -32,7 +32,7 @@ data and configuration, specifically:
 }
 \details{
 This is an overkill function that is intended to reset your status
-as it you would never have installed and/or used \strong{giscoR}.
+as it you would never have installed and/or used \CRANpkg{giscoR}.
 }
 \examples{
 
@@ -53,6 +53,8 @@ Sys.getenv("GISCO_CACHE_DIR")
 }
 }
 \seealso{
+\code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
+
 Other cache utilities: 
 \code{\link{gisco_detect_cache_dir}()},
 \code{\link{gisco_set_cache_dir}()}

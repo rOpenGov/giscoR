@@ -1,4 +1,4 @@
-#' Clear your **giscoR** cache dir
+#' Clear your \CRANpkg{giscoR} cache dir
 #'
 #' @name gisco_clear_cache
 #' @family cache utilities
@@ -9,21 +9,23 @@
 #' **Use this function with caution**. This function would clear your cached
 #' data and configuration, specifically:
 #'
-#' * Deletes the **giscoR** config directory
+#' * Deletes the \CRANpkg{giscoR} config directory
 #'   (`rappdirs::user_config_dir("giscoR", "R")`).
 #' * Deletes the `cache_dir` directory.
 #' * Deletes the values on stored on `Sys.getenv("GISCO_CACHE_DIR")` and
 #'   `options(gisco_cache_dir)`.
 #'
 #' @param config if `TRUE`, will delete the configuration folder of
-#'   **giscoR**.
+#'   \CRANpkg{giscoR}.
 #' @param cached_data If this is set to `TRUE`, it will delete your
 #'   `cache_dir` and all its content.
 #' @inheritParams gisco_set_cache_dir
 #'
+#' @seealso [rappdirs::user_config_dir()]
+#'
 #' @details
 #' This is an overkill function that is intended to reset your status
-#' as it you would never have installed and/or used **giscoR**.
+#' as it you would never have installed and/or used \CRANpkg{giscoR}.
 #'
 #' @examples
 #'
