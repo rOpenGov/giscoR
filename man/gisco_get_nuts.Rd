@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco_get_nuts.R
 \name{gisco_get_nuts}
 \alias{gisco_get_nuts}
-\title{Get GISCO NUTS \code{sf} polygons, points and lines}
+\title{Get GISCO NUTS \CRANpkg{sf} polygons, points and lines}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 }
@@ -22,8 +22,8 @@ gisco_get_nuts(
 )
 }
 \arguments{
-\item{year}{Release year of the file. One of "2003", "2006,
-"2010", "2013", "2016" or "2021".}
+\item{year}{Release year of the file. One of \code{"2003"}, \code{"2006"}, \code{"2010"},
+\code{"2013"}, \code{"2016"} or \code{"2021"}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -57,10 +57,13 @@ default is \code{FALSE}.}
 
 \item{spatialtype}{Type of geometry to be returned:
 \itemize{
-\item \strong{"BN"}: Boundaries - \code{LINESTRING} object.
-\item \strong{"LB"}: Labels - \code{POINT} object.
-\item \strong{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-}}
+\item \code{"BN"}: Boundaries - \code{LINESTRING} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
+\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+}
+
+\strong{Note that} parameters \code{country}, \code{nuts_level} and \code{nuts_id} would be only
+applied when \code{spatialtype} is \code{"BN"} or \code{"RG"}.}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
@@ -69,15 +72,16 @@ would not work. See also \code{\link[countrycode:countrycode]{countrycode::count
 
 \item{nuts_id}{Optional. A character vector of NUTS IDs.}
 
-\item{nuts_level}{NUTS level. One of "0", "1", "2" or "3".
-See Description.}
+\item{nuts_level}{NUTS level. One of \code{"0"}, \code{"1"}, \code{"2"} or \code{"3"}.
+See \strong{Description}.}
 }
 \value{
-A \code{sf} object specified by \code{spatialtype}. The resulting \code{sf} object
-would present an additional column \code{geo} (equal to \code{NUTS_ID}) for
-improving compatibility with \CRANpkg{eurostat} package. See
-\code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}). See also \link{gisco_nuts} to
-understand the columns and values provided.
+A \CRANpkg{sf} object specified by \code{spatialtype}. The resulting
+\CRANpkg{sf} object would present an additional column \code{geo} (equal to
+\code{NUTS_ID}) for improving compatibility with \CRANpkg{eurostat} package. See
+\code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}).
+
+See also \link{gisco_nuts} to understand the columns and values provided.
 }
 \description{
 Returns
@@ -86,10 +90,10 @@ polygons, lines and points at a specified scale, as provided by GISCO.
 
 NUTS are provided at three different levels:
 \itemize{
-\item \strong{"0"}: Country level
-\item \strong{"1"}: Groups of states/regions
-\item \strong{"2"}: States/regions
-\item \strong{"3"}: Counties/provinces/districts
+\item \code{"0"}: Country level
+\item \code{"1"}: Groups of states/regions
+\item \code{"2"}: States/regions
+\item \code{"3"}: Counties/provinces/districts
 }
 
 Note that NUTS-level definition may vary across countries. See also

@@ -10,29 +10,29 @@
 #' @family political
 #'
 #' @return
-#' A `sf` object on `mode = "sf"` or a dataframe on `mode = "df"`.
+#' A \CRANpkg{sf} object on `mode = "sf"` or a data frame on `mode = "df"`.
 #'
-#' @param id_giscoR Select the `unit` type to be downloaded.
-#' Accepted values are "nuts", "countries" or "urban_audit".
+#' @param id_giscoR Select the `unit` type to be downloaded. Accepted values are
+#'  `"nuts"`, `"countries"` or `"urban_audit"`.
 #'
-#' @param unit Unit ID to be downloaded. See Details.
+#' @param unit Unit ID to be downloaded. See **Details**.
 #'
-#' @param mode Controls the output of the function. Possible values are "sf"
-#' or "df". See Value and Details.
+#' @param mode Controls the output of the function. Possible values are `"sf"`
+#'  or `"df"`. See **Value** and **Details**.
 #'
-#' @param spatialtype Type of geometry to be returned: "RG", for `POLYGON` and
-#' "LB" for `POINT`.
+#' @param spatialtype Type of geometry to be returned: `"RG"`, for `POLYGON` and
+#'  `"LB"` for `POINT`.
 #'
 #' @inheritParams gisco_get_countries
 #'
 #' @inheritSection gisco_get_countries About caching
 #'
 #' @details
-#' The function can return a dataframe on `mode = "df"` or a `sf` object
-#' on `mode = "sf"`.
+#' The function can return a data frame on `mode = "df"` or a \CRANpkg{sf}
+#' object on `mode = "sf"`.
 #'
 #' In order to see the available `unit` ids with the required
-#' combination of `spatialtype, year`, first run the function on "df"
+#' combination of `spatialtype, year`, first run the function on `"df"`
 #' mode. Once that you get the data frame you can select the required ids
 #' on the `unit` parameter.
 #'
