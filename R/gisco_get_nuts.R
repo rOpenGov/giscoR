@@ -13,7 +13,7 @@
 #' * `"3"`: Counties/provinces/districts
 #'
 #' Note that NUTS-level definition may vary across countries. See also
-#' <https://ec.europa.eu/eurostat/web/nuts/background>.
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts>.
 #'
 #' @concept political
 #' @family political

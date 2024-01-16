@@ -97,7 +97,7 @@ NUTS are provided at three different levels:
 }
 
 Note that NUTS-level definition may vary across countries. See also
-\url{https://ec.europa.eu/eurostat/web/nuts/background}.
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts}.
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.
