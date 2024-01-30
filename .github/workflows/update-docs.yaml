@@ -30,7 +30,7 @@ jobs:
       - name: Update docs
         run: |
 
-          pkgdev::update_docs()
+          pkgdev::update_docs(opt_dir = c("man/figures", "img", "vignettes"),)
 
         shell: Rscript {0}
 
