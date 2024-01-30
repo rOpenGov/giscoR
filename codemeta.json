@@ -216,7 +216,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis"],
-  "fileSize": "1117.245KB",
+  "fileSize": "1117.242KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

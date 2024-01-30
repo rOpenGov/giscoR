@@ -46,7 +46,7 @@ Copyright: General Copyright © European Union, 1995 - today. See file
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.0
+RoxygenNote: 7.3.1
 X-schema.org-applicationCategory: cartography
 X-schema.org-isPartOf: http://ropengov.org/
 X-schema.org-keywords: ropengov, r, spatial, api-wrapper, rstats,
