@@ -9,16 +9,10 @@ provided by GISCO. Also, specific areas as Gibraltar or Antarctica are
 presented separately. The definition of country used on GISCO
 correspond roughly with territories with an official
 ISO-3166
-code."><meta property="og:image" content="https://ropengov.github.io/giscoR/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenGov"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+code."><meta property="og:image" content="https://ropengov.github.io/giscoR/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@rOpenGov"><meta name="twitter:site" content="@rOpenGov"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-VGVFXGHWRL"></script><script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VGVFXGHWRL');
-</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=B612+Mono&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rogtemplate.css" rel="stylesheet"></head><body>
+<![endif]--><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=B612+Mono&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rogtemplate.css" rel="stylesheet"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
@@ -26,7 +20,7 @@ code."><meta property="og:image" content="https://ropengov.github.io/giscoR/logo
     
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +59,7 @@ code."><meta property="og:image" content="https://ropengov.github.io/giscoR/logo
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Get GISCO world country <code>sf</code> polygons, points and lines</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Get GISCO world country <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> polygons, points and lines</h1>
       <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_get_countries.R" class="external-link"><code>R/gisco_get_countries.R</code></a></small>
       <div class="d-none name"><code>gisco_get.Rd</code></div>
     </div>
@@ -102,16 +96,16 @@ code.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>year</dt>
-<dd><p>Release year of the file. One of "2001", "2006",
-"2010", "2013", "2016" or "2020".</p></dd>
+<dd><p>Release year of the file. One of <code>"2001"</code>, <code>"2006"</code>,
+<code>"2010"</code>, <code>"2013"</code>, <code>"2016"</code> or <code>"2020"</code>.</p></dd>
 
 
 <dt>epsg</dt>
 <dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
-One of:</p><ul><li><p>"4258": ETRS89</p></li>
-<li><p>"4326": WGS84</p></li>
-<li><p>"3035": ETRS89 / ETRS-LAEA</p></li>
-<li><p>"3857": Pseudo-Mercator</p></li>
+One of:</p><ul><li><p><code>"4258"</code>: ETRS89</p></li>
+<li><p><code>"4326"</code>: WGS84</p></li>
+<li><p><code>"3035"</code>: ETRS89 / ETRS-LAEA</p></li>
+<li><p><code>"3857"</code>: Pseudo-Mercator</p></li>
 </ul></dd>
 
 
@@ -136,21 +130,22 @@ default is <code>FALSE</code>.</p></dd>
 
 
 <dt>resolution</dt>
-<dd><p>Resolution of the geospatial data. One of</p><ul><li><p>"60": 1:60million</p></li>
-<li><p>"20": 1:20million</p></li>
-<li><p>"10": 1:10million</p></li>
-<li><p>"03": 1:3million</p></li>
-<li><p>"01": 1:1million</p></li>
+<dd><p>Resolution of the geospatial data. One of</p><ul><li><p><code>"60"</code>: 1:60million</p></li>
+<li><p><code>"20"</code>: 1:20million</p></li>
+<li><p><code>"10"</code>: 1:10million</p></li>
+<li><p><code>"03"</code>: 1:3million</p></li>
+<li><p><code>"01"</code>: 1:1million</p></li>
 </ul></dd>
 
 
 <dt>spatialtype</dt>
-<dd><p>Type of geometry to be returned:</p><ul><li><p><strong>"BN"</strong>: Boundaries - <code>LINESTRING</code> object.</p></li>
-<li><p><strong>"COASTL"</strong>: coastlines - <code>LINESTRING</code> object.</p></li>
-<li><p><strong>"INLAND"</strong>: inland boundaries - <code>LINESTRING</code> object.</p></li>
-<li><p><strong>"LB"</strong>: Labels - <code>POINT</code> object.</p></li>
-<li><p><strong>"RG"</strong>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
-</ul></dd>
+<dd><p>Type of geometry to be returned:</p><ul><li><p><code>"BN"</code>: Boundaries - <code>LINESTRING</code> object.</p></li>
+<li><p><code>"COASTL"</code>: coastlines - <code>LINESTRING</code> object.</p></li>
+<li><p><code>"INLAND"</code>: inland boundaries - <code>LINESTRING</code> object.</p></li>
+<li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
+<li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+</ul><p><strong>Note that</strong> parameters <code>country</code> and <code>region</code> would be only applied
+when <code>spatialtype</code> is <code>"BN"</code> or <code>"RG"</code>.</p></dd>
 
 
 <dt>country</dt>
@@ -162,16 +157,17 @@ would not work. See also <code><a href="https://rdrr.io/pkg/countrycode/man/coun
 
 <dt>region</dt>
 <dd><p>Optional. A character vector of UN M49 region codes or
-European Union membership. Possible values are "Africa", "Americas",
-"Asia", "Europe", "Oceania" or "EU" for countries belonging to the European
-Union (as per 2021). See <strong>About world regions</strong> and <a href="gisco_countrycode.html">gisco_countrycode</a></p></dd>
+European Union membership. Possible values are <code>"Africa"</code>, <code>"Americas"</code>,
+<code>"Asia"</code>, <code>"Europe"</code>, <code>"Oceania"</code> or <code>"EU"</code> for countries belonging to the
+European Union (as per 2021). See <strong>About world regions</strong> and
+<a href="gisco_countrycode.html">gisco_countrycode</a>.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code>sf</code> object specified by <code>spatialtype</code>.</p>
+<p>A <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object specified by <code>spatialtype</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
