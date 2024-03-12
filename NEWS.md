@@ -1,7 +1,8 @@
 # giscoR (development version)
 
 -   Improve documentation, stating where the parameters `country` and `region`
-    applies (#50, #75)
+    applies (#50, #75).
+-   Migrate to **httr2** instead of **httr**.
 
 # giscoR 0.4.0
 

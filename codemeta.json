@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.3.2 (2023-10-31 ucrt)",
+  "runtimePlatform": "R version 4.3.3 (2024-02-29 ucrt)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -83,6 +83,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=ggplot2"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "httr2",
+      "name": "httr2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=httr2"
     },
     {
       "@type": "SoftwareApplication",
@@ -170,18 +182,6 @@
     },
     "4": {
       "@type": "SoftwareApplication",
-      "identifier": "httr",
-      "name": "httr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=httr"
-    },
-    "5": {
-      "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
       "version": ">= 0.3.0",
@@ -193,7 +193,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "6": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -206,7 +206,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "7": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -216,7 +216,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis"],
-  "fileSize": "1117.242KB",
+  "fileSize": "1116.79KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

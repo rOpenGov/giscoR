@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco_get_healthcare.R
 \name{gisco_get_healthcare}
 \alias{gisco_get_healthcare}
-\title{Get locations of healthcare services in Europe.}
+\title{Get locations of healthcare services in Europe}
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services}
 }

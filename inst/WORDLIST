@@ -1,5 +1,4 @@
 Arel
-BN
 Bundock
 CMD
 CNTR
@@ -12,7 +11,6 @@ EPSG
 ETRS
 Eurostat
 FID
-FUA
 GISCO
 Gb
 Geodata
@@ -39,7 +37,7 @@ codelist
 config
 countrycode
 der
-df
+dev
 dieghernan
 dir
 eurostat

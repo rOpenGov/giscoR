@@ -22,7 +22,7 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 
 <!-- badges: end -->
 
-[giscoR](https://ropengov.github.io/giscoR//) is an API package that
+[**giscoR**](https://ropengov.github.io/giscoR//) is an API package that
 helps to retrieve data from [Eurostat - GISCO (the Geographic
 Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides
@@ -44,21 +44,21 @@ Full site with examples and vignettes on
 
 ## Installation
 
-Install `giscoR` from
+Install **giscoR** from
 [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
 ``` r
 install.packages("giscoR")
 ```
 
-You can install the developing version of `giscoR` with:
+You can install the developing version of **giscoR** with:
 
 ``` r
 library(remotes)
 install_github("rOpenGov/giscoR")
 ```
 
-Alternatively, you can install `giscoR` using the
+Alternatively, you can install **giscoR** using the
 [r-universe](https://ropengov.r-universe.dev/giscoR):
 
 ``` r
@@ -72,7 +72,7 @@ install.packages("giscoR",
 You can have a look to the documentation of the dev version in
 <https://ropengov.github.io/giscoR/dev/>
 
-This script highlights some features of `giscoR`:
+This script highlights some features of **giscoR** :
 
 ``` r
 library(giscoR)
@@ -139,7 +139,7 @@ ggplot(coast) +
 
 ### Labels
 
-An example of a labeled map using `ggplot2`:
+An example of a labeled map using **ggplot2**:
 
 ``` r
 ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
@@ -154,9 +154,9 @@ ggplot(ITA) +
 
 ### Thematic maps
 
-An example of a thematic map plotted with the `ggplot2` package. The
-information is extracted via the `eurostat` package. We would follow the
-fantastic approach presented by [Milos
+An example of a thematic map plotted with the **ggplot2** package. The
+information is extracted via the **eurostat** package. We would follow
+the fantastic approach presented by [Milos
 Popovic](https://milospopovic.net/) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
@@ -281,8 +281,8 @@ ggplot(nuts3.sf) +
 ## A note on caching
 
 Some data sets (as Local Administrative Units - LAU, or high-resolution
-files) may have a size larger than 50MB. You can use `giscoR` to create
-your own local repository at a given local directory passing the
+files) may have a size larger than 50MB. You can use **giscoR** to
+create your own local repository at a given local directory passing the
 following function:
 
 ``` r
@@ -296,18 +296,19 @@ them on your local directory.
 
 ### API data packages
 
-- `eurostat` package (<https://ropengov.github.io/eurostat/>). This is
+- **eurostat** package (<https://ropengov.github.io/eurostat/>). This is
   an API package that provides access to open data from Eurostat.
 
-### Plotting `sf` objects
+### Plotting **sf** objects
 
 Some packages recommended for visualization are:
 
-- [`tmap`](https://r-tmap.github.io/tmap/)
-- [`ggplot2`](https://github.com/tidyverse/ggplot2) +
-  [`ggspatial`](https://github.com/paleolimbot/ggspatial)
-- [`mapsf`](https://riatelab.github.io/mapsf/)
-- [`leaflet`](https://rstudio.github.io/leaflet/)
+- [**tmap**](https://r-tmap.github.io/tmap/)
+- [**ggplot2**](https://github.com/tidyverse/ggplot2) +
+  [**ggspatial**](https://github.com/paleolimbot/ggspatial) +
+  [**tidyterra**](https://dieghernan.github.io/tidyterra/)
+- [**mapsf**](https://riatelab.github.io/mapsf/)
+- [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 

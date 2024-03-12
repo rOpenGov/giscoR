@@ -1,5 +1,5 @@
 # -----------------------------------------------------------
-# CITATION file created with {cffr} R package, v0.5.0
+# CITATION file created with {cffr} R package, v1.0.0
 # See also: https://docs.ropensci.org/cffr/
 # -----------------------------------------------------------
  
@@ -67,11 +67,10 @@ references:
   url: https://www.R-project.org/
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2024'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
   version: '>= 3.6.0'
 - type: software
   title: countrycode
@@ -98,17 +97,6 @@ references:
     email: dcooley@symbolix.com.au
   year: '2024'
   version: '>= 2.0.0'
-- type: software
-  title: httr
-  abstract: 'httr: Tools for Working with URLs and HTTP'
-  notes: Imports
-  url: https://httr.r-lib.org/
-  repository: https://CRAN.R-project.org/package=httr
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  year: '2024'
 - type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
@@ -144,11 +132,10 @@ references:
   notes: Imports
   authors:
   - name: R Core Team
-  location:
-    name: Vienna, Austria
-  year: '2024'
   institution:
     name: R Foundation for Statistical Computing
+    address: Vienna, Austria
+  year: '2024'
 - type: software
   title: eurostat
   abstract: 'eurostat: Tools for Eurostat Open Data'
@@ -201,8 +188,23 @@ references:
   - family-names: Dunnington
     given-names: Dewey
     orcid: https://orcid.org/0000-0002-9415-4582
+  - family-names: Brand
+    given-names: Teun
+    name-particle: van den
+    orcid: https://orcid.org/0000-0002-9335-7468
   year: '2024'
   version: '>= 3.0.0'
+- type: software
+  title: httr2
+  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
+  notes: Suggests
+  url: https://httr2.r-lib.org
+  repository: https://CRAN.R-project.org/package=httr2
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2024'
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
@@ -219,7 +221,7 @@ references:
   title: lwgeom
   abstract: 'lwgeom: Bindings to Selected ''liblwgeom'' Functions for Simple Features'
   notes: Suggests
-  url: https://github.com/r-spatial/lwgeom/
+  url: https://r-spatial.github.io/lwgeom/
   repository: https://CRAN.R-project.org/package=lwgeom
   authors:
   - family-names: Pebesma

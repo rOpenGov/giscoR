@@ -1,24 +1,37 @@
 url: https://ropengov.github.io/giscoR/
+
 reference:
 - title: Political
-  desc: These functions return `sf` objects with political boundaries
+  desc: >
+    These functions return <a href="https://CRAN.R-project.org/package=sf"
+    class="external-link"><span class="pkg">sf</span></a> objects with political
+    boundaries.
   contents: has_concept("political")
 - title: Infrastructures
-  desc: These functions return `sf` objects with man-made features
+  desc: >
+    These functions return  <a href="https://CRAN.R-project.org/package=sf"
+    class="external-link"><span class="pkg">sf</span></a> objects with man-made
+    features
   contents: has_concept("infrastructure")
 - title: Misc
-  desc: Thse functions return other `sf` objects
+  desc: >
+    These functions return other <a href="https://CRAN.R-project.org/package=sf"
+    class="external-link"><span class="pkg">sf</span></a> objects
   contents: has_concept("misc")
-- title: Cache management
+- title: >
+    Cache management
   contents: has_concept("cache utilities")
 - title: Helpers
-  desc: A collection of helper functions
+  desc: >
+    A collection of helper functions
   contents: has_concept("helper")
 - title: Datasets
-  desc: These objects are datasets already included in the package.
+  desc: >
+    These objects are datasets already included in the package.
   contents: has_concept("dataset")
 - title: About the package
   contents: giscoR-package
+
 template:
   package: rogtemplate
   params:
@@ -29,10 +42,10 @@ template:
       card: summary_large_image
 home:
   title: giscoR | R package for download geodata from GISCO - Eurostat
-  description: giscoR is a R API package that helps to retrieve data from Eurostat
-    - GISCO (the Geographic Information System of the COmmission). It also provides
-    some lightweight data sets ready to use without downloading. Currently only the
-    Administrative Units / Statistical Units data sets are supported
+  description: >
+    giscoR is a R API package that helps to retrieve data from Eurostat -
+    GISCO (the Geographic Information System of the COmmission). It also
+    provides some lightweight data sets ready to use without downloading.
 authors:
   Diego Hernangómez:
     href: https://dieghernan.github.io/
@@ -42,6 +55,4 @@ authors:
     href: https://vincentarelbundock.github.io/countrycode/
 repo:
   branch: main
-development:
-  mode: auto
 
