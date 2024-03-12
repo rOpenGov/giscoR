@@ -43,6 +43,8 @@ dir
 eurostat
 geojson
 geospatial
+ggplot
+ggspatial
 gisco
 giscoR’
 httr
@@ -50,4 +52,7 @@ kms
 les
 licence
 limites
+mapsf
 rOG
+tidyterra
+tmap

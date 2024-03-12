@@ -36,27 +36,22 @@
 #'
 #' COPYRIGHT NOTICE
 #'
-#' When data downloaded from GISCO
-#' is used in any printed or electronic publication,
-#' in addition to any other provisions
-#' applicable to the whole Eurostat website,
-#' data source will have to be acknowledged
-#' in the legend of the map and
-#' in the introductory page of the publication
-#' with the following copyright notice:
+#' When data downloaded from GISCO is used in any printed or electronic
+#' publication, in addition to any other provisions applicable to the whole
+#' Eurostat website, data source will have to be acknowledged in the legend of
+#' the map and in the introductory page of the publication with the following
+#' copyright notice:
 #'
 #' * EN: (C) EuroGeographics for the administrative boundaries
 #' * FR: (C) EuroGeographics pour les limites administratives
 #' * DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
 #'
-#' For publications in languages other than
-#' English, French or German,
-#' the translation of the copyright notice
-#' in the language of the publication shall be used.
+#' For publications in languages other than English, French or German,
+#' the translation of the copyright notice in the language of the publication
+#' shall be used.
 #'
-#' If you intend to use the data commercially,
-#' please contact EuroGeographics for
-#' information regarding their licence agreements.
+#' If you intend to use the data commercially, please contact EuroGeographics
+#' for information regarding their licence agreements.
 #'
 #' @examples
 #' gisco_attributions()
