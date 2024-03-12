@@ -3,13 +3,13 @@ url: https://ropengov.github.io/giscoR/
 repo:
   branch: main
 
-template:
-  params:
-    ganalytics: G-VGVFXGHWRL
-  opengraph:
-    twitter:
-      creator: "@dhernangomez"
-      card: summary_large_image
+# template:
+#   params:
+#     ganalytics: G-VGVFXGHWRL
+#   opengraph:
+#     twitter:
+#       creator: "@dhernangomez"
+#       card: summary_large_image
 
 home:
   title: giscoR | R package for download geodata from GISCO - Eurostat
