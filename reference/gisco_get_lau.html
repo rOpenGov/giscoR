@@ -18,7 +18,7 @@ Urban Areas, that correspond roughly with towns and cities."><meta property="og:
     
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,7 +95,9 @@ Urban Areas, that correspond roughly with towns and cities.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>year</dt>
-<dd><p>Release year of the file. See <strong>Details</strong>.</p></dd>
+<dd><p>Release year of the file:</p><ul><li><p>For <code>gisco_get_communes()</code> one of <code>"2001"</code>, <code>"2004"</code>, <code>"2006"</code>, <code>"2008"</code>, <code>"2010"</code>, <code>"2013"</code> or <code>"2016"</code>.</p></li>
+<li><p>For <code>gisco_get_lau()</code> one of <code>"2011"</code>, <code>"2012"</code>, <code>"2013"</code>, <code>"2014"</code>, <code>"2015"</code>, <code>"2016"</code>, <code>"2017"</code>, <code>"2018"</code>, <code>"2019"</code> or <code>"2020"</code>.</p></li>
+</ul></dd>
 
 
 <dt>epsg</dt>
@@ -115,7 +117,7 @@ One of:</p><ul><li><p><code>"4258"</code>: ETRS89</p></li>
 <dt>update_cache</dt>
 <dd><p>A logical whether to update cache. Default is <code>FALSE</code>.
 When set to <code>TRUE</code> it would force a fresh download of the source
-.geojson file.</p></dd>
+<code>.geojson</code> file.</p></dd>
 
 
 <dt>cache_dir</dt>
@@ -156,13 +158,6 @@ would not work. See also <code><a href="https://rdrr.io/pkg/countrycode/man/coun
 <code>gisco_get_lau()</code>, a <code>POLYGON</code> object.</p>
     </div>
     <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Valid years for each function are:</p><ul><li><p><strong><code>gisco_get_communes</code></strong>: one of <code>"2001"</code>, <code>"2004"</code>, <code>"2006"</code>, <code>"2008"</code>,
-<code>"2010"</code>, <code>"2013"</code> or <code>"2016"</code>.</p></li>
-<li><p><strong><code>gisco_get_lau</code></strong>: one of
-<code>"2011"</code>, <code>"2012"</code>, <code>"2013"</code>, <code>"2014"</code>, <code>"2015"</code>, <code>"2016"</code>, <code>"2017"</code>, <code>"2018"</code>, <code>"2019"</code>, <code>"2020"</code>.</p></li>
-</ul></div>
-    <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
     <p>Please check the download and usage provisions on <code><a href="gisco_attributions.html">gisco_attributions()</a></code>.</p>
     </div>
@@ -172,7 +167,7 @@ would not work. See also <code><a href="https://rdrr.io/pkg/countrycode/man/coun
 <p>Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting <code>update_cache = TRUE</code>.</p>
 <p>If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
+corresponding <code>.geojson</code> file by any other method and save it on your
 <code>cache_dir</code>. Use the option <code>verbose = TRUE</code> for debugging the API query.</p>
 <p>For a complete list of files available check <a href="gisco_db.html">gisco_db</a>.</p>
     </div>
