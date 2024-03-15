@@ -3,27 +3,29 @@
 #' @family cache utilities
 #' @seealso [rappdirs::user_config_dir()]
 #'
-#' @return An (invisible) character with the path to your `cache_dir`.
+#' @rdname gisco_set_cache_dir
+#'
+#' @return
+#' `gisco_set_cache_dir()` returns an (invisible) character with the path to
+#' your `cache_dir`, but it is mainly called for its side effect.
+#'
 #' @description
 #' This function will store your `cache_dir` path on your local machine and
 #' would load it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
-#' find your cached path.
+#' find your cached path or use [gisco_detect_cache_dir()].
 #'
 #' Alternatively, you can store the `cache_dir` manually with the following
 #' options:
 #'   * Run `Sys.setenv(GISCO_CACHE_DIR = "cache_dir")`. You would need to
 #'     run this command on each session (Similar to `install = FALSE`).
-#'   * Set `options(gisco_cache_dir = "cache_dir")`. Similar to the previous
-#'     option. This is **not recommended any more**, and it is provided for
-#'     backwards compatibility purposes.
-#'   * Write this line on your .Renviron file:
+#'   * Write this line on your `.Renviron` file:
 #'     `GISCO_CACHE_DIR = "value_for_cache_dir"` (same behavior than
 #'     `install = TRUE`). This would store your `cache_dir` permanently.
 #'
 #' @inheritParams gisco_get_nuts
 #' @param cache_dir A path to a cache directory. On missing value the function
 #'   would store the cached files on a temporary dir (See [base::tempdir()]).
-#' @param install if `TRUE`, will install the key in your local machine for
+#' @param install If `TRUE`, will install the key in your local machine for
 #'   use in future sessions.  Defaults to `FALSE.` If `cache_dir` is `FALSE`
 #'   this parameter is set to `FALSE` automatically.
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
@@ -39,9 +41,7 @@
 #'
 #' Sys.getenv("GISCO_CACHE_DIR")
 #' @export
-gisco_set_cache_dir <- function(cache_dir,
-                                overwrite = FALSE,
-                                install = FALSE,
+gisco_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
                                 verbose = TRUE) {
   # Default if not provided
   if (missing(cache_dir) || cache_dir == "") {
@@ -119,8 +119,7 @@ gisco_set_cache_dir <- function(cache_dir,
   return(invisible(cache_dir))
 }
 
-gisco_clear_cache <- function(config = TRUE,
-                              cached_data = TRUE,
+gisco_clear_cache <- function(config = TRUE, cached_data = TRUE,
                               verbose = FALSE) {
   config_dir <- rappdirs::user_config_dir("giscoR", "R")
   data_dir <- gsc_helper_detect_cache_dir()
@@ -201,21 +200,13 @@ gsc_helper_detect_cache_dir <- function() {
 }
 
 
-#' Helper function to detect current `cache_dir`
-#'
 #' @export
-#'
-#' @description
-#' Detect the path to your current `cache_dir`. See [gisco_set_cache_dir()]
-#'
+#' @rdname gisco_set_cache_dir
 #' @param ... Ignored
-#' @return The path to the `cache_dir` used in this session
+#' @return
+#' `gisco_detect_cache_dir()` returns the path to the `cache_dir` used in this
+#' session.
 #'
-#' @family cache utilities
-#' @seealso [gisco_set_cache_dir()]
-#'
-#' @name gisco_detect_cache_dir
-#' @rdname gisco_detect_cache_dir
 #' @examples
 #'
 #' gisco_detect_cache_dir()

@@ -1,8 +1,10 @@
-# giscoR (development version)
+# giscoR 0.4.1
 
 -   Improve documentation, stating where the parameters `country` and `region`
     applies (#50, #75).
 -   Migrate to **httr2** instead of **httr**.
+-   Removed `tgs00026` dataset, use `eurostat::get_eurostat("tgs00026")`
+    instead.
 
 # giscoR 0.4.0
 

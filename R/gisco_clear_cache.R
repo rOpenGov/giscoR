@@ -45,8 +45,7 @@
 #' Sys.getenv("GISCO_CACHE_DIR")
 #' }
 #' @export
-gisco_clear_cache <- function(config = FALSE,
-                              cached_data = TRUE,
+gisco_clear_cache <- function(config = FALSE, cached_data = TRUE,
                               verbose = FALSE) {
   # nocov start
   config_dir <- rappdirs::user_config_dir("giscoR", "R")

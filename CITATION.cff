@@ -8,7 +8,7 @@ message: 'To cite package "giscoR" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'giscoR: Download Map Data from GISCO API - Eurostat'
-version: 0.4.0.9000
+version: 0.4.1
 doi: 10.5281/zenodo.4317946
 abstract: Tools to download data from the GISCO (Geographic Information System of
   the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global
@@ -31,7 +31,7 @@ preferred-citation:
     affiliation: rOpenGov
   doi: 10.5281/zenodo.4317946
   year: '2024'
-  version: 0.4.0.9000
+  version: 0.4.1
   url: https://ropengov.github.io/giscoR/
   abstract: Tools to download data from the GISCO (Geographic Information System of
     the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global
@@ -137,6 +137,30 @@ references:
     address: Vienna, Austria
   year: '2024'
 - type: software
+  title: dplyr
+  abstract: 'dplyr: A Grammar of Data Manipulation'
+  notes: Suggests
+  url: https://dplyr.tidyverse.org
+  repository: https://CRAN.R-project.org/package=dplyr
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+    orcid: https://orcid.org/0000-0003-4757-117X
+  - family-names: François
+    given-names: Romain
+    orcid: https://orcid.org/0000-0002-2444-4226
+  - family-names: Henry
+    given-names: Lionel
+  - family-names: Müller
+    given-names: Kirill
+    orcid: https://orcid.org/0000-0002-1416-3412
+  - family-names: Vaughan
+    given-names: Davis
+    email: davis@posit.co
+    orcid: https://orcid.org/0000-0003-4777-038X
+  year: '2024'
+- type: software
   title: eurostat
   abstract: 'eurostat: Tools for Eurostat Open Data'
   notes: Suggests
@@ -193,7 +217,7 @@ references:
     name-particle: van den
     orcid: https://orcid.org/0000-0002-9335-7468
   year: '2024'
-  version: '>= 3.0.0'
+  version: '>= 3.5.0'
 - type: software
   title: httr2
   abstract: 'httr2: Perform HTTP Requests and Process the Responses'

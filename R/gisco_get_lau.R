@@ -8,13 +8,14 @@
 #'
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].
-#' @concept political
 #' @family political
 #'
 #' @return A \CRANpkg{sf} object specified by `spatialtype`. In the case of
 #'   [gisco_get_lau()], a `POLYGON` object.
 #'
-#' @param year Release year of the file. See **Details**.
+#' @param year Release year of the file:
+#'   - For `gisco_get_communes()` one of `r gsc_helper_year_docs("communes")`.
+#'   - For `gisco_get_lau()` one of `r gsc_helper_year_docs("lau")`.
 #'
 #' @param gisco_id Optional. A character vector of GISCO_ID LAU values.
 #'
@@ -22,29 +23,11 @@
 #'
 #' @inheritSection gisco_get_countries About caching
 #'
-#' @details
-#' Valid years for each function are:
-#' * **`gisco_get_communes`**: one of `"2001"`, `"2004"`, `"2006"`, `"2008"`,
-#' `"2010"`, `"2013"` or `"2016"`.
-#' * **`gisco_get_lau`**: one of
-#'
-#' ```{r, echo=FALSE, results= "asis"}
-#' cat(paste0(
-#'   paste0('`"', (2011:2020), '"`', collapse = ", "),
-#'   ".")
-#'   )
-#'
-#' ```
 #'
 #' @export
-gisco_get_lau <- function(year = "2016",
-                          epsg = "4326",
-                          cache = TRUE,
-                          update_cache = FALSE,
-                          cache_dir = NULL,
-                          verbose = FALSE,
-                          country = NULL,
-                          gisco_id = NULL) {
+gisco_get_lau <- function(year = "2016", epsg = "4326", cache = TRUE,
+                          update_cache = FALSE, cache_dir = NULL,
+                          verbose = FALSE, country = NULL, gisco_id = NULL) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(

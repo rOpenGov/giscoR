@@ -22,7 +22,6 @@ Milos
 ORCID
 Popovic
 RG
-Renviron
 Repo
 Tercet
 URBN
@@ -34,6 +33,7 @@ bezuglich
 bezüglich
 codecov
 codelist
+colorspace
 config
 countrycode
 der
@@ -54,5 +54,6 @@ licence
 limites
 mapsf
 rOG
+rcartocolor
 tidyterra
 tmap

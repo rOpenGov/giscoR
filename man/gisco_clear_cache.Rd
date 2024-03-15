@@ -56,7 +56,6 @@ Sys.getenv("GISCO_CACHE_DIR")
 \code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
 
 Other cache utilities: 
-\code{\link{gisco_detect_cache_dir}()},
 \code{\link{gisco_set_cache_dir}()}
 }
 \concept{cache utilities}

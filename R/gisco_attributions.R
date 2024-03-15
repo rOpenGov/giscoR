@@ -1,6 +1,5 @@
 #' Attribution when publishing GISCO data
 #'
-#' @concept helper
 #' @family helper
 #'
 #' @description

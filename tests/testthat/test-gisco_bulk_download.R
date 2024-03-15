@@ -9,7 +9,6 @@ test_that("Bulk download online", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  # expect_silent(gisco_bulk_download(resolution = 60, cache_dir = tempdir()))
   expect_silent(gisco_bulk_download(
     resolution = 60,
     cache_dir = file.path(tempdir(), "testthat", "bulk"),

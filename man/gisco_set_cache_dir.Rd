@@ -2,6 +2,7 @@
 % Please edit documentation in R/gisco_cache.R
 \name{gisco_set_cache_dir}
 \alias{gisco_set_cache_dir}
+\alias{gisco_detect_cache_dir}
 \title{Set your \CRANpkg{giscoR} cache dir}
 \usage{
 gisco_set_cache_dir(
@@ -10,6 +11,8 @@ gisco_set_cache_dir(
   install = FALSE,
   verbose = TRUE
 )
+
+gisco_detect_cache_dir(...)
 }
 \arguments{
 \item{cache_dir}{A path to a cache directory. On missing value the function
@@ -18,30 +21,33 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 \item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
 \code{GISCO_CACHE_DIR} that you already have in local machine.}
 
-\item{install}{if \code{TRUE}, will install the key in your local machine for
+\item{install}{If \code{TRUE}, will install the key in your local machine for
 use in future sessions.  Defaults to \code{FALSE.} If \code{cache_dir} is \code{FALSE}
 this parameter is set to \code{FALSE} automatically.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
+
+\item{...}{Ignored}
 }
 \value{
-An (invisible) character with the path to your \code{cache_dir}.
+\code{gisco_set_cache_dir()} returns an (invisible) character with the path to
+your \code{cache_dir}, but it is mainly called for its side effect.
+
+\code{gisco_detect_cache_dir()} returns the path to the \code{cache_dir} used in this
+session.
 }
 \description{
 This function will store your \code{cache_dir} path on your local machine and
 would load it for future sessions. Type \code{Sys.getenv("GISCO_CACHE_DIR")} to
-find your cached path.
+find your cached path or use \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}}.
 
 Alternatively, you can store the \code{cache_dir} manually with the following
 options:
 \itemize{
 \item Run \code{Sys.setenv(GISCO_CACHE_DIR = "cache_dir")}. You would need to
 run this command on each session (Similar to \code{install = FALSE}).
-\item Set \code{options(gisco_cache_dir = "cache_dir")}. Similar to the previous
-option. This is \strong{not recommended any more}, and it is provided for
-backwards compatibility purposes.
-\item Write this line on your .Renviron file:
+\item Write this line on your \code{.Renviron} file:
 \code{GISCO_CACHE_DIR = "value_for_cache_dir"} (same behavior than
 \code{install = TRUE}). This would store your \code{cache_dir} permanently.
 }
@@ -54,12 +60,14 @@ gisco_set_cache_dir(verbose = TRUE)
 }
 
 Sys.getenv("GISCO_CACHE_DIR")
+
+gisco_detect_cache_dir()
+
 }
 \seealso{
 \code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
 
 Other cache utilities: 
-\code{\link{gisco_clear_cache}()},
-\code{\link{gisco_detect_cache_dir}()}
+\code{\link{gisco_clear_cache}()}
 }
 \concept{cache utilities}

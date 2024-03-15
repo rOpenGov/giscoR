@@ -14,9 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-
-Annex with the NUTS codes (version **2021**, 
-**2016** and **2013**) included on this package.
+Annex with the NUTS codes (version **2021**, **2016** and **2013**) available in
+**giscoR**.
 
 ## NUTS 2021
 
@@ -36,7 +35,6 @@ reactable(df,
   defaultSorted = c("LEVL_CODE", "CNTR_CODE")
 )
 ```
-
 
 ## NUTS 2016
 

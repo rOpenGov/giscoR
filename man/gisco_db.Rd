@@ -20,5 +20,12 @@ This data frame is used to check the validity of the API calls.
 
 data(gisco_db)
 }
+\seealso{
+Other dataset: 
+\code{\link{gisco_coastallines}},
+\code{\link{gisco_countries}},
+\code{\link{gisco_countrycode}},
+\code{\link{gisco_nuts}}
+}
 \concept{dataset}
 \keyword{internal}

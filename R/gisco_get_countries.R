@@ -13,7 +13,6 @@
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].
 #'
-#' @concept political
 #' @family political
 #'
 #' @details
@@ -25,7 +24,7 @@
 #' the data setting `update_cache = TRUE`.
 #'
 #'  If you experience any problem on download, try to download the
-#'  corresponding .geojson file by any other method and save it on your
+#'  corresponding `.geojson` file by any other method and save it on your
 #'  `cache_dir`. Use the option `verbose = TRUE` for debugging the API query.
 #'
 #' For a complete list of files available check [gisco_db].
@@ -41,8 +40,8 @@
 #'
 #' @return A \CRANpkg{sf} object specified by `spatialtype`.
 #'
-#' @param year Release year of the file. One of `"2001"`, `"2006"`,
-#'   `"2010"`, `"2013"`, `"2016"` or `"2020"`.
+#' @param year Release year of the file. One
+#'   of `r gsc_helper_year_docs("countries")`.
 #'
 #' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
 #'  One of:
@@ -56,7 +55,7 @@
 #'
 #' @param update_cache A logical whether to update cache. Default is `FALSE`.
 #'  When set to `TRUE` it would force a fresh download of the source
-#'  .geojson file.
+#'  `.geojson` file.
 #'
 #' @param cache_dir A path to a cache directory. See **About caching**.
 #'
@@ -112,15 +111,10 @@
 #'   geom_sf(fill = "#078930", col = "white") +
 #'   theme_minimal()
 #'
-gisco_get_countries <- function(year = "2016",
-                                epsg = "4326",
-                                cache = TRUE,
-                                update_cache = FALSE,
-                                cache_dir = NULL,
-                                verbose = FALSE,
-                                resolution = "20",
-                                spatialtype = "RG",
-                                country = NULL,
+gisco_get_countries <- function(year = "2016", epsg = "4326", cache = TRUE,
+                                update_cache = FALSE, cache_dir = NULL,
+                                verbose = FALSE, resolution = "20",
+                                spatialtype = "RG", country = NULL,
                                 region = NULL) {
   ext <- "geojson"
 

@@ -107,3 +107,18 @@ gsc_message <- function(verbose, ...) {
 
   return(invisible())
 }
+
+
+#' Helper for docs
+#' @noRd
+gsc_helper_year_docs <- function(x) {
+  # nocov start
+  db <- giscoR::gisco_db
+  y <- db[db$id_giscoR %in% x, "year"]
+
+  y_all <- sort(unique(unlist(strsplit(y, ","))))
+  ftext <- paste0('`"', y_all, '"`')
+  lt <- length(ftext)
+  paste0(paste0(ftext[-lt], collapse = ", "), " or ", ftext[lt])
+  # nocov end
+}

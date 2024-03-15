@@ -1,6 +1,5 @@
 ---
 title: "Get started with giscoR"
-author: <a href="https://orcid.org/0000-0001-8457-4658">Diego Hernangómez <img alt="ORCID logo" src="https://info.orcid.org/wp-content/uploads/2019/11/orcid_24x24.png" width="16" height="16" /></a>
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Get started with giscoR}
@@ -33,7 +32,7 @@ areas (01M, 03M) as well as lightweight datasets specially useful for
 representing wider areas (10M, 20M, 60M). Shapefiles are provided on 3 different
 projections: EPSG 4326, 3035 or 3857.
 
-**giscoR** returns `sf` objects, so the `sf` package is necessary.
+**giscoR** returns `sf` class objects, see <https://r-spatial.github.io/sf/>.
 
 # Caching
 
@@ -55,41 +54,37 @@ your local directory.
 
 # Downloading data
 
-Please be aware that [downloading provisions
-apply](https://ec.europa.eu/eurostat/web/gisco/geodata) when using GISCO data.
+Please be aware that downloading provisions apply when using GISCO data:
+
+> When data downloaded from this page is used in any printed or electronic
+> publication, in addition to any other provisions applicable to the whole
+> Eurostat website, data source will have to be acknowledged in the legend of
+> the map and in the introductory page of the publication with the following
+> copyright notice:
+>
+> -   EN: © EuroGeographics for the administrative boundaries
+> -   FR: © EuroGeographics pour les limites administratives
+> -   DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
+>
+> For publications in languages other than English, French or German, the
+> translation of the copyright notice in the language of the publication shall
+> be used.
+>
+> If you intend to use the data commercially, please contact **EuroGeographics**
+> for information regarding their licence agreements.
+
 There is a function, `gisco_attributions` that would guide you on this topic. It
 also provides attributions on several languages.
 
 
 ```r
 library(giscoR)
-gisco_attributions(copyright = TRUE)
-#> 
-#>     COPYRIGHT NOTICE
-#> 
-#>     When data downloaded from GISCO
-#>     is used in any printed or electronic publication,
-#>     in addition to any other provisions applicable to
-#>     the whole Eurostat website, data source will have
-#>     to be acknowledged in the legend of the map and in
-#>     the introductory page of the publication with the
-#>     following copyright notice:
-#> 
-#>     - EN: (C) EuroGeographics for the administrative boundaries
-#>     - FR: (C) EuroGeographics pour les limites administratives
-#>     - DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
-#> 
-#>     For publications in languages other than English,
-#>     French or German, the translation of the copyright
-#>     notice in the language of the publication shall be
-#>     used.
-#> 
-#>     If you intend to use the data commercially, please
-#>     contact EuroGeographics for information regarding
-#>     their licence agreements.
-#> 
-#> 
+gisco_attributions(lang = "en")
 #> [1] "© EuroGeographics for the administrative boundaries"
+gisco_attributions(lang = "fr")
+#> [1] "© EuroGeographics pour les limites administratives"
+gisco_attributions(lang = "de")
+#> [1] "© EuroGeographics bezuglich der Verwaltungsgrenzen"
 ```
 
 # Basic example
@@ -101,24 +96,14 @@ Some examples on data downloads
 library(sf)
 library(ggplot2) # Use ggplot for plotting
 
-
 Asia <- gisco_get_countries(region = "Asia")
-
 
 ggplot(Asia) +
   geom_sf(fill = "cornsilk", color = "#887e6a") +
   theme(
     panel.background = element_rect(fill = "#fffff3"),
-    panel.border = element_rect(
-      colour = "#887e6a",
-      fill = NA,
-      size = 1.5
-    ),
-    axis.text = element_text(
-      family = "serif",
-      colour = "#887e6a",
-      face = "bold"
-    )
+    panel.border = element_rect(colour = "#887e6a", fill = NA, linewidth = 1.5),
+    axis.text = element_text(family = "serif", colour = "#887e6a", face = "bold")
   )
 ```
 
@@ -136,35 +121,17 @@ It is possible also to combine different shapefiles, just set `resolution` and
 
 
 ```r
-africa_north <-
-  gisco_get_countries(
-    country = c("Morocco", "Argelia", "Libia", "Tunisia", "Egypt"),
-    resolution = "20",
-    epsg = "4326",
-    year = "2016"
-  )
+africa_north <- gisco_get_countries(country = c("Morocco", "Argelia", "Libia", "Tunisia", "Egypt"), resolution = "20", epsg = "4326", year = "2016")
 
 # Coastal lines
 
-coast <- gisco_get_coastallines(
-  resolution = "20",
-  epsg = "4326",
-  year = "2016"
-)
+coast <- gisco_get_coastallines(resolution = "20", epsg = "4326", year = "2016")
 
 # Plot
-
 ggplot(coast) +
   geom_sf(color = "grey80") +
   geom_sf(data = africa_north, fill = "grey30", color = "white") +
-  coord_sf(
-    xlim = c(-13, 37),
-    ylim = c(18.5, 40)
-  ) +
-  theme(
-    axis.ticks = element_blank(),
-    axis.text = element_blank()
-  ) +
+  coord_sf(xlim = c(-13, 37), ylim = c(18.5, 40)) +
   facet_wrap(vars(NAME_ENGL), ncol = 2)
 ```
 
@@ -173,130 +140,89 @@ ggplot(coast) +
 <p class="caption">Political map of North Africa</p>
 </div>
 
-# Plotting **giscoR**
+# Plotting with **giscoR**
 
 This is an example on how **giscoR** can play nicely with some Eurostat data.
-For plotting purposes we would use the `ggplot2` package however any package
-that handles `sf` objects (e.g. `tmap`, `mapsf`, `leaflet`, etc. could be used).
+For plotting purposes we would use the **ggplot2** package however any package
+that handles `sf` objects (e.g. **tmap**, **mapsf**, **leaflet**, etc. could be
+used).
 
-Also `colorspace` and `rcartocolor` packages are recommended, as they provide
-great color palettes.
+Also **colorspace** and **rcartocolor** packages are recommended, as they
+provide great color palettes.
 
 
 ```r
-# EU members plus UK
+# EU members
+library(dplyr)
+library(eurostat)
 
-eu2016 <- c("UK", gisco_countrycode[gisco_countrycode$eu, ]$CNTR_CODE)
-
-nuts2 <- gisco_get_nuts(
-  year = "2016",
-  epsg = "3035",
-  resolution = "3",
-  nuts_level = "2",
-  country = eu2016
-)
+nuts2 <- gisco_get_nuts(year = "2021", epsg = "3035", resolution = "3", nuts_level = "2")
 
 # Borders
 borders <- gisco_get_countries(
-  epsg = "3035",
-  year = "2016",
-  resolution = "3",
-  country = eu2016
+  epsg = "3035", year = "2016", resolution = "3",
+  country = nuts2$CNTR_CODE
 )
 
 # Eurostat data - Disposable income
-pps <- giscoR::tgs00026
-pps <- pps[pps$time == 2016, ]
+pps <- get_eurostat("tgs00026") %>%
+  filter(TIME_PERIOD == "2021-01-01")
 
-# Breaks
-br <- c(0, seq(10, 25, 2.5), 1000) * 1000
+nuts2_sf <- nuts2 %>%
+  left_join(pps, by = "geo") %>%
+  mutate(
+    values_th = values / 1000,
+    categ = cut(values_th, c(0, 15, 30, 70, 100, 150, Inf))
+  )
 
-nuts2.sf <- merge(nuts2,
-  pps,
-  by.x = "NUTS_ID",
-  by.y = "geo",
-  all.x = TRUE
-)
+# Adjust the labels
+labs <- levels(nuts2_sf$categ)
+labs[6] <- "+150"
 
-# Cut
-nuts2.sf$values_groups <- cut(nuts2.sf$values, breaks = br)
-
-# Labels
-labels <- paste0(br / 1000, "k")[-1]
-labels[1] <- "<10k"
-labels[8] <- ">25k"
-
-# Plot
-pal <- hcl.colors(8, "Spectral", alpha = 0.8)
-
-ggplot(nuts2.sf) +
-  geom_sf(aes(fill = values_groups), color = NA, alpha = 0.9) +
+# Finally the plot
+ggplot(nuts2_sf) +
+  geom_sf(aes(fill = categ), color = NA, alpha = 0.9) +
   geom_sf(data = borders, fill = NA, size = 0.1, col = "grey30") +
   # Center in Europe: EPSG 3035
-  coord_sf(
-    xlim = c(2377294, 6500000),
-    ylim = c(1413597, 5228510)
+  coord_sf(xlim = c(2377294, 6500000), ylim = c(1413597, 5228510)) +
+  # Legends and color
+  scale_fill_manual(
+    values = hcl.colors(6, "Spectral", rev = TRUE),
+    labels = labs, na.value = "black"
   ) +
+  guides(fill = guide_legend(nrow = 1)) +
+  # Dark theme
+  theme_void() +
+  theme(
+    text = element_text(colour = "grey90"),
+    plot.background = element_rect(fill = "black"),
+    plot.title = element_text(hjust = 0.5, vjust = -1, ),
+    plot.subtitle = element_text(hjust = 0.5, vjust = -2, face = "bold"),
+    plot.caption = element_text(
+      size = 6, hjust = 0.5,
+      margin = margin(b = 2, t = 13)
+    ),
+    legend.text = element_text(size = 7, ),
+    legend.title = element_text(size = 7),
+    legend.position = "bottom",
+    legend.direction = "horizontal",
+    legend.text.position = "bottom",
+    legend.title.position = "top",
+    legend.key.height = rel(0.5),
+    legend.key.width = unit(0.1, "npc")
+  ) +
+  # Annotate and labels
   labs(
-    title = "Disposable income of private households (2016)",
+    title = "Disposable income of private households (2021)",
     subtitle = "NUTS-2 level",
+    fill = "euros",
     caption = paste0(
       "Source: Eurostat\n ", gisco_attributions()
     )
-  ) +
-  scale_fill_manual(
-    name = "euros",
-    values = pal,
-    drop = FALSE,
-    na.value = "black",
-    labels = labels,
-    guide = guide_legend(
-      direction = "horizontal",
-      keyheight = 0.5,
-      keywidth = 2,
-      title.position = "top",
-      title.hjust = 0,
-      label.hjust = .5,
-      nrow = 1,
-      byrow = TRUE,
-      reverse = FALSE,
-      label.position = "bottom"
-    )
-  ) +
-  theme_void() +
-  # Theme
-  theme(
-    plot.background = element_rect(fill = "black"),
-    plot.title = element_text(
-      color = "grey90",
-      hjust = 0.5,
-      vjust = -1,
-    ),
-    plot.subtitle = element_text(
-      color = "grey90",
-      hjust = 0.5,
-      vjust = -2,
-      face = "bold"
-    ),
-    plot.caption = element_text(
-      color = "grey90",
-      size = 6,
-      hjust = 0.5,
-      margin = margin(b = 2, t = 13)
-    ),
-    legend.text = element_text(
-      size = 7,
-      color = "grey90"
-    ),
-    legend.title = element_text(
-      size = 7,
-      color = "grey90"
-    ),
-    legend.position = c(0.5, 0.02)
   )
 ```
 
 <div class="figure">
-<img src="./giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2016)" width="100%" />
-<p class="caption">Disposable income of private households by NUTS 2 regions (2016)</p>
+<img src="./giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2021)" width="100%" />
+<p class="caption">Disposable income of private households by NUTS 2 regions (2021)</p>
 </div>

@@ -6,7 +6,6 @@
 #' dataset and applies filters, [gisco_get_units()] downloads a single
 #' shapefile for each unit.
 #'
-#' @concept political
 #' @family political
 #'
 #' @return
@@ -91,16 +90,10 @@
 #' }
 #' @export
 gisco_get_units <- function(id_giscoR = c("nuts", "countries", "urban_audit"),
-                            unit = "ES4",
-                            mode = c("sf", "df"),
-                            year = "2016",
-                            epsg = "4326",
-                            cache = TRUE,
-                            update_cache = FALSE,
-                            cache_dir = NULL,
-                            verbose = FALSE,
-                            resolution = "20",
-                            spatialtype = "RG") {
+                            unit = "ES4", mode = c("sf", "df"), year = "2016",
+                            epsg = "4326", cache = TRUE, update_cache = FALSE,
+                            cache_dir = NULL, verbose = FALSE,
+                            resolution = "20", spatialtype = "RG") {
   year <- as.character(year)
 
   cache_dir <- gsc_helper_cachedir(cache_dir)

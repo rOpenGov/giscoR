@@ -2,7 +2,7 @@
 #'
 #' Database with the list of files that the package can load.
 #'
-#' @concept dataset
+#' @family dataset
 #'
 #' @name gisco_db
 #'
@@ -52,8 +52,15 @@ NULL
 #'   geom_sf(color = "red3", fill = "blue4") +
 #'   theme_void()
 #' @source
-#' [CNTR_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/)
-#' file.
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("[CNTR_RG_20M_2016_4326.geojson]",
+#'       "(https://gisco-services.ec.europa.eu/distribution/v2/",
+#'       "countries/geojson/) file."))
+#'
+#'
+#' ```
 #'
 #' @docType data
 #'
@@ -80,8 +87,14 @@ NULL
 #' }
 #'
 #' @source
-#' [COAS_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/)
-#' file.
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("[COAS_RG_20M_2016_4326.geojson]",
+#'       "(https://gisco-services.ec.europa.eu/distribution/v2/",
+#'       "coas/geojson/) file."))
+#'
+#' ```
 #'
 #' @docType data
 #'
@@ -166,8 +179,14 @@ NULL
 #'
 #'
 #' @source
-#' [NUTS_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/)
-#' file.
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("[NUTS_RG_20M_2016_4326.geojson]",
+#'       "(https://gisco-services.ec.europa.eu/distribution/v2/",
+#'       "nuts/geojson/) file."))
+#'
+#' ```
 #'
 #' @docType data
 #'
@@ -226,39 +245,14 @@ NULL
 #' @seealso [gisco_get_countries()],
 #'  [countrycode::codelist], [countrycode::countrycode-package]
 #'
-#' See also the [Unicode Common Locale Data
-#' Repository](https://cldr.unicode.org/translation/displaynames/countryregion-territory-names).
+#' See also the
+#' ```{r, echo=FALSE, results='asis'}
 #'
-#' @docType data
-NULL
-
-#' Disposable income of private households by NUTS 2 regions
+#' cat(paste0(" [Unicode Common Locale Data Repository]",
+#'       "(https://cldr.unicode.org/translation/displaynames/",
+#'       "countryregion-territory-names)."))
 #'
-#' @name tgs00026
+#' ```
 #'
-#' @family dataset
-#'
-#' @source <https://ec.europa.eu/eurostat>, extracted on 2020-10-27
-#'
-#' @description
-#' The disposable income of private households is the balance
-#' of primary income (operating surplus/mixed income plus compensation of
-#' employees plus property income received minus property income paid) and
-#' the redistribution of income in cash. These transactions comprise social
-#' contributions paid, social benefits in cash received, current taxes on
-#' income and wealth paid, as well as other current transfers. Disposable
-#' income does not include social transfers in kind coming from public
-#' administrations or non-profit institutions serving households.
-#' @format
-#' data_frame:
-#' \describe{
-#'   \item{geo}{NUTS2 identifier}
-#'   \item{time}{reference year (2007 to 2018)}
-#'   \item{values}{value in euros}
-#' }
-#'
-#' @examples
-#'
-#' data(tgs00026)
 #' @docType data
 NULL

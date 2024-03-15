@@ -2,7 +2,6 @@
 #'
 #' Loads a \CRANpkg{sf} object from GISCO API or your local library.
 #'
-#' @concept infrastructure
 #' @family infrastructure
 #'
 #' @return A `POINT` object on EPSG:4326.
@@ -13,8 +12,13 @@
 #'
 #' @inheritSection gisco_get_countries About caching
 #' @source
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks>
 #'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("<https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data",
+#'       "/transport-networks>"))
+#'
+#' ```
 #'
 #' @details
 #'  [gisco_get_airports()] refer to Europe. All shapefiles provided in
@@ -72,11 +76,8 @@
 #'   )
 #' }
 #' @export
-gisco_get_airports <- function(year = "2013",
-                               country = NULL,
-                               cache_dir = NULL,
-                               update_cache = FALSE,
-                               verbose = FALSE) {
+gisco_get_airports <- function(year = "2013", country = NULL, cache_dir = NULL,
+                               update_cache = FALSE, verbose = FALSE) {
   year <- as.character(year)
   if (year != "2013") {
     stop("Year should be 2013")
@@ -113,11 +114,8 @@ gisco_get_airports <- function(year = "2013",
 #' [UN/LOCODE](https://unece.org/trade/uncefact/unlocode) standard.
 #'
 #' @export
-gisco_get_ports <- function(year = "2013",
-                            country = NULL,
-                            cache_dir = NULL,
-                            update_cache = FALSE,
-                            verbose = FALSE) {
+gisco_get_ports <- function(year = "2013", country = NULL, cache_dir = NULL,
+                            update_cache = FALSE, verbose = FALSE) {
   year <- as.character(year)
   if (year != "2013") {
     stop("Year should be 2013")

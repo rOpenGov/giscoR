@@ -20,8 +20,7 @@ GISCO}
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/}{CNTR_RG_20M_2016_4326.geojson}
-file.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/countries/geojson/}{CNTR_RG_20M_2016_4326.geojson} file.
 }
 \description{
 A \CRANpkg{sf} object including all countries as provided by
@@ -44,7 +43,7 @@ ggplot(GBR) +
 Other dataset: 
 \code{\link{gisco_coastallines}},
 \code{\link{gisco_countrycode}},
-\code{\link{gisco_nuts}},
-\code{\link{tgs00026}}
+\code{\link{gisco_db}},
+\code{\link{gisco_nuts}}
 }
 \concept{dataset}

@@ -22,8 +22,8 @@ gisco_get_nuts(
 )
 }
 \arguments{
-\item{year}{Release year of the file. One of \code{"2003"}, \code{"2006"}, \code{"2010"},
-\code{"2013"}, \code{"2016"} or \code{"2021"}.}
+\item{year}{Release year of the file. One
+of \code{"2003"}, \code{"2006"}, \code{"2010"}, \code{"2013"}, \code{"2016"} or \code{"2021"}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -39,7 +39,7 @@ One of:
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-.geojson file.}
+\code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
@@ -96,8 +96,7 @@ NUTS are provided at three different levels:
 \item \code{"3"}: Counties/provinces/districts
 }
 
-Note that NUTS-level definition may vary across countries. See also
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/nuts}.
+Note that NUTS-level definition may vary across countries. See also \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data//administrative-units-statistical-units/nuts}.
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.
@@ -106,7 +105,7 @@ Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting \code{update_cache = TRUE}.
 
 If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
+corresponding \code{.geojson} file by any other method and save it on your
 \code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 
 For a complete list of files available check \link{gisco_db}.

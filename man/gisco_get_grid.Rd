@@ -25,7 +25,7 @@ gisco_get_grid(
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-.geojson file.}
+\code{.geojson} file.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
@@ -56,7 +56,7 @@ Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting \code{update_cache = TRUE}.
 
 If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
+corresponding \code{.geojson} file by any other method and save it on your
 \code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 
 For a complete list of files available check \link{gisco_db}.
@@ -70,23 +70,23 @@ grid <- gisco_get_grid(resolution = 20)
 # If downloaded correctly proceed
 
 if (!is.null(grid)) {
-  grid$popdens <- grid$TOT_P_2011 / 20
+  library(dplyr)
 
+  grid <- grid \%>\%
+    mutate(popdens = TOT_P_2021 / 20)
 
-  breaks <- c(
-    0, 0.1, 100, 500, 1000, 2500, 5000, 10000,
-    25000, max(grid$popdens) + 1
-  )
+  breaks <- c(0, 0.1, 100, 500, 1000, 5000, 10000, Inf)
 
   # Cut groups
+  grid <- grid \%>\%
+    mutate(popdens_cut = cut(popdens,
+      breaks = breaks,
+      include.lowest = TRUE
+    ))
 
-  grid$popdens_cut <- cut(grid$popdens,
-    breaks = breaks,
-    include.lowest = TRUE
-  )
   cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
   cut_labs[1] <- "0"
-  cut_labs[9] <- "> 25 000"
+  cut_labs[7] <- "> 10 000"
 
   pal <- c("black", hcl.colors(length(breaks) - 2,
     palette = "Spectral",
@@ -107,48 +107,29 @@ if (!is.null(grid)) {
       labels = cut_labs,
       guide = guide_legend(
         direction = "horizontal",
-        keyheight = 0.5,
-        keywidth = 2,
-        title.position = "top",
-        title.hjust = 0.5,
-        label.hjust = .5,
-        nrow = 1,
-        byrow = TRUE,
-        reverse = FALSE,
-        label.position = "bottom"
+        nrow = 1
       )
     ) +
     theme_void() +
     labs(
-      title = "Population density in Europe",
+      title = "Population density in Europe (2021)",
       subtitle = "Grid: 20 km.",
       caption = gisco_attributions()
     ) +
     theme(
+      text = element_text(colour = "white"),
       plot.background = element_rect(fill = "grey2"),
-      plot.title = element_text(
-        size = 18, color = "white",
-        hjust = 0.5,
-      ),
-      plot.subtitle = element_text(
-        size = 14,
-        color = "white",
-        hjust = 0.5,
-        face = "bold"
-      ),
+      plot.title = element_text(hjust = 0.5),
+      plot.subtitle = element_text(hjust = 0.5, face = "bold"),
       plot.caption = element_text(
-        size = 9, color = "grey60",
-        hjust = 0.5, vjust = 0,
+        color = "grey60", hjust = 0.5, vjust = 0,
         margin = margin(t = 5, b = 10)
       ),
-      legend.text = element_text(
-        size = 8,
-        color = "white"
-      ),
-      legend.title = element_text(
-        color = "white"
-      ),
-      legend.position = "bottom"
+      legend.position = "bottom",
+      legend.title.position = "top",
+      legend.text.position = "bottom",
+      legend.key.height = unit(0.5, "lines"),
+      legend.key.width = unit(1, "lines")
     )
 }
 }

@@ -1,7 +1,7 @@
 Type: Package
 Package: giscoR
 Title: Download Map Data from GISCO API - Eurostat
-Version: 0.4.0.9000
+Version: 0.4.1
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658", affiliation = "rOpenGov")),
@@ -28,8 +28,9 @@ Imports:
     sf (>= 0.9.0),
     utils
 Suggests: 
+    dplyr,
     eurostat,
-    ggplot2 (>= 3.0.0),
+    ggplot2 (>= 3.5.0),
     httr2,
     knitr,
     lwgeom (>= 0.2-2),

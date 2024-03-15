@@ -2,10 +2,9 @@
 #'
 #' Downloads worldwide coastlines
 #'
-#' @concept political
 #' @family political
 #'
-#' @param year Release year. One of `"2006"`, `"2010"`, `"2013"` or `"2016"`.
+#' @param year Release year. One of `r gsc_helper_year_docs("coastallines")`.
 #'
 #' @inheritParams gisco_get_countries
 #'
@@ -33,15 +32,14 @@
 #'     ylim = c(4, 30)
 #'   ) +
 #'   theme_minimal() +
-#'   theme(panel.background = element_rect(fill = "#C7E7FB", color = "black"))
+#'   theme(
+#'     panel.background = element_rect(fill = "#C7E7FB", color = NA),
+#'     panel.border = element_rect(colour = "black", fill = NA)
+#'   )
 #' @export
-gisco_get_coastallines <- function(year = "2016",
-                                   epsg = "4326",
-                                   cache = TRUE,
-                                   update_cache = FALSE,
-                                   cache_dir = NULL,
-                                   verbose = FALSE,
-                                   resolution = "20") {
+gisco_get_coastallines <- function(year = "2016", epsg = "4326", cache = TRUE,
+                                   update_cache = FALSE, cache_dir = NULL,
+                                   verbose = FALSE, resolution = "20") {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(

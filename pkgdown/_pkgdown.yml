@@ -9,6 +9,9 @@ template:
       creator: '@dhernangomez'
       card: summary_large_image
 
+development:
+  mode: auto
+
 home:
   title: giscoR | R package for download geodata from GISCO - Eurostat
   description: >
@@ -57,3 +60,4 @@ authors:
     href: https://vincentarelbundock.github.io/countrycode/
 repo:
   branch: main
+

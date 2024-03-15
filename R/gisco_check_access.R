@@ -1,6 +1,6 @@
 #' Check access to GISCO API
 #'
-#' @concept helper
+#' @family helper
 #'
 #' @description
 #' Check if **R** has access to resources at

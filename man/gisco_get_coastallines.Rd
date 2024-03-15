@@ -34,7 +34,7 @@ One of:
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-.geojson file.}
+\code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
@@ -66,7 +66,7 @@ Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting \code{update_cache = TRUE}.
 
 If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
+corresponding \code{.geojson} file by any other method and save it on your
 \code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 
 For a complete list of files available check \link{gisco_db}.
@@ -86,7 +86,10 @@ ggplot(coast) +
     ylim = c(4, 30)
   ) +
   theme_minimal() +
-  theme(panel.background = element_rect(fill = "#C7E7FB", color = "black"))
+  theme(
+    panel.background = element_rect(fill = "#C7E7FB", color = NA),
+    panel.border = element_rect(colour = "black", fill = NA)
+  )
 \dontshow{\}) # examplesIf}
 }
 \seealso{

@@ -28,7 +28,11 @@ gisco_get_lau(
 )
 }
 \arguments{
-\item{year}{Release year of the file. See \strong{Details}.}
+\item{year}{Release year of the file:
+\itemize{
+\item For \code{gisco_get_communes()} one of \code{"2001"}, \code{"2004"}, \code{"2006"}, \code{"2008"}, \code{"2010"}, \code{"2013"} or \code{"2016"}.
+\item For \code{gisco_get_lau()} one of \code{"2011"}, \code{"2012"}, \code{"2013"}, \code{"2014"}, \code{"2015"}, \code{"2016"}, \code{"2017"}, \code{"2018"}, \code{"2019"} or \code{"2020"}.
+}}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
@@ -44,7 +48,7 @@ One of:
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-.geojson file.}
+\code{.geojson} file.}
 
 \item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 
@@ -78,15 +82,6 @@ A \CRANpkg{sf} object specified by \code{spatialtype}. In the case of
 \code{\link[=gisco_get_communes]{gisco_get_communes()}} and \code{\link[=gisco_get_lau]{gisco_get_lau()}} download shapes of Local
 Urban Areas, that correspond roughly with towns and cities.
 }
-\details{
-Valid years for each function are:
-\itemize{
-\item \strong{\code{gisco_get_communes}}: one of \code{"2001"}, \code{"2004"}, \code{"2006"}, \code{"2008"},
-\code{"2010"}, \code{"2013"} or \code{"2016"}.
-\item \strong{\code{gisco_get_lau}}: one of
-\code{"2011"}, \code{"2012"}, \code{"2013"}, \code{"2014"}, \code{"2015"}, \code{"2016"}, \code{"2017"}, \code{"2018"}, \code{"2019"}, \code{"2020"}.
-}
-}
 \note{
 Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
@@ -97,7 +92,7 @@ Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting \code{update_cache = TRUE}.
 
 If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
+corresponding \code{.geojson} file by any other method and save it on your
 \code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 
 For a complete list of files available check \link{gisco_db}.

@@ -5,7 +5,7 @@
 #' territory, for various resolutions from 1km to 100km. Base statistics such
 #' as population figures are provided for these cells.
 #'
-#' @concept misc
+#' @family misc
 #'
 #' @return A `POLYGON/POINT` \CRANpkg{sf} object.
 #'
@@ -42,23 +42,23 @@
 #' # If downloaded correctly proceed
 #'
 #' if (!is.null(grid)) {
-#'   grid$popdens <- grid$TOT_P_2011 / 20
+#'   library(dplyr)
 #'
+#'   grid <- grid %>%
+#'     mutate(popdens = TOT_P_2021 / 20)
 #'
-#'   breaks <- c(
-#'     0, 0.1, 100, 500, 1000, 2500, 5000, 10000,
-#'     25000, max(grid$popdens) + 1
-#'   )
+#'   breaks <- c(0, 0.1, 100, 500, 1000, 5000, 10000, Inf)
 #'
 #'   # Cut groups
+#'   grid <- grid %>%
+#'     mutate(popdens_cut = cut(popdens,
+#'       breaks = breaks,
+#'       include.lowest = TRUE
+#'     ))
 #'
-#'   grid$popdens_cut <- cut(grid$popdens,
-#'     breaks = breaks,
-#'     include.lowest = TRUE
-#'   )
 #'   cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
 #'   cut_labs[1] <- "0"
-#'   cut_labs[9] <- "> 25 000"
+#'   cut_labs[7] <- "> 10 000"
 #'
 #'   pal <- c("black", hcl.colors(length(breaks) - 2,
 #'     palette = "Spectral",
@@ -79,56 +79,36 @@
 #'       labels = cut_labs,
 #'       guide = guide_legend(
 #'         direction = "horizontal",
-#'         keyheight = 0.5,
-#'         keywidth = 2,
-#'         title.position = "top",
-#'         title.hjust = 0.5,
-#'         label.hjust = .5,
-#'         nrow = 1,
-#'         byrow = TRUE,
-#'         reverse = FALSE,
-#'         label.position = "bottom"
+#'         nrow = 1
 #'       )
 #'     ) +
 #'     theme_void() +
 #'     labs(
-#'       title = "Population density in Europe",
+#'       title = "Population density in Europe (2021)",
 #'       subtitle = "Grid: 20 km.",
 #'       caption = gisco_attributions()
 #'     ) +
 #'     theme(
+#'       text = element_text(colour = "white"),
 #'       plot.background = element_rect(fill = "grey2"),
-#'       plot.title = element_text(
-#'         size = 18, color = "white",
-#'         hjust = 0.5,
-#'       ),
-#'       plot.subtitle = element_text(
-#'         size = 14,
-#'         color = "white",
-#'         hjust = 0.5,
-#'         face = "bold"
-#'       ),
+#'       plot.title = element_text(hjust = 0.5),
+#'       plot.subtitle = element_text(hjust = 0.5, face = "bold"),
 #'       plot.caption = element_text(
-#'         size = 9, color = "grey60",
-#'         hjust = 0.5, vjust = 0,
+#'         color = "grey60", hjust = 0.5, vjust = 0,
 #'         margin = margin(t = 5, b = 10)
 #'       ),
-#'       legend.text = element_text(
-#'         size = 8,
-#'         color = "white"
-#'       ),
-#'       legend.title = element_text(
-#'         color = "white"
-#'       ),
-#'       legend.position = "bottom"
+#'       legend.position = "bottom",
+#'       legend.title.position = "top",
+#'       legend.text.position = "bottom",
+#'       legend.key.height = unit(0.5, "lines"),
+#'       legend.key.width = unit(1, "lines")
 #'     )
 #' }
 #' }
 #' @export
 gisco_get_grid <- function(resolution = "20",
                            spatialtype = c("REGION", "POINT"),
-                           cache_dir = NULL,
-                           update_cache = FALSE,
+                           cache_dir = NULL, update_cache = FALSE,
                            verbose = FALSE) {
   resolution <- as.character(resolution)
   validres <- as.character(c(1, 2, 5, 10, 20, 50, 100))

@@ -35,7 +35,7 @@ gisco_bulk_download(
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-.geojson file.}
+\code{.geojson} file.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
@@ -59,7 +59,8 @@ in the initial bulk download (case of \code{ext = "shp"}).}
 Silent function.
 }
 \description{
-Downloads zipped data from GISCO and extract them on the \code{cache_dir} folder.
+Downloads zipped data from GISCO and extract them on the
+\code{\link[=gisco_set_cache_dir]{cache_dir}} folder.
 }
 \details{
 See the years available in the corresponding functions:
@@ -82,7 +83,7 @@ Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting \code{update_cache = TRUE}.
 
 If you experience any problem on download, try to download the
-corresponding .geojson file by any other method and save it on your
+corresponding \code{.geojson} file by any other method and save it on your
 \code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 
 For a complete list of files available check \link{gisco_db}.
