@@ -39,7 +39,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Config/Needs/website: ropengov/rogtemplate, ragg, reactable, styler,
-    devtools, remotes
+    devtools, remotes, geometries, rapidjsonr, sfheaders, jsonify
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: General Copyright © European Union, 1995 - today. See file
