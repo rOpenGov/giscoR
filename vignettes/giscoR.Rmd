@@ -140,7 +140,7 @@ ggplot(coast) +
 <p class="caption">Political map of North Africa</p>
 </div>
 
-# Plotting with **giscoR**
+# Thematic maps with **giscoR**
 
 This is an example on how **giscoR** can play nicely with some Eurostat data.
 For plotting purposes we would use the **ggplot2** package however any package
@@ -156,13 +156,15 @@ provide great color palettes.
 library(dplyr)
 library(eurostat)
 
-nuts2 <- gisco_get_nuts(year = "2021", epsg = "3035", resolution = "3", nuts_level = "2")
-
-# Borders
-borders <- gisco_get_countries(
-  epsg = "3035", year = "2016", resolution = "3",
-  country = nuts2$CNTR_CODE
+nuts2 <- gisco_get_nuts(
+  year = "2021", epsg = "3035", resolution = "3",
+  nuts_level = "2"
 )
+# Borders from countries
+borders <- gisco_get_countries(epsg = "3035", year = "2020", resolution = "3")
+
+eu_bord <- borders %>%
+  filter(CNTR_ID %in% nuts2$CNTR_CODE)
 
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") %>%
@@ -172,35 +174,48 @@ nuts2_sf <- nuts2 %>%
   left_join(pps, by = "geo") %>%
   mutate(
     values_th = values / 1000,
-    categ = cut(values_th, c(0, 15, 30, 70, 100, 150, Inf))
+    categ = cut(values_th, c(0, 15, 30, 60, 90, 120, Inf))
   )
+
 
 # Adjust the labels
 labs <- levels(nuts2_sf$categ)
-labs[6] <- "+150"
+labs[1] <- "< 15"
+labs[6] <- "> 120"
+levels(nuts2_sf$categ) <- labs
+
 
 # Finally the plot
 ggplot(nuts2_sf) +
-  geom_sf(aes(fill = categ), color = NA, alpha = 0.9) +
-  geom_sf(data = borders, fill = NA, size = 0.1, col = "grey30") +
+  # Background
+  geom_sf(data = borders, fill = "#e1e1e1", color = NA) +
+  geom_sf(aes(fill = categ), color = "grey20", linewidth = .1) +
+  geom_sf(data = eu_bord, fill = NA, color = "black", linewidth = .15) +
   # Center in Europe: EPSG 3035
   coord_sf(xlim = c(2377294, 6500000), ylim = c(1413597, 5228510)) +
   # Legends and color
   scale_fill_manual(
-    values = hcl.colors(6, "Spectral", rev = TRUE),
-    labels = labs, na.value = "black"
+    values = hcl.colors(length(labs), "Geyser", rev = TRUE),
+    # Label NA
+    labels = function(x) {
+      ifelse(is.na(x), "No Data", x)
+    },
+    na.value = "#e1e1e1"
   ) +
   guides(fill = guide_legend(nrow = 1)) +
-  # Dark theme
   theme_void() +
   theme(
-    text = element_text(colour = "grey90"),
-    plot.background = element_rect(fill = "black"),
-    plot.title = element_text(hjust = 0.5, vjust = -1, ),
-    plot.subtitle = element_text(hjust = 0.5, vjust = -2, face = "bold"),
+    text = element_text(colour = "grey0"),
+    panel.background = element_rect(fill = "#97dbf2"),
+    panel.border = element_rect(fill = NA, color = "grey10"),
+    plot.title = element_text(hjust = 0.5, vjust = -1, size = 12),
+    plot.subtitle = element_text(
+      hjust = 0.5, vjust = -2, face = "bold",
+      margin = margin(b = 10, t = 5), size = 12
+    ),
     plot.caption = element_text(
-      size = 6, hjust = 0.5,
-      margin = margin(b = 2, t = 13)
+      size = 8, hjust = 0.5, margin =
+        margin(b = 2, t = 13)
     ),
     legend.text = element_text(size = 7, ),
     legend.title = element_text(size = 7),
@@ -209,13 +224,13 @@ ggplot(nuts2_sf) +
     legend.text.position = "bottom",
     legend.title.position = "top",
     legend.key.height = rel(0.5),
-    legend.key.width = unit(0.1, "npc")
+    legend.key.width = unit(.1, "npc")
   ) +
   # Annotate and labels
   labs(
     title = "Disposable income of private households (2021)",
     subtitle = "NUTS-2 level",
-    fill = "euros",
+    fill = "euros (thousands)",
     caption = paste0(
       "Source: Eurostat\n ", gisco_attributions()
     )
