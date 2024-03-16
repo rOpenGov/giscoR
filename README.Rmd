@@ -352,8 +352,8 @@ toBibtex(citation("giscoR"))
 > [EuroGeographics](https://eurogeographics.org/maps-for-europe/licensing/) for
 > information regarding their licence agreements.
 >
-> *From
-> <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units>*
+> *From [GISCO
+> Web](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)*
 
 ## Disclaimer
 

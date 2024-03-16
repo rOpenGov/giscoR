@@ -183,6 +183,7 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
+#> indexed 0B in  0s, 0B/sindexed 2.15GB in  0s, 2.15GB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -344,8 +345,8 @@ A BibTeX entry for LaTeX users is
 > [EuroGeographics](https://eurogeographics.org/maps-for-europe/licensing/)
 > for information regarding their licence agreements.
 >
-> *From
-> <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units>*
+> *From [GISCO
+> Web](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)*
 
 ## Disclaimer
 
