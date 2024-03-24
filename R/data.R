@@ -243,7 +243,7 @@ NULL
 #' @source [countrycode::codelist] **v1.2.0**.
 #'
 #' @seealso [gisco_get_countries()],
-#'  [countrycode::codelist], [countrycode::countrycode-package]
+#'  [countrycode::codelist], \CRANpkg{countrycode} package.
 #'
 #' See also the
 #' ```{r, echo=FALSE, results='asis'}

@@ -38,7 +38,7 @@ data(gisco_countrycode)
 }
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}},
-\link[countrycode:codelist]{countrycode::codelist}, \link[countrycode:countrycode-package]{countrycode::countrycode-package}
+\link[countrycode:codelist]{countrycode::codelist}, \CRANpkg{countrycode} package.
 
 See also the \href{https://cldr.unicode.org/translation/displaynames/countryregion-territory-names}{Unicode Common Locale Data Repository}.
 
