@@ -1,4 +1,4 @@
-# giscoR (development version)
+# giscoR 0.4.2
 
 -   Update of docs to avoid warnings on **CRAN** (#81).
 

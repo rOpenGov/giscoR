@@ -169,7 +169,6 @@ eu_bord <- borders %>%
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") %>%
   filter(TIME_PERIOD == "2021-01-01")
-#> [1mindexed[0m [32m0B[0m in [36m 0s[0m, [32m0B/s[0m[1mindexed[0m [32m2.15GB[0m in [36m 0s[0m, [32m2.15GB/s[0m                                                                                        
 
 nuts2_sf <- nuts2 %>%
   left_join(pps, by = "geo") %>%
