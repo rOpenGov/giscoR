@@ -183,6 +183,7 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
+#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 426.08TB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -199,18 +200,22 @@ nuts3_sf <- nuts3 %>%
 # Breaks and labels
 
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
+labs <- prettyNum(br[-1], big.mark = ",")
 
+# Label function to be used in the plot, mainly for NAs
+labeller_plot <- function(x) {
+  ifelse(is.na(x), "No Data", x)
+}
 nuts3_sf <- nuts3_sf %>%
-  mutate(values_cut = cut(values, br, dig.lab = 5))
+  # Cut with labels
+  mutate(values_cut = cut(values, br, labels = labs))
 
-labs_plot <- prettyNum(br[-1], big.mark = ",")
 
 # Palette
-pal <- hcl.colors(length(br) - 1, "Lajolla")
+pal <- hcl.colors(length(labs), "Lajolla")
 
 
 # Plot
-
 ggplot(nuts3_sf) +
   geom_sf(aes(fill = values_cut), linewidth = 0, color = NA, alpha = 0.9) +
   geom_sf(data = country_lines, col = "black", linewidth = 0.1) +
@@ -221,7 +226,9 @@ ggplot(nuts3_sf) +
   ) +
   # Legends
   scale_fill_manual(
-    values = pal, labels = labs_plot,
+    values = pal,
+    # Label for NA
+    labels = labeller_plot,
     drop = FALSE, guide = guide_legend(direction = "horizontal", nrow = 1)
   ) +
   # Theming
@@ -252,7 +259,8 @@ ggplot(nuts3_sf) +
     fill = "people per sq. kilometer",
     caption = paste0(
       "Source: Eurostat, ", gisco_attributions(),
-      "\nBased on Milos Popovic: https://milospopovic.net/how-to-make-choropleth-map-in-r/"
+      "\nBased on Milos Popovic: ",
+      "https://milospopovic.net/how-to-make-choropleth-map-in-r/"
     )
   )
 ```
@@ -353,8 +361,7 @@ This package is in no way officially related to or endorsed by Eurostat.
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-RJ-2017-019" class="csl-entry">
 

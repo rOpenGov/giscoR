@@ -223,18 +223,22 @@ nuts3_sf <- nuts3 %>%
 # Breaks and labels
 
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
+labs <- prettyNum(br[-1], big.mark = ",")
 
+# Label function to be used in the plot, mainly for NAs
+labeller_plot <- function(x) {
+  ifelse(is.na(x), "No Data", x)
+}
 nuts3_sf <- nuts3_sf %>%
-  mutate(values_cut = cut(values, br, dig.lab = 5))
+  # Cut with labels
+  mutate(values_cut = cut(values, br, labels = labs))
 
-labs_plot <- prettyNum(br[-1], big.mark = ",")
 
 # Palette
-pal <- hcl.colors(length(br) - 1, "Lajolla")
+pal <- hcl.colors(length(labs), "Lajolla")
 
 
 # Plot
-
 ggplot(nuts3_sf) +
   geom_sf(aes(fill = values_cut), linewidth = 0, color = NA, alpha = 0.9) +
   geom_sf(data = country_lines, col = "black", linewidth = 0.1) +
@@ -245,7 +249,9 @@ ggplot(nuts3_sf) +
   ) +
   # Legends
   scale_fill_manual(
-    values = pal, labels = labs_plot,
+    values = pal,
+    # Label for NA
+    labels = labeller_plot,
     drop = FALSE, guide = guide_legend(direction = "horizontal", nrow = 1)
   ) +
   # Theming
@@ -276,7 +282,8 @@ ggplot(nuts3_sf) +
     fill = "people per sq. kilometer",
     caption = paste0(
       "Source: Eurostat, ", gisco_attributions(),
-      "\nBased on Milos Popovic: https://milospopovic.net/how-to-make-choropleth-map-in-r/"
+      "\nBased on Milos Popovic: ",
+      "https://milospopovic.net/how-to-make-choropleth-map-in-r/"
     )
   )
 ```
