@@ -64,14 +64,9 @@ coastline).
 }
 \examples{
 
-nuts <- gisco_nuts
+data("gisco_nuts")
+head(gisco_nuts)
 
-italy <- subset(nuts, CNTR_CODE == "IT" & LEVL_CODE == 3)
-
-library(ggplot2)
-
-ggplot(italy) +
-  geom_sf()
 }
 \seealso{
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}

@@ -34,7 +34,8 @@ is extracted from \CRANpkg{countrycode} package.
 }
 \examples{
 
-data(gisco_countrycode)
+data("gisco_countrycode")
+dplyr::glimpse(gisco_countrycode)
 
 }
 \seealso{

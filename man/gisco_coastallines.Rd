@@ -20,27 +20,8 @@ with 3 variables:
 A \code{\link[sf:sf]{sf}} object as provided by GISCO (2016 version).
 }
 \examples{
-
-coasts <- gisco_coastallines
-
-library(ggplot2)
-
-ggplot(coasts) +
-  geom_sf(color = "blue", fill = "blue", alpha = 0.2) +
-  # Zoom on Oceania
-  coord_sf(
-    xlim = c(96, 179),
-    ylim = c(-51, 11)
-  ) +
-  theme_minimal() +
-  theme(
-    plot.background = element_rect(
-      fill = "black",
-      color = "black"
-    ),
-    panel.grid = element_blank(),
-    axis.text = element_text(colour = "grey90")
-  )
+data("gisco_coastallines")
+head(gisco_coastallines)
 }
 \seealso{
 \code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}}

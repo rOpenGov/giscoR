@@ -28,14 +28,9 @@ GISCO (2016 version).
 }
 \examples{
 
-cntry <- gisco_countries
-GBR <- subset(cntry, ISO3_CODE == "GBR")
+data("gisco_countries")
+head(gisco_countries)
 
-library(ggplot2)
-
-ggplot(GBR) +
-  geom_sf(color = "red3", fill = "blue4") +
-  theme_void()
 }
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}

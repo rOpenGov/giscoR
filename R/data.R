@@ -44,14 +44,9 @@ NULL
 #' }
 #' @examples
 #'
-#' cntry <- gisco_countries
-#' GBR <- subset(cntry, ISO3_CODE == "GBR")
+#' data("gisco_countries")
+#' head(gisco_countries)
 #'
-#' library(ggplot2)
-#'
-#' ggplot(GBR) +
-#'   geom_sf(color = "red3", fill = "blue4") +
-#'   theme_void()
 #' @source
 #'
 #' ```{r, echo=FALSE, results='asis'}
@@ -104,27 +99,8 @@ NULL
 #' @seealso [gisco_get_coastallines()]
 #'
 #' @examples
-#'
-#' coasts <- gisco_coastallines
-#'
-#' library(ggplot2)
-#'
-#' ggplot(coasts) +
-#'   geom_sf(color = "blue", fill = "blue", alpha = 0.2) +
-#'   # Zoom on Oceania
-#'   coord_sf(
-#'     xlim = c(96, 179),
-#'     ylim = c(-51, 11)
-#'   ) +
-#'   theme_minimal() +
-#'   theme(
-#'     plot.background = element_rect(
-#'       fill = "black",
-#'       color = "black"
-#'     ),
-#'     panel.grid = element_blank(),
-#'     axis.text = element_text(colour = "grey90")
-#'   )
+#' data("gisco_coastallines")
+#' head(gisco_coastallines)
 NULL
 
 #' All NUTS `POLYGON` object
@@ -198,14 +174,9 @@ NULL
 #'
 #' @examples
 #'
-#' nuts <- gisco_nuts
+#' data("gisco_nuts")
+#' head(gisco_nuts)
 #'
-#' italy <- subset(nuts, CNTR_CODE == "IT" & LEVL_CODE == 3)
-#'
-#' library(ggplot2)
-#'
-#' ggplot(italy) +
-#'   geom_sf()
 #' @encoding UTF-8
 NULL
 
@@ -243,7 +214,8 @@ NULL
 #'
 #' @examples
 #'
-#' data(gisco_countrycode)
+#' data("gisco_countrycode")
+#' dplyr::glimpse(gisco_countrycode)
 #'
 #' @source [countrycode::codelist] **v1.2.0**.
 #'
