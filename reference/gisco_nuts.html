@@ -146,15 +146,35 @@ coastline).</p></li>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">nuts</span> <span class="op">&lt;-</span> <span class="va">gisco_nuts</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"gisco_nuts"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gisco_nuts</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 6 features and 10 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: MULTIPOLYGON</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -63.08825 ymin: -21.39077 xmax: 55.83808 ymax: 70.08134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   NUTS_ID LEVL_CODE URBN_TYPE CNTR_CODE                  NAME_LATN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      ES         0         0        ES                     ESPAÑA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      FI         0         0        FI            SUOMI / FINLAND</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      IS         0         0        IS                     ÍSLAND</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     PT2         1         0        PT REGIÃO AUTÓNOMA DOS AÇORES</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      FR         0         0        FR                     FRANCE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      HR         0         0        HR                   HRVATSKA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    NUTS_NAME MOUNT_TYPE COAST_TYPE FID geo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     ESPAÑA          0          0  ES  ES</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            SUOMI / FINLAND          0          0  FI  FI</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                     ÍSLAND          0          0  IS  IS</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 REGIÃO AUTÓNOMA DOS AÇORES          0          0 PT2 PT2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                     FRANCE          0          0  FR  FR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   HRVATSKA          0          0  HR  HR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         geometry</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 MULTIPOLYGON (((4.17069 40....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 MULTIPOLYGON (((28.8195 69....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 MULTIPOLYGON (((-21.25398 6...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 MULTIPOLYGON (((-25.18988 3...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 MULTIPOLYGON (((55.32105 -2...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 MULTIPOLYGON (((16.37339 46...</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">italy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">nuts</span>, <span class="va">CNTR_CODE</span> <span class="op">==</span> <span class="st">"IT"</span> <span class="op">&amp;</span> <span class="va">LEVL_CODE</span> <span class="op">==</span> <span class="fl">3</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">italy</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-plt img"><img src="gisco_nuts-1.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
