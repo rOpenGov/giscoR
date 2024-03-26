@@ -67,7 +67,7 @@ default is \code{FALSE}.}
 \code{"LB"} for \code{POINT}.}
 }
 \value{
-A \CRANpkg{sf} object on \code{mode = "sf"} or a data frame on \code{mode = "df"}.
+A \code{\link[sf:sf]{sf}} object on \code{mode = "sf"} or a data frame on \code{mode = "df"}.
 }
 \description{
 Download individual shapefiles of units. Unlike \code{\link[=gisco_get_countries]{gisco_get_countries()}},
@@ -76,7 +76,7 @@ dataset and applies filters, \code{\link[=gisco_get_units]{gisco_get_units()}} d
 shapefile for each unit.
 }
 \details{
-The function can return a data frame on \code{mode = "df"} or a \CRANpkg{sf}
+The function can return a data frame on \code{mode = "df"} or a \code{\link[sf:sf]{sf}}
 object on \code{mode = "sf"}.
 
 In order to see the available \code{unit} ids with the required

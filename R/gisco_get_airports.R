@@ -1,6 +1,6 @@
 #' Get location of airports and ports from GISCO API
 #'
-#' Loads a \CRANpkg{sf} object from GISCO API or your local library.
+#' Loads a [`sf`][sf::st_sf] object from GISCO API or your local library.
 #'
 #' @family infrastructure
 #'

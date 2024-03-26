@@ -49,7 +49,8 @@ options:
 run this command on each session (Similar to \code{install = FALSE}).
 \item Write this line on your \code{.Renviron} file:
 \code{GISCO_CACHE_DIR = "value_for_cache_dir"} (same behavior than
-\code{install = TRUE}). This would store your \code{cache_dir} permanently.
+\code{install = TRUE}). This would store your \code{cache_dir} permanently. See
+also \code{usethis::edit_r_environ()}.
 }
 }
 \examples{

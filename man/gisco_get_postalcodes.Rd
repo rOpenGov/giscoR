@@ -33,7 +33,7 @@ When set to \code{TRUE} it would force a fresh download of the source
 default is \code{FALSE}.}
 }
 \value{
-A \code{POINT} \CRANpkg{sf} object on EPSG:4326.
+A \code{POINT} \code{\link[sf:sf]{sf}} object on EPSG:4326.
 }
 \description{
 Get postal codes points of the EU, EFTA and candidate countries.

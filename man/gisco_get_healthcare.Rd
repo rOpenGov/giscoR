@@ -34,7 +34,7 @@ vector of Eurostat country codes. Mixed types (as \code{c("Turkey","US","FRA")})
 would not work. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
-A \code{POINT} \CRANpkg{sf} object.
+A \code{POINT} \code{\link[sf:sf]{sf}} object.
 }
 \description{
 The dataset contains information on main healthcare services considered to

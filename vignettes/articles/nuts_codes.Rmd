@@ -14,8 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-Annex with the NUTS codes (version **2021**, **2016** and **2013**) available in
-**giscoR**.
+Annex with the [NUTS codes](https://ec.europa.eu/eurostat/web/nuts/overview)
+(version **2021**, **2016** and **2013**) available in **giscoR**.
 
 ## NUTS 2021
 
@@ -29,6 +29,7 @@ reactable(df,
   elementId = "NUTS2021",
   filterable = TRUE,
   searchable = TRUE,
+  defaultColDef = colDef(minWidth = 120),
   showPageSizeOptions = TRUE,
   striped = TRUE,
   paginationType = "jump",
@@ -48,6 +49,7 @@ reactable(df,
   elementId = "NUTS2016",
   filterable = TRUE,
   searchable = TRUE,
+  defaultColDef = colDef(minWidth = 120),
   showPageSizeOptions = TRUE,
   striped = TRUE,
   paginationType = "jump",
@@ -64,9 +66,9 @@ library(reactable)
 df <- gisco_get_nuts(year = 2013, resolution = 60)
 df <- sf::st_drop_geometry(df)
 reactable(df,
-  elementId = "NUTS2013",
   filterable = TRUE,
   searchable = TRUE,
+  defaultColDef = colDef(minWidth = 120),
   showPageSizeOptions = TRUE,
   striped = TRUE,
   paginationType = "jump",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco_get_coastallines.R
 \name{gisco_get_coastallines}
 \alias{gisco_get_coastallines}
-\title{Get GISCO coastlines \CRANpkg{sf} polygons}
+\title{Get GISCO coastlines \code{\link[sf:sf]{sf}} polygons}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 }
@@ -51,7 +51,7 @@ default is \code{FALSE}.}
 }}
 }
 \value{
-A \CRANpkg{sf} \code{POLYGON} object.
+A \code{\link[sf:sf]{sf}} \code{POLYGON} object.
 }
 \description{
 Downloads worldwide coastlines

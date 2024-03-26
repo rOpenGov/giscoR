@@ -12,12 +12,12 @@
 #' @param year Release year of the file. See **Details**.
 #'
 #' @param id_giscoR Type of dataset to be downloaded. Values supported are:
-#' * `"coastallines"`
-#' * `"communes"`
-#' * `"countries"`
-#' * `"lau"`
-#' * `"nuts"`
-#' * `"urban_audit"`
+#'   * `"coastallines"`.
+#'   * `"communes"`.
+#'   * `"countries"`.
+#'   * `"lau"`.
+#'   * `"nuts"`.
+#'   * `"urban_audit"`.
 #'
 #' @inheritParams gisco_get_countries
 #'
@@ -32,13 +32,12 @@
 #' @details
 #'
 #' See the years available in the corresponding functions:
-#'  * [gisco_get_coastallines()]
-#'  * [gisco_get_communes()]
-#'  * [gisco_get_countries()]
-#'  * [gisco_get_lau()]
-#'  * [gisco_get_nuts()]
-#'  * [gisco_get_urban_audit()]
-#'
+#'  * [gisco_get_coastallines()].
+#'  * [gisco_get_communes()].
+#'  * [gisco_get_countries()].
+#'  * [gisco_get_lau()].
+#'  * [gisco_get_nuts()].
+#'  * [gisco_get_urban_audit()].
 #'
 #' The usual extension used across \CRANpkg{giscoR} is `"geojson"`,
 #' however other formats are already available on GISCO.

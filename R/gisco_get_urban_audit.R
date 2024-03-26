@@ -1,5 +1,4 @@
-#' Get GISCO greater cities and metropolitan areas \CRANpkg{sf} polygons and
-#' points
+#' Get GISCO greater cities and metropolitan areas [`sf`][sf::st_sf] objects
 #'
 #' @description
 #' Returns polygons and points corresponding to cities, greater cities and
@@ -9,7 +8,7 @@
 #'
 #' @family political
 #'
-#' @return A \CRANpkg{sf} object specified by `spatialtype`.
+#' @return A [`sf`][sf::st_sf] object specified by `spatialtype`.
 #'
 #' @param year Release year of the file. One
 #'   of `r gsc_helper_year_docs("urban_audit")`.

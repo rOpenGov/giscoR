@@ -4,28 +4,30 @@
 #'
 #' @description
 #' Get the legal text to be used along with the data downloaded with this
-#' package
+#' package.
 #'
 #' @export
 #'
 #' @param lang Language (two-letter ISO code). See
-#' <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes> and Details.
+#' <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes> and **Details**.
 #'
-#' @param copyright
-#' Boolean. Whether to display the copyright notice or not on the console.
+#' @param copyright Boolean `TRUE/FALSE`. Whether to display the copyright
+#'   notice or not on the console.
 #'
 #' @return A string with the attribution to be used.
 #'
+#' @encoding UTF-8
+#'
 #' @details
 #' Current languages supported are:
-#' * `"en"` - English
-#' * `"da"` - Danish
-#' * `"de"` - German
-#' * `"es"` - Spanish
-#' * `"fi"` - Finish
-#' * `"fr"` - French
-#' * `"no"` - Norwegian
-#' * `"sv"` - Swedish
+#' * `"en"`: English.
+#' * `"da"`: Danish.
+#' * `"de"`: German.
+#' * `"es"`: Spanish.
+#' * `"fi"`: Finish.
+#' * `"fr"`: French.
+#' * `"no"`: Norwegian.
+#' * `"sv"`: Swedish.
 #'
 #' Please consider
 #' [contributing](https://github.com/rOpenGov/giscoR/issues) if you spot any
@@ -41,9 +43,9 @@
 #' the map and in the introductory page of the publication with the following
 #' copyright notice:
 #'
-#' * EN: (C) EuroGeographics for the administrative boundaries
-#' * FR: (C) EuroGeographics pour les limites administratives
-#' * DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
+#' * EN: (C) EuroGeographics for the administrative boundaries.
+#' * FR: (C) EuroGeographics pour les limites administratives.
+#' * DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen.
 #'
 #' For publications in languages other than English, French or German,
 #' the translation of the copyright notice in the language of the publication

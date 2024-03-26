@@ -1,4 +1,4 @@
-#' Get GISCO NUTS \CRANpkg{sf} polygons, points and lines
+#' Get GISCO NUTS [`sf`][sf::st_sf] polygons, points and lines
 #'
 #' @description
 #' Returns
@@ -30,8 +30,8 @@
 #'
 #' @family political
 #'
-#' @return A \CRANpkg{sf} object specified by `spatialtype`. The resulting
-#' \CRANpkg{sf} object would present an additional column `geo` (equal to
+#' @return A [`sf`][sf::st_sf] object specified by `spatialtype`. The resulting
+#' [`sf`][sf::st_sf] object would present an additional column `geo` (equal to
 #' `NUTS_ID`) for improving compatibility with \CRANpkg{eurostat} package. See
 #' [eurostat::get_eurostat_geospatial()]).
 #'

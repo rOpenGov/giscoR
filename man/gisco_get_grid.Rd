@@ -31,7 +31,7 @@ When set to \code{TRUE} it would force a fresh download of the source
 default is \code{FALSE}.}
 }
 \value{
-A \code{POLYGON/POINT} \CRANpkg{sf} object.
+A \code{POLYGON/POINT} \code{\link[sf:sf]{sf}} object.
 }
 \description{
 These datasets contain grid cells covering the European land

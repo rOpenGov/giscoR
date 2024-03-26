@@ -2,8 +2,7 @@
 % Please edit documentation in R/gisco_get_urban_audit.R
 \name{gisco_get_urban_audit}
 \alias{gisco_get_urban_audit}
-\title{Get GISCO greater cities and metropolitan areas \CRANpkg{sf} polygons and
-points}
+\title{Get GISCO greater cities and metropolitan areas \code{\link[sf:sf]{sf}} objects}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 }
@@ -60,7 +59,7 @@ would not work. See also \code{\link[countrycode:countrycode]{countrycode::count
 \code{"GREATER_CITIES"} or \code{NULL}, that would download the full dataset.}
 }
 \value{
-A \CRANpkg{sf} object specified by \code{spatialtype}.
+A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 }
 \description{
 Returns polygons and points corresponding to cities, greater cities and

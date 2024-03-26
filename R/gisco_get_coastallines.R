@@ -1,4 +1,4 @@
-#' Get GISCO coastlines \CRANpkg{sf} polygons
+#' Get GISCO coastlines [`sf`][sf::st_sf] polygons
 #'
 #' Downloads worldwide coastlines
 #'
@@ -12,7 +12,7 @@
 #'
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
-#' @return A \CRANpkg{sf} `POLYGON` object.
+#' @return A [`sf`][sf::st_sf] `POLYGON` object.
 #'
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].

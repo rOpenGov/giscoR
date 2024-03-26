@@ -1,4 +1,4 @@
-#' Get GISCO urban areas \CRANpkg{sf} polygons, points and lines
+#' Get GISCO urban areas [`sf`][sf::st_sf] polygons, points and lines
 #'
 #' @description
 #' [gisco_get_communes()] and [gisco_get_lau()] download shapes of Local
@@ -10,7 +10,7 @@
 #' Please check the download and usage provisions on [gisco_attributions()].
 #' @family political
 #'
-#' @return A \CRANpkg{sf} object specified by `spatialtype`. In the case of
+#' @return A [`sf`][sf::st_sf] object specified by `spatialtype`. In the case of
 #'   [gisco_get_lau()], a `POLYGON` object.
 #'
 #' @param year Release year of the file:

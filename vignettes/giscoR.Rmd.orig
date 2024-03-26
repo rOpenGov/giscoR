@@ -21,7 +21,6 @@ knitr::opts_chunk$set(
   fig.path = "./",
   out.width = "100%"
 )
-
 ```
 
 # Introduction
@@ -45,7 +44,8 @@ areas (01M, 03M) as well as lightweight datasets specially useful for
 representing wider areas (10M, 20M, 60M). Shapefiles are provided on 3 different
 projections: EPSG 4326, 3035 or 3857.
 
-**giscoR** returns `sf` class objects, see <https://r-spatial.github.io/sf/>.
+**giscoR** returns [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+class objects, see <https://r-spatial.github.io/sf/>.
 
 # Caching
 
@@ -85,8 +85,8 @@ Please be aware that downloading provisions apply when using GISCO data:
 > If you intend to use the data commercially, please contact **EuroGeographics**
 > for information regarding their licence agreements.
 
-There is a function, `gisco_attributions` that would guide you on this topic. It
-also provides attributions on several languages.
+There is a function, `gisco_attributions()` that would guide you on this topic.
+It also provides attributions on several languages.
 
 ```{r, message=TRUE}
 library(giscoR)
@@ -103,14 +103,17 @@ Some examples on data downloads
 library(sf)
 library(ggplot2) # Use ggplot for plotting
 
-Asia <- gisco_get_countries(region = "Asia")
+asia <- gisco_get_countries(region = "Asia")
 
-ggplot(Asia) +
+ggplot(asia) +
   geom_sf(fill = "cornsilk", color = "#887e6a") +
   theme(
     panel.background = element_rect(fill = "#fffff3"),
     panel.border = element_rect(colour = "#887e6a", fill = NA, linewidth = 1.5),
-    axis.text = element_text(family = "serif", colour = "#887e6a", face = "bold")
+    axis.text = element_text(
+      family = "serif", colour = "#887e6a",
+      face = "bold"
+    )
   )
 ```
 
@@ -122,7 +125,13 @@ It is possible also to combine different shapefiles, just set `resolution` and
 `epsg` (and optionally `year`) to the same value:
 
 ```{r africa, fig.cap="Political map of North Africa"}
-africa_north <- gisco_get_countries(country = c("Morocco", "Argelia", "Libia", "Tunisia", "Egypt"), resolution = "20", epsg = "4326", year = "2016")
+africa_north <- gisco_get_countries(
+  country = c(
+    "Morocco", "Argelia", "Libia",
+    "Tunisia", "Egypt"
+  ),
+  resolution = "20", epsg = "4326", year = "2016"
+)
 
 # Coastal lines
 
@@ -139,20 +148,26 @@ ggplot(coast) +
 # Thematic maps with **giscoR**
 
 This is an example on how **giscoR** can play nicely with some Eurostat data.
-For plotting purposes we would use the **ggplot2** package however any package
-that handles `sf` objects (e.g. **tmap**, **mapsf**, **leaflet**, etc. could be
-used).
+For plotting purposes we would use the
+[**ggplot2**](https://CRAN.R-project.org/package=ggplot2) package however any
+package that handles `sf` objects (e.g.
+[**tmap**](https://CRAN.R-project.org/package=tmap),
+[**mapsf**](https://CRAN.R-project.org/package=mapsf),
+[**leaflet**](https://CRAN.R-project.org/package=leaflet), etc. could be used).
 
-Also **colorspace** and **rcartocolor** packages are recommended, as they
-provide great color palettes.
+Also [**colorspace**](https://CRAN.R-project.org/package=colorspace) and
+[**rcartocolor**](https://CRAN.R-project.org/package=rcartocolor) packages are
+recommended, as they provide great color palettes.
 
 ```{r giscoR, fig.cap="Disposable income of private households by NUTS 2 regions (2021)", dpi=200}
 # EU members
 library(dplyr)
 library(eurostat)
 
-nuts2 <- gisco_get_nuts(year = "2021", epsg = "3035", resolution = "3",
-                        nuts_level = "2")
+nuts2 <- gisco_get_nuts(
+  year = "2021", epsg = "3035", resolution = "3",
+  nuts_level = "2"
+)
 # Borders from countries
 borders <- gisco_get_countries(epsg = "3035", year = "2020", resolution = "3")
 
@@ -190,7 +205,9 @@ ggplot(nuts2_sf) +
   scale_fill_manual(
     values = hcl.colors(length(labs), "Geyser", rev = TRUE),
     # Label NA
-    labels = function(x){ifelse(is.na(x),"No Data", x)},
+    labels = function(x) {
+      ifelse(is.na(x), "No Data", x)
+    },
     na.value = "#e1e1e1"
   ) +
   guides(fill = guide_legend(nrow = 1)) +
@@ -200,10 +217,14 @@ ggplot(nuts2_sf) +
     panel.background = element_rect(fill = "#97dbf2"),
     panel.border = element_rect(fill = NA, color = "grey10"),
     plot.title = element_text(hjust = 0.5, vjust = -1, size = 12),
-    plot.subtitle = element_text(hjust = 0.5, vjust = -2, face = "bold",
-                                 margin = margin(b = 10, t = 5), size = 12 ),
-    plot.caption = element_text(size = 8, hjust = 0.5, margin =
-                                  margin(b = 2, t = 13)),
+    plot.subtitle = element_text(
+      hjust = 0.5, vjust = -2, face = "bold",
+      margin = margin(b = 10, t = 5), size = 12
+    ),
+    plot.caption = element_text(
+      size = 8, hjust = 0.5, margin =
+        margin(b = 2, t = 13)
+    ),
     legend.text = element_text(size = 7, ),
     legend.title = element_text(size = 7),
     legend.position = "bottom",

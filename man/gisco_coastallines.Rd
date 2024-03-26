@@ -5,19 +5,19 @@
 \alias{gisco_coastallines}
 \title{World coastal lines \code{POLYGON} object}
 \format{
-A \code{POLYGON} \CRANpkg{sf} object (resolution: 1:20million, EPSG:4326) with
-3 variables:
+A \code{POLYGON} \code{\link[sf:sf]{sf}} object (resolution: 1:20million, EPSG:4326)
+with 3 variables:
 \describe{
-\item{COAS_ID}{Coast ID}
-\item{FID}{FID}
-\item{geometry}{geometry field}
+\item{COAS_ID}{Coast ID.}
+\item{FID}{FID.}
+\item{geometry}{geometry field.}
 }
 }
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/}{COAS_RG_20M_2016_4326.geojson} file.
 }
 \description{
-A \CRANpkg{sf} object as provided by GISCO (2016 version).
+A \code{\link[sf:sf]{sf}} object as provided by GISCO (2016 version).
 }
 \examples{
 

@@ -9,7 +9,7 @@
 #' @family political
 #'
 #' @return
-#' A \CRANpkg{sf} object on `mode = "sf"` or a data frame on `mode = "df"`.
+#' A [`sf`][sf::st_sf] object on `mode = "sf"` or a data frame on `mode = "df"`.
 #'
 #' @param id_giscoR Select the `unit` type to be downloaded. Accepted values are
 #'  `"nuts"`, `"countries"` or `"urban_audit"`.
@@ -27,7 +27,7 @@
 #' @inheritSection gisco_get_countries About caching
 #'
 #' @details
-#' The function can return a data frame on `mode = "df"` or a \CRANpkg{sf}
+#' The function can return a data frame on `mode = "df"` or a [`sf`][sf::st_sf]
 #' object on `mode = "sf"`.
 #'
 #' In order to see the available `unit` ids with the required

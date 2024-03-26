@@ -1,4 +1,4 @@
-#' Get GISCO world country \CRANpkg{sf} polygons, points and lines
+#' Get GISCO world country [`sf`][sf::st_sf] polygons, points and lines
 #'
 #' @description
 #' Returns world country polygons, lines and points at a specified scale, as
@@ -38,7 +38,7 @@
 #' `region = "EU"` to get the EU members (reference date: 2021).
 #'
 #'
-#' @return A \CRANpkg{sf} object specified by `spatialtype`.
+#' @return A [`sf`][sf::st_sf] object specified by `spatialtype`.
 #'
 #' @param year Release year of the file. One
 #'   of `r gsc_helper_year_docs("countries")`.

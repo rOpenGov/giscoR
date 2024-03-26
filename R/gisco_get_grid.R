@@ -7,7 +7,7 @@
 #'
 #' @family misc
 #'
-#' @return A `POLYGON/POINT` \CRANpkg{sf} object.
+#' @return A `POLYGON/POINT` [`sf`][sf::st_sf] object.
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'

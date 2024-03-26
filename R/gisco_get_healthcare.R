@@ -6,7 +6,7 @@
 #' The dataset contains information on main healthcare services considered to
 #' be 'hospitals' by Member States.
 #'
-#' @return A `POINT` \CRANpkg{sf} object.
+#' @return A `POINT` [`sf`][sf::st_sf] object.
 #'
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'

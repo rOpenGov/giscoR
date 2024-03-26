@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco_get_nuts.R
 \name{gisco_get_nuts}
 \alias{gisco_get_nuts}
-\title{Get GISCO NUTS \CRANpkg{sf} polygons, points and lines}
+\title{Get GISCO NUTS \code{\link[sf:sf]{sf}} polygons, points and lines}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 }
@@ -76,8 +76,8 @@ would not work. See also \code{\link[countrycode:countrycode]{countrycode::count
 See \strong{Description}.}
 }
 \value{
-A \CRANpkg{sf} object specified by \code{spatialtype}. The resulting
-\CRANpkg{sf} object would present an additional column \code{geo} (equal to
+A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}. The resulting
+\code{\link[sf:sf]{sf}} object would present an additional column \code{geo} (equal to
 \code{NUTS_ID}) for improving compatibility with \CRANpkg{eurostat} package. See
 \code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}).
 

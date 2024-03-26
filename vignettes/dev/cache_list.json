@@ -1,0 +1,13 @@
+{
+  "b8d614c17a10198b0e790fc89bda3a7c": {
+    "id": ["tgs00026"],
+    "time_format": ["date"],
+    "filters": null,
+    "type": ["code"],
+    "select_time": null,
+    "stringsAsFactors": [false],
+    "keepFlags": [false],
+    "source": ["bulk"],
+    "download_date": ["2024-03-26"]
+  }
+}

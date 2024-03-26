@@ -32,7 +32,8 @@ areas (01M, 03M) as well as lightweight datasets specially useful for
 representing wider areas (10M, 20M, 60M). Shapefiles are provided on 3 different
 projections: EPSG 4326, 3035 or 3857.
 
-**giscoR** returns `sf` class objects, see <https://r-spatial.github.io/sf/>.
+**giscoR** returns [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+class objects, see <https://r-spatial.github.io/sf/>.
 
 # Caching
 
@@ -73,8 +74,8 @@ Please be aware that downloading provisions apply when using GISCO data:
 > If you intend to use the data commercially, please contact **EuroGeographics**
 > for information regarding their licence agreements.
 
-There is a function, `gisco_attributions` that would guide you on this topic. It
-also provides attributions on several languages.
+There is a function, `gisco_attributions()` that would guide you on this topic.
+It also provides attributions on several languages.
 
 
 ```r
@@ -96,14 +97,17 @@ Some examples on data downloads
 library(sf)
 library(ggplot2) # Use ggplot for plotting
 
-Asia <- gisco_get_countries(region = "Asia")
+asia <- gisco_get_countries(region = "Asia")
 
-ggplot(Asia) +
+ggplot(asia) +
   geom_sf(fill = "cornsilk", color = "#887e6a") +
   theme(
     panel.background = element_rect(fill = "#fffff3"),
     panel.border = element_rect(colour = "#887e6a", fill = NA, linewidth = 1.5),
-    axis.text = element_text(family = "serif", colour = "#887e6a", face = "bold")
+    axis.text = element_text(
+      family = "serif", colour = "#887e6a",
+      face = "bold"
+    )
   )
 ```
 
@@ -121,7 +125,13 @@ It is possible also to combine different shapefiles, just set `resolution` and
 
 
 ```r
-africa_north <- gisco_get_countries(country = c("Morocco", "Argelia", "Libia", "Tunisia", "Egypt"), resolution = "20", epsg = "4326", year = "2016")
+africa_north <- gisco_get_countries(
+  country = c(
+    "Morocco", "Argelia", "Libia",
+    "Tunisia", "Egypt"
+  ),
+  resolution = "20", epsg = "4326", year = "2016"
+)
 
 # Coastal lines
 
@@ -143,12 +153,16 @@ ggplot(coast) +
 # Thematic maps with **giscoR**
 
 This is an example on how **giscoR** can play nicely with some Eurostat data.
-For plotting purposes we would use the **ggplot2** package however any package
-that handles `sf` objects (e.g. **tmap**, **mapsf**, **leaflet**, etc. could be
-used).
+For plotting purposes we would use the
+[**ggplot2**](https://CRAN.R-project.org/package=ggplot2) package however any
+package that handles `sf` objects (e.g.
+[**tmap**](https://CRAN.R-project.org/package=tmap),
+[**mapsf**](https://CRAN.R-project.org/package=mapsf),
+[**leaflet**](https://CRAN.R-project.org/package=leaflet), etc. could be used).
 
-Also **colorspace** and **rcartocolor** packages are recommended, as they
-provide great color palettes.
+Also [**colorspace**](https://CRAN.R-project.org/package=colorspace) and
+[**rcartocolor**](https://CRAN.R-project.org/package=rcartocolor) packages are
+recommended, as they provide great color palettes.
 
 
 ```r

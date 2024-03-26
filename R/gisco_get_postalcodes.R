@@ -9,7 +9,7 @@
 #'
 #' @family political
 #'
-#' @return A `POINT` \CRANpkg{sf} object on EPSG:4326.
+#' @return A `POINT` [`sf`][sf::st_sf] object on EPSG:4326.
 #'
 #' @export
 #'

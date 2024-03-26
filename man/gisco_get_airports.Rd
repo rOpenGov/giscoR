@@ -45,7 +45,7 @@ default is \code{FALSE}.}
 A \code{POINT} object on EPSG:4326.
 }
 \description{
-Loads a \CRANpkg{sf} object from GISCO API or your local library.
+Loads a \code{\link[sf:sf]{sf}} object from GISCO API or your local library.
 }
 \details{
 \code{\link[=gisco_get_airports]{gisco_get_airports()}} refer to Europe. All shapefiles provided in

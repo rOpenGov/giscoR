@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco_get_countries.R
 \name{gisco_get_countries}
 \alias{gisco_get_countries}
-\title{Get GISCO world country \CRANpkg{sf} polygons, points and lines}
+\title{Get GISCO world country \code{\link[sf:sf]{sf}} polygons, points and lines}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 }
@@ -78,7 +78,7 @@ European Union (as per 2021). See \strong{About world regions} and
 \link{gisco_countrycode}.}
 }
 \value{
-A \CRANpkg{sf} object specified by \code{spatialtype}.
+A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
 }
 \description{
 Returns world country polygons, lines and points at a specified scale, as

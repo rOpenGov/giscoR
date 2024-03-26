@@ -1,4 +1,5 @@
 Arel
+Biecek
 Bundock
 CMD
 CNTR
@@ -13,14 +14,19 @@ Eurostat
 FID
 GISCO
 Gb
-Geodata
+Huovari
+Janne
+Kainu
 LAEA
 LAU
 LOCODE
+Lahti
 Licence
+Markus
 Milos
 ORCID
 Popovic
+Przemysław
 RG
 Repo
 Tercet
@@ -29,6 +35,7 @@ Urbanisation
 Verwaltungsgrenzen
 WGS
 administratives
+al
 bezuglich
 bezüglich
 codecov
@@ -37,9 +44,9 @@ colorspace
 config
 countrycode
 der
-dev
 dieghernan
 dir
+et
 eurostat
 geojson
 geospatial

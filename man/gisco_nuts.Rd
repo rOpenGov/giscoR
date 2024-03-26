@@ -10,55 +10,56 @@ A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
 2,016 rows and
 11 variables:
 \describe{
-\item{NUTS_ID}{NUTS identifier}
-\item{LEVL_CODE}{NUTS level code (0,1,2,3)}
-\item{URBN_TYPE}{Urban Type, see Details}
-\item{CNTR_CODE}{Eurostat Country code}
-\item{NAME_LATN}{NUTS name on Latin characters}
-\item{NUTS_NAME}{NUTS name on local alphabet}
-\item{MOUNT_TYPE}{Mount Type, see Details}
-\item{COAST_TYPE}{Coast Type, see Details}
-\item{FID}{FID}
+\item{NUTS_ID}{NUTS identifier.}
+\item{LEVL_CODE}{NUTS level code \verb{(0,1,2,3)}.}
+\item{URBN_TYPE}{Urban Type, see \strong{Details}.}
+\item{CNTR_CODE}{Eurostat Country code.}
+\item{NAME_LATN}{NUTS name on Latin characters.}
+\item{NUTS_NAME}{NUTS name on local alphabet.}
+\item{MOUNT_TYPE}{Mount Type, see \strong{Details}.}
+\item{COAST_TYPE}{Coast Type, see \strong{Details}.}
+\item{FID}{FID.}
 \item{geo}{Same as NUTS_ID, provided for compatibility with
-\CRANpkg{eurostat}}
-\item{geometry}{geometry field}
+\CRANpkg{eurostat}.}
+\item{geometry}{geometry field.}
 }
 }
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/}{NUTS_RG_20M_2016_4326.geojson} file.
 }
 \description{
-A \CRANpkg{sf} object including all NUTS levels as provided by GISCO
+A \code{\link[sf:sf]{sf}} object including all NUTS levels as provided by GISCO
 (2016 version).
 }
 \details{
 \strong{MOUNT_TYPE}: Mountain typology:
 \itemize{
-\item 1: More than 50 \% of the surface is covered by topographic mountain areas.
-\item 2: More than 50 \% of the regional population lives in topographic
+\item \code{1}: More than 50 \% of the surface is covered by topographic mountain
+areas.
+\item \code{2}: More than 50 \% of the regional population lives in topographic
 mountain areas.
-\item 3: More than 50 \% of the surface is covered by topographic mountain areas
-and where more than 50 \% of the regional population lives in these
+\item \code{3}: More than 50 \% of the surface is covered by topographic mountain
+areas and where more than 50 \% of the regional population lives in these
 mountain areas.
-\item 4: Non-mountain region / other regions.
-\item 0: No classification provided
+\item \code{4}: Non-mountain region / other regions.
+\item \code{0}: No classification provided.
 }
 
 \strong{URBN_TYPE}: Urban-rural typology:
 \itemize{
-\item 1: Predominantly urban region.
-\item 2: Intermediate region.
-\item 3: Predominantly rural region.
-\item 0: No classification provided
+\item \code{1}: Predominantly urban region.
+\item \code{2}: Intermediate region.
+\item \code{3}: Predominantly rural region.
+\item \code{0}: No classification provided.
 }
 
 \strong{COAST_TYPE}: Coastal typology:
 \itemize{
-\item 1: Coastal (on coast).
-\item 2: Coastal (less than 50\% of population living within 50 km. of the
+\item \code{1}: Coastal (on coast).
+\item \code{2}: Coastal (less than 50\% of population living within 50 km. of the
 coastline).
-\item 3: Non-coastal region.
-\item 0: No classification provided
+\item \code{3}: Non-coastal region.
+\item \code{0}: No classification provided.
 }
 }
 \examples{

@@ -20,7 +20,8 @@
 #'     run this command on each session (Similar to `install = FALSE`).
 #'   * Write this line on your `.Renviron` file:
 #'     `GISCO_CACHE_DIR = "value_for_cache_dir"` (same behavior than
-#'     `install = TRUE`). This would store your `cache_dir` permanently.
+#'     `install = TRUE`). This would store your `cache_dir` permanently. See
+#'     also `usethis::edit_r_environ()`.
 #'
 #' @inheritParams gisco_get_nuts
 #' @param cache_dir A path to a cache directory. On missing value the function

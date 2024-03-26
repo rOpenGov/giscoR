@@ -20,7 +20,7 @@ Locale Data Repository.}
 \item{un.regionintermediate.name}{Intermediate Region name UN (M49).}
 \item{un.regionsub.code}{Numeric sub-region code UN (M49).}
 \item{un.regionsub.name}{Sub-Region name UN (M49).}
-\item{eu}{Logical indicating if the country belongs to the European.}
+\item{eu}{Logical indicating if the country belongs to the European Union.}
 }
 }
 \source{
@@ -35,10 +35,11 @@ is extracted from \CRANpkg{countrycode} package.
 \examples{
 
 data(gisco_countrycode)
+
 }
 \seealso{
-\code{\link[=gisco_get_countries]{gisco_get_countries()}},
-\link[countrycode:codelist]{countrycode::codelist}, \CRANpkg{countrycode} package.
+\code{\link[=gisco_get_countries]{gisco_get_countries()}} and \link[countrycode:codelist]{countrycode::codelist}, included in
+\CRANpkg{countrycode}.
 
 See also the \href{https://cldr.unicode.org/translation/displaynames/countryregion-territory-names}{Unicode Common Locale Data Repository}.
 

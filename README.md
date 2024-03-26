@@ -151,9 +151,9 @@ ggplot(ITA) +
 ### Thematic maps
 
 An example of a thematic map plotted with the **ggplot2** package. The
-information is extracted via the **eurostat** package. We would follow
-the fantastic approach presented by [Milos
-Popovic](https://milospopovic.net/) on [this
+information is extracted via the **eurostat** package ([Lahti et al.
+2017](#ref-RJ-2017-019)). We would follow the fantastic approach
+presented by [Milos Popovic](https://milospopovic.net/) on [this
 post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
 We start by extracting the corresponding geographic data:
@@ -277,8 +277,8 @@ them on your local directory.
 
 ### API data packages
 
-- **eurostat** package (<https://ropengov.github.io/eurostat/>). This is
-  an API package that provides access to open data from Eurostat.
+- **eurostat** ([Lahti et al. 2017](#ref-RJ-2017-019)): This is an API
+  package that provides access to open data from Eurostat.
 
 ### Plotting **sf** objects
 
@@ -332,9 +332,9 @@ A BibTeX entry for LaTeX users is
 > acknowledged in the legend of the map and in the introductory page of
 > the publication with the following copyright notice:
 >
-> - EN: © EuroGeographics for the administrative boundaries
-> - FR: © EuroGeographics pour les limites administratives
-> - DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
+> - EN: © EuroGeographics for the administrative boundaries.
+> - FR: © EuroGeographics pour les limites administratives.
+> - DE: © EuroGeographics bezüglich der Verwaltungsgrenzen.
 >
 > For publications in languages other than English, French or German,
 > the translation of the copyright notice in the language of the
@@ -350,3 +350,18 @@ A BibTeX entry for LaTeX users is
 ## Disclaimer
 
 This package is in no way officially related to or endorsed by Eurostat.
+
+## References
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+
+<div id="ref-RJ-2017-019" class="csl-entry">
+
+Lahti, Leo, Janne Huovari, Markus Kainu, and Przemysław Biecek. 2017.
+“<span class="nocase">Retrieval and Analysis of Eurostat Open Data with
+the eurostat Package</span>.” *The R Journal* 9 (1): 385–92.
+<https://doi.org/10.32614/RJ-2017-019>.
+
+</div>
+
+</div>

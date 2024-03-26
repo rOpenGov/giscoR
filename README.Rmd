@@ -1,5 +1,7 @@
 ---
 output: github_document
+bibliography: inst/REFERENCES.bib
+link-citations: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -173,9 +175,10 @@ ggplot(ITA) +
 ### Thematic maps
 
 An example of a thematic map plotted with the **ggplot2** package. The
-information is extracted via the **eurostat** package. We would follow the
-fantastic approach presented by [Milos Popovic](https://milospopovic.net/) on
-[this post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
+information is extracted via the **eurostat** package [@RJ-2017-019]. We would
+follow the fantastic approach presented by [Milos
+Popovic](https://milospopovic.net/) on [this
+post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
 
 We start by extracting the corresponding geographic data:
 
@@ -295,8 +298,8 @@ your local directory.
 
 ### API data packages
 
--   **eurostat** package (<https://ropengov.github.io/eurostat/>). This is an
-    API package that provides access to open data from Eurostat.
+-   **eurostat** [@RJ-2017-019]: This is an API package that provides access to
+    open data from Eurostat.
 
 ### Plotting **sf** objects
 
@@ -340,9 +343,9 @@ toBibtex(citation("giscoR"))
 > the map and in the introductory page of the publication with the following
 > copyright notice:
 >
-> -   EN: © EuroGeographics for the administrative boundaries
-> -   FR: © EuroGeographics pour les limites administratives
-> -   DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
+> -   EN: © EuroGeographics for the administrative boundaries.
+> -   FR: © EuroGeographics pour les limites administratives.
+> -   DE: © EuroGeographics bezüglich der Verwaltungsgrenzen.
 >
 > For publications in languages other than English, French or German, the
 > translation of the copyright notice in the language of the publication shall
@@ -358,3 +361,5 @@ toBibtex(citation("giscoR"))
 ## Disclaimer
 
 This package is in no way officially related to or endorsed by Eurostat.
+
+## References

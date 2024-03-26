@@ -3,7 +3,7 @@
 \name{gisco_get_lau}
 \alias{gisco_get_lau}
 \alias{gisco_get_communes}
-\title{Get GISCO urban areas \CRANpkg{sf} polygons, points and lines}
+\title{Get GISCO urban areas \code{\link[sf:sf]{sf}} polygons, points and lines}
 \usage{
 gisco_get_communes(
   year = "2016",
@@ -75,7 +75,7 @@ would not work. See also \code{\link[countrycode:countrycode]{countrycode::count
 \item{gisco_id}{Optional. A character vector of GISCO_ID LAU values.}
 }
 \value{
-A \CRANpkg{sf} object specified by \code{spatialtype}. In the case of
+A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}. In the case of
 \code{\link[=gisco_get_lau]{gisco_get_lau()}}, a \code{POLYGON} object.
 }
 \description{

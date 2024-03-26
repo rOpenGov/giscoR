@@ -22,20 +22,18 @@ home:
 reference:
 - title: Political
   desc: >
-    These functions return <a href="https://CRAN.R-project.org/package=sf"
-    class="external-link"><span class="pkg">sf</span></a> objects with political
-    boundaries.
+    These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
+    class="external-link">sf</a> objects with political boundaries
   contents: has_concept("political")
 - title: Infrastructures
   desc: >
-    These functions return  <a href="https://CRAN.R-project.org/package=sf"
-    class="external-link"><span class="pkg">sf</span></a> objects with man-made
-    features
+    These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
+    class="external-link">sf</a> objects with man-made features
   contents: has_concept("infrastructure")
 - title: Misc
   desc: >
-    These functions return other <a href="https://CRAN.R-project.org/package=sf"
-    class="external-link"><span class="pkg">sf</span></a> objects
+    These functions return other <a href="https://r-spatial.github.io/sf/reference/sf.html"
+    class="external-link">sf</a> objects
   contents: has_concept("misc")
 - title: >
     Cache management
@@ -46,7 +44,8 @@ reference:
   contents: has_concept("helper")
 - title: Datasets
   desc: >
-    These objects are datasets already included in the package.
+    Datasets included with <a href="https://CRAN.R-project.org/package=giscoR"
+    class="external-link"><span class="pkg">giscoR</span></a>
   contents: has_concept("dataset")
 - title: About the package
   contents: giscoR-package
