@@ -63,7 +63,7 @@
     </div>
 
     <div class="ref-description section level2">
-    <p>A <a href="https://CRAN.R-project.org/package=sf" class="external-link"><span class="pkg">sf</span></a> object including all NUTS levels as provided by GISCO
+    <p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object including all NUTS levels as provided by GISCO
 (2016 version).</p>
     </div>
 
@@ -73,38 +73,38 @@
     <p>A <code>POLYGON</code> data frame (resolution: 1:20million, EPSG:4326) object with
 2,016 rows and
 11 variables:</p><dl><dt>NUTS_ID</dt>
-<dd><p>NUTS identifier</p></dd>
+<dd><p>NUTS identifier.</p></dd>
 
 <dt>LEVL_CODE</dt>
-<dd><p>NUTS level code (0,1,2,3)</p></dd>
+<dd><p>NUTS level code <code>(0,1,2,3)</code>.</p></dd>
 
 <dt>URBN_TYPE</dt>
-<dd><p>Urban Type, see Details</p></dd>
+<dd><p>Urban Type, see <strong>Details</strong>.</p></dd>
 
 <dt>CNTR_CODE</dt>
-<dd><p>Eurostat Country code</p></dd>
+<dd><p>Eurostat Country code.</p></dd>
 
 <dt>NAME_LATN</dt>
-<dd><p>NUTS name on Latin characters</p></dd>
+<dd><p>NUTS name on Latin characters.</p></dd>
 
 <dt>NUTS_NAME</dt>
-<dd><p>NUTS name on local alphabet</p></dd>
+<dd><p>NUTS name on local alphabet.</p></dd>
 
 <dt>MOUNT_TYPE</dt>
-<dd><p>Mount Type, see Details</p></dd>
+<dd><p>Mount Type, see <strong>Details</strong>.</p></dd>
 
 <dt>COAST_TYPE</dt>
-<dd><p>Coast Type, see Details</p></dd>
+<dd><p>Coast Type, see <strong>Details</strong>.</p></dd>
 
 <dt>FID</dt>
-<dd><p>FID</p></dd>
+<dd><p>FID.</p></dd>
 
 <dt>geo</dt>
 <dd><p>Same as NUTS_ID, provided for compatibility with
-<a href="https://CRAN.R-project.org/package=eurostat" class="external-link"><span class="pkg">eurostat</span></a></p></dd>
+<a href="https://CRAN.R-project.org/package=eurostat" class="external-link"><span class="pkg">eurostat</span></a>.</p></dd>
 
 <dt>geometry</dt>
-<dd><p>geometry field</p></dd>
+<dd><p>geometry field.</p></dd>
 
 
 </dl></div>
@@ -114,23 +114,24 @@
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><strong>MOUNT_TYPE</strong>: Mountain typology:</p><ul><li><p>1: More than 50 % of the surface is covered by topographic mountain areas.</p></li>
-<li><p>2: More than 50 % of the regional population lives in topographic
+    <p><strong>MOUNT_TYPE</strong>: Mountain typology:</p><ul><li><p><code>1</code>: More than 50 % of the surface is covered by topographic mountain
+areas.</p></li>
+<li><p><code>2</code>: More than 50 % of the regional population lives in topographic
 mountain areas.</p></li>
-<li><p>3: More than 50 % of the surface is covered by topographic mountain areas
-and where more than 50 % of the regional population lives in these
+<li><p><code>3</code>: More than 50 % of the surface is covered by topographic mountain
+areas and where more than 50 % of the regional population lives in these
 mountain areas.</p></li>
-<li><p>4: Non-mountain region / other regions.</p></li>
-<li><p>0: No classification provided</p></li>
-</ul><p><strong>URBN_TYPE</strong>: Urban-rural typology:</p><ul><li><p>1: Predominantly urban region.</p></li>
-<li><p>2: Intermediate region.</p></li>
-<li><p>3: Predominantly rural region.</p></li>
-<li><p>0: No classification provided</p></li>
-</ul><p><strong>COAST_TYPE</strong>: Coastal typology:</p><ul><li><p>1: Coastal (on coast).</p></li>
-<li><p>2: Coastal (less than 50% of population living within 50 km. of the
+<li><p><code>4</code>: Non-mountain region / other regions.</p></li>
+<li><p><code>0</code>: No classification provided.</p></li>
+</ul><p><strong>URBN_TYPE</strong>: Urban-rural typology:</p><ul><li><p><code>1</code>: Predominantly urban region.</p></li>
+<li><p><code>2</code>: Intermediate region.</p></li>
+<li><p><code>3</code>: Predominantly rural region.</p></li>
+<li><p><code>0</code>: No classification provided.</p></li>
+</ul><p><strong>COAST_TYPE</strong>: Coastal typology:</p><ul><li><p><code>1</code>: Coastal (on coast).</p></li>
+<li><p><code>2</code>: Coastal (less than 50% of population living within 50 km. of the
 coastline).</p></li>
-<li><p>3: Non-coastal region.</p></li>
-<li><p>0: No classification provided</p></li>
+<li><p><code>3</code>: Non-coastal region.</p></li>
+<li><p><code>0</code>: No classification provided.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

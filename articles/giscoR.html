@@ -121,7 +121,8 @@ representing small areas (01M, 03M) as well as lightweight datasets
 specially useful for representing wider areas (10M, 20M, 60M).
 Shapefiles are provided on 3 different projections: EPSG 4326, 3035 or
 3857.</p>
-<p><strong>giscoR</strong> returns <code>sf</code> class objects, see <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a>.</p>
+<p><strong>giscoR</strong> returns <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><code>sf</code></a>
+class objects, see <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
@@ -160,8 +161,8 @@ publication shall be used.</p>
 <strong>EuroGeographics</strong> for information regarding their licence
 agreements.</p>
 </blockquote>
-<p>There is a function, <code>gisco_attributions</code> that would guide
-you on this topic. It also provides attributions on several
+<p>There is a function, <code><a href="../reference/gisco_attributions.html">gisco_attributions()</a></code> that would
+guide you on this topic. It also provides attributions on several
 languages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
@@ -180,14 +181,17 @@ languages.</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span> <span class="co"># Use ggplot for plotting</span></span>
 <span></span>
-<span><span class="va">Asia</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Asia"</span><span class="op">)</span></span>
+<span><span class="va">asia</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>region <span class="op">=</span> <span class="st">"Asia"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">Asia</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">asia</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"cornsilk"</span>, color <span class="op">=</span> <span class="st">"#887e6a"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
 <span>    panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#fffff3"</span><span class="op">)</span>,</span>
 <span>    panel.border <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_rect</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"#887e6a"</span>, fill <span class="op">=</span> <span class="cn">NA</span>, linewidth <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span>,</span>
-<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"serif"</span>, colour <span class="op">=</span> <span class="st">"#887e6a"</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span></span>
+<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span></span>
+<span>      family <span class="op">=</span> <span class="st">"serif"</span>, colour <span class="op">=</span> <span class="st">"#887e6a"</span>,</span>
+<span>      face <span class="op">=</span> <span class="st">"bold"</span></span>
+<span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="country-1.png" alt="Political map of Asia" width="100%"><p class="caption">
@@ -201,7 +205,13 @@ country names, ISO3 and Eurostat codes on one single call.</p>
 <code>resolution</code> and <code>epsg</code> (and optionally
 <code>year</code>) to the same value:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">africa_north</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Morocco"</span>, <span class="st">"Argelia"</span>, <span class="st">"Libia"</span>, <span class="st">"Tunisia"</span>, <span class="st">"Egypt"</span><span class="op">)</span>, resolution <span class="op">=</span> <span class="st">"20"</span>, epsg <span class="op">=</span> <span class="st">"4326"</span>, year <span class="op">=</span> <span class="st">"2016"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">africa_north</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span></span>
+<span>  country <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"Morocco"</span>, <span class="st">"Argelia"</span>, <span class="st">"Libia"</span>,</span>
+<span>    <span class="st">"Tunisia"</span>, <span class="st">"Egypt"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  resolution <span class="op">=</span> <span class="st">"20"</span>, epsg <span class="op">=</span> <span class="st">"4326"</span>, year <span class="op">=</span> <span class="st">"2016"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Coastal lines</span></span>
 <span></span>
@@ -223,12 +233,14 @@ Political map of North Africa
 <h2 id="thematic-maps-with-giscor">Thematic maps with <strong>giscoR</strong><a class="anchor" aria-label="anchor" href="#thematic-maps-with-giscor"></a>
 </h2>
 <p>This is an example on how <strong>giscoR</strong> can play nicely
-with some Eurostat data. For plotting purposes we would use the
-<strong>ggplot2</strong> package however any package that handles
-<code>sf</code> objects (e.g. <strong>tmap</strong>,
-<strong>mapsf</strong>, <strong>leaflet</strong>, etc. could be
-used).</p>
-<p>Also <strong>colorspace</strong> and <strong>rcartocolor</strong>
+with some Eurostat data. For plotting purposes we would use the <a href="https://CRAN.R-project.org/package=ggplot2" class="external-link"><strong>ggplot2</strong></a>
+package however any package that handles <code>sf</code> objects (e.g.
+<a href="https://CRAN.R-project.org/package=tmap" class="external-link"><strong>tmap</strong></a>,
+<a href="https://CRAN.R-project.org/package=mapsf" class="external-link"><strong>mapsf</strong></a>,
+<a href="https://CRAN.R-project.org/package=leaflet" class="external-link"><strong>leaflet</strong></a>,
+etc. could be used).</p>
+<p>Also <a href="https://CRAN.R-project.org/package=colorspace" class="external-link"><strong>colorspace</strong></a>
+and <a href="https://CRAN.R-project.org/package=rcartocolor" class="external-link"><strong>rcartocolor</strong></a>
 packages are recommended, as they provide great color palettes.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># EU members</span></span>
