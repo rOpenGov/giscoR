@@ -1,6 +1,7 @@
 url: https://ropengov.github.io/giscoR/
 
 template:
+  bootstrap: 5
   package: rogtemplate
   params:
     ganalytics: 'G-VGVFXGHWRL'
