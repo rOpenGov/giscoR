@@ -64,7 +64,7 @@ For a complete list of files available check \link{gisco_db}.
 health_BEL <- gisco_get_healthcare(country = "Belgium")
 
 # Plot if downloaded
-if (nrow(edu_BEL) > 3) {
+if (nrow(health_BEL) > 3) {
   library(ggplot2)
   ggplot(health_BEL) +
     geom_sf(aes(color = emergency))
