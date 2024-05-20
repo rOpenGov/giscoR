@@ -29,7 +29,7 @@ gisco_get_ports(
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
-vector of Eurostat country codes. Mixed types (as \code{c("Turkey","US","FRA")})
+vector of Eurostat country codes. Mixed types (as \code{c("Italy","ES","FRA")})
 would not work. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
@@ -125,6 +125,7 @@ ggplot(coast) +
 }
 \seealso{
 Other infrastructure: 
+\code{\link{gisco_get_education}()},
 \code{\link{gisco_get_healthcare}()}
 }
 \concept{infrastructure}

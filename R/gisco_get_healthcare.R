@@ -26,7 +26,13 @@
 #' \donttest{
 #'
 #' health_BEL <- gisco_get_healthcare(country = "Belgium")
-#' health_BEL
+#'
+#' # Plot if downloaded
+#' if (nrow(health_BEL) > 3) {
+#'   library(ggplot2)
+#'   ggplot(health_BEL) +
+#'     geom_sf(aes(color = emergency))
+#' }
 #' }
 #' @export
 gisco_get_healthcare <- function(cache = TRUE, update_cache = FALSE,
