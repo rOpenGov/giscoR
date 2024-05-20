@@ -258,5 +258,5 @@ is_named <- function(x) {
     return(FALSE)
   }
 
-  return(TRUE)
+  TRUE
 }
