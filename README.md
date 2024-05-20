@@ -68,6 +68,9 @@ install.packages("giscoR",
 
 ## Usage
 
+You can have a look to the documentation of the dev version in
+<https://ropengov.github.io/giscoR/dev/>
+
 This script highlights some features of **giscoR** :
 
 ``` r
@@ -183,6 +186,7 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
+#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 442.30TB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -326,7 +330,7 @@ A BibTeX entry for LaTeX users is
       doi = {10.5281/zenodo.4317946},
       author = {Diego Hernangómez},
       year = {2024},
-      version = {0.4.2},
+      version = {0.4.2.9000},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
     }
@@ -352,7 +356,7 @@ A BibTeX entry for LaTeX users is
 > for information regarding their licence agreements.
 >
 > *From [GISCO
-> Web](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)*
+> Web](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)*
 
 ## Disclaimer
 
@@ -360,8 +364,7 @@ This package is in no way officially related to or endorsed by Eurostat.
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-RJ-2017-019" class="csl-entry">
 

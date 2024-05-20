@@ -12,13 +12,7 @@
 #'
 #' @inheritSection gisco_get_countries About caching
 #' @source
-#'
-#' ```{r, echo=FALSE, results='asis'}
-#'
-#' cat(paste0("<https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data",
-#'       "/transport-networks>"))
-#'
-#' ```
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>
 #'
 #' @details
 #'  [gisco_get_airports()] refer to Europe. All shapefiles provided in

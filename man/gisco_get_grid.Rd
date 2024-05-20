@@ -4,7 +4,7 @@
 \alias{gisco_get_grid}
 \title{Get grid cells covering covering Europe for various resolutions}
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}
 }
 \usage{
 gisco_get_grid(
@@ -47,7 +47,7 @@ need to confirm the download.
 }
 \note{
 There are specific downloading provisions, please see
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/grids}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.

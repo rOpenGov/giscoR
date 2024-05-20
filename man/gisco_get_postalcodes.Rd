@@ -4,7 +4,7 @@
 \alias{gisco_get_postalcodes}
 \title{Get postal code points from GISCO}
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/postal-codes}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata//administrative-units/postal-codes}.
 }
 \usage{
 gisco_get_postalcodes(
@@ -50,8 +50,7 @@ The dataset is released under the CC-BY-SA-4.0 licence and requires the
 following attribution whenever used:
 
 \emph{(c) European Union - GISCO, 2021, postal code point dataset, Licence
-CC-BY-SA 4.0 available at
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data}}
+CC-BY-SA 4.0 available at \url{https://ec.europa.eu/eurostat/web/gisco/geodata//administrative-units/postal-codes}}.
 
 Shapefiles provided in ETRS89 (\href{https://epsg.io/4258}{EPSG:4258}).
 }

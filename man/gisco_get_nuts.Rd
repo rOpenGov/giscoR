@@ -96,7 +96,7 @@ NUTS are provided at three different levels:
 \item \code{"3"}: Counties/provinces/districts
 }
 
-Note that NUTS-level definition may vary across countries. See also \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data//administrative-units-statistical-units/nuts}.
+Note that NUTS-level definition may vary across countries. See also \url{https://ec.europa.eu/eurostat/web/gisco/geodata//statistical-units/territorial-units-statistics}.
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.

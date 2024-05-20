@@ -45,7 +45,7 @@
 #'     geom_sf()
 #' }
 #' }
-gisco_get_urban_audit <- function(year = "2020", epsg = "4326",
+gisco_get_urban_audit <- function(year = "2021", epsg = "4326",
                                   cache = TRUE, update_cache = FALSE,
                                   cache_dir = NULL, verbose = FALSE,
                                   spatialtype = "RG", country = NULL,

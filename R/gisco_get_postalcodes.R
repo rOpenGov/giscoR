@@ -27,12 +27,26 @@
 #'
 #' *(c) European Union - GISCO, 2021, postal code point dataset, Licence
 #' CC-BY-SA 4.0 available at
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data>*
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(
+#'   paste0(" <https://ec.europa.eu/eurostat/web/gisco/geodata",
+#'       "//administrative-units/postal-codes>*.")
+#'    )
+#'
+#' ```
 #'
 #' Shapefiles provided in ETRS89 ([EPSG:4258](https://epsg.io/4258)).
 #'
 #' @source
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/postal-codes>
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(
+#'   paste0(" <https://ec.europa.eu/eurostat/web/gisco/geodata",
+#'       "//administrative-units/postal-codes>.")
+#'    )
+#'
+#' ```
 #'
 #' @examplesIf gisco_check_access()
 #'

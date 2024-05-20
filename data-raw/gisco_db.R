@@ -127,7 +127,7 @@ df <- as.data.frame(df)
 
 # YEAR--
 df$year <- NA
-for (i in 2000:2021) {
+for (i in 2000:2024) {
   char <- as.character(i)
   r <- grep(char, df$api_file) %>% as.integer()
   if (length(r) > 0) {
@@ -135,7 +135,7 @@ for (i in 2000:2021) {
   }
 }
 
-allyear <- unique(df$year)
+allyear <- sort(unique(df$year))
 for (i in seq_len(length(allyear))) {
   df$api_file <- gsub(allyear[i], "{year}", df$api_file)
 }
@@ -151,7 +151,7 @@ df <- df %>%
       ","
   ))
 
-df <- as.data.frame(df)
+df <- as_tibble(df)
 # Resolution--
 df$resolution <- NA
 avres <- c("01", "03", "10", "20", "60", "100")

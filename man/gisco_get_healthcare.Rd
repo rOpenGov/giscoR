@@ -4,7 +4,7 @@
 \alias{gisco_get_healthcare}
 \title{Get locations of healthcare services in Europe}
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/healthcare-services}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services}
 }
 \usage{
 gisco_get_healthcare(

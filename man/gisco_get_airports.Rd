@@ -5,7 +5,7 @@
 \alias{gisco_get_ports}
 \title{Get location of airports and ports from GISCO API}
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/transport-networks}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks}
 }
 \usage{
 gisco_get_airports(

@@ -22,8 +22,8 @@
 #' ```{r, echo=FALSE, results='asis'}
 #'
 #' cat(
-#'   paste0(" <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data",
-#'       "//administrative-units-statistical-units/nuts>.")
+#'   paste0(" <https://ec.europa.eu/eurostat/web/gisco/geodata",
+#'       "//statistical-units/territorial-units-statistics>.")
 #'    )
 #'
 #' ```

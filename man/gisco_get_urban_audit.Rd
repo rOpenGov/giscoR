@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_urban_audit(
-  year = "2020",
+  year = "2021",
   epsg = "4326",
   cache = TRUE,
   update_cache = FALSE,
@@ -21,7 +21,7 @@ gisco_get_urban_audit(
 }
 \arguments{
 \item{year}{Release year of the file. One
-of \code{"2001"}, \code{"2004"}, \code{"2014"}, \code{"2018"} or \code{"2020"}.}
+of \code{"2001"}, \code{"2004"}, \code{"2014"}, \code{"2018"}, \code{"2020"} or \code{"2021"}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:

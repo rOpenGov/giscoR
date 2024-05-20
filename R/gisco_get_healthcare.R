@@ -11,13 +11,7 @@
 #' @author dieghernan, <https://github.com/dieghernan/>
 #'
 #' @source
-#'
-#' ```{r, echo=FALSE, results='asis'}
-#'
-#' cat(paste0("<https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data",
-#'       "/healthcare-services>"))
-#'
-#' ```
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>
 #'
 #' @inheritParams gisco_get_countries
 #'

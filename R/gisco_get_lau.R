@@ -25,7 +25,7 @@
 #'
 #'
 #' @export
-gisco_get_lau <- function(year = "2016", epsg = "4326", cache = TRUE,
+gisco_get_lau <- function(year = "2021", epsg = "4326", cache = TRUE,
                           update_cache = FALSE, cache_dir = NULL,
                           verbose = FALSE, country = NULL, gisco_id = NULL) {
   ext <- "geojson"

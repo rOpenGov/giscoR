@@ -363,7 +363,7 @@ toBibtex(citation("giscoR"))
 > information regarding their licence agreements.
 >
 > *From [GISCO
-> Web](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)*
+> Web](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)*
 
 ## Disclaimer
 
