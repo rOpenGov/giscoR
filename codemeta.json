@@ -228,7 +228,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis"],
-  "fileSize": "1218.668KB",
+  "fileSize": "1224.516KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -249,6 +249,6 @@
   ],
   "releaseNotes": "https://github.com/rOpenGov/giscoR/blob/master/NEWS.md",
   "readme": "https://github.com/rOpenGov/giscoR/blob/main/README.md",
-  "contIntegration": ["https://github.com/rOpenGov/giscoR/actions/workflows/check-full.yaml", "https://app.codecov.io/gh/ropengov/giscoR"],
+  "contIntegration": ["https://github.com/rOpenGov/giscoR/actions/workflows/check-full.yaml", "https://github.com/rOpenGov/giscoR/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/ropengov/giscoR"],
   "developmentStatus": "https://www.repostatus.org/#active"
 }

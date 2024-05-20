@@ -71,7 +71,7 @@
 #'
 #' @param country Optional. A character vector of country codes. It could be
 #'  either a vector of country names, a vector of ISO3 country codes or a
-#'  vector of Eurostat country codes. Mixed types (as `c("Turkey","US","FRA")`)
+#'  vector of Eurostat country codes. Mixed types (as `c("Italy","ES","FRA")`)
 #'  would not work. See also [countrycode::countrycode()].
 #'
 #' @param verbose Logical, displays information. Useful for debugging,

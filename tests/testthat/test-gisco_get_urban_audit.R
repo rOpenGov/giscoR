@@ -10,9 +10,9 @@ test_that("Urban Audit online", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_silent(gisco_get_urban_audit(level = "GREATER_CITIES"))
+  expect_silent(gisco_get_urban_audit(level = "CITIES"))
   fromurl <- expect_silent(gisco_get_urban_audit(
-    level = "GREATER_CITIES",
+    level = "CITIES",
     cache = FALSE
   ))
 
@@ -36,6 +36,7 @@ test_that("Urban Audit online", {
     gisco_get_urban_audit(
       level = "GREATER_CITIES",
       spatialtype = "LB",
+      year = 2020,
       epsg = 3857,
       country = c("ITA", "POL")
     )

@@ -1,5 +1,7 @@
 # giscoR (development version)
 
+-   New functions:
+    -   `gisco_get_education()`.
 -   Update `gisco_db` with the most up-to-date released data.
 -   Default year of some functions updated to the latest available data:
     -   `gisco_get_lau()` and `gisco_get_urban_audit()` default year now is
