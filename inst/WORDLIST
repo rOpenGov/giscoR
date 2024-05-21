@@ -60,12 +60,16 @@ ggspatial
 gisco
 giscoR’
 httr
+jsonlite
 kms
 les
 licence
 limites
+lwgeom
 mapsf
 rOG
 rcartocolor
+roxygen
+testthat
 tidyterra
 tmap

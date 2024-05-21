@@ -43,7 +43,6 @@ results](https://badges.cranchecks.info/worst/giscoR.svg)](https://cran.r-projec
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![status](https://tinyverse.netlify.app/status/giscoR)](https://CRAN.R-project.org/package=giscoR)
 
 <!-- badges: end -->
 

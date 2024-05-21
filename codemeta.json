@@ -194,6 +194,18 @@
     },
     "4": {
       "@type": "SoftwareApplication",
+      "identifier": "jsonlite",
+      "name": "jsonlite",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
+    },
+    "5": {
+      "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
       "version": ">= 0.3.0",
@@ -205,7 +217,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "5": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -218,7 +230,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "6": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -228,7 +240,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis"],
-  "fileSize": "1224.516KB",
+  "fileSize": "1250.44KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

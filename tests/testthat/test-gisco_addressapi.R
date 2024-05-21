@@ -105,7 +105,7 @@ test_that("gisco_addressapi_search online", {
 test_that("gisco_addressapi_reverse online", {
   skip_on_cran()
   skip_if_gisco_offline()
-  expect_silent(n <- gisco_addressapi_bbox(
+  expect_silent(n <- gisco_addressapi_reverse(
     x = 14.90691902084116,
     y = 49.63074884786084
   ))

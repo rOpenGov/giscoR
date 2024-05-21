@@ -19,7 +19,6 @@ results](https://badges.cranchecks.info/worst/giscoR.svg)](https://cran.r-projec
 [![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![status](https://tinyverse.netlify.app/status/giscoR)](https://CRAN.R-project.org/package=giscoR)
 
 <!-- badges: end -->
 
@@ -187,7 +186,6 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
-#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 415.28TB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
