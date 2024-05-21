@@ -42,32 +42,45 @@ gisco_get_healthcare <- function(cache = TRUE, update_cache = FALSE,
   epsg <- "4326"
   ext <- "gpkg"
 
+  if (!is.null(country)) {
+    country_get <- gsc_helper_countrynames(country, "eurostat")
+  } else {
+    country_get <- "EU"
+  }
+
+
   api_entry <- paste0(
     "https://gisco-services.ec.europa.eu/pub/healthcare",
-    "/gpkg/EU.gpkg"
+    "/gpkg/", country_get, ".gpkg"
   )
-  filename <- basename(api_entry)
+
+  n_cnt <- seq_len(length(api_entry))
+
+  ress <- lapply(n_cnt, function(x) {
+    api <- api_entry[x]
+    filename <- basename(api)
 
 
-  if (cache) {
-    # Guess source to load
-    namefileload <- gsc_api_cache(
-      api_entry, filename, cache_dir, update_cache,
-      verbose
-    )
-  } else {
-    namefileload <- api_entry
-  }
+    if (cache) {
+      # Guess source to load
+      namefileload <- gsc_api_cache(
+        api, filename, cache_dir, update_cache,
+        verbose
+      )
+    } else {
+      namefileload <- api
+    }
 
-  if (is.null(namefileload)) {
-    return(NULL)
-  }
+    if (is.null(namefileload)) {
+      return(NULL)
+    }
 
-  data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
+    data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
 
-  if (!is.null(country) && "cc" %in% names(data_sf)) {
-    country <- gsc_helper_countrynames(country, "eurostat")
-    data_sf <- data_sf[data_sf$cc %in% country, ]
-  }
-  return(data_sf)
+    data_sf
+  })
+
+  data_sf_all <- do.call("rbind", ress)
+
+  return(data_sf_all)
 }

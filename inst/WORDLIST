@@ -1,3 +1,4 @@
+API's
 Arel
 Biecek
 Bundock
@@ -7,6 +8,7 @@ COAS
 COmmission
 CodeFactor
 DOI
+Designator
 EFTA
 EPSG
 ETRS
@@ -34,20 +36,23 @@ URBN
 Urbanisation
 Verwaltungsgrenzen
 WGS
+WKT
 administratives
 al
 bezuglich
 bezüglich
 codecov
-codelist
 colorspace
 config
 countrycode
 der
+dev
 dieghernan
 dir
 et
+european
 eurostat
+geocoding
 geojson
 geospatial
 ggplot
