@@ -4,7 +4,7 @@
     -   `gisco_get_education()`.
     -   Add access to [GISCO Address
         API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home)
-        through new functions. See `?gisco_addressapi` to know more.
+        through new functions. See `?gisco_addressapi` to know more (#84).
 -   New dependency: **jsonlite** added to 'Imports'.
 -   Update `gisco_db` with the most up-to-date released data.
 -   Default year of some functions updated to the latest available data:
