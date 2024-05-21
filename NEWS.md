@@ -2,6 +2,10 @@
 
 -   New functions:
     -   `gisco_get_education()`.
+    -   Add access to [GISCO Address
+        API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home)
+        through new functions. See `?gisco_addressapi` to know more (#84).
+-   New dependency: **jsonlite** added to 'Imports'.
 -   Update `gisco_db` with the most up-to-date released data.
 -   Default year of some functions updated to the latest available data:
     -   `gisco_get_lau()` and `gisco_get_urban_audit()` default year now is
@@ -30,7 +34,7 @@
 
 # giscoR 0.3.5
 
--   Review examples to avoid CRAN errors and notes.
+-   Review examples to avoid **CRAN** errors and notes.
 -   New helper function: `gisco_detect_cache_dir()`.
 -   Now the functions fail gracefully with an informative message, instead of an
     error, and return `NULL`.
@@ -45,12 +49,12 @@
 
 # giscoR 0.3.2
 
--   Fix HTML5 issue as requested by CRAN.
+-   Fix HTML5 issue as requested by **CRAN**.
 
 # giscoR 0.3.1
 
--   Add `Copyright` on DESCRIPTION.
--   Add `lwgeom` on `Suggests`.
+-   Add `Copyright` on `DESCRIPTION`.
+-   Add **lwgeom** on 'Suggests'.
 -   `gisco_get_airports()` and `gisco_get_ports()`:
     -   Only year available is 2013.
     -   Now information is downloaded instead of using internal data.
@@ -67,22 +71,22 @@
     `gisco_clear_cache()`.
 -   Fix an error when `cache = FALSE`. Now files are loaded instead throwing an
     error.
--   New tests with `testthat`.
+-   New tests with **testthat**.
 -   Update on docs. New examples
 -   Refactor documents and codes for the previous `gisco_get` doc.
--   Add `eurostat` package to `Suggests`.
--   `lwgeom` dependency removed.
+-   Add **eurostat** package to ' Suggests'.
+-   **lwgeom** dependency removed.
 -   Update internal grid object.
--   `tmap` package replaced by `ggplot2` on vignettes and examples.
+-   **tmap** package replaced by **ggplot2** on vignettes and examples.
 
 # giscoR 0.2.4
 
 -   New `eu` field on `giscoR::gisco_countrycode`.
--   Fix typos on documentation
--   Include vignette on the package
--   Move docs to `roxygen2`
--   `lwgeom` moved to Import field.
--   `cartography` package replaced by `tmap` on vignettes.
+-   Fix typos on documentation.
+-   Include vignette on the package.
+-   Move docs to **roxygen2**.
+-   **lwgeom** moved to 'Imports' field.
+-   **cartography** package replaced by **tmap** on vignettes.
 
 # giscoR 0.2.3
 
@@ -95,14 +99,14 @@
 
 # giscoR 0.2.1
 
--   Remove CRAN notes.
+-   Remove **CRAN** notes.
 -   Improve docs.
--   Fix CRAN checks.
+-   Fix **CRAN** checks.
 
 # giscoR 0.2.0
 
--   Remove `colorspace` as dependency.
--   Bump R minimal version to 3.6.0.
+-   Remove **colorspace** as dependency.
+-   Bump **R** minimal version to `3.6.0`.
 -   Change order on parameters for `gisco_get()` functions.
 -   Rewriting of internal functions and utils.
 -   Add `verbose` parameter to functions.
@@ -120,7 +124,7 @@
 # giscoR 0.1.1
 
 -   Added `giscoR::tgs00026` dataset.
--   Remove `eurostat` dependency.
+-   Remove **eurostat** dependency.
 
 # giscoR 0.1.0
 
