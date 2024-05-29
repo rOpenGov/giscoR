@@ -34,6 +34,9 @@
     <loc>https://ropengov.github.io/giscoR/reference/giscoR-package.html</loc>
   </url>
   <url>
+    <loc>https://ropengov.github.io/giscoR/reference/gisco_addressapi.html</loc>
+  </url>
+  <url>
     <loc>https://ropengov.github.io/giscoR/reference/gisco_attributions.html</loc>
   </url>
   <url>
@@ -65,6 +68,9 @@
   </url>
   <url>
     <loc>https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.html</loc>
+  </url>
+  <url>
+    <loc>https://ropengov.github.io/giscoR/reference/gisco_get_education.html</loc>
   </url>
   <url>
     <loc>https://ropengov.github.io/giscoR/reference/gisco_get_grid.html</loc>

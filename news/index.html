@@ -16,7 +16,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.4.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,6 +60,21 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.5.0" id="giscor-050">giscoR 0.5.0<a class="anchor" aria-label="anchor" href="#giscor-050"></a></h2>
+<ul><li>New functions:
+<ul><li>
+<code><a href="../reference/gisco_get_education.html">gisco_get_education()</a></code>.</li>
+<li>Add access to <a href="https://gisco-services.ec.europa.eu/addressapi/docs/screen/home" class="external-link">GISCO Address API</a> through new functions. See <code><a href="../reference/gisco_addressapi.html">?gisco_addressapi</a></code> to know more (<a href="https://github.com/rOpenGov/giscoR/issues/84" class="external-link">#84</a>).</li>
+</ul></li>
+<li>New dependency: <strong>jsonlite</strong> added to ‘Imports’.</li>
+<li>Update <code>gisco_db</code> with the most up-to-date released data.</li>
+<li>Default year of some functions updated to the latest available data:
+<ul><li>
+<code><a href="../reference/gisco_get_lau.html">gisco_get_lau()</a></code> and <code><a href="../reference/gisco_get_urban_audit.html">gisco_get_urban_audit()</a></code> default year now is <code>"2021"</code>.</li>
+</ul></li>
+<li>Update urls in documentation.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.2" id="giscor-042">giscoR 0.4.2<a class="anchor" aria-label="anchor" href="#giscor-042"></a></h2><p class="text-muted">CRAN release: 2024-03-27</p>
 <ul><li>Update of docs to avoid warnings on <strong>CRAN</strong> (<a href="https://github.com/rOpenGov/giscoR/issues/81" class="external-link">#81</a>).</li>
 <li>Rebuild datasets.</li>
@@ -79,7 +94,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.5" id="giscor-035">giscoR 0.3.5<a class="anchor" aria-label="anchor" href="#giscor-035"></a></h2><p class="text-muted">CRAN release: 2023-06-30</p>
-<ul><li>Review examples to avoid CRAN errors and notes.</li>
+<ul><li>Review examples to avoid <strong>CRAN</strong> errors and notes.</li>
 <li>New helper function: <code><a href="../reference/gisco_set_cache_dir.html">gisco_detect_cache_dir()</a></code>.</li>
 <li>Now the functions fail gracefully with an informative message, instead of an error, and return <code>NULL</code>.</li>
 </ul></div>
@@ -93,12 +108,12 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.2" id="giscor-032">giscoR 0.3.2<a class="anchor" aria-label="anchor" href="#giscor-032"></a></h2><p class="text-muted">CRAN release: 2022-08-13</p>
-<ul><li>Fix HTML5 issue as requested by CRAN.</li>
+<ul><li>Fix HTML5 issue as requested by <strong>CRAN</strong>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="giscor-031">giscoR 0.3.1<a class="anchor" aria-label="anchor" href="#giscor-031"></a></h2><p class="text-muted">CRAN release: 2021-10-06</p>
-<ul><li>Add <code>Copyright</code> on DESCRIPTION.</li>
-<li>Add <code>lwgeom</code> on <code>Suggests</code>.</li>
+<ul><li>Add <code>Copyright</code> on <code>DESCRIPTION</code>.</li>
+<li>Add <strong>lwgeom</strong> on ‘Suggests’.</li>
 <li>
 <code><a href="../reference/gisco_get_airports.html">gisco_get_airports()</a></code> and <code><a href="../reference/gisco_get_airports.html">gisco_get_ports()</a></code>:
 <ul><li>Only year available is 2013.</li>
@@ -112,27 +127,26 @@
 <ul><li>Now <strong>giscoR</strong> is part of <a href="https://ropengov.org/" class="external-link">rOpenGov</a>. Repo has been transferred.</li>
 <li>Caching improvements: new function <code><a href="../reference/gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code> based on <code><a href="https://rappdirs.r-lib.org/reference/user_cache_dir.html" class="external-link">rappdirs::user_cache_dir()</a></code>. Now the <code>cache_dir</code> path is stored and it is not necessary to set it up again on a new session. Also added <code><a href="../reference/gisco_clear_cache.html">gisco_clear_cache()</a></code>.</li>
 <li>Fix an error when <code>cache = FALSE</code>. Now files are loaded instead throwing an error.</li>
-<li>New tests with <code>testthat</code>.</li>
+<li>New tests with <strong>testthat</strong>.</li>
 <li>Update on docs. New examples</li>
 <li>Refactor documents and codes for the previous <code>gisco_get</code> doc.</li>
-<li>Add <code>eurostat</code> package to <code>Suggests</code>.</li>
+<li>Add <strong>eurostat</strong> package to ’ Suggests’.</li>
 <li>
-<code>lwgeom</code> dependency removed.</li>
+<strong>lwgeom</strong> dependency removed.</li>
 <li>Update internal grid object.</li>
 <li>
-<code>tmap</code> package replaced by <code>ggplot2</code> on vignettes and examples.</li>
+<strong>tmap</strong> package replaced by <strong>ggplot2</strong> on vignettes and examples.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.4" id="giscor-024">giscoR 0.2.4<a class="anchor" aria-label="anchor" href="#giscor-024"></a></h2><p class="text-muted">CRAN release: 2021-04-13</p>
 <ul><li>New <code>eu</code> field on <code><a href="../reference/gisco_countrycode.html">giscoR::gisco_countrycode</a></code>.</li>
-<li>Fix typos on documentation</li>
-<li>Include vignette on the package</li>
-<li>Move docs to <code>roxygen2</code>
-</li>
+<li>Fix typos on documentation.</li>
+<li>Include vignette on the package.</li>
+<li>Move docs to <strong>roxygen2</strong>.</li>
 <li>
-<code>lwgeom</code> moved to Import field.</li>
+<strong>lwgeom</strong> moved to ‘Imports’ field.</li>
 <li>
-<code>cartography</code> package replaced by <code>tmap</code> on vignettes.</li>
+<strong>cartography</strong> package replaced by <strong>tmap</strong> on vignettes.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.3" id="giscor-023">giscoR 0.2.3<a class="anchor" aria-label="anchor" href="#giscor-023"></a></h2>
@@ -145,14 +159,14 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.1" id="giscor-021">giscoR 0.2.1<a class="anchor" aria-label="anchor" href="#giscor-021"></a></h2>
-<ul><li>Remove CRAN notes.</li>
+<ul><li>Remove <strong>CRAN</strong> notes.</li>
 <li>Improve docs.</li>
-<li>Fix CRAN checks.</li>
+<li>Fix <strong>CRAN</strong> checks.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="giscor-020">giscoR 0.2.0<a class="anchor" aria-label="anchor" href="#giscor-020"></a></h2><p class="text-muted">CRAN release: 2020-11-12</p>
-<ul><li>Remove <code>colorspace</code> as dependency.</li>
-<li>Bump R minimal version to 3.6.0.</li>
+<ul><li>Remove <strong>colorspace</strong> as dependency.</li>
+<li>Bump <strong>R</strong> minimal version to <code>3.6.0</code>.</li>
 <li>Change order on parameters for <code>gisco_get()</code> functions.</li>
 <li>Rewriting of internal functions and utils.</li>
 <li>Add <code>verbose</code> parameter to functions.</li>
@@ -170,7 +184,7 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.1" id="giscor-011">giscoR 0.1.1<a class="anchor" aria-label="anchor" href="#giscor-011"></a></h2><p class="text-muted">CRAN release: 2020-10-28</p>
 <ul><li>Added <code><a href="https://ropengov.github.io/eurostat/reference/tgs00026.html" class="external-link">giscoR::tgs00026</a></code> dataset.</li>
-<li>Remove <code>eurostat</code> dependency.</li>
+<li>Remove <strong>eurostat</strong> dependency.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="giscor-010">giscoR 0.1.0<a class="anchor" aria-label="anchor" href="#giscor-010"></a></h2><p class="text-muted">CRAN release: 2020-10-13</p>
