@@ -41,7 +41,7 @@
         "url": "https://cran.r-project.org"
       },
       "runtimePlatform": "R version 4.4.0 (2024-04-24 ucrt)",
-      "version": "0.4.2.9000"
+      "version": "0.5.0"
     },
     {
       "id": "https://doi.org/10.5281/zenodo.4317946",
