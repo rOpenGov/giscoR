@@ -7,7 +7,7 @@ bibentry(
   "Manual",
   header = paste0("To cite '", meta$Package, "' in publications use:"),
   title = paste("{giscoR}:", gsub("'", "", meta$Title)),
-  doi = doi,
+  doi = paste0("10.32614/CRAN.package.",meta$Package),
   author = c(person("Diego", "Hernangómez")),
   year = year,
   version = meta$Version,
