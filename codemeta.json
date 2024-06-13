@@ -240,7 +240,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis"],
-  "fileSize": "1258.852KB",
+  "fileSize": "1259.642KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -253,10 +253,10 @@
         }
       ],
       "name": "{giscoR}: Download Map Data from GISCO API - Eurostat",
-      "identifier": "10.5281/zenodo.4317946",
+      "identifier": "10.32614/CRAN.package.giscoR",
       "url": "https://ropengov.github.io/giscoR/",
-      "@id": "https://doi.org/10.5281/zenodo.4317946",
-      "sameAs": "https://doi.org/10.5281/zenodo.4317946"
+      "@id": "https://doi.org/10.32614/CRAN.package.giscoR",
+      "sameAs": "https://doi.org/10.32614/CRAN.package.giscoR"
     }
   ],
   "releaseNotes": "https://github.com/rOpenGov/giscoR/blob/master/NEWS.md",

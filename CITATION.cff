@@ -9,7 +9,7 @@ type: software
 license: GPL-3.0-only
 title: 'giscoR: Download Map Data from GISCO API - Eurostat'
 version: 0.5.0
-doi: 10.5281/zenodo.4317946
+doi: 10.32614/CRAN.package.giscoR
 abstract: Tools to download data from the GISCO (Geographic Information System of
   the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global
   and European map data available. This package is in no way officially related to
@@ -29,7 +29,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
     affiliation: rOpenGov
-  doi: 10.5281/zenodo.4317946
+  doi: 10.32614/CRAN.package.giscoR
   year: '2024'
   version: 0.5.0
   url: https://ropengov.github.io/giscoR/
@@ -109,6 +109,9 @@ references:
     email: jeroen@berkeley.edu
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2024'
+  identifiers:
+  - type: url
+    value: https://arxiv.org/abs/1403.2805
 - type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
