@@ -245,29 +245,25 @@ etc. could be used).</p>
 <p>Also <a href="https://CRAN.R-project.org/package=colorspace" class="external-link"><strong>colorspace</strong></a>
 and <a href="https://CRAN.R-project.org/package=rcartocolor" class="external-link"><strong>rcartocolor</strong></a>
 packages are recommended, as they provide great color palettes.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># EU members</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">library</span>(eurostat)</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>nuts2 <span class="ot">&lt;-</span> <span class="fu">gisco_get_nuts</span>(</span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  <span class="at">year =</span> <span class="st">"2021"</span>, <span class="at">epsg =</span> <span class="st">"3035"</span>, <span class="at">resolution =</span> <span class="st">"3"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="at">nuts_level =</span> <span class="st">"2"</span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>)</span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co"># Borders from countries</span></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>borders <span class="ot">&lt;-</span> <span class="fu">gisco_get_countries</span>(<span class="at">epsg =</span> <span class="st">"3035"</span>, <span class="at">year =</span> <span class="st">"2020"</span>, <span class="at">resolution =</span> <span class="st">"3"</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>eu_bord <span class="ot">&lt;-</span> borders <span class="sc">%&gt;%</span></span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>  <span class="fu">filter</span>(CNTR_ID <span class="sc">%in%</span> nuts2<span class="sc">$</span>CNTR_CODE)</span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co"># Eurostat data - Disposable income</span></span>
-<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a>pps <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="st">"tgs00026"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a>  <span class="fu">filter</span>(TIME_PERIOD <span class="sc">==</span> <span class="st">"2021-01-01"</span>)</span>
-<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a>indexed <span class="dv">0</span>B <span class="cf">in</span>  <span class="dv">0</span>s, <span class="dv">0</span>B<span class="sc">/</span>s</span>
-<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a>indexed <span class="fl">1.00</span>TB <span class="cf">in</span>  <span class="dv">0</span>s, <span class="fl">3.64</span>PB<span class="sc">/</span>s</span>
-<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a>                                                                                                        </span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># EU members</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/eurostat/" class="external-link">eurostat</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">nuts2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get_nuts.html">gisco_get_nuts</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="st">"2021"</span>, epsg <span class="op">=</span> <span class="st">"3035"</span>, resolution <span class="op">=</span> <span class="st">"3"</span>,</span>
+<span>  nuts_level <span class="op">=</span> <span class="st">"2"</span></span>
+<span><span class="op">)</span></span>
+<span><span class="co"># Borders from countries</span></span>
+<span><span class="va">borders</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get.html">gisco_get_countries</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="st">"3035"</span>, year <span class="op">=</span> <span class="st">"2020"</span>, resolution <span class="op">=</span> <span class="st">"3"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">eu_bord</span> <span class="op">&lt;-</span> <span class="va">borders</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">CNTR_ID</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">nuts2</span><span class="op">$</span><span class="va">CNTR_CODE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Eurostat data - Disposable income</span></span>
+<span><span class="va">pps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span><span class="st">"tgs00026"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TIME_PERIOD</span> <span class="op">==</span> <span class="st">"2021-01-01"</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">nuts2_sf</span> <span class="op">&lt;-</span> <span class="va">nuts2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">pps</span>, by <span class="op">=</span> <span class="st">"geo"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
