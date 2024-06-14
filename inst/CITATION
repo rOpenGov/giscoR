@@ -13,5 +13,6 @@ bibentry(
   year = year,
   version = meta$Version,
   url = unlist(strsplit(meta$URL, ","))[1],
-  abstract = abs
+  abstract = abs,
+  key = paste0("R-", pkg)
 )
