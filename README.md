@@ -16,7 +16,7 @@ results](https://badges.cranchecks.info/worst/giscoR.svg)](https://cran.r-projec
 [![R-hub](https://github.com/rOpenGov/giscoR/actions/workflows/rhub.yaml/badge.svg)](https://github.com/rOpenGov/giscoR/actions/workflows/rhub.yaml)
 [![codecov](https://codecov.io/gh/ropengov/giscoR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropengov/giscoR)
 [![CodeFactor](https://www.codefactor.io/repository/github/ropengov/giscor/badge)](https://www.codefactor.io/repository/github/ropengov/giscor)
-[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.4317946-blue)](https://doi.org/10.5281/zenodo.4317946)
+[![DOI](https://img.shields.io/badge/DOI-10.32614/CRAN.package.giscoR-blue)](https://doi.org/10.32614/CRAN.package.giscoR)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 
@@ -67,6 +67,9 @@ install.packages("giscoR",
 ```
 
 ## Usage
+
+You can have a look to the documentation of the dev version in
+<https://ropengov.github.io/giscoR/dev/>
 
 This script highlights some features of **giscoR** :
 
@@ -183,6 +186,7 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
+#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 457.44TB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -326,7 +330,7 @@ A BibTeX entry for LaTeX users is
       doi = {10.32614/CRAN.package.giscoR},
       author = {Diego Hernangómez},
       year = {2024},
-      version = {0.5.0},
+      version = {0.5.0.9000},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
     }
@@ -360,8 +364,7 @@ This package is in no way officially related to or endorsed by Eurostat.
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
 <div id="ref-RJ-2017-019" class="csl-entry">
 

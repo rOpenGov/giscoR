@@ -1,3 +1,7 @@
+# giscoR (development version)
+
+-   `gisco_get_education()`:Fix API entry points.
+
 # giscoR 0.5.0
 
 -   New functions:

@@ -49,7 +49,7 @@ gisco_get_education <- function(cache = TRUE, update_cache = FALSE,
 
 
   api_entry <- paste0(
-    "https://gisco-services.ec.europa.eu/pub/education",
+    "https://gisco-services.ec.europa.eu/pub/education/2020/",
     "/gpkg/", country_get, ".gpkg"
   )
 
