@@ -43,7 +43,7 @@ gisco_get_healthcare <- function(cache = TRUE, update_cache = FALSE,
   ext <- "gpkg"
 
   api_entry <- paste0(
-    "https://gisco-services.ec.europa.eu/pub/healthcare",
+    "https://gisco-services.ec.europa.eu/pub/healthcare/2020",
     "/gpkg/EU.gpkg"
   )
   filename <- basename(api_entry)
