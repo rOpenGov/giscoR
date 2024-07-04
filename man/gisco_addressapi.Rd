@@ -140,35 +140,24 @@ The resulting object may present the following variables:\tabular{ll}{
 \examples{
 \dontshow{if (gisco_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
-library(dplyr)
-
 # Cities in a region
 
-gisco_addressapi_cities(country = "PT", province = "LISBOA") \%>\%
-  as_tibble()
-
+gisco_addressapi_cities(country = "PT", province = "LISBOA")
 
 
 # Geocode and reverse geocode with sf objects
-library(ggplot2)
-
 # Structured search
-
 struct <- gisco_addressapi_search(
   country = "ES", city = "BARCELONA",
   road = "GRACIA"
 )
 
-struct \%>\%
-  ggplot() +
-  geom_sf(aes(color = PC)) +
-  labs(color = "POSTAL CODES")
+struct
 
 # Reverse geocoding
-
 reverse <- gisco_addressapi_reverse(x = struct$X[1], y = struct$Y[1])
 
-glimpse(reverse)
+reverse
 }
 \dontshow{\}) # examplesIf}
 }
