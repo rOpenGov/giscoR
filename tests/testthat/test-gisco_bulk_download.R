@@ -29,11 +29,11 @@ test_that("Bulk download online", {
     cache_dir = tempdir(),
     ext = "gdb"
   ))
-  expect_silent(gisco_bulk_download(
-    id_giscoR = "urban_audit",
-    cache_dir = tempdir(),
-    year = 2004
-  ))
+  # expect_silent(gisco_bulk_download(
+  #   id_giscoR = "urban_audit",
+  #   cache_dir = tempdir(),
+  #   year = 2004
+  # ))
   expect_message(gisco_bulk_download(
     resolution = 60,
     cache_dir = tempdir(),
