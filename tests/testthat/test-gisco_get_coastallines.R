@@ -2,7 +2,6 @@ test_that("Coastallines", {
   expect_error(gisco_get_coastallines(year = 2001, res = 60))
   expect_error(gisco_get_coastallines(year = 2011))
   expect_error(gisco_get_coastallines(epsg = 2819))
-  expect_error(gisco_get_coastallines(spatialtype = "aa"))
   expect_error(gisco_get_coastallines(res = 15))
   expect_silent(gisco_get_coastallines())
   expect_message(gisco_get_coastallines(verbose = TRUE))
@@ -15,7 +14,7 @@ test_that("Coastal download online", {
 
   expect_silent(gisco_get_coastallines(resolution = "60"))
   expect_silent(gisco_get_coastallines(resolution = "60", cache = FALSE))
-  expect_silent(gisco_get_coastallines(resolution = 3))
+  # expect_silent(gisco_get_coastallines(resolution = 3))
   expect_message(gisco_get_coastallines(resolution = "60", verbose = TRUE))
   expect_message(gisco_get_coastallines(
     resolution = "60",

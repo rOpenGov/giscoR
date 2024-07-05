@@ -9,12 +9,12 @@ test_that("Education online", {
   # Several countries
   nn <- gisco_get_education(country = c("LU", "DK", "BE"))
 
-  expect_length(unique(nn$cc), 3)
+  expect_length(unique(nn$cntr_id), 3)
 
   # Full
   eufull <- gisco_get_education()
 
-  expect_gt(length(unique(eufull$cc)), 10)
+  expect_gt(length(unique(eufull$cntr_id)), 10)
 })
 
 test_that("Offline", {

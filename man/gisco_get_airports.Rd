@@ -74,24 +74,22 @@ For a complete list of files available check \link{gisco_db}.
 \donttest{
 library(sf)
 
-Greece <- gisco_get_countries(country = "EL", resolution = "1")
-AirP_GC <- gisco_get_airports(country = "EL")
-AirP_GC <- st_transform(AirP_GC, st_crs(Greece))
+greece <- gisco_get_countries(country = "EL", resolution = 3)
+airp_gc <- gisco_get_airports(country = "EL")
 
 library(ggplot2)
 
-
-ggplot(Greece) +
-  geom_sf(fill = "grey80") +
-  geom_sf(data = AirP_GC, color = "blue") +
-  labs(
-    title = "Airports on Greece",
-    shape = NULL,
-    color = NULL,
-    caption = gisco_attributions()
-  )
-
-
+if (inherits(airp_gc, "sf")) {
+  ggplot(greece) +
+    geom_sf(fill = "grey80") +
+    geom_sf(data = airp_gc, color = "blue") +
+    labs(
+      title = "Airports on Greece",
+      shape = NULL,
+      color = NULL,
+      caption = gisco_attributions()
+    )
+}
 ##############################
 #         Plot ports         #
 ##############################
@@ -99,27 +97,28 @@ ggplot(Greece) +
 ports <- gisco_get_ports()
 coast <- giscoR::gisco_coastallines
 
-# To Equal Earth projection :)
+# To Robinson projection :)
 
 library(sf)
-coast <- st_transform(coast, 8857)
+coast <- st_transform(coast, "ESRI:54030")
 ports <- st_transform(ports, st_crs(coast))
 
-
-ggplot(coast) +
-  geom_sf(fill = "#F6E1B9", color = "#0978AB") +
-  geom_sf(data = ports, fill = "red", shape = 21) +
-  theme_void() +
-  theme(
-    panel.background = element_rect(fill = "#C6ECFF"),
-    panel.grid = element_blank(),
-    plot.title = element_text(face = "bold", hjust = 0.5),
-    plot.subtitle = element_text(face = "italic", hjust = 0.5)
-  ) +
-  labs(
-    title = "Ports Worldwide", subtitle = "Year 2013",
-    caption = "(c) European Union, 1995 - today"
-  )
+if (inherits(ports, "sf")) {
+  ggplot(coast) +
+    geom_sf(fill = "#F6E1B9", color = "#0978AB") +
+    geom_sf(data = ports, fill = "red", shape = 21) +
+    theme_void() +
+    theme(
+      panel.background = element_rect(fill = "#C6ECFF"),
+      panel.grid = element_blank(),
+      plot.title = element_text(face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(face = "italic", hjust = 0.5)
+    ) +
+    labs(
+      title = "Ports Worldwide", subtitle = "Year 2013",
+      caption = "(c) European Union, 1995 - today"
+    )
+}
 }
 \dontshow{\}) # examplesIf}
 }
