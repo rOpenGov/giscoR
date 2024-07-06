@@ -61,13 +61,13 @@ For a complete list of files available check \link{gisco_db}.
 \dontshow{if (gisco_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 \donttest{
 
-health_BEL <- gisco_get_healthcare(country = "Belgium")
+health_be <- gisco_get_healthcare(country = "Belgium")
 
 # Plot if downloaded
-if (nrow(health_BEL) > 3) {
+if (inherits(health_be, "sf")) {
   library(ggplot2)
-  ggplot(health_BEL) +
-    geom_sf(aes(color = emergency))
+  ggplot(health_be) +
+    geom_sf()
 }
 }
 \dontshow{\}) # examplesIf}

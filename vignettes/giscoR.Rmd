@@ -177,7 +177,7 @@ library(dplyr)
 library(eurostat)
 
 nuts2 <- gisco_get_nuts(
-  year = "2021", epsg = "3035", resolution = "3",
+  year = "2021", epsg = "3035", resolution = "10",
   nuts_level = "2"
 )
 # Borders from countries

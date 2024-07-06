@@ -25,13 +25,13 @@
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #'
-#' health_BEL <- gisco_get_healthcare(country = "Belgium")
+#' health_be <- gisco_get_healthcare(country = "Belgium")
 #'
 #' # Plot if downloaded
-#' if (nrow(health_BEL) > 3) {
+#' if (inherits(health_be, "sf")) {
 #'   library(ggplot2)
-#'   ggplot(health_BEL) +
-#'     geom_sf(aes(color = emergency))
+#'   ggplot(health_be) +
+#'     geom_sf()
 #' }
 #' }
 #' @export
@@ -65,9 +65,9 @@ gisco_get_healthcare <- function(cache = TRUE, update_cache = FALSE,
 
   data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
 
-  if (!is.null(country) && "cc" %in% names(data_sf)) {
+  if (!is.null(country) && "cntr_id" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
-    data_sf <- data_sf[data_sf$cc %in% country, ]
+    data_sf <- data_sf[data_sf$cntr_id %in% country, ]
   }
   return(data_sf)
 }
