@@ -40,9 +40,3 @@
 
 # Revdeps
 
-## New problems (1)
-
-|package  |version |error  |warning |note |
-|:--------|:-------|:------|:-------|:----|
-|[mapSpain](problems.md#mapspain)|0.9.1   |__+1__ |        |1    |
-
