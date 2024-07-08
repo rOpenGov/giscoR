@@ -14,7 +14,7 @@ test_that("Coastal download online", {
 
   expect_silent(gisco_get_coastallines(resolution = "60"))
   expect_silent(gisco_get_coastallines(resolution = "60", cache = FALSE))
-  # expect_silent(gisco_get_coastallines(resolution = 3))
+  expect_silent(gisco_get_coastallines(resolution = 3))
   expect_message(gisco_get_coastallines(resolution = "60", verbose = TRUE))
   expect_message(gisco_get_coastallines(
     resolution = "60",
