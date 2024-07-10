@@ -82,14 +82,8 @@ It also provides attributions on several languages.
 library(giscoR)
 gisco_attributions(lang = "en")
 #> [1] "© EuroGeographics for the administrative boundaries"
-```
-
-``` r
 gisco_attributions(lang = "fr")
 #> [1] "© EuroGeographics pour les limites administratives"
-```
-
-``` r
 gisco_attributions(lang = "de")
 #> [1] "© EuroGeographics bezuglich der Verwaltungsgrenzen"
 ```

@@ -31,8 +31,8 @@ test_that("Bulk download online", {
   ))
   expect_silent(gisco_bulk_download(
     id_giscoR = "urban_audit",
-     cache_dir = tempdir(),
-     year = 2004
+    cache_dir = tempdir(),
+    year = 2004
   ))
   expect_message(gisco_bulk_download(
     resolution = 60,
