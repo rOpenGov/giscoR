@@ -1,3 +1,10 @@
+# giscoR (development version)
+
+## Update with latest data available
+
+-   `gisco_get_education()` and `gisco_get_healthcare()` gains a new `year`
+    argument: years available now are 2020 and 2023 versions of the dataset.
+
 # giscoR 0.5.1
 
 -   Use **CRAN** DOI: <https://doi.org/10.32614/CRAN.package.giscoR>.
