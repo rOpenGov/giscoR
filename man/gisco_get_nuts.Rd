@@ -23,7 +23,7 @@ gisco_get_nuts(
 }
 \arguments{
 \item{year}{Release year of the file. One
-of \code{"2003"}, \code{"2006"}, \code{"2010"}, \code{"2013"}, \code{"2016"} or \code{"2021"}.}
+of \code{"2003"}, \code{"2006"}, \code{"2010"}, \code{"2013"}, \code{"2016"}, \code{"2021"} or \code{"2024"}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:

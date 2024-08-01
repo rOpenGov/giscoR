@@ -44,6 +44,15 @@ test_that("Countries online", {
     cache = FALSE
   ))
 
+  expect_silent(
+    gisco_get_countries(
+      year = 2024,
+      spatialtype = "BN",
+      resolution = 60,
+      cache = TRUE
+    )
+  )
+
   expect_silent(gisco_get_countries(
     spatialtype = "COASTL",
     country = c("ESP", "ITA")

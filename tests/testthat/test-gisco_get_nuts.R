@@ -95,6 +95,14 @@ test_that("NUTS online", {
   expect_equal(epsg3035, sf::st_crs(a))
   expect_equal(epsg3857, sf::st_crs(b))
   expect_equal(epsg4326, sf::st_crs(c))
+
+  expect_silent(aa <-
+    gisco_get_nuts(
+      year = 2024,
+      resolution = "60",
+      nuts_level = "0",
+      nuts_id = "ES5"
+    ))
 })
 
 

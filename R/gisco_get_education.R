@@ -12,7 +12,7 @@
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>
 #'
-#' @inheritParams gisco_get_countries
+#' @inheritParams gisco_get_healthcare
 #'
 #' @inheritSection gisco_get_countries About caching
 #'
@@ -34,10 +34,12 @@
 #' }
 #' }
 #' @export
-gisco_get_education <- function(cache = TRUE, update_cache = FALSE,
+gisco_get_education <- function(year = c("2023", "2020"),
+                                cache = TRUE, update_cache = FALSE,
                                 cache_dir = NULL, verbose = FALSE,
                                 country = NULL) {
   # Given vars
+  year <- match.arg(year)
   epsg <- "4326"
   ext <- "gpkg"
 
@@ -49,15 +51,15 @@ gisco_get_education <- function(cache = TRUE, update_cache = FALSE,
 
 
   api_entry <- paste0(
-    "https://gisco-services.ec.europa.eu/pub/education/2020/",
-    "/gpkg/", country_get, ".gpkg"
+    "https://gisco-services.ec.europa.eu/pub/education/", year, "/gpkg/",
+    country_get, ".gpkg"
   )
 
   n_cnt <- seq_len(length(api_entry))
 
   ress <- lapply(n_cnt, function(x) {
     api <- api_entry[x]
-    filename <- basename(api)
+    filename <- paste0("edu_", year, "_", basename(api_entry))
 
 
     if (cache) {
