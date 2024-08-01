@@ -31,7 +31,7 @@ gisco_get_units(
 or \code{"df"}. See \strong{Value} and \strong{Details}.}
 
 \item{year}{Release year of the file. One
-of \code{"2001"}, \code{"2006"}, \code{"2010"}, \code{"2013"}, \code{"2016"} or \code{"2020"}.}
+of \code{"2001"}, \code{"2006"}, \code{"2010"}, \code{"2013"}, \code{"2016"}, \code{"2020"} or \code{"2024"}.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:

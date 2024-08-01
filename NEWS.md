@@ -4,6 +4,8 @@
 
 -   `gisco_get_education()` and `gisco_get_healthcare()` gains a new `year`
     argument: years available now are 2020 and 2023 versions of the dataset.
+-   `gisco_get_nuts()` and `gisco_get_countries()` now can download the 2024
+    version of the datasets.
 
 # giscoR 0.5.1
 
