@@ -159,7 +159,6 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2024'
-  doi: 10.32614/CRAN.package.utils
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'

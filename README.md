@@ -186,7 +186,6 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
-#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 395.58TB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -364,7 +363,8 @@ This package is in no way officially related to or endorsed by Eurostat.
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-RJ-2017-019" class="csl-entry">
 
