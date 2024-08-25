@@ -8,6 +8,7 @@
 }
 \usage{
 gisco_get_education(
+  year = c("2023", "2020"),
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
@@ -16,6 +17,8 @@ gisco_get_education(
 )
 }
 \arguments{
+\item{year}{Release year of the file. One of \code{"2020"}, \code{"2023"} (default).}
+
 \item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
 \strong{About caching}.}
 

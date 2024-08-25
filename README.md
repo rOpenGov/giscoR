@@ -68,6 +68,9 @@ install.packages("giscoR",
 
 ## Usage
 
+You can have a look to the documentation of the dev version in
+<https://ropengov.github.io/giscoR/dev/>
+
 This script highlights some features of **giscoR** :
 
 ``` r
@@ -326,7 +329,7 @@ A BibTeX entry for LaTeX users is
       doi = {10.32614/CRAN.package.giscoR},
       author = {Diego Hernangómez},
       year = {2024},
-      version = {0.5.1},
+      version = {0.5.1.9000},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
     }
