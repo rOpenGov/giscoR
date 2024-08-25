@@ -59,7 +59,7 @@ gisco_get_education <- function(year = c("2023", "2020"),
 
   ress <- lapply(n_cnt, function(x) {
     api <- api_entry[x]
-    filename <- paste0("edu_", year, "_", basename(api_entry))
+    filename <- paste0("edu_", year, "_", basename(api))
 
 
     if (cache) {
