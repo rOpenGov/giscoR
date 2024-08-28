@@ -1,11 +1,11 @@
-# giscoR (development version)
+# giscoR 0.6.0
 
 ## Update with latest data available
 
 -   `gisco_get_education()` and `gisco_get_healthcare()` gains a new `year`
     argument: years available now are 2020 and 2023 versions of the dataset.
 -   `gisco_get_nuts()` and `gisco_get_countries()` now can download the 2024
-    version of the datasets.
+    version of the datasets (#93 \@hannesaddec).
 
 # giscoR 0.5.1
 

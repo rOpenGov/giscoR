@@ -53,8 +53,7 @@ Loads a \code{\link[sf:sf]{sf}} object from GISCO API or your local library.
 
 \code{\link[=gisco_get_ports]{gisco_get_ports()}} adds a new field \code{CNTR_ISO2} to the original data
 identifying the country of the port. Worldwide information available.
-The port codes are aligned with
-\href{https://unece.org/trade/uncefact/unlocode}{UN/LOCODE} standard.
+The port codes are aligned with UN/LOCODE standard.
 }
 \section{About caching}{
 You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.

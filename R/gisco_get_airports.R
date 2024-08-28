@@ -103,8 +103,7 @@ gisco_get_airports <- function(year = "2013", country = NULL, cache_dir = NULL,
 #'
 #' [gisco_get_ports()] adds a new field `CNTR_ISO2` to the original data
 #' identifying the country of the port. Worldwide information available.
-#' The port codes are aligned with
-#' [UN/LOCODE](https://unece.org/trade/uncefact/unlocode) standard.
+#' The port codes are aligned with UN/LOCODE standard.
 #'
 #' @export
 gisco_get_ports <- function(year = "2013", country = NULL, cache_dir = NULL,
