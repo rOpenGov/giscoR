@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,10 +23,6 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/giscoR.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/nuts_codes.html">NUTS codes</a></li>
-  </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -42,6 +38,16 @@
       <small>Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.6.0" id="giscor-060">giscoR 0.6.0<a class="anchor" aria-label="anchor" href="#giscor-060"></a></h2>
+<div class="section level3">
+<h3 id="update-with-latest-data-available-0-6-0">Update with latest data available<a class="anchor" aria-label="anchor" href="#update-with-latest-data-available-0-6-0"></a></h3>
+<ul><li>
+<code><a href="../reference/gisco_get_education.html">gisco_get_education()</a></code> and <code><a href="../reference/gisco_get_healthcare.html">gisco_get_healthcare()</a></code> gains a new <code>year</code> argument: years available now are 2020 and 2023 versions of the dataset.</li>
+<li>
+<code><a href="../reference/gisco_get_nuts.html">gisco_get_nuts()</a></code> and <code><a href="../reference/gisco_get.html">gisco_get_countries()</a></code> now can download the 2024 version of the datasets (<a href="https://github.com/rOpenGov/giscoR/issues/93" class="external-link">#93</a> <a href="https://github.com/hannesaddec" class="external-link">@hannesaddec</a>).</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.1" id="giscor-051">giscoR 0.5.1<a class="anchor" aria-label="anchor" href="#giscor-051"></a></h2><p class="text-muted">CRAN release: 2024-07-06</p>
 <ul><li>Use <strong>CRAN</strong> DOI: <a href="https://doi.org/10.32614/CRAN.package.giscoR" class="external-link uri">https://doi.org/10.32614/CRAN.package.giscoR</a>.</li>
