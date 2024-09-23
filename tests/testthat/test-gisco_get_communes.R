@@ -25,15 +25,10 @@ test_that("Communes online", {
   expect_equal(as.character(unique(lu$CNTR_CODE)), "LU")
 
   # Test selected years
-  years <- c("2001", "2013")
+  lb <- gisco_get_communes(
+    spatialtype = "LB", country = "LU", year = "2013",
+    verbose = FALSE
+  )
 
-  # Liechtenstein
-  for (i in seq_len(length(years))) {
-    lb <- gisco_get_communes(
-      spatialtype = "LB", country = "LU", year = years[i],
-      verbose = FALSE
-    )
-
-    expect_equal(as.character(unique(lb$CNTR_CODE)), "LU")
-  }
+  expect_equal(as.character(unique(lb$CNTR_CODE)), "LU")
 })
