@@ -241,13 +241,18 @@ packages are recommended, as they provide great color palettes.</p>
 <span>    values_th <span class="op">=</span> <span class="va">values</span> <span class="op">/</span> <span class="fl">1000</span>,</span>
 <span>    categ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">values_th</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">15</span>, <span class="fl">30</span>, <span class="fl">60</span>, <span class="fl">90</span>, <span class="fl">120</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Error in UseMethod("left_join"): no applicable method for 'left_join' applied to an object of class "NULL"</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Adjust the labels</span></span>
 <span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">nuts2_sf</span><span class="op">$</span><span class="va">categ</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Error: object 'nuts2_sf' not found</span></span>
 <span><span class="va">labs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"&lt; 15"</span></span>
+<span><span class="co">#&gt; Error in labs[1] &lt;- "&lt; 15": object of type 'closure' is not subsettable</span></span>
 <span><span class="va">labs</span><span class="op">[</span><span class="fl">6</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"&gt; 120"</span></span>
+<span><span class="co">#&gt; Error in labs[6] &lt;- "&gt; 120": object of type 'closure' is not subsettable</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">nuts2_sf</span><span class="op">$</span><span class="va">categ</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">labs</span></span>
+<span><span class="co">#&gt; Error: object 'nuts2_sf' not found</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Finally the plot</span></span>
@@ -299,12 +304,8 @@ packages are recommended, as they provide great color palettes.</p>
 <span>    caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
 <span>      <span class="st">"Source: Eurostat\n "</span>, <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2021)" width="100%"><p class="caption">
-Disposable income of private households by NUTS 2 regions (2021)
-</p>
-</div>
+<span>  <span class="op">)</span></span>
+<span><span class="co">#&gt; Error: object 'nuts2_sf' not found</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
