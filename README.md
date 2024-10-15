@@ -360,7 +360,8 @@ This package is in no way officially related to or endorsed by Eurostat.
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-RJ-2017-019" class="csl-entry">
 

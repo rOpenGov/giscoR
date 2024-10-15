@@ -190,13 +190,18 @@ nuts2_sf <- nuts2 %>%
     values_th = values / 1000,
     categ = cut(values_th, c(0, 15, 30, 60, 90, 120, Inf))
   )
+#> Error in UseMethod("left_join"): no applicable method for 'left_join' applied to an object of class "NULL"
 
 
 # Adjust the labels
 labs <- levels(nuts2_sf$categ)
+#> Error: object 'nuts2_sf' not found
 labs[1] <- "< 15"
+#> Error in labs[1] <- "< 15": object of type 'closure' is not subsettable
 labs[6] <- "> 120"
+#> Error in labs[6] <- "> 120": object of type 'closure' is not subsettable
 levels(nuts2_sf$categ) <- labs
+#> Error: object 'nuts2_sf' not found
 
 
 # Finally the plot
@@ -249,9 +254,5 @@ ggplot(nuts2_sf) +
       "Source: Eurostat\n ", gisco_attributions()
     )
   )
+#> Error: object 'nuts2_sf' not found
 ```
-
-<div class="figure">
-<img src="./giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2021)" width="100%" />
-<p class="caption">Disposable income of private households by NUTS 2 regions (2021)</p>
-</div>
