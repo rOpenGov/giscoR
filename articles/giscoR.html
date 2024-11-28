@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
 <script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get started with giscoR">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-VGVFXGHWRL"></script><script>
@@ -241,18 +241,13 @@ packages are recommended, as they provide great color palettes.</p>
 <span>    values_th <span class="op">=</span> <span class="va">values</span> <span class="op">/</span> <span class="fl">1000</span>,</span>
 <span>    categ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">values_th</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">15</span>, <span class="fl">30</span>, <span class="fl">60</span>, <span class="fl">90</span>, <span class="fl">120</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Error in UseMethod("left_join"): no applicable method for 'left_join' applied to an object of class "NULL"</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Adjust the labels</span></span>
 <span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">nuts2_sf</span><span class="op">$</span><span class="va">categ</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Error: object 'nuts2_sf' not found</span></span>
 <span><span class="va">labs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"&lt; 15"</span></span>
-<span><span class="co">#&gt; Error in labs[1] &lt;- "&lt; 15": object of type 'closure' is not subsettable</span></span>
 <span><span class="va">labs</span><span class="op">[</span><span class="fl">6</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"&gt; 120"</span></span>
-<span><span class="co">#&gt; Error in labs[6] &lt;- "&gt; 120": object of type 'closure' is not subsettable</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">nuts2_sf</span><span class="op">$</span><span class="va">categ</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">labs</span></span>
-<span><span class="co">#&gt; Error: object 'nuts2_sf' not found</span></span>
 <span></span>
 <span></span>
 <span><span class="co"># Finally the plot</span></span>
@@ -304,8 +299,12 @@ packages are recommended, as they provide great color palettes.</p>
 <span>    caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
 <span>      <span class="st">"Source: Eurostat\n "</span>, <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="co">#&gt; Error: object 'nuts2_sf' not found</span></span></code></pre></div>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="figure">
+<img src="giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2021)" width="100%"><p class="caption">
+Disposable income of private households by NUTS 2 regions (2021)
+</p>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
