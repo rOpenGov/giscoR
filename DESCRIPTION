@@ -52,4 +52,5 @@ RoxygenNote: 7.3.2
 X-schema.org-applicationCategory: cartography
 X-schema.org-isPartOf: http://ropengov.org/
 X-schema.org-keywords: ropengov, r, spatial, api-wrapper, rstats,
-    r-package, eurostat, gisco, thematic-maps, eurostat-data
+    r-package, eurostat, gisco, thematic-maps, eurostat-data, cran,
+    ggplot2, gis
