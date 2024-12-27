@@ -184,7 +184,7 @@ gsc_helper_detect_cache_dir <- function() {
 
       # 3. Return from cached path
       Sys.setenv(GISCO_CACHE_DIR = cached_path)
-      return(cached_path)
+      cached_path
     } else {
       # 4. Default cache location
 
@@ -192,10 +192,10 @@ gsc_helper_detect_cache_dir <- function() {
         overwrite = TRUE,
         verbose = FALSE
       )
-      return(cache_dir)
+      cache_dir
     }
   } else {
-    return(getvar)
+    getvar
   }
   # nocov end
 }

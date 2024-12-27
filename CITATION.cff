@@ -63,6 +63,7 @@ keywords:
 - cran
 - ggplot2
 - gis
+- cran-r
 references:
 - type: software
   title: 'R: A Language and Environment for Statistical Computing'
