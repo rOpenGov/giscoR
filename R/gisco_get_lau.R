@@ -57,7 +57,7 @@ gisco_get_lau <- function(year = "2021", epsg = "4326", cache = TRUE,
     }
 
     # Get layer name
-    layer <- tools::file_path_sans_ext(basename(namefileload))
+    layer <- as.character(sf::st_layers(namefileload)[1, 1])
 
     # Construct query
     q <- paste0("SELECT * from \"", layer, "\" WHERE")
