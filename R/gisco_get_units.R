@@ -261,7 +261,7 @@ gsc_units_sf <- function(id_giscoR,
 
   # Last check
   df_sf <- sf::st_make_valid(df_sf)
-  return(df_sf)
+  df_sf
 }
 
 #' Download data frame for units
@@ -349,5 +349,5 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
 
 
   gsc_message(verbose, "Database loaded succesfully")
-  return(df_csv)
+  df_csv
 }

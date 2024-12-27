@@ -92,7 +92,7 @@ gsc_helper_utf8 <- function(data_sf) {
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  return(data_sf)
+  data_sf
 }
 
 
@@ -105,7 +105,7 @@ gsc_message <- function(verbose, ...) {
 
   if (verbose) message(msg)
 
-  return(invisible())
+  invisible()
 }
 
 
