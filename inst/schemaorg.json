@@ -18,12 +18,6 @@
         {
           "type": "Organization",
           "name": "EuroGeographics"
-        },
-        {
-          "id": "https://orcid.org/0000-0003-2042-7063",
-          "type": "Person",
-          "familyName": "Arel-Bundock",
-          "givenName": "Vincent"
         }
       ],
       "description": "Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.",

@@ -41,12 +41,6 @@
     {
       "@type": "Organization",
       "name": "EuroGeographics"
-    },
-    {
-      "@type": "Person",
-      "givenName": "Vincent",
-      "familyName": "Arel-Bundock",
-      "@id": "https://orcid.org/0000-0003-2042-7063"
     }
   ],
   "maintainer": [
@@ -240,7 +234,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis", "cran-r"],
-  "fileSize": "1242.561KB",
+  "fileSize": "1242.162KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

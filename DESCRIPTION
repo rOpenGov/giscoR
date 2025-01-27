@@ -5,10 +5,7 @@ Version: 0.6.1
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658")),
-    person("EuroGeographics", role = "cph",
-           comment = c(note = "for the administrative boundaries.")),
-    person("Vincent", "Arel-Bundock", role = "cph",
-           comment = c(ORCID = "0000-0003-2042-7063", note = "for the gisco_countrycode dataset."))
+    person("EuroGeographics", role = "cph")
   )
 Description: Tools to download data from the GISCO (Geographic Information
     System of the Commission) Eurostat database
