@@ -20,7 +20,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID}) (rOpenGov) [copyright holder]
+\strong{Maintainer}: Diego Hernangómez \email{diego.hernangomezherrero@gmail.com} (\href{https://orcid.org/0000-0001-8457-4658}{ORCID}) [copyright holder]
 
 Other contributors:
 \itemize{

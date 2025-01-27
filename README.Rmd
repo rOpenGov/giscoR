@@ -88,19 +88,6 @@ install.packages("giscoR",
 
 ## Usage
 
-```{r echo=FALSE, results='asis'}
-v <- packageVersion("giscoR")
-
-l <- unlist(strsplit(as.character(v), ".", fixed = TRUE))
-
-if (length(l) == 4) {
-  cat(
-    "You can have a look to the documentation of",
-    "the dev version in <https://ropengov.github.io/giscoR/dev/>"
-  )
-}
-```
-
 This script highlights some features of **giscoR** :
 
 ```{r example}
@@ -129,7 +116,7 @@ DNK_all <- bind_rows(DNK_res60, DNK_res20, DNK_res10, DNK_res03)
 library(ggplot2)
 
 ggplot(DNK_all) +
-  geom_sf(fill = "tomato") +
+  geom_sf(fill = "#c8102e") +
   facet_wrap(vars(res)) +
   theme_minimal()
 

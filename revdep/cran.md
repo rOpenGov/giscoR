@@ -1,7 +1,12 @@
 ## revdepcheck results
 
-We checked 6 reverse dependencies (0 from CRAN + 6 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
+We checked 6 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
  * We saw 0 new problems
- * We failed to check 0 packages
+ * We failed to check 1 packages
 
+Issues with CRAN packages are summarised below.
+
+### Failed to check
+
+* clustTMB (NA)
