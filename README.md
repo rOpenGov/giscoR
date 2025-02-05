@@ -360,6 +360,20 @@ This package is in no way officially related to or endorsed by Eurostat.
 
 ## References
 
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
+
+<div id="ref-RJ-2017-019" class="csl-entry">
+
+Lahti, Leo, Janne Huovari, Markus Kainu, and Przemysław Biecek. 2017.
+“<span class="nocase">Retrieval and Analysis of Eurostat Open Data with
+the eurostat Package</span>.” *The R Journal* 9 (1): 385–92.
+<https://doi.org/10.32614/RJ-2017-019>.
+
+</div>
+
+</div>
+
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
@@ -552,17 +566,3 @@ specification. Contributions of any kind are welcome!
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
-
-<div id="ref-RJ-2017-019" class="csl-entry">
-
-Lahti, Leo, Janne Huovari, Markus Kainu, and Przemysław Biecek. 2017.
-“<span class="nocase">Retrieval and Analysis of Eurostat Open Data with
-the eurostat Package</span>.” *The R Journal* 9 (1): 385–92.
-<https://doi.org/10.32614/RJ-2017-019>.
-
-</div>
-
-</div>
