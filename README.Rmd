@@ -363,160 +363,173 @@ This package is in no way officially related to or endorsed by Eurostat.
 
 ## Contributors
 
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-
 <!-- prettier-ignore-start -->
-
 <!-- markdownlint-disable -->
 
-All contributions to this project are gratefully acknowledged using the
-[`allcontributors` package](https://github.com/ropensci/allcontributors)
-following the [allcontributors](https://allcontributors.org) specification.
-Contributions of any kind are welcome!
+All contributions to this project are gratefully acknowledged using the [`allcontributors` package](https://github.com/ropensci/allcontributors) following the [allcontributors](https://allcontributors.org) specification. Contributions of any kind are welcome!
 
 ### Code
 
-+------------------------------------------------------------------------------+
-| [![](https://avatars.githubusercontent.com/u/25656809?v=4){alt=""}           |
-| ](https://github.com/dieghernan)\                                            |
-| [dieghernan](https://github.com/rOpenGov/giscoR/commits?author=dieghernan)   |
-+------------------------------------------------------------------------------+
+<table class="table allctb-table" >
+
+<tr>
+<td align="center">
+<a href="https://github.com/dieghernan">
+<img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/commits?author=dieghernan">dieghernan</a>
+</td>
+</tr>
+
+</table>
+
 
 ### Issue Authors
 
-+--------+--------+--------+--------+--------+--------+--------+--------+
-| [![](  | [      | [![](h | [![](h | [      | [      | [      | [![](  |
-| https: | ![](ht | ttps:/ | ttps:/ | ![](ht | ![](ht | ![](ht | https: |
-| //avat | tps:// | /avata | /avata | tps:// | tps:// | tps:// | //avat |
-| ars.gi | avatar | rs.git | rs.git | avatar | avatar | avatar | ars.gi |
-| thubus | s.gith | hubuse | hubuse | s.gith | s.gith | s.gith | thubus |
-| ercont | ubuser | rconte | rconte | ubuser | ubuser | ubuser | ercont |
-| ent.co | conten | nt.com | nt.com | conten | conten | conten | ent.co |
-| m/u/31 | t.com/ | /u/150 | /u/231 | t.com/ | t.com/ | t.com/ | m/u/12 |
-| 28982? | u/2089 | 16826? | 49739? | u/6981 | u/4230 | u/6288 | 85650? |
-| v=4){a | 3206?u | v=4){a | v=4){a | 3611?u | 0133?u | 6579?u | v=4){a |
-| lt=""} | =52f10 | lt=""} | lt=""} | =824c1 | =0b58f | =d2e67 | lt=""} |
-| ]      | 63b756 | ]      | ](http | 0fc689 | 378f81 | 7a6e98 | ](     |
-| (https | 12eac4 | (https | s://gi | a7f358 | 3ca044 | 99bcfb | https: |
-| ://git | 9b2be4 | ://git | thub.c | 9c9640 | 4df64c | 21dd72 | //gith |
-| hub.co | 3de36d | hub.co | om/mar | bb7edf | 8f73b3 | 471efb | ub.com |
-| m/lodd | 036fd9 | m/umbe | tinhul | 23513a | d1ec49 | a00694 | /richa |
-| erig)\ | 5abb2& | 1987)\ | enyi)\ | 12e42& | 7a82c& | 61410& | rdtc)\ |
-| [lodde | v=4){a | [umbe1 | [mar   | v=4){a | v=4){a | v=4){a | [r     |
-| rig](h | lt=""} | 987](h | tinhul | lt=""} | lt=""} | lt=""} | ichard |
-| ttps:/ | ](h    | ttps:/ | enyi]( | ](http | ](ht   | ](http | tc](ht |
-| /githu | ttps:/ | /githu | https: | s://gi | tps:// | s://gi | tps:// |
-| b.com/ | /githu | b.com/ | //gith | thub.c | github | thub.c | github |
-| rOpenG | b.com/ | rOpenG | ub.com | om/pit | .com/d | om/nah | .com/r |
-| ov/gis | elijah | ov/gis | /rOpen | kant)\ | ominic | in29)\ | OpenGo |
-| coR/is | rona)\ | coR/is | Gov/gi | [pit   | roye)\ | [nah   | v/gisc |
-| sues?q | [eli   | sues?q | scoR/i | kant]( | [domin | in29]( | oR/iss |
-| =is%3A | jahron | =is%3A | ssues? | https: | icroye | https: | ues?q= |
-| issue+ | a](htt | issue+ | q=is%3 | //gith | ](http | //gith | is%3Ai |
-| author | ps://g | author | Aissue | ub.com | s://gi | ub.com | ssue+a |
-| %3Alod | ithub. | %3Aumb | +autho | /rOpen | thub.c | /rOpen | uthor% |
-| derig) | com/rO | e1987) | r%3Ama | Gov/gi | om/rOp | Gov/gi | 3Arich |
-|        | penGov |        | rtinhu | scoR/i | enGov/ | scoR/i | ardtc) |
-|        | /gisco |        | lenyi) | ssues? | giscoR | ssues? |        |
-|        | R/issu |        |        | q=is%3 | /issue | q=is%3 |        |
-|        | es?q=i |        |        | Aissue | s?q=is | Aissue |        |
-|        | s%3Ais |        |        | +autho | %3Aiss | +autho |        |
-|        | sue+au |        |        | r%3Api | ue+aut | r%3Ana |        |
-|        | thor%3 |        |        | tkant) | hor%3A | hin29) |        |
-|        | Aelija |        |        |        | domini |        |        |
-|        | hrona) |        |        |        | croye) |        |        |
-+--------+--------+--------+--------+--------+--------+--------+--------+
-| [![](h | [![]   | [![](h | [      | [![](h | [      | [![](h |        |
-| ttps:/ | (https | ttps:/ | ![](ht | ttps:/ | ![](ht | ttps:/ |        |
-| /avata | ://ava | /avata | tps:// | /avata | tps:// | /avata |        |
-| rs.git | tars.g | rs.git | avatar | rs.git | avatar | rs.git |        |
-| hubuse | ithubu | hubuse | s.gith | hubuse | s.gith | hubuse |        |
-| rconte | sercon | rconte | ubuser | rconte | ubuser | rconte |        |
-| nt.com | tent.c | nt.com | conten | nt.com | conten | nt.com |        |
-| /u/585 | om/u/9 | /u/840 | t.com/ | /u/132 | t.com/ | /u/547 |        |
-| 6545?u | 87057? | 15506? | u/4299 | 35761? | u/1797 | 62742? |        |
-| =640bf | v=4){a | v=4){a | 9492?u | v=4){a | 86080? | v=4){a |        |
-| 30b479 | lt=""} | lt=""} | =df413 | lt=""} | v=4){a | lt=""} |        |
-| 8fd06b | ](htt  | ](h    | 5b75c6 | ](ht   | lt=""} | ](http |        |
-| ecb5a2 | ps://g | ttps:/ | 26a031 | tps:// | ](ht   | s://gi |        |
-| 2d56f3 | ithub. | /githu | ec914a | github | tps:// | thub.c |        |
-| 8d63ca | com/vi | b.com/ | 4c2a8f | .com/h | github | om/raf |        |
-| b78d2& | ncenta | swimme | e21f32 | annesa | .com/k | faem)\ |        |
-| v=4){a | relbun | r008)\ | 66f1d& | ddec)\ | alegod | [raf   |        |
-| lt=""} | dock)\ | [swi   | v=4){a | [hanne | dess)\ | faem]( |        |
-| ](ht   | [v     | mmer00 | lt=""} | saddec | [kaleg | https: |        |
-| tps:// | incent | 8](htt | ](     | ](http | oddess | //gith |        |
-| github | arelbu | ps://g | https: | s://gi | ](http | ub.com |        |
-| .com/m | ndock] | ithub. | //gith | thub.c | s://gi | /rOpen |        |
-| aurole | (https | com/rO | ub.com | om/rOp | thub.c | Gov/gi |        |
-| pore)\ | ://git | penGov | /RemiD | enGov/ | om/rOp | scoR/i |        |
-| [mauro | hub.co | /gisco | umas)\ | giscoR | enGov/ | ssues? |        |
-| lepore | m/rOpe | R/issu | [R     | /issue | giscoR | q=is%3 |        |
-| ](http | nGov/g | es?q=i | emiDum | s?q=is | /issue | Aissue |        |
-| s://gi | iscoR/ | s%3Ais | as](ht | %3Aiss | s?q=is | +autho |        |
-| thub.c | issues | sue+au | tps:// | ue+aut | %3Aiss | r%3Ara |        |
-| om/rOp | ?q=is% | thor%3 | github | hor%3A | ue+aut | ffaem) |        |
-| enGov/ | 3Aissu | Aswimm | .com/r | hannes | hor%3A |        |        |
-| giscoR | e+auth | er008) | OpenGo | addec) | kalego |        |        |
-| /issue | or%3Av |        | v/gisc |        | ddess) |        |        |
-| s?q=is | incent |        | oR/iss |        |        |        |        |
-| %3Aiss | arelbu |        | ues?q= |        |        |        |        |
-| ue+aut | ndock) |        | is%3Ai |        |        |        |        |
-| hor%3A |        |        | ssue+a |        |        |        |        |
-| maurol |        |        | uthor% |        |        |        |        |
-| epore) |        |        | 3ARemi |        |        |        |        |
-|        |        |        | Dumas) |        |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+--------+
+<table class="table allctb-table" >
+
+<tr>
+<td align="center">
+<a href="https://github.com/lodderig">
+<img src="https://avatars.githubusercontent.com/u/3128982?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Alodderig">lodderig</a>
+</td>
+<td align="center">
+<a href="https://github.com/umbe1987">
+<img src="https://avatars.githubusercontent.com/u/15016826?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Aumbe1987">umbe1987</a>
+</td>
+<td align="center">
+<a href="https://github.com/martinhulenyi">
+<img src="https://avatars.githubusercontent.com/u/23149739?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Amartinhulenyi">martinhulenyi</a>
+</td>
+<td align="center">
+<a href="https://github.com/pitkant">
+<img src="https://avatars.githubusercontent.com/u/69813611?u=824c10fc689a7f3589c9640bb7edf23513a12e42&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Apitkant">pitkant</a>
+</td>
+<td align="center">
+<a href="https://github.com/nahin29">
+<img src="https://avatars.githubusercontent.com/u/62886579?u=d2e677a6e9899bcfb21dd72471efba0069461410&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Anahin29">nahin29</a>
+</td>
+<td align="center">
+<a href="https://github.com/richardtc">
+<img src="https://avatars.githubusercontent.com/u/1285650?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Arichardtc">richardtc</a>
+</td>
+<td align="center">
+<a href="https://github.com/maurolepore">
+<img src="https://avatars.githubusercontent.com/u/5856545?u=640bf30b4798fd06becb5a22d56f38d63cab78d2&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Amaurolepore">maurolepore</a>
+</td>
+<td align="center">
+<a href="https://github.com/vincentarelbundock">
+<img src="https://avatars.githubusercontent.com/u/987057?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Avincentarelbundock">vincentarelbundock</a>
+</td>
+</tr>
+
+
+<tr>
+<td align="center">
+<a href="https://github.com/swimmer008">
+<img src="https://avatars.githubusercontent.com/u/84015506?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Aswimmer008">swimmer008</a>
+</td>
+<td align="center">
+<a href="https://github.com/RemiDumas">
+<img src="https://avatars.githubusercontent.com/u/42999492?u=df4135b75c626a031ec914a4c2a8fe21f3266f1d&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3ARemiDumas">RemiDumas</a>
+</td>
+<td align="center">
+<a href="https://github.com/hannesaddec">
+<img src="https://avatars.githubusercontent.com/u/13235761?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Ahannesaddec">hannesaddec</a>
+</td>
+<td align="center">
+<a href="https://github.com/kalegoddess">
+<img src="https://avatars.githubusercontent.com/u/179786080?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Akalegoddess">kalegoddess</a>
+</td>
+<td align="center">
+<a href="https://github.com/raffaem">
+<img src="https://avatars.githubusercontent.com/u/54762742?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Araffaem">raffaem</a>
+</td>
+<td align="center">
+<a href="https://github.com/dominicroye">
+<img src="https://avatars.githubusercontent.com/u/42300133?u=0b58f378f813ca0444df64c8f73b3d1ec497a82c&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
+</td>
+</tr>
+
+</table>
+
 
 ### Issue Contributors
 
-+--------+--------+--------+--------+--------+--------+--------+--------+
-| [![](h | [![](h | [![](h | [![](h | [      | [      | [      | [      |
-| ttps:/ | ttps:/ | ttps:/ | ttps:/ | ![](ht | ![](ht | ![](ht | ![](ht |
-| /avata | /avata | /avata | /avata | tps:// | tps:// | tps:// | tps:// |
-| rs.git | rs.git | rs.git | rs.git | avatar | avatar | avatar | avatar |
-| hubuse | hubuse | hubuse | hubuse | s.gith | s.gith | s.gith | s.gith |
-| rconte | rconte | rconte | rconte | ubuser | ubuser | ubuser | ubuser |
-| nt.com | nt.com | nt.com | nt.com | conten | conten | conten | conten |
-| /u/675 | /u/690 | /u/980 | /u/636 | t.com/ | t.com/ | t.com/ | t.com/ |
-| 9913?u | 33788? | 6572?u | 0066?u | u/7643 | u/1130 | u/1640 | u/1694 |
-| =81d80 | v=4){a | =043bf | =60987 | 4717?u | 52114? | 87714? | 50649? |
-| 006adb | lt=""} | 244790 | 3695a6 | =cf223 | v=4){a | v=4){a | v=4){a |
-| b3c7ab | ](http | f0e448 | ad7ca9 | 5261c2 | lt=""} | lt=""} | lt=""} |
-| 6a607d | s://gi | 86f5a7 | fdad64 | 2d1703 | ](ht   | ](ht   | ](h    |
-| 00cfb9 | thub.c | 34fc2c | 7d29a7 | cc8f66 | tps:// | tps:// | ttps:/ |
-| 09c918 | om/tri | d052af | c972cc | 852507 | github | github | /githu |
-| 490a9& | fick)\ | 5af26& | fdbb8& | 5efd4c | .com/w | .com/j | b.com/ |
-| v=4){a | [      | v=4){a | v=4){a | 321dd& | ebervi | oelang | pradis |
-| lt=""} | trific | lt=""} | lt=""} | v=4){a | enna)\ | ley9)\ | teph)\ |
-| ]      | k](htt | ](htt  | ]      | lt=""} | [we    | [jo    | [      |
-| (https | ps://g | ps://g | (https | ](htt  | bervie | elangl | pradis |
-| ://git | ithub. | ithub. | ://git | ps://g | nna](h | ey9](h | teph]( |
-| hub.co | com/rO | com/vi | hub.co | ithub. | ttps:/ | ttps:/ | https: |
-| m/Dele | penGov | n-ni)\ | m/matt | com/GB | /githu | /githu | //gith |
-| etdk)\ | /gisco | [vin-  | eodefe | -IHE)\ | b.com/ | b.com/ | ub.com |
-| [De    | R/issu | ni](ht | lice)\ | [GB-I  | rOpenG | rOpenG | /rOpen |
-| leetdk | es?q=i | tps:// | [ma    | HE](ht | ov/gis | ov/gis | Gov/gi |
-| ](http | s%3Ais | github | tteode | tps:// | coR/is | coR/is | scoR/i |
-| s://gi | sue+co | .com/r | felice | github | sues?q | sues?q | ssues? |
-| thub.c | mmente | OpenGo | ](http | .com/r | =is%3A | =is%3A | q=is%3 |
-| om/rOp | r%3Atr | v/gisc | s://gi | OpenGo | issue+ | issue+ | Aissue |
-| enGov/ | ifick) | oR/iss | thub.c | v/gisc | commen | commen | +comme |
-| giscoR |        | ues?q= | om/rOp | oR/iss | ter%3A | ter%3A | nter%3 |
-| /issue |        | is%3Ai | enGov/ | ues?q= | weberv | joelan | Apradi |
-| s?q=is |        | ssue+c | giscoR | is%3Ai | ienna) | gley9) | steph) |
-| %3Aiss |        | omment | /issue | ssue+c |        |        |        |
-| ue+com |        | er%3Av | s?q=is | omment |        |        |        |
-| menter |        | in-ni) | %3Aiss | er%3AG |        |        |        |
-| %3ADel |        |        | ue+com | B-IHE) |        |        |        |
-| eetdk) |        |        | menter |        |        |        |        |
-|        |        |        | %3Amat |        |        |        |        |
-|        |        |        | teodef |        |        |        |        |
-|        |        |        | elice) |        |        |        |        |
-+--------+--------+--------+--------+--------+--------+--------+--------+
+<table class="table allctb-table" >
+
+<tr>
+<td align="center">
+<a href="https://github.com/vin-ni">
+<img src="https://avatars.githubusercontent.com/u/9806572?u=043bf244790f0e44886f5a734fc2cd052af5af26&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Avin-ni">vin-ni</a>
+</td>
+<td align="center">
+<a href="https://github.com/matteodefelice">
+<img src="https://avatars.githubusercontent.com/u/6360066?u=609873695a6ad7ca9fdad647d29a7c972ccfdbb8&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Amatteodefelice">matteodefelice</a>
+</td>
+<td align="center">
+<a href="https://github.com/GB-IHE">
+<img src="https://avatars.githubusercontent.com/u/76434717?u=cf2235261c22d1703cc8f668525075efd4c321dd&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3AGB-IHE">GB-IHE</a>
+</td>
+<td align="center">
+<a href="https://github.com/webervienna">
+<img src="https://avatars.githubusercontent.com/u/113052114?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Awebervienna">webervienna</a>
+</td>
+<td align="center">
+<a href="https://github.com/joelangley9">
+<img src="https://avatars.githubusercontent.com/u/164087714?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Ajoelangley9">joelangley9</a>
+</td>
+<td align="center">
+<a href="https://github.com/pradisteph">
+<img src="https://avatars.githubusercontent.com/u/169450649?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Apradisteph">pradisteph</a>
+</td>
+</tr>
+
+</table>
 
 <!-- markdownlint-enable -->
-
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+

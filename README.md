@@ -183,7 +183,6 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
-#> indexed 0B in  0s, 0B/sindexed 2.15GB in  0s, 2.15GB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -410,12 +409,6 @@ specification. Contributions of any kind are welcome!
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Alodderig">lodderig</a>
 </td>
 <td align="center">
-<a href="https://github.com/elijahrona">
-<img src="https://avatars.githubusercontent.com/u/20893206?u=52f1063b75612eac49b2be43de36d036fd95abb2&v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Aelijahrona">elijahrona</a>
-</td>
-<td align="center">
 <a href="https://github.com/umbe1987">
 <img src="https://avatars.githubusercontent.com/u/15016826?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
@@ -434,12 +427,6 @@ specification. Contributions of any kind are welcome!
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Apitkant">pitkant</a>
 </td>
 <td align="center">
-<a href="https://github.com/dominicroye">
-<img src="https://avatars.githubusercontent.com/u/42300133?u=0b58f378f813ca0444df64c8f73b3d1ec497a82c&v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
-</td>
-<td align="center">
 <a href="https://github.com/nahin29">
 <img src="https://avatars.githubusercontent.com/u/62886579?u=d2e677a6e9899bcfb21dd72471efba0069461410&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
@@ -451,8 +438,6 @@ specification. Contributions of any kind are welcome!
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Arichardtc">richardtc</a>
 </td>
-</tr>
-<tr>
 <td align="center">
 <a href="https://github.com/maurolepore">
 <img src="https://avatars.githubusercontent.com/u/5856545?u=640bf30b4798fd06becb5a22d56f38d63cab78d2&v=4" width="100px;" class="allctb-avatar" alt=""/>
@@ -465,6 +450,8 @@ specification. Contributions of any kind are welcome!
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Avincentarelbundock">vincentarelbundock</a>
 </td>
+</tr>
+<tr>
 <td align="center">
 <a href="https://github.com/swimmer008">
 <img src="https://avatars.githubusercontent.com/u/84015506?v=4" width="100px;" class="allctb-avatar" alt=""/>
@@ -495,6 +482,12 @@ specification. Contributions of any kind are welcome!
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Araffaem">raffaem</a>
 </td>
+<td align="center">
+<a href="https://github.com/dominicroye">
+<img src="https://avatars.githubusercontent.com/u/42300133?u=0b58f378f813ca0444df64c8f73b3d1ec497a82c&v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
+</td>
 </tr>
 </table>
 
@@ -502,18 +495,6 @@ specification. Contributions of any kind are welcome!
 
 <table class="table allctb-table">
 <tr>
-<td align="center">
-<a href="https://github.com/Deleetdk">
-<img src="https://avatars.githubusercontent.com/u/6759913?u=81d80006adbb3c7ab6a607d00cfb909c918490a9&v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3ADeleetdk">Deleetdk</a>
-</td>
-<td align="center">
-<a href="https://github.com/trifick">
-<img src="https://avatars.githubusercontent.com/u/69033788?v=4" width="100px;" class="allctb-avatar" alt=""/>
-</a><br>
-<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Atrifick">trifick</a>
-</td>
 <td align="center">
 <a href="https://github.com/vin-ni">
 <img src="https://avatars.githubusercontent.com/u/9806572?u=043bf244790f0e44886f5a734fc2cd052af5af26&v=4" width="100px;" class="allctb-avatar" alt=""/>
