@@ -364,6 +364,7 @@ This package is in no way officially related to or endorsed by Eurostat.
 ## Contributors
 
 
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -479,6 +480,12 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
 </td>
+<td align="center">
+<a href="https://github.com/FSS-learning">
+<img src="https://avatars.githubusercontent.com/u/185188279?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3AFSS-learning">FSS-learning</a>
+</td>
 </tr>
 
 </table>
@@ -532,4 +539,5 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
 

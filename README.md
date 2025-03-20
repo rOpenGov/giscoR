@@ -488,6 +488,12 @@ specification. Contributions of any kind are welcome!
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
 </td>
+<td align="center">
+<a href="https://github.com/FSS-learning">
+<img src="https://avatars.githubusercontent.com/u/185188279?v=4" width="100px;" class="allctb-avatar" alt=""/>
+</a><br>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3AFSS-learning">FSS-learning</a>
+</td>
 </tr>
 </table>
 
