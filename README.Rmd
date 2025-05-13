@@ -365,6 +365,7 @@ This package is in no way officially related to or endorsed by Eurostat.
 
 
 
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -417,10 +418,10 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Apitkant">pitkant</a>
 </td>
 <td align="center">
-<a href="https://github.com/nahin29">
+<a href="https://github.com/mdnahinalam">
 <img src="https://avatars.githubusercontent.com/u/62886579?u=d2e677a6e9899bcfb21dd72471efba0069461410&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
-<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Anahin29">nahin29</a>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Amdnahinalam">mdnahinalam</a>
 </td>
 <td align="center">
 <a href="https://github.com/richardtc">
@@ -539,5 +540,6 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
 
 

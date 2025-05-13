@@ -427,10 +427,10 @@ specification. Contributions of any kind are welcome!
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Apitkant">pitkant</a>
 </td>
 <td align="center">
-<a href="https://github.com/nahin29">
+<a href="https://github.com/mdnahinalam">
 <img src="https://avatars.githubusercontent.com/u/62886579?u=d2e677a6e9899bcfb21dd72471efba0069461410&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
-<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Anahin29">nahin29</a>
+<a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Amdnahinalam">mdnahinalam</a>
 </td>
 <td align="center">
 <a href="https://github.com/richardtc">
