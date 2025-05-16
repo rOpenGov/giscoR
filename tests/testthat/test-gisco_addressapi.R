@@ -93,12 +93,7 @@ test_that("gisco_addressapi_search online", {
   expect_s3_class(n, "sf")
   expect_null(gisco_addressapi_search(country = "ES"))
 
-  expect_null(gisco_addressapi_search(
-    country = "ES",
-    province = "CASTILLA Y LEON",
-    city = "PARIS",
-    road = "MAYOR"
-  ))
+  expect_null(gisco_addressapi_search(country = "XYZ"))
 })
 
 
