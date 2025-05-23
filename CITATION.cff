@@ -265,20 +265,6 @@ references:
   year: '2025'
   doi: 10.32614/CRAN.package.knitr
 - type: software
-  title: lwgeom
-  abstract: 'lwgeom: Bindings to Selected ''liblwgeom'' Functions for Simple Features'
-  notes: Suggests
-  url: https://r-spatial.github.io/lwgeom/
-  repository: https://CRAN.R-project.org/package=lwgeom
-  authors:
-  - family-names: Pebesma
-    given-names: Edzer
-    email: edzer.pebesma@uni-muenster.de
-    orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2025'
-  doi: 10.32614/CRAN.package.lwgeom
-  version: '>= 0.2-2'
-- type: software
   title: rmarkdown
   abstract: 'rmarkdown: Dynamic Documents for R'
   notes: Suggests

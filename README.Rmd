@@ -1,7 +1,7 @@
 ---
 output: github_document
 bibliography: inst/REFERENCES.bib
-link-citations: yes
+link-citations: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
