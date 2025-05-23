@@ -377,9 +377,7 @@ the eurostat Package</span>.” *The R Journal* 9 (1): 385–92.
 ## Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-
 <!-- prettier-ignore-start -->
-
 <!-- markdownlint-disable -->
 
 All contributions to this project are gratefully acknowledged using the
@@ -390,215 +388,157 @@ specification. Contributions of any kind are welcome!
 ### Code
 
 <table class="table allctb-table">
-
 <tr>
-
 <td align="center">
-
 <a href="https://github.com/dieghernan">
 <img src="https://avatars.githubusercontent.com/u/25656809?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/commits?author=dieghernan">dieghernan</a>
 </td>
-
 </tr>
-
 </table>
 
 ### Issue Authors
 
 <table class="table allctb-table">
-
 <tr>
-
 <td align="center">
-
 <a href="https://github.com/lodderig">
 <img src="https://avatars.githubusercontent.com/u/3128982?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Alodderig">lodderig</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/umbe1987">
 <img src="https://avatars.githubusercontent.com/u/15016826?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Aumbe1987">umbe1987</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/martinhulenyi">
 <img src="https://avatars.githubusercontent.com/u/23149739?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Amartinhulenyi">martinhulenyi</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/pitkant">
 <img src="https://avatars.githubusercontent.com/u/69813611?u=824c10fc689a7f3589c9640bb7edf23513a12e42&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Apitkant">pitkant</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/mdnahinalam">
 <img src="https://avatars.githubusercontent.com/u/62886579?u=d2e677a6e9899bcfb21dd72471efba0069461410&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Amdnahinalam">mdnahinalam</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/richardtc">
 <img src="https://avatars.githubusercontent.com/u/1285650?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Arichardtc">richardtc</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/maurolepore">
 <img src="https://avatars.githubusercontent.com/u/5856545?u=640bf30b4798fd06becb5a22d56f38d63cab78d2&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Amaurolepore">maurolepore</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/vincentarelbundock">
 <img src="https://avatars.githubusercontent.com/u/987057?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Avincentarelbundock">vincentarelbundock</a>
 </td>
-
 </tr>
-
 <tr>
-
 <td align="center">
-
 <a href="https://github.com/swimmer008">
 <img src="https://avatars.githubusercontent.com/u/84015506?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Aswimmer008">swimmer008</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/RemiDumas">
 <img src="https://avatars.githubusercontent.com/u/42999492?u=df4135b75c626a031ec914a4c2a8fe21f3266f1d&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3ARemiDumas">RemiDumas</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/hannesaddec">
 <img src="https://avatars.githubusercontent.com/u/13235761?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Ahannesaddec">hannesaddec</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/kalegoddess">
 <img src="https://avatars.githubusercontent.com/u/179786080?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Akalegoddess">kalegoddess</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/raffaem">
 <img src="https://avatars.githubusercontent.com/u/54762742?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Araffaem">raffaem</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/dominicroye">
 <img src="https://avatars.githubusercontent.com/u/42300133?u=0b58f378f813ca0444df64c8f73b3d1ec497a82c&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3Adominicroye">dominicroye</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/FSS-learning">
 <img src="https://avatars.githubusercontent.com/u/185188279?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+author%3AFSS-learning">FSS-learning</a>
 </td>
-
 </tr>
-
 </table>
 
 ### Issue Contributors
 
 <table class="table allctb-table">
-
 <tr>
-
 <td align="center">
-
 <a href="https://github.com/vin-ni">
 <img src="https://avatars.githubusercontent.com/u/9806572?u=043bf244790f0e44886f5a734fc2cd052af5af26&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Avin-ni">vin-ni</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/matteodefelice">
 <img src="https://avatars.githubusercontent.com/u/6360066?u=609873695a6ad7ca9fdad647d29a7c972ccfdbb8&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Amatteodefelice">matteodefelice</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/GB-IHE">
 <img src="https://avatars.githubusercontent.com/u/76434717?u=cf2235261c22d1703cc8f668525075efd4c321dd&v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3AGB-IHE">GB-IHE</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/webervienna">
 <img src="https://avatars.githubusercontent.com/u/113052114?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Awebervienna">webervienna</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/joelangley9">
 <img src="https://avatars.githubusercontent.com/u/164087714?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Ajoelangley9">joelangley9</a>
 </td>
-
 <td align="center">
-
 <a href="https://github.com/pradisteph">
 <img src="https://avatars.githubusercontent.com/u/169450649?v=4" width="100px;" class="allctb-avatar" alt=""/>
 </a><br>
 <a href="https://github.com/rOpenGov/giscoR/issues?q=is%3Aissue+commenter%3Apradisteph">pradisteph</a>
 </td>
-
 </tr>
-
 </table>
-
 <!-- markdownlint-enable -->
-
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
