@@ -253,7 +253,7 @@
       "sameAs": "https://doi.org/10.32614/CRAN.package.giscoR"
     }
   ],
-  "releaseNotes": "https://github.com/rOpenGov/giscoR/blob/master/NEWS.md",
+  "releaseNotes": "https://github.com/rOpenGov/giscoR/blob/main/NEWS.md",
   "readme": "https://github.com/rOpenGov/giscoR/blob/main/README.md",
   "contIntegration": ["https://github.com/rOpenGov/giscoR/actions/workflows/check-full.yaml", "https://github.com/rOpenGov/giscoR/actions/workflows/rhub.yaml", "https://app.codecov.io/gh/ropengov/giscoR"],
   "developmentStatus": "https://www.repostatus.org/#active"
