@@ -90,7 +90,7 @@ For a complete list of files available check \link{gisco_db}.
 }
 
 \examples{
-\dontshow{if (gisco_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \dontrun{
 
 # Countries 2016 - It would take some time

@@ -138,7 +138,7 @@ The resulting object may present the following variables:\tabular{ll}{
 }
 }
 \examples{
-\dontshow{if (gisco_check_access()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
 # Cities in a region
 
