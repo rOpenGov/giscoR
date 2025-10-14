@@ -1,3 +1,7 @@
+# giscoR (development version)
+
+-   Improve tests.
+
 # giscoR 0.6.1
 
 -   Fix an issue when filtering source on `gisco_get_lau()`.

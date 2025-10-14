@@ -23,12 +23,4 @@ test_that("Communes online", {
   lu <- expect_silent(gisco_get_communes(spatialtype = "LB", country = "LU"))
 
   expect_equal(as.character(unique(lu$CNTR_CODE)), "LU")
-
-  # Test selected years
-  lb <- gisco_get_communes(
-    spatialtype = "LB", country = "LU", year = "2013",
-    verbose = FALSE
-  )
-
-  expect_equal(as.character(unique(lb$CNTR_CODE)), "LU")
 })

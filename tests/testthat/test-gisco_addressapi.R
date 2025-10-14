@@ -149,8 +149,8 @@ test_that("gisco_addressapi_housenumbers online", {
     country = "ES",
     province = "MADRID",
     city = "MADRID",
-    road = "USERA",
-    postcode = 28019
+    road = "CL MARCELO USERA",
+    postcode = 28026
   ))
   expect_s3_class(n, "data.frame")
 })

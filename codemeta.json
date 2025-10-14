@@ -8,13 +8,13 @@
   "codeRepository": "https://github.com/rOpenGov/giscoR",
   "issueTracker": "https://github.com/rOpenGov/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "0.6.1",
+  "version": "0.6.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.1 (2025-06-13 ucrt)",
+  "runtimePlatform": "R version 4.5.1 (2025-06-13)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -234,7 +234,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis", "cran-r"],
-  "fileSize": "1249.893KB",
+  "fileSize": "1241.563KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
