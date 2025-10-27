@@ -36,25 +36,33 @@
 #' }
 #' }
 #' @export
-gisco_get_healthcare <- function(year = c("2023", "2020"), cache = TRUE,
-                                 update_cache = FALSE, cache_dir = NULL,
-                                 verbose = FALSE, country = NULL) {
+gisco_get_healthcare <- function(
+  year = c("2023", "2020"),
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  country = NULL
+) {
   # Given vars
   year <- match.arg(year)
   epsg <- "4326"
   ext <- "gpkg"
 
   api_entry <- paste0(
-    "https://gisco-services.ec.europa.eu/pub/healthcare/", year,
+    "https://gisco-services.ec.europa.eu/pub/healthcare/",
+    year,
     "/gpkg/EU.gpkg"
   )
   filename <- paste0("health_", year, "_", basename(api_entry))
 
-
   if (cache) {
     # Guess source to load
     namefileload <- gsc_api_cache(
-      api_entry, filename, cache_dir, update_cache,
+      api_entry,
+      filename,
+      cache_dir,
+      update_cache,
       verbose
     )
   } else {

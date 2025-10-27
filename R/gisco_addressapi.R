@@ -71,10 +71,15 @@
 #'
 #' reverse
 #' }
-gisco_addressapi_search <- function(country = NULL, province = NULL,
-                                    city = NULL, road = NULL,
-                                    housenumber = NULL, postcode = NULL,
-                                    verbose = FALSE) {
+gisco_addressapi_search <- function(
+  country = NULL,
+  province = NULL,
+  city = NULL,
+  road = NULL,
+  housenumber = NULL,
+  postcode = NULL,
+  verbose = FALSE
+) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/search?"
   custom_query <- list(
     country = country,
@@ -84,7 +89,6 @@ gisco_addressapi_search <- function(country = NULL, province = NULL,
     housenumber = housenumber,
     postcode = postcode
   )
-
 
   call_api(custom_query, apiurl, verbose)
 }
@@ -105,9 +109,14 @@ gisco_addressapi_reverse <- function(x, y, country = NULL, verbose = FALSE) {
 
 #' @rdname gisco_addressapi
 #' @export
-gisco_addressapi_bbox <- function(country = NULL, province = NULL, city = NULL,
-                                  road = NULL, postcode = NULL,
-                                  verbose = FALSE) {
+gisco_addressapi_bbox <- function(
+  country = NULL,
+  province = NULL,
+  city = NULL,
+  road = NULL,
+  postcode = NULL,
+  verbose = FALSE
+) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/bbox?"
   custom_query <- list(
     country = country,
@@ -120,8 +129,10 @@ gisco_addressapi_bbox <- function(country = NULL, province = NULL, city = NULL,
   apiurl <- add_custom_query(custom_query, apiurl)
   filename <- "address.json"
   namefileload <- gsc_api_cache(
-    apiurl, filename,
-    cache_dir = tempdir(), update_cache = TRUE,
+    apiurl,
+    filename,
+    cache_dir = tempdir(),
+    update_cache = TRUE,
     verbose = verbose
   )
 
@@ -129,7 +140,8 @@ gisco_addressapi_bbox <- function(country = NULL, province = NULL, city = NULL,
     return(NULL)
   }
 
-  results <- jsonlite::read_json(namefileload,
+  results <- jsonlite::read_json(
+    namefileload,
     simplifyVector = TRUE,
     flatten = TRUE
   )
@@ -167,8 +179,10 @@ gisco_addressapi_countries <- function(verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/countries"
   filename <- "address.json"
   namefileload <- gsc_api_cache(
-    apiurl, filename,
-    cache_dir = tempdir(), update_cache = TRUE,
+    apiurl,
+    filename,
+    cache_dir = tempdir(),
+    update_cache = TRUE,
     verbose = verbose
   )
 
@@ -176,7 +190,8 @@ gisco_addressapi_countries <- function(verbose = FALSE) {
     return(NULL)
   }
 
-  results <- jsonlite::read_json(namefileload,
+  results <- jsonlite::read_json(
+    namefileload,
     simplifyVector = TRUE,
     flatten = TRUE
   )
@@ -190,8 +205,11 @@ gisco_addressapi_countries <- function(verbose = FALSE) {
 
 #' @rdname gisco_addressapi
 #' @export
-gisco_addressapi_provinces <- function(country = NULL, city = NULL,
-                                       verbose = FALSE) {
+gisco_addressapi_provinces <- function(
+  country = NULL,
+  city = NULL,
+  verbose = FALSE
+) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/provinces?"
   custom_query <- list(
     country = country,
@@ -203,8 +221,11 @@ gisco_addressapi_provinces <- function(country = NULL, city = NULL,
 
 #' @rdname gisco_addressapi
 #' @export
-gisco_addressapi_cities <- function(country = NULL, province = NULL,
-                                    verbose = FALSE) {
+gisco_addressapi_cities <- function(
+  country = NULL,
+  province = NULL,
+  verbose = FALSE
+) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/cities?"
   custom_query <- list(
     country = country,
@@ -216,8 +237,12 @@ gisco_addressapi_cities <- function(country = NULL, province = NULL,
 
 #' @rdname gisco_addressapi
 #' @export
-gisco_addressapi_roads <- function(country = NULL, province = NULL, city = NULL,
-                                   verbose = FALSE) {
+gisco_addressapi_roads <- function(
+  country = NULL,
+  province = NULL,
+  city = NULL,
+  verbose = FALSE
+) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/roads?"
   custom_query <- list(
     country = country,
@@ -230,9 +255,14 @@ gisco_addressapi_roads <- function(country = NULL, province = NULL, city = NULL,
 
 #' @rdname gisco_addressapi
 #' @export
-gisco_addressapi_housenumbers <- function(country = NULL, province = NULL,
-                                          city = NULL, road = NULL,
-                                          postcode = NULL, verbose = FALSE) {
+gisco_addressapi_housenumbers <- function(
+  country = NULL,
+  province = NULL,
+  city = NULL,
+  road = NULL,
+  postcode = NULL,
+  verbose = FALSE
+) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/housenumbers?"
   custom_query <- list(
     country = country,
@@ -248,8 +278,12 @@ gisco_addressapi_housenumbers <- function(country = NULL, province = NULL,
 
 #' @rdname gisco_addressapi
 #' @export
-gisco_addressapi_postcodes <- function(country = NULL, province = NULL,
-                                       city = NULL, verbose = FALSE) {
+gisco_addressapi_postcodes <- function(
+  country = NULL,
+  province = NULL,
+  city = NULL,
+  verbose = FALSE
+) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/postcodes?"
   custom_query <- list(
     country = country,
@@ -274,8 +308,10 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
   apiurl <- add_custom_query(custom_query, apiurl)
   filename <- "address.json"
   namefileload <- gsc_api_cache(
-    apiurl, filename,
-    cache_dir = tempdir(), update_cache = TRUE,
+    apiurl,
+    filename,
+    cache_dir = tempdir(),
+    update_cache = TRUE,
     verbose = verbose
   )
 
@@ -283,7 +319,8 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
     return(NULL)
   }
 
-  results <- jsonlite::read_json(namefileload,
+  results <- jsonlite::read_json(
+    namefileload,
     simplifyVector = TRUE,
     flatten = TRUE
   )
@@ -322,11 +359,9 @@ add_custom_query <- function(custom_query = list(), url) {
   # Collapse
   custom_query <- lapply(custom_query, paste0, collapse = ",")
 
-
   opts <- paste0(names(custom_query), "=", custom_query, collapse = "&")
 
   end_url <- paste0(url, opts)
-
 
   URLencode(end_url)
 }

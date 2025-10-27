@@ -89,16 +89,23 @@
 #'   )
 #' }
 #' @export
-gisco_get_units <- function(id_giscoR = c("nuts", "countries", "urban_audit"),
-                            unit = "ES4", mode = c("sf", "df"), year = "2016",
-                            epsg = "4326", cache = TRUE, update_cache = FALSE,
-                            cache_dir = NULL, verbose = FALSE,
-                            resolution = "20", spatialtype = "RG") {
+gisco_get_units <- function(
+  id_giscoR = c("nuts", "countries", "urban_audit"),
+  unit = "ES4",
+  mode = c("sf", "df"),
+  year = "2016",
+  epsg = "4326",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "20",
+  spatialtype = "RG"
+) {
   year <- as.character(year)
 
   cache_dir <- gsc_helper_cachedir(cache_dir)
   unit <- unique(unit)
-
 
   # Validations
   id_giscoR <- match.arg(id_giscoR)
@@ -128,9 +135,14 @@ gisco_get_units <- function(id_giscoR = c("nuts", "countries", "urban_audit"),
     level <- "CITY"
   }
 
-
-  api_entry <- gsc_api_url(id_giscoR, year, epsg, resolution,
-    ext = "geojson", spatialtype, verbose = verbose,
+  api_entry <- gsc_api_url(
+    id_giscoR,
+    year,
+    epsg,
+    resolution,
+    ext = "geojson",
+    spatialtype,
+    verbose = verbose,
     level = level
   )
   basename <- basename(api_entry)
@@ -145,9 +157,17 @@ gisco_get_units <- function(id_giscoR = c("nuts", "countries", "urban_audit"),
     return(df)
   } else if (mode == "sf") {
     sf <- gsc_units_sf(
-      id_giscoR, unit, year,
-      epsg, cache, update_cache, cache_dir,
-      verbose, spatialtype, api_url, remain,
+      id_giscoR,
+      unit,
+      year,
+      epsg,
+      cache,
+      update_cache,
+      cache_dir,
+      verbose,
+      spatialtype,
+      api_url,
+      remain,
       level
     )
     return(sf)
@@ -156,18 +176,20 @@ gisco_get_units <- function(id_giscoR = c("nuts", "countries", "urban_audit"),
 
 #' Download sf for units
 #' @noRd
-gsc_units_sf <- function(id_giscoR,
-                         unit,
-                         year,
-                         epsg,
-                         cache,
-                         update_cache,
-                         cache_dir,
-                         verbose,
-                         spatialtype,
-                         api_url,
-                         remain,
-                         level) {
+gsc_units_sf <- function(
+  id_giscoR,
+  unit,
+  year,
+  epsg,
+  cache,
+  update_cache,
+  cache_dir,
+  verbose,
+  spatialtype,
+  api_url,
+  remain,
+  level
+) {
   cache_dir <- gsc_helper_cachedir(cache_dir)
 
   filename <- unit
@@ -218,16 +240,15 @@ gsc_units_sf <- function(id_giscoR,
       path <- file.path(api_url, filename[i])
     }
 
-
-
     if (inherits(path, "try-error") || is.null(path)) {
       gsc_message(
         TRUE,
-        "\nSkipping unit = ", unit[i], "\nNot found"
+        "\nSkipping unit = ",
+        unit[i],
+        "\nNot found"
       )
       next()
     }
-
 
     iter_sf <- try(
       gsc_api_load(path, epsg, "geojson", cache, verbose),
@@ -238,7 +259,8 @@ gsc_units_sf <- function(id_giscoR,
     if (inherits(iter_sf, "try-error")) {
       gsc_message(
         TRUE,
-        "\nSkipping unit = ", unit[i],
+        "\nSkipping unit = ",
+        unit[i],
         "\n Corrupted file"
       )
       next()
@@ -254,7 +276,10 @@ gsc_units_sf <- function(id_giscoR,
   }
 
   if (!exists("df_sf")) {
-    stop("No results for c(", paste0("'", unit, "'", collapse = ", "), ")",
+    stop(
+      "No results for c(",
+      paste0("'", unit, "'", collapse = ", "),
+      ")",
       call. = FALSE
     )
   }
@@ -346,7 +371,6 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
     stringsAsFactors = FALSE,
     encoding = "UTF-8"
   )
-
 
   gsc_message(verbose, "Database loaded succesfully")
   df_csv

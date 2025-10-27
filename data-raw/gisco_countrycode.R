@@ -24,7 +24,12 @@ gisco_countrycode <-
 # Change names to Eurostat and ISO to ease joins on giscoR
 
 names(gisco_countrycode) <-
-  c("CNTR_CODE", "iso2c", "ISO3_CODE", names(gisco_countrycode)[4:length(names(gisco_countrycode))])
+  c(
+    "CNTR_CODE",
+    "iso2c",
+    "ISO3_CODE",
+    names(gisco_countrycode)[4:length(names(gisco_countrycode))]
+  )
 
 # Add EU col
 EU <- igo_members("EU")["ccode"]
@@ -36,7 +41,6 @@ EU <- EU[EU$ISO3_CODE != "GBR", ]
 
 gisco_countrycode <- merge(gisco_countrycode, EU, all.x = TRUE)
 gisco_countrycode[is.na(gisco_countrycode$eu), "eu"] <- FALSE
-
 
 
 usethis::use_data(gisco_countrycode, overwrite = TRUE, compress = "gzip")

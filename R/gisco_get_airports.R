@@ -69,8 +69,13 @@
 #' }
 #' }
 #' @export
-gisco_get_airports <- function(year = "2013", country = NULL, cache_dir = NULL,
-                               update_cache = FALSE, verbose = FALSE) {
+gisco_get_airports <- function(
+  year = "2013",
+  country = NULL,
+  cache_dir = NULL,
+  update_cache = FALSE,
+  verbose = FALSE
+) {
   year <- as.character(year)
   if (year != "2013") {
     stop("Year should be 2013")
@@ -89,7 +94,6 @@ gisco_get_airports <- function(year = "2013", country = NULL, cache_dir = NULL,
   # Normalize to lonlat
   data_sf <- sf::st_transform(data_sf, 4326)
 
-
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
@@ -106,8 +110,13 @@ gisco_get_airports <- function(year = "2013", country = NULL, cache_dir = NULL,
 #' The port codes are aligned with UN/LOCODE standard.
 #'
 #' @export
-gisco_get_ports <- function(year = "2013", country = NULL, cache_dir = NULL,
-                            update_cache = FALSE, verbose = FALSE) {
+gisco_get_ports <- function(
+  year = "2013",
+  country = NULL,
+  cache_dir = NULL,
+  update_cache = FALSE,
+  verbose = FALSE
+) {
   year <- as.character(year)
   if (year != "2013") {
     stop("Year should be 2013")

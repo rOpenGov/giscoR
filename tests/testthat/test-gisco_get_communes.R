@@ -16,7 +16,8 @@ test_that("Communes online", {
   # even with verbose TRUE
   expect_message(gisco_get_communes(
     spatialtype = "COASTL",
-    country = "LU", verbose = FALSE
+    country = "LU",
+    verbose = FALSE
   ))
 
   expect_message(gisco_get_communes(spatialtype = "LB", verbose = TRUE))

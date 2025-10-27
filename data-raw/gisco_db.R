@@ -14,11 +14,13 @@ dataset <- "datasets.json"
 ext <- "geojson"
 
 # Function----
-dwndata <- function(name = "coastallines",
-                    api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/coas",
-                    clean = "coastline-",
-                    dataset = "datasets.json",
-                    ext = "geojson") {
+dwndata <- function(
+  name = "coastallines",
+  api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/coas",
+  clean = "coastline-",
+  dataset = "datasets.json",
+  ext = "geojson"
+) {
   # Create temp file
   tmp <- tempfile(dataset, fileext = ".json")
   tmp <- gsub("\\", "/", tmp, fixed = TRUE)
@@ -50,11 +52,12 @@ dwndata <- function(name = "coastallines",
     data.year$api_file <- gsub(ext, "{ext}", data.year$api_file)
     rownames(data.year) <- c()
 
-    data.year <- data.year %>% mutate(
-      api_entry = api_entry,
-      id_giscoR = name,
-      ext = paste0(ext.year, collapse = ",")
-    )
+    data.year <- data.year %>%
+      mutate(
+        api_entry = api_entry,
+        id_giscoR = name,
+        ext = paste0(ext.year, collapse = ",")
+      )
     if (exists("final.df")) {
       final.df <- bind_rows(final.df, data.year)
     } else {
@@ -117,7 +120,9 @@ for (i in seq_len(length(allepsg))) {
 
 df <- df %>%
   group_by(
-    api_file, api_entry, id_giscoR,
+    api_file,
+    api_entry,
+    id_giscoR,
     ext
   ) %>%
   summarise(epsg = paste(epsg, collapse = ","))
@@ -143,13 +148,13 @@ for (i in seq_len(length(allyear))) {
 
 df <- df %>%
   group_by(
-    api_file, api_entry, id_giscoR,
-    ext, epsg
+    api_file,
+    api_entry,
+    id_giscoR,
+    ext,
+    epsg
   ) %>%
-  summarise(year = paste(year,
-    collapse =
-      ","
-  ))
+  summarise(year = paste(year, collapse = ","))
 
 df <- as_tibble(df)
 # Resolution--
@@ -162,7 +167,6 @@ for (i in 1:length(avres)) {
     df[grep(char, df$api_file), ]$resolution <- char
   }
 }
-
 
 
 allres <- unique(df$resolution)
@@ -182,8 +186,6 @@ df <- as.data.frame(df)
 df[df$resolution == "NA", ]$resolution <- NA
 
 df <- as.data.frame(df)
-
-
 
 
 # Order matters - spatialtype
@@ -265,7 +267,6 @@ uraulev <-
 for (j in seq_len(length(uraulev))) {
   urau$api_file <- gsub(uraulev[j], "{level}", urau$api_file)
 }
-
 
 
 # Rejoin----

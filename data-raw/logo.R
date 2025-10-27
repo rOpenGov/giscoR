@@ -10,7 +10,6 @@ library(ggplot2)
 # sysfonts::font_add_google("Noto Serif")
 # sysfonts::font_families_google()
 
-
 map <- gisco_get_nuts(
   year = "2016",
   nuts_level = "3",
@@ -70,7 +69,6 @@ library(hexSticker)
 # fontinit <- as.character(windowsFonts("serif"))
 # windowsFonts(serif = windowsFont("Noto Serif"))
 
-
 sticker(
   a,
   package = "giscoR",
@@ -90,7 +88,6 @@ sticker(
   # p_size = 30,
   # dpi = 600
 )
-
 
 # windowsFonts(serif = fontinit)
 # windowsFonts("serif")

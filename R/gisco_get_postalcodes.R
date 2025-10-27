@@ -72,9 +72,13 @@
 #'     )
 #' }
 #' }
-gisco_get_postalcodes <- function(year = "2020", country = NULL,
-                                  cache_dir = NULL, update_cache = FALSE,
-                                  verbose = FALSE) {
+gisco_get_postalcodes <- function(
+  year = "2020",
+  country = NULL,
+  cache_dir = NULL,
+  update_cache = FALSE,
+  verbose = FALSE
+) {
   year <- as.character(year)
   if (year != "2020") {
     stop("Year should be 2020")
@@ -88,21 +92,27 @@ gisco_get_postalcodes <- function(year = "2020", country = NULL,
     )
   }
 
-
   filename <- basename(url)
 
   basename <- gsc_api_cache(
-    url = url, name = filename, cache_dir = cache_dir,
-    update_cache = update_cache, verbose = verbose
+    url = url,
+    name = filename,
+    cache_dir = cache_dir,
+    update_cache = update_cache,
+    verbose = verbose
   )
 
   if (is.null(basename)) {
     return(NULL)
   }
 
-  gsc_unzip(basename, cache_dir,
-    ext = "*", verbose = verbose,
-    update_cache = update_cache, recursive = FALSE
+  gsc_unzip(
+    basename,
+    cache_dir,
+    ext = "*",
+    verbose = verbose,
+    update_cache = update_cache,
+    recursive = FALSE
   )
 
   # Capture shp layer name
@@ -126,9 +136,9 @@ gisco_get_postalcodes <- function(year = "2020", country = NULL,
     # Construct query
     q <- paste0(
       "SELECT * from \"",
-      layer, "\" WHERE CNTR_ID IN (", paste0("'", country, "'",
-        collapse = ", "
-      ),
+      layer,
+      "\" WHERE CNTR_ID IN (",
+      paste0("'", country, "'", collapse = ", "),
       ")"
     )
 

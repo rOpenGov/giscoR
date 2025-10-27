@@ -1,14 +1,16 @@
 #' Extract downloading path
 #' @noRd
-gsc_api_url <- function(id_giscoR = "nuts",
-                        year = "2016",
-                        epsg = "4326",
-                        resolution = "60",
-                        spatialtype = "BN",
-                        ext = "geojson",
-                        nuts_level = "all",
-                        level = NULL,
-                        verbose = TRUE) {
+gsc_api_url <- function(
+  id_giscoR = "nuts",
+  year = "2016",
+  epsg = "4326",
+  resolution = "60",
+  spatialtype = "BN",
+  ext = "geojson",
+  nuts_level = "all",
+  level = NULL,
+  verbose = TRUE
+) {
   year <- as.character(year)
   epsg <- as.character(epsg)
   resolution <- as.character(resolution)
@@ -33,13 +35,11 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
   db <- db[grep(year, db$year), ]
 
-
   rm(av_years)
 
   # Available epsg
   av_epsg <- paste(db$epsg, collapse = ",")
   av_epsg <- sort(unique(unlist(strsplit(av_epsg, ","))))
-
 
   if (!(epsg %in% av_epsg)) {
     stop(
@@ -50,7 +50,6 @@ gsc_api_url <- function(id_giscoR = "nuts",
     )
   }
 
-
   db <- db[grep(epsg, db$epsg), ]
   rm(av_epsg)
 
@@ -58,8 +57,6 @@ gsc_api_url <- function(id_giscoR = "nuts",
 
   av_ext <- paste(db$ext, collapse = ",")
   av_ext <- sort(unique(unlist(strsplit(av_ext, ","))))
-
-
 
   if (!(ext %in% av_ext)) {
     stop(
@@ -73,17 +70,17 @@ gsc_api_url <- function(id_giscoR = "nuts",
   db <- db[grep(ext, db$ext), ]
   rm(av_ext)
 
-
   # Available spatialtype
   av_sptype <- paste(db$spatialtype, collapse = ",")
   av_sptype <- sort(unique(unlist(strsplit(av_sptype, ","))))
 
   if (length(av_sptype) == 1) {
     gsc_message(
-      verbose, "[Auto] Selecting spatialtype = '",
-      av_sptype, "'\n"
+      verbose,
+      "[Auto] Selecting spatialtype = '",
+      av_sptype,
+      "'\n"
     )
-
 
     spatialtype <- av_sptype
   } else {
@@ -108,7 +105,9 @@ gsc_api_url <- function(id_giscoR = "nuts",
   if (length(av_res) == 1) {
     gsc_message(
       verbose,
-      "[Auto] Selecting resolution = '", av_res, "'\n"
+      "[Auto] Selecting resolution = '",
+      av_res,
+      "'\n"
     )
 
     resolution <- av_res
@@ -137,7 +136,6 @@ gsc_api_url <- function(id_giscoR = "nuts",
       nuts_level <- "error"
     }
 
-
     if (!(nuts_level %in% av_nuts)) {
       stop(
         "Select one nuts level of ",
@@ -155,7 +153,6 @@ gsc_api_url <- function(id_giscoR = "nuts",
     if (is.null((level))) {
       level <- "all"
     }
-
 
     if (!(level %in% av_ualevel)) {
       stop(
@@ -187,7 +184,6 @@ gsc_api_url <- function(id_giscoR = "nuts",
   }
   # nocov end
 
-
   gisco_path <- db$api_file
   # Create api call
   params <-
@@ -200,7 +196,6 @@ gsc_api_url <- function(id_giscoR = "nuts",
       "level",
       "ext"
     )
-
 
   for (i in seq_len(length(params))) {
     patt <- paste0("\\{", params[i], "\\}")
@@ -230,20 +225,20 @@ gsc_api_url <- function(id_giscoR = "nuts",
 #' @name gsc_api_cache
 #' @noRd
 gsc_api_cache <-
-  function(url = NULL,
-           name = basename(url),
-           cache_dir = NULL,
-           update_cache = FALSE,
-           verbose = TRUE) {
+  function(
+    url = NULL,
+    name = basename(url),
+    cache_dir = NULL,
+    update_cache = FALSE,
+    verbose = TRUE
+  ) {
     cache_dir <- gsc_helper_cachedir(cache_dir)
 
     # Create destfile and clean
     file_local <- file.path(cache_dir, name)
     file_local <- gsub("//", "/", file_local)
 
-
     gsc_message(verbose, "\nCache dir is ", cache_dir, "\n")
-
 
     # Check if file already exists
     fileoncache <- file.exists(file_local)
@@ -256,14 +251,12 @@ gsc_api_cache <-
         file_local
       )
 
-
       return(file_local)
     }
 
     if (fileoncache) {
       gsc_message(verbose, "\nUpdating cached file\n")
     }
-
 
     gsc_message(verbose, "Downloading from ", url, "\n")
 
@@ -283,7 +276,6 @@ gsc_api_cache <-
       message("Returning `NULL`")
       return(NULL)
     }
-
 
     err_dwnload <- suppressWarnings(try(
       download.file(url, file_local, quiet = isFALSE(verbose), mode = "wb"),
@@ -327,8 +319,11 @@ gsc_api_cache <-
     # If not then stop
     if (inherits(err_dwnload, "try-error")) {
       gsc_message(
-        TRUE, "HTTP Status Code:", httr2::resp_status(resp),
-        "-", httr2::resp_status_desc(resp)
+        TRUE,
+        "HTTP Status Code:",
+        httr2::resp_status(resp),
+        "-",
+        httr2::resp_status_desc(resp)
       )
       gsc_message(
         TRUE,
@@ -350,18 +345,16 @@ gsc_api_cache <-
 
 #' @name gsc_api_load
 #' @noRd
-gsc_api_load <- function(file = NULL,
-                         epsg = NULL,
-                         ext = tools::file_ext(file),
-                         cache = FALSE,
-                         verbose = TRUE) {
+gsc_api_load <- function(
+  file = NULL,
+  epsg = NULL,
+  ext = tools::file_ext(file),
+  cache = FALSE,
+  verbose = TRUE
+) {
   # Currently only supported these ext
   if (!ext %in% c("geojson", "gpkg")) {
-    stop("\nExtension ",
-      ext,
-      " not supported yet",
-      call. = FALSE
-    )
+    stop("\nExtension ", ext, " not supported yet", call. = FALSE)
   }
 
   epsg <- as.character(epsg)
@@ -376,14 +369,10 @@ gsc_api_load <- function(file = NULL,
     gsc_message(verbose, "Reading from url ", file)
   }
 
-
   if (ext == "geojson") {
     data_sf <- suppressWarnings(
       try(
-        geojsonsf::geojson_sf(file,
-          input = num$input,
-          wkt = num$wkt
-        ),
+        geojsonsf::geojson_sf(file, input = num$input, wkt = num$wkt),
         silent = TRUE
       )
     )
@@ -400,7 +389,6 @@ gsc_api_load <- function(file = NULL,
     )
   }
 
-
   if (inherits(data_sf, "try-error")) {
     message(
       "File :\n",
@@ -411,7 +399,6 @@ gsc_api_load <- function(file = NULL,
 
     stop("\nExecution halted", call. = FALSE)
   }
-
 
   gsc_message(verbose, "File loaded", "\n", "Encoding characters")
 
@@ -430,18 +417,15 @@ gsc_load_shp <- function(url, cache_dir = NULL, verbose, update_cache) {
 
   # Download file
   zipfile <- gsc_api_cache(
-    url, basename,
+    url,
+    basename,
     cache_dir,
     update_cache,
     verbose
   )
 
   # Unzip file
-  gsc_unzip(zipfile, cache_dir, "*",
-    recursive = TRUE,
-    verbose,
-    update_cache
-  )
+  gsc_unzip(zipfile, cache_dir, "*", recursive = TRUE, verbose, update_cache)
 
   zippedfiles <- unzip(zipfile, list = TRUE)
 
@@ -458,14 +442,16 @@ gsc_load_shp <- function(url, cache_dir = NULL, verbose, update_cache) {
 #' Unzip a file
 #' @noRd
 gsc_unzip <-
-  function(destfile,
-           cache_dir,
-           ext,
-           # Deprecate
-           recursive = TRUE,
-           verbose = TRUE,
-           # Deprecate
-           update_cache = TRUE) {
+  function(
+    destfile,
+    cache_dir,
+    ext,
+    # Deprecate
+    recursive = TRUE,
+    verbose = TRUE,
+    # Deprecate
+    update_cache = TRUE
+  ) {
     cache_dir <- gsc_helper_cachedir(cache_dir)
 
     infiles <- unzip(destfile, list = TRUE, junkpaths = TRUE)
@@ -474,11 +460,11 @@ gsc_unzip <-
     outfiles <- infiles[grep(ext, infiles$Name), ]$Name
 
     gsc_message(
-      verbose, "Extracting files:\n",
+      verbose,
+      "Extracting files:\n",
       paste0(outfiles, collapse = "\n"),
       "\n"
     )
-
 
     allfiles <- list.files(cache_dir)
 
@@ -492,14 +478,16 @@ gsc_unzip <-
       s <- file.remove(s)
     }
 
-    result <- try(unzip(
-      destfile,
-      files = outfiles,
-      exdir = cache_dir,
-      junkpaths = TRUE,
-      overwrite = update_cache
-    ), silent = TRUE)
-
+    result <- try(
+      unzip(
+        destfile,
+        files = outfiles,
+        exdir = cache_dir,
+        junkpaths = TRUE,
+        overwrite = update_cache
+      ),
+      silent = TRUE
+    )
 
     # nocov start
     if (inherits(result, "try-error")) {

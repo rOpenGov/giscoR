@@ -72,14 +72,19 @@ gsc_helper_utf8 <- function(data_sf) {
   g <- sf::st_geometry(data_sf)
 
   which_geom <-
-    which(vapply(data_sf, function(f) {
-      inherits(f, "sfc")
-    }, TRUE))
+    which(vapply(
+      data_sf,
+      function(f) {
+        inherits(f, "sfc")
+      },
+      TRUE
+    ))
 
   nm <- names(which_geom)
 
   data_utf8 <-
-    as.data.frame(set_utf8(sf::st_drop_geometry(data_sf)),
+    as.data.frame(
+      set_utf8(sf::st_drop_geometry(data_sf)),
       stringsAsFactors = FALSE
     )
 
@@ -103,7 +108,9 @@ gsc_message <- function(verbose, ...) {
   dots <- list(...)
   msg <- paste(dots, collapse = " ")
 
-  if (verbose) message(msg)
+  if (verbose) {
+    message(msg)
+  }
 
   invisible()
 }

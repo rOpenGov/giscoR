@@ -94,7 +94,8 @@ test_that("Bulk download offline", {
   options(giscoR_test_offline = TRUE)
   expect_message(
     n <- gisco_bulk_download(
-      resolution = 60, cache_dir = tempdir(),
+      resolution = 60,
+      cache_dir = tempdir(),
       update_cache = TRUE
     ),
     "not reachable"

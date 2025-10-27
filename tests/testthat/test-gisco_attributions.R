@@ -5,8 +5,6 @@ test_that("Display cache dir", {
 })
 
 
-
-
 test_that("Testing attributions", {
   skip_on_cran()
   skip_on_os("windows")

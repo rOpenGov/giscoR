@@ -22,13 +22,19 @@ test_that("LAU online", {
   expect_length(cntry, 2)
   expect_equal(cntry, c("ES", "LI"))
 
-  expect_true(nrow(
-    li_and_es[li_and_es$CNTR_CODE == "ES", ]
-  ) == 1)
+  expect_true(
+    nrow(
+      li_and_es[li_and_es$CNTR_CODE == "ES", ]
+    ) ==
+      1
+  )
 
-  expect_true(nrow(
-    li_and_es[li_and_es$CNTR_CODE == "LI", ]
-  ) > 5)
+  expect_true(
+    nrow(
+      li_and_es[li_and_es$CNTR_CODE == "LI", ]
+    ) >
+      5
+  )
 })
 
 

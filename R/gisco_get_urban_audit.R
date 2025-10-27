@@ -45,19 +45,30 @@
 #'     geom_sf()
 #' }
 #' }
-gisco_get_urban_audit <- function(year = "2021", epsg = "4326",
-                                  cache = TRUE, update_cache = FALSE,
-                                  cache_dir = NULL, verbose = FALSE,
-                                  spatialtype = "RG", country = NULL,
-                                  level = NULL) {
+gisco_get_urban_audit <- function(
+  year = "2021",
+  epsg = "4326",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  spatialtype = "RG",
+  country = NULL,
+  level = NULL
+) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
-    id_giscoR = "urban_audit", year = year,
-    epsg = epsg, resolution = 0,
+    id_giscoR = "urban_audit",
+    year = year,
+    epsg = epsg,
+    resolution = 0,
     # Not necessary
-    spatialtype = spatialtype, ext = ext, nuts_level = NULL,
-    level = level, verbose = verbose
+    spatialtype = spatialtype,
+    ext = ext,
+    nuts_level = NULL,
+    level = level,
+    verbose = verbose
   )
 
   filename <- basename(api_entry)
@@ -65,8 +76,11 @@ gisco_get_urban_audit <- function(year = "2021", epsg = "4326",
   if (cache) {
     # Guess source to load
     namefileload <- gsc_api_cache(
-      api_entry, filename, cache_dir,
-      update_cache, verbose
+      api_entry,
+      filename,
+      cache_dir,
+      update_cache,
+      verbose
     )
   } else {
     namefileload <- api_entry
@@ -78,7 +92,6 @@ gisco_get_urban_audit <- function(year = "2021", epsg = "4326",
 
   # Load - geojson only so far
   data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
-
 
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)

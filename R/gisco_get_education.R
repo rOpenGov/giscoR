@@ -34,10 +34,14 @@
 #' }
 #' }
 #' @export
-gisco_get_education <- function(year = c("2023", "2020"),
-                                cache = TRUE, update_cache = FALSE,
-                                cache_dir = NULL, verbose = FALSE,
-                                country = NULL) {
+gisco_get_education <- function(
+  year = c("2023", "2020"),
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  country = NULL
+) {
   # Given vars
   year <- match.arg(year)
   epsg <- "4326"
@@ -49,10 +53,12 @@ gisco_get_education <- function(year = c("2023", "2020"),
     country_get <- "EU"
   }
 
-
   api_entry <- paste0(
-    "https://gisco-services.ec.europa.eu/pub/education/", year, "/gpkg/",
-    country_get, ".gpkg"
+    "https://gisco-services.ec.europa.eu/pub/education/",
+    year,
+    "/gpkg/",
+    country_get,
+    ".gpkg"
   )
 
   n_cnt <- seq_len(length(api_entry))
@@ -61,11 +67,13 @@ gisco_get_education <- function(year = c("2023", "2020"),
     api <- api_entry[x]
     filename <- paste0("edu_", year, "_", basename(api))
 
-
     if (cache) {
       # Guess source to load
       namefileload <- gsc_api_cache(
-        api, filename, cache_dir, update_cache,
+        api,
+        filename,
+        cache_dir,
+        update_cache,
         verbose
       )
     } else {

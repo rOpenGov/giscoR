@@ -106,10 +106,13 @@
 #' }
 #' }
 #' @export
-gisco_get_grid <- function(resolution = "20",
-                           spatialtype = c("REGION", "POINT"),
-                           cache_dir = NULL, update_cache = FALSE,
-                           verbose = FALSE) {
+gisco_get_grid <- function(
+  resolution = "20",
+  spatialtype = c("REGION", "POINT"),
+  cache_dir = NULL,
+  update_cache = FALSE,
+  verbose = FALSE
+) {
   resolution <- as.character(resolution)
   validres <- as.character(c(1, 2, 5, 10, 20, 50, 100))
 
@@ -133,7 +136,8 @@ gisco_get_grid <- function(resolution = "20",
 
   # nocov start
   if (resolution %in% c("1", "2") && isFALSE(exist_local)) {
-    sel <- menu(c("Yes", "No"),
+    sel <- menu(
+      c("Yes", "No"),
       title = "You are about to download a large file (>500M). Proceed?"
     )
     if (sel != 1) {
@@ -141,7 +145,6 @@ gisco_get_grid <- function(resolution = "20",
     }
   }
   # nocov end
-
 
   localfile <- gsc_api_cache(url, filename, cache_dir, update_cache, verbose)
 
@@ -154,13 +157,9 @@ gisco_get_grid <- function(resolution = "20",
   gsc_message(verbose, format(size, units = "auto"))
 
   data_sf <- try(
-    sf::st_read(localfile,
-      quiet = !verbose,
-      stringsAsFactors = FALSE
-    ),
+    sf::st_read(localfile, quiet = !verbose, stringsAsFactors = FALSE),
     silent = TRUE
   )
-
 
   # nocov start
   if (inherits(data_sf, "try-error")) {

@@ -75,7 +75,6 @@ test_that("Countries online", {
     update_cache = TRUE
   ))
 
-
   expect_silent(gisco_get_countries(
     year = "2013",
     resolution = "60",
@@ -87,7 +86,8 @@ test_that("Offline", {
   options(giscoR_test_offline = TRUE)
   expect_message(
     n <- gisco_get_countries(
-      resolution = 60, cache_dir = tempdir(),
+      resolution = 60,
+      cache_dir = tempdir(),
       update_cache = TRUE
     ),
     "not reachable"

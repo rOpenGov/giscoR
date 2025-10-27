@@ -54,19 +54,31 @@
 #' }
 #' @export
 gisco_bulk_download <- function(
-    id_giscoR = c(
-      "countries", "coastallines", "communes", "lau", "nuts",
-      "urban_audit"
-    ),
-    year = "2016", cache_dir = NULL, update_cache = FALSE, verbose = FALSE,
-    resolution = "10", ext = c("geojson", "shp", "svg", "json", "gdb"),
-    recursive = TRUE) {
+  id_giscoR = c(
+    "countries",
+    "coastallines",
+    "communes",
+    "lau",
+    "nuts",
+    "urban_audit"
+  ),
+  year = "2016",
+  cache_dir = NULL,
+  update_cache = FALSE,
+  verbose = FALSE,
+  resolution = "10",
+  ext = c("geojson", "shp", "svg", "json", "gdb"),
+  recursive = TRUE
+) {
   valid <- c(
-    "coastallines", "communes", "countries", "lau", "nuts",
+    "coastallines",
+    "communes",
+    "countries",
+    "lau",
+    "nuts",
     "urban_audit"
   )
   names(valid) <- c("coastline", "communes", "countries", "lau", "nuts", "urau")
-
 
   id_giscoR <- match.arg(id_giscoR)
 
@@ -81,9 +93,16 @@ gisco_bulk_download <- function(
     level <- "CITY"
   }
 
-  routes <- gsc_api_url(id_giscoR, year, epsg, resolution, spatialtype,
+  routes <- gsc_api_url(
+    id_giscoR,
+    year,
+    epsg,
+    resolution,
+    spatialtype,
     "geojson",
-    nuts_level = "all", level = level, verbose = verbose
+    nuts_level = "all",
+    level = level,
+    verbose = verbose
   )
 
   api_entry <- unlist(strsplit(routes, "/geojson/"))[1]
@@ -105,10 +124,11 @@ gisco_bulk_download <- function(
   zipname <- paste0("ref-", getalias, "-", year, "-", remain2, ".", ext, ".zip")
   url <- file.path(api_entry, zipname)
 
-
   destfile <- gsc_api_cache(
     url,
-    zipname, cache_dir, update_cache,
+    zipname,
+    cache_dir,
+    update_cache,
     verbose
   )
 

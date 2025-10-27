@@ -11,7 +11,6 @@ test_that("Postal codes online", {
     verbose = TRUE
   ))
 
-
   li <- expect_silent(gisco_get_postalcodes(country = "Malta"))
   expect_length(unique(li$CNTR_ID), 1)
   expect_identical(as.character(unique(li$CNTR_ID)), "MT")

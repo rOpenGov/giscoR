@@ -25,21 +25,33 @@
 #'
 #'
 #' @export
-gisco_get_lau <- function(year = "2021", epsg = "4326", cache = TRUE,
-                          update_cache = FALSE, cache_dir = NULL,
-                          verbose = FALSE, country = NULL, gisco_id = NULL) {
+gisco_get_lau <- function(
+  year = "2021",
+  epsg = "4326",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  country = NULL,
+  gisco_id = NULL
+) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
-    id_giscoR = "lau", year = year, epsg = epsg,
-    resolution = 0, spatialtype = "RG", ext = ext, nuts_level = NULL,
-    level = NULL, verbose = verbose
+    id_giscoR = "lau",
+    year = year,
+    epsg = epsg,
+    resolution = 0,
+    spatialtype = "RG",
+    ext = ext,
+    nuts_level = NULL,
+    level = NULL,
+    verbose = verbose
   )
 
   filename <- basename(api_entry)
   # Improve speed using querys if country(es) are selected
   # We construct the query and passed it to the st_read fun
-
 
   if ((!is.null(country) || !is.null(gisco_id)) && cache) {
     gsc_message(verbose, "Speed up using sf query")
@@ -48,7 +60,10 @@ gisco_get_lau <- function(year = "2021", epsg = "4326", cache = TRUE,
     }
 
     namefileload <- gsc_api_cache(
-      api_entry, filename, cache_dir, update_cache,
+      api_entry,
+      filename,
+      cache_dir,
+      update_cache,
       verbose
     )
 
@@ -65,19 +80,25 @@ gisco_get_lau <- function(year = "2021", epsg = "4326", cache = TRUE,
     where <- NULL
 
     if (!is.null(country)) {
-      where <- c(where, paste0(
-        "CNTR_CODE IN (",
-        paste0("'", country, "'", collapse = ", "),
-        ")"
-      ))
+      where <- c(
+        where,
+        paste0(
+          "CNTR_CODE IN (",
+          paste0("'", country, "'", collapse = ", "),
+          ")"
+        )
+      )
     }
 
     if (!is.null(gisco_id)) {
-      where <- c(where, paste0(
-        "GISCO_ID IN (",
-        paste0("'", gisco_id, "'", collapse = ", "),
-        ")"
-      ))
+      where <- c(
+        where,
+        paste0(
+          "GISCO_ID IN (",
+          paste0("'", gisco_id, "'", collapse = ", "),
+          ")"
+        )
+      )
     }
 
     where <- paste(where, collapse = " OR ")
@@ -85,11 +106,8 @@ gisco_get_lau <- function(year = "2021", epsg = "4326", cache = TRUE,
 
     gsc_message(verbose, "Using query:\n   ", q)
 
-
     data_sf <- try(
-      suppressWarnings(sf::st_read(namefileload,
-        quiet = !verbose, query = q
-      )),
+      suppressWarnings(sf::st_read(namefileload, quiet = !verbose, query = q)),
       silent = TRUE
     )
 
@@ -112,8 +130,11 @@ gisco_get_lau <- function(year = "2021", epsg = "4326", cache = TRUE,
   if (cache) {
     # Guess source to load
     namefileload <- gsc_api_cache(
-      api_entry, filename, cache_dir,
-      update_cache, verbose
+      api_entry,
+      filename,
+      cache_dir,
+      update_cache,
+      verbose
     )
   } else {
     namefileload <- api_entry
@@ -172,24 +193,30 @@ gisco_get_lau <- function(year = "2021", epsg = "4326", cache = TRUE,
 #' }
 #' }
 #' @export
-gisco_get_communes <- function(year = "2016",
-                               epsg = "4326",
-                               cache = TRUE,
-                               update_cache = FALSE,
-                               cache_dir = NULL,
-                               verbose = FALSE,
-                               spatialtype = "RG",
-                               country = NULL) {
+gisco_get_communes <- function(
+  year = "2016",
+  epsg = "4326",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  spatialtype = "RG",
+  country = NULL
+) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
-    id_giscoR = "communes", year = year,
-    epsg = epsg, resolution = 0,
+    id_giscoR = "communes",
+    year = year,
+    epsg = epsg,
+    resolution = 0,
     # Not needed
-    spatialtype = spatialtype, ext = ext, nuts_level = NULL,
-    level = NULL, verbose = verbose
+    spatialtype = spatialtype,
+    ext = ext,
+    nuts_level = NULL,
+    level = NULL,
+    verbose = verbose
   )
-
 
   filename <- basename(api_entry)
 
@@ -200,8 +227,11 @@ gisco_get_communes <- function(year = "2016",
     gsc_message(verbose, "Speed up using sf query")
     country <- gsc_helper_countrynames(country, "eurostat")
     namefileload <- gsc_api_cache(
-      api_entry, filename,
-      cache_dir, update_cache, verbose
+      api_entry,
+      filename,
+      cache_dir,
+      update_cache,
+      verbose
     )
 
     if (is.null(namefileload)) {
@@ -213,12 +243,14 @@ gisco_get_communes <- function(year = "2016",
 
     # Construct query
     q <- paste0(
-      "SELECT * from \"", layer, "\" WHERE CNTR_CODE IN (",
-      paste0("'", country, "'", collapse = ", "), ")"
+      "SELECT * from \"",
+      layer,
+      "\" WHERE CNTR_CODE IN (",
+      paste0("'", country, "'", collapse = ", "),
+      ")"
     )
 
     gsc_message(verbose, "Using query:\n   ", q)
-
 
     data_sf <- try(
       suppressWarnings(
@@ -243,14 +275,14 @@ gisco_get_communes <- function(year = "2016",
     )
   }
 
-
-
-
   if (cache) {
     # Guess source to load
     namefileload <- gsc_api_cache(
-      api_entry, filename,
-      cache_dir, update_cache, verbose
+      api_entry,
+      filename,
+      cache_dir,
+      update_cache,
+      verbose
     )
   } else {
     namefileload <- api_entry
@@ -262,7 +294,6 @@ gisco_get_communes <- function(year = "2016",
 
   # Load - geojson only so far
   data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
-
 
   return(data_sf)
 }

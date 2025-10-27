@@ -111,17 +111,30 @@
 #'   geom_sf(fill = "#078930", col = "white") +
 #'   theme_minimal()
 #'
-gisco_get_countries <- function(year = "2016", epsg = "4326", cache = TRUE,
-                                update_cache = FALSE, cache_dir = NULL,
-                                verbose = FALSE, resolution = "20",
-                                spatialtype = "RG", country = NULL,
-                                region = NULL) {
+gisco_get_countries <- function(
+  year = "2016",
+  epsg = "4326",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "20",
+  spatialtype = "RG",
+  country = NULL,
+  region = NULL
+) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
-    id_giscoR = "countries", year = year, epsg = epsg,
-    resolution = resolution, spatialtype = spatialtype, ext = ext,
-    nuts_level = NULL, level = NULL, verbose = verbose
+    id_giscoR = "countries",
+    year = year,
+    epsg = epsg,
+    resolution = resolution,
+    spatialtype = spatialtype,
+    ext = ext,
+    nuts_level = NULL,
+    level = NULL,
+    verbose = verbose
   )
 
   filename <- basename(api_entry)
@@ -144,17 +157,27 @@ gisco_get_countries <- function(year = "2016", epsg = "4326", cache = TRUE,
     # Speed up if requesting units
     if (!is.null(country) && spatialtype %in% c("RG", "LB")) {
       data_sf <- gisco_get_units(
-        id_giscoR = "countries", unit = country,
-        mode = "sf", year = year, epsg = epsg, cache = cache,
-        cache_dir = cache_dir, update_cache = update_cache, verbose = verbose,
-        resolution = resolution, spatialtype = spatialtype
+        id_giscoR = "countries",
+        unit = country,
+        mode = "sf",
+        year = year,
+        epsg = epsg,
+        cache = cache,
+        cache_dir = cache_dir,
+        update_cache = update_cache,
+        verbose = verbose,
+        resolution = resolution,
+        spatialtype = spatialtype
       )
     } else {
       if (cache) {
         # Guess source to load
         namefileload <- gsc_api_cache(
-          api_entry, filename, cache_dir,
-          update_cache, verbose
+          api_entry,
+          filename,
+          cache_dir,
+          update_cache,
+          verbose
         )
       } else {
         namefileload <- api_entry

@@ -22,15 +22,16 @@ test_that("Urban Audit online", {
 
   # Test CITIES vs GREATER_CITIES for regex
   a <- gisco_get_urban_audit(
-    year = 2020, spatialtype = "LB",
+    year = 2020,
+    spatialtype = "LB",
     level = "CITIES"
   )
   b <- gisco_get_urban_audit(
-    year = 2020, spatialtype = "LB",
+    year = 2020,
+    spatialtype = "LB",
     level = "GREATER_CITIES"
   )
   expect_false(nrow(a) == nrow(b))
-
 
   check <- expect_silent(
     gisco_get_urban_audit(
@@ -49,7 +50,6 @@ test_that("Urban Audit online", {
     0
   )
 
-
   check <- expect_silent(
     gisco_get_urban_audit(
       year = 2014,
@@ -65,7 +65,6 @@ test_that("Urban Audit online", {
     setdiff(unique(check$CNTR_CODE), c("IT", "PL")),
     0
   )
-
 
   skip("Not working")
   check <- expect_silent(gisco_get_urban_audit(

@@ -69,7 +69,6 @@ test_that("Units sf online", {
   )
   expect_silent(gisco_get_units(id_giscoR = "nuts", unit = "ES"))
 
-
   dups <- expect_silent(gisco_get_units(
     id_giscoR = "nuts",
     unit = c("ES", "IT", "ES")
@@ -155,7 +154,6 @@ test_that("Units sf online", {
 })
 
 
-
 test_that("Units df online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -170,7 +168,6 @@ test_that("Units df online", {
   expect_s3_class(test, "data.frame", exact = TRUE)
   expect_true(nrow(test) > 5)
 
-
   test <- expect_silent(gisco_get_units(
     id_giscoR = "countries",
     unit = "Spain",
@@ -181,22 +178,21 @@ test_that("Units df online", {
   expect_s3_class(test, "data.frame", exact = TRUE)
   expect_true(nrow(test) > 5)
 
-
   test <- expect_silent(gisco_get_units(
     id_giscoR = "nuts",
     unit = "ES",
     mode = "df"
   ))
 
-
   expect_s3_class(test, "data.frame", exact = TRUE)
   expect_true(nrow(test) > 5)
 
   expect_message(gisco_get_units(
-    id_giscoR = "nuts", unit = "ES",
-    mode = "df", verbose = TRUE
+    id_giscoR = "nuts",
+    unit = "ES",
+    mode = "df",
+    verbose = TRUE
   ))
-
 
   test <- expect_silent(gisco_get_units(
     id_giscoR = "urban_audit",

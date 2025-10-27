@@ -17,7 +17,4 @@ gisco_nuts <- gisco_get_nuts(
 
 colnames(gisco_nuts)
 
-usethis::use_data(gisco_nuts,
-  overwrite = TRUE,
-  compress = "xz"
-)
+usethis::use_data(gisco_nuts, overwrite = TRUE, compress = "xz")

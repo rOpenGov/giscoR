@@ -15,7 +15,6 @@ test_that("Get airports", {
     sf::st_crs(4326)
   )
 
-
   expect_identical(
     sf::st_crs(es),
     sf::st_crs(4326)
@@ -31,12 +30,10 @@ test_that("Get airports", {
 
   expect_true("CNTR_ISO2" %in% names(es))
 
-
   expect_identical(
     sf::st_crs(all),
     sf::st_crs(4326)
   )
-
 
   expect_identical(
     sf::st_crs(es),

@@ -15,10 +15,7 @@ test_that("Grids online", {
   expect_message(g100 <- suppressWarnings(gisco_get_grid(100, verbose = TRUE)))
   expect_s3_class(g100, "sf")
   expect_message(suppressWarnings(
-    gisco_get_grid(100,
-      spatialtype = "POINT",
-      verbose = TRUE
-    )
+    gisco_get_grid(100, spatialtype = "POINT", verbose = TRUE)
   ))
 })
 

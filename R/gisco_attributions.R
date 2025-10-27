@@ -96,13 +96,14 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
   verbose <- !lang %in% c("en", "da", "de", "es", "fi", "fr", "no", "sv")
 
   gsc_message(
-    verbose, "Language", lang, "not supported,",
+    verbose,
+    "Language",
+    lang,
+    "not supported,",
     "switching to English.",
     "\nConsider contributing:",
     "\nhttps://github.com/rOpenGov/giscoR/issues"
   )
-
-
 
   attr <- switch(lang,
     "en" = "\u00a9 EuroGeographics for the administrative boundaries",

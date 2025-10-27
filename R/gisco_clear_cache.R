@@ -45,8 +45,11 @@
 #' Sys.getenv("GISCO_CACHE_DIR")
 #' }
 #' @export
-gisco_clear_cache <- function(config = FALSE, cached_data = TRUE,
-                              verbose = FALSE) {
+gisco_clear_cache <- function(
+  config = FALSE,
+  cached_data = TRUE,
+  verbose = FALSE
+) {
   # nocov start
   config_dir <- rappdirs::user_config_dir("giscoR", "R")
   data_dir <- gsc_helper_detect_cache_dir()
@@ -60,7 +63,6 @@ gisco_clear_cache <- function(config = FALSE, cached_data = TRUE,
     unlink(data_dir, recursive = TRUE, force = TRUE)
     gsc_message(verbose, "giscoR cached data deleted: ", data_dir)
   }
-
 
   Sys.setenv(GISCO_CACHE_DIR = "")
   options(gisco_cache_dir = NULL)

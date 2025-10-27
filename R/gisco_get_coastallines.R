@@ -37,15 +37,27 @@
 #'     panel.border = element_rect(colour = "black", fill = NA)
 #'   )
 #' @export
-gisco_get_coastallines <- function(year = "2016", epsg = "4326", cache = TRUE,
-                                   update_cache = FALSE, cache_dir = NULL,
-                                   verbose = FALSE, resolution = "20") {
+gisco_get_coastallines <- function(
+  year = "2016",
+  epsg = "4326",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "20"
+) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
-    id_giscoR = "coastallines", year = year,
-    epsg = epsg, resolution = resolution, spatialtype = NULL, ext = ext,
-    nuts_level = NULL, level = NULL, verbose = verbose
+    id_giscoR = "coastallines",
+    year = year,
+    epsg = epsg,
+    resolution = resolution,
+    spatialtype = NULL,
+    ext = ext,
+    nuts_level = NULL,
+    level = NULL,
+    verbose = verbose
   )
 
   filename <- basename(api_entry)
@@ -68,8 +80,11 @@ gisco_get_coastallines <- function(year = "2016", epsg = "4326", cache = TRUE,
     if (cache) {
       # Guess source to load
       namefileload <- gsc_api_cache(
-        api_entry, filename, cache_dir,
-        update_cache, verbose
+        api_entry,
+        filename,
+        cache_dir,
+        update_cache,
+        verbose
       )
     } else {
       namefileload <- api_entry

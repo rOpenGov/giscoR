@@ -42,8 +42,12 @@
 #'
 #' Sys.getenv("GISCO_CACHE_DIR")
 #' @export
-gisco_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
-                                verbose = TRUE) {
+gisco_set_cache_dir <- function(
+  cache_dir,
+  overwrite = FALSE,
+  install = FALSE,
+  verbose = TRUE
+) {
   # Default if not provided
   if (missing(cache_dir) || cache_dir == "") {
     gsc_message(
@@ -59,7 +63,6 @@ gisco_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
   } else {
     is_temp <- FALSE
   }
-
 
   # Validate
   stopifnot(
@@ -81,8 +84,6 @@ gisco_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
     "giscoR cache dir is: ",
     cache_dir
   )
-
-
 
   # Install path on environ var.
 
@@ -115,13 +116,15 @@ gisco_set_cache_dir <- function(cache_dir, overwrite = FALSE, install = FALSE,
     )
   }
 
-
   Sys.setenv(GISCO_CACHE_DIR = cache_dir)
   return(invisible(cache_dir))
 }
 
-gisco_clear_cache <- function(config = TRUE, cached_data = TRUE,
-                              verbose = FALSE) {
+gisco_clear_cache <- function(
+  config = TRUE,
+  cached_data = TRUE,
+  verbose = FALSE
+) {
   config_dir <- rappdirs::user_config_dir("giscoR", "R")
   data_dir <- gsc_helper_detect_cache_dir()
   if (config && dir.exists(config_dir)) {
@@ -133,7 +136,6 @@ gisco_clear_cache <- function(config = TRUE, cached_data = TRUE,
     unlink(data_dir, recursive = TRUE, force = TRUE, expand = TRUE)
     gsc_message(verbose, "giscoR cached data deleted: ", data_dir)
   }
-
 
   Sys.setenv(GISCO_CACHE_DIR = "")
   options(gisco_cache_dir = NULL)
@@ -147,7 +149,6 @@ gsc_helper_detect_cache_dir <- function() {
   # Try from getenv
   getvar <- Sys.getenv("GISCO_CACHE_DIR")
 
-
   # 1. Get from option - This is from backwards compatibility only
   # nocov start
   from_option <- getOption("gisco_cache_dir", NULL)
@@ -156,9 +157,6 @@ gsc_helper_detect_cache_dir <- function() {
     cache_dir <- gisco_set_cache_dir(from_option, install = FALSE)
     return(cache_dir)
   }
-
-
-
 
   if (is.null(getvar) || is.na(getvar) || getvar == "") {
     # Not set - tries to retrieve from cache
@@ -171,10 +169,13 @@ gsc_helper_detect_cache_dir <- function() {
       cached_path <- readLines(cache_config)
 
       # Case on empty cached path - would default
-      if (any(
-        is.null(cached_path),
-        is.na(cached_path), cached_path == ""
-      )) {
+      if (
+        any(
+          is.null(cached_path),
+          is.na(cached_path),
+          cached_path == ""
+        )
+      ) {
         cache_dir <- gisco_set_cache_dir(
           overwrite = TRUE,
           verbose = FALSE

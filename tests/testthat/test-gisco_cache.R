@@ -12,13 +12,11 @@ test_that("Test cache online", {
   # Cache dir should be deleted now
   expect_false(dir.exists(testdir))
 
-
   # Reset just for testing all cases
   testdir <- file.path(tempdir(), "giscoR", "testthat")
   expect_message(gisco_set_cache_dir(testdir))
 
   cat("Testing cache dir is ", Sys.getenv("GISCO_CACHE_DIR"), "\n")
-
 
   skip_on_cran()
   skip_if_gisco_offline()
