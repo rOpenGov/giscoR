@@ -1,0 +1,79 @@
+# Clear your [giscoR](https://CRAN.R-project.org/package=giscoR) cache dir
+
+**Use this function with caution**. This function would clear your
+cached data and configuration, specifically:
+
+- Deletes the [giscoR](https://CRAN.R-project.org/package=giscoR) config
+  directory (`rappdirs::user_config_dir("giscoR", "R")`).
+
+- Deletes the `cache_dir` directory.
+
+- Deletes the values on stored on `Sys.getenv("GISCO_CACHE_DIR")` and
+  `options(gisco_cache_dir)`.
+
+## Usage
+
+``` r
+gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
+```
+
+## Arguments
+
+- config:
+
+  if `TRUE`, will delete the configuration folder of
+  [giscoR](https://CRAN.R-project.org/package=giscoR).
+
+- cached_data:
+
+  If this is set to `TRUE`, it will delete your `cache_dir` and all its
+  content.
+
+- verbose:
+
+  Logical, displays information. Useful for debugging, default is
+  `FALSE`.
+
+## Value
+
+Invisible. This function is called for its side effects.
+
+## Details
+
+This is an overkill function that is intended to reset your status as it
+you would never have installed and/or used
+[giscoR](https://CRAN.R-project.org/package=giscoR).
+
+## See also
+
+[`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
+
+Other cache utilities:
+[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md)
+
+## Examples
+
+``` r
+# Don't run this! It would modify your current state
+# \dontrun{
+gisco_clear_cache(verbose = TRUE)
+#> giscoR cached data deleted:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpKY0xVG/giscoR
+
+Sys.getenv("GISCO_CACHE_DIR")
+#> [1] ""
+
+# Set new cache on a temp dir
+newcache <- file.path(tempdir(), "giscoR", "pkgdown")
+
+newcache
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpKY0xVG/giscoR/pkgdown"
+
+gisco_set_cache_dir(newcache)
+#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpKY0xVG/giscoR/pkgdown
+#> To install your cache_dir path for use in future sessions, 
+#> run this function with `install = TRUE`.
+
+Sys.getenv("GISCO_CACHE_DIR")
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpKY0xVG/giscoR/pkgdown"
+# }
+```
