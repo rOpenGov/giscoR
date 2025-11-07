@@ -39,3 +39,5 @@
 ^CONTRIBUTING\.md$
 ^Rplots\.pdf$
 ^codecov\.yml$
+^[.]?air[.]toml$
+^\.vscode$
