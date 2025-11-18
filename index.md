@@ -344,22 +344,3 @@ Lahti, Leo, Janne Huovari, Markus Kainu, and Przemysław Biecek. 2017.
 “Retrieval and Analysis of Eurostat Open Data with the eurostat
 Package.” *The R Journal* 9 (1): 385–92.
 <https://doi.org/10.32614/RJ-2017-019>.
-
-## Contributors
-
-All contributions to this project are gratefully acknowledged using the
-[`allcontributors` package](https://github.com/ropensci/allcontributors)
-following the [allcontributors](https://allcontributors.org)
-specification. Contributions of any kind are welcome!
-
-### Code
-
-[TABLE]
-
-### Issue Authors
-
-[TABLE]
-
-### Issue Contributors
-
-[TABLE]

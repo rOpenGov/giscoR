@@ -67,7 +67,7 @@ this session.
 
 ## See also
 
-[`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
+[`rappdirs::user_config_dir()`](https://rdrr.io/pkg/rappdirs/man/user_data_dir.html)
 
 Other cache utilities:
 [`gisco_clear_cache()`](https://ropengov.github.io/giscoR/reference/gisco_clear_cache.md)
@@ -79,12 +79,12 @@ Other cache utilities:
 # \dontrun{
 gisco_set_cache_dir(verbose = TRUE)
 #> Using a temporary cache dir.  Set 'cache_dir' to a value for store permanently
-#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpKY0xVG/giscoR
+#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpuswWff/giscoR
 # }
 
 Sys.getenv("GISCO_CACHE_DIR")
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpKY0xVG/giscoR"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpuswWff/giscoR"
 
 gisco_detect_cache_dir()
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpKY0xVG/giscoR"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpuswWff/giscoR"
 ```

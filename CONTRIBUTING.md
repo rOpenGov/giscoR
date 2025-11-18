@@ -20,8 +20,7 @@ with a minimal [reprex](https://www.tidyverse.org/help/#reprex).
 
 - We recommend that you create a Git branch for each pull request (PR).
 - Look at the `R-CMD-check` build status before. After making changes,
-  run
-  [`devtools::check()`](https://devtools.r-lib.org/reference/check.html)
+  run [`devtools::check()`](https://rdrr.io/pkg/devtools/man/check.html)
   and ensure no new Notes, Warnings or Errors are appearing.
 - We recommend the tidyverse [style guide](http://style.tidyverse.org).
   We also use the [styler](https://CRAN.R-project.org/package=styler)

@@ -6,14 +6,10 @@
 
 ## giscoR 0.6.1
 
-CRAN release: 2025-01-27
-
 - Fix an issue when filtering source on
   [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
 
 ## giscoR 0.6.0
-
-CRAN release: 2024-08-28
 
 ### Update with latest data available
 
@@ -31,16 +27,12 @@ CRAN release: 2024-08-28
 
 ## giscoR 0.5.1
 
-CRAN release: 2024-07-06
-
 - Use **CRAN** DOI: <https://doi.org/10.32614/CRAN.package.giscoR>.
 - [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md):
   Fix API entry points.
 - Review failing examples.
 
 ## giscoR 0.5.0
-
-CRAN release: 2024-05-29
 
 - New functions:
   - [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md).
@@ -60,15 +52,11 @@ CRAN release: 2024-05-29
 
 ## giscoR 0.4.2
 
-CRAN release: 2024-03-27
-
 - Update of docs to avoid warnings on **CRAN**
   ([\#81](https://github.com/rOpenGov/giscoR/issues/81)).
 - Rebuild datasets.
 
 ## giscoR 0.4.1
-
-CRAN release: 2024-03-15
 
 - Improve documentation, stating where the parameters `country` and
   `region` applies
@@ -80,8 +68,6 @@ CRAN release: 2024-03-15
 
 ## giscoR 0.4.0
 
-CRAN release: 2023-10-30
-
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md):
   Add an additional `geo` column (identical to `NUTS_ID`) for enhanced
   compatibility with **eurostat** package
@@ -91,8 +77,6 @@ CRAN release: 2023-10-30
 
 ## giscoR 0.3.5
 
-CRAN release: 2023-06-30
-
 - Review examples to avoid **CRAN** errors and notes.
 - New helper function:
   [`gisco_detect_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
@@ -101,13 +85,9 @@ CRAN release: 2023-06-30
 
 ## giscoR 0.3.4
 
-CRAN release: 2023-05-26
-
 - Update tests and documentation.
 
 ## giscoR 0.3.3
-
-CRAN release: 2023-02-16
 
 - Fix broken urls on
   [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/reference/gisco_get_healthcare.md)
@@ -115,13 +95,9 @@ CRAN release: 2023-02-16
 
 ## giscoR 0.3.2
 
-CRAN release: 2022-08-13
-
 - Fix HTML5 issue as requested by **CRAN**.
 
 ## giscoR 0.3.1
-
-CRAN release: 2021-10-06
 
 - Add `Copyright` on `DESCRIPTION`.
 - Add **lwgeom** on ‘Suggests’.
@@ -136,14 +112,12 @@ CRAN release: 2021-10-06
 
 ## giscoR 0.3.0
 
-CRAN release: 2021-09-27
-
 - Now **giscoR** is part of [rOpenGov](https://ropengov.org/). Repo has
   been transferred.
 - Caching improvements: new function
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md)
   based on
-  [`rappdirs::user_cache_dir()`](https://rappdirs.r-lib.org/reference/user_cache_dir.html).
+  [`rappdirs::user_cache_dir()`](https://rdrr.io/pkg/rappdirs/man/user_cache_dir.html).
   Now the `cache_dir` path is stored and it is not necessary to set it
   up again on a new session. Also added
   [`gisco_clear_cache()`](https://ropengov.github.io/giscoR/reference/gisco_clear_cache.md).
@@ -158,8 +132,6 @@ CRAN release: 2021-09-27
 - **tmap** package replaced by **ggplot2** on vignettes and examples.
 
 ## giscoR 0.2.4
-
-CRAN release: 2021-04-13
 
 - New `eu` field on
   [`giscoR::gisco_countrycode`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md).
@@ -176,8 +148,6 @@ CRAN release: 2021-04-13
 
 ## giscoR 0.2.2
 
-CRAN release: 2020-11-23
-
 - Remove vignette
 
 ## giscoR 0.2.1
@@ -187,8 +157,6 @@ CRAN release: 2020-11-23
 - Fix **CRAN** checks.
 
 ## giscoR 0.2.0
-
-CRAN release: 2020-11-12
 
 - Remove **colorspace** as dependency.
 - Bump **R** minimal version to `3.6.0`.
@@ -214,15 +182,11 @@ CRAN release: 2020-11-12
 
 ## giscoR 0.1.1
 
-CRAN release: 2020-10-28
-
 - Added
   [`giscoR::tgs00026`](https://ropengov.github.io/eurostat/reference/tgs00026.html)
   dataset.
 - Remove **eurostat** dependency.
 
 ## giscoR 0.1.0
-
-CRAN release: 2020-10-13
 
 - First stable release.

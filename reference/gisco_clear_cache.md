@@ -46,7 +46,7 @@ you would never have installed and/or used
 
 ## See also
 
-[`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
+[`rappdirs::user_config_dir()`](https://rdrr.io/pkg/rappdirs/man/user_data_dir.html)
 
 Other cache utilities:
 [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md)
@@ -57,7 +57,7 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 gisco_clear_cache(verbose = TRUE)
-#> giscoR cached data deleted:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpKY0xVG/giscoR
+#> giscoR cached data deleted:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpuswWff/giscoR
 
 Sys.getenv("GISCO_CACHE_DIR")
 #> [1] ""
@@ -66,14 +66,14 @@ Sys.getenv("GISCO_CACHE_DIR")
 newcache <- file.path(tempdir(), "giscoR", "pkgdown")
 
 newcache
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpKY0xVG/giscoR/pkgdown"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpuswWff/giscoR/pkgdown"
 
 gisco_set_cache_dir(newcache)
-#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpKY0xVG/giscoR/pkgdown
+#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpuswWff/giscoR/pkgdown
 #> To install your cache_dir path for use in future sessions, 
 #> run this function with `install = TRUE`.
 
 Sys.getenv("GISCO_CACHE_DIR")
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpKY0xVG/giscoR/pkgdown"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpuswWff/giscoR/pkgdown"
 # }
 ```
