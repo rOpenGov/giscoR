@@ -41,6 +41,6 @@ EU <- EU[EU$ISO3_CODE != "GBR", ]
 
 gisco_countrycode <- merge(gisco_countrycode, EU, all.x = TRUE)
 gisco_countrycode[is.na(gisco_countrycode$eu), "eu"] <- FALSE
-
+gisco_countrycode <- tibble::as_tibble(gisco_countrycode)
 
 usethis::use_data(gisco_countrycode, overwrite = TRUE, compress = "gzip")

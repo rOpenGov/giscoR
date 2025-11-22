@@ -289,7 +289,8 @@ gisco_db <-
     api_entry
   ) %>%
   arrange(id_giscoR, year, resolution, spatialtype, api_file) %>%
-  as.data.frame()
+  as.data.frame() |>
+  as_tibble()
 
 
 usethis::use_data(gisco_db, overwrite = TRUE)

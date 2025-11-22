@@ -238,5 +238,5 @@ gsc_helper_cachedir <- function(cache_dir = NULL) {
   if (isFALSE(dir.exists(cache_dir))) {
     dir.create(cache_dir, recursive = TRUE)
   }
-  return(cache_dir)
+  cache_dir
 }

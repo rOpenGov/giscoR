@@ -197,7 +197,7 @@ gsc_api_url <- function(
       "ext"
     )
 
-  for (i in seq_len(length(params))) {
+  for (i in seq_along(params)) {
     patt <- paste0("\\{", params[i], "\\}")
     repl <- eval(parse(text = params[i]))
     if (is.null(repl)) {
@@ -219,7 +219,7 @@ gsc_api_url <- function(
 
   api_url <- file.path(db$api_entry, gisco_path)
 
-  return(api_url)
+  api_url
 }
 
 #' @name gsc_api_cache
@@ -339,7 +339,7 @@ gsc_api_cache <-
 
     gsc_message(verbose, "Download succesful on \n\n", file_local, "\n\n")
 
-    return(file_local)
+    file_local
   }
 
 
@@ -405,7 +405,8 @@ gsc_api_load <- function(
   # To UTF-8
   data_sf <- gsc_helper_utf8(data_sf)
   data_sf <- sf::st_make_valid(data_sf)
-  return(data_sf)
+
+  data_sf
 }
 
 
@@ -436,7 +437,9 @@ gsc_load_shp <- function(url, cache_dir = NULL, verbose, update_cache) {
 
   data_sf <- sf::st_read(file.path(cache_dir, shpfile), quiet = !verbose)
 
-  return(data_sf)
+  data_sf <- gsc_helper_utf8(data_sf)
+
+  data_sf
 }
 
 #' Unzip a file

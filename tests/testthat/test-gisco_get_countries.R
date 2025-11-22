@@ -63,9 +63,20 @@ test_that("Countries online", {
     country = c("ESP", "ITA")
   ))
 
-  expect_silent(gisco_get_countries(resolution = 60, country = c("ES", "IT")))
-  expect_silent(gisco_get_countries(spatialtype = "COASTL", resolution = "60"))
-
+  expect_silent(
+    b <-
+      gisco_get_countries(resolution = 60, country = c("ES", "IT"))
+  )
+  expect_s3_class(b, "tbl_df")
+  expect_s3_class(b, "sf")
+  expect_silent(
+    c <- gisco_get_countries(
+      spatialtype = "COASTL",
+      resolution = "60"
+    )
+  )
+  expect_s3_class(c, "tbl_df")
+  expect_s3_class(c, "sf")
   expect_silent(gisco_get_countries(resolution = "60", country = "DNK"))
 
   expect_silent(gisco_get_countries(spatialtype = "COASTL", resolution = 3))

@@ -24,6 +24,7 @@ Imports:
     jsonlite,
     rappdirs (>= 0.3.0),
     sf (>= 0.9.0),
+    tibble,
     utils
 Suggests: 
     dplyr,

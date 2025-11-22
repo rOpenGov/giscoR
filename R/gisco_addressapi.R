@@ -169,6 +169,7 @@ gisco_addressapi_bbox <- function(
 
   bbox <- sf::st_as_sfc(bboxclass)
   res <- sf::st_sf(bbox)
+  res <- gsc_helper_utf8(res)
 
   res
 }
@@ -328,6 +329,7 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
 
   res <- results$results
   res <- as.data.frame(res)
+  res <- tibble::as_tibble(res)
   if (nrow(res) == 0) {
     message("No results, returning NULL")
     return(NULL)
@@ -343,6 +345,7 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
     res_clean <- cbind(res_clean, xy_coords)
 
     res <- cbind(geometry, res_clean)
+    res <- gsc_helper_utf8(res)
   }
 
   res

@@ -1,6 +1,7 @@
 # giscoR (development version)
 
 -   Improve tests.
+-   Results displayed as tibble.
 
 # giscoR 0.6.1
 
@@ -152,3 +153,4 @@
 # giscoR 0.1.0
 
 -   First stable release.
+

@@ -114,6 +114,8 @@ gisco_get_lau <- function(
     # If everything was fine then output
     if (!inherits(data_sf, "try-error")) {
       data_sf <- sf::st_make_valid(data_sf)
+      data_sf <- gsc_helper_utf8(data_sf)
+
       return(data_sf)
     }
 
@@ -161,7 +163,9 @@ gisco_get_lau <- function(
   if (!is.null(gisco_id) && "GISCO_ID" %in% names(data_sf)) {
     data_sf <- data_sf[data_sf$GISCO_ID %in% gisco_id, ]
   }
-  return(data_sf)
+  data_sf <- gsc_helper_utf8(data_sf)
+
+  data_sf
 }
 
 
@@ -262,6 +266,7 @@ gisco_get_communes <- function(
     # If everything was fine then output
     if (!inherits(data_sf, "try-error")) {
       data_sf <- sf::st_make_valid(data_sf)
+      data_sf <- gsc_helper_utf8(data_sf)
       return(data_sf)
     }
 
@@ -294,6 +299,7 @@ gisco_get_communes <- function(
 
   # Load - geojson only so far
   data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
+  data_sf <- gsc_helper_utf8(data_sf)
 
   return(data_sf)
 }

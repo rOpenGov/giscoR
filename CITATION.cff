@@ -145,6 +145,22 @@ references:
   doi: 10.32614/CRAN.package.sf
   version: '>= 0.9.0'
 - type: software
+  title: tibble
+  abstract: 'tibble: Simple Data Frames'
+  notes: Imports
+  url: https://tibble.tidyverse.org/
+  repository: https://CRAN.R-project.org/package=tibble
+  authors:
+  - family-names: Müller
+    given-names: Kirill
+    email: kirill@cynkra.com
+    orcid: https://orcid.org/0000-0002-1416-3412
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@rstudio.com
+  year: '2025'
+  doi: 10.32614/CRAN.package.tibble
+- type: software
   title: utils
   abstract: 'R: A Language and Environment for Statistical Computing'
   notes: Imports

@@ -31,7 +31,7 @@ gisco_get_lau(
 \item{year}{Release year of the file:
 \itemize{
 \item For \code{gisco_get_communes()} one of \code{"2001"}, \code{"2004"}, \code{"2006"}, \code{"2008"}, \code{"2010"}, \code{"2013"} or \code{"2016"}.
-\item For \code{gisco_get_lau()} one of \code{"2011"}, \code{"2012"}, \code{"2013"}, \code{"2014"}, \code{"2015"}, \code{"2016"}, \code{"2017"}, \code{"2018"}, \code{"2019"}, \code{"2020"} or \code{"2021"}.
+\item For \code{gisco_get_lau()} one of \code{"2011"}, \code{"2012"}, \code{"2013"}, \code{"2014"}, \code{"2015"}, \code{"2016"}, \code{"2017"}, \code{"2018"}, \code{"2019"}, \code{"2020"}, \code{"2021"}, \code{"2022"}, \code{"2023"} or \code{"2024"}.
 }}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.

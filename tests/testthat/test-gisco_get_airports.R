@@ -9,6 +9,8 @@ test_that("Get airports", {
   all <- expect_silent(gisco_get_airports())
   expect_silent(gisco_get_airports(year = 2013))
   es <- expect_silent(gisco_get_airports(country = "ES"))
+  expect_s3_class(es, "tbl_df")
+  expect_s3_class(es, "sf")
 
   expect_identical(
     sf::st_crs(all),
@@ -27,7 +29,8 @@ test_that("Get airports", {
   all <- expect_silent(gisco_get_ports())
   expect_silent(gisco_get_ports(year = 2013))
   es <- expect_silent(gisco_get_ports(country = "ES"))
-
+  expect_s3_class(es, "tbl_df")
+  expect_s3_class(es, "sf")
   expect_true("CNTR_ISO2" %in% names(es))
 
   expect_identical(

@@ -73,6 +73,7 @@ test_that("gisco_addressapi_bbox online", {
     )
   )
   expect_s3_class(n, "sf")
+  expect_s3_class(n, "tbl_df")
   expect_message(
     n <- gisco_addressapi_bbox(
       country = "Spain",
@@ -97,6 +98,8 @@ test_that("gisco_addressapi_search online", {
     )
   )
   expect_s3_class(n, "sf")
+  expect_s3_class(n, "tbl_df")
+
   expect_null(gisco_addressapi_search(country = "ES"))
 
   expect_null(gisco_addressapi_search(country = "XYZ"))
@@ -113,6 +116,8 @@ test_that("gisco_addressapi_reverse online", {
     )
   )
   expect_s3_class(n, "sf")
+  expect_s3_class(n, "tbl_df")
+
   expect_null(gisco_addressapi_reverse(-10, -30))
 })
 
@@ -130,7 +135,9 @@ test_that("gisco_addressapi_provinces online", {
   skip_if_gisco_offline()
   expect_silent(n <- gisco_addressapi_provinces(country = "LU"))
   expect_s3_class(n, "data.frame")
+  expect_s3_class(n, "tbl_df")
 })
+
 test_that("gisco_addressapi_cities online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -141,6 +148,7 @@ test_that("gisco_addressapi_cities online", {
     )
   )
   expect_s3_class(n, "data.frame")
+  expect_s3_class(n, "tbl_df")
 })
 test_that("gisco_addressapi_roads online", {
   skip_on_cran()
@@ -153,6 +161,7 @@ test_that("gisco_addressapi_roads online", {
     )
   )
   expect_s3_class(n, "data.frame")
+  expect_s3_class(n, "tbl_df")
 })
 test_that("gisco_addressapi_housenumbers online", {
   skip_on_cran()
@@ -167,6 +176,7 @@ test_that("gisco_addressapi_housenumbers online", {
     )
   )
   expect_s3_class(n, "data.frame")
+  expect_s3_class(n, "tbl_df")
 })
 test_that("gisco_addressapi_postcodes online", {
   skip_on_cran()
@@ -179,6 +189,7 @@ test_that("gisco_addressapi_postcodes online", {
     )
   )
   expect_s3_class(n, "data.frame")
+  expect_s3_class(n, "tbl_df")
 })
 
 test_that("gisco_addressapi_copyright online", {
@@ -186,4 +197,5 @@ test_that("gisco_addressapi_copyright online", {
   skip_if_gisco_offline()
   expect_silent(n <- gisco_addressapi_copyright())
   expect_s3_class(n, "data.frame")
+  expect_s3_class(n, "tbl_df")
 })

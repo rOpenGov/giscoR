@@ -172,7 +172,7 @@ gisco_get_postalcodes <- function(
   data_sf <- sf::st_read(namefileload, quiet = !verbose)
   data_sf <- sf::st_make_valid(data_sf)
 
-  return(data_sf)
+  data_sf
 
   # nocov end
 }

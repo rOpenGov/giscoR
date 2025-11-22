@@ -38,7 +38,7 @@ gsc_helper_countrynames <- function(names, out = "eurostat") {
       )
     )
   }
-  return(outnames2)
+  outnames2
 }
 
 #' Convert sf object to UTF-8
@@ -88,6 +88,8 @@ gsc_helper_utf8 <- function(data_sf) {
       stringsAsFactors = FALSE
     )
 
+  data_utf8 <- tibble::as_tibble(data_utf8)
+
   # Regenerate with right encoding
   data_sf <- sf::st_as_sf(data_utf8, g)
 
@@ -121,6 +123,7 @@ gsc_message <- function(verbose, ...) {
 gsc_helper_year_docs <- function(x) {
   # nocov start
   db <- giscoR::gisco_db
+  db <- as.data.frame(db)
   y <- db[db$id_giscoR %in% x, "year"]
 
   y_all <- sort(unique(unlist(strsplit(y, ","))))

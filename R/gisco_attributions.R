@@ -116,5 +116,5 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     "sv" = "\u00a9 EuroGeographics f\u00f6r administrativa gr\u00e4nser",
     "\u00a9 EuroGeographics for the administrative boundaries"
   )
-  return(attr)
+  attr
 }

@@ -7,7 +7,7 @@
 gisco_check_access()
 }
 \value{
-a logical.
+A logical.
 }
 \description{
 Check if \strong{R} has access to resources at

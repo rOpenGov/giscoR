@@ -20,8 +20,11 @@ test_that("Communes online", {
     verbose = FALSE
   ))
 
-  expect_message(gisco_get_communes(spatialtype = "LB", verbose = TRUE))
-  lu <- expect_silent(gisco_get_communes(spatialtype = "LB", country = "LU"))
-
+  expect_message(s2 <- gisco_get_communes(spatialtype = "LB", verbose = TRUE))
+  expect_s3_class(s2, "tbl_df")
+  expect_s3_class(s2, "sf")
+  expect_silent(lu <- gisco_get_communes(spatialtype = "LB", country = "LU"))
+  expect_s3_class(lu, "tbl_df")
+  expect_s3_class(lu, "sf")
   expect_equal(as.character(unique(lu$CNTR_CODE)), "LU")
 })

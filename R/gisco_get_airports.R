@@ -98,7 +98,7 @@ gisco_get_airports <- function(
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
-  return(data_sf)
+  data_sf
 }
 
 #' @rdname gisco_get_airports
@@ -142,5 +142,5 @@ gisco_get_ports <- function(
     country <- gsc_helper_countrynames(country, "iso2c")
     data_sf <- data_sf[data_sf$CNTR_ISO2 %in% country, ]
   }
-  return(data_sf)
+  data_sf
 }

@@ -34,6 +34,8 @@ test_that("Coastal download online", {
       verbose = TRUE
     )
   )
+  expect_s3_class(a, "tbl_df")
+  expect_s3_class(a, "sf")
   b <- gisco_get_coastallines(resolution = "60", epsg = "3857")
   c <- gisco_get_coastallines(resolution = "60", epsg = "4326")
 

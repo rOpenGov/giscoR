@@ -154,7 +154,7 @@ gisco_get_units <- function(
   if (mode == "df") {
     df <- gsc_units_df(id_giscoR, year, api_url, verbose)
 
-    return(df)
+    df
   } else if (mode == "sf") {
     sf <- gsc_units_sf(
       id_giscoR,
@@ -170,7 +170,7 @@ gisco_get_units <- function(
       remain,
       level
     )
-    return(sf)
+    sf
   }
 }
 
@@ -312,10 +312,10 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
 
   url <- file.path(api_url, csv)
 
-  file.local <- tempfile(fileext = ".csv")
+  file_local <- tempfile(fileext = ".csv")
 
   err_dwnload <- suppressWarnings(try(
-    download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
+    download.file(url, file_local, quiet = isFALSE(verbose), mode = "wb"),
     silent = TRUE
   ))
 
@@ -344,7 +344,7 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
     gsc_message(verbose, "Retry query")
     Sys.sleep(1)
     err_dwnload <- suppressWarnings(try(
-      download.file(url, file.local, quiet = isFALSE(verbose), mode = "wb"),
+      download.file(url, file_local, quiet = isFALSE(verbose), mode = "wb"),
       silent = TRUE
     ))
   }
@@ -366,7 +366,7 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
   # nocov end
 
   df_csv <- read.csv2(
-    file.local,
+    file_local,
     sep = ",",
     stringsAsFactors = FALSE,
     encoding = "UTF-8"

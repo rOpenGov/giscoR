@@ -98,5 +98,5 @@ gisco_get_urban_audit <- function(
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
-  return(data_sf)
+  data_sf
 }
