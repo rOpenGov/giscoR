@@ -11,7 +11,7 @@ gisco_check_access()
 
 ## Value
 
-a logical.
+A logical.
 
 ## See also
 
