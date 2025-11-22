@@ -109,15 +109,14 @@ gisco_addressapi_copyright(verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) in
-most cases, except `gisco_addressapi_search()`,
+A `data.frame` object in most cases, except `gisco_addressapi_search()`,
 `gisco_addressapi_reverse()` and `gisco_addressapi_bbox()`, that return
 a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
 Brief description of the API endpoints (source [GISCO Address API \\
-Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)):
+Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints):
 
 |                 |                                                                                                                                                                                                                                                                                         |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
