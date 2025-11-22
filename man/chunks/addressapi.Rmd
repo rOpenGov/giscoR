@@ -1,8 +1,8 @@
-Brief description of the API endpoints (source [GISCO Address API \>
+Brief description of the API endpoints (source [GISCO Address API
 Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)):
 
 | **Endpoint** | **Description** |
-|-------------|-------------------------------------------------------------------|
+|-----------------|--------------------------------------------------------------|
 | `/countries` | Returns all country codes that are compatible with the address API. Check the coverage map for available countries and see [here for a list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
 | `/provinces` | Returns all provinces within the specified country. Can also be used to get the province of a specified city. |
 | `/cities` | Returns all cities within a specified province or country. |
@@ -17,7 +17,7 @@ Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)
 The resulting object may present the following variables:
 
 | **Property name** | **Description** |
-|---------------|-----------------------------------------------------------------|
+|------------------|-------------------------------------------------------------|
 | `LD` | Refers to "Locator Designator" and represents the house number part of the address |
 | `TF` | Refers to "Thoroughfare" and represents the street or road part of the address |
 | `L0` | Refers to Level 0 of the API administrative levels. Values are country codes consisting of 2 characters. |

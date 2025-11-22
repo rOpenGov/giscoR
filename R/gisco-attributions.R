@@ -8,8 +8,8 @@
 #'
 #' @export
 #'
-#' @param lang Language (two-letter ISO code). See
-#' <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes> and **Details**.
+#' @param lang Language (two-letter ISO code). See [countrycodes::codelist]
+#'   and **Details**.
 #'
 #' @param copyright Boolean `TRUE/FALSE`. Whether to display the copyright
 #'   notice or not on the console.
@@ -60,10 +60,17 @@
 #' gisco_attributions(lang = "es", copyright = TRUE)
 #'
 #' gisco_attributions(lang = "XXX")
+#'
+#' # Get list of codes from countrycodes
+#' library(dplyr)
+#'
+#' countrycode::codelist %>%
+#' select(country.name.en, iso2c)
+
 gisco_attributions <- function(lang = "en", copyright = FALSE) {
   lang <- tolower(lang)
   if (copyright) {
-    message(
+    cli::cli_alert_info(
       "
     COPYRIGHT NOTICE
 
@@ -95,17 +102,23 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
   # Display message
   verbose <- !lang %in% c("en", "da", "de", "es", "fi", "fr", "no", "sv")
 
-  gsc_message(
+  make_msg(
+    "warning",
     verbose,
     "Language",
     lang,
-    "not supported,",
-    "switching to English.",
-    "\nConsider contributing:",
-    "\nhttps://github.com/rOpenGov/giscoR/issues"
+    "not supported.",
+    "Switching to English."
+  )
+  make_msg(
+    "info",
+    verbose,
+    "Consider contributing:",
+    "{.url https://github.com/rOpenGov/giscoR/issues}"
   )
 
-  attr <- switch(lang,
+  attr <- switch(
+    lang,
     "en" = "\u00a9 EuroGeographics for the administrative boundaries",
     "da" = "\u00a9 EuroGeographics for administrative gr\u00e6nser",
     "de" = "\u00a9 EuroGeographics bezuglich der Verwaltungsgrenzen",
