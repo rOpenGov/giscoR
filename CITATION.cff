@@ -74,6 +74,18 @@ references:
   year: '2025'
   version: '>= 3.6.0'
 - type: software
+  title: cli
+  abstract: 'cli: Helpers for Developing Command Line Interfaces'
+  notes: Imports
+  url: https://cli.r-lib.org
+  repository: https://CRAN.R-project.org/package=cli
+  authors:
+  - family-names: Csárdi
+    given-names: Gábor
+    email: gabor@posit.co
+  year: '2025'
+  doi: 10.32614/CRAN.package.cli
+- type: software
   title: countrycode
   abstract: 'countrycode: Convert Country Names and Country Codes'
   notes: Imports
@@ -100,6 +112,18 @@ references:
   year: '2025'
   doi: 10.32614/CRAN.package.geojsonsf
   version: '>= 2.0.0'
+- type: software
+  title: httr2
+  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
+  notes: Imports
+  url: https://httr2.r-lib.org
+  repository: https://CRAN.R-project.org/package=httr2
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2025'
+  doi: 10.32614/CRAN.package.httr2
 - type: software
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
@@ -255,18 +279,6 @@ references:
   year: '2025'
   doi: 10.32614/CRAN.package.ggplot2
   version: '>= 3.5.0'
-- type: software
-  title: httr2
-  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
-  notes: Suggests
-  url: https://httr2.r-lib.org
-  repository: https://CRAN.R-project.org/package=httr2
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  year: '2025'
-  doi: 10.32614/CRAN.package.httr2
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'

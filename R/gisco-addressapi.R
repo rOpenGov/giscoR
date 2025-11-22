@@ -15,26 +15,26 @@
 #' @name gisco_addressapi
 #' @rdname gisco_addressapi
 #'
-#' @param country	Country code (`country = "LU"`).
+#' @param country Country code (`country = "LU"`).
 #' @param x,y x and y coordinates (as longitude and latitude) to be converted
 #'  into a human-readable address.
-#' @param province	A province within a country. For a list of provinces within a
+#' @param province A province within a country. For a list of provinces within a
 #'  certain country use the provinces endpoint
 #'  (`gisco_addressapi_provinces(country = "LU")`).
-#' @param city	A city within a province. For a list of cities within a certain
+#' @param city A city within a province. For a list of cities within a certain
 #'   province use the cities endpoint
 #'   (`gisco_addressapi_cities(province = "capellen")`).
-#' @param road	A road within a city.
-#' @param housenumber	The house number or house name within a road or street.
+#' @param road A road within a city.
+#' @param housenumber The house number or house name within a road or street.
 #' @param postcode Can be used in combination with the previous parameters.
 #'
 #' @inheritParams gisco_get_nuts
 #'
 #' @returns
 #'
-#' A `data.frame` object in most cases, except  `gisco_addressapi_search()`,
-#' `gisco_addressapi_reverse()` and `gisco_addressapi_bbox()`, that return a
-#' [`sf`][sf::st_sf] object.
+#' A [tibble][tibble::tbl_df] in most cases, except
+#' `gisco_addressapi_search()`, `gisco_addressapi_reverse()` and
+#' `gisco_addressapi_bbox()`, that return a [`sf`][sf::st_sf] object.
 #'
 #'
 #' @details
@@ -126,31 +126,11 @@ gisco_addressapi_bbox <- function(
     postcode = postcode
   )
 
-  apiurl <- add_custom_query(custom_query, apiurl)
-  filename <- "address.json"
-  namefileload <- gsc_api_cache(
-    apiurl,
-    filename,
-    cache_dir = tempdir(),
-    update_cache = TRUE,
-    verbose = verbose
-  )
+  res <- call_api(custom_query, apiurl, verbose)
 
-  if (is.null(namefileload)) {
-    return(NULL)
-  }
+  if (any(nrow(res) == 0, is.na(res$bbox), is.null(res$bbox))) {
+    cli::cli_alert_warning("No results. Returning {.val NULL}")
 
-  results <- jsonlite::read_json(
-    namefileload,
-    simplifyVector = TRUE,
-    flatten = TRUE
-  )
-  unlink(namefileload, force = TRUE)
-
-  res <- results$results
-  res <- as.data.frame(res)
-  if (any(nrow(res) == 0, results$count == 0, is.na(res))) {
-    message("No results, returning NULL")
     return(NULL)
   }
 
@@ -168,9 +148,8 @@ gisco_addressapi_bbox <- function(
   bboxclass[1:4] <- bbox
 
   bbox <- sf::st_as_sfc(bboxclass)
-  res <- sf::st_sf(bbox)
+  res <- sf::st_sf(x = "bbox", geometry = bbox)
   res <- gsc_helper_utf8(res)
-
   res
 }
 
@@ -178,30 +157,14 @@ gisco_addressapi_bbox <- function(
 #' @export
 gisco_addressapi_countries <- function(verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/countries"
-  filename <- "address.json"
-  namefileload <- gsc_api_cache(
-    apiurl,
-    filename,
-    cache_dir = tempdir(),
-    update_cache = TRUE,
-    verbose = verbose
-  )
 
-  if (is.null(namefileload)) {
-    return(NULL)
+  res <- call_api(list(NULL), apiurl, verbose)
+  if (is.null(res)) {
+    return(res)
   }
+  res <- tibble::tibble(L0 = unlist(res[, 1]))
 
-  results <- jsonlite::read_json(
-    namefileload,
-    simplifyVector = TRUE,
-    flatten = TRUE
-  )
-  unlink(namefileload, force = TRUE)
-
-  res <- results$results
-  res <- data.frame(L0 = unlist(res))
-
-  return(res)
+  res
 }
 
 #' @rdname gisco_addressapi
@@ -306,65 +269,54 @@ gisco_addressapi_copyright <- function(verbose = FALSE) {
 # General ----
 
 call_api <- function(custom_query, apiurl, verbose = FALSE) {
-  apiurl <- add_custom_query(custom_query, apiurl)
-  filename <- "address.json"
-  namefileload <- gsc_api_cache(
-    apiurl,
-    filename,
-    cache_dir = tempdir(),
-    update_cache = TRUE,
-    verbose = verbose
-  )
+  # Prepare the query
+  clean_q <- unlist(custom_query)
+  get_url <- httr2::url_modify(apiurl, query = as.list(clean_q))
+  if (verbose) {
+    cli::cli_alert_info("GET {.url {get_url}}")
+  }
 
-  if (is.null(namefileload)) {
+  req <- httr2::request(get_url)
+  req <- httr2::req_error(req, is_error = function(x) {
+    FALSE
+  })
+  req <- httr2::req_timeout(req, 100000)
+  resp <- httr2::req_perform(req)
+
+  # Testing purposes only
+  # Mock the behavior of offline
+  test_offline <- getOption("giscoR_test_offline", NULL)
+  if (any(httr2::resp_is_error(resp), test_offline)) {
+    get_status_code <- httr2::resp_status(resp) # nolint
+    get_status_desc <- httr2::resp_status_desc(resp) # nolint
+
+    cli::cli_alert_danger(
+      c("{.strong Error {.num {get_status_code}}} ({get_status_desc})")
+    )
+    cli::cli_alert_warning(
+      c(
+        "If you think this is a bug please consider opening an issue on ",
+        "{.url https://github.com/ropengov/giscoR/issues}"
+      )
+    )
+    cli::cli_alert("Returning {.val NULL}")
     return(NULL)
   }
 
-  results <- jsonlite::read_json(
-    namefileload,
-    simplifyVector = TRUE,
-    flatten = TRUE
-  )
-  unlink(namefileload, force = TRUE)
+  resp_df <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  resp_df <- tibble::as_tibble(resp_df$results)
 
-  res <- results$results
-  res <- as.data.frame(res)
-  res <- tibble::as_tibble(res)
-  if (nrow(res) == 0) {
-    message("No results, returning NULL")
-    return(NULL)
+  if (!"XY" %in% names(resp_df)) {
+    return(resp_df)
   }
 
-  if ("XY" %in% names(res)) {
-    # Extract XY coordinates as matrix
-    xy_coords <- as.data.frame(matrix(unlist(res$XY), ncol = 2, byrow = TRUE))
-    names(xy_coords) <- c("X", "Y")
-    res_clean <- res[, setdiff(names(res), "XY")]
-    geometry <- sf::st_as_sf(xy_coords, coords = c("X", "Y"), crs = 4326)
-
-    res_clean <- cbind(res_clean, xy_coords)
-
-    res <- cbind(geometry, res_clean)
-    res <- gsc_helper_utf8(res)
-  }
-
-  res
-}
-
-add_custom_query <- function(custom_query = list(), url) {
-  # Remove NULLs and not populated
-  custom_query <- custom_query[lengths(custom_query) > 0]
-
-  if (any(length(custom_query) == 0)) {
-    return(url)
-  }
-
-  # Collapse
-  custom_query <- lapply(custom_query, paste0, collapse = ",")
-
-  opts <- paste0(names(custom_query), "=", custom_query, collapse = "&")
-
-  end_url <- paste0(url, opts)
-
-  URLencode(end_url)
+  # If XY then can convert to sf
+  xy_coords <- as.data.frame(matrix(unlist(resp_df$XY), ncol = 2, byrow = TRUE))
+  names(xy_coords) <- c("X", "Y")
+  resp_df <- cbind(resp_df, xy_coords)
+  resp_df <- resp_df[setdiff(names(resp_df), "XY")]
+  geometry <- sf::st_as_sf(xy_coords, coords = c("X", "Y"), crs = 4326)
+  resp_sf <- sf::st_as_sf(resp_df, geometry = sf::st_geometry(geometry))
+  resp_sf <- gsc_helper_utf8(resp_sf)
+  resp_sf
 }

@@ -19,8 +19,10 @@ BugReports: https://github.com/rOpenGov/giscoR/issues
 Depends: 
     R (>= 3.6.0)
 Imports: 
+    cli,
     countrycode (>= 1.2.0),
     geojsonsf (>= 2.0.0),
+    httr2,
     jsonlite,
     rappdirs (>= 0.3.0),
     sf (>= 0.9.0),
@@ -30,7 +32,6 @@ Suggests:
     dplyr,
     eurostat,
     ggplot2 (>= 3.5.0),
-    httr2,
     knitr,
     lwgeom (>= 0.2-2),
     rmarkdown,

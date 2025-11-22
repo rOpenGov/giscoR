@@ -2,60 +2,60 @@ test_that("Test offline", {
   options(giscoR_test_offline = TRUE)
   expect_message(
     n <- gisco_addressapi_bbox(),
-    "not reachable"
+    "Error"
   )
   expect_null(n)
 
   expect_message(
     n <- gisco_addressapi_cities(),
-    "not reachable"
+    "Error"
   )
 
   expect_message(
     n <- gisco_addressapi_copyright(),
-    "not reachable"
+    "Error"
   )
   expect_null(n)
 
   expect_message(
     n <- gisco_addressapi_countries(),
-    "not reachable"
+    "Error"
   )
   expect_null(n)
 
   expect_message(
     n <- gisco_addressapi_housenumbers(),
-    "not reachable"
+    "Error"
   )
   expect_null(n)
 
   expect_message(
     n <- gisco_addressapi_postcodes(),
-    "not reachable"
+    "Error"
   )
   expect_null(n)
 
   expect_message(
     n <- gisco_addressapi_provinces(),
-    "not reachable"
+    "Error"
   )
   expect_null(n)
 
   expect_message(
     n <- gisco_addressapi_reverse(x = 0, y = 0),
-    "not reachable"
+    "Error"
   )
   expect_null(n)
 
   expect_message(
     n <- gisco_addressapi_roads(),
-    "not reachable"
+    "Error"
   )
   expect_null(n)
 
   expect_message(
     n <- gisco_addressapi_search(),
-    "not reachable"
+    "Error"
   )
   expect_null(n)
 
@@ -82,7 +82,9 @@ test_that("gisco_addressapi_bbox online", {
     )
   )
 
-  expect_null(gisco_addressapi_bbox("Namibia"))
+  expect_message(n <- gisco_addressapi_bbox("Namibia"), "No results. Returning")
+
+  expect_null(n)
 })
 
 
@@ -117,8 +119,12 @@ test_that("gisco_addressapi_reverse online", {
   )
   expect_s3_class(n, "sf")
   expect_s3_class(n, "tbl_df")
+  expect_true(all("X" %in% names(n), "Y" %in% names(n)))
 
-  expect_null(gisco_addressapi_reverse(-10, -30))
+  expect_shape(
+    gisco_addressapi_reverse(-10, -30),
+    nrow = 0
+  )
 })
 
 
@@ -126,7 +132,7 @@ test_that("gisco_addressapi_country online", {
   skip_on_cran()
   skip_if_gisco_offline()
   expect_silent(n <- gisco_addressapi_countries())
-  expect_s3_class(n, "data.frame")
+  expect_s3_class(n, "tbl_df")
   expect_identical("L0", names(n))
 })
 
@@ -134,7 +140,6 @@ test_that("gisco_addressapi_provinces online", {
   skip_on_cran()
   skip_if_gisco_offline()
   expect_silent(n <- gisco_addressapi_provinces(country = "LU"))
-  expect_s3_class(n, "data.frame")
   expect_s3_class(n, "tbl_df")
 })
 
@@ -147,9 +152,10 @@ test_that("gisco_addressapi_cities online", {
       province = "MURCIA"
     )
   )
-  expect_s3_class(n, "data.frame")
+
   expect_s3_class(n, "tbl_df")
 })
+
 test_that("gisco_addressapi_roads online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -160,9 +166,10 @@ test_that("gisco_addressapi_roads online", {
       city = "CODORNIZ"
     )
   )
-  expect_s3_class(n, "data.frame")
+
   expect_s3_class(n, "tbl_df")
 })
+
 test_that("gisco_addressapi_housenumbers online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -175,9 +182,10 @@ test_that("gisco_addressapi_housenumbers online", {
       postcode = 28026
     )
   )
-  expect_s3_class(n, "data.frame")
+
   expect_s3_class(n, "tbl_df")
 })
+
 test_that("gisco_addressapi_postcodes online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -188,7 +196,7 @@ test_that("gisco_addressapi_postcodes online", {
       city = "CODORNIZ"
     )
   )
-  expect_s3_class(n, "data.frame")
+
   expect_s3_class(n, "tbl_df")
 })
 
@@ -196,6 +204,5 @@ test_that("gisco_addressapi_copyright online", {
   skip_on_cran()
   skip_if_gisco_offline()
   expect_silent(n <- gisco_addressapi_copyright())
-  expect_s3_class(n, "data.frame")
   expect_s3_class(n, "tbl_df")
 })
