@@ -73,7 +73,7 @@ test_that("Caching errors", {
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Load shp", {
+test_that("Read shp", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -85,12 +85,21 @@ test_that("Load shp", {
     "https://gisco-services.ec.europa.eu/distribution/v2/countries/",
     "shp/CNTR_LB_2024_4326.shp.zip"
   )
-  expect_silent(
-    s <- load_shp(url, cdir, "fake_shp", verbose = FALSE, update_cache = FALSE)
+
+  fake_local <- api_cache(
+    url,
+    basename(url),
+    cdir,
+    "fake",
+    update_cache = FALSE,
+    verbose = FALSE
   )
+
+  s <- read_shp_zip(fake_local)
 
   expect_s3_class(s, "sf")
   expect_s3_class(s, "tbl_df")
-  expect_true(file.exists(file.path(cdir, "fake_shp", basename(url))))
+  expect_true(file.exists(fake_local))
   unlink(cdir, recursive = TRUE, force = TRUE)
+  expect_false(dir.exists(cdir))
 })

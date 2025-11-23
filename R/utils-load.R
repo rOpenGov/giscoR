@@ -75,29 +75,7 @@ api_cache <- function(
 }
 
 
-load_shp <- function(
-  url,
-  cache_dir = NULL,
-  subdir,
-  verbose,
-  update_cache
-) {
-  cache_dir <- gsc_helper_cachedir(cache_dir)
-  basename <- basename(url)
-
-  # Download file
-  file_local <- api_cache(
-    url,
-    basename,
-    cache_dir,
-    subdir,
-    update_cache = update_cache,
-    verbose = verbose
-  )
-  if (is.null(file_local)) {
-    return(NULL) # nocov
-  }
-
+read_shp_zip <- function(file_local) {
   shp_zip <- unzip(file_local, list = TRUE)
   shp_zip <- shp_zip$Name
   shp_zip <- shp_zip[grepl("shp$", shp_zip)]
@@ -106,7 +84,7 @@ load_shp <- function(
   # Read with vszip
   shp_read <- file.path("/vsizip/", file_local, shp_end)
   shp_read <- gsub("//", "/", shp_read)
-  data_sf <- sf::read_sf(shp_read, quiet = !verbose)
+  data_sf <- sf::read_sf(shp_read)
 
   data_sf <- gsc_helper_utf8(data_sf)
 

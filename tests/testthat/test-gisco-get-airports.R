@@ -1,3 +1,19 @@
+test_that("Offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_airports(update_cache = TRUE),
+    "Error"
+  )
+  expect_null(n)
+
+  expect_message(
+    n <- gisco_get_ports(update_cache = TRUE),
+    "Error"
+  )
+  expect_null(n)
+  options(giscoR_test_offline = FALSE)
+})
+
 test_that("Get airports", {
   expect_error(gisco_get_ports(year = 2020))
   expect_error(gisco_get_airports(year = 2020))

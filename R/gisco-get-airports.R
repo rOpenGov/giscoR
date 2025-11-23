@@ -91,7 +91,21 @@ gisco_get_airports <- function(
     )
   }
 
-  data_sf <- load_shp(url, cache_dir, "airports", verbose, update_cache)
+  filename <- basename(url)
+  namefileload <- api_cache(
+    url,
+    filename,
+    cache_dir,
+    "airports",
+    update_cache,
+    verbose
+  )
+
+  if (is.null(namefileload)) {
+    return(NULL)
+  }
+
+  data_sf <- read_shp_zip(namefileload)
 
   # Normalize to lonlat
   data_sf <- sf::st_transform(data_sf, 4326)
@@ -100,6 +114,7 @@ gisco_get_airports <- function(
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
+  data_sf <- gsc_helper_utf8(data_sf)
   data_sf
 }
 
@@ -134,7 +149,21 @@ gisco_get_ports <- function(
     )
   }
 
-  data_sf <- load_shp(url, cache_dir, "ports", verbose, update_cache)
+  filename <- basename(url)
+  namefileload <- api_cache(
+    url,
+    filename,
+    cache_dir,
+    "ports",
+    update_cache,
+    verbose
+  )
+
+  if (is.null(namefileload)) {
+    return(NULL)
+  }
+
+  data_sf <- read_shp_zip(namefileload)
 
   # Normalize to lonlat
   data_sf <- sf::st_transform(data_sf, 4326)
