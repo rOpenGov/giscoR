@@ -20,8 +20,10 @@ with 3 variables:
 A \code{\link[sf:sf]{sf}} object as provided by GISCO (2016 version).
 }
 \examples{
+library(sf)
 data("gisco_coastallines")
-head(gisco_coastallines)
+gisco_coastallines
+
 }
 \seealso{
 \code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}}

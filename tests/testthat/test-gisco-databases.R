@@ -3,7 +3,7 @@ test_that("Get database", {
   skip_if_gisco_offline()
 
   # Get db
-  new_db <- gisco_get_latest_db()
+  new_db <- gisco_get_latest_db(update_cache = TRUE)
   expect_s3_class(new_db, "tbl_df")
   expect_snapshot(unique(new_db$id_giscor))
   expect_snapshot(unique(new_db$ext))
@@ -18,7 +18,10 @@ test_that("Get database", {
 test_that("Test cached database", {
   skip_on_cran()
   skip_if_gisco_offline()
-  cached_db <- file.path(tempdir(), "gisco_cached_db.rds")
+  cdir <- gsc_helper_detect_cache_dir()
+  cdir_db <- gsc_helper_cachedir(file.path(cdir, "cache_db"))
+
+  cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
   unlink(cached_db)
   expect_false(file.exists(cached_db))
 

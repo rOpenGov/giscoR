@@ -18,7 +18,7 @@ This data frame is used to check the validity of the API calls.
 }
 \examples{
 
-data(gisco_db)
+data("gisco_db")
 }
 \seealso{
 Other dataset: 

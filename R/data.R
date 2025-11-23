@@ -16,7 +16,7 @@
 #' @keywords internal
 #' @examples
 #'
-#' data(gisco_db)
+#' data("gisco_db")
 NULL
 
 #' World countries `POLYGON` [`sf`][sf::st_sf] object
@@ -99,8 +99,10 @@ NULL
 #' @seealso [gisco_get_coastallines()]
 #'
 #' @examples
+#' library(sf)
 #' data("gisco_coastallines")
-#' head(gisco_coastallines)
+#' gisco_coastallines
+#'
 NULL
 
 #' All NUTS `POLYGON` object
