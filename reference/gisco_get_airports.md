@@ -7,7 +7,7 @@ from GISCO API or your local library.
 
 ``` r
 gisco_get_airports(
-  year = "2013",
+  year = c("2006", "2013"),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -15,7 +15,7 @@ gisco_get_airports(
 )
 
 gisco_get_ports(
-  year = "2013",
+  year = c("2009", "2013"),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -31,7 +31,7 @@ gisco_get_ports(
 
 - year:
 
-  Year of reference. Only year available right now is `"2013"`.
+  Year of reference.
 
 - country:
 
@@ -95,10 +95,9 @@ Other infrastructure:
 ``` r
 # \donttest{
 library(sf)
-#> Linking to GEOS 3.13.1, GDAL 3.11.0, PROJ 9.6.0; sf_use_s2() is TRUE
 
 greece <- gisco_get_countries(country = "EL", resolution = 3)
-airp_gc <- gisco_get_airports(country = "EL")
+airp_gc <- gisco_get_airports(2013, country = "EL")
 
 library(ggplot2)
 
@@ -114,11 +113,10 @@ if (inherits(airp_gc, "sf")) {
     )
 }
 
-##############################
-#         Plot ports         #
-##############################
 
-ports <- gisco_get_ports()
+# Plot ports
+
+ports <- gisco_get_ports(2013)
 coast <- giscoR::gisco_coastallines
 
 # To Robinson projection :)

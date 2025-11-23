@@ -116,7 +116,7 @@ a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Brief description of the API endpoints (source [GISCO Address API \\
+Brief description of the API endpoints (source [GISCO Address API
 Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)):
 
 |                 |                                                                                                                                                                                                                                                                                         |
@@ -192,7 +192,7 @@ struct
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 80 × 14
 #>    LD    TF    L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
-#>    <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
+#>  * <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
 #>  1 1     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #>  2 3     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #>  3 7     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
@@ -217,7 +217,7 @@ reverse
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 5 × 14
 #>   LD    TF     L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
-#>   <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
+#> * <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
 #> 1 1     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #> 2 1     CL CA… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #> 3 3     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4

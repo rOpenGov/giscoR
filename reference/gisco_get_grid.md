@@ -154,14 +154,6 @@ if (!is.null(grid)) {
       legend.key.width = unit(1, "lines")
     )
 }
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 
 # }
 ```

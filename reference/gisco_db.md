@@ -25,5 +25,5 @@ Other dataset:
 ## Examples
 
 ``` r
-data(gisco_db)
+data("gisco_db")
 ```

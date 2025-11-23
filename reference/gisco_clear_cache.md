@@ -56,24 +56,21 @@ Other cache utilities:
 ``` r
 # Don't run this! It would modify your current state
 # \dontrun{
+my_cache <- gisco_detect_cache_dir()
+
+# Set an example cache
+ex <- file.path(tempdir(), "example", "cache")
+gisco_set_cache_dir(ex, verbose = FALSE)
+
+# Restore initial cache
 gisco_clear_cache(verbose = TRUE)
-#> giscoR cached data deleted:  C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpk5GQeQ/giscoR
+#> giscoR cached data deleted:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEre8qy/example/cache
 
-Sys.getenv("GISCO_CACHE_DIR")
-#> [1] ""
-
-# Set new cache on a temp dir
-newcache <- file.path(tempdir(), "giscoR", "pkgdown")
-
-newcache
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmpk5GQeQ/giscoR/pkgdown"
-
-gisco_set_cache_dir(newcache)
-#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpk5GQeQ/giscoR/pkgdown
+gisco_set_cache_dir(my_cache)
+#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEre8qy/giscoR
 #> To install your cache_dir path for use in future sessions, 
 #> run this function with `install = TRUE`.
-
-Sys.getenv("GISCO_CACHE_DIR")
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmpk5GQeQ/giscoR/pkgdown"
+identical(my_cache, gisco_detect_cache_dir())
+#> [1] TRUE
 # }
 ```

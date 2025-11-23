@@ -14,8 +14,8 @@ gisco_attributions(lang = "en", copyright = FALSE)
 - lang:
 
   Language (two-letter ISO code). See
-  <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes> and
-  **Details**.
+  [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html)
+  and **Details**.
 
 - copyright:
 
@@ -113,4 +113,32 @@ gisco_attributions(lang = "XXX")
 #> ! Language xxx not supported. Switching to English.
 #> ℹ Consider contributing: <https://github.com/rOpenGov/giscoR/issues>
 #> [1] "© EuroGeographics for the administrative boundaries"
+
+# Get list of codes from countrycodes
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+
+countrycode::codelist %>%
+  select(country.name.en, iso2c)
+#> # A tibble: 291 × 2
+#>    country.name.en   iso2c
+#>    <chr>             <chr>
+#>  1 Afghanistan       AF   
+#>  2 Albania           AL   
+#>  3 Algeria           DZ   
+#>  4 American Samoa    AS   
+#>  5 Andorra           AD   
+#>  6 Angola            AO   
+#>  7 Anguilla          AI   
+#>  8 Antarctica        AQ   
+#>  9 Antigua & Barbuda AG   
+#> 10 Argentina         AR   
+#> # ℹ 281 more rows
 ```
