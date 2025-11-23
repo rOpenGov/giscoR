@@ -132,10 +132,11 @@ gisco_get_grid <- function(
   file_local <- file.path(gsc_helper_cachedir(cache_dir), "grid", filename)
   exist_local <- file.exists(file_local)
 
+  msg <- paste0("File already cached: {.file ", file_local, "}.")
   make_msg(
     "info",
     all(verbose, exist_local),
-    "File already cached: {.file {file_local}}."
+    msg
   )
 
   # nocov start

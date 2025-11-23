@@ -8,7 +8,7 @@ test_that("Grids online", {
   skip_if_gisco_offline()
 
   # Warnings due to issues with the GPKG driver
-  gdef <- gisco_get_grid()
+  expect_message(gdef <- gisco_get_grid(verbose = TRUE))
   expect_s3_class(gdef, "sf")
   expect_s3_class(gdef, "tbl_df")
   expect_silent(g100 <- gisco_get_grid(100))

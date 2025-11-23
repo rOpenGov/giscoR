@@ -45,9 +45,8 @@ gisco_get_healthcare <- function(
   country = NULL
 ) {
   # Given vars
+  year <- as.character(year)
   year <- match.arg(year)
-  epsg <- "4326"
-  ext <- "gpkg"
 
   api_entry <- paste0(
     "https://gisco-services.ec.europa.eu/pub/healthcare/",
@@ -58,10 +57,11 @@ gisco_get_healthcare <- function(
 
   if (cache) {
     # Guess source to load
-    namefileload <- gsc_api_cache(
+    namefileload <- api_cache(
       api_entry,
       filename,
       cache_dir,
+      "health",
       update_cache,
       verbose
     )
@@ -73,11 +73,13 @@ gisco_get_healthcare <- function(
     return(NULL)
   }
 
-  data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
+  data_sf <- sf::read_sf(namefileload)
 
   if (!is.null(country) && "cntr_id" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$cntr_id %in% country, ]
   }
-  return(data_sf)
+
+  data_sf <- gsc_helper_utf8(data_sf)
+  data_sf
 }
