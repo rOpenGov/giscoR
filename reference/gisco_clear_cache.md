@@ -64,10 +64,10 @@ gisco_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 gisco_clear_cache(verbose = TRUE)
-#> giscoR cached data deleted:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYpWImA/example/cache
+#> giscoR cached data deleted:  C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp0AL1KB/example/cache
 
 gisco_set_cache_dir(my_cache)
-#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYpWImA/giscoR
+#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp0AL1KB/giscoR
 #> To install your cache_dir path for use in future sessions, 
 #> run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
