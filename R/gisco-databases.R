@@ -4,7 +4,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
 
   cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
 
-  if (file.exists(cached_db) & isFALSE(update_cache)) {
+  if (file.exists(cached_db) && isFALSE(update_cache)) {
     # Read the db, not update
     db <- readRDS(cached_db)
     return(db)
@@ -18,7 +18,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
     req <- httr2::req_url_path_append(req, entry_point)
     api_entry <- httr2::req_get_url(req)
     req <- httr2::req_url_path_append(req, "datasets.json")
-    req <- httr2::req_cache(req, cdir_db)
+    req <- httr2::req_cache(req, tempdir())
     resp <- httr2::req_perform(req)
     master <- httr2::resp_body_json(resp)
     years <- gsub("[^.0-9]", "", names(master))
@@ -28,7 +28,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
       req <- httr2::request(url_api)
       req <- httr2::req_url_path_append(req, entry_point)
       req <- httr2::req_url_path_append(req, master[[i]]$files)
-      req <- httr2::req_cache(req, cdir_db)
+      req <- httr2::req_cache(req, tempdir())
       resp <- httr2::req_perform(req)
       child <- httr2::resp_body_json(resp)
       tibble::tibble(

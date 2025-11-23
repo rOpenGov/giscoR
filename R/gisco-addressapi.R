@@ -291,7 +291,10 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
     cli::cli_alert_danger(
-      c("{.strong Error {.num {get_status_code}}} ({get_status_desc})")
+      c(
+        "{.strong Error {.num {get_status_code}}} ({get_status_desc}):",
+        " {.url {get_url}}."
+      )
     )
     cli::cli_alert_warning(
       c(

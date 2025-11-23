@@ -6,7 +6,7 @@
 #'
 #' @return A `POINT` object on EPSG:4326.
 #'
-#' @param year Year of reference. Only year available right now is `"2013"`.
+#' @param year Year of reference.
 #'
 #' @inheritParams gisco_get_countries
 #'
@@ -23,7 +23,7 @@
 #' library(sf)
 #'
 #' greece <- gisco_get_countries(country = "EL", resolution = 3)
-#' airp_gc <- gisco_get_airports(country = "EL")
+#' airp_gc <- gisco_get_airports(2013, country = "EL")
 #'
 #' library(ggplot2)
 #'
@@ -38,11 +38,10 @@
 #'       caption = gisco_attributions()
 #'     )
 #' }
-#' ##############################
-#' #         Plot ports         #
-#' ##############################
 #'
-#' ports <- gisco_get_ports()
+#' # Plot ports
+#'
+#' ports <- gisco_get_ports(2013)
 #' coast <- giscoR::gisco_coastallines
 #'
 #' # To Robinson projection :)
@@ -70,15 +69,19 @@
 #' }
 #' @export
 gisco_get_airports <- function(
-  year = "2013",
+  year = c("2006", "2013"),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE
 ) {
   year <- as.character(year)
-  if (year != "2013") {
-    stop("Year should be 2013")
+  year <- match.arg(year)
+  if (year == "2006") {
+    url <- paste0(
+      "https://ec.europa.eu/eurostat/cache/GISCO/",
+      "geodatafiles/AIRP_SH.zip"
+    )
   }
 
   if (year == "2013") {
@@ -88,8 +91,7 @@ gisco_get_airports <- function(
     )
   }
 
-  data_sf <- gsc_load_shp(url, cache_dir, verbose, update_cache)
-  data_sf <- sf::st_make_valid(data_sf)
+  data_sf <- load_shp(url, cache_dir, "airports", verbose, update_cache)
 
   # Normalize to lonlat
   data_sf <- sf::st_transform(data_sf, 4326)
@@ -111,17 +113,20 @@ gisco_get_airports <- function(
 #'
 #' @export
 gisco_get_ports <- function(
-  year = "2013",
+  year = c("2009", "2013"),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE
 ) {
   year <- as.character(year)
-  if (year != "2013") {
-    stop("Year should be 2013")
+  year <- match.arg(year)
+  if (year == "2009") {
+    url <- paste0(
+      "https://ec.europa.eu/eurostat/cache/GISCO/",
+      "geodatafiles/PORT_2009_SH.zip"
+    )
   }
-
   if (year == "2013") {
     url <- paste0(
       "https://ec.europa.eu/eurostat/cache/GISCO/",
@@ -129,8 +134,7 @@ gisco_get_ports <- function(
     )
   }
 
-  data_sf <- gsc_load_shp(url, cache_dir, verbose, update_cache)
-  data_sf <- sf::st_make_valid(data_sf)
+  data_sf <- load_shp(url, cache_dir, "ports", verbose, update_cache)
 
   # Normalize to lonlat
   data_sf <- sf::st_transform(data_sf, 4326)
@@ -142,5 +146,6 @@ gisco_get_ports <- function(
     country <- gsc_helper_countrynames(country, "iso2c")
     data_sf <- data_sf[data_sf$CNTR_ISO2 %in% country, ]
   }
+  data_sf <- gsc_helper_utf8(data_sf)
   data_sf
 }

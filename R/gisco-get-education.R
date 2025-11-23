@@ -43,9 +43,8 @@ gisco_get_education <- function(
   country = NULL
 ) {
   # Given vars
+  year <- as.character(year)
   year <- match.arg(year)
-  epsg <- "4326"
-  ext <- "gpkg"
 
   if (!is.null(country)) {
     country_get <- gsc_helper_countrynames(country, "eurostat")
@@ -69,10 +68,11 @@ gisco_get_education <- function(
 
     if (cache) {
       # Guess source to load
-      namefileload <- gsc_api_cache(
+      namefileload <- api_cache(
         api,
         filename,
         cache_dir,
+        "education",
         update_cache,
         verbose
       )
@@ -84,12 +84,16 @@ gisco_get_education <- function(
       return(NULL)
     }
 
-    data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
+    data_sf <- sf::read_sf(namefileload)
 
     data_sf
   })
 
   data_sf_all <- do.call("rbind", ress)
+  if (is.null(data_sf_all)) {
+    return(NULL)
+  }
+  data_sf_all <- gsc_helper_utf8(data_sf_all)
 
   return(data_sf_all)
 }
