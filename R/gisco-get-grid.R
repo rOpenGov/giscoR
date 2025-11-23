@@ -129,13 +129,19 @@ gisco_get_grid <- function(
   api_entry <- "https://gisco-services.ec.europa.eu/grid"
   url <- file.path(api_entry, filename)
 
-  local <- file.path(gsc_helper_cachedir(cache_dir), filename)
-  exist_local <- file.exists(local)
+  file_local <- file.path(gsc_helper_cachedir(cache_dir), "grid", filename)
+  exist_local <- file.exists(file_local)
 
-  gsc_message(verbose & exist_local, "File exits on local cache dir")
+  make_msg(
+    "info",
+    all(verbose, exist_local),
+    "File already cached: {.file {file_local}}."
+  )
 
   # nocov start
   if (resolution %in% c("1", "2") && isFALSE(exist_local)) {
+    verbose <- TRUE
+
     sel <- menu(
       c("Yes", "No"),
       title = "You are about to download a large file (>500M). Proceed?"
@@ -146,34 +152,26 @@ gisco_get_grid <- function(
   }
   # nocov end
 
-  localfile <- gsc_api_cache(url, filename, cache_dir, update_cache, verbose)
+  file_local <- api_cache(
+    url,
+    basename(file_local),
+    cache_dir,
+    "grid",
+    update_cache,
+    verbose
+  )
 
-  if (is.null(localfile)) {
+  if (is.null(file_local)) {
     return(NULL)
   }
 
-  size <- file.size(localfile)
+  size <- file.size(file_local)
   class(size) <- "object_size"
-  gsc_message(verbose, format(size, units = "auto"))
+  size <- format(size, units = "auto")
+  make_msg("info", verbose, size)
 
-  data_sf <- try(
-    sf::st_read(localfile, quiet = !verbose, stringsAsFactors = FALSE),
-    silent = TRUE
-  )
+  data_sf <- sf::read_sf(file_local)
+  data_sf <- gsc_helper_utf8(data_sf)
 
-  # nocov start
-  if (inherits(data_sf, "try-error")) {
-    stop(
-      "\n Malformed ",
-      localfile,
-      "\n Try downloading from: \n",
-      url,
-      "\n to your cache_dir folder"
-    )
-  }
-  # nocov end
-
-  data_sf <- sf::st_make_valid(data_sf)
-
-  return(data_sf)
+  data_sf
 }
