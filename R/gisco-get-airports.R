@@ -69,7 +69,7 @@
 #' }
 #' @export
 gisco_get_airports <- function(
-  year = c("2006", "2013"),
+  year = c("2013", "2006"),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -113,7 +113,7 @@ gisco_get_airports <- function(
 #'
 #' @export
 gisco_get_ports <- function(
-  year = c("2009", "2013"),
+  year = c("2013", "2009"),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,

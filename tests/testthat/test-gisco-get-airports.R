@@ -25,12 +25,12 @@ test_that("Get airports", {
   expect_identical(as.character(unique(es$CNTR_CODE)), "ES")
   expect_true(nrow(all) > nrow(es))
 
-  # 2013
+  # 2006
 
-  all <- expect_silent(gisco_get_airports(2013))
+  all <- expect_silent(gisco_get_airports(2006))
   expect_true(all(sf::st_geometry_type(all) == "POINT"))
 
-  es <- expect_silent(gisco_get_airports(2013, country = "ES"))
+  es <- expect_silent(gisco_get_airports(2006, country = "ES"))
   expect_s3_class(es, "tbl_df")
   expect_s3_class(es, "sf")
   expect_lt(nrow(es), nrow(all))
@@ -70,11 +70,11 @@ test_that("Get airports", {
 
   expect_identical(as.character(unique(es$CNTR_ISO2)), "ES")
 
-  # 2013
-  all <- expect_silent(gisco_get_ports(2013))
+  # 2009
+  all <- expect_silent(gisco_get_ports(2009))
   expect_true(all(sf::st_geometry_type(all) == "POINT"))
 
-  expect_silent(gisco_get_ports(2013))
+  expect_silent(gisco_get_ports(2009))
   es <- expect_silent(gisco_get_ports(country = "ES"))
   expect_s3_class(es, "tbl_df")
   expect_s3_class(es, "sf")

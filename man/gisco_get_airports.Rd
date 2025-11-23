@@ -9,7 +9,7 @@
 }
 \usage{
 gisco_get_airports(
-  year = c("2006", "2013"),
+  year = c("2013", "2006"),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -17,7 +17,7 @@ gisco_get_airports(
 )
 
 gisco_get_ports(
-  year = c("2009", "2013"),
+  year = c("2013", "2009"),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
