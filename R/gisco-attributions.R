@@ -8,7 +8,7 @@
 #'
 #' @export
 #'
-#' @param lang Language (two-letter ISO code). See [countrycodes::codelist]
+#' @param lang Language (two-letter ISO code). See [countrycode::codelist]
 #'   and **Details**.
 #'
 #' @param copyright Boolean `TRUE/FALSE`. Whether to display the copyright
@@ -65,8 +65,7 @@
 #' library(dplyr)
 #'
 #' countrycode::codelist %>%
-#' select(country.name.en, iso2c)
-
+#'   select(country.name.en, iso2c)
 gisco_attributions <- function(lang = "en", copyright = FALSE) {
   lang <- tolower(lang)
   if (copyright) {
@@ -117,8 +116,7 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     "{.url https://github.com/rOpenGov/giscoR/issues}"
   )
 
-  attr <- switch(
-    lang,
+  attr <- switch(lang,
     "en" = "\u00a9 EuroGeographics for the administrative boundaries",
     "da" = "\u00a9 EuroGeographics for administrative gr\u00e6nser",
     "de" = "\u00a9 EuroGeographics bezuglich der Verwaltungsgrenzen",

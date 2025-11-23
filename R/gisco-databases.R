@@ -1,29 +1,11 @@
-make_msg <- function(type = "generic", verbose, ...) {
-  if (!verbose) {
-    return(invisible())
-  }
-  dots <- list(...)
-  msg <- paste(dots, collapse = " ")
+gisco_get_latest_db <- function() {
+  cached_db <- file.path(tempdir(), "gisco_cached_db.rds")
 
-  if (type == "generic") {
-    cli::cli_alert(msg)
+  if (file.exists(cached_db)) {
+    db <- readRDS(cached_db)
+    return(db)
   }
-  if (type == "success") {
-    cli::cli_alert_success(msg)
-  }
-  if (type == "warning") {
-    cli::cli_alert_warning(msg)
-  }
-  if (type == "danger") {
-    cli::cli_alert_danger(msg)
-  }
-  if (type == "info") {
-    cli::cli_alert_info(msg)
-  }
-  invisible()
-}
 
-get_latest_gisco_db <- function() {
   get_db_data <- function(entry_point) {
     url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/"
 
@@ -157,6 +139,10 @@ get_latest_gisco_db <- function() {
   final_db_2 <- final_db_2[, ordernames]
 
   final_db_2 <- final_db_2[do.call(order, final_db_2), ]
+
+  # Write in temp
+
+  saveRDS(final_db_2, cached_db)
 
   final_db_2
 }

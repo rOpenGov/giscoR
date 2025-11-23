@@ -106,7 +106,7 @@ The API supports fuzzy searching (also referred to as approximate string
 matching) for all parameters of each endpoint.
 }
 \details{
-Brief description of the API endpoints (source \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API \> Endpoints}):\tabular{ll}{
+Brief description of the API endpoints (source \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API Endpoints}):\tabular{ll}{
    \strong{Endpoint} \tab \strong{Description} \cr
    \verb{/countries} \tab Returns all country codes that are compatible with the address API. Check the coverage map for available countries and see \href{https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies}{here for a list of official country codes}. \cr
    \verb{/provinces} \tab Returns all provinces within the specified country. Can also be used to get the province of a specified city. \cr
