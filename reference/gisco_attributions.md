@@ -85,36 +85,32 @@ gisco_attributions()
 #> [1] "© EuroGeographics for the administrative boundaries"
 
 gisco_attributions(lang = "es", copyright = TRUE)
+#> ℹ COPYRIGHT NOTICE
 #> 
-#>     COPYRIGHT NOTICE
+#> When data downloaded from GISCO
+#> is used in any printed or electronic publication,
+#> in addition to any other provisions applicable to
+#> the whole Eurostat website, data source will have
+#> to be acknowledged in the legend of the map and in
+#> the introductory page of the publication with the
+#> following copyright notice:
 #> 
-#>     When data downloaded from GISCO
-#>     is used in any printed or electronic publication,
-#>     in addition to any other provisions applicable to
-#>     the whole Eurostat website, data source will have
-#>     to be acknowledged in the legend of the map and in
-#>     the introductory page of the publication with the
-#>     following copyright notice:
+#> - EN: (C) EuroGeographics for the administrative boundaries
+#> - FR: (C) EuroGeographics pour les limites administratives
+#> - DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
 #> 
-#>     - EN: (C) EuroGeographics for the administrative boundaries
-#>     - FR: (C) EuroGeographics pour les limites administratives
-#>     - DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
+#> For publications in languages other than English,
+#> French or German, the translation of the copyright
+#> notice in the language of the publication shall be
+#> used.
 #> 
-#>     For publications in languages other than English,
-#>     French or German, the translation of the copyright
-#>     notice in the language of the publication shall be
-#>     used.
-#> 
-#>     If you intend to use the data commercially, please
-#>     contact EuroGeographics for information regarding
-#>     their licence agreements.
-#> 
-#>       
+#> If you intend to use the data commercially, please
+#> contact EuroGeographics for information regarding
+#> their licence agreements.
 #> [1] "© Eurogeographics para los límites administrativos"
 
 gisco_attributions(lang = "XXX")
-#> Language xxx not supported, switching to English. 
-#> Consider contributing: 
-#> https://github.com/rOpenGov/giscoR/issues
+#> ! Language xxx not supported. Switching to English.
+#> ℹ Consider contributing: <https://github.com/rOpenGov/giscoR/issues>
 #> [1] "© EuroGeographics for the administrative boundaries"
 ```
