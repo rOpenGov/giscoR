@@ -82,16 +82,16 @@ my_cache <- gisco_detect_cache_dir()
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEre8qy/example/cachenew
+#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYpWImA/example/cachenew
 #> To install your cache_dir path for use in future sessions, 
 #> run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpEre8qy/example/cachenew"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpYpWImA/example/cachenew"
 
 # Restore initial cache
 gisco_set_cache_dir(my_cache)
-#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpEre8qy/giscoR
+#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpYpWImA/giscoR
 #> To install your cache_dir path for use in future sessions, 
 #> run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
@@ -99,9 +99,9 @@ identical(my_cache, gisco_detect_cache_dir())
 # }
 
 gisco_detect_cache_dir()
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpEre8qy/giscoR"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpYpWImA/giscoR"
 
 
 gisco_detect_cache_dir()
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpEre8qy/giscoR"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpYpWImA/giscoR"
 ```
