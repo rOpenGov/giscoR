@@ -60,7 +60,7 @@ gisco_get_education <- function(
     ".gpkg"
   )
 
-  n_cnt <- seq_len(length(api_entry))
+  n_cnt <- seq_along(api_entry)
 
   ress <- lapply(n_cnt, function(x) {
     api <- api_entry[x]
@@ -95,5 +95,5 @@ gisco_get_education <- function(
   }
   data_sf_all <- gsc_helper_utf8(data_sf_all)
 
-  return(data_sf_all)
+  data_sf_all
 }
