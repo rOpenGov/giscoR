@@ -98,17 +98,18 @@
 #'   scale_fill_viridis_d()
 #' }
 gisco_get_nuts <- function(
-    year = "2016",
-    epsg = "4326",
-    cache = TRUE,
-    update_cache = FALSE,
-    cache_dir = NULL,
-    verbose = FALSE,
-    resolution = "20",
-    spatialtype = "RG",
-    country = NULL,
-    nuts_id = NULL,
-    nuts_level = "all") {
+  year = "2016",
+  epsg = "4326",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "20",
+  spatialtype = "RG",
+  country = NULL,
+  nuts_id = NULL,
+  nuts_level = "all"
+) {
   ext <- "geojson"
 
   nuts_level <- as.character(nuts_level)

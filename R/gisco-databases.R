@@ -1,6 +1,6 @@
 gisco_get_latest_db <- function(update_cache = FALSE) {
-  cdir <- gsc_helper_detect_cache_dir()
-  cdir_db <- gsc_helper_cachedir(file.path(cdir, "cache_db"))
+  cdir <- tempdir()
+  cdir_db <- gsc_helper_cachedir(file.path(cdir, "giscor", "cache_db"))
 
   cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
 
@@ -18,8 +18,18 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
     req <- httr2::req_url_path_append(req, entry_point)
     api_entry <- httr2::req_get_url(req)
     req <- httr2::req_url_path_append(req, "datasets.json")
-    req <- httr2::req_cache(req, tempdir())
+    req <- httr2::req_cache(req, cdir_db)
+    req <- httr2::req_error(req, is_error = function(x) {
+      FALSE
+    })
     resp <- httr2::req_perform(req)
+    # Testing
+    test_offline <- getOption("giscoR_test_offline", NULL)
+
+    if (any(httr2::resp_is_error(resp), test_offline)) {
+      return(NULL)
+    }
+
     master <- httr2::resp_body_json(resp)
     years <- gsub("[^.0-9]", "", names(master))
     iter <- seq_along(master)
@@ -28,11 +38,20 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
       req <- httr2::request(url_api)
       req <- httr2::req_url_path_append(req, entry_point)
       req <- httr2::req_url_path_append(req, master[[i]]$files)
-      req <- httr2::req_cache(req, tempdir())
+      req <- httr2::req_cache(req, cdir_db)
+      req <- httr2::req_error(req, is_error = function(x) {
+        FALSE
+      })
       resp <- httr2::req_perform(req)
+      # nocov start
+      if (httr2::resp_is_error(resp)) {
+        return(NULL)
+      }
+      # nocov end
+
       child <- httr2::resp_body_json(resp)
       tibble::tibble(
-        id_giscor = entry_point,
+        id_giscoR = entry_point,
         year = years[i],
         api_file = unlist(child),
         api_entry = api_entry
@@ -43,11 +62,24 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   }
 
   final_db <- lapply(
-    c("coas", "communes", "countries", "lau", "nuts", "urau"),
+    c("coas", "communes", "countries", "lau", "nuts", "urau", "pcode"),
     get_db_data
   )
 
   final_db <- do.call(rbind, final_db)
+  if (is.null(final_db)) {
+    url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/" # nolint
+
+    cli::cli_alert_warning(
+      c(
+        "Can't access {.url {url_api}}",
+        "If you think this is a bug please consider opening an issue on ",
+        "{.url https://github.com/ropengov/giscoR/issues}"
+      )
+    )
+    cli::cli_alert("Returning {.val NULL}")
+    return(NULL)
+  }
   final_db <- tibble::as_tibble(final_db)
 
   # Remove non-useful extensions
@@ -87,15 +119,15 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   # nuts_level: Different for NUTS and URBAN AUDIT
   final_db$nuts_level <- NA
   final_db$level <- NA
-  clean <- final_db[!final_db$id_giscor %in% c("nuts", "urau"), ]
-  nuts <- final_db[final_db$id_giscor == "nuts", ]
-  urau <- final_db[final_db$id_giscor == "urau", ]
+  clean <- final_db[!final_db$id_giscoR %in% c("nuts", "urau"), ]
+  nuts <- final_db[final_db$id_giscoR == "nuts", ]
+  urau <- final_db[final_db$id_giscoR == "urau", ]
 
   # NUTS
   nuts$nuts_level <- "all"
 
   avnutslev <- c("LEVL_0", "LEVL_1", "LEVL_2", "LEVL_3")
-  i <- 1
+
   for (i in seq_along(avnutslev)) {
     char <- avnutslev[i]
     num <- gsub("[^.0-9]", "", char)
@@ -120,6 +152,13 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   # Almost there: regenerate and add file extension
   final_db_2 <- rbind(clean, urau, nuts)
 
+  # Recode
+  id_giscor <- final_db_2$id_giscoR
+  id_giscor[id_giscor == "coas"] <- "coastallines"
+  id_giscor[id_giscor == "urau"] <- "urban_audit"
+  id_giscor[id_giscor == "pcode"] <- "postalcode"
+  final_db_2$id_giscoR <- id_giscor
+
   # get extensions
   extension <- final_db_2$api_file
   # remove ending zip
@@ -128,7 +167,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   final_db_2$ext <- ext_end
 
   ordernames <- c(
-    "id_giscor",
+    "id_giscoR",
     "year",
     "epsg",
     "resolution",
@@ -149,4 +188,36 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   saveRDS(final_db_2, cached_db)
 
   final_db_2
+}
+
+# Get db
+get_db <- function() {
+  db <- gisco_get_latest_db()
+  if (is.null(db)) {
+    db <- giscoR::gisco_db
+
+    cdir <- tempdir()
+    cdir_db <- gsc_helper_cachedir(file.path(cdir, "giscor", "cache_db"))
+
+    cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
+    saveRDS(db, cached_db)
+
+    # Msg
+    url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/" # nolint
+
+    cli::cli_alert_warning(
+      c(
+        "Can't get the latest database from {.url {url_api}}.\n",
+        "Try later with {.fn giscoR::gisco_get_latest_db} option",
+        "{.arg update_cache = TRUE}"
+      )
+    )
+    cli::cli_alert_info(
+      c(
+        "Using cached {.help [{.value gisco_db}](giscoR::gisco_db)} ",
+        "information (may be outdated)"
+      )
+    )
+  }
+  db
 }

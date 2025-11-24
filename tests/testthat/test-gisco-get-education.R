@@ -1,3 +1,12 @@
+test_that("Offline", {
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_education(country = "LU", update_cache = TRUE),
+    "Error"
+  )
+  expect_null(n)
+  options(giscoR_test_offline = FALSE)
+})
 test_that("Education online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -39,14 +48,4 @@ test_that("Education online 2020", {
   expect_length(unique(nn$cntr_id), 3)
   expect_s3_class(nn, "sf")
   expect_s3_class(nn, "tbl_df")
-})
-
-test_that("Offline", {
-  options(giscoR_test_offline = TRUE)
-  expect_message(
-    n <- gisco_get_education(country = "LU", update_cache = TRUE),
-    "Error"
-  )
-  expect_null(n)
-  options(giscoR_test_offline = FALSE)
 })

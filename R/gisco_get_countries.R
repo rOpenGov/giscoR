@@ -112,16 +112,17 @@
 #'   theme_minimal()
 #'
 gisco_get_countries <- function(
-    year = "2016",
-    epsg = "4326",
-    cache = TRUE,
-    update_cache = FALSE,
-    cache_dir = NULL,
-    verbose = FALSE,
-    resolution = "20",
-    spatialtype = "RG",
-    country = NULL,
-    region = NULL) {
+  year = "2016",
+  epsg = "4326",
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = "20",
+  spatialtype = "RG",
+  country = NULL,
+  region = NULL
+) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(

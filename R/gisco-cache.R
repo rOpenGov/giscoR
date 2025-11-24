@@ -64,10 +64,11 @@
 #'
 #' @export
 gisco_set_cache_dir <- function(
-    cache_dir,
-    overwrite = FALSE,
-    install = FALSE,
-    verbose = TRUE) {
+  cache_dir,
+  overwrite = FALSE,
+  install = FALSE,
+  verbose = TRUE
+) {
   # Default if not provided
   if (missing(cache_dir) || cache_dir == "") {
     make_msg(
@@ -196,9 +197,10 @@ gisco_detect_cache_dir <- function() {
 #' }
 #' @export
 gisco_clear_cache <- function(
-    config = FALSE,
-    cached_data = TRUE,
-    verbose = FALSE) {
+  config = FALSE,
+  cached_data = TRUE,
+  verbose = FALSE
+) {
   config_dir <- rappdirs::user_config_dir("giscoR", "R")
   data_dir <- gsc_helper_detect_cache_dir()
 
@@ -268,7 +270,6 @@ gsc_helper_detect_cache_dir <- function() {
     getvar
   }
 }
-
 
 
 #' Creates `cache_dir`

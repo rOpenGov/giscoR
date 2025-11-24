@@ -15,11 +15,12 @@ ext <- "geojson"
 
 # Function----
 dwndata <- function(
-    name = "coastallines",
-    api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/coas",
-    clean = "coastline-",
-    dataset = "datasets.json",
-    ext = "geojson") {
+  name = "coastallines",
+  api_entry = "https://gisco-services.ec.europa.eu/distribution/v2/coas",
+  clean = "coastline-",
+  dataset = "datasets.json",
+  ext = "geojson"
+) {
   # Create temp file
   tmp <- tempfile(dataset, fileext = ".json")
   tmp <- gsub("\\", "/", tmp, fixed = TRUE)
