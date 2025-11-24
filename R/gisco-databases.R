@@ -1,3 +1,10 @@
+#' TODO
+#'
+#' TODO Description
+#'
+#' @export
+#' @inheritParams gisco_get_nuts
+#' @family databases
 gisco_get_latest_db <- function(update_cache = FALSE) {
   cdir <- tempdir()
   cdir_db <- gsc_helper_cachedir(file.path(cdir, "giscor", "cache_db"))
@@ -156,7 +163,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   id_giscor <- final_db_2$id_giscoR
   id_giscor[id_giscor == "coas"] <- "coastallines"
   id_giscor[id_giscor == "urau"] <- "urban_audit"
-  id_giscor[id_giscor == "pcode"] <- "postalcode"
+  id_giscor[id_giscor == "pcode"] <- "postalcodes"
   final_db_2$id_giscoR <- id_giscor
 
   # get extensions

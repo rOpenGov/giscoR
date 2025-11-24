@@ -26,6 +26,11 @@ Other dataset:
 \code{\link{gisco_countries}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_nuts}}
+
+Other databases: 
+\code{\link{gisco_get_db_years}()},
+\code{\link{gisco_get_latest_db}()}
 }
+\concept{databases}
 \concept{dataset}
 \keyword{internal}

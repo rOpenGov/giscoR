@@ -2,7 +2,8 @@
 #'
 #' Get postal codes points of the EU, EFTA and candidate countries.
 #'
-#' @param year Year of reference. Currently only `"2020"` is available.
+#' @param year Year of reference. one of
+#'   `r for_docs(gisco_get_db_years("postalcodes"))`.
 #'
 #' @inheritParams gisco_get_airports
 #' @inheritSection gisco_get_countries About caching

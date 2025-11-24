@@ -3,6 +3,7 @@
 #' Database with the list of files that the package can load.
 #'
 #' @family dataset
+#' @family databases
 #'
 #' @name gisco_db
 #'

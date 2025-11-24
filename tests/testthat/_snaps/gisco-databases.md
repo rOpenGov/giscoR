@@ -4,7 +4,7 @@
       unique(new_db$id_giscoR)
     Output
       [1] "coastallines" "communes"     "countries"    "lau"          "nuts"        
-      [6] "postalcode"   "urban_audit" 
+      [6] "postalcodes"  "urban_audit" 
 
 ---
 

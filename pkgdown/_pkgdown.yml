@@ -32,6 +32,10 @@ reference:
   desc: >
     Access to other GISCO tools
   contents: has_concept("tools")
+- title: Databases
+  desc: >
+    Get information about the current and most up-to-date database.
+  contents: has_concept("databases")
 - title: Misc
   desc: >
     These functions return other <a href="https://r-spatial.github.io/sf/reference/sf.html"

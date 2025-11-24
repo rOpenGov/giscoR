@@ -16,7 +16,8 @@ gisco_get_postalcodes(
 )
 }
 \arguments{
-\item{year}{Year of reference. Currently only \code{"2020"} is available.}
+\item{year}{Year of reference. one of
+\code{"2020"} or \code{"2024"}.}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
