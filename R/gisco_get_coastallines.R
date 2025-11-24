@@ -38,14 +38,13 @@
 #'   )
 #' @export
 gisco_get_coastallines <- function(
-  year = "2016",
-  epsg = "4326",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  resolution = "20"
-) {
+    year = "2016",
+    epsg = "4326",
+    cache = TRUE,
+    update_cache = FALSE,
+    cache_dir = NULL,
+    verbose = FALSE,
+    resolution = "20") {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(

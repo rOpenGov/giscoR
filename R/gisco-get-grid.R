@@ -107,12 +107,11 @@
 #' }
 #' @export
 gisco_get_grid <- function(
-  resolution = "20",
-  spatialtype = c("REGION", "POINT"),
-  cache_dir = NULL,
-  update_cache = FALSE,
-  verbose = FALSE
-) {
+    resolution = "20",
+    spatialtype = c("REGION", "POINT"),
+    cache_dir = NULL,
+    update_cache = FALSE,
+    verbose = FALSE) {
   resolution <- as.character(resolution)
   validres <- as.character(c(1, 2, 5, 10, 20, 50, 100))
 

@@ -37,13 +37,12 @@
 #' }
 #' @export
 gisco_get_healthcare <- function(
-  year = c("2023", "2020"),
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  country = NULL
-) {
+    year = c("2023", "2020"),
+    cache = TRUE,
+    update_cache = FALSE,
+    cache_dir = NULL,
+    verbose = FALSE,
+    country = NULL) {
   # Given vars
   year <- as.character(year)
   year <- match.arg(year)

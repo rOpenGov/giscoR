@@ -46,16 +46,15 @@
 #' }
 #' }
 gisco_get_urban_audit <- function(
-  year = "2021",
-  epsg = "4326",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  spatialtype = "RG",
-  country = NULL,
-  level = NULL
-) {
+    year = "2021",
+    epsg = "4326",
+    cache = TRUE,
+    update_cache = FALSE,
+    cache_dir = NULL,
+    verbose = FALSE,
+    spatialtype = "RG",
+    country = NULL,
+    level = NULL) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(

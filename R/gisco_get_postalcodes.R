@@ -73,12 +73,11 @@
 #' }
 #' }
 gisco_get_postalcodes <- function(
-  year = "2020",
-  country = NULL,
-  cache_dir = NULL,
-  update_cache = FALSE,
-  verbose = FALSE
-) {
+    year = "2020",
+    country = NULL,
+    cache_dir = NULL,
+    update_cache = FALSE,
+    verbose = FALSE) {
   year <- as.character(year)
   if (year != "2020") {
     stop("Year should be 2020")

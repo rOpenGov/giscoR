@@ -26,15 +26,14 @@
 #'
 #' @export
 gisco_get_lau <- function(
-  year = "2021",
-  epsg = "4326",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  country = NULL,
-  gisco_id = NULL
-) {
+    year = "2021",
+    epsg = "4326",
+    cache = TRUE,
+    update_cache = FALSE,
+    cache_dir = NULL,
+    verbose = FALSE,
+    country = NULL,
+    gisco_id = NULL) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(
@@ -198,15 +197,14 @@ gisco_get_lau <- function(
 #' }
 #' @export
 gisco_get_communes <- function(
-  year = "2016",
-  epsg = "4326",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  spatialtype = "RG",
-  country = NULL
-) {
+    year = "2016",
+    epsg = "4326",
+    cache = TRUE,
+    update_cache = FALSE,
+    cache_dir = NULL,
+    verbose = FALSE,
+    spatialtype = "RG",
+    country = NULL) {
   ext <- "geojson"
 
   api_entry <- gsc_api_url(

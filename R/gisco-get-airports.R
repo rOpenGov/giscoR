@@ -69,12 +69,11 @@
 #' }
 #' @export
 gisco_get_airports <- function(
-  year = c("2013", "2006"),
-  country = NULL,
-  cache_dir = NULL,
-  update_cache = FALSE,
-  verbose = FALSE
-) {
+    year = c("2013", "2006"),
+    country = NULL,
+    cache_dir = NULL,
+    update_cache = FALSE,
+    verbose = FALSE) {
   year <- as.character(year)
   year <- match.arg(year)
   if (year == "2006") {
@@ -128,12 +127,11 @@ gisco_get_airports <- function(
 #'
 #' @export
 gisco_get_ports <- function(
-  year = c("2013", "2009"),
-  country = NULL,
-  cache_dir = NULL,
-  update_cache = FALSE,
-  verbose = FALSE
-) {
+    year = c("2013", "2009"),
+    country = NULL,
+    cache_dir = NULL,
+    update_cache = FALSE,
+    verbose = FALSE) {
   year <- as.character(year)
   year <- match.arg(year)
   if (year == "2009") {

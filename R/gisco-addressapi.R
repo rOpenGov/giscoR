@@ -72,14 +72,13 @@
 #' reverse
 #' }
 gisco_addressapi_search <- function(
-  country = NULL,
-  province = NULL,
-  city = NULL,
-  road = NULL,
-  housenumber = NULL,
-  postcode = NULL,
-  verbose = FALSE
-) {
+    country = NULL,
+    province = NULL,
+    city = NULL,
+    road = NULL,
+    housenumber = NULL,
+    postcode = NULL,
+    verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/search?"
   custom_query <- list(
     country = country,
@@ -110,13 +109,12 @@ gisco_addressapi_reverse <- function(x, y, country = NULL, verbose = FALSE) {
 #' @rdname gisco_addressapi
 #' @export
 gisco_addressapi_bbox <- function(
-  country = NULL,
-  province = NULL,
-  city = NULL,
-  road = NULL,
-  postcode = NULL,
-  verbose = FALSE
-) {
+    country = NULL,
+    province = NULL,
+    city = NULL,
+    road = NULL,
+    postcode = NULL,
+    verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/bbox?"
   custom_query <- list(
     country = country,
@@ -170,10 +168,9 @@ gisco_addressapi_countries <- function(verbose = FALSE) {
 #' @rdname gisco_addressapi
 #' @export
 gisco_addressapi_provinces <- function(
-  country = NULL,
-  city = NULL,
-  verbose = FALSE
-) {
+    country = NULL,
+    city = NULL,
+    verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/provinces?"
   custom_query <- list(
     country = country,
@@ -186,10 +183,9 @@ gisco_addressapi_provinces <- function(
 #' @rdname gisco_addressapi
 #' @export
 gisco_addressapi_cities <- function(
-  country = NULL,
-  province = NULL,
-  verbose = FALSE
-) {
+    country = NULL,
+    province = NULL,
+    verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/cities?"
   custom_query <- list(
     country = country,
@@ -202,11 +198,10 @@ gisco_addressapi_cities <- function(
 #' @rdname gisco_addressapi
 #' @export
 gisco_addressapi_roads <- function(
-  country = NULL,
-  province = NULL,
-  city = NULL,
-  verbose = FALSE
-) {
+    country = NULL,
+    province = NULL,
+    city = NULL,
+    verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/roads?"
   custom_query <- list(
     country = country,
@@ -220,13 +215,12 @@ gisco_addressapi_roads <- function(
 #' @rdname gisco_addressapi
 #' @export
 gisco_addressapi_housenumbers <- function(
-  country = NULL,
-  province = NULL,
-  city = NULL,
-  road = NULL,
-  postcode = NULL,
-  verbose = FALSE
-) {
+    country = NULL,
+    province = NULL,
+    city = NULL,
+    road = NULL,
+    postcode = NULL,
+    verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/housenumbers?"
   custom_query <- list(
     country = country,
@@ -243,11 +237,10 @@ gisco_addressapi_housenumbers <- function(
 #' @rdname gisco_addressapi
 #' @export
 gisco_addressapi_postcodes <- function(
-  country = NULL,
-  province = NULL,
-  city = NULL,
-  verbose = FALSE
-) {
+    country = NULL,
+    province = NULL,
+    city = NULL,
+    verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/postcodes?"
   custom_query <- list(
     country = country,

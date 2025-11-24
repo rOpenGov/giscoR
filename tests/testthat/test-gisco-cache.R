@@ -1,27 +1,24 @@
 test_that("Test cache online", {
   # Get current cache dir
-  current <- gsc_helper_detect_cache_dir()
-
-  cat("User cache dir is ", current, "\n")
+  expect_message(current <- gisco_detect_cache_dir())
 
   # Set a temp cache dir
   expect_message(gisco_set_cache_dir(verbose = TRUE))
-  testdir <- expect_silent(gisco_set_cache_dir(verbose = FALSE))
+  testdir <- expect_silent(gisco_set_cache_dir(
+    file.path(current, "testthat"),
+    verbose = FALSE
+  ))
+
+  expect_identical(gisco_detect_cache_dir(), testdir)
+
   # Clean
   expect_silent(gisco_clear_cache(config = FALSE, verbose = FALSE))
   # Cache dir should be deleted now
   expect_false(dir.exists(testdir))
 
   # Reset just for testing all cases
-  testdir <- file.path(tempdir(), "giscoR", "testthat")
+  testdir <- file.path(tempdir(), "giscor", "testthat")
   expect_message(gisco_set_cache_dir(testdir))
-
-  cat("Testing cache dir is ", Sys.getenv("GISCO_CACHE_DIR"), "\n")
-
-  skip_on_cran()
-  skip_if_gisco_offline()
-
-  expect_message(gisco_get_countries(resolution = "60", verbose = TRUE))
 
   expect_true(dir.exists(testdir))
 

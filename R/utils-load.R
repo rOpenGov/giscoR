@@ -1,11 +1,10 @@
 api_cache <- function(
-  url = NULL,
-  name = basename(url),
-  cache_dir = NULL,
-  subdir = "fixme",
-  update_cache = FALSE,
-  verbose = TRUE
-) {
+    url = NULL,
+    name = basename(url),
+    cache_dir = NULL,
+    subdir = "fixme",
+    update_cache = FALSE,
+    verbose = TRUE) {
   cache_dir <- gsc_helper_cachedir(cache_dir)
   cache_dir <- gsc_helper_cachedir(file.path(cache_dir, subdir))
 
