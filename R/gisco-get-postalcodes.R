@@ -3,7 +3,8 @@
 #' Get postal codes points of the EU, EFTA and candidate countries.
 #'
 #' @param year Year of reference. one of
-#'   `r giscoR:::for_docs("postalcodes", "year", decreasing = TRUE)`.
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
+#'   "year",TRUE)}.
 #'
 #' @inheritParams gisco_get_countries
 #' @inheritSection gisco_get_countries About caching

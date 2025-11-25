@@ -10,12 +10,6 @@ test_that("offline", {
   )
   expect_null(n)
 
-  expect_message(
-    n <- gisco_get_communes(update_cache = TRUE),
-    "not reachable"
-  )
-  expect_null(n)
-
   options(giscoR_test_offline = FALSE)
 })
 

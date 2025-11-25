@@ -75,7 +75,7 @@ api_cache <- function(
 }
 
 
-read_shp_zip <- function(file_local) {
+read_shp_zip <- function(file_local, q = NULL) {
   shp_zip <- unzip(file_local, list = TRUE)
   shp_zip <- shp_zip$Name
   shp_zip <- shp_zip[grepl("shp$", shp_zip)]
@@ -84,7 +84,11 @@ read_shp_zip <- function(file_local) {
   # Read with vszip
   shp_read <- file.path("/vsizip/", file_local, shp_end)
   shp_read <- gsub("//", "/", shp_read)
-  data_sf <- sf::read_sf(shp_read)
+  if (!is.null(q)) {
+    data_sf <- sf::read_sf(shp_read, query = q)
+  } else {
+    data_sf <- sf::read_sf(shp_read)
+  }
 
   data_sf <- gsc_helper_utf8(data_sf)
 

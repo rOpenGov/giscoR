@@ -1,4 +1,22 @@
+test_that("offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  db <- gisco_get_latest_db()
+
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_communes(update_cache = TRUE, spatialtype = "LB"),
+    "Error"
+  )
+  expect_null(n)
+
+  options(giscoR_test_offline = FALSE)
+})
+
+
 test_that("Communes offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
   expect_error(gisco_get_communes(year = "2007"))
   expect_error(gisco_get_communes(epsg = "9999"))
   expect_error(gisco_get_communes(year = "2004", spatialtype = "COASTL"))
@@ -27,4 +45,16 @@ test_that("Communes online", {
   expect_s3_class(lu, "tbl_df")
   expect_s3_class(lu, "sf")
   expect_equal(as.character(unique(lu$CNTR_CODE)), "LU")
+})
+
+test_that("Deprecations", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  expect_snapshot(
+    s <- gisco_get_communes(
+      cache = FALSE,
+      spatialtype = "LB"
+    )
+  )
 })

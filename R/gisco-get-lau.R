@@ -1,10 +1,12 @@
 #' Get GISCO urban areas [`sf`][sf::st_sf] polygons, points and lines
 #'
+#' @rdname gisco_get_lau
+#' @name gisco_get_lau
+#'
 #' @description
 #' [gisco_get_communes()] and [gisco_get_lau()] download shapes of Local
 #' Urban Areas, that correspond roughly with towns and cities.
 #'
-#' @order 2
 #'
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].
@@ -15,9 +17,11 @@
 #'
 #' @param year Release year of the file:
 #'   - For `gisco_get_communes()` one of
-#'     `r giscoR:::for_docs("communes", "year", decreasing = TRUE)`.
+#'    \Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
+#'    "year",TRUE)}.
 #'   - For `gisco_get_lau()` one of
-#'     `r giscoR:::for_docs("lau", "year", decreasing = TRUE)`.
+#'     \Sexpr[stage=render,results=rd]{giscoR:::for_docs("lau",
+#'     "year",TRUE)}.
 #'
 #' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
 #'  One of:
@@ -50,7 +54,7 @@ gisco_get_lau <- function(
   if (lifecycle::is_present(cache)) {
     lifecycle::deprecate_warn(
       when = "1.0.0",
-      what = "gisco_get_lau(cache)",
+      what = "giscoR::gisco_get_lau(cache)",
       details = paste0(
         "Results are always cached. To avoid persistency use ",
         "`cache_dir = tempdir()`."
@@ -129,141 +133,6 @@ gisco_get_lau <- function(
   data_sf <- gsc_helper_utf8(data_sf)
 }
 
-
-#' @rdname gisco_get_lau
-#' @name gisco_get_lau
-#'
-#' @order 1
-#'
-#' @examplesIf gisco_check_access()
-#' \donttest{
-#'
-#' ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
-#'
-#' if (!is.null(ire_lau)) {
-#'   library(ggplot2)
-#'
-#'   ggplot(ire_lau) +
-#'     geom_sf(shape = 21, col = "#009A44", size = 0.5) +
-#'     labs(
-#'       title = "Communes in Ireland",
-#'       subtitle = "Year 2016",
-#'       caption = gisco_attributions()
-#'     ) +
-#'     theme_void() +
-#'     theme(text = element_text(
-#'       colour = "#009A44",
-#'       family = "serif", face = "bold"
-#'     ))
-#' }
-#' }
-#' @export
-gisco_get_communes <- function(
-  year = "2016",
-  epsg = "4326",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  spatialtype = "RG",
-  country = NULL
-) {
-  ext <- "geojson"
-
-  api_entry <- gsc_api_url(
-    id_giscoR = "communes",
-    year = year,
-    epsg = epsg,
-    resolution = 0,
-    # Not needed
-    spatialtype = spatialtype,
-    ext = ext,
-    nuts_level = NULL,
-    level = NULL,
-    verbose = verbose
-  )
-
-  filename <- basename(api_entry)
-
-  # Improve speed using querys if country(es) are selected
-  # We construct the query and passed it to the st_read fun
-
-  if (cache && !is.null(country)) {
-    gsc_message(verbose, "Speed up using sf query")
-    country <- gsc_helper_countrynames(country, "eurostat")
-    namefileload <- gsc_api_cache(
-      api_entry,
-      filename,
-      cache_dir,
-      update_cache,
-      verbose
-    )
-
-    if (is.null(namefileload)) {
-      return(NULL)
-    }
-
-    # Get layer name
-    layer <- tools::file_path_sans_ext(basename(namefileload))
-
-    # Construct query
-    q <- paste0(
-      "SELECT * from \"",
-      layer,
-      "\" WHERE CNTR_CODE IN (",
-      paste0("'", country, "'", collapse = ", "),
-      ")"
-    )
-
-    gsc_message(verbose, "Using query:\n   ", q)
-
-    data_sf <- try(
-      suppressWarnings(
-        sf::st_read(namefileload, quiet = !verbose, query = q)
-      ),
-      silent = TRUE
-    )
-
-    # If everything was fine then output
-    if (!inherits(data_sf, "try-error")) {
-      data_sf <- sf::st_make_valid(data_sf)
-      data_sf <- gsc_helper_utf8(data_sf)
-      return(data_sf)
-    }
-
-    # If not don't update cache (was already updated) and continue
-    update_cache <- FALSE
-    rm(data_sf)
-    gsc_message(
-      TRUE,
-      "\n\nIt was a problem with the query.",
-      "Retrying without country filters\n\n"
-    )
-  }
-
-  if (cache) {
-    # Guess source to load
-    namefileload <- gsc_api_cache(
-      api_entry,
-      filename,
-      cache_dir,
-      update_cache,
-      verbose
-    )
-  } else {
-    namefileload <- api_entry
-  }
-
-  if (is.null(namefileload)) {
-    return(NULL)
-  }
-
-  # Load - geojson only so far
-  data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
-  data_sf <- gsc_helper_utf8(data_sf)
-
-  return(data_sf)
-}
 
 get_url_lau <- function(
   id = "lau",

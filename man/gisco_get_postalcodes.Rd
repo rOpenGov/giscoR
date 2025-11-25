@@ -17,7 +17,8 @@ gisco_get_postalcodes(
 }
 \arguments{
 \item{year}{Year of reference. one of
-\code{"2024"} or \code{"2020"}.}
+\Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
+"year",TRUE)}.}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
