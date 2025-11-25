@@ -1,3 +1,85 @@
+get_url_db <- function(
+  id,
+  year,
+  epsg = 4326,
+  resolution = NULL,
+  spatialtype = NULL,
+  nuts_level = NULL,
+  level = NULL,
+  ext = NULL
+) {
+  make_params <- list(
+    year = year,
+    epsg = epsg,
+    resolution = resolution,
+    spatialtype = spatialtype,
+    nuts_level = nuts_level,
+    level = level,
+    ext = ext
+  )
+
+  # Clean and to char
+  make_params <- make_params[lengths(make_params) != 0]
+  make_params <- lapply(make_params, as.character)
+
+  # Fun with namespace
+  fn <- paste0("giscoR::", fn)
+
+  db <- gisco_get_latest_db()
+
+  # Initial filter
+  db <- db[db$id_giscoR == id, ]
+  years <- sort(unique(db$year)) # nolint
+
+  # Only inform valids in year
+  if (!make_params$year %in% db$year) {
+    cli::cli_abort(
+      paste0(
+        "Years available for {.fn giscoR::",
+        fn,
+        "} are ",
+        "{.str {years}}."
+      )
+    )
+  }
+
+  # Loop and check final results
+  for (n in names(make_params)) {
+    check_val <- make_params[[n]]
+    vec_val <- db[[n]]
+    filt_db <- vec_val == check_val
+    filt_db[is.na(filt_db)] <- FALSE
+    db <- db[filt_db, ]
+  }
+
+  # Prepare msg
+  val <- unlist(make_params)
+  val <- paste0("{.arg ", names(make_params), "} = {.val ", val, "}")
+  names(val) <- rep("*", length(val))
+
+  if (nrow(db) == 0) {
+    cli::cli_abort(
+      c(
+        "No results for {.fn {fn}} with params:",
+        val,
+        i = "Check available combinations in {.fn giscoR::gisco_get_latest_db}."
+      )
+    )
+  }
+
+  if (nrow(db) > 1) {
+    cli::cli_alert_warning("{.fn {fn}} has {nrow(db)} results with params:")
+    cli::cli_bullets(val)
+    db_res <- db[1, ]
+    val2 <- unlist(db_res)
+    val2 <- paste0("{.arg ", names(db_res), "} = {.val ", val2, "}")
+    names(val2) <- rep("*", length(val2))
+    cli::cli_alert("Returning first value:")
+    cli::cli_bullets(val2)
+  }
+  db
+}
+
 api_cache <- function(
   url = NULL,
   name = basename(url),
@@ -72,25 +154,4 @@ api_cache <- function(
   msg <- paste0("Download succesful on {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
   file_local
-}
-
-
-read_shp_zip <- function(file_local, q = NULL) {
-  shp_zip <- unzip(file_local, list = TRUE)
-  shp_zip <- shp_zip$Name
-  shp_zip <- shp_zip[grepl("shp$", shp_zip)]
-  shp_end <- shp_zip[1]
-
-  # Read with vszip
-  shp_read <- file.path("/vsizip/", file_local, shp_end)
-  shp_read <- gsub("//", "/", shp_read)
-  if (!is.null(q)) {
-    data_sf <- sf::read_sf(shp_read, query = q)
-  } else {
-    data_sf <- sf::read_sf(shp_read)
-  }
-
-  data_sf <- gsc_helper_utf8(data_sf)
-
-  data_sf
 }

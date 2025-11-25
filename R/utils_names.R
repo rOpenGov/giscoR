@@ -71,17 +71,7 @@ gsc_helper_utf8 <- function(data_sf) {
   names <- names(data_sf)
   g <- sf::st_geometry(data_sf)
 
-  which_geom <-
-    which(vapply(
-      data_sf,
-      function(f) {
-        inherits(f, "sfc")
-      },
-      TRUE
-    ))
-
-  nm <- names(which_geom)
-
+  nm <- "geometry"
   data_utf8 <-
     as.data.frame(
       set_utf8(sf::st_drop_geometry(data_sf)),
@@ -93,7 +83,7 @@ gsc_helper_utf8 <- function(data_sf) {
   # Regenerate with right encoding
   data_sf <- sf::st_as_sf(data_utf8, g)
 
-  # Rename geometry to original value
+  # Rename geometry to geometry
   newnames <- names(data_sf)
   newnames[newnames == "g"] <- nm
   colnames(data_sf) <- newnames
