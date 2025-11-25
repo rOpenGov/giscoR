@@ -22,7 +22,7 @@ gisco_get_postalcodes(
 
 - year:
 
-  Year of reference. one of `"2024"` or `"2020"`.
+  Year of reference. one of `"2024"`, `"2020"` .
 
 - country:
 

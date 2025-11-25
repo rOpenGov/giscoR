@@ -9,7 +9,7 @@ Urban Areas, that correspond roughly with towns and cities.
 gisco_get_communes(
   year = "2016",
   epsg = "4326",
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
@@ -36,11 +36,11 @@ gisco_get_lau(
   Release year of the file:
 
   - For `gisco_get_communes()` one of `"2016"`, `"2013"`, `"2010"`,
-    `"2008"`, `"2006"`, `"2004"` or `"2001"`.
+    `"2008"`, `"2006"`, `"2004"`, `"2001"` .
 
   - For `gisco_get_lau()` one of `"2024"`, `"2023"`, `"2022"`, `"2021"`,
     `"2020"`, `"2019"`, `"2018"`, `"2017"`, `"2016"`, `"2015"`,
-    `"2014"`, `"2013"`, `"2012"` or `"2011"`.
+    `"2014"`, `"2013"`, `"2012"`, `"2011"` .
 
 - epsg:
 
