@@ -3,10 +3,11 @@
 #' Get postal codes points of the EU, EFTA and candidate countries.
 #'
 #' @param year Year of reference. one of
-#'   `r for_docs(gisco_get_db_years("postalcodes"))`.
+#'   `r giscoR:::for_docs("postalcodes", "year", decreasing = TRUE)`.
 #'
-#' @inheritParams gisco_get_airports
+#' @inheritParams gisco_get_countries
 #' @inheritSection gisco_get_countries About caching
+#' @inherit gisco_get_countries source
 #'
 #' @family political
 #'
@@ -26,7 +27,7 @@
 #' The dataset is released under the CC-BY-SA-4.0 licence and requires the
 #' following attribution whenever used:
 #'
-#' *(c) European Union - GISCO, 2021, postal code point dataset, Licence
+#' *(c) European Union - GISCO, 2024, postal code point dataset, Licence
 #' CC-BY-SA 4.0 available at
 #' ```{r, echo=FALSE, results='asis'}
 #'
@@ -37,17 +38,7 @@
 #'
 #' ```
 #'
-#' Shapefiles provided in ETRS89 ([EPSG:4258](https://epsg.io/4258)).
 #'
-#' @source
-#' ```{r, echo=FALSE, results='asis'}
-#'
-#' cat(
-#'   paste0(" <https://ec.europa.eu/eurostat/web/gisco/geodata",
-#'       "//administrative-units/postal-codes>.")
-#'    )
-#'
-#' ```
 #'
 #' @examplesIf gisco_check_access()
 #'
@@ -64,8 +55,8 @@
 #'     theme_bw() +
 #'     labs(
 #'       title = "Postcodes of Belgium",
-#'       subtitle = "2020",
-#'       caption = paste("(c) European Union - GISCO, 2021,",
+#'       subtitle = "2024",
+#'       caption = paste("(c) European Union - GISCO, 2024,",
 #'         "postal code point dataset",
 #'         "Licence CC-BY-SA 4.0",
 #'         sep = "\n"
@@ -74,65 +65,40 @@
 #' }
 #' }
 gisco_get_postalcodes <- function(
-  year = "2020",
+  year = "2024",
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE
 ) {
   year <- as.character(year)
-  if (year != "2020") {
-    stop("Year should be 2020")
-  }
-  cache_dir <- gsc_helper_cachedir(cache_dir)
 
-  if (year == "2020") {
-    url <- paste0(
-      "https://gisco-services.ec.europa.eu/tercet/Various/",
-      "PC_2020_PT_SH.zip"
-    )
-  }
-
+  url <- get_url_postcodes(year)
   filename <- basename(url)
 
-  basename <- gsc_api_cache(
+  file_local <- api_cache(
     url = url,
     name = filename,
     cache_dir = cache_dir,
+    subdir = "postalcodes",
     update_cache = update_cache,
     verbose = verbose
   )
 
-  if (is.null(basename)) {
+  if (is.null(file_local)) {
     return(NULL)
   }
-
-  gsc_unzip(
-    basename,
-    cache_dir,
-    ext = "*",
-    verbose = verbose,
-    update_cache = update_cache,
-    recursive = FALSE
-  )
-
-  # Capture shp layer name
-  destfile <- basename
-
-  zipfiles <- unzip(destfile, list = TRUE)
-  shpfile <- basename(zipfiles[grep(".shp$", zipfiles[[1]]), 1])
-
-  namefileload <- file.path(cache_dir, shpfile)
 
   # Improve speed using querys if country(es) are selected
   # We construct the query and passed it to the st_read fun
 
   if (!is.null(country)) {
-    gsc_message(verbose, "Speed up using sf query")
+    make_msg("info", verbose, "Speed up using {.pkg sf} query")
     country <- gsc_helper_countrynames(country, "eurostat")
 
     # Get layer name
-    layer <- tools::file_path_sans_ext(basename(namefileload))
+    layer <- sf::st_layers(file_local)
+    layer <- layer[which.max(layer$features), ]$name
 
     # Construct query
     q <- paste0(
@@ -143,37 +109,39 @@ gisco_get_postalcodes <- function(
       ")"
     )
 
-    gsc_message(verbose, "Using query:\n   ", q)
-    data_sf <- try(
-      suppressWarnings(
-        sf::st_read(namefileload, quiet = !verbose, query = q)
-      ),
-      silent = TRUE
-    )
+    msg <- paste0("{.code ", q, "}")
+    make_msg("info", verbose, "Using query:\n   ", msg)
+    data_sf <- sf::read_sf(file_local, query = q)
+    data_sf <- gsc_helper_utf8(data_sf)
+    return(data_sf)
+  }
 
-    # If everything was fine then output
-    if (!inherits(data_sf, "try-error")) {
-      data_sf <- sf::st_make_valid(data_sf)
-      return(data_sf)
-    }
+  # If not read the whole file
+  data_sf <- sf::read_sf(file_local)
+  data_sf <- gsc_helper_utf8(data_sf)
 
-    # nocov start
+  data_sf
+}
 
-    # If not, remove and continue
-    rm(data_sf)
-    gsc_message(
-      TRUE,
-      "\n\nIt was a problem with the query.",
-      "Retrying without country filters\n\n"
+
+get_url_postcodes <- function(year = 2024, epsg = 4326, ext = "gpkg") {
+  db <- gisco_get_latest_db()
+  db <- db[db$id_giscoR == "postalcodes", ]
+  years <- sort(unique(db$year)) # nolint
+
+  if (!year %in% db$year) {
+    cli::cli_abort(
+      paste0(
+        "Years available for {.fn giscoR::gisco_get_postalcodes} are ",
+        "{.str {years}}."
+      )
     )
   }
 
-  # This is if not returning from the previous step
+  db <- db[db$year == year, ]
+  db <- db[db$ext == ext, ]
+  db <- db[db$epsg == epsg, ]
+  url <- paste0(db$api_entry, "/", db$api_file)
 
-  data_sf <- sf::st_read(namefileload, quiet = !verbose)
-  data_sf <- sf::st_make_valid(data_sf)
-
-  data_sf
-
-  # nocov end
+  url
 }

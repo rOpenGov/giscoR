@@ -376,19 +376,7 @@ gsc_api_load <- function(
         silent = TRUE
       )
     )
-  } else if (ext == "gpkg") {
-    data_sf <- suppressWarnings(
-      try(
-        sf::st_read(
-          file,
-          stringsAsFactors = FALSE,
-          quiet = !verbose
-        ),
-        silent = TRUE
-      )
-    )
   }
-
   if (inherits(data_sf, "try-error")) {
     message(
       "File :\n",

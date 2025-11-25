@@ -22,7 +22,7 @@ api_cache <- function(
   # If already cached return
   if (isFALSE(update_cache) && fileoncache) {
     msg <- paste0("File already cached: {.file ", file_local, "}.")
-    make_msg("info", verbose, msg)
+    make_msg("success", verbose, msg)
 
     return(file_local)
   }

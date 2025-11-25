@@ -1,4 +1,25 @@
-test_that("LAU offline", {
+test_that("offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  db <- gisco_get_latest_db()
+
+  options(giscoR_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_lau(update_cache = TRUE, year = 2020),
+    "Error"
+  )
+  expect_null(n)
+
+  expect_message(
+    n <- gisco_get_communes(update_cache = TRUE),
+    "not reachable"
+  )
+  expect_null(n)
+
+  options(giscoR_test_offline = FALSE)
+})
+
+test_that("LAU Errors", {
   expect_error(gisco_get_lau(year = "2001"))
   expect_error(gisco_get_lau(epsg = "9999"))
 })
@@ -8,9 +29,9 @@ test_that("LAU online", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  all <- expect_silent(gisco_get_lau(year = 2020))
+  all <- expect_silent(gisco_get_lau(year = 2024))
   li_and_es <- expect_silent(gisco_get_lau(
-    year = 2020,
+    year = 2024,
     country = "LI",
     gisco_id = "ES_12016"
   ))
@@ -37,20 +58,15 @@ test_that("LAU online", {
   )
 })
 
+test_that("Deprecations", {
+  skip_on_cran()
+  skip_if_gisco_offline()
 
-test_that("offline", {
-  options(giscoR_test_offline = TRUE)
-  expect_message(
-    n <- gisco_get_lau(update_cache = TRUE),
-    "not reachable"
+  expect_snapshot(
+    s <- gisco_get_lau(
+      year = 2024,
+      cache = TRUE,
+      gisco_id = "ES_12016"
+    )
   )
-  expect_null(n)
-
-  expect_message(
-    n <- gisco_get_communes(update_cache = TRUE),
-    "not reachable"
-  )
-  expect_null(n)
-
-  options(giscoR_test_offline = FALSE)
 })

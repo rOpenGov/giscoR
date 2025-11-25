@@ -17,9 +17,9 @@ gisco_get_communes(
 )
 
 gisco_get_lau(
-  year = "2021",
+  year = "2024",
   epsg = "4326",
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
@@ -30,21 +30,24 @@ gisco_get_lau(
 \arguments{
 \item{year}{Release year of the file:
 \itemize{
-\item For \code{gisco_get_communes()} one of \code{"2001"}, \code{"2004"}, \code{"2006"}, \code{"2008"}, \code{"2010"}, \code{"2013"} or \code{"2016"}.
-\item For \code{gisco_get_lau()} one of \code{"2011"}, \code{"2012"}, \code{"2013"}, \code{"2014"}, \code{"2015"}, \code{"2016"}, \code{"2017"}, \code{"2018"}, \code{"2019"}, \code{"2020"}, \code{"2021"}, \code{"2022"}, \code{"2023"} or \code{"2024"}.
+\item For \code{gisco_get_communes()} one of
+\code{"2016"}, \code{"2013"}, \code{"2010"}, \code{"2008"}, \code{"2006"}, \code{"2004"} or \code{"2001"}.
+\item For \code{gisco_get_lau()} one of
+\code{"2024"}, \code{"2023"}, \code{"2022"}, \code{"2021"}, \code{"2020"}, \code{"2019"}, \code{"2018"}, \code{"2017"}, \code{"2016"}, \code{"2015"}, \code{"2014"}, \code{"2013"}, \code{"2012"} or \code{"2011"}.
 }}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
 \item \code{"4326"}: WGS84
 \item \code{"3035"}: ETRS89 / ETRS-LAEA
 \item \code{"3857"}: Pseudo-Mercator
 }}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
-\strong{About caching}.}
+\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. These functions always
+caches the result due to the size. \code{cache_dir} can be set to
+\code{\link[base:tempfile]{base::tempdir()}}, so the file would be deleted when the \strong{R} session is
+closed.}
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
@@ -92,7 +95,7 @@ Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting \code{update_cache = TRUE}.
 
 If you experience any problem on download, try to download the
-corresponding \code{.geojson} file by any other method and save it on your
+corresponding file by any other method and save it on your
 \code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 
 For a complete list of files available check \link{gisco_db}.

@@ -54,7 +54,7 @@ Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting \code{update_cache = TRUE}.
 
 If you experience any problem on download, try to download the
-corresponding \code{.geojson} file by any other method and save it on your
+corresponding file by any other method and save it on your
 \code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
 
 For a complete list of files available check \link{gisco_db}.

@@ -1,10 +1,3 @@
-#' TODO
-#'
-#' TODO Description
-#'
-#' @export
-#' @inheritParams gisco_get_nuts
-#' @family databases
 gisco_get_latest_db <- function(update_cache = FALSE) {
   cdir <- tempdir()
   cdir_db <- gsc_helper_cachedir(file.path(cdir, "giscor", "cache_db"))
@@ -79,7 +72,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
 
     cli::cli_alert_warning(
       c(
-        "Can't access {.url {url_api}}",
+        "Can't access {.url {url_api}}. ",
         "If you think this is a bug please consider opening an issue on ",
         "{.url https://github.com/ropengov/giscoR/issues}"
       )

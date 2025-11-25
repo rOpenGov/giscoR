@@ -1,9 +1,9 @@
-#' GISCO database
+#' Cached GISCO database
 #'
 #' Database with the list of files that the package can load.
 #'
 #' @family dataset
-#' @family databases
+#' @family database
 #'
 #' @name gisco_db
 #'
