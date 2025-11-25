@@ -60,9 +60,9 @@ Urban Areas, that correspond roughly with towns and cities.</p>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">gisco_get_lau</span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="st">"2021"</span>,</span>
+<span>  year <span class="op">=</span> <span class="st">"2024"</span>,</span>
 <span>  epsg <span class="op">=</span> <span class="st">"4326"</span>,</span>
-<span>  cache <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  cache <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -76,23 +76,26 @@ Urban Areas, that correspond roughly with towns and cities.</p>
 
 
 <dl><dt id="arg-year">year<a class="anchor" aria-label="anchor" href="#arg-year"></a></dt>
-<dd><p>Release year of the file:</p><ul><li><p>For <code>gisco_get_communes()</code> one of <code>"2001"</code>, <code>"2004"</code>, <code>"2006"</code>, <code>"2008"</code>, <code>"2010"</code>, <code>"2013"</code> or <code>"2016"</code>.</p></li>
-<li><p>For <code>gisco_get_lau()</code> one of <code>"2011"</code>, <code>"2012"</code>, <code>"2013"</code>, <code>"2014"</code>, <code>"2015"</code>, <code>"2016"</code>, <code>"2017"</code>, <code>"2018"</code>, <code>"2019"</code>, <code>"2020"</code>, <code>"2021"</code>, <code>"2022"</code>, <code>"2023"</code> or <code>"2024"</code>.</p></li>
+<dd><p>Release year of the file:</p><ul><li><p>For <code>gisco_get_communes()</code> one of
+<code>"2016"</code>, <code>"2013"</code>, <code>"2010"</code>, <code>"2008"</code>, <code>"2006"</code>, <code>"2004"</code> or <code>"2001"</code>.</p></li>
+<li><p>For <code>gisco_get_lau()</code> one of
+<code>"2024"</code>, <code>"2023"</code>, <code>"2022"</code>, <code>"2021"</code>, <code>"2020"</code>, <code>"2019"</code>, <code>"2018"</code>, <code>"2017"</code>, <code>"2016"</code>, <code>"2015"</code>, <code>"2014"</code>, <code>"2013"</code>, <code>"2012"</code> or <code>"2011"</code>.</p></li>
 </ul></dd>
 
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
 <dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
-One of:</p><ul><li><p><code>"4258"</code>: ETRS89</p></li>
-<li><p><code>"4326"</code>: WGS84</p></li>
+One of:</p><ul><li><p><code>"4326"</code>: WGS84</p></li>
 <li><p><code>"3035"</code>: ETRS89 / ETRS-LAEA</p></li>
 <li><p><code>"3857"</code>: Pseudo-Mercator</p></li>
 </ul></dd>
 
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
-<dd><p>A logical whether to do caching. Default is <code>TRUE</code>. See
-<strong>About caching</strong>.</p></dd>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a>. These functions always
+caches the result due to the size. <code>cache_dir</code> can be set to
+<code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code>, so the file would be deleted when the <strong>R</strong> session is
+closed.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -146,7 +149,7 @@ would not work. See also <code><a href="https://vincentarelbundock.github.io/cou
 <p>Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting <code>update_cache = TRUE</code>.</p>
 <p>If you experience any problem on download, try to download the
-corresponding <code>.geojson</code> file by any other method and save it on your
+corresponding file by any other method and save it on your
 <code>cache_dir</code>. Use the option <code>verbose = TRUE</code> for debugging the API query.</p>
 <p>For a complete list of files available check <a href="gisco_db.html">gisco_db</a>.</p>
     </div>

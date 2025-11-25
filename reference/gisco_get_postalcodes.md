@@ -6,7 +6,7 @@ Get postal codes points of the EU, EFTA and candidate countries.
 
 ``` r
 gisco_get_postalcodes(
-  year = "2020",
+  year = "2024",
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -16,13 +16,13 @@ gisco_get_postalcodes(
 
 ## Source
 
-<https://ec.europa.eu/eurostat/web/gisco/geodata//administrative-units/postal-codes>.
+<https://gisco-services.ec.europa.eu/distribution/v2/>
 
 ## Arguments
 
 - year:
 
-  Year of reference. Currently only `"2020"` is available.
+  Year of reference. one of `"2024"` or `"2020"`.
 
 - country:
 
@@ -64,11 +64,9 @@ is to create correspondence tables for the NUTS classification (EC)
 The dataset is released under the CC-BY-SA-4.0 licence and requires the
 following attribution whenever used:
 
-*(c) European Union - GISCO, 2021, postal code point dataset, Licence
+*(c) European Union - GISCO, 2024, postal code point dataset, Licence
 CC-BY-SA 4.0 available at
 <https://ec.europa.eu/eurostat/web/gisco/geodata//administrative-units/postal-codes>*.
-
-Shapefiles provided in ETRS89 ([EPSG:4258](https://epsg.io/4258)).
 
 ## About caching
 
@@ -79,9 +77,8 @@ Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting `update_cache = TRUE`.
 
 If you experience any problem on download, try to download the
-corresponding `.geojson` file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
+corresponding file by any other method and save it on your `cache_dir`.
+Use the option `verbose = TRUE` for debugging the API query.
 
 For a complete list of files available check
 [gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
@@ -113,8 +110,8 @@ if (!is.null(pc_bel)) {
     theme_bw() +
     labs(
       title = "Postcodes of Belgium",
-      subtitle = "2020",
-      caption = paste("(c) European Union - GISCO, 2021,",
+      subtitle = "2024",
+      caption = paste("(c) European Union - GISCO, 2024,",
         "postal code point dataset",
         "Licence CC-BY-SA 4.0",
         sep = "\n"

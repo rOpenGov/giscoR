@@ -426,6 +426,10 @@ Access to other GISCO tools
   [`gisco_addressapi_copyright()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
   : GISCO Address API
 
+## Databases
+
+Get information about the current and most up-to-date database.
+
 ## Misc
 
 These functions return other

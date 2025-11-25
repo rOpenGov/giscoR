@@ -35,7 +35,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get postal code points from GISCO</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco_get_postalcodes.R" class="external-link"><code>R/gisco_get_postalcodes.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco-get-postalcodes.R" class="external-link"><code>R/gisco-get-postalcodes.R</code></a></small>
       <div class="d-none name"><code>gisco_get_postalcodes.Rd</code></div>
     </div>
 
@@ -46,7 +46,7 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gisco_get_postalcodes</span><span class="op">(</span></span>
-<span>  year <span class="op">=</span> <span class="st">"2020"</span>,</span>
+<span>  year <span class="op">=</span> <span class="st">"2024"</span>,</span>
 <span>  country <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
@@ -56,14 +56,15 @@
 
     <div class="section level2">
     <h2 id="source">Source<a class="anchor" aria-label="anchor" href="#source"></a></h2>
-    <p><a href="https://ec.europa.eu/eurostat/web/gisco/geodata//administrative-units/postal-codes" class="external-link">https://ec.europa.eu/eurostat/web/gisco/geodata//administrative-units/postal-codes</a>.</p>
+    <p><a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">https://gisco-services.ec.europa.eu/distribution/v2/</a></p>
     </div>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
 <dl><dt id="arg-year">year<a class="anchor" aria-label="anchor" href="#arg-year"></a></dt>
-<dd><p>Year of reference. Currently only <code>"2020"</code> is available.</p></dd>
+<dd><p>Year of reference. one of
+<code>"2024"</code> or <code>"2020"</code>.</p></dd>
 
 
 <dt id="arg-country">country<a class="anchor" aria-label="anchor" href="#arg-country"></a></dt>
@@ -104,9 +105,8 @@ part of the Tercet Regulation (EU) 2017/2391</p>
     <h2 id="copyright">Copyright<a class="anchor" aria-label="anchor" href="#copyright"></a></h2>
     <p>The dataset is released under the CC-BY-SA-4.0 licence and requires the
 following attribution whenever used:</p>
-<p><em>(c) European Union - GISCO, 2021, postal code point dataset, Licence
+<p><em>(c) European Union - GISCO, 2024, postal code point dataset, Licence
 CC-BY-SA 4.0 available at <a href="https://ec.europa.eu/eurostat/web/gisco/geodata//administrative-units/postal-codes" class="external-link">https://ec.europa.eu/eurostat/web/gisco/geodata//administrative-units/postal-codes</a></em>.</p>
-<p>Shapefiles provided in ETRS89 (<a href="https://epsg.io/4258" class="external-link">EPSG:4258</a>).</p>
     </div>
     <div class="section level2">
     <h2 id="about-caching">About caching<a class="anchor" aria-label="anchor" href="#about-caching"></a></h2>
@@ -114,7 +114,7 @@ CC-BY-SA 4.0 available at <a href="https://ec.europa.eu/eurostat/web/gisco/geoda
 <p>Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting <code>update_cache = TRUE</code>.</p>
 <p>If you experience any problem on download, try to download the
-corresponding <code>.geojson</code> file by any other method and save it on your
+corresponding file by any other method and save it on your
 <code>cache_dir</code>. Use the option <code>verbose = TRUE</code> for debugging the API query.</p>
 <p>For a complete list of files available check <a href="gisco_db.html">gisco_db</a>.</p>
     </div>
@@ -146,8 +146,8 @@ corresponding <code>.geojson</code> file by any other method and save it on your
 <span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>      title <span class="op">=</span> <span class="st">"Postcodes of Belgium"</span>,</span></span>
-<span class="r-in"><span>      subtitle <span class="op">=</span> <span class="st">"2020"</span>,</span></span>
-<span class="r-in"><span>      caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"(c) European Union - GISCO, 2021,"</span>,</span></span>
+<span class="r-in"><span>      subtitle <span class="op">=</span> <span class="st">"2024"</span>,</span></span>
+<span class="r-in"><span>      caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"(c) European Union - GISCO, 2024,"</span>,</span></span>
 <span class="r-in"><span>        <span class="st">"postal code point dataset"</span>,</span></span>
 <span class="r-in"><span>        <span class="st">"Licence CC-BY-SA 4.0"</span>,</span></span>
 <span class="r-in"><span>        sep <span class="op">=</span> <span class="st">"\n"</span></span></span>

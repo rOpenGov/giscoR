@@ -18,9 +18,9 @@ gisco_get_communes(
 )
 
 gisco_get_lau(
-  year = "2021",
+  year = "2024",
   epsg = "4326",
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
@@ -35,18 +35,16 @@ gisco_get_lau(
 
   Release year of the file:
 
-  - For `gisco_get_communes()` one of `"2001"`, `"2004"`, `"2006"`,
-    `"2008"`, `"2010"`, `"2013"` or `"2016"`.
+  - For `gisco_get_communes()` one of `"2016"`, `"2013"`, `"2010"`,
+    `"2008"`, `"2006"`, `"2004"` or `"2001"`.
 
-  - For `gisco_get_lau()` one of `"2011"`, `"2012"`, `"2013"`, `"2014"`,
-    `"2015"`, `"2016"`, `"2017"`, `"2018"`, `"2019"`, `"2020"`,
-    `"2021"`, `"2022"`, `"2023"` or `"2024"`.
+  - For `gisco_get_lau()` one of `"2024"`, `"2023"`, `"2022"`, `"2021"`,
+    `"2020"`, `"2019"`, `"2018"`, `"2017"`, `"2016"`, `"2015"`,
+    `"2014"`, `"2013"`, `"2012"` or `"2011"`.
 
 - epsg:
 
   projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
-
-  - `"4258"`: ETRS89
 
   - `"4326"`: WGS84
 
@@ -56,8 +54,10 @@ gisco_get_lau(
 
 - cache:
 
-  A logical whether to do caching. Default is `TRUE`. See **About
-  caching**.
+  **\[deprecated\]**. These functions always caches the result due to
+  the size. `cache_dir` can be set to
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html), so the file
+  would be deleted when the **R** session is closed.
 
 - update_cache:
 
@@ -122,9 +122,8 @@ Sometimes cached files may be corrupt. On that case, try re-downloading
 the data setting `update_cache = TRUE`.
 
 If you experience any problem on download, try to download the
-corresponding `.geojson` file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
+corresponding file by any other method and save it on your `cache_dir`.
+Use the option `verbose = TRUE` for debugging the API query.
 
 For a complete list of files available check
 [gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
