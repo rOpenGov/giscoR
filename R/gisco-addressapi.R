@@ -149,7 +149,7 @@ gisco_addressapi_bbox <- function(
 
   bbox <- sf::st_as_sfc(bboxclass)
   res <- sf::st_sf(x = "bbox", geometry = bbox)
-  res <- gsc_helper_utf8(res)
+  res <- sanitize_sf(res)
   res
 }
 
@@ -281,11 +281,20 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
     FALSE
   })
   req <- httr2::req_timeout(req, 100000)
+
+  test_off <- getOption("gisco_test_off", NULL)
+
+  if (any(!httr2::is_online(), test_off)) {
+    cli::cli_alert_danger("Offline")
+    cli::cli_alert("Returning {.val NULL}")
+    return(NULL)
+  }
+
   resp <- httr2::req_perform(req)
 
   # Testing purposes only
   # Mock the behavior of offline
-  test_offline <- getOption("giscoR_test_offline", NULL)
+  test_offline <- getOption("gisco_test_err", NULL)
   if (any(httr2::resp_is_error(resp), test_offline)) {
     get_status_code <- httr2::resp_status(resp) # nolint
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
@@ -320,6 +329,6 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
   resp_df <- resp_df[setdiff(names(resp_df), "XY")]
   geometry <- sf::st_as_sf(xy_coords, coords = c("X", "Y"), crs = 4326)
   resp_sf <- sf::st_as_sf(resp_df, geometry = sf::st_geometry(geometry))
-  resp_sf <- gsc_helper_utf8(resp_sf)
+  resp_sf <- sanitize_sf(resp_sf)
   resp_sf
 }

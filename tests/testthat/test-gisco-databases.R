@@ -1,14 +1,34 @@
+test_that("No conexion", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  options(gisco_test_off = TRUE)
+
+  expect_snapshot(
+    fend <- gisco_get_latest_db(update_cache = TRUE),
+  )
+  expect_null(fend)
+
+  options(gisco_test_off = FALSE)
+})
+
+
 test_that("Offline", {
-  options(giscoR_test_offline = TRUE)
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  options(gisco_test_err = TRUE)
   expect_message(
     n <- gisco_get_latest_db(update_cache = TRUE),
     "Can't access"
   )
   expect_null(n)
-  options(giscoR_test_offline = FALSE)
+  options(gisco_test_err = FALSE)
 })
 
 test_that("Offline detection", {
+  skip_on_cran()
+  skip_if_gisco_offline()
   cdir <- tempdir()
   cdir_db <- gsc_helper_cachedir(file.path(cdir, "giscor", "cache_db"))
 
@@ -17,7 +37,7 @@ test_that("Offline detection", {
     unlink(cached_db)
   }
   expect_false(file.exists(cached_db))
-  options(giscoR_test_offline = TRUE)
+  options(gisco_test_err = TRUE)
   expect_message(
     n <- get_db(),
     "Can't access"
@@ -33,7 +53,7 @@ test_that("Offline detection", {
     unlink(cached_db)
   }
   expect_false(file.exists(cached_db))
-  options(giscoR_test_offline = FALSE)
+  options(gisco_test_err = FALSE)
 })
 
 test_that("Get database", {

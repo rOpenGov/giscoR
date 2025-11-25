@@ -91,7 +91,7 @@ test_that("Bulk download online", {
 })
 
 test_that("Bulk download offline", {
-  options(giscoR_test_offline = TRUE)
+  options(gisco_test_err = TRUE)
   expect_message(
     n <- gisco_bulk_download(
       resolution = 60,
@@ -101,5 +101,5 @@ test_that("Bulk download offline", {
     "not reachable"
   )
   expect_null(n)
-  options(giscoR_test_offline = FALSE)
+  options(gisco_test_err = FALSE)
 })

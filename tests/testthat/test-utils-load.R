@@ -1,3 +1,33 @@
+test_that("No conexion", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  options(gisco_test_off = TRUE)
+
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/distribution/v2/",
+    "nuts/geojson/NUTS_LB_2016_4326_LEVL_0.geojson"
+  )
+  cdir <- file.path(tempdir(), "testthat_ex")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+  expect_snapshot(
+    fend <- api_cache(
+      url,
+      cache_dir = cdir,
+      subdir = "fixme",
+      update_cache = FALSE,
+      verbose = FALSE
+    )
+  )
+  expect_null(fend)
+  expect_length(list.files(cdir, recursive = TRUE), 0)
+  unlink(cdir, recursive = TRUE, force = TRUE)
+
+  options(gisco_test_off = FALSE)
+})
+
+
 test_that("Caching tests", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -20,6 +50,8 @@ test_that("Caching tests", {
     ),
     "Cache dir is"
   )
+
+  expect_length(list.files(cdir, recursive = TRUE), 1)
 
   expect_message(
     fend <- api_cache(
@@ -71,4 +103,96 @@ test_that("Caching errors", {
 
   expect_null(fend)
   unlink(cdir, recursive = TRUE, force = TRUE)
+})
+
+test_that("Get urls", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  expect_error(get_url_db(
+    "postalcodes",
+    year = "1991",
+    fn = "gisco_get_postalcodes"
+  ))
+
+  expect_snapshot(
+    get_url_db("communes", "9999", fn = "gisco_get_communes"),
+    error = TRUE
+  )
+
+  expect_snapshot(
+    get_url_db(
+      "communes",
+      "2016",
+      epsg = "1111",
+      ext = "csv",
+      fn = "gisco_get_communes"
+    ),
+    error = TRUE
+  )
+
+  expect_snapshot(
+    ss <- get_url_db("communes", "2016", fn = "gisco_get_communes")
+  )
+  expect_type(ss, "character")
+
+  expect_silent(
+    url <- get_url_db(
+      "nuts",
+      "2024",
+      epsg = 4326,
+      ext = "gpkg",
+      nuts_level = "all",
+      spatialtype = "RG",
+      resolution = "60",
+      fn = "gisco_get_communes"
+    )
+  )
+
+  # Valid URL
+  library(httr2)
+  resp <- request(url) %>%
+    req_perform()
+  expect_equal(resp_status(resp), 200)
+})
+
+test_that("Old tests", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  expect_error(get_url_db(
+    "urban_audit",
+    year = 2020,
+    spatialtype = "LB",
+    level = "aaa",
+    fn = "a_fun"
+  ))
+
+  expect_message(
+    n <- api_cache(
+      "https://github.com/dieghernan/a_fake_thing_here",
+      verbose = FALSE
+    ),
+    "404"
+  )
+
+  expect_null(n)
+  expect_message(
+    dwn <- get_url_db(
+      "urban_audit",
+      year = 2020,
+      spatialtype = "LB",
+      ext = "json",
+      fn = "a_fun"
+    )
+  )
+
+  expect_silent(api_cache(dwn, update_cache = FALSE, verbose = FALSE))
+
+  expect_message(get_url_db(
+    "urban_audit",
+    year = 2020,
+    spatialtype = "LB",
+    fn = "a_fun"
+  ))
 })

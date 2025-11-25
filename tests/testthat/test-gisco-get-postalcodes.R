@@ -7,7 +7,7 @@ test_that("Offline", {
   skip_if_gisco_offline()
   db <- gisco_get_latest_db()
 
-  options(giscoR_test_offline = TRUE)
+  options(gisco_test_err = TRUE)
   expect_message(
     n <- gisco_get_postalcodes(
       year = 2024,
@@ -17,7 +17,7 @@ test_that("Offline", {
     "Error"
   )
   expect_null(n)
-  options(giscoR_test_offline = FALSE)
+  options(gisco_test_err = FALSE)
 })
 
 test_that("Postal codes online", {

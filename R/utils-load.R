@@ -6,7 +6,8 @@ get_url_db <- function(
   spatialtype = NULL,
   nuts_level = NULL,
   level = NULL,
-  ext = NULL
+  ext = NULL,
+  fn
 ) {
   make_params <- list(
     year = year,
@@ -77,7 +78,10 @@ get_url_db <- function(
     cli::cli_alert("Returning first value:")
     cli::cli_bullets(val2)
   }
-  db
+  db <- db[1, ]
+  url <- paste0(db$api_entry, "/", db$api_file)
+
+  url
 }
 
 api_cache <- function(
@@ -105,6 +109,11 @@ api_cache <- function(
   if (isFALSE(update_cache) && fileoncache) {
     msg <- paste0("File already cached: {.file ", file_local, "}.")
     make_msg("success", verbose, msg)
+    size <- file.size(file_local)
+    class(size) <- "object_size"
+    sz <- format(size, units = "auto")
+    make_msg("info", verbose, "File size:", sz)
+    make_msg("generic", verbose, "Start reading file...")
 
     return(file_local)
   }
@@ -126,11 +135,19 @@ api_cache <- function(
     req <- httr2::req_progress(req)
   }
 
+  test_off <- getOption("gisco_test_off", NULL)
+
+  if (any(!httr2::is_online(), test_off)) {
+    cli::cli_alert_danger("Offline")
+    cli::cli_alert("Returning {.val NULL}")
+    return(NULL)
+  }
+
   # Response
   resp <- httr2::req_perform(req, path = file_local)
 
   # Testing
-  test_offline <- getOption("giscoR_test_offline", NULL)
+  test_offline <- getOption("gisco_test_err", NULL)
   if (any(httr2::resp_is_error(resp), test_offline)) {
     unlink(file_local, force = TRUE)
     get_status_code <- httr2::resp_status(resp) # nolint
@@ -153,5 +170,11 @@ api_cache <- function(
   }
   msg <- paste0("Download succesful on {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
+  size <- file.size(file_local)
+  class(size) <- "object_size"
+  sz <- format(size, units = "auto")
+  make_msg("info", verbose, "File size:", sz)
+  make_msg("generic", verbose, "Start reading file...")
+
   file_local
 }

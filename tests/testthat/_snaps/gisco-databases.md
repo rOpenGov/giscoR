@@ -1,3 +1,11 @@
+# No conexion
+
+    Code
+      fend <- gisco_get_latest_db(update_cache = TRUE)
+    Message
+      ! Can't access <https://gisco-services.ec.europa.eu/distribution/v2/>. If you think this is a bug please consider opening an issue on <https://github.com/ropengov/giscoR/issues>
+      > Returning "NULL"
+
 # Get database
 
     Code

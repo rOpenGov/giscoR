@@ -3,14 +3,14 @@ test_that("offline", {
   skip_if_gisco_offline()
   db <- gisco_get_latest_db()
 
-  options(giscoR_test_offline = TRUE)
+  options(gisco_test_err = TRUE)
   expect_message(
     n <- gisco_get_lau(update_cache = TRUE, year = 2020),
     "Error"
   )
   expect_null(n)
 
-  options(giscoR_test_offline = FALSE)
+  options(gisco_test_err = FALSE)
 })
 
 test_that("LAU Errors", {
@@ -30,6 +30,10 @@ test_that("LAU online", {
     gisco_id = "ES_12016"
   ))
 
+  expect_identical(
+    all[all$GISCO_ID == "ES_12016", ],
+    li_and_es[li_and_es$GISCO_ID == "ES_12016", ]
+  )
   expect_true(nrow(all) > 1000 * nrow(li_and_es))
 
   cntry <- sort(unique(li_and_es$CNTR_CODE))

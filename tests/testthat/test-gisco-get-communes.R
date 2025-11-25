@@ -3,18 +3,18 @@ test_that("offline", {
   skip_if_gisco_offline()
   db <- gisco_get_latest_db()
 
-  options(giscoR_test_offline = TRUE)
+  options(gisco_test_err = TRUE)
   expect_message(
     n <- gisco_get_communes(update_cache = TRUE, spatialtype = "LB"),
     "Error"
   )
   expect_null(n)
 
-  options(giscoR_test_offline = FALSE)
+  options(gisco_test_err = FALSE)
 })
 
 
-test_that("Communes offline", {
+test_that("Communes errors", {
   skip_on_cran()
   skip_if_gisco_offline()
   expect_error(gisco_get_communes(year = "2007"))

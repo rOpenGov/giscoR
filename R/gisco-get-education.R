@@ -93,7 +93,7 @@ gisco_get_education <- function(
   if (is.null(data_sf_all)) {
     return(NULL)
   }
-  data_sf_all <- gsc_helper_utf8(data_sf_all)
+  data_sf_all <- sanitize_sf(data_sf_all)
 
   data_sf_all
 }

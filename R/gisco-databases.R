@@ -22,9 +22,16 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
     req <- httr2::req_error(req, is_error = function(x) {
       FALSE
     })
+
+    test_off <- getOption("gisco_test_off", NULL)
+
+    if (any(!httr2::is_online(), test_off)) {
+      return(NULL)
+    }
+
     resp <- httr2::req_perform(req)
     # Testing
-    test_offline <- getOption("giscoR_test_offline", NULL)
+    test_offline <- getOption("gisco_test_err", NULL)
 
     if (any(httr2::resp_is_error(resp), test_offline)) {
       return(NULL)

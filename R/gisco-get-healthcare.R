@@ -80,6 +80,6 @@ gisco_get_healthcare <- function(
     data_sf <- data_sf[data_sf$cntr_id %in% country, ]
   }
 
-  data_sf <- gsc_helper_utf8(data_sf)
+  data_sf <- sanitize_sf(data_sf)
   data_sf
 }

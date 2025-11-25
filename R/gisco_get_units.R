@@ -323,7 +323,7 @@ gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
 
   # Testing purposes only
   # Mock the behavior of offline
-  test <- getOption("giscoR_test_offline", NULL)
+  test <- getOption("gisco_test_err", NULL)
 
   if (isTRUE(test)) {
     gsc_message(

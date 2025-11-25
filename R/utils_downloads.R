@@ -262,7 +262,7 @@ gsc_api_cache <-
 
     # Testing purposes only
     # Mock the behavior of offline
-    test <- getOption("giscoR_test_offline", NULL)
+    test <- getOption("gisco_test_err", NULL)
 
     if (isTRUE(test)) {
       gsc_message(
@@ -391,7 +391,7 @@ gsc_api_load <- function(
   gsc_message(verbose, "File loaded", "\n", "Encoding characters")
 
   # To UTF-8
-  data_sf <- gsc_helper_utf8(data_sf)
+  data_sf <- sanitize_sf(data_sf)
   data_sf <- sf::st_make_valid(data_sf)
 
   data_sf
@@ -425,7 +425,7 @@ gsc_load_shp <- function(url, cache_dir = NULL, verbose, update_cache) {
 
   data_sf <- sf::st_read(file.path(cache_dir, shpfile), quiet = !verbose)
 
-  data_sf <- gsc_helper_utf8(data_sf)
+  data_sf <- sanitize_sf(data_sf)
 
   data_sf
 }

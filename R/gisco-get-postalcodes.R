@@ -74,7 +74,12 @@ gisco_get_postalcodes <- function(
 ) {
   year <- as.character(year)
 
-  url <- get_url_postcodes(year)
+  url <- get_url_db(
+    "postalcodes",
+    year = year,
+    ext = "gpkg",
+    fn = "gisco_get_postalcodes"
+  )
   filename <- basename(url)
 
   file_local <- api_cache(
@@ -113,36 +118,13 @@ gisco_get_postalcodes <- function(
     msg <- paste0("{.code ", q, "}")
     make_msg("info", verbose, "Using query:\n   ", msg)
     data_sf <- sf::read_sf(file_local, query = q)
-    data_sf <- gsc_helper_utf8(data_sf)
+    data_sf <- sanitize_sf(data_sf)
     return(data_sf)
   }
 
   # If not read the whole file
   data_sf <- sf::read_sf(file_local)
-  data_sf <- gsc_helper_utf8(data_sf)
+  data_sf <- sanitize_sf(data_sf)
 
   data_sf
-}
-
-
-get_url_postcodes <- function(year = 2024, epsg = 4326, ext = "gpkg") {
-  db <- gisco_get_latest_db()
-  db <- db[db$id_giscoR == "postalcodes", ]
-  years <- sort(unique(db$year)) # nolint
-
-  if (!year %in% db$year) {
-    cli::cli_abort(
-      paste0(
-        "Years available for {.fn giscoR::gisco_get_postalcodes} are ",
-        "{.str {years}}."
-      )
-    )
-  }
-
-  db <- db[db$year == year, ]
-  db <- db[db$ext == ext, ]
-  db <- db[db$epsg == epsg, ]
-  url <- paste0(db$api_entry, "/", db$api_file)
-
-  url
 }

@@ -111,11 +111,11 @@ test_that("Urban Audit online", {
 
 
 test_that("offline", {
-  options(giscoR_test_offline = TRUE)
+  options(gisco_test_err = TRUE)
   expect_message(
     n <- gisco_get_urban_audit(update_cache = TRUE),
     "not reachable"
   )
   expect_null(n)
-  options(giscoR_test_offline = FALSE)
+  options(gisco_test_err = FALSE)
 })

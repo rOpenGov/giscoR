@@ -1,5 +1,8 @@
 test_that("Offline", {
-  options(giscoR_test_offline = TRUE)
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  options(gisco_test_err = TRUE)
   expect_message(
     n <- gisco_get_airports(update_cache = TRUE),
     "Error"
@@ -11,7 +14,7 @@ test_that("Offline", {
     "Error"
   )
   expect_null(n)
-  options(giscoR_test_offline = FALSE)
+  options(gisco_test_err = FALSE)
 })
 
 test_that("Get airports", {

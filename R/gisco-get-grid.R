@@ -172,7 +172,7 @@ gisco_get_grid <- function(
   make_msg("info", verbose, size)
 
   data_sf <- sf::read_sf(file_local)
-  data_sf <- gsc_helper_utf8(data_sf)
+  data_sf <- sanitize_sf(data_sf)
 
   data_sf
 }

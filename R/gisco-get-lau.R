@@ -63,7 +63,13 @@ gisco_get_lau <- function(
   }
   year <- as.character(year)
 
-  url <- get_url_lau("lau", year, epsg, ext = "gpkg", "RG", "gisco_get_lau")
+  url <- get_url_db(
+    "lau",
+    year = year,
+    epsg = epsg,
+    ext = "gpkg",
+    fn = "gisco_get_lau"
+  )
 
   basename <- basename(url)
 
@@ -130,76 +136,5 @@ gisco_get_lau <- function(
     data_sf <- sf::read_sf(file_local)
   }
 
-  data_sf <- gsc_helper_utf8(data_sf)
-}
-
-
-get_url_lau <- function(
-  id = "lau",
-  year = 2024,
-  epsg = 4326,
-  ext = "gpkg",
-  spatialtype = "RG",
-  fn = "gisco_get_lau"
-) {
-  db <- gisco_get_latest_db()
-  db <- db[db$id_giscoR == id, ]
-  years <- sort(unique(db$year)) # nolint
-
-  if (!year %in% db$year) {
-    cli::cli_abort(
-      paste0(
-        "Years available for {.fn giscoR::",
-        fn,
-        "} are ",
-        "{.str {years}}."
-      )
-    )
-  }
-
-  db <- db[db$year == year, ]
-  db <- db[db$ext == ext, ]
-
-  valid_epsg <- sort(unique(db$epsg)) # nolint
-
-  if (!epsg %in% db$epsg) {
-    cli::cli_abort(
-      paste0(
-        "{.arg epsg} available for {.fn giscoR::",
-        fn,
-        "} ",
-        "are {.str {valid_epsg}}."
-      )
-    )
-  }
-  db <- db[db$epsg == epsg, ]
-
-  valid_spatialtypes <- sort(unique(db$spatialtype)) # nolint
-  lnt <- length(valid_spatialtypes) # nolint
-  if (!spatialtype %in% db$spatialtype) {
-    cli::cli_abort(
-      paste0(
-        "{.arg spatialtype} available for {.fn giscoR::",
-        fn,
-        "} ",
-        "{qty(lnt)} {?is/are} {.str {valid_spatialtypes}}."
-      )
-    )
-  }
-  db <- db[db$spatialtype == spatialtype, ]
-  if (nrow(db) == 0) {
-    valid_args <- c("year", "epsg", "spatialtype") # nolint
-    cli::cli_abort(
-      paste0(
-        "This combination of {.arg {valid_args}} ",
-        "is currently not available for {.fn giscoR::",
-        fn,
-        "}."
-      )
-    )
-  }
-
-  url <- paste0(db$api_entry, "/", db$api_file)
-
-  url
+  data_sf <- sanitize_sf(data_sf)
 }

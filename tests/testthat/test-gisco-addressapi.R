@@ -1,5 +1,22 @@
+test_that("No conexion", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  options(gisco_test_off = TRUE)
+
+  expect_snapshot(
+    fend <- gisco_addressapi_bbox(),
+  )
+  expect_null(fend)
+
+  options(gisco_test_off = FALSE)
+})
+
+
 test_that("Test offline", {
-  options(giscoR_test_offline = TRUE)
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  options(gisco_test_err = TRUE)
   expect_message(
     n <- gisco_addressapi_bbox(),
     "Error"
@@ -59,7 +76,7 @@ test_that("Test offline", {
   )
   expect_null(n)
 
-  options(giscoR_test_offline = FALSE)
+  options(gisco_test_err = FALSE)
 })
 
 
