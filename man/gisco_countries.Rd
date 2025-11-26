@@ -35,8 +35,9 @@ head(gisco_countries)
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
 
-Other dataset: 
+Other dataset:
 \code{\link{gisco_coastallines}},
+\code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},
 \code{\link{gisco_nuts}}

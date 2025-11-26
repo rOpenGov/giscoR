@@ -237,3 +237,55 @@ NULL
 #'
 #' @docType data
 NULL
+
+
+#' World countries `POLYGON` [`sf`][sf::st_sf] object 2024
+#'
+#' @family dataset
+#'
+#' @name gisco_countries_2024
+#'
+#' @description
+#' A [`sf`][sf::st_sf] object including all countries as provided by
+#' GISCO (2024 version).
+#'
+#' @format
+#' A `MULTIPOLYGON` data frame (resolution: 1:20million, EPSG:4326) object
+#' with `r nrow(giscoR::gisco_countries_2024)` rows and variables:
+#' \describe{
+#'   \item{CNTR_ID}{Country ID as per Eurostat.}
+#'   \item{CNTR_NAME}{Official country name on local language.}
+#'   \item{NAME_ENGL}{Country name in English.}
+#'   \item{NAME_FREN}{Country name in French.}
+#'   \item{ISO3_CODE}{ISO 3166-1 alpha-3 code of each country, as provided by
+#'   GISCO.}
+#'   \item{SVRG_UN}{Sovereign status as per United Nations.}
+#'   \item{CAPT}{Capitol city.}
+#'   \item{EU_STAT}{European Union member.}
+#'   \item{EFTA_STAT}{EFTA member.}
+#'   \item{CC_STAT}{EU candidate member.}
+#'   \item{NAME_GERM}{Country name in German.}
+#'   \item{geometry}{geometry field.}
+#' }
+#' @examples
+#'
+#' data("gisco_countries_2024")
+#' head(gisco_countries_2024)
+#'
+#' @source
+#'
+#' ```{r, echo=FALSE, results='asis'}
+#'
+#' cat(paste0("[CNTR_RG_20M_2024_4326.gpkg]",
+#'       "(https://gisco-services.ec.europa.eu/distribution/v2/",
+#'       "countries/gpkg/) file."))
+#'
+#'
+#' ```
+#'
+#' @docType data
+#'
+#' @seealso [gisco_get_countries()]
+#'
+#' @encoding UTF-8
+NULL

@@ -131,6 +131,15 @@ test_that("Get urls", {
     error = TRUE
   )
 
+  ss1 <- get_url_db("nuts", "2016", resolution = 20, fn = "gisco_get_communes")
+  ss2 <- get_url_db(
+    "nuts",
+    "2016",
+    resolution = "20",
+    fn = "gisco_get_communes"
+  )
+  expect_identical(ss1, ss2)
+
   expect_snapshot(
     ss <- get_url_db("communes", "2016", fn = "gisco_get_communes")
   )
@@ -182,6 +191,7 @@ test_that("Old tests", {
       "urban_audit",
       year = 2020,
       spatialtype = "LB",
+      resolution = 20000,
       ext = "json",
       fn = "a_fun"
     )

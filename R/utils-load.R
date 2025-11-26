@@ -9,6 +9,10 @@ get_url_db <- function(
   ext = NULL,
   fn
 ) {
+  if (all(!is.null(spatialtype), spatialtype == "LB")) {
+    resolution <- NULL
+  }
+
   make_params <- list(
     year = year,
     epsg = epsg,
@@ -23,10 +27,15 @@ get_url_db <- function(
   make_params <- make_params[lengths(make_params) != 0]
   make_params <- lapply(make_params, as.character)
 
+  if (!is.null(make_params$resolution)) {
+    resolution <- sprintf("%02d", as.numeric(make_params$resolution))
+    make_params$resolution <- resolution
+  }
+
   # Fun with namespace
   fn <- paste0("giscoR::", fn)
 
-  db <- gisco_get_latest_db()
+  db <- get_db()
 
   # Initial filter
   db <- db[db$id_giscoR == id, ]
@@ -119,7 +128,7 @@ api_cache <- function(
   }
 
   if (fileoncache) {
-    make_msg("info", verbose, "Updating cached file")
+    make_msg("warning", verbose, "Updating cached file")
   }
 
   msg <- paste0("Downloading {.url ", url, "}.")

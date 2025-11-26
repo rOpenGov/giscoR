@@ -40,12 +40,12 @@
 #'
 #' @return A [`sf`][sf::st_sf] object specified by `spatialtype`.
 #'
-#' @param year Release year of the file. One
-#'   of `r gsc_helper_year_docs("countries")`.
+#' @param year Release year of the file. One of
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+#'   "year",TRUE)}`.
 #'
 #' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
 #'  One of:
-#'  * `"4258"`: ETRS89
 #'  * `"4326"`: WGS84
 #'  * `"3035"`: ETRS89 / ETRS-LAEA
 #'  * `"3857"`: Pseudo-Mercator
@@ -55,7 +55,7 @@
 #'
 #' @param update_cache A logical whether to update cache. Default is `FALSE`.
 #'  When set to `TRUE` it would force a fresh download of the source
-#'  `.geojson` file.
+#'  `.gpkg` file.
 #'
 #' @param cache_dir A path to a cache directory. See **About caching**.
 #'
@@ -112,7 +112,7 @@
 #'   theme_minimal()
 #'
 gisco_get_countries <- function(
-  year = "2016",
+  year = "2024",
   epsg = "4326",
   cache = TRUE,
   update_cache = FALSE,
@@ -123,79 +123,92 @@ gisco_get_countries <- function(
   country = NULL,
   region = NULL
 ) {
-  ext <- "geojson"
-
-  api_entry <- gsc_api_url(
-    id_giscoR = "countries",
+  api_entry <- get_url_db(
+    id = "countries",
     year = year,
     epsg = epsg,
     resolution = resolution,
     spatialtype = spatialtype,
-    ext = ext,
-    nuts_level = NULL,
-    level = NULL,
-    verbose = verbose
+    ext = "gpkg",
+    fn = "gisco_get_countries"
   )
 
   filename <- basename(api_entry)
 
   # Check if data is already available
-  checkdata <- grep("CNTR_RG_20M_2016_4326", filename)
-  if (isFALSE(update_cache) && length(checkdata)) {
-    dwnload <- FALSE
-    data_sf <- giscoR::gisco_countries
+  checkdata <- grepl("CNTR_RG_20M_2024_4326.gpkg", filename)
+  if (all(isFALSE(update_cache), checkdata)) {
+    data_sf <- giscoR::gisco_countries_2024
 
-    gsc_message(
+    make_msg(
+      "info",
       verbose,
-      "Loaded from gisco_countries dataset. Use update_cache = TRUE
-    to load the shapefile from the .geojson file"
+      "Loaded from {.help giscoR::gisco_countries_2024} dataset.",
+      "Use {.arg update_cache = TRUE} to re-load from file"
+    )
+    data_sf <- filter_countryregion(data_sf, country, region)
+    data_sf <- sanitize_sf(data_sf)
+
+    return(data_sf)
+  }
+  # Speed up if requesting units
+  if (!is.null(country) && spatialtype %in% c("RG", "LB")) {
+    data_sf <- gisco_get_units(
+      id_giscoR = "countries",
+      unit = country,
+      mode = "sf",
+      year = year,
+      epsg = epsg,
+      cache = cache,
+      cache_dir = cache_dir,
+      update_cache = update_cache,
+      verbose = verbose,
+      resolution = resolution,
+      spatialtype = spatialtype
+    )
+    data_sf <- filter_countryregion(data_sf, country, region)
+    data_sf <- sanitize_sf(data_sf)
+
+    return(data_sf)
+  }
+
+  if (cache) {
+    # Guess source to load
+    namefileload <- api_cache(
+      api_entry,
+      filename,
+      cache_dir,
+      "countries",
+      update_cache,
+      verbose
     )
   } else {
-    dwnload <- TRUE
-  }
-  if (dwnload) {
-    # Speed up if requesting units
-    if (!is.null(country) && spatialtype %in% c("RG", "LB")) {
-      data_sf <- gisco_get_units(
-        id_giscoR = "countries",
-        unit = country,
-        mode = "sf",
-        year = year,
-        epsg = epsg,
-        cache = cache,
-        cache_dir = cache_dir,
-        update_cache = update_cache,
-        verbose = verbose,
-        resolution = resolution,
-        spatialtype = spatialtype
-      )
-    } else {
-      if (cache) {
-        # Guess source to load
-        namefileload <- gsc_api_cache(
-          api_entry,
-          filename,
-          cache_dir,
-          update_cache,
-          verbose
-        )
-      } else {
-        namefileload <- api_entry
-      }
-
-      if (is.null(namefileload)) {
-        return(NULL)
-      }
-      # Load - geojson only so far
-      data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
-    }
+    msg <- paste0("{.url ", api_entry, "}.")
+    make_msg("info", verbose, "Reading from", msg)
+    namefileload <- api_entry
   }
 
-  if (!is.null(country) && "CNTR_ID" %in% names(data_sf)) {
+  if (is.null(namefileload)) {
+    return(NULL)
+  }
+  # Load
+  data_sf <- sf::read_sf(namefileload)
+  data_sf <- filter_countryregion(data_sf, country, region)
+
+  data_sf <- sanitize_sf(data_sf)
+
+  data_sf
+}
+
+filter_countryregion <- function(data_sf, country, region) {
+  if (!"CNTR_ID" %in% names(data_sf)) {
+    return(data_sf)
+  }
+  if (!is.null(country)) {
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_ID %in% country, ]
   }
-  if (!is.null(region) && "CNTR_ID" %in% names(data_sf)) {
+  if (!is.null(region)) {
     region_df <- giscoR::gisco_countrycode
     cntryregion <- region_df[region_df$un.region.name %in% region, ]
 
@@ -206,6 +219,5 @@ gisco_get_countries <- function(
 
     data_sf <- data_sf[data_sf$CNTR_ID %in% cntryregion$CNTR_CODE, ]
   }
-
-  return(data_sf)
+  data_sf
 }

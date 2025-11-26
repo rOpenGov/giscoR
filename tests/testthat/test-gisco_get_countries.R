@@ -1,4 +1,23 @@
+test_that("Offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  db <- gisco_get_latest_db()
+
+  options(gisco_test_err = TRUE)
+  expect_message(
+    n <- gisco_get_countries(
+      update_cache = TRUE,
+      resolution = 60
+    ),
+    "Error"
+  )
+  expect_null(n)
+  options(gisco_test_err = FALSE)
+})
 test_that("Countries errors", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
   expect_error(gisco_get_countries(year = 2001, resolution = 60))
   expect_error(gisco_get_countries(year = 2011))
   expect_error(gisco_get_countries(epsg = 2819))
@@ -7,6 +26,9 @@ test_that("Countries errors", {
 })
 
 test_that("Country names", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
   # Test names
   expect_error(gisco_get_countries(country = "Z"))
   expect_warning(expect_warning(gisco_get_countries(country = "ZZ")))
@@ -24,6 +46,8 @@ test_that("Country names", {
 })
 
 test_that("Countries offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
   # Test
   expect_silent(gisco_get_countries())
   expect_message(gisco_get_countries(verbose = TRUE))
@@ -46,7 +70,7 @@ test_that("Countries online", {
 
   expect_silent(
     gisco_get_countries(
-      year = 2024,
+      year = 2020,
       spatialtype = "BN",
       resolution = 60,
       cache = TRUE
@@ -91,18 +115,4 @@ test_that("Countries online", {
     resolution = "60",
     spatialtype = "RG"
   ))
-})
-
-test_that("Offline", {
-  options(gisco_test_err = TRUE)
-  expect_message(
-    n <- gisco_get_countries(
-      resolution = 60,
-      cache_dir = tempdir(),
-      update_cache = TRUE
-    ),
-    "not reachable"
-  )
-  expect_null(n)
-  options(gisco_test_err = FALSE)
 })

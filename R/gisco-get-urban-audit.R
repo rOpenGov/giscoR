@@ -10,8 +10,9 @@
 #'
 #' @return A [`sf`][sf::st_sf] object specified by `spatialtype`.
 #'
-#' @param year Release year of the file. One
-#'   of `r gsc_helper_year_docs("urban_audit")`.
+#' @param year Release year of the file. One of
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
+#'   "year",TRUE)}`.
 #'
 #' @param spatialtype Type of geometry to be returned:
 #'  * `"LB"`: Labels - `POINT` object.
@@ -23,8 +24,8 @@
 #' @inheritParams gisco_get_countries
 #'
 #' @inheritSection gisco_get_countries About caching
+#' @inherit gisco_get_countries source
 #'
-#' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
 #' @seealso [gisco_get_communes()], [gisco_get_lau()]
 #'
@@ -56,43 +57,42 @@ gisco_get_urban_audit <- function(
   country = NULL,
   level = NULL
 ) {
-  ext <- "geojson"
-
-  api_entry <- gsc_api_url(
-    id_giscoR = "urban_audit",
+  if (is.null(level)) {
+    level <- "all"
+  }
+  api_entry <- get_url_db(
+    id = "urban_audit",
     year = year,
     epsg = epsg,
-    resolution = 0,
-    # Not necessary
     spatialtype = spatialtype,
-    ext = ext,
-    nuts_level = NULL,
+    ext = "gpkg",
     level = level,
-    verbose = verbose
+    fn = "gisco_get_urban_audit"
   )
 
-  filename <- basename(api_entry)
+  if (!cache) {
+    msg <- paste0("{.url ", api_entry, "}.")
+    make_msg("info", verbose, "Reading from", msg)
 
-  if (cache) {
-    # Guess source to load
-    namefileload <- gsc_api_cache(
+    data_sf <- sf::read_sf(api_entry)
+  } else {
+    filename <- basename(api_entry)
+    namefileload <- api_cache(
       api_entry,
       filename,
       cache_dir,
+      "urban_audit",
       update_cache,
       verbose
     )
-  } else {
-    namefileload <- api_entry
+
+    if (is.null(namefileload)) {
+      return(NULL)
+    }
+    data_sf <- sf::read_sf(namefileload)
   }
 
-  if (is.null(namefileload)) {
-    return(NULL)
-  }
-
-  # Load - geojson only so far
-  data_sf <- gsc_api_load(namefileload, epsg, ext, cache, verbose)
-
+  data_sf <- sanitize_sf(data_sf)
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")

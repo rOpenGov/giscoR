@@ -47,6 +47,7 @@ See also the \href{https://cldr.unicode.org/translation/displaynames/countryregi
 Other dataset: 
 \code{\link{gisco_coastallines}},
 \code{\link{gisco_countries}},
+\code{\link{gisco_countries_2024}},
 \code{\link{gisco_db}},
 \code{\link{gisco_nuts}}
 }

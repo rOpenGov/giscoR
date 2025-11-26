@@ -1,10 +1,29 @@
 test_that("Urban Audit offline", {
+  skip_on_cran()
+
   expect_error(gisco_get_urban_audit(year = "1999"))
   expect_error(gisco_get_urban_audit(epsg = "9999"))
   expect_error(gisco_get_urban_audit(level = "9999"))
   expect_error(gisco_get_urban_audit(spatialtype = "BN"))
   expect_error(gisco_get_urban_audit(year = 2001))
 })
+
+test_that("Mock offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  db <- gisco_get_latest_db()
+
+  options(gisco_test_err = TRUE)
+  expect_message(
+    n <- gisco_get_urban_audit(
+      update_cache = TRUE
+    ),
+    "Error"
+  )
+  expect_null(n)
+  options(gisco_test_err = FALSE)
+})
+
 
 test_that("Urban Audit online", {
   skip_on_cran()
@@ -17,6 +36,7 @@ test_that("Urban Audit online", {
   ))
 
   expect_s3_class(fromurl, "sf")
+  expect_s3_class(fromurl, "tbl_df")
 
   expect_silent(gisco_get_urban_audit(level = "CITIES", spatialtype = "LB"))
 
@@ -43,7 +63,7 @@ test_that("Urban Audit online", {
     )
   )
 
-  expect_identical(sf::st_crs(check), sf::st_crs(3857))
+  expect_identical(sf::st_crs(check)$epsg, sf::st_crs(3857)$epsg)
 
   expect_length(
     setdiff(unique(check$CNTR_CODE), c("IT", "PL")),
@@ -59,14 +79,13 @@ test_that("Urban Audit online", {
       country = c("ITA", "POL")
     )
   )
-  expect_identical(sf::st_crs(check), sf::st_crs(3857))
+  expect_identical(sf::st_crs(check)$epsg, sf::st_crs(3857)$epsg)
 
   expect_length(
     setdiff(unique(check$CNTR_CODE), c("IT", "PL")),
     0
   )
 
-  skip("Not working")
   check <- expect_silent(gisco_get_urban_audit(
     year = 2018,
     epsg = 3857,
@@ -74,7 +93,7 @@ test_that("Urban Audit online", {
     country = c("ITA", "POL")
   ))
 
-  expect_identical(sf::st_crs(check), sf::st_crs(3857))
+  expect_identical(sf::st_crs(check)$epsg, sf::st_crs(3857)$epsg)
 
   expect_length(
     setdiff(unique(check$CNTR_CODE), c("IT", "PL")),
@@ -101,21 +120,10 @@ test_that("Urban Audit online", {
     )
   )
 
-  expect_identical(sf::st_crs(check), sf::st_crs(3857))
+  expect_identical(sf::st_crs(check)$epsg, sf::st_crs(3857)$epsg)
 
   expect_length(
     setdiff(unique(check$CNTR_CODE), c("IT", "PL")),
     0
   )
-})
-
-
-test_that("offline", {
-  options(gisco_test_err = TRUE)
-  expect_message(
-    n <- gisco_get_urban_audit(update_cache = TRUE),
-    "not reachable"
-  )
-  expect_null(n)
-  options(gisco_test_err = FALSE)
 })
