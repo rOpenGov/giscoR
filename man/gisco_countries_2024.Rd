@@ -46,5 +46,11 @@ Other dataset:
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},
 \code{\link{gisco_nuts}}
+
+Other administrative units datasets:
+\code{\link{gisco_get_countries}()},
+\code{\link{gisco_get_lau}()},
+\code{\link{gisco_get_postalcodes}()}
 }
+\concept{admin}
 \concept{dataset}

@@ -151,9 +151,6 @@ ggplot(select_nuts) +
 Other political: 
 \code{\link{gisco_bulk_download}()},
 \code{\link{gisco_get_coastallines}()},
-\code{\link{gisco_get_countries}()},
-\code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_postalcodes}()},
 \code{\link{gisco_get_units}()},
 \code{\link{gisco_get_urban_audit}()}
 }

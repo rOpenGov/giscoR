@@ -8,12 +8,12 @@
 #' [ISO-3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
 #' code.
 #'
-#' @rdname gisco_get
+#' @aliases gisco_get
 #'
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].
 #'
-#' @family political
+#' @family admin
 #'
 #' @details
 #' # About caching

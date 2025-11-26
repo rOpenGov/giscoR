@@ -10,7 +10,7 @@
 #'
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].
-#' @family political
+#' @family admin
 #'
 #' @return A [`sf`][sf::st_sf] object specified by `spatialtype`. In the case of
 #'   [gisco_get_lau()], a `POLYGON` object.

@@ -96,13 +96,9 @@ if (!is.null(pc_bel)) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other political: 
-\code{\link{gisco_bulk_download}()},
-\code{\link{gisco_get_coastallines}()},
+Other administrative units datasets:
+\code{\link{gisco_countries_2024}},
 \code{\link{gisco_get_countries}()},
-\code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_nuts}()},
-\code{\link{gisco_get_units}()},
-\code{\link{gisco_get_urban_audit}()}
+\code{\link{gisco_get_lau}()}
 }
-\concept{political}
+\concept{admin}

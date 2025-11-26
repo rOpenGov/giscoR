@@ -1,4 +1,5 @@
 #' sf::read_sf wrapper
+#' @noRd
 read_geo_file_sf <- function(file_local, ...) {
   data_sf <- sf::read_sf(file_local, ...)
   data_sf <- sanitize_sf(data_sf)
@@ -6,7 +7,8 @@ read_geo_file_sf <- function(file_local, ...) {
   data_sf
 }
 
-#' Create and read vsizip construct
+#' Create and read 'vsizip' construct
+#' @noRd
 read_shp_zip <- function(file_local, q = NULL) {
   shp_zip <- unzip(file_local, list = TRUE)
   shp_zip <- shp_zip$Name

@@ -138,7 +138,7 @@ load_url <- function(
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })
-  req <- httr2::req_timeout(req, 10)
+  req <- httr2::req_timeout(req, 300)
   req <- httr2::req_retry(req, max_tries = 3)
   if (verbose) {
     req <- httr2::req_progress(req)

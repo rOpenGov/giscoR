@@ -18,6 +18,21 @@ home:
     provides some lightweight data sets ready to use without downloading.
 
 reference:
+- title: GISCO API
+  desc: >
+    These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
+    class="external-link">sf</a> objects
+- subtitle: Administrative units
+  desc: |
+    On using administrative data for statistical purposes, administrative units
+    are the units for which administrative data are recorded. These units may or
+    may not be the same as those required for the statistical purposes (referred
+    to as statistical units).
+
+    See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units"
+    class="external-link">copyrights information</a>.
+  contents: has_concept("admin")
+
 - title: Political
   desc: >
     These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"

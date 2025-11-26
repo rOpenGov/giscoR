@@ -242,6 +242,7 @@ NULL
 #' World countries `POLYGON` [`sf`][sf::st_sf] object 2024
 #'
 #' @family dataset
+#' @family admin
 #'
 #' @name gisco_countries_2024
 #'

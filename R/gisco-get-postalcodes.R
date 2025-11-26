@@ -10,7 +10,7 @@
 #' @inheritSection gisco_get_countries About caching
 #' @inherit gisco_get_countries source
 #'
-#' @family political
+#' @family admin
 #'
 #' @return A `POINT` [`sf`][sf::st_sf] object on EPSG:4326.
 #'

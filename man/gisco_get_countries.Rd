@@ -2,6 +2,7 @@
 % Please edit documentation in R/gisco_get_countries.R
 \name{gisco_get_countries}
 \alias{gisco_get_countries}
+\alias{gisco_get}
 \title{Get GISCO world country \code{\link[sf:sf]{sf}} polygons, points and lines}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
@@ -131,13 +132,9 @@ ggplot(africa) +
 \code{\link[=gisco_countrycode]{gisco_countrycode()}}, \link{gisco_countries},
 \code{\link[countrycode:countrycode]{countrycode::countrycode()}}
 
-Other political: 
-\code{\link{gisco_bulk_download}()},
-\code{\link{gisco_get_coastallines}()},
+Other administrative units datasets:
+\code{\link{gisco_countries_2024}},
 \code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_nuts}()},
-\code{\link{gisco_get_postalcodes}()},
-\code{\link{gisco_get_units}()},
-\code{\link{gisco_get_urban_audit}()}
+\code{\link{gisco_get_postalcodes}()}
 }
-\concept{political}
+\concept{admin}
