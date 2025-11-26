@@ -76,7 +76,7 @@ gisco_get_healthcare <- function(
   data_sf <- read_geo_file_sf(namefileload)
 
   if (!is.null(country) && "cntr_id" %in% names(data_sf)) {
-    country <- gsc_helper_countrynames(country, "eurostat")
+    country <- get_country_code(country)
     data_sf <- data_sf[data_sf$cntr_id %in% country, ]
   }
 

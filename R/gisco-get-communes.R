@@ -76,7 +76,7 @@ gisco_get_communes <- function(
   if (!is.null(country)) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
 
-    country <- gsc_helper_countrynames(country, "eurostat")
+    country <- get_country_code(country)
 
     # Get layer name
     layer <- sf::st_layers(file_local)

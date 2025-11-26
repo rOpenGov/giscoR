@@ -47,7 +47,7 @@ gisco_get_education <- function(
   year <- match.arg(year)
 
   if (!is.null(country)) {
-    country_get <- gsc_helper_countrynames(country, "eurostat")
+    country_get <- get_country_code(country)
   } else {
     country_get <- "EU"
   }

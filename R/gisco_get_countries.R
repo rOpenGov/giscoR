@@ -201,7 +201,7 @@ filter_countryregion <- function(data_sf, country, region) {
     return(data_sf)
   }
   if (!is.null(country)) {
-    country <- gsc_helper_countrynames(country, "eurostat")
+    country <- get_country_code(country)
     data_sf <- data_sf[data_sf$CNTR_ID %in% country, ]
   }
   if (!is.null(region)) {

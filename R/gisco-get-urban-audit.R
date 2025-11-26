@@ -94,7 +94,7 @@ gisco_get_urban_audit <- function(
 
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
-    country <- gsc_helper_countrynames(country, "eurostat")
+    country <- get_country_code(country)
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
   data_sf

@@ -92,7 +92,7 @@ gisco_get_lau <- function(
   if (any(!is.null(country), !is.null(gisco_id))) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
     if (!is.null(country)) {
-      country <- gsc_helper_countrynames(country, "eurostat")
+      country <- get_country_code(country)
     }
 
     # Get layer name
