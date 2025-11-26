@@ -56,3 +56,17 @@ gsc_helper_year_docs <- function(x) {
   paste0(paste0(ftext[-lt], collapse = ", "), " or ", ftext[lt])
   # nocov end
 }
+
+#' Helper for display messages on verbose
+#'
+#' @noRd
+gsc_message <- function(verbose, ...) {
+  dots <- list(...)
+  msg <- paste(dots, collapse = " ")
+
+  if (verbose) {
+    message(msg)
+  }
+
+  invisible()
+}

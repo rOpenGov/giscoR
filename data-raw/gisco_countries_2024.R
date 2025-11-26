@@ -2,25 +2,15 @@
 library(giscoR)
 library(sf)
 library(ggplot2)
-url <- get_url_db(
-  "countries",
-  year = "2024",
-  epsg = "4326",
-  ext = "gpkg",
+
+gisco_countries_2024 <- gisco_get_countries(
+  verbose = TRUE,
+  year = 2024,
+  resolution = 20,
+  epsg = 4326,
   spatialtype = "RG",
-  resolution = "20",
-  fn = "aa"
+  update_cache = TRUE
 )
-
-url
-local <- api_cache(url, cache_dir = NULL, subdir = "countries")
-
-gisco_countries_2024 <- sf::read_sf(local)
-gisco_countries_2024 <- giscoR:::sanitize_sf(gisco_countries_2024)
-
-colnames(giscoR::gisco_countries)
-colnames(gisco_countries_2024)
-dplyr::glimpse(gisco_countries_2024)
 
 ggplot(gisco_countries_2024) +
   geom_sf()

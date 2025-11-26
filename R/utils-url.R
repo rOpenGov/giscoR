@@ -93,7 +93,7 @@ get_url_db <- function(
   url
 }
 
-api_cache <- function(
+load_url <- function(
   url = NULL,
   name = basename(url),
   cache_dir = NULL,
@@ -138,7 +138,7 @@ api_cache <- function(
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })
-  req <- httr2::req_timeout(req, 100000)
+  req <- httr2::req_timeout(req, 10)
   req <- httr2::req_retry(req, max_tries = 3)
   if (verbose) {
     req <- httr2::req_progress(req)

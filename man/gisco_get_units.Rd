@@ -30,13 +30,13 @@ gisco_get_units(
 \item{mode}{Controls the output of the function. Possible values are \code{"sf"}
 or \code{"df"}. See \strong{Value} and \strong{Details}.}
 
-\item{year}{Release year of the file. One
-of \code{"2001"}, \code{"2006"}, \code{"2010"}, \code{"2013"}, \code{"2016"}, \code{"2020"} or \code{"2024"}.}
+\item{year}{Release year of the file. One of
+\Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+"year",TRUE)}`.}
 
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
 \item \code{"4326"}: WGS84
 \item \code{"3035"}: ETRS89 / ETRS-LAEA
 \item \code{"3857"}: Pseudo-Mercator
@@ -47,7 +47,7 @@ One of:
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+\code{.gpkg} file.}
 
 \item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 

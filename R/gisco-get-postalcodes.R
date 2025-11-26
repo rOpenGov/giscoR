@@ -82,7 +82,7 @@ gisco_get_postalcodes <- function(
   )
   filename <- basename(url)
 
-  file_local <- api_cache(
+  file_local <- load_url(
     url = url,
     name = filename,
     cache_dir = cache_dir,
@@ -117,14 +117,12 @@ gisco_get_postalcodes <- function(
 
     msg <- paste0("{.code ", q, "}")
     make_msg("info", verbose, "Using query:\n   ", msg)
-    data_sf <- sf::read_sf(file_local, query = q)
-    data_sf <- sanitize_sf(data_sf)
+    data_sf <- read_geo_file_sf(file_local, query = q)
     return(data_sf)
   }
 
   # If not read the whole file
-  data_sf <- sf::read_sf(file_local)
-  data_sf <- sanitize_sf(data_sf)
+  data_sf <- read_geo_file_sf(file_local)
 
   data_sf
 }

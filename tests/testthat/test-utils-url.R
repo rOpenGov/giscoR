@@ -12,7 +12,7 @@ test_that("No conexion", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
   expect_snapshot(
-    fend <- api_cache(
+    fend <- load_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -41,7 +41,7 @@ test_that("Caching tests", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
   expect_message(
-    fend <- api_cache(
+    fend <- load_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -54,7 +54,7 @@ test_that("Caching tests", {
   expect_length(list.files(cdir, recursive = TRUE), 1)
 
   expect_message(
-    fend <- api_cache(
+    fend <- load_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -65,7 +65,7 @@ test_that("Caching tests", {
   )
 
   expect_message(
-    fend <- api_cache(
+    fend <- load_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -91,7 +91,7 @@ test_that("Caching errors", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
   expect_message(
-    fend <- api_cache(
+    fend <- load_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -178,7 +178,7 @@ test_that("Old tests", {
   ))
 
   expect_message(
-    n <- api_cache(
+    n <- load_url(
       "https://github.com/dieghernan/a_fake_thing_here",
       verbose = FALSE
     ),
@@ -197,7 +197,7 @@ test_that("Old tests", {
     )
   )
 
-  expect_silent(api_cache(dwn, update_cache = FALSE, verbose = FALSE))
+  expect_silent(load_url(dwn, update_cache = FALSE, verbose = FALSE))
 
   expect_message(get_url_db(
     "urban_audit",

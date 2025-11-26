@@ -74,10 +74,10 @@ gisco_get_urban_audit <- function(
     msg <- paste0("{.url ", api_entry, "}.")
     make_msg("info", verbose, "Reading from", msg)
 
-    data_sf <- sf::read_sf(api_entry)
+    data_sf <- read_geo_file_sf(api_entry)
   } else {
     filename <- basename(api_entry)
-    namefileload <- api_cache(
+    namefileload <- load_url(
       api_entry,
       filename,
       cache_dir,
@@ -89,10 +89,9 @@ gisco_get_urban_audit <- function(
     if (is.null(namefileload)) {
       return(NULL)
     }
-    data_sf <- sf::read_sf(namefileload)
+    data_sf <- read_geo_file_sf(namefileload)
   }
 
-  data_sf <- sanitize_sf(data_sf)
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
     # Convert ISO3 to EUROSTAT thanks to Vincent Arel-Bundock (countrycode)
     country <- gsc_helper_countrynames(country, "eurostat")

@@ -1,3 +1,31 @@
+#' sf::read_sf wrapper
+read_geo_file_sf <- function(file_local, ...) {
+  data_sf <- sf::read_sf(file_local, ...)
+  data_sf <- sanitize_sf(data_sf)
+
+  data_sf
+}
+
+#' Create and read vsizip construct
+read_shp_zip <- function(file_local, q = NULL) {
+  shp_zip <- unzip(file_local, list = TRUE)
+  shp_zip <- shp_zip$Name
+  shp_zip <- shp_zip[grepl("shp$", shp_zip)]
+  shp_end <- shp_zip[1]
+
+  # Read with vszip
+  shp_read <- file.path("/vsizip/", file_local, shp_end)
+  shp_read <- gsub("//", "/", shp_read)
+  if (!is.null(q)) {
+    data_sf <- read_geo_file_sf(shp_read, query = q)
+  } else {
+    data_sf <- read_geo_file_sf(shp_read)
+  }
+
+  data_sf
+}
+
+
 #' Convert sf object to UTF-8
 #'
 #' Convert to UTF-8
@@ -47,42 +75,6 @@ sanitize_sf <- function(data_sf) {
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
   data_sf <- sf::st_make_valid(data_sf)
-
-  data_sf
-}
-
-
-#' Helper for display messages on verbose
-#'
-#' @noRd
-gsc_message <- function(verbose, ...) {
-  dots <- list(...)
-  msg <- paste(dots, collapse = " ")
-
-  if (verbose) {
-    message(msg)
-  }
-
-  invisible()
-}
-
-
-read_shp_zip <- function(file_local, q = NULL) {
-  shp_zip <- unzip(file_local, list = TRUE)
-  shp_zip <- shp_zip$Name
-  shp_zip <- shp_zip[grepl("shp$", shp_zip)]
-  shp_end <- shp_zip[1]
-
-  # Read with vszip
-  shp_read <- file.path("/vsizip/", file_local, shp_end)
-  shp_read <- gsub("//", "/", shp_read)
-  if (!is.null(q)) {
-    data_sf <- sf::read_sf(shp_read, query = q)
-  } else {
-    data_sf <- sf::read_sf(shp_read)
-  }
-
-  data_sf <- sanitize_sf(data_sf)
 
   data_sf
 }

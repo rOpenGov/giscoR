@@ -153,7 +153,7 @@ gisco_get_grid <- function(
   }
   # nocov end
 
-  file_local <- api_cache(
+  file_local <- load_url(
     url,
     basename(file_local),
     cache_dir,
@@ -171,8 +171,7 @@ gisco_get_grid <- function(
   size <- format(size, units = "auto")
   make_msg("info", verbose, size)
 
-  data_sf <- sf::read_sf(file_local)
-  data_sf <- sanitize_sf(data_sf)
+  data_sf <- read_geo_file_sf(file_local)
 
   data_sf
 }

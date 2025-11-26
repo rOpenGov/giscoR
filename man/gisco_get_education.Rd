@@ -24,7 +24,7 @@ gisco_get_education(
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+\code{.gpkg} file.}
 
 \item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 

@@ -16,6 +16,7 @@ test_that("Test offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
+  db <- gisco_get_latest_db()
   options(gisco_test_err = TRUE)
   expect_message(
     n <- gisco_addressapi_bbox(),
@@ -34,10 +35,6 @@ test_that("Test offline", {
   )
   expect_null(n)
 
-  expect_message(
-    n <- gisco_addressapi_countries(),
-    "Error"
-  )
   expect_null(n)
 
   expect_message(

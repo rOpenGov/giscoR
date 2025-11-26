@@ -28,7 +28,6 @@ of \code{"2003"}, \code{"2006"}, \code{"2010"}, \code{"2013"}, \code{"2016"}, \c
 \item{epsg}{projection of the map: 4-digit \href{https://epsg.io/}{EPSG code}.
 One of:
 \itemize{
-\item \code{"4258"}: ETRS89
 \item \code{"4326"}: WGS84
 \item \code{"3035"}: ETRS89 / ETRS-LAEA
 \item \code{"3857"}: Pseudo-Mercator
@@ -39,7 +38,7 @@ One of:
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+\code{.gpkg} file.}
 
 \item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
 

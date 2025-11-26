@@ -7,7 +7,7 @@
 \title{World countries \code{POLYGON} \code{\link[sf:sf]{sf}} object 2024}
 \format{
 A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object
-with 260 rows and 7 variables:
+with 260 rows and variables:
 \describe{
 \item{CNTR_ID}{Country ID as per Eurostat.}
 \item{CNTR_NAME}{Official country name on local language.}

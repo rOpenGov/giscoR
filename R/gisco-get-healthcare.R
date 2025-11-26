@@ -57,7 +57,7 @@ gisco_get_healthcare <- function(
 
   if (cache) {
     # Guess source to load
-    namefileload <- api_cache(
+    namefileload <- load_url(
       api_entry,
       filename,
       cache_dir,
@@ -73,13 +73,12 @@ gisco_get_healthcare <- function(
     return(NULL)
   }
 
-  data_sf <- sf::read_sf(namefileload)
+  data_sf <- read_geo_file_sf(namefileload)
 
   if (!is.null(country) && "cntr_id" %in% names(data_sf)) {
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$cntr_id %in% country, ]
   }
 
-  data_sf <- sanitize_sf(data_sf)
   data_sf
 }

@@ -147,7 +147,6 @@ gisco_get_countries <- function(
       "Use {.arg update_cache = TRUE} to re-load from file"
     )
     data_sf <- filter_countryregion(data_sf, country, region)
-    data_sf <- sanitize_sf(data_sf)
 
     return(data_sf)
   }
@@ -167,14 +166,13 @@ gisco_get_countries <- function(
       spatialtype = spatialtype
     )
     data_sf <- filter_countryregion(data_sf, country, region)
-    data_sf <- sanitize_sf(data_sf)
 
     return(data_sf)
   }
 
   if (cache) {
     # Guess source to load
-    namefileload <- api_cache(
+    namefileload <- load_url(
       api_entry,
       filename,
       cache_dir,
@@ -192,10 +190,8 @@ gisco_get_countries <- function(
     return(NULL)
   }
   # Load
-  data_sf <- sf::read_sf(namefileload)
+  data_sf <- read_geo_file_sf(namefileload)
   data_sf <- filter_countryregion(data_sf, country, region)
-
-  data_sf <- sanitize_sf(data_sf)
 
   data_sf
 }

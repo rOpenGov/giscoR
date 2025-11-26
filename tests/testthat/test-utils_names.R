@@ -43,7 +43,7 @@ test_that("Errors on database", {
   skip_if_gisco_offline()
 
   expect_message(
-    n <- gsc_api_cache(
+    n <- gsc_load_url(
       "https://github.com/dieghernan/a_fake_thing_here",
       verbose = FALSE
     ),
@@ -64,13 +64,13 @@ test_that("Errors on database", {
     spatialtype = "LB",
     ext = "topojson"
   )
-  expect_silent(gsc_api_cache(dwn, update_cache = FALSE, verbose = FALSE))
+  expect_silent(gsc_load_url(dwn, update_cache = FALSE, verbose = FALSE))
 
   expect_message(gsc_api_url("urban_audit", year = 2020, spatialtype = "LB"))
 
   dwn <- expect_silent(gsc_api_url(ext = "svg"))
 
-  expect_silent(gsc_api_cache(dwn, update_cache = FALSE, verbose = FALSE))
+  expect_silent(gsc_load_url(dwn, update_cache = FALSE, verbose = FALSE))
 
   dwn <- expect_silent(gsc_api_url(ext = "shp"))
 

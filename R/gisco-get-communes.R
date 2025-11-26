@@ -57,7 +57,7 @@ gisco_get_communes <- function(
 
   basename <- basename(url)
 
-  file_local <- api_cache(
+  file_local <- load_url(
     url,
     basename,
     cache_dir = cache_dir,
@@ -108,11 +108,9 @@ gisco_get_communes <- function(
         "retrying without country filters."
       )
       data_sf <- read_shp_zip(file_local)
-    } else {
-      data_sf <- sanitize_sf(data_sf)
     }
   } else {
-    data_sf <- sf::read_sf(file_local)
+    data_sf <- read_geo_file_sf(file_local)
   }
 
   data_sf

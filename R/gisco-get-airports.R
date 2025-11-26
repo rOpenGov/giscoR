@@ -92,7 +92,7 @@ gisco_get_airports <- function(
   }
 
   filename <- basename(url)
-  namefileload <- api_cache(
+  namefileload <- load_url(
     url,
     filename,
     cache_dir,
@@ -114,7 +114,6 @@ gisco_get_airports <- function(
     country <- gsc_helper_countrynames(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
-  data_sf <- sanitize_sf(data_sf)
   data_sf
 }
 
@@ -150,7 +149,7 @@ gisco_get_ports <- function(
   }
 
   filename <- basename(url)
-  namefileload <- api_cache(
+  namefileload <- load_url(
     url,
     filename,
     cache_dir,
@@ -175,6 +174,5 @@ gisco_get_ports <- function(
     country <- gsc_helper_countrynames(country, "iso2c")
     data_sf <- data_sf[data_sf$CNTR_ISO2 %in% country, ]
   }
-  data_sf <- sanitize_sf(data_sf)
   data_sf
 }

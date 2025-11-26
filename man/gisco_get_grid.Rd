@@ -25,7 +25,7 @@ gisco_get_grid(
 
 \item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
 When set to \code{TRUE} it would force a fresh download of the source
-\code{.geojson} file.}
+\code{.gpkg} file.}
 
 \item{verbose}{Logical, displays information. Useful for debugging,
 default is \code{FALSE}.}
