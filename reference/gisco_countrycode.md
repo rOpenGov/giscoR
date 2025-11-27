@@ -67,12 +67,6 @@ A data frame object with 249 rows and 13 variables:
 [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html)
 **v1.2.0**.
 
-## World Regions
-
-Regions are defined as per the geographic regions defined by the UN (see
-<https://unstats.un.org/unsd/methodology/m49/>. Under this scheme Cyprus
-is assigned to Asia.
-
 ## See also
 
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)

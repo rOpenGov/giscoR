@@ -122,6 +122,12 @@ Copyright:
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
+## World Regions
+
+Regions are defined as per the geographic regions defined by the UN (see
+<https://unstats.un.org/unsd/methodology/m49/>. Under this scheme Cyprus
+is assigned to Asia.
+
 ## See also
 
 [gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md),
