@@ -3,7 +3,7 @@
 #' @description
 #' This data set contains the administrative boundaries at country level of the
 #' world. This dataset consists of 2 feature classes (regions, boundaries) per
-#' scale level and there are 5 different scale levels (01M, 3M, 10M, 20M and
+#' scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 #' 60M).
 #'
 #' @aliases gisco_get
@@ -20,31 +20,33 @@
 #'   * `"3857"`: [Pseudo-Mercator](https://epsg.io/3857)
 #' @param cache logical. Whether to do caching. Default is `TRUE`. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
-#' @param update_cache .logical. Should the cached file be refreshed?. Default
+#' @param update_cache logical. Should the cached file be refreshed?. Default
 #'   is `FALSE`. When set to `TRUE` it would force a new download.
 #' @param cache_dir character string. A path to a cache directory. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
-#' @param spatialtype Type of geometry to be returned. Options available are:
-#'  * `"BN"`: Boundaries - `LINESTRING` object.
-#'  * `"COASTL"`: coastlines - `LINESTRING` object.
-#'  * `"INLAND"`: inland boundaries - `LINESTRING` object.
-#'  * `"LB"`: Labels - `POINT` object.
-#'  * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#' @param spatialtype character string. Type of geometry to be returned.
+#'   Options available are:
+#'   * `"BN"`: Boundaries - `LINESTRING` object.
+#'   * `"COASTL"`: coastlines - `LINESTRING` object.
+#'   * `"INLAND"`: inland boundaries - `LINESTRING` object.
+#'   * `"LB"`: Labels - `POINT` object.
+#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #' @param country Optional. A character vector of country codes. It could be
-#'  either a vector of country names, a vector of ISO3 country codes or a
-#'  vector of Eurostat country codes. See also [countrycode::countrycode()].
+#'   either a vector of country names, a vector of ISO3 country codes or a
+#'   vector of Eurostat country codes. See also [countrycode::countrycode()].
 #' @param verbose logical. If `TRUE` displays informational messages.
-#' @param resolution Resolution of the geospatial data. One of:
-#'  * `"60"`: 1:60million
-#'  * `"20"`: 1:20million
-#'  * `"10"`: 1:10million
-#'  * `"03"`: 1:3million
-#'  * `"01"`: 1:1million
+#' @param resolution character string or number. Resolution of the geospatial
+#'   data. One of:
+#'   * `"60"`: 1:60million
+#'   * `"20"`: 1:20million
+#'   * `"10"`: 1:10million
+#'   * `"03"`: 1:3million
+#'   * `"01"`: 1:1million
 #' @param region Optional. A character vector of UN M49 region codes or
-#'  European Union membership. Possible values are `"Africa"`, `"Americas"`,
-#'  `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
-#'  European Union (as per 2021). See **World regions** and
-#'  [gisco_countrycode].
+#'   European Union membership. Possible values are `"Africa"`, `"Americas"`,
+#'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
+#'   European Union (as per 2021). See **World regions** and
+#'   [gisco_countrycode].
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
 #'   "ext",TRUE)}.
@@ -61,6 +63,7 @@
 #'
 #' @examples
 #'
+#' \donttest{
 #' cntries <- gisco_get_countries()
 #'
 #' library(ggplot2)
@@ -73,7 +76,7 @@
 #' ggplot(africa) +
 #'   geom_sf(fill = "#078930", col = "white") +
 #'   theme_minimal()
-#'
+#' }
 gisco_get_countries <- function(
   year = 2024,
   epsg = 4326,

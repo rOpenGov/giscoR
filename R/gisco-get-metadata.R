@@ -3,7 +3,6 @@
 #' @description
 #' Get a table with the names and ids of administrative of statistical units.
 #'
-#' @aliases gisco_get
 #' @family database
 #' @export
 #'
@@ -12,7 +11,7 @@
 #' @source
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
-#' @param id, character string. Select the unit type to be downloaded. Accepted
+#' @param id character string. Select the unit type to be downloaded. Accepted
 #'   values are `"nuts"`, `"countries"` or `"urban_audit"`.
 #' @param year character string or number. Release year of the metadata.
 #'

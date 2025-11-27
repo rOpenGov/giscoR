@@ -2,7 +2,6 @@
 % Please edit documentation in R/gisco-get-metadata.R
 \name{gisco_get_metadata}
 \alias{gisco_get_metadata}
-\alias{gisco_get}
 \title{Get metadata}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.

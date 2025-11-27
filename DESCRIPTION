@@ -36,7 +36,6 @@ Suggests:
     knitr,
     lwgeom (>= 0.2-2),
     rmarkdown,
-    spelling,
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
