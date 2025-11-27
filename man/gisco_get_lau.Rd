@@ -130,7 +130,6 @@ if (!is.null(ire_lau)) {
 }
 \seealso{
 Other administrative units datasets:
-\code{\link{gisco_countries_2024}},
 \code{\link{gisco_get_countries}()},
 \code{\link{gisco_get_postalcodes}()}
 }

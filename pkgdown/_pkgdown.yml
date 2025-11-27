@@ -23,7 +23,7 @@ reference:
     These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
     class="external-link">sf</a> objects
 - subtitle: Administrative units
-  desc: |
+  desc: >
     On using administrative data for statistical purposes, administrative units
     are the units for which administrative data are recorded. These units may or
     may not be the same as those required for the statistical purposes (referred
@@ -32,7 +32,14 @@ reference:
     See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units"
     class="external-link">copyrights information</a>.
   contents: has_concept("admin")
+- subtitle: Statistical units
+  desc: >
+    A statistical unit is the unit of observation or measurement for which data
+    are collected or derived.
 
+    See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units"
+    class="external-link">copyrights information</a>.
+  contents: has_concept("stats")
 - title: Political
   desc: >
     These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"

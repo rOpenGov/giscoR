@@ -73,6 +73,18 @@ test_that("Test offline", {
   )
   expect_null(n)
 
+  expect_message(
+    n <- gisco_addressapi_countries(),
+    "Error"
+  )
+  expect_null(n)
+
+  expect_message(
+    n <- gisco_addressapi_copyright(),
+    "Error"
+  )
+  expect_null(n)
+
   options(gisco_test_err = FALSE)
 })
 

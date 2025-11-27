@@ -26,7 +26,6 @@
 #'
 #' pts
 #' }
-
 gisco_get_census <- function(
   year = "2011",
   cache_dir = NULL,

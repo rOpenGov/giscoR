@@ -13,7 +13,7 @@
       get_url_db("communes", "9999", fn = "gisco_get_communes")
     Condition
       Error in `get_url_db()`:
-      ! Years available for `giscoR::giscoR::gisco_get_communes()` are "2001", "2004", "2006", "2008", "2010", "2013", and "2016".
+      ! Years available for `giscoR::gisco_get_communes()` are "2001", "2004", "2006", "2008", "2010", "2013", and "2016".
 
 ---
 

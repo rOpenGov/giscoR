@@ -133,7 +133,6 @@ ggplot(africa) +
 \code{\link[countrycode:countrycode]{countrycode::countrycode()}}
 
 Other administrative units datasets:
-\code{\link{gisco_countries_2024}},
 \code{\link{gisco_get_lau}()},
 \code{\link{gisco_get_postalcodes}()}
 }

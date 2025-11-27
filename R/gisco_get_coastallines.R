@@ -2,7 +2,7 @@
 #'
 #' Downloads worldwide coastlines
 #'
-#' @family political
+#' @family stats
 #'
 #' @param year Release year. One of `r gsc_helper_year_docs("coastallines")`.
 #'

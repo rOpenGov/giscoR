@@ -148,10 +148,8 @@ ggplot(select_nuts) +
 \link{gisco_nuts}, \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}
 
-Other political: 
-\code{\link{gisco_bulk_download}()},
-\code{\link{gisco_get_coastallines}()},
-\code{\link{gisco_get_units}()},
-\code{\link{gisco_get_urban_audit}()}
+Other statistical units datasets:
+\code{\link{gisco_get_census}()},
+\code{\link{gisco_get_coastallines}()}
 }
-\concept{political}
+\concept{stats}

@@ -218,7 +218,7 @@ gsc_units_sf <- function(
     filename <- paste0(filename, filepattern)
   }
 
-  for (i in seq_len(length(filename))) {
+  for (i in seq_along(filename)) {
     fn <- filename[i]
     if (id_giscoR == "countries") {
       # Modify name for countries

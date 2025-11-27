@@ -125,18 +125,21 @@ references:
   year: '2025'
   doi: 10.32614/CRAN.package.httr2
 - type: software
-  title: jsonlite
-  abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
+  title: lifecycle
+  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
   notes: Imports
-  url: https://jeroen.r-universe.dev/jsonlite
-  repository: https://CRAN.R-project.org/package=jsonlite
+  url: https://lifecycle.r-lib.org/
+  repository: https://CRAN.R-project.org/package=lifecycle
   authors:
-  - family-names: Ooms
-    given-names: Jeroen
-    email: jeroenooms@gmail.com
-    orcid: https://orcid.org/0000-0002-4035-0289
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+    orcid: https://orcid.org/0000-0003-4757-117X
   year: '2025'
-  doi: 10.32614/CRAN.package.jsonlite
+  doi: 10.32614/CRAN.package.lifecycle
 - type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
@@ -280,6 +283,19 @@ references:
   doi: 10.32614/CRAN.package.ggplot2
   version: '>= 3.5.0'
 - type: software
+  title: jsonlite
+  abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
+  notes: Suggests
+  url: https://jeroen.r-universe.dev/jsonlite
+  repository: https://CRAN.R-project.org/package=jsonlite
+  authors:
+  - family-names: Ooms
+    given-names: Jeroen
+    email: jeroenooms@gmail.com
+    orcid: https://orcid.org/0000-0002-4035-0289
+  year: '2025'
+  doi: 10.32614/CRAN.package.jsonlite
+- type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
@@ -350,6 +366,22 @@ references:
     orcid: https://orcid.org/0000-0003-3925-190X
   year: '2025'
   doi: 10.32614/CRAN.package.rmarkdown
+- type: software
+  title: spelling
+  abstract: 'spelling: Tools for Spell Checking in R'
+  notes: Suggests
+  url: https://ropensci.r-universe.dev/spelling
+  repository: https://CRAN.R-project.org/package=spelling
+  authors:
+  - family-names: Ooms
+    given-names: Jeroen
+    email: jeroenooms@gmail.com
+    orcid: https://orcid.org/0000-0002-4035-0289
+  - family-names: Hester
+    given-names: Jim
+    email: james.hester@rstudio.com
+  year: '2025'
+  doi: 10.32614/CRAN.package.spelling
 - type: software
   title: testthat
   abstract: 'testthat: Unit Testing for R'

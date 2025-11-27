@@ -151,7 +151,8 @@ gisco_get_countries <- function(
     return(data_sf)
   }
   # Speed up if requesting units
-  if (!is.null(country) && spatialtype %in% c("RG", "LB")) {
+  # If country and  spatialtype %in% c("RG", "LB")
+  if (all(!is.null(country), is.null(region), spatialtype %in% c("RG", "LB"))) {
     data_sf <- gisco_get_units(
       id_giscoR = "countries",
       unit = country,
@@ -196,14 +197,21 @@ gisco_get_countries <- function(
   data_sf
 }
 
-filter_countryregion <- function(data_sf, country, region) {
+filter_countryregion <- function(data_sf, country = NULL, region = NULL) {
   if (!"CNTR_ID" %in% names(data_sf)) {
     return(data_sf)
   }
+  if (all(is.null(country), is.null(region))) {
+    return(data_sf)
+  }
+
+  data_sf <- data_sf[order(data_sf$CNTR_ID), ]
+
   if (!is.null(country)) {
     country <- get_country_code(country)
     data_sf <- data_sf[data_sf$CNTR_ID %in% country, ]
   }
+
   if (!is.null(region)) {
     region_df <- giscoR::gisco_countrycode
     cntryregion <- region_df[region_df$un.region.name %in% region, ]

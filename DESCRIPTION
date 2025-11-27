@@ -28,7 +28,7 @@ Imports:
     sf (>= 1.0.0),
     tibble,
     utils
-Suggests: 
+Suggests:
     dplyr,
     eurostat,
     ggplot2 (>= 3.5.0),
@@ -36,6 +36,7 @@ Suggests:
     knitr,
     lwgeom (>= 0.2-2),
     rmarkdown,
+    spelling,
     testthat (>= 3.0.0)
 VignetteBuilder: 
     knitr
@@ -46,6 +47,7 @@ Config/testthat/parallel: true
 Copyright: General Copyright © European Union, 1995 - today. See file
     COPYRIGHTS for specific provisions.
 Encoding: UTF-8
+Language: en-US
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3

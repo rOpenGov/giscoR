@@ -64,4 +64,9 @@ pts
 }
 \dontshow{\}) # examplesIf}
 }
+\seealso{
+Other statistical units datasets:
+\code{\link{gisco_get_coastallines}()},
+\code{\link{gisco_get_nuts}()}
+}
 \concept{stats}

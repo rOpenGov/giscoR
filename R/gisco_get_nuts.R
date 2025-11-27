@@ -28,7 +28,7 @@
 #'
 #' ```
 #'
-#' @family political
+#' @family stats
 #'
 #' @return A [`sf`][sf::st_sf] object specified by `spatialtype`. The resulting
 #' [`sf`][sf::st_sf] object would present an additional column `geo` (equal to

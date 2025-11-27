@@ -14,105 +14,179 @@ test_that("Offline", {
   expect_null(n)
   options(gisco_test_err = FALSE)
 })
-test_that("Countries errors", {
+
+test_that("Cached dataset vs updated", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(gisco_get_countries(year = 2001, resolution = 60))
-  expect_error(gisco_get_countries(year = 2011))
-  expect_error(gisco_get_countries(epsg = 2819))
-  expect_error(gisco_get_countries(spatialtype = "aa"))
-  expect_error(gisco_get_countries(res = 15))
+  cdir <- file.path(tempdir(), "testcountry")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+  expect_snapshot(db_cached <- gisco_get_countries(verbose = TRUE))
+
+  # Force download
+
+  db_cached2 <- gisco_get_countries(
+    update_cache = TRUE,
+    cache_dir = cdir
+  )
+
+  expect_s3_class(db_cached, "sf")
+  expect_s3_class(db_cached, "tbl_df")
+
+  expect_identical(db_cached, db_cached2)
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    "countries/CNTR_RG_20M_2024_4326.gpkg"
+  )
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Country names", {
+test_that("Cache vs non-cached", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  # Test names
-  expect_error(gisco_get_countries(country = "Z"))
-  expect_warning(expect_warning(gisco_get_countries(country = "ZZ")))
-  expect_silent(gisco_get_countries(country = "ES"))
-  expect_true(nrow(gisco_get_countries(country = "Spain")) == 1)
-  expect_true(nrow(gisco_get_countries(country = "ES")) == 1)
-  expect_silent(gisco_get_countries(region = c("Africa", "Americas")))
-  expect_true(nrow(gisco_get_countries(region = "EU")) == 27)
-  expect_true(nrow(gisco_get_countries(country = c("Spain", "Italia"))) == 2)
-  expect_true(nrow(gisco_get_countries(country = c("ES", "IT"))) == 2)
-  expect_true(nrow(gisco_get_countries(country = c("ESP", "ITA"))) == 2)
-  expect_warning(
-    expect_warning(gisco_get_countries(country = c("ESP", "Italia")))
+  cdir <- file.path(tempdir(), "testcountry")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+  expect_message(
+    db_online <- gisco_get_countries(
+      resolution = "60",
+      cache = FALSE,
+      verbose = TRUE,
+      cache_dir = cdir
+    ),
+    "Reading from"
+  )
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+
+  # vs cache TRUE
+  expect_silent(
+    db_cached <- gisco_get_countries(
+      resolution = "60",
+      cache = TRUE,
+      cache_dir = cdir
+    )
+  )
+
+  expect_identical(db_online, db_cached)
+  expect_s3_class(db_online, "sf")
+  expect_s3_class(db_online, "tbl_df")
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    "countries/CNTR_RG_60M_2024_4326.gpkg"
+  )
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})
+test_that("Filter countries", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  db_cached <- gisco_get_countries(region = "Africa")
+  db_cached2 <- gisco_get_countries(update_cache = TRUE, region = "Africa")
+  expect_lt(nrow(db_cached), 70)
+  expect_s3_class(db_cached, "sf")
+  expect_s3_class(db_cached, "tbl_df")
+
+  # See EU
+  db_cached_eu <- gisco_get_countries(update_cache = TRUE, region = "EU")
+  expect_identical(nrow(db_cached_eu), 27L)
+
+  # Combine
+  db_cached_full <- gisco_get_countries(
+    resolution = "60",
+    region = c("EU", "Africa")
+  )
+  expect_identical(nrow(db_cached) + nrow(db_cached_eu), nrow(db_cached_full))
+
+  # Combine with cnt
+  db_cached_full <- gisco_get_countries(
+    resolution = "60",
+    country = c("Spain", "Angola", "Japan"),
+    region = c("EU", "Africa")
+  )
+  expect_identical(nrow(db_cached_full), 2L)
+  expect_identical(
+    db_cached_full$ISO3_CODE,
+    get_country_code(c("Angola", "Spain"), "iso3c")
+  )
+
+  db_cnts <- gisco_get_countries(
+    resolution = "60",
+    country = c("Spain", "Angola", "Japan")
+  )
+  expect_identical(nrow(db_cnts), 3L)
+  expect_identical(
+    db_cnts$CNTR_ID,
+    sort(get_country_code(c("Spain", "Angola", "Japan")))
   )
 })
 
-test_that("Countries offline", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-  # Test
-  expect_silent(gisco_get_countries())
-  expect_message(gisco_get_countries(verbose = TRUE))
-  expect_true(sf::st_is_longlat(gisco_get_countries()))
-})
-
-test_that("Countries online", {
+test_that("Spatial types", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_silent(gisco_get_countries(
-    spatialtype = "LB",
-    country = c("Spain", "Italia")
-  ))
+  # LB
+  lb <- gisco_get_countries(spatialtype = "LB")
+  expect_true(unique(sf::st_geometry_type(lb)) == "POINT") # Can filter
+  expect_true("CNTR_ID" %in% names(lb))
+  lb_filter <- gisco_get_countries(spatialtype = "LB", country = "ESP")
+  expect_identical(lb_filter$CNTR_ID, "ES")
 
-  expect_silent(gisco_get_countries(
-    spatialtype = "LB",
-    cache = FALSE
-  ))
+  # BN
+  bn <- gisco_get_countries(spatialtype = "BN", resolution = "60")
+  expect_true(unique(sf::st_geometry_type(bn)) == "MULTILINESTRING")
+  # No filter
+  expect_false("CNTR_ID" %in% names(bn))
+  expect_identical(
+    bn,
+    gisco_get_countries(spatialtype = "BN", resolution = "60", country = "ES")
+  )
 
-  expect_silent(
+  # COASTL
+  bn <- gisco_get_countries(spatialtype = "COASTL", resolution = "60")
+  expect_true(unique(sf::st_geometry_type(bn)) == "MULTILINESTRING")
+  # No filter
+  expect_false("CNTR_ID" %in% names(bn))
+  expect_identical(
+    bn,
     gisco_get_countries(
-      year = 2020,
-      spatialtype = "BN",
-      resolution = 60,
-      cache = TRUE
-    )
-  )
-
-  expect_silent(gisco_get_countries(
-    spatialtype = "COASTL",
-    country = c("ESP", "ITA")
-  ))
-
-  expect_silent(gisco_get_countries(
-    resolution = "10",
-    country = c("ESP", "ITA")
-  ))
-
-  expect_silent(
-    b <-
-      gisco_get_countries(resolution = 60, country = c("ES", "IT"))
-  )
-  expect_s3_class(b, "tbl_df")
-  expect_s3_class(b, "sf")
-  expect_silent(
-    c <- gisco_get_countries(
       spatialtype = "COASTL",
-      resolution = "60"
+      resolution = "60",
+      country = "ES"
     )
   )
-  expect_s3_class(c, "tbl_df")
-  expect_s3_class(c, "sf")
-  expect_silent(gisco_get_countries(resolution = "60", country = "DNK"))
-
-  expect_silent(gisco_get_countries(spatialtype = "COASTL", resolution = 3))
-  expect_silent(gisco_get_countries(
-    spatialtype = "COASTL",
-    resolution = "60",
-    update_cache = TRUE
-  ))
-
-  expect_silent(gisco_get_countries(
-    year = "2013",
-    resolution = "60",
-    spatialtype = "RG"
-  ))
+  # INLAND
+  bn <- gisco_get_countries(spatialtype = "INLAND", resolution = "60")
+  expect_true(unique(sf::st_geometry_type(bn)) == "MULTILINESTRING")
+  # No filter
+  expect_false("CNTR_ID" %in% names(bn))
+  expect_identical(
+    bn,
+    gisco_get_countries(
+      spatialtype = "INLAND",
+      resolution = "60",
+      country = "ES"
+    )
+  )
 })

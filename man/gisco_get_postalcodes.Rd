@@ -97,7 +97,6 @@ if (!is.null(pc_bel)) {
 }
 \seealso{
 Other administrative units datasets:
-\code{\link{gisco_countries_2024}},
 \code{\link{gisco_get_countries}()},
 \code{\link{gisco_get_lau}()}
 }

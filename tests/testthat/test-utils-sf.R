@@ -11,7 +11,7 @@ test_that("Read shp", {
     "shp/CNTR_LB_2024_4326.shp.zip"
   )
 
-  fake_local <- api_cache(
+  fake_local <- load_url(
     url,
     basename(url),
     cdir,

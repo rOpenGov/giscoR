@@ -94,10 +94,8 @@ ggplot(coast) +
 \seealso{
 \link{gisco_coastallines}
 
-Other political: 
-\code{\link{gisco_bulk_download}()},
-\code{\link{gisco_get_nuts}()},
-\code{\link{gisco_get_units}()},
-\code{\link{gisco_get_urban_audit}()}
+Other statistical units datasets:
+\code{\link{gisco_get_census}()},
+\code{\link{gisco_get_nuts}()}
 }
-\concept{political}
+\concept{stats}

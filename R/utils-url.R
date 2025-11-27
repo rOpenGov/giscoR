@@ -45,7 +45,7 @@ get_url_db <- function(
   if (!make_params$year %in% db$year) {
     cli::cli_abort(
       paste0(
-        "Years available for {.fn giscoR::",
+        "Years available for {.fn ",
         fn,
         "} are ",
         "{.str {years}}."

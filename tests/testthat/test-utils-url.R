@@ -160,7 +160,7 @@ test_that("Get urls", {
 
   # Valid URL
   library(httr2)
-  resp <- request(url) %>%
+  resp <- request(url) |>
     req_perform()
   expect_equal(resp_status(resp), 200)
 })

@@ -47,8 +47,8 @@ geocoding
 geojson
 geospatial
 ggplot
-ggspatial
 giscoR’
+gpkg
 httr
 jsonlite
 kms
@@ -63,5 +63,4 @@ rcartocolor
 roxygen
 testthat
 tibble
-tidyterra
 tmap

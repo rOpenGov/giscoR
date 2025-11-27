@@ -92,6 +92,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "jsonlite",
+      "name": "jsonlite",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "knitr",
       "name": "knitr",
       "provider": {
@@ -126,6 +138,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "spelling",
+      "name": "spelling",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=spelling"
     },
     {
       "@type": "SoftwareApplication",
@@ -200,15 +224,15 @@
     },
     "6": {
       "@type": "SoftwareApplication",
-      "identifier": "jsonlite",
-      "name": "jsonlite",
+      "identifier": "lifecycle",
+      "name": "lifecycle",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=jsonlite"
+      "sameAs": "https://CRAN.R-project.org/package=lifecycle"
     },
     "7": {
       "@type": "SoftwareApplication",
@@ -258,7 +282,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis", "cran-r"],
-  "fileSize": "1568.055KB",
+  "fileSize": "2045.74KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

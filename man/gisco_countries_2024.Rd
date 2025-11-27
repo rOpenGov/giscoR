@@ -9,19 +9,19 @@
 A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object
 with 260 rows and variables:
 \describe{
-\item{CNTR_ID}{Country ID as per Eurostat.}
-\item{CNTR_NAME}{Official country name on local language.}
-\item{NAME_ENGL}{Country name in English.}
-\item{NAME_FREN}{Country name in French.}
-\item{ISO3_CODE}{ISO 3166-1 alpha-3 code of each country, as provided by
+\item{\code{CNTR_ID}}{Country ID as per Eurostat.}
+\item{\code{CNTR_NAME}}{Official country name on local language.}
+\item{\code{NAME_ENGL}}{Country name in English.}
+\item{\code{NAME_FREN}}{Country name in French.}
+\item{\code{ISO3_CODE}}{ISO 3166-1 alpha-3 code of each country, as provided by
 GISCO.}
-\item{SVRG_UN}{Sovereign status as per United Nations.}
-\item{CAPT}{Capitol city.}
-\item{EU_STAT}{European Union member.}
-\item{EFTA_STAT}{EFTA member.}
-\item{CC_STAT}{EU candidate member.}
-\item{NAME_GERM}{Country name in German.}
-\item{geometry}{geometry field.}
+\item{\code{SVRG_UN}}{Sovereign status as per United Nations.}
+\item{\code{CAPT}}{Capitol city.}
+\item{\code{EU_STAT}}{European Union member.}
+\item{\code{EFTA_STAT}}{EFTA member.}
+\item{\code{CC_STAT}}{EU candidate member.}
+\item{\code{NAME_GERM}}{Country name in German.}
+\item{\code{geometry}}{geometry field.}
 }
 }
 \source{
@@ -46,11 +46,5 @@ Other dataset:
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},
 \code{\link{gisco_nuts}}
-
-Other administrative units datasets:
-\code{\link{gisco_get_countries}()},
-\code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_postalcodes}()}
 }
-\concept{admin}
 \concept{dataset}
