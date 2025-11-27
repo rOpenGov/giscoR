@@ -28,38 +28,39 @@ gisco_get_coastallines(
 
 - epsg:
 
-  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
+  character string or number. Projection of the map: 4-digit [EPSG
+  code](https://epsg.io/). One of:
 
-  - `"4258"`: ETRS89
+  - `"4326"`: [WGS84](https://epsg.io/4326)
 
-  - `"4326"`: WGS84
+  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035)
 
-  - `"3035"`: ETRS89 / ETRS-LAEA
-
-  - `"3857"`: Pseudo-Mercator
+  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857)
 
 - cache:
 
-  A logical whether to do caching. Default is `TRUE`. See **About
-  caching**.
+  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.geojson` file.
+  .logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - resolution:
 
-  Resolution of the geospatial data. One of
+  Resolution of the geospatial data. One of:
 
   - `"60"`: 1:60million
 
@@ -81,33 +82,13 @@ object.
 Please check the download and usage provisions on
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
 
-## About caching
-
-You can set your `cache_dir` with
-[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding file by any other method and save it on your `cache_dir`.
-Use the option `verbose = TRUE` for debugging the API query.
-
-For a complete list of files available check
-[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
-
 ## See also
 
 [gisco_coastallines](https://ropengov.github.io/giscoR/reference/gisco_coastallines.md)
 
-Other political:
-[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
-[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
-[`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md),
-[`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md),
-[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+Other statistical units datasets:
+[`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
+[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
 
 ## Examples
 

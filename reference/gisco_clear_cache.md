@@ -30,8 +30,7 @@ gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -56,7 +55,7 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpayy1Is/giscoR
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmQNKSI/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -64,13 +63,13 @@ gisco_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 gisco_clear_cache(verbose = TRUE)
-#> ! giscoR data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpayy1Is/example/cache
+#> ! giscoR data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmQNKSI/example/cache
 
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpayy1Is/giscoR.
+#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmQNKSI/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpayy1Is/giscoR
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmQNKSI/giscoR
 #> [1] TRUE
 # }
 ```

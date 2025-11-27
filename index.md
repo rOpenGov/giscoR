@@ -265,17 +265,6 @@ them on your local directory.
 - **eurostat** ([Lahti et al. 2017](#ref-RJ-2017-019)): This is an API
   package that provides access to open data from Eurostat.
 
-### Plotting **sf** objects
-
-Some packages recommended for visualization are:
-
-- [**tmap**](https://r-tmap.github.io/tmap/)
-- [**ggplot2**](https://github.com/tidyverse/ggplot2) +
-  [**ggspatial**](https://github.com/paleolimbot/ggspatial) +
-  [**tidyterra**](https://dieghernan.github.io/tidyterra/)
-- [**mapsf**](https://riatelab.github.io/mapsf/)
-- [**leaflet**](https://rstudio.github.io/leaflet/)
-
 ## Contribute
 
 Check the GitHub page for [source

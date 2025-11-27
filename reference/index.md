@@ -1,26 +1,20 @@
 # Package index
 
-## Political
+## GISCO API
 
 These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects with
-political boundaries
+[sf](https://r-spatial.github.io/sf/reference/sf.html) objects
 
-- [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
-  : Bulk download from GISCO API
+### Administrative units
 
-- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md)
-  :
+On using administrative data for statistical purposes, administrative
+units are the units for which administrative data are recorded. These
+units may or may not be the same as those required for the statistical
+purposes (referred to as statistical units). See [copyright
+information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
 
-  Get GISCO world country
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
-  points and lines
-
-- [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md)
-  :
-
-  Get GISCO coastlines
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons
+- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+  : Country data
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
   [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
@@ -30,6 +24,24 @@ political boundaries
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
   points and lines
 
+- [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
+  : Postal codes
+
+### Statistical units
+
+A statistical unit is the unit of observation or measurement for which
+data are collected or derived. See [copyright
+information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
+
+- [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md)
+  : Census data
+
+- [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md)
+  :
+
+  Get GISCO coastlines
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons
+
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
   :
 
@@ -37,11 +49,14 @@ political boundaries
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
   points and lines
 
-- [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
-  : Get postal code points from GISCO
+## Political
 
-- [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
-  : Get geospatial units data from GISCO API
+These functions return
+[sf](https://r-spatial.github.io/sf/reference/sf.html) objects with
+political boundaries
+
+- [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
+  : Bulk download from GISCO API
 
 - [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
   :
@@ -90,6 +105,8 @@ These functions return other
 
 - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
   : Get grid cells covering covering Europe for various resolutions
+- [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
+  : Get metadata
 
 ## Cache management
 
@@ -129,6 +146,12 @@ Datasets included with
 
   World countries `POLYGON`
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+
+- [`gisco_countries_2024`](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md)
+  :
+
+  World countries `POLYGON`
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object 2024
 
 - [`gisco_countrycode`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md)
   : Data frame with different country code schemes and world regions

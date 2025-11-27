@@ -43,10 +43,11 @@ file.
 
 ## See also
 
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md)
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
 
 Other dataset:
 [`gisco_coastallines`](https://ropengov.github.io/giscoR/reference/gisco_coastallines.md),
+[`gisco_countries_2024`](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md),
 [`gisco_nuts`](https://ropengov.github.io/giscoR/reference/gisco_nuts.md)

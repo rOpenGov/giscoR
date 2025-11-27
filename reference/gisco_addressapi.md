@@ -99,8 +99,7 @@ gisco_addressapi_copyright(verbose = FALSE)
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - x, y:
 

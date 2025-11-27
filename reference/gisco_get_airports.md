@@ -37,23 +37,23 @@ gisco_get_ports(
 
   Optional. A character vector of country codes. It could be either a
   vector of country names, a vector of ISO3 country codes or a vector of
-  Eurostat country codes. Mixed types (as `c("Italy","ES","FRA")`) would
-  not work. See also
+  Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.geojson` file.
+  .logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -67,21 +67,6 @@ A `POINT` object on EPSG:4326.
 `gisco_get_ports()` adds a new field `CNTR_ISO2` to the original data
 identifying the country of the port. Worldwide information available.
 The port codes are aligned with UN/LOCODE standard.
-
-## About caching
-
-You can set your `cache_dir` with
-[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding file by any other method and save it on your `cache_dir`.
-Use the option `verbose = TRUE` for debugging the API query.
-
-For a complete list of files available check
-[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
 
 ## See also
 
