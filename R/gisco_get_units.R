@@ -1,12 +1,21 @@
 #' Get geospatial units data from GISCO API
 #'
 #' @description
+#'
+#' `r lifecycle::badge("deprecated")`
+#'
+#' This function is deprecated. Use:
+#'
+#' - `gisco_get_metadata()` (equivalent to `mode = "df"`)
+#' - TODO
+#'
 #' Download individual shapefiles of units. Unlike [gisco_get_countries()],
 #' [gisco_get_nuts()] or [gisco_get_urban_audit()], that downloads a full
 #' dataset and applies filters, [gisco_get_units()] downloads a single
 #' shapefile for each unit.
 #'
 #' @family political
+#' @keywords internal
 #'
 #' @return
 #' A [`sf`][sf::st_sf] object on `mode = "sf"` or a data frame on `mode = "df"`.
@@ -101,6 +110,17 @@ gisco_get_units <- function(
   resolution = "20",
   spatialtype = "RG"
 ) {
+  mode <- match_arg_pretty(mode)
+  if (mode == "df") {
+    lifecycle::deprecate_warn(
+      "1.0.0",
+      "gisco_get_units()",
+      "giscoR::gisco_get_metadata()"
+    )
+
+    df <- gisco_get_metadata(id_giscoR, year, verbose = verbose)
+    return(df)
+  }
   year <- as.character(year)
 
   cache_dir <- gsc_helper_cachedir(cache_dir)
@@ -110,16 +130,16 @@ gisco_get_units <- function(
   id_giscoR <- match.arg(id_giscoR)
   mode <- match.arg(mode)
 
-  if (mode == "sf" && !(spatialtype %in% c("RG", "LB"))) {
+  if (!(spatialtype %in% c("RG", "LB"))) {
     stop('spatialtype should be one of "RG","LB"')
   }
 
-  if (is.null(unit) && mode == "sf") {
+  if (is.null(unit)) {
     stop("Select unit(s) to download with unit = c('unit_id1','unit_id2')")
   }
 
   # Convert to iso3c for countries 2001
-  if (mode == "sf" && id_giscoR == "countries") {
+  if (id_giscoR == "countries") {
     if (year == "2001") {
       unit <- gsc_helper_countrynames(unit, "iso3c")
     } else {
@@ -150,27 +170,21 @@ gisco_get_units <- function(
   remain <- unlist(strsplit(api_entry, "/geojson/"))[2]
 
   # Compose depending of the mode
-  if (mode == "df") {
-    df <- gsc_units_df(id_giscoR, year, api_url, verbose)
-
-    df
-  } else if (mode == "sf") {
-    sf <- gsc_units_sf(
-      id_giscoR,
-      unit,
-      year,
-      epsg,
-      cache,
-      update_cache,
-      cache_dir,
-      verbose,
-      spatialtype,
-      api_url,
-      remain,
-      level
-    )
-    sf
-  }
+  sf <- gsc_units_sf(
+    id_giscoR,
+    unit,
+    year,
+    epsg,
+    cache,
+    update_cache,
+    cache_dir,
+    verbose,
+    spatialtype,
+    api_url,
+    remain,
+    level
+  )
+  sf
 }
 
 #' Download sf for units
@@ -286,91 +300,4 @@ gsc_units_sf <- function(
   # Last check
   df_sf <- sf::st_make_valid(df_sf)
   df_sf
-}
-
-#' Download data frame for units
-#' @noRd
-gsc_units_df <- function(id_giscoR, year, api_url, verbose) {
-  if (id_giscoR == "countries") {
-    if (year < "2013") {
-      csv <- "csv/CNTR_AT.csv"
-    } else {
-      csv <- paste0("csv/CNTR_AT_", year, ".csv")
-    }
-  } else if (id_giscoR == "urban_audit") {
-    if (year <= "2004") {
-      csv <- paste0("csv/URAU_CITY_AT_", year, ".csv")
-    } else if (year < "2018") {
-      csv <- "csv/URAU_AT_2011_2014.csv"
-    } else {
-      csv <- paste0("csv/URAU_AT_", year, ".csv")
-    }
-  } else if (id_giscoR == "nuts") {
-    csv <- paste0("csv/NUTS_AT_", year, ".csv")
-  }
-
-  url <- file.path(api_url, csv)
-
-  file_local <- tempfile(fileext = ".csv")
-
-  err_dwnload <- suppressWarnings(try(
-    download.file(url, file_local, quiet = isFALSE(verbose), mode = "wb"),
-    silent = TRUE
-  ))
-
-  # If error then try again
-
-  # Testing purposes only
-  # Mock the behavior of offline
-  test <- getOption("gisco_test_err", NULL)
-
-  if (isTRUE(test)) {
-    gsc_message(
-      TRUE,
-      "\nurl \n ",
-      url,
-      " not reachable.\n\nPlease download manually. ",
-      "If you think this is a bug please consider opening an issue on ",
-      "https://github.com/ropengov/giscoR/issues"
-    )
-    message("Returning `NULL`")
-    return(NULL)
-  }
-
-  # nocov start
-
-  if (inherits(err_dwnload, "try-error")) {
-    gsc_message(verbose, "Retry query")
-    Sys.sleep(1)
-    err_dwnload <- suppressWarnings(try(
-      download.file(url, file_local, quiet = isFALSE(verbose), mode = "wb"),
-      silent = TRUE
-    ))
-  }
-
-  # If not then stop
-  if (inherits(err_dwnload, "try-error")) {
-    gsc_message(
-      TRUE,
-      "\nurl \n ",
-      url,
-      "not reachable.\n\nPlease download manually.",
-      "If you think this is a bug please consider opening an issue on ",
-      "https://github.com/ropengov/giscoR/issues"
-    )
-    message("Returning `NULL`")
-    return(NULL)
-  }
-
-  # nocov end
-
-  df_csv <- read.csv2(
-    file_local,
-    sep = ",",
-    stringsAsFactors = FALSE,
-    encoding = "UTF-8"
-  )
-
-  gsc_message(verbose, "Database loaded succesfully")
-  df_csv
 }

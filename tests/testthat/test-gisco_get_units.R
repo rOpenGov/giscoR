@@ -93,8 +93,7 @@ test_that("Units sf online", {
     unit = c("FR", "ES", "xt", "PT")
   ))
   expect_message(gisco_get_units(verbose = TRUE))
-  df <- gisco_get_units(mode = "df")
-  expect_true(class(df) == "data.frame")
+
   sf <-
     gisco_get_units(
       id_giscoR = "urban_audit",
@@ -103,22 +102,6 @@ test_that("Units sf online", {
     )
   expect_true(class(sf)[1] == "sf")
   expect_message(gisco_get_units(unit = c("ES1", "ES345", "FFRE3")))
-  expect_silent(gisco_get_units(
-    id_giscoR = "urban_audit",
-    year = "2004",
-    mode = "df"
-  ))
-  expect_message(gisco_get_units(
-    id_giscoR = "urban_audit",
-    year = "2014",
-    mode = "df",
-    verbose = TRUE
-  ))
-  expect_silent(gisco_get_units(
-    id_giscoR = "countries",
-    year = "2001",
-    mode = "df"
-  ))
 
   expect_silent(gisco_get_units(
     id_giscoR = "nuts",
@@ -140,112 +123,15 @@ test_that("Units sf online", {
     verbose = TRUE,
     unit = "XXXXX"
   ))
-
-  expect_silent(gisco_get_units(
-    id_giscoR = "countries",
-    year = 2016,
-    mode = "df"
-  ))
-  expect_silent(gisco_get_units(
-    id_giscoR = "urban_audit",
-    year = 2018,
-    mode = "df"
-  ))
 })
 
 
-test_that("Units df online", {
+test_that("Deprecate df mode", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  test <- expect_silent(gisco_get_units(
-    year = "2001",
-    id_giscoR = "countries",
-    unit = "ES",
-    mode = "df"
-  ))
-
-  expect_s3_class(test, "data.frame", exact = TRUE)
-  expect_true(nrow(test) > 5)
-
-  test <- expect_silent(gisco_get_units(
-    id_giscoR = "countries",
-    unit = "Spain",
-    spatialtype = "LB",
-    mode = "df"
-  ))
-
-  expect_s3_class(test, "data.frame", exact = TRUE)
-  expect_true(nrow(test) > 5)
-
-  test <- expect_silent(gisco_get_units(
-    id_giscoR = "nuts",
-    unit = "ES",
-    mode = "df"
-  ))
-
-  expect_s3_class(test, "data.frame", exact = TRUE)
-  expect_true(nrow(test) > 5)
-
-  expect_message(gisco_get_units(
-    id_giscoR = "nuts",
-    unit = "ES",
-    mode = "df",
-    verbose = TRUE
-  ))
-
-  test <- expect_silent(gisco_get_units(
-    id_giscoR = "urban_audit",
-    year = 2001,
-    unit = "ES",
-    mode = "df"
-  ))
-
-  expect_s3_class(test, "data.frame", exact = TRUE)
-  expect_true(nrow(test) > 5)
-
-  test <- expect_silent(gisco_get_units(
-    id_giscoR = "urban_audit",
-    year = 2014,
-    unit = "ES",
-    mode = "df"
-  ))
-
-  expect_s3_class(test, "data.frame", exact = TRUE)
-  expect_true(nrow(test) > 5)
-
-  test <- expect_silent(gisco_get_units(
-    id_giscoR = "urban_audit",
-    year = 2020,
-    unit = "ES",
-    mode = "df"
-  ))
-
-  expect_s3_class(test, "data.frame", exact = TRUE)
-  expect_true(nrow(test) > 5)
-
-  test <- expect_silent(gisco_get_units(
-    id_giscoR = "urban_audit",
-    year = 2004,
-    unit = "ES",
-    mode = "df"
-  ))
-
-  expect_s3_class(test, "data.frame", exact = TRUE)
-  expect_true(nrow(test) > 5)
-})
-
-test_that("Offline", {
-  options(gisco_test_err = TRUE)
-  expect_message(
-    n <- gisco_get_units(
-      id_giscoR = "nuts",
-      unit = "ES",
-      mode = "df",
-      update_cache = TRUE
-    ),
-    "not reachable"
+  expect_snapshot(
+    df1 <- gisco_get_units("nuts", year = 2016, mode = "df")
   )
-  expect_null(n)
-  options(gisco_test_err = FALSE)
+  expect_identical(df1, gisco_get_metadata("nuts", 2016))
 })

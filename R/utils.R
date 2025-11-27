@@ -38,7 +38,10 @@ get_country_code <- function(names, out = "eurostat") {
     if (
       any(grepl("kosovo", tolower(x)), "xk" == tolower(x), "xkx" == tolower(x))
     ) {
-      code <- switch(out, "eurostat" = "XK", "iso3c" = "XKX")
+      code <- switch(out,
+        "eurostat" = "XK",
+        "iso3c" = "XKX"
+      )
       return(code)
     }
 
@@ -101,11 +104,16 @@ match_arg_pretty <- function(arg, choices) {
 
   if (length(arg) > 1 || is.na(lmatch)) {
     # Create error message
-
-    msg <- paste0("{.str ", choices, "}", collapse = " or ")
-    if (length(choices) > 1) {
+    if (length(choices) == 1) {
+      msg <- paste0("{.str ", choices, "}")
+    } else {
+      l_choices <- length(choices)
+      msg <- paste0("{.str ", choices[-l_choices], "}", collapse = ", ")
+      msg <- paste0(msg, " or {.str ", choices[l_choices], "}")
+      # Add one of at the begining
       msg <- paste0("one of ", msg)
     }
+
     msg <- paste0(msg, ", not ")
     bad_arg <- paste0("{.str ", arg, "}", collapse = " or ")
     msg <- paste0(msg, bad_arg, ".")

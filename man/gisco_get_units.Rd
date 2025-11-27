@@ -69,6 +69,14 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 A \code{\link[sf:sf]{sf}} object on \code{mode = "sf"} or a data frame on \code{mode = "df"}.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+This function is deprecated. Use:
+\itemize{
+\item \code{gisco_get_metadata()} (equivalent to \code{mode = "df"})
+\item TODO
+}
+
 Download individual shapefiles of units. Unlike \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}} or \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}, that downloads a full
 dataset and applies filters, \code{\link[=gisco_get_units]{gisco_get_units()}} downloads a single
@@ -145,3 +153,4 @@ Other political:
 dieghernan, \url{https://github.com/dieghernan/}
 }
 \concept{political}
+\keyword{internal}

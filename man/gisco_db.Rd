@@ -27,6 +27,9 @@ Other dataset:
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_nuts}}
+
+Other database: 
+\code{\link{gisco_get_metadata}()}
 }
 \concept{database}
 \concept{dataset}

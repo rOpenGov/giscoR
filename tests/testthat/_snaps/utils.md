@@ -144,7 +144,7 @@
       my_fun("error here")
     Condition
       Error:
-      ! `arg_one` should be one of "10" or "1000" or "3000" or "5000", not "error here".
+      ! `arg_one` should be one of "10", "1000", "3000" or "5000", not "error here".
 
 ---
 
@@ -152,7 +152,7 @@
       my_fun(c("an", "error"))
     Condition
       Error:
-      ! `arg_one` should be one of "10" or "1000" or "3000" or "5000", not "an" or "error".
+      ! `arg_one` should be one of "10", "1000", "3000" or "5000", not "an" or "error".
 
 ---
 
@@ -160,7 +160,7 @@
       my_fun("5")
     Condition
       Error:
-      ! `arg_one` should be one of "10" or "1000" or "3000" or "5000", not "5".
+      ! `arg_one` should be one of "10", "1000", "3000" or "5000", not "5".
       i Did you mean "5000"?
 
 ---
@@ -169,7 +169,7 @@
       my_fun("00")
     Condition
       Error:
-      ! `arg_one` should be one of "10" or "1000" or "3000" or "5000", not "00".
+      ! `arg_one` should be one of "10", "1000", "3000" or "5000", not "00".
 
 ---
 

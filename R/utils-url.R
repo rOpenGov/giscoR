@@ -7,7 +7,8 @@ get_url_db <- function(
   nuts_level = NULL,
   level = NULL,
   ext = NULL,
-  fn
+  fn,
+  db = get_db()
 ) {
   if (all(!is.null(spatialtype), spatialtype == "LB")) {
     resolution <- NULL
@@ -34,8 +35,6 @@ get_url_db <- function(
 
   # Fun with namespace
   fn <- paste0("giscoR::", fn)
-
-  db <- get_db()
 
   # Initial filter
   db <- db[db$id_giscoR == id, ]
