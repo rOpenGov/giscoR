@@ -189,6 +189,7 @@ NULL
 #' @name gisco_countrycode
 #'
 #' @family dataset
+#' @inheritSection gisco_get_countries World regions
 #'
 #' @description
 #' A data frame containing conversions between different country
@@ -221,13 +222,6 @@ NULL
 #' dplyr::glimpse(gisco_countrycode)
 #'
 #' @source [countrycode::codelist] **v1.2.0**.
-#'
-#' @details
-#' # World Regions
-#'
-#' Regions are defined as per the geographic regions defined by the
-#' UN (see <https://unstats.un.org/unsd/methodology/m49/>.
-#' Under this scheme Cyprus is assigned to Asia.
 #'
 #' @seealso
 #' [gisco_get_countries()] and [countrycode::codelist], included in

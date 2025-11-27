@@ -92,6 +92,11 @@ world. This dataset consists of 2 feature classes (regions, boundaries) per
 scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 60M).
 }
+\section{World Regions}{
+Regions are defined as per the geographic regions defined by the
+UN (see \url{https://unstats.un.org/unsd/methodology/m49/}.
+Under this scheme Cyprus is assigned to Asia.
+}
 \examples{
 \donttest{
 cntries <- gisco_get_countries()
