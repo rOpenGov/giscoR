@@ -34,7 +34,7 @@
 #' }
 #' @export
 gisco_get_education <- function(
-  year = c("2023", "2020"),
+  year = c(2023, 2020),
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
@@ -42,8 +42,7 @@ gisco_get_education <- function(
   country = NULL
 ) {
   # Given vars
-  year <- as.character(year)
-  year <- match.arg(year)
+  year <- match_arg_pretty(year)
 
   if (!is.null(country)) {
     country_get <- get_country_code(country)

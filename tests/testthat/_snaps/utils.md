@@ -138,3 +138,52 @@
     Output
       [1] "DE" "US" "EL" "UK"
 
+# Pretty match
+
+    Code
+      my_fun("error here")
+    Condition
+      Error:
+      ! `arg_one` should be one of "10" or "1000" or "3000" or "5000", not "error here".
+
+---
+
+    Code
+      my_fun(c("an", "error"))
+    Condition
+      Error:
+      ! `arg_one` should be one of "10" or "1000" or "3000" or "5000", not "an" or "error".
+
+---
+
+    Code
+      my_fun("5")
+    Condition
+      Error:
+      ! `arg_one` should be one of "10" or "1000" or "3000" or "5000", not "5".
+      i Did you mean "5000"?
+
+---
+
+    Code
+      my_fun("00")
+    Condition
+      Error:
+      ! `arg_one` should be one of "10" or "1000" or "3000" or "5000", not "00".
+
+---
+
+    Code
+      my_fun2(c(1, 2))
+    Condition
+      Error:
+      ! `year` should be "20", not "1" or "2".
+
+---
+
+    Code
+      gisco_get_airports(2050)
+    Condition
+      Error:
+      ! `year` should be one of "2013" or "2006", not "2050".
+

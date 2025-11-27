@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_education(
-  year = c("2023", "2020"),
+  year = c(2023, 2020),
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,

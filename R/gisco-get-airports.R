@@ -74,8 +74,7 @@ gisco_get_airports <- function(
   update_cache = FALSE,
   verbose = FALSE
 ) {
-  year <- as.character(year)
-  year <- match.arg(year)
+  year <- match_arg_pretty(year)
   if (year == "2006") {
     url <- paste0(
       "https://ec.europa.eu/eurostat/cache/GISCO/",
@@ -132,8 +131,7 @@ gisco_get_ports <- function(
   update_cache = FALSE,
   verbose = FALSE
 ) {
-  year <- as.character(year)
-  year <- match.arg(year)
+  year <- match_arg_pretty(year)
   if (year == "2009") {
     url <- paste0(
       "https://ec.europa.eu/eurostat/cache/GISCO/",

@@ -59,7 +59,7 @@
 #' }
 #' }
 gisco_get_postalcodes <- function(
-  year = "2024",
+  year = 2024,
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,

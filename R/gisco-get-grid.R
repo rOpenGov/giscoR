@@ -106,20 +106,18 @@
 #' }
 #' @export
 gisco_get_grid <- function(
-  resolution = "20",
+  resolution = 20,
   spatialtype = c("REGION", "POINT"),
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE
 ) {
-  resolution <- as.character(resolution)
+  resolution <- as.numeric(resolution)
   validres <- as.character(c(1, 2, 5, 10, 20, 50, 100))
 
-  if (!resolution %in% validres) {
-    stop("resolution should be one of ", paste0(validres, collapse = ", "))
-  }
+  resolution <- match_arg_pretty(resolution, validres)
 
-  spatialtype <- match.arg(spatialtype)
+  spatialtype <- match_arg_pretty(spatialtype)
   valid <- c("REGION", "POINT")
 
   translate <- c("surf", "point")

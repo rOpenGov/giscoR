@@ -12,7 +12,7 @@ Copyright:
 }
 \usage{
 gisco_get_postalcodes(
-  year = "2024",
+  year = 2024,
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,

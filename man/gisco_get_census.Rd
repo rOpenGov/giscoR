@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_census(
-  year = "2011",
+  year = 2011,
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE,

@@ -8,7 +8,7 @@
 }
 \usage{
 gisco_get_grid(
-  resolution = "20",
+  resolution = 20,
   spatialtype = c("REGION", "POINT"),
   cache_dir = NULL,
   update_cache = FALSE,

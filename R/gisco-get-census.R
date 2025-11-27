@@ -26,16 +26,15 @@
 #' pts
 #' }
 gisco_get_census <- function(
-  year = "2011",
+  year = 2011,
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE,
   spatialtype = c("RG", "PT")
 ) {
-  year <- as.character(year)
-  year <- match.arg(year)
+  year <- match_arg_pretty(year)
 
-  spatialtype <- match.arg(spatialtype)
+  spatialtype <- match_arg_pretty(spatialtype)
   if (spatialtype == "PT") {
     url <- paste0(
       "https://ec.europa.eu/eurostat/cache/GISCO/",

@@ -73,13 +73,13 @@
 #'   theme_minimal()
 #'
 gisco_get_countries <- function(
-  year = "2024",
-  epsg = "4326",
+  year = 2024,
+  epsg = 4326,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = "20",
+  resolution = 20,
   spatialtype = "RG",
   country = NULL,
   region = NULL
