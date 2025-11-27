@@ -43,9 +43,14 @@
 #' the map and in the introductory page of the publication with the following
 #' copyright notice:
 #'
-#' * EN: (C) EuroGeographics for the administrative boundaries.
-#' * FR: (C) EuroGeographics pour les limites administratives.
-#' * DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen.
+#' ```{r, echo=FALSE, results='asis'}
+#' cat("")
+#' cat("* EN: \u00a9 EuroGeographics for the administrative boundaries.",
+#' "* FR: \u00a9 EuroGeographics pour les limites administratives.",
+#' "* DE: \u00a9 EuroGeographics bez\u00fcglich der Verwaltungsgrenzen.",
+#' sep = "\n")
+#'
+#' ```
 #'
 #' For publications in languages other than English, French or German,
 #' the translation of the copyright notice in the language of the publication
@@ -81,9 +86,9 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     the introductory page of the publication with the
     following copyright notice:
 
-    - EN: (C) EuroGeographics for the administrative boundaries
-    - FR: (C) EuroGeographics pour les limites administratives
-    - DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
+    - EN: \u00a9 EuroGeographics for the administrative boundaries
+    - FR: \u00a9 EuroGeographics pour les limites administratives
+    - DE: \u00a9 EuroGeographics bez\u00fcglich der Verwaltungsgrenzen
 
     For publications in languages other than English,
     French or German, the translation of the copyright
@@ -116,10 +121,11 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     "{.url https://github.com/rOpenGov/giscoR/issues}"
   )
 
-  attr <- switch(lang,
+  attr <- switch(
+    lang,
     "en" = "\u00a9 EuroGeographics for the administrative boundaries",
     "da" = "\u00a9 EuroGeographics for administrative gr\u00e6nser",
-    "de" = "\u00a9 EuroGeographics bezuglich der Verwaltungsgrenzen",
+    "de" = "\u00a9 EuroGeographics bez\u00fcglich der Verwaltungsgrenzen",
     "es" = "\u00a9 Eurogeographics para los l\u00edmites administrativos",
     "fi" = "\u00a9 EuroGeographics Association hallinnollisille rajoille",
     "fr" = "\u00a9 EuroGeographics pour les limites administratives",

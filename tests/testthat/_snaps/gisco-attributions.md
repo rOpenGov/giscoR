@@ -13,9 +13,9 @@
       the introductory page of the publication with the
       following copyright notice:
       
-      - EN: (C) EuroGeographics for the administrative boundaries
-      - FR: (C) EuroGeographics pour les limites administratives
-      - DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
+      - EN: © EuroGeographics for the administrative boundaries
+      - FR: © EuroGeographics pour les limites administratives
+      - DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
       
       For publications in languages other than English,
       French or German, the translation of the copyright
@@ -41,7 +41,7 @@
     Code
       gisco_attributions("de")
     Output
-      [1] "© EuroGeographics bezuglich der Verwaltungsgrenzen"
+      [1] "© EuroGeographics bezüglich der Verwaltungsgrenzen"
 
 ---
 

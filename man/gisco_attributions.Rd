@@ -47,9 +47,9 @@ Eurostat website, data source will have to be acknowledged in the legend of
 the map and in the introductory page of the publication with the following
 copyright notice:
 \itemize{
-\item EN: (C) EuroGeographics for the administrative boundaries.
-\item FR: (C) EuroGeographics pour les limites administratives.
-\item DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen.
+\item EN: © EuroGeographics for the administrative boundaries.
+\item FR: © EuroGeographics pour les limites administratives.
+\item DE: © EuroGeographics bezüglich der Verwaltungsgrenzen.
 }
 
 For publications in languages other than English, French or German,
