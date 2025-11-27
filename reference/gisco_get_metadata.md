@@ -19,7 +19,7 @@ gisco_get_metadata(
 
 ## Arguments
 
-- id, :
+- id:
 
   character string. Select the unit type to be downloaded. Accepted
   values are `"nuts"`, `"countries"` or `"urban_audit"`.

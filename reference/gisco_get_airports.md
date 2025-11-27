@@ -48,7 +48,7 @@ gisco_get_ports(
 
 - update_cache:
 
-  .logical. Should the cached file be refreshed?. Default is `FALSE`.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
   When set to `TRUE` it would force a new download.
 
 - verbose:

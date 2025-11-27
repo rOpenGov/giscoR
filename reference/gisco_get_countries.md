@@ -2,7 +2,7 @@
 
 This data set contains the administrative boundaries at country level of
 the world. This dataset consists of 2 feature classes (regions,
-boundaries) per scale level and there are 5 different scale levels (01M,
+boundaries) per scale level and there are 5 different scale levels (1M,
 3M, 10M, 20M and 60M).
 
 ## Usage
@@ -56,7 +56,7 @@ Copyright:
 
 - update_cache:
 
-  .logical. Should the cached file be refreshed?. Default is `FALSE`.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
   When set to `TRUE` it would force a new download.
 
 - cache_dir:
@@ -71,7 +71,7 @@ Copyright:
 
 - resolution:
 
-  Resolution of the geospatial data. One of:
+  character string or number. Resolution of the geospatial data. One of:
 
   - `"60"`: 1:60million
 
@@ -85,7 +85,8 @@ Copyright:
 
 - spatialtype:
 
-  Type of geometry to be returned. Options available are:
+  character string. Type of geometry to be returned. Options available
+  are:
 
   - `"BN"`: Boundaries - `LINESTRING` object.
 
@@ -134,6 +135,7 @@ Other administrative units datasets:
 ## Examples
 
 ``` r
+# \donttest{
 cntries <- gisco_get_countries()
 
 library(ggplot2)
@@ -148,4 +150,5 @@ ggplot(africa) +
   geom_sf(fill = "#078930", col = "white") +
   theme_minimal()
 
+# }
 ```

@@ -193,7 +193,9 @@ CRAN release: 2020-11-12
 
 - Remove **colorspace** as dependency.
 - Bump **R** minimal version to `3.6.0`.
-- Change order on parameters for `gisco_get()` functions.
+- Change order on parameters for
+  [`gisco_get()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+  functions.
 - Rewriting of internal functions and utils.
 - Add `verbose` parameter to functions.
 - Rewriting of

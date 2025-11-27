@@ -53,7 +53,7 @@ gisco_bulk_download(
 
 - update_cache:
 
-  .logical. Should the cached file be refreshed?. Default is `FALSE`.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
   When set to `TRUE` it would force a new download.
 
 - verbose:
@@ -62,7 +62,7 @@ gisco_bulk_download(
 
 - resolution:
 
-  Resolution of the geospatial data. One of:
+  character string or number. Resolution of the geospatial data. One of:
 
   - `"60"`: 1:60million
 

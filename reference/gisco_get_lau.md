@@ -61,7 +61,7 @@ gisco_get_lau(
 
 - update_cache:
 
-  .logical. Should the cached file be refreshed?. Default is `FALSE`.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
   When set to `TRUE` it would force a new download.
 
 - cache_dir:
@@ -76,7 +76,8 @@ gisco_get_lau(
 
 - spatialtype:
 
-  Type of geometry to be returned. Options available are:
+  character string. Type of geometry to be returned. Options available
+  are:
 
   - `"BN"`: Boundaries - `LINESTRING` object.
 
