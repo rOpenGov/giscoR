@@ -32,12 +32,6 @@ code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
 provided by the World Bank and the UN (M49). This data set
 is extracted from \CRANpkg{countrycode} package.
 }
-\section{World Regions}{
-Regions are defined as per the geographic regions defined by the
-UN (see \url{https://unstats.un.org/unsd/methodology/m49/}.
-Under this scheme Cyprus is assigned to Asia.
-}
-
 \examples{
 
 data("gisco_countrycode")

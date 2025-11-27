@@ -97,6 +97,7 @@ Regions are defined as per the geographic regions defined by the
 UN (see \url{https://unstats.un.org/unsd/methodology/m49/}.
 Under this scheme Cyprus is assigned to Asia.
 }
+
 \examples{
 \donttest{
 cntries <- gisco_get_countries()
