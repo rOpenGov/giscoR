@@ -123,6 +123,18 @@ test_that("Pretty match", {
     error = TRUE
   )
 
+  # With custom options
+  my_fun3 <- function(an_arg = 20) {
+    match_arg_pretty(an_arg, c("30", "20"))
+  }
+  expect_identical(my_fun3(), "20")
+  expect_snapshot(my_fun3("3"), error = TRUE)
+  # Pass more options than expected
+  expect_snapshot(
+    my_fun2(c(1, 2)),
+    error = TRUE
+  )
+
   # Live action
   skip_on_cran()
   skip_if_gisco_offline()

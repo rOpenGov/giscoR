@@ -21,13 +21,14 @@ gisco_get_countries(
   resolution = 20,
   spatialtype = "RG",
   country = NULL,
-  region = NULL
+  region = NULL,
+  ext = "gpkg"
 )
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
-"year",TRUE)}`.}
+"year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
@@ -75,6 +76,10 @@ European Union membership. Possible values are \code{"Africa"}, \code{"Americas"
 \code{"Asia"}, \code{"Europe"}, \code{"Oceania"} or \code{"EU"} for countries belonging to the
 European Union (as per 2021). See \strong{World regions} and
 \link{gisco_countrycode}.}
+
+\item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
+\Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+"ext",TRUE)}.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object.

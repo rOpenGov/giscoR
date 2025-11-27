@@ -12,7 +12,7 @@
 #'
 #' @param year Release year of the file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
-#'   "year",TRUE)}`.
+#'   "year",TRUE)}.
 #'
 #' @param spatialtype Type of geometry to be returned:
 #'  * `"LB"`: Labels - `POINT` object.

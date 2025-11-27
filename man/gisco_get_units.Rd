@@ -32,7 +32,7 @@ or \code{"df"}. See \strong{Value} and \strong{Details}.}
 
 \item{year}{character string or number. Release year of the file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
-"year",TRUE)}`.}
+"year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:

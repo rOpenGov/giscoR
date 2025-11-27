@@ -182,6 +182,23 @@
 ---
 
     Code
+      my_fun3("3")
+    Condition
+      Error:
+      ! `an_arg` should be one of "30" or "20", not "3".
+      i Did you mean "30"?
+
+---
+
+    Code
+      my_fun2(c(1, 2))
+    Condition
+      Error:
+      ! `year` should be "20", not "1" or "2".
+
+---
+
+    Code
       gisco_get_airports(2050)
     Condition
       Error:

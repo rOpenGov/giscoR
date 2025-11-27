@@ -25,7 +25,7 @@ gisco_get_urban_audit(
 \arguments{
 \item{year}{Release year of the file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
-"year",TRUE)}`.}
+"year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:

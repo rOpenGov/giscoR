@@ -12,7 +12,7 @@
 #'
 #' @param year character string or number. Release year of the file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
-#'   "year",TRUE)}`.
+#'   "year",TRUE)}.
 #' @param epsg character string or number. Projection of the map: 4-digit
 #'   [EPSG code](https://epsg.io/). One of:
 #'   * `"4326"`: [WGS84](https://epsg.io/4326)
@@ -45,7 +45,9 @@
 #'  `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
 #'  European Union (as per 2021). See **World regions** and
 #'  [gisco_countrycode].
-#'
+#' @param ext character. Extension of the file (default `"gpkg"`). One of
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+#'   "ext",TRUE)}.
 #' @return A [`sf`][sf::st_sf] object.
 #'
 #' @seealso
@@ -82,15 +84,19 @@ gisco_get_countries <- function(
   resolution = 20,
   spatialtype = "RG",
   country = NULL,
-  region = NULL
+  region = NULL,
+  ext = "gpkg"
 ) {
+  valid_ext <- c("geojson", "gpkg", "shp")
+  ext <- match_arg_pretty(ext, valid_ext)
+
   api_entry <- get_url_db(
     id = "countries",
     year = year,
     epsg = epsg,
     resolution = resolution,
     spatialtype = spatialtype,
-    ext = "gpkg",
+    ext = ext,
     fn = "gisco_get_countries"
   )
 
@@ -152,7 +158,12 @@ gisco_get_countries <- function(
     return(NULL)
   }
   # Load
-  data_sf <- read_geo_file_sf(namefileload)
+  if (ext == "shp") {
+    data_sf <- read_shp_zip(namefileload)
+  } else {
+    data_sf <- read_geo_file_sf(namefileload)
+  }
+
   data_sf <- filter_countryregion(data_sf, country, region)
 
   data_sf

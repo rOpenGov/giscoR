@@ -38,10 +38,7 @@ get_country_code <- function(names, out = "eurostat") {
     if (
       any(grepl("kosovo", tolower(x)), "xk" == tolower(x), "xkx" == tolower(x))
     ) {
-      code <- switch(out,
-        "eurostat" = "XK",
-        "iso3c" = "XKX"
-      )
+      code <- switch(out, "eurostat" = "XK", "iso3c" = "XKX")
       return(code)
     }
 
@@ -77,9 +74,9 @@ get_country_code <- function(names, out = "eurostat") {
 }
 
 match_arg_pretty <- function(arg, choices) {
-  if (missing(choices)) {
-    arg_name <- as.character(substitute(arg)) # nolint
+  arg_name <- as.character(substitute(arg)) # nolint
 
+  if (missing(choices)) {
     formal_args <- formals(sys.function(sys_par <- sys.parent()))
     choices <- eval(
       formal_args[[as.character(substitute(arg))]],

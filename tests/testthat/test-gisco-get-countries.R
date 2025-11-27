@@ -189,3 +189,55 @@ test_that("Spatial types", {
     )
   )
 })
+
+test_that("Extensions", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  # Error
+  expect_snapshot(
+    gisco_get_countries(ext = "docx"),
+    error = TRUE
+  )
+
+  cdir <- file.path(tempdir(), "testcountry")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+
+  db_geojson <- gisco_get_countries(
+    resolution = "60",
+    cache_dir = cdir,
+    ext = "geojson"
+  )
+  expect_s3_class(db_geojson, "sf")
+  expect_s3_class(db_geojson, "tbl_df")
+
+  expect_length(
+    list.files(cdir, recursive = TRUE, pattern = "geojson"),
+    1
+  )
+
+  db_zip <- gisco_get_countries(
+    resolution = "60",
+    cache_dir = cdir,
+    verbose = TRUE,
+    ext = "shp"
+  )
+
+  expect_s3_class(db_zip, "sf")
+  expect_s3_class(db_zip, "tbl_df")
+
+  expect_length(
+    list.files(cdir, recursive = TRUE, pattern = "shp.zip"),
+    1
+  )
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})
