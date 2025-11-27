@@ -21,7 +21,6 @@
 #'
 #' @inheritParams gisco_get_countries
 #'
-#' @inheritSection gisco_get_countries About caching
 #'
 #' @details
 #'

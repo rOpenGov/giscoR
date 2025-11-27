@@ -55,7 +55,6 @@
 #'
 #' @inheritParams gisco_get_countries
 #'
-#' @inheritSection gisco_get_countries About caching
 #'
 #' @seealso [gisco_nuts], [gisco_get_countries()],
 #' [eurostat::get_eurostat_geospatial()]

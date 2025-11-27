@@ -14,7 +14,6 @@
 #'
 #' @inheritParams gisco_get_healthcare
 #'
-#' @inheritSection gisco_get_countries About caching
 #'
 #' @details
 #' Files are distributed on EPSG:4326. Metadata available on

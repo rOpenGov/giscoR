@@ -30,7 +30,7 @@ reference:
     to as statistical units).
 
     See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units"
-    class="external-link">copyrights information</a>.
+    class="external-link">copyright information</a>.
   contents: has_concept("admin")
 - subtitle: Statistical units
   desc: >
@@ -38,7 +38,7 @@ reference:
     are collected or derived.
 
     See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units"
-    class="external-link">copyrights information</a>.
+    class="external-link">copyright information</a>.
   contents: has_concept("stats")
 - title: Political
   desc: >

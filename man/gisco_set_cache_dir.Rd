@@ -25,8 +25,7 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 use in future sessions.  Defaults to \code{FALSE.} If \code{cache_dir} is \code{FALSE}
 this parameter is set to \code{FALSE} automatically.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
 \code{gisco_set_cache_dir()} returns an (invisible) character with the path to
@@ -50,6 +49,10 @@ path to a small configuration file under
 }
 \section{Caching strategies}{
 
+
+Some files can be read from its online source without caching using the
+option \code{cache = FALSE}. Otherwise the source file would be downloaded to
+your computer. \CRANpkg{giscoR} implements the following caching options:
 \itemize{
 \item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no
 install).
@@ -61,6 +64,14 @@ be kept across \strong{R} sessions.
 \item For caching specific files, use the \code{cache_dir} argument in the
 corresponding function. See example in \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}.
 }
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting \code{update_cache = TRUE} in the corresponding function.
+
+If you experience any problem on download, try to download the
+corresponding file by any other method and save it on your
+\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query
+and \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to identify your cached path.
 }
 
 \examples{

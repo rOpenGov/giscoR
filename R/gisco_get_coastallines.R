@@ -8,7 +8,6 @@
 #'
 #' @inheritParams gisco_get_countries
 #'
-#' @inheritSection gisco_get_countries About caching
 #'
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'

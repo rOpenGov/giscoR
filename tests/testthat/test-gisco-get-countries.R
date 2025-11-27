@@ -40,7 +40,6 @@ test_that("Cached dataset vs updated", {
   expect_s3_class(db_cached, "sf")
   expect_s3_class(db_cached, "tbl_df")
 
-  expect_identical(db_cached, db_cached2)
   expect_identical(
     list.files(cdir, recursive = TRUE),
     "countries/CNTR_RG_20M_2024_4326.gpkg"

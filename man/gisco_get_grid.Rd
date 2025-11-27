@@ -21,14 +21,13 @@ gisco_get_grid(
 
 \item{spatialtype}{Select one of \code{"REGION"} or \code{"POINT"}.}
 
-\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+\item{cache_dir}{character string. A path to a cache directory. See
+\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.gpkg} file.}
+\item{update_cache}{.logical. Should the cached file be refreshed?. Default
+is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
 A \code{POLYGON/POINT} \code{\link[sf:sf]{sf}} object.
@@ -49,19 +48,6 @@ need to confirm the download.
 There are specific downloading provisions, please see
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}
 }
-\section{About caching}{
-You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting \code{update_cache = TRUE}.
-
-If you experience any problem on download, try to download the
-corresponding file by any other method and save it on your
-\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
-
-For a complete list of files available check \link{gisco_db}.
-}
-
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{

@@ -31,7 +31,12 @@
 #' path to a small configuration file under
 #' `rappdirs::user_config_dir("giscoR", "R")`.
 #'
+#'
 #' @section Caching strategies:
+#'
+#' Some files can be read from its online source without caching using the
+#' option `cache = FALSE`. Otherwise the source file would be downloaded to
+#' your computer. \CRANpkg{giscoR} implements the following caching options:
 #'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no
 #'   install).
@@ -43,6 +48,13 @@
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function. See example in [gisco_get_nuts()].
 #'
+#' Sometimes cached files may be corrupt. On that case, try re-downloading
+#' the data setting `update_cache = TRUE` in the corresponding function.
+#'
+#'  If you experience any problem on download, try to download the
+#'  corresponding file by any other method and save it on your
+#'  `cache_dir`. Use the option `verbose = TRUE` for debugging the API query
+#'  and [gisco_detect_cache_dir()] to identify your cached path.
 #'
 #'
 #' @examples

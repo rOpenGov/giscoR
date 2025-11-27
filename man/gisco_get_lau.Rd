@@ -51,31 +51,26 @@ caches the result due to the size. \code{cache_dir} can be set to
 \code{\link[base:tempfile]{base::tempdir()}}, so the file would be deleted when the \strong{R} session is
 closed.}
 
-\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.gpkg} file.}
+\item{update_cache}{.logical. Should the cached file be refreshed?. Default
+is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
-\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+\item{cache_dir}{character string. A path to a cache directory. See
+\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{spatialtype}{Type of geometry to be returned:
+\item{spatialtype}{Type of geometry to be returned. Options available are:
 \itemize{
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
 \item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
 \item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-}
-
-\strong{Note that} parameters \code{country} and \code{region} would be only applied
-when \code{spatialtype} is \code{"BN"} or \code{"RG"}.}
+}}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
-vector of Eurostat country codes. Mixed types (as \code{c("Italy","ES","FRA")})
-would not work. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{gisco_id}{Optional. A character vector of GISCO_ID LAU values.}
 }
@@ -90,19 +85,6 @@ Urban Areas, that correspond roughly with towns and cities.
 \note{
 Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
-\section{About caching}{
-You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting \code{update_cache = TRUE}.
-
-If you experience any problem on download, try to download the
-corresponding file by any other method and save it on your
-\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
-
-For a complete list of files available check \link{gisco_db}.
-}
-
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{

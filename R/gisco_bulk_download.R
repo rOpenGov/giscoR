@@ -21,7 +21,6 @@
 #'
 #' @inheritParams gisco_get_countries
 #'
-#' @inheritSection gisco_get_countries About caching
 #'
 #' @param ext Extension of the file(s) to be downloaded. Formats available are
 #' `"geojson"`, `"shp"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.

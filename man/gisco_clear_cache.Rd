@@ -13,8 +13,7 @@ gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 \item{cached_data}{If this is set to \code{TRUE}, it will delete your
 \code{cache_dir} and all its content.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
 Invisible. This function is called for its side effects.

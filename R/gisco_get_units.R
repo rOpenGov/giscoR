@@ -24,7 +24,6 @@
 #'
 #' @inheritParams gisco_get_countries
 #'
-#' @inheritSection gisco_get_countries About caching
 #'
 #' @details
 #' The function can return a data frame on `mode = "df"` or a [`sf`][sf::st_sf]

@@ -1,44 +1,37 @@
-#' Get postal code points from GISCO
+#' Postal codes
 #'
-#' Get postal codes points of the EU, EFTA and candidate countries.
-#'
-#' @param year Year of reference. one of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
-#'   "year",TRUE)}.
-#'
-#' @inheritParams gisco_get_countries
-#' @inheritSection gisco_get_countries About caching
-#' @inherit gisco_get_countries source
-#'
-#' @family admin
-#'
-#' @return A `POINT` [`sf`][sf::st_sf] object on EPSG:4326.
-#'
-#' @export
-#'
-#' @details
+#' @description
 #' The postal code point dataset shows the location of postal codes, NUTS codes
 #' and the Degree of Urbanisation classification across the EU, EFTA and
 #' candidate countries from a variety of sources. Its primary purpose is to
 #' create correspondence tables for the NUTS classification (EC) 1059/2003 as
-#' part of the Tercet Regulation (EU) 2017/2391
+#' part of the Tercet Regulation (EU) 2017/2391.
 #'
+#' @family admin
+#' @export
+#'
+#' @param year character string or number. Release year of the file. One of
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
+#'   "year",TRUE)}.
+#'
+#' @inheritParams gisco_get_countries
+#' @inherit gisco_get_countries source return
+#'
+#' @encoding UTF-8
+#'
+#' @details
 #' # Copyright
 #'
 #' The dataset is released under the CC-BY-SA-4.0 licence and requires the
 #' following attribution whenever used:
 #'
-#' *(c) European Union - GISCO, 2024, postal code point dataset, Licence
-#' CC-BY-SA 4.0 available at
-#' ```{r, echo=FALSE, results='asis'}
 #'
-#' cat(
-#'   paste0(" <https://ec.europa.eu/eurostat/web/gisco/geodata",
-#'       "//administrative-units/postal-codes>*.")
-#'    )
+#' ```{r, echo=FALSE, results='asis'}
+#' cat("")
+#' cat("\u00a9 European Union - GISCO, 2024, postal code point dataset,",
+#' "Licence CC-BY-SA 4.0.")
 #'
 #' ```
-#'
 #'
 #'
 #' @examplesIf gisco_check_access()

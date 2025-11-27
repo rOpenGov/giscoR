@@ -83,8 +83,7 @@ province use the cities endpoint
 
 \item{postcode}{Can be used in combination with the previous parameters.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{x, y}{x and y coordinates (as longitude and latitude) to be converted
 into a human-readable address.}

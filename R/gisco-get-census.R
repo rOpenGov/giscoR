@@ -11,7 +11,6 @@
 #'  * `"PT"`: Points - `POINT` object.
 #'  * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #' @inheritParams gisco_get_countries
-#' @inheritSection gisco_get_countries About caching
 #' @inherit gisco_get_countries return
 #'
 #' @source

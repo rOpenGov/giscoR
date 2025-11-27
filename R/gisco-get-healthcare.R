@@ -16,7 +16,6 @@
 #' @param year Release year of the file. One of `"2020"`, `"2023"` (default).
 #' @inheritParams gisco_get_countries
 #'
-#' @inheritSection gisco_get_countries About caching
 #'
 #' @details
 #' Files are distributed on EPSG:4326. Metadata available on

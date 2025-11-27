@@ -19,22 +19,20 @@ gisco_get_healthcare(
 \arguments{
 \item{year}{Release year of the file. One of \code{"2020"}, \code{"2023"} (default).}
 
-\item{cache}{A logical whether to do caching. Default is \code{TRUE}. See
-\strong{About caching}.}
+\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{A logical whether to update cache. Default is \code{FALSE}.
-When set to \code{TRUE} it would force a fresh download of the source
-\code{.gpkg} file.}
+\item{update_cache}{.logical. Should the cached file be refreshed?. Default
+is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
-\item{cache_dir}{A path to a cache directory. See \strong{About caching}.}
+\item{cache_dir}{character string. A path to a cache directory. See
+\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{Logical, displays information. Useful for debugging,
-default is \code{FALSE}.}
+\item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{country}{Optional. A character vector of country codes. It could be
 either a vector of country names, a vector of ISO3 country codes or a
-vector of Eurostat country codes. Mixed types (as \code{c("Italy","ES","FRA")})
-would not work. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
 A \code{POINT} \code{\link[sf:sf]{sf}} object.
@@ -47,19 +45,6 @@ be 'hospitals' by Member States.
 Files are distributed on EPSG:4326. Metadata available on
 \url{https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf}.
 }
-\section{About caching}{
-You can set your \code{cache_dir} with \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting \code{update_cache = TRUE}.
-
-If you experience any problem on download, try to download the
-corresponding file by any other method and save it on your
-\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query.
-
-For a complete list of files available check \link{gisco_db}.
-}
-
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
