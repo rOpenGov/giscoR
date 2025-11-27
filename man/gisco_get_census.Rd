@@ -21,7 +21,7 @@ gisco_get_census(
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{.logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed?. Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}

@@ -51,7 +51,7 @@ caches the result due to the size. \code{cache_dir} can be set to
 \code{\link[base:tempfile]{base::tempdir()}}, so the file would be deleted when the \strong{R} session is
 closed.}
 
-\item{update_cache}{.logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed?. Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
@@ -59,7 +59,8 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{spatialtype}{Type of geometry to be returned. Options available are:
+\item{spatialtype}{character string. Type of geometry to be returned.
+Options available are:
 \itemize{
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
 \item \code{"COASTL"}: coastlines - \code{LINESTRING} object.

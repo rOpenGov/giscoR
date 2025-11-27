@@ -41,7 +41,7 @@ gisco_get_countries(
 \item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{.logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed?. Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
@@ -49,7 +49,8 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{resolution}{Resolution of the geospatial data. One of:
+\item{resolution}{character string or number. Resolution of the geospatial
+data. One of:
 \itemize{
 \item \code{"60"}: 1:60million
 \item \code{"20"}: 1:20million
@@ -58,7 +59,8 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 \item \code{"01"}: 1:1million
 }}
 
-\item{spatialtype}{Type of geometry to be returned. Options available are:
+\item{spatialtype}{character string. Type of geometry to be returned.
+Options available are:
 \itemize{
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
 \item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
@@ -87,11 +89,11 @@ A \code{\link[sf:sf]{sf}} object.
 \description{
 This data set contains the administrative boundaries at country level of the
 world. This dataset consists of 2 feature classes (regions, boundaries) per
-scale level and there are 5 different scale levels (01M, 3M, 10M, 20M and
+scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 60M).
 }
 \examples{
-
+\donttest{
 cntries <- gisco_get_countries()
 
 library(ggplot2)
@@ -104,7 +106,7 @@ africa <- gisco_get_countries(region = "Africa")
 ggplot(africa) +
   geom_sf(fill = "#078930", col = "white") +
   theme_minimal()
-
+}
 }
 \seealso{
 \link{gisco_countrycode}, \link{gisco_countries_2024}, \code{\link[countrycode:countrycode]{countrycode::countrycode()}}

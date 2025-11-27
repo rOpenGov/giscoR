@@ -62,7 +62,6 @@
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>
 #'
 #' @examples
-#'
 #' \donttest{
 #' cntries <- gisco_get_countries()
 #'

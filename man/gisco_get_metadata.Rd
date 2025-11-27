@@ -14,7 +14,7 @@ gisco_get_metadata(
 )
 }
 \arguments{
-\item{id, }{character string. Select the unit type to be downloaded. Accepted
+\item{id}{character string. Select the unit type to be downloaded. Accepted
 values are \code{"nuts"}, \code{"countries"} or \code{"urban_audit"}.}
 
 \item{year}{character string or number. Release year of the metadata.}
