@@ -11,5 +11,5 @@
       gisco_get_countries(ext = "docx")
     Condition
       Error:
-      ! `ext` should be one of "geojson" or "gpkg" or "shp", not "docx".
+      ! `ext` should be one of "geojson", "gpkg" or "shp", not "docx".
 

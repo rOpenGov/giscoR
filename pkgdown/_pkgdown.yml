@@ -62,7 +62,9 @@ reference:
   desc: >
     These functions return other <a href="https://r-spatial.github.io/sf/reference/sf.html"
     class="external-link">sf</a> objects
-  contents: has_concept("misc")
+  contents: 
+    - has_concept("misc")
+    - has_concept("database")
 - title: >
     Cache management
   contents: has_concept("cache utilities")
