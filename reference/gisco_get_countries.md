@@ -110,7 +110,7 @@ Copyright:
   Optional. A character vector of UN M49 region codes or European Union
   membership. Possible values are `"Africa"`, `"Americas"`, `"Asia"`,
   `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
-  European Union (as per 2021). See **World regions** and
+  European Union (as per 2021). See **World Regions** and
   [gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md).
 
 - ext:
