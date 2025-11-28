@@ -1,4 +1,4 @@
-#' Country data
+#' Country data set
 #'
 #' @description
 #' This data set contains the administrative boundaries at country level of the
@@ -8,6 +8,13 @@
 #'
 #' @aliases gisco_get
 #' @family admin
+#' @encoding UTF-8
+#' @return A [`sf`][sf::st_sf] object.
+#'
+#' @seealso
+#' [gisco_countrycode], [gisco_countries_2024], [gisco_get_metadata()],
+#' [countrycode::countrycode()].
+#'
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
@@ -50,10 +57,6 @@
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
 #'   "ext",TRUE)}.
-#' @return A [`sf`][sf::st_sf] object.
-#'
-#' @seealso
-#' [gisco_countrycode], [gisco_countries_2024], [countrycode::countrycode()]
 #'
 #' @source
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>
@@ -62,6 +65,7 @@
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>
 #'
 #' @details
+#'
 #' # World Regions
 #'
 #' Regions are defined as per the geographic regions defined by the
@@ -168,7 +172,7 @@ gisco_get_countries <- function(
   }
   # Load
   if (ext == "shp") {
-    data_sf <- read_shp_zip(namefileload)
+    data_sf <- read_geo_file_sf(namefileload)
   } else {
     data_sf <- read_geo_file_sf(namefileload)
   }

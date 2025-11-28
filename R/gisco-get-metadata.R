@@ -4,8 +4,9 @@
 #' Get a table with the names and ids of administrative of statistical units.
 #'
 #' @family database
+#' @seealso
+#' [gisco_get_nuts()], [gisco_get_countries()], [gisco_get_urban_audit()].
 #' @export
-#'
 #' @inheritParams gisco_get_countries
 #'
 #' @source

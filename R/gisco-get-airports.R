@@ -103,7 +103,7 @@ gisco_get_airports <- function(
     return(NULL)
   }
 
-  data_sf <- read_shp_zip(namefileload)
+  data_sf <- read_geo_file_sf(namefileload)
 
   # Normalize to lonlat
   data_sf <- sf::st_transform(data_sf, 4326)
@@ -159,7 +159,7 @@ gisco_get_ports <- function(
     return(NULL)
   }
 
-  data_sf <- read_shp_zip(namefileload)
+  data_sf <- read_geo_file_sf(namefileload)
 
   # Normalize to lonlat
   data_sf <- sf::st_transform(data_sf, 4326)

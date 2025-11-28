@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{gisco_get_postalcodes}
 \alias{gisco_get_postalcodes}
-\title{Postal codes}
+\title{Postal codes data set}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
@@ -82,6 +82,7 @@ if (!is.null(pc_bel)) {
 }
 \seealso{
 Other administrative units datasets:
+\code{\link{gisco_get_communes}()},
 \code{\link{gisco_get_countries}()},
 \code{\link{gisco_get_lau}()}
 }

@@ -1,32 +1,28 @@
 #' sf::read_sf wrapper
 #' @noRd
-read_geo_file_sf <- function(file_local, ...) {
-  data_sf <- sf::read_sf(file_local, ...)
+read_geo_file_sf <- function(file_local, q = NULL, ...) {
+  # Create and read 'vsizip' construct for shp.zip
+  if (grepl(".zip$", file_local, ignore.case = TRUE)) {
+    shp_zip <- unzip(file_local, list = TRUE)
+    shp_zip <- shp_zip$Name
+    shp_zip <- shp_zip[grepl("shp$", shp_zip)]
+    shp_end <- shp_zip[1]
+
+    # Read with vszip
+    file_local <- file.path("/vsizip/", file_local, shp_end)
+    file_local <- gsub("//", "/", file_local)
+  }
+
+  if (!is.null(q)) {
+    data_sf <- sf::read_sf(file_local, query = q, ...)
+  } else {
+    data_sf <- sf::read_sf(file_local, ...)
+  }
+
   data_sf <- sanitize_sf(data_sf)
 
   data_sf
 }
-
-#' Create and read 'vsizip' construct
-#' @noRd
-read_shp_zip <- function(file_local, q = NULL) {
-  shp_zip <- unzip(file_local, list = TRUE)
-  shp_zip <- shp_zip$Name
-  shp_zip <- shp_zip[grepl("shp$", shp_zip)]
-  shp_end <- shp_zip[1]
-
-  # Read with vszip
-  shp_read <- file.path("/vsizip/", file_local, shp_end)
-  shp_read <- gsub("//", "/", shp_read)
-  if (!is.null(q)) {
-    data_sf <- read_geo_file_sf(shp_read, query = q)
-  } else {
-    data_sf <- read_geo_file_sf(shp_read)
-  }
-
-  data_sf
-}
-
 
 #' Convert sf object to UTF-8
 #'
@@ -79,4 +75,32 @@ sanitize_sf <- function(data_sf) {
   data_sf <- sf::st_make_valid(data_sf)
 
   data_sf
+}
+
+get_geo_file_colnames <- function(file_local) {
+  layer <- get_sf_layer_name(file_local)
+  # Get column names
+  q_base <- paste0("SELECT * FROM \"", layer, "\"")
+  get_cols <- read_geo_file_sf(file_local, q = paste(q_base, "LIMIT 1"))
+
+  names(get_cols)
+}
+
+find_colname <- function(
+  file_local,
+  candidates = c("CNTR_ID", "CNTR_CODE")
+) {
+  actual_names <- get_geo_file_colnames(file_local)
+  match <- intersect(candidates, actual_names)
+  if (length(match) == 0) {
+    return(NULL)
+  }
+  match
+}
+
+get_sf_layer_name <- function(file_local) {
+  layer <- sf::st_layers(file_local)
+  layer <- layer[which.max(layer$features), ]$name
+
+  layer
 }

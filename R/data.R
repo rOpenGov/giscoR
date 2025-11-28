@@ -189,7 +189,7 @@ NULL
 #' @name gisco_countrycode
 #'
 #' @family dataset
-#' @inheritSection gisco_get_countries World regions
+#' @inheritSection gisco_get_countries World Regions
 #'
 #' @description
 #' A data frame containing conversions between different country

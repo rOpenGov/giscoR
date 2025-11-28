@@ -1,4 +1,4 @@
-#' Postal codes
+#' Postal codes data set
 #'
 #' @description
 #' The postal code point dataset shows the location of postal codes, NUTS codes
@@ -15,8 +15,7 @@
 #'   "year",TRUE)}.
 #'
 #' @inheritParams gisco_get_countries
-#' @inherit gisco_get_countries source return
-#'
+#' @inherit gisco_get_countries source return note
 #' @encoding UTF-8
 #'
 #' @details
@@ -96,8 +95,7 @@ gisco_get_postalcodes <- function(
     country <- get_country_code(country)
 
     # Get layer name
-    layer <- sf::st_layers(file_local)
-    layer <- layer[which.max(layer$features), ]$name
+    layer <- get_sf_layer_name(file_local)
 
     # Construct query
     q <- paste0(

@@ -95,8 +95,7 @@ gisco_get_lau <- function(
     }
 
     # Get layer name
-    layer <- sf::st_layers(file_local)
-    layer <- layer[which.max(layer$features), ]$name
+    layer <- get_sf_layer_name(file_local)
 
     # Construct query
     q <- paste0("SELECT * from \"", layer, "\" WHERE")

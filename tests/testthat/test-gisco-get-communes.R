@@ -58,3 +58,84 @@ test_that("Deprecations", {
     )
   )
 })
+
+test_that("Extensions", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  # Error
+  expect_snapshot(
+    gisco_get_communes(ext = "docx"),
+    error = TRUE
+  )
+
+  cdir <- file.path(tempdir(), "testcountry")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+
+  db_geojson <- gisco_get_communes(
+    year = 2016,
+    spatialtype = "LB",
+    cache_dir = cdir,
+    ext = "geojson"
+  )
+  expect_s3_class(db_geojson, "sf")
+  expect_s3_class(db_geojson, "tbl_df")
+
+  # Filter
+  db_geojson <- gisco_get_communes(
+    year = 2016,
+    spatialtype = "LB",
+    cache_dir = cdir,
+    ext = "geojson",
+    verbose = TRUE,
+    country = "ES"
+  )
+  expect_length(
+    list.files(cdir, recursive = TRUE, pattern = "geojson"),
+    1
+  )
+
+  db_gpkg <- gisco_get_communes(
+    year = 2013,
+    spatialtype = "LB",
+    cache_dir = cdir,
+    ext = "gpkg"
+  )
+
+  expect_s3_class(db_gpkg, "sf")
+  expect_s3_class(db_gpkg, "tbl_df")
+
+  # Filter
+  db_gpkg <- gisco_get_communes(
+    year = 2013,
+    spatialtype = "LB",
+    cache_dir = cdir,
+    ext = "gpkg",
+    verbose = TRUE,
+    country = "ES"
+  )
+  expect_length(
+    list.files(cdir, recursive = TRUE, pattern = "gpkg"),
+    1
+  )
+
+  expect_silent(
+    db_gpkg <- gisco_get_communes(
+      year = 2013,
+      spatialtype = "COASTL",
+      cache_dir = cdir,
+      ext = "gpkg",
+      country = "ES"
+    )
+  )
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})
