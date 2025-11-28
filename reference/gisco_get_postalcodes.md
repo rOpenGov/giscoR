@@ -1,4 +1,4 @@
-# Postal codes
+# Postal codes data set
 
 The postal code point dataset shows the location of postal codes, NUTS
 codes and the Degree of Urbanisation classification across the EU, EFTA
@@ -69,6 +69,7 @@ CC-BY-SA 4.0.
 ## See also
 
 Other administrative units datasets:
+[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md),
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
 

@@ -94,7 +94,7 @@ See the years available in the corresponding functions:
 
 - [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md).
 
-- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
+- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
 
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md).
 

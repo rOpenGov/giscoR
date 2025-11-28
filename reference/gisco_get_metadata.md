@@ -38,6 +38,10 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## See also
 
+[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
+[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md).
+
 Other database:
 [`gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md)
 

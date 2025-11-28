@@ -99,7 +99,7 @@ Please check the download and usage provisions on
 
 ## See also
 
-[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
+[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
 
 Other political:

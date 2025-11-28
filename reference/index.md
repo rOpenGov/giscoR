@@ -13,11 +13,13 @@ units may or may not be the same as those required for the statistical
 purposes (referred to as statistical units). See [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
 
-- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
-  : Country data
+- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
+  : Communes data set
 
-- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
-  [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+  : Country data set
+
+- [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
   :
 
   Get GISCO urban areas
@@ -25,7 +27,7 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-unit
   points and lines
 
 - [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
-  : Postal codes
+  : Postal codes data set
 
 ### Statistical units
 

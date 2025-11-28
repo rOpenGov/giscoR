@@ -1,25 +1,23 @@
-# Country data set
+# Communes data set
 
-This data set contains the administrative boundaries at country level of
-the world. This dataset consists of 2 feature classes (regions,
-boundaries) per scale level and there are 5 different scale levels (1M,
-3M, 10M, 20M and 60M).
+This data set shows pan European administrative boundaries down to
+commune level version 2016. Communes are equivalent to Local
+Administrative Units, see
+[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
 
 ## Usage
 
 ``` r
-gisco_get_countries(
-  year = 2024,
+gisco_get_communes(
+  year = 2016,
   epsg = 4326,
-  cache = TRUE,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = 20,
   spatialtype = "RG",
   country = NULL,
-  region = NULL,
-  ext = "gpkg"
+  ext = "shp"
 )
 ```
 
@@ -69,20 +67,6 @@ Copyright:
 
   logical. If `TRUE` displays informational messages.
 
-- resolution:
-
-  character string or number. Resolution of the geospatial data. One of:
-
-  - `"60"`: 1:60million
-
-  - `"20"`: 1:20million
-
-  - `"10"`: 1:10million
-
-  - `"03"`: 1:3million
-
-  - `"01"`: 1:1million
-
 - spatialtype:
 
   character string. Type of geometry to be returned. Options available
@@ -105,38 +89,36 @@ Copyright:
   Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
-- region:
-
-  Optional. A character vector of UN M49 region codes or European Union
-  membership. Possible values are `"Africa"`, `"Americas"`, `"Asia"`,
-  `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
-  European Union (as per 2021). See **World regions** and
-  [gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md).
-
 - ext:
 
-  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
+  character. Extension of the file (default `"shp"`). One of `"shp"`,
   `"gpkg"`, `"geojson"` .
 
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
-## World Regions
+## Details
 
-Regions are defined as per the geographic regions defined by the UN (see
-<https://unstats.un.org/unsd/methodology/m49/>. Under this scheme Cyprus
-is assigned to Asia.
+The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
+nomenclature are hierarchical classifications of statistical regions
+that together subdivide the EU economic territory into regions of five
+different levels (NUTS 1, 2 and 3 and LAU , respectively, moving from
+larger to smaller territorial units).
+
+The data set is based on EuroBoundaryMap from
+[EuroGeographics](https://eurogeographics.org/). Geographical extent
+covers the European Union 28, EFTA countries, and candidate countries.
+The scale of the data set is 1:100 000.
+
+The LAU classification is not covered by any legislative act.
 
 ## See also
 
-[gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md),
-[gisco_countries_2024](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md),
-[`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md),
-[`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
+[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
 
 Other administrative units datasets:
-[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md),
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
 [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
 
@@ -144,19 +126,25 @@ Other administrative units datasets:
 
 ``` r
 # \donttest{
-cntries <- gisco_get_countries()
 
-library(ggplot2)
-ggplot(cntries) +
-  geom_sf()
+ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 
+if (!is.null(ire_lau)) {
+  library(ggplot2)
 
-# Get a region
-
-africa <- gisco_get_countries(region = "Africa")
-ggplot(africa) +
-  geom_sf(fill = "#078930", col = "white") +
-  theme_minimal()
+  ggplot(ire_lau) +
+    geom_sf(shape = 21, col = "#009A44", size = 0.5) +
+    labs(
+      title = "Communes in Ireland",
+      subtitle = "Year 2016",
+      caption = gisco_attributions()
+    ) +
+    theme_void() +
+    theme(text = element_text(
+      colour = "#009A44",
+      family = "serif", face = "bold"
+    ))
+}
 
 # }
 ```
