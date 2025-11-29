@@ -57,9 +57,9 @@ Options available are:
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 }}
 
-\item{country}{Optional. A character vector of country codes. It could be
-either a vector of country names, a vector of ISO3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{character vector of country codes. It could be either a
+vector of country names, a vector of ISO3 country codes or a vector of
+Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{ext}{character. Extension of the file (default \code{"shp"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
@@ -87,6 +87,10 @@ the data set is 1:100 000.
 
 The LAU classification is not covered by any legislative act.
 }
+\section{Note}{
+Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
+}
+
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
@@ -117,7 +121,6 @@ if (!is.null(ire_lau)) {
 
 Other administrative units datasets:
 \code{\link{gisco_get_countries}()},
-\code{\link{gisco_get_lau}()},
 \code{\link{gisco_get_postalcodes}()}
 }
 \concept{admin}

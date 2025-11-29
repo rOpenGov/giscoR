@@ -64,9 +64,9 @@ data. One of:
 \strong{Note that} parameters \code{country}, \code{nuts_level} and \code{nuts_id} would be only
 applied when \code{spatialtype} is \code{"BN"} or \code{"RG"}.}
 
-\item{country}{Optional. A character vector of country codes. It could be
-either a vector of country names, a vector of ISO3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{character vector of country codes. It could be either a
+vector of country names, a vector of ISO3 country codes or a vector of
+Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{nuts_id}{Optional. A character vector of NUTS IDs.}
 
@@ -136,6 +136,7 @@ ggplot(select_nuts) +
 
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
-\code{\link{gisco_get_coastallines}()}
+\code{\link{gisco_get_coastallines}()},
+\code{\link{gisco_get_lau}()}
 }
 \concept{stats}

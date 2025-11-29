@@ -30,7 +30,8 @@ test_that("Get Census POLYGON", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  all <- expect_silent(gisco_get_census(spatialtype = "RG"))
+  # On read should warn
+  expect_message(all <- gisco_get_census(spatialtype = "RG"))
   expect_s3_class(all, "tbl_df")
   expect_s3_class(all, "sf")
   expect_true(unique(sf::st_geometry_type(all)) == "MULTIPOLYGON")

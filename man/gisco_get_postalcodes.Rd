@@ -16,7 +16,8 @@ gisco_get_postalcodes(
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
-  verbose = FALSE
+  verbose = FALSE,
+  ext = "gpkg"
 )
 }
 \arguments{
@@ -24,9 +25,9 @@ gisco_get_postalcodes(
 \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
 "year",TRUE)}.}
 
-\item{country}{Optional. A character vector of country codes. It could be
-either a vector of country names, a vector of ISO3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{character vector of country codes. It could be either a
+vector of country names, a vector of ISO3 country codes or a vector of
+Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
@@ -35,6 +36,10 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
+
+\item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
+\Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
+"ext",TRUE)}.}
 }
 \value{
 A \code{\link[sf:sf]{sf}} object.
@@ -51,6 +56,10 @@ The dataset is released under the CC-BY-SA-4.0 licence and requires the
 following attribution whenever used:
 
 © European Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
+}
+
+\section{Note}{
+Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
 
 \examples{
@@ -83,7 +92,6 @@ if (!is.null(pc_bel)) {
 \seealso{
 Other administrative units datasets:
 \code{\link{gisco_get_communes}()},
-\code{\link{gisco_get_countries}()},
-\code{\link{gisco_get_lau}()}
+\code{\link{gisco_get_countries}()}
 }
 \concept{admin}

@@ -47,9 +47,9 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{country}{Optional. A character vector of country codes. It could be
-either a vector of country names, a vector of ISO3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{character vector of country codes. It could be either a
+vector of country names, a vector of ISO3 country codes or a vector of
+Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{gisco_id}{Optional. A character vector of GISCO_ID LAU values.}
 }
@@ -65,9 +65,9 @@ Urban Areas, that correspond roughly with towns and cities.
 Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
 \seealso{
-Other administrative units datasets:
-\code{\link{gisco_get_communes}()},
-\code{\link{gisco_get_countries}()},
-\code{\link{gisco_get_postalcodes}()}
+Other statistical units datasets:
+\code{\link{gisco_get_census}()},
+\code{\link{gisco_get_coastallines}()},
+\code{\link{gisco_get_nuts}()}
 }
-\concept{admin}
+\concept{stats}

@@ -40,6 +40,13 @@ reference:
     See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units"
     class="external-link">copyright information</a>.
   contents: has_concept("stats")
+- title: GISCO Address API
+  desc: >
+    Query the <a href="https://gisco-services.ec.europa.eu/address_api/"
+    class="external-link">GISCO Addres API</a>, which allows developers to
+    carry out both geocoding and reverse geocoding using a pan-european address
+    database.
+  contents: has_concept("address_api")
 - title: Political
   desc: >
     These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"

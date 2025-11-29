@@ -38,9 +38,9 @@
 #'   * `"INLAND"`: inland boundaries - `LINESTRING` object.
 #'   * `"LB"`: Labels - `POINT` object.
 #'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#' @param country Optional. A character vector of country codes. It could be
-#'   either a vector of country names, a vector of ISO3 country codes or a
-#'   vector of Eurostat country codes. See also [countrycode::countrycode()].
+#' @param country character vector of country codes. It could be either a
+#'   vector of country names, a vector of ISO3 country codes or a vector of
+#'   Eurostat country codes. See also [countrycode::countrycode()].
 #' @param verbose logical. If `TRUE` displays informational messages.
 #' @param resolution character string or number. Resolution of the geospatial
 #'   data. One of:
@@ -52,7 +52,7 @@
 #' @param region Optional. A character vector of UN M49 region codes or
 #'   European Union membership. Possible values are `"Africa"`, `"Americas"`,
 #'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
-#'   European Union (as per 2021). See **World regions** and
+#'   European Union (as per 2021). See **World Regions** and
 #'   [gisco_countrycode].
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
@@ -71,6 +71,10 @@
 #' Regions are defined as per the geographic regions defined by the
 #' UN (see <https://unstats.un.org/unsd/methodology/m49/>.
 #' Under this scheme Cyprus is assigned to Asia.
+#'
+#' # Note
+#' Please check the download and usage provisions on [gisco_attributions()].
+
 #'
 #' @examples
 #' \donttest{
@@ -100,7 +104,7 @@ gisco_get_countries <- function(
   region = NULL,
   ext = "gpkg"
 ) {
-  valid_ext <- c("geojson", "gpkg", "shp")
+  valid_ext <- for_docs("countries", "ext", formatted = FALSE)
   ext <- match_arg_pretty(ext, valid_ext)
 
   api_entry <- get_url_db(
@@ -130,54 +134,59 @@ gisco_get_countries <- function(
 
     return(data_sf)
   }
-  # Speed up if requesting units
-  # If country and  spatialtype %in% c("RG", "LB")
-  if (all(!is.null(country), is.null(region), spatialtype %in% c("RG", "LB"))) {
-    data_sf <- gisco_get_units(
-      id_giscoR = "countries",
-      unit = country,
-      mode = "sf",
-      year = year,
-      epsg = epsg,
-      cache = cache,
-      cache_dir = cache_dir,
-      update_cache = update_cache,
-      verbose = verbose,
-      resolution = resolution,
-      spatialtype = spatialtype
-    )
-    data_sf <- filter_countryregion(data_sf, country, region)
 
+  # Not cached are read from url
+  if (all(isFALSE(cache), ext != "shp")) {
+    msg <- paste0("{.url ", api_entry, "}.")
+    make_msg("info", verbose, "Reading from", msg)
+
+    data_sf <- read_geo_file_sf(api_entry)
+    data_sf <- filter_countryregion(data_sf)
     return(data_sf)
   }
 
-  if (cache) {
-    # Guess source to load
-    namefileload <- load_url(
-      api_entry,
-      filename,
-      cache_dir,
-      "countries",
-      update_cache,
-      verbose
-    )
-  } else {
-    msg <- paste0("{.url ", api_entry, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-    namefileload <- api_entry
-  }
-
-  if (is.null(namefileload)) {
+  # Cache
+  file_local <- load_url(
+    api_entry,
+    filename,
+    cache_dir,
+    "countries",
+    update_cache,
+    verbose
+  )
+  if (is.null(file_local)) {
     return(NULL)
   }
-  # Load
-  if (ext == "shp") {
-    data_sf <- read_geo_file_sf(namefileload)
-  } else {
-    data_sf <- read_geo_file_sf(namefileload)
-  }
 
-  data_sf <- filter_countryregion(data_sf, country, region)
+  # Improve speed using querys if country(es) are selected
+  # We construct the query and passed it to the st_read fun
+
+  cnt_region <- get_countrycodes_region(country, region)
+  filter_col <- find_colname(file_local)
+  q <- NULL
+
+  if (all(!is.null(cnt_region), !is.null(filter_col))) {
+    make_msg("info", verbose, "Speed up using {.pkg sf} query")
+    cnt_region <- sort(cnt_region)
+
+    # Get layer name
+    layer <- get_sf_layer_name(file_local)
+
+    # Construct query
+    q <- paste0(
+      "SELECT * from \"",
+      layer,
+      "\" WHERE ",
+      filter_col[1],
+      " IN (",
+      paste0("'", cnt_region, "'", collapse = ", "),
+      ")"
+    )
+
+    msg <- paste0("{.code ", q, "}")
+    make_msg("info", verbose, "Using query:\n   ", msg)
+  }
+  data_sf <- read_geo_file_sf(file_local, q)
 
   data_sf
 }
@@ -186,27 +195,13 @@ filter_countryregion <- function(data_sf, country = NULL, region = NULL) {
   if (!"CNTR_ID" %in% names(data_sf)) {
     return(data_sf)
   }
-  if (all(is.null(country), is.null(region))) {
+  fil_codes <- get_countrycodes_region(country, region)
+  if (is.null(fil_codes)) {
     return(data_sf)
   }
 
+  data_sf <- data_sf[data_sf$CNTR_ID %in% fil_codes, ]
   data_sf <- data_sf[order(data_sf$CNTR_ID), ]
 
-  if (!is.null(country)) {
-    country <- get_country_code(country)
-    data_sf <- data_sf[data_sf$CNTR_ID %in% country, ]
-  }
-
-  if (!is.null(region)) {
-    region_df <- giscoR::gisco_countrycode
-    cntryregion <- region_df[region_df$un.region.name %in% region, ]
-
-    if ("EU" %in% region) {
-      eu <- region_df[region_df$eu, ]
-      cntryregion <- unique(rbind(cntryregion, eu))
-    }
-
-    data_sf <- data_sf[data_sf$CNTR_ID %in% cntryregion$CNTR_CODE, ]
-  }
   data_sf
 }

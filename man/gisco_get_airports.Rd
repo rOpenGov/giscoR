@@ -27,9 +27,9 @@ gisco_get_ports(
 \arguments{
 \item{year}{Year of reference.}
 
-\item{country}{Optional. A character vector of country codes. It could be
-either a vector of country names, a vector of ISO3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{character vector of country codes. It could be either a
+vector of country names, a vector of ISO3 country codes or a vector of
+Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}

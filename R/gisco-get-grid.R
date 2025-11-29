@@ -126,33 +126,9 @@ gisco_get_grid <- function(
   api_entry <- "https://gisco-services.ec.europa.eu/grid"
   url <- file.path(api_entry, filename)
 
-  file_local <- file.path(gsc_helper_cachedir(cache_dir), "grid", filename)
-  exist_local <- file.exists(file_local)
-
-  msg <- paste0("File already cached: {.file ", file_local, "}.")
-  make_msg(
-    "info",
-    all(verbose, exist_local),
-    msg
-  )
-
-  # nocov start
-  if (resolution %in% c("1", "2") && isFALSE(exist_local)) {
-    verbose <- TRUE
-
-    sel <- menu(
-      c("Yes", "No"),
-      title = "You are about to download a large file (>500M). Proceed?"
-    )
-    if (sel != 1) {
-      stop("Execution halted")
-    }
-  }
-  # nocov end
-
   file_local <- load_url(
     url,
-    basename(file_local),
+    basename(url),
     cache_dir,
     "grid",
     update_cache,
@@ -162,11 +138,6 @@ gisco_get_grid <- function(
   if (is.null(file_local)) {
     return(NULL)
   }
-
-  size <- file.size(file_local)
-  class(size) <- "object_size"
-  size <- format(size, units = "auto")
-  make_msg("info", verbose, size)
 
   data_sf <- read_geo_file_sf(file_local)
 

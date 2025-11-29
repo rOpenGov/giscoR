@@ -7,7 +7,8 @@
 #'
 #' @family admin
 #' @inheritParams gisco_get_countries
-#' @inherit gisco_get_countries source return note
+#' @inherit gisco_get_countries source return
+#' @inheritSection gisco_get_countries Note
 #' @encoding UTF-8
 #' @seealso
 #' [gisco_get_lau()].
@@ -130,21 +131,7 @@ gisco_get_communes <- function(
     msg <- paste0("{.code ", q, "}")
     make_msg("info", verbose, "Using query:\n   ", msg)
 
-    data_sf <- try(
-      suppressWarnings(
-        read_geo_file_sf(file_local, q)
-      ),
-      silent = TRUE
-    )
-    if (inherits(data_sf, "try-error")) {
-      make_msg(
-        "danger",
-        TRUE,
-        "Problem with the query",
-        "retrying without country filters."
-      )
-      data_sf <- read_geo_file_sf(file_local)
-    }
+    data_sf <- read_geo_file_sf(file_local, q)
   } else {
     data_sf <- read_geo_file_sf(file_local)
   }

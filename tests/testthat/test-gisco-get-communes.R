@@ -32,7 +32,9 @@ test_that("Communes online", {
 
   # Trying to query a dataset without a country field. Should show a message
   # even with verbose TRUE
-  expect_message(gisco_get_communes(
+
+  # Fixed now
+  expect_silent(gisco_get_communes(
     spatialtype = "COASTL",
     country = "LU",
     verbose = FALSE

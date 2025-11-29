@@ -83,6 +83,7 @@ ggplot(coast) +
 
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
+\code{\link{gisco_get_lau}()},
 \code{\link{gisco_get_nuts}()}
 }
 \concept{stats}

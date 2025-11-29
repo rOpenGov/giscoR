@@ -10,7 +10,7 @@
 #'
 #' @note
 #' Please check the download and usage provisions on [gisco_attributions()].
-#' @family admin
+#' @family stats
 #'
 #' @return A [`sf`][sf::st_sf] object specified by `spatialtype`. In the case of
 #'   [gisco_get_lau()], a `POLYGON` object.
@@ -87,8 +87,12 @@ gisco_get_lau <- function(
 
   # Improve speed using querys if country(es) are selected
   # We construct the query and passed it to the st_read fun
-
-  if (any(!is.null(country), !is.null(gisco_id))) {
+  filter_col_cnt <- find_colname(file_local)
+  filter_col_id <- find_colname(file_local, "GISCO_ID")
+  if (
+    all(!is.null(country), !is.null(filter_col_cnt)) ||
+      all(!is.null(gisco_id), !is.null(filter_col_id))
+  ) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
     if (!is.null(country)) {
       country <- get_country_code(country)
@@ -102,22 +106,24 @@ gisco_get_lau <- function(
 
     where <- NULL
 
-    if (!is.null(country)) {
+    if (all(!is.null(country), !is.null(filter_col_cnt))) {
       where <- c(
         where,
         paste0(
-          "CNTR_CODE IN (",
+          filter_col_cnt,
+          " IN (",
           paste0("'", country, "'", collapse = ", "),
           ")"
         )
       )
     }
 
-    if (!is.null(gisco_id)) {
+    if (all(!is.null(gisco_id), !is.null(filter_col_id))) {
       where <- c(
         where,
         paste0(
-          "GISCO_ID IN (",
+          filter_col_id,
+          " IN (",
           paste0("'", gisco_id, "'", collapse = ", "),
           ")"
         )

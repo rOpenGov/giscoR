@@ -8,12 +8,17 @@
 #' part of the Tercet Regulation (EU) 2017/2391.
 #'
 #' @family admin
+#' @inheritParams gisco_get_countries
+#' @inherit gisco_get_countries source return
+#' @inheritSection gisco_get_countries Note
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
 #'   "year",TRUE)}.
-#'
+#' @param ext character. Extension of the file (default `"gpkg"`). One of
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
+#'   "ext",TRUE)}.
 #' @inheritParams gisco_get_countries
 #' @inherit gisco_get_countries source return note
 #' @encoding UTF-8
@@ -62,14 +67,16 @@ gisco_get_postalcodes <- function(
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
-  verbose = FALSE
+  verbose = FALSE,
+  ext = "gpkg"
 ) {
-  year <- as.character(year)
+  valid_ext <- for_docs("countries", "ext", formatted = FALSE)
+  ext <- match_arg_pretty(ext, valid_ext)
 
   url <- get_url_db(
     "postalcodes",
     year = year,
-    ext = "gpkg",
+    ext = ext,
     fn = "gisco_get_postalcodes"
   )
   filename <- basename(url)
@@ -90,7 +97,8 @@ gisco_get_postalcodes <- function(
   # Improve speed using querys if country(es) are selected
   # We construct the query and passed it to the st_read fun
 
-  if (!is.null(country)) {
+  filter_col <- find_colname(file_local)
+  if (all(!is.null(country), !is.null(filter_col))) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
     country <- get_country_code(country)
 
@@ -101,7 +109,9 @@ gisco_get_postalcodes <- function(
     q <- paste0(
       "SELECT * from \"",
       layer,
-      "\" WHERE CNTR_ID IN (",
+      "\" WHERE ",
+      filter_col,
+      " IN (",
       paste0("'", country, "'", collapse = ", "),
       ")"
     )

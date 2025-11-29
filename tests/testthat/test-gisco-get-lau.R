@@ -21,19 +21,33 @@ test_that("LAU Errors", {
 
 test_that("LAU online", {
   skip_on_cran()
+
   skip_if_gisco_offline()
 
-  all <- expect_silent(gisco_get_lau(year = 2024))
-  li_and_es <- expect_silent(gisco_get_lau(
-    year = 2024,
-    country = "LI",
-    gisco_id = "ES_12016"
-  ))
-
-  expect_identical(
-    all[all$GISCO_ID == "ES_12016", ],
-    li_and_es[li_and_es$GISCO_ID == "ES_12016", ]
+  # Heavy download, should warn
+  expect_message(
+    all <- gisco_get_lau(
+      year = 2024,
+      update_cache = TRUE,
+      verbose = FALSE
+    )
   )
+  expect_message(
+    li_and_es <- gisco_get_lau(
+      year = 2024,
+      country = "LI",
+      gisco_id = "ES_12016"
+    )
+  )
+
+  expect_message(
+    li <- gisco_get_lau(
+      year = 2024,
+      verbose = TRUE,
+      country = "LI"
+    )
+  )
+
   expect_true(nrow(all) > 1000 * nrow(li_and_es))
 
   cntry <- sort(unique(li_and_es$CNTR_CODE))

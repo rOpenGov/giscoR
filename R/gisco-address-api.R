@@ -12,34 +12,34 @@
 #' The API supports fuzzy searching (also referred to as approximate string
 #' matching) for all parameters of each endpoint.
 #'
-#' @name gisco_addressapi
-#' @rdname gisco_addressapi
+#' @name gisco_address_api
+#' @rdname gisco_address_api
+#' @inheritParams gisco_get_nuts
+#' @family address_api
+#' @export
 #'
 #' @param country Country code (`country = "LU"`).
 #' @param x,y x and y coordinates (as longitude and latitude) to be converted
 #'  into a human-readable address.
 #' @param province A province within a country. For a list of provinces within a
 #'  certain country use the provinces endpoint
-#'  (`gisco_addressapi_provinces(country = "LU")`).
+#'  (`gisco_address_api_provinces(country = "LU")`).
 #' @param city A city within a province. For a list of cities within a certain
 #'   province use the cities endpoint
-#'   (`gisco_addressapi_cities(province = "capellen")`).
+#'   (`gisco_address_api_cities(province = "capellen")`).
 #' @param road A road within a city.
 #' @param housenumber The house number or house name within a road or street.
 #' @param postcode Can be used in combination with the previous parameters.
 #'
-#' @inheritParams gisco_get_nuts
 #'
 #' @returns
-#'
 #' A [tibble][tibble::tbl_df] in most cases, except
-#' `gisco_addressapi_search()`, `gisco_addressapi_reverse()` and
-#' `gisco_addressapi_bbox()`, that return a [`sf`][sf::st_sf] object.
-#'
+#' `gisco_address_api_search()`, `gisco_address_api_reverse()` and
+#' `gisco_address_api_bbox()`, that return a [`sf`][sf::st_sf] object.
 #'
 #' @details
 #'
-#' ```{r child = "man/chunks/addressapi.Rmd"}
+#' ```{r child = "man/chunks/address_api.Rmd"}
 #' ```
 #'
 #' @seealso
@@ -47,19 +47,17 @@
 #' See the docs:
 #' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 #'
-#' @family tools
 #'
-#' @export
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #' # Cities in a region
 #'
-#' gisco_addressapi_cities(country = "PT", province = "LISBOA")
+#' gisco_address_api_cities(country = "PT", province = "LISBOA")
 #'
 #'
 #' # Geocode and reverse geocode with sf objects
 #' # Structured search
-#' struct <- gisco_addressapi_search(
+#' struct <- gisco_address_api_search(
 #'   country = "ES", city = "BARCELONA",
 #'   road = "GRACIA"
 #' )
@@ -67,11 +65,11 @@
 #' struct
 #'
 #' # Reverse geocoding
-#' reverse <- gisco_addressapi_reverse(x = struct$X[1], y = struct$Y[1])
+#' reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 #'
 #' reverse
 #' }
-gisco_addressapi_search <- function(
+gisco_address_api_search <- function(
   country = NULL,
   province = NULL,
   city = NULL,
@@ -93,9 +91,9 @@ gisco_addressapi_search <- function(
   call_api(custom_query, apiurl, verbose)
 }
 
-#' @rdname gisco_addressapi
+#' @rdname gisco_address_api
 #' @export
-gisco_addressapi_reverse <- function(x, y, country = NULL, verbose = FALSE) {
+gisco_address_api_reverse <- function(x, y, country = NULL, verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/reverse?"
   custom_query <- list(
     x = x,
@@ -107,9 +105,9 @@ gisco_addressapi_reverse <- function(x, y, country = NULL, verbose = FALSE) {
 }
 
 
-#' @rdname gisco_addressapi
+#' @rdname gisco_address_api
 #' @export
-gisco_addressapi_bbox <- function(
+gisco_address_api_bbox <- function(
   country = NULL,
   province = NULL,
   city = NULL,
@@ -153,9 +151,9 @@ gisco_addressapi_bbox <- function(
   res
 }
 
-#' @rdname gisco_addressapi
+#' @rdname gisco_address_api
 #' @export
-gisco_addressapi_countries <- function(verbose = FALSE) {
+gisco_address_api_countries <- function(verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/countries"
 
   res <- call_api(list(NULL), apiurl, verbose)
@@ -167,9 +165,9 @@ gisco_addressapi_countries <- function(verbose = FALSE) {
   res
 }
 
-#' @rdname gisco_addressapi
+#' @rdname gisco_address_api
 #' @export
-gisco_addressapi_provinces <- function(
+gisco_address_api_provinces <- function(
   country = NULL,
   city = NULL,
   verbose = FALSE
@@ -183,9 +181,9 @@ gisco_addressapi_provinces <- function(
   call_api(custom_query, apiurl, verbose)
 }
 
-#' @rdname gisco_addressapi
+#' @rdname gisco_address_api
 #' @export
-gisco_addressapi_cities <- function(
+gisco_address_api_cities <- function(
   country = NULL,
   province = NULL,
   verbose = FALSE
@@ -199,9 +197,9 @@ gisco_addressapi_cities <- function(
   call_api(custom_query, apiurl, verbose)
 }
 
-#' @rdname gisco_addressapi
+#' @rdname gisco_address_api
 #' @export
-gisco_addressapi_roads <- function(
+gisco_address_api_roads <- function(
   country = NULL,
   province = NULL,
   city = NULL,
@@ -217,9 +215,9 @@ gisco_addressapi_roads <- function(
   call_api(custom_query, apiurl, verbose)
 }
 
-#' @rdname gisco_addressapi
+#' @rdname gisco_address_api
 #' @export
-gisco_addressapi_housenumbers <- function(
+gisco_address_api_housenumbers <- function(
   country = NULL,
   province = NULL,
   city = NULL,
@@ -240,9 +238,9 @@ gisco_addressapi_housenumbers <- function(
 }
 
 
-#' @rdname gisco_addressapi
+#' @rdname gisco_address_api
 #' @export
-gisco_addressapi_postcodes <- function(
+gisco_address_api_postcodes <- function(
   country = NULL,
   province = NULL,
   city = NULL,
@@ -258,9 +256,9 @@ gisco_addressapi_postcodes <- function(
   call_api(custom_query, apiurl, verbose)
 }
 
-#' @rdname gisco_addressapi
+#' @rdname gisco_address_api
 #' @export
-gisco_addressapi_copyright <- function(verbose = FALSE) {
+gisco_address_api_copyright <- function(verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/copyright"
   call_api(custom_query = NULL, apiurl, verbose)
 }
@@ -332,3 +330,55 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
   resp_sf <- sanitize_sf(resp_sf)
   resp_sf
 }
+
+# Export alias ----
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_bbox <- gisco_address_api_bbox
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_cities <- gisco_address_api_cities
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_copyright <- gisco_address_api_copyright
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_countries <- gisco_address_api_countries
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_housenumbers <- gisco_address_api_housenumbers
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_postcodes <- gisco_address_api_postcodes
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_provinces <- gisco_address_api_provinces
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_reverse <- gisco_address_api_reverse
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_roads <- gisco_address_api_roads
+
+#' @export
+#' @rdname gisco_address_api
+#' @usage NULL
+gisco_addressapi_search <- gisco_address_api_search

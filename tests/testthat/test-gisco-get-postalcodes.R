@@ -29,14 +29,14 @@ test_that("Postal codes online", {
     verbose = TRUE
   ))
 
-  li <- expect_silent(gisco_get_postalcodes(country = "Malta"))
+  expect_message(li <- gisco_get_postalcodes(country = "Malta"))
   expect_s3_class(li, "sf")
   expect_s3_class(li, "tbl_df")
   expect_length(unique(li$CNTR_ID), 1)
   expect_identical(as.character(unique(li$CNTR_ID)), "MT")
 
   # Several
-  li2 <- expect_silent(gisco_get_postalcodes(country = c("MT", "LU")))
+  expect_message(li2 <- gisco_get_postalcodes(country = c("MT", "LU")))
   expect_length(unique(li2$CNTR_ID), 2)
   expect_s3_class(li2, "sf")
   expect_s3_class(li2, "tbl_df")
@@ -47,4 +47,39 @@ test_that("Postal codes online", {
   all <- gisco_get_postalcodes()
   expect_s3_class(all, "sf")
   expect_s3_class(all, "tbl_df")
+})
+test_that("Extensions", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  # Error
+  expect_snapshot(
+    gisco_get_postalcodes(ext = "docx"),
+    error = TRUE
+  )
+
+  cdir <- file.path(tempdir(), "testpcode")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+
+  # Filter
+  db_shp <- gisco_get_postalcodes(
+    cache_dir = cdir,
+    ext = "shp",
+    verbose = TRUE,
+    country = "LU"
+  )
+  expect_length(
+    list.files(cdir, recursive = TRUE, pattern = "shp.zip"),
+    1
+  )
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
 })

@@ -1,7 +1,7 @@
 # No conexion
 
     Code
-      fend <- gisco_addressapi_bbox()
+      fend <- gisco_address_api_bbox()
     Message
       x Offline
       > Returning "NULL"

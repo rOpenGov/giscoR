@@ -94,6 +94,17 @@ test_that("Cache vs non-cached", {
     "countries/CNTR_RG_60M_2024_4326.gpkg"
   )
 
+  # shp is always cached
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 0)
+
+  f <- gisco_get_countries(
+    resolution = 60,
+    cache_dir = cdir,
+    ext = "shp",
+    cache = FALSE
+  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 1)
+
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
@@ -132,12 +143,13 @@ test_that("Filter countries", {
 
   db_cnts <- gisco_get_countries(
     resolution = "60",
+    verbose = TRUE,
     country = c("Spain", "Angola", "Japan")
   )
   expect_identical(nrow(db_cnts), 3L)
   expect_identical(
-    db_cnts$CNTR_ID,
-    sort(get_country_code(c("Spain", "Angola", "Japan")))
+    sort(db_cnts$CNTR_ID),
+    sort(get_country_code(c("Angola", "Spain", "Japan")))
   )
 })
 

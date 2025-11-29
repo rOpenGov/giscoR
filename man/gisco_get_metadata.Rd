@@ -29,9 +29,11 @@ Get a table with the names and ids of administrative of statistical units.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
+\donttest{
 cities <- gisco_get_metadata(id = "urban_audit", year = 2020)
 
 cities
+}
 \dontshow{\}) # examplesIf}
 }
 \seealso{
