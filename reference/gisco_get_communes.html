@@ -76,15 +76,15 @@ see <code><a href="gisco_get_lau.html">gisco_get_lau()</a></code>.</p>
 
 <dl><dt id="arg-year">year<a class="anchor" aria-label="anchor" href="#arg-year"></a></dt>
 <dd><p>character string or number. Release year of the file. One of
-<code>"2024"</code>, <code>"2020"</code>, <code>"2016"</code>, <code>"2013"</code>, <code>"2010"</code>, <code>"2006"</code>, <code>"2001"</code>
+<code>"2016"</code>, <code>"2013"</code>, <code>"2010"</code>, <code>"2008"</code>, <code>"2006"</code>, <code>"2004"</code>, <code>"2001"</code>
 .</p></dd>
 
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
-<dd><p>projection of the map: 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>.
-One of:</p><ul><li><p><code>"4326"</code>: WGS84</p></li>
-<li><p><code>"3035"</code>: ETRS89 / ETRS-LAEA</p></li>
-<li><p><code>"3857"</code>: Pseudo-Mercator</p></li>
+<dd><p>character string or number. Projection of the map: 4-digit
+<a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a></p></li>
+<li><p><code>"3035"</code>: <a href="https://epsg.io/3035" class="external-link">ETRS89 / ETRS-LAEA</a></p></li>
+<li><p><code>"3857"</code>: <a href="https://epsg.io/3857" class="external-link">Pseudo-Mercator</a></p></li>
 </ul></dd>
 
 
@@ -111,11 +111,11 @@ is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new downlo
 
 <dt id="arg-spatialtype">spatialtype<a class="anchor" aria-label="anchor" href="#arg-spatialtype"></a></dt>
 <dd><p>character string. Type of geometry to be returned.
-Options available are:</p><ul><li><p><code>"BN"</code>: Boundaries - <code>LINESTRING</code> object.</p></li>
+Options available are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+<li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
+<li><p><code>"BN"</code>: Boundaries - <code>LINESTRING</code> object.</p></li>
 <li><p><code>"COASTL"</code>: coastlines - <code>LINESTRING</code> object.</p></li>
 <li><p><code>"INLAND"</code>: inland boundaries - <code>LINESTRING</code> object.</p></li>
-<li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
-<li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
 </ul></dd>
 
 

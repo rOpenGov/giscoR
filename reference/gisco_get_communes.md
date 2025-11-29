@@ -32,18 +32,19 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. One of `"2024"`,
-  `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`, `"2001"` .
+  character string or number. Release year of the file. One of `"2016"`,
+  `"2013"`, `"2010"`, `"2008"`, `"2006"`, `"2004"`, `"2001"` .
 
 - epsg:
 
-  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
+  character string or number. Projection of the map: 4-digit [EPSG
+  code](https://epsg.io/). One of:
 
-  - `"4326"`: WGS84
+  - `"4326"`: [WGS84](https://epsg.io/4326)
 
-  - `"3035"`: ETRS89 / ETRS-LAEA
+  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035)
 
-  - `"3857"`: Pseudo-Mercator
+  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857)
 
 - cache:
 
@@ -72,15 +73,15 @@ Copyright:
   character string. Type of geometry to be returned. Options available
   are:
 
+  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+
+  - `"LB"`: Labels - `POINT` object.
+
   - `"BN"`: Boundaries - `LINESTRING` object.
 
   - `"COASTL"`: coastlines - `LINESTRING` object.
 
   - `"INLAND"`: inland boundaries - `LINESTRING` object.
-
-  - `"LB"`: Labels - `POINT` object.
-
-  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
 - country:
 

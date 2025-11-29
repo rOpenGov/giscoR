@@ -88,15 +88,15 @@ Copyright:
   character string. Type of geometry to be returned. Options available
   are:
 
+  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+
+  - `"LB"`: Labels - `POINT` object.
+
   - `"BN"`: Boundaries - `LINESTRING` object.
 
   - `"COASTL"`: coastlines - `LINESTRING` object.
 
   - `"INLAND"`: inland boundaries - `LINESTRING` object.
-
-  - `"LB"`: Labels - `POINT` object.
-
-  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
 - country:
 
