@@ -188,7 +188,11 @@ country names, ISO3 and Eurostat codes on one single call.</p>
 <span></span>
 <span><span class="co"># Coastal lines</span></span>
 <span></span>
-<span><span class="va">coast</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get_coastallines.html">gisco_get_coastallines</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="st">"20"</span>, epsg <span class="op">=</span> <span class="st">"4326"</span>, year <span class="op">=</span> <span class="st">"2016"</span><span class="op">)</span></span>
+<span><span class="va">coast</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get_coastal_lines.html">gisco_get_coastal_lines</a></span><span class="op">(</span></span>
+<span>  resolution <span class="op">=</span> <span class="st">"20"</span>,</span>
+<span>  epsg <span class="op">=</span> <span class="st">"4326"</span>,</span>
+<span>  year <span class="op">=</span> <span class="st">"2016"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Plot</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">coast</span><span class="op">)</span> <span class="op">+</span></span>
@@ -235,7 +239,7 @@ packages are recommended, as they provide great color palettes.</p>
 <span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a>indexed <span class="dv">0</span>B <span class="cf">in</span>  <span class="dv">0</span>s, <span class="dv">0</span>B<span class="sc">/</span>s</span>
 <span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a>indexed <span class="fl">2.15</span>GB <span class="cf">in</span>  <span class="dv">0</span>s, <span class="fl">2.15</span>GB<span class="sc">/</span>s</span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>                                                                                           </span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>                                                                                                </span>
 <span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a></span>
 <span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a>nuts2_sf <span class="ot">&lt;-</span> nuts2 <span class="sc">%&gt;%</span></span>
 <span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a>  <span class="fu">left_join</span>(pps, <span class="at">by =</span> <span class="st">"geo"</span>) <span class="sc">%&gt;%</span></span>

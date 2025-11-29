@@ -1,18 +1,19 @@
-# Get GISCO coastlines [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons
+# Coastal lines dataset
 
-Downloads worldwide coastlines
+Downloads worldwide coastlines.
 
 ## Usage
 
 ``` r
-gisco_get_coastallines(
-  year = "2016",
-  epsg = "4326",
+gisco_get_coastal_lines(
+  year = 2016,
+  epsg = 4326,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = "20"
+  resolution = 20,
+  ext = "gpkg"
 )
 ```
 
@@ -20,11 +21,15 @@ gisco_get_coastallines(
 
 <https://gisco-services.ec.europa.eu/distribution/v2/>
 
+Copyright:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>
+
 ## Arguments
 
 - year:
 
-  Release year. One of `"2006"`, `"2010"`, `"2013"` or `"2016"`.
+  character string or number. Release year of the file. One of `"2016"`,
+  `"2013"`, `"2010"`, `"2006"` .
 
 - epsg:
 
@@ -72,10 +77,14 @@ gisco_get_coastallines(
 
   - `"01"`: 1:1million
 
+- ext:
+
+  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
+  `"gpkg"`, `"geojson"` .
+
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
-object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Note
 
@@ -84,7 +93,7 @@ Please check the download and usage provisions on
 
 ## See also
 
-[gisco_coastallines](https://ropengov.github.io/giscoR/reference/gisco_coastallines.md)
+[gisco_coastallines](https://ropengov.github.io/giscoR/reference/gisco_coastallines.md).
 
 Other statistical units datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
@@ -94,16 +103,16 @@ Other statistical units datasets:
 ## Examples
 
 ``` r
-coast <- gisco_get_coastallines()
+coast <- gisco_get_coastal_lines()
 
 library(ggplot2)
 
 ggplot(coast) +
   geom_sf(color = "#1278AB", fill = "#FDFBEA") +
-  # Zoom on Caribe
+  # Zoom on Mediterranean Sea
   coord_sf(
-    xlim = c(-99, -49),
-    ylim = c(4, 30)
+    xlim = c(-4, 35),
+    ylim = c(31, 45)
   ) +
   theme_minimal() +
   theme(

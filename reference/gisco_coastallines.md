@@ -27,7 +27,7 @@ file.
 
 ## See also
 
-[`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md)
+[`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md)
 
 Other dataset:
 [`gisco_countries`](https://ropengov.github.io/giscoR/reference/gisco_countries.md),
@@ -50,7 +50,7 @@ gisco_coastallines
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 2,129 × 2
 #>    COAS_ID                                                              geometry
-#>  *   <dbl>                                                         <POLYGON [°]>
+#>  *   <int>                                                         <POLYGON [°]>
 #>  1       1 ((113.6473 22.70988, 113.7385 22.70698, 114.0376 22.5037, 113.8981 2…
 #>  2       2 ((-58.83353 -63.55264, -59.49395 -63.83298, -59.87452 -63.83559, -60…
 #>  3       3 ((-94.64807 74.07687, -95.03269 73.98793, -95.11147 73.94852, -95.21…

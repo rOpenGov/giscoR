@@ -92,7 +92,7 @@ Silent function.
 
 See the years available in the corresponding functions:
 
-- [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md).
+- [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md).
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
 

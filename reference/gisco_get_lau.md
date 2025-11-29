@@ -92,5 +92,5 @@ Please check the download and usage provisions on
 
 Other statistical units datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
-[`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
+[`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)

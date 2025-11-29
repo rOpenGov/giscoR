@@ -366,11 +366,8 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 - [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md)
   : Census data
 
-- [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md)
-  :
-
-  Get GISCO coastlines
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons
+- [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md)
+  : Coastal lines dataset
 
 - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
   :
