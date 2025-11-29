@@ -5,6 +5,9 @@
 \title{Census data}
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census}
+
+Copyright:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}
 }
 \usage{
 gisco_get_census(
@@ -16,7 +19,8 @@ gisco_get_census(
 )
 }
 \arguments{
-\item{year}{Year of reference. Currently only \code{"2011"} is supported}
+\item{year}{character string or number. Release year of the file. Currently
+only \code{"2011"} is provided.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
@@ -52,7 +56,7 @@ pts
 }
 \seealso{
 Other statistical units datasets:
-\code{\link{gisco_get_coastallines}()},
+\code{\link{gisco_get_coastal_lines}()},
 \code{\link{gisco_get_lau}()},
 \code{\link{gisco_get_nuts}()}
 }

@@ -3,8 +3,8 @@
 library(giscoR)
 library(sf)
 
-gisco_coastallines <- gisco_get_coastallines(
-  resolution = "20",
+gisco_coastallines <- gisco_get_coastal_lines(
+  resolution = 20,
   year = "2016",
   epsg = "4326",
   update_cache = TRUE,

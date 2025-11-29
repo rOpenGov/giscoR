@@ -65,7 +65,7 @@ Downloads zipped data from GISCO and extract them on the
 \details{
 See the years available in the corresponding functions:
 \itemize{
-\item \code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}}.
+\item \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}}.
 \item \code{\link[=gisco_get_communes]{gisco_get_communes()}}.
 \item \code{\link[=gisco_get_countries]{gisco_get_countries()}}.
 \item \code{\link[=gisco_get_lau]{gisco_get_lau()}}.

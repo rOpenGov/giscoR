@@ -97,7 +97,7 @@ NULL
 #'
 #' @docType data
 #'
-#' @seealso [gisco_get_coastallines()]
+#' @seealso [gisco_get_coastal_lines()]
 #'
 #' @examples
 #' library(sf)

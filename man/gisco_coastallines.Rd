@@ -26,7 +26,7 @@ gisco_coastallines
 
 }
 \seealso{
-\code{\link[=gisco_get_coastallines]{gisco_get_coastallines()}}
+\code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}}
 
 Other dataset: 
 \code{\link{gisco_countries}},

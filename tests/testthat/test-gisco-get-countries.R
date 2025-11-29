@@ -153,6 +153,71 @@ test_that("Filter countries", {
   )
 })
 
+test_that("Filter countries no cached", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  db_cached <- gisco_get_countries(region = "Africa")
+  db_no_cache <- gisco_get_countries(
+    region = "Africa",
+    cache = FALSE
+  )
+  expect_lt(nrow(db_cached), 70)
+  expect_s3_class(db_cached, "sf")
+  expect_s3_class(db_cached, "tbl_df")
+
+  # See EU
+  db_cached_eu <- gisco_get_countries(
+    region = "EU",
+    cache = FALSE
+  )
+  expect_identical(nrow(db_cached_eu), 27L)
+
+  # Combine
+  db_cached_full <- gisco_get_countries(
+    resolution = "60",
+    cache = FALSE,
+    region = c("EU", "Africa")
+  )
+  expect_identical(nrow(db_cached) + nrow(db_cached_eu), nrow(db_cached_full))
+
+  # Combine with cnt
+  db_cached_full <- gisco_get_countries(
+    resolution = "60",
+    country = c("Spain", "Angola", "Japan"),
+    region = c("EU", "Africa"),
+    cache = FALSE
+  )
+  expect_identical(nrow(db_cached_full), 2L)
+  expect_identical(
+    db_cached_full$ISO3_CODE,
+    get_country_code(c("Angola", "Spain"), "iso3c")
+  )
+
+  db_cnts <- gisco_get_countries(
+    resolution = "60",
+    cache = FALSE,
+    country = c("Spain", "Angola", "Japan")
+  )
+  expect_identical(nrow(db_cnts), 3L)
+  expect_identical(
+    sort(db_cnts$CNTR_ID),
+    sort(get_country_code(c("Angola", "Spain", "Japan")))
+  )
+
+  # No filters
+  bn <- gisco_get_countries(spatialtype = "COASTL", resolution = "60")
+  bn_nocach <- gisco_get_countries(
+    spatialtype = "COASTL",
+    cache = FALSE,
+    country = "AN ERROR",
+    resolution = "60"
+  )
+
+  expect_identical(nrow(bn), nrow(bn_nocach))
+})
+
+
 test_that("Spatial types", {
   skip_on_cran()
   skip_if_gisco_offline()

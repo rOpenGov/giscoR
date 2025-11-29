@@ -4,18 +4,21 @@
 #' at the corresponding Census.
 #'
 #' @family stats
+#' @inheritParams gisco_get_countries
+#' @inherit gisco_get_countries return
 #' @export
 #'
-#' @param year Year of reference. Currently only `"2011"` is supported
+#' @param year character string or number. Release year of the file. Currently
+#'   only `"2011"` is provided.
 #' @param spatialtype Type of geometry to be returned:
 #'  * `"PT"`: Points - `POINT` object.
 #'  * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#' @inheritParams gisco_get_countries
-#' @inherit gisco_get_countries return
 #'
 #' @source
-#'
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census>
+#'
+#' Copyright:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{

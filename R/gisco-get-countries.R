@@ -141,7 +141,7 @@ gisco_get_countries <- function(
     make_msg("info", verbose, "Reading from", msg)
 
     data_sf <- read_geo_file_sf(api_entry)
-    data_sf <- filter_countryregion(data_sf)
+    data_sf <- filter_countryregion(data_sf, country, region)
     return(data_sf)
   }
 

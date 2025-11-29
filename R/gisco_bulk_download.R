@@ -31,7 +31,7 @@
 #' @details
 #'
 #' See the years available in the corresponding functions:
-#'  * [gisco_get_coastallines()].
+#'  * [gisco_get_coastal_lines()].
 #'  * [gisco_get_communes()].
 #'  * [gisco_get_countries()].
 #'  * [gisco_get_lau()].

@@ -136,7 +136,7 @@ ggplot(select_nuts) +
 
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
-\code{\link{gisco_get_coastallines}()},
+\code{\link{gisco_get_coastal_lines}()},
 \code{\link{gisco_get_lau}()}
 }
 \concept{stats}

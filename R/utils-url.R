@@ -145,6 +145,11 @@ load_url <- function(
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })
+
+  temp_cache <- file.path(tempdir(), "gisco_api_cache")
+  temp_cache <- gsc_helper_cachedir(temp_cache)
+  req <- httr2::req_cache(req, temp_cache)
+
   req <- httr2::req_timeout(req, 300)
   req <- httr2::req_retry(req, max_tries = 3)
   if (verbose) {
