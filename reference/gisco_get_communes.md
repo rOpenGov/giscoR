@@ -37,20 +37,20 @@ Copyright:
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
-  code](https://epsg.io/). One of:
+  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
 
-  - `"4326"`: [WGS84](https://epsg.io/4326)
+  - `"4326"`: WGS84
 
-  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035)
+  - `"3035"`: ETRS89 / ETRS-LAEA
 
-  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857)
+  - `"3857"`: Pseudo-Mercator
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
-  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+  **\[deprecated\]**. These functions always caches the result due to
+  the size. `cache_dir` can be set to
+  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html), so the file
+  would be deleted when the **R** session is closed.
 
 - update_cache:
 
