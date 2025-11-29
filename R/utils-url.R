@@ -151,7 +151,7 @@ load_url <- function(
     req <- httr2::req_progress(req)
   }
 
-  test_off <- getOption("gisco_test_off", NULL)
+  test_off <- getOption("gisco_test_off", FALSE)
 
   if (any(!httr2::is_online(), test_off)) {
     cli::cli_alert_danger("Offline")
@@ -173,11 +173,20 @@ load_url <- function(
     req <- httr2::req_progress(req)
   }
 
+  # Testing
+  test_offline <- getOption("gisco_test_err", FALSE)
+  if (test_offline) {
+    # Modify to redirect to fake url
+    req <- httr2::req_url(
+      req,
+      "https://gisco-services.ec.europa.eu/distribution/v2/fake"
+    )
+    file_local <- tempfile(fileext = ".txt")
+  }
+
   resp <- httr2::req_perform(req, path = file_local)
 
-  # Testing
-  test_offline <- getOption("gisco_test_err", NULL)
-  if (any(httr2::resp_is_error(resp), test_offline)) {
+  if (httr2::resp_is_error(resp)) {
     unlink(file_local, force = TRUE)
     get_status_code <- httr2::resp_status(resp) # nolint
     get_status_desc <- httr2::resp_status_desc(resp) # nolint

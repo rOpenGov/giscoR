@@ -23,17 +23,25 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
       FALSE
     })
 
-    test_off <- getOption("gisco_test_off", NULL)
+    test_off <- getOption("gisco_test_off", FALSE)
 
     if (any(!httr2::is_online(), test_off)) {
       return(NULL)
     }
 
-    resp <- httr2::req_perform(req)
     # Testing
-    test_offline <- getOption("gisco_test_err", NULL)
+    test_offline <- getOption("gisco_test_err", FALSE)
+    if (test_offline) {
+      # Modify to redirect to fake url
+      req <- httr2::req_url(
+        req,
+        "https://gisco-services.ec.europa.eu/distribution/v2/fake"
+      )
+    }
 
-    if (any(httr2::resp_is_error(resp), test_offline)) {
+    resp <- httr2::req_perform(req)
+
+    if (httr2::resp_is_error(resp)) {
       return(NULL)
     }
 

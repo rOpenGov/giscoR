@@ -280,7 +280,7 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
   })
   req <- httr2::req_timeout(req, 100000)
 
-  test_off <- getOption("gisco_test_off", NULL)
+  test_off <- getOption("gisco_test_off", FALSE)
 
   if (any(!httr2::is_online(), test_off)) {
     cli::cli_alert_danger("Offline")
@@ -288,12 +288,19 @@ call_api <- function(custom_query, apiurl, verbose = FALSE) {
     return(NULL)
   }
 
+  # Testing
+  test_offline <- getOption("gisco_test_err", FALSE)
+  if (test_offline) {
+    # Modify to redirect to fake url
+    req <- httr2::req_url(
+      req,
+      "https://gisco-services.ec.europa.eu/distribution/v2/fake"
+    )
+  }
+
   resp <- httr2::req_perform(req)
 
-  # Testing purposes only
-  # Mock the behavior of offline
-  test_offline <- getOption("gisco_test_err", NULL)
-  if (any(httr2::resp_is_error(resp), test_offline)) {
+  if (httr2::resp_is_error(resp)) {
     get_status_code <- httr2::resp_status(resp) # nolint
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
