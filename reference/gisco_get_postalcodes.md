@@ -14,7 +14,8 @@ gisco_get_postalcodes(
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
-  verbose = FALSE
+  verbose = FALSE,
+  ext = "gpkg"
 )
 ```
 
@@ -34,9 +35,9 @@ Copyright:
 
 - country:
 
-  Optional. A character vector of country codes. It could be either a
-  vector of country names, a vector of ISO3 country codes or a vector of
-  Eurostat country codes. See also
+  character vector of country codes. It could be either a vector of
+  country names, a vector of ISO3 country codes or a vector of Eurostat
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - cache_dir:
@@ -54,6 +55,11 @@ Copyright:
 
   logical. If `TRUE` displays informational messages.
 
+- ext:
+
+  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
+  `"gpkg"`, `"geojson"` .
+
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
@@ -66,12 +72,16 @@ following attribution whenever used:
 © European Union - GISCO, 2024, postal code point dataset, Licence
 CC-BY-SA 4.0.
 
+## Note
+
+Please check the download and usage provisions on
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
+
 ## See also
 
 Other administrative units datasets:
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
 
 ## Examples
 
@@ -80,6 +90,9 @@ Other administrative units datasets:
 # \dontrun{
 
 pc_bel <- gisco_get_postalcodes(country = "BE")
+#> ! The file to be downloaded has size 138.6 Mb.
+#> ! File size: 138.6 Mb
+#> ℹ Reading file with sf. It can take a while, hold on!
 
 if (!is.null(pc_bel)) {
   library(ggplot2)

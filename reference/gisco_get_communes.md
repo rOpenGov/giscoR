@@ -84,9 +84,9 @@ Copyright:
 
 - country:
 
-  Optional. A character vector of country codes. It could be either a
-  vector of country names, a vector of ISO3 country codes or a vector of
-  Eurostat country codes. See also
+  character vector of country codes. It could be either a vector of
+  country names, a vector of ISO3 country codes or a vector of Eurostat
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - ext:
@@ -113,13 +113,17 @@ The scale of the data set is 1:100 000.
 
 The LAU classification is not covered by any legislative act.
 
+## Note
+
+Please check the download and usage provisions on
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
+
 ## See also
 
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
 
 Other administrative units datasets:
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
 [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
 
 ## Examples

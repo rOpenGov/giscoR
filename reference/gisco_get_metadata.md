@@ -48,6 +48,7 @@ Other database:
 ## Examples
 
 ``` r
+# \donttest{
 cities <- gisco_get_metadata(id = "urban_audit", year = 2020)
 
 cities
@@ -66,4 +67,5 @@ cities
 #> 10 FR017L2   F         FR        FUA of Metz        ""        ""        ""      
 #> # ℹ 1,710 more rows
 #> # ℹ 3 more variables: NUTS3_2016 <chr>, AREA_SQM <dbl>, NUTS3_2021 <chr>
+# }
 ```

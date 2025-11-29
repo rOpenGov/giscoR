@@ -47,9 +47,8 @@ CRAN release: 2024-05-29
   - [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md).
   - Add access to [GISCO Address
     API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home)
-    through new functions. See
-    [`?gisco_addressapi`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-    to know more ([\#84](https://github.com/rOpenGov/giscoR/issues/84)).
+    through new functions. See `?gisco_addressapi` to know more
+    ([\#84](https://github.com/rOpenGov/giscoR/issues/84)).
 - New dependency: **jsonlite** added to ‘Imports’.
 - Update `gisco_db` with the most up-to-date released data.
 - Default year of some functions updated to the latest available data:

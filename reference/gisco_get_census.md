@@ -56,6 +56,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 Other statistical units datasets:
 [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
+[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
 
 ## Examples

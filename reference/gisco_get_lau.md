@@ -68,9 +68,9 @@ gisco_get_lau(
 
 - country:
 
-  Optional. A character vector of country codes. It could be either a
-  vector of country names, a vector of ISO3 country codes or a vector of
-  Eurostat country codes. See also
+  character vector of country codes. It could be either a vector of
+  country names, a vector of ISO3 country codes or a vector of Eurostat
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - gisco_id:
@@ -90,7 +90,7 @@ Please check the download and usage provisions on
 
 ## See also
 
-Other administrative units datasets:
-[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
-[`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
+Other statistical units datasets:
+[`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
+[`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
+[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)

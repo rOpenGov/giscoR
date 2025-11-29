@@ -15,17 +15,8 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-unit
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
   : Communes data set
-
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
   : Country data set
-
-- [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
-  :
-
-  Get GISCO urban areas
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
-  points and lines
-
 - [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
   : Postal codes data set
 
@@ -44,12 +35,38 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
   Get GISCO coastlines
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons
 
+- [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+  :
+
+  Get GISCO urban areas
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
+  points and lines
+
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
   :
 
   Get GISCO NUTS
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
   points and lines
+
+## GISCO Address API
+
+Query the [GISCO Addres
+API](https://gisco-services.ec.europa.eu/address_api/), which allows
+developers to carry out both geocoding and reverse geocoding using a
+pan-european address database.
+
+- [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  [`gisco_address_api_reverse()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  [`gisco_address_api_bbox()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  [`gisco_address_api_countries()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  [`gisco_address_api_provinces()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  [`gisco_address_api_cities()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  [`gisco_address_api_roads()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  [`gisco_address_api_housenumbers()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  [`gisco_address_api_postcodes()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  [`gisco_address_api_copyright()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  : GISCO Address API
 
 ## Political
 
@@ -83,18 +100,6 @@ man-made features
 ## Tools
 
 Access to other GISCO tools
-
-- [`gisco_addressapi_search()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  [`gisco_addressapi_reverse()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  [`gisco_addressapi_bbox()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  [`gisco_addressapi_countries()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  [`gisco_addressapi_provinces()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  [`gisco_addressapi_cities()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  [`gisco_addressapi_roads()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  [`gisco_addressapi_housenumbers()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  [`gisco_addressapi_postcodes()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  [`gisco_addressapi_copyright()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
-  : GISCO Address API
 
 ## Databases
 

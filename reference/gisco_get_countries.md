@@ -100,9 +100,9 @@ Copyright:
 
 - country:
 
-  Optional. A character vector of country codes. It could be either a
-  vector of country names, a vector of ISO3 country codes or a vector of
-  Eurostat country codes. See also
+  character vector of country codes. It could be either a vector of
+  country names, a vector of ISO3 country codes or a vector of Eurostat
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - region:
@@ -128,6 +128,11 @@ Regions are defined as per the geographic regions defined by the UN (see
 <https://unstats.un.org/unsd/methodology/m49/>. Under this scheme Cyprus
 is assigned to Asia.
 
+## Note
+
+Please check the download and usage provisions on
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
+
 ## See also
 
 [gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md),
@@ -137,7 +142,6 @@ is assigned to Asia.
 
 Other administrative units datasets:
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
 [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
 
 ## Examples
