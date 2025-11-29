@@ -164,6 +164,7 @@ load_url <- function(
   # Check before the size to see if we need to inform
   getsize <- httr2::req_perform_connection(req)
   size_dwn <- as.numeric(httr2::resp_header(getsize, "content-length", 0))
+  close(getsize)
   class(size_dwn) <- class(object.size("a"))
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {

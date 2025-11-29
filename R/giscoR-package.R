@@ -7,5 +7,6 @@
 #' @importFrom lifecycle deprecated
 #' @importFrom sf st_crs
 #' @importFrom utils download.file unzip read.csv URLencode
+#' @importFrom utils object.size
 ## usethis namespace: end
 NULL
