@@ -1,55 +1,57 @@
-# Get GISCO urban areas [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons, points and lines
+# Local Administrative Units (LAU) data set
 
-[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
-and `gisco_get_lau()` download shapes of Local Urban Areas, that
-correspond roughly with towns and cities.
+This data set shows pan European administrative boundaries down to
+commune level. Local Administrative units are equivalent to Communes,
+see
+[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
 
 ## Usage
 
 ``` r
 gisco_get_lau(
-  year = "2024",
-  epsg = "4326",
+  year = 2024,
+  epsg = 4326,
   cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
   country = NULL,
-  gisco_id = NULL
+  gisco_id = NULL,
+  ext = "gpkg"
 )
 ```
+
+## Source
+
+<https://gisco-services.ec.europa.eu/distribution/v2/>
+
+Copyright:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>
 
 ## Arguments
 
 - year:
 
-  Release year of the file:
-
-  - For
-    [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
-    one of `"2016"`, `"2013"`, `"2010"`, `"2008"`, `"2006"`, `"2004"`,
-    `"2001"` .
-
-  - For `gisco_get_lau()` one of `"2024"`, `"2023"`, `"2022"`, `"2021"`,
-    `"2020"`, `"2019"`, `"2018"`, `"2017"`, `"2016"`, `"2015"`,
-    `"2014"`, `"2013"`, `"2012"`, `"2011"` .
+  character string or number. Release year of the file. One of `"2024"`,
+  `"2023"`, `"2022"`, `"2021"`, `"2020"`, `"2019"`, `"2018"`, `"2017"`,
+  `"2016"`, `"2015"`, `"2014"`, `"2013"`, `"2012"`, `"2011"` .
 
 - epsg:
 
-  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
+  character string or number. Projection of the map: 4-digit [EPSG
+  code](https://epsg.io/). One of:
 
-  - `"4326"`: WGS84
+  - `"4326"`: [WGS84](https://epsg.io/4326)
 
-  - `"3035"`: ETRS89 / ETRS-LAEA
+  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035)
 
-  - `"3857"`: Pseudo-Mercator
+  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857)
 
 - cache:
 
   **\[deprecated\]**. These functions always caches the result due to
-  the size. `cache_dir` can be set to
-  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html), so the file
-  would be deleted when the **R** session is closed.
+  the size. See **See Caching strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
@@ -75,13 +77,35 @@ gisco_get_lau(
 
 - gisco_id:
 
-  Optional. A character vector of GISCO_ID LAU values.
+  Optional. A character vector of `GISCO_ID` LAU values.
+
+- ext:
+
+  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
+  `"gpkg"`, `"geojson"` .
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-specified by `spatialtype`. In the case of `gisco_get_lau()`, a
-`POLYGON` object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+
+## Details
+
+The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
+nomenclature are hierarchical classifications of statistical regions
+that together subdivide the EU economic territory into regions of five
+different levels (NUTS 1, 2 and 3 and LAU , respectively, moving from
+larger to smaller territorial units).
+
+The LAU classification is not covered by any legislative act.
+Geographical extent covers the European Union, EFTA countries, and
+candidate countries. The scale of the data set is 1:100 000.
+
+The data contains the National Statistical agency LAU code which can be
+joined to LAU lists as well as a field `GISCO_ID` which is a unique
+identifier consisting of the Country code and LAU code.
+
+Total resident population figures (31 December) have also been added ins
+some versions based on the associated LAU lists
 
 ## Note
 
@@ -90,7 +114,38 @@ Please check the download and usage provisions on
 
 ## See also
 
+[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
+
 Other statistical units datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
+
+## Examples
+
+``` r
+# \dontrun{
+
+lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
+#> ! The file to be downloaded has size 74.6 Mb.
+
+if (!is.null(lu_lau)) {
+  library(ggplot2)
+
+  ggplot(lu_lau) +
+    geom_sf(aes(fill = POP_DENS_2024)) +
+    labs(
+      title = "Population Density in Luxembourg",
+      subtitle = "Year 2024",
+      caption = gisco_attributions()
+    ) +
+    scale_fill_viridis_b(
+      option = "cividis",
+      label = \(x) prettyNum(x, big.mark = ",")
+    ) +
+    theme_void() +
+    labs(fill = "pop/km2")
+}
+
+# }
+```

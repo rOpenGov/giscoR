@@ -1,4 +1,4 @@
-# Get grid cells covering covering Europe for various resolutions
+# Grid data set
 
 These datasets contain grid cells covering the European land territory,
 for various resolutions from 1km to 100km. Base statistics such as
@@ -8,7 +8,7 @@ population figures are provided for these cells.
 
 ``` r
 gisco_get_grid(
-  resolution = 20,
+  resolution = c(100, 50, 20, 10, 5, 2, 1),
   spatialtype = c("REGION", "POINT"),
   cache_dir = NULL,
   update_cache = FALSE,
@@ -18,6 +18,9 @@ gisco_get_grid(
 
 ## Source
 
+<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
+
+There are specific downloading provisions, please see
 <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
 
 ## Arguments
@@ -48,25 +51,14 @@ gisco_get_grid(
 
 ## Value
 
-A `POLYGON/POINT`
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed on EPSG:3035.
+Files are distributed on [`EPSG:3035`](https://epsg.io/3035).
 
-The file sizes range is from 428Kb (`resolution = "100"`) to 1.7Gb
-`resolution = "1"`. For resolutions 1km and 2km you would need to
-confirm the download.
-
-## Note
-
-There are specific downloading provisions, please see
-<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
-
-## Author
-
-dieghernan, <https://github.com/dieghernan/>
+The file sizes range is from 428Kb (`resolution = 100`) to 1.7Gb
+`resolution = 1`.
 
 ## Examples
 
@@ -119,7 +111,7 @@ if (!is.null(grid)) {
     ) +
     theme_void() +
     labs(
-      title = "Population density in Europe (2021)",
+      title = "Population density in Europe",
       subtitle = "Grid: 20 km.",
       caption = gisco_attributions()
     ) +

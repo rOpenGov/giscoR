@@ -91,8 +91,6 @@ Other administrative units datasets:
 
 pc_bel <- gisco_get_postalcodes(country = "BE")
 #> ! The file to be downloaded has size 138.6 Mb.
-#> ! File size: 138.6 Mb
-#> ℹ Reading file with sf. It can take a while, hold on!
 
 if (!is.null(pc_bel)) {
   library(ggplot2)

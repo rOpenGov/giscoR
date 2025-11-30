@@ -1,8 +1,8 @@
 # Communes data set
 
 This data set shows pan European administrative boundaries down to
-commune level version 2016. Communes are equivalent to Local
-Administrative Units, see
+commune level. Communes are equivalent to Local Administrative Units,
+see
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
 
 ## Usage
@@ -49,9 +49,8 @@ Copyright:
 - cache:
 
   **\[deprecated\]**. These functions always caches the result due to
-  the size. `cache_dir` can be set to
-  [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html), so the file
-  would be deleted when the **R** session is closed.
+  the size. See **See Caching strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
@@ -132,12 +131,12 @@ Other administrative units datasets:
 ``` r
 # \donttest{
 
-ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
+ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 
-if (!is.null(ire_lau)) {
+if (!is.null(ire_comm)) {
   library(ggplot2)
 
-  ggplot(ire_lau) +
+  ggplot(ire_comm) +
     geom_sf(shape = 21, col = "#009A44", size = 0.5) +
     labs(
       title = "Communes in Ireland",

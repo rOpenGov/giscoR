@@ -30,14 +30,10 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
   : Census data
 
 - [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md)
-  : Coastal lines dataset
+  : Coastal lines data set
 
 - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
-  :
-
-  Get GISCO urban areas
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
-  points and lines
+  : Local Administrative Units (LAU) data set
 
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
   :
@@ -45,6 +41,15 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
   Get GISCO NUTS
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
   points and lines
+
+### Grids
+
+These datasets contain grid cells covering the land territory of the EU,
+in various resolutions from 1 km to 100 km. Base statistics such as
+population figures are provided for these cells.
+
+- [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
+  : Grid data set
 
 ## GISCO Address API
 
@@ -107,8 +112,6 @@ Get information about the current and most up-to-date database.
 These functions return other
 [sf](https://r-spatial.github.io/sf/reference/sf.html) objects
 
-- [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
-  : Get grid cells covering covering Europe for various resolutions
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
   : Get metadata
 

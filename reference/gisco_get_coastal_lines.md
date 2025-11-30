@@ -1,4 +1,4 @@
-# Coastal lines dataset
+# Coastal lines data set
 
 Downloads worldwide coastlines.
 
