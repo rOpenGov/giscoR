@@ -1,6 +1,20 @@
 #' sf::read_sf wrapper
 #' @noRd
 read_geo_file_sf <- function(file_local, q = NULL, ...) {
+  # Warn if file size is huge and no query
+
+  if (all(!grepl("^http", file_local), file.exists(file_local), is.null(q))) {
+    fsize <- file.size(file_local)
+    fsize_unit <- fsize
+    class(fsize_unit) <- class(object.size("a"))
+    thr <- 20 * (1024^2)
+    if (fsize > thr) {
+      fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
+      make_msg("warning", TRUE, "Reading large file", fsize_unit)
+      make_msg("generic", TRUE, "It can take a while. Hold on!")
+    }
+  }
+
   # Create and read 'vsizip' construct for shp.zip
   if (grepl(".zip$", file_local, ignore.case = TRUE)) {
     shp_zip <- unzip(file_local, list = TRUE)
@@ -14,9 +28,9 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
   }
 
   if (!is.null(q)) {
-    data_sf <- sf::read_sf(file_local, query = q, ...)
+    data_sf <- sf::read_sf(file_local, query = q)
   } else {
-    data_sf <- sf::read_sf(file_local, ...)
+    data_sf <- sf::read_sf(file_local)
   }
 
   data_sf <- sanitize_sf(data_sf)

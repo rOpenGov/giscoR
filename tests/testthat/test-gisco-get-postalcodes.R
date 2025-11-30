@@ -29,14 +29,14 @@ test_that("Postal codes online", {
     verbose = TRUE
   ))
 
-  expect_message(li <- gisco_get_postalcodes(country = "Malta"))
+  expect_silent(li <- gisco_get_postalcodes(country = "Malta"))
   expect_s3_class(li, "sf")
   expect_s3_class(li, "tbl_df")
   expect_length(unique(li$CNTR_ID), 1)
   expect_identical(as.character(unique(li$CNTR_ID)), "MT")
 
   # Several
-  expect_message(li2 <- gisco_get_postalcodes(country = c("MT", "LU")))
+  expect_silent(li2 <- gisco_get_postalcodes(country = c("MT", "LU")))
   expect_length(unique(li2$CNTR_ID), 2)
   expect_s3_class(li2, "sf")
   expect_s3_class(li2, "tbl_df")

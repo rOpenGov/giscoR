@@ -48,7 +48,7 @@
 #' @examplesIf gisco_check_access()
 #' \dontrun{
 #'
-#' lu_lau <- gisco_get_lau(country = "Luxembourg")
+#' lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
 #'
 #' if (!is.null(lu_lau)) {
 #'   library(ggplot2)
@@ -60,7 +60,7 @@
 #'       subtitle = "Year 2024",
 #'       caption = gisco_attributions()
 #'     ) +
-#'     scale_fill_viridis_c(
+#'     scale_fill_viridis_b(
 #'       option = "cividis",
 #'       label = \(x) prettyNum(x, big.mark = ",")
 #'     ) +
@@ -165,7 +165,7 @@ gisco_get_lau <- function(
 
     msg <- paste0("{.code ", q, "}")
     make_msg("info", verbose, "Using query:\n   ", msg)
-    data_sf <- read_geo_file_sf(file_local, query = q)
+    data_sf <- read_geo_file_sf(file_local, q = q)
   } else {
     data_sf <- read_geo_file_sf(file_local)
   }

@@ -118,7 +118,7 @@ gisco_get_postalcodes <- function(
 
     msg <- paste0("{.code ", q, "}")
     make_msg("info", verbose, "Using query:\n   ", msg)
-    data_sf <- read_geo_file_sf(file_local, query = q)
+    data_sf <- read_geo_file_sf(file_local, q = q)
     return(data_sf)
   }
 

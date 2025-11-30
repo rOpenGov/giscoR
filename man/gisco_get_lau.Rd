@@ -92,7 +92,7 @@ Please check the download and usage provisions on \code{\link[=gisco_attribution
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \dontrun{
 
-lu_lau <- gisco_get_lau(country = "Luxembourg")
+lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
 
 if (!is.null(lu_lau)) {
   library(ggplot2)
@@ -104,7 +104,7 @@ if (!is.null(lu_lau)) {
       subtitle = "Year 2024",
       caption = gisco_attributions()
     ) +
-    scale_fill_viridis_c(
+    scale_fill_viridis_b(
       option = "cividis",
       label = \(x) prettyNum(x, big.mark = ",")
     ) +
