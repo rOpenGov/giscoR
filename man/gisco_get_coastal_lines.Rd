@@ -3,7 +3,7 @@
 \name{gisco_get_coastal_lines}
 \alias{gisco_get_coastal_lines}
 \alias{gisco_get_coastallines}
-\title{Coastal lines dataset}
+\title{Coastal lines data set}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 

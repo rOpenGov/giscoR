@@ -1,54 +1,83 @@
-#' Get GISCO urban areas [`sf`][sf::st_sf] polygons, points and lines
-#'
-#' @rdname gisco_get_lau
-#' @name gisco_get_lau
+#' Local Administrative Units (LAU) data set
 #'
 #' @description
-#' [gisco_get_communes()] and [gisco_get_lau()] download shapes of Local
-#' Urban Areas, that correspond roughly with towns and cities.
+#' This data set shows pan European administrative boundaries down to commune
+#' level. Local Administrative units are equivalent to Communes,
+#' see [gisco_get_communes()].
 #'
-#'
-#' @note
-#' Please check the download and usage provisions on [gisco_attributions()].
 #' @family stats
+#' @inheritParams gisco_get_communes
+#' @inherit gisco_get_coastal_lines source return
+#' @inheritSection gisco_get_coastal_lines Note
+#' @encoding UTF-8
 #'
-#' @return A [`sf`][sf::st_sf] object specified by `spatialtype`. In the case of
-#'   [gisco_get_lau()], a `POLYGON` object.
-#'
-#' @param year Release year of the file:
-#'   - For `gisco_get_communes()` one of
-#'    \Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
-#'    "year",TRUE)}.
-#'   - For `gisco_get_lau()` one of
-#'     \Sexpr[stage=render,results=rd]{giscoR:::for_docs("lau",
-#'     "year",TRUE)}.
-#'
-#' @param epsg projection of the map: 4-digit [EPSG code](https://epsg.io/).
-#'  One of:
-#'  * `"4326"`: WGS84
-#'  * `"3035"`: ETRS89 / ETRS-LAEA
-#'  * `"3857"`: Pseudo-Mercator
-#'
-#' @param cache `r lifecycle::badge('deprecated')`. These functions always
-#'   caches the result due to the size. `cache_dir` can be set to
-#'  [base::tempdir()], so the file would be deleted when the **R** session is
-#'  closed.
-#' @param gisco_id Optional. A character vector of GISCO_ID LAU values.
-#'
-#' @inheritParams gisco_get_countries
-#'
-#'
+#' @seealso
+#' [gisco_get_communes()].
 #'
 #' @export
+#'
+#' @param year character string or number. Release year of the file. One of
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("lau",
+#'   "year",TRUE)}.
+#' @param gisco_id Optional. A character vector of `GISCO_ID` LAU values.
+#' @param ext character. Extension of the file (default `"gpkg"`). One of
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("lau",
+#'   "ext",TRUE)}.
+#'
+#' @inheritParams gisco_get_countries
+#' @export
+#'
+#' @details
+#' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
+#' nomenclature are hierarchical classifications of statistical regions that
+#' together subdivide the EU economic territory into regions of five different
+#' levels (NUTS 1, 2 and 3 and LAU , respectively, moving from larger to smaller
+#' territorial units).
+#'
+#' The LAU classification is not covered by any legislative act. Geographical
+#' extent covers the European Union, EFTA countries, and candidate countries.
+#' The scale of the data set is 1:100 000.
+#'
+#' The data contains the National Statistical agency LAU code which can be
+#' joined to LAU lists as well as a field `GISCO_ID` which is a unique
+#' identifier consisting of the Country code and LAU code.
+#'
+#' Total resident population figures (31 December) have also been added ins
+#' some versions based on the associated LAU lists
+#'
+#' @examplesIf gisco_check_access()
+#' \dontrun{
+#'
+#' lu_lau <- gisco_get_lau(country = "Luxembourg")
+#'
+#' if (!is.null(lu_lau)) {
+#'   library(ggplot2)
+#'
+#'   ggplot(lu_lau) +
+#'     geom_sf(aes(fill = POP_DENS_2024)) +
+#'     labs(
+#'       title = "Population Density in Luxembourg",
+#'       subtitle = "Year 2024",
+#'       caption = gisco_attributions()
+#'     ) +
+#'     scale_fill_viridis_c(
+#'       option = "cividis",
+#'       label = \(x) prettyNum(x, big.mark = ",")
+#'     ) +
+#'     theme_void() +
+#'     labs(fill = "pop/km2")
+#' }
+#' }
 gisco_get_lau <- function(
-  year = "2024",
-  epsg = "4326",
+  year = 2024,
+  epsg = 4326,
   cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
   country = NULL,
-  gisco_id = NULL
+  gisco_id = NULL,
+  ext = "gpkg"
 ) {
   if (lifecycle::is_present(cache)) {
     lifecycle::deprecate_warn(
@@ -60,13 +89,14 @@ gisco_get_lau <- function(
       )
     )
   }
-  year <- as.character(year)
+  valid_ext <- c("geojson", "gpkg", "shp")
+  ext <- match_arg_pretty(ext, valid_ext)
 
   url <- get_url_db(
     "lau",
     year = year,
     epsg = epsg,
-    ext = "gpkg",
+    ext = ext,
     fn = "gisco_get_lau"
   )
 

@@ -2,13 +2,16 @@
 % Please edit documentation in R/gisco-get-grid.R
 \name{gisco_get_grid}
 \alias{gisco_get_grid}
-\title{Get grid cells covering covering Europe for various resolutions}
+\title{Grid data set}
 \source{
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}
+
+There are specific downloading provisions, please see
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}
 }
 \usage{
 gisco_get_grid(
-  resolution = 20,
+  resolution = c(100, 50, 20, 10, 5, 2, 1),
   spatialtype = c("REGION", "POINT"),
   cache_dir = NULL,
   update_cache = FALSE,
@@ -30,7 +33,7 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \code{POLYGON/POINT} \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 These datasets contain grid cells covering the European land
@@ -38,15 +41,10 @@ territory, for various resolutions from 1km to 100km. Base statistics such
 as population figures are provided for these cells.
 }
 \details{
-Files are distributed on EPSG:3035.
+Files are distributed on \href{https://epsg.io/3035}{\code{EPSG:3035}}.
 
-The file sizes range is from 428Kb (\code{resolution = "100"})
-to 1.7Gb \code{resolution = "1"}. For resolutions 1km and 2km you would
-need to confirm the download.
-}
-\note{
-There are specific downloading provisions, please see
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}
+The file sizes range is from 428Kb (\code{resolution = 100})
+to 1.7Gb \code{resolution = 1}.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
@@ -98,7 +96,7 @@ if (!is.null(grid)) {
     ) +
     theme_void() +
     labs(
-      title = "Population density in Europe (2021)",
+      title = "Population density in Europe",
       subtitle = "Grid: 20 km.",
       caption = gisco_attributions()
     ) +
@@ -121,7 +119,4 @@ if (!is.null(grid)) {
 }
 \dontshow{\}) # examplesIf}
 }
-\author{
-dieghernan, \url{https://github.com/dieghernan/}
-}
-\concept{misc}
+\concept{grids}

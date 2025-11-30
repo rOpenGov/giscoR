@@ -40,6 +40,12 @@ reference:
     See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units"
     class="external-link">copyright information</a>.
   contents: has_concept("stats")
+- subtitle: Grids
+  desc: >
+    These datasets contain grid cells covering the land territory of the EU, in
+    various resolutions from 1 km to 100 km. Base statistics such as population
+    figures are provided for these cells.
+  contents: has_concept("grids")
 - title: GISCO Address API
   desc: >
     Query the <a href="https://gisco-services.ec.europa.eu/address_api/"

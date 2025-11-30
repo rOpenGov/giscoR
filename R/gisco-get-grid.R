@@ -1,38 +1,30 @@
-#' Get grid cells covering covering Europe for various resolutions
+#' Grid data set
 #'
 #' @description
 #' These datasets contain grid cells covering the European land
 #' territory, for various resolutions from 1km to 100km. Base statistics such
 #' as population figures are provided for these cells.
 #'
-#' @family misc
-#'
-#' @return A `POLYGON/POINT` [`sf`][sf::st_sf] object.
-#'
-#' @author dieghernan, <https://github.com/dieghernan/>
+#' @family grids
+#' @inheritParams gisco_get_countries
+#' @inherit gisco_get_countries return
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
 #'
-#' @param resolution Resolution of the grid cells on kms. Available values are
-#' `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"`, `"100"`. See **Details**.
-#'
-#' @param spatialtype Select one of `"REGION"` or `"POINT"`.
-#'
-#' @inheritParams gisco_get_countries
-#'
-#'
-#' @details
-#'
-#' Files are distributed on EPSG:3035.
-#'
-#' The file sizes range is from 428Kb (`resolution = "100"`)
-#' to 1.7Gb `resolution = "1"`. For resolutions 1km and 2km you would
-#' need to confirm the download.
-#'
-#' @note
 #' There are specific downloading provisions, please see
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
+#'
+#' @param resolution Resolution of the grid cells on kms. Available values are
+#' `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"`, `"100"`. See **Details**.
+#' @param spatialtype Select one of `"REGION"` or `"POINT"`.
+#'
+#' @details
+#' Files are distributed on [`EPSG:3035`](https://epsg.io/3035).
+#'
+#' The file sizes range is from 428Kb (`resolution = 100`)
+#' to 1.7Gb `resolution = 1`.
+#'
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{
@@ -83,7 +75,7 @@
 #'     ) +
 #'     theme_void() +
 #'     labs(
-#'       title = "Population density in Europe (2021)",
+#'       title = "Population density in Europe",
 #'       subtitle = "Grid: 20 km.",
 #'       caption = gisco_attributions()
 #'     ) +
@@ -106,18 +98,15 @@
 #' }
 #' @export
 gisco_get_grid <- function(
-  resolution = 20,
+  resolution = c(100, 50, 20, 10, 5, 2, 1),
   spatialtype = c("REGION", "POINT"),
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE
 ) {
-  resolution <- as.numeric(resolution)
-  validres <- as.character(c(1, 2, 5, 10, 20, 50, 100))
-
-  resolution <- match_arg_pretty(resolution, validres)
-
+  resolution <- match_arg_pretty(resolution)
   spatialtype <- match_arg_pretty(spatialtype)
+
   valid <- c("REGION", "POINT")
 
   translate <- c("surf", "point")

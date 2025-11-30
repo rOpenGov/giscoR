@@ -2,7 +2,7 @@
 #'
 #' @description
 #' This data set shows pan European administrative boundaries down to commune
-#' level version 2016. Communes are equivalent to Local Administrative Units,
+#' level. Communes are equivalent to Local Administrative Units,
 #' see [gisco_get_lau()].
 #'
 #' @family admin
@@ -10,13 +10,18 @@
 #' @inherit gisco_get_countries source return
 #' @inheritSection gisco_get_countries Note
 #' @encoding UTF-8
+#'
 #' @seealso
 #' [gisco_get_lau()].
+#'
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
 #'   "year",TRUE)}.
+#' @param cache `r lifecycle::badge('deprecated')`. These functions always
+#'   caches the result due to the size. See **See Caching strategies** section
+#'   in [gisco_set_cache_dir()].
 #' @param ext character. Extension of the file (default `"shp"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
 #'   "ext",TRUE)}.
@@ -38,12 +43,12 @@
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #'
-#' ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
+#' ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 #'
-#' if (!is.null(ire_lau)) {
+#' if (!is.null(ire_comm)) {
 #'   library(ggplot2)
 #'
-#'   ggplot(ire_lau) +
+#'   ggplot(ire_comm) +
 #'     geom_sf(shape = 21, col = "#009A44", size = 0.5) +
 #'     labs(
 #'       title = "Communes in Ireland",

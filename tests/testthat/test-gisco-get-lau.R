@@ -32,7 +32,7 @@ test_that("LAU online", {
       verbose = FALSE
     )
   )
-  expect_message(
+  expect_silent(
     li_and_es <- gisco_get_lau(
       year = 2024,
       country = "LI",
@@ -81,4 +81,61 @@ test_that("Deprecations", {
       gisco_id = "ES_12016"
     )
   )
+  expect_s3_class(s, "sf")
+  expect_s3_class(s, "tbl_df")
+  expect_equal(nrow(s), 1)
+  expect_equal(s$GISCO_ID, "ES_12016")
+})
+
+test_that("Extensions", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  # Error
+  expect_snapshot(
+    gisco_get_lau(ext = "docx"),
+    error = TRUE
+  )
+
+  cdir <- file.path(tempdir(), "testlau")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+
+  db_geojson <- gisco_get_lau(
+    year = 2020,
+    cache_dir = cdir,
+    ext = "geojson",
+    country = "LU"
+  )
+  expect_s3_class(db_geojson, "sf")
+  expect_s3_class(db_geojson, "tbl_df")
+
+  expect_length(
+    list.files(cdir, recursive = TRUE, pattern = "geojson"),
+    1
+  )
+
+  db_shp <- gisco_get_lau(
+    year = 2020,
+    cache_dir = cdir,
+    ext = "shp",
+    country = "LU"
+  )
+
+  expect_s3_class(db_shp, "sf")
+  expect_s3_class(db_shp, "tbl_df")
+
+  expect_length(
+    list.files(cdir, recursive = TRUE, pattern = "shp"),
+    1
+  )
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
 })

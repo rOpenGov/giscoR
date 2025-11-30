@@ -117,19 +117,6 @@ load_url <- function(
   if (isFALSE(update_cache) && fileoncache) {
     msg <- paste0("File already cached: {.file ", file_local, "}.")
     make_msg("success", verbose, msg)
-    # Inform in big files
-    size <- file.size(file_local)
-    thr <- 20 * (1024^2)
-    if (size > thr) {
-      class(size) <- "object_size"
-      paste0(sz <- format(size, units = "auto"))
-      make_msg("warning", TRUE, "File size:", sz)
-      make_msg(
-        "info",
-        TRUE,
-        "Reading file with {.pkg sf}. It can take a while, hold on!"
-      )
-    }
 
     return(file_local)
   }
@@ -213,20 +200,6 @@ load_url <- function(
   }
   msg <- paste0("Download succesful on {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
-
-  # Inform in big files
-  size <- file.size(file_local)
-  thr <- 20 * (1024^2)
-  if (size > thr) {
-    class(size) <- "object_size"
-    paste0(sz <- format(size, units = "auto"))
-    make_msg("warning", TRUE, "File size:", sz)
-    make_msg(
-      "info",
-      TRUE,
-      "Reading file with {.pkg sf}. It can take a while, hold on!"
-    )
-  }
 
   file_local
 }

@@ -63,11 +63,11 @@ data. One of:
 \item{spatialtype}{character string. Type of geometry to be returned.
 Options available are:
 \itemize{
+\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
 \item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
 \item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
-\item \code{"LB"}: Labels - \code{POINT} object.
-\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 }}
 
 \item{country}{character vector of country codes. It could be either a

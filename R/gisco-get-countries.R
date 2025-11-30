@@ -33,11 +33,11 @@
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
 #' @param spatialtype character string. Type of geometry to be returned.
 #'   Options available are:
+#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#'   * `"LB"`: Labels - `POINT` object.
 #'   * `"BN"`: Boundaries - `LINESTRING` object.
 #'   * `"COASTL"`: coastlines - `LINESTRING` object.
 #'   * `"INLAND"`: inland boundaries - `LINESTRING` object.
-#'   * `"LB"`: Labels - `POINT` object.
-#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #' @param country character vector of country codes. It could be either a
 #'   vector of country names, a vector of ISO3 country codes or a vector of
 #'   Eurostat country codes. See also [countrycode::countrycode()].

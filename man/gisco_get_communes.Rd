@@ -25,7 +25,7 @@ gisco_get_communes(
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+\Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
 "year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
@@ -36,8 +36,9 @@ gisco_get_communes(
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}
 }}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. These functions always
+caches the result due to the size. See \strong{See Caching strategies} section
+in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed?. Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
@@ -50,11 +51,11 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 \item{spatialtype}{character string. Type of geometry to be returned.
 Options available are:
 \itemize{
+\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
 \item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
 \item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
-\item \code{"LB"}: Labels - \code{POINT} object.
-\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 }}
 
 \item{country}{character vector of country codes. It could be either a
@@ -70,7 +71,7 @@ A \code{\link[sf:sf]{sf}} object.
 }
 \description{
 This data set shows pan European administrative boundaries down to commune
-level version 2016. Communes are equivalent to Local Administrative Units,
+level. Communes are equivalent to Local Administrative Units,
 see \code{\link[=gisco_get_lau]{gisco_get_lau()}}.
 }
 \details{
@@ -95,12 +96,12 @@ Please check the download and usage provisions on \code{\link[=gisco_attribution
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
 
-ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
+ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 
-if (!is.null(ire_lau)) {
+if (!is.null(ire_comm)) {
   library(ggplot2)
 
-  ggplot(ire_lau) +
+  ggplot(ire_comm) +
     geom_sf(shape = 21, col = "#009A44", size = 0.5) +
     labs(
       title = "Communes in Ireland",
