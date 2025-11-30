@@ -67,9 +67,15 @@ A data frame object with 249 rows and 13 variables:
 [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html)
 **v1.2.0**.
 
+## World Regions
+
+Regions are defined as per the geographic regions defined by the UN (see
+<https://unstats.un.org/unsd/methodology/m49/>. Under this scheme Cyprus
+is assigned to Asia.
+
 ## See also
 
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md)
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
 and
 [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html),
 included in
@@ -81,8 +87,10 @@ Repository](https://cldr.unicode.org/translation/displaynames/countryregion-terr
 Other dataset:
 [`gisco_coastallines`](https://ropengov.github.io/giscoR/reference/gisco_coastallines.md),
 [`gisco_countries`](https://ropengov.github.io/giscoR/reference/gisco_countries.md),
+[`gisco_countries_2024`](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md),
-[`gisco_nuts`](https://ropengov.github.io/giscoR/reference/gisco_nuts.md)
+[`gisco_nuts`](https://ropengov.github.io/giscoR/reference/gisco_nuts.md),
+[`gisco_nuts_2024`](https://ropengov.github.io/giscoR/reference/gisco_nuts_2024.md)
 
 ## Examples
 

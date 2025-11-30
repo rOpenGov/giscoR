@@ -1,37 +1,38 @@
-# Get GISCO NUTS [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons, points and lines
+# Territorial units for statistics (NUTS) data set
 
-Returns [NUTS
-regions](https://en.wikipedia.org/wiki/Nomenclature_of_Territorial_Units_for_Statistics)
-polygons, lines and points at a specified scale, as provided by GISCO.
+The GISCO statistical unit dataset represents the NUTS (nomenclature of
+territorial units for statistics) and statistical regions by means of
+multipart polygon, polyline and point topology. The NUTS geographical
+information is completed by attribute tables and a set of cartographic
+help lines to better visualise multipart polygonal regions.
 
-NUTS are provided at three different levels:
+The NUTS are a hierarchical system divided into 3 levels:
 
-- `"0"`: Country level
+- NUTS 1: major socio-economic regions
 
-- `"1"`: Groups of states/regions
+- NUTS 2: basic regions for the application of regional policies
 
-- `"2"`: States/regions
+- NUTS 3: small regions for specific diagnoses.
 
-- `"3"`: Counties/provinces/districts
-
-Note that NUTS-level definition may vary across countries. See also
-<https://ec.europa.eu/eurostat/web/gisco/geodata//statistical-units/territorial-units-statistics>.
+Also, there is a NUTS 0 level, which usually corresponds to the national
+boundaries.
 
 ## Usage
 
 ``` r
 gisco_get_nuts(
-  year = "2016",
-  epsg = "4326",
+  year = 2024,
+  epsg = 4326,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = "20",
+  resolution = 20,
   spatialtype = "RG",
   country = NULL,
   nuts_id = NULL,
-  nuts_level = "all"
+  nuts_level = c("all", "0", "1", "2", "3"),
+  ext = "gpkg"
 )
 ```
 
@@ -39,47 +40,51 @@ gisco_get_nuts(
 
 <https://gisco-services.ec.europa.eu/distribution/v2/>
 
+Copyright:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>
+
 ## Arguments
 
 - year:
 
-  Release year of the file. One of `"2003"`, `"2006"`, `"2010"`,
-  `"2013"`, `"2016"`, `"2021"` or `"2024"`.
+  character string or number. Release year of the file. One of `"2024"`,
+  `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`, `"2003"` .
 
 - epsg:
 
-  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
+  character string or number. Projection of the map: 4-digit [EPSG
+  code](https://epsg.io/). One of:
 
-  - `"4258"`: ETRS89
+  - `"4326"`: [WGS84](https://epsg.io/4326)
 
-  - `"4326"`: WGS84
+  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035)
 
-  - `"3035"`: ETRS89 / ETRS-LAEA
-
-  - `"3857"`: Pseudo-Mercator
+  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857)
 
 - cache:
 
-  A logical whether to do caching. Default is `TRUE`. See **About
-  caching**.
+  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.geojson` file.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - resolution:
 
-  Resolution of the geospatial data. One of
+  character string or number. Resolution of the geospatial data. One of:
 
   - `"60"`: 1:60million
 
@@ -93,23 +98,20 @@ gisco_get_nuts(
 
 - spatialtype:
 
-  Type of geometry to be returned:
+  character string. Type of geometry to be returned. Options available
+  are:
+
+  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
   - `"BN"`: Boundaries - `LINESTRING` object.
 
   - `"LB"`: Labels - `POINT` object.
 
-  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-
-  **Note that** parameters `country`, `nuts_level` and `nuts_id` would
-  be only applied when `spatialtype` is `"BN"` or `"RG"`.
-
 - country:
 
-  Optional. A character vector of country codes. It could be either a
-  vector of country names, a vector of ISO3 country codes or a vector of
-  Eurostat country codes. Mixed types (as `c("Italy","ES","FRA")`) would
-  not work. See also
+  character vector of country codes. It could be either a vector of
+  country names, a vector of ISO3 country codes or a vector of Eurostat
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - nuts_id:
@@ -118,52 +120,51 @@ gisco_get_nuts(
 
 - nuts_level:
 
-  NUTS level. One of `"0"`, `"1"`, `"2"` or `"3"`. See **Description**.
+  character string. NUTS level. One of `0`, `1`, `2`, `3` or `all` for
+  all levels.
+
+- ext:
+
+  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
+  `"gpkg"`, `"geojson"` .
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-specified by `spatialtype`. The resulting
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object would
-present an additional column `geo` (equal to `NUTS_ID`) for improving
-compatibility with
-[eurostat](https://CRAN.R-project.org/package=eurostat) package. See
-[`eurostat::get_eurostat_geospatial()`](https://ropengov.github.io/eurostat/reference/get_eurostat_geospatial.html)).
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
-See also
-[gisco_nuts](https://ropengov.github.io/giscoR/reference/gisco_nuts.md)
-to understand the columns and values provided.
+## Details
 
-## About caching
+The NUTS nomenclature is a hierarchical classification of statistical
+regions and subdivides the EU economic territory into regions of three
+different levels (NUTS 1, 2 and 3, moving respectively from larger to
+smaller territorial units). NUTS 1 is the most aggregated level. An
+additional Country level (NUTS 0) is also available for countries where
+the nation at statistical level does not coincide with the
+administrative boundaries.
 
-You can set your `cache_dir` with
-[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+The NUTS classification has been officially established through
+Commission Delegated Regulation 2019/1755. A non-official NUTS-like
+classification has been defined for the EFTA countries, candidate
+countries and potential candidates based on a bilateral agreement
+between Eurostat and the respective statistical agencies.
 
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
+An introduction to the NUTS classification is available here:
+<http://ec.europa.eu/eurostat/web/nuts/overview>.
 
-If you experience any problem on download, try to download the
-corresponding `.geojson` file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
+## Note
 
-For a complete list of files available check
-[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
+Please check the download and usage provisions on
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
 
 ## See also
 
-[gisco_nuts](https://ropengov.github.io/giscoR/reference/gisco_nuts.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
-[`eurostat::get_eurostat_geospatial()`](https://ropengov.github.io/eurostat/reference/get_eurostat_geospatial.html)
+[gisco_nuts_2024](https://ropengov.github.io/giscoR/reference/gisco_nuts_2024.md),
+[`eurostat::get_eurostat_geospatial()`](https://ropengov.github.io/eurostat/reference/get_eurostat_geospatial.html).
 
-Other political:
-[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
-[`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
-[`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md),
-[`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md),
-[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+Other statistical units datasets:
+[`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
+[`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md),
+[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
 
 ## Examples
 

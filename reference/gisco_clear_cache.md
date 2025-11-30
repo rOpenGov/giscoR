@@ -8,8 +8,7 @@ cached data and configuration, specifically:
 
 - Deletes the `cache_dir` directory.
 
-- Deletes the values on stored on `Sys.getenv("GISCO_CACHE_DIR")` and
-  `options(gisco_cache_dir)`.
+- Deletes the values on stored on `Sys.getenv("GISCO_CACHE_DIR")`.
 
 ## Usage
 
@@ -31,8 +30,7 @@ gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -56,24 +54,22 @@ Other cache utilities:
 ``` r
 # Don't run this! It would modify your current state
 # \dontrun{
+my_cache <- gisco_detect_cache_dir()
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpUNGYAu/giscoR
+
+# Set an example cache
+ex <- file.path(tempdir(), "example", "cache")
+gisco_set_cache_dir(ex, verbose = FALSE)
+
+# Restore initial cache
 gisco_clear_cache(verbose = TRUE)
-#> giscoR cached data deleted:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpaSi6XL/giscoR
+#> ! giscoR data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpUNGYAu/example/cache
 
-Sys.getenv("GISCO_CACHE_DIR")
-#> [1] ""
-
-# Set new cache on a temp dir
-newcache <- file.path(tempdir(), "giscoR", "pkgdown")
-
-newcache
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpaSi6XL/giscoR/pkgdown"
-
-gisco_set_cache_dir(newcache)
-#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpaSi6XL/giscoR/pkgdown
-#> To install your cache_dir path for use in future sessions, 
-#> run this function with `install = TRUE`.
-
-Sys.getenv("GISCO_CACHE_DIR")
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpaSi6XL/giscoR/pkgdown"
+gisco_set_cache_dir(my_cache)
+#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpUNGYAu/giscoR.
+#> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
+identical(my_cache, gisco_detect_cache_dir())
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpUNGYAu/giscoR
+#> [1] TRUE
 # }
 ```

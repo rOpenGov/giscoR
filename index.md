@@ -161,6 +161,7 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
+#> indexed 0B in  0s, 0B/sindexed 2.15GB in  0s, 2.15GB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -264,17 +265,6 @@ them on your local directory.
 
 - **eurostat** ([Lahti et al. 2017](#ref-RJ-2017-019)): This is an API
   package that provides access to open data from Eurostat.
-
-### Plotting **sf** objects
-
-Some packages recommended for visualization are:
-
-- [**tmap**](https://r-tmap.github.io/tmap/)
-- [**ggplot2**](https://github.com/tidyverse/ggplot2) +
-  [**ggspatial**](https://github.com/paleolimbot/ggspatial) +
-  [**tidyterra**](https://dieghernan.github.io/tidyterra/)
-- [**mapsf**](https://riatelab.github.io/mapsf/)
-- [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 

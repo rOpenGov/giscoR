@@ -76,7 +76,7 @@ gisco_attributions(lang = "en")
 gisco_attributions(lang = "fr")
 #> [1] "© EuroGeographics pour les limites administratives"
 gisco_attributions(lang = "de")
-#> [1] "© EuroGeographics bezuglich der Verwaltungsgrenzen"
+#> [1] "© EuroGeographics bezüglich der Verwaltungsgrenzen"
 ```
 
 ## Basic example
@@ -123,7 +123,11 @@ africa_north <- gisco_get_countries(
 
 # Coastal lines
 
-coast <- gisco_get_coastallines(resolution = "20", epsg = "4326", year = "2016")
+coast <- gisco_get_coastal_lines(
+  resolution = "20",
+  epsg = "4326",
+  year = "2016"
+)
 
 # Plot
 ggplot(coast) +
@@ -173,7 +177,7 @@ pps <- get_eurostat("tgs00026") %>%
 #> 
 indexed 0B in  0s, 0B/s
 indexed 2.15GB in  0s, 2.15GB/s
-                                                                                  
+                                                                                                
 
 nuts2_sf <- nuts2 %>%
   left_join(pps, by = "geo") %>%

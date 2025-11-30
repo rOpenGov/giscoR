@@ -47,21 +47,22 @@ gisco_bulk_download(
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.geojson` file.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - resolution:
 
-  Resolution of the geospatial data. One of
+  character string or number. Resolution of the geospatial data. One of:
 
   - `"60"`: 1:60million
 
@@ -91,11 +92,11 @@ Silent function.
 
 See the years available in the corresponding functions:
 
-- [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md).
+- [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md).
 
-- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
+- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
 
-- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md).
+- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md).
 
 - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
 
@@ -107,30 +108,9 @@ The usual extension used across
 [giscoR](https://CRAN.R-project.org/package=giscoR) is `"geojson"`,
 however other formats are already available on GISCO.
 
-## About caching
-
-You can set your `cache_dir` with
-[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding `.geojson` file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
-
-For a complete list of files available check
-[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
-
 ## See also
 
 Other political:
-[`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
-[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
-[`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md),
 [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md),
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
 
