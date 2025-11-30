@@ -177,7 +177,7 @@ pps <- get_eurostat("tgs00026") %>%
 #> 
 indexed 0B in  0s, 0B/s
 indexed 2.15GB in  0s, 2.15GB/s
-                                                                                                
+                                                                                               
 
 nuts2_sf <- nuts2 %>%
   left_join(pps, by = "geo") %>%

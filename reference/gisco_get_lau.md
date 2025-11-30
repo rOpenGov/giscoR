@@ -1,6 +1,6 @@
-# Local Administrative Units (LAU) data set
+# Local Administrative Units (LAU) dataset
 
-This data set shows pan European administrative boundaries down to
+This dataset shows pan European administrative boundaries down to
 commune level. Local Administrative units are equivalent to Communes,
 see
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
@@ -98,7 +98,7 @@ larger to smaller territorial units).
 
 The LAU classification is not covered by any legislative act.
 Geographical extent covers the European Union, EFTA countries, and
-candidate countries. The scale of the data set is 1:100 000.
+candidate countries. The scale of the dataset is 1:100 000.
 
 The data contains the National Statistical agency LAU code which can be
 joined to LAU lists as well as a field `GISCO_ID` which is a unique
@@ -119,7 +119,8 @@ Please check the download and usage provisions on
 Other statistical units datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md),
-[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
+[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
+[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
 
 ## Examples
 

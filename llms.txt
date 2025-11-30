@@ -4,13 +4,13 @@
 helps to retrieve data from [Eurostat - GISCO (the Geographic
 Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides
-some lightweight data sets ready to use without downloading.
+some lightweight datasets ready to use without downloading.
 
 [GISCO](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository including several data sets as countries, coastal lines,
+data repository including several datasets as countries, coastal lines,
 labels or [NUTS
 levels](https://ec.europa.eu/eurostat/web/regions-and-cities/overview).
-The data sets are usually provided at several resolution levels
+The datasets are usually provided at several resolution levels
 (60M/20M/10M/03M/01M) and in 3 different projections (4326/3035/3857).
 
 Note that the package does not provide metadata on the downloaded files,
@@ -247,7 +247,7 @@ ggplot(nuts3_sf) +
 
 ## A note on caching
 
-Some data sets (as Local Administrative Units - LAU, or high-resolution
+Some datasets (as Local Administrative Units - LAU, or high-resolution
 files) may have a size larger than 50MB. You can use **giscoR** to
 create your own local repository at a given local directory passing the
 following function:
@@ -351,11 +351,11 @@ purposes (referred to as statistical units). See [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
-  : Communes data set
+  : Communes dataset
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
-  : Country data set
+  : Country dataset
 - [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
-  : Postal codes data set
+  : Postal codes dataset
 
 ### Statistical units
 
@@ -364,13 +364,15 @@ data are collected or derived. See [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 
 - [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md)
-  : Census data
+  : Census dataset
 - [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md)
-  : Coastal lines data set
+  : Coastal lines dataset
 - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
-  : Local Administrative Units (LAU) data set
+  : Local Administrative Units (LAU) dataset
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
-  : Territorial units for statistics (NUTS) data set
+  : Territorial units for statistics (NUTS) dataset
+- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+  : Urban Audit dataset
 
 ### Grids
 
@@ -379,7 +381,7 @@ in various resolutions from 1 km to 100 km. Base statistics such as
 population figures are provided for these cells.
 
 - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
-  : Grid data set
+  : Grid dataset
 
 ## GISCO Address API
 
@@ -408,12 +410,6 @@ political boundaries
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
   : Bulk download from GISCO API
-
-- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
-  :
-
-  Get GISCO greater cities and metropolitan areas
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects
 
 ## Infrastructures
 

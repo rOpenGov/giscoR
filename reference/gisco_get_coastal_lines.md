@@ -1,4 +1,4 @@
-# Coastal lines data set
+# Coastal lines dataset
 
 Downloads worldwide coastlines.
 
@@ -98,7 +98,8 @@ Please check the download and usage provisions on
 Other statistical units datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
-[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
+[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
+[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
 
 ## Examples
 

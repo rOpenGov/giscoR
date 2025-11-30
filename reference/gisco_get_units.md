@@ -142,8 +142,7 @@ Please check the download and usage provisions on
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
 
 Other political:
-[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
-[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
 
 ## Author
 

@@ -1,4 +1,4 @@
-# Postal codes data set
+# Postal codes dataset
 
 The postal code point dataset shows the location of postal codes, NUTS
 codes and the Degree of Urbanisation classification across the EU, EFTA

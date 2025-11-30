@@ -6,6 +6,9 @@
   maintainer, copyright holder.
   [](https://orcid.org/0000-0001-8457-4658)
 
+- **[Eurostat](https://ec.europa.eu/eurostat)**. Copyright holder.
+  [![ROR](https://raw.githubusercontent.com/ror-community/ror-logos/main/ror-icon-rgb.svg)](https://ror.org/033d3q980)
+
 - **[EuroGeographics](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)**.
   Copyright holder.
 

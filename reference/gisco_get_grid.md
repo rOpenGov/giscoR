@@ -1,4 +1,4 @@
-# Grid data set
+# Grid dataset
 
 These datasets contain grid cells covering the European land territory,
 for various resolutions from 1km to 100km. Base statistics such as

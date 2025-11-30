@@ -1,6 +1,6 @@
-# Communes data set
+# Communes dataset
 
-This data set shows pan European administrative boundaries down to
+This dataset shows pan European administrative boundaries down to
 commune level. Communes are equivalent to Local Administrative Units,
 see
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
@@ -106,10 +106,10 @@ that together subdivide the EU economic territory into regions of five
 different levels (NUTS 1, 2 and 3 and LAU , respectively, moving from
 larger to smaller territorial units).
 
-The data set is based on EuroBoundaryMap from
+The dataset is based on EuroBoundaryMap from
 [EuroGeographics](https://eurogeographics.org/). Geographical extent
 covers the European Union 28, EFTA countries, and candidate countries.
-The scale of the data set is 1:100 000.
+The scale of the dataset is 1:100 000.
 
 The LAU classification is not covered by any legislative act.
 

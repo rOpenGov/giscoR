@@ -1,23 +1,24 @@
-# Get GISCO greater cities and metropolitan areas [`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects
+# Urban Audit dataset
 
-Returns polygons and points corresponding to cities, greater cities and
-metropolitan areas included on the [Urban Audit
-report](https://ec.europa.eu/eurostat/web/regions-and-cities) of
-Eurostat.
+The dataset contains the boundaries of cities (`"CITIES"`), greater
+cities (`"GREATER_CITIES"`) and functional urban areas (`"FUA"`) as
+defined according to the EC-OECD city definition. This is used for the
+Eurostat Urban Audit data collection.
 
 ## Usage
 
 ``` r
 gisco_get_urban_audit(
-  year = "2021",
-  epsg = "4326",
+  year = 2021,
+  epsg = 4326,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  spatialtype = "RG",
+  spatialtype = c("RG", "LB"),
   country = NULL,
-  level = NULL
+  level = c("all", "CITIES", "FUA", "GREATER_CITIES", "CITY", "KERN", "LUZ"),
+  ext = "gpkg"
 )
 ```
 
@@ -32,8 +33,8 @@ Copyright:
 
 - year:
 
-  Release year of the file. One of `"2021"`, `"2020"`, `"2018"`,
-  `"2014"`, `"2004"`, `"2001"` .
+  character string or number. Release year of the file. One of `"2021"`,
+  `"2020"`, `"2018"`, `"2014"`, `"2004"`, `"2001"` .
 
 - epsg:
 
@@ -69,11 +70,12 @@ Copyright:
 
 - spatialtype:
 
-  Type of geometry to be returned:
-
-  - `"LB"`: Labels - `POINT` object.
+  character string. Type of geometry to be returned. Options available
+  are:
 
   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+
+  - `"LB"`: Labels - `POINT` object.
 
 - country:
 
@@ -84,13 +86,40 @@ Copyright:
 
 - level:
 
-  Level of Urban Audit. Possible values are `"CITIES"`, `"FUA"`,
-  `"GREATER_CITIES"` or `NULL`, that would download the full dataset.
+  character string. Level of Urban Audit. Possible values `"all"` (the
+  default), that would download the full dataset or `"CITIES"`, `"FUA"`,
+  and (for versions prior to `year = 2020`) `"GREATER_CITIES"`,
+  `"CITY"`, `"KERN"` or `"LUZ"`.
+
+- ext:
+
+  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
+  `"gpkg"`, `"geojson"` .
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-specified by `spatialtype`.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+
+## Details
+
+See more in [Eurostat - Statistics
+Explained](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions).
+
+The cities are defined at several conceptual levels:
+
+- The core city (`"CITIES"`), using an administrative definition.
+
+- The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating
+  the functional urban region. The coverage is the EU plus Iceland,
+  Norway and Switzerland . The dataset includes polygon features, point
+  features and a related attribute table which can be joined on the URAU
+  code field.
+
+The `"URAU_CATG"` field defines the Urban Audit category:
+
+- `"C"` = City.
+
+- `"F"` = Functional Urban Area Service Type.
 
 ## Note
 
@@ -99,18 +128,18 @@ Please check the download and usage provisions on
 
 ## See also
 
-[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
-
-Other political:
-[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
-[`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
+Other statistical units datasets:
+[`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
+[`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md),
+[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
+[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
 
 ## Examples
 
 ``` r
 # \donttest{
-cities <- gisco_get_urban_audit(year = "2020", level = "CITIES")
+cities <- gisco_get_urban_audit(year = 2021, level = "CITIES")
+#> Error in gisco_get_urban_audit(year = 2021, level = "CITIES"): could not find function "gisco_get_urban_audit"
 
 if (!is.null(cities)) {
   bcn <- cities[cities$URAU_NAME == "Barcelona", ]
@@ -119,6 +148,6 @@ if (!is.null(cities)) {
   ggplot(bcn) +
     geom_sf()
 }
-
+#> Error: object 'cities' not found
 # }
 ```

@@ -2,7 +2,7 @@
 
 A data frame containing conversions between different country code
 schemes (Eurostat/ISO2 and 3) as well as geographic regions as provided
-by the World Bank and the UN (M49). This data set is extracted from
+by the World Bank and the UN (M49). This dataset is extracted from
 [countrycode](https://CRAN.R-project.org/package=countrycode) package.
 
 ## Format

@@ -1,4 +1,4 @@
-# Territorial units for statistics (NUTS) data set
+# Territorial units for statistics (NUTS) dataset
 
 The GISCO statistical unit dataset represents the NUTS (nomenclature of
 territorial units for statistics) and statistical regions by means of
@@ -164,7 +164,8 @@ Please check the download and usage provisions on
 Other statistical units datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
+[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
 
 ## Examples
 

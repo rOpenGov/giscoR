@@ -14,11 +14,11 @@ purposes (referred to as statistical units). See [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
-  : Communes data set
+  : Communes dataset
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
-  : Country data set
+  : Country dataset
 - [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
-  : Postal codes data set
+  : Postal codes dataset
 
 ### Statistical units
 
@@ -27,13 +27,15 @@ data are collected or derived. See [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 
 - [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md)
-  : Census data
+  : Census dataset
 - [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md)
-  : Coastal lines data set
+  : Coastal lines dataset
 - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
-  : Local Administrative Units (LAU) data set
+  : Local Administrative Units (LAU) dataset
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
-  : Territorial units for statistics (NUTS) data set
+  : Territorial units for statistics (NUTS) dataset
+- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+  : Urban Audit dataset
 
 ### Grids
 
@@ -42,7 +44,7 @@ in various resolutions from 1 km to 100 km. Base statistics such as
 population figures are provided for these cells.
 
 - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
-  : Grid data set
+  : Grid dataset
 
 ## GISCO Address API
 
@@ -71,12 +73,6 @@ political boundaries
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
   : Bulk download from GISCO API
-
-- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
-  :
-
-  Get GISCO greater cities and metropolitan areas
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects
 
 ## Infrastructures
 

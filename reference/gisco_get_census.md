@@ -1,6 +1,6 @@
-# Census data
+# Census dataset
 
-This data set shows pan European communal boundaries depicting the
+This dataset shows pan European communal boundaries depicting the
 situation at the corresponding Census.
 
 ## Usage
@@ -61,7 +61,8 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 Other statistical units datasets:
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
-[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
+[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
+[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
 
 ## Examples
 

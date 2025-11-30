@@ -111,8 +111,7 @@ however other formats are already available on GISCO.
 ## See also
 
 Other political:
-[`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md),
-[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+[`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
 
 ## Examples
 
