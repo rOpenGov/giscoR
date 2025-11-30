@@ -63,7 +63,6 @@ if (nrow(edu_BEL) > 3) {
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
 
 Other infrastructure: 
-\code{\link{gisco_get_airports}()},
 \code{\link{gisco_get_healthcare}()}
 }
 \author{

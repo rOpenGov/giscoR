@@ -49,6 +49,8 @@ reference:
     various resolutions from 1 km to 100 km. Base statistics such as population
     figures are provided for these cells.
   contents: has_concept("grids")
+- subtitle: Transport networks
+  contents: has_concept("transport")
 - title: GISCO Address API
   desc: >
     Query the <a href="https://gisco-services.ec.europa.eu/address_api/"

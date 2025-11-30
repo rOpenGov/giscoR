@@ -115,7 +115,7 @@ candidates based on a bilateral agreement between Eurostat and the respective
 statistical agencies.
 
 An introduction to the NUTS classification is available here:
-\url{http://ec.europa.eu/eurostat/web/nuts/overview}.
+\url{https://ec.europa.eu/eurostat/web/nuts/overview}.
 }
 \section{Note}{
 Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.

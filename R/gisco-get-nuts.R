@@ -53,7 +53,7 @@
 #' statistical agencies.
 #'
 #' An introduction to the NUTS classification is available here:
-#' <http://ec.europa.eu/eurostat/web/nuts/overview>.
+#' <https://ec.europa.eu/eurostat/web/nuts/overview>.
 #'
 #' @examples
 #' nuts2 <- gisco_get_nuts(nuts_level = 2)
