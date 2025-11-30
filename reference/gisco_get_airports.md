@@ -7,7 +7,7 @@ from GISCO API or your local library.
 
 ``` r
 gisco_get_airports(
-  year = c("2013", "2006"),
+  year = "2013",
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -15,7 +15,7 @@ gisco_get_airports(
 )
 
 gisco_get_ports(
-  year = c("2013", "2009"),
+  year = "2013",
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -31,29 +31,29 @@ gisco_get_ports(
 
 - year:
 
-  Year of reference.
+  Year of reference. Only year available right now is `"2013"`.
 
 - country:
 
-  character vector of country codes. It could be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  Optional. A character vector of country codes. It could be either a
+  vector of country names, a vector of ISO3 country codes or a vector of
+  Eurostat country codes. Mixed types (as `c("Italy","ES","FRA")`) would
+  not work. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+  A path to a cache directory. See **About caching**.
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  A logical whether to update cache. Default is `FALSE`. When set to
+  `TRUE` it would force a fresh download of the source `.geojson` file.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical, displays information. Useful for debugging, default is
+  `FALSE`.
 
 ## Value
 
@@ -68,6 +68,22 @@ A `POINT` object on EPSG:4326.
 identifying the country of the port. Worldwide information available.
 The port codes are aligned with UN/LOCODE standard.
 
+## About caching
+
+You can set your `cache_dir` with
+[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting `update_cache = TRUE`.
+
+If you experience any problem on download, try to download the
+corresponding `.geojson` file by any other method and save it on your
+`cache_dir`. Use the option `verbose = TRUE` for debugging the API
+query.
+
+For a complete list of files available check
+[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
+
 ## See also
 
 Other infrastructure:
@@ -79,9 +95,10 @@ Other infrastructure:
 ``` r
 # \donttest{
 library(sf)
+#> Linking to GEOS 3.13.1, GDAL 3.11.0, PROJ 9.6.0; sf_use_s2() is TRUE
 
 greece <- gisco_get_countries(country = "EL", resolution = 3)
-airp_gc <- gisco_get_airports(2013, country = "EL")
+airp_gc <- gisco_get_airports(country = "EL")
 
 library(ggplot2)
 
@@ -97,10 +114,11 @@ if (inherits(airp_gc, "sf")) {
     )
 }
 
+##############################
+#         Plot ports         #
+##############################
 
-# Plot ports
-
-ports <- gisco_get_ports(2013)
+ports <- gisco_get_ports()
 coast <- giscoR::gisco_coastallines
 
 # To Robinson projection :)

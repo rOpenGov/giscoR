@@ -23,6 +23,4 @@ Useful links:
 
 Other contributors:
 
-- Eurostat ([ROR](https://ror.org/033d3q980)) \[copyright holder\]
-
 - EuroGeographics \[copyright holder\]

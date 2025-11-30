@@ -14,8 +14,8 @@ gisco_attributions(lang = "en", copyright = FALSE)
 - lang:
 
   Language (two-letter ISO code). See
-  [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html)
-  and **Details**.
+  <https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes> and
+  **Details**.
 
 - copyright:
 
@@ -60,11 +60,11 @@ Eurostat website, data source will have to be acknowledged in the legend
 of the map and in the introductory page of the publication with the
 following copyright notice:
 
-- EN: © EuroGeographics for the administrative boundaries.
+- EN: (C) EuroGeographics for the administrative boundaries.
 
-- FR: © EuroGeographics pour les limites administratives.
+- FR: (C) EuroGeographics pour les limites administratives.
 
-- DE: © EuroGeographics bezüglich der Verwaltungsgrenzen.
+- DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen.
 
 For publications in languages other than English, French or German, the
 translation of the copyright notice in the language of the publication
@@ -85,60 +85,36 @@ gisco_attributions()
 #> [1] "© EuroGeographics for the administrative boundaries"
 
 gisco_attributions(lang = "es", copyright = TRUE)
-#> ℹ COPYRIGHT NOTICE
 #> 
-#> When data downloaded from GISCO
-#> is used in any printed or electronic publication,
-#> in addition to any other provisions applicable to
-#> the whole Eurostat website, data source will have
-#> to be acknowledged in the legend of the map and in
-#> the introductory page of the publication with the
-#> following copyright notice:
+#>     COPYRIGHT NOTICE
 #> 
-#> - EN: © EuroGeographics for the administrative boundaries
-#> - FR: © EuroGeographics pour les limites administratives
-#> - DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
+#>     When data downloaded from GISCO
+#>     is used in any printed or electronic publication,
+#>     in addition to any other provisions applicable to
+#>     the whole Eurostat website, data source will have
+#>     to be acknowledged in the legend of the map and in
+#>     the introductory page of the publication with the
+#>     following copyright notice:
 #> 
-#> For publications in languages other than English,
-#> French or German, the translation of the copyright
-#> notice in the language of the publication shall be
-#> used.
+#>     - EN: (C) EuroGeographics for the administrative boundaries
+#>     - FR: (C) EuroGeographics pour les limites administratives
+#>     - DE: (C) EuroGeographics bezuglich der Verwaltungsgrenzen
 #> 
-#> If you intend to use the data commercially, please
-#> contact EuroGeographics for information regarding
-#> their licence agreements.
+#>     For publications in languages other than English,
+#>     French or German, the translation of the copyright
+#>     notice in the language of the publication shall be
+#>     used.
+#> 
+#>     If you intend to use the data commercially, please
+#>     contact EuroGeographics for information regarding
+#>     their licence agreements.
+#> 
+#>       
 #> [1] "© Eurogeographics para los límites administrativos"
 
 gisco_attributions(lang = "XXX")
-#> ! Language xxx not supported. Switching to English.
-#> ℹ Consider contributing: <https://github.com/rOpenGov/giscoR/issues>
+#> Language xxx not supported, switching to English. 
+#> Consider contributing: 
+#> https://github.com/rOpenGov/giscoR/issues
 #> [1] "© EuroGeographics for the administrative boundaries"
-
-# Get list of codes from countrycodes
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-
-countrycode::codelist %>%
-  select(country.name.en, iso2c)
-#> # A tibble: 291 × 2
-#>    country.name.en   iso2c
-#>    <chr>             <chr>
-#>  1 Afghanistan       AF   
-#>  2 Albania           AL   
-#>  3 Algeria           DZ   
-#>  4 American Samoa    AS   
-#>  5 Andorra           AD   
-#>  6 Angola            AO   
-#>  7 Anguilla          AI   
-#>  8 Antarctica        AQ   
-#>  9 Antigua & Barbuda AG   
-#> 10 Argentina         AR   
-#> # ℹ 281 more rows
 ```

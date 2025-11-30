@@ -14,7 +14,7 @@ matching) for all parameters of each endpoint.
 ## Usage
 
 ``` r
-gisco_address_api_search(
+gisco_addressapi_search(
   country = NULL,
   province = NULL,
   city = NULL,
@@ -24,9 +24,9 @@ gisco_address_api_search(
   verbose = FALSE
 )
 
-gisco_address_api_reverse(x, y, country = NULL, verbose = FALSE)
+gisco_addressapi_reverse(x, y, country = NULL, verbose = FALSE)
 
-gisco_address_api_bbox(
+gisco_addressapi_bbox(
   country = NULL,
   province = NULL,
   city = NULL,
@@ -35,20 +35,20 @@ gisco_address_api_bbox(
   verbose = FALSE
 )
 
-gisco_address_api_countries(verbose = FALSE)
+gisco_addressapi_countries(verbose = FALSE)
 
-gisco_address_api_provinces(country = NULL, city = NULL, verbose = FALSE)
+gisco_addressapi_provinces(country = NULL, city = NULL, verbose = FALSE)
 
-gisco_address_api_cities(country = NULL, province = NULL, verbose = FALSE)
+gisco_addressapi_cities(country = NULL, province = NULL, verbose = FALSE)
 
-gisco_address_api_roads(
+gisco_addressapi_roads(
   country = NULL,
   province = NULL,
   city = NULL,
   verbose = FALSE
 )
 
-gisco_address_api_housenumbers(
+gisco_addressapi_housenumbers(
   country = NULL,
   province = NULL,
   city = NULL,
@@ -57,14 +57,14 @@ gisco_address_api_housenumbers(
   verbose = FALSE
 )
 
-gisco_address_api_postcodes(
+gisco_addressapi_postcodes(
   country = NULL,
   province = NULL,
   city = NULL,
   verbose = FALSE
 )
 
-gisco_address_api_copyright(verbose = FALSE)
+gisco_addressapi_copyright(verbose = FALSE)
 ```
 
 ## Arguments
@@ -77,13 +77,13 @@ gisco_address_api_copyright(verbose = FALSE)
 
   A province within a country. For a list of provinces within a certain
   country use the provinces endpoint
-  (`gisco_address_api_provinces(country = "LU")`).
+  (`gisco_addressapi_provinces(country = "LU")`).
 
 - city:
 
   A city within a province. For a list of cities within a certain
   province use the cities endpoint
-  (`gisco_address_api_cities(province = "capellen")`).
+  (`gisco_addressapi_cities(province = "capellen")`).
 
 - road:
 
@@ -99,7 +99,8 @@ gisco_address_api_copyright(verbose = FALSE)
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical, displays information. Useful for debugging, default is
+  `FALSE`.
 
 - x, y:
 
@@ -108,16 +109,14 @@ gisco_address_api_copyright(verbose = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) in
-most cases, except `gisco_address_api_search()`,
-`gisco_address_api_reverse()` and `gisco_address_api_bbox()`, that
-return a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-object.
+A `data.frame` object in most cases, except `gisco_addressapi_search()`,
+`gisco_addressapi_reverse()` and `gisco_addressapi_bbox()`, that return
+a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Brief description of the API endpoints (source [GISCO Address API
-Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)):
+Brief description of the API endpoints (source [GISCO Address API \\
+Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints):
 
 |                 |                                                                                                                                                                                                                                                                                         |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -162,7 +161,7 @@ See the docs:
 # \donttest{
 # Cities in a region
 
-gisco_address_api_cities(country = "PT", province = "LISBOA")
+gisco_addressapi_cities(country = "PT", province = "LISBOA")
 #> # A tibble: 9 × 1
 #>   L2                 
 #>   <chr>              
@@ -179,7 +178,7 @@ gisco_address_api_cities(country = "PT", province = "LISBOA")
 
 # Geocode and reverse geocode with sf objects
 # Structured search
-struct <- gisco_address_api_search(
+struct <- gisco_addressapi_search(
   country = "ES", city = "BARCELONA",
   road = "GRACIA"
 )
@@ -192,7 +191,7 @@ struct
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 80 × 14
 #>    LD    TF    L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
-#>  * <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
+#>    <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
 #>  1 1     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #>  2 3     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #>  3 7     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
@@ -207,7 +206,7 @@ struct
 #> # ℹ 1 more variable: geometry <POINT [°]>
 
 # Reverse geocoding
-reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
+reverse <- gisco_addressapi_reverse(x = struct$X[1], y = struct$Y[1])
 
 reverse
 #> Simple feature collection with 5 features and 13 fields
@@ -217,7 +216,7 @@ reverse
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 5 × 14
 #>   LD    TF     L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
-#> * <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
+#>   <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
 #> 1 1     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #> 2 1     CL CA… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #> 3 3     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4

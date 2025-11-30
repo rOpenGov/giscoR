@@ -104,10 +104,8 @@ file.
 Other dataset:
 [`gisco_coastallines`](https://ropengov.github.io/giscoR/reference/gisco_coastallines.md),
 [`gisco_countries`](https://ropengov.github.io/giscoR/reference/gisco_countries.md),
-[`gisco_countries_2024`](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md),
-[`gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md),
-[`gisco_nuts_2024`](https://ropengov.github.io/giscoR/reference/gisco_nuts_2024.md)
+[`gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md)
 
 ## Examples
 

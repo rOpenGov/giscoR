@@ -1,70 +1,5 @@
 # Package index
 
-## GISCO API
-
-These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects
-
-### Administrative units
-
-On using administrative data for statistical purposes, administrative
-units are the units for which administrative data are recorded. These
-units may or may not be the same as those required for the statistical
-purposes (referred to as statistical units). See [copyright
-information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
-
-- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
-  : Communes dataset
-- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
-  : Country dataset
-- [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
-  : Postal codes dataset
-
-### Statistical units
-
-A statistical unit is the unit of observation or measurement for which
-data are collected or derived. See [copyright
-information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
-
-- [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md)
-  : Census dataset
-- [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md)
-  : Coastal lines dataset
-- [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
-  : Local Administrative Units (LAU) dataset
-- [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
-  : Territorial units for statistics (NUTS) dataset
-- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
-  : Urban Audit dataset
-
-### Grids
-
-These datasets contain grid cells covering the land territory of the EU,
-in various resolutions from 1 km to 100 km. Base statistics such as
-population figures are provided for these cells.
-
-- [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
-  : Grid dataset
-
-## GISCO Address API
-
-Query the [GISCO Addres
-API](https://gisco-services.ec.europa.eu/address_api/), which allows
-developers to carry out both geocoding and reverse geocoding using a
-pan-european address database.
-
-- [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  [`gisco_address_api_reverse()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  [`gisco_address_api_bbox()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  [`gisco_address_api_countries()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  [`gisco_address_api_provinces()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  [`gisco_address_api_cities()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  [`gisco_address_api_roads()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  [`gisco_address_api_housenumbers()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  [`gisco_address_api_postcodes()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  [`gisco_address_api_copyright()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-  : GISCO Address API
-
 ## Political
 
 These functions return
@@ -73,6 +8,46 @@ political boundaries
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
   : Bulk download from GISCO API
+
+- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md)
+  :
+
+  Get GISCO world country
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
+  points and lines
+
+- [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md)
+  :
+
+  Get GISCO coastlines
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons
+
+- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+  [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+  :
+
+  Get GISCO urban areas
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
+  points and lines
+
+- [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
+  :
+
+  Get GISCO NUTS
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons,
+  points and lines
+
+- [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md)
+  : Get postal code points from GISCO
+
+- [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
+  : Get geospatial units data from GISCO API
+
+- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+  :
+
+  Get GISCO greater cities and metropolitan areas
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects
 
 ## Infrastructures
 
@@ -92,17 +67,25 @@ man-made features
 
 Access to other GISCO tools
 
-## Databases
-
-Get information about the current and most up-to-date database.
+- [`gisco_addressapi_search()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  [`gisco_addressapi_reverse()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  [`gisco_addressapi_bbox()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  [`gisco_addressapi_countries()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  [`gisco_addressapi_provinces()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  [`gisco_addressapi_cities()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  [`gisco_addressapi_roads()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  [`gisco_addressapi_housenumbers()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  [`gisco_addressapi_postcodes()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  [`gisco_addressapi_copyright()`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+  : GISCO Address API
 
 ## Misc
 
 These functions return other
 [sf](https://r-spatial.github.io/sf/reference/sf.html) objects
 
-- [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
-  : Get metadata
+- [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
+  : Get grid cells covering covering Europe for various resolutions
 
 ## Cache management
 
@@ -143,21 +126,10 @@ Datasets included with
   World countries `POLYGON`
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
-- [`gisco_countries_2024`](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md)
-  :
-
-  World countries `POLYGON`
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object 2024
-
 - [`gisco_countrycode`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md)
   : Data frame with different country code schemes and world regions
 
 - [`gisco_nuts`](https://ropengov.github.io/giscoR/reference/gisco_nuts.md)
-  :
-
-  All NUTS `POLYGON` object
-
-- [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/reference/gisco_nuts_2024.md)
   :
 
   All NUTS `POLYGON` object

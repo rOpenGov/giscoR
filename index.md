@@ -4,13 +4,13 @@
 helps to retrieve data from [Eurostat - GISCO (the Geographic
 Information System of the
 COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides
-some lightweight datasets ready to use without downloading.
+some lightweight data sets ready to use without downloading.
 
 [GISCO](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository including several datasets as countries, coastal lines,
+data repository including several data sets as countries, coastal lines,
 labels or [NUTS
 levels](https://ec.europa.eu/eurostat/web/regions-and-cities/overview).
-The datasets are usually provided at several resolution levels
+The data sets are usually provided at several resolution levels
 (60M/20M/10M/03M/01M) and in 3 different projections (4326/3035/3857).
 
 Note that the package does not provide metadata on the downloaded files,
@@ -161,7 +161,6 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
-#> indexed 0B in  0s, 0B/sindexed 2.15GB in  0s, 2.15GB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -247,7 +246,7 @@ ggplot(nuts3_sf) +
 
 ## A note on caching
 
-Some datasets (as Local Administrative Units - LAU, or high-resolution
+Some data sets (as Local Administrative Units - LAU, or high-resolution
 files) may have a size larger than 50MB. You can use **giscoR** to
 create your own local repository at a given local directory passing the
 following function:
@@ -265,6 +264,17 @@ them on your local directory.
 
 - **eurostat** ([Lahti et al. 2017](#ref-RJ-2017-019)): This is an API
   package that provides access to open data from Eurostat.
+
+### Plotting **sf** objects
+
+Some packages recommended for visualization are:
+
+- [**tmap**](https://r-tmap.github.io/tmap/)
+- [**ggplot2**](https://github.com/tidyverse/ggplot2) +
+  [**ggspatial**](https://github.com/paleolimbot/ggspatial) +
+  [**tidyterra**](https://dieghernan.github.io/tidyterra/)
+- [**mapsf**](https://riatelab.github.io/mapsf/)
+- [**leaflet**](https://rstudio.github.io/leaflet/)
 
 ## Contribute
 

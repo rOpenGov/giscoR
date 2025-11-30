@@ -1,46 +1,39 @@
-# Get GISCO urban areas [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons, points and lines
+# Get GISCO world country [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons, points and lines
 
-`gisco_get_communes()` and `gisco_get_lau()` download shapes of Local
-Urban Areas, that correspond roughly with towns and cities.
+Returns world country polygons, lines and points at a specified scale,
+as provided by GISCO. Also, specific areas as Gibraltar or Antarctica
+are presented separately. The definition of country used on GISCO
+correspond roughly with territories with an official
+[ISO-3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)
+code.
 
 ## Usage
 
 ``` r
-gisco_get_communes(
+gisco_get_countries(
   year = "2016",
   epsg = "4326",
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
+  resolution = "20",
   spatialtype = "RG",
-  country = NULL
-)
-
-gisco_get_lau(
-  year = "2021",
-  epsg = "4326",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
   country = NULL,
-  gisco_id = NULL
+  region = NULL
 )
 ```
+
+## Source
+
+<https://gisco-services.ec.europa.eu/distribution/v2/>
 
 ## Arguments
 
 - year:
 
-  Release year of the file:
-
-  - For `gisco_get_communes()` one of `"2001"`, `"2004"`, `"2006"`,
-    `"2008"`, `"2010"`, `"2013"` or `"2016"`.
-
-  - For `gisco_get_lau()` one of `"2011"`, `"2012"`, `"2013"`, `"2014"`,
-    `"2015"`, `"2016"`, `"2017"`, `"2018"`, `"2019"`, `"2020"`,
-    `"2021"`, `"2022"`, `"2023"` or `"2024"`.
+  Release year of the file. One of `"2001"`, `"2006"`, `"2010"`,
+  `"2013"`, `"2016"`, `"2020"` or `"2024"`.
 
 - epsg:
 
@@ -73,6 +66,20 @@ gisco_get_lau(
   Logical, displays information. Useful for debugging, default is
   `FALSE`.
 
+- resolution:
+
+  Resolution of the geospatial data. One of
+
+  - `"60"`: 1:60million
+
+  - `"20"`: 1:20million
+
+  - `"10"`: 1:10million
+
+  - `"03"`: 1:3million
+
+  - `"01"`: 1:1million
+
 - spatialtype:
 
   Type of geometry to be returned:
@@ -98,15 +105,18 @@ gisco_get_lau(
   not work. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
-- gisco_id:
+- region:
 
-  Optional. A character vector of GISCO_ID LAU values.
+  Optional. A character vector of UN M49 region codes or European Union
+  membership. Possible values are `"Africa"`, `"Americas"`, `"Asia"`,
+  `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
+  European Union (as per 2021). See **About world regions** and
+  [gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md).
 
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-specified by `spatialtype`. In the case of `gisco_get_lau()`, a
-`POLYGON` object.
+specified by `spatialtype`.
 
 ## Note
 
@@ -129,12 +139,23 @@ query.
 For a complete list of files available check
 [gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
 
+## World Regions
+
+Regions are defined as per the geographic regions defined by the UN (see
+<https://unstats.un.org/unsd/methodology/m49/>. Under this scheme Cyprus
+is assigned to Asia. You may use `region = "EU"` to get the EU members
+(reference date: 2021).
+
 ## See also
+
+[`gisco_countrycode()`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md),
+[gisco_countries](https://ropengov.github.io/giscoR/reference/gisco_countries.md),
+[`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html)
 
 Other political:
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
 [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
+[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
 [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md),
 [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md),
@@ -143,26 +164,18 @@ Other political:
 ## Examples
 
 ``` r
-# \donttest{
+cntries <- gisco_get_countries()
 
-ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
+library(ggplot2)
+ggplot(cntries) +
+  geom_sf()
 
-if (!is.null(ire_lau)) {
-  library(ggplot2)
 
-  ggplot(ire_lau) +
-    geom_sf(shape = 21, col = "#009A44", size = 0.5) +
-    labs(
-      title = "Communes in Ireland",
-      subtitle = "Year 2016",
-      caption = gisco_attributions()
-    ) +
-    theme_void() +
-    theme(text = element_text(
-      colour = "#009A44",
-      family = "serif", face = "bold"
-    ))
-}
+# Get a region
 
-# }
+africa <- gisco_get_countries(region = "Africa")
+ggplot(africa) +
+  geom_sf(fill = "#078930", col = "white") +
+  theme_minimal()
+
 ```
