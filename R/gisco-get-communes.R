@@ -1,7 +1,7 @@
-#' Communes data set
+#' Communes dataset
 #'
 #' @description
-#' This data set shows pan European administrative boundaries down to commune
+#' This dataset shows pan European administrative boundaries down to commune
 #' level. Communes are equivalent to Local Administrative Units,
 #' see [gisco_get_lau()].
 #'
@@ -33,10 +33,10 @@
 #' levels (NUTS 1, 2 and 3 and LAU , respectively, moving from larger to smaller
 #' territorial units).
 #'
-#' The data set is based on EuroBoundaryMap from
+#' The dataset is based on EuroBoundaryMap from
 #' [EuroGeographics](https://eurogeographics.org/). Geographical extent covers
 #' the European Union 28, EFTA countries, and candidate countries. The scale of
-#' the data set is 1:100 000.
+#' the dataset is 1:100 000.
 #'
 #' The LAU classification is not covered by any legislative act.
 #'
@@ -77,7 +77,7 @@ gisco_get_communes <- function(
   if (lifecycle::is_present(cache)) {
     lifecycle::deprecate_warn(
       when = "1.0.0",
-      what = "giscoR::gisco_get_lau(cache)",
+      what = "giscoR::gisco_get_communes(cache)",
       details = paste0(
         "Results are always cached. To avoid persistency use ",
         "`cache_dir = tempdir()`."

@@ -29,7 +29,7 @@ Locale Data Repository.}
 \description{
 A data frame containing conversions between different country
 code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
-provided by the World Bank and the UN (M49). This data set
+provided by the World Bank and the UN (M49). This dataset
 is extracted from \CRANpkg{countrycode} package.
 }
 \section{World Regions}{

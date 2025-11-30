@@ -1,4 +1,4 @@
-#' Postal codes data set
+#' Postal codes dataset
 #'
 #' @description
 #' The postal code point dataset shows the location of postal codes, NUTS codes
@@ -14,10 +14,10 @@
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postal_codes",
 #'   "year",TRUE)}.
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postal_codes",
 #'   "ext",TRUE)}.
 #' @inheritParams gisco_get_countries
 #' @inherit gisco_get_countries source return note
@@ -74,7 +74,7 @@ gisco_get_postalcodes <- function(
   ext <- match_arg_pretty(ext, valid_ext)
 
   url <- get_url_db(
-    "postalcodes",
+    "postal_codes",
     year = year,
     ext = ext,
     fn = "gisco_get_postalcodes"
@@ -85,7 +85,7 @@ gisco_get_postalcodes <- function(
     url = url,
     name = filename,
     cache_dir = cache_dir,
-    subdir = "postalcodes",
+    subdir = "postal_codes",
     update_cache = update_cache,
     verbose = verbose
   )

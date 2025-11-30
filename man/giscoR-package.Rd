@@ -24,6 +24,7 @@ Useful links:
 
 Other contributors:
 \itemize{
+  \item Eurostat (\href{https://ror.org/033d3q980}{ROR}) [copyright holder]
   \item EuroGeographics [copyright holder]
 }
 

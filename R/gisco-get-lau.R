@@ -1,7 +1,7 @@
-#' Local Administrative Units (LAU) data set
+#' Local Administrative Units (LAU) dataset
 #'
 #' @description
-#' This data set shows pan European administrative boundaries down to commune
+#' This dataset shows pan European administrative boundaries down to commune
 #' level. Local Administrative units are equivalent to Communes,
 #' see [gisco_get_communes()].
 #'
@@ -36,7 +36,7 @@
 #'
 #' The LAU classification is not covered by any legislative act. Geographical
 #' extent covers the European Union, EFTA countries, and candidate countries.
-#' The scale of the data set is 1:100 000.
+#' The scale of the dataset is 1:100 000.
 #'
 #' The data contains the National Statistical agency LAU code which can be
 #' joined to LAU lists as well as a field `GISCO_ID` which is a unique

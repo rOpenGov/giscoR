@@ -3,7 +3,7 @@
 \name{gisco_get_coastal_lines}
 \alias{gisco_get_coastal_lines}
 \alias{gisco_get_coastallines}
-\title{Coastal lines data set}
+\title{Coastal lines dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
@@ -24,7 +24,7 @@ gisco_get_coastal_lines(
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("coastallines",
+\Sexpr[stage=render,results=rd]{giscoR:::for_docs("coastal_lines",
 "year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
@@ -96,6 +96,7 @@ ggplot(coast) +
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
 \code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_nuts}()}
+\code{\link{gisco_get_nuts}()},
+\code{\link{gisco_get_urban_audit}()}
 }
 \concept{stats}

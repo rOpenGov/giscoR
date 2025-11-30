@@ -127,3 +127,124 @@ test_that("Urban Audit online", {
     0
   )
 })
+
+test_that("Test inputs", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  expect_snapshot(gisco_get_urban_audit(ext = "docx"), error = TRUE)
+  expect_snapshot(gisco_get_urban_audit(level = "docx"), error = TRUE)
+
+  # NULL is working
+  db_null <- gisco_get_urban_audit(country = "LU", level = NULL)
+  db_all <- gisco_get_urban_audit(country = "LU", level = "all")
+  expect_identical(db_null, db_all)
+})
+
+test_that("Cache vs non-cached", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  cdir <- file.path(tempdir(), "testurbanaudit")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+  expect_message(
+    db_online <- gisco_get_urban_audit(
+      level = "CITIES",
+      cache = FALSE,
+      verbose = TRUE,
+      country = "LU",
+      cache_dir = cdir
+    ),
+    "Reading from"
+  )
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+
+  # vs cache TRUE
+  expect_silent(
+    db_cached <- gisco_get_urban_audit(
+      level = "CITIES",
+      cache = TRUE,
+      verbose = FALSE,
+      country = "LU",
+      cache_dir = cdir
+    )
+  )
+
+  expect_identical(db_online$URAU_CODE, db_cached$URAU_CODE)
+  expect_s3_class(db_online, "sf")
+  expect_s3_class(db_online, "tbl_df")
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    "urban_audit/URAU_RG_100K_2021_4326_CITIES.gpkg"
+  )
+
+  # shp is always cached
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 0)
+
+  f <- gisco_get_urban_audit(
+    cache_dir = cdir,
+    ext = "shp",
+    country = "LU",
+    cache = FALSE
+  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 1)
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})
+test_that("Extensions", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  cdir <- file.path(tempdir(), "testurbanaudit")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  expect_identical(
+    list.files(cdir, recursive = TRUE),
+    character(0)
+  )
+
+  db_geojson <- gisco_get_urban_audit(
+    cache_dir = cdir,
+    ext = "geojson",
+    spatialtype = "LB"
+  )
+  expect_s3_class(db_geojson, "sf")
+  expect_s3_class(db_geojson, "tbl_df")
+
+  expect_length(
+    list.files(cdir, recursive = TRUE, pattern = "geojson"),
+    1
+  )
+
+  db_zip <- gisco_get_urban_audit(
+    spatialtype = "LB",
+    cache_dir = cdir,
+    verbose = TRUE,
+    ext = "shp"
+  )
+
+  expect_s3_class(db_zip, "sf")
+  expect_s3_class(db_zip, "tbl_df")
+
+  expect_length(
+    list.files(cdir, recursive = TRUE, pattern = "shp.zip"),
+    1
+  )
+
+  # Cleanup
+  unlink(cdir, recursive = TRUE, force = TRUE)
+})

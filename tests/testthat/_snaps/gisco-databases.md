@@ -9,10 +9,10 @@
 # Get database
 
     Code
-      unique(new_db$id_giscoR)
+      unique(new_db$id_giscor)
     Output
-      [1] "coastallines" "communes"     "countries"    "lau"          "nuts"        
-      [6] "postalcodes"  "urban_audit" 
+      [1] "coastal_lines" "communes"      "countries"     "lau"          
+      [5] "nuts"          "postal_codes"  "urban_audit"  
 
 ---
 

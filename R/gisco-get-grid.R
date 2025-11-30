@@ -1,4 +1,4 @@
-#' Grid data set
+#' Grid dataset
 #'
 #' @description
 #' These datasets contain grid cells covering the European land

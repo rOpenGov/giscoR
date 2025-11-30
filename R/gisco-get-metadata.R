@@ -35,7 +35,7 @@ gisco_get_metadata <- function(
   year <- match_arg_pretty(year, valids)
 
   db <- get_db()
-  db <- db[db$id_giscoR == id, ]
+  db <- db[db$id_giscor == id, ]
   db <- db[db$year == year, ]
   db <- db[db$ext == "csv", ]
   db <- db[grepl("_AT", db$api_file), ]

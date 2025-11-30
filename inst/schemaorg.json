@@ -17,6 +17,10 @@
         },
         {
           "type": "Organization",
+          "name": "Eurostat"
+        },
+        {
+          "type": "Organization",
           "name": "EuroGeographics"
         }
       ],

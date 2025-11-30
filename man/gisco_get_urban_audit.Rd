@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco-get-urban-audit.R
 \name{gisco_get_urban_audit}
 \alias{gisco_get_urban_audit}
-\title{Get GISCO greater cities and metropolitan areas \code{\link[sf:sf]{sf}} objects}
+\title{Urban Audit dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
@@ -11,19 +11,20 @@ Copyright:
 }
 \usage{
 gisco_get_urban_audit(
-  year = "2021",
-  epsg = "4326",
+  year = 2021,
+  epsg = 4326,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  spatialtype = "RG",
+  spatialtype = c("RG", "LB"),
   country = NULL,
-  level = NULL
+  level = c("all", "CITIES", "FUA", "GREATER_CITIES", "CITY", "KERN", "LUZ"),
+  ext = "gpkg"
 )
 }
 \arguments{
-\item{year}{Release year of the file. One of
+\item{year}{character string or number. Release year of the file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
 "year",TRUE)}.}
 
@@ -46,35 +47,62 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{spatialtype}{Type of geometry to be returned:
+\item{spatialtype}{character string. Type of geometry to be returned. Options
+available are:
 \itemize{
-\item \code{"LB"}: Labels - \code{POINT} object.
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
+\item \code{"LB"}: Labels - \code{POINT} object.
 }}
 
 \item{country}{character vector of country codes. It could be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
-\item{level}{Level of Urban Audit. Possible values are \code{"CITIES"}, \code{"FUA"},
-\code{"GREATER_CITIES"} or \code{NULL}, that would download the full dataset.}
+\item{level}{character string. Level of Urban Audit. Possible values \code{"all"}
+(the default), that would download the full dataset or \code{"CITIES"}, \code{"FUA"},
+and (for versions prior to \code{year = 2020}) \code{"GREATER_CITIES"}, \code{"CITY"},
+\code{"KERN"} or \code{"LUZ"}.}
+
+\item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
+\Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
+"ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object specified by \code{spatialtype}.
+A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Returns polygons and points corresponding to cities, greater cities and
-metropolitan areas included on the
-\href{https://ec.europa.eu/eurostat/web/regions-and-cities}{Urban Audit report}
-of Eurostat.
+The dataset contains the boundaries of cities (\code{"CITIES"}), greater cities
+(\code{"GREATER_CITIES"}) and functional urban areas (\code{"FUA"}) as defined
+according to the EC-OECD city definition. This is used for the Eurostat Urban
+Audit data collection.
 }
-\note{
+\details{
+See more in \href{https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions}{Eurostat - Statistics Explained}.
+
+The cities are defined at several conceptual levels:
+\itemize{
+\item The core city (\code{"CITIES"}), using an administrative definition.
+\item The Functional Urban Area/Large Urban Zone (\code{"FUA"}), approximating the
+functional urban region.
+The coverage is the EU plus Iceland, Norway and Switzerland . The dataset
+includes polygon features, point features and a related attribute table
+which can be joined on the URAU code field.
+}
+
+The \code{"URAU_CATG"} field defines the Urban Audit category:
+\itemize{
+\item \code{"C"} = City.
+\item \code{"F"} = Functional Urban Area Service Type.
+}
+}
+\section{Note}{
 Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
+
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-cities <- gisco_get_urban_audit(year = "2020", level = "CITIES")
+cities <- gisco_get_urban_audit(year = 2021, level = "CITIES")
 
 if (!is.null(cities)) {
   bcn <- cities[cities$URAU_NAME == "Barcelona", ]
@@ -87,10 +115,10 @@ if (!is.null(cities)) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=gisco_get_communes]{gisco_get_communes()}}, \code{\link[=gisco_get_lau]{gisco_get_lau()}}
-
-Other political: 
-\code{\link{gisco_bulk_download}()},
-\code{\link{gisco_get_units}()}
+Other statistical units datasets:
+\code{\link{gisco_get_census}()},
+\code{\link{gisco_get_coastal_lines}()},
+\code{\link{gisco_get_lau}()},
+\code{\link{gisco_get_nuts}()}
 }
-\concept{political}
+\concept{stats}

@@ -36,7 +36,7 @@
       * `year` = "2016"
       * `epsg` = "4326"
       > Returning first value:
-      * `id_giscoR` = "communes"
+      * `id_giscor` = "communes"
       * `year` = "2016"
       * `epsg` = "4326"
       * `resolution` = "01"
@@ -46,4 +46,5 @@
       * `ext` = "csv"
       * `api_file` = "csv/COMM_BN_01M_2016_4326.csv"
       * `api_entry` = "https://gisco-services.ec.europa.eu/distribution/v2/communes"
+      * `last_updated` = "20422"
 

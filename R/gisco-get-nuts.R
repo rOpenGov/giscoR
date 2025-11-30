@@ -1,4 +1,4 @@
-#' Territorial units for statistics (NUTS) data set
+#' Territorial units for statistics (NUTS) dataset
 #'
 #' @description
 #' The GISCO statistical unit dataset represents the NUTS (nomenclature of

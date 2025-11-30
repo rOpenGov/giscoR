@@ -110,7 +110,7 @@ test_that("Get urls", {
   skip_if_gisco_offline()
 
   expect_error(get_url_db(
-    "postalcodes",
+    "postal_codes",
     year = "1991",
     fn = "gisco_get_postalcodes"
   ))

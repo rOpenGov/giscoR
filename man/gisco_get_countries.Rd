@@ -4,7 +4,7 @@
 \name{gisco_get_countries}
 \alias{gisco_get_countries}
 \alias{gisco_get}
-\title{Country data set}
+\title{Country dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
@@ -88,7 +88,7 @@ European Union (as per 2021). See \strong{World Regions} and
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-This data set contains the administrative boundaries at country level of the
+This dataset contains the administrative boundaries at country level of the
 world. This dataset consists of 2 feature classes (regions, boundaries) per
 scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 60M).

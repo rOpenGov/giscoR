@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{gisco_get_lau}
 \alias{gisco_get_lau}
-\title{Local Administrative Units (LAU) data set}
+\title{Local Administrative Units (LAU) dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
@@ -62,7 +62,7 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-This data set shows pan European administrative boundaries down to commune
+This dataset shows pan European administrative boundaries down to commune
 level. Local Administrative units are equivalent to Communes,
 see \code{\link[=gisco_get_communes]{gisco_get_communes()}}.
 }
@@ -75,7 +75,7 @@ territorial units).
 
 The LAU classification is not covered by any legislative act. Geographical
 extent covers the European Union, EFTA countries, and candidate countries.
-The scale of the data set is 1:100 000.
+The scale of the dataset is 1:100 000.
 
 The data contains the National Statistical agency LAU code which can be
 joined to LAU lists as well as a field \code{GISCO_ID} which is a unique
@@ -120,6 +120,7 @@ if (!is.null(lu_lau)) {
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
 \code{\link{gisco_get_coastal_lines}()},
-\code{\link{gisco_get_nuts}()}
+\code{\link{gisco_get_nuts}()},
+\code{\link{gisco_get_urban_audit}()}
 }
 \concept{stats}

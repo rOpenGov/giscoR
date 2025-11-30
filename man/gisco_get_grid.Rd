@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco-get-grid.R
 \name{gisco_get_grid}
 \alias{gisco_get_grid}
-\title{Grid data set}
+\title{Grid dataset}
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}
 

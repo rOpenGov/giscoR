@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{gisco_get_communes}
 \alias{gisco_get_communes}
-\title{Communes data set}
+\title{Communes dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
@@ -70,7 +70,7 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-This data set shows pan European administrative boundaries down to commune
+This dataset shows pan European administrative boundaries down to commune
 level. Communes are equivalent to Local Administrative Units,
 see \code{\link[=gisco_get_lau]{gisco_get_lau()}}.
 }
@@ -81,10 +81,10 @@ together subdivide the EU economic territory into regions of five different
 levels (NUTS 1, 2 and 3 and LAU , respectively, moving from larger to smaller
 territorial units).
 
-The data set is based on EuroBoundaryMap from
+The dataset is based on EuroBoundaryMap from
 \href{https://eurogeographics.org/}{EuroGeographics}. Geographical extent covers
 the European Union 28, EFTA countries, and candidate countries. The scale of
-the data set is 1:100 000.
+the dataset is 1:100 000.
 
 The LAU classification is not covered by any legislative act.
 }

@@ -66,7 +66,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
 
       child <- httr2::resp_body_json(resp)
       tibble::tibble(
-        id_giscoR = entry_point,
+        id_giscor = entry_point,
         year = years[i],
         api_file = unlist(child),
         api_entry = api_entry
@@ -134,9 +134,9 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   # nuts_level: Different for NUTS and URBAN AUDIT
   final_db$nuts_level <- NA
   final_db$level <- NA
-  clean <- final_db[!final_db$id_giscoR %in% c("nuts", "urau"), ]
-  nuts <- final_db[final_db$id_giscoR == "nuts", ]
-  urau <- final_db[final_db$id_giscoR == "urau", ]
+  clean <- final_db[!final_db$id_giscor %in% c("nuts", "urau"), ]
+  nuts <- final_db[final_db$id_giscor == "nuts", ]
+  urau <- final_db[final_db$id_giscor == "urau", ]
 
   # NUTS
   nuts$nuts_level <- "all"
@@ -168,11 +168,11 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   final_db_2 <- rbind(clean, urau, nuts)
 
   # Recode
-  id_giscor <- final_db_2$id_giscoR
-  id_giscor[id_giscor == "coas"] <- "coastallines"
+  id_giscor <- final_db_2$id_giscor
+  id_giscor[id_giscor == "coas"] <- "coastal_lines"
   id_giscor[id_giscor == "urau"] <- "urban_audit"
-  id_giscor[id_giscor == "pcode"] <- "postalcodes"
-  final_db_2$id_giscoR <- id_giscor
+  id_giscor[id_giscor == "pcode"] <- "postal_codes"
+  final_db_2$id_giscor <- id_giscor
 
   # get extensions
   extension <- final_db_2$api_file
@@ -182,7 +182,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   final_db_2$ext <- ext_end
 
   ordernames <- c(
-    "id_giscoR",
+    "id_giscor",
     "year",
     "epsg",
     "resolution",
@@ -197,6 +197,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
   final_db_2 <- final_db_2[, ordernames]
 
   final_db_2 <- final_db_2[do.call(order, final_db_2), ]
+  final_db_2$last_updated <- Sys.Date()
 
   # Write in temp
 

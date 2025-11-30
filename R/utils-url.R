@@ -37,7 +37,7 @@ get_url_db <- function(
   fn <- paste0("giscoR::", fn)
 
   # Initial filter
-  db <- db[db$id_giscoR == id, ]
+  db <- db[db$id_giscor == id, ]
   years <- sort(unique(db$year)) # nolint
 
   # Only inform valids in year

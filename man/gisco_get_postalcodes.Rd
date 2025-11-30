@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{gisco_get_postalcodes}
 \alias{gisco_get_postalcodes}
-\title{Postal codes data set}
+\title{Postal codes dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
@@ -22,7 +22,7 @@ gisco_get_postalcodes(
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
+\Sexpr[stage=render,results=rd]{giscoR:::for_docs("postal_codes",
 "year",TRUE)}.}
 
 \item{country}{character vector of country codes. It could be either a
@@ -38,7 +38,7 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
 \item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("postalcodes",
+\Sexpr[stage=render,results=rd]{giscoR:::for_docs("postal_codes",
 "ext",TRUE)}.}
 }
 \value{

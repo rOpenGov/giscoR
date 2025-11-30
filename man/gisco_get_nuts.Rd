@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco-get-nuts.R
 \name{gisco_get_nuts}
 \alias{gisco_get_nuts}
-\title{Territorial units for statistics (NUTS) data set}
+\title{Territorial units for statistics (NUTS) dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
@@ -161,6 +161,7 @@ ggplot(select_nuts) +
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
 \code{\link{gisco_get_coastal_lines}()},
-\code{\link{gisco_get_lau}()}
+\code{\link{gisco_get_lau}()},
+\code{\link{gisco_get_urban_audit}()}
 }
 \concept{stats}

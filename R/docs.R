@@ -2,7 +2,7 @@
 for_docs <- function(id, field, decreasing = FALSE, formatted = TRUE) {
   db <- get_db()
 
-  df <- db[db$id_giscoR == id, field]
+  df <- db[db$id_giscor == id, field]
 
   x <- sort(unique(df[[field]]), decreasing = decreasing)
   x <- x[!is.na(x)]

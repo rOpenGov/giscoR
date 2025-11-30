@@ -1,4 +1,4 @@
-#' Coastal lines data set
+#' Coastal lines dataset
 #'
 #' @description
 #' Downloads worldwide coastlines.
@@ -11,7 +11,7 @@
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("coastallines",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("coastal_lines",
 #'   "year",TRUE)}.
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
@@ -53,11 +53,11 @@ gisco_get_coastal_lines <- function(
   resolution = 20,
   ext = "gpkg"
 ) {
-  valid_ext <- for_docs("coastallines", "ext", formatted = FALSE)
+  valid_ext <- for_docs("coastal_lines", "ext", formatted = FALSE)
   ext <- match_arg_pretty(ext, valid_ext)
 
   api_entry <- get_url_db(
-    id = "coastallines",
+    id = "coastal_lines",
     year = year,
     epsg = epsg,
     resolution = resolution,

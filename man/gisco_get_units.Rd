@@ -147,8 +147,7 @@ ggplot(Provincia) +
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
 
 Other political: 
-\code{\link{gisco_bulk_download}()},
-\code{\link{gisco_get_urban_audit}()}
+\code{\link{gisco_bulk_download}()}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}

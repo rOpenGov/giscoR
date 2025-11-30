@@ -2,7 +2,7 @@
 % Please edit documentation in R/gisco-get-census.R
 \name{gisco_get_census}
 \alias{gisco_get_census}
-\title{Census data}
+\title{Census dataset}
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census}
 
@@ -40,7 +40,7 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 A \code{\link[sf:sf]{sf}} object.
 }
 \description{
-This data set shows pan European communal boundaries depicting the situation
+This dataset shows pan European communal boundaries depicting the situation
 at the corresponding Census.
 }
 \examples{
@@ -58,6 +58,7 @@ pts
 Other statistical units datasets:
 \code{\link{gisco_get_coastal_lines}()},
 \code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_nuts}()}
+\code{\link{gisco_get_nuts}()},
+\code{\link{gisco_get_urban_audit}()}
 }
 \concept{stats}

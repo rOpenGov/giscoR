@@ -1,7 +1,7 @@
-#' Country data set
+#' Country dataset
 #'
 #' @description
-#' This data set contains the administrative boundaries at country level of the
+#' This dataset contains the administrative boundaries at country level of the
 #' world. This dataset consists of 2 feature classes (regions, boundaries) per
 #' scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 #' 60M).
