@@ -58,10 +58,13 @@ licence
 limites
 lwgeom
 mapsf
+polyline
 rOG
 rOpenGov
 rcartocolor
 roxygen
+socio
 testthat
 tibble
 tmap
+visualise

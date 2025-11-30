@@ -40,6 +40,7 @@ Other dataset:
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},
-\code{\link{gisco_nuts}}
+\code{\link{gisco_nuts}},
+\code{\link{gisco_nuts_2024}}
 }
 \concept{dataset}

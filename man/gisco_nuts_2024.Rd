@@ -2,37 +2,36 @@
 % Please edit documentation in R/data.R
 \docType{data}
 \encoding{UTF-8}
-\name{gisco_nuts}
-\alias{gisco_nuts}
+\name{gisco_nuts_2024}
+\alias{gisco_nuts_2024}
 \title{All NUTS \code{POLYGON} object}
 \format{
 A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
-2,016 rows and
+1,798 rows and
 11 variables:
 \describe{
-\item{NUTS_ID}{NUTS identifier.}
-\item{LEVL_CODE}{NUTS level code \verb{(0,1,2,3)}.}
-\item{URBN_TYPE}{Urban Type, see \strong{Details}.}
-\item{CNTR_CODE}{Eurostat Country code.}
-\item{NAME_LATN}{NUTS name on Latin characters.}
-\item{NUTS_NAME}{NUTS name on local alphabet.}
-\item{MOUNT_TYPE}{Mount Type, see \strong{Details}.}
-\item{COAST_TYPE}{Coast Type, see \strong{Details}.}
-\item{FID}{FID.}
-\item{geo}{Same as NUTS_ID, provided for compatibility with
+\item{\code{NUTS_ID}}{NUTS identifier.}
+\item{\code{LEVL_CODE}}{NUTS level code \verb{(0,1,2,3)}.}
+\item{\code{CNTR_CODE}}{Eurostat Country code.}
+\item{\code{NAME_LATN}}{NUTS name on Latin characters.}
+\item{\code{NUTS_NAME}}{NUTS name on local alphabet.}
+\item{\code{MOUNT_TYPE}}{Mount Type, see \strong{Details}.}
+\item{\code{URBN_TYPE}}{Urban Type, see \strong{Details}.}
+\item{\code{COAST_TYPE}}{Coast Type, see \strong{Details}.}
+\item{\code{geo}}{Same as \code{NUTS_ID}, provided for compatibility with
 \CRANpkg{eurostat}.}
-\item{geometry}{geometry field.}
+\item{\code{geometry}}{geometry field.}
 }
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/}{NUTS_RG_20M_2016_4326.geojson} file.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/gpkg/}{NUTS_RG_20M_2024_4326.gpkg} file.
 }
 \description{
 A \code{\link[sf:sf]{sf}} object including all NUTS levels as provided by GISCO
-(2016 version).
+(2024 version).
 }
 \details{
-\strong{MOUNT_TYPE}: Mountain typology:
+\code{MOUNT_TYPE}: Mountain typology:
 \itemize{
 \item \code{1}: More than 50 \% of the surface is covered by topographic mountain
 areas.
@@ -45,7 +44,7 @@ mountain areas.
 \item \code{0}: No classification provided.
 }
 
-\strong{URBN_TYPE}: Urban-rural typology:
+\code{URBN_TYPE}: Urban-rural typology:
 \itemize{
 \item \code{1}: Predominantly urban region.
 \item \code{2}: Intermediate region.
@@ -53,7 +52,7 @@ mountain areas.
 \item \code{0}: No classification provided.
 }
 
-\strong{COAST_TYPE}: Coastal typology:
+\code{COAST_TYPE}: Coastal typology:
 \itemize{
 \item \code{1}: Coastal (on coast).
 \item \code{2}: Coastal (less than 50\% of population living within 50 km. of the
@@ -77,6 +76,6 @@ Other dataset:
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},
-\code{\link{gisco_nuts_2024}}
+\code{\link{gisco_nuts}}
 }
 \concept{dataset}
