@@ -7,7 +7,7 @@ to be 'hospitals' by Member States.
 
 ``` r
 gisco_get_healthcare(
-  year = c(2023, 2020),
+  year = c("2023", "2020"),
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
@@ -28,30 +28,29 @@ gisco_get_healthcare(
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
-  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+  A logical whether to do caching. Default is `TRUE`. See **About
+  caching**.
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  A logical whether to update cache. Default is `FALSE`. When set to
+  `TRUE` it would force a fresh download of the source `.geojson` file.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+  A path to a cache directory. See **About caching**.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical, displays information. Useful for debugging, default is
+  `FALSE`.
 
 - country:
 
-  character vector of country codes. It could be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  Optional. A character vector of country codes. It could be either a
+  vector of country names, a vector of ISO3 country codes or a vector of
+  Eurostat country codes. Mixed types (as `c("Italy","ES","FRA")`) would
+  not work. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 ## Value
@@ -64,9 +63,25 @@ object.
 Files are distributed on EPSG:4326. Metadata available on
 <https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf>.
 
+## About caching
+
+You can set your `cache_dir` with
+[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting `update_cache = TRUE`.
+
+If you experience any problem on download, try to download the
+corresponding `.geojson` file by any other method and save it on your
+`cache_dir`. Use the option `verbose = TRUE` for debugging the API
+query.
+
+For a complete list of files available check
+[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
+
 ## See also
 
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md)
 
 Other infrastructure:
 [`gisco_get_airports()`](https://ropengov.github.io/giscoR/reference/gisco_get_airports.md),

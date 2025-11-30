@@ -25,7 +25,7 @@ CRAN release: 2024-08-28
   versions of the dataset.
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
   and
-  [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+  [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md)
   now can download the 2024 version of the datasets
   ([\#93](https://github.com/rOpenGov/giscoR/issues/93)
   [@hannesaddec](https://github.com/hannesaddec)).
@@ -47,8 +47,9 @@ CRAN release: 2024-05-29
   - [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md).
   - Add access to [GISCO Address
     API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home)
-    through new functions. See `?gisco_addressapi` to know more
-    ([\#84](https://github.com/rOpenGov/giscoR/issues/84)).
+    through new functions. See
+    [`?gisco_addressapi`](https://ropengov.github.io/giscoR/reference/gisco_addressapi.md)
+    to know more ([\#84](https://github.com/rOpenGov/giscoR/issues/84)).
 - New dependency: **jsonlite** added to ‘Imports’.
 - Update `gisco_db` with the most up-to-date released data.
 - Default year of some functions updated to the latest available data:
@@ -192,9 +193,7 @@ CRAN release: 2020-11-12
 
 - Remove **colorspace** as dependency.
 - Bump **R** minimal version to `3.6.0`.
-- Change order on parameters for
-  [`gisco_get()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
-  functions.
+- Change order on parameters for `gisco_get()` functions.
 - Rewriting of internal functions and utils.
 - Add `verbose` parameter to functions.
 - Rewriting of
@@ -207,7 +206,7 @@ CRAN release: 2020-11-12
   - [`gisco_get_ports()`](https://ropengov.github.io/giscoR/reference/gisco_get_airports.md)
   - [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
 - Now
-  [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+  [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md)
   and
   [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
   uses

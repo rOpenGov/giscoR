@@ -1,23 +1,18 @@
-# Get GISCO greater cities and metropolitan areas [`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects
+# Get GISCO coastlines [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons
 
-Returns polygons and points corresponding to cities, greater cities and
-metropolitan areas included on the [Urban Audit
-report](https://ec.europa.eu/eurostat/web/regions-and-cities) of
-Eurostat.
+Downloads worldwide coastlines
 
 ## Usage
 
 ``` r
-gisco_get_urban_audit(
-  year = "2021",
+gisco_get_coastallines(
+  year = "2016",
   epsg = "4326",
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  spatialtype = "RG",
-  country = NULL,
-  level = NULL
+  resolution = "20"
 )
 ```
 
@@ -29,8 +24,7 @@ gisco_get_urban_audit(
 
 - year:
 
-  Release year of the file. One of `"2001"`, `"2004"`, `"2014"`,
-  `"2018"`, `"2020"` or `"2021"`.
+  Release year. One of `"2006"`, `"2010"`, `"2013"` or `"2016"`.
 
 - epsg:
 
@@ -63,31 +57,24 @@ gisco_get_urban_audit(
   Logical, displays information. Useful for debugging, default is
   `FALSE`.
 
-- spatialtype:
+- resolution:
 
-  Type of geometry to be returned:
+  Resolution of the geospatial data. One of
 
-  - `"LB"`: Labels - `POINT` object.
+  - `"60"`: 1:60million
 
-  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+  - `"20"`: 1:20million
 
-- country:
+  - `"10"`: 1:10million
 
-  Optional. A character vector of country codes. It could be either a
-  vector of country names, a vector of ISO3 country codes or a vector of
-  Eurostat country codes. Mixed types (as `c("Italy","ES","FRA")`) would
-  not work. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
+  - `"03"`: 1:3million
 
-- level:
-
-  Level of Urban Audit. Possible values are `"CITIES"`, `"FUA"`,
-  `"GREATER_CITIES"` or `NULL`, that would download the full dataset.
+  - `"01"`: 1:1million
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-specified by `spatialtype`.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) `POLYGON`
+object.
 
 ## Note
 
@@ -112,31 +99,34 @@ For a complete list of files available check
 
 ## See also
 
-[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+[gisco_coastallines](https://ropengov.github.io/giscoR/reference/gisco_coastallines.md)
 
 Other political:
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
-[`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
 [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md),
-[`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
+[`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md),
+[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
 
 ## Examples
 
 ``` r
-# \donttest{
-cities <- gisco_get_urban_audit(year = "2020", level = "CITIES")
+coast <- gisco_get_coastallines()
 
-if (!is.null(cities)) {
-  bcn <- cities[cities$URAU_NAME == "Barcelona", ]
+library(ggplot2)
 
-  library(ggplot2)
-  ggplot(bcn) +
-    geom_sf()
-}
-
-# }
+ggplot(coast) +
+  geom_sf(color = "#1278AB", fill = "#FDFBEA") +
+  # Zoom on Caribe
+  coord_sf(
+    xlim = c(-99, -49),
+    ylim = c(4, 30)
+  ) +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "#C7E7FB", color = NA),
+    panel.border = element_rect(colour = "black", fill = NA)
+  )
 ```

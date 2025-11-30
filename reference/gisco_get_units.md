@@ -1,16 +1,7 @@
 # Get geospatial units data from GISCO API
 
-**\[deprecated\]**
-
-This function is deprecated. Use:
-
-- [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
-  (equivalent to `mode = "df"`)
-
-- TODO
-
 Download individual shapefiles of units. Unlike
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
 or
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md),
@@ -57,44 +48,43 @@ gisco_get_units(
 
 - year:
 
-  character string or number. Release year of the file. One of `"2024"`,
-  `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`, `"2001"` .
+  Release year of the file. One of `"2001"`, `"2006"`, `"2010"`,
+  `"2013"`, `"2016"`, `"2020"` or `"2024"`.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
-  code](https://epsg.io/). One of:
+  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
 
-  - `"4326"`: [WGS84](https://epsg.io/4326)
+  - `"4258"`: ETRS89
 
-  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035)
+  - `"4326"`: WGS84
 
-  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857)
+  - `"3035"`: ETRS89 / ETRS-LAEA
+
+  - `"3857"`: Pseudo-Mercator
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
-  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+  A logical whether to do caching. Default is `TRUE`. See **About
+  caching**.
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  A logical whether to update cache. Default is `FALSE`. When set to
+  `TRUE` it would force a fresh download of the source `.geojson` file.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
-  strategies** section in
-  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+  A path to a cache directory. See **About caching**.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  Logical, displays information. Useful for debugging, default is
+  `FALSE`.
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  Resolution of the geospatial data. One of
 
   - `"60"`: 1:60million
 
@@ -137,12 +127,33 @@ conflicts with NUTS-0 datasets.
 Please check the download and usage provisions on
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
 
+## About caching
+
+You can set your `cache_dir` with
+[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+
+Sometimes cached files may be corrupt. On that case, try re-downloading
+the data setting `update_cache = TRUE`.
+
+If you experience any problem on download, try to download the
+corresponding `.geojson` file by any other method and save it on your
+`cache_dir`. Use the option `verbose = TRUE` for debugging the API
+query.
+
+For a complete list of files available check
+[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
+
 ## See also
 
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md)
 
 Other political:
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
+[`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
+[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
+[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
+[`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md),
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
 
 ## Author
@@ -158,8 +169,6 @@ cities <- gisco_get_units(
   mode = "df",
   year = "2020"
 )
-#> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
-#> ℹ Please use `gisco_get_metadata()` instead.
 VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
 #   Order from big to small
 VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
