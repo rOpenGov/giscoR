@@ -7,6 +7,7 @@
 #' Audit data collection.
 #'
 #' @family stats
+#' @export
 #' @inheritParams gisco_get_countries
 #' @inheritSection gisco_get_countries Note
 #' @inherit gisco_get_nuts source return
@@ -29,7 +30,6 @@
 #'   "ext",TRUE)}.
 #'
 #' @details
-#'
 #' See more in
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(" [Eurostat - Statistics Explained]",
