@@ -79,12 +79,12 @@ Other cache utilities:
 # \dontrun{
 gisco_set_cache_dir(verbose = TRUE)
 #> Using a temporary cache dir.  Set 'cache_dir' to a value for store permanently
-#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpKUReyI/giscoR
+#> giscoR cache dir is:  C:\Users\RUNNER~1\AppData\Local\Temp\RtmpWQTiDJ/giscoR
 # }
 
 Sys.getenv("GISCO_CACHE_DIR")
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpKUReyI/giscoR"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpWQTiDJ/giscoR"
 
 gisco_detect_cache_dir()
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpKUReyI/giscoR"
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpWQTiDJ/giscoR"
 ```
