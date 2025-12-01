@@ -49,14 +49,16 @@ cache_dir folder."><meta property="og:image" content="https://ropengov.github.io
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">gisco_bulk_download</span><span class="op">(</span></span>
-<span>  id_giscoR <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"countries"</span>, <span class="st">"coastallines"</span>, <span class="st">"communes"</span>, <span class="st">"lau"</span>, <span class="st">"nuts"</span>, <span class="st">"urban_audit"</span><span class="op">)</span>,</span>
-<span>  year <span class="op">=</span> <span class="st">"2016"</span>,</span>
+<span>  id_giscor <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"countries"</span>, <span class="st">"coastal_lines"</span>, <span class="st">"communes"</span>, <span class="st">"lau"</span>, <span class="st">"nuts"</span>, <span class="st">"urban_audit"</span>,</span>
+<span>    <span class="st">"postal_codes"</span><span class="op">)</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2016</span>,</span>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  resolution <span class="op">=</span> <span class="st">"10"</span>,</span>
-<span>  ext <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"geojson"</span>, <span class="st">"shp"</span>, <span class="st">"svg"</span>, <span class="st">"json"</span>, <span class="st">"gdb"</span><span class="op">)</span>,</span>
-<span>  recursive <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  resolution <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  ext <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"shp"</span>, <span class="st">"geojson"</span><span class="op">)</span>,</span>
+<span>  recursive <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -68,7 +70,7 @@ cache_dir folder."><meta property="og:image" content="https://ropengov.github.io
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-id-giscor">id_giscoR<a class="anchor" aria-label="anchor" href="#arg-id-giscor"></a></dt>
+<dl><dt id="arg-id-giscor">id_giscor<a class="anchor" aria-label="anchor" href="#arg-id-giscor"></a></dt>
 <dd><p>Type of dataset to be downloaded. Values supported are:</p><ul><li><p><code>"coastallines"</code>.</p></li>
 <li><p><code>"communes"</code>.</p></li>
 <li><p><code>"countries"</code>.</p></li>
@@ -115,6 +117,10 @@ data. One of:</p><ul><li><p><code>"60"</code>: 1:60million</p></li>
 <dd><p>Tries to unzip recursively the zip files (if any) included
 in the initial bulk download (case of <code>ext = "shp"</code>).</p></dd>
 
+
+<dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+<dd><p>Ignored.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -141,9 +147,45 @@ however other formats are already available on GISCO.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># Countries 2016 - It would take some time</span></span></span>
-<span class="r-in"><span><span class="fu">gisco_bulk_download</span><span class="op">(</span>id_giscoR <span class="op">=</span> <span class="st">"countries"</span>, resolution <span class="op">=</span> <span class="st">"60"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in gisco_bulk_download(id_giscoR = "countries", resolution = "60"):</span> unused argument (id_giscoR = "countries")</span>
+<span class="r-in"><span><span class="co"># Write on temp dir</span></span></span>
+<span class="r-in"><span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"testexample"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">ss</span> <span class="op">&lt;-</span> <span class="fu">gisco_bulk_download</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  id_giscor <span class="op">=</span> <span class="st">"countries"</span>, resolution <span class="op">=</span> <span class="st">"60"</span>,</span></span>
+<span class="r-in"><span>  year <span class="op">=</span> <span class="fl">2016</span>, ext <span class="op">=</span> <span class="st">"geojson"</span>,</span></span>
+<span class="r-in"><span>  cache_dir <span class="op">=</span> <span class="va">tmp</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Read one</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Linking to GEOS 3.13.1, GDAL 3.11.0, PROJ 9.6.0; sf_use_s2() is TRUE</span>
+<span class="r-in"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">tmp</span>, recursive <span class="op">=</span> <span class="cn">TRUE</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpSKurdM/testexample/countries/CNTR_BN_60M_2016_3035.geojson"</span>
+<span class="r-in"><span><span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">read_sf</a></span><span class="op">(</span><span class="va">f</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 1339 features and 9 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: MULTILINESTRING</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -7032129 ymin: -9159740 xmax: 16931810 ymax: 15431090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Projected CRS: ETRS89-extended / LAEA Europe</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,339 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    EU_FLAG EFTA_FLAG CC_FLAG COAS_FLAG CNTR_BN_ID OTHR_FLAG POL_STAT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> F       F         F       T                157 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> F       F         F       T                158 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> F       F         F       T                159 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> F       F         F       T                160 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> F       F         F       T                161 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> F       F         F       T                162 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> F       F         F       T                163 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> F       F         F       T                164 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> F       F         F       T                165 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> F       F         F       T                166 T                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1,329 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: CNTR_BN_CODE &lt;int&gt;, CNTR_CODE &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   geometry &lt;MULTILINESTRING [m]&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Clean</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">tmp</span>, force <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
