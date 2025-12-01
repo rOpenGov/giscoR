@@ -24,7 +24,7 @@ reference:
 - title: GISCO API
   desc: >
     These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link">sf</a> objects
+    class="external-link"><span class="pkg">sf</span></a> objects
 - subtitle: Administrative units
   desc: >
     On using administrative data for statistical purposes, administrative units
@@ -51,6 +51,8 @@ reference:
   contents: has_concept("grids")
 - subtitle: Transport networks
   contents: has_concept("transport")
+- subtitle: Basic services
+  contents: has_concept("services")
 - title: GISCO Address API
   desc: >
     Query the <a href="https://gisco-services.ec.europa.eu/address_api/"
@@ -61,25 +63,13 @@ reference:
 - title: Political
   desc: >
     These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link">sf</a> objects with political boundaries
+    class="external-link"><span class="pkg">sf</span></a> objects with political
+    boundaries
   contents: has_concept("political")
-- title: Infrastructures
-  desc: >
-    These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link">sf</a> objects with man-made features
-  contents: has_concept("infrastructure")
-- title: Tools
-  desc: >
-    Access to other GISCO tools
-  contents: has_concept("tools")
-- title: Databases
-  desc: >
-    Get information about the current and most up-to-date database.
-  contents: has_concept("databases")
 - title: Misc
   desc: >
     These functions return other <a href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link">sf</a> objects
+    class="external-link"><span class="pkg">sf</span></a> objects
   contents:
     - has_concept("misc")
     - has_concept("database")

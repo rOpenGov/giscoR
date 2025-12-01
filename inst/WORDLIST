@@ -6,6 +6,7 @@ COAS
 COmmission
 CodeFactor
 Designator
+EEA
 EFTA
 EPSG
 ETRS
@@ -13,8 +14,10 @@ EuroBoundaryMap
 FID
 GISCO
 Gb
+Geolocation
 Huovari
 ICAO
+ISCED
 Janne
 Kainu
 LAEA
@@ -47,6 +50,7 @@ dieghernan
 et
 european
 eurostat
+geocoded
 geocoding
 geojson
 geospatial
@@ -67,6 +71,7 @@ rOpenGov
 rcartocolor
 roxygen
 socio
+specialised
 testthat
 tibble
 tmap

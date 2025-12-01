@@ -1,27 +1,31 @@
-#' Get locations of healthcare services in Europe
-#'
-#' @family infrastructure
+#' Healthcare services in Europe
 #'
 #' @description
 #' The dataset contains information on main healthcare services considered to
-#' be 'hospitals' by Member States.
+#' be 'hospitals' by Member States. The definition varies slightly from country
+#' to country, but roughly includes the following:
 #'
-#' @return A `POINT` [`sf`][sf::st_sf] object.
+#' *"'Hospitals' comprises licensed establishments primarily engaged in
+#' providing medical, diagnostic, and treatment services that include physician,
+#' nursing, and other health services to in-patients and the specialised
+#' accommodation services required by inpatients*.
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
-#'
-#' @source
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>
-#'
-#' @param year Release year of the file. One of `"2020"`, `"2023"` (default).
+#' @family services
+#' @inherit gisco_get_education return source
 #' @inheritParams gisco_get_countries
+#' @encoding UTF-8
+#' @export
+#'
+#' @param year character string or number. Release year of the file. One of
+#'   `2023`, `2020`.
 #'
 #'
 #' @details
-#' Files are distributed on EPSG:4326. Metadata available on
-#' <https://gisco-services.ec.europa.eu/pub/healthcare/metadata.pdf>.
+#' Files are distributed [EPSG:4326](https://epsg.io/4326).
 #'
-#' @seealso [gisco_get_countries()]
+#' ```{r child = "man/chunks/healthcare_meta.Rmd"}
+#' ```
+#'
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #'

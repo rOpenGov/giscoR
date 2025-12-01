@@ -1,25 +1,39 @@
-#' Get locations of education services in Europe
-#'
-#' @family infrastructure
+#' Education services in Europe
 #'
 #' @description
-#' The dataset contains information on main education services by Member States.
+#' This dataset is an integration of Member States official data on the
+#' location of education services. Additional information on these services is
+#' included when available (see **Details**).
 #'
-#' @return A `POINT` [`sf`][sf::st_sf] object.
+#' @family services
+#' @inherit gisco_get_countries return
+#' @inheritParams gisco_get_countries
+#' @encoding UTF-8
+#' @export
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
+#' @param year character string or number. Release year of the file. One of
+#'   `2023`, `2020`.
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>
 #'
-#' @inheritParams gisco_get_healthcare
+#' There are no specific download rules for the datasets shown below. However,
+#' please refer to [the general copyright
+#' notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and licence
+#' provisions, which must be complied with. Permission to download and use
+#' these data is subject to these rules being accepted.
+#'
+#' The data are extracted from official national registers. They may contain
+#' inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
+#' input national data.
 #'
 #'
 #' @details
-#' Files are distributed on EPSG:4326. Metadata available on
-#' <https://gisco-services.ec.europa.eu/pub/education/metadata.pdf>.
+#' Files are distributed [EPSG:4326](https://epsg.io/4326).
 #'
-#' @seealso [gisco_get_countries()]
+#' ```{r child = "man/chunks/education_meta.Rmd"}
+#' ```
+#'
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #'
@@ -32,7 +46,6 @@
 #'     geom_sf(shape = 21, size = 0.15)
 #' }
 #' }
-#' @export
 gisco_get_education <- function(
   year = c(2023, 2020),
   cache = TRUE,

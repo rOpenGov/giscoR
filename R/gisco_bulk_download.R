@@ -11,7 +11,7 @@
 #'
 #' @param year Release year of the file. See **Details**.
 #'
-#' @param id_giscoR Type of dataset to be downloaded. Values supported are:
+#' @param id_giscor Type of dataset to be downloaded. Values supported are:
 #'   * `"coastallines"`.
 #'   * `"communes"`.
 #'   * `"countries"`.
@@ -53,80 +53,80 @@
 #' }
 #' @export
 gisco_bulk_download <- function(
-  id_giscoR = c(
+  id_giscor = c(
     "countries",
-    "coastallines",
+    "coastal_lines",
     "communes",
     "lau",
     "nuts",
-    "urban_audit"
+    "urban_audit",
+    "postal_codes"
   ),
-  year = "2016",
+  year = 2016,
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE,
-  resolution = "10",
-  ext = c("geojson", "shp", "svg", "json", "gdb"),
-  recursive = TRUE
+  resolution = 10,
+  ext = c("shp", "geojson"),
+  recursive = deprecated()
 ) {
-  valid <- c(
-    "coastallines",
-    "communes",
-    "countries",
-    "lau",
-    "nuts",
-    "urban_audit"
-  )
-  names(valid) <- c("coastline", "communes", "countries", "lau", "nuts", "urau")
-
-  id_giscoR <- match.arg(id_giscoR)
-
-  ext <- match.arg(ext)
+  id_giscor <- match_arg_pretty(id_giscor)
+  ext <- match_arg_pretty(ext)
 
   # Standard parameters for the call
   year <- as.character(year)
-  epsg <- "4326"
-  spatialtype <- "RG"
-  level <- "all"
-  if (id_giscoR == "urban_audit" && year < "2014") {
-    level <- "CITY"
-  }
 
-  routes <- gsc_api_url(
-    id_giscoR,
-    year,
-    epsg,
-    resolution,
-    spatialtype,
-    "geojson",
-    nuts_level = "all",
-    level = level,
-    verbose = verbose
+  make_params <- make_bulk_params(
+    id = id_giscor,
+    year = year,
+    resolution = resolution
   )
 
-  api_entry <- unlist(strsplit(routes, "/geojson/"))[1]
-  remain <- unlist(strsplit(routes, "/geojson/"))[2]
+  routes <- get_url_db(
+    id = id_giscor,
+    year = year,
+    epsg = make_params$epsg,
+    resolution = make_params$resolution,
+    spatialtype = make_params$spatialtype,
+    nuts_level = make_params$nuts_level,
+    level = make_params$level,
+    ext = "shp",
+    fn = "gisco_bulk_download"
+  )
 
-  api_entry <- file.path(api_entry, "download")
-  getalias <- names(valid[valid == id_giscoR])
+  api_entry <- gsub("/shp/.*", "/download", routes)
+  get_alias <- switch(
+    id_giscor,
+    "coastal_lines" = "coastline",
+    "urban_audit" = "urau",
+    "postal_codes" = "pcode",
+    id_giscor
+  )
+  zipname <- paste0("ref-", get_alias)
+  zipname <- paste0(zipname, "-", year)
+  if (!is.null(make_params$resolution)) {
+    r <- sprintf("%02dm", as.numeric(make_params$resolution))
+    if (make_params$resolution == "100") {
+      r <- "100k"
+    }
+    zipname <- paste0(zipname, "-", r)
+  }
+  zipname <- paste0(zipname, ".", ext, ".zip")
 
-  # Clean names
-  remain2 <- gsub(spatialtype, "", remain)
-  remain2 <- gsub(epsg, "", remain2)
-  remain2 <- gsub(year, "", remain2)
-  remain2 <- gsub(".geojson", "", remain2)
-  remain2 <- gsub(level, "", remain2)
-  remain2 <- (unlist(strsplit(remain2, "_")))[-1]
-  remain2 <- tolower(paste0(remain2, collapse = ""))
-
-  # Create url
-  zipname <- paste0("ref-", getalias, "-", year, "-", remain2, ".", ext, ".zip")
   url <- file.path(api_entry, zipname)
 
-  destfile <- gsc_api_cache(
+  subdir <- switch(
+    id_giscor,
+    "coastal_lines" = "coastal",
+    "postal_codes" = "postalcodes",
+    id_giscor
+  )
+
+  destfile <- load_url(
     url,
     zipname,
     cache_dir,
+    subdir,
     update_cache,
     verbose
   )
@@ -138,6 +138,58 @@ gisco_bulk_download <- function(
   # Clean cache dir name for extracting
   unzip_dir <- gsub(paste0("/", zipname), "", destfile)
 
-  # Unzip
-  gsc_unzip(destfile, unzip_dir, ext, recursive, verbose, update_cache)
+  infiles <- unzip(destfile, list = TRUE, junkpaths = TRUE)
+  # Extract files
+  outfiles <- infiles[grep(ext, infiles$Name), ]$Name
+
+  if (verbose) {
+    for_bullets <- outfiles
+    names(for_bullets) <- rep(">", length(for_bullets))
+    cli::cli_alert_info(c("Extracting files:"))
+    cli::cli_bullets(for_bullets)
+  }
+
+  unlink(file.path(unzip_dir, outfiles))
+
+  unzip(destfile, files = outfiles, exdir = unzip_dir)
+
+  invisible(outfiles)
+}
+
+make_bulk_params <- function(id, year, resolution = NULL) {
+  # Need this to ensure everything is captured
+  make_params <- list(
+    year = year,
+    epsg = 4326,
+    resolution = resolution,
+    spatialtype = "RG",
+    nuts_level = NULL,
+    level = NULL,
+    ext = "shp"
+  )
+
+  if (id == "urban_audit" && year < "2014") {
+    make_params$level <- "CITY"
+    make_params$resolution <- "03"
+  }
+  if (id == "urban_audit" && year >= "2014") {
+    make_params$level <- "all"
+    make_params$resolution <- "100"
+  }
+
+  if (id == "postal_codes") {
+    make_params$resolution <- NULL
+    make_params$spatialtype <- NULL
+  }
+  if (id == "nuts") {
+    make_params$nuts_level <- "all"
+  }
+  if (id %in% c("communes", "lau")) {
+    make_params$resolution <- "01"
+  }
+
+  if (id == "communes" && as.character(year) %in% c("2004", "2006", "2008")) {
+    make_params$resolution <- NULL
+  }
+  make_params
 }
