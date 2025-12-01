@@ -9,7 +9,7 @@ Each endpoint available is implemented through a specific function, see
 **Details**.
 
 The API supports fuzzy searching (also referred to as approximate string
-matching) for all parameters of each endpoint.
+matching) for all arguments of each endpoint.
 
 ## Usage
 
@@ -95,7 +95,7 @@ gisco_address_api_copyright(verbose = FALSE)
 
 - postcode:
 
-  Can be used in combination with the previous parameters.
+  Can be used in combination with the previous arguments.
 
 - verbose:
 
@@ -128,9 +128,9 @@ Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)
 | `/roads`        | Returns all roads or streets within a specified city.                                                                                                                                                                                                                                   |
 | `/housenumbers` | Returns all house numbers or names within the specified road. It is possible that in certain countries an address may not have a road component. In this case, if a road is not specified then the number of house numbers returned by **the API is limited to 1000**.                  |
 | `/postcodes`    | Returns all postcodes within the specified address component (Country or Province or City).                                                                                                                                                                                             |
-| `/search`       | The search endpoint allows structured queries to the address database. Please note that various combinations of each of the parameters can be used in order to retrieve the addresses that share an address component. **The API is limited to a maximum of 100 addresses**.            |
+| `/search`       | The search endpoint allows structured queries to the address database. Please note that various combinations of each of the arguments can be used in order to retrieve the addresses that share an address component. **The API is limited to a maximum of 100 addresses**.             |
 | `/reverse`      | The API's reverse theme allows you to specify x and y coordinates in order to retrieve a structured address.                                                                                                                                                                            |
-| `/bbox`         | Returns a [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component depending on the parameters specified.                                                                                                                  |
+| `/bbox`         | Returns a [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component depending on the arguments specified.                                                                                                                   |
 | `/copyright`    | Returns the copyright text for each available country in the Address API.                                                                                                                                                                                                               |
 
 The resulting object may present the following variables:
@@ -159,7 +159,6 @@ See the docs:
 ## Examples
 
 ``` r
-# \donttest{
 # Cities in a region
 
 gisco_address_api_cities(country = "PT", province = "LISBOA")
@@ -224,5 +223,4 @@ reverse
 #> 4 2     CL CA… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #> 5 7     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
 #> # ℹ 1 more variable: geometry <POINT [°]>
-# }
 ```

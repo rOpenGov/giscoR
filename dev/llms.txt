@@ -161,6 +161,7 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") %>%
   filter(TIME_PERIOD == "2021-01-01")
+#> indexed 0B in  0s, 0B/sindexed 2.15GB in  0s, 2.15GB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -294,7 +295,7 @@ A BibTeX entry for LaTeX users is
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2025},
-  version = {0.6.1.9000},
+  version = {0.9.9.9999},
   url = {https://ropengov.github.io/giscoR/},
   abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
 }
@@ -336,10 +337,12 @@ Package.” *The R Journal* 9 (1): 385–92.
 
 # Package index
 
-## GISCO API
+## GISCO Geodata
 
-These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects
+Download datasets from the [GISCO Geodata
+distribution](https://ec.europa.eu/eurostat/web/gisco/geodata). These
+functions return [sf](https://r-spatial.github.io/sf/reference/sf.html)
+objects.
 
 ### Administrative units
 
@@ -353,7 +356,7 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-unit
   : Communes dataset
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
   : Country dataset
-- [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postalcodes.md)
+- [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
   : Postal codes dataset
 
 ### Statistical units
@@ -396,6 +399,13 @@ population figures are provided for these cells.
 - [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_healthcare.md)
   : Healthcare services in Europe
 
+### Additional helpers
+
+Additional functions for downloading GISCO API datasets.
+
+- [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
+  : GISCO API bulk download
+
 ## GISCO Address API
 
 Query the [GISCO Addres
@@ -414,15 +424,6 @@ pan-european address database.
   [`gisco_address_api_postcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_copyright()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   : GISCO Address API
-
-## Political
-
-These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects with
-political boundaries
-
-- [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
-  : Bulk download from GISCO API
 
 ## Misc
 

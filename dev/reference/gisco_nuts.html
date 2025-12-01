@@ -121,6 +121,7 @@ coastline).</p></li>
 <code><a href="gisco_countries_2024.html">gisco_countries_2024</a></code>,
 <code><a href="gisco_countrycode.html">gisco_countrycode</a></code>,
 <code><a href="gisco_db.html">gisco_db</a></code>,
+<code><a href="gisco_db_units.html">gisco_db_units</a></code>,
 <code><a href="gisco_nuts_2024.html">gisco_nuts_2024</a></code></p></div>
     </div>
 
@@ -135,15 +136,15 @@ coastline).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -63.08825 ymin: -21.39077 xmax: 55.83808 ymax: 70.08134</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   NUTS_ID LEVL_CODE URBN_TYPE CNTR_CODE NAME_LATN           NUTS_NAME MOUNT_TYPE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ES              0         0 ES        ESPAÑA              ESPAÑA             0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> FI              0         0 FI        SUOMI / FINLAND     SUOMI / …          0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> IS              0         0 IS        ÍSLAND              ÍSLAND             0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> PT2             1         0 PT        REGIÃO AUTÓNOMA DO… REGIÃO A…          0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> FR              0         0 FR        FRANCE              FRANCE             0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> HR              0         0 HR        HRVATSKA            HRVATSKA           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: COAST_TYPE &lt;dbl&gt;, geo &lt;chr&gt;, geometry &lt;MULTIPOLYGON [°]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN           NUTS_NAME MOUNT_TYPE URBN_TYPE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ES              0 ES        ESPAÑA              ESPAÑA             0         0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> FI              0 FI        SUOMI / FINLAND     SUOMI / …          0         0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> IS              0 IS        ÍSLAND              ÍSLAND             0         0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> PT2             1 PT        REGIÃO AUTÓNOMA DO… REGIÃO A…          0         0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> FR              0 FR        FRANCE              FRANCE             0         0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> HR              0 HR        HRVATSKA            HRVATSKA           0         0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: COAST_TYPE &lt;int&gt;, geo &lt;chr&gt;, geometry &lt;MULTIPOLYGON [°]&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

@@ -67,7 +67,6 @@ Other transport networks datasets:
 ## Examples
 
 ``` r
-# \donttest{
 library(sf)
 
 greece <- gisco_get_countries(country = "EL", resolution = 3)
@@ -86,6 +85,4 @@ if (inherits(airp_gc, "sf")) {
       caption = gisco_attributions()
     )
 }
-
-# }
 ```

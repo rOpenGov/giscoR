@@ -118,8 +118,6 @@ Other basic services datasets:
 ## Examples
 
 ``` r
-# \donttest{
-
 health_be <- gisco_get_healthcare(country = "Belgium")
 
 # Plot if downloaded
@@ -128,6 +126,4 @@ if (inherits(health_be, "sf")) {
   ggplot(health_be) +
     geom_sf()
 }
-
-# }
 ```

@@ -103,6 +103,7 @@ Other dataset:
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
+[`gisco_db_units`](https://ropengov.github.io/giscoR/dev/reference/gisco_db_units.md),
 [`gisco_nuts`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.md)
 
 ## Examples
@@ -116,13 +117,13 @@ head(gisco_nuts)
 #> Bounding box:  xmin: -63.08825 ymin: -21.39077 xmax: 55.83808 ymax: 70.08134
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 6 × 10
-#>   NUTS_ID LEVL_CODE URBN_TYPE CNTR_CODE NAME_LATN           NUTS_NAME MOUNT_TYPE
-#>   <chr>       <dbl>     <dbl> <chr>     <chr>               <chr>          <dbl>
-#> 1 ES              0         0 ES        ESPAÑA              ESPAÑA             0
-#> 2 FI              0         0 FI        SUOMI / FINLAND     SUOMI / …          0
-#> 3 IS              0         0 IS        ÍSLAND              ÍSLAND             0
-#> 4 PT2             1         0 PT        REGIÃO AUTÓNOMA DO… REGIÃO A…          0
-#> 5 FR              0         0 FR        FRANCE              FRANCE             0
-#> 6 HR              0         0 HR        HRVATSKA            HRVATSKA           0
-#> # ℹ 3 more variables: COAST_TYPE <dbl>, geo <chr>, geometry <MULTIPOLYGON [°]>
+#>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN           NUTS_NAME MOUNT_TYPE URBN_TYPE
+#>   <chr>       <int> <chr>     <chr>               <chr>          <int>     <int>
+#> 1 ES              0 ES        ESPAÑA              ESPAÑA             0         0
+#> 2 FI              0 FI        SUOMI / FINLAND     SUOMI / …          0         0
+#> 3 IS              0 IS        ÍSLAND              ÍSLAND             0         0
+#> 4 PT2             1 PT        REGIÃO AUTÓNOMA DO… REGIÃO A…          0         0
+#> 5 FR              0 FR        FRANCE              FRANCE             0         0
+#> 6 HR              0 HR        HRVATSKA            HRVATSKA           0         0
+#> # ℹ 3 more variables: COAST_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
 ```

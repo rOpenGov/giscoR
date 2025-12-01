@@ -9,7 +9,7 @@ is to create correspondence tables for the NUTS classification (EC)
 ## Usage
 
 ``` r
-gisco_get_postalcodes(
+gisco_get_postal_codes(
   year = 2024,
   country = NULL,
   cache_dir = NULL,
@@ -79,6 +79,10 @@ Please check the download and usage provisions on
 
 ## See also
 
+See
+[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
+to perform a bulk download of datasets.
+
 Other administrative units datasets:
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md),
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
@@ -89,7 +93,7 @@ Other administrative units datasets:
 # Heavy-weight download!
 # \dontrun{
 
-pc_bel <- gisco_get_postalcodes(country = "BE")
+pc_bel <- gisco_get_postal_codes(country = "BE")
 #> ! The file to be downloaded has size 138.6 Mb.
 
 if (!is.null(pc_bel)) {

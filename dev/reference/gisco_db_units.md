@@ -1,6 +1,6 @@
-# Cached GISCO database
+# Cached GISCO database for units
 
-Database with the list of files that the package can load.
+Database with the list of files that the package can load in units.
 
 ## Format
 
@@ -21,16 +21,16 @@ Other dataset:
 [`gisco_countries`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries.md),
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
-[`gisco_db_units`](https://ropengov.github.io/giscoR/dev/reference/gisco_db_units.md),
+[`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
 [`gisco_nuts`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.md),
 [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
 
 Other database:
-[`gisco_db_units`](https://ropengov.github.io/giscoR/dev/reference/gisco_db_units.md),
+[`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
 
 ## Examples
 
 ``` r
-data("gisco_db")
+data("gisco_db_units")
 ```

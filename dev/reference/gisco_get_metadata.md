@@ -43,12 +43,12 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md).
 
 Other database:
-[`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
+[`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
+[`gisco_db_units`](https://ropengov.github.io/giscoR/dev/reference/gisco_db_units.md)
 
 ## Examples
 
 ``` r
-# \donttest{
 cities <- gisco_get_metadata(id = "urban_audit", year = 2020)
 
 cities
@@ -67,5 +67,4 @@ cities
 #> 10 FR017L2   F         FR        FUA of Metz        ""        ""        ""      
 #> # ℹ 1,710 more rows
 #> # ℹ 3 more variables: NUTS3_2016 <chr>, AREA_SQM <dbl>, NUTS3_2021 <chr>
-# }
 ```

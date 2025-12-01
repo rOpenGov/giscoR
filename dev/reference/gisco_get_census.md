@@ -67,7 +67,6 @@ Other statistical units datasets:
 ## Examples
 
 ``` r
-# \donttest{
 library(sf)
 
 pts <- gisco_get_census(spatialtype = "PT")
@@ -92,5 +91,4 @@ pts
 #>  9 AT111_10809        9 (16.40948 47.39185)
 #> 10 AT111_10810       10  (16.63391 47.4686)
 #> # ℹ 115,126 more rows
-# }
 ```

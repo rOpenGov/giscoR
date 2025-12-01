@@ -1,8 +1,8 @@
-# Bulk download from GISCO API
+# GISCO API bulk download
 
-Downloads zipped data from GISCO and extract them on the
+Download zipped data from GISCO to the
 [`cache_dir`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md)
-folder.
+and extract the relevant ones.
 
 ## Usage
 
@@ -15,7 +15,7 @@ gisco_bulk_download(
   update_cache = FALSE,
   verbose = FALSE,
   resolution = 10,
-  ext = c("shp", "geojson"),
+  ext = c("shp", "geojson", "svg", "json", "gdb"),
   recursive = deprecated(),
   ...
 )
@@ -29,23 +29,28 @@ gisco_bulk_download(
 
 - id_giscor:
 
-  Type of dataset to be downloaded. Values supported are:
+  character string or number. Type of dataset to be downloaded, see
+  **Details**. Values supported are:
 
-  - `"coastallines"`.
+  - `"countries"`
 
-  - `"communes"`.
+  - `"coastal_lines"`
 
-  - `"countries"`.
+  - `"communes"`
 
-  - `"lau"`.
+  - `"lau"`
 
-  - `"nuts"`.
+  - `"nuts"`
 
-  - `"urban_audit"`.
+  - `"urban_audit"`
+
+  - `"postal_codes"`
+
+  This argument replaces the previous (deprecated) argument `id_giscoR`.
 
 - year:
 
-  Release year of the file. See **Details**.
+  character string or number. Release year of the file, see **Details**.
 
 - cache_dir:
 
@@ -79,30 +84,39 @@ gisco_bulk_download(
 - ext:
 
   Extension of the file(s) to be downloaded. Formats available are
-  `"geojson"`, `"shp"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.
+  `"shp"`, `"geojson"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.
 
 - recursive:
 
-  Tries to unzip recursively the zip files (if any) included in the
-  initial bulk download (case of `ext = "shp"`).
+  **\[deprecated\]** `recursive` is no longer supported; this function
+  will never perform recursive extraction of child `.zip` files. This is
+  the case of "`shp.zip` inside the top-level `.zip`, that won't be
+  unzipped.
 
 - ...:
 
-  Ignored.
+  Ignored. The argument `id_giscoR` (**\[deprecated\]**) would be
+  captured via `...` and re-directed to `id_giscor` with a
+  [warning](https://lifecycle.r-lib.org/reference/deprecate_soft.html).
 
 ## Value
 
-Silent function.
+A (invisible) character vector with the full path of the files
+extracted. See **Examples**.
 
 ## Details
 
-See the years available in the corresponding functions:
+Some arguments only apply to a specific value of `"id_giscor"`. For
+example `"resolution"` would be ignored for values `"communes"`,
+`"lau"`, `"urban_audit"` and `"postal_codes"`.
+
+See years available in the corresponding functions:
+
+- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md).
 
 - [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md).
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md).
-
-- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md).
 
 - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md).
 
@@ -110,58 +124,63 @@ See the years available in the corresponding functions:
 
 - [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md).
 
-The usual extension used across
-[giscoR](https://CRAN.R-project.org/package=giscoR) is `"geojson"`,
-however other formats are already available on GISCO.
+- [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md).
+
+The usual extensions used across
+[giscoR](https://CRAN.R-project.org/package=giscoR) are `"gpkg"` and
+`"shp"`, however other formats are already available on GISCO. Note that
+after performing a bulk download you may need to adjust the default
+`"ext"` value in the corresponding function to connect it with the
+downloaded files (see **Examples**).
 
 ## See also
 
-Other political:
+Additional utils for downloading datasets:
 [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
 
 ## Examples
 
 ``` r
-# \dontrun{
-
-# Write on temp dir
 tmp <- file.path(tempdir(), "testexample")
 
-ss <- gisco_bulk_download(
-  id_giscor = "countries", resolution = "60",
-  year = 2016, ext = "geojson",
+dest_files <- gisco_bulk_download(
+  id_giscor = "countries", resolution = 60,
+  year = 2024, ext = "geojson",
   cache_dir = tmp
 )
 # Read one
 library(sf)
 #> Linking to GEOS 3.13.1, GDAL 3.11.0, PROJ 9.6.0; sf_use_s2() is TRUE
-f <- list.files(tmp, recursive = TRUE, full.names = TRUE)
-f[1]
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpSKurdM/testexample/countries/CNTR_BN_60M_2016_3035.geojson"
-sf::read_sf(f[1])
-#> Simple feature collection with 1339 features and 9 fields
-#> Geometry type: MULTILINESTRING
+read_sf(dest_files[1]) |> head()
+#> Simple feature collection with 6 features and 11 fields
+#> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
-#> Bounding box:  xmin: -7032129 ymin: -9159740 xmax: 16931810 ymax: 15431090
+#> Bounding box:  xmin: 2110342 ymin: -3415366 xmax: 13761830 ymax: 2744026
 #> Projected CRS: ETRS89-extended / LAEA Europe
-#> # A tibble: 1,339 × 10
-#>    EU_FLAG EFTA_FLAG CC_FLAG COAS_FLAG CNTR_BN_ID OTHR_FLAG POL_STAT
-#>    <chr>   <chr>     <chr>   <chr>          <int> <chr>        <int>
-#>  1 F       F         F       T                157 T                0
-#>  2 F       F         F       T                158 T                0
-#>  3 F       F         F       T                159 T                0
-#>  4 F       F         F       T                160 T                0
-#>  5 F       F         F       T                161 T                0
-#>  6 F       F         F       T                162 T                0
-#>  7 F       F         F       T                163 T                0
-#>  8 F       F         F       T                164 T                0
-#>  9 F       F         F       T                165 T                0
-#> 10 F       F         F       T                166 T                0
-#> # ℹ 1,329 more rows
-#> # ℹ 3 more variables: CNTR_BN_CODE <int>, CNTR_CODE <chr>,
-#> #   geometry <MULTILINESTRING [m]>
+#> # A tibble: 6 × 12
+#>   CNTR_ID CNTR_NAME          NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT  EU_STAT
+#>   <chr>   <chr>              <chr>     <chr>     <chr>     <chr>   <chr> <chr>  
+#> 1 CC      Cocos Keeling Isl… Cocos (K… Îles des… CCK       AU Ter… West… F      
+#> 2 CD      République Démocr… Democrat… Républiq… COD       UN Mem… Kins… F      
+#> 3 CF      République Centra… Central … Républiq… CAF       UN Mem… Bang… F      
+#> 4 CG      Congo-Kongo-Kongó  Congo     Congo     COG       UN Mem… Braz… F      
+#> 5 CH      Schweiz-Suisse-Sv… Switzerl… Suisse    CHE       UN Mem… Bern  F      
+#> 6 CI      Côte D’Ivoire      Côte D’I… Côte d’I… CIV       UN Mem… Yamo… F      
+#> # ℹ 4 more variables: EFTA_STAT <chr>, CC_STAT <chr>, NAME_GERM <chr>,
+#> #   geometry <MULTIPOLYGON [m]>
+
+# Now we can connect the function with the downloaded data like:
+
+connect <- gisco_get_countries(
+  resolution = 60,
+  year = 2024, ext = "geojson",
+  cache_dir = tmp, verbose = TRUE
+)
+#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp8uYdCz/testexample/countries.
+#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp8uYdCz/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+
+# Message shows that file is already cached ;)
 
 # Clean
 unlink(tmp, force = TRUE)
-# }
 ```

@@ -111,8 +111,6 @@ Other basic services datasets:
 ## Examples
 
 ``` r
-# \donttest{
-
 edu_BEL <- gisco_get_education(country = "Belgium")
 
 # Plot if downloaded
@@ -121,6 +119,4 @@ if (nrow(edu_BEL) > 3) {
   ggplot(edu_BEL) +
     geom_sf(shape = 21, size = 0.15)
 }
-
-# }
 ```

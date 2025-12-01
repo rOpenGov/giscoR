@@ -109,13 +109,12 @@ is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new downlo
 
 
 <dt id="arg-spatialtype">spatialtype<a class="anchor" aria-label="anchor" href="#arg-spatialtype"></a></dt>
-<dd><p>character string. Type of geometry to be returned.
-Options available are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+<dd><p>character string. Type of geometry to be returned. Options
+available are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
 <li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
 <li><p><code>"BN"</code>: Boundaries - <code>LINESTRING</code> object.</p></li>
-<li><p><code>"COASTL"</code>: coastlines - <code>LINESTRING</code> object.</p></li>
-<li><p><code>"INLAND"</code>: inland boundaries - <code>LINESTRING</code> object.</p></li>
-</ul></dd>
+</ul><p><strong>Note that</strong> argument <code>country</code> would be only applied when
+<code>spatialtype</code> is <code>"RG"</code> or <code>"LB"</code>.</p></dd>
 
 
 <dt id="arg-country">country<a class="anchor" aria-label="anchor" href="#arg-country"></a></dt>
@@ -154,16 +153,15 @@ the dataset is 1:100 000.</p>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p><code><a href="gisco_get_lau.html">gisco_get_lau()</a></code>.</p>
+<p>See <code><a href="gisco_bulk_download.html">gisco_bulk_download()</a></code> to perform a bulk download of datasets.</p>
 <p>Other administrative units datasets:
 <code><a href="gisco_get_countries.html">gisco_get_countries()</a></code>,
-<code><a href="gisco_get_postalcodes.html">gisco_get_postalcodes()</a></code></p></div>
+<code><a href="gisco_get_postal_codes.html">gisco_get_postal_codes()</a></code></p></div>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">ire_comm</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_communes</span><span class="op">(</span>spatialtype <span class="op">=</span> <span class="st">"LB"</span>, country <span class="op">=</span> <span class="st">"Ireland"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ire_comm</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_communes</span><span class="op">(</span>spatialtype <span class="op">=</span> <span class="st">"LB"</span>, country <span class="op">=</span> <span class="st">"Ireland"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">ire_comm</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
@@ -182,7 +180,6 @@ the dataset is 1:100 000.</p>
 <span class="r-in"><span>    <span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-plt img"><img src="gisco_get_communes-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

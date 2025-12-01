@@ -50,7 +50,7 @@ GISCO (2024 version).</p>
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
     <p>A <code>MULTIPOLYGON</code> data frame (resolution: 1:20million, EPSG:4326) object
-with 260 rows and variables:</p><dl><dt><code>CNTR_ID</code></dt>
+with 263 rows and variables:</p><dl><dt><code>CNTR_ID</code></dt>
 <dd><p>Country ID as per Eurostat.</p></dd>
 
 <dt><code>CNTR_NAME</code></dt>
@@ -101,6 +101,7 @@ GISCO.</p></dd>
 <code><a href="gisco_countries.html">gisco_countries</a></code>,
 <code><a href="gisco_countrycode.html">gisco_countrycode</a></code>,
 <code><a href="gisco_db.html">gisco_db</a></code>,
+<code><a href="gisco_db_units.html">gisco_db_units</a></code>,
 <code><a href="gisco_nuts.html">gisco_nuts</a></code>,
 <code><a href="gisco_nuts_2024.html">gisco_nuts_2024</a></code></p></div>
     </div>
@@ -113,14 +114,14 @@ GISCO.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 6 features and 11 fields</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: MULTIPOLYGON</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -180 ymin: -89 xmax: 179.7788 ymax: 42.6412</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 1.442566 ymin: -13.43119 xmax: 74.88986 ymax: 42.6412</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 12</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   CNTR_ID CNTR_NAME          NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT  EU_STAT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> AQ      Antarctica         Antarcti… Antarcti… ATA       Sovere… <span style="color: #BB0000;">NA</span>    F      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> AR      Argentina          Argentina Argentine ARG       UN Mem… Buen… F      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> AS      American Samoa-Sā… American… Samoa am… ASM       US Non… Pago… F      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> CD      République Démocr… Democrat… Républiq… COD       UN Mem… Kins… F      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> CF      République Centra… Central … Républiq… CAF       UN Mem… Bang… F      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> CG      Congo-Kongo-Kongó  Congo     Congo     COG       UN Mem… Braz… F      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> AD      Andorra            Andorra   Andorre   AND       UN Mem… Ando… F      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> AE      الإمارات العربية … United A… Émirats … ARE       UN Mem… Abu … F      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> AF      افغانستان-افغانست… Afghanis… Afghanis… AFG       UN Mem… Kabul F      </span>

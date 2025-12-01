@@ -78,9 +78,8 @@ Copyright:
 
   - `"BN"`: Boundaries - `LINESTRING` object.
 
-  - `"COASTL"`: coastlines - `LINESTRING` object.
-
-  - `"INLAND"`: inland boundaries - `LINESTRING` object.
+  **Note that** argument `country` would be only applied when
+  `spatialtype` is `"RG"` or `"LB"`.
 
 - country:
 
@@ -122,15 +121,17 @@ Please check the download and usage provisions on
 
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md).
 
+See
+[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
+to perform a bulk download of datasets.
+
 Other administrative units datasets:
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
-[`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postalcodes.md)
+[`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
 
 ## Examples
 
 ``` r
-# \donttest{
-
 ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 
 if (!is.null(ire_comm)) {
@@ -149,6 +150,4 @@ if (!is.null(ire_comm)) {
       family = "serif", face = "bold"
     ))
 }
-
-# }
 ```

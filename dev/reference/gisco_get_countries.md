@@ -98,6 +98,9 @@ Copyright:
 
   - `"INLAND"`: inland boundaries - `LINESTRING` object.
 
+  **Note that** arguments `country` and `region` would be only applied
+  when `spatialtype` is `"RG"` or `"LB"`.
+
 - country:
 
   character vector of country codes. It could be either a vector of
@@ -140,14 +143,17 @@ Please check the download and usage provisions on
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md),
 [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
+See
+[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
+to perform a bulk download of datasets.
+
 Other administrative units datasets:
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md),
-[`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postalcodes.md)
+[`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
 
 ## Examples
 
 ``` r
-# \donttest{
 cntries <- gisco_get_countries()
 
 library(ggplot2)
@@ -161,6 +167,4 @@ africa <- gisco_get_countries(region = "Africa")
 ggplot(africa) +
   geom_sf(fill = "#078930", col = "white") +
   theme_minimal()
-
-# }
 ```

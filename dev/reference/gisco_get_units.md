@@ -125,9 +125,9 @@ The function can return a data frame on `mode = "df"` or a
 In order to see the available `unit` ids with the required combination
 of `spatialtype, year`, first run the function on `"df"` mode. Once that
 you get the data frame you can select the required ids on the `unit`
-parameter.
+argument.
 
-On `mode = "df"` the only relevant parameters are `spatialtype, year`.
+On `mode = "df"` the only relevant arguments are `spatialtype, year`.
 
 ## Note
 
@@ -141,7 +141,7 @@ Please check the download and usage provisions on
 
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
 
-Other political:
+Additional utils for downloading datasets:
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
 
 ## Author
@@ -151,46 +151,45 @@ dieghernan, <https://github.com/dieghernan/>
 ## Examples
 
 ``` r
-# \donttest{
-cities <- gisco_get_units(
-  id_giscoR = "urban_audit",
-  mode = "df",
-  year = "2020"
-)
-#> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
-#> ℹ Please use `gisco_get_metadata()` instead.
-VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
-#   Order from big to small
-VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
+if (FALSE) {
+  # TODO - NOT RUN
 
-VAL.sf <- gisco_get_units(
-  id_giscoR = "urban_audit",
-  year = "2020",
-  unit = VAL$URAU_CODE
-)
-# Provincia
-Provincia <-
-  gisco_get_units(
-    id_giscoR = "nuts",
-    unit = c("ES523"),
-    resolution = "01"
+  cities <- gisco_get_units(
+    id_giscoR = "urban_audit",
+    mode = "df",
+    year = "2020"
   )
+  VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
+  #   Order from big to small
+  VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
 
-# Reorder
-VAL.sf$URAU_CATG <- factor(VAL.sf$URAU_CATG, levels = c("F", "K", "C"))
-
-# Plot
-library(ggplot2)
-
-ggplot(Provincia) +
-  geom_sf(fill = "gray1") +
-  geom_sf(data = VAL.sf, aes(fill = URAU_CATG)) +
-  scale_fill_viridis_d() +
-  labs(
-    title = "Valencia",
-    subtitle = "Urban Audit",
-    fill = "Urban Audit\ncategory"
+  VAL.sf <- gisco_get_units(
+    id_giscoR = "urban_audit",
+    year = "2020",
+    unit = VAL$URAU_CODE
   )
+  # Provincia
+  Provincia <-
+    gisco_get_units(
+      id_giscoR = "nuts",
+      unit = c("ES523"),
+      resolution = "01"
+    )
 
-# }
+  # Reorder
+  VAL.sf$URAU_CATG <- factor(VAL.sf$URAU_CATG, levels = c("F", "K", "C"))
+
+  # Plot
+  library(ggplot2)
+
+  ggplot(Provincia) +
+    geom_sf(fill = "gray1") +
+    geom_sf(data = VAL.sf, aes(fill = URAU_CATG)) +
+    scale_fill_viridis_d() +
+    labs(
+      title = "Valencia",
+      subtitle = "Urban Audit",
+      fill = "Urban Audit\ncategory"
+    )
+}
 ```

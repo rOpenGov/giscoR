@@ -1,9 +1,11 @@
 # Package index
 
-## GISCO API
+## GISCO Geodata
 
-These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects
+Download datasets from the [GISCO Geodata
+distribution](https://ec.europa.eu/eurostat/web/gisco/geodata). These
+functions return [sf](https://r-spatial.github.io/sf/reference/sf.html)
+objects.
 
 ### Administrative units
 
@@ -17,7 +19,7 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-unit
   : Communes dataset
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
   : Country dataset
-- [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postalcodes.md)
+- [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
   : Postal codes dataset
 
 ### Statistical units
@@ -60,6 +62,13 @@ population figures are provided for these cells.
 - [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_healthcare.md)
   : Healthcare services in Europe
 
+### Additional helpers
+
+Additional functions for downloading GISCO API datasets.
+
+- [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
+  : GISCO API bulk download
+
 ## GISCO Address API
 
 Query the [GISCO Addres
@@ -78,15 +87,6 @@ pan-european address database.
   [`gisco_address_api_postcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_copyright()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   : GISCO Address API
-
-## Political
-
-These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects with
-political boundaries
-
-- [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
-  : Bulk download from GISCO API
 
 ## Misc
 

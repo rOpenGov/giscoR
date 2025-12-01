@@ -103,9 +103,12 @@ Copyright:
 
   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
+  - `"LB"`: Labels - `POINT` object.
+
   - `"BN"`: Boundaries - `LINESTRING` object.
 
-  - `"LB"`: Labels - `POINT` object.
+  **Note that** arguments `country`, `nuts_level` and `nuts_id` would be
+  only applied when `spatialtype` is `"RG"` or `"LB"`.
 
 - country:
 
@@ -161,6 +164,10 @@ Please check the download and usage provisions on
 [gisco_nuts_2024](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md),
 [`eurostat::get_eurostat_geospatial()`](https://ropengov.github.io/eurostat/reference/get_eurostat_geospatial.html).
 
+See
+[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
+to perform a bulk download of datasets.
+
 Other statistical units datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
@@ -183,7 +190,6 @@ ggplot(nuts2) +
   ) +
   labs(title = "NUTS-2 levels")
 
-# \donttest{
 # NUTS-3 for Germany
 germany_nuts3 <- gisco_get_nuts(nuts_level = 3, country = "Germany")
 
@@ -203,6 +209,4 @@ select_nuts <- gisco_get_nuts(nuts_id = c("ES2", "FRJ", "FRL", "ITC"))
 ggplot(select_nuts) +
   geom_sf(aes(fill = CNTR_CODE)) +
   scale_fill_viridis_d()
-
-# }
 ```

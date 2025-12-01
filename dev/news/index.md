@@ -70,7 +70,7 @@ CRAN release: 2024-03-27
 
 CRAN release: 2024-03-15
 
-- Improve documentation, stating where the parameters `country` and
+- Improve documentation, stating where the arguments `country` and
   `region` applies
   ([\#50](https://github.com/rOpenGov/giscoR/issues/50),
   [\#75](https://github.com/rOpenGov/giscoR/issues/75)).
@@ -131,7 +131,7 @@ CRAN release: 2021-10-06
   - Only year available is 2013.
   - Now information is downloaded instead of using internal data.
 - New function:
-  [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postalcodes.md).
+  [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md).
 - Update `gisco_db`.
 
 ## giscoR 0.3.0
@@ -192,11 +192,11 @@ CRAN release: 2020-11-12
 
 - Remove **colorspace** as dependency.
 - Bump **R** minimal version to `3.6.0`.
-- Change order on parameters for
+- Change order on arguments for
   [`gisco_get()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
   functions.
 - Rewriting of internal functions and utils.
-- Add `verbose` parameter to functions.
+- Add `verbose` argument to functions.
 - Rewriting of
   [`giscoR::gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
 - Functions added:

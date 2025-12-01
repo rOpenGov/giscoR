@@ -69,7 +69,6 @@ Other transport networks datasets:
 ## Examples
 
 ``` r
-# \donttest{
 library(sf)
 
 ports <- gisco_get_ports(2013)
@@ -98,6 +97,4 @@ if (inherits(ports, "sf")) {
     ) +
     coord_sf(crs = "ESRI:54030")
 }
-
-# }
 ```

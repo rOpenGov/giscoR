@@ -6,7 +6,7 @@ including all countries as provided by GISCO (2024 version).
 ## Format
 
 A `MULTIPOLYGON` data frame (resolution: 1:20million, EPSG:4326) object
-with 260 rows and variables:
+with 263 rows and variables:
 
 - `CNTR_ID`:
 
@@ -70,6 +70,7 @@ Other dataset:
 [`gisco_countries`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
+[`gisco_db_units`](https://ropengov.github.io/giscoR/dev/reference/gisco_db_units.md),
 [`gisco_nuts`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.md),
 [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
 
@@ -81,14 +82,14 @@ head(gisco_countries_2024)
 #> Simple feature collection with 6 features and 11 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
-#> Bounding box:  xmin: -180 ymin: -89 xmax: 179.7788 ymax: 42.6412
+#> Bounding box:  xmin: 1.442566 ymin: -13.43119 xmax: 74.88986 ymax: 42.6412
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 6 × 12
 #>   CNTR_ID CNTR_NAME          NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT  EU_STAT
 #>   <chr>   <chr>              <chr>     <chr>     <chr>     <chr>   <chr> <chr>  
-#> 1 AQ      Antarctica         Antarcti… Antarcti… ATA       Sovere… NA    F      
-#> 2 AR      Argentina          Argentina Argentine ARG       UN Mem… Buen… F      
-#> 3 AS      American Samoa-Sā… American… Samoa am… ASM       US Non… Pago… F      
+#> 1 CD      République Démocr… Democrat… Républiq… COD       UN Mem… Kins… F      
+#> 2 CF      République Centra… Central … Républiq… CAF       UN Mem… Bang… F      
+#> 3 CG      Congo-Kongo-Kongó  Congo     Congo     COG       UN Mem… Braz… F      
 #> 4 AD      Andorra            Andorra   Andorre   AND       UN Mem… Ando… F      
 #> 5 AE      الإمارات العربية … United A… Émirats … ARE       UN Mem… Abu … F      
 #> 6 AF      افغانستان-افغانست… Afghanis… Afghanis… AFG       UN Mem… Kabul F      
