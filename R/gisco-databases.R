@@ -31,14 +31,14 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
       FALSE
     })
 
-    test_off <- getOption("gisco_test_off", FALSE)
+    test_off <- getOption("gisco_test_offline", FALSE)
 
     if (any(!httr2::is_online(), test_off)) {
       return(NULL)
     }
 
     # Testing
-    test_offline <- getOption("gisco_test_err", FALSE)
+    test_offline <- getOption("gisco_test_404", FALSE)
     if (test_offline) {
       # Modify to redirect to fake url
       req <- httr2::req_url(
@@ -248,14 +248,14 @@ gisco_get_latest_db_units <- function(update_cache = FALSE) {
       FALSE
     })
 
-    test_off <- getOption("gisco_test_off", FALSE)
+    test_off <- getOption("gisco_test_offline", FALSE)
 
     if (any(!httr2::is_online(), test_off)) {
       return(NULL)
     }
 
     # Testing
-    test_offline <- getOption("gisco_test_err", FALSE)
+    test_offline <- getOption("gisco_test_404", FALSE)
     if (test_offline) {
       # Modify to redirect to fake url
       req <- httr2::req_url(

@@ -92,7 +92,7 @@ get_url_db <- function(
   url
 }
 
-load_url <- function(
+download_url <- function(
   url = NULL,
   name = basename(url),
   cache_dir = NULL,
@@ -143,7 +143,7 @@ load_url <- function(
     req <- httr2::req_progress(req)
   }
 
-  test_off <- getOption("gisco_test_off", FALSE)
+  test_off <- getOption("gisco_test_offline", FALSE)
 
   if (any(!httr2::is_online(), test_off)) {
     cli::cli_alert_danger("Offline")
@@ -166,7 +166,7 @@ load_url <- function(
   }
 
   # Testing
-  test_offline <- getOption("gisco_test_err", FALSE)
+  test_offline <- getOption("gisco_test_404", FALSE)
   if (test_offline) {
     # Modify to redirect to fake url
     req <- httr2::req_url(
@@ -202,4 +202,67 @@ load_url <- function(
   make_msg("success", verbose, msg)
 
   file_local
+}
+
+get_request_body <- function(url, verbose = TRUE) {
+  msg <- paste0("GET {.url ", url, "}.")
+  make_msg("info", verbose, msg)
+
+  req <- httr2::request(url)
+  req <- httr2::req_error(req, is_error = function(x) {
+    FALSE
+  })
+
+  temp_cache <- file.path(tempdir(), "gisco_api_cache")
+  temp_cache <- gsc_helper_cachedir(temp_cache)
+  req <- httr2::req_cache(req, temp_cache)
+
+  req <- httr2::req_timeout(req, 300)
+  req <- httr2::req_retry(req, max_tries = 3)
+  if (verbose) {
+    req <- httr2::req_progress(req)
+  }
+
+  test_off <- getOption("gisco_test_offline", FALSE)
+
+  if (any(!httr2::is_online(), test_off)) {
+    cli::cli_alert_danger("Offline")
+    cli::cli_alert("Returning {.val NULL}")
+    return(NULL)
+  }
+
+  # Testing
+  test_offline <- getOption("gisco_test_404", FALSE)
+  if (test_offline) {
+    # Modify to redirect to fake url
+    req <- httr2::req_url(
+      req,
+      "https://gisco-services.ec.europa.eu/distribution/v2/fake"
+    )
+  }
+
+  resp <- httr2::req_perform(req)
+
+  if (httr2::resp_is_error(resp)) {
+    get_status_code <- httr2::resp_status(resp) # nolint
+    get_status_desc <- httr2::resp_status_desc(resp) # nolint
+
+    cli::cli_alert_danger(
+      c(
+        "{.strong Error {.num {get_status_code}}} ({get_status_desc}):",
+        " {.url {url}}."
+      )
+    )
+    cli::cli_alert_warning(
+      c(
+        "If you think this is a bug please consider opening an issue on ",
+        "{.url https://github.com/ropengov/giscoR/issues}"
+      )
+    )
+    cli::cli_alert("Returning {.val NULL}")
+    return(NULL)
+  }
+
+  make_msg("success", verbose, "Success")
+  resp
 }

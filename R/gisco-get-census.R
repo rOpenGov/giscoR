@@ -48,7 +48,7 @@ gisco_get_census <- function(
     )
   }
   filename <- basename(url)
-  namefileload <- load_url(
+  namefileload <- download_url(
     url,
     filename,
     cache_dir,

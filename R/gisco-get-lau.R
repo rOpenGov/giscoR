@@ -104,7 +104,7 @@ gisco_get_lau <- function(
 
   basename <- basename(url)
 
-  file_local <- load_url(
+  file_local <- download_url(
     url,
     basename,
     cache_dir = cache_dir,
@@ -119,8 +119,8 @@ gisco_get_lau <- function(
 
   # Improve speed using querys if country(es) are selected
   # We construct the query and passed it to the st_read fun
-  filter_col_cnt <- find_colname(file_local)
-  filter_col_id <- find_colname(file_local, "GISCO_ID")
+  filter_col_cnt <- get_col_name(file_local)
+  filter_col_id <- get_col_name(file_local, "GISCO_ID")
   if (
     all(!is.null(country), !is.null(filter_col_cnt)) ||
       all(!is.null(gisco_id), !is.null(filter_col_id))

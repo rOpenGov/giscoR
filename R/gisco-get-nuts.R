@@ -163,7 +163,7 @@ gisco_get_nuts <- function(
   }
 
   # Cache
-  file_local <- load_url(
+  file_local <- download_url(
     api_entry,
     filename,
     cache_dir,
@@ -177,8 +177,8 @@ gisco_get_nuts <- function(
 
   # Improve speed using querys if country(es) are selected
   # We construct the query and passed it to the st_read fun
-  filter_col_cnt <- find_colname(file_local)
-  filter_col_id <- find_colname(file_local, "NUTS_ID")
+  filter_col_cnt <- get_col_name(file_local)
+  filter_col_id <- get_col_name(file_local, "NUTS_ID")
   if (
     all(!is.null(country), !is.null(filter_col_cnt)) ||
       all(!is.null(nuts_id), !is.null(filter_col_id))

@@ -262,7 +262,7 @@ gsc_api_cache <-
 
     # Testing purposes only
     # Mock the behavior of offline
-    test <- getOption("gisco_test_err", NULL)
+    test <- getOption("gisco_test_404", NULL)
 
     if (isTRUE(test)) {
       gsc_message(

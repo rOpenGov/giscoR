@@ -58,43 +58,47 @@
 #' @seealso [gisco_get_countries()]
 #'
 #' @examplesIf gisco_check_access()
-#' cities <- gisco_get_units(
-#'   id_giscoR = "urban_audit",
-#'   mode = "df",
-#'   year = "2020"
-#' )
-#' VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
-#' #   Order from big to small
-#' VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
+#' if (FALSE) {
+#'   # TODO - NOT RUN
 #'
-#' VAL.sf <- gisco_get_units(
-#'   id_giscoR = "urban_audit",
-#'   year = "2020",
-#'   unit = VAL$URAU_CODE
-#' )
-#' # Provincia
-#' Provincia <-
-#'   gisco_get_units(
-#'     id_giscoR = "nuts",
-#'     unit = c("ES523"),
-#'     resolution = "01"
+#'   cities <- gisco_get_units(
+#'     id_giscoR = "urban_audit",
+#'     mode = "df",
+#'     year = "2020"
 #'   )
+#'   VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
+#'   #   Order from big to small
+#'   VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
 #'
-#' # Reorder
-#' VAL.sf$URAU_CATG <- factor(VAL.sf$URAU_CATG, levels = c("F", "K", "C"))
-#'
-#' # Plot
-#' library(ggplot2)
-#'
-#' ggplot(Provincia) +
-#'   geom_sf(fill = "gray1") +
-#'   geom_sf(data = VAL.sf, aes(fill = URAU_CATG)) +
-#'   scale_fill_viridis_d() +
-#'   labs(
-#'     title = "Valencia",
-#'     subtitle = "Urban Audit",
-#'     fill = "Urban Audit\ncategory"
+#'   VAL.sf <- gisco_get_units(
+#'     id_giscoR = "urban_audit",
+#'     year = "2020",
+#'     unit = VAL$URAU_CODE
 #'   )
+#'   # Provincia
+#'   Provincia <-
+#'     gisco_get_units(
+#'       id_giscoR = "nuts",
+#'       unit = c("ES523"),
+#'       resolution = "01"
+#'     )
+#'
+#'   # Reorder
+#'   VAL.sf$URAU_CATG <- factor(VAL.sf$URAU_CATG, levels = c("F", "K", "C"))
+#'
+#'   # Plot
+#'   library(ggplot2)
+#'
+#'   ggplot(Provincia) +
+#'     geom_sf(fill = "gray1") +
+#'     geom_sf(data = VAL.sf, aes(fill = URAU_CATG)) +
+#'     scale_fill_viridis_d() +
+#'     labs(
+#'       title = "Valencia",
+#'       subtitle = "Urban Audit",
+#'       fill = "Urban Audit\ncategory"
+#'     )
+#' }
 gisco_get_units <- function(
   id_giscoR = c("nuts", "countries", "urban_audit"),
   unit = "ES4",

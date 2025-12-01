@@ -110,7 +110,7 @@ gisco_get_urban_audit <- function(
   }
 
   filename <- basename(api_entry)
-  file_local <- load_url(
+  file_local <- download_url(
     api_entry,
     filename,
     cache_dir,
@@ -126,7 +126,7 @@ gisco_get_urban_audit <- function(
   # Improve speed using querys if country(es) are selected
   # We construct the query and passed it to the st_read fun
 
-  filter_col <- find_colname(file_local)
+  filter_col <- get_col_name(file_local)
   if (all(!is.null(country), !is.null(filter_col))) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
 

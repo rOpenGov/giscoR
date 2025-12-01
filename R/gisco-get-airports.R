@@ -67,7 +67,7 @@ gisco_get_airports <- function(
   }
 
   filename <- basename(url)
-  namefileload <- load_url(
+  namefileload <- download_url(
     url,
     filename,
     cache_dir,

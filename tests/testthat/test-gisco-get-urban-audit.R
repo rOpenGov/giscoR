@@ -13,7 +13,7 @@ test_that("Mock offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  options(gisco_test_err = TRUE)
+  options(gisco_test_404 = TRUE)
   expect_message(
     n <- gisco_get_urban_audit(
       update_cache = TRUE
@@ -21,7 +21,7 @@ test_that("Mock offline", {
     "Error"
   )
   expect_null(n)
-  options(gisco_test_err = FALSE)
+  options(gisco_test_404 = FALSE)
 })
 
 

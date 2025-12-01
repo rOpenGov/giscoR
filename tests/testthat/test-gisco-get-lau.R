@@ -2,14 +2,14 @@ test_that("offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  options(gisco_test_err = TRUE)
+  options(gisco_test_404 = TRUE)
   expect_message(
     n <- gisco_get_lau(update_cache = TRUE, year = 2020),
     "Error"
   )
   expect_null(n)
 
-  options(gisco_test_err = FALSE)
+  options(gisco_test_404 = FALSE)
 })
 
 test_that("LAU Errors", {

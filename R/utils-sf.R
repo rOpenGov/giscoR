@@ -100,7 +100,7 @@ get_geo_file_colnames <- function(file_local) {
   names(get_cols)
 }
 
-find_colname <- function(
+get_col_name <- function(
   file_local,
   candidates = c("CNTR_ID", "CNTR_CODE")
 ) {

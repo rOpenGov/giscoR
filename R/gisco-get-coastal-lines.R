@@ -95,7 +95,7 @@ gisco_get_coastal_lines <- function(
   }
 
   # Cache
-  file_local <- load_url(
+  file_local <- download_url(
     api_entry,
     filename,
     cache_dir,

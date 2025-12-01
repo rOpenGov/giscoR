@@ -180,7 +180,7 @@ gisco_bulk_download <- function(
     id_giscor
   )
 
-  destfile <- load_url(
+  destfile <- download_url(
     url,
     zipname,
     cache_dir,

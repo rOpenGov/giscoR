@@ -47,3 +47,20 @@
       * `api_file` = "csv/COMM_BN_01M_2016_4326.csv"
       * `api_entry` = "https://gisco-services.ec.europa.eu/distribution/v2/communes"
 
+# No conexion body
+
+    Code
+      fend <- get_request_body(url, verbose = FALSE)
+    Message
+      x Offline
+      > Returning "NULL"
+
+# Error body
+
+    Code
+      fend <- get_request_body(url, verbose = FALSE)
+    Message
+      x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/distribution/v2/themes.json>.
+      ! If you think this is a bug please consider opening an issue on <https://github.com/ropengov/giscoR/issues>
+      > Returning "NULL"
+

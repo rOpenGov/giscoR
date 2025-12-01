@@ -73,7 +73,7 @@ gisco_get_ports <- function(
   }
 
   filename <- basename(url)
-  namefileload <- load_url(
+  namefileload <- download_url(
     url,
     filename,
     cache_dir,

@@ -57,7 +57,7 @@ gisco_get_metadata <- function(
     req <- httr2::req_progress(req)
   }
 
-  test_off <- getOption("gisco_test_off", FALSE)
+  test_off <- getOption("gisco_test_offline", FALSE)
 
   if (any(!httr2::is_online(), test_off)) {
     cli::cli_alert_danger("Offline")
@@ -67,7 +67,7 @@ gisco_get_metadata <- function(
 
   file_local <- tempfile(fileext = "csv")
   # Testing
-  test_offline <- getOption("gisco_test_err", FALSE)
+  test_offline <- getOption("gisco_test_404", FALSE)
   if (test_offline) {
     # Modify to redirect to fake url
     req <- httr2::req_url(

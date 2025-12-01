@@ -2,14 +2,14 @@ test_that("Offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  options(gisco_test_err = TRUE)
+  options(gisco_test_404 = TRUE)
   expect_message(
     n <- gisco_bulk_download(update_cache = TRUE),
     "Error"
   )
   expect_null(n)
 
-  options(gisco_test_err = FALSE)
+  options(gisco_test_404 = FALSE)
 })
 
 test_that("Deprecations", {

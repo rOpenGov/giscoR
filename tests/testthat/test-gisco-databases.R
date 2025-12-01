@@ -4,7 +4,7 @@ test_that("No conexion", {
 
   gb <- gisco_get_latest_db(update_cache = TRUE)
 
-  options(gisco_test_off = TRUE)
+  options(gisco_test_offline = TRUE)
 
   expect_snapshot(
     fend <- gisco_get_latest_db(update_cache = TRUE),
@@ -16,7 +16,7 @@ test_that("No conexion", {
   )
   expect_null(fend)
 
-  options(gisco_test_off = FALSE)
+  options(gisco_test_offline = FALSE)
 })
 
 
@@ -24,7 +24,7 @@ test_that("Offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  options(gisco_test_err = TRUE)
+  options(gisco_test_404 = TRUE)
   expect_message(
     n <- gisco_get_latest_db(update_cache = TRUE),
     "Can't access"
@@ -37,7 +37,7 @@ test_that("Offline", {
   )
   expect_null(n)
 
-  options(gisco_test_err = FALSE)
+  options(gisco_test_404 = FALSE)
 })
 
 test_that("Offline detection", {
@@ -51,7 +51,7 @@ test_that("Offline detection", {
     unlink(cached_db)
   }
   expect_false(file.exists(cached_db))
-  options(gisco_test_err = TRUE)
+  options(gisco_test_404 = TRUE)
   expect_message(
     n <- get_db(),
     "Can't access"
@@ -67,7 +67,7 @@ test_that("Offline detection", {
     unlink(cached_db)
   }
   expect_false(file.exists(cached_db))
-  options(gisco_test_err = FALSE)
+  options(gisco_test_404 = FALSE)
 })
 test_that("On CRAN", {
   # Imagine we are in CRAN
@@ -142,7 +142,7 @@ test_that("Offline detection units", {
     unlink(cached_db)
   }
   expect_false(file.exists(cached_db))
-  options(gisco_test_err = TRUE)
+  options(gisco_test_404 = TRUE)
   expect_message(
     n <- get_db_units(),
     "Can't access"
@@ -158,7 +158,7 @@ test_that("Offline detection units", {
     unlink(cached_db)
   }
   expect_false(file.exists(cached_db))
-  options(gisco_test_err = FALSE)
+  options(gisco_test_404 = FALSE)
 })
 
 test_that("On CRAN units", {

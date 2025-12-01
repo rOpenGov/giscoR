@@ -86,7 +86,7 @@ gisco_address_api_search <- function(
     postcode = postcode
   )
 
-  call_api(custom_query, apiurl, verbose)
+  call_address_api(custom_query, apiurl, verbose)
 }
 
 #' @rdname gisco_address_api
@@ -99,7 +99,7 @@ gisco_address_api_reverse <- function(x, y, country = NULL, verbose = FALSE) {
     country = country
   )
 
-  call_api(custom_query, apiurl, verbose)
+  call_address_api(custom_query, apiurl, verbose)
 }
 
 
@@ -122,7 +122,7 @@ gisco_address_api_bbox <- function(
     postcode = postcode
   )
 
-  res <- call_api(custom_query, apiurl, verbose)
+  res <- call_address_api(custom_query, apiurl, verbose)
 
   if (any(nrow(res) == 0, is.na(res$bbox), is.null(res$bbox))) {
     cli::cli_alert_warning("No results. Returning {.val NULL}")
@@ -154,7 +154,7 @@ gisco_address_api_bbox <- function(
 gisco_address_api_countries <- function(verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/countries"
 
-  res <- call_api(list(NULL), apiurl, verbose)
+  res <- call_address_api(list(NULL), apiurl, verbose)
   if (is.null(res)) {
     return(res)
   }
@@ -176,7 +176,7 @@ gisco_address_api_provinces <- function(
     city = city
   )
 
-  call_api(custom_query, apiurl, verbose)
+  call_address_api(custom_query, apiurl, verbose)
 }
 
 #' @rdname gisco_address_api
@@ -192,7 +192,7 @@ gisco_address_api_cities <- function(
     province = province
   )
 
-  call_api(custom_query, apiurl, verbose)
+  call_address_api(custom_query, apiurl, verbose)
 }
 
 #' @rdname gisco_address_api
@@ -210,7 +210,7 @@ gisco_address_api_roads <- function(
     city = city
   )
 
-  call_api(custom_query, apiurl, verbose)
+  call_address_api(custom_query, apiurl, verbose)
 }
 
 #' @rdname gisco_address_api
@@ -232,7 +232,7 @@ gisco_address_api_housenumbers <- function(
     postcode = postcode
   )
 
-  call_api(custom_query, apiurl, verbose)
+  call_address_api(custom_query, apiurl, verbose)
 }
 
 
@@ -251,75 +251,26 @@ gisco_address_api_postcodes <- function(
     city = city
   )
 
-  call_api(custom_query, apiurl, verbose)
+  call_address_api(custom_query, apiurl, verbose)
 }
 
 #' @rdname gisco_address_api
 #' @export
 gisco_address_api_copyright <- function(verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/copyright"
-  call_api(custom_query = NULL, apiurl, verbose)
+  call_address_api(custom_query = NULL, apiurl, verbose)
 }
 
 # Helpers
 # General ----
 
-call_api <- function(custom_query, apiurl, verbose = FALSE) {
+call_address_api <- function(custom_query, apiurl, verbose = FALSE) {
   # Prepare the query
   clean_q <- unlist(custom_query)
-  get_url <- httr2::url_modify(apiurl, query = as.list(clean_q))
-  if (verbose) {
-    cli::cli_alert_info("GET {.url {get_url}}")
-  }
+  url <- httr2::url_modify(apiurl, query = as.list(clean_q))
 
-  req <- httr2::request(get_url)
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
-
-  temp_cache <- file.path(tempdir(), "gisco_api_cache")
-  temp_cache <- gsc_helper_cachedir(temp_cache)
-  req <- httr2::req_cache(req, temp_cache)
-
-  req <- httr2::req_timeout(req, 100000)
-
-  test_off <- getOption("gisco_test_off", FALSE)
-
-  if (any(!httr2::is_online(), test_off)) {
-    cli::cli_alert_danger("Offline")
-    cli::cli_alert("Returning {.val NULL}")
-    return(NULL)
-  }
-
-  # Testing
-  test_offline <- getOption("gisco_test_err", FALSE)
-  if (test_offline) {
-    # Modify to redirect to fake url
-    req <- httr2::req_url(
-      req,
-      "https://gisco-services.ec.europa.eu/distribution/v2/fake"
-    )
-  }
-
-  resp <- httr2::req_perform(req)
-
-  if (httr2::resp_is_error(resp)) {
-    get_status_code <- httr2::resp_status(resp) # nolint
-    get_status_desc <- httr2::resp_status_desc(resp) # nolint
-
-    cli::cli_alert_danger(
-      c(
-        "{.strong Error {.num {get_status_code}}} ({get_status_desc}):",
-        " {.url {get_url}}."
-      )
-    )
-    cli::cli_alert_warning(
-      c(
-        "If you think this is a bug please consider opening an issue on ",
-        "{.url https://github.com/ropengov/giscoR/issues}"
-      )
-    )
-    cli::cli_alert("Returning {.val NULL}")
+  resp <- get_request_body(url, verbose)
+  if (is.null(resp)) {
     return(NULL)
   }
 

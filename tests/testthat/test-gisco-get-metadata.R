@@ -2,27 +2,27 @@ test_that("No conexion", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  options(gisco_test_off = TRUE)
+  options(gisco_test_offline = TRUE)
 
   expect_snapshot(
     fend <- gisco_get_metadata()
   )
   expect_null(fend)
 
-  options(gisco_test_off = FALSE)
+  options(gisco_test_offline = FALSE)
 })
 
 test_that("Offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  options(gisco_test_err = TRUE)
+  options(gisco_test_404 = TRUE)
   expect_message(
     n <- gisco_get_metadata(),
     "Error"
   )
   expect_null(n)
-  options(gisco_test_err = FALSE)
+  options(gisco_test_404 = FALSE)
 })
 
 test_that("Messages", {

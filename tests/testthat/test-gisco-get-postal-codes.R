@@ -9,7 +9,7 @@ test_that("Offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  options(gisco_test_err = TRUE)
+  options(gisco_test_404 = TRUE)
   expect_message(
     n <- gisco_get_postal_codes(
       year = 2024,
@@ -19,7 +19,7 @@ test_that("Offline", {
     "Error"
   )
   expect_null(n)
-  options(gisco_test_err = FALSE)
+  options(gisco_test_404 = FALSE)
 })
 
 test_that("Postal codes online", {

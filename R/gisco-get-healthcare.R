@@ -55,7 +55,7 @@ gisco_get_healthcare <- function(
 
   if (cache) {
     # Guess source to load
-    namefileload <- load_url(
+    namefileload <- download_url(
       api_entry,
       filename,
       cache_dir,

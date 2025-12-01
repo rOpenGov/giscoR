@@ -134,7 +134,7 @@ gisco_get_countries <- function(
       "Loaded from {.help giscoR::gisco_countries_2024} dataset.",
       "Use {.arg update_cache = TRUE} to re-load from file"
     )
-    data_sf <- filter_countryregion(data_sf, country, region)
+    data_sf <- filter_country_region(data_sf, country, region)
 
     return(data_sf)
   }
@@ -145,12 +145,12 @@ gisco_get_countries <- function(
     make_msg("info", verbose, "Reading from", msg)
 
     data_sf <- read_geo_file_sf(api_entry)
-    data_sf <- filter_countryregion(data_sf, country, region)
+    data_sf <- filter_country_region(data_sf, country, region)
     return(data_sf)
   }
 
   # Cache
-  file_local <- load_url(
+  file_local <- download_url(
     api_entry,
     filename,
     cache_dir,
@@ -166,7 +166,7 @@ gisco_get_countries <- function(
   # We construct the query and passed it to the st_read fun
 
   cnt_region <- get_countrycodes_region(country, region)
-  filter_col <- find_colname(file_local)
+  filter_col <- get_col_name(file_local)
   q <- NULL
 
   if (all(!is.null(cnt_region), !is.null(filter_col))) {
@@ -195,7 +195,7 @@ gisco_get_countries <- function(
   data_sf
 }
 
-filter_countryregion <- function(data_sf, country = NULL, region = NULL) {
+filter_country_region <- function(data_sf, country = NULL, region = NULL) {
   if (!"CNTR_ID" %in% names(data_sf)) {
     return(data_sf)
   }

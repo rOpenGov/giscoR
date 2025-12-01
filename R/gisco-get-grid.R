@@ -113,7 +113,7 @@ gisco_get_grid <- function(
   api_entry <- "https://gisco-services.ec.europa.eu/grid"
   url <- file.path(api_entry, filename)
 
-  file_local <- load_url(
+  file_local <- download_url(
     url,
     basename(url),
     cache_dir,

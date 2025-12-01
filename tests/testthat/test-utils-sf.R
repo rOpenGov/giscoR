@@ -11,7 +11,7 @@ test_that("Read shp", {
     "shp/CNTR_LB_2024_4326.shp.zip"
   )
 
-  fake_local <- load_url(
+  fake_local <- download_url(
     url,
     basename(url),
     cdir,
@@ -20,8 +20,8 @@ test_that("Read shp", {
     verbose = FALSE
   )
   nm <- get_geo_file_colnames(fake_local)
-  expect_identical(find_colname(fake_local), "CNTR_ID")
-  expect_null(find_colname(fake_local, "A_FAKE_COL"))
+  expect_identical(get_col_name(fake_local), "CNTR_ID")
+  expect_null(get_col_name(fake_local, "A_FAKE_COL"))
   expect_true("geometry" %in% nm)
   expect_true("CNTR_ID" %in% nm)
   s <- read_geo_file_sf(fake_local)
@@ -53,7 +53,7 @@ test_that("Read gpkg", {
     "gpkg/CNTR_LB_2024_4326.gpkg"
   )
 
-  fake_local <- load_url(
+  fake_local <- download_url(
     url,
     basename(url),
     cdir,
@@ -84,7 +84,7 @@ test_that("Read gpkg", {
     "urau/gpkg/URAU_RG_100K_2021_4326.gpkg"
   )
 
-  file_local <- load_url(
+  file_local <- download_url(
     url,
     cache_dir = cdir,
     subdir = "fixme",

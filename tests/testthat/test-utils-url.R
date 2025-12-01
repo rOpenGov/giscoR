@@ -1,7 +1,7 @@
 test_that("No conexion", {
   skip_on_cran()
   skip_if_gisco_offline()
-  options(gisco_test_off = TRUE)
+  options(gisco_test_offline = TRUE)
 
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/",
@@ -12,7 +12,7 @@ test_that("No conexion", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
   expect_snapshot(
-    fend <- load_url(
+    fend <- download_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -24,7 +24,7 @@ test_that("No conexion", {
   expect_length(list.files(cdir, recursive = TRUE), 0)
   unlink(cdir, recursive = TRUE, force = TRUE)
 
-  options(gisco_test_off = FALSE)
+  options(gisco_test_offline = FALSE)
 })
 test_that("Offline", {
   skip_on_cran()
@@ -35,13 +35,13 @@ test_that("Offline", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  options(gisco_test_err = TRUE)
+  options(gisco_test_404 = TRUE)
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/countries/",
     "shp/CNTR_LB_2024_4326.shp.zip"
   )
   expect_message(
-    s <- load_url(
+    s <- download_url(
       url,
       verbose = FALSE,
       cache_dir = cdir,
@@ -51,11 +51,11 @@ test_that("Offline", {
   )
   expect_null(s)
 
-  options(gisco_test_err = FALSE)
+  options(gisco_test_404 = FALSE)
 
   # Otherwise work
   expect_silent(
-    s <- load_url(
+    s <- download_url(
       url,
       verbose = FALSE,
       cache_dir = cdir,
@@ -83,7 +83,7 @@ test_that("Caching tests", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
   expect_message(
-    fend <- load_url(
+    fend <- download_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -96,7 +96,7 @@ test_that("Caching tests", {
   expect_length(list.files(cdir, recursive = TRUE), 1)
 
   expect_message(
-    fend <- load_url(
+    fend <- download_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -107,7 +107,7 @@ test_that("Caching tests", {
   )
 
   expect_message(
-    fend <- load_url(
+    fend <- download_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -133,7 +133,7 @@ test_that("Caching errors", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
   expect_message(
-    fend <- load_url(
+    fend <- download_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -150,7 +150,7 @@ test_that("Caching errors", {
   url <- get_url_db("lau", ext = "gpkg", year = 2024, fn = "a_fun")
 
   expect_message(
-    load_url(
+    download_url(
       url,
       cache_dir = cdir,
       subdir = "fixme",
@@ -223,6 +223,69 @@ test_that("Get urls", {
   expect_equal(resp_status(resp), 200)
 })
 
+test_that("No conexion body", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  options(gisco_test_offline = TRUE)
+
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/distribution/v2/",
+    "themes.json"
+  )
+
+  expect_snapshot(
+    fend <- get_request_body(url, verbose = FALSE)
+  )
+  expect_null(fend)
+  options(gisco_test_offline = FALSE)
+})
+test_that("Error body", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  options(gisco_test_404 = TRUE)
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/distribution/v2/",
+    "themes.json"
+  )
+
+  expect_snapshot(
+    fend <- get_request_body(url, verbose = FALSE)
+  )
+  expect_null(fend)
+  options(gisco_test_404 = FALSE)
+})
+
+
+test_that("Tests body", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/distribution/v2/",
+    "themes.json"
+  )
+
+  expect_message(
+    fend <- get_request_body(url, verbose = TRUE),
+    "GET"
+  )
+
+  expect_s3_class(fend, "httr2_response")
+
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/distribution/v2/",
+    "themes_fake.json"
+  )
+
+  expect_message(
+    fend <- get_request_body(url, verbose = TRUE),
+    "GET"
+  )
+
+  expect_null(fend)
+})
+
+
 test_that("Old tests", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -236,7 +299,7 @@ test_that("Old tests", {
   ))
 
   expect_message(
-    n <- load_url(
+    n <- download_url(
       "https://github.com/dieghernan/a_fake_thing_here",
       verbose = FALSE
     ),
@@ -255,7 +318,7 @@ test_that("Old tests", {
     )
   )
 
-  expect_silent(load_url(dwn, update_cache = FALSE, verbose = FALSE))
+  expect_silent(download_url(dwn, update_cache = FALSE, verbose = FALSE))
 
   expect_message(get_url_db(
     "urban_audit",

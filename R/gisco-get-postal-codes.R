@@ -85,7 +85,7 @@ gisco_get_postal_codes <- function(
   )
   filename <- basename(url)
 
-  file_local <- load_url(
+  file_local <- download_url(
     url = url,
     name = filename,
     cache_dir = cache_dir,
@@ -101,7 +101,7 @@ gisco_get_postal_codes <- function(
   # Improve speed using querys if country(es) are selected
   # We construct the query and passed it to the st_read fun
 
-  filter_col <- find_colname(file_local)
+  filter_col <- get_col_name(file_local)
   if (all(!is.null(country), !is.null(filter_col))) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
     country <- get_country_code(country)

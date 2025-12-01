@@ -76,7 +76,7 @@ gisco_get_education <- function(
 
     if (cache) {
       # Guess source to load
-      namefileload <- load_url(
+      namefileload <- download_url(
         api,
         filename,
         cache_dir,
