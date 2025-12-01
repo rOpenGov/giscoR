@@ -149,7 +149,7 @@ countries and potential candidates based on a bilateral agreement
 between Eurostat and the respective statistical agencies.
 
 An introduction to the NUTS classification is available here:
-<http://ec.europa.eu/eurostat/web/nuts/overview>.
+<https://ec.europa.eu/eurostat/web/nuts/overview>.
 
 ## Note
 

@@ -382,6 +382,20 @@ population figures are provided for these cells.
 - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_grid.md)
   : Grid dataset
 
+### Transport networks
+
+- [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
+  : Airports dataset
+- [`gisco_get_ports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_ports.md)
+  : Ports dataset
+
+### Basic services
+
+- [`gisco_get_education()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_education.md)
+  : Education services in Europe
+- [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_healthcare.md)
+  : Healthcare services in Europe
+
 ## GISCO Address API
 
 Query the [GISCO Addres
@@ -409,28 +423,6 @@ political boundaries
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
   : Bulk download from GISCO API
-
-## Infrastructures
-
-These functions return
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects with
-man-made features
-
-- [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
-  [`gisco_get_ports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
-  : Get location of airports and ports from GISCO API
-- [`gisco_get_education()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_education.md)
-  : Get locations of education services in Europe
-- [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_healthcare.md)
-  : Get locations of healthcare services in Europe
-
-## Tools
-
-Access to other GISCO tools
-
-## Databases
-
-Get information about the current and most up-to-date database.
 
 ## Misc
 

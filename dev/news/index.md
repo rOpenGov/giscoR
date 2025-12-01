@@ -127,7 +127,7 @@ CRAN release: 2021-10-06
 - Add **lwgeom** on ‘Suggests’.
 - [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
   and
-  [`gisco_get_ports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md):
+  [`gisco_get_ports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_ports.md):
   - Only year available is 2013.
   - Now information is downloaded instead of using internal data.
 - New function:
@@ -204,7 +204,7 @@ CRAN release: 2020-11-12
   - [`gisco_check_access()`](https://ropengov.github.io/giscoR/dev/reference/gisco_check_access.md)
   - [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
   - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_grid.md)
-  - [`gisco_get_ports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
+  - [`gisco_get_ports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_ports.md)
   - [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
 - Now
   [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)

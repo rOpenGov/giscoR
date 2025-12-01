@@ -1,14 +1,13 @@
-# Airports dataset
+# Ports dataset
 
-This dataset includes the location of over 11,800 Pan European airports
-and heliports. The airports are identified using the International Civil
-Aviation Organisation (ICAO) airport codes.
+This dataset includes the location of over 2,440 Pan European ports. The
+ports are identified following the UN LOCODE list.
 
 ## Usage
 
 ``` r
-gisco_get_airports(
-  year = c(2013, 2006),
+gisco_get_ports(
+  year = c(2013, 2009),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -27,7 +26,7 @@ Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 - year:
 
   character string or number. Release year of the file. One of `2013`,
-  `2006`.
+  `2009`.
 
 - country:
 
@@ -59,10 +58,13 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
 
+`gisco_get_ports()` adds a new field CNTR_ISO2 to the original data
+identifying the country of the port.
+
 ## See also
 
 Other transport networks datasets:
-[`gisco_get_ports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_ports.md)
+[`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
 
 ## Examples
 
@@ -70,21 +72,31 @@ Other transport networks datasets:
 # \donttest{
 library(sf)
 
-greece <- gisco_get_countries(country = "EL", resolution = 3)
-airp_gc <- gisco_get_airports(2013, country = "EL")
+ports <- gisco_get_ports(2013)
+coast <- giscoR::gisco_coastallines
 
-library(ggplot2)
+if (inherits(ports, "sf")) {
+  library(ggplot2)
 
-if (inherits(airp_gc, "sf")) {
-  ggplot(greece) +
-    geom_sf(fill = "grey80") +
-    geom_sf(data = airp_gc, color = "blue") +
+  ggplot(coast) +
+    geom_sf(fill = "grey10", color = "grey20") +
+    geom_sf(
+      data = ports, color = "#6bb857",
+      size = 0.2, alpha = 0.25
+    ) +
+    theme_void() +
+    theme(
+      plot.background = element_rect(fill = "black"),
+      text = element_text(color = "white"),
+      panel.grid = element_blank(),
+      plot.title = element_text(face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(face = "italic", hjust = 0.5)
+    ) +
     labs(
-      title = "Airports on Greece",
-      shape = NULL,
-      color = NULL,
-      caption = gisco_attributions()
-    )
+      title = "Ports Worldwide", subtitle = "Year 2013",
+      caption = "(c) European Union, 1995 - today"
+    ) +
+    coord_sf(crs = "ESRI:54030")
 }
 
 # }

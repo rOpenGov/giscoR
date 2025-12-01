@@ -120,5 +120,6 @@ Other political:
 
 # Countries 2016 - It would take some time
 gisco_bulk_download(id_giscoR = "countries", resolution = "60")
+#> Error in gisco_bulk_download(id_giscoR = "countries", resolution = "60"): unused argument (id_giscoR = "countries")
 # }
 ```
