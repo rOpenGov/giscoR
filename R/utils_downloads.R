@@ -18,7 +18,7 @@ gsc_api_url <- function(
     resolution <- paste0("0", resolution)
   }
   db <- giscoR::gisco_db
-  db <- db[db$id_giscoR == id_giscoR, ]
+  db <- db[db$id_giscor == id_giscoR, ]
 
   # Available years
   av_years <- paste(db$year, collapse = ",")

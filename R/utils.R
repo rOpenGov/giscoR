@@ -84,3 +84,27 @@ match_arg_pretty <- function(arg, choices) {
 
   choices[lmatch]
 }
+
+rbind_fill <- function(a_list) {
+  # Drop nulls
+  is_null <- vapply(a_list, is.null, FUN.VALUE = logical(1))
+  a_list <- a_list[!is_null]
+  if (length(a_list) == 0) {
+    return(NULL)
+  }
+  # Get all names
+  nms <- unique(unlist(lapply(a_list, names)))
+
+  a_list <- lapply(
+    a_list,
+    function(x) {
+      for (i in nms[!nms %in% names(x)]) {
+        x[[i]] <- NA
+      }
+      x
+    }
+  )
+  names(a_list) <- NULL
+  binded <- do.call(rbind, a_list)
+  binded
+}

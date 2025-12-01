@@ -12,7 +12,6 @@ test_that("Urban Audit offline", {
 test_that("Mock offline", {
   skip_on_cran()
   skip_if_gisco_offline()
-  db <- gisco_get_latest_db()
 
   options(gisco_test_err = TRUE)
   expect_message(

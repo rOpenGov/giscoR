@@ -39,7 +39,7 @@
       * `id_giscor` = "communes"
       * `year` = "2016"
       * `epsg` = "4326"
-      * `resolution` = "01"
+      * `resolution` = "1"
       * `spatialtype` = "BN"
       * `nuts_level` = "NA"
       * `level` = "NA"

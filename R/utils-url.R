@@ -29,7 +29,7 @@ get_url_db <- function(
   make_params <- lapply(make_params, as.character)
 
   if (!is.null(make_params$resolution)) {
-    resolution <- sprintf("%02d", as.numeric(make_params$resolution))
+    resolution <- as.numeric(make_params$resolution)
     make_params$resolution <- resolution
   }
 

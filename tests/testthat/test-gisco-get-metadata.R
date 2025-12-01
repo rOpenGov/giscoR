@@ -1,7 +1,6 @@
 test_that("No conexion", {
   skip_on_cran()
   skip_if_gisco_offline()
-  db <- gisco_get_latest_db(update_cache = TRUE)
 
   options(gisco_test_off = TRUE)
 

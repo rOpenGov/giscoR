@@ -97,7 +97,7 @@ gisco_get_education <- function(
     data_sf
   })
 
-  data_sf_all <- do.call("rbind", ress)
+  data_sf_all <- rbind_fill(ress)
   if (is.null(data_sf_all)) {
     return(NULL)
   }

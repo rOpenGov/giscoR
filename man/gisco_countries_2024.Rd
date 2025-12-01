@@ -7,7 +7,7 @@
 \title{World countries \code{POLYGON} \code{\link[sf:sf]{sf}} object 2024}
 \format{
 A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object
-with 260 rows and variables:
+with 263 rows and variables:
 \describe{
 \item{\code{CNTR_ID}}{Country ID as per Eurostat.}
 \item{\code{CNTR_NAME}}{Official country name on local language.}
@@ -45,6 +45,7 @@ Other dataset:
 \code{\link{gisco_countries}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},
+\code{\link{gisco_db_units}},
 \code{\link{gisco_nuts}},
 \code{\link{gisco_nuts_2024}}
 }

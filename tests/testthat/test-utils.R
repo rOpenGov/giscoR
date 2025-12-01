@@ -88,3 +88,61 @@ test_that("Pretty match", {
   expect_snapshot(gisco_get_airports(2050), error = TRUE)
   expect_s3_class(gisco_get_airports(2013), "sf")
 })
+
+test_that("Bind and fill sf", {
+  skip_on_cran()
+  gb <- giscoR::gisco_countries_2024[1, ]
+  cos <- giscoR::gisco_nuts_2024[1, ]
+  a_list <- list(gb, cos, gb, cos)
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "sf")
+  expect_s3_class(binded, "tbl_df")
+  expect_equal(nrow(binded), 4)
+})
+
+test_that("Bind and fill tibbles", {
+  skip_on_cran()
+  gb <- giscoR::gisco_countries_2024[1, ]
+  gb <- sf::st_drop_geometry(gb)
+  cos <- giscoR::gisco_nuts_2024[1, ]
+  cos <- sf::st_drop_geometry(cos)
+  a_list <- list(gb, cos, gb, cos)
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "tbl_df")
+  expect_equal(nrow(binded), 4)
+})
+
+test_that("Bind and fill sf removes NULL", {
+  skip_on_cran()
+  gb <- giscoR::gisco_countries_2024[1, ]
+  cos <- giscoR::gisco_nuts_2024[1, ]
+  a_list <- list(gb, cos, gb, cos)
+  a_list[[3]] <- NULL
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "sf")
+  expect_s3_class(binded, "tbl_df")
+  expect_equal(nrow(binded), 3)
+})
+
+test_that("Bind and fill tibble removes NULL", {
+  skip_on_cran()
+  gb <- giscoR::gisco_countries_2024[1, ]
+  gb <- sf::st_drop_geometry(gb)
+  cos <- giscoR::gisco_nuts_2024[1, ]
+  cos <- sf::st_drop_geometry(cos)
+
+  a_list <- list(gb, cos, gb, cos)
+  a_list[[3]] <- NULL
+  expect_error(err <- do.call(rbind, a_list))
+  expect_silent(binded <- rbind_fill(a_list))
+  expect_s3_class(binded, "tbl_df")
+  expect_equal(nrow(binded), 3)
+
+  # All NULLs return NULL
+  new_l <- list(a = NULL, b = NULL)
+
+  expect_null(rbind_fill(new_l))
+})

@@ -20,6 +20,28 @@
 #' data("gisco_db")
 NULL
 
+#' Cached GISCO database for units
+#'
+#' Database with the list of files that the package can load in units.
+#'
+#' @family dataset
+#' @family database
+#'
+#' @name gisco_db_units
+#'
+#' @docType data
+#'
+#' @format A data frame
+#'
+#' @details This data frame is used to check the validity of the API calls.
+#'
+#' @source GISCO API `datasets.json`.
+#' @keywords internal
+#' @examples
+#'
+#' data("gisco_db_units")
+NULL
+
 #' World countries `POLYGON` [`sf`][sf::st_sf] object
 #'
 #' @family dataset

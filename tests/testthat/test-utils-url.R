@@ -30,8 +30,6 @@ test_that("Offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  db <- gisco_get_latest_db(update_cache = TRUE)
-
   cdir <- file.path(tempdir(), "testthat_ex")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
