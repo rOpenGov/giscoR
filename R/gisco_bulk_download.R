@@ -27,6 +27,7 @@
 #'
 #' @param recursive Tries to unzip recursively the zip files (if any) included
 #' in the initial bulk download (case of `ext = "shp"`).
+#' @param ... Ignored.
 #'
 #' @details
 #'
@@ -48,8 +49,22 @@
 #' @examplesIf gisco_check_access()
 #' \dontrun{
 #'
-#' # Countries 2016 - It would take some time
-#' gisco_bulk_download(id_giscoR = "countries", resolution = "60")
+#' # Write on temp dir
+#' tmp <- file.path(tempdir(), "testexample")
+#'
+#' ss <- gisco_bulk_download(
+#'   id_giscor = "countries", resolution = "60",
+#'   year = 2016, ext = "geojson",
+#'   cache_dir = tmp
+#' )
+#' # Read one
+#' library(sf)
+#' f <- list.files(tmp, recursive = TRUE, full.names = TRUE)
+#' f[1]
+#' sf::read_sf(f[1])
+#'
+#' # Clean
+#' unlink(tmp, force = TRUE)
 #' }
 #' @export
 gisco_bulk_download <- function(
@@ -68,8 +83,19 @@ gisco_bulk_download <- function(
   verbose = FALSE,
   resolution = 10,
   ext = c("shp", "geojson"),
-  recursive = deprecated()
+  recursive = deprecated(),
+  ...
 ) {
+  dots <- list(...)
+  if ("id_giscoR" %in% names(dots)) {
+    lifecycle::deprecate_warn(
+      "1.0.0",
+      "gisco_bulk_download(id_giscoR)",
+      "gisco_bulk_download(id_giscor)"
+    )
+    id_giscor <- dots$id_giscoR
+  }
+
   id_giscor <- match_arg_pretty(id_giscor)
   ext <- match_arg_pretty(ext)
 
@@ -94,9 +120,15 @@ gisco_bulk_download <- function(
     fn = "gisco_bulk_download"
   )
 
+  # Restore
+  if (
+    id_giscor == "communes" && as.character(year) %in% c("2004", "2006", "2008")
+  ) {
+    make_params$resolution <- 1
+  }
+
   api_entry <- gsub("/shp/.*", "/download", routes)
-  get_alias <- switch(
-    id_giscor,
+  get_alias <- switch(id_giscor,
     "coastal_lines" = "coastline",
     "urban_audit" = "urau",
     "postal_codes" = "pcode",
@@ -115,8 +147,7 @@ gisco_bulk_download <- function(
 
   url <- file.path(api_entry, zipname)
 
-  subdir <- switch(
-    id_giscor,
+  subdir <- switch(id_giscor,
     "coastal_lines" = "coastal",
     "postal_codes" = "postalcodes",
     id_giscor

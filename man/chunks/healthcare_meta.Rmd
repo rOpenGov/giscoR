@@ -1,7 +1,7 @@
 Brief description of each attribute:
 
 | **Attribute** | **Description** |
-|--------------------------------------------|------------------------------------|
+|----|----|
 | `id` | The healthcare service identifier. This identifier is based on national identification codes, if it exists. |
 | `hospital_name` | The name of the healthcare institution. |
 | `site_name` | The name of the specific site or branch of a healthcare institution. |

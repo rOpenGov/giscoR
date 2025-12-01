@@ -14,11 +14,37 @@ test_that("Offline", {
   options(gisco_test_err = FALSE)
 })
 
+test_that("Deprecations", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  cdir <- file.path(tempdir(), "testthat", "bulk")
+  if (dir.exists(cdir)) {
+    unlink(cdir, force = TRUE, recursive = TRUE)
+  }
+
+  expect_snapshot(
+    s <- gisco_bulk_download(
+      id_giscoR = "coastal_lines",
+      resolution = 60,
+      cache_dir = cdir
+    )
+  )
+
+  s1 <- gisco_bulk_download(
+    id_giscor = "coastal_lines",
+    resolution = 60,
+    cache_dir = cdir
+  )
+  expect_identical(s, s1)
+  if (dir.exists(cdir)) {
+    unlink(cdir, force = TRUE, recursive = TRUE)
+  }
+})
 
 test_that("Errors on bulk download", {
   expect_error(gisco_bulk_download(year = "2000"))
   expect_error(gisco_bulk_download(resolution = "35"))
-  expect_error(gisco_bulk_download(id_giscoR = "nutes"))
+  expect_snapshot(gisco_bulk_download(id_giscoR = "nutes"), error = TRUE)
   expect_error(gisco_bulk_download(ext = "aa"))
 })
 
@@ -30,103 +56,35 @@ test_that("Bulk download online", {
   if (dir.exists(cdir)) {
     unlink(cdir, force = TRUE, recursive = TRUE)
   }
-  expect_silent(
-    ss <- gisco_bulk_download(
-      resolution = 60,
-      cache_dir = cdir,
-      ext = "shp"
-    )
-  )
-  expect_silent(gisco_bulk_download(
-    resolution = 60,
-    cache_dir = cdir,
-    ext = "geojson"
-  ))
-  expect_message(gisco_bulk_download(
-    id_giscor = "urban_audit",
-    year = 2018,
-    cache_dir = cdir,
-    ext = "shp"
-  ))
-  expect_silent(gisco_bulk_download(
-    id_giscor = "urban_audit",
-    cache_dir = cdir,
-    year = 2004
-  ))
-  expect_message(gisco_bulk_download(
-    resolution = 60,
-    cache_dir = cdir,
-    verbose = TRUE
-  ))
-  expect_message(
-    gisco_bulk_download(
-      resolution = 60,
-      verbose = TRUE,
-      cache_dir = cdir,
-      ext = "shp"
-    )
-  )
-  expect_message(gisco_bulk_download(
-    resolution = 60,
-    verbose = TRUE,
-    cache_dir = cdir,
-    ext = "shp"
-  ))
-  expect_message(gisco_bulk_download(
-    resolution = 60,
-    verbose = TRUE,
-    cache_dir = cdir,
-    ext = "shp"
-  ))
-  expect_silent(gisco_bulk_download(
-    resolution = 60,
-    update_cache = TRUE,
-    cache_dir = cdir,
-  ))
-  expect_silent(
-    gisco_bulk_download(
-      resolution = 60,
-      cache_dir = cdir,
-      ext = "shp",
-      recursive = TRUE
-    )
-  )
-  expect_silent(
-    gisco_bulk_download(
-      resolution = 60,
-      cache_dir = cdir,
-      ext = "shp",
-      recursive = FALSE
-    )
-  )
-  expect_message(
-    gisco_bulk_download(
-      id_giscor = "countries",
-      cache_dir = cdir,
-      verbose = TRUE,
-      resolution = 60
-    )
+
+  id <- c(
+    "countries",
+    "coastal_lines",
+    "communes",
+    "lau",
+    "nuts",
+    "urban_audit",
+    "postal_codes"
   )
 
-  expect_message(
-    gisco_bulk_download(
-      id_giscor = "postal_codes",
-      cache_dir = cdir,
-      verbose = TRUE,
-      year = 2024,
-      resolution = 60
-    )
-  )
+  for (iii in id) {
+    y <- for_docs(iii, "year", formatted = FALSE) |>
+      sort() |>
+      range()
 
-  expect_message(
-    gisco_bulk_download(
-      id_giscor = "nuts",
-      cache_dir = cdir,
-      verbose = TRUE,
-      year = 2024,
-      resolution = 60
-    )
-  )
+    aa <- lapply(y, function(x) {
+      s <- gisco_bulk_download(
+        iii,
+        year = x,
+        resolution = 20,
+        cache_dir = cdir,
+        ext = "shp"
+      )
+      expect_false(is.null(s))
+    })
+  }
 
-  if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
+  if (dir.exists(cdir)) {
+    unlink(cdir, force = TRUE, recursive = TRUE)
+  }
 })

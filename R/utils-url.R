@@ -79,7 +79,7 @@ get_url_db <- function(
   if (nrow(db) > 1) {
     cli::cli_alert_warning("{.fn {fn}} has {nrow(db)} results with params:")
     cli::cli_bullets(val)
-    db_res <- db[1, ]
+    db_res <- db[1, setdiff(names(db), "last_updated")]
     val2 <- unlist(db_res)
     val2 <- paste0("{.arg ", names(db_res), "} = {.val ", val2, "}")
     names(val2) <- rep("*", length(val2))

@@ -8,18 +8,20 @@
 }
 \usage{
 gisco_bulk_download(
-  id_giscoR = c("countries", "coastallines", "communes", "lau", "nuts", "urban_audit"),
-  year = "2016",
+  id_giscor = c("countries", "coastal_lines", "communes", "lau", "nuts", "urban_audit",
+    "postal_codes"),
+  year = 2016,
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE,
-  resolution = "10",
-  ext = c("geojson", "shp", "svg", "json", "gdb"),
-  recursive = TRUE
+  resolution = 10,
+  ext = c("shp", "geojson"),
+  recursive = deprecated(),
+  ...
 )
 }
 \arguments{
-\item{id_giscoR}{Type of dataset to be downloaded. Values supported are:
+\item{id_giscor}{Type of dataset to be downloaded. Values supported are:
 \itemize{
 \item \code{"coastallines"}.
 \item \code{"communes"}.
@@ -54,6 +56,8 @@ data. One of:
 
 \item{recursive}{Tries to unzip recursively the zip files (if any) included
 in the initial bulk download (case of \code{ext = "shp"}).}
+
+\item{...}{Ignored.}
 }
 \value{
 Silent function.
@@ -80,8 +84,22 @@ however other formats are already available on GISCO.
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \dontrun{
 
-# Countries 2016 - It would take some time
-gisco_bulk_download(id_giscoR = "countries", resolution = "60")
+# Write on temp dir
+tmp <- file.path(tempdir(), "testexample")
+
+ss <- gisco_bulk_download(
+  id_giscor = "countries", resolution = "60",
+  year = 2016, ext = "geojson",
+  cache_dir = tmp
+)
+# Read one
+library(sf)
+f <- list.files(tmp, recursive = TRUE, full.names = TRUE)
+f[1]
+sf::read_sf(f[1])
+
+# Clean
+unlink(tmp, force = TRUE)
 }
 \dontshow{\}) # examplesIf}
 }
