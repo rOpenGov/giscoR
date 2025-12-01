@@ -77,6 +77,31 @@ test_that("Read gpkg", {
     q = "SELECT * from \"CNTR_LB_2024_4326.gpkg\" LIMIT 1"
   )
   expect_equal(sq, s[1, ])
+
+  # Expect a message here with verbose being a large file > 20Mb
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/distribution/v2/",
+    "urau/gpkg/URAU_RG_100K_2021_4326.gpkg"
+  )
+
+  file_local <- load_url(
+    url,
+    cache_dir = cdir,
+    subdir = "fixme",
+    verbose = FALSE
+  )
+  expect_message(af <- read_geo_file_sf(file_local), "Reading large file")
+  # With query doesn't warn
+
+  q <- paste0(
+    "SELECT * from \"URAU_RG_100K_2021_4326.gpkg\" ",
+    "WHERE CNTR_CODE IN ('LU')"
+  )
+  expect_silent(af <- read_geo_file_sf(file_local, q = q))
+
+  # From url doesn't warn
+  expect_silent(f2 <- read_geo_file_sf(url))
+
   unlink(cdir, recursive = TRUE, force = TRUE)
   expect_false(dir.exists(cdir))
 })

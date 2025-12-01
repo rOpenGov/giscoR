@@ -9,9 +9,9 @@ Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)
 | `/roads` | Returns all roads or streets within a specified city. |
 | `/housenumbers` | Returns all house numbers or names within the specified road. It is possible that in certain countries an address may not have a road component. In this case, if a road is not specified then the number of house numbers returned by **the API is limited to 1000**. |
 | `/postcodes` | Returns all postcodes within the specified address component (Country or Province or City). |
-| `/search` | The search endpoint allows structured queries to the address database. Please note that various combinations of each of the parameters can be used in order to retrieve the addresses that share an address component. **The API is limited to a maximum of 100 addresses**. |
+| `/search` | The search endpoint allows structured queries to the address database. Please note that various combinations of each of the arguments can be used in order to retrieve the addresses that share an address component. **The API is limited to a maximum of 100 addresses**. |
 | `/reverse` | The API's reverse theme allows you to specify x and y coordinates in order to retrieve a structured address. |
-| `/bbox` | Returns a [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component depending on the parameters specified. |
+| `/bbox` | Returns a [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component depending on the arguments specified. |
 | `/copyright` | Returns the copyright text for each available country in the Address API. |
 
 The resulting object may present the following variables:

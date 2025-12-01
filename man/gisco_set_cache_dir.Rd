@@ -23,7 +23,7 @@ would store the cached files on a temporary dir (See \code{\link[base:tempfile]{
 
 \item{install}{If \code{TRUE}, will install the key in your local machine for
 use in future sessions.  Defaults to \code{FALSE.} If \code{cache_dir} is \code{FALSE}
-this parameter is set to \code{FALSE} automatically.}
+this argument is set to \code{FALSE} automatically.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }

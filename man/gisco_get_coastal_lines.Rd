@@ -93,6 +93,8 @@ ggplot(coast) +
 \seealso{
 \link{gisco_coastallines}.
 
+See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
+
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
 \code{\link{gisco_get_lau}()},

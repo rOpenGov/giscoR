@@ -90,9 +90,9 @@ object on \code{mode = "sf"}.
 In order to see the available \code{unit} ids with the required
 combination of \verb{spatialtype, year}, first run the function on \code{"df"}
 mode. Once that you get the data frame you can select the required ids
-on the \code{unit} parameter.
+on the \code{unit} argument.
 
-On \code{mode = "df"} the only relevant parameters are \verb{spatialtype, year}.
+On \code{mode = "df"} the only relevant arguments are \verb{spatialtype, year}.
 }
 \note{
 Country-level files would be renamed on your \code{cache_dir}
@@ -102,7 +102,6 @@ Please check the download and usage provisions on \code{\link[=gisco_attribution
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
 cities <- gisco_get_units(
   id_giscoR = "urban_audit",
   mode = "df",
@@ -140,17 +139,16 @@ ggplot(Provincia) +
     subtitle = "Urban Audit",
     fill = "Urban Audit\ncategory"
   )
-}
 \dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
 
-Other political: 
+Additional utils for downloading datasets:
 \code{\link{gisco_bulk_download}()}
 }
 \author{
 dieghernan, \url{https://github.com/dieghernan/}
 }
-\concept{political}
+\concept{extra}
 \keyword{internal}

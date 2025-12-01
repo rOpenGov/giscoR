@@ -43,7 +43,7 @@
 
 # giscoR 0.4.1
 
--   Improve documentation, stating where the parameters `country` and `region`
+-   Improve documentation, stating where the arguments `country` and `region`
     applies (#50, #75).
 -   Migrate to **httr2** instead of **httr**.
 -   Removed `tgs00026` dataset, use `eurostat::get_eurostat("tgs00026")`
@@ -131,9 +131,9 @@
 
 -   Remove **colorspace** as dependency.
 -   Bump **R** minimal version to `3.6.0`.
--   Change order on parameters for `gisco_get()` functions.
+-   Change order on arguments for `gisco_get()` functions.
 -   Rewriting of internal functions and utils.
--   Add `verbose` parameter to functions.
+-   Add `verbose` argument to functions.
 -   Rewriting of `giscoR::gisco_db`.
 -   Functions added:
     -   `gisco_bulk_download()`

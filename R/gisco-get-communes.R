@@ -10,9 +10,12 @@
 #' @inherit gisco_get_countries source return
 #' @inheritSection gisco_get_countries Note
 #' @encoding UTF-8
+#' @export
 #'
 #' @seealso
 #' [gisco_get_lau()].
+#'
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
 #' @export
 #'
@@ -22,6 +25,15 @@
 #' @param cache `r lifecycle::badge('deprecated')`. These functions always
 #'   caches the result due to the size. See **See Caching strategies** section
 #'   in [gisco_set_cache_dir()].
+#'
+#' @param spatialtype character string. Type of geometry to be returned. Options
+#'   available are:
+#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#'   * `"LB"`: Labels - `POINT` object.
+#'   * `"BN"`: Boundaries - `LINESTRING` object.
+#'
+#'   **Note that** argument `country` would be only applied when
+#'   `spatialtype` is `"RG"` or `"LB"`.
 #' @param ext character. Extension of the file (default `"shp"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
 #'   "ext",TRUE)}.
@@ -41,8 +53,6 @@
 #' The LAU classification is not covered by any legislative act.
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
-#'
 #' ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 #'
 #' if (!is.null(ire_comm)) {
@@ -61,8 +71,6 @@
 #'       family = "serif", face = "bold"
 #'     ))
 #' }
-#' }
-#' @export
 gisco_get_communes <- function(
   year = 2016,
   epsg = 4326,

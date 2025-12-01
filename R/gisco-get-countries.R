@@ -15,6 +15,8 @@
 #' [gisco_countrycode], [gisco_countries_2024], [gisco_get_metadata()],
 #' [countrycode::countrycode()].
 #'
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
+#'
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
@@ -38,6 +40,10 @@
 #'   * `"BN"`: Boundaries - `LINESTRING` object.
 #'   * `"COASTL"`: coastlines - `LINESTRING` object.
 #'   * `"INLAND"`: inland boundaries - `LINESTRING` object.
+#'
+#'   **Note that** arguments `country` and `region` would be
+#'   only applied when `spatialtype` is `"RG"` or `"LB"`.
+#'
 #' @param country character vector of country codes. It could be either a
 #'   vector of country names, a vector of ISO3 country codes or a vector of
 #'   Eurostat country codes. See also [countrycode::countrycode()].
@@ -77,7 +83,6 @@
 
 #'
 #' @examples
-#' \donttest{
 #' cntries <- gisco_get_countries()
 #'
 #' library(ggplot2)
@@ -90,7 +95,6 @@
 #' ggplot(africa) +
 #'   geom_sf(fill = "#078930", col = "white") +
 #'   theme_minimal()
-#' }
 gisco_get_countries <- function(
   year = 2024,
   epsg = 4326,

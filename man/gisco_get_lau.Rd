@@ -117,6 +117,8 @@ if (!is.null(lu_lau)) {
 \seealso{
 \code{\link[=gisco_get_communes]{gisco_get_communes()}}.
 
+See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
+
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
 \code{\link{gisco_get_coastal_lines}()},

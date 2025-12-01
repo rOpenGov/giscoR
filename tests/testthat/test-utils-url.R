@@ -26,6 +26,50 @@ test_that("No conexion", {
 
   options(gisco_test_off = FALSE)
 })
+test_that("Offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  db <- gisco_get_latest_db(update_cache = TRUE)
+
+  cdir <- file.path(tempdir(), "testthat_ex")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  options(gisco_test_err = TRUE)
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/distribution/v2/countries/",
+    "shp/CNTR_LB_2024_4326.shp.zip"
+  )
+  expect_message(
+    s <- load_url(
+      url,
+      verbose = FALSE,
+      cache_dir = cdir,
+      update_cache = TRUE
+    ),
+    "Error "
+  )
+  expect_null(s)
+
+  options(gisco_test_err = FALSE)
+
+  # Otherwise work
+  expect_silent(
+    s <- load_url(
+      url,
+      verbose = FALSE,
+      cache_dir = cdir,
+      update_cache = TRUE
+    )
+  )
+  expect_length(s, 1)
+  expect_true(is.character(s))
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+})
 
 
 test_that("Caching tests", {
@@ -102,6 +146,22 @@ test_that("Caching errors", {
   )
 
   expect_null(fend)
+
+  # Warn if size of download is huge
+
+  url <- get_url_db("lau", ext = "gpkg", year = 2024, fn = "a_fun")
+
+  expect_message(
+    load_url(
+      url,
+      cache_dir = cdir,
+      subdir = "fixme",
+      update_cache = FALSE,
+      verbose = FALSE
+    ),
+    "The file to be downloaded has size"
+  )
+
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
 

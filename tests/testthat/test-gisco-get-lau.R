@@ -14,6 +14,9 @@ test_that("offline", {
 })
 
 test_that("LAU Errors", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
   expect_error(gisco_get_lau(year = "2001"))
   expect_error(gisco_get_lau(epsg = "9999"))
 })

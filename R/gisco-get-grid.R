@@ -8,6 +8,7 @@
 #' @family grids
 #' @inheritParams gisco_get_countries
 #' @inherit gisco_get_countries return
+#' @export
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
@@ -27,7 +28,6 @@
 #'
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
 #' grid <- gisco_get_grid(resolution = 20)
 #'
 #' # If downloaded correctly proceed
@@ -95,8 +95,6 @@
 #'       legend.key.width = unit(1, "lines")
 #'     )
 #' }
-#' }
-#' @export
 gisco_get_grid <- function(
   resolution = c(100, 50, 20, 10, 5, 2, 1),
   spatialtype = c("REGION", "POINT"),

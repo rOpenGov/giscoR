@@ -14,8 +14,9 @@
 #' dataset and applies filters, [gisco_get_units()] downloads a single
 #' shapefile for each unit.
 #'
-#' @family political
+#' @family extra
 #' @keywords internal
+#' @export
 #'
 #' @return
 #' A [`sf`][sf::st_sf] object on `mode = "sf"` or a data frame on `mode = "df"`.
@@ -41,9 +42,9 @@
 #' In order to see the available `unit` ids with the required
 #' combination of `spatialtype, year`, first run the function on `"df"`
 #' mode. Once that you get the data frame you can select the required ids
-#' on the `unit` parameter.
+#' on the `unit` argument.
 #'
-#' On `mode = "df"` the only relevant parameters are `spatialtype, year`.
+#' On `mode = "df"` the only relevant arguments are `spatialtype, year`.
 #'
 #' @note
 #' Country-level files would be renamed on your `cache_dir`
@@ -57,7 +58,6 @@
 #' @seealso [gisco_get_countries()]
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
 #' cities <- gisco_get_units(
 #'   id_giscoR = "urban_audit",
 #'   mode = "df",
@@ -95,8 +95,6 @@
 #'     subtitle = "Urban Audit",
 #'     fill = "Urban Audit\ncategory"
 #'   )
-#' }
-#' @export
 gisco_get_units <- function(
   id_giscoR = c("nuts", "countries", "urban_audit"),
   unit = "ES4",

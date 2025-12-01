@@ -1,72 +1,89 @@
-#' Bulk download from GISCO API
-#'
-#'
-#' @family political
+#' GISCO API bulk download
 #'
 #' @description
-#' Downloads zipped data from GISCO and extract them on the
-#' [`cache_dir`][gisco_set_cache_dir()] folder.
+#' Download zipped data from GISCO to the [`cache_dir`][gisco_set_cache_dir()]
+#' and extract the relevant ones.
 #'
-#' @return Silent function.
-#'
-#' @param year Release year of the file. See **Details**.
-#'
-#' @param id_giscor Type of dataset to be downloaded. Values supported are:
-#'   * `"coastallines"`.
-#'   * `"communes"`.
-#'   * `"countries"`.
-#'   * `"lau"`.
-#'   * `"nuts"`.
-#'   * `"urban_audit"`.
-#'
+#' @family extra
+#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
-#'
-#'
-#' @param ext Extension of the file(s) to be downloaded. Formats available are
-#' `"geojson"`, `"shp"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.
-#'
-#' @param recursive Tries to unzip recursively the zip files (if any) included
-#' in the initial bulk download (case of `ext = "shp"`).
-#' @param ... Ignored.
-#'
-#' @details
-#'
-#' See the years available in the corresponding functions:
-#'  * [gisco_get_coastal_lines()].
-#'  * [gisco_get_communes()].
-#'  * [gisco_get_countries()].
-#'  * [gisco_get_lau()].
-#'  * [gisco_get_nuts()].
-#'  * [gisco_get_urban_audit()].
-#'
-#' The usual extension used across \CRANpkg{giscoR} is `"geojson"`,
-#' however other formats are already available on GISCO.
-#'
+#' @export
 #'
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
+#' @return
+#' A (invisible) character vector with the full path of the files extracted.
+#' See **Examples**.
+#'
+#' @param year character string or number. Release year of the file, see
+#'   **Details**.
+#'
+#' @param id_giscor character string or number. Type of dataset to be
+#'   downloaded, see **Details**. Values supported are:
+#'   - `"countries"`
+#'   - `"coastal_lines"`
+#'   - `"communes"`
+#'   - `"lau"`
+#'   - `"nuts"`
+#'   - `"urban_audit"`
+#'   - `"postal_codes"`
+#'
+#'   This argument replaces the previous (deprecated) argument `id_giscoR`.
+#' @param recursive `r lifecycle::badge("deprecated")` `recursive` is no
+#'   longer supported; this function will never perform recursive extraction of
+#'   child `.zip` files. This is the case of "`shp.zip` inside the top-level
+#'   `.zip`, that won't be unzipped.
+#' @param ... Ignored. The argument `id_giscoR`
+#'   (`r lifecycle::badge("deprecated")`) would be captured via `...` and
+#'   re-directed to `id_giscor` with a [warning][lifecycle::deprecate_warn].
+#'
+#' @param ext Extension of the file(s) to be downloaded. Formats available are
+#' `"shp"`, `"geojson"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.
+#'
+#' @details
+#' Some arguments only apply to a specific value of `"id_giscor"`. For example
+#' `"resolution"` would be ignored for values `"communes"`, `"lau"`,
+#' `"urban_audit"` and `"postal_codes"`.
+#'
+#' See years available in the corresponding functions:
+#'  * [gisco_get_countries()].
+#'  * [gisco_get_coastal_lines()].
+#'  * [gisco_get_communes()].
+#'  * [gisco_get_lau()].
+#'  * [gisco_get_nuts()].
+#'  * [gisco_get_urban_audit()].
+#'  * [gisco_get_postal_codes()].
+#'
+#' The usual extensions used across \CRANpkg{giscoR} are `"gpkg"` and `"shp"`,
+#' however other formats are already available on GISCO. Note that after
+#' performing a bulk download you may need to adjust the default `"ext"` value
+#' in the corresponding function to connect it with the downloaded files (see
+#' **Examples**).
 #'
 #' @examplesIf gisco_check_access()
-#' \dontrun{
-#'
-#' # Write on temp dir
 #' tmp <- file.path(tempdir(), "testexample")
 #'
-#' ss <- gisco_bulk_download(
-#'   id_giscor = "countries", resolution = "60",
-#'   year = 2016, ext = "geojson",
+#' dest_files <- gisco_bulk_download(
+#'   id_giscor = "countries", resolution = 60,
+#'   year = 2024, ext = "geojson",
 #'   cache_dir = tmp
 #' )
 #' # Read one
 #' library(sf)
-#' f <- list.files(tmp, recursive = TRUE, full.names = TRUE)
-#' f[1]
-#' sf::read_sf(f[1])
+#' read_sf(dest_files[1]) |> head()
+#'
+#' # Now we can connect the function with the downloaded data like:
+#'
+#' connect <- gisco_get_countries(
+#'   resolution = 60,
+#'   year = 2024, ext = "geojson",
+#'   cache_dir = tmp, verbose = TRUE
+#' )
+#'
+#' # Message shows that file is already cached ;)
 #'
 #' # Clean
 #' unlink(tmp, force = TRUE)
-#' }
-#' @export
 gisco_bulk_download <- function(
   id_giscor = c(
     "countries",
@@ -82,16 +99,27 @@ gisco_bulk_download <- function(
   update_cache = FALSE,
   verbose = FALSE,
   resolution = 10,
-  ext = c("shp", "geojson"),
+  ext = c("shp", "geojson", "svg", "json", "gdb"),
   recursive = deprecated(),
   ...
 ) {
   dots <- list(...)
+
+  if (lifecycle::is_present(recursive)) {
+    lifecycle::deprecate_warn(
+      "1.0.0",
+      "giscoR::gisco_bulk_download(recursive)",
+      details = paste0(
+        "Child `.zip` files inside the top-level `.zip` won't be unzipped."
+      )
+    )
+  }
+
   if ("id_giscoR" %in% names(dots)) {
     lifecycle::deprecate_warn(
       "1.0.0",
-      "gisco_bulk_download(id_giscoR)",
-      "gisco_bulk_download(id_giscor)"
+      "giscoR::gisco_bulk_download(id_giscoR)",
+      "giscoR::gisco_bulk_download(id_giscor)"
     )
     id_giscor <- dots$id_giscoR
   }
@@ -99,7 +127,7 @@ gisco_bulk_download <- function(
   id_giscor <- match_arg_pretty(id_giscor)
   ext <- match_arg_pretty(ext)
 
-  # Standard parameters for the call
+  # Standard arguments for the call
   year <- as.character(year)
 
   make_params <- make_bulk_params(
@@ -149,7 +177,6 @@ gisco_bulk_download <- function(
 
   subdir <- switch(id_giscor,
     "coastal_lines" = "coastal",
-    "postal_codes" = "postalcodes",
     id_giscor
   )
 
@@ -184,7 +211,9 @@ gisco_bulk_download <- function(
 
   unzip(destfile, files = outfiles, exdir = unzip_dir)
 
-  invisible(outfiles)
+  out_full <- file.path(unzip_dir, outfiles)
+
+  invisible(out_full)
 }
 
 make_bulk_params <- function(id, year, resolution = NULL) {

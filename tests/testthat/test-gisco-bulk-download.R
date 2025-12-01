@@ -30,18 +30,33 @@ test_that("Deprecations", {
     )
   )
 
-  s1 <- gisco_bulk_download(
-    id_giscor = "coastal_lines",
-    resolution = 60,
-    cache_dir = cdir
+  expect_message(
+    s1 <- gisco_bulk_download(
+      id_giscor = "coastal_lines",
+      resolution = 60,
+      cache_dir = cdir,
+      verbose = TRUE
+    )
   )
   expect_identical(s, s1)
+
+  expect_snapshot(
+    gisco_bulk_download(
+      "nuts",
+      resolution = 60,
+      recursive = TRUE,
+      cache_dir = cdir
+    )
+  )
   if (dir.exists(cdir)) {
     unlink(cdir, force = TRUE, recursive = TRUE)
   }
 })
 
 test_that("Errors on bulk download", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
   expect_error(gisco_bulk_download(year = "2000"))
   expect_error(gisco_bulk_download(resolution = "35"))
   expect_snapshot(gisco_bulk_download(id_giscoR = "nutes"), error = TRUE)
@@ -80,9 +95,36 @@ test_that("Bulk download online", {
         cache_dir = cdir,
         ext = "shp"
       )
-      expect_false(is.null(s))
+
+      expect_true(all(file.exists(s)))
     })
   }
+
+  # Additional and extensions
+  ss <- gisco_bulk_download(
+    "communes",
+    year = 2004,
+    ext = "svg",
+    cache_dir = cdir
+  )
+
+  expect_true(all(file.exists(ss)))
+  ss <- gisco_bulk_download(
+    "countries",
+    year = 2024,
+    ext = "json",
+    cache_dir = cdir,
+    resolution = 60
+  )
+  expect_true(all(file.exists(ss)))
+  ss <- gisco_bulk_download(
+    "countries",
+    year = 2024,
+    ext = "gdb",
+    cache_dir = cdir,
+    resolution = 60
+  )
+  expect_true(all(file.exists(ss)))
 
   if (dir.exists(cdir)) {
     unlink(cdir, force = TRUE, recursive = TRUE)

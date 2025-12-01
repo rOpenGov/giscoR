@@ -48,7 +48,6 @@ to 1.7Gb \code{resolution = 1}.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
 grid <- gisco_get_grid(resolution = 20)
 
 # If downloaded correctly proceed
@@ -115,7 +114,6 @@ if (!is.null(grid)) {
       legend.key.height = unit(0.5, "lines"),
       legend.key.width = unit(1, "lines")
     )
-}
 }
 \dontshow{\}) # examplesIf}
 }

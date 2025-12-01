@@ -48,15 +48,16 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{spatialtype}{character string. Type of geometry to be returned.
-Options available are:
+\item{spatialtype}{character string. Type of geometry to be returned. Options
+available are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
-\item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
-\item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
-}}
+}
+
+\strong{Note that} argument \code{country} would be only applied when
+\code{spatialtype} is \code{"RG"} or \code{"LB"}.}
 
 \item{country}{character vector of country codes. It could be either a
 vector of country names, a vector of ISO3 country codes or a vector of
@@ -94,8 +95,6 @@ Please check the download and usage provisions on \code{\link[=gisco_attribution
 
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
-
 ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 
 if (!is.null(ire_comm)) {
@@ -114,14 +113,15 @@ if (!is.null(ire_comm)) {
       family = "serif", face = "bold"
     ))
 }
-}
 \dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=gisco_get_lau]{gisco_get_lau()}}.
 
+See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
+
 Other administrative units datasets:
 \code{\link{gisco_get_countries}()},
-\code{\link{gisco_get_postalcodes}()}
+\code{\link{gisco_get_postal_codes}()}
 }
 \concept{admin}

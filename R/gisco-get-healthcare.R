@@ -27,8 +27,6 @@
 #' ```
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
-#'
 #' health_be <- gisco_get_healthcare(country = "Belgium")
 #'
 #' # Plot if downloaded
@@ -37,8 +35,6 @@
 #'   ggplot(health_be) +
 #'     geom_sf()
 #' }
-#' }
-#' @export
 gisco_get_healthcare <- function(
   year = c(2023, 2020),
   cache = TRUE,

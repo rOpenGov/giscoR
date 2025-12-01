@@ -48,7 +48,6 @@ Dataset includes objects in \href{https://epsg.io/4326}{EPSG:4326}.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
 library(sf)
 
 greece <- gisco_get_countries(country = "EL", resolution = 3)
@@ -66,7 +65,6 @@ if (inherits(airp_gc, "sf")) {
       color = NULL,
       caption = gisco_attributions()
     )
-}
 }
 \dontshow{\}) # examplesIf}
 }

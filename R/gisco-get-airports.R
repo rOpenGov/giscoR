@@ -24,7 +24,6 @@
 #' Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
 #' library(sf)
 #'
 #' greece <- gisco_get_countries(country = "EL", resolution = 3)
@@ -42,7 +41,6 @@
 #'       color = NULL,
 #'       caption = gisco_attributions()
 #'     )
-#' }
 #' }
 gisco_get_airports <- function(
   year = c(2013, 2006),

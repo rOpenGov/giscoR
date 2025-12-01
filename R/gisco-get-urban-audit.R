@@ -12,6 +12,9 @@
 #' @inheritSection gisco_get_countries Note
 #' @inherit gisco_get_nuts source return
 #'
+#' @seealso
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
+#'
 #' @param year character string or number. Release year of the file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
 #'   "year",TRUE)}.
@@ -53,7 +56,6 @@
 #'
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
 #' cities <- gisco_get_urban_audit(year = 2021, level = "CITIES")
 #'
 #' if (!is.null(cities)) {
@@ -62,7 +64,6 @@
 #'   library(ggplot2)
 #'   ggplot(bcn) +
 #'     geom_sf()
-#' }
 #' }
 gisco_get_urban_audit <- function(
   year = 2021,

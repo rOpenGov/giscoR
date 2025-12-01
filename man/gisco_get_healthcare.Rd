@@ -92,8 +92,6 @@ Brief description of each attribute:\tabular{ll}{
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
-
 health_be <- gisco_get_healthcare(country = "Belgium")
 
 # Plot if downloaded
@@ -101,7 +99,6 @@ if (inherits(health_be, "sf")) {
   library(ggplot2)
   ggplot(health_be) +
     geom_sf()
-}
 }
 \dontshow{\}) # examplesIf}
 }

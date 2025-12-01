@@ -14,6 +14,8 @@
 #' @seealso
 #' [gisco_get_communes()].
 #'
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
+#'
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of

@@ -19,7 +19,7 @@
 #'   would store the cached files on a temporary dir (See [base::tempdir()]).
 #' @param install If `TRUE`, will install the key in your local machine for
 #'   use in future sessions.  Defaults to `FALSE.` If `cache_dir` is `FALSE`
-#'   this parameter is set to `FALSE` automatically.
+#'   this argument is set to `FALSE` automatically.
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
 #'   `GISCO_CACHE_DIR` that you already have in local machine.
 #'

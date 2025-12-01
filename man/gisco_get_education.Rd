@@ -85,8 +85,6 @@ Brief description of each attribute:\tabular{ll}{
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
-
 edu_BEL <- gisco_get_education(country = "Belgium")
 
 # Plot if downloaded
@@ -94,7 +92,6 @@ if (nrow(edu_BEL) > 3) {
   library(ggplot2)
   ggplot(edu_BEL) +
     geom_sf(shape = 21, size = 0.15)
-}
 }
 \dontshow{\}) # examplesIf}
 }

@@ -91,7 +91,7 @@ province use the cities endpoint
 
 \item{housenumber}{The house number or house name within a road or street.}
 
-\item{postcode}{Can be used in combination with the previous parameters.}
+\item{postcode}{Can be used in combination with the previous arguments.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
@@ -112,7 +112,7 @@ Each endpoint available is implemented through a specific function, see
 \strong{Details}.
 
 The API supports fuzzy searching (also referred to as approximate string
-matching) for all parameters of each endpoint.
+matching) for all arguments of each endpoint.
 }
 \details{
 Brief description of the API endpoints (source \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API Endpoints}):\tabular{ll}{
@@ -123,9 +123,9 @@ Brief description of the API endpoints (source \href{https://gisco-services.ec.e
    \verb{/roads} \tab Returns all roads or streets within a specified city. \cr
    \verb{/housenumbers} \tab Returns all house numbers or names within the specified road. It is possible that in certain countries an address may not have a road component. In this case, if a road is not specified then the number of house numbers returned by \strong{the API is limited to 1000}. \cr
    \verb{/postcodes} \tab Returns all postcodes within the specified address component (Country or Province or City). \cr
-   \verb{/search} \tab The search endpoint allows structured queries to the address database. Please note that various combinations of each of the parameters can be used in order to retrieve the addresses that share an address component. \strong{The API is limited to a maximum of 100 addresses}. \cr
+   \verb{/search} \tab The search endpoint allows structured queries to the address database. Please note that various combinations of each of the arguments can be used in order to retrieve the addresses that share an address component. \strong{The API is limited to a maximum of 100 addresses}. \cr
    \verb{/reverse} \tab The API's reverse theme allows you to specify x and y coordinates in order to retrieve a structured address. \cr
-   \verb{/bbox} \tab Returns a \href{https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry}{WKT} bounding box for an address component depending on the parameters specified. \cr
+   \verb{/bbox} \tab Returns a \href{https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry}{WKT} bounding box for an address component depending on the arguments specified. \cr
    \verb{/copyright} \tab Returns the copyright text for each available country in the Address API. \cr
 }
 
@@ -148,7 +148,6 @@ The resulting object may present the following variables:\tabular{ll}{
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
 # Cities in a region
 
 gisco_address_api_cities(country = "PT", province = "LISBOA")
@@ -167,7 +166,6 @@ struct
 reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 
 reverse
-}
 \dontshow{\}) # examplesIf}
 }
 \seealso{

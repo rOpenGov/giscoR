@@ -1,5 +1,8 @@
 test_that("Error on postal codes", {
-  expect_error(gisco_get_postalcodes("1991", "Years available for"))
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  expect_error(gisco_get_postal_codes("1991", "Years available for"))
 })
 
 test_that("Offline", {
@@ -9,7 +12,7 @@ test_that("Offline", {
 
   options(gisco_test_err = TRUE)
   expect_message(
-    n <- gisco_get_postalcodes(
+    n <- gisco_get_postal_codes(
       year = 2024,
       country = "ES",
       update_cache = TRUE
@@ -24,19 +27,19 @@ test_that("Postal codes online", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_message(gisco_get_postalcodes(
+  expect_message(gisco_get_postal_codes(
     country = "Malta",
     verbose = TRUE
   ))
 
-  expect_silent(li <- gisco_get_postalcodes(country = "Malta"))
+  expect_silent(li <- gisco_get_postal_codes(country = "Malta"))
   expect_s3_class(li, "sf")
   expect_s3_class(li, "tbl_df")
   expect_length(unique(li$CNTR_ID), 1)
   expect_identical(as.character(unique(li$CNTR_ID)), "MT")
 
   # Several
-  expect_silent(li2 <- gisco_get_postalcodes(country = c("MT", "LU")))
+  expect_silent(li2 <- gisco_get_postal_codes(country = c("MT", "LU")))
   expect_length(unique(li2$CNTR_ID), 2)
   expect_s3_class(li2, "sf")
   expect_s3_class(li2, "tbl_df")
@@ -44,7 +47,7 @@ test_that("Postal codes online", {
   expect_identical(sort(unique(li2$CNTR_ID)), c("LU", "MT"))
 
   # All
-  all <- gisco_get_postalcodes()
+  all <- gisco_get_postal_codes()
   expect_s3_class(all, "sf")
   expect_s3_class(all, "tbl_df")
 })
@@ -54,7 +57,7 @@ test_that("Extensions", {
 
   # Error
   expect_snapshot(
-    gisco_get_postalcodes(ext = "docx"),
+    gisco_get_postal_codes(ext = "docx"),
     error = TRUE
   )
 
@@ -69,7 +72,7 @@ test_that("Extensions", {
   )
 
   # Filter
-  db_shp <- gisco_get_postalcodes(
+  db_shp <- gisco_get_postal_codes(
     cache_dir = cdir,
     ext = "shp",
     verbose = TRUE,

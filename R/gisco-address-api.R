@@ -10,7 +10,7 @@
 #' **Details**.
 #'
 #' The API supports fuzzy searching (also referred to as approximate string
-#' matching) for all parameters of each endpoint.
+#' matching) for all arguments of each endpoint.
 #'
 #' @name gisco_address_api
 #' @rdname gisco_address_api
@@ -29,7 +29,7 @@
 #'   (`gisco_address_api_cities(province = "capellen")`).
 #' @param road A road within a city.
 #' @param housenumber The house number or house name within a road or street.
-#' @param postcode Can be used in combination with the previous parameters.
+#' @param postcode Can be used in combination with the previous arguments.
 #'
 #'
 #' @returns
@@ -49,7 +49,6 @@
 #'
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
 #' # Cities in a region
 #'
 #' gisco_address_api_cities(country = "PT", province = "LISBOA")
@@ -68,7 +67,6 @@
 #' reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 #'
 #' reverse
-#' }
 gisco_address_api_search <- function(
   country = NULL,
   province = NULL,

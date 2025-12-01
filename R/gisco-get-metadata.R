@@ -20,11 +20,9 @@
 #' A [tibble][tibble::tbl_df].
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
 #' cities <- gisco_get_metadata(id = "urban_audit", year = 2020)
 #'
 #' cities
-#' }
 gisco_get_metadata <- function(
   id = c("nuts", "countries", "urban_audit"),
   year = 2024,

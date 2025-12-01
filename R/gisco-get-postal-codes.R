@@ -7,11 +7,15 @@
 #' create correspondence tables for the NUTS classification (EC) 1059/2003 as
 #' part of the Tercet Regulation (EU) 2017/2391.
 #'
+#' @rdname gisco_get_postal_codes
 #' @family admin
 #' @inheritParams gisco_get_countries
 #' @inherit gisco_get_countries source return
 #' @inheritSection gisco_get_countries Note
 #' @export
+#'
+#' @seealso
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
 #' @param year character string or number. Release year of the file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postal_codes",
@@ -43,7 +47,7 @@
 #' # Heavy-weight download!
 #' \dontrun{
 #'
-#' pc_bel <- gisco_get_postalcodes(country = "BE")
+#' pc_bel <- gisco_get_postal_codes(country = "BE")
 #'
 #' if (!is.null(pc_bel)) {
 #'   library(ggplot2)
@@ -62,7 +66,7 @@
 #'     )
 #' }
 #' }
-gisco_get_postalcodes <- function(
+gisco_get_postal_codes <- function(
   year = 2024,
   country = NULL,
   cache_dir = NULL,
@@ -77,7 +81,7 @@ gisco_get_postalcodes <- function(
     "postal_codes",
     year = year,
     ext = ext,
-    fn = "gisco_get_postalcodes"
+    fn = "gisco_get_postal_codes"
   )
   filename <- basename(url)
 
@@ -127,3 +131,10 @@ gisco_get_postalcodes <- function(
 
   data_sf
 }
+
+# Export alias ----
+
+#' @export
+#' @rdname gisco_get_postal_codes
+#' @usage NULL
+gisco_get_postalcodes <- gisco_get_postal_codes

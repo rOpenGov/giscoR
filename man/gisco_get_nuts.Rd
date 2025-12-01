@@ -63,9 +63,12 @@ data. One of:
 available are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-\item \code{"BN"}: Boundaries - \code{LINESTRING} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
-}}
+\item \code{"BN"}: Boundaries - \code{LINESTRING} object.
+}
+
+\strong{Note that} arguments \code{country}, \code{nuts_level} and \code{nuts_id} would be
+only applied when \code{spatialtype} is \code{"RG"} or \code{"LB"}.}
 
 \item{country}{character vector of country codes. It could be either a
 vector of country names, a vector of ISO3 country codes or a vector of
@@ -134,7 +137,6 @@ ggplot(nuts2) +
     ylim = c(1313597, 5628510)
   ) +
   labs(title = "NUTS-2 levels")
-\donttest{
 # NUTS-3 for Germany
 germany_nuts3 <- gisco_get_nuts(nuts_level = 3, country = "Germany")
 
@@ -154,9 +156,10 @@ ggplot(select_nuts) +
   geom_sf(aes(fill = CNTR_CODE)) +
   scale_fill_viridis_d()
 }
-}
 \seealso{
 \link{gisco_nuts_2024}, \code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}.
+
+See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},

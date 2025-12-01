@@ -20,7 +20,6 @@
 #' identifying the country of the port.
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
 #' library(sf)
 #'
 #' ports <- gisco_get_ports(2013)
@@ -48,7 +47,6 @@
 #'       caption = "(c) European Union, 1995 - today"
 #'     ) +
 #'     coord_sf(crs = "ESRI:54030")
-#' }
 #' }
 gisco_get_ports <- function(
   year = c(2013, 2009),

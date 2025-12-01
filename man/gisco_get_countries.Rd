@@ -68,7 +68,10 @@ Options available are:
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
 \item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
 \item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
-}}
+}
+
+\strong{Note that} arguments \code{country} and \code{region} would be
+only applied when \code{spatialtype} is \code{"RG"} or \code{"LB"}.}
 
 \item{country}{character vector of country codes. It could be either a
 vector of country names, a vector of ISO3 country codes or a vector of
@@ -104,7 +107,6 @@ Please check the download and usage provisions on \code{\link[=gisco_attribution
 }
 
 \examples{
-\donttest{
 cntries <- gisco_get_countries()
 
 library(ggplot2)
@@ -118,13 +120,14 @@ ggplot(africa) +
   geom_sf(fill = "#078930", col = "white") +
   theme_minimal()
 }
-}
 \seealso{
 \link{gisco_countrycode}, \link{gisco_countries_2024}, \code{\link[=gisco_get_metadata]{gisco_get_metadata()}},
 \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.
 
+See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
+
 Other administrative units datasets:
 \code{\link{gisco_get_communes}()},
-\code{\link{gisco_get_postalcodes}()}
+\code{\link{gisco_get_postal_codes}()}
 }
 \concept{admin}

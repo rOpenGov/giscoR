@@ -35,8 +35,6 @@
 #' ```
 #'
 #' @examplesIf gisco_check_access()
-#' \donttest{
-#'
 #' edu_BEL <- gisco_get_education(country = "Belgium")
 #'
 #' # Plot if downloaded
@@ -44,7 +42,6 @@
 #'   library(ggplot2)
 #'   ggplot(edu_BEL) +
 #'     geom_sf(shape = 21, size = 0.15)
-#' }
 #' }
 gisco_get_education <- function(
   year = c(2023, 2020),

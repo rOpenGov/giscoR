@@ -19,9 +19,12 @@
 #' @inheritParams gisco_get_countries
 #' @inheritSection gisco_get_countries Note
 #' @inherit gisco_get_communes source return
-#'
-#' @seealso [gisco_nuts_2024], [eurostat::get_eurostat_geospatial()].
 #' @export
+#'
+#' @seealso
+#' [gisco_nuts_2024], [eurostat::get_eurostat_geospatial()].
+#'
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
 #' @param year character string or number. Release year of the file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("nuts",
@@ -29,8 +32,11 @@
 #' @param spatialtype character string. Type of geometry to be returned. Options
 #'   available are:
 #'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   * `"BN"`: Boundaries - `LINESTRING` object.
 #'   * `"LB"`: Labels - `POINT` object.
+#'   * `"BN"`: Boundaries - `LINESTRING` object.
+#'
+#'   **Note that** arguments `country`, `nuts_level` and `nuts_id` would be
+#'   only applied when `spatialtype` is `"RG"` or `"LB"`.
 #' @param nuts_level character string. NUTS level. One of `0`,
 #'   `1`, `2`, `3` or `all` for all levels.
 #' @param nuts_id Optional. A character vector of NUTS IDs.
@@ -68,7 +74,6 @@
 #'     ylim = c(1313597, 5628510)
 #'   ) +
 #'   labs(title = "NUTS-2 levels")
-#' \donttest{
 #' # NUTS-3 for Germany
 #' germany_nuts3 <- gisco_get_nuts(nuts_level = 3, country = "Germany")
 #'
@@ -87,7 +92,6 @@
 #' ggplot(select_nuts) +
 #'   geom_sf(aes(fill = CNTR_CODE)) +
 #'   scale_fill_viridis_d()
-#' }
 gisco_get_nuts <- function(
   year = 2024,
   epsg = 4326,

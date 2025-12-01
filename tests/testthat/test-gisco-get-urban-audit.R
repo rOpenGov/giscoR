@@ -1,5 +1,6 @@
 test_that("Urban Audit offline", {
   skip_on_cran()
+  skip_if_gisco_offline()
 
   expect_error(gisco_get_urban_audit(year = "1999"))
   expect_error(gisco_get_urban_audit(epsg = "9999"))

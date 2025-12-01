@@ -50,7 +50,6 @@ identifying the country of the port.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-\donttest{
 library(sf)
 
 ports <- gisco_get_ports(2013)
@@ -78,7 +77,6 @@ if (inherits(ports, "sf")) {
       caption = "(c) European Union, 1995 - today"
     ) +
     coord_sf(crs = "ESRI:54030")
-}
 }
 \dontshow{\}) # examplesIf}
 }

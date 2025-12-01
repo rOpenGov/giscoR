@@ -24,7 +24,10 @@
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>
 #'
 #'
-#' @seealso [gisco_coastallines].
+#' @seealso
+#' [gisco_coastallines].
+#'
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
 #' @examplesIf gisco_check_access()
 #' coast <- gisco_get_coastal_lines()
