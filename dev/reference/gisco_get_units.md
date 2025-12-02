@@ -7,16 +7,8 @@ This function is deprecated. Use:
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
   (equivalent to `mode = "df"`).
 
-- [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-  and friends (equivalent to `mode = "sf"`)
-
-Download individual shapefiles of units. Unlike
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
-[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md)
-or
-[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md),
-that downloads a full dataset and applies filters, `gisco_get_units()`
-downloads a single shapefile for each unit.
+- [`gisco_get_unit*`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+  functions (equivalent to `mode = "sf"`)
 
 ## Usage
 
@@ -25,13 +17,13 @@ gisco_get_units(
   id_giscoR = c("nuts", "countries", "urban_audit"),
   unit = "ES4",
   mode = c("sf", "df"),
-  year = "2016",
-  epsg = "4326",
+  year = 2016,
+  epsg = 4326,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = "20",
+  resolution = 20,
   spatialtype = "RG"
 )
 ```
@@ -39,6 +31,8 @@ gisco_get_units(
 ## Source
 
 <https://gisco-services.ec.europa.eu/distribution/v2/>
+
+All the source files are `.geojson` files.
 
 ## Arguments
 
@@ -49,17 +43,16 @@ gisco_get_units(
 
 - unit:
 
-  Unit ID to be downloaded. See **Details**.
+  Unit ID to be downloaded.
 
 - mode:
 
   Controls the output of the function. Possible values are `"sf"` or
-  `"df"`. See **Value** and **Details**.
+  `"df"`. See **Value**.
 
 - year:
 
-  character string or number. Release year of the file. One of `"2024"`,
-  `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`, `"2001"` .
+  character string or number. Release year of the file.
 
 - epsg:
 
@@ -109,71 +102,95 @@ gisco_get_units(
 
 - spatialtype:
 
-  Type of geometry to be returned: `"RG"`, for `POLYGON` and `"LB"` for
-  `POINT`.
+  character string. Type of geometry to be returned. Options available
+  are:
+
+  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+
+  - `"LB"`: Labels - `POINT` object.
 
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object on
-`mode = "sf"` or a data frame on `mode = "df"`.
-
-## Details
-
-The function can return a data frame on `mode = "df"` or a
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object on
-`mode = "sf"`.
-
-In order to see the available `unit` ids with the required combination
-of `spatialtype, year`, first run the function on `"df"` mode. Once that
-you get the data frame you can select the required ids on the `unit`
-argument.
-
-On `mode = "df"` the only relevant arguments are `spatialtype, year`.
+`mode = "sf"` or a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) on
+`mode = "df"`.
 
 ## Note
 
-Country-level files would be renamed on your `cache_dir` to avoid naming
-conflicts with NUTS-0 datasets.
-
 Please check the download and usage provisions on
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md).
+
+## See also
+
+[`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md),
+[`gisco_get_unit*`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+functions.
 
 ## Examples
 
 ``` r
 # \donttest{
-# Get metadata
-cities <- gisco_get_metadata("urban_audit", 2020)
+# mode df
+gisco_get_units("nuts", mode = "df", year = 2016)
+#> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
+#> ℹ Please use `gisco_get_metadata()` instead.
+#> # A tibble: 2,016 × 7
+#>    CNTR_CODE NUTS_ID NAME_LATN         NUTS_NAME MOUNT_TYPE URBN_TYPE COAST_TYPE
+#>    <chr>     <chr>   <chr>             <chr>          <int>     <int>      <int>
+#>  1 UK        UKL2    East Wales        East Wal…          0         0          0
+#>  2 UK        UKL18   Swansea           Swansea            4         1          1
+#>  3 UK        UKL17   Bridgend and Nea… Bridgend…          2         1          1
+#>  4 UK        UKL16   Gwent Valleys     Gwent Va…          2         1          2
+#>  5 UK        UKL15   Central Valleys   Central …          3         1          2
+#>  6 UK        UKL14   South West Wales  South We…          4         3          1
+#>  7 UK        UKL12   Gwynedd           Gwynedd            2         3          1
+#>  8 UK        UKL11   Isle of Anglesey  Isle of …          4         3          1
+#>  9 UK        UKL1    West Wales and T… West Wal…          0         0          0
+#> 10 UK        UKL     WALES             WALES              0         0          0
+#> # ℹ 2,006 more rows
+# ->
+gisco_get_metadata("nuts", year = 2016)
+#> # A tibble: 2,016 × 7
+#>    CNTR_CODE NUTS_ID NAME_LATN         NUTS_NAME MOUNT_TYPE URBN_TYPE COAST_TYPE
+#>    <chr>     <chr>   <chr>             <chr>          <int>     <int>      <int>
+#>  1 UK        UKL2    East Wales        East Wal…          0         0          0
+#>  2 UK        UKL18   Swansea           Swansea            4         1          1
+#>  3 UK        UKL17   Bridgend and Nea… Bridgend…          2         1          1
+#>  4 UK        UKL16   Gwent Valleys     Gwent Va…          2         1          2
+#>  5 UK        UKL15   Central Valleys   Central …          3         1          2
+#>  6 UK        UKL14   South West Wales  South We…          4         3          1
+#>  7 UK        UKL12   Gwynedd           Gwynedd            2         3          1
+#>  8 UK        UKL11   Isle of Anglesey  Isle of …          4         3          1
+#>  9 UK        UKL1    West Wales and T… West Wal…          0         0          0
+#> 10 UK        UKL     WALES             WALES              0         0          0
+#> # ℹ 2,006 more rows
 
-
-# Valencia, Spain
-valencia <- cities[grep("Valencia", cities$URAU_NAME), ]
-valencia
-#> # A tibble: 3 × 10
-#>   URAU_CODE URAU_CATG CNTR_CODE URAU_NAME CITY_CPTL CITY_KERN FUA_CODE 
-#>   <chr>     <chr>     <chr>     <chr>     <chr>     <chr>     <chr>    
-#> 1 ES003L3   F         ES        Valencia  ""        ""        ""       
-#> 2 ES003C1   C         ES        Valencia  ""        "ES003K1" "ES003L3"
-#> 3 ES003K1   K         ES        Valencia  ""        ""        ""       
-#> # ℹ 3 more variables: NUTS3_2016 <chr>, AREA_SQM <dbl>, NUTS3_2021 <chr>
-library(dplyr)
-# Now get the shapes and order by AREA_SQM
-valencia_sf <- gisco_get_unit_urban_audit(
-  unit = valencia$URAU_CODE,
-  year = "2020",
-) |>
-  arrange(desc(AREA_SQM))
-# Plot
-library(ggplot2)
-
-ggplot(valencia_sf) +
-  geom_sf(aes(fill = URAU_CATG)) +
-  scale_fill_viridis_d() +
-  labs(
-    title = "Valencia",
-    subtitle = "Urban Audit 2020",
-    fill = "Category"
-  )
-
+# mode sf for NUTS
+gisco_get_units("nuts", unit = "ES111", mode = "sf", year = 2016)
+#> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
+#> ℹ Please use `gisco_get_unit_nuts()` instead.
+#> Simple feature collection with 1 feature and 9 fields
+#> Geometry type: POLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: -9.2475 ymin: 42.56619 xmax: -7.699736 ymax: 43.73816
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 1 × 10
+#>   COAST_TYPE MOUNT_TYPE NAME_LATN CNTR_CODE NUTS_ID NUTS_NAME LEVL_CODE
+#> *      <int>      <int> <chr>     <chr>     <chr>   <chr>         <int>
+#> 1          1          2 A Coruña  ES        ES111   A Coruña          3
+#> # ℹ 3 more variables: URBN_TYPE <int>, geo <chr>, geometry <POLYGON [°]>
+# ->
+gisco_get_unit_nuts(unit = "ES111", year = 2016)
+#> Simple feature collection with 1 feature and 9 fields
+#> Geometry type: MULTIPOLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: -9.29841 ymin: 42.4636 xmax: -7.662418 ymax: 43.78793
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 1 × 10
+#>   COAST_TYPE MOUNT_TYPE NAME_LATN CNTR_CODE NUTS_ID NUTS_NAME LEVL_CODE
+#> *      <int>      <int> <chr>     <chr>     <chr>   <chr>         <int>
+#> 1          1          2 A Coruña  ES        ES111   A Coruña          3
+#> # ℹ 3 more variables: URBN_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
 # }
 ```
