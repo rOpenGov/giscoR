@@ -1,4 +1,4 @@
-#' Country dataset
+#' Countries dataset
 #'
 #' @description
 #' This dataset contains the administrative boundaries at country level of the

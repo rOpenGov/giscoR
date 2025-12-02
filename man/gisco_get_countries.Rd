@@ -4,7 +4,7 @@
 \name{gisco_get_countries}
 \alias{gisco_get_countries}
 \alias{gisco_get}
-\title{Country dataset}
+\title{Countries dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
