@@ -354,7 +354,7 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-unit
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md)
   : Communes dataset
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
-  : Country dataset
+  : Countries dataset
 - [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
   : Postal codes dataset
 
@@ -406,6 +406,7 @@ Additional functions for downloading GISCO API datasets.
   : GISCO API bulk download
 - [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
   [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+  [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
   : GISCO API single download
 
 ## GISCO Address API

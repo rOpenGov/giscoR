@@ -141,45 +141,39 @@ Please check the download and usage provisions on
 ## Examples
 
 ``` r
-if (FALSE) {
-  # TODO - NOT RUN
+# \donttest{
+# Get metadata
+cities <- gisco_get_metadata("urban_audit", 2020)
 
-  cities <- gisco_get_units(
-    id_giscoR = "urban_audit",
-    mode = "df",
-    year = "2020"
+
+# Valencia, Spain
+valencia <- cities[grep("Valencia", cities$URAU_NAME), ]
+valencia
+#> # A tibble: 3 × 10
+#>   URAU_CODE URAU_CATG CNTR_CODE URAU_NAME CITY_CPTL CITY_KERN FUA_CODE 
+#>   <chr>     <chr>     <chr>     <chr>     <chr>     <chr>     <chr>    
+#> 1 ES003L3   F         ES        Valencia  ""        ""        ""       
+#> 2 ES003C1   C         ES        Valencia  ""        "ES003K1" "ES003L3"
+#> 3 ES003K1   K         ES        Valencia  ""        ""        ""       
+#> # ℹ 3 more variables: NUTS3_2016 <chr>, AREA_SQM <dbl>, NUTS3_2021 <chr>
+library(dplyr)
+# Now get the shapes and order by AREA_SQM
+valencia_sf <- gisco_get_unit_urban_audit(
+  unit = valencia$URAU_CODE,
+  year = "2020",
+) |>
+  arrange(desc(AREA_SQM))
+# Plot
+library(ggplot2)
+
+ggplot(valencia_sf) +
+  geom_sf(aes(fill = URAU_CATG)) +
+  scale_fill_viridis_d() +
+  labs(
+    title = "Valencia",
+    subtitle = "Urban Audit 2020",
+    fill = "Category"
   )
-  VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
-  #   Order from big to small
-  VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
 
-  VAL.sf <- gisco_get_units(
-    id_giscoR = "urban_audit",
-    year = "2020",
-    unit = VAL$URAU_CODE
-  )
-  # Provincia
-  Provincia <-
-    gisco_get_units(
-      id_giscoR = "nuts",
-      unit = c("ES523"),
-      resolution = "01"
-    )
-
-  # Reorder
-  VAL.sf$URAU_CATG <- factor(VAL.sf$URAU_CATG, levels = c("F", "K", "C"))
-
-  # Plot
-  library(ggplot2)
-
-  ggplot(Provincia) +
-    geom_sf(fill = "gray1") +
-    geom_sf(data = VAL.sf, aes(fill = URAU_CATG)) +
-    scale_fill_viridis_d() +
-    labs(
-      title = "Valencia",
-      subtitle = "Urban Audit",
-      fill = "Urban Audit\ncategory"
-    )
-}
+# }
 ```

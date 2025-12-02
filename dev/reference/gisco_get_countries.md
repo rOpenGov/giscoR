@@ -1,4 +1,4 @@
-# Country dataset
+# Countries dataset
 
 This dataset contains the administrative boundaries at country level of
 the world. This dataset consists of 2 feature classes (regions,

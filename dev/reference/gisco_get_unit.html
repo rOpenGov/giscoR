@@ -45,7 +45,7 @@ of downloading and reading into your R session."><meta property="og:image" conte
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>GISCO API single download</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco-get-unit-country.R" class="external-link"><code>R/gisco-get-unit-country.R</code></a>, <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco-get-unit-nuts.R" class="external-link"><code>R/gisco-get-unit-nuts.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco-get-unit-country.R" class="external-link"><code>R/gisco-get-unit-country.R</code></a>, <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco-get-unit-nuts.R" class="external-link"><code>R/gisco-get-unit-nuts.R</code></a>, <a href="https://github.com/rOpenGov/giscoR/blob/main/R/gisco-get-unit-urban-audit.R" class="external-link"><code>R/gisco-get-unit-urban-audit.R</code></a></small>
       <div class="d-none name"><code>gisco_get_unit.Rd</code></div>
     </div>
 
@@ -81,6 +81,17 @@ of downloading and reading into your <strong>R</strong> session.</p>
 <span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  resolution <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">10</span>, <span class="fl">20</span>, <span class="fl">60</span><span class="op">)</span>,</span>
+<span>  spatialtype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"RG"</span>, <span class="st">"LB"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">gisco_get_unit_urban_audit</span><span class="op">(</span></span>
+<span>  unit <span class="op">=</span> <span class="st">"ES001F"</span>,</span>
+<span>  year <span class="op">=</span> <span class="fl">2021</span>,</span>
+<span>  epsg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4326</span>, <span class="fl">3857</span>, <span class="fl">3035</span><span class="op">)</span>,</span>
+<span>  cache <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  update_cache <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  cache_dir <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  spatialtype <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"RG"</span>, <span class="st">"LB"</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -167,6 +178,43 @@ combination of arguments with <code><a href="gisco_get_metadata.html">gisco_get_
 <code><a href="gisco_bulk_download.html">gisco_bulk_download()</a></code></p></div>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Get metadata</span></span></span>
+<span class="r-in"><span><span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="gisco_get_metadata.html">gisco_get_metadata</a></span><span class="op">(</span><span class="st">"urban_audit"</span>, <span class="fl">2020</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Valencia, Spain</span></span></span>
+<span class="r-in"><span><span class="va">valencia</span> <span class="op">&lt;-</span> <span class="va">cities</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"Valencia"</span>, <span class="va">cities</span><span class="op">$</span><span class="va">URAU_NAME</span><span class="op">)</span>, <span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">valencia</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   URAU_CODE URAU_CATG CNTR_CODE URAU_NAME CITY_CPTL CITY_KERN FUA_CODE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ES003L3   F         ES        Valencia  <span style="color: #949494;">""</span>        <span style="color: #949494;">""</span>        <span style="color: #949494;">""</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ES003C1   C         ES        Valencia  <span style="color: #949494;">""</span>        <span style="color: #949494;">"</span>ES003K1<span style="color: #949494;">"</span> <span style="color: #949494;">"</span>ES003L3<span style="color: #949494;">"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ES003K1   K         ES        Valencia  <span style="color: #949494;">""</span>        <span style="color: #949494;">""</span>        <span style="color: #949494;">""</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: NUTS3_2016 &lt;chr&gt;, AREA_SQM &lt;dbl&gt;, NUTS3_2021 &lt;chr&gt;</span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Now get the shapes and order by AREA_SQM</span></span></span>
+<span class="r-in"><span><span class="va">valencia_sf</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_unit_urban_audit</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  unit <span class="op">=</span> <span class="va">valencia</span><span class="op">$</span><span class="va">URAU_CODE</span>,</span></span>
+<span class="r-in"><span>  year <span class="op">=</span> <span class="st">"2020"</span>,</span></span>
+<span class="r-in"><span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">AREA_SQM</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Plot</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">valencia_sf</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">URAU_CATG</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Valencia"</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"Urban Audit 2020"</span>,</span></span>
+<span class="r-in"><span>    fill <span class="op">=</span> <span class="st">"Category"</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-plt img"><img src="gisco_get_unit-1.png" alt="" width="700" height="433"></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

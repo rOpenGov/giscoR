@@ -177,47 +177,41 @@ to avoid naming conflicts with NUTS-0 datasets.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="co"># TODO - NOT RUN</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># Get metadata</span></span></span>
+<span class="r-in"><span><span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu"><a href="gisco_get_metadata.html">gisco_get_metadata</a></span><span class="op">(</span><span class="st">"urban_audit"</span>, <span class="fl">2020</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">cities</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_units</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    id_giscoR <span class="op">=</span> <span class="st">"urban_audit"</span>,</span></span>
-<span class="r-in"><span>    mode <span class="op">=</span> <span class="st">"df"</span>,</span></span>
-<span class="r-in"><span>    year <span class="op">=</span> <span class="st">"2020"</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Valencia, Spain</span></span></span>
+<span class="r-in"><span><span class="va">valencia</span> <span class="op">&lt;-</span> <span class="va">cities</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"Valencia"</span>, <span class="va">cities</span><span class="op">$</span><span class="va">URAU_NAME</span><span class="op">)</span>, <span class="op">]</span></span></span>
+<span class="r-in"><span><span class="va">valencia</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   URAU_CODE URAU_CATG CNTR_CODE URAU_NAME CITY_CPTL CITY_KERN FUA_CODE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ES003L3   F         ES        Valencia  <span style="color: #949494;">""</span>        <span style="color: #949494;">""</span>        <span style="color: #949494;">""</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ES003C1   C         ES        Valencia  <span style="color: #949494;">""</span>        <span style="color: #949494;">"</span>ES003K1<span style="color: #949494;">"</span> <span style="color: #949494;">"</span>ES003L3<span style="color: #949494;">"</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ES003K1   K         ES        Valencia  <span style="color: #949494;">""</span>        <span style="color: #949494;">""</span>        <span style="color: #949494;">""</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: NUTS3_2016 &lt;chr&gt;, AREA_SQM &lt;dbl&gt;, NUTS3_2021 &lt;chr&gt;</span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Now get the shapes and order by AREA_SQM</span></span></span>
+<span class="r-in"><span><span class="va">valencia_sf</span> <span class="op">&lt;-</span> <span class="fu"><a href="gisco_get_unit.html">gisco_get_unit_urban_audit</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  unit <span class="op">=</span> <span class="va">valencia</span><span class="op">$</span><span class="va">URAU_CODE</span>,</span></span>
+<span class="r-in"><span>  year <span class="op">=</span> <span class="st">"2020"</span>,</span></span>
+<span class="r-in"><span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">AREA_SQM</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Plot</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">valencia_sf</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">URAU_CATG</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Valencia"</span>,</span></span>
+<span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"Urban Audit 2020"</span>,</span></span>
+<span class="r-in"><span>    fill <span class="op">=</span> <span class="st">"Category"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="va">VAL</span> <span class="op">&lt;-</span> <span class="va">cities</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grep</a></span><span class="op">(</span><span class="st">"Valencia"</span>, <span class="va">cities</span><span class="op">$</span><span class="va">URAU_NAME</span><span class="op">)</span>, <span class="op">]</span></span></span>
-<span class="r-in"><span>  <span class="co">#   Order from big to small</span></span></span>
-<span class="r-in"><span>  <span class="va">VAL</span> <span class="op">&lt;-</span> <span class="va">VAL</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/double.html" class="external-link">as.double</a></span><span class="op">(</span><span class="va">VAL</span><span class="op">$</span><span class="va">AREA_SQM</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="op">]</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="va">VAL.sf</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_units</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    id_giscoR <span class="op">=</span> <span class="st">"urban_audit"</span>,</span></span>
-<span class="r-in"><span>    year <span class="op">=</span> <span class="st">"2020"</span>,</span></span>
-<span class="r-in"><span>    unit <span class="op">=</span> <span class="va">VAL</span><span class="op">$</span><span class="va">URAU_CODE</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  <span class="co"># Provincia</span></span></span>
-<span class="r-in"><span>  <span class="va">Provincia</span> <span class="op">&lt;-</span></span></span>
-<span class="r-in"><span>    <span class="fu">gisco_get_units</span><span class="op">(</span></span></span>
-<span class="r-in"><span>      id_giscoR <span class="op">=</span> <span class="st">"nuts"</span>,</span></span>
-<span class="r-in"><span>      unit <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ES523"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>      resolution <span class="op">=</span> <span class="st">"01"</span></span></span>
-<span class="r-in"><span>    <span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Reorder</span></span></span>
-<span class="r-in"><span>  <span class="va">VAL.sf</span><span class="op">$</span><span class="va">URAU_CATG</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">VAL.sf</span><span class="op">$</span><span class="va">URAU_CATG</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"F"</span>, <span class="st">"K"</span>, <span class="st">"C"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Plot</span></span></span>
-<span class="r-in"><span>  <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">Provincia</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gray1"</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">VAL.sf</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">URAU_CATG</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_fill_viridis_d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>      title <span class="op">=</span> <span class="st">"Valencia"</span>,</span></span>
-<span class="r-in"><span>      subtitle <span class="op">=</span> <span class="st">"Urban Audit"</span>,</span></span>
-<span class="r-in"><span>      fill <span class="op">=</span> <span class="st">"Urban Audit\ncategory"</span></span></span>
-<span class="r-in"><span>    <span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-plt img"><img src="gisco_get_units-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
