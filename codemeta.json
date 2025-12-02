@@ -191,19 +191,6 @@
     },
     "4": {
       "@type": "SoftwareApplication",
-      "identifier": "geojsonsf",
-      "name": "geojsonsf",
-      "version": ">= 2.0.0",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=geojsonsf"
-    },
-    "5": {
-      "@type": "SoftwareApplication",
       "identifier": "httr2",
       "name": "httr2",
       "provider": {
@@ -214,7 +201,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=httr2"
     },
-    "6": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "lifecycle",
       "name": "lifecycle",
@@ -226,7 +213,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=lifecycle"
     },
-    "7": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "rappdirs",
       "name": "rappdirs",
@@ -239,7 +226,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rappdirs"
     },
-    "8": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "sf",
       "name": "sf",
@@ -252,7 +239,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=sf"
     },
-    "9": {
+    "8": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -264,7 +251,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "10": {
+    "9": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -274,7 +261,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis", "cran-r"],
-  "fileSize": "2396.145KB",
+  "fileSize": "2386.244KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

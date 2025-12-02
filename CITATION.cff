@@ -100,19 +100,6 @@ references:
   doi: 10.32614/CRAN.package.countrycode
   version: '>= 1.2.0'
 - type: software
-  title: geojsonsf
-  abstract: 'geojsonsf: GeoJSON to Simple Feature Converter'
-  notes: Imports
-  url: https://github.com/SymbolixAU/geojsonsf
-  repository: https://CRAN.R-project.org/package=geojsonsf
-  authors:
-  - family-names: Cooley
-    given-names: David
-    email: dcooley@symbolix.com.au
-  year: '2025'
-  doi: 10.32614/CRAN.package.geojsonsf
-  version: '>= 2.0.0'
-- type: software
   title: httr2
   abstract: 'httr2: Perform HTTP Requests and Process the Responses'
   notes: Imports
