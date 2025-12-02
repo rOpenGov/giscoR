@@ -5,9 +5,10 @@
 This function is deprecated. Use:
 
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
-  (equivalent to `mode = "df"`)
+  (equivalent to `mode = "df"`).
 
-- TODO
+- [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+  and friends (equivalent to `mode = "sf"`)
 
 Download individual shapefiles of units. Unlike
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
@@ -136,17 +137,6 @@ conflicts with NUTS-0 datasets.
 
 Please check the download and usage provisions on
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md).
-
-## See also
-
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
-
-Additional utils for downloading datasets:
-[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
-
-## Author
-
-dieghernan, <https://github.com/dieghernan/>
 
 ## Examples
 

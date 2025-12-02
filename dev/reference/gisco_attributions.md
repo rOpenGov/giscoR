@@ -73,11 +73,6 @@ shall be used.
 If you intend to use the data commercially, please contact
 EuroGeographics for information regarding their licence agreements.
 
-## See also
-
-Other helper:
-[`gisco_check_access()`](https://ropengov.github.io/giscoR/dev/reference/gisco_check_access.md)
-
 ## Examples
 
 ``` r

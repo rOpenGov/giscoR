@@ -103,7 +103,6 @@ Other dataset:
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
-[`gisco_db_units`](https://ropengov.github.io/giscoR/dev/reference/gisco_db_units.md),
 [`gisco_nuts`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.md)
 
 ## Examples

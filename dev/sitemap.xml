@@ -18,7 +18,6 @@
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_db.html</loc></url>
-<url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_db_units.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.html</loc></url>
@@ -32,6 +31,7 @@
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_get_ports.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.html</loc></url>
+<url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.html</loc></url>

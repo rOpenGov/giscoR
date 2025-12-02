@@ -43,8 +43,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md).
 
 Other database:
-[`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
-[`gisco_db_units`](https://ropengov.github.io/giscoR/dev/reference/gisco_db_units.md)
+[`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
 
 ## Examples
 

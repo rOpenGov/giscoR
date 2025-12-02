@@ -8,7 +8,7 @@ and extract the relevant ones.
 
 ``` r
 gisco_bulk_download(
-  id_giscor = c("countries", "coastal_lines", "communes", "lau", "nuts", "urban_audit",
+  id = c("countries", "coastal_lines", "communes", "lau", "nuts", "urban_audit",
     "postal_codes"),
   year = 2016,
   cache_dir = NULL,
@@ -27,7 +27,7 @@ gisco_bulk_download(
 
 ## Arguments
 
-- id_giscor:
+- id:
 
   character string or number. Type of dataset to be downloaded, see
   **Details**. Values supported are:
@@ -96,7 +96,7 @@ gisco_bulk_download(
 - ...:
 
   Ignored. The argument `id_giscoR` (**\[deprecated\]**) would be
-  captured via `...` and re-directed to `id_giscor` with a
+  captured via `...` and re-directed to `id` with a
   [warning](https://lifecycle.r-lib.org/reference/deprecate_soft.html).
 
 ## Value
@@ -106,9 +106,9 @@ extracted. See **Examples**.
 
 ## Details
 
-Some arguments only apply to a specific value of `"id_giscor"`. For
-example `"resolution"` would be ignored for values `"communes"`,
-`"lau"`, `"urban_audit"` and `"postal_codes"`.
+Some arguments only apply to a specific value of `"id"`. For example
+`"resolution"` would be ignored for values `"communes"`, `"lau"`,
+`"urban_audit"` and `"postal_codes"`.
 
 See years available in the corresponding functions:
 
@@ -136,7 +136,7 @@ downloaded files (see **Examples**).
 ## See also
 
 Additional utils for downloading datasets:
-[`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
+[`gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
 
 ## Examples
 
@@ -144,7 +144,7 @@ Additional utils for downloading datasets:
 tmp <- file.path(tempdir(), "testexample")
 
 dest_files <- gisco_bulk_download(
-  id_giscor = "countries", resolution = 60,
+  id = "countries", resolution = 60,
   year = 2024, ext = "geojson",
   cache_dir = tmp
 )
@@ -176,8 +176,8 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp8uYdCz/testexample/countries.
-#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp8uYdCz/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpmc9s9G/testexample/countries.
+#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpmc9s9G/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # Message shows that file is already cached ;)
 
