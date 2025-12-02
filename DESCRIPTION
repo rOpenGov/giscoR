@@ -23,7 +23,6 @@ Depends:
 Imports: 
     cli,
     countrycode (>= 1.2.0),
-    geojsonsf (>= 2.0.0),
     httr2,
     lifecycle,
     rappdirs (>= 0.3.0),

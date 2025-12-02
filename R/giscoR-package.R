@@ -6,7 +6,6 @@
 #' @importFrom cli qty
 #' @importFrom lifecycle deprecated
 #' @importFrom sf st_crs
-#' @importFrom utils download.file unzip read.csv URLencode
-#' @importFrom utils object.size
+#' @importFrom utils object.size unzip read.csv
 ## usethis namespace: end
 NULL
