@@ -17,10 +17,12 @@
 #'
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
+#' See [gisco_get_unit_country()] to download single files.
+#'
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 #'   "year",TRUE)}.
 #' @param epsg character string or number. Projection of the map: 4-digit
 #'   [EPSG code](https://epsg.io/). One of:
@@ -61,7 +63,7 @@
 #'   European Union (as per 2021). See **World Regions** and
 #'   [gisco_countrycode].
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 #'   "ext",TRUE)}.
 #'
 #' @source
@@ -108,7 +110,7 @@ gisco_get_countries <- function(
   region = NULL,
   ext = "gpkg"
 ) {
-  valid_ext <- for_docs("countries", "ext", formatted = FALSE)
+  valid_ext <- db_values("countries", "ext", formatted = FALSE)
   ext <- match_arg_pretty(ext, valid_ext)
 
   api_entry <- get_url_db(

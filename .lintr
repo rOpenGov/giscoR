@@ -1,3 +1,6 @@
 linters: linters_with_defaults() # see vignette("lintr")
 encoding: "UTF-8"
-exclusions: list("data-raw", "R/gisco_get_units.R")
+exclusions: list(
+      "data-raw",
+      "R/deprecated-gisco_get_units.R"
+  )

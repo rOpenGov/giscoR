@@ -1,7 +1,6 @@
 #' Check access to GISCO API
 #'
-#' @family helper
-#'
+#' @keywords internal
 #' @description
 #' Check if **R** has access to resources at
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.
@@ -18,10 +17,7 @@ gisco_check_access <- function() {
   }
 
   req <- httr2::request("https://gisco-services.ec.europa.eu/distribution/v2/")
-  req <- httr2::req_url_path_append(
-    req,
-    "nuts/geojson/NUTS_LB_2016_4326_LEVL_0.geojson"
-  )
+  req <- httr2::req_url_path_append(req, "themes.json")
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })

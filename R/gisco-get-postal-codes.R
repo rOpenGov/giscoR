@@ -18,10 +18,10 @@
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
 #' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postal_codes",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("postal_codes",
 #'   "year",TRUE)}.
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("postal_codes",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("postal_codes",
 #'   "ext",TRUE)}.
 #' @inheritParams gisco_get_countries
 #' @inherit gisco_get_countries source return note
@@ -74,7 +74,7 @@ gisco_get_postal_codes <- function(
   verbose = FALSE,
   ext = "gpkg"
 ) {
-  valid_ext <- for_docs("countries", "ext", formatted = FALSE)
+  valid_ext <- db_values("countries", "ext", formatted = FALSE)
   ext <- match_arg_pretty(ext, valid_ext)
 
   url <- get_url_db(
@@ -104,7 +104,7 @@ gisco_get_postal_codes <- function(
   filter_col <- get_col_name(file_local)
   if (all(!is.null(country), !is.null(filter_col))) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
-    country <- get_country_code(country)
+    country <- convert_country_code(country)
 
     # Get layer name
     layer <- get_sf_layer_name(file_local)

@@ -1,5 +1,5 @@
 # For docs
-for_docs <- function(id, field, decreasing = FALSE, formatted = TRUE) {
+db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
   db <- get_db()
 
   df <- db[db$id_giscor == id, field]

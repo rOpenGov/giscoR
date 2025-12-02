@@ -137,7 +137,7 @@ test_that("Filter countries", {
   expect_identical(nrow(db_cached_full), 2L)
   expect_identical(
     db_cached_full$ISO3_CODE,
-    get_country_code(c("Angola", "Spain"), "iso3c")
+    convert_country_code(c("Angola", "Spain"), "iso3c")
   )
 
   db_cnts <- gisco_get_countries(
@@ -148,7 +148,7 @@ test_that("Filter countries", {
   expect_identical(nrow(db_cnts), 3L)
   expect_identical(
     sort(db_cnts$CNTR_ID),
-    sort(get_country_code(c("Angola", "Spain", "Japan")))
+    sort(convert_country_code(c("Angola", "Spain", "Japan")))
   )
 })
 
@@ -190,7 +190,7 @@ test_that("Filter countries no cached", {
   expect_identical(nrow(db_cached_full), 2L)
   expect_identical(
     db_cached_full$ISO3_CODE,
-    get_country_code(c("Angola", "Spain"), "iso3c")
+    convert_country_code(c("Angola", "Spain"), "iso3c")
   )
 
   db_cnts <- gisco_get_countries(
@@ -201,7 +201,7 @@ test_that("Filter countries no cached", {
   expect_identical(nrow(db_cnts), 3L)
   expect_identical(
     sort(db_cnts$CNTR_ID),
-    sort(get_country_code(c("Angola", "Spain", "Japan")))
+    sort(convert_country_code(c("Angola", "Spain", "Japan")))
   )
 
   # No filters

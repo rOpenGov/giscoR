@@ -18,7 +18,7 @@
 #' @param year character string or number. Release year of the file, see
 #'   **Details**.
 #'
-#' @param id_giscor character string or number. Type of dataset to be
+#' @param id character string or number. Type of dataset to be
 #'   downloaded, see **Details**. Values supported are:
 #'   - `"countries"`
 #'   - `"coastal_lines"`
@@ -35,13 +35,13 @@
 #'   `.zip`, that won't be unzipped.
 #' @param ... Ignored. The argument `id_giscoR`
 #'   (`r lifecycle::badge("deprecated")`) would be captured via `...` and
-#'   re-directed to `id_giscor` with a [warning][lifecycle::deprecate_warn].
+#'   re-directed to `id` with a [warning][lifecycle::deprecate_warn].
 #'
 #' @param ext Extension of the file(s) to be downloaded. Formats available are
 #' `"shp"`, `"geojson"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.
 #'
 #' @details
-#' Some arguments only apply to a specific value of `"id_giscor"`. For example
+#' Some arguments only apply to a specific value of `"id"`. For example
 #' `"resolution"` would be ignored for values `"communes"`, `"lau"`,
 #' `"urban_audit"` and `"postal_codes"`.
 #'
@@ -64,7 +64,7 @@
 #' tmp <- file.path(tempdir(), "testexample")
 #'
 #' dest_files <- gisco_bulk_download(
-#'   id_giscor = "countries", resolution = 60,
+#'   id = "countries", resolution = 60,
 #'   year = 2024, ext = "geojson",
 #'   cache_dir = tmp
 #' )
@@ -85,7 +85,7 @@
 #' # Clean
 #' unlink(tmp, force = TRUE)
 gisco_bulk_download <- function(
-  id_giscor = c(
+  id = c(
     "countries",
     "coastal_lines",
     "communes",
@@ -119,25 +119,25 @@ gisco_bulk_download <- function(
     lifecycle::deprecate_warn(
       "1.0.0",
       "giscoR::gisco_bulk_download(id_giscoR)",
-      "giscoR::gisco_bulk_download(id_giscor)"
+      "giscoR::gisco_bulk_download(id)"
     )
-    id_giscor <- dots$id_giscoR
+    id <- dots$id_giscoR
   }
 
-  id_giscor <- match_arg_pretty(id_giscor)
+  id <- match_arg_pretty(id)
   ext <- match_arg_pretty(ext)
 
   # Standard arguments for the call
   year <- as.character(year)
 
   make_params <- make_bulk_params(
-    id = id_giscor,
+    id = id,
     year = year,
     resolution = resolution
   )
 
   routes <- get_url_db(
-    id = id_giscor,
+    id = id,
     year = year,
     epsg = make_params$epsg,
     resolution = make_params$resolution,
@@ -149,18 +149,16 @@ gisco_bulk_download <- function(
   )
 
   # Restore
-  if (
-    id_giscor == "communes" && as.character(year) %in% c("2004", "2006", "2008")
-  ) {
+  if (id == "communes" && as.character(year) %in% c("2004", "2006", "2008")) {
     make_params$resolution <- 1
   }
 
   api_entry <- gsub("/shp/.*", "/download", routes)
-  get_alias <- switch(id_giscor,
+  get_alias <- switch(id,
     "coastal_lines" = "coastline",
     "urban_audit" = "urau",
     "postal_codes" = "pcode",
-    id_giscor
+    id
   )
   zipname <- paste0("ref-", get_alias)
   zipname <- paste0(zipname, "-", year)
@@ -175,9 +173,9 @@ gisco_bulk_download <- function(
 
   url <- file.path(api_entry, zipname)
 
-  subdir <- switch(id_giscor,
+  subdir <- switch(id,
     "coastal_lines" = "coastal",
-    id_giscor
+    id
   )
 
   destfile <- download_url(

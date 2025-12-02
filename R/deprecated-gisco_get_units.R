@@ -1,20 +1,18 @@
 #' Get geospatial units data from GISCO API
 #'
 #' @description
-#'
 #' `r lifecycle::badge("deprecated")`
 #'
 #' This function is deprecated. Use:
 #'
-#' - `gisco_get_metadata()` (equivalent to `mode = "df"`)
-#' - TODO
+#' - [gisco_get_metadata()] (equivalent to `mode = "df"`).
+#' - [gisco_get_unit_country()] and friends (equivalent to `mode = "sf"`)
 #'
 #' Download individual shapefiles of units. Unlike [gisco_get_countries()],
 #' [gisco_get_nuts()] or [gisco_get_urban_audit()], that downloads a full
 #' dataset and applies filters, [gisco_get_units()] downloads a single
 #' shapefile for each unit.
 #'
-#' @family extra
 #' @keywords internal
 #' @export
 #'
@@ -52,10 +50,8 @@
 #'
 #' Please check the download and usage provisions on [gisco_attributions()].
 #'
-#' @author dieghernan, <https://github.com/dieghernan/>
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
-#' @seealso [gisco_get_countries()]
 #'
 #' @examplesIf gisco_check_access()
 #' if (FALSE) {
@@ -125,7 +121,7 @@ gisco_get_units <- function(
   }
   year <- as.character(year)
 
-  cache_dir <- gsc_helper_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
   unit <- unique(unit)
 
   # Validations
@@ -205,7 +201,7 @@ gsc_units_sf <- function(
   remain,
   level
 ) {
-  cache_dir <- gsc_helper_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
 
   filename <- unit
 

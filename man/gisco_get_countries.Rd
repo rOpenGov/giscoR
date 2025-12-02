@@ -28,7 +28,7 @@ gisco_get_countries(
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 "year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
@@ -84,7 +84,7 @@ European Union (as per 2021). See \strong{World Regions} and
 \link{gisco_countrycode}.}
 
 \item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 "ext",TRUE)}.}
 }
 \value{
@@ -125,6 +125,8 @@ ggplot(africa) +
 \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.
 
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
+
+See \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}} to download single files.
 
 Other administrative units datasets:
 \code{\link{gisco_get_communes}()},

@@ -5,7 +5,7 @@
 #' @return a vector of names
 #'
 #' @noRd
-get_country_code <- function(names, out = "eurostat") {
+convert_country_code <- function(names, out = "eurostat") {
   names[tolower(names) == "antartica"] <- "Antarctica"
 
   # Vectorize
@@ -60,7 +60,7 @@ get_countrycodes_region <- function(
 ) {
   store <- NULL
   if (!is.null(country)) {
-    country <- get_country_code(country, code)
+    country <- convert_country_code(country, code)
     store <- c(store, country)
   }
 
@@ -74,7 +74,7 @@ get_countrycodes_region <- function(
     }
     cnt_region <- sort(unique(cntryregion$CNTR_CODE))
     cnt_region <- cnt_region[!is.na(cnt_region)]
-    cnt_region <- get_country_code(cnt_region, code)
+    cnt_region <- convert_country_code(cnt_region, code)
 
     # Condition in both country and region is AND
     # so we intersect

@@ -106,7 +106,7 @@ gisco_set_cache_dir <- function(
   )
 
   # Create and expand
-  cache_dir <- gsc_helper_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
   msg <- paste0("{.pkg giscoR} cache dir is {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
@@ -158,7 +158,7 @@ gisco_set_cache_dir <- function(
 #' gisco_detect_cache_dir()
 #'
 gisco_detect_cache_dir <- function() {
-  cd <- gsc_helper_detect_cache_dir()
+  cd <- detect_cache_dir_muted()
   cli::cli_alert_info("{.path {cd}}")
   cd
 }
@@ -214,7 +214,7 @@ gisco_clear_cache <- function(
   verbose = FALSE
 ) {
   config_dir <- rappdirs::user_config_dir("giscoR", "R")
-  data_dir <- gsc_helper_detect_cache_dir()
+  data_dir <- detect_cache_dir_muted()
 
   # nocov start
   if (config && dir.exists(config_dir)) {
@@ -241,7 +241,7 @@ gisco_clear_cache <- function(
 }
 
 # Internal funs
-gsc_helper_detect_cache_dir <- function() {
+detect_cache_dir_muted <- function() {
   # Try from getenv
   getvar <- Sys.getenv("GISCO_CACHE_DIR")
 
@@ -286,10 +286,10 @@ gsc_helper_detect_cache_dir <- function() {
 
 #' Creates `cache_dir`
 #' @noRd
-gsc_helper_cachedir <- function(cache_dir = NULL) {
+create_cache_dir <- function(cache_dir = NULL) {
   # Check cache dir from options if not set
   if (is.null(cache_dir)) {
-    cache_dir <- gsc_helper_detect_cache_dir()
+    cache_dir <- detect_cache_dir_muted()
   }
 
   cache_dir <- path.expand(cache_dir)

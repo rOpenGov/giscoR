@@ -25,7 +25,7 @@ gisco_get_urban_audit(
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 "year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
@@ -64,7 +64,7 @@ and (for versions prior to \code{year = 2020}) \code{"GREATER_CITIES"}, \code{"C
 \code{"KERN"} or \code{"LUZ"}.}
 
 \item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 "ext",TRUE)}.}
 }
 \value{

@@ -24,7 +24,7 @@ gisco_get_coastal_lines(
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("coastal_lines",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 "year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
@@ -57,7 +57,7 @@ data. One of:
 }}
 
 \item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("countries",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 "ext",TRUE)}.}
 }
 \value{

@@ -19,11 +19,11 @@
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("lau",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "year",TRUE)}.
 #' @param gisco_id Optional. A character vector of `GISCO_ID` LAU values.
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("lau",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "ext",TRUE)}.
 #'
 #' @inheritParams gisco_get_countries
@@ -127,7 +127,7 @@ gisco_get_lau <- function(
   ) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
     if (!is.null(country)) {
-      country <- get_country_code(country)
+      country <- convert_country_code(country)
     }
 
     # Get layer name

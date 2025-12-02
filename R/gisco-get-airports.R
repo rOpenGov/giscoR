@@ -86,7 +86,7 @@ gisco_get_airports <- function(
   data_sf <- sf::st_transform(data_sf, 4326)
 
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
-    country <- get_country_code(country)
+    country <- convert_country_code(country)
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
   data_sf

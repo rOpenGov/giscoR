@@ -72,8 +72,4 @@ library(dplyr)
 countrycode::codelist \%>\%
   select(country.name.en, iso2c)
 }
-\seealso{
-Other helper: 
-\code{\link{gisco_check_access}()}
-}
 \concept{helper}

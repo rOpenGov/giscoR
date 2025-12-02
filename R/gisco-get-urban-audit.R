@@ -16,7 +16,7 @@
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
 #' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 #'   "year",TRUE)}.
 #'
 #' @param spatialtype character string. Type of geometry to be returned. Options
@@ -29,7 +29,7 @@
 #'   and (for versions prior to `year = 2020`) `"GREATER_CITIES"`, `"CITY"`,
 #'   `"KERN"` or `"LUZ"`.
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("urban_audit",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 #'   "ext",TRUE)}.
 #'
 #' @details
@@ -81,7 +81,7 @@ gisco_get_urban_audit <- function(
     level <- "all"
   }
 
-  valid_ext <- for_docs("urban_audit", "ext", formatted = FALSE)
+  valid_ext <- db_values("urban_audit", "ext", formatted = FALSE)
 
   ext <- match_arg_pretty(ext, valid_ext)
   level <- match_arg_pretty(level)
@@ -103,7 +103,7 @@ gisco_get_urban_audit <- function(
 
     data_sf <- read_geo_file_sf(api_entry)
     if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
-      country <- get_country_code(country)
+      country <- convert_country_code(country)
       data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
     }
     return(data_sf)
@@ -130,7 +130,7 @@ gisco_get_urban_audit <- function(
   if (all(!is.null(country), !is.null(filter_col))) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
 
-    country <- get_country_code(country)
+    country <- convert_country_code(country)
 
     # Get layer name
     layer <- get_sf_layer_name(file_local)

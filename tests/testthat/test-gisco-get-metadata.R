@@ -1,4 +1,4 @@
-test_that("No conexion", {
+test_that("Test offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -12,7 +12,7 @@ test_that("No conexion", {
   options(gisco_test_offline = FALSE)
 })
 
-test_that("Offline", {
+test_that("Test 404", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -53,7 +53,7 @@ test_that("Errors", {
 test_that("Check all nuts", {
   skip_on_cran()
   skip_if_gisco_offline()
-  val_years <- for_docs("nuts", "year", formatted = FALSE)
+  val_years <- db_values("nuts", "year", formatted = FALSE)
   for (i in val_years) {
     db <- gisco_get_metadata("nuts", i)
     expect_s3_class(db, "tbl_df")
@@ -63,7 +63,7 @@ test_that("Check all nuts", {
 test_that("Check all countries", {
   skip_on_cran()
   skip_if_gisco_offline()
-  val_years <- for_docs("countries", "year", formatted = FALSE)
+  val_years <- db_values("countries", "year", formatted = FALSE)
   for (i in val_years) {
     db <- gisco_get_metadata("countries", i)
     expect_s3_class(db, "tbl_df")
@@ -73,7 +73,7 @@ test_that("Check all countries", {
 test_that("Check all urban_audit", {
   skip_on_cran()
   skip_if_gisco_offline()
-  val_years <- for_docs("urban_audit", "year", formatted = FALSE)
+  val_years <- db_values("urban_audit", "year", formatted = FALSE)
   for (i in val_years) {
     db <- gisco_get_metadata("urban_audit", i)
     expect_s3_class(db, "tbl_df")

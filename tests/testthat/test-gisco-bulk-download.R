@@ -1,4 +1,18 @@
-test_that("Offline", {
+test_that("Test offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  options(gisco_test_offline = TRUE)
+  expect_message(
+    n <- gisco_bulk_download(update_cache = TRUE),
+    "Offline"
+  )
+  expect_null(n)
+
+  options(gisco_test_offline = FALSE)
+})
+
+test_that("Test 404", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -30,7 +44,7 @@ test_that("Deprecations", {
 
   expect_message(
     s1 <- gisco_bulk_download(
-      id_giscor = "coastal_lines",
+      id = "coastal_lines",
       resolution = 60,
       cache_dir = cdir,
       verbose = TRUE
@@ -51,7 +65,7 @@ test_that("Deprecations", {
   }
 })
 
-test_that("Errors on bulk download", {
+test_that("Errors", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -61,7 +75,7 @@ test_that("Errors on bulk download", {
   expect_error(gisco_bulk_download(ext = "aa"))
 })
 
-test_that("Bulk download online", {
+test_that("Online", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -81,7 +95,7 @@ test_that("Bulk download online", {
   )
 
   for (iii in id) {
-    y <- for_docs(iii, "year", formatted = FALSE) |>
+    y <- db_values(iii, "year", formatted = FALSE) |>
       sort() |>
       range()
 

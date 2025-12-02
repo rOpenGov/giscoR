@@ -100,8 +100,8 @@ download_url <- function(
   update_cache = FALSE,
   verbose = TRUE
 ) {
-  cache_dir <- gsc_helper_cachedir(cache_dir)
-  cache_dir <- gsc_helper_cachedir(file.path(cache_dir, subdir))
+  cache_dir <- create_cache_dir(cache_dir)
+  cache_dir <- create_cache_dir(file.path(cache_dir, subdir))
 
   # Create destfile and clean
   file_local <- file.path(cache_dir, name)
@@ -134,7 +134,7 @@ download_url <- function(
   })
 
   temp_cache <- file.path(tempdir(), "gisco_api_cache")
-  temp_cache <- gsc_helper_cachedir(temp_cache)
+  temp_cache <- create_cache_dir(temp_cache)
   req <- httr2::req_cache(req, temp_cache)
 
   req <- httr2::req_timeout(req, 300)
@@ -214,7 +214,7 @@ get_request_body <- function(url, verbose = TRUE) {
   })
 
   temp_cache <- file.path(tempdir(), "gisco_api_cache")
-  temp_cache <- gsc_helper_cachedir(temp_cache)
+  temp_cache <- create_cache_dir(temp_cache)
   req <- httr2::req_cache(req, temp_cache)
 
   req <- httr2::req_timeout(req, 300)

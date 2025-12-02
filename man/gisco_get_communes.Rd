@@ -25,7 +25,7 @@ gisco_get_communes(
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 "year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
@@ -64,7 +64,7 @@ vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{ext}{character. Extension of the file (default \code{"shp"}). One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 "ext",TRUE)}.}
 }
 \value{

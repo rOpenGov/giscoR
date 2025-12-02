@@ -1,4 +1,4 @@
-# No conexion
+# Test offline
 
     Code
       fend <- gisco_get_metadata()

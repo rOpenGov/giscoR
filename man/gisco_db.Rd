@@ -26,12 +26,10 @@ Other dataset:
 \code{\link{gisco_countries}},
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},
-\code{\link{gisco_db_units}},
 \code{\link{gisco_nuts}},
 \code{\link{gisco_nuts_2024}}
 
 Other database: 
-\code{\link{gisco_db_units}},
 \code{\link{gisco_get_metadata}()}
 }
 \concept{database}

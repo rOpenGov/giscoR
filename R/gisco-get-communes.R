@@ -20,7 +20,7 @@
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 #'   "year",TRUE)}.
 #' @param cache `r lifecycle::badge('deprecated')`. These functions always
 #'   caches the result due to the size. See **See Caching strategies** section
@@ -35,7 +35,7 @@
 #'   **Note that** argument `country` would be only applied when
 #'   `spatialtype` is `"RG"` or `"LB"`.
 #' @param ext character. Extension of the file (default `"shp"`). One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("communes",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 #'   "ext",TRUE)}.
 #'
 #' @details
@@ -125,7 +125,7 @@ gisco_get_communes <- function(
   if (all(!is.null(country), !is.null(filter_col))) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
 
-    country <- get_country_code(country)
+    country <- convert_country_code(country)
 
     # Get layer name
     layer <- get_sf_layer_name(file_local)

@@ -9,7 +9,7 @@
 }
 \usage{
 gisco_bulk_download(
-  id_giscor = c("countries", "coastal_lines", "communes", "lau", "nuts", "urban_audit",
+  id = c("countries", "coastal_lines", "communes", "lau", "nuts", "urban_audit",
     "postal_codes"),
   year = 2016,
   cache_dir = NULL,
@@ -22,7 +22,7 @@ gisco_bulk_download(
 )
 }
 \arguments{
-\item{id_giscor}{character string or number. Type of dataset to be
+\item{id}{character string or number. Type of dataset to be
 downloaded, see \strong{Details}. Values supported are:
 \itemize{
 \item \code{"countries"}
@@ -67,7 +67,7 @@ child \code{.zip} files. This is the case of "\code{shp.zip} inside the top-leve
 
 \item{...}{Ignored. The argument \code{id_giscoR}
 (\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}) would be captured via \code{...} and
-re-directed to \code{id_giscor} with a \link[lifecycle:deprecate_soft]{warning}.}
+re-directed to \code{id} with a \link[lifecycle:deprecate_soft]{warning}.}
 }
 \value{
 A (invisible) character vector with the full path of the files extracted.
@@ -78,7 +78,7 @@ Download zipped data from GISCO to the \code{\link[=gisco_set_cache_dir]{cache_d
 and extract the relevant ones.
 }
 \details{
-Some arguments only apply to a specific value of \code{"id_giscor"}. For example
+Some arguments only apply to a specific value of \code{"id"}. For example
 \code{"resolution"} would be ignored for values \code{"communes"}, \code{"lau"},
 \code{"urban_audit"} and \code{"postal_codes"}.
 
@@ -104,7 +104,7 @@ in the corresponding function to connect it with the downloaded files (see
 tmp <- file.path(tempdir(), "testexample")
 
 dest_files <- gisco_bulk_download(
-  id_giscor = "countries", resolution = 60,
+  id = "countries", resolution = 60,
   year = 2024, ext = "geojson",
   cache_dir = tmp
 )
@@ -128,6 +128,6 @@ unlink(tmp, force = TRUE)
 }
 \seealso{
 Additional utils for downloading datasets:
-\code{\link{gisco_get_units}()}
+\code{\link{gisco_get_unit}}
 }
 \concept{extra}

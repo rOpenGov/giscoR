@@ -27,7 +27,7 @@
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
 #' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("nuts",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "year",TRUE)}.
 #' @param spatialtype character string. Type of geometry to be returned. Options
 #'   available are:
@@ -41,7 +41,7 @@
 #'   `1`, `2`, `3` or `all` for all levels.
 #' @param nuts_id Optional. A character vector of NUTS IDs.
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::for_docs("nuts",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "ext",TRUE)}.
 #'
 #' @details
@@ -106,7 +106,7 @@ gisco_get_nuts <- function(
   nuts_level = c("all", "0", "1", "2", "3"),
   ext = "gpkg"
 ) {
-  valid_ext <- for_docs("nuts", "ext", formatted = FALSE)
+  valid_ext <- db_values("nuts", "ext", formatted = FALSE)
   ext <- match_arg_pretty(ext, valid_ext)
   nuts_level <- match_arg_pretty(nuts_level)
 
@@ -185,7 +185,7 @@ gisco_get_nuts <- function(
   ) {
     make_msg("info", verbose, "Speed up using {.pkg sf} query")
     if (!is.null(country)) {
-      country <- get_country_code(country)
+      country <- convert_country_code(country)
     }
 
     # Get layer name
@@ -243,7 +243,7 @@ filter_country_nuts <- function(data_sf, country = NULL, nuts_id = NULL) {
   }
 
   if (all(!is.null(country), "CNTR_CODE" %in% names(data_sf))) {
-    country <- get_country_code(country, "eurostat")
+    country <- convert_country_code(country, "eurostat")
     data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
   }
 

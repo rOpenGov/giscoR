@@ -34,7 +34,7 @@ test_that("Units sf online", {
 
   # Check that the file was not downloaded
   file <- file.path(
-    gsc_helper_detect_cache_dir(),
+    detect_cache_dir_muted(),
     "DNK-cntry-region-20m-4326-2001.geojson"
   )
 

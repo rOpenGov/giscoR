@@ -25,7 +25,7 @@ gisco_get_lau(
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("lau",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 "year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
@@ -55,7 +55,7 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 \item{gisco_id}{Optional. A character vector of \code{GISCO_ID} LAU values.}
 
 \item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("lau",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 "ext",TRUE)}.}
 }
 \value{

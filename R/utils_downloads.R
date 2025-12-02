@@ -232,7 +232,7 @@ gsc_api_cache <-
     update_cache = FALSE,
     verbose = TRUE
   ) {
-    cache_dir <- gsc_helper_cachedir(cache_dir)
+    cache_dir <- create_cache_dir(cache_dir)
 
     # Create destfile and clean
     file_local <- file.path(cache_dir, name)
@@ -401,7 +401,7 @@ gsc_api_load <- function(
 #' Load shapefile "shp" from an online resource
 #' @noRd
 gsc_load_shp <- function(url, cache_dir = NULL, verbose, update_cache) {
-  cache_dir <- gsc_helper_cachedir(cache_dir)
+  cache_dir <- create_cache_dir(cache_dir)
   basename <- basename(url)
 
   # Download file
@@ -443,7 +443,7 @@ gsc_unzip <-
     # Deprecate
     update_cache = TRUE
   ) {
-    cache_dir <- gsc_helper_cachedir(cache_dir)
+    cache_dir <- create_cache_dir(cache_dir)
 
     infiles <- unzip(destfile, list = TRUE, junkpaths = TRUE)
 

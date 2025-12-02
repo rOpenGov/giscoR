@@ -17,8 +17,4 @@ Check if \strong{R} has access to resources at
 
 gisco_check_access()
 }
-\seealso{
-Other helper: 
-\code{\link{gisco_attributions}()}
-}
-\concept{helper}
+\keyword{internal}

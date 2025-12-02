@@ -4,8 +4,8 @@ test_that("Check docs", {
   # Load databases now
   db <- gisco_get_latest_db()
   db <- gisco_get_latest_db_units()
-  expect_snapshot(for_docs("communes", "year"))
-  expect_snapshot(for_docs("communes", "year", decreasing = TRUE))
-  expect_snapshot(for_docs("communes", "ext"))
-  expect_snapshot(for_docs("communes", "spatialtype", formatted = FALSE))
+  expect_snapshot(db_values("communes", "year"))
+  expect_snapshot(db_values("communes", "year", decreasing = TRUE))
+  expect_snapshot(db_values("communes", "ext"))
+  expect_snapshot(db_values("communes", "spatialtype", formatted = FALSE))
 })

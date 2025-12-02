@@ -29,7 +29,7 @@ gisco_get_metadata <- function(
   verbose = FALSE
 ) {
   id <- match_arg_pretty(id)
-  valids <- for_docs(id, "year", formatted = FALSE)
+  valids <- db_values(id, "year", formatted = FALSE)
   year <- match_arg_pretty(year, valids)
 
   db <- get_db()
@@ -39,68 +39,19 @@ gisco_get_metadata <- function(
   db <- db[grepl("_AT", db$api_file), ]
 
   url <- paste0(db$api_entry, "/", db$api_file)
+  tmp_file <- basename(tempfile(fileext = ".csv"))
 
-  msg <- paste0("Get {.url ", url, "}.")
-  make_msg("info", verbose, msg)
+  file_local <- download_url(
+    url = url,
+    name = tmp_file,
+    cache_dir = tempdir(),
+    subdir = "gisco_metadata",
+    verbose = verbose
+  )
 
-  req <- httr2::request(url)
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
-  temp_cache <- file.path(tempdir(), "gisco_api_cache")
-  temp_cache <- gsc_helper_cachedir(temp_cache)
-  req <- httr2::req_cache(req, temp_cache)
-
-  req <- httr2::req_timeout(req, 300)
-  req <- httr2::req_retry(req, max_tries = 3)
-  if (verbose) {
-    req <- httr2::req_progress(req)
-  }
-
-  test_off <- getOption("gisco_test_offline", FALSE)
-
-  if (any(!httr2::is_online(), test_off)) {
-    cli::cli_alert_danger("Offline")
-    cli::cli_alert("Returning {.val NULL}")
+  if (is.null(file_local)) {
     return(NULL)
   }
-
-  file_local <- tempfile(fileext = "csv")
-  # Testing
-  test_offline <- getOption("gisco_test_404", FALSE)
-  if (test_offline) {
-    # Modify to redirect to fake url
-    req <- httr2::req_url(
-      req,
-      "https://gisco-services.ec.europa.eu/distribution/v2/fake"
-    )
-    file_local <- tempfile(fileext = ".txt")
-  }
-
-  # Response
-  resp <- httr2::req_perform(req, path = file_local)
-
-  if (httr2::resp_is_error(resp)) {
-    unlink(file_local, force = TRUE)
-    get_status_code <- httr2::resp_status(resp) # nolint
-    get_status_desc <- httr2::resp_status_desc(resp) # nolint
-
-    cli::cli_alert_danger(
-      c(
-        "{.strong Error {.num {get_status_code}}} ({get_status_desc}):",
-        " {.url {url}}."
-      )
-    )
-    cli::cli_alert_warning(
-      c(
-        "If you think this is a bug please consider opening an issue on ",
-        "{.url https://github.com/ropengov/giscoR/issues}"
-      )
-    )
-    cli::cli_alert("Returning {.val NULL}")
-    return(NULL)
-  }
-
   meta_df <- read.csv(file_local, encoding = "UTF-8")
   meta_df <- tibble::as_tibble(meta_df)
   unlink(file_local, force = TRUE)

@@ -1,4 +1,4 @@
-test_that("No conexion", {
+test_that("Test offline", {
   skip_on_cran()
   skip_if_gisco_offline()
   options(gisco_test_offline = TRUE)
@@ -12,7 +12,7 @@ test_that("No conexion", {
 })
 
 
-test_that("Test offline", {
+test_that("Test 404", {
   skip_on_cran()
   skip_if_gisco_offline()
 

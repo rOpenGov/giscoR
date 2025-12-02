@@ -27,7 +27,7 @@ gisco_get_nuts(
 }
 \arguments{
 \item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("nuts",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 "year",TRUE)}.}
 
 \item{epsg}{character string or number. Projection of the map: 4-digit
@@ -80,7 +80,7 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 \code{1}, \code{2}, \code{3} or \code{all} for all levels.}
 
 \item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
-\Sexpr[stage=render,results=rd]{giscoR:::for_docs("nuts",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 "ext",TRUE)}.}
 }
 \value{
