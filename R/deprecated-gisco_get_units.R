@@ -54,46 +54,32 @@
 #'
 #'
 #' @examplesIf gisco_check_access()
-#' if (FALSE) {
-#'   # TODO - NOT RUN
+#' \donttest{
+#' # Get metadata
+#' cities <- gisco_get_metadata("urban_audit", 2020)
 #'
-#'   cities <- gisco_get_units(
-#'     id_giscoR = "urban_audit",
-#'     mode = "df",
-#'     year = "2020"
+#'
+#' # Valencia, Spain
+#' valencia <- cities[grep("Valencia", cities$URAU_NAME), ]
+#' valencia
+#' library(dplyr)
+#' # Now get the shapes and order by AREA_SQM
+#' valencia_sf <- gisco_get_unit_urban_audit(
+#'   unit = valencia$URAU_CODE,
+#'   year = "2020",
+#' ) |>
+#'   arrange(desc(AREA_SQM))
+#' # Plot
+#' library(ggplot2)
+#'
+#' ggplot(valencia_sf) +
+#'   geom_sf(aes(fill = URAU_CATG)) +
+#'   scale_fill_viridis_d() +
+#'   labs(
+#'     title = "Valencia",
+#'     subtitle = "Urban Audit 2020",
+#'     fill = "Category"
 #'   )
-#'   VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
-#'   #   Order from big to small
-#'   VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
-#'
-#'   VAL.sf <- gisco_get_units(
-#'     id_giscoR = "urban_audit",
-#'     year = "2020",
-#'     unit = VAL$URAU_CODE
-#'   )
-#'   # Provincia
-#'   Provincia <-
-#'     gisco_get_units(
-#'       id_giscoR = "nuts",
-#'       unit = c("ES523"),
-#'       resolution = "01"
-#'     )
-#'
-#'   # Reorder
-#'   VAL.sf$URAU_CATG <- factor(VAL.sf$URAU_CATG, levels = c("F", "K", "C"))
-#'
-#'   # Plot
-#'   library(ggplot2)
-#'
-#'   ggplot(Provincia) +
-#'     geom_sf(fill = "gray1") +
-#'     geom_sf(data = VAL.sf, aes(fill = URAU_CATG)) +
-#'     scale_fill_viridis_d() +
-#'     labs(
-#'       title = "Valencia",
-#'       subtitle = "Urban Audit",
-#'       fill = "Urban Audit\ncategory"
-#'     )
 #' }
 gisco_get_units <- function(
   id_giscoR = c("nuts", "countries", "urban_audit"),

@@ -4,8 +4,8 @@ test_that("Test offline", {
 
   options(gisco_test_offline = TRUE)
   expect_message(
-    n <- gisco_get_unit_nuts(
-      year = 2024,
+    n <- gisco_get_unit_urban_audit(
+      year = 2021,
       update_cache = TRUE,
       verbose = TRUE
     ),
@@ -21,8 +21,8 @@ test_that("Test 404", {
 
   options(gisco_test_404 = TRUE)
   expect_message(
-    n <- gisco_get_unit_nuts(
-      year = 2024,
+    n <- gisco_get_unit_urban_audit(
+      year = 2021,
       update_cache = TRUE,
       verbose = TRUE
     ),
@@ -32,26 +32,52 @@ test_that("Test 404", {
   options(gisco_test_404 = FALSE)
 })
 
-test_that("unit_nuts: ES416", {
+test_that("unit_urau: Several years", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_nuts")
+  cdir <- file.path(tempdir(), "test_unit_urau")
   if (dir.exists(cdir)) {
     unlink(cdir, force = TRUE, recursive = TRUE)
   }
-  years <- db_values("nuts", "year", formatted = FALSE)
+  years <- db_values("urban_audit", "year", formatted = FALSE)
 
   for (y in years) {
+    db <- gisco_get_metadata("urban_audit", y)[1, 1]
     expect_silent(
-      gr <- gisco_get_unit_nuts(
-        unit = "ES416",
+      gr <- gisco_get_unit_urban_audit(
+        unit = db[[1]],
         spatialtype = "LB",
         cache_dir = cdir,
         year = y
       )
     )
-    expect_identical(rev(names(gr))[1:2], c("geometry", "geo"))
+    expect_s3_class(gr, "sf")
+    expect_s3_class(gr, "tbl_df")
+  }
+
+  if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
+})
+test_that("unit_urau: Several years polygon", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  cdir <- file.path(tempdir(), "test_unit_urau")
+  if (dir.exists(cdir)) {
+    unlink(cdir, force = TRUE, recursive = TRUE)
+  }
+  years <- db_values("urban_audit", "year", formatted = FALSE)
+
+  for (y in years) {
+    db <- gisco_get_metadata("urban_audit", y)[1, 1]
+    expect_silent(
+      gr <- gisco_get_unit_urban_audit(
+        unit = db[[1]],
+        spatialtype = "RG",
+        cache_dir = cdir,
+        year = y
+      )
+    )
     expect_s3_class(gr, "sf")
     expect_s3_class(gr, "tbl_df")
   }
@@ -59,11 +85,11 @@ test_that("unit_nuts: ES416", {
   if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("unit_nuts: Caching", {
+test_that("unit_urau: Caching", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_nuts")
+  cdir <- file.path(tempdir(), "test_unit_urau")
   if (dir.exists(cdir)) {
     unlink(cdir, force = TRUE, recursive = TRUE)
   }
@@ -74,17 +100,15 @@ test_that("unit_nuts: Caching", {
 
   # Not caching
   expect_message(
-    g <- gisco_get_unit_nuts(
-      "ES416",
+    g <- gisco_get_unit_urban_audit(
       spatialtype = "LB",
       cache = FALSE,
       cache_dir = cdir,
-      year = "2024",
+      year = "2021",
       verbose = TRUE
     ),
     "Reading from"
   )
-  expect_identical(rev(names(g))[1:2], c("geometry", "geo"))
 
   expect_identical(
     list.files(cdir, recursive = TRUE),
@@ -93,55 +117,50 @@ test_that("unit_nuts: Caching", {
 
   # And now caching
   expect_message(
-    g <- gisco_get_unit_nuts(
-      "ES416",
+    g <- gisco_get_unit_urban_audit(
       spatialtype = "LB",
       cache = TRUE,
       cache_dir = cdir,
-      year = "2024",
+      year = "2021",
       verbose = TRUE
     )
   )
-  expect_identical(rev(names(g))[1:2], c("geometry", "geo"))
-
   expect_length(
     list.files(cdir, recursive = TRUE),
     1
   )
 
   expect_message(
-    g <- gisco_get_unit_nuts(
-      "ES416",
+    g <- gisco_get_unit_urban_audit(
       spatialtype = "LB",
       cache = TRUE,
       cache_dir = cdir,
-      year = "2024",
+      year = "2021",
       verbose = TRUE
     ),
     "File already cached"
   )
-  expect_identical(rev(names(g))[1:2], c("geometry", "geo"))
 
   if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("unit_nuts: Multi calls", {
+test_that("unit_urau: Multi calls", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_nuts")
+  cdir <- file.path(tempdir(), "test_unit_urau")
   if (dir.exists(cdir)) {
     unlink(cdir, force = TRUE, recursive = TRUE)
   }
 
   # Message even when verbose FALSE
   expect_message(
-    g <- gisco_get_unit_nuts(
+    g <- gisco_get_unit_urban_audit(
       "XXXYY",
       spatialtype = "LB",
       cache = FALSE,
       cache_dir = cdir,
-      year = "2016",
+      year = "2001",
       verbose = FALSE
     ),
     "Skipping"
@@ -150,82 +169,38 @@ test_that("unit_nuts: Multi calls", {
 
   # Several
   expect_message(
-    g <- gisco_get_unit_nuts(
-      c("XXX", "ES", "DE111", "CZ01"),
+    g <- gisco_get_unit_urban_audit(
+      c("XXX", "BE001C1", "RO001C1", "DE111", "FI001K2"),
       spatialtype = "LB",
       cache = FALSE,
       cache_dir = cdir,
-      year = "2016",
+      year = "2018",
       verbose = FALSE
     ),
     "Skipping"
   )
   expect_equal(nrow(g), 3)
-  expect_true(all(g$CNTR_CODE == c("ES", "DE", "CZ")))
+  expect_true(all(g$CNTR_CODE == c("BE", "RO", "FI")))
   expect_true(all(sf::st_geometry_type(g) == "POINT"))
 
   # Polygon
 
-  pol <- gisco_get_unit_nuts(
-    c("LU", "ITC", "SK010"),
-    year = 2024,
+  pol <- gisco_get_unit_urban_audit(
+    c("XXX", "BE001C1", "RO001C1", "DE111", "FI001K2"),
+    year = 2018,
     spatialtype = "RG",
-    resolution = 60,
     cache_dir = cdir
   )
   expect_equal(nrow(pol), 3)
-  expect_true(all(sf::st_geometry_type(pol) == "POLYGON"))
+  expect_true(all(sf::st_geometry_type(pol) == "MULTIPOLYGON"))
 
   if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("unit_nuts: Validate inputs", {
+test_that("unit_urban_audit: Validate inputs", {
   skip_on_cran()
   skip_if_gisco_offline()
-  expect_snapshot(gisco_get_unit_nuts(year = -1989), error = TRUE)
-  expect_snapshot(gisco_get_unit_nuts(epsg = -1989), error = TRUE)
-  expect_snapshot(gisco_get_unit_nuts(resolution = -1989), error = TRUE)
-  expect_snapshot(gisco_get_unit_nuts(spatialtype = "foo"), error = TRUE)
-})
-
-test_that("unit_nuts: Old tests", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-
-  expect_silent(gisco_get_unit_nuts(unit = "ES"))
-
-  dups <- expect_silent(gisco_get_unit_nuts(
-    unit = c("ES", "IT", "ES"),
-    resolution = 60,
-    spatialtype = "LB"
-  ))
-
-  expect_equal(nrow(dups), 2)
-
-  expect_silent(gisco_get_unit_nuts(
-    year = 2016,
-    unit = "PT",
-    spatialtype = "LB",
-    resolution = 60,
-    update_cache = TRUE
-  ))
-  r <- gisco_get_unit_nuts(
-    unit = c("FR", "ES", "xt", "PT"),
-    resolution = 60,
-    spatialtype = "LB"
-  )
-
-  expect_true(nrow(r) == 3)
-  expect_message(gisco_get_unit_nuts(
-    unit = c("FR", "ES", "xt", "PT"),
-    spatialtype = "LB"
-  ))
-
-  expect_message(gisco_get_unit_nuts(verbose = TRUE))
-  expect_message(gisco_get_unit_nuts(unit = c("ES1", "ES345", "FFRE3")))
-  expect_silent(gisco_get_unit_nuts(
-    year = "2016",
-    update_cache = TRUE,
-    unit = "ES"
-  ))
+  expect_snapshot(gisco_get_unit_urban_audit(year = -1989), error = TRUE)
+  expect_snapshot(gisco_get_unit_urban_audit(epsg = -1989), error = TRUE)
+  expect_snapshot(gisco_get_unit_urban_audit(spatialtype = "foo"), error = TRUE)
 })

@@ -115,6 +115,8 @@ if (!is.null(cities)) {
 \seealso{
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
+See \code{\link[=gisco_get_unit_urban_audit]{gisco_get_unit_urban_audit()}} to download single files.
+
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
 \code{\link{gisco_get_coastal_lines}()},

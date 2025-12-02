@@ -1,69 +1,60 @@
-#' GISCO API single download
-#'
-#' @description
-#' Download datasets of single spatial units from GISCO to the
-#' [`cache_dir`][gisco_set_cache_dir()].
-#'
-#' Unlike [gisco_get_countries()], [gisco_get_nuts()] or
-#' [gisco_get_urban_audit()] (that downloads a full dataset and applies
-#' filters), these functions download a single per unit, reducing the time
-#' of downloading and reading into your **R** session.
-#'
 #' @rdname gisco_get_unit
-#' @name gisco_get_unit
-#' @family extra
-#' @encoding UTF-8
-#' @inheritParams gisco_get_countries
-#' @inherit gisco_get_countries return
-#' @inheritSection gisco_get_countries Note
 #' @export
 #'
-#' @seealso
-#' [gisco_get_metadata()], [gisco_get_countries()],
-#' [gisco_get_nuts()], [gisco_get_urban_audit()].
+#' @examplesIf gisco_check_access()
+#' # Get metadata
+#' cities <- gisco_get_metadata("urban_audit", 2020)
 #'
-#' @param unit character vector of unit ids to be downloaded. See **Details**.
-#' @param year character string or number. Release year of the file.
-#' @param spatialtype character string. Type of geometry to be returned.
-#'   Options available are:
-#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   * `"LB"`: Labels - `POINT` object.
 #'
-#' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/>
+#' # Valencia, Spain
+#' valencia <- cities[grep("Valencia", cities$URAU_NAME), ]
+#' valencia
+#' library(dplyr)
+#' # Now get the shapes and order by AREA_SQM
+#' valencia_sf <- gisco_get_unit_urban_audit(
+#'   unit = valencia$URAU_CODE,
+#'   year = "2020",
+#' ) |>
+#'   arrange(desc(AREA_SQM))
+#' # Plot
+#' library(ggplot2)
 #'
-#' All the source files are `.geojson` files.
-#'
-#' @details
-#' Check the available `unit` ids with the required
-#' combination of arguments with [gisco_get_metadata()].
-#'
-gisco_get_unit_country <- function(
-  unit = "ES",
-  year = 2024,
+#' ggplot(valencia_sf) +
+#'   geom_sf(aes(fill = URAU_CATG)) +
+#'   scale_fill_viridis_d() +
+#'   labs(
+#'     title = "Valencia",
+#'     subtitle = "Urban Audit 2020",
+#'     fill = "Category"
+#'   )
+gisco_get_unit_urban_audit <- function(
+  unit = "ES001F",
+  year = 2021,
   epsg = c(4326, 3857, 3035),
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = c(1, 3, 10, 20, 60),
   spatialtype = c("RG", "LB")
 ) {
   valid_years <- db_values(
-    "countries",
+    "urban_audit",
     "year",
     formatted = FALSE,
     decreasing = TRUE
   )
 
-  year <- match_arg_pretty(year, valid_years)
+  year <- as.numeric(match_arg_pretty(year, valid_years))
   epsg <- match_arg_pretty(epsg)
-  resolution <- match_arg_pretty(resolution)
-
-  res_txt <- sprintf("%02dm", as.numeric(resolution))
+  if (year < 2014) {
+    res_txt <- "03M"
+  } else if (year == 2014) {
+    res_txt <- "100K"
+  } else {
+    res_txt <- "100k"
+  }
 
   spatialtype <- match_arg_pretty(spatialtype)
-
   # Prepare inputs
   type <- switch(spatialtype,
     "RG" = "region",
@@ -73,12 +64,7 @@ gisco_get_unit_country <- function(
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson
 
-  use_code <- switch(year,
-    "2001" = "iso3c",
-    "2006" = "iso2c",
-    "eurostat"
-  )
-  unit_code <- convert_country_code(unit, use_code)
+  unit_code <- unique(unit)
 
   unit_names <- paste0(unit_code, "-", type)
   if (type == "region") {
@@ -102,7 +88,7 @@ gisco_get_unit_country <- function(
     # First look in cache
     guess_path <- file.path(
       create_cache_dir(cache_dir),
-      "countries",
+      "urban_audit",
       "units",
       single_unit
     )
@@ -118,7 +104,7 @@ gisco_get_unit_country <- function(
     # Now check online
     db_path <- paste0(
       "https://gisco-services.ec.europa.eu/distribution/",
-      "v2/countries/countries-",
+      "v2/urau/urau-",
       year,
       "-units.json"
     )
@@ -141,7 +127,7 @@ gisco_get_unit_country <- function(
 
     api_entry <- paste0(
       "https://gisco-services.ec.europa.eu/",
-      "distribution/v2/countries/distribution/"
+      "distribution/v2/urau/distribution/"
     )
     url <- file.path(api_entry, single_unit)
 
@@ -156,7 +142,7 @@ gisco_get_unit_country <- function(
     file_local <- download_url(
       url,
       cache_dir = cache_dir,
-      subdir = "countries/units",
+      subdir = "urban_audit/units",
       verbose = verbose,
       update_cache = update_cache
     )

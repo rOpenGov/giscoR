@@ -48,6 +48,12 @@ gisco_get_unit_nuts <- function(
   alldata <- lapply(iter, function(i) {
     single_unit <- unit_names[i]
     unit_txt <- unit[i] # nolint
+    make_msg(
+      "info",
+      verbose,
+      paste0("File {.str ", single_unit, "} requested.")
+    )
+
     # First look in cache
     guess_path <- file.path(
       create_cache_dir(cache_dir),
@@ -61,6 +67,8 @@ gisco_get_unit_nuts <- function(
       msg <- paste0("File already cached: {.file ", guess_path, "}.")
       make_msg("success", verbose, msg)
       data_sf <- read_geo_file_sf(guess_path)
+      data_sf$geo <- data_sf$NUTS_ID
+
       return(data_sf)
     }
 
@@ -99,6 +107,7 @@ gisco_get_unit_nuts <- function(
       make_msg("info", verbose, "Reading from", msg)
 
       data_sf <- read_geo_file_sf(url)
+      data_sf$geo <- data_sf$NUTS_ID
       return(data_sf)
     }
 
@@ -109,7 +118,9 @@ gisco_get_unit_nuts <- function(
       verbose = verbose,
       update_cache = update_cache
     )
-    read_geo_file_sf(file_local)
+    data_sf <- read_geo_file_sf(file_local)
+    data_sf$geo <- data_sf$NUTS_ID
+    data_sf
   })
   alldata <- rbind_fill(alldata)
   if (is.null(alldata)) {
