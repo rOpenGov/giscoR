@@ -190,7 +190,9 @@ test_that("unit_nuts: Old tests", {
   expect_silent(gisco_get_unit_nuts(unit = "ES"))
 
   dups <- expect_silent(gisco_get_unit_nuts(
-    unit = c("ES", "IT", "ES"), resolution = 60, spatialtype = "LB"
+    unit = c("ES", "IT", "ES"),
+    resolution = 60,
+    spatialtype = "LB"
   ))
 
   expect_equal(nrow(dups), 2)
@@ -198,17 +200,20 @@ test_that("unit_nuts: Old tests", {
   expect_silent(gisco_get_unit_nuts(
     year = 2016,
     unit = "PT",
-    spatialtype = "LB", resolution = 60,
+    spatialtype = "LB",
+    resolution = 60,
     update_cache = TRUE
   ))
   r <- gisco_get_unit_nuts(
-    unit = c("FR", "ES", "xt", "PT"), resolution = 60,
+    unit = c("FR", "ES", "xt", "PT"),
+    resolution = 60,
     spatialtype = "LB"
   )
 
   expect_true(nrow(r) == 3)
   expect_message(gisco_get_unit_nuts(
-    unit = c("FR", "ES", "xt", "PT"), spatialtype = "LB"
+    unit = c("FR", "ES", "xt", "PT"),
+    spatialtype = "LB"
   ))
 
   expect_message(gisco_get_unit_nuts(verbose = TRUE))
