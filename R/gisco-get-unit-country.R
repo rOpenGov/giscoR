@@ -1,3 +1,43 @@
+#' GISCO API single download
+#'
+#' @description
+#' Download datasets of single spatial units from GISCO to the
+#' [`cache_dir`][gisco_set_cache_dir()].
+#'
+#' Unlike [gisco_get_countries()], [gisco_get_nuts()] or
+#' [gisco_get_urban_audit()] (that downloads a full dataset and applies
+#' filters), these functions download a single per unit, reducing the time
+#' of downloading and reading into your **R** session.
+#'
+#' @rdname gisco_get_unit
+#' @name gisco_get_unit
+#' @family extra
+#' @encoding UTF-8
+#' @inheritParams gisco_get_countries
+#' @inherit gisco_get_countries return
+#' @inheritSection gisco_get_countries Note
+#' @export
+#'
+#' @seealso
+#' [gisco_get_metadata()], [gisco_get_countries()],
+#' [gisco_get_nuts()], [gisco_get_urban_audit()].
+#'
+#' @param unit character vector of unit ids to be downloaded. See **Details**.
+#' @param year character string or number. Release year of the file.
+#' @param spatialtype character string. Type of geometry to be returned.
+#'   Options available are:
+#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#'   * `"LB"`: Labels - `POINT` object.
+#'
+#' @source
+#' <https://gisco-services.ec.europa.eu/distribution/v2/>
+#'
+#' All the source files are `.geojson` files.
+#'
+#' @details
+#' Check the available `unit` ids with the required
+#' combination of arguments with [gisco_get_metadata()].
+#'
 gisco_get_unit_country <- function(
   unit = "ES",
   year = 2024,

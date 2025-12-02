@@ -52,11 +52,11 @@
 #' @param verbose logical. If `TRUE` displays informational messages.
 #' @param resolution character string or number. Resolution of the geospatial
 #'   data. One of:
-#'   * `"60"`: 1:60million
-#'   * `"20"`: 1:20million
-#'   * `"10"`: 1:10million
-#'   * `"03"`: 1:3million
-#'   * `"01"`: 1:1million
+#'   * `"60"`: 1:60 million.
+#'   * `"20"`: 1:20 million.
+#'   * `"10"`: 1:10 million.
+#'   * `"03"`: 1:3 million.
+#'   * `"01"`: 1:1 million.
 #' @param region Optional. A character vector of UN M49 region codes or
 #'   European Union membership. Possible values are `"Africa"`, `"Americas"`,
 #'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the

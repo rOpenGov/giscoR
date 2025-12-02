@@ -53,11 +53,11 @@ is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 \item{resolution}{character string or number. Resolution of the geospatial
 data. One of:
 \itemize{
-\item \code{"60"}: 1:60million
-\item \code{"20"}: 1:20million
-\item \code{"10"}: 1:10million
-\item \code{"03"}: 1:3million
-\item \code{"01"}: 1:1million
+\item \code{"60"}: 1:60 million.
+\item \code{"20"}: 1:20 million.
+\item \code{"10"}: 1:10 million.
+\item \code{"03"}: 1:3 million.
+\item \code{"01"}: 1:1 million.
 }}
 
 \item{spatialtype}{character string. Type of geometry to be returned.

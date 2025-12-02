@@ -26,6 +26,8 @@
 #'
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
+#' See [gisco_get_unit_nuts()] to download single files.
+#'
 #' @param year character string or number. Release year of the file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "year",TRUE)}.

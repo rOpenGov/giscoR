@@ -1,45 +1,7 @@
-#' GISCO API single download
-#'
-#' @description
-#' Download datasets of single spatial units from GISCO to the
-#' [`cache_dir`][gisco_set_cache_dir()].
-#'
-#' Unlike [gisco_get_countries()], [gisco_get_nuts()] or
-#' [gisco_get_urban_audit()] (that downloads a full dataset and applies
-#' filters), these functions download a single per unit, reducing the time
-#' of downloading and reading into your **R** session.
-#'
 #' @rdname gisco_get_unit
-#' @name gisco_get_unit
-#' @family extra
-#' @encoding UTF-8
-#' @inheritParams gisco_get_countries
-#' @inherit gisco_get_countries return
-#' @inheritSection gisco_get_countries Note
 #' @export
-#'
-#' @seealso
-#' [gisco_get_metadata()], [gisco_get_countries()],
-#' [gisco_get_nuts()], [gisco_get_urban_audit()].
-#'
-#' @param unit character vector of unit ids to be downloaded. See **Details**.
-#' @param year character string or number. Release year of the file.
-#' @param spatialtype character string. Type of geometry to be returned.
-#'   Options available are:
-#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   * `"LB"`: Labels - `POINT` object.
-#'
-#' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/>
-#'
-#' All the source files are `.geojson` files.
-#'
-#' @details
-#' Check the available `unit` ids with the required
-#' combination of arguments with [gisco_get_metadata()].
-#'
-gisco_get_unit_country <- function(
-  unit = "ES",
+gisco_get_unit_nuts <- function(
+  unit = "ES416",
   year = 2024,
   epsg = c(4326, 3857, 3035),
   cache = TRUE,
@@ -50,7 +12,7 @@ gisco_get_unit_country <- function(
   spatialtype = c("RG", "LB")
 ) {
   valid_years <- db_values(
-    "countries",
+    "nuts",
     "year",
     formatted = FALSE,
     decreasing = TRUE
@@ -61,9 +23,7 @@ gisco_get_unit_country <- function(
   resolution <- match_arg_pretty(resolution)
 
   res_txt <- sprintf("%02dm", as.numeric(resolution))
-
   spatialtype <- match_arg_pretty(spatialtype)
-
   # Prepare inputs
   type <- switch(spatialtype,
     "RG" = "region",
@@ -73,12 +33,7 @@ gisco_get_unit_country <- function(
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson
 
-  use_code <- switch(year,
-    "2001" = "iso3c",
-    "2006" = "iso2c",
-    "eurostat"
-  )
-  unit_code <- convert_country_code(unit, use_code)
+  unit_code <- unique(unit)
 
   unit_names <- paste0(unit_code, "-", type)
   if (type == "region") {
@@ -96,7 +51,7 @@ gisco_get_unit_country <- function(
     # First look in cache
     guess_path <- file.path(
       create_cache_dir(cache_dir),
-      "countries",
+      "nuts",
       "units",
       single_unit
     )
@@ -112,7 +67,7 @@ gisco_get_unit_country <- function(
     # Now check online
     db_path <- paste0(
       "https://gisco-services.ec.europa.eu/distribution/",
-      "v2/countries/countries-",
+      "v2/nuts/nuts-",
       year,
       "-units.json"
     )
@@ -135,7 +90,7 @@ gisco_get_unit_country <- function(
 
     api_entry <- paste0(
       "https://gisco-services.ec.europa.eu/",
-      "distribution/v2/countries/distribution/"
+      "distribution/v2/nuts/distribution/"
     )
     url <- file.path(api_entry, single_unit)
 
@@ -150,7 +105,7 @@ gisco_get_unit_country <- function(
     file_local <- download_url(
       url,
       cache_dir = cache_dir,
-      subdir = "countries/units",
+      subdir = "nuts/units",
       verbose = verbose,
       update_cache = update_cache
     )
