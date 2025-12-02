@@ -57,7 +57,7 @@ data. One of:
 }}
 
 \item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
-\Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
+\Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 "ext",TRUE)}.}
 }
 \value{

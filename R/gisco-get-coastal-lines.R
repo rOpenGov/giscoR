@@ -14,7 +14,7 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 #'   "year",TRUE)}.
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
+#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 #'   "ext",TRUE)}.
 #'
 #' @source
