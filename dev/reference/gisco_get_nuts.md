@@ -86,15 +86,15 @@ Copyright:
 
   character string or number. Resolution of the geospatial data. One of:
 
-  - `"60"`: 1:60million
+  - `"60"`: 1:60 million.
 
-  - `"20"`: 1:20million
+  - `"20"`: 1:20 million.
 
-  - `"10"`: 1:10million
+  - `"10"`: 1:10 million.
 
-  - `"03"`: 1:3million
+  - `"03"`: 1:3 million.
 
-  - `"01"`: 1:1million
+  - `"01"`: 1:1 million.
 
 - spatialtype:
 
@@ -167,6 +167,10 @@ Please check the download and usage provisions on
 See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
 to perform a bulk download of datasets.
+
+See
+[`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+to download single files.
 
 Other statistical units datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),

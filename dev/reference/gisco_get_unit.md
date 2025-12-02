@@ -26,6 +26,18 @@ gisco_get_unit_country(
   resolution = c(1, 3, 10, 20, 60),
   spatialtype = c("RG", "LB")
 )
+
+gisco_get_unit_nuts(
+  unit = "ES416",
+  year = 2024,
+  epsg = c(4326, 3857, 3035),
+  cache = TRUE,
+  update_cache = FALSE,
+  cache_dir = NULL,
+  verbose = FALSE,
+  resolution = c(1, 3, 10, 20, 60),
+  spatialtype = c("RG", "LB")
+)
 ```
 
 ## Source
@@ -80,15 +92,15 @@ All the source files are `.geojson` files.
 
   character string or number. Resolution of the geospatial data. One of:
 
-  - `"60"`: 1:60million
+  - `"60"`: 1:60 million.
 
-  - `"20"`: 1:20million
+  - `"20"`: 1:20 million.
 
-  - `"10"`: 1:10million
+  - `"10"`: 1:10 million.
 
-  - `"03"`: 1:3million
+  - `"03"`: 1:3 million.
 
-  - `"01"`: 1:1million
+  - `"01"`: 1:1 million.
 
 - spatialtype:
 

@@ -69,6 +69,7 @@ Additional functions for downloading GISCO API datasets.
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
   : GISCO API bulk download
 - [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+  [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
   : GISCO API single download
 
 ## GISCO Address API

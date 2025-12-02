@@ -67,15 +67,15 @@ Copyright:
 
   character string or number. Resolution of the geospatial data. One of:
 
-  - `"60"`: 1:60million
+  - `"60"`: 1:60 million.
 
-  - `"20"`: 1:20million
+  - `"20"`: 1:20 million.
 
-  - `"10"`: 1:10million
+  - `"10"`: 1:10 million.
 
-  - `"03"`: 1:3million
+  - `"03"`: 1:3 million.
 
-  - `"01"`: 1:1million
+  - `"01"`: 1:1 million.
 
 - ext:
 
