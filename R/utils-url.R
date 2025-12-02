@@ -153,10 +153,11 @@ download_url <- function(
 
   # Response
 
-  # Check before the size to see if we need to inform
-  getsize <- httr2::req_perform_connection(req)
+  # Check before the size to see if we need to inform with HEAD
+  get_header <- httr2::req_method(req, "HEAD")
+  getsize <- httr2::req_perform(get_header)
+
   size_dwn <- as.numeric(httr2::resp_header(getsize, "content-length", 0))
-  close(getsize)
   class(size_dwn) <- class(object.size("a"))
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
