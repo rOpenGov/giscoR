@@ -1,12 +1,12 @@
 # Retrieve and update the GISCO database in use by [giscoR](https://CRAN.R-project.org/package=giscoR)
 
-Returns an optionally updates the database with the endpoints of the
-GISCO API.
+Returns an optionally updates the cached database with the endpoints of
+the GISCO API.
 
 ## Usage
 
 ``` r
-gisco_get_latest_db(update_cache = FALSE)
+gisco_get_cached_db(update_cache = FALSE)
 ```
 
 ## Source
@@ -17,7 +17,7 @@ gisco_get_latest_db(update_cache = FALSE)
 
 - update_cache:
 
-  logical. On `TRUE` the local database would be rebuilt with the most
+  logical. On `TRUE` the cached database would be rebuilt with the most
   updated information of the GISCO API.
 
 ## Value
@@ -26,11 +26,15 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## Details
 
-The database in use is stored in the
+The cached database is stored in the
 [giscoR](https://CRAN.R-project.org/package=giscoR) cache path, see
 [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md)
 for details. The cached database would be used in subsequent **R**
 sessions.
+
+On new GISCO data releases, you can access the new updated data simply
+by refreshing the cached database without waiting for a new version of
+[giscoR](https://CRAN.R-project.org/package=giscoR).
 
 A static database
 [gisco_db](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
@@ -46,7 +50,7 @@ Other database utils:
 ## Examples
 
 ``` r
-gisco_get_latest_db() |>
+gisco_get_cached_db() |>
   dplyr::glimpse()
 #> Rows: 9,609
 #> Columns: 11

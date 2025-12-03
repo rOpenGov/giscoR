@@ -18,7 +18,7 @@ right API endpoints.
 
 This version of the database would be used in case there is any problem
 on update. Please use
-[`gisco_get_latest_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_latest_db.md)
+[`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md)
 with `update_cache = TRUE` to update the corresponding API endpoints.
 
 ## See also
@@ -30,7 +30,7 @@ Other datasets:
 [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
 
 Other database utils:
-[`gisco_get_latest_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_latest_db.md),
+[`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md),
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
 
 ## Examples

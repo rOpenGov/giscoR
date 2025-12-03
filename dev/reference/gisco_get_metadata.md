@@ -44,7 +44,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 Other database utils:
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
-[`gisco_get_latest_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_latest_db.md)
+[`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md)
 
 ## Examples
 

@@ -374,7 +374,7 @@ metadata.
 - [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
   : Cached GISCO database
 
-- [`gisco_get_latest_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_latest_db.md)
+- [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md)
   :
 
   Retrieve and update the GISCO database in use by
