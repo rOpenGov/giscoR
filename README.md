@@ -111,7 +111,7 @@ ggplot(nl_all) +
   theme_minimal()
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-1.png" alt="The Netherlands boundaries at different resolutions" width="100%" />
+<img src="man/figures/README-resolution-map-1.png" alt="The Netherlands boundaries at different resolutions" width="100%" />
 
 ## Advanced Example: Thematic maps
 
@@ -150,7 +150,6 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
-#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 280.57TB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
@@ -227,7 +226,7 @@ ggplot(nuts3_sf) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-thematic-1.png" alt="Population density in 2021" width="100%" />
+<img src="man/figures/README-thematic-map-1.png" alt="Population density in 2021" width="100%" />
 
 ## Caching
 

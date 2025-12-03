@@ -21,8 +21,10 @@ test_that("#62 geo column to NUTS", {
 
   # In no cached data
   nuts0_nocache <- gisco_get_nuts(
-    cache = FALSE, nuts_level = 0,
-    resolution = 60, year = 2021,
+    cache = FALSE,
+    nuts_level = 0,
+    resolution = 60,
+    year = 2021,
     epsg = 3035,
     nuts_id = "LU",
     ext = "geojson"
@@ -32,8 +34,10 @@ test_that("#62 geo column to NUTS", {
 
   # No cached LB
   nuts0_nocache_lb <- gisco_get_nuts(
-    cache = FALSE, nuts_level = 0,
-    resolution = 60, year = 2021,
+    cache = FALSE,
+    nuts_level = 0,
+    resolution = 60,
+    year = 2021,
     epsg = 3035,
     spatialtype = "LB",
     nuts_id = "LU"
@@ -44,7 +48,8 @@ test_that("#62 geo column to NUTS", {
   # Cache
   nuts0_cache <- gisco_get_nuts(
     nuts_level = 0,
-    resolution = 60, year = 2021,
+    resolution = 60,
+    year = 2021,
     epsg = 3035,
     nuts_id = "LU"
   )
@@ -53,7 +58,8 @@ test_that("#62 geo column to NUTS", {
 
   nuts0_cache_lb <- gisco_get_nuts(
     nuts_level = 0,
-    resolution = 60, year = 2021,
+    resolution = 60,
+    year = 2021,
     epsg = 3035,
     spatialtype = "LB",
     nuts_id = "LU"
@@ -65,37 +71,41 @@ test_that("#62 geo column to NUTS", {
 
   # No cached
   u_nuts0_nocached <- gisco_get_unit_nuts(
-    year = 2021, unit = "LU", cache = FALSE,
+    year = 2021,
+    unit = "LU",
+    cache = FALSE,
     resolution = 60
   )
-
 
   expect_true("geo" %in% names(u_nuts0_nocached))
 
   u_nuts0_nocached_lb <- gisco_get_unit_nuts(
-    year = 2021, unit = "LU", cache = FALSE,
+    year = 2021,
+    unit = "LU",
+    cache = FALSE,
     spatialtype = "LB",
     resolution = 60
   )
-
 
   expect_true("geo" %in% names(u_nuts0_nocached_lb))
 
   # Cached
   u_nuts0_cached <- gisco_get_unit_nuts(
-    year = 2021, unit = "LU", cache = TRUE,
+    year = 2021,
+    unit = "LU",
+    cache = TRUE,
     resolution = 60
   )
-
 
   expect_true("geo" %in% names(u_nuts0_cached))
 
   u_nuts0_cached_lb <- gisco_get_unit_nuts(
-    year = 2021, unit = "LU", cache = TRUE,
+    year = 2021,
+    unit = "LU",
+    cache = TRUE,
     spatialtype = "LB",
     resolution = 60
   )
-
 
   expect_true("geo" %in% names(u_nuts0_cached_lb))
 })
