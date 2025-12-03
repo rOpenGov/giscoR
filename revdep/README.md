@@ -10,7 +10,7 @@
 |collate  |C.UTF-8                                                |
 |ctype    |C.UTF-8                                                |
 |tz       |UTC                                                    |
-|date     |2025-11-24                                             |
+|date     |2025-12-03                                             |
 |pandoc   |3.1.11 @ /opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc |
 |quarto   |NA                                                     |
 
@@ -18,7 +18,7 @@
 
 |package     |old    |new        |Δ  |
 |:-----------|:------|:----------|:--|
-|giscoR      |0.6.1  |0.6.1.9000 |*  |
+|giscoR      |0.6.1  |0.9.9.9999 |*  |
 |askpass     |NA     |1.2.1      |*  |
 |classInt    |0.4-11 |0.4-11     |   |
 |cli         |NA     |3.6.5      |*  |
@@ -26,11 +26,11 @@
 |curl        |NA     |7.0.0      |*  |
 |DBI         |1.2.3  |1.2.3      |   |
 |e1071       |1.7-16 |1.7-16     |   |
-|geojsonsf   |2.0.3  |2.0.3      |   |
-|geometries  |0.2.5  |0.2.5      |   |
+|geojsonsf   |2.0.5  |NA         |*  |
+|geometries  |0.2.5  |NA         |*  |
 |glue        |NA     |1.8.0      |*  |
 |httr2       |NA     |1.2.1      |*  |
-|jsonify     |1.2.2  |1.2.2      |   |
+|jsonify     |1.2.3  |NA         |*  |
 |jsonlite    |2.0.0  |2.0.0      |   |
 |lifecycle   |NA     |1.0.4      |*  |
 |magrittr    |2.0.4  |2.0.4      |   |
@@ -39,13 +39,13 @@
 |pkgconfig   |NA     |2.0.3      |*  |
 |proxy       |0.4-27 |0.4-27     |   |
 |R6          |NA     |2.6.1      |*  |
-|rapidjsonr  |1.2.1  |1.2.1      |   |
+|rapidjsonr  |1.2.1  |NA         |*  |
 |rappdirs    |0.3.3  |0.3.3      |   |
 |Rcpp        |1.1.0  |1.1.0      |   |
 |rlang       |NA     |1.1.6      |*  |
 |s2          |1.1.9  |1.1.9      |   |
-|sf          |1.0-22 |1.0-22     |   |
-|sfheaders   |0.4.4  |0.4.4      |   |
+|sf          |1.0-23 |1.0-23     |   |
+|sfheaders   |0.4.5  |NA         |*  |
 |sys         |NA     |3.4.3      |*  |
 |tibble      |NA     |3.3.0      |*  |
 |units       |1.0-0  |1.0-0      |   |
