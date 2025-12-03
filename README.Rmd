@@ -7,20 +7,15 @@ link-citations: true
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
-knitr::opts_knit$set(
-  progress = TRUE,
-  base.url = "https://raw.githubusercontent.com/ropengov/giscoR/main/"
-)
-
 knitr::opts_chunk$set(
   collapse = TRUE,
   tidy = "styler",
   comment = "#>",
-  fig.path = "img/README-",
+  fig.path = "man/figures/README-",
   warning = FALSE,
   message = FALSE,
   dev = "ragg_png",
-  dpi = 300,
+  dpi = 150,
   out.width = "100%"
 )
 ```
@@ -88,7 +83,7 @@ install.packages("giscoR", repos = c("https://ropengov.r-universe.dev", "https:/
 
 This script highlights some features of **giscoR** :
 
-```{r example, fig.alt="The Netherlands boundaries at different resolutions"}
+```{r resolution-map, fig.alt="The Netherlands boundaries at different resolutions"}
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -158,7 +153,7 @@ popdens <- get_eurostat("demo_r_d3dens") |>
 
 By last, we merge and manipulate the data for creating the final plot:
 
-```{r thematic, fig.asp=1.1, fig.alt="Population density in 2021"}
+```{r thematic-map, fig.asp=1.1, fig.alt="Population density in 2021"}
 # Merge data
 nuts3_sf <- nuts3 |>
   left_join(popdens, by = "geo")
