@@ -216,6 +216,11 @@ test_that("Get urls", {
     )
   )
 
+  # Valid URL with HEAD
+  req <- httr2::request(url)
+  req <- httr2::req_method(req, "HEAD")
+  resp <- httr2::req_perform(req)
+  expect_equal(httr2::resp_status(resp), 200)
 
   # Try with label
   expect_silent(
@@ -235,7 +240,7 @@ test_that("Get urls", {
   req <- httr2::request(url_lb)
   req <- httr2::req_method(req, "HEAD")
   resp <- httr2::req_perform(req)
-  expect_equal(resp_status(resp), 200)
+  expect_equal(httr2::resp_status(resp), 200)
 })
 
 test_that("No connection body", {
