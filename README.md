@@ -72,45 +72,46 @@ library(giscoR)
 library(sf)
 library(dplyr)
 
-# Download Denmark boundaries at different resolutions
-dnk_all <- lapply(c("60", "20", "10", "03"), function(r) {
-  gisco_get_countries(country = "Denmark", year = 2024, resolution = r) |>
+# Download The Netherlands boundaries at different resolutions
+nl_all <- lapply(c("60", "20", "10", "03"), function(r) {
+  gisco_get_countries(country = "Netherlands", year = 2024, resolution = r) |>
     mutate(res = paste0(r, "M"))
 }) |>
   bind_rows()
 
-glimpse(dnk_all)
+glimpse(nl_all)
 #> Rows: 4
 #> Columns: 13
-#> $ CNTR_ID   <chr> "DK", "DK", "DK", "DK"
-#> $ CNTR_NAME <chr> "Danmark", "Danmark", "Danmark", "Danmark"
-#> $ NAME_ENGL <chr> "Denmark", "Denmark", "Denmark", "Denmark"
-#> $ NAME_FREN <chr> "Danemark", "Danemark", "Danemark", "Danemark"
-#> $ ISO3_CODE <chr> "DNK", "DNK", "DNK", "DNK"
+#> $ CNTR_ID   <chr> "NL", "NL", "NL", "NL"
+#> $ CNTR_NAME <chr> "Nederland", "Nederland", "Nederland", "Nederland"
+#> $ NAME_ENGL <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
+#> $ NAME_FREN <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
+#> $ ISO3_CODE <chr> "NLD", "NLD", "NLD", "NLD"
 #> $ SVRG_UN   <chr> "UN Member State", "UN Member State", "UN Member State", "UN…
-#> $ CAPT      <chr> "Copenhagen", "Copenhagen", "Copenhagen", "Copenhagen"
+#> $ CAPT      <chr> "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"
 #> $ EU_STAT   <chr> "T", "T", "T", "T"
 #> $ EFTA_STAT <chr> "F", "F", "F", "F"
 #> $ CC_STAT   <chr> "F", "F", "F", "F"
-#> $ NAME_GERM <chr> "Dänemark", "Dänemark", "Dänemark", "Dänemark"
-#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((14.80303 55..., MULTIPOLYGON (((15.15502 55.…
+#> $ NAME_GERM <chr> "Niederlande", "Niederlande", "Niederlande", "Niederlande"
+#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…
 #> $ res       <chr> "60M", "20M", "10M", "03M"
 
 # Plot with ggplot2
 
 library(ggplot2)
 
-ggplot(dnk_all) +
-  geom_sf(fill = "#c8102e") +
+ggplot(nl_all) +
+  geom_sf(fill = "#AD1D25") +
   facet_wrap(~res) +
   labs(
-    title = "Denmark boundaries at different resolutions",
+    title = "The Netherlands boundaries at different resolutions",
     subtitle = "Year: 2024",
     caption = gisco_attributions()
-  )
+  ) +
+  theme_minimal()
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-1.png" alt="Denmark boundaries at different resolutions" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-1.png" alt="The Netherlands boundaries at different resolutions" width="100%" />
 
 ## Advanced Example: Thematic maps
 
@@ -149,6 +150,7 @@ We now download the data from Eurostat:
 library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
+#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 280.57TB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:

@@ -88,32 +88,33 @@ install.packages("giscoR", repos = c("https://ropengov.r-universe.dev", "https:/
 
 This script highlights some features of **giscoR** :
 
-```{r example, fig.alt="Denmark boundaries at different resolutions"}
+```{r example, fig.alt="The Netherlands boundaries at different resolutions"}
 library(giscoR)
 library(sf)
 library(dplyr)
 
-# Download Denmark boundaries at different resolutions
-dnk_all <- lapply(c("60", "20", "10", "03"), function(r) {
-  gisco_get_countries(country = "Denmark", year = 2024, resolution = r) |>
+# Download The Netherlands boundaries at different resolutions
+nl_all <- lapply(c("60", "20", "10", "03"), function(r) {
+  gisco_get_countries(country = "Netherlands", year = 2024, resolution = r) |>
     mutate(res = paste0(r, "M"))
 }) |>
   bind_rows()
 
-glimpse(dnk_all)
+glimpse(nl_all)
 
 # Plot with ggplot2
 
 library(ggplot2)
 
-ggplot(dnk_all) +
-  geom_sf(fill = "#c8102e") +
+ggplot(nl_all) +
+  geom_sf(fill = "#AD1D25") +
   facet_wrap(~res) +
   labs(
-    title = "Denmark boundaries at different resolutions",
+    title = "The Netherlands boundaries at different resolutions",
     subtitle = "Year: 2024",
     caption = gisco_attributions()
-  )
+  ) +
+  theme_minimal()
 ```
 
 ## Advanced Example: Thematic maps
