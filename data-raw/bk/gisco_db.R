@@ -32,7 +32,7 @@ dwndata <- function(
   download.file(url, destfile = tmp)
 
   master <- fromJSON(tmp)
-  years <- names(master) %>% str_replace_all(clean, "")
+  years <- names(master) |> str_replace_all(clean, "")
   # years <- years[1:2]
 
   for (i in 1:length(years)) {
@@ -44,15 +44,15 @@ dwndata <- function(
     ext.year <- names(master.year)
     ext.year <- ext.year[ext.year != "csv"]
     data.year <-
-      master.year[[ext]] %>%
-      unlist() %>%
+      master.year[[ext]] |>
+      unlist() |>
       as.data.frame(stringsAsFactors = FALSE)
 
     names(data.year) <- "api_file"
     data.year$api_file <- gsub(ext, "{ext}", data.year$api_file)
     rownames(data.year) <- c()
 
-    data.year <- data.year %>%
+    data.year <- data.year |>
       mutate(
         api_entry = api_entry,
         id_giscoR = name,
@@ -118,13 +118,13 @@ for (i in seq_len(length(allepsg))) {
   df$api_file <- gsub(allepsg[i], "{epsg}", df$api_file)
 }
 
-df <- df %>%
+df <- df |>
   group_by(
     api_file,
     api_entry,
     id_giscoR,
     ext
-  ) %>%
+  ) |>
   summarise(epsg = paste(epsg, collapse = ","))
 
 
@@ -134,7 +134,7 @@ df <- as.data.frame(df)
 df$year <- NA
 for (i in 2000:2024) {
   char <- as.character(i)
-  r <- grep(char, df$api_file) %>% as.integer()
+  r <- grep(char, df$api_file) |> as.integer()
   if (length(r) > 0) {
     df[grep(char, df$api_file), ]$year <- char
   }
@@ -146,14 +146,14 @@ for (i in seq_len(length(allyear))) {
 }
 
 
-df <- df %>%
+df <- df |>
   group_by(
     api_file,
     api_entry,
     id_giscoR,
     ext,
     epsg
-  ) %>%
+  ) |>
   summarise(year = paste(year, collapse = ","))
 
 df <- as_tibble(df)
@@ -162,7 +162,7 @@ df$resolution <- NA
 avres <- c("01", "03", "10", "20", "60", "100")
 for (i in 1:length(avres)) {
   char <- avres[i]
-  r <- grep(char, df$api_file) %>% as.integer()
+  r <- grep(char, df$api_file) |> as.integer()
   if (length(r) > 0) {
     df[grep(char, df$api_file), ]$resolution <- char
   }
@@ -178,8 +178,8 @@ for (i in seq_len(length(allres))) {
 }
 
 
-df <- df %>%
-  group_by(api_file, api_entry, id_giscoR, ext, epsg, year) %>%
+df <- df |>
+  group_by(api_file, api_entry, id_giscoR, ext, epsg, year) |>
   summarise(resolution = paste(resolution, collapse = ","))
 
 df <- as.data.frame(df)
@@ -193,7 +193,7 @@ avspatialtype <- c("BN", "RG", "LB", "COASTL", "INLAND")
 df$spatialtype <- NA
 for (i in 1:length(avspatialtype)) {
   char <- avspatialtype[i]
-  r <- grep(char, df$api_file) %>% as.integer()
+  r <- grep(char, df$api_file) |> as.integer()
   if (length(r) > 0) {
     df[grep(char, df$api_file), ]$spatialtype <- char
   }
@@ -203,8 +203,8 @@ for (i in 1:length(avspatialtype)) {
 #   df$api_file <- gsub(avspatialtype[i], "{spatialtype}", df$api_file)
 # }
 
-df <- df %>%
-  group_by(api_file, api_entry, id_giscoR, ext, epsg, year, resolution) %>%
+df <- df |>
+  group_by(api_file, api_entry, id_giscoR, ext, epsg, year, resolution) |>
   summarise(spatialtype = paste(spatialtype, collapse = ","))
 
 df <- as.data.frame(df)
@@ -234,7 +234,7 @@ for (j in seq_len(length(nums))) {
   nuts$api_file <- gsub(nums[j], "{nuts_level}", nuts$api_file)
 }
 
-nuts <- nuts %>%
+nuts <- nuts |>
   group_by(
     api_file,
     api_entry,
@@ -244,7 +244,7 @@ nuts <- nuts %>%
     year,
     resolution,
     spatialtype
-  ) %>%
+  ) |>
   summarise(nuts_level = paste(nuts_level, collapse = ","))
 nuts <- as.data.frame(nuts)
 
@@ -275,7 +275,7 @@ gisco_db <- bind_rows(clean, nuts, urau)
 gisco_db <- as.data.frame(gisco_db)
 
 gisco_db <-
-  gisco_db %>%
+  gisco_db |>
   select(
     id_giscoR,
     year,
@@ -287,8 +287,8 @@ gisco_db <-
     ext,
     api_file,
     api_entry
-  ) %>%
-  arrange(id_giscoR, year, resolution, spatialtype, api_file) %>%
+  ) |>
+  arrange(id_giscoR, year, resolution, spatialtype, api_file) |>
   as.data.frame() |>
   as_tibble()
 

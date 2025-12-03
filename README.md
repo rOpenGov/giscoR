@@ -22,25 +22,22 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 
 <!-- badges: end -->
 
-[**giscoR**](https://ropengov.github.io/giscoR//) is an API package that
-helps to retrieve data from [Eurostat - GISCO (the Geographic
-Information System of the
-COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides
-some lightweight datasets ready to use without downloading.
+[**giscoR**](https://ropengov.github.io/giscoR//) is an **R** package
+that provides a simple interface to
+[GISCO](https://ec.europa.eu/eurostat/web/gisco) data from Eurostat. It
+allows you to download and work with global and European geospatial
+datasets -such as country boundaries, NUTS regions, coastlines, and
+labels- directly in **R**.
 
-[GISCO](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository including several datasets as countries, coastal lines,
-labels or [NUTS
-levels](https://ec.europa.eu/eurostat/web/regions-and-cities/overview).
-The datasets are usually provided at several resolution levels
-(60M/20M/10M/03M/01M) and in 3 different projections (4326/3035/3857).
+## Key features
 
-Note that the package does not provide metadata on the downloaded files,
-the information is available on the [API
-webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
-
-Full site with examples and vignettes on
-<https://ropengov.github.io/giscoR/>
+- Retrieve **GISCO shapefiles** for countries, regions, and
+  administrative units.
+- Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
+  `01M`.
+- Choose from three projections: **EPSG 4326**, **3035**, or **3857**.
+- Works seamlessly with **sf** objects for spatial analysis.
+- Includes **caching** for faster repeated access.
 
 ## Installation
 
@@ -51,22 +48,22 @@ Install **giscoR** from
 install.packages("giscoR")
 ```
 
-You can install the developing version of **giscoR** with:
+You can install the development version of **giscoR** with:
 
 ``` r
-remotes::install_github("rOpenGov/giscoR")
+# install.packages("pak")
+
+pak::pak("rOpenGov/giscoR")
 ```
 
-Alternatively, you can install **giscoR** using the
+Alternatively, you can install **giscoR** via
 [r-universe](https://ropengov.r-universe.dev/giscoR):
 
 ``` r
-install.packages("giscoR",
-  repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org")
-)
+install.packages("giscoR", repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
-## Usage
+## Quick Example
 
 This script highlights some features of **giscoR** :
 
@@ -75,80 +72,47 @@ library(giscoR)
 library(sf)
 library(dplyr)
 
-# Different resolutions
-DNK_res60 <- gisco_get_countries(resolution = "60", country = "DNK") %>%
-  mutate(res = "60M")
-DNK_res20 <-
-  gisco_get_countries(resolution = "20", country = "DNK") %>%
-  mutate(res = "20M")
-DNK_res10 <-
-  gisco_get_countries(resolution = "10", country = "DNK") %>%
-  mutate(res = "10M")
-DNK_res03 <-
-  gisco_get_countries(resolution = "03", country = "DNK") %>%
-  mutate(res = "03M")
+# Download Denmark boundaries at different resolutions
+dnk_all <- lapply(c("60", "20", "10", "03"), function(r) {
+  gisco_get_countries(country = "Denmark", year = 2024, resolution = r) |>
+    mutate(res = paste0(r, "M"))
+}) |>
+  bind_rows()
 
+glimpse(dnk_all)
+#> Rows: 4
+#> Columns: 13
+#> $ CNTR_ID   <chr> "DK", "DK", "DK", "DK"
+#> $ CNTR_NAME <chr> "Danmark", "Danmark", "Danmark", "Danmark"
+#> $ NAME_ENGL <chr> "Denmark", "Denmark", "Denmark", "Denmark"
+#> $ NAME_FREN <chr> "Danemark", "Danemark", "Danemark", "Danemark"
+#> $ ISO3_CODE <chr> "DNK", "DNK", "DNK", "DNK"
+#> $ SVRG_UN   <chr> "UN Member State", "UN Member State", "UN Member State", "UN…
+#> $ CAPT      <chr> "Copenhagen", "Copenhagen", "Copenhagen", "Copenhagen"
+#> $ EU_STAT   <chr> "T", "T", "T", "T"
+#> $ EFTA_STAT <chr> "F", "F", "F", "F"
+#> $ CC_STAT   <chr> "F", "F", "F", "F"
+#> $ NAME_GERM <chr> "Dänemark", "Dänemark", "Dänemark", "Dänemark"
+#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((14.80303 55..., MULTIPOLYGON (((15.15502 55.…
+#> $ res       <chr> "60M", "20M", "10M", "03M"
 
-DNK_all <- bind_rows(DNK_res60, DNK_res20, DNK_res10, DNK_res03)
-
-# Plot ggplot2
+# Plot with ggplot2
 
 library(ggplot2)
 
-ggplot(DNK_all) +
+ggplot(dnk_all) +
   geom_sf(fill = "#c8102e") +
-  facet_wrap(vars(res)) +
-  theme_minimal()
-```
-
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-1.png" width="100%" />
-
-``` r
-
-
-# Labels and Lines available
-
-labs <- gisco_get_countries(
-  spatialtype = "LB",
-  region = "Africa",
-  epsg = "3857"
-)
-
-coast <- gisco_get_countries(
-  spatialtype = "COASTL",
-  epsg = "3857"
-)
-
-# For zooming
-afr_bbox <- st_bbox(labs)
-
-ggplot(coast) +
-  geom_sf(col = "deepskyblue4", linewidth = 3) +
-  geom_sf(data = labs, fill = "springgreen4", col = "darkgoldenrod1", size = 5, shape = 21) +
-  coord_sf(
-    xlim = afr_bbox[c("xmin", "xmax")],
-    ylim = afr_bbox[c("ymin", "ymax")]
+  facet_wrap(~res) +
+  labs(
+    title = "Denmark boundaries at different resolutions",
+    subtitle = "Year: 2024",
+    caption = gisco_attributions()
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-2.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-1.png" alt="Denmark boundaries at different resolutions" width="100%" />
 
-### Labels
-
-An example of a labeled map using **ggplot2**:
-
-``` r
-ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
-
-ggplot(ITA) +
-  geom_sf() +
-  geom_sf_text(aes(label = NAME_LATN)) +
-  theme(axis.title = element_blank())
-```
-
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-labels-1.png" width="100%" />
-
-### Thematic maps
+## Advanced Example: Thematic maps
 
 An example of a thematic map plotted with the **ggplot2** package. The
 information is extracted via the **eurostat** package ([Lahti et al.
@@ -161,19 +125,21 @@ We start by extracting the corresponding geographic data:
 ``` r
 # Get shapes
 nuts3 <- gisco_get_nuts(
-  year = "2021",
-  epsg = "3035",
-  resolution = "10",
-  nuts_level = "3"
+  year = 2021,
+  epsg = 3035,
+  resolution = 10,
+  nuts_level = 3
 )
 
-# Group by NUTS by country and convert to lines
-country_lines <- nuts3 %>%
-  group_by(
-    CNTR_CODE
-  ) %>%
-  summarise(n = n()) %>%
-  st_cast("MULTILINESTRING")
+# Get country lines (NUTS 0 level)
+
+country_lines <- gisco_get_nuts(
+  year = 2021,
+  epsg = 3035,
+  resolution = 10,
+  spatialtype = "BN",
+  nuts_level = 0
+)
 ```
 
 We now download the data from Eurostat:
@@ -181,23 +147,19 @@ We now download the data from Eurostat:
 ``` r
 # Use eurostat
 library(eurostat)
-popdens <- get_eurostat("demo_r_d3dens") %>%
+popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
+#> indexed 0B in  0s, 0B/sindexed 1.00TB in  0s, 395.24TB/s                                                                              
 ```
 
 By last, we merge and manipulate the data for creating the final plot:
 
 ``` r
 # Merge data
-nuts3_sf <- nuts3 %>%
+nuts3_sf <- nuts3 |>
   left_join(popdens, by = "geo")
 
-nuts3_sf <- nuts3 %>%
-  left_join(popdens, by = c("NUTS_ID" = "geo"))
-
-
 # Breaks and labels
-
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
 labs <- prettyNum(br[-1], big.mark = ",")
 
@@ -205,7 +167,7 @@ labs <- prettyNum(br[-1], big.mark = ",")
 labeller_plot <- function(x) {
   ifelse(is.na(x), "No Data", x)
 }
-nuts3_sf <- nuts3_sf %>%
+nuts3_sf <- nuts3_sf |>
   # Cut with labels
   mutate(values_cut = cut(values, br, labels = labs))
 
@@ -264,28 +226,18 @@ ggplot(nuts3_sf) +
   )
 ```
 
-<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-thematic-1.png" width="100%" />
+<img src="https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-thematic-1.png" alt="Population density in 2021" width="100%" />
 
-## A note on caching
+## Caching
 
-Some datasets (as Local Administrative Units - LAU, or high-resolution
-files) may have a size larger than 50MB. You can use **giscoR** to
-create your own local repository at a given local directory passing the
-following function:
+Large datasets (e.g., LAU or high-resolution files) can exceed 50MB.
+Use:
 
 ``` r
 gisco_set_cache_dir("./path/to/location")
 ```
 
-You can also download manually the files (`.geojson` format) and store
-them on your local directory.
-
-## Recommended packages
-
-### API data packages
-
-- **eurostat** ([Lahti et al. 2017](#ref-RJ-2017-019)): This is an API
-  package that provides access to open data from Eurostat.
+Files will be stored locally for faster access.
 
 ## Contribute
 
@@ -346,8 +298,7 @@ A BibTeX entry for LaTeX users is
 ## Disclaimer
 
 This package is in no way officially related to or endorsed by Eurostat.
-
-## References
+The authors are not responsible for any misuse of the data.
 
 <div id="refs" class="references csl-bib-body hanging-indent"
 entry-spacing="0">

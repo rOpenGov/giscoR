@@ -4,12 +4,12 @@
 #
 #
 # # Ports
-# ports2013 <- st_read("./data-raw/PORT_2013_SH/Data/PORT_PT_2013.shp", stringsAsFactors = FALSE) %>%
-#   st_transform(4326) %>%
+# ports2013 <- st_read("./data-raw/PORT_2013_SH/Data/PORT_PT_2013.shp", stringsAsFactors = FALSE) |>
+#   st_transform(4326) |>
 #   st_make_valid()
 #
-# ports2009 <- st_read("./data-raw/PORT_2009_SH/shape/data/PORT_PT_2009.shp", stringsAsFactors = FALSE) %>%
-#   st_transform(4326) %>%
+# ports2009 <- st_read("./data-raw/PORT_2009_SH/shape/data/PORT_PT_2009.shp", stringsAsFactors = FALSE) |>
+#   st_transform(4326) |>
 #   st_make_valid()
 #
 #

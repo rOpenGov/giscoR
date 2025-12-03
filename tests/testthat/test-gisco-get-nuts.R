@@ -1,4 +1,20 @@
-test_that("Offline", {
+test_that("Test offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  options(gisco_test_offline = TRUE)
+  expect_message(
+    n <- gisco_get_nuts(
+      update_cache = TRUE,
+      cache_dir = tempdir(),
+      resolution = 60
+    ),
+    "Offline"
+  )
+  expect_null(n)
+  options(gisco_test_offline = FALSE)
+})
+test_that("Test 404", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -299,103 +315,4 @@ test_that("Extensions", {
 
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)
-})
-
-test_that("Old tests", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-
-  expect_silent(aa <- gisco_get_nuts())
-  # Position
-  expect_identical(rev(names(aa))[1:2], c("geometry", "geo"))
-  expect_identical(aa$geo, aa$NUTS_ID)
-
-  expect_true(sf::st_is_longlat(gisco_get_nuts()))
-  expect_silent(gisco_get_nuts(nuts_level = "0"))
-
-  expect_silent(aa <- gisco_get_nuts(spatialtype = "LB"))
-  expect_identical(rev(names(aa))[1:2], c("geometry", "geo"))
-  expect_true("geo" %in% names(aa))
-  expect_identical(aa$geo, aa$NUTS_ID)
-  expect_silent(gisco_get_nuts(spatialtype = "LB", cache = FALSE))
-
-  expect_silent(aa <- gisco_get_nuts(resolution = "60", nuts_level = "0"))
-  expect_identical(rev(names(aa))[1:2], c("geometry", "geo"))
-  expect_true("geo" %in% names(aa))
-  expect_identical(aa$geo, aa$NUTS_ID)
-  expect_message(
-    gisco_get_nuts(
-      resolution = "60",
-      nuts_level = "0",
-      update_cache = TRUE,
-      verbose = TRUE
-    )
-  )
-  expect_silent(
-    aa <-
-      gisco_get_nuts(
-        resolution = "60",
-        nuts_level = "1",
-        nuts_id = "ES5"
-      )
-  )
-  expect_equal(nrow(aa), 1)
-  expect_identical(rev(names(aa))[1:2], c("geometry", "geo"))
-  expect_true("geo" %in% names(aa))
-  expect_identical(aa$geo, aa$NUTS_ID)
-
-  expect_silent(
-    aa <- gisco_get_nuts(
-      resolution = "60",
-      nuts_id = "ES5",
-      spatialtype = "LB"
-    )
-  )
-  expect_equal(nrow(aa), 1)
-  expect_true("geo" %in% names(aa))
-  expect_identical(aa$geo, aa$NUTS_ID)
-
-  expect_silent(
-    aa <- gisco_get_nuts(
-      resolution = "60",
-      nuts_id = "ES5",
-      spatialtype = "BN"
-    )
-  )
-
-  # On BN no NUTS_ID
-  expect_false("geo" %in% names(aa))
-
-  expect_silent(
-    aa <- gisco_get_nuts(
-      resolution = "60",
-      country = c("ITA", "POL")
-    )
-  )
-
-  expect_true("geo" %in% names(aa))
-  expect_identical(aa$geo, aa$NUTS_ID)
-
-  a <- gisco_get_nuts(resolution = "60", epsg = "3035")
-  b <- gisco_get_nuts(resolution = "60", epsg = "3857")
-  c <- gisco_get_nuts(resolution = "60", epsg = "4326")
-
-  epsg3035 <- sf::st_crs(3035)$epsg
-  epsg3857 <- sf::st_crs(3857)$epsg
-  epsg4326 <- sf::st_crs(4326)$epsg
-
-  expect_equal(epsg3035, sf::st_crs(a)$epsg)
-  expect_equal(epsg3857, sf::st_crs(b)$epsg)
-  expect_equal(epsg4326, sf::st_crs(c)$epsg)
-
-  expect_silent(
-    aa <-
-      gisco_get_nuts(
-        year = 2021,
-        resolution = "60",
-        nuts_level = "0",
-        nuts_id = "ES"
-      )
-  )
-  expect_equal(aa$NUTS_ID, "ES")
 })

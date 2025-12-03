@@ -10,7 +10,7 @@ get_url_db <- function(
   fn,
   db = get_db()
 ) {
-  if (all(!is.null(spatialtype), spatialtype == "LB")) {
+  if (all(!is.null(spatialtype), spatialtype %in% c("LB", "PT"))) {
     resolution <- NULL
   }
 
@@ -266,4 +266,27 @@ get_request_body <- function(url, verbose = TRUE) {
 
   make_msg("success", verbose, "Success")
   resp
+}
+
+#' Allows to use jsonlite in Imports
+#'
+#' The only purpose of this function is to use \CRANpkg{jsonlite} in the
+#' source package code, so it should be included in the Imports file. Otherwise
+#' CRAN would complain as it is not directly used.
+#'
+#' We need to import \CRANpkg{jsonlite} because the package makes heavy use of
+#' it under the hood with [httr2::resp_body_json()], but \CRANpkg{httr2} lists
+#' it on Suggests. So we need to avoid this with this simple trick.
+#'
+#' This function is never used on the package.
+#'
+#' @noRd
+for_import_jsonlite <- function() {
+  # To json on our website
+  url <- "https://ropengov.github.io/giscoR/search.json"
+  resp <- get_request_body(url, verbose = FALSE)
+  txt <- httr2::resp_body_string(resp)
+  local <- jsonlite::parse_json(txt)
+  local <- NULL
+  invisible(local)
 }

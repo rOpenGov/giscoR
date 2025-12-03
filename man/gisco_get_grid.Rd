@@ -55,13 +55,13 @@ grid <- gisco_get_grid(resolution = 20)
 if (!is.null(grid)) {
   library(dplyr)
 
-  grid <- grid \%>\%
+  grid <- grid |>
     mutate(popdens = TOT_P_2021 / 20)
 
   breaks <- c(0, 0.1, 100, 500, 1000, 5000, 10000, Inf)
 
   # Cut groups
-  grid <- grid \%>\%
+  grid <- grid |>
     mutate(popdens_cut = cut(popdens,
       breaks = breaks,
       include.lowest = TRUE

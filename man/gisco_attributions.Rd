@@ -69,7 +69,7 @@ gisco_attributions(lang = "XXX")
 # Get list of codes from countrycodes
 library(dplyr)
 
-countrycode::codelist \%>\%
+countrycode::codelist |>
   select(country.name.en, iso2c)
 }
 \concept{misc}

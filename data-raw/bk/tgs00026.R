@@ -11,7 +11,7 @@ tmelt$time <- as.numeric(as.character(tmelt$time))
 
 library(dplyr)
 
-tgs00026 <- tmelt %>% arrange(time, geo)
+tgs00026 <- tmelt |> arrange(time, geo)
 
 tgs00026 <- as.data.frame(tgs00026)
 

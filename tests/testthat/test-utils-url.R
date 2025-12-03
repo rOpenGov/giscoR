@@ -1,4 +1,4 @@
-test_that("No conexion", {
+test_that("Test offline", {
   skip_on_cran()
   skip_if_gisco_offline()
   options(gisco_test_offline = TRUE)
@@ -26,7 +26,7 @@ test_that("No conexion", {
 
   options(gisco_test_offline = FALSE)
 })
-test_that("Offline", {
+test_that("Test 404", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -216,14 +216,29 @@ test_that("Get urls", {
     )
   )
 
-  # Valid URL
-  library(httr2)
-  resp <- request(url) |>
-    req_perform()
+
+  # Try with label
+  expect_silent(
+    url_lb <- get_url_db(
+      "nuts",
+      "2024",
+      epsg = 4326,
+      ext = "gpkg",
+      nuts_level = "all",
+      spatialtype = "LB",
+      resolution = "60",
+      fn = "gisco_get_communes"
+    )
+  )
+
+  # Valid URL with HEAD
+  req <- httr2::request(url_lb)
+  req <- httr2::req_method(req, "HEAD")
+  resp <- httr2::req_perform(req)
   expect_equal(resp_status(resp), 200)
 })
 
-test_that("No conexion body", {
+test_that("No connection body", {
   skip_on_cran()
   skip_if_gisco_offline()
   options(gisco_test_offline = TRUE)
@@ -285,45 +300,9 @@ test_that("Tests body", {
   expect_null(fend)
 })
 
-
-test_that("Old tests", {
+test_that("Test import jsonlite", {
   skip_on_cran()
   skip_if_gisco_offline()
-
-  expect_error(get_url_db(
-    "urban_audit",
-    year = 2020,
-    spatialtype = "LB",
-    level = "aaa",
-    fn = "a_fun"
-  ))
-
-  expect_message(
-    n <- download_url(
-      "https://github.com/dieghernan/a_fake_thing_here",
-      verbose = FALSE
-    ),
-    "404"
-  )
-
-  expect_null(n)
-  expect_message(
-    dwn <- get_url_db(
-      "urban_audit",
-      year = 2020,
-      spatialtype = "LB",
-      resolution = 20000,
-      ext = "json",
-      fn = "a_fun"
-    )
-  )
-
-  expect_silent(download_url(dwn, update_cache = FALSE, verbose = FALSE))
-
-  expect_message(get_url_db(
-    "urban_audit",
-    year = 2020,
-    spatialtype = "LB",
-    fn = "a_fun"
-  ))
+  expect_silent(p <- for_import_jsonlite())
+  expect_null(for_import_jsonlite())
 })

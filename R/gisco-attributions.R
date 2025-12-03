@@ -66,7 +66,7 @@
 #' # Get list of codes from countrycodes
 #' library(dplyr)
 #'
-#' countrycode::codelist %>%
+#' countrycode::codelist |>
 #'   select(country.name.en, iso2c)
 gisco_attributions <- function(lang = "en", copyright = FALSE) {
   lang <- tolower(lang)

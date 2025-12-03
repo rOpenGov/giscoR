@@ -14,7 +14,7 @@ GISCO API \code{datasets.json}.
 }
 \description{
 Database with the list of files in the GISCO API as of
-2025-12-02.
+2025-12-03.
 }
 \details{
 This database is used to redirect the corresponding functions to the

@@ -1,4 +1,4 @@
-# No conexion
+# Test offline
 
     Code
       fend <- download_url(url, cache_dir = cdir, subdir = "fixme", update_cache = FALSE,
@@ -47,7 +47,7 @@
       * `api_file` = "csv/COMM_BN_01M_2016_4326.csv"
       * `api_entry` = "https://gisco-services.ec.europa.eu/distribution/v2/communes"
 
-# No conexion body
+# No connection body
 
     Code
       fend <- get_request_body(url, verbose = FALSE)
