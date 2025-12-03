@@ -4,11 +4,11 @@
 \encoding{UTF-8}
 \name{gisco_nuts_2024}
 \alias{gisco_nuts_2024}
-\title{All NUTS \code{POLYGON} object}
+\title{NUTS 2024 \code{\link[sf:sf]{sf}} object}
 \format{
-A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
-1,798 rows and
-11 variables:
+A \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
+1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. with
+263 rows and 10 variables:
 \describe{
 \item{\code{NUTS_ID}}{NUTS identifier.}
 \item{\code{LEVL_CODE}}{NUTS level code \verb{(0,1,2,3)}.}
@@ -27,8 +27,8 @@ A \code{POLYGON} data frame (resolution: 1:20million, EPSG:4326) object with
 \href{https://gisco-services.ec.europa.eu/distribution/v2/nuts/gpkg/}{NUTS_RG_20M_2024_4326.gpkg} file.
 }
 \description{
-A \code{\link[sf:sf]{sf}} object including all NUTS levels as provided by GISCO
-(2024 version).
+This dataset represents the regions for levels 0, 1, 2 and 3 of the
+Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
 }
 \details{
 \code{MOUNT_TYPE}: Mountain typology:
@@ -62,20 +62,17 @@ coastline).
 }
 }
 \examples{
-
-data("gisco_nuts")
-head(gisco_nuts)
+data("gisco_nuts_2024")
+head(gisco_nuts_2024)
 
 }
 \seealso{
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
 
-Other dataset: 
-\code{\link{gisco_coastallines}},
-\code{\link{gisco_countries}},
+Other datasets: 
+\code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},
-\code{\link{gisco_db}},
-\code{\link{gisco_nuts}}
+\code{\link{gisco_db}}
 }
-\concept{dataset}
+\concept{datasets}

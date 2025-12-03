@@ -1,8 +1,8 @@
 # For docs
 db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
-  db <- get_db()
+  db <- as.data.frame(get_db())
 
-  df <- db[db$id_giscor == id, field]
+  df <- db[db$id_giscor == id, ]
 
   x <- sort(unique(df[[field]]), decreasing = decreasing)
   x <- x[!is.na(x)]

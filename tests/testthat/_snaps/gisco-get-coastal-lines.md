@@ -11,5 +11,5 @@
     Code
       db_cached <- gisco_get_coastal_lines(verbose = TRUE)
     Message
-      i Loaded from `?giscoR::gisco_coastallines()` dataset. Use `update_cache = TRUE` to re-load from file
+      i Loaded from `?giscoR::gisco_coastal_lines()` dataset. Use `update_cache = TRUE` to re-load from file
 

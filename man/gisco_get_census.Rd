@@ -45,11 +45,13 @@ at the corresponding Census.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
+\donttest{
 library(sf)
 
 pts <- gisco_get_census(spatialtype = "PT")
 
 pts
+}
 \dontshow{\}) # examplesIf}
 }
 \seealso{

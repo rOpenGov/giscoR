@@ -4,10 +4,11 @@
 \encoding{UTF-8}
 \name{gisco_countries_2024}
 \alias{gisco_countries_2024}
-\title{World countries \code{POLYGON} \code{\link[sf:sf]{sf}} object 2024}
+\title{Countries 2024 \code{\link[sf:sf]{sf}} object}
 \format{
-A \code{MULTIPOLYGON} data frame (resolution: 1:20million, EPSG:4326) object
-with 263 rows and variables:
+A \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
+1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. with
+263 rows and 12 variables:
 \describe{
 \item{\code{CNTR_ID}}{Country ID as per Eurostat.}
 \item{\code{CNTR_NAME}}{Official country name on local language.}
@@ -28,8 +29,8 @@ GISCO.}
 \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/gpkg/}{CNTR_RG_20M_2024_4326.gpkg} file.
 }
 \description{
-A \code{\link[sf:sf]{sf}} object including all countries as provided by
-GISCO (2024 version).
+This object contains the administrative boundaries at country level of the
+world.
 }
 \examples{
 
@@ -40,12 +41,10 @@ head(gisco_countries_2024)
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
 
-Other dataset: 
-\code{\link{gisco_coastallines}},
-\code{\link{gisco_countries}},
+Other datasets: 
+\code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},
-\code{\link{gisco_nuts}},
 \code{\link{gisco_nuts_2024}}
 }
-\concept{dataset}
+\concept{datasets}

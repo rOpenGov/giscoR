@@ -53,7 +53,7 @@ identifying the country of the port.
 library(sf)
 
 ports <- gisco_get_ports(2013)
-coast <- giscoR::gisco_coastallines
+coast <- giscoR::gisco_coastal_lines
 
 if (inherits(ports, "sf")) {
   library(ggplot2)

@@ -106,4 +106,5 @@ gisco_get_unit_nuts(unit = "ES111", year = 2016)
 \seealso{
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}, \code{\link[=gisco_get_unit]{gisco_get_unit*}} functions.
 }
+\concept{deprecated functions}
 \keyword{internal}

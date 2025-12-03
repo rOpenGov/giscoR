@@ -91,7 +91,7 @@ ggplot(coast) +
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\link{gisco_coastallines}.
+\link{gisco_coastal_lines}.
 
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 

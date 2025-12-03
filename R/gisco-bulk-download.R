@@ -62,7 +62,7 @@
 #'
 #' @examplesIf gisco_check_access()
 #' tmp <- file.path(tempdir(), "testexample")
-#'
+#' \donttest{
 #' dest_files <- gisco_bulk_download(
 #'   id = "countries", resolution = 60,
 #'   year = 2024, ext = "geojson",
@@ -81,7 +81,7 @@
 #' )
 #'
 #' # Message shows that file is already cached ;)
-#'
+#' }
 #' # Clean
 #' unlink(tmp, force = TRUE)
 gisco_bulk_download <- function(

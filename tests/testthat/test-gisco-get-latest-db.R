@@ -2,7 +2,7 @@ test_that("Test offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  gb <- gisco_get_latest_db(update_cache = TRUE)
+  gb <- gisco_get_latest_db()
 
   options(gisco_test_offline = TRUE)
 

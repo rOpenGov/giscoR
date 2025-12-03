@@ -58,6 +58,8 @@
 #'
 #'
 #' @examplesIf gisco_check_access()
+#' \donttest{
+#'
 #' cities <- gisco_get_urban_audit(year = 2021, level = "CITIES")
 #'
 #' if (!is.null(cities)) {
@@ -66,6 +68,7 @@
 #'   library(ggplot2)
 #'   ggplot(bcn) +
 #'     geom_sf()
+#' }
 #' }
 gisco_get_urban_audit <- function(
   year = 2021,

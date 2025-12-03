@@ -8,10 +8,10 @@
 gisco_attributions(lang = "en", copyright = FALSE)
 }
 \arguments{
-\item{lang}{Language (two-letter ISO code). See \link[countrycode:codelist]{countrycode::codelist}
-and \strong{Details}.}
+\item{lang}{character. Language (two-letter ISO code). See
+\link[countrycode:codelist]{countrycode::codelist} and \strong{Details}.}
 
-\item{copyright}{Boolean \code{TRUE/FALSE}. Whether to display the copyright
+\item{copyright}{logical \code{TRUE/FALSE}. Whether to display the copyright
 notice or not on the console.}
 }
 \value{
@@ -72,4 +72,4 @@ library(dplyr)
 countrycode::codelist \%>\%
   select(country.name.en, iso2c)
 }
-\concept{helper}
+\concept{misc}

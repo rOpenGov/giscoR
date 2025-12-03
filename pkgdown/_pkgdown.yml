@@ -59,6 +59,14 @@ reference:
   desc: >
     Additional functions for downloading GISCO API datasets.
   contents: has_concept("extra")
+- subtitle: <span class="pkg">giscoR</span> database management
+  desc: >
+    Get the current database in use by the package and the corresponding
+    metadata.
+  contents: has_concept("database")
+- subtitle: Misc
+  desc: Other functions
+  contents: has_concept("misc")
 - title: GISCO Address API
   desc: >
     Query the <a href="https://gisco-services.ec.europa.eu/address_api/"
@@ -66,28 +74,21 @@ reference:
     carry out both geocoding and reverse geocoding using a pan-european address
     database.
   contents: has_concept("address_api")
-- title: Misc
-  desc: >
-    These functions return other <a href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link"><span class="pkg">sf</span></a> objects
-  contents:
-    - has_concept("misc")
-    - has_concept("database")
 - title: >
     Cache management
   contents: has_concept("cache utilities")
-- title: Helpers
-  desc: >
-    A collection of helper functions
-  contents: has_concept("helper")
 - title: Datasets
   desc: >
     Datasets included with <a href="https://CRAN.R-project.org/package=giscoR"
-    class="external-link"><span class="pkg">giscoR</span></a>
-  contents: has_concept("dataset")
+    class="external-link"><span class="pkg">giscoR</span></a>.
+  contents:
+    - has_concept("datasets")
 - title: About the package
   contents: giscoR-package
-
+- title: Deprecated functions
+  desc: These functions would be removed in the future.
+  contents:
+    - gisco_get_units
 authors:
   Diego Hernangómez:
     href: https://dieghernan.github.io/

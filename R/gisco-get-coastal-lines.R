@@ -25,7 +25,7 @@
 #'
 #'
 #' @seealso
-#' [gisco_coastallines].
+#' [gisco_coastal_lines].
 #'
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
@@ -73,12 +73,12 @@ gisco_get_coastal_lines <- function(
   # Check if data is already available
   checkdata <- grepl("COAS_RG_20M_2016_4326.gpkg", filename)
   if (all(isFALSE(update_cache), checkdata)) {
-    data_sf <- giscoR::gisco_coastallines
+    data_sf <- giscoR::gisco_coastal_lines
 
     make_msg(
       "info",
       verbose,
-      "Loaded from {.help giscoR::gisco_coastallines} dataset.",
+      "Loaded from {.help giscoR::gisco_coastal_lines} dataset.",
       "Use {.arg update_cache = TRUE} to re-load from file"
     )
 

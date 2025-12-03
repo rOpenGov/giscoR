@@ -13,6 +13,7 @@
 #' @inheritParams gisco_get_unit
 #' @inherit gisco_get_unit source
 #' @inheritSection gisco_get_unit Note
+#' @family deprecated functions
 #' @export
 #'
 #' @seealso

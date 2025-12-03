@@ -21,11 +21,13 @@
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>
 #'
 #' @examplesIf gisco_check_access()
+#' \donttest{
 #' library(sf)
 #'
 #' pts <- gisco_get_census(spatialtype = "PT")
 #'
 #' pts
+#' }
 gisco_get_census <- function(
   year = 2011,
   cache_dir = NULL,

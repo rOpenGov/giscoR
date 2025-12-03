@@ -5,10 +5,6 @@
 #'
 #' @rdname gisco_set_cache_dir
 #'
-#' @return
-#' `gisco_set_cache_dir()` returns an (invisible) character with the path to
-#' your `cache_dir`, but it is mainly called for its side effect.
-#'
 #' @description
 #' This function will store your `cache_dir` path on your local machine and
 #' would load it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
@@ -31,6 +27,9 @@
 #' path to a small configuration file under
 #' `rappdirs::user_config_dir("giscoR", "R")`.
 #'
+#' @return
+#' `gisco_set_cache_dir()` returns an (invisible) character with the path to
+#' your `cache_dir`, but it is mainly called for its side effect.
 #'
 #' @section Caching strategies:
 #'

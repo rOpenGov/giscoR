@@ -102,7 +102,7 @@ in the corresponding function to connect it with the downloaded files (see
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 tmp <- file.path(tempdir(), "testexample")
-
+\donttest{
 dest_files <- gisco_bulk_download(
   id = "countries", resolution = 60,
   year = 2024, ext = "geojson",
@@ -121,7 +121,7 @@ connect <- gisco_get_countries(
 )
 
 # Message shows that file is already cached ;)
-
+}
 # Clean
 unlink(tmp, force = TRUE)
 \dontshow{\}) # examplesIf}

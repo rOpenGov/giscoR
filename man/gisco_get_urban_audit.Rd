@@ -101,6 +101,8 @@ Please check the download and usage provisions on \code{\link[=gisco_attribution
 
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
+\donttest{
+
 cities <- gisco_get_urban_audit(year = 2021, level = "CITIES")
 
 if (!is.null(cities)) {
@@ -109,6 +111,7 @@ if (!is.null(cities)) {
   library(ggplot2)
   ggplot(bcn) +
     geom_sf()
+}
 }
 \dontshow{\}) # examplesIf}
 }

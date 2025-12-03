@@ -1,22 +1,19 @@
 #' Attribution when publishing GISCO data
 #'
-#' @family helper
-#'
 #' @description
 #' Get the legal text to be used along with the data downloaded with this
 #' package.
 #'
+#' @family misc
+#' @encoding UTF-8
 #' @export
 #'
-#' @param lang Language (two-letter ISO code). See [countrycode::codelist]
-#'   and **Details**.
-#'
-#' @param copyright Boolean `TRUE/FALSE`. Whether to display the copyright
+#' @param lang character. Language (two-letter ISO code). See
+#'   [countrycode::codelist] and **Details**.
+#' @param copyright logical `TRUE/FALSE`. Whether to display the copyright
 #'   notice or not on the console.
 #'
 #' @return A string with the attribution to be used.
-#'
-#' @encoding UTF-8
 #'
 #' @details
 #' Current languages supported are:
