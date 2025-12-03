@@ -2,8 +2,127 @@
 
 ## giscoR (development version)
 
-- Improve tests.
-- Results displayed as tibble.
+In this major release, we have completely overhauled the code and test
+suite. The package now uses **httr2** for API requests, and the
+preferred file format for downloading data is now GeoPackage (`"gpkg"`)
+when available, instead of GeoJSON. Additionally, cached files are now
+organized into subfolders based on the data topic, making them easier to
+manage and locate.
+
+These changes imply that previous caches will not be compatible with
+this version of **giscoR** and will need to be re-downloaded.
+
+The package has also been updated for compatibility with **R 4.1** and
+above. Several dependencies have been added or removed to improve
+performance. The package always returns tidy objects (either **tibbles**
+or **sf** objects whose attached data frame is a tibble).
+
+Another major change is that dataset subsetting is now performed during
+reading (see
+[`sf::read_sf()`](https://r-spatial.github.io/sf/reference/st_read.html))
+using GDAL’s query capabilities. This improves function performance and,
+combined with the switch to GeoPackage as the preferred format,
+significantly reduces the size of downloaded files. Additionally, the
+**geojsonsf** package (initially added to improve performance) is no
+longer needed and has been removed as a dependency.
+
+We have added new functions, introduced new arguments to existing
+functions, renamed some functions, and partially deprecated others to
+streamline the user experience. The only function that has been fully
+deprecated is
+[`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md),
+as its functionality has been integrated into other functions. The
+datasets shipped with the package have also been updated to the latest
+available versions.
+
+Most changes will not affect the user experience, but we recommend
+reviewing the documentation at <https://ropengov.github.io/giscoR/> to
+ensure a smooth transition to the new version.
+
+### Major Changes
+
+- Complete code and test overhaul for improved stability and
+  maintainability.
+- API requests now use **httr2** for better performance and reliability.
+- Preferred download format switched to GeoPackage (`"gpkg"`) when
+  available, replacing GeoJSON.
+- Cache structure reorganized into topic-based subfolders for easier
+  management.
+
+> **Note:** Previous caches are not compatible with this version and
+> must be re-downloaded.
+
+#### Compatibility and Performance
+
+- Updated for **R ≥ 4.1**.
+- Dependencies revised: added **cli**, **httr2**, **lifecycle**,
+  **tibble**; removed **geojsonsf**.
+- Functions now return **tidy objects** (tibbles or `sf` objects with
+  tibble data frames).
+- **Subsetting performed on read** using GDAL query via
+  [`sf::read_sf()`](https://r-spatial.github.io/sf/reference/st_read.html),
+  improving speed and reducing file size.
+
+### New functions:
+
+- [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md):
+  Access GISCO Census data.
+- [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md),
+  [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md),
+  [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md):
+  Access individual unit files.
+- [`gisco_get_latest_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_latest_db.md):
+  Retrieve and store the latest `gisco_db` dataset.
+- [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md):
+  Retrieve dataset metadata.
+
+### Renamed Functions
+
+- `gisco_addressapi_*` → `gisco_address_api_*`
+- [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md)
+  →
+  [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md)
+- [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
+  →
+  [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
+
+> Previous names remain as aliases for backward compatibility.
+
+### Arguments
+
+- New `ext` argument for specifying file format (e.g., `"gpkg"`,
+  `"shp"`, `"geojson"`).
+- Default `year` updated to latest available
+  ([\#105](https://github.com/rOpenGov/giscoR/issues/105)).
+
+### Datasets
+
+- `gisco_db`: Updated to latest available data.
+- New `gisco_countries_2024` data added, replacing `gisco_countries`
+  (removed).
+- New `gisco_nuts_2024` data added, replacing `gisco_nuts` (removed).
+- New `gisco_coastal_lines` data added, replacing `gisco_coastallines`
+  (removed).
+
+### Deprecations
+
+- [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
+  fully deprecated; functionality integrated into
+  [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
+  and `gisco_get_unit_*` family.
+- `cache` argument deprecated in heavy-download functions
+  ([`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),
+  [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md)).
+- [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md):
+  `id_giscoR` renamed to `id`.
+
+#### Other Updates
+
+- Added Eurostat as copyright holder in `Authors@R`.
+- Full test suite rewritten.
+- Documentation reviewed and improved.
+- **pkgdown** site reorganized for better navigation.
+- Messages now displayed using **cli**.
 
 ## giscoR 0.6.1
 
