@@ -44,7 +44,7 @@
 <blockquote>
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
 </blockquote>
-<p>Database management has also been improved. Instead of relying on the static <code>gisco_db</code> dataset, the package now stores the database in the cache. This cached database is used for all API calls and can be updated via <code>gisco_get_cached_db(update_cache = TRUE)</code>. In practice, this means that when GISCO publishes a new yearly release, you can access the new updated data simply by refreshing the cached database without waiting for a new version of <strong>giscoR</strong>.</p>
+<p>Database management has also been improved. Instead of relying on the static <code><a href="../reference/gisco_db.html">?gisco_db</a></code> dataset, the package now stores the database in the cache. This cached database is used for all API calls and can be updated via <code>gisco_get_cached_db(update_cache = TRUE)</code>. In practice, this means that when GISCO publishes a new yearly release, you can access the new updated data simply by refreshing the cached database without waiting for a new version of <strong>giscoR</strong>.</p>
 <p>The package now requires <strong>R ≥ 4.1</strong>, and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
 <p>Dataset subsetting is now performed at read time using GDAL’s query capabilities (<code><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">sf::read_sf()</a></code>), improving performance and reducing file size. The <strong>geojsonsf</strong> dependency is no longer required.</p>
 <p>Several new functions and arguments have been added, some functions renamed, and one deprecated. All bundled datasets have been updated to their latest versions.</p>
@@ -102,15 +102,15 @@
 </ul></div>
 <div class="section level3">
 <h3 id="dataset-updates-development-version">Dataset updates<a class="anchor" aria-label="anchor" href="#dataset-updates-development-version"></a></h3>
-<ul><li>Update <code>gisco_db</code> to the newest data.</li>
-<li>Add <code>gisco_countries_2024</code> (replace <code>gisco_countries</code>).</li>
-<li>Add <code>gisco_nuts_2024</code> (replace <code>gisco_nuts</code>).</li>
-<li>Add <code>gisco_coastal_lines</code> (replace <code>gisco_coastallines</code>).</li>
+<ul><li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code> to the newest data.</li>
+<li>Add <code><a href="../reference/gisco_countries_2024.html">?gisco_countries_2024</a></code> (replace <code>gisco_countries</code>).</li>
+<li>Add <code><a href="../reference/gisco_nuts_2024.html">?gisco_nuts_2024</a></code> (replace <code>gisco_nuts</code>).</li>
+<li>Add <code><a href="../reference/gisco_coastal_lines.html">?gisco_coastal_lines</a></code> (replace <code>gisco_coastallines</code>).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="deprecations-development-version">Deprecations<a class="anchor" aria-label="anchor" href="#deprecations-development-version"></a></h3>
 <ul><li>Deprecate <code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code>.
-<ul><li>Functionality is now available through <code><a href="../reference/gisco_get_metadata.html">gisco_get_metadata()</a></code> and the <code>gisco_get_unit_*</code> family.</li>
+<ul><li>Functionality is now available through <code><a href="../reference/gisco_get_metadata.html">gisco_get_metadata()</a></code> and the <code><a href="../reference/gisco_get_unit.html">?gisco_get_unit</a></code> family.</li>
 </ul></li>
 <li>Deprecate <code>cache</code> argument in heavy-download functions (<code><a href="../reference/gisco_get_lau.html">gisco_get_lau()</a></code>, <code><a href="../reference/gisco_get_communes.html">gisco_get_communes()</a></code>).</li>
 <li>In <code><a href="../reference/gisco_bulk_download.html">gisco_bulk_download()</a></code>, rename <code>id_giscoR</code> → <code>id</code>.</li>
@@ -147,7 +147,7 @@
 <ul><li>Add <code><a href="../reference/gisco_get_education.html">gisco_get_education()</a></code>.</li>
 <li>Add support for the GISCO Address API (see <code><a href="../reference/gisco_address_api.html">?gisco_addressapi</a></code>).</li>
 <li>Add <strong>jsonlite</strong> to Imports.</li>
-<li>Update <code>gisco_db</code>.</li>
+<li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code>.</li>
 <li>Update defaults:
 <ul><li>
 <code><a href="../reference/gisco_get_lau.html">gisco_get_lau()</a></code> → <code>”2021”</code>
@@ -202,7 +202,7 @@
 <li>Always download fresh data</li>
 </ul></li>
 <li>Add <code><a href="../reference/gisco_get_postal_codes.html">gisco_get_postalcodes()</a></code>.</li>
-<li>Update <code>gisco_db</code>.</li>
+<li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="giscor-030">giscoR 0.3.0<a class="anchor" aria-label="anchor" href="#giscor-030"></a></h2><p class="text-muted">CRAN release: 2021-09-27</p>
@@ -217,7 +217,7 @@
 <li>Fix <code>cache = FALSE</code> behavior.</li>
 <li>Add new tests.</li>
 <li>Update documentation and examples.</li>
-<li>Refactor <code>gisco_get</code> documentation.</li>
+<li>Refactor <code><a href="../reference/gisco_get_countries.html">gisco_get_countries()</a></code> documentation.</li>
 <li>Add <strong>eurostat</strong> to Suggests.</li>
 <li>Remove <strong>lwgeom</strong>.</li>
 <li>Update internal grid.</li>
@@ -225,7 +225,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.4" id="giscor-024">giscoR 0.2.4<a class="anchor" aria-label="anchor" href="#giscor-024"></a></h2><p class="text-muted">CRAN release: 2021-04-13</p>
-<ul><li>Add <code>eu</code> field to <code>gisco_countrycode</code>.</li>
+<ul><li>Add <code>eu</code> field to <code><a href="../reference/gisco_countrycode.html">?gisco_countrycode</a></code>.</li>
 <li>Fix documentation typos.</li>
 <li>Add vignette.</li>
 <li>Move to <strong>roxygen2</strong>.</li>
@@ -254,7 +254,7 @@
 <li>Reorder arguments in <code><a href="../reference/gisco_get_countries.html">gisco_get()</a></code> functions.</li>
 <li>Rewrite internal utilities.</li>
 <li>Add <code>verbose</code> argument.</li>
-<li>Rewrite <code>gisco_db</code>.</li>
+<li>Rewrite <code><a href="../reference/gisco_db.html">?gisco_db</a></code>.</li>
 <li>Add:
 <ul><li><code><a href="../reference/gisco_bulk_download.html">gisco_bulk_download()</a></code></li>
 <li><code><a href="../reference/gisco_check_access.html">gisco_check_access()</a></code></li>

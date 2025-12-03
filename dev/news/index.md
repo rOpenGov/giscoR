@@ -11,10 +11,12 @@ reorganized into topic-based subfolders for easier management.
 > with this release and must be rebuilt.
 
 Database management has also been improved. Instead of relying on the
-static `gisco_db` dataset, the package now stores the database in the
-cache. This cached database is used for all API calls and can be updated
-via `gisco_get_cached_db(update_cache = TRUE)`. In practice, this means
-that when GISCO publishes a new yearly release, you can access the new
+static
+[`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
+dataset, the package now stores the database in the cache. This cached
+database is used for all API calls and can be updated via
+`gisco_get_cached_db(update_cache = TRUE)`. In practice, this means that
+when GISCO publishes a new yearly release, you can access the new
 updated data simply by refreshing the cached database without waiting
 for a new version of **giscoR**.
 
@@ -84,10 +86,18 @@ We recommend reviewing the updated documentation at
 
 ### Dataset updates
 
-- Update `gisco_db` to the newest data.
-- Add `gisco_countries_2024` (replace `gisco_countries`).
-- Add `gisco_nuts_2024` (replace `gisco_nuts`).
-- Add `gisco_coastal_lines` (replace `gisco_coastallines`).
+- Update
+  [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
+  to the newest data.
+- Add
+  [`?gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md)
+  (replace `gisco_countries`).
+- Add
+  [`?gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
+  (replace `gisco_nuts`).
+- Add
+  [`?gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md)
+  (replace `gisco_coastallines`).
 
 ### Deprecations
 
@@ -95,7 +105,9 @@ We recommend reviewing the updated documentation at
   [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md).
   - Functionality is now available through
     [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
-    and the `gisco_get_unit_*` family.
+    and the
+    [`?gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+    family.
 - Deprecate `cache` argument in heavy-download functions
   ([`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),
   [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md)).
@@ -154,7 +166,8 @@ CRAN release: 2024-05-29
 - Add support for the GISCO Address API (see
   [`?gisco_addressapi`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)).
 - Add **jsonlite** to Imports.
-- Update `gisco_db`.
+- Update
+  [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
 - Update defaults:
   - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md)
     → `”2021”`
@@ -233,7 +246,8 @@ CRAN release: 2021-10-06
   - Always download fresh data
 - Add
   [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md).
-- Update `gisco_db`.
+- Update
+  [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
 
 ## giscoR 0.3.0
 
@@ -249,7 +263,9 @@ CRAN release: 2021-09-27
 - Fix `cache = FALSE` behavior.
 - Add new tests.
 - Update documentation and examples.
-- Refactor `gisco_get` documentation.
+- Refactor
+  [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
+  documentation.
 - Add **eurostat** to Suggests.
 - Remove **lwgeom**.
 - Update internal grid.
@@ -259,7 +275,8 @@ CRAN release: 2021-09-27
 
 CRAN release: 2021-04-13
 
-- Add `eu` field to `gisco_countrycode`.
+- Add `eu` field to
+  [`?gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md).
 - Fix documentation typos.
 - Add vignette.
 - Move to **roxygen2**.
@@ -294,7 +311,8 @@ CRAN release: 2020-11-12
   functions.
 - Rewrite internal utilities.
 - Add `verbose` argument.
-- Rewrite `gisco_db`.
+- Rewrite
+  [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
 - Add:
   - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
   - [`gisco_check_access()`](https://ropengov.github.io/giscoR/dev/reference/gisco_check_access.md)
