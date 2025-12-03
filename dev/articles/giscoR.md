@@ -168,15 +168,15 @@ nuts2 <- gisco_get_nuts(
 # Borders from countries
 borders <- gisco_get_countries(epsg = "3035", year = "2020", resolution = "3")
 
-eu_bord <- borders %>%
+eu_bord <- borders |>
   filter(CNTR_ID %in% nuts2$CNTR_CODE)
 
 # Eurostat data - Disposable income
-pps <- get_eurostat("tgs00026") %>%
+pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2021-01-01")
 
-nuts2_sf <- nuts2 %>%
-  left_join(pps, by = "geo") %>%
+nuts2_sf <- nuts2 |>
+  left_join(pps, by = "geo") |>
   mutate(
     values_th = values / 1000,
     categ = cut(values_th, c(0, 15, 30, 60, 90, 120, Inf))

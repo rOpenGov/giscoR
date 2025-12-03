@@ -120,7 +120,7 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 
-countrycode::codelist %>%
+countrycode::codelist |>
   select(country.name.en, iso2c)
 #> # A tibble: 291 × 2
 #>    country.name.en   iso2c
