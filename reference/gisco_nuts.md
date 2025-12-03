@@ -112,19 +112,30 @@ Other dataset:
 ``` r
 data("gisco_nuts")
 head(gisco_nuts)
-#> Simple feature collection with 6 features and 9 fields
+#> Simple feature collection with 6 features and 10 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: -63.08825 ymin: -21.39077 xmax: 55.83808 ymax: 70.08134
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 6 × 10
-#>   NUTS_ID LEVL_CODE URBN_TYPE CNTR_CODE NAME_LATN           NUTS_NAME MOUNT_TYPE
-#>   <chr>       <dbl>     <dbl> <chr>     <chr>               <chr>          <dbl>
-#> 1 ES              0         0 ES        ESPAÑA              ESPAÑA             0
-#> 2 FI              0         0 FI        SUOMI / FINLAND     SUOMI / …          0
-#> 3 IS              0         0 IS        ÍSLAND              ÍSLAND             0
-#> 4 PT2             1         0 PT        REGIÃO AUTÓNOMA DO… REGIÃO A…          0
-#> 5 FR              0         0 FR        FRANCE              FRANCE             0
-#> 6 HR              0         0 HR        HRVATSKA            HRVATSKA           0
-#> # ℹ 3 more variables: COAST_TYPE <dbl>, geo <chr>, geometry <MULTIPOLYGON [°]>
+#>   NUTS_ID LEVL_CODE URBN_TYPE CNTR_CODE                  NAME_LATN
+#> 1      ES         0         0        ES                     ESPAÑA
+#> 2      FI         0         0        FI            SUOMI / FINLAND
+#> 3      IS         0         0        IS                     ÍSLAND
+#> 4     PT2         1         0        PT REGIÃO AUTÓNOMA DOS AÇORES
+#> 5      FR         0         0        FR                     FRANCE
+#> 6      HR         0         0        HR                   HRVATSKA
+#>                    NUTS_NAME MOUNT_TYPE COAST_TYPE FID geo
+#> 1                     ESPAÑA          0          0  ES  ES
+#> 2            SUOMI / FINLAND          0          0  FI  FI
+#> 3                     ÍSLAND          0          0  IS  IS
+#> 4 REGIÃO AUTÓNOMA DOS AÇORES          0          0 PT2 PT2
+#> 5                     FRANCE          0          0  FR  FR
+#> 6                   HRVATSKA          0          0  HR  HR
+#>                         geometry
+#> 1 MULTIPOLYGON (((4.17069 40....
+#> 2 MULTIPOLYGON (((28.8195 69....
+#> 3 MULTIPOLYGON (((-21.25398 6...
+#> 4 MULTIPOLYGON (((-25.18988 3...
+#> 5 MULTIPOLYGON (((55.32105 -2...
+#> 6 MULTIPOLYGON (((16.37339 46...
 ```

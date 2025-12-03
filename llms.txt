@@ -305,7 +305,7 @@ A BibTeX entry for LaTeX users is
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2025},
-  version = {0.6.1.9000},
+  version = {0.6.1},
   url = {https://ropengov.github.io/giscoR/},
   abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
 }

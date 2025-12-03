@@ -162,17 +162,15 @@ See the docs:
 # Cities in a region
 
 gisco_addressapi_cities(country = "PT", province = "LISBOA")
-#> # A tibble: 9 × 1
-#>   L2                 
-#>   <chr>              
-#> 1 AMADORA            
-#> 2 CASCAIS            
-#> 3 LISBOA             
-#> 4 LOURES             
-#> 5 MAFRA              
-#> 6 ODIVELAS           
-#> 7 OEIRAS             
-#> 8 SINTRA             
+#>                    L2
+#> 1             AMADORA
+#> 2             CASCAIS
+#> 3              LISBOA
+#> 4              LOURES
+#> 5               MAFRA
+#> 6            ODIVELAS
+#> 7              OEIRAS
+#> 8              SINTRA
 #> 9 VILA FRANCA DE XIRA
 
 
@@ -189,21 +187,29 @@ struct
 #> Dimension:     XY
 #> Bounding box:  xmin: 2.145219 ymin: 41.39211 xmax: 2.16427 ymax: 41.39642
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 80 × 14
-#>    LD    TF    L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
-#>    <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
-#>  1 1     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  2 3     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  3 7     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  4 8     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  5 9     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  6 10    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  7 11    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  8 12    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  9 14    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 10 16    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> # ℹ 70 more rows
-#> # ℹ 1 more variable: geometry <POINT [°]>
+#> First 10 features:
+#>    LD                      TF        L2                 L1 L0   PC N0  N1   N2
+#> 1   1 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 2   3 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 3   7 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 4   8 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 5   9 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 6  10 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 7  11 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 8  12 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 9  14 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 10 16 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#>       N3           OL        X        Y                  geometry
+#> 1  ES511 8FH494VW+94H 2.145345 41.39343 POINT (2.145345 41.39343)
+#> 2  ES511 8FH494VW+F38 2.145219 41.39367 POINT (2.145219 41.39367)
+#> 3  ES511 8FH494VW+F63 2.145538 41.39363 POINT (2.145538 41.39363)
+#> 4  ES511 8FH494VW+F9G 2.145954 41.39368 POINT (2.145954 41.39368)
+#> 5  ES511 8FH494VW+G8C 2.145758 41.39381 POINT (2.145758 41.39381)
+#> 6  ES511 8FH494VW+GC8 2.146082 41.39378 POINT (2.146082 41.39378)
+#> 7  ES511 8FH494VW+H9G 2.145942 41.39395 POINT (2.145942 41.39395)
+#> 8  ES511 8FH494VW+GFV 2.146184 41.39386 POINT (2.146184 41.39386)
+#> 9  ES511 8FH494VW+HGF 2.146291 41.39394 POINT (2.146291 41.39394)
+#> 10 ES511 8FH494VW+JH3 2.146419 41.39401 POINT (2.146419 41.39401)
 
 # Reverse geocoding
 reverse <- gisco_addressapi_reverse(x = struct$X[1], y = struct$Y[1])
@@ -214,14 +220,17 @@ reverse
 #> Dimension:     XY
 #> Bounding box:  xmin: 2.145121 ymin: 41.39326 xmax: 2.145538 ymax: 41.39367
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 5 × 14
-#>   LD    TF     L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
-#>   <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
-#> 1 1     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 2 1     CL CA… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 3 3     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 4 2     CL CA… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 5 7     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> # ℹ 1 more variable: geometry <POINT [°]>
+#>   LD                      TF        L2                 L1 L0   PC N0  N1   N2
+#> 1  1 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 2  1               CL CALVET BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 3  3 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 4  2               CL CALVET BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#> 5  7 CL TRAVESSERA DE GRACIA BARCELONA CATALUÑA/CATALUNYA ES 8021 ES ES5 ES51
+#>      N3           OL        X        Y                  geometry
+#> 1 ES511 8FH494VW+94H 2.145345 41.39343 POINT (2.145345 41.39343)
+#> 2 ES511 8FH494VW+833 2.145185 41.39326 POINT (2.145185 41.39326)
+#> 3 ES511 8FH494VW+F38 2.145219 41.39367 POINT (2.145219 41.39367)
+#> 4 ES511 8FH494VW+C2Q 2.145121 41.39359 POINT (2.145121 41.39359)
+#> 5 ES511 8FH494VW+F63 2.145538 41.39363 POINT (2.145538 41.39363)
 # }
 ```

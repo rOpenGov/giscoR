@@ -1,10 +1,5 @@
 # Changelog
 
-## giscoR (development version)
-
-- Improve tests.
-- Results displayed as tibble.
-
 ## giscoR 0.6.1
 
 CRAN release: 2025-01-27

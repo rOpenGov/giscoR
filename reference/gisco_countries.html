@@ -15,7 +15,7 @@ GISCO (2016 version)."><meta property="og:image" content="https://ropengov.githu
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.6.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,20 +93,25 @@ GISCO.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"gisco_countries"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gisco_countries</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 6 features and 4 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 6 features and 5 fields</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: MULTIPOLYGON</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -63.09693 ymin: 17.00297 xmax: 74.88986 ymax: 42.63545</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 5</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   CNTR_ID CNTR_NAME                ISO3_CODE NAME_ENGL                  geometry</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;MULTIPOLYGON [°]&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> AE      الإمارات العربية المتحدة ARE       United A… (((56.26584 25.62472, 56…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> AF      افغانستان-افغانستان      AFG       Afghanis… (((74.7055 37.38216, 74.…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> AG      Antigua and Barbuda      ATG       Antigua … (((-61.80237 17.17129, -…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> AI      Anguilla                 AIA       Anguilla  (((-63.05444 18.17551, -…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> AL      Shqipëria                ALB       Albania   (((19.73314 42.63545, 19…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> AM      Հայաստան                 ARM       Armenia   (((46.45984 39.53191, 46…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   CNTR_ID                CNTR_NAME ISO3_CODE            NAME_ENGL FID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      AE الإمارات العربية المتحدة       ARE United Arab Emirates  AE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      AF      افغانستان-افغانستان       AFG          Afghanistan  AF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      AG      Antigua and Barbuda       ATG  Antigua and Barbuda  AG</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      AI                 Anguilla       AIA             Anguilla  AI</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      AL                Shqipëria       ALB              Albania  AL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6      AM                 Հայաստան       ARM              Armenia  AM</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         geometry</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 MULTIPOLYGON (((56.35462 25...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 MULTIPOLYGON (((74.7055 37....</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 MULTIPOLYGON (((-61.80237 1...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 MULTIPOLYGON (((-63.05444 1...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 MULTIPOLYGON (((19.831 42.4...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 MULTIPOLYGON (((46.45984 39...</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
