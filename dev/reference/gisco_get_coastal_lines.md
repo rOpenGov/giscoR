@@ -93,7 +93,7 @@ Please check the download and usage provisions on
 
 ## See also
 
-[gisco_coastallines](https://ropengov.github.io/giscoR/dev/reference/gisco_coastallines.md).
+[gisco_coastal_lines](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md).
 
 See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)

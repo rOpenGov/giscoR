@@ -13,13 +13,13 @@ gisco_attributions(lang = "en", copyright = FALSE)
 
 - lang:
 
-  Language (two-letter ISO code). See
+  character. Language (two-letter ISO code). See
   [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html)
   and **Details**.
 
 - copyright:
 
-  Boolean `TRUE/FALSE`. Whether to display the copyright notice or not
+  logical `TRUE/FALSE`. Whether to display the copyright notice or not
   on the console.
 
 ## Value

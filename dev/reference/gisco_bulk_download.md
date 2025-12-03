@@ -142,7 +142,7 @@ Additional utils for downloading datasets:
 
 ``` r
 tmp <- file.path(tempdir(), "testexample")
-
+# \donttest{
 dest_files <- gisco_bulk_download(
   id = "countries", resolution = 60,
   year = 2024, ext = "geojson",
@@ -176,11 +176,11 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4248Rz/testexample/countries.
-#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp4248Rz/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpY9fY2b/testexample/countries.
+#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpY9fY2b/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # Message shows that file is already cached ;)
-
+# }
 # Clean
 unlink(tmp, force = TRUE)
 ```

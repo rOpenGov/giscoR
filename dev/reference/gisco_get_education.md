@@ -111,12 +111,31 @@ Other basic services datasets:
 ## Examples
 
 ``` r
+# \donttest{
 edu_BEL <- gisco_get_education(country = "Belgium")
-
-# Plot if downloaded
-if (nrow(edu_BEL) > 3) {
-  library(ggplot2)
-  ggplot(edu_BEL) +
-    geom_sf(shape = 21, size = 0.15)
-}
+edu_BEL
+#> Simple feature collection with 11616 features and 24 fields (with 2 geometries empty)
+#> Geometry type: GEOMETRY
+#> Dimension:     XY
+#> Bounding box:  xmin: 2.585864 ymin: 49.52634 xmax: 6.141682 ymax: 51.4919
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 11,616 × 25
+#>    id     name  site_name   lat   lon street house_number postcode address city 
+#>  * <chr>  <chr> <chr>     <dbl> <dbl> <chr>  <chr>        <chr>    <chr>   <chr>
+#>  1 BE_W0… Acad… NA         50.5  5.63 NA     NA           4140     RUE D'… DOLE…
+#>  2 BE_W0… Ande… NA         50.8  4.31 NA     NA           1070     CHAUSS… ANDE…
+#>  3 BE_W0… Inst… NA         50.8  4.38 NA     NA           1180     CHAUSS… UCCLE
+#>  4 BE_W0… Ecol… NA         50.6  3.76 NA     NA           7801     PLACE … IRCH…
+#>  5 BE_W0… Ecol… NA         50.5  4.33 NA     NA           6183     RUE DE… TRAZ…
+#>  6 BE_W0… Jard… NA         50.8  4.41 NA     NA           1170     RUE DE… WATE…
+#>  7 BE_W0… Ecol… NA         50.5  4.38 NA     NA           6180     RUE DU… COUR…
+#>  8 BE_W0… Ecol… NA         50.5  4.33 NA     NA           6183     PLACE … TRAZ…
+#>  9 BE_W0… Ecol… NA         50.5  4.30 NA     NA           6181     RUE DE… GOUY…
+#> 10 BE_W0… Ecol… NA         50.4  4.53 NA     NA           6240     RUE FE… PIRO…
+#> # ℹ 11,606 more rows
+#> # ℹ 15 more variables: cntr_id <chr>, levels <chr>, max_students <chr>,
+#> #   enrollment <chr>, fields <chr>, facility_type <chr>, public_private <chr>,
+#> #   tel <chr>, email <chr>, url <chr>, ref_date <chr>, pub_date <chr>,
+#> #   geo_qual <chr>, comments <chr>, geometry <POINT [°]>
+# }
 ```

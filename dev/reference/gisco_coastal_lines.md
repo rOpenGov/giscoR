@@ -1,48 +1,34 @@
-# World coastal lines `POLYGON` object
+# Coastal lines 2016 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object as
-provided by GISCO (2016 version).
+This object contains the coastal lines of the world.
 
 ## Format
 
-A `POLYGON` [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-object (resolution: 1:20million, EPSG:4326) with 3 variables:
-
-- COAS_ID:
-
-  Coast ID.
-
-- FID:
-
-  FID.
-
-- geometry:
-
-  geometry field.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
+`POLYGON` geometries, resolution: 1:20 million and
+[EPSG:4326](https://epsg.io/4326).
 
 ## Source
 
-[COAS_RG_20M_2016_4326.geojson](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/)
+[COAS_RG_20M_2016_4326.gpkg](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/)
 file.
 
 ## See also
 
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md)
 
-Other dataset:
-[`gisco_countries`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries.md),
+Other datasets:
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
-[`gisco_nuts`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.md),
 [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
 
 ## Examples
 
 ``` r
 library(sf)
-data("gisco_coastallines")
-gisco_coastallines
+data("gisco_coastal_lines")
+gisco_coastal_lines
 #> Simple feature collection with 2129 features and 1 field
 #> Geometry type: POLYGON
 #> Dimension:     XY

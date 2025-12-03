@@ -1,12 +1,13 @@
-# World countries `POLYGON` [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object 2024
+# Countries 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-including all countries as provided by GISCO (2024 version).
+This object contains the administrative boundaries at country level of
+the world.
 
 ## Format
 
-A `MULTIPOLYGON` data frame (resolution: 1:20million, EPSG:4326) object
-with 263 rows and variables:
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
+`MULTIPOLYGON` geometries, resolution: 1:20 million and
+[EPSG:4326](https://epsg.io/4326). with 263 rows and 12 variables:
 
 - `CNTR_ID`:
 
@@ -65,12 +66,10 @@ file.
 
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
 
-Other dataset:
-[`gisco_coastallines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastallines.md),
-[`gisco_countries`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries.md),
+Other datasets:
+[`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
-[`gisco_nuts`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.md),
 [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
 
 ## Examples

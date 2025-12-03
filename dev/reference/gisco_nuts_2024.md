@@ -1,12 +1,13 @@
-# All NUTS `POLYGON` object
+# NUTS 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-including all NUTS levels as provided by GISCO (2024 version).
+This dataset represents the regions for levels 0, 1, 2 and 3 of the
+Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
 
 ## Format
 
-A `POLYGON` data frame (resolution: 1:20million, EPSG:4326) object with
-1,798 rows and 11 variables:
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
+`MULTIPOLYGON` geometries, resolution: 1:20 million and
+[EPSG:4326](https://epsg.io/4326). with 263 rows and 10 variables:
 
 - `NUTS_ID`:
 
@@ -97,32 +98,30 @@ file.
 
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md)
 
-Other dataset:
-[`gisco_coastallines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastallines.md),
-[`gisco_countries`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries.md),
+Other datasets:
+[`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md),
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
-[`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
-[`gisco_nuts`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.md)
+[`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
 
 ## Examples
 
 ``` r
-data("gisco_nuts")
-head(gisco_nuts)
+data("gisco_nuts_2024")
+head(gisco_nuts_2024)
 #> Simple feature collection with 6 features and 9 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
-#> Bounding box:  xmin: -63.08825 ymin: -21.39077 xmax: 55.83808 ymax: 70.08134
+#> Bounding box:  xmin: 19.30265 ymin: 40.72684 xmax: 20.59774 ymax: 42.63906
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 6 × 10
-#>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN           NUTS_NAME MOUNT_TYPE URBN_TYPE
-#>   <chr>       <int> <chr>     <chr>               <chr>          <int>     <int>
-#> 1 ES              0 ES        ESPAÑA              ESPAÑA             0         0
-#> 2 FI              0 FI        SUOMI / FINLAND     SUOMI / …          0         0
-#> 3 IS              0 IS        ÍSLAND              ÍSLAND             0         0
-#> 4 PT2             1 PT        REGIÃO AUTÓNOMA DO… REGIÃO A…          0         0
-#> 5 FR              0 FR        FRANCE              FRANCE             0         0
-#> 6 HR              0 HR        HRVATSKA            HRVATSKA           0         0
+#>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN NUTS_NAME MOUNT_TYPE URBN_TYPE
+#>   <chr>       <int> <chr>     <chr>     <chr>          <int>     <int>
+#> 1 AL011           3 AL        Dibër     Dibër             NA        NA
+#> 2 AL012           3 AL        Durrës    Durrës            NA        NA
+#> 3 AL013           3 AL        Kukës     Kukës             NA        NA
+#> 4 AL014           3 AL        Lezhë     Lezhë             NA        NA
+#> 5 AL015           3 AL        Shkodër   Shkodër           NA        NA
+#> 6 AL021           3 AL        Elbasan   Elbasan           NA        NA
 #> # ℹ 3 more variables: COAST_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
 ```

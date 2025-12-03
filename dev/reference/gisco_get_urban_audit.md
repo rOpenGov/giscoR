@@ -145,6 +145,8 @@ Other statistical units datasets:
 ## Examples
 
 ``` r
+# \donttest{
+
 cities <- gisco_get_urban_audit(year = 2021, level = "CITIES")
 
 if (!is.null(cities)) {
@@ -154,4 +156,6 @@ if (!is.null(cities)) {
   ggplot(bcn) +
     geom_sf()
 }
+
+# }
 ```

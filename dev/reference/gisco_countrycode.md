@@ -1,71 +1,74 @@
-# Data frame with different country code schemes and world regions
+# Database with different country code schemes and world regions
 
-A data frame containing conversions between different country code
-schemes (Eurostat/ISO2 and 3) as well as geographic regions as provided
-by the World Bank and the UN (M49). This dataset is extracted from
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+containing conversions between different country code schemes
+(Eurostat/ISO2 and 3) as well as geographic regions as provided by the
+World Bank and the UN ([M49
+Standard](https://unstats.un.org/unsd/methodology/m49/)). This database
+has been extracted from the
 [countrycode](https://CRAN.R-project.org/package=countrycode) package.
 
 ## Format
 
 A data frame object with 249 rows and 13 variables:
 
-- ISO3_CODE:
+- `ISO3_CODE`:
 
   Eurostat code of each country.
 
-- CNTR_CODE:
+- `CNTR_CODE`:
 
   ISO 3166-1 alpha-2 code of each country.
 
-- iso2c:
+- `iso2c`:
 
   ISO 3166-1 alpha-3 code of each country.
 
-- iso.name.en:
+- `iso.name.en`:
 
   ISO English short name.
 
-- cldr.short.en:
+- `cldr.short.en`:
 
   English short name as provided by the Unicode Common Locale Data
   Repository.
 
-- continent:
+- `continent`:
 
   As provided by the World Bank.
 
-- un.region.code:
+- `un.region.code`:
 
   Numeric region code UN (M49).
 
-- un.region.name:
+- `un.region.name`:
 
   Region name UN (M49).
 
-- un.regionintermediate.code:
+- `un.regionintermediate.code`:
 
   Numeric intermediate Region.
 
-- un.regionintermediate.name:
+- `un.regionintermediate.name`:
 
   Intermediate Region name UN (M49).
 
-- un.regionsub.code:
+- `un.regionsub.code`:
 
   Numeric sub-region code UN (M49).
 
-- un.regionsub.name:
+- `un.regionsub.name`:
 
   Sub-Region name UN (M49).
 
-- eu:
+- `eu`:
 
   Logical indicating if the country belongs to the European Union.
 
 ## Source
 
 [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html)
-**v1.2.0**.
+**v1.6.1**.
 
 ## World Regions
 
@@ -75,21 +78,16 @@ is assigned to Asia.
 
 ## See also
 
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
-and
-[countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html),
-included in
-[countrycode](https://CRAN.R-project.org/package=countrycode).
+[`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
+[countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html).
 
 See also the [Unicode Common Locale Data
 Repository](https://cldr.unicode.org/translation/displaynames/countryregion-territory-names).
 
-Other dataset:
-[`gisco_coastallines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastallines.md),
-[`gisco_countries`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries.md),
+Other datasets:
+[`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md),
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
-[`gisco_nuts`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.md),
 [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
 
 ## Examples

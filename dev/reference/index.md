@@ -73,6 +73,30 @@ Additional functions for downloading GISCO API datasets.
   [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
   : GISCO API single download
 
+### giscoR database management
+
+Get the current database in use by the package and the corresponding
+metadata.
+
+- [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
+  : Cached GISCO database
+
+- [`gisco_get_latest_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_latest_db.md)
+  :
+
+  Retrieve and update the GISCO database in use by
+  [giscoR](https://CRAN.R-project.org/package=giscoR)
+
+- [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
+  : Get metadata
+
+### Misc
+
+Other functions
+
+- [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md)
+  : Attribution when publishing GISCO data
+
 ## GISCO Address API
 
 Query the [GISCO Addres
@@ -92,14 +116,6 @@ pan-european address database.
   [`gisco_address_api_copyright()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   : GISCO Address API
 
-## Misc
-
-These functions return other
-[sf](https://r-spatial.github.io/sf/reference/sf.html) objects
-
-- [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
-  : Get metadata
-
 ## Cache management
 
 - [`gisco_clear_cache()`](https://ropengov.github.io/giscoR/dev/reference/gisco_clear_cache.md)
@@ -114,50 +130,44 @@ These functions return other
 
   Set your [giscoR](https://CRAN.R-project.org/package=giscoR) cache dir
 
-## Helpers
-
-A collection of helper functions
-
-- [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md)
-  : Attribution when publishing GISCO data
-
 ## Datasets
 
 Datasets included with
-[giscoR](https://CRAN.R-project.org/package=giscoR)
+[giscoR](https://CRAN.R-project.org/package=giscoR).
 
-- [`gisco_coastallines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastallines.md)
+- [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md)
   :
 
-  World coastal lines `POLYGON` object
-
-- [`gisco_countries`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries.md)
-  :
-
-  World countries `POLYGON`
+  Coastal lines 2016
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
 - [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md)
   :
 
-  World countries `POLYGON`
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object 2024
+  Countries 2024
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
 - [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md)
-  : Data frame with different country code schemes and world regions
+  : Database with different country code schemes and world regions
 
-- [`gisco_nuts`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts.md)
-  :
-
-  All NUTS `POLYGON` object
+- [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
+  : Cached GISCO database
 
 - [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
   :
 
-  All NUTS `POLYGON` object
+  NUTS 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+  object
 
 ## About the package
 
 - [`giscoR`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
   : giscoR: Download Map Data from GISCO API - Eurostat
+
+## Deprecated functions
+
+These functions would be removed in the future.
+
+- [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
+  **\[deprecated\]** : Get geospatial units data from GISCO API
