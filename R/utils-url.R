@@ -71,7 +71,7 @@ get_url_db <- function(
       c(
         "No results for {.fn {fn}} with params:",
         val,
-        i = "Check available combinations in {.fn giscoR::gisco_get_latest_db}."
+        i = "Check available combinations in {.fn giscoR::gisco_get_cached_db}."
       )
     )
   }
@@ -135,7 +135,7 @@ download_url <- function(
 
   temp_cache <- file.path(tempdir(), "gisco_api_cache")
   temp_cache <- create_cache_dir(temp_cache)
-  req <- httr2::req_cache(req, temp_cache)
+  req <- httr2::req_cache(req, temp_cache, max_n = 10)
 
   req <- httr2::req_timeout(req, 300)
   req <- httr2::req_retry(req, max_tries = 3)
@@ -216,7 +216,7 @@ get_request_body <- function(url, verbose = TRUE) {
 
   temp_cache <- file.path(tempdir(), "gisco_api_cache")
   temp_cache <- create_cache_dir(temp_cache)
-  req <- httr2::req_cache(req, temp_cache)
+  req <- httr2::req_cache(req, temp_cache, max_n = 10)
 
   req <- httr2::req_timeout(req, 300)
   req <- httr2::req_retry(req, max_tries = 3)

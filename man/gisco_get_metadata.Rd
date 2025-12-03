@@ -39,6 +39,6 @@ cities
 
 Other database utils:
 \code{\link{gisco_db}},
-\code{\link{gisco_get_latest_db}()}
+\code{\link{gisco_get_cached_db}()}
 }
 \concept{database}

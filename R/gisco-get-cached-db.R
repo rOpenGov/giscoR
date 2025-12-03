@@ -1,19 +1,23 @@
 #' Retrieve and update the GISCO database in use by \CRANpkg{giscoR}
 #'
-#' Returns an optionally updates the database with the endpoints of the GISCO
-#' API.
+#' Returns an optionally updates the cached database with the endpoints of the
+#' GISCO API.
 #'
 #' @family database
 #' @export
 #' @inherit gisco_get_metadata return source
 #'
-#' @param update_cache logical. On `TRUE` the local database would be rebuilt
+#' @param update_cache logical. On `TRUE` the cached database would be rebuilt
 #'   with the most updated information of the GISCO API.
 #'
 #' @details
-#' The database in use is stored in the \CRANpkg{giscoR} cache path, see
+#' The cached database is stored in the \CRANpkg{giscoR} cache path, see
 #' [gisco_set_cache_dir()] for details. The cached database would be used
 #' in subsequent **R** sessions.
+#'
+#' On new GISCO data releases, you can access the new updated data simply by
+#' refreshing the cached database without waiting for a new version of
+#' \CRANpkg{giscoR}.
 #'
 #' A static database [gisco_db] is shipped with the package. This database would
 #' be used in case there is any problem on update.
@@ -21,10 +25,10 @@
 #'
 #' @examplesIf gisco_check_access()
 #'
-#' gisco_get_latest_db() |>
+#' gisco_get_cached_db() |>
 #'   dplyr::glimpse()
 #'
-gisco_get_latest_db <- function(update_cache = FALSE) {
+gisco_get_cached_db <- function(update_cache = FALSE) {
   cdir <- create_cache_dir()
   cdir_db <- create_cache_dir(file.path(cdir, "cache_db"))
 
@@ -245,7 +249,7 @@ gisco_get_latest_db <- function(update_cache = FALSE) {
 
 # Get db
 get_db <- function() {
-  db <- gisco_get_latest_db()
+  db <- gisco_get_cached_db()
   if (is.null(db)) {
     db <- giscoR::gisco_db
 
@@ -261,7 +265,7 @@ get_db <- function() {
     cli::cli_alert_warning(
       c(
         "Can't get the latest database from {.url {url_api}}.\n",
-        "Try later with {.fn giscoR::gisco_get_latest_db}",
+        "Try later with {.fn giscoR::gisco_get_cached_db}",
         "option {.arg update_cache = TRUE}"
       )
     )

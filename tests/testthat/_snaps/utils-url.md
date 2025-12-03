@@ -25,7 +25,7 @@
       * `year` = "2016"
       * `epsg` = "1111"
       * `ext` = "csv"
-      i Check available combinations in `giscoR::gisco_get_latest_db()`.
+      i Check available combinations in `giscoR::gisco_get_cached_db()`.
 
 ---
 

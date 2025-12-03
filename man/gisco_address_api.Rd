@@ -3,6 +3,7 @@
 \name{gisco_address_api}
 \alias{gisco_address_api}
 \alias{gisco_address_api_search}
+\alias{gisco_addressapi}
 \alias{gisco_address_api_reverse}
 \alias{gisco_address_api_bbox}
 \alias{gisco_address_api_countries}

@@ -12,10 +12,9 @@ EPSG
 ETRS
 EuroBoundaryMap
 GDAL
-GDAL's
+GDAL’s
 GISCO
 Gb
-GeoJSON
 GeoPackage
 Geolocation
 Huovari
@@ -46,6 +45,7 @@ al
 api
 bezüglich
 cli
+codebase
 codecov
 colorspace
 der
@@ -77,7 +77,6 @@ roxygen
 socio
 specialised
 subfolders
-testthat
 tibble
 tibbles
 tmap

@@ -2,12 +2,12 @@ test_that("Test offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  gb <- gisco_get_latest_db()
+  gb <- gisco_get_cached_db()
 
   options(gisco_test_offline = TRUE)
 
   expect_snapshot(
-    fend <- gisco_get_latest_db(update_cache = TRUE),
+    fend <- gisco_get_cached_db(update_cache = TRUE),
   )
   expect_null(fend)
 
@@ -21,7 +21,7 @@ test_that("Test 404", {
 
   options(gisco_test_404 = TRUE)
   expect_message(
-    n <- gisco_get_latest_db(update_cache = TRUE),
+    n <- gisco_get_cached_db(update_cache = TRUE),
     "Can't access"
   )
   expect_null(n)
@@ -72,7 +72,7 @@ test_that("On CRAN", {
     unlink(cached_db)
   }
   expect_false(file.exists(cached_db))
-  expect_silent(n <- gisco_get_latest_db())
+  expect_silent(n <- gisco_get_cached_db())
   old_db <- gisco_db
   expect_identical(n, old_db)
 
@@ -91,7 +91,7 @@ test_that("Get database", {
   skip_if_gisco_offline()
 
   # Get db
-  new_db <- gisco_get_latest_db(update_cache = TRUE)
+  new_db <- gisco_get_cached_db(update_cache = TRUE)
   expect_s3_class(new_db, "tbl_df")
   expect_snapshot(unique(new_db$id_giscor))
   expect_snapshot(unique(new_db$ext))
@@ -114,8 +114,8 @@ test_that("Test cached database", {
   expect_false(file.exists(cached_db))
 
   # Get db
-  new_db <- gisco_get_latest_db()
+  new_db <- gisco_get_cached_db()
   expect_true(file.exists(cached_db))
-  new_db_cached <- gisco_get_latest_db()
+  new_db_cached <- gisco_get_cached_db()
   expect_identical(new_db, new_db_cached)
 })

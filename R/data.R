@@ -9,7 +9,7 @@
 #' @family database
 #' @encoding UTF-8
 #'
-#' @inherit gisco_get_latest_db source
+#' @inherit gisco_get_cached_db source
 #'
 #' @format
 #' A [tibble][tibble::tbl_df] with
@@ -20,7 +20,7 @@
 #' right API endpoints.
 #'
 #' This version of the database would be used in case there is any problem on
-#' update. Please use [gisco_get_latest_db()] with `update_cache = TRUE` to
+#' update. Please use [gisco_get_cached_db()] with `update_cache = TRUE` to
 #' update the corresponding API endpoints.
 #'
 #' @source GISCO API `datasets.json`.

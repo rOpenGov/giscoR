@@ -21,7 +21,7 @@ This database is used to redirect the corresponding functions to the
 right API endpoints.
 
 This version of the database would be used in case there is any problem on
-update. Please use \code{\link[=gisco_get_latest_db]{gisco_get_latest_db()}} with \code{update_cache = TRUE} to
+update. Please use \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}} with \code{update_cache = TRUE} to
 update the corresponding API endpoints.
 }
 \examples{
@@ -37,7 +37,7 @@ Other datasets:
 \code{\link{gisco_nuts_2024}}
 
 Other database utils:
-\code{\link{gisco_get_latest_db}()},
+\code{\link{gisco_get_cached_db}()},
 \code{\link{gisco_get_metadata}()}
 }
 \concept{database}

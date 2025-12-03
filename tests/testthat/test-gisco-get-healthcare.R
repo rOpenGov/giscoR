@@ -25,7 +25,8 @@ test_that("Healthcare online", {
   expect_message(gisco_get_healthcare(verbose = TRUE))
 
   # No cache
-  expect_silent(n <- gisco_get_healthcare())
-  expect_silent(n2 <- gisco_get_healthcare(cache = FALSE))
-  expect_identical(n, n2)
+  expect_silent(n <- gisco_get_healthcare(country = "LU"))
+  expect_s3_class(n, "sf")
+  expect_s3_class(n, "tbl_df")
+  expect_true(all(n$cntr_id == "LU"))
 })
