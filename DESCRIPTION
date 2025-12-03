@@ -43,7 +43,7 @@ VignetteBuilder:
 Config/Needs/website: ropengov/rogtemplate, ragg, reactable, styler,
     devtools, remotes, geometries, rapidjsonr, sfheaders, jsonify
 Config/testthat/edition: 3
-Config/testthat/parallel: true
+Config/testthat/parallel: false
 Copyright: General Copyright © European Union, 1995 - today. See file
     COPYRIGHTS for specific provisions.
 Encoding: UTF-8
