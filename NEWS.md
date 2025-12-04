@@ -9,7 +9,7 @@ subfolders for easier management.
 > release and must be rebuilt.
 
 Database management has also been improved. Instead of relying on the static
-`gisco_db` dataset, the package now stores the database in the cache. This
+`?gisco_db` dataset, the package now stores the database in the cache. This
 cached database is used for all API calls and can be updated via
 `gisco_get_cached_db(update_cache = TRUE)`. In practice, this means that when
 GISCO publishes a new yearly release, you can access the new updated data simply
@@ -73,10 +73,10 @@ We recommend reviewing the updated documentation at
 
 ## Dataset updates
 
--   Update `gisco_db` to the newest data.
--   Add `gisco_countries_2024` (replace `gisco_countries`).
--   Add `gisco_nuts_2024` (replace `gisco_nuts`).
--   Add `gisco_coastal_lines` (replace `gisco_coastallines`).
+-   Update `?gisco_db` to the newest data.
+-   Add `?gisco_countries_2024` (replace `gisco_countries`).
+-   Add `?g``isco_nuts_2024` (replace `gisco_nuts`).
+-   Add `?g``isco_coastal_lines` (replace `gisco_coastallines`).
 
 > The datasets `gisco_countries`, `gisco_nuts`, and `gisco_coastallines` are no
 > longer available. Any code that accessed them directly (e.g.,
@@ -127,7 +127,7 @@ We recommend reviewing the updated documentation at
 -   Add `gisco_get_education()`.
 -   Add support for the GISCO Address API (see `?gisco_addressapi`).
 -   Add **jsonlite** to Imports.
--   Update `gisco_db`.
+-   Update `?gisco_db`.
 -   Update defaults:
     -   `gisco_get_lau()` → `”2021”`
     -   `gisco_get_urban_audit()` → `”2021”`
@@ -176,7 +176,7 @@ We recommend reviewing the updated documentation at
     -   Only year available: 2013
     -   Always download fresh data
 -   Add `gisco_get_postalcodes()`.
--   Update `gisco_db`.
+-   Update `?gisco_db`.
 
 # giscoR 0.3.0
 
@@ -188,7 +188,7 @@ We recommend reviewing the updated documentation at
 -   Fix `cache = FALSE` behavior.
 -   Add new tests.
 -   Update documentation and examples.
--   Refactor `gisco_get` documentation.
+-   Refactor `?gisco_get` documentation.
 -   Add **eurostat** to Suggests.
 -   Remove **lwgeom**.
 -   Update internal grid.
@@ -196,7 +196,7 @@ We recommend reviewing the updated documentation at
 
 # giscoR 0.2.4
 
--   Add `eu` field to `gisco_countrycode`.
+-   Add `eu` field to `?gisco_countrycode`.
 -   Fix documentation typos.
 -   Add vignette.
 -   Move to **roxygen2**.
@@ -222,10 +222,10 @@ We recommend reviewing the updated documentation at
 
 -   Remove **colorspace**.
 -   Require **R ≥ 3.6.0**.
--   Reorder arguments in `gisco_get()` functions.
+-   Reorder arguments in `?gisco_get` functions.
 -   Rewrite internal utilities.
 -   Add `verbose` argument.
--   Rewrite `gisco_db`.
+-   Rewrite `?gisco_db`.
 -   Add:
     -   `gisco_bulk_download()`
     -   `gisco_check_access()`
