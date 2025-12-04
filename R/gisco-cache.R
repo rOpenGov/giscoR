@@ -348,5 +348,5 @@ migrate_cache <- function(
   }
   unlink(old, force = TRUE, recursive = TRUE)
 
-  return(invisible())
+  invisible()
 }
