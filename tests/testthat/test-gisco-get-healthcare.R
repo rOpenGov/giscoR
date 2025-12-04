@@ -29,4 +29,10 @@ test_that("Healthcare online", {
   expect_s3_class(n, "sf")
   expect_s3_class(n, "tbl_df")
   expect_true(all(n$cntr_id == "LU"))
+
+  # Cache
+  expect_silent(n <- gisco_get_healthcare(country = "LU", cache = FALSE))
+  expect_s3_class(n, "sf")
+  expect_s3_class(n, "tbl_df")
+  expect_true(all(n$cntr_id == "LU"))
 })

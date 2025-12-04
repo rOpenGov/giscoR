@@ -23,7 +23,7 @@ Invisible. This function is called for its side effects.
 data and configuration, specifically:
 \itemize{
 \item Deletes the \CRANpkg{giscoR} config directory
-(\code{rappdirs::user_config_dir("giscoR", "R")}).
+(\code{tools::R_user_dir("giscoR", "config")}).
 \item Deletes the \code{cache_dir} directory.
 \item Deletes the values on stored on \code{Sys.getenv("GISCO_CACHE_DIR")}.
 }
@@ -50,7 +50,7 @@ identical(my_cache, gisco_detect_cache_dir())
 }
 }
 \seealso{
-\code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
+\code{\link[tools:userdir]{tools::R_user_dir()}}
 
 Other cache utilities: 
 \code{\link{gisco_set_cache_dir}()}

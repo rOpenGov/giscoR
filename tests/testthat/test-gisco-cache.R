@@ -35,6 +35,7 @@ test_that("Test cache", {
 })
 
 test_that("Mock restart", {
+  skip_on_cran()
   # Store current value
   getvar <- Sys.getenv("GISCO_CACHE_DIR")
 
@@ -44,11 +45,12 @@ test_that("Mock restart", {
 
   # Careful!
   cache_config <- file.path(
-    rappdirs::user_config_dir("giscoR", "R"),
+    tools::R_user_dir("giscoR", "config"),
     "gisco_cache_dir"
   )
+  tester_has_config_installed <- file.exists(cache_config)
 
-  if (file.exists(cache_config)) {
+  if (tester_has_config_installed) {
     stored_val <- readLines(cache_config)
     gisco_clear_cache(cached_data = FALSE, config = TRUE)
     expect_false(file.exists(cache_config))
@@ -78,8 +80,78 @@ test_that("Mock restart", {
   expect_identical(muted, created)
   expect_identical(muted, muted2)
   expect_false(Sys.getenv("GISCO_CACHE_DIR") == "")
-  expect_identical(muted, getvar)
 
   # Restore cache
+  if (tester_has_config_installed) {
+    gisco_set_cache_dir(
+      stored_val,
+      install = TRUE,
+      overwrite = TRUE,
+      verbose = FALSE
+    )
+  }
+
+  # Session value (may differ from current)
+  gisco_set_cache_dir(getvar, install = FALSE)
+
   Sys.setenv("GISCO_CACHE_DIR" = getvar)
+})
+
+
+test_that("Mock migration", {
+  skip_on_cran()
+
+  # Store current value
+  getvar <- Sys.getenv("GISCO_CACHE_DIR")
+  # New empty value
+  Sys.unsetenv("GISCO_CACHE_DIR")
+  expect_identical(Sys.getenv("GISCO_CACHE_DIR"), "")
+
+  # Delete now cache files
+  old <- rappdirs::user_config_dir("giscoR", "R")
+  new <- tools::R_user_dir("giscoR", "config")
+  fname <- "gisco_cache_dir"
+
+  old_fname <- file.path(old, fname)
+  new_fname <- file.path(new, fname)
+  tester_has_config_installed <- file.exists(new_fname)
+
+  unlink(old_fname)
+  unlink(new_fname)
+
+  expect_false(file.exists(old_fname))
+  expect_false(file.exists(new_fname))
+
+  # Create an old cache config
+  nnn <- create_cache_dir(old)
+  writeLines(tempdir(), old_fname)
+  expect_true(file.exists(old_fname))
+
+  # On detect we should see a message
+  expect_snapshot(detected <- detect_cache_dir_muted())
+  # And never again
+  expect_silent(detected2 <- detect_cache_dir_muted())
+  expect_identical(detected, detected2)
+  expect_identical(detected, tempdir())
+  expect_identical(Sys.getenv("GISCO_CACHE_DIR"), detected)
+
+  expect_false(file.exists(old_fname))
+  expect_true(file.exists(new_fname))
+
+  # OK, now re-configure the cache
+  if (tester_has_config_installed) {
+    gisco_set_cache_dir(
+      getvar,
+      install = TRUE,
+      overwrite = TRUE,
+      verbose = FALSE
+    )
+  } else {
+    gisco_set_cache_dir(getvar, install = FALSE, verbose = FALSE)
+  }
+
+  after_test <- detect_cache_dir_muted()
+
+  expect_identical(Sys.getenv("GISCO_CACHE_DIR"), getvar)
+  expect_identical(after_test, getvar)
 })

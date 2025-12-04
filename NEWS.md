@@ -16,6 +16,12 @@ GISCO publishes a new yearly release, you can access the new updated data simply
 by refreshing the cached database without waiting for a new version of
 **giscoR**.
 
+We have transitioned from `rappdirs::user_config_dir()` to `tools::R_user_dir()`
+for managing your persistent cache directory. If you are a heavy **giscoR** user
+and already have a cache directory in place, you’ll receive a one-time friendly
+message informing you about this migration. Consider it a warm welcome to
+**giscoR** 1.0.0 😉.
+
 The package now requires **R ≥ 4.1**, and dependency updates improve both
 performance and maintainability. All functions return tidy objects (tibbles or
 `sf` objects with tibble data).

@@ -1,7 +1,7 @@
 #' Set your \CRANpkg{giscoR} cache dir
 #'
 #' @family cache utilities
-#' @seealso [rappdirs::user_config_dir()]
+#' @seealso [tools::R_user_dir()]
 #'
 #' @rdname gisco_set_cache_dir
 #'
@@ -25,7 +25,7 @@
 #' session ends). To persist a cache across **R** sessions, use
 #' `gisco_set_cache_dir(cache_dir, install = TRUE)` which writes the chosen
 #' path to a small configuration file under
-#' `rappdirs::user_config_dir("giscoR", "R")`.
+#' `tools::R_user_dir("giscoR", "config")`.
 #'
 #' @return
 #' `gisco_set_cache_dir()` returns an (invisible) character with the path to
@@ -55,6 +55,14 @@
 #'  `cache_dir`. Use the option `verbose = TRUE` for debugging the API query
 #'  and [gisco_detect_cache_dir()] to identify your cached path.
 #'
+#' @note
+#'
+#' In \CRANpkg{giscoR} >= 1.0.0 the location of the configuration file has
+#' moved from `rappdirs::user_config_dir("giscoR", "R")` to
+#' `tools::R_user_dir("giscoR", "config")`. We have implemented a functionality
+#' that would migrate previous configuration files from one location to another
+#' with a message. This message would appear only once informing of the
+#' migration.
 #'
 #' @examples
 #'
@@ -113,7 +121,7 @@ gisco_set_cache_dir <- function(
   # nocov start
 
   if (install) {
-    config_dir <- rappdirs::user_config_dir("giscoR", "R")
+    config_dir <- tools::R_user_dir("giscoR", "config")
     # Create cache dir if not presente
     if (!dir.exists(config_dir)) {
       dir.create(config_dir, recursive = TRUE)
@@ -174,7 +182,7 @@ gisco_detect_cache_dir <- function() {
 #' data and configuration, specifically:
 #'
 #' * Deletes the \CRANpkg{giscoR} config directory
-#'   (`rappdirs::user_config_dir("giscoR", "R")`).
+#'   (`tools::R_user_dir("giscoR", "config")`).
 #' * Deletes the `cache_dir` directory.
 #' * Deletes the values on stored on `Sys.getenv("GISCO_CACHE_DIR")`.
 #'
@@ -184,7 +192,7 @@ gisco_detect_cache_dir <- function() {
 #'   `cache_dir` and all its content.
 #' @inheritParams gisco_set_cache_dir
 #'
-#' @seealso [rappdirs::user_config_dir()]
+#' @seealso [tools::R_user_dir()]
 #'
 #' @details
 #' This is an overkill function that is intended to reset your status
@@ -212,7 +220,9 @@ gisco_clear_cache <- function(
   cached_data = TRUE,
   verbose = FALSE
 ) {
-  config_dir <- rappdirs::user_config_dir("giscoR", "R")
+  migrate_cache()
+
+  config_dir <- tools::R_user_dir("giscoR", "config")
   data_dir <- detect_cache_dir_muted()
 
   # nocov start
@@ -241,13 +251,15 @@ gisco_clear_cache <- function(
 
 # Internal funs
 detect_cache_dir_muted <- function() {
+  migrate_cache()
+
   # Try from getenv
   getvar <- Sys.getenv("GISCO_CACHE_DIR")
 
   if (is.null(getvar) || is.na(getvar) || getvar == "") {
     # Not set - tries to retrieve from cache
     cache_config <- file.path(
-      rappdirs::user_config_dir("giscoR", "R"),
+      tools::R_user_dir("giscoR", "config"),
       "gisco_cache_dir"
     )
 
@@ -298,4 +310,43 @@ create_cache_dir <- function(cache_dir = NULL) {
     dir.create(cache_dir, recursive = TRUE)
   }
   cache_dir
+}
+
+#' Migrate cache config from rappdirs to tools
+#'
+#' One-time function for giscoR >= 1.0.0
+#' @param old old cache config folder
+#' @param new new cache config folder
+#'
+#' @noRd
+migrate_cache <- function(
+  old = rappdirs::user_config_dir("giscoR", "R"),
+  new = tools::R_user_dir("giscoR", "config")
+) {
+  fname <- "gisco_cache_dir"
+
+  old_fname <- file.path(old, fname)
+  new_fname <- file.path(new, fname)
+
+  if (file.exists(new_fname)) {
+    unlink(old, force = TRUE, recursive = TRUE)
+    return(invisible())
+  }
+
+  if (file.exists(old_fname)) {
+    cache_dir <- readLines(old_fname)
+    gisco_set_cache_dir(cache_dir, install = TRUE, verbose = FALSE)
+    cli::cli_alert_success(
+      c(
+        "{.pkg giscoR} >= 1.0.0: Cache configuration migrated. ",
+        "See {.strong Note} in {.fn giscoR::gisco_set_cache_dir} for details."
+      )
+    )
+    cli::cli_alert_info(
+      "This is a one-time message, it won't be displayed in the future."
+    )
+  }
+  unlink(old, force = TRUE, recursive = TRUE)
+
+  return(invisible())
 }

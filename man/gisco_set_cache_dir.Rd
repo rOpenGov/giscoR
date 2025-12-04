@@ -45,7 +45,15 @@ By default, when no cache \code{cache_dir} is set the package uses a folder insi
 session ends). To persist a cache across \strong{R} sessions, use
 \code{gisco_set_cache_dir(cache_dir, install = TRUE)} which writes the chosen
 path to a small configuration file under
-\code{rappdirs::user_config_dir("giscoR", "R")}.
+\code{tools::R_user_dir("giscoR", "config")}.
+}
+\note{
+In \CRANpkg{giscoR} >= 1.0.0 the location of the configuration file has
+moved from \code{rappdirs::user_config_dir("giscoR", "R")} to
+\code{tools::R_user_dir("giscoR", "config")}. We have implemented a functionality
+that would migrate previous configuration files from one location to another
+with a message. This message would appear only once informing of the
+migration.
 }
 \section{Caching strategies}{
 
@@ -96,7 +104,7 @@ gisco_detect_cache_dir()
 
 }
 \seealso{
-\code{\link[rappdirs:user_data_dir]{rappdirs::user_config_dir()}}
+\code{\link[tools:userdir]{tools::R_user_dir()}}
 
 Other cache utilities: 
 \code{\link{gisco_clear_cache}()}

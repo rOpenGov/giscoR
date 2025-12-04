@@ -51,12 +51,16 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   get_db_data <- function(entry_point) {
     url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/"
 
+    # Create a folder for caching httr2 requests
+    cache_httr2 <- tools::R_user_dir("giscoR", "cache")
+    cache_httr2 <- create_cache_dir(cache_httr2)
+
     # Compose url
     req <- httr2::request(url_api)
     req <- httr2::req_url_path_append(req, entry_point)
     api_entry <- httr2::req_get_url(req)
     req <- httr2::req_url_path_append(req, "datasets.json")
-    req <- httr2::req_cache(req, tempdir())
+    req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2)
     req <- httr2::req_error(req, is_error = function(x) {
       FALSE
     })
@@ -88,10 +92,14 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
     iter <- seq_along(master)
 
     all_data <- lapply(iter, function(i) {
+      # Create a folder for caching httr2 requests
+      cache_httr2 <- tools::R_user_dir("giscoR", "cache")
+      cache_httr2 <- create_cache_dir(cache_httr2)
+
       req <- httr2::request(url_api)
       req <- httr2::req_url_path_append(req, entry_point)
       req <- httr2::req_url_path_append(req, master[[i]]$files)
-      req <- httr2::req_cache(req, tempdir())
+      req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2)
       req <- httr2::req_error(req, is_error = function(x) {
         FALSE
       })
