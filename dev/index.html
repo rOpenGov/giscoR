@@ -83,12 +83,12 @@ some lightweight datasets ready to use without downloading.
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><a href="https://ropengov.github.io/giscoR//"><strong>giscoR</strong></a> is an <strong>R</strong> package that provides a simple interface to <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO</a> data from Eurostat. It allows you to download and work with global and European geospatial datasets -such as country boundaries, NUTS regions, coastlines, and labels- directly in <strong>R</strong>.</p>
+<p><a href="https://ropengov.github.io/giscoR//"><strong>giscoR</strong></a> is an <strong>R</strong> package that provides a simple interface to <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO</a> data from Eurostat. It allows you to download and work with global and European geospatial datasets — such as country boundaries, NUTS regions, coastlines, and labels — directly in <strong>R</strong>.</p>
 <div class="section level2">
 <h2 id="key-features">Key features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h2>
 <ul>
-<li>Retrieve <strong>GISCO shapefiles</strong> for countries, regions, and administrative units.</li>
+<li>Retrieve <strong>GISCO files</strong> for countries, regions, and administrative units.</li>
 <li>Access data at multiple resolutions: <code>60M</code>, <code>20M</code>, <code>10M</code>, <code>03M</code>, <code>01M</code>.</li>
 <li>Choose from three projections: <strong>EPSG 4326</strong>, <strong>3035</strong>, or <strong>3857</strong>.</li>
 <li>Works seamlessly with <strong>sf</strong> objects for spatial analysis.</li>
@@ -161,10 +161,15 @@ some lightweight datasets ready to use without downloading.
 <div class="section level2">
 <h2 id="advanced-example-thematic-maps">Advanced Example: Thematic maps<a class="anchor" aria-label="anchor" href="#advanced-example-thematic-maps"></a>
 </h2>
-<p>An example of a thematic map plotted with the <strong>ggplot2</strong> package. The information is extracted via the <strong>eurostat</strong> package (<a href="#ref-RJ-2017-019">Lahti et al. 2017</a>). We would follow the fantastic approach presented by <a href="https://milospopovic.net/" class="external-link">Milos Popovic</a> on <a href="https://milospopovic.net/how-to-make-choropleth-map-in-r/" class="external-link">this post</a>:</p>
+<p>This example shows a thematic map created with the <strong>ggplot2</strong> package. The data are obtained via the <strong>eurostat</strong> package. This follows the approach presented by <a href="https://milospopovic.net/" class="external-link">Milos Popovic</a> in <a href="https://milospopovic.net/how-to-make-choropleth-map-in-r/" class="external-link">this post</a>.</p>
 <p>We start by extracting the corresponding geographic data:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Get shapes</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/eurostat/" class="external-link">eurostat</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Get sf objects</span></span>
 <span><span class="va">nuts3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get_nuts.html">gisco_get_nuts</a></span><span class="op">(</span></span>
 <span>  year <span class="op">=</span> <span class="fl">2021</span>,</span>
 <span>  epsg <span class="op">=</span> <span class="fl">3035</span>,</span>
@@ -184,10 +189,9 @@ some lightweight datasets ready to use without downloading.
 <p>We now download the data from Eurostat:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Use eurostat</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/eurostat/" class="external-link">eurostat</a></span><span class="op">)</span></span>
 <span><span class="va">popdens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span><span class="st">"demo_r_d3dens"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TIME_PERIOD</span> <span class="op">==</span> <span class="st">"2021-01-01"</span><span class="op">)</span></span></code></pre></div>
-<p>By last, we merge and manipulate the data for creating the final plot:</p>
+<p>Finally, we merge and manipulate the data to create the final plot:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Merge data</span></span>
 <span><span class="va">nuts3_sf</span> <span class="op">&lt;-</span> <span class="va">nuts3</span> <span class="op">|&gt;</span></span>
@@ -197,7 +201,7 @@ some lightweight datasets ready to use without downloading.
 <span><span class="va">br</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">25</span>, <span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">200</span>, <span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2500</span>, <span class="fl">5000</span>, <span class="fl">10000</span>, <span class="fl">30000</span><span class="op">)</span></span>
 <span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/formatc.html" class="external-link">prettyNum</a></span><span class="op">(</span><span class="va">br</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>, big.mark <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Label function to be used in the plot, mainly for NAs</span></span>
+<span><span class="co"># Label function used in the plot, mainly for NAs</span></span>
 <span><span class="va">labeller_plot</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"No Data"</span>, <span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -272,7 +276,7 @@ some lightweight datasets ready to use without downloading.
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
 </h2>
 <p>Check the GitHub page for <a href="https://github.com/rOpenGov/giscoR/" class="external-link">source code</a>.</p>
-<p>Contributions are very welcome:</p>
+<p>Contributions are welcome:</p>
 <ul>
 <li>
 <a href="https://github.com/rOpenGov/giscoR/issues" class="external-link">Use issue tracker</a> for feedback and bug reports.</li>
@@ -297,29 +301,17 @@ some lightweight datasets ready to use without downloading.
 <span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="copyright-notice">Copyright notice<a class="anchor" aria-label="anchor" href="#copyright-notice"></a>
+<h2 id="general-copyright">General copyright<a class="anchor" aria-label="anchor" href="#general-copyright"></a>
 </h2>
 <blockquote>
-<p>When data downloaded from this page is used in any printed or electronic publication, in addition to any other provisions applicable to the whole Eurostat website, data source will have to be acknowledged in the legend of the map and in the introductory page of the publication with the following copyright notice:</p>
-<ul>
-<li>EN: © EuroGeographics for the administrative boundaries.</li>
-<li>FR: © EuroGeographics pour les limites administratives.</li>
-<li>DE: © EuroGeographics bezüglich der Verwaltungsgrenzen.</li>
-</ul>
-<p>For publications in languages other than English, French or German, the translation of the copyright notice in the language of the publication shall be used.</p>
-<p>If you intend to use the data commercially, please contact <a href="https://eurogeographics.org/maps-for-europe/licensing/" class="external-link">EuroGeographics</a> for information regarding their licence agreements.</p>
-<p><em>From <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">GISCO Web</a></em></p>
+<p><a href="https://ec.europa.eu/eurostat/web/main/help/copyright-notice" class="external-link">Eurostat’s general copyright notice and licence policy</a> applies. Moreover, there are specific rules that apply to some of the following datasets available for downloading. The download and use of these data are subject to these rules being accepted. See our <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units" class="external-link">administrative units</a> and <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">statistical units</a> for more details.</p>
+<p>Source: <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link uri">https://ec.europa.eu/eurostat/web/gisco/geodata</a></p>
 </blockquote>
 </div>
 <div class="section level2">
 <h2 id="disclaimer">Disclaimer<a class="anchor" aria-label="anchor" href="#disclaimer"></a>
 </h2>
-<p>This package is in no way officially related to or endorsed by Eurostat. The authors are not responsible for any misuse of the data.</p>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-RJ-2017-019" class="csl-entry">
-Lahti, Leo, Janne Huovari, Markus Kainu, and Przemysław Biecek. 2017. “<span class="nocase">Retrieval and Analysis of Eurostat Open Data with the eurostat Package</span>.” <em>The R Journal</em> 9 (1): 385–92. <a href="https://doi.org/10.32614/RJ-2017-019" class="external-link uri">https://doi.org/10.32614/RJ-2017-019</a>.
-</div>
-</div>
+<p>This package is neither affiliated with nor endorsed by Eurostat. The authors are not responsible for any misuse of the data.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -366,7 +358,7 @@ Lahti, Leo, Janne Huovari, Markus Kainu, and Przemysław Biecek. 2017. “<span 
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://ropengov.org/" class="external-link"><img src="https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg" alt="rOG-badge"></a></li>
+<li><a href="https://ropengov.org/" class="external-link"><img src="https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg" alt="rOpenGov package"></a></li>
 <li><a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><img src="https://www.r-pkg.org/badges/version/giscoR" alt="CRAN status"></a></li>
 <li><a href="https://cran.r-project.org/web/checks/check_results_giscoR.html" class="external-link"><img src="https://badges.cranchecks.info/worst/giscoR.svg" alt="CRAN results"></a></li>
 <li><a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/giscoR" alt="Downloads"></a></li>

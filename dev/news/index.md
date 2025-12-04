@@ -67,7 +67,9 @@ We recommend reviewing the updated documentation at
 
 ### Renamed functions
 
-- `gisco_addressapi_*` → `gisco_address_api_*`
+- [`?gisco_addressapi`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
+  →
+  [`?gisco_address_api`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
 - [`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md)
   →
   [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md)
@@ -92,12 +94,17 @@ We recommend reviewing the updated documentation at
 - Add
   [`?gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md)
   (replace `gisco_countries`).
-- Add
-  [`?gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
-  (replace `gisco_nuts`).
-- Add
-  [`?gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md)
-  (replace `gisco_coastallines`).
+- Add ``` ?g``isco_nuts_2024 ``` (replace `gisco_nuts`).
+- Add ``` ?g``isco_coastal_lines ``` (replace `gisco_coastallines`).
+
+> The datasets `gisco_countries`, `gisco_nuts`, and `gisco_coastallines`
+> are no longer available. Any code that accessed them directly (e.g.,
+> `giscoR::gisco_countries`) will now fail.  
+>
+> Please use the updated datasets or, preferably, retrieve them via the
+> corresponding functions such as
+> [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
+> with default parameters.
 
 ### Deprecations
 
@@ -264,7 +271,7 @@ CRAN release: 2021-09-27
 - Add new tests.
 - Update documentation and examples.
 - Refactor
-  [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
+  [`?gisco_get`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
   documentation.
 - Add **eurostat** to Suggests.
 - Remove **lwgeom**.
@@ -307,7 +314,7 @@ CRAN release: 2020-11-12
 - Remove **colorspace**.
 - Require **R ≥ 3.6.0**.
 - Reorder arguments in
-  [`gisco_get()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
+  [`?gisco_get`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
   functions.
 - Rewrite internal utilities.
 - Add `verbose` argument.

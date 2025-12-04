@@ -7,8 +7,8 @@ This function is deprecated. Use:
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
   (equivalent to `mode = "df"`).
 
-- [`gisco_get_unit*`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-  functions (equivalent to `mode = "sf"`)
+- [`?gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)functions
+  (equivalent to `mode = "sf"`)
 
 ## Usage
 
@@ -124,7 +124,7 @@ Please check the download and usage provisions on
 ## See also
 
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md),
-[`gisco_get_unit*`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+[`?gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
 functions.
 
 ## Examples

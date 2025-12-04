@@ -83,7 +83,7 @@
 <div class="section level3">
 <h3 id="renamed-functions-development-version">Renamed functions<a class="anchor" aria-label="anchor" href="#renamed-functions-development-version"></a></h3>
 <ul><li>
-<code>gisco_addressapi_*</code> → <code>gisco_address_api_*</code>
+<code><a href="../reference/gisco_address_api.html">?gisco_addressapi</a></code> → <code><a href="../reference/gisco_address_api.html">?gisco_address_api</a></code>
 </li>
 <li>
 <code><a href="../reference/gisco_get_coastal_lines.html">gisco_get_coastallines()</a></code> → <code><a href="../reference/gisco_get_coastal_lines.html">gisco_get_coastal_lines()</a></code>
@@ -104,9 +104,13 @@
 <h3 id="dataset-updates-development-version">Dataset updates<a class="anchor" aria-label="anchor" href="#dataset-updates-development-version"></a></h3>
 <ul><li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code> to the newest data.</li>
 <li>Add <code><a href="../reference/gisco_countries_2024.html">?gisco_countries_2024</a></code> (replace <code>gisco_countries</code>).</li>
-<li>Add <code><a href="../reference/gisco_nuts_2024.html">?gisco_nuts_2024</a></code> (replace <code>gisco_nuts</code>).</li>
-<li>Add <code><a href="../reference/gisco_coastal_lines.html">?gisco_coastal_lines</a></code> (replace <code>gisco_coastallines</code>).</li>
-</ul></div>
+<li>Add <code>?g``isco_nuts_2024</code> (replace <code>gisco_nuts</code>).</li>
+<li>Add <code>?g``isco_coastal_lines</code> (replace <code>gisco_coastallines</code>).</li>
+</ul><blockquote>
+<p>The datasets <code>gisco_countries</code>, <code>gisco_nuts</code>, and <code>gisco_coastallines</code> are no longer available. Any code that accessed them directly (e.g., <code>giscoR::gisco_countries</code>) will now fail.<br></p>
+<p>Please use the updated datasets or, preferably, retrieve them via the corresponding functions such as <code><a href="../reference/gisco_get_countries.html">gisco_get_countries()</a></code> with default parameters.</p>
+</blockquote>
+</div>
 <div class="section level3">
 <h3 id="deprecations-development-version">Deprecations<a class="anchor" aria-label="anchor" href="#deprecations-development-version"></a></h3>
 <ul><li>Deprecate <code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code>.
@@ -217,7 +221,7 @@
 <li>Fix <code>cache = FALSE</code> behavior.</li>
 <li>Add new tests.</li>
 <li>Update documentation and examples.</li>
-<li>Refactor <code><a href="../reference/gisco_get_countries.html">gisco_get_countries()</a></code> documentation.</li>
+<li>Refactor <code><a href="../reference/gisco_get_countries.html">?gisco_get</a></code> documentation.</li>
 <li>Add <strong>eurostat</strong> to Suggests.</li>
 <li>Remove <strong>lwgeom</strong>.</li>
 <li>Update internal grid.</li>
@@ -251,7 +255,7 @@
 <h2 class="pkg-version" data-toc-text="0.2.0" id="giscor-020">giscoR 0.2.0<a class="anchor" aria-label="anchor" href="#giscor-020"></a></h2><p class="text-muted">CRAN release: 2020-11-12</p>
 <ul><li>Remove <strong>colorspace</strong>.</li>
 <li>Require <strong>R ≥ 3.6.0</strong>.</li>
-<li>Reorder arguments in <code><a href="../reference/gisco_get_countries.html">gisco_get()</a></code> functions.</li>
+<li>Reorder arguments in <code><a href="../reference/gisco_get_countries.html">?gisco_get</a></code> functions.</li>
 <li>Rewrite internal utilities.</li>
 <li>Add <code>verbose</code> argument.</li>
 <li>Rewrite <code><a href="../reference/gisco_db.html">?gisco_db</a></code>.</li>

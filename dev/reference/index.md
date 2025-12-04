@@ -99,7 +99,7 @@ metadata.
 Other functions
 
 - [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md)
-  : Attribution when publishing GISCO data
+  : Attribution for administrative and statistical GISCO data
 
 ## GISCO Address API
 

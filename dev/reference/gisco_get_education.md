@@ -112,30 +112,34 @@ Other basic services datasets:
 
 ``` r
 # \donttest{
-edu_BEL <- gisco_get_education(country = "Belgium")
-edu_BEL
-#> Simple feature collection with 11616 features and 24 fields (with 1 geometry empty)
-#> Geometry type: GEOMETRY
-#> Dimension:     XY
-#> Bounding box:  xmin: 2.585864 ymin: 49.52634 xmax: 6.141682 ymax: 51.4919
-#> Geodetic CRS:  WGS 84
-#> # A tibble: 11,616 × 25
-#>    id     name  site_name   lat   lon street house_number postcode address city 
-#>  * <chr>  <chr> <chr>     <dbl> <dbl> <chr>  <chr>        <chr>    <chr>   <chr>
-#>  1 BE_F0… Midd… NA         51.0  5.35 KEMPI… 400          3500     NA      HASS…
-#>  2 BE_F0… Midd… NA         50.9  5.32 KLEIN… 7            3500     NA      HASS…
-#>  3 BE_F0… Mosa… NA         51.1  5.74 KLOOS… 14           3640     NA      KINR…
-#>  4 BE_F0… Onze… NA         51.0  3.14 MANDE… 170          8800     NA      ROES…
-#>  5 BE_F0… Vrij… NA         50.9  3.12 BLEKE… 77           8800     NA      ROES…
-#>  6 BE_F0… Heil… NA         51.0  3.20 WEZES… 2            8850     NA      ARDO…
-#>  7 BE_F0… Insp… NA         51.0  5.37 LYCEU… 11           3530     NA      HOUT…
-#>  8 BE_F0… Insp… NA         51.0  5.37 HEREB… 41           3530     NA      HOUT…
-#>  9 BE_F0… Insp… NA         51.0  5.37 HEREB… 41           3530     NA      HOUT…
-#> 10 BE_F0… Virg… NA         50.9  5.34 GUFFE… 27           3500     NA      HASS…
-#> # ℹ 11,606 more rows
-#> # ℹ 15 more variables: cntr_id <chr>, levels <chr>, max_students <chr>,
-#> #   enrollment <chr>, fields <chr>, facility_type <chr>, public_private <chr>,
-#> #   tel <chr>, email <chr>, url <chr>, ref_date <chr>, pub_date <chr>,
-#> #   geo_qual <chr>, comments <chr>, geometry <POINT [°]>
+edu_austria <- gisco_get_education(country = "Austria", year = 2023)
+
+# Plot if downloaded
+if (!is.null(edu_austria)) {
+  austria_nuts3 <- gisco_get_nuts(country = "Austria", nuts_level = 3)
+
+  library(ggplot2)
+  ggplot(austria_nuts3) +
+    geom_sf(fill = "grey10", color = "grey60") +
+    geom_sf(
+      data = edu_austria, aes(color = rev(public_private)),
+      alpha = 0.25
+    ) +
+    theme_void() +
+    theme(
+      plot.background = element_rect(fill = "black"),
+      text = element_text(color = "white"),
+      panel.grid = element_blank(),
+      plot.title = element_text(face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(face = "italic", hjust = 0.5)
+    ) +
+    labs(
+      title = "Education", subtitle = "Austria (2023)",
+      caption = "Source: Eurostat, Education 2023 dataset.",
+      color = "Type"
+    ) +
+    coord_sf(crs = 3035)
+}
+
 # }
 ```

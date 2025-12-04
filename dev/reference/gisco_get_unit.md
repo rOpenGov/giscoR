@@ -165,7 +165,7 @@ valencia
 #> 3 ES003K1   K         ES        Valencia  ""        ""        ""       
 #> # ℹ 3 more variables: NUTS3_2016 <chr>, AREA_SQM <dbl>, NUTS3_2021 <chr>
 library(dplyr)
-# Now get the shapes and order by AREA_SQM
+# Now get the sf objects and order by AREA_SQM
 valencia_sf <- gisco_get_unit_urban_audit(
   unit = valencia$URAU_CODE,
   year = "2020",

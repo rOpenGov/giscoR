@@ -1,7 +1,11 @@
-# Attribution when publishing GISCO data
+# Attribution for administrative and statistical GISCO data
 
-Get the legal text to be used along with the data downloaded with this
-package.
+Get the legal text to be used for administrative and statistical data
+downloaded from GISCO, see section **Copyright information**.
+
+For other datasets you may abide to the [Eurostat's general copyright
+notice and licence
+policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice).
 
 ## Usage
 
@@ -50,9 +54,32 @@ Please consider
 [contributing](https://github.com/rOpenGov/giscoR/issues) if you spot
 any mistake or want to add a new language.
 
-## Note
+## Copyright information
 
-COPYRIGHT NOTICE
+These provisions described in this section apply to administrative and
+statistical data, provided by the following functions:
+
+**Administrative units**
+
+- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md)
+
+- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
+
+- [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
+
+**Statistical units**
+
+- [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md)
+
+- [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md)
+
+- [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md)
+
+- [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md)
+
+- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md)
+
+### Copyright Notice
 
 When data downloaded from GISCO is used in any printed or electronic
 publication, in addition to any other provisions applicable to the whole
