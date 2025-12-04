@@ -92,13 +92,35 @@ Brief description of each attribute:\tabular{ll}{
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-health_be <- gisco_get_healthcare(country = "Belgium")
+health_benelux <- gisco_get_healthcare(
+  country = c("BE", "NL", "LU"),
+  year = 2023
+)
 
 # Plot if downloaded
-if (inherits(health_be, "sf")) {
+if (!is.null(health_benelux)) {
+  benelux <- gisco_get_countries(country = c("BE", "NL", "LU"))
+
   library(ggplot2)
-  ggplot(health_be) +
-    geom_sf()
+  ggplot(benelux) +
+    geom_sf(fill = "grey10", color = "grey20") +
+    geom_sf(
+      data = health_benelux, color = "red",
+      size = 0.2, alpha = 0.25
+    ) +
+    theme_void() +
+    theme(
+      plot.background = element_rect(fill = "black"),
+      text = element_text(color = "white"),
+      panel.grid = element_blank(),
+      plot.title = element_text(face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(face = "italic", hjust = 0.5)
+    ) +
+    labs(
+      title = "Healthcare services", subtitle = "Benelux (2023)",
+      caption = "Source: Eurostat, Healthcare 2023 dataset."
+    ) +
+    coord_sf(crs = 3035)
 }
 \dontshow{\}) # examplesIf}
 }

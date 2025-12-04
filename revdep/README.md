@@ -1,18 +1,19 @@
 # Platform
 
-|field    |value                                                  |
-|:--------|:------------------------------------------------------|
-|version  |R version 4.5.2 (2025-10-31)                           |
-|os       |Ubuntu 24.04.3 LTS                                     |
-|system   |x86_64, linux-gnu                                      |
-|ui       |X11                                                    |
-|language |(EN)                                                   |
-|collate  |C.UTF-8                                                |
-|ctype    |C.UTF-8                                                |
-|tz       |UTC                                                    |
-|date     |2025-12-03                                             |
-|pandoc   |3.1.11 @ /opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc |
-|quarto   |NA                                                     |
+|field    |value                                                                                                                                                                                       |
+|:--------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|version  |R version 4.5.2 (2025-10-31 ucrt)                                                                                                                                                           |
+|os       |Windows 11 x64 (build 26200)                                                                                                                                                                |
+|system   |x86_64, mingw32                                                                                                                                                                             |
+|ui       |RStudio                                                                                                                                                                                     |
+|language |(EN)                                                                                                                                                                                        |
+|collate  |Spanish_Spain.utf8                                                                                                                                                                          |
+|ctype    |Spanish_Spain.utf8                                                                                                                                                                          |
+|tz       |Europe/Madrid                                                                                                                                                                               |
+|date     |2025-12-03                                                                                                                                                                                  |
+|rstudio  |2025.09.2+418 Cucumberleaf Sunflower (desktop)                                                                                                                                              |
+|pandoc   |3.1.12.2 @ C:\PROGRA~1\Pandoc\pandoc.exe                                                                                                                                                    |
+|quarto   |ERROR: Unknown command "TMPDIR=C:/Users/diego/AppData/Local/Temp/Rtmpu45xUN/file405057464cbf". Did you mean command "create"? @ C:\Users\diego\AppData\Local\Programs\Quarto\bin\quarto.exe |
 
 # Dependencies
 

@@ -10,7 +10,7 @@
 #' valencia <- cities[grep("Valencia", cities$URAU_NAME), ]
 #' valencia
 #' library(dplyr)
-#' # Now get the shapes and order by AREA_SQM
+#' # Now get the sf objects and order by AREA_SQM
 #' valencia_sf <- gisco_get_unit_urban_audit(
 #'   unit = valencia$URAU_CODE,
 #'   year = "2020",

@@ -44,8 +44,10 @@ Config/Needs/website: ropengov/rogtemplate, ragg, reactable, styler,
     devtools, remotes, geometries, rapidjsonr, sfheaders, jsonify
 Config/testthat/edition: 3
 Config/testthat/parallel: true
-Copyright: General Copyright © European Union, 1995 - today. See file
-    COPYRIGHTS for specific provisions.
+Copyright: Eurostat's general copyright notice and licence policy applies
+    (see file COPYRIGHTS). Moreover, there are specific rules that apply
+    to administrative and statistical data, see
+    <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

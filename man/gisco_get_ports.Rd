@@ -55,7 +55,7 @@ library(sf)
 ports <- gisco_get_ports(2013)
 coast <- giscoR::gisco_coastal_lines
 
-if (inherits(ports, "sf")) {
+if (!is.null(ports)) {
   library(ggplot2)
 
   ggplot(coast) +
@@ -74,7 +74,7 @@ if (inherits(ports, "sf")) {
     ) +
     labs(
       title = "Ports Worldwide", subtitle = "Year 2013",
-      caption = "(c) European Union, 1995 - today"
+      caption = "Source: Eurostat, Ports 2013 dataset."
     ) +
     coord_sf(crs = "ESRI:54030")
 }

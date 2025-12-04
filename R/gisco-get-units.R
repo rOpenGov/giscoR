@@ -6,16 +6,17 @@
 #' This function is deprecated. Use:
 #'
 #' - [gisco_get_metadata()] (equivalent to `mode = "df"`).
-#' - [`gisco_get_unit*`][gisco_get_unit] functions (equivalent to
+#' - [`?gisco_get_unit`][gisco_get_unit]functions (equivalent to
 #'   `mode = "sf"`)
-#'
+#' @family deprecated functions
+#' @encoding UTF-8
 #' @inheritParams gisco_get_unit
 #' @inherit gisco_get_unit source
 #' @inheritSection gisco_get_unit Note
 #' @export
 #'
 #' @seealso
-#' [gisco_get_metadata()], [`gisco_get_unit*`][gisco_get_unit] functions.
+#' [gisco_get_metadata()], [`?gisco_get_unit`][gisco_get_unit] functions.
 #'
 #' @return
 #' A [`sf`][sf::st_sf] object on `mode = "sf"` or a [tibble][tibble::tbl_df]

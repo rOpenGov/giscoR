@@ -24,22 +24,35 @@
 #' Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
 #'
 #' @examplesIf gisco_check_access()
-#' library(sf)
+#' airp <- gisco_get_airports(year = 2013)
+#' coast <- giscoR::gisco_coastal_lines
 #'
-#' greece <- gisco_get_countries(country = "EL", resolution = 3)
-#' airp_gc <- gisco_get_airports(2013, country = "EL")
+#' if (!is.null(airp)) {
+#'   library(ggplot2)
 #'
-#' library(ggplot2)
-#'
-#' if (inherits(airp_gc, "sf")) {
-#'   ggplot(greece) +
-#'     geom_sf(fill = "grey80") +
-#'     geom_sf(data = airp_gc, color = "blue") +
+#'   ggplot(coast) +
+#'     geom_sf(fill = "grey10", color = "grey20") +
+#'     geom_sf(
+#'       data = airp, color = "#00F0FF",
+#'       size = 0.2, alpha = 0.25
+#'     ) +
+#'     theme_void() +
+#'     theme(
+#'       plot.background = element_rect(fill = "black"),
+#'       text = element_text(color = "white"),
+#'       panel.grid = element_blank(),
+#'       plot.title = element_text(face = "bold", hjust = 0.5),
+#'       plot.subtitle = element_text(face = "italic", hjust = 0.5)
+#'     ) +
 #'     labs(
-#'       title = "Airports on Greece",
-#'       shape = NULL,
-#'       color = NULL,
-#'       caption = gisco_attributions()
+#'       title = "Airports in Europe", subtitle = "Year 2013",
+#'       caption = "Source: Eurostat, Airports 2013 dataset."
+#'     ) +
+#'     # Center in Europe: EPSG 3035
+#'     coord_sf(
+#'       crs = 3035,
+#'       xlim = c(2377294, 7453440),
+#'       ylim = c(1313597, 5628510)
 #'     )
 #' }
 gisco_get_airports <- function(

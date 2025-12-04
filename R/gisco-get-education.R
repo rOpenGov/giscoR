@@ -36,8 +36,34 @@
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{
-#' edu_BEL <- gisco_get_education(country = "Belgium")
-#' edu_BEL
+#' edu_austria <- gisco_get_education(country = "Austria", year = 2023)
+#'
+#' # Plot if downloaded
+#' if (!is.null(edu_austria)) {
+#'   austria_nuts3 <- gisco_get_nuts(country = "Austria", nuts_level = 3)
+#'
+#'   library(ggplot2)
+#'   ggplot(austria_nuts3) +
+#'     geom_sf(fill = "grey10", color = "grey60") +
+#'     geom_sf(
+#'       data = edu_austria, aes(color = rev(public_private)),
+#'       alpha = 0.25
+#'     ) +
+#'     theme_void() +
+#'     theme(
+#'       plot.background = element_rect(fill = "black"),
+#'       text = element_text(color = "white"),
+#'       panel.grid = element_blank(),
+#'       plot.title = element_text(face = "bold", hjust = 0.5),
+#'       plot.subtitle = element_text(face = "italic", hjust = 0.5)
+#'     ) +
+#'     labs(
+#'       title = "Education", subtitle = "Austria (2023)",
+#'       caption = "Source: Eurostat, Education 2023 dataset.",
+#'       color = "Type"
+#'     ) +
+#'     coord_sf(crs = 3035)
+#' }
 #' }
 #'
 gisco_get_education <- function(

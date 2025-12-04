@@ -1,123 +1,137 @@
+<https://ec.europa.eu/eurostat/help/copyright-notice>
+
 ========================================
-GENERAL COPYRIGHT
+Copyright notice and free re-use of data
 ========================================
 
-(c) European Union, 1995 - today
+General principles
+==================
 
-Eurostat has a policy of encouraging free re-use of its data, both for
-non-commercial and commercial purposes. All statistical data, metadata, content
-of web pages or other dissemination tools, official publications and other
-documents published on its website, with the exceptions listed below, can be
-reused without any payment or written licence provided that:
+1. The copyright for the editorial content of this website, which is owned by
+   the EU, is licensed under the Creative Commons Attribution 4.0 International
+   licence. This means that you can re-use the content provided you acknowledge
+   the source and indicate any changes you have made. You may be required to
+   clear additional rights if certain content depicts identifiable private
+   individuals or includes third-party works.
 
-  - the source is indicated as Eurostat;
-  - when re-use involves modifications to the data or text, this must be stated
-  clearly to the end user of the information.
+2. Reuse of statistical data, metadata, publications, and other dissemination
+   tools published on this website for commercial or non-commercial purposes is
+   authorised provided the source is acknowledged. The reuse policy of the
+   European Commission is implemented by the Decision of  12 December 2011
+   <https://eur-lex.europa.eu/eli/dec/2011/833/oj>.
 
+3. These general principles can be subject to conditions which may be specified
+   in individual copyright notices. Therefore, users are advised to refer to the
+   copyright information on the individual documents.
+
+4. Exceptions to these general principles are listed below.
 
 Exceptions
+==========
 
-  1. The permission granted above does not extend to any material whose
-  copyright is identified as belonging to a third-party, such as photos or
-  illustrations from copyright holders other than the European Union. In these
-  circumstances, authorisation must be obtained from the relevant copyright
-  holder(s).
+- The permission granted above does not extend to any material whose copyright
+  is identified as belonging to a third-party, such as photos or illustrations
+  from copyright holders other than the European Union. In these circumstances,
+  authorisation must be obtained from the relevant copyright holder(s).
 
-  2. Logos and trademarks are excluded from the above mentioned general
-  permission, except if they are redistributed as an integral part of a
-  Eurostat publication and if the publication is redistributed unchanged.
+- Logos and trademarks are excluded from the above mentioned general permission,
+  except if they are redistributed as an integral part of a Eurostat publication
+  and if the publication is redistributed unchanged.
 
-  3. When reuse involves translations of publications or modifications to the
-  data or text, this must be stated clearly to the end user of the information.
-  A disclaimer regarding the non-responsibility of Eurostat shall be included.
+- When reuse involves translations of publications or modifications to the data
+  or text, this must be stated clearly to the end user of the information. A
+  disclaimer regarding the non-responsibility of Eurostat shall be included.
 
-  4. The following Eurostat data and documents may not be reused for commercial
-  purposes (but non-commercial reuse is possible without restriction):
+- When reuse involves translations of publications, the following copyright
+  information and disclaimer shall be added:
 
-    a. Data identified as belonging to sources other than Eurostat; all data
+  First published in English (or other language) as ‘Title of the publication’
+
+  by Eurostat on the European Union's official website 'Europa'
+  (c) European Union, year
+  Translator: XXXXX
+
+  Xxxx (Language of the translation) translation: (c) copyrightholder  (translator), year of the translation
+  The translation is the sole responsibility of the author or authors of the
+  translation.  In the event of any discrepancy between the original work and
+  the translation, only the text of original work shall be considered valid.
+
+- The following Eurostat data and documents may not be reused for commercial
+  purposes, but non-commercial reuse is possible without restriction:
+
+  - Data identified as belonging to sources other than Eurostat. All data
     published on Eurostat's website can be regarded as belonging to Eurostat
     for the purpose of their reuse, with the exceptions stated below, or if it
     is explicitly stated otherwise.
 
-    b. Publications or documents where the copyright belongs partly or wholly
-    to other organisations, for example concerning co-publications between
-    Eurostat and other publishers.
+  - Publications or documents where the copyright belongs partly or fully to
+    other organisations, for example concerning co-publications between Eurostat
+    and other publishers.
 
-    c. Data on countries other than
-      - Member States of the European Union (EU), and
-      - Member States of the European Free Trade Association (EFTA), and
-      - official EU acceding and candidate countries.
+  - Data for countries other than:
+    - Member States of the European Union (EU)
+    - Member States of the European Free Trade Association (EFTA) official EU
+      acceding and candidate countries.
 
-    Examples are data on the United States of America, Japan or China. Often,
-    such data are included in Eurostat data tables. In such cases, a re-user
-    would need to eliminate such data from the tables before reusing them
-    commercially.
+    Examples are data for the United States of America, Japan or China. In such
+    cases, the user will need to eliminate these data from the tables before
+    reusing them commercially.
 
-    d. Trade data originating from Liechtenstein and Switzerland (as declaring
+  - Trade data originating from Liechtenstein and Switzerland (as declaring
     countries), from 1995 onwards, and concerning the following commodity
     classifications: HS, SITC, BEC, NSTR and national commodity classifications.
     Thus it is, for example, not allowed to sell export/import data declared by
     Switzerland (concerning the above named commodity classifications). However,
-    it is allowed to sell Swiss export/import data declared by an EU Member
+    it is allowed to sell Swiss export / import data declared by an EU Member
     State (but see below a similar exception for Austria).
 
-    e. Trade data originating from Austria (as a declaring country) for a level
-    of detail of the Combined Nomenclature of 8 digits; again, it is not
-    allowed to sell export/import declared by Austria (concerning the above
-    named commodity classifications), but it is allowed to sell Austrian
-    export/import data declared by another EU Member State.
+  - Trade data originating from Austria (as a declaring country) for a level of
+    detail of the Combined Nomenclature of 8 digits; again, it is not allowed
+    to sell export/import declared by Austria (concerning the above named
+    commodity classifications), but it is allowed to sell Austrian export /
+    import data declared by another EU Member State.
 
+How to re-use Eurostat material for commercial purposes
+=======================================================
 
+There is no special procedure or requirement for a written licence. Just
+download the material and use it, unless the material is listed in the
+exceptions above.
 
+How to cite Eurostat products
+=============================
 
-========================================
-ADMINISTRATIVE UNITS / STATISTICAL UNITS
-========================================
+Parts indicated in squared brackets [ ] should be replaced by the relevant
+information by the user.
 
-When data downloaded from this page is used in any printed or electronic
-publication, in addition to any other provisions applicable to the whole
-Eurostat website, data source will have to be acknowledged in the legend of
-the map and in the introductory page of the publication with the following
-copyright notice:
+  Datasets
+  ========
 
-- EN: (c) EuroGeographics for the administrative boundaries
+  Source: [digital object identifier (DOI) number of the Eurostat dataset], [access date]
 
-- FR: (c) EuroGeographics pour les limites administratives
+  In the dataset, you can use the functionality to copy the DOI URL, which is located below the dataset title.
 
-- DE: (c) EuroGeographics bezuglich der Verwaltungsgrenzen
+  Customised versions of a dataset must be cited as following:
 
-For publications in languages other than English, French or German, the
-translation of the copyright notice in the language of the publication shall
-be used.
+  Source: [Eurostat dataset datacode link], [access date]
 
-If you intend to use the data commercially, please contact
-EuroGeographics <https://eurogeographics.org/products-and-services/licensing/>
-for information regarding their licence agreements.
+  The Data Browser provides an online help on how to copy the title together
+  with the datacode link of the dataset
+  <https://ec.europa.eu/eurostat/web/user-guides/data-browser/data-selection-display/save#bookmark-link>.
 
+  Publications
+  ============
 
-========================================
-GRIDS
-========================================
-Download provisions for the population figures (attributes TOT_P_2006,
-TOT_P_2011 and TOT_P_2018)
+  European Commission, Eurostat, [Title of the publication], Publication Office
+  of the European Union, [year], [link, for example: https://data.europa.eu/doi/10.2785/494153]
 
-Users may freely copy, publish and distribute the GEOSTAT 2006 grid dataset
-within their own organisation (company, governmental authority, municipality).
+  You can find the DOI number on the publication products page under the section
+  'Additional information'.
 
-Users may not:
+  Other products
+  ==============
 
-- disseminate the dataset to clients outside their own organisation
-- sell the dataset – in whole or in part – to parties outside their organisation
-- use it for any other commercial purpose.
+  Source: Eurostat, [Title of the product], [link to the product], [access date].
 
-For general information on content, lineage, access and conditions of use, see
-the metadata file the usage conditions file and the read-me fileincluded in the
-download zip package.
-
-
-========================================
-POSTAL CODES
-========================================
-
-(c) European Union - GISCO, 2021, postal code point dataset, Licence CC-BY-SA 4.0
-available at <https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data>.
+  This concerns for example interactive tools, data visualisations, webpages,
+  Statistics Explained articles, PDF documents.

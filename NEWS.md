@@ -60,7 +60,7 @@ We recommend reviewing the updated documentation at
 
 ## Renamed functions
 
--   `gisco_addressapi_*` → `gisco_address_api_*`
+-   `?gisco_addressapi` → `?gisco_address_api`
 -   `gisco_get_coastallines()` → `gisco_get_coastal_lines()`
 -   `gisco_get_postalcodes()` → `gisco_get_postal_codes()`
 
@@ -78,11 +78,19 @@ We recommend reviewing the updated documentation at
 -   Add `gisco_nuts_2024` (replace `gisco_nuts`).
 -   Add `gisco_coastal_lines` (replace `gisco_coastallines`).
 
+> The datasets `gisco_countries`, `gisco_nuts`, and `gisco_coastallines` are no
+> longer available. Any code that accessed them directly (e.g.,
+> `giscoR::gisco_countries`) will now fail.\
+>
+> Please use the updated datasets or, preferably, retrieve them via the
+> corresponding functions such as `gisco_get_countries()` with default
+> parameters.
+
 ## Deprecations
 
 -   Deprecate `gisco_get_units()`.
     -   Functionality is now available through `gisco_get_metadata()` and the
-        `gisco_get_unit_*` family.
+        `?gisco_get_unit` family.
 -   Deprecate `cache` argument in heavy-download functions (`gisco_get_lau()`,
     `gisco_get_communes()`).
 -   In `gisco_bulk_download()`, rename `id_giscoR` → `id`.

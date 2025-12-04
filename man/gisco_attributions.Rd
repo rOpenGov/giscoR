@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{gisco_attributions}
 \alias{gisco_attributions}
-\title{Attribution when publishing GISCO data}
+\title{Attribution for administrative and statistical GISCO data}
 \usage{
 gisco_attributions(lang = "en", copyright = FALSE)
 }
@@ -18,8 +18,10 @@ notice or not on the console.}
 A string with the attribution to be used.
 }
 \description{
-Get the legal text to be used along with the data downloaded with this
-package.
+Get the legal text to be used for administrative and statistical data
+downloaded from GISCO, see section \strong{Copyright information}.
+
+For other datasets you may abide to the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat's general copyright notice and licence policy}.
 }
 \details{
 Current languages supported are:
@@ -38,8 +40,26 @@ Please consider
 \href{https://github.com/rOpenGov/giscoR/issues}{contributing} if you spot any
 mistake or want to add a new language.
 }
-\note{
-COPYRIGHT NOTICE
+\section{Copyright information}{
+These provisions described in this section apply to administrative and
+statistical data, provided by the following functions:
+
+\strong{Administrative units}
+\itemize{
+\item \code{\link[=gisco_get_communes]{gisco_get_communes()}}
+\item \code{\link[=gisco_get_countries]{gisco_get_countries()}}
+\item \code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}
+}
+
+\strong{Statistical units}
+\itemize{
+\item \code{\link[=gisco_get_census]{gisco_get_census()}}
+\item \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}}
+\item \code{\link[=gisco_get_lau]{gisco_get_lau()}}
+\item \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
+\item \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}
+}
+\subsection{Copyright Notice}{
 
 When data downloaded from GISCO is used in any printed or electronic
 publication, in addition to any other provisions applicable to the whole
@@ -59,6 +79,8 @@ shall be used.
 If you intend to use the data commercially, please contact EuroGeographics
 for information regarding their licence agreements.
 }
+}
+
 \examples{
 gisco_attributions()
 

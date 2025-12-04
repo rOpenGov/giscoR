@@ -97,5 +97,5 @@ reference:
   contents: giscoR-package
 - title: Deprecated functions
   desc: These functions would be removed in the future.
-  contents: has_lifecycle("deprecated")
+  contents: has_concept("deprecated functions")
 

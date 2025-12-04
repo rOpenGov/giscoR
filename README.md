@@ -5,7 +5,8 @@
 
 <!-- badges: start -->
 
-[![rOG-badge](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](https://ropengov.org/)
+[![rOpenGov
+package](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](https://ropengov.org/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
 [![CRAN
@@ -26,13 +27,13 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 that provides a simple interface to
 [GISCO](https://ec.europa.eu/eurostat/web/gisco) data from Eurostat. It
 allows you to download and work with global and European geospatial
-datasets -such as country boundaries, NUTS regions, coastlines, and
-labels- directly in **R**.
+datasets — such as country boundaries, NUTS regions, coastlines, and
+labels — directly in **R**.
 
 ## Key features
 
-- Retrieve **GISCO shapefiles** for countries, regions, and
-  administrative units.
+- Retrieve **GISCO files** for countries, regions, and administrative
+  units.
 - Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
   `01M`.
 - Choose from three projections: **EPSG 4326**, **3035**, or **3857**.
@@ -115,16 +116,20 @@ ggplot(nl_all) +
 
 ## Advanced Example: Thematic maps
 
-An example of a thematic map plotted with the **ggplot2** package. The
-information is extracted via the **eurostat** package ([Lahti et al.
-2017](#ref-RJ-2017-019)). We would follow the fantastic approach
-presented by [Milos Popovic](https://milospopovic.net/) on [this
-post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
+This example shows a thematic map created with the **ggplot2** package.
+The data are obtained via the **eurostat** package. This follows the
+approach presented by [Milos Popovic](https://milospopovic.net/) in
+[this post](https://milospopovic.net/how-to-make-choropleth-map-in-r/).
 
 We start by extracting the corresponding geographic data:
 
 ``` r
-# Get shapes
+library(giscoR)
+library(dplyr)
+library(eurostat)
+library(ggplot2)
+
+# Get sf objects
 nuts3 <- gisco_get_nuts(
   year = 2021,
   epsg = 3035,
@@ -147,12 +152,11 @@ We now download the data from Eurostat:
 
 ``` r
 # Use eurostat
-library(eurostat)
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
 ```
 
-By last, we merge and manipulate the data for creating the final plot:
+Finally, we merge and manipulate the data to create the final plot:
 
 ``` r
 # Merge data
@@ -163,7 +167,7 @@ nuts3_sf <- nuts3 |>
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
 labs <- prettyNum(br[-1], big.mark = ",")
 
-# Label function to be used in the plot, mainly for NAs
+# Label function used in the plot, mainly for NAs
 labeller_plot <- function(x) {
   ifelse(is.na(x), "No Data", x)
 }
@@ -244,7 +248,7 @@ Files will be stored locally for faster access.
 Check the GitHub page for [source
 code](https://github.com/rOpenGov/giscoR/).
 
-Contributions are very welcome:
+Contributions are welcome:
 
 - [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
   feedback and bug reports.
@@ -272,44 +276,22 @@ A BibTeX entry for LaTeX users is
       abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
     }
 
-## Copyright notice
+## General copyright
 
-> When data downloaded from this page is used in any printed or
-> electronic publication, in addition to any other provisions applicable
-> to the whole Eurostat website, data source will have to be
-> acknowledged in the legend of the map and in the introductory page of
-> the publication with the following copyright notice:
+> [Eurostat’s general copyright notice and licence
+> policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
+> applies. Moreover, there are specific rules that apply to some of the
+> following datasets available for downloading. The download and use of
+> these data are subject to these rules being accepted. See our
+> [administrative
+> units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
+> and [statistical
+> units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
+> for more details.
 >
-> - EN: © EuroGeographics for the administrative boundaries.
-> - FR: © EuroGeographics pour les limites administratives.
-> - DE: © EuroGeographics bezüglich der Verwaltungsgrenzen.
->
-> For publications in languages other than English, French or German,
-> the translation of the copyright notice in the language of the
-> publication shall be used.
->
-> If you intend to use the data commercially, please contact
-> [EuroGeographics](https://eurogeographics.org/maps-for-europe/licensing/)
-> for information regarding their licence agreements.
->
-> *From [GISCO
-> Web](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)*
+> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
 ## Disclaimer
 
-This package is in no way officially related to or endorsed by Eurostat.
-The authors are not responsible for any misuse of the data.
-
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
-
-<div id="ref-RJ-2017-019" class="csl-entry">
-
-Lahti, Leo, Janne Huovari, Markus Kainu, and Przemysław Biecek. 2017.
-“<span class="nocase">Retrieval and Analysis of Eurostat Open Data with
-the eurostat Package</span>.” *The R Journal* 9 (1): 385–92.
-<https://doi.org/10.32614/RJ-2017-019>.
-
-</div>
-
-</div>
+This package is neither affiliated with nor endorsed by Eurostat. The
+authors are not responsible for any misuse of the data.
