@@ -17,6 +17,10 @@
         },
         {
           "type": "Organization",
+          "name": "Eurostat"
+        },
+        {
+          "type": "Organization",
           "name": "EuroGeographics"
         }
       ],
@@ -35,7 +39,7 @@
         "url": "https://cran.r-project.org"
       },
       "runtimePlatform": "R version 4.5.2 (2025-10-31 ucrt)",
-      "version": "0.6.1.9000"
+      "version": "0.9.9.9999"
     },
     {
       "id": "https://doi.org/10.32614/CRAN.package.giscoR",

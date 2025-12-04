@@ -1,10 +1,12 @@
 Type: Package
 Package: giscoR
 Title: Download Map Data from GISCO API - Eurostat
-Version: 0.6.1.9000
+Version: 0.9.9.9999
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658")),
+    person("Eurostat", role = "cph",
+           comment = c(ROR = "033d3q980")),
     person("EuroGeographics", role = "cph")
   )
 Description: Tools to download data from the GISCO (Geographic Information
@@ -17,20 +19,21 @@ URL: https://ropengov.github.io/giscoR/,
     https://github.com/rOpenGov/giscoR
 BugReports: https://github.com/rOpenGov/giscoR/issues
 Depends: 
-    R (>= 3.6.0)
+    R (>= 4.1)
 Imports: 
+    cli,
     countrycode (>= 1.2.0),
-    geojsonsf (>= 2.0.0),
+    httr2,
     jsonlite,
+    lifecycle,
     rappdirs (>= 0.3.0),
-    sf (>= 0.9.0),
+    sf (>= 1.0.0),
     tibble,
     utils
-Suggests: 
+Suggests:
     dplyr,
     eurostat,
     ggplot2 (>= 3.5.0),
-    httr2,
     knitr,
     lwgeom (>= 0.2-2),
     rmarkdown,
@@ -41,8 +44,10 @@ Config/Needs/website: ropengov/rogtemplate, ragg, reactable, styler,
     devtools, remotes, geometries, rapidjsonr, sfheaders, jsonify
 Config/testthat/edition: 3
 Config/testthat/parallel: true
-Copyright: General Copyright © European Union, 1995 - today. See file
-    COPYRIGHTS for specific provisions.
+Copyright: Eurostat's general copyright notice and licence policy applies
+    (see file COPYRIGHTS). Moreover, there are specific rules that apply
+    to administrative and statistical data, see
+    <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)

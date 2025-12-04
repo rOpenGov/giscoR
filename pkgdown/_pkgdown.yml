@@ -4,61 +4,98 @@ template:
   bootstrap: 5
   package: rogtemplate
   params:
-    ganalytics: 'G-VGVFXGHWRL'
+    ganalytics: G-VGVFXGHWRL
   opengraph:
     twitter:
       creator: '@dhernangomez'
       card: summary_large_image
 
-home:
-  title: giscoR | R package for download geodata from GISCO - Eurostat
-  description: >
-    giscoR is a R API package that helps to retrieve data from Eurostat -
-    GISCO (the Geographic Information System of the COmmission). It also
-    provides some lightweight data sets ready to use without downloading.
-
-reference:
-- title: Political
-  desc: >
-    These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link">sf</a> objects with political boundaries
-  contents: has_concept("political")
-- title: Infrastructures
-  desc: >
-    These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link">sf</a> objects with man-made features
-  contents: has_concept("infrastructure")
-- title: Tools
-  desc: >
-    Access to other GISCO tools
-  contents: has_concept("tools")
-- title: Misc
-  desc: >
-    These functions return other <a href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link">sf</a> objects
-  contents: has_concept("misc")
-- title: >
-    Cache management
-  contents: has_concept("cache utilities")
-- title: Helpers
-  desc: >
-    A collection of helper functions
-  contents: has_concept("helper")
-- title: Datasets
-  desc: >
-    Datasets included with <a href="https://CRAN.R-project.org/package=giscoR"
-    class="external-link"><span class="pkg">giscoR</span></a>
-  contents: has_concept("dataset")
-- title: About the package
-  contents: giscoR-package
+development:
+  mode: auto
 
 authors:
   Diego Hernangómez:
     href: https://dieghernan.github.io/
   EuroGeographics:
     href: https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units
-  Vincent Arel-Bundock:
-    href: https://vincentarelbundock.github.io/countrycode/
+  Eurostat:
+    href: https://ec.europa.eu/eurostat
+
 repo:
   branch: main
+
+home:
+  title: giscoR | R package for download geodata from GISCO - Eurostat
+  description: |
+    giscoR is a R API package that helps to retrieve data from Eurostat - GISCO
+    (the Geographic Information System of the COmmission). It also provides
+    some lightweight datasets ready to use without downloading.
+
+reference:
+- title: GISCO Geodata
+  desc: |
+    Download datasets from the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata"
+    class="external-link">GISCO Geodata distribution</a>. These functions
+    return <a href="https://r-spatial.github.io/sf/reference/sf.html"
+    class="external-link"><span class="pkg">sf</span></a> objects.
+- subtitle: Administrative units
+  desc: |
+    On using administrative data for statistical purposes, administrative units
+    are the units for which administrative data are recorded. These units may or
+    may not be the same as those required for the statistical purposes (referred
+    to as statistical units).
+
+    See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units"
+    class="external-link">copyright information</a>.
+  contents: has_concept("admin")
+- subtitle: Statistical units
+  desc: |
+    A statistical unit is the unit of observation or measurement for which data
+    are collected or derived.
+
+    See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units"
+    class="external-link">copyright information</a>.
+  contents: has_concept("stats")
+- subtitle: Grids
+  desc: |
+    These datasets contain grid cells covering the land territory of the EU, in
+    various resolutions from 1 km to 100 km. Base statistics such as population
+    figures are provided for these cells.
+  contents: has_concept("grids")
+- subtitle: Transport networks
+  contents: has_concept("transport")
+- subtitle: Basic services
+  contents: has_concept("services")
+- subtitle: Additional helpers
+  desc: |
+    Additional functions for downloading GISCO API datasets.
+  contents: has_concept("extra")
+- subtitle: <span class="pkg">giscoR</span> database management
+  desc: |
+    Get the current database in use by the package and the corresponding
+    metadata.
+  contents: has_concept("database")
+- subtitle: Misc
+  desc: Other functions
+  contents: has_concept("misc")
+- title: GISCO Address API
+  desc: |
+    Query the <a href="https://gisco-services.ec.europa.eu/address_api/"
+    class="external-link">GISCO Addres API</a>, which allows developers to carry
+    out both geocoding and reverse geocoding using a pan-european address
+    database.
+  contents: has_concept("address_api")
+- title: |
+    Cache management
+  contents: has_concept("cache utilities")
+- title: Datasets
+  desc: |
+    Datasets included with <a href="https://CRAN.R-project.org/package=giscoR"
+    class="external-link"><span class="pkg">giscoR</span></a>.
+  contents: has_concept("datasets")
+- title: About the package
+  contents: giscoR-package
+- title: Deprecated functions
+  desc: These functions would be removed in the future.
+  contents: has_concept("deprecated functions")
 

@@ -1,0 +1,121 @@
+test_that("Test offline", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  gb <- gisco_get_cached_db()
+
+  options(gisco_test_offline = TRUE)
+
+  expect_snapshot(
+    fend <- gisco_get_cached_db(update_cache = TRUE),
+  )
+  expect_null(fend)
+
+  options(gisco_test_offline = FALSE)
+})
+
+
+test_that("Test 404", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  options(gisco_test_404 = TRUE)
+  expect_message(
+    n <- gisco_get_cached_db(update_cache = TRUE),
+    "Can't access"
+  )
+  expect_null(n)
+
+  options(gisco_test_404 = FALSE)
+})
+
+test_that("Offline detection", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  cdir <- detect_cache_dir_muted()
+  cdir_db <- create_cache_dir(file.path(cdir, "cache_db"))
+
+  cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
+  if (file.exists(cached_db)) {
+    unlink(cached_db)
+  }
+  expect_false(file.exists(cached_db))
+  options(gisco_test_404 = TRUE)
+  expect_message(
+    n <- get_db(),
+    "Can't access"
+  )
+  old_db <- gisco_db
+  expect_identical(n, old_db)
+
+  # Next time silent and cached
+  expect_silent(n2 <- get_db())
+  expect_identical(n2, gisco_db)
+
+  if (file.exists(cached_db)) {
+    unlink(cached_db)
+  }
+  expect_false(file.exists(cached_db))
+  options(gisco_test_404 = FALSE)
+})
+test_that("On CRAN", {
+  # Imagine we are in CRAN
+  env_orig <- Sys.getenv("NOT_CRAN")
+  Sys.setenv("NOT_CRAN" = "false")
+  expect_true(on_cran())
+
+  cdir <- detect_cache_dir_muted()
+  cdir_db <- create_cache_dir(file.path(cdir, "cache_db"))
+
+  cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
+  if (file.exists(cached_db)) {
+    unlink(cached_db)
+  }
+  expect_false(file.exists(cached_db))
+  expect_silent(n <- gisco_get_cached_db())
+  old_db <- gisco_db
+  expect_identical(n, old_db)
+
+  if (file.exists(cached_db)) {
+    unlink(cached_db)
+  }
+  expect_false(file.exists(cached_db))
+
+  # Restore
+  Sys.setenv("NOT_CRAN" = env_orig)
+  expect_identical(Sys.getenv("NOT_CRAN"), env_orig)
+})
+
+test_that("Get database", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  # Get db
+  new_db <- gisco_get_cached_db(update_cache = TRUE)
+  expect_s3_class(new_db, "tbl_df")
+  expect_snapshot(unique(new_db$id_giscor))
+  expect_snapshot(unique(new_db$ext))
+  expect_snapshot(unique(new_db$epsg))
+  expect_snapshot(unique(new_db$nuts_level))
+  expect_snapshot(unique(new_db$resolution))
+  expect_snapshot(unique(new_db$spatialtype))
+  expect_snapshot(unique(new_db$level))
+  expect_snapshot(sort(unique(new_db$year)))
+})
+
+test_that("Test cached database", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+  cdir <- detect_cache_dir_muted()
+  cdir_db <- create_cache_dir(file.path(cdir, "cache_db"))
+
+  cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
+  unlink(cached_db)
+  expect_false(file.exists(cached_db))
+
+  # Get db
+  new_db <- gisco_get_cached_db()
+  expect_true(file.exists(cached_db))
+  new_db_cached <- gisco_get_cached_db()
+  expect_identical(new_db, new_db_cached)
+})

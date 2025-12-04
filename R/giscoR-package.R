@@ -1,6 +1,11 @@
 #' @keywords internal
 "_PACKAGE"
 
-# import stuffs
-#' @importFrom utils download.file unzip read.csv2 menu URLencode
+
+## usethis namespace: start
+#' @importFrom cli qty
+#' @importFrom lifecycle deprecated
+#' @importFrom sf st_crs
+#' @importFrom utils object.size unzip read.csv
+## usethis namespace: end
 NULL

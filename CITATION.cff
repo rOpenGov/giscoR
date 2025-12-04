@@ -8,7 +8,7 @@ message: 'To cite package "giscoR" in publications use:'
 type: software
 license: GPL-3.0-only
 title: 'giscoR: Download Map Data from GISCO API - Eurostat'
-version: 0.6.1.9000
+version: 0.9.9.9999
 doi: 10.32614/CRAN.package.giscoR
 identifiers:
 - type: doi
@@ -32,7 +32,7 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
   doi: 10.32614/CRAN.package.giscoR
   year: '2025'
-  version: 0.6.1.9000
+  version: 0.9.9.9999
   url: https://ropengov.github.io/giscoR/
   abstract: Tools to download data from the GISCO (Geographic Information System of
     the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global
@@ -72,7 +72,19 @@ references:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
   year: '2025'
-  version: '>= 3.6.0'
+  version: '>= 4.1'
+- type: software
+  title: cli
+  abstract: 'cli: Helpers for Developing Command Line Interfaces'
+  notes: Imports
+  url: https://cli.r-lib.org
+  repository: https://CRAN.R-project.org/package=cli
+  authors:
+  - family-names: Csárdi
+    given-names: Gábor
+    email: gabor@posit.co
+  year: '2025'
+  doi: 10.32614/CRAN.package.cli
 - type: software
   title: countrycode
   abstract: 'countrycode: Convert Country Names and Country Codes'
@@ -88,18 +100,17 @@ references:
   doi: 10.32614/CRAN.package.countrycode
   version: '>= 1.2.0'
 - type: software
-  title: geojsonsf
-  abstract: 'geojsonsf: GeoJSON to Simple Feature Converter'
+  title: httr2
+  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
   notes: Imports
-  url: https://github.com/SymbolixAU/geojsonsf
-  repository: https://CRAN.R-project.org/package=geojsonsf
+  url: https://httr2.r-lib.org
+  repository: https://CRAN.R-project.org/package=httr2
   authors:
-  - family-names: Cooley
-    given-names: David
-    email: dcooley@symbolix.com.au
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
   year: '2025'
-  doi: 10.32614/CRAN.package.geojsonsf
-  version: '>= 2.0.0'
+  doi: 10.32614/CRAN.package.httr2
 - type: software
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
@@ -113,6 +124,22 @@ references:
     orcid: https://orcid.org/0000-0002-4035-0289
   year: '2025'
   doi: 10.32614/CRAN.package.jsonlite
+- type: software
+  title: lifecycle
+  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
+  notes: Imports
+  url: https://lifecycle.r-lib.org/
+  repository: https://CRAN.R-project.org/package=lifecycle
+  authors:
+  - family-names: Henry
+    given-names: Lionel
+    email: lionel@posit.co
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+    orcid: https://orcid.org/0000-0003-4757-117X
+  year: '2025'
+  doi: 10.32614/CRAN.package.lifecycle
 - type: software
   title: rappdirs
   abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
@@ -143,7 +170,7 @@ references:
     orcid: https://orcid.org/0000-0001-8049-7069
   year: '2025'
   doi: 10.32614/CRAN.package.sf
-  version: '>= 0.9.0'
+  version: '>= 1.0.0'
 - type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'
@@ -255,18 +282,6 @@ references:
   year: '2025'
   doi: 10.32614/CRAN.package.ggplot2
   version: '>= 3.5.0'
-- type: software
-  title: httr2
-  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
-  notes: Suggests
-  url: https://httr2.r-lib.org
-  repository: https://CRAN.R-project.org/package=httr2
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  year: '2025'
-  doi: 10.32614/CRAN.package.httr2
 - type: software
   title: knitr
   abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'

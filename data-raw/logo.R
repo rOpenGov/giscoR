@@ -18,8 +18,8 @@ map <- gisco_get_nuts(
 )
 
 f <-
-  codelist %>%
-  select(eurostat, eu28) %>%
+  codelist |>
+  select(eurostat, eu28) |>
   filter(!is.na(eu28), eurostat != "UK")
 
 map <- inner_join(map, f, by = c("CNTR_CODE" = "eurostat"))
