@@ -74,9 +74,9 @@ We recommend reviewing the updated documentation at
 ## Dataset updates
 
 -   Update `?gisco_db` to the newest data.
--   Add `?gisco_countries_2024` (replace `gisco_countries`).
--   Add `?g``isco_nuts_2024` (replace `gisco_nuts`).
--   Add `?g``isco_coastal_lines` (replace `gisco_coastallines`).
+-   Add `?gisco_countries_2024` (replaces `gisco_countries`).
+-   Add `?gisco_nuts_2024` (replaces `gisco_nuts`).
+-   Add `?gisco_coastal_lines` (replaced `gisco_coastallines`).
 
 > The datasets `gisco_countries`, `gisco_nuts`, and `gisco_coastallines` are no
 > longer available. Any code that accessed them directly (e.g.,
