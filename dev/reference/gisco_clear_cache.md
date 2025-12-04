@@ -4,7 +4,7 @@
 cached data and configuration, specifically:
 
 - Deletes the [giscoR](https://CRAN.R-project.org/package=giscoR) config
-  directory (`rappdirs::user_config_dir("giscoR", "R")`).
+  directory (`tools::R_user_dir("giscoR", "config")`).
 
 - Deletes the `cache_dir` directory.
 
@@ -44,7 +44,7 @@ you would never have installed and/or used
 
 ## See also
 
-[`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
+[`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html)
 
 Other cache utilities:
 [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md)
@@ -55,7 +55,7 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/giscoR
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -63,13 +63,13 @@ gisco_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 gisco_clear_cache(verbose = TRUE)
-#> ! giscoR data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/example/cache
+#> ! giscoR data deleted: C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/example/cache
 
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/giscoR.
+#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/giscoR
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/giscoR
 #> [1] TRUE
 # }
 ```

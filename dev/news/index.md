@@ -20,6 +20,14 @@ when GISCO publishes a new yearly release, you can access the new
 updated data simply by refreshing the cached database without waiting
 for a new version of **giscoR**.
 
+We have transitioned from
+[`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
+to [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) for
+managing your persistent cache directory. If you are a heavy **giscoR**
+user and already have a cache directory in place, you’ll receive a
+one-time friendly message informing you about this migration. Consider
+it a warm welcome to **giscoR** 1.0.0 😉.
+
 The package now requires **R ≥ 4.1**, and dependency updates improve
 both performance and maintainability. All functions return tidy objects
 (tibbles or `sf` objects with tibble data).
@@ -93,9 +101,13 @@ We recommend reviewing the updated documentation at
   to the newest data.
 - Add
   [`?gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md)
-  (replace `gisco_countries`).
-- Add ``` ?g``isco_nuts_2024 ``` (replace `gisco_nuts`).
-- Add ``` ?g``isco_coastal_lines ``` (replace `gisco_coastallines`).
+  (replaces `gisco_countries`).
+- Add
+  [`?gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
+  (replaces `gisco_nuts`).
+- Add
+  [`?gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md)
+  (replaced `gisco_coastallines`).
 
 > The datasets `gisco_countries`, `gisco_nuts`, and `gisco_coastallines`
 > are no longer available. Any code that accessed them directly (e.g.,

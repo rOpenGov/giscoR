@@ -56,7 +56,17 @@ files are temporary and are removed when the **R** session ends). To
 persist a cache across **R** sessions, use
 `gisco_set_cache_dir(cache_dir, install = TRUE)` which writes the chosen
 path to a small configuration file under
-`rappdirs::user_config_dir("giscoR", "R")`.
+`tools::R_user_dir("giscoR", "config")`.
+
+## Note
+
+In [giscoR](https://CRAN.R-project.org/package=giscoR) \>= 1.0.0 the
+location of the configuration file has moved from
+`rappdirs::user_config_dir("giscoR", "R")` to
+`tools::R_user_dir("giscoR", "config")`. We have implemented a
+functionality that would migrate previous configuration files from one
+location to another with a message. This message would appear only once
+informing of the migration.
 
 ## Caching strategies
 
@@ -90,7 +100,7 @@ Use the option `verbose = TRUE` for debugging the API query and
 
 ## See also
 
-[`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
+[`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html)
 
 Other cache utilities:
 [`gisco_clear_cache()`](https://ropengov.github.io/giscoR/dev/reference/gisco_clear_cache.md)
@@ -101,29 +111,29 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/giscoR
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/example/cachenew.
+#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/example/cachenew
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpecJR0O/example/cachenew"
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/example/cachenew
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmpc3gjgJ/example/cachenew"
 
 # Restore initial cache
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/giscoR.
+#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/giscoR
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpecJR0O/giscoR
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpecJR0O/giscoR"
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmpc3gjgJ/giscoR
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmpc3gjgJ/giscoR"
 ```

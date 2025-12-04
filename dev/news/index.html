@@ -45,6 +45,7 @@
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
 </blockquote>
 <p>Database management has also been improved. Instead of relying on the static <code><a href="../reference/gisco_db.html">?gisco_db</a></code> dataset, the package now stores the database in the cache. This cached database is used for all API calls and can be updated via <code>gisco_get_cached_db(update_cache = TRUE)</code>. In practice, this means that when GISCO publishes a new yearly release, you can access the new updated data simply by refreshing the cached database without waiting for a new version of <strong>giscoR</strong>.</p>
+<p>We have transitioned from <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code> to <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> for managing your persistent cache directory. If you are a heavy <strong>giscoR</strong> user and already have a cache directory in place, you’ll receive a one-time friendly message informing you about this migration. Consider it a warm welcome to <strong>giscoR</strong> 1.0.0 😉.</p>
 <p>The package now requires <strong>R ≥ 4.1</strong>, and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
 <p>Dataset subsetting is now performed at read time using GDAL’s query capabilities (<code><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">sf::read_sf()</a></code>), improving performance and reducing file size. The <strong>geojsonsf</strong> dependency is no longer required.</p>
 <p>Several new functions and arguments have been added, some functions renamed, and one deprecated. All bundled datasets have been updated to their latest versions.</p>
@@ -103,9 +104,9 @@
 <div class="section level3">
 <h3 id="dataset-updates-development-version">Dataset updates<a class="anchor" aria-label="anchor" href="#dataset-updates-development-version"></a></h3>
 <ul><li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code> to the newest data.</li>
-<li>Add <code><a href="../reference/gisco_countries_2024.html">?gisco_countries_2024</a></code> (replace <code>gisco_countries</code>).</li>
-<li>Add <code>?g``isco_nuts_2024</code> (replace <code>gisco_nuts</code>).</li>
-<li>Add <code>?g``isco_coastal_lines</code> (replace <code>gisco_coastallines</code>).</li>
+<li>Add <code><a href="../reference/gisco_countries_2024.html">?gisco_countries_2024</a></code> (replaces <code>gisco_countries</code>).</li>
+<li>Add <code><a href="../reference/gisco_nuts_2024.html">?gisco_nuts_2024</a></code> (replaces <code>gisco_nuts</code>).</li>
+<li>Add <code><a href="../reference/gisco_coastal_lines.html">?gisco_coastal_lines</a></code> (replaced <code>gisco_coastallines</code>).</li>
 </ul><blockquote>
 <p>The datasets <code>gisco_countries</code>, <code>gisco_nuts</code>, and <code>gisco_coastallines</code> are no longer available. Any code that accessed them directly (e.g., <code>giscoR::gisco_countries</code>) will now fail.<br></p>
 <p>Please use the updated datasets or, preferably, retrieve them via the corresponding functions such as <code><a href="../reference/gisco_get_countries.html">gisco_get_countries()</a></code> with default parameters.</p>
