@@ -4,10 +4,10 @@
 \alias{gisco_get_census}
 \title{Census dataset}
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census}.
 
 Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
 }
 \usage{
 gisco_get_census(

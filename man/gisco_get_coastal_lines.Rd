@@ -5,10 +5,10 @@
 \alias{gisco_get_coastallines}
 \title{Coastal lines dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}
+\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
 Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
 }
 \usage{
 gisco_get_coastal_lines(
@@ -30,9 +30,9 @@ gisco_get_coastal_lines(
 \item{epsg}{character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}
-\item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}
-\item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}
+\item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
+\item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
+\item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
 \item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See

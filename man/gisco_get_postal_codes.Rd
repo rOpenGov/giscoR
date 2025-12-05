@@ -6,10 +6,10 @@
 \alias{gisco_get_postalcodes}
 \title{Postal codes dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}
+\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
 Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
 }
 \usage{
 gisco_get_postal_codes(

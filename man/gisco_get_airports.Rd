@@ -5,10 +5,10 @@
 \alias{gisco_get_airports}
 \title{Airports dataset}
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks}.
 
 Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata}.
 }
 \usage{
 gisco_get_airports(

@@ -4,10 +4,10 @@
 \alias{gisco_get_grid}
 \title{Grid dataset}
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}.
 
 There are specific downloading provisions, please see
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}.
 }
 \usage{
 gisco_get_grid(

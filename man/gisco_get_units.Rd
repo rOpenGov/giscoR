@@ -38,9 +38,9 @@ or \code{"df"}. See \strong{Value}.}
 \item{epsg}{character string or number. Projection of the map: 4-digit
 \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
-\item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}
-\item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}
-\item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}
+\item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
+\item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
+\item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
 \item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See

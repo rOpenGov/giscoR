@@ -5,7 +5,7 @@
 \alias{gisco_bulk_download}
 \title{GISCO API bulk download}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}
+\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 }
 \usage{
 gisco_bulk_download(

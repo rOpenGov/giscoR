@@ -5,7 +5,7 @@
 \alias{gisco_get_education}
 \title{Education services in Europe}
 \source{
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services}.
 
 There are no specific download rules for the datasets shown below. However,
 please refer to \href{https://ec.europa.eu/eurostat/web/gisco/geodata}{the general copyright notice} and licence
