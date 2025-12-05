@@ -15,10 +15,10 @@
 #'   `2013`, `2006`.
 #'
 #' @source
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
 #'
 #' Copyright:
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata>
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 #'
 #' @details
 #' Dataset includes objects in [EPSG:4326](https://epsg.io/4326).

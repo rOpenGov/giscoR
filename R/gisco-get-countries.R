@@ -26,9 +26,9 @@
 #'   "year",TRUE)}.
 #' @param epsg character string or number. Projection of the map: 4-digit
 #'   [EPSG code](https://epsg.io/). One of:
-#'   * `"4326"`: [WGS84](https://epsg.io/4326)
-#'   * `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035)
-#'   * `"3857"`: [Pseudo-Mercator](https://epsg.io/3857)
+#'   * `"4326"`: [WGS84](https://epsg.io/4326).
+#'   * `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
+#'   * `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 #' @param cache logical. Whether to do caching. Default is `TRUE`. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
 #' @param update_cache logical. Should the cached file be refreshed?. Default
@@ -67,10 +67,10 @@
 #'   "ext",TRUE)}.
 #'
 #' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/>
+#' <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
 #' Copyright:
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
 #'
 #' @details
 #'

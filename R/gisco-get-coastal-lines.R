@@ -18,10 +18,10 @@
 #'   "ext",TRUE)}.
 #'
 #' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/>
+#' <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
 #' Copyright:
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 #'
 #'
 #' @seealso

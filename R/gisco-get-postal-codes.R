@@ -58,7 +58,7 @@
 #'     labs(
 #'       title = "Postcodes of Belgium",
 #'       subtitle = "2024",
-#'       caption = paste("(c) European Union - GISCO, 2024,",
+#'       caption = paste("\u00a9 European Union - GISCO, 2024,",
 #'         "postal code point dataset",
 #'         "Licence CC-BY-SA 4.0",
 #'         sep = "\n"

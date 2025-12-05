@@ -15,7 +15,7 @@
 #'   `2023`, `2020`.
 #'
 #' @source
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>.
 #'
 #' There are no specific download rules for the datasets shown below. However,
 #' please refer to [the general copyright

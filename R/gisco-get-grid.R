@@ -11,10 +11,10 @@
 #' @export
 #'
 #' @source
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 #'
 #' There are specific downloading provisions, please see
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 #'
 #' @param resolution Resolution of the grid cells on kms. Available values are
 #' `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"`, `"100"`. See **Details**.

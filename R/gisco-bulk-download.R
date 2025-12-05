@@ -9,7 +9,7 @@
 #' @inheritParams gisco_get_countries
 #' @export
 #'
-#' @source <https://gisco-services.ec.europa.eu/distribution/v2/>
+#' @source <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
 #' @return
 #' A (invisible) character vector with the full path of the files extracted.
