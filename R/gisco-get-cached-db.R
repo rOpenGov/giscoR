@@ -255,7 +255,11 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
 }
 
 
-# Get db
+#' Internal function to get the GISCO database, with fallback to static
+#'
+#' @return A tibble with the GISCO database.
+#'
+#' @noRd
 get_db <- function() {
   db <- gisco_get_cached_db()
   if (is.null(db)) {
@@ -292,6 +296,9 @@ get_db <- function() {
 }
 
 
+#' Internal function to check if we are on CRAN
+#' @return logical
+#' @noRd
 on_cran <- function() {
   env <- Sys.getenv("NOT_CRAN")
   if (identical(env, "")) {

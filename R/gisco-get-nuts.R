@@ -239,6 +239,15 @@ gisco_get_nuts <- function(
   data_sf
 }
 
+
+#' Filter NUTS data sf by country and/or NUTS ID
+#'
+#' @param data_sf sf object
+#' @param country character vector of country codes or names
+#' @param nuts_id character vector of NUTS IDs
+#'
+#' @return sf object filtered
+#' @noRd
 filter_country_nuts <- function(data_sf, country = NULL, nuts_id = NULL) {
   if (all(is.null(country), is.null(nuts_id))) {
     return(data_sf)

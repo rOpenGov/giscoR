@@ -262,9 +262,16 @@ gisco_address_api_copyright <- function(verbose = FALSE) {
   call_address_api(custom_query = NULL, apiurl, verbose)
 }
 
-# Helpers
-# General ----
-
+#' Helper function to prepare and call the Address API
+#'
+#' @param custom_query A named list with the query parameters.
+#' @param apiurl The API endpoint URL.
+#' @param verbose Logical. Whether to print verbose output.
+#'
+#' @returns
+#' A `sf` object or `tibble`.
+#'
+#' @noRd
 call_address_api <- function(custom_query, apiurl, verbose = FALSE) {
   # Prepare the query
   clean_q <- unlist(custom_query)

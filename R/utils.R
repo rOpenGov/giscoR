@@ -1,3 +1,16 @@
+#' Create messages based on type
+#'
+#' @param type character string. Type of message. Accepted values are
+#'  `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
+#'
+#' @param verbose logical. Whether to print the message or not.
+#' @param ... Character strings to be combined into the message.
+#'
+#' @returns
+#' Invisibly returns `NULL`. Prints messages to the console if `verbose` is
+#' `TRUE`.
+#'
+#' @noRd
 make_msg <- function(type = "generic", verbose, ...) {
   if (!verbose) {
     return(invisible())
@@ -23,6 +36,15 @@ make_msg <- function(type = "generic", verbose, ...) {
   invisible()
 }
 
+#' Match argument with pretty error message
+#'
+#' @param arg The argument to match.
+#' @param choices The possible choices for the argument.
+#'
+#' @returns
+#' The matched argument.
+#'
+#' @noRd
 match_arg_pretty <- function(arg, choices) {
   arg_name <- as.character(substitute(arg)) # nolint
 
@@ -85,6 +107,15 @@ match_arg_pretty <- function(arg, choices) {
   choices[lmatch]
 }
 
+
+#' Row bind data frames or lists with different columns, filling missing
+#' columns with `NA`.
+#'
+#' @param a_list A list of data frames or lists to row bind.
+#' @return
+#' A data frame resulting from row binding the input data frames or sf objects.
+#'
+#' @noRd
 rbind_fill <- function(a_list) {
   # Drop nulls
   is_null <- vapply(a_list, is.null, FUN.VALUE = logical(1))

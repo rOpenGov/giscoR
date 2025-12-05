@@ -249,7 +249,12 @@ gisco_clear_cache <- function(
   invisible()
 }
 
-# Internal funs
+# Internal funs ----
+
+#' Detects cache dir silently
+#'
+#' @returns path to cache dir
+#' @noRd
 detect_cache_dir_muted <- function() {
   migrate_cache()
 
@@ -295,7 +300,11 @@ detect_cache_dir_muted <- function() {
 }
 
 
-#' Creates `cache_dir`
+#' Creates `cache_dir` if not exists
+#'
+#' @param cache_dir path to cache dir
+#' @returns path to cache dir
+#'
 #' @noRd
 create_cache_dir <- function(cache_dir = NULL) {
   # Check cache dir from options if not set

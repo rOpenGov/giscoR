@@ -214,6 +214,14 @@ gisco_bulk_download <- function(
   invisible(out_full)
 }
 
+#' Internal function to set parameters for bulk download
+#'
+#' @param id Dataset ID
+#' @param year Year
+#' @param resolution Resolution
+#'
+#' @return A list with parameters
+#' @noRd
 make_bulk_params <- function(id, year, resolution = NULL) {
   # Need this to ensure everything is captured
   make_params <- list(
