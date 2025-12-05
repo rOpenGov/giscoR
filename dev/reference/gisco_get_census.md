@@ -17,10 +17,10 @@ gisco_get_census(
 
 ## Source
 
-<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census>.
 
 Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 
 ## Arguments
 

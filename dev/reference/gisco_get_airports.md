@@ -18,9 +18,9 @@ gisco_get_airports(
 
 ## Source
 
-<https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
 
-Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 ## Arguments
 

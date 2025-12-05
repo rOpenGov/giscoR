@@ -38,10 +38,10 @@ gisco_get_nuts(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>
+<https://gisco-services.ec.europa.eu/distribution/v2/>.
 
 Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
 
 ## Arguments
 
@@ -55,11 +55,11 @@ Copyright:
   character string or number. Projection of the map: 4-digit [EPSG
   code](https://epsg.io/). One of:
 
-  - `"4326"`: [WGS84](https://epsg.io/4326)
+  - `"4326"`: [WGS84](https://epsg.io/4326).
 
-  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035)
+  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 
-  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857)
+  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 
 - cache:
 

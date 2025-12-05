@@ -17,9 +17,9 @@ gisco_get_ports(
 
 ## Source
 
-<https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
 
-Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 ## Arguments
 

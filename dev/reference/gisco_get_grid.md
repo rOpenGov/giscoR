@@ -18,10 +18,10 @@ gisco_get_grid(
 
 ## Source
 
-<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 
 There are specific downloading provisions, please see
-<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 
 ## Arguments
 

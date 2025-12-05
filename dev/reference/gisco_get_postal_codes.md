@@ -21,10 +21,10 @@ gisco_get_postal_codes(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>
+<https://gisco-services.ec.europa.eu/distribution/v2/>.
 
 Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
 
 ## Arguments
 
