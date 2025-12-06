@@ -119,6 +119,8 @@ if (!is.null(lu_lau)) {
 
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
+See \code{\link[=gisco_id_api_lau]{gisco_id_api_lau()}} to download via GISCO ID service API.
+
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
 \code{\link{gisco_get_coastal_lines}()},

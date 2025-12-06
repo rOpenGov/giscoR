@@ -24,6 +24,9 @@
 \alias{gisco_addressapi_roads}
 \alias{gisco_addressapi_search}
 \title{GISCO Address API}
+\source{
+\url{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}.
+}
 \usage{
 gisco_address_api_search(
   country = NULL,
@@ -105,7 +108,7 @@ A \link[tibble:tbl_df-class]{tibble} in most cases, except
 \code{gisco_address_api_bbox()}, that return a \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Access the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}{GISCO Address API}, that
+Functions to interact with the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}{GISCO Address API}, that
 allows to carry out both geocoding and reverse geocoding using a pan-european
 address database.
 
@@ -172,5 +175,8 @@ reverse
 \seealso{
 See the docs:
 \url{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}.
+
+Other API tools: 
+\code{\link{gisco_id_api}}
 }
-\concept{address_api}
+\concept{API tools}

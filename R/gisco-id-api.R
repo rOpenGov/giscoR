@@ -6,7 +6,90 @@
 #' attributes and, optionally, geometry for different datasets at specified
 #' longitude and latitude coordinates.
 #'
-#' @noRd
+#' Each endpoint available is implemented through a specific function, see
+#' **Details**.
+#'
+#' @name gisco_id_api
+#' @rdname gisco_id_api
+#' @inheritParams gisco_address_api
+#' @family API tools
+#' @export
+#'
+#' @source
+#' <https://gisco-services.ec.europa.eu/id/api-docs/>.
+#'
+#' @param x,y character string or numeric. x and y coordinates (as longitude
+#'   and latitude) to be identified.
+#' @param xmin,ymin,xmax,ymax character string or numeric. Bounding box
+#'   coordinates to identify all geonames within the box.
+#' @param nuts_id character. NUTS ID code.
+#' @param epsg character string or numeric. EPSG code for the coordinate
+#'   reference system.
+#' @param geometry logical. Whether to return geometry. On `TRUE` a
+#'   [`sf`][sf::st_sf] object would be returned. On `FALSE` a
+#'   [tibble][tibble::tbl_df] would be returned.
+#' @param year character string or numeric. Year of the dataset, see
+#'   **Details**.
+#' @param nuts_level character string. NUTS level. One of `0`,
+#'   `1`, `2` or `3`.
+#'
+#' @returns
+#' A [tibble][tibble::tbl_df] or a [`sf`][sf::st_sf] object.
+#'
+#' @details
+#' The available endpoints are:
+#'
+#' * `gisco_id_api_geonames()`: Get geographic placenames either from x/y
+#'   coordinates or a bounding box.
+#' * `gisco_id_api_nuts()`: Returns NUTS regions from either a specified
+#'   longitude and latitude (x,y) or id. Accepted `year`
+#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("nuts")}.
+#' * `gisco_id_api_lau()`: Returns the id and - optionally - geometry for Large
+#'   Urban Areas (LAU) at specified longitude and latitude (x,y). Accepted
+#'   `year`
+#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("lau")}.
+#' * `gisco_id_api_country()`: Returns the id and - optionally - geometry for
+#'   countries at specified longitude and latitude (x,y). Accepted `year`
+#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("country")}.
+#' * `gisco_id_api_river_basin()`: Returns the id and - optionally - geometry
+#'   for river basins at specified longitude and latitude (x,y), based on the
+#'   Water Framework Directive (WFD) reference spatial data sets. Accepted
+#'   `year`
+#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("riverbasin")}.
+#' * `gisco_id_api_biogeo_region()`: Returns the id and - optionally - geometry
+#'   for biogeo regions at specified longitude and latitude (x,y). The
+#'  biogeographical regions dataset contains the official delineations used in
+#'  the Habitats Directive (92/43/EEC) and for the EMERALD Network. Accepted
+#'  `year`
+#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("biogeoregion")}.
+#' * `gisco_id_api_census_grid()`: Returns the id and - optionally - geometry
+#'   for census grid cells at specified longitude and latitude (x,y). Accepted
+#'    `year`
+#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("censusgrid")}.
+#' @seealso
+#' [gisco_get_nuts()], [gisco_get_lau()], [gisco_get_countries()],
+#' [gisco_get_census()].
+#'
+#' @examplesIf gisco_check_access()
+#' \donttest{
+#' gisco_id_api_geonames(x = -2.5, y = 43.06)
+#'
+#' lau <- gisco_id_api_lau(x = -2.5, y = 43.06)
+#' nuts3 <- gisco_id_api_nuts(x = -2.5, y = 43.06, nuts_level = 3)
+#'
+#' if (all(!is.null(lau), !is.null(nuts3))) {
+#'   library(ggplot2)
+#'
+#'   ggplot(nuts3) +
+#'     geom_sf(fill = "lightblue", color = "black") +
+#'     geom_sf(data = lau, fill = "orange", color = "red") +
+#'     labs(
+#'       title = "NUTS3 and LAU boundaries",
+#'       subtitle = "Arrasate, Basque Country, Spain",
+#'       caption = "Source: GISCO ID service API"
+#'     )
+#' }
+#' }
 gisco_id_api_geonames <- function(
   x = NULL,
   y = NULL,
@@ -29,15 +112,17 @@ gisco_id_api_geonames <- function(
   call_id_api(custom_query, apiurl, verbose)
 }
 
+#' @rdname gisco_id_api
+#' @export
 gisco_id_api_nuts <- function(
-  nuts_id = NULL,
   x = NULL,
   y = NULL,
-  epsg = c(4326, 4258, 3035),
-  geometry = TRUE,
   year = 2024,
+  epsg = c(4326, 4258, 3035),
+  verbose = FALSE,
+  nuts_id = NULL,
   nuts_level = NULL,
-  verbose = FALSE
+  geometry = TRUE
 ) {
   prepare_id_query(
     nuts_id = nuts_id,
@@ -52,14 +137,15 @@ gisco_id_api_nuts <- function(
   )
 }
 
-
+#' @rdname gisco_id_api
+#' @export
 gisco_id_api_lau <- function(
   x,
   y,
-  epsg = c(4326, 4258, 3035),
-  geometry = TRUE,
   year = 2024,
-  verbose = FALSE
+  epsg = c(4326, 4258, 3035),
+  verbose = FALSE,
+  geometry = TRUE
 ) {
   prepare_id_query(
     x = x,
@@ -72,13 +158,15 @@ gisco_id_api_lau <- function(
   )
 }
 
+#' @rdname gisco_id_api
+#' @export
 gisco_id_api_country <- function(
   x,
   y,
-  epsg = c(4326, 4258, 3035),
-  geometry = TRUE,
   year = 2024,
-  verbose = FALSE
+  epsg = c(4326, 4258, 3035),
+  verbose = FALSE,
+  geometry = TRUE
 ) {
   prepare_id_query(
     x = x,
@@ -91,13 +179,15 @@ gisco_id_api_country <- function(
   )
 }
 
+#' @rdname gisco_id_api
+#' @export
 gisco_id_api_river_basin <- function(
   x,
   y,
-  epsg = c(4326, 4258, 3035),
-  geometry = TRUE,
   year = 2019,
-  verbose = FALSE
+  epsg = c(4326, 4258, 3035),
+  verbose = FALSE,
+  geometry = TRUE
 ) {
   prepare_id_query(
     x = x,
@@ -110,13 +200,15 @@ gisco_id_api_river_basin <- function(
   )
 }
 
+#' @rdname gisco_id_api
+#' @export
 gisco_id_api_biogeo_region <- function(
   x,
   y,
-  epsg = c(4326, 4258, 3035),
-  geometry = TRUE,
   year = 2016,
-  verbose = FALSE
+  epsg = c(4326, 4258, 3035),
+  verbose = FALSE,
+  geometry = TRUE
 ) {
   prepare_id_query(
     x = x,
@@ -129,13 +221,15 @@ gisco_id_api_biogeo_region <- function(
   )
 }
 
+#' @rdname gisco_id_api
+#' @export
 gisco_id_api_census_grid <- function(
   x,
   y,
-  epsg = c(4326, 4258, 3035),
-  geometry = TRUE,
   year = 2021,
-  verbose = FALSE
+  epsg = c(4326, 4258, 3035),
+  verbose = FALSE,
+  geometry = TRUE
 ) {
   prepare_id_query(
     x = x,

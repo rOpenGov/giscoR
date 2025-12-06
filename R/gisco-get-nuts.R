@@ -28,6 +28,8 @@
 #'
 #' See [gisco_get_unit_nuts()] to download single files.
 #'
+#' See [gisco_id_api_nuts()] to download via GISCO ID service API.
+#'
 #' @param year character string or number. Release year of the file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "year",TRUE)}.
@@ -139,11 +141,7 @@ gisco_get_nuts <- function(
       "Use {.arg update_cache = TRUE} to re-load from file"
     )
 
-    if (nuts_level %in% c("0", "1", "2", "3")) {
-      data_sf <- data_sf[data_sf$LEVL_CODE == nuts_level, ]
-    }
-
-    data_sf <- filter_country_nuts(data_sf, country, nuts_id)
+    data_sf <- filter_country_nuts_level(data_sf, country, nuts_id, nuts_level)
 
     return(data_sf)
   }
@@ -155,11 +153,7 @@ gisco_get_nuts <- function(
 
     data_sf <- read_geo_file_sf(api_entry)
 
-    if ("NUTS_ID" %in% names(data_sf)) {
-      data_sf$geo <- data_sf$NUTS_ID
-      data_sf <- sanitize_sf(data_sf)
-    }
-    data_sf <- filter_country_nuts(data_sf, country, nuts_id)
+    data_sf <- filter_country_nuts_level(data_sf, country, nuts_id, nuts_level)
 
     return(data_sf)
   }
@@ -245,10 +239,26 @@ gisco_get_nuts <- function(
 #' @param data_sf sf object
 #' @param country character vector of country codes or names
 #' @param nuts_id character vector of NUTS IDs
+#' @param nuts_level character string. NUTS level. One of `0`, `1`, `2`, `3`
+#'   or `all` for all levels.
 #'
 #' @return sf object filtered
 #' @noRd
-filter_country_nuts <- function(data_sf, country = NULL, nuts_id = NULL) {
+filter_country_nuts_level <- function(
+  data_sf,
+  country = NULL,
+  nuts_id = NULL,
+  nuts_level = "all"
+) {
+  if ("NUTS_ID" %in% names(data_sf)) {
+    data_sf$geo <- data_sf$NUTS_ID
+    data_sf <- sanitize_sf(data_sf)
+  }
+
+  if (nuts_level %in% c("0", "1", "2", "3")) {
+    data_sf <- data_sf[data_sf$LEVL_CODE == nuts_level, ]
+  }
+
   if (all(is.null(country), is.null(nuts_id))) {
     return(data_sf)
   }

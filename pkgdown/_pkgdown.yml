@@ -78,13 +78,11 @@ reference:
 - subtitle: Misc
   desc: Other functions
   contents: has_concept("misc")
-- title: GISCO Address API
+- title: GISCO Tools
   desc: |
-    Query the <a href="https://gisco-services.ec.europa.eu/address_api/"
-    class="external-link">GISCO Addres API</a>, which allows developers to carry
-    out both geocoding and reverse geocoding using a pan-european address
-    database.
-  contents: has_concept("address_api")
+    Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools"
+    class="external-link">APIs and tools</a> provided by GISCO.
+  contents: has_concept("API tools")
 - title: |
     Cache management
   contents: has_concept("cache utilities")

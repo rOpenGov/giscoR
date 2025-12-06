@@ -22,6 +22,9 @@
 #' [gisco_get_metadata()], [gisco_get_countries()],
 #' [gisco_get_nuts()], [gisco_get_urban_audit()].
 #'
+#' See [`gisco_id_api`][giscoR::gisco_id_api] to download via GISCO ID service
+#' API.
+#'
 #' @param unit character vector of unit ids to be downloaded. See **Details**.
 #' @param year character string or number. Release year of the file.
 #' @param spatialtype character string. Type of geometry to be returned.

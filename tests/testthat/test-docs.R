@@ -9,3 +9,11 @@ test_that("Check docs", {
   expect_snapshot(db_values("communes", "ext"))
   expect_snapshot(db_values("communes", "spatialtype", formatted = FALSE))
 })
+
+test_that("Check GISCO ID docs", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  expect_snapshot(docs_id_years("nuts"))
+  expect_snapshot(docs_id_years("riverbasin"))
+})

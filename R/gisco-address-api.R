@@ -1,7 +1,7 @@
 #' GISCO Address API
 #'
 #' @description
-#' Access the [GISCO Address
+#' Functions to interact with the [GISCO Address
 #' API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home), that
 #' allows to carry out both geocoding and reverse geocoding using a pan-european
 #' address database.
@@ -12,11 +12,14 @@
 #' The API supports fuzzy searching (also referred to as approximate string
 #' matching) for all arguments of each endpoint.
 #'
+#' @source
+#' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
+#'
 #' @name gisco_address_api
 #' @rdname gisco_address_api
 #' @aliases gisco_addressapi
 #' @inheritParams gisco_get_nuts
-#' @family address_api
+#' @family API tools
 #' @export
 #'
 #' @param country Country code (`country = "LU"`).

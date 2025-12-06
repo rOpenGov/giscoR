@@ -163,6 +163,8 @@ See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk 
 
 See \code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}} to download single files.
 
+See \code{\link[=gisco_id_api_nuts]{gisco_id_api_nuts()}} to download via GISCO ID service API.
+
 Other statistical units datasets:
 \code{\link{gisco_get_census}()},
 \code{\link{gisco_get_coastal_lines}()},

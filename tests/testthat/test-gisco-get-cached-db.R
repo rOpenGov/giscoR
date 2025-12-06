@@ -59,6 +59,9 @@ test_that("Offline detection", {
   options(gisco_test_404 = FALSE)
 })
 test_that("On CRAN", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
   # Imagine we are in CRAN
   env_orig <- Sys.getenv("NOT_CRAN")
   Sys.setenv("NOT_CRAN" = "false")

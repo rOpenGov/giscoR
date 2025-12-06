@@ -19,6 +19,8 @@
 #'
 #' See [gisco_get_unit_country()] to download single files.
 #'
+#' See [gisco_id_api_country()] to download via GISCO ID service API.
+#'
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of

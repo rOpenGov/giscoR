@@ -128,6 +128,8 @@ See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk 
 
 See \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}} to download single files.
 
+See \code{\link[=gisco_id_api_country]{gisco_id_api_country()}} to download via GISCO ID service API.
+
 Other administrative units datasets:
 \code{\link{gisco_get_communes}()},
 \code{\link{gisco_get_postal_codes}()}

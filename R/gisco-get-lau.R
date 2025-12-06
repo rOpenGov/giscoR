@@ -16,6 +16,8 @@
 #'
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
+#' See [gisco_id_api_lau()] to download via GISCO ID service API.
+#'
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
