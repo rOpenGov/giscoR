@@ -58,6 +58,10 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## See also
 
+See
+[`gisco_id_api_census_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+to download via GISCO ID service API.
+
 Other statistical units datasets:
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),

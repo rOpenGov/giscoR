@@ -151,6 +151,10 @@ See
 [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
 to download single files.
 
+See
+[`gisco_id_api_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+to download via GISCO ID service API.
+
 Other administrative units datasets:
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md),
 [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)

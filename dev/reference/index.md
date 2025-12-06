@@ -101,12 +101,10 @@ Other functions
 - [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md)
   : Attribution for administrative and statistical GISCO data
 
-## GISCO Address API
+## GISCO Tools
 
-Query the [GISCO Addres
-API](https://gisco-services.ec.europa.eu/address_api/), which allows
-developers to carry out both geocoding and reverse geocoding using a
-pan-european address database.
+Query additional [APIs and
+tools](https://ec.europa.eu/eurostat/web/gisco/tools) provided by GISCO.
 
 - [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_reverse()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
@@ -119,6 +117,14 @@ pan-european address database.
   [`gisco_address_api_postcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_copyright()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   : GISCO Address API
+- [`gisco_id_api_geonames()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  [`gisco_id_api_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  [`gisco_id_api_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  [`gisco_id_api_river_basin()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  [`gisco_id_api_biogeo_region()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  [`gisco_id_api_census_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  : GISCO ID service API
 
 ## Cache management
 

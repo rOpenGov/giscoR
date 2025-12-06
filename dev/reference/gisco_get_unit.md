@@ -144,6 +144,10 @@ Please check the download and usage provisions on
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md),
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md).
 
+See
+[`gisco_id_api`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+to download via GISCO ID service API.
+
 Additional utils for downloading datasets:
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
 

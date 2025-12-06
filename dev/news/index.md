@@ -66,14 +66,29 @@ We recommend reviewing the updated documentation at
 
 ### New functions
 
+- Metadata and database utilities:
+  - [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md)
+  - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
 - [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md)
-- [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-- [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-- [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-- [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md)
-- [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
+  for accessing census grid data.
+- New separate functions to access unit data (replacing
+  [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)):
+  - [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+  - [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+  - [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+- Functions to access the [GISCO ID service
+  API](https://gisco-services.ec.europa.eu/id/api-docs/)
+  - [`gisco_id_api_geonames()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  - [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  - [`gisco_id_api_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  - [`gisco_id_api_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  - [`gisco_id_api_river_basin()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  - [`gisco_id_api_biogeo_region()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  - [`gisco_id_api_census_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
 
 ### Renamed functions
+
+We renamed several functions to improve clarity and consistency:
 
 - [`?gisco_addressapi`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   →
@@ -95,6 +110,9 @@ We recommend reviewing the updated documentation at
   ([\#105](https://github.com/rOpenGov/giscoR/issues/105)).
 
 ### Dataset updates
+
+We updated all bundled datasets to their latest versions and added new
+ones:
 
 - Update
   [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)

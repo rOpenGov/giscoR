@@ -74,15 +74,30 @@
 </div>
 <div class="section level3">
 <h3 id="new-functions-development-version">New functions<a class="anchor" aria-label="anchor" href="#new-functions-development-version"></a></h3>
-<ul><li><code><a href="../reference/gisco_get_census.html">gisco_get_census()</a></code></li>
-<li><code><a href="../reference/gisco_get_unit.html">gisco_get_unit_country()</a></code></li>
+<ul><li>Metadata and database utilities:
+<ul><li><code><a href="../reference/gisco_get_cached_db.html">gisco_get_cached_db()</a></code></li>
+<li><code><a href="../reference/gisco_get_metadata.html">gisco_get_metadata()</a></code></li>
+</ul></li>
+<li>
+<code><a href="../reference/gisco_get_census.html">gisco_get_census()</a></code> for accessing census grid data.</li>
+<li>New separate functions to access unit data (replacing <code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code>):
+<ul><li><code><a href="../reference/gisco_get_unit.html">gisco_get_unit_country()</a></code></li>
 <li><code><a href="../reference/gisco_get_unit.html">gisco_get_unit_nuts()</a></code></li>
 <li><code><a href="../reference/gisco_get_unit.html">gisco_get_unit_urban_audit()</a></code></li>
-<li><code><a href="../reference/gisco_get_cached_db.html">gisco_get_cached_db()</a></code></li>
-<li><code><a href="../reference/gisco_get_metadata.html">gisco_get_metadata()</a></code></li>
+</ul></li>
+<li>Functions to access the <a href="https://gisco-services.ec.europa.eu/id/api-docs/" class="external-link">GISCO ID service API</a>
+<ul><li><code><a href="../reference/gisco_id_api.html">gisco_id_api_geonames()</a></code></li>
+<li><code><a href="../reference/gisco_id_api.html">gisco_id_api_nuts()</a></code></li>
+<li><code><a href="../reference/gisco_id_api.html">gisco_id_api_lau()</a></code></li>
+<li><code><a href="../reference/gisco_id_api.html">gisco_id_api_country()</a></code></li>
+<li><code><a href="../reference/gisco_id_api.html">gisco_id_api_river_basin()</a></code></li>
+<li><code><a href="../reference/gisco_id_api.html">gisco_id_api_biogeo_region()</a></code></li>
+<li><code><a href="../reference/gisco_id_api.html">gisco_id_api_census_grid()</a></code></li>
+</ul></li>
 </ul></div>
 <div class="section level3">
 <h3 id="renamed-functions-development-version">Renamed functions<a class="anchor" aria-label="anchor" href="#renamed-functions-development-version"></a></h3>
+<p>We renamed several functions to improve clarity and consistency:</p>
 <ul><li>
 <code><a href="../reference/gisco_address_api.html">?gisco_addressapi</a></code> → <code><a href="../reference/gisco_address_api.html">?gisco_address_api</a></code>
 </li>
@@ -103,6 +118,7 @@
 </ul></div>
 <div class="section level3">
 <h3 id="dataset-updates-development-version">Dataset updates<a class="anchor" aria-label="anchor" href="#dataset-updates-development-version"></a></h3>
+<p>We updated all bundled datasets to their latest versions and added new ones:</p>
 <ul><li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code> to the newest data.</li>
 <li>Add <code><a href="../reference/gisco_countries_2024.html">?gisco_countries_2024</a></code> (replaces <code>gisco_countries</code>).</li>
 <li>Add <code><a href="../reference/gisco_nuts_2024.html">?gisco_nuts_2024</a></code> (replaces <code>gisco_nuts</code>).</li>

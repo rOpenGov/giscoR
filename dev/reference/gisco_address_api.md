@@ -1,6 +1,6 @@
 # GISCO Address API
 
-Access the [GISCO Address
+Functions to interact with the [GISCO Address
 API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home),
 that allows to carry out both geocoding and reverse geocoding using a
 pan-european address database.
@@ -66,6 +66,10 @@ gisco_address_api_postcodes(
 
 gisco_address_api_copyright(verbose = FALSE)
 ```
+
+## Source
+
+<https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 
 ## Arguments
 
@@ -155,6 +159,9 @@ The resulting object may present the following variables:
 
 See the docs:
 <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
+
+Other API tools:
+[`gisco_id_api`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
 
 ## Examples
 

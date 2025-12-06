@@ -172,6 +172,10 @@ See
 [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
 to download single files.
 
+See
+[`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+to download via GISCO ID service API.
+
 Other statistical units datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
