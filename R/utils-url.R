@@ -166,7 +166,8 @@ download_url <- function(
   cache_httr2 <- tools::R_user_dir("giscoR", "cache")
   cache_httr2 <- create_cache_dir(cache_httr2)
 
-  req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2)
+  req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2,
+  max_age = 3600 )
 
   req <- httr2::req_timeout(req, 300)
   req <- httr2::req_retry(req, max_tries = 3)
@@ -258,7 +259,8 @@ get_request_body <- function(url, verbose = TRUE) {
   cache_httr2 <- tools::R_user_dir("giscoR", "cache")
   cache_httr2 <- create_cache_dir(cache_httr2)
 
-  req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2)
+  req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2,
+    max_age = 3600 )
 
   req <- httr2::req_timeout(req, 300)
   req <- httr2::req_retry(req, max_tries = 3)
