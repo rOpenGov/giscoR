@@ -1,4 +1,11 @@
-#' sf::read_sf wrapper
+#' Read geospatial file into sf object with optional query
+#'
+#' @param file_local Local file path or URL to the geospatial file.
+#' @param q Optional SQL query string to filter the data during reading.
+#' @param ... Additional arguments passed to `sf::read_sf()`.
+#'
+#' @return An `sf` object containing the geospatial data.
+#'
 #' @noRd
 read_geo_file_sf <- function(file_local, q = NULL, ...) {
   # Warn if file size is huge and no query
@@ -99,6 +106,12 @@ sanitize_sf <- function(data_sf) {
   data_sf
 }
 
+#' Get column names from a geospatial file
+#'
+#' @param file_local Local file path or URL to the geospatial file.
+#' @return A character vector with the column names.
+#'
+#' @noRd
 get_geo_file_colnames <- function(file_local) {
   layer <- get_sf_layer_name(file_local)
   # Get column names
@@ -108,6 +121,17 @@ get_geo_file_colnames <- function(file_local) {
   names(get_cols)
 }
 
+
+#' Get column name for filtering from a geospatial file
+#'
+#' @param file_local Local file path or URL to the geospatial file.
+#' @param candidates Character vector of candidate column names.
+#'
+#' @return
+#' A character vector with the matching column names or NULL if none found.
+#'
+#' @noRd
+#'
 get_col_name <- function(
   file_local,
   candidates = c("CNTR_ID", "CNTR_CODE")

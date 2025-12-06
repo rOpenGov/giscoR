@@ -48,83 +48,9 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
     return(db)
   }
 
-  get_db_data <- function(entry_point) {
-    url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/"
-
-    # Create a folder for caching httr2 requests
-    cache_httr2 <- tools::R_user_dir("giscoR", "cache")
-    cache_httr2 <- create_cache_dir(cache_httr2)
-
-    # Compose url
-    req <- httr2::request(url_api)
-    req <- httr2::req_url_path_append(req, entry_point)
-    api_entry <- httr2::req_get_url(req)
-    req <- httr2::req_url_path_append(req, "datasets.json")
-    req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2)
-    req <- httr2::req_error(req, is_error = function(x) {
-      FALSE
-    })
-
-    test_off <- getOption("gisco_test_offline", FALSE)
-
-    if (any(!httr2::is_online(), test_off)) {
-      return(NULL)
-    }
-
-    # Testing
-    test_offline <- getOption("gisco_test_404", FALSE)
-    if (test_offline) {
-      # Modify to redirect to fake url
-      req <- httr2::req_url(
-        req,
-        "https://gisco-services.ec.europa.eu/distribution/v2/fake"
-      )
-    }
-
-    resp <- httr2::req_perform(req)
-
-    if (httr2::resp_is_error(resp)) {
-      return(NULL)
-    }
-
-    master <- httr2::resp_body_json(resp)
-    years <- gsub("[^.0-9]", "", names(master))
-    iter <- seq_along(master)
-
-    all_data <- lapply(iter, function(i) {
-      # Create a folder for caching httr2 requests
-      cache_httr2 <- tools::R_user_dir("giscoR", "cache")
-      cache_httr2 <- create_cache_dir(cache_httr2)
-
-      req <- httr2::request(url_api)
-      req <- httr2::req_url_path_append(req, entry_point)
-      req <- httr2::req_url_path_append(req, master[[i]]$files)
-      req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2)
-      req <- httr2::req_error(req, is_error = function(x) {
-        FALSE
-      })
-      resp <- httr2::req_perform(req)
-      # nocov start
-      if (httr2::resp_is_error(resp)) {
-        return(NULL)
-      }
-      # nocov end
-
-      child <- httr2::resp_body_json(resp)
-      tibble::tibble(
-        id_giscor = entry_point,
-        year = years[i],
-        api_file = unname(unlist(child)),
-        api_entry = unname(api_entry)
-      )
-    })
-
-    all_data <- rbind_fill(all_data)
-  }
-
   final_db <- lapply(
     c("coas", "communes", "countries", "lau", "nuts", "urau", "pcode"),
-    get_db_data
+    scrap_api_data
   )
 
   final_db <- rbind_fill(final_db)
@@ -254,8 +180,91 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   final_db_2
 }
 
+#' Internal function to get all data from GISCO API for a given entry point
+#'
+#' @param entry_point character. The GISCO API entry point.
+#' @return A tibble with the data from the API.
+#' @noRd
+scrap_api_data <- function(entry_point) {
+  url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/"
 
-# Get db
+  # Create a folder for caching httr2 requests
+  cache_httr2 <- tools::R_user_dir("giscoR", "cache")
+  cache_httr2 <- create_cache_dir(cache_httr2)
+
+  # Compose url
+  req <- httr2::request(url_api)
+  req <- httr2::req_url_path_append(req, entry_point)
+  api_entry <- httr2::req_get_url(req)
+  req <- httr2::req_url_path_append(req, "datasets.json")
+  req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2)
+  req <- httr2::req_error(req, is_error = function(x) {
+    FALSE
+  })
+
+  test_off <- getOption("gisco_test_offline", FALSE)
+
+  if (any(!httr2::is_online(), test_off)) {
+    return(NULL)
+  }
+
+  # Testing
+  test_offline <- getOption("gisco_test_404", FALSE)
+  if (test_offline) {
+    # Modify to redirect to fake url
+    req <- httr2::req_url(
+      req,
+      "https://gisco-services.ec.europa.eu/distribution/v2/fake"
+    )
+  }
+
+  resp <- httr2::req_perform(req)
+
+  if (httr2::resp_is_error(resp)) {
+    return(NULL)
+  }
+
+  master <- httr2::resp_body_json(resp)
+  years <- gsub("[^.0-9]", "", names(master))
+  iter <- seq_along(master)
+
+  all_data <- lapply(iter, function(i) {
+    # Create a folder for caching httr2 requests
+    cache_httr2 <- tools::R_user_dir("giscoR", "cache")
+    cache_httr2 <- create_cache_dir(cache_httr2)
+
+    req <- httr2::request(url_api)
+    req <- httr2::req_url_path_append(req, entry_point)
+    req <- httr2::req_url_path_append(req, master[[i]]$files)
+    req <- httr2::req_cache(req, cache_httr2, max_size = 1024^3 / 2)
+    req <- httr2::req_error(req, is_error = function(x) {
+      FALSE
+    })
+    resp <- httr2::req_perform(req)
+    # nocov start
+    if (httr2::resp_is_error(resp)) {
+      return(NULL)
+    }
+    # nocov end
+
+    child <- httr2::resp_body_json(resp)
+    tibble::tibble(
+      id_giscor = entry_point,
+      year = years[i],
+      api_file = unname(unlist(child)),
+      api_entry = unname(api_entry)
+    )
+  })
+
+  all_data <- rbind_fill(all_data)
+  all_data
+}
+
+#' Internal function to get the GISCO database, with fallback to static
+#'
+#' @return A tibble with the GISCO database.
+#'
+#' @noRd
 get_db <- function() {
   db <- gisco_get_cached_db()
   if (is.null(db)) {
@@ -289,14 +298,4 @@ get_db <- function() {
     )
   }
   db
-}
-
-
-on_cran <- function() {
-  env <- Sys.getenv("NOT_CRAN")
-  if (identical(env, "")) {
-    !interactive() # nocov
-  } else {
-    !isTRUE(as.logical(env))
-  }
 }

@@ -26,3 +26,17 @@
     Output
       [1] "BN"     "COASTL" "INLAND" "LB"     "RG"    
 
+# Check GISCO ID docs
+
+    Code
+      docs_id_years("nuts")
+    Output
+      [1] "are \\code{\"2024\"}, \\code{\"2021\"}, \\code{\"2016\"}, \\code{\"2013\"}, \\code{\"2010\"}, \\code{\"2006\"}"
+
+---
+
+    Code
+      docs_id_years("riverbasin")
+    Output
+      [1] "is \\code{\"2019\"}"
+

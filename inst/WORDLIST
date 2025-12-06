@@ -11,6 +11,7 @@ EPSG
 ETRS
 EuroBoundaryMap
 Eurostat's
+Eurostat’s
 GDAL
 GDAL’s
 GISCO
@@ -33,10 +34,12 @@ Tercet
 URAU
 Urbanisation
 Verwaltungsgrenzen
+WFD
 WKT
 administratives
-api
 bezüglich
+biogeo
+biogeographical
 cli
 codebase
 codecov
@@ -47,6 +50,7 @@ eurostat
 geocoded
 geocoding
 geojsonsf
+geonames
 geospatial
 ggplot
 giscoR’
@@ -61,8 +65,8 @@ limites
 lwgeom
 mapsf
 pkgdown
+placenames
 polyline
-rOG
 rOpenGov
 roxygen
 socio

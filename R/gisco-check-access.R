@@ -15,6 +15,9 @@ gisco_check_access <- function() {
   if (!httr2::is_online()) {
     return(FALSE) # nocov
   }
+  if (on_cran()) {
+    return(FALSE)
+  }
 
   req <- httr2::request("https://gisco-services.ec.europa.eu/distribution/v2/")
   req <- httr2::req_url_path_append(req, "themes.json")
@@ -29,7 +32,11 @@ gisco_check_access <- function() {
   }
 }
 
-
+#' Skip tests if GISCO API is not reachable
+#'
+#' @return invisible TRUE or skips the test
+#'
+#' @noRd
 skip_if_gisco_offline <- function() {
   # nocov start
   if (gisco_check_access()) {
@@ -41,4 +48,17 @@ skip_if_gisco_offline <- function() {
   }
   invisible()
   # nocov end
+}
+
+
+#' Internal function to check if we are on CRAN
+#' @return logical
+#' @noRd
+on_cran <- function() {
+  env <- Sys.getenv("NOT_CRAN")
+  if (identical(env, "")) {
+    !interactive() # nocov
+  } else {
+    !isTRUE(as.logical(env))
+  }
 }

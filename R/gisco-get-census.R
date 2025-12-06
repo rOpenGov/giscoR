@@ -8,6 +8,11 @@
 #' @inherit gisco_get_countries return
 #' @export
 #'
+#' @seealso
+#'
+#' See [gisco_id_api_census_grid()] to download via GISCO ID service API.
+
+#'
 #' @param year character string or number. Release year of the file. Currently
 #'   only `"2011"` is provided.
 #' @param spatialtype Type of geometry to be returned:

@@ -55,6 +55,8 @@ pts
 \dontshow{\}) # examplesIf}
 }
 \seealso{
+See \code{\link[=gisco_id_api_census_grid]{gisco_id_api_census_grid()}} to download via GISCO ID service API.
+
 Other statistical units datasets:
 \code{\link{gisco_get_coastal_lines}()},
 \code{\link{gisco_get_lau}()},

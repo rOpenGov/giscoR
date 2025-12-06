@@ -57,14 +57,27 @@ We recommend reviewing the updated documentation at
 
 ## New functions
 
--   `gisco_get_census()`
--   `gisco_get_unit_country()`
--   `gisco_get_unit_nuts()`
--   `gisco_get_unit_urban_audit()`
--   `gisco_get_cached_db()`
--   `gisco_get_metadata()`
+-   Metadata and database utilities:
+    -   `gisco_get_cached_db()`
+    -   `gisco_get_metadata()`
+-   `gisco_get_census()` for accessing census grid data.
+-   New separate functions to access unit data (replacing `gisco_get_units()`):
+    -   `gisco_get_unit_country()`
+    -   `gisco_get_unit_nuts()`
+    -   `gisco_get_unit_urban_audit()`
+-   Functions to access the [GISCO ID service
+    API](https://gisco-services.ec.europa.eu/id/api-docs/)
+    -   `gisco_id_api_geonames()`
+    -   `gisco_id_api_nuts()`
+    -   `gisco_id_api_lau()`
+    -   `gisco_id_api_country()`
+    -   `gisco_id_api_river_basin()`
+    -   `gisco_id_api_biogeo_region()`
+    -   `gisco_id_api_census_grid()`
 
 ## Renamed functions
+
+We renamed several functions to improve clarity and consistency:
 
 -   `?gisco_addressapi` → `?gisco_address_api`
 -   `gisco_get_coastallines()` → `gisco_get_coastal_lines()`
@@ -78,6 +91,8 @@ We recommend reviewing the updated documentation at
 -   Update default `year` to the latest release (#105).
 
 ## Dataset updates
+
+We updated all bundled datasets to their latest versions and added new ones:
 
 -   Update `?gisco_db` to the newest data.
 -   Add `?gisco_countries_2024` (replaces `gisco_countries`).

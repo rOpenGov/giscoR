@@ -19,6 +19,8 @@
 #'
 #' See [gisco_get_unit_country()] to download single files.
 #'
+#' See [gisco_id_api_country()] to download via GISCO ID service API.
+#'
 #' @export
 #'
 #' @param year character string or number. Release year of the file. One of
@@ -197,6 +199,16 @@ gisco_get_countries <- function(
   data_sf
 }
 
+
+#' Filter data sf by country and/or region
+#'
+#' @param data_sf sf object
+#' @param country character vector of country codes or names
+#' @param region character vector of region codes or names
+#'
+#' @return sf object filtered
+#'
+#' @noRd
 filter_country_region <- function(data_sf, country = NULL, region = NULL) {
   if (!"CNTR_ID" %in% names(data_sf)) {
     return(data_sf)

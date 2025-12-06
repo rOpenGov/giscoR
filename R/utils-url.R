@@ -1,3 +1,19 @@
+#' Find URL in the local cached database
+#'
+#' Internal function to find the correct URL from the local cached database
+#'
+#' @param id character string. The `id_giscor` value to filter the database.
+#' @param year character string or number. Release year.
+#' @param epsg numeric. EPSG code.
+#' @param resolution numeric. Resolution in meters.
+#' @param spatialtype character string. Spatial type.
+#' @param nuts_level character string. NUTS level.
+#' @param level character string. Level for Urban Audit datasets.
+#' @param ext character string. File extension.
+#' @param fn character string. Function name for messages.
+#'
+#' @return A character string with the URL.
+#' @noRd
 get_url_db <- function(
   id,
   year,
@@ -92,6 +108,19 @@ get_url_db <- function(
   url
 }
 
+
+#' Internal function to download and cache a file from a URL
+#'
+#' @param url character string. The URL to download.
+#' @param name character string. The name of the file to save.
+#' @param cache_dir character string. The base cache directory.
+#' @param subdir character string. The subdirectory inside the cache directory.
+#' @param update_cache logical. Whether to update the cached file.
+#' @param verbose logical. Whether to print messages.
+#'
+#' @return The local file path of the downloaded file.
+#'
+#' @noRd
 download_url <- function(
   url = NULL,
   name = basename(url),
@@ -207,6 +236,15 @@ download_url <- function(
   file_local
 }
 
+
+#' Internal function to get the response body from a URL
+#'
+#' @param url character string. The URL to download.
+#' @param verbose logical. Whether to print messages.
+#'
+#' @return The response object from httr2.
+#'
+#' @noRd
 get_request_body <- function(url, verbose = TRUE) {
   msg <- paste0("GET {.url ", url, "}.")
   make_msg("info", verbose, msg)
