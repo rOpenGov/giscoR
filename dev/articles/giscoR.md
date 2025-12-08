@@ -98,8 +98,8 @@ ggplot(world) +
   geom_sf(data = asia, fill = "#FDFBEA", color = "#656565") +
   coord_sf(crs = "+proj=laea +lon_0=95 +lat_0=35") +
   lims(
-    x = c(-5000000, 7000000),
-    y = c(-5000000, 3000000)
+    x = c(-5500000, 5500000),
+    y = c(-4500000, 2500000)
   ) +
   theme(panel.background = element_rect(fill = "#C7E7FB")) +
   labs(
@@ -180,6 +180,10 @@ eu_bord <- borders |>
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                                            
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
