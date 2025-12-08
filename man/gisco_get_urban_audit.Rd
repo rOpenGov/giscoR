@@ -75,6 +75,10 @@ The dataset contains the boundaries of cities (\code{"CITIES"}), greater cities
 (\code{"GREATER_CITIES"}) and functional urban areas (\code{"FUA"}) as defined
 according to the EC-OECD city definition. This is used for the Eurostat Urban
 Audit data collection.
+
+\strong{Please note that} this function gets data from the aggregated GISCO
+Urban Audit file. If you prefer to download individual urban audit files,
+please use \code{\link[=gisco_get_unit_urban_audit]{gisco_get_unit_urban_audit()}}.
 }
 \details{
 See more in \href{https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions}{Eurostat - Statistics Explained}.

@@ -6,6 +6,10 @@
 #' scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 #' 60M).
 #'
+#' **Please note that** this function gets data from the aggregated GISCO
+#' country file. If you prefer to download individual country files, please use
+#' [gisco_get_unit_country()].
+#'
 #' @aliases gisco_get
 #' @family admin
 #' @encoding UTF-8

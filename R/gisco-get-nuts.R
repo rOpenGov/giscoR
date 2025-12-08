@@ -15,6 +15,12 @@
 #' Also, there is a NUTS 0 level, which usually corresponds to the national
 #' boundaries.
 #'
+#' **Please note that** this function gets data from the aggregated GISCO
+#' NUTS file, that contains data of all the countries at the requested NUTS
+#' level(s). If you prefer to download individual NUTS files, please use
+#' [gisco_get_unit_nuts()].
+#'
+#' @encoding UTF-8
 #' @family stats
 #' @inheritParams gisco_get_countries
 #' @inheritSection gisco_get_countries Note

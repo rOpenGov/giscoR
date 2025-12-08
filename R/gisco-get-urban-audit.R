@@ -6,6 +6,10 @@
 #' according to the EC-OECD city definition. This is used for the Eurostat Urban
 #' Audit data collection.
 #'
+#' **Please note that** this function gets data from the aggregated GISCO
+#' Urban Audit file. If you prefer to download individual urban audit files,
+#' please use [gisco_get_unit_urban_audit()].
+#'
 #' @family stats
 #' @export
 #' @inheritParams gisco_get_countries

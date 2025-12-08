@@ -163,7 +163,7 @@ download_url <- function(
   })
 
   # Create a folder for caching httr2 requests
-  cache_httr2 <- tools::R_user_dir("giscoR", "cache")
+  cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
   cache_httr2 <- create_cache_dir(cache_httr2)
 
   req <- httr2::req_cache(
@@ -260,7 +260,7 @@ get_request_body <- function(url, verbose = TRUE) {
   })
 
   # Create a folder for caching httr2 requests
-  cache_httr2 <- tools::R_user_dir("giscoR", "cache")
+  cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
   cache_httr2 <- create_cache_dir(cache_httr2)
 
   req <- httr2::req_cache(

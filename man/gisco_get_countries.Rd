@@ -95,6 +95,10 @@ This dataset contains the administrative boundaries at country level of the
 world. This dataset consists of 2 feature classes (regions, boundaries) per
 scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 60M).
+
+\strong{Please note that} this function gets data from the aggregated GISCO
+country file. If you prefer to download individual country files, please use
+\code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}}.
 }
 \section{World Regions}{
 Regions are defined as per the geographic regions defined by the
