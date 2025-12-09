@@ -1,167 +1,159 @@
-# Get GISCO urban areas [`sf`](https://r-spatial.github.io/sf/reference/sf.html) polygons, points and lines
+# Local Administrative Units (LAU) dataset
 
-`gisco_get_communes()` and `gisco_get_lau()` download shapes of Local
-Urban Areas, that correspond roughly with towns and cities.
+This dataset shows pan European administrative boundaries down to
+commune level. Local Administrative units are equivalent to Communes,
+see
+[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
 
 ## Usage
 
 ``` r
-gisco_get_communes(
-  year = "2016",
-  epsg = "4326",
-  cache = TRUE,
-  update_cache = FALSE,
-  cache_dir = NULL,
-  verbose = FALSE,
-  spatialtype = "RG",
-  country = NULL
-)
-
 gisco_get_lau(
-  year = "2021",
-  epsg = "4326",
-  cache = TRUE,
+  year = 2024,
+  epsg = 4326,
+  cache = deprecated(),
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
   country = NULL,
-  gisco_id = NULL
+  gisco_id = NULL,
+  ext = "gpkg"
 )
 ```
+
+## Source
+
+<https://gisco-services.ec.europa.eu/distribution/v2/>.
+
+Copyright:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 
 ## Arguments
 
 - year:
 
-  Release year of the file:
-
-  - For `gisco_get_communes()` one of `"2001"`, `"2004"`, `"2006"`,
-    `"2008"`, `"2010"`, `"2013"` or `"2016"`.
-
-  - For `gisco_get_lau()` one of `"2011"`, `"2012"`, `"2013"`, `"2014"`,
-    `"2015"`, `"2016"`, `"2017"`, `"2018"`, `"2019"`, `"2020"` or
-    `"2021"`.
+  character string or number. Release year of the file. One of `"2024"`,
+  `"2023"`, `"2022"`, `"2021"`, `"2020"`, `"2019"`, `"2018"`, `"2017"`,
+  `"2016"`, `"2015"`, `"2014"`, `"2013"`, `"2012"`, `"2011"` .
 
 - epsg:
 
-  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
+  character string or number. Projection of the map: 4-digit [EPSG
+  code](https://epsg.io/). One of:
 
-  - `"4258"`: ETRS89
+  - `"4326"`: [WGS84](https://epsg.io/4326).
 
-  - `"4326"`: WGS84
+  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 
-  - `"3035"`: ETRS89 / ETRS-LAEA
-
-  - `"3857"`: Pseudo-Mercator
+  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 
 - cache:
 
-  A logical whether to do caching. Default is `TRUE`. See **About
-  caching**.
+  **\[deprecated\]**. These functions always caches the result due to
+  the size. See **See Caching strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.geojson` file.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
-
-- spatialtype:
-
-  Type of geometry to be returned:
-
-  - `"BN"`: Boundaries - `LINESTRING` object.
-
-  - `"COASTL"`: coastlines - `LINESTRING` object.
-
-  - `"INLAND"`: inland boundaries - `LINESTRING` object.
-
-  - `"LB"`: Labels - `POINT` object.
-
-  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-
-  **Note that** parameters `country` and `region` would be only applied
-  when `spatialtype` is `"BN"` or `"RG"`.
+  logical. If `TRUE` displays informational messages.
 
 - country:
 
-  Optional. A character vector of country codes. It could be either a
-  vector of country names, a vector of ISO3 country codes or a vector of
-  Eurostat country codes. Mixed types (as `c("Italy","ES","FRA")`) would
-  not work. See also
+  character vector of country codes. It could be either a vector of
+  country names, a vector of ISO3 country codes or a vector of Eurostat
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - gisco_id:
 
-  Optional. A character vector of GISCO_ID LAU values.
+  Optional. A character vector of `GISCO_ID` LAU values.
+
+- ext:
+
+  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
+  `"gpkg"`, `"geojson"` .
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-specified by `spatialtype`. In the case of `gisco_get_lau()`, a
-`POLYGON` object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+
+## Details
+
+The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
+nomenclature are hierarchical classifications of statistical regions
+that together subdivide the EU economic territory into regions of five
+different levels (NUTS 1, 2 and 3 and LAU , respectively, moving from
+larger to smaller territorial units).
+
+The LAU classification is not covered by any legislative act.
+Geographical extent covers the European Union, EFTA countries, and
+candidate countries. The scale of the dataset is 1:100 000.
+
+The data contains the National Statistical agency LAU code which can be
+joined to LAU lists as well as a field `GISCO_ID` which is a unique
+identifier consisting of the Country code and LAU code.
+
+Total resident population figures (31 December) have also been added ins
+some versions based on the associated LAU lists
 
 ## Note
 
 Please check the download and usage provisions on
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
 
-## About caching
-
-You can set your `cache_dir` with
-[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding `.geojson` file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
-
-For a complete list of files available check
-[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
-
 ## See also
 
-Other political:
-[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
-[`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
+[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
+
+See
+[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
+to perform a bulk download of datasets.
+
+See
+[`gisco_id_api_lau()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+to download via GISCO ID service API.
+
+Other statistical units datasets:
+[`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
+[`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
-[`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md),
-[`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md),
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
 
 ## Examples
 
 ``` r
-# \donttest{
+# \dontrun{
 
-ire_lau <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
+lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
+#> ! The file to be downloaded has size 74.6 Mb.
 
-if (!is.null(ire_lau)) {
+if (!is.null(lu_lau)) {
   library(ggplot2)
 
-  ggplot(ire_lau) +
-    geom_sf(shape = 21, col = "#009A44", size = 0.5) +
+  ggplot(lu_lau) +
+    geom_sf(aes(fill = POP_DENS_2024)) +
     labs(
-      title = "Communes in Ireland",
-      subtitle = "Year 2016",
+      title = "Population Density in Luxembourg",
+      subtitle = "Year 2024",
       caption = gisco_attributions()
     ) +
+    scale_fill_viridis_b(
+      option = "cividis",
+      label = \(x) prettyNum(x, big.mark = ",")
+    ) +
     theme_void() +
-    theme(text = element_text(
-      colour = "#009A44",
-      family = "serif", face = "bold"
-    ))
+    labs(fill = "pop/km2")
 }
 
 # }

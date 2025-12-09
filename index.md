@@ -1,24 +1,21 @@
 # giscoR
 
-[**giscoR**](https://ropengov.github.io/giscoR//) is an API package that
-helps to retrieve data from [Eurostat - GISCO (the Geographic
-Information System of the
-COmmission)](https://ec.europa.eu/eurostat/web/gisco). It also provides
-some lightweight data sets ready to use without downloading.
+[**giscoR**](https://ropengov.github.io/giscoR//) is an **R** package
+that provides a simple interface to
+[GISCO](https://ec.europa.eu/eurostat/web/gisco) data from Eurostat. It
+allows you to download and work with global and European geospatial
+datasets — such as country boundaries, NUTS regions, coastlines, and
+labels — directly in **R**.
 
-[GISCO](https://ec.europa.eu/eurostat/web/gisco) is a geospatial open
-data repository including several data sets as countries, coastal lines,
-labels or [NUTS
-levels](https://ec.europa.eu/eurostat/web/regions-and-cities/overview).
-The data sets are usually provided at several resolution levels
-(60M/20M/10M/03M/01M) and in 3 different projections (4326/3035/3857).
+## Key features
 
-Note that the package does not provide metadata on the downloaded files,
-the information is available on the [API
-webpage](https://gisco-services.ec.europa.eu/distribution/v2/).
-
-Full site with examples and vignettes on
-<https://ropengov.github.io/giscoR/>
+- Retrieve **GISCO files** for countries, regions, and administrative
+  units.
+- Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
+  `01M`.
+- Choose from three projections: **EPSG 4326**, **3035**, or **3857**.
+- Works seamlessly with **sf** objects for spatial analysis.
+- Includes **caching** for faster repeated access.
 
 ## Installation
 
@@ -29,22 +26,22 @@ Install **giscoR** from
 install.packages("giscoR")
 ```
 
-You can install the developing version of **giscoR** with:
+You can install the development version of **giscoR** with:
 
 ``` r
-remotes::install_github("rOpenGov/giscoR")
+# install.packages("pak")
+
+pak::pak("rOpenGov/giscoR")
 ```
 
-Alternatively, you can install **giscoR** using the
+Alternatively, you can install **giscoR** via
 [r-universe](https://ropengov.r-universe.dev/giscoR):
 
 ``` r
-install.packages("giscoR",
-  repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org")
-)
+install.packages("giscoR", repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
-## Usage
+## Quick Example
 
 This script highlights some features of **giscoR** :
 
@@ -53,137 +50,106 @@ library(giscoR)
 library(sf)
 library(dplyr)
 
-# Different resolutions
-DNK_res60 <- gisco_get_countries(resolution = "60", country = "DNK") %>%
-  mutate(res = "60M")
-DNK_res20 <-
-  gisco_get_countries(resolution = "20", country = "DNK") %>%
-  mutate(res = "20M")
-DNK_res10 <-
-  gisco_get_countries(resolution = "10", country = "DNK") %>%
-  mutate(res = "10M")
-DNK_res03 <-
-  gisco_get_countries(resolution = "03", country = "DNK") %>%
-  mutate(res = "03M")
+# Download The Netherlands boundaries at different resolutions
+nl_all <- lapply(c("60", "20", "10", "03"), function(r) {
+  gisco_get_countries(country = "Netherlands", year = 2024, resolution = r) |>
+    mutate(res = paste0(r, "M"))
+}) |>
+  bind_rows()
 
+glimpse(nl_all)
+#> Rows: 4
+#> Columns: 13
+#> $ CNTR_ID   <chr> "NL", "NL", "NL", "NL"
+#> $ CNTR_NAME <chr> "Nederland", "Nederland", "Nederland", "Nederland"
+#> $ NAME_ENGL <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
+#> $ NAME_FREN <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
+#> $ ISO3_CODE <chr> "NLD", "NLD", "NLD", "NLD"
+#> $ SVRG_UN   <chr> "UN Member State", "UN Member State", "UN Member State", "UN…
+#> $ CAPT      <chr> "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"
+#> $ EU_STAT   <chr> "T", "T", "T", "T"
+#> $ EFTA_STAT <chr> "F", "F", "F", "F"
+#> $ CC_STAT   <chr> "F", "F", "F", "F"
+#> $ NAME_GERM <chr> "Niederlande", "Niederlande", "Niederlande", "Niederlande"
+#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…
+#> $ res       <chr> "60M", "20M", "10M", "03M"
 
-DNK_all <- bind_rows(DNK_res60, DNK_res20, DNK_res10, DNK_res03)
-
-# Plot ggplot2
+# Plot with ggplot2
 
 library(ggplot2)
 
-ggplot(DNK_all) +
-  geom_sf(fill = "#c8102e") +
-  facet_wrap(vars(res)) +
+ggplot(nl_all) +
+  geom_sf(fill = "#AD1D25") +
+  facet_wrap(~res) +
+  labs(
+    title = "The Netherlands boundaries at different resolutions",
+    subtitle = "Year: 2024",
+    caption = gisco_attributions()
+  ) +
   theme_minimal()
 ```
 
-![](https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-1.png)
+![The Netherlands boundaries at different
+resolutions](reference/figures/README-resolution-map-1.png)
 
-``` r
+## Advanced Example: Thematic maps
 
-
-# Labels and Lines available
-
-labs <- gisco_get_countries(
-  spatialtype = "LB",
-  region = "Africa",
-  epsg = "3857"
-)
-
-coast <- gisco_get_countries(
-  spatialtype = "COASTL",
-  epsg = "3857"
-)
-
-# For zooming
-afr_bbox <- st_bbox(labs)
-
-ggplot(coast) +
-  geom_sf(col = "deepskyblue4", linewidth = 3) +
-  geom_sf(data = labs, fill = "springgreen4", col = "darkgoldenrod1", size = 5, shape = 21) +
-  coord_sf(
-    xlim = afr_bbox[c("xmin", "xmax")],
-    ylim = afr_bbox[c("ymin", "ymax")]
-  )
-```
-
-![](https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-example-2.png)
-
-### Labels
-
-An example of a labeled map using **ggplot2**:
-
-``` r
-ITA <- gisco_get_nuts(country = "Italy", nuts_level = 1)
-
-ggplot(ITA) +
-  geom_sf() +
-  geom_sf_text(aes(label = NAME_LATN)) +
-  theme(axis.title = element_blank())
-```
-
-![](https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-labels-1.png)
-
-### Thematic maps
-
-An example of a thematic map plotted with the **ggplot2** package. The
-information is extracted via the **eurostat** package ([Lahti et al.
-2017](#ref-RJ-2017-019)). We would follow the fantastic approach
-presented by [Milos Popovic](https://milospopovic.net/) on [this
-post](https://milospopovic.net/how-to-make-choropleth-map-in-r/):
+This example shows a thematic map created with the **ggplot2** package.
+The data are obtained via the **eurostat** package. This follows the
+approach presented by [Milos Popovic](https://milospopovic.net/) in
+[this post](https://milospopovic.net/how-to-make-choropleth-map-in-r/).
 
 We start by extracting the corresponding geographic data:
 
 ``` r
-# Get shapes
+library(giscoR)
+library(dplyr)
+library(eurostat)
+library(ggplot2)
+
+# Get sf objects
 nuts3 <- gisco_get_nuts(
-  year = "2021",
-  epsg = "3035",
-  resolution = "10",
-  nuts_level = "3"
+  year = 2021,
+  epsg = 3035,
+  resolution = 10,
+  nuts_level = 3
 )
 
-# Group by NUTS by country and convert to lines
-country_lines <- nuts3 %>%
-  group_by(
-    CNTR_CODE
-  ) %>%
-  summarise(n = n()) %>%
-  st_cast("MULTILINESTRING")
+# Get country lines (NUTS 0 level)
+
+country_lines <- gisco_get_nuts(
+  year = 2021,
+  epsg = 3035,
+  resolution = 10,
+  spatialtype = "BN",
+  nuts_level = 0
+)
 ```
 
 We now download the data from Eurostat:
 
 ``` r
 # Use eurostat
-library(eurostat)
-popdens <- get_eurostat("demo_r_d3dens") %>%
+popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
 ```
 
-By last, we merge and manipulate the data for creating the final plot:
+Finally, we merge and manipulate the data to create the final plot:
 
 ``` r
 # Merge data
-nuts3_sf <- nuts3 %>%
+nuts3_sf <- nuts3 |>
   left_join(popdens, by = "geo")
 
-nuts3_sf <- nuts3 %>%
-  left_join(popdens, by = c("NUTS_ID" = "geo"))
-
-
 # Breaks and labels
-
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
 labs <- prettyNum(br[-1], big.mark = ",")
 
-# Label function to be used in the plot, mainly for NAs
+# Label function used in the plot, mainly for NAs
 labeller_plot <- function(x) {
   ifelse(is.na(x), "No Data", x)
 }
-nuts3_sf <- nuts3_sf %>%
+nuts3_sf <- nuts3_sf |>
   # Cut with labels
   mutate(values_cut = cut(values, br, labels = labs))
 
@@ -242,46 +208,26 @@ ggplot(nuts3_sf) +
   )
 ```
 
-![](https://raw.githubusercontent.com/ropengov/giscoR/main/img/README-thematic-1.png)
+![Population density in
+2021](reference/figures/README-thematic-map-1.png)
 
-## A note on caching
+## Caching
 
-Some data sets (as Local Administrative Units - LAU, or high-resolution
-files) may have a size larger than 50MB. You can use **giscoR** to
-create your own local repository at a given local directory passing the
-following function:
+Large datasets (e.g., LAU or high-resolution files) can exceed 50MB.
+Use:
 
 ``` r
 gisco_set_cache_dir("./path/to/location")
 ```
 
-You can also download manually the files (`.geojson` format) and store
-them on your local directory.
-
-## Recommended packages
-
-### API data packages
-
-- **eurostat** ([Lahti et al. 2017](#ref-RJ-2017-019)): This is an API
-  package that provides access to open data from Eurostat.
-
-### Plotting **sf** objects
-
-Some packages recommended for visualization are:
-
-- [**tmap**](https://r-tmap.github.io/tmap/)
-- [**ggplot2**](https://github.com/tidyverse/ggplot2) +
-  [**ggspatial**](https://github.com/paleolimbot/ggspatial) +
-  [**tidyterra**](https://dieghernan.github.io/tidyterra/)
-- [**mapsf**](https://riatelab.github.io/mapsf/)
-- [**leaflet**](https://rstudio.github.io/leaflet/)
+Files will be stored locally for faster access.
 
 ## Contribute
 
 Check the GitHub page for [source
 code](https://github.com/rOpenGov/giscoR/).
 
-Contributions are very welcome:
+Contributions are welcome:
 
 - [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
   feedback and bug reports.
@@ -305,42 +251,28 @@ A BibTeX entry for LaTeX users is
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2025},
-  version = {0.6.1},
+  version = {1.0.0},
   url = {https://ropengov.github.io/giscoR/},
   abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
 }
 ```
 
-## Copyright notice
+## General copyright
 
-> When data downloaded from this page is used in any printed or
-> electronic publication, in addition to any other provisions applicable
-> to the whole Eurostat website, data source will have to be
-> acknowledged in the legend of the map and in the introductory page of
-> the publication with the following copyright notice:
+> [Eurostat’s general copyright notice and licence
+> policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
+> applies. Moreover, there are specific rules that apply to some of the
+> following datasets available for downloading. The download and use of
+> these data are subject to these rules being accepted. See our
+> [administrative
+> units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
+> and [statistical
+> units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
+> for more details.
 >
-> - EN: © EuroGeographics for the administrative boundaries.
-> - FR: © EuroGeographics pour les limites administratives.
-> - DE: © EuroGeographics bezüglich der Verwaltungsgrenzen.
->
-> For publications in languages other than English, French or German,
-> the translation of the copyright notice in the language of the
-> publication shall be used.
->
-> If you intend to use the data commercially, please contact
-> [EuroGeographics](https://eurogeographics.org/maps-for-europe/licensing/)
-> for information regarding their licence agreements.
->
-> *From [GISCO
-> Web](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)*
+> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
 ## Disclaimer
 
-This package is in no way officially related to or endorsed by Eurostat.
-
-## References
-
-Lahti, Leo, Janne Huovari, Markus Kainu, and Przemysław Biecek. 2017.
-“Retrieval and Analysis of Eurostat Open Data with the eurostat
-Package.” *The R Journal* 9 (1): 385–92.
-<https://doi.org/10.32614/RJ-2017-019>.
+This package is neither affiliated with nor endorsed by Eurostat. The
+authors are not responsible for any misuse of the data.

@@ -1,21 +1,14 @@
-# Get location of airports and ports from GISCO API
+# Airports dataset
 
-Loads a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
-from GISCO API or your local library.
+This dataset includes the location of over 11,800 Pan European airports
+and heliports. The airports are identified using the International Civil
+Aviation Organisation (ICAO) airport codes.
 
 ## Usage
 
 ``` r
 gisco_get_airports(
-  year = "2013",
-  country = NULL,
-  cache_dir = NULL,
-  update_cache = FALSE,
-  verbose = FALSE
-)
-
-gisco_get_ports(
-  year = "2013",
+  year = c(2013, 2006),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -25,124 +18,84 @@ gisco_get_ports(
 
 ## Source
 
-<https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
+
+Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 ## Arguments
 
 - year:
 
-  Year of reference. Only year available right now is `"2013"`.
+  character string or number. Release year of the file. One of `2013`,
+  `2006`.
 
 - country:
 
-  Optional. A character vector of country codes. It could be either a
-  vector of country names, a vector of ISO3 country codes or a vector of
-  Eurostat country codes. Mixed types (as `c("Italy","ES","FRA")`) would
-  not work. See also
+  character vector of country codes. It could be either a vector of
+  country names, a vector of ISO3 country codes or a vector of Eurostat
+  country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.geojson` file.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
-A `POINT` object on EPSG:4326.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-`gisco_get_airports()` refer to Europe. All shapefiles provided in
-[EPSG:4326](https://epsg.io/4326).
-
-`gisco_get_ports()` adds a new field `CNTR_ISO2` to the original data
-identifying the country of the port. Worldwide information available.
-The port codes are aligned with UN/LOCODE standard.
-
-## About caching
-
-You can set your `cache_dir` with
-[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding `.geojson` file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
-
-For a complete list of files available check
-[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
+Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
 
 ## See also
 
-Other infrastructure:
-[`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md),
-[`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/reference/gisco_get_healthcare.md)
+Other transport networks datasets:
+[`gisco_get_ports()`](https://ropengov.github.io/giscoR/reference/gisco_get_ports.md)
 
 ## Examples
 
 ``` r
-# \donttest{
-library(sf)
-#> Linking to GEOS 3.13.1, GDAL 3.11.0, PROJ 9.6.0; sf_use_s2() is TRUE
+airp <- gisco_get_airports(year = 2013)
+coast <- giscoR::gisco_coastal_lines
 
-greece <- gisco_get_countries(country = "EL", resolution = 3)
-airp_gc <- gisco_get_airports(country = "EL")
+if (!is.null(airp)) {
+  library(ggplot2)
 
-library(ggplot2)
-
-if (inherits(airp_gc, "sf")) {
-  ggplot(greece) +
-    geom_sf(fill = "grey80") +
-    geom_sf(data = airp_gc, color = "blue") +
-    labs(
-      title = "Airports on Greece",
-      shape = NULL,
-      color = NULL,
-      caption = gisco_attributions()
-    )
-}
-
-##############################
-#         Plot ports         #
-##############################
-
-ports <- gisco_get_ports()
-coast <- giscoR::gisco_coastallines
-
-# To Robinson projection :)
-
-library(sf)
-coast <- st_transform(coast, "ESRI:54030")
-ports <- st_transform(ports, st_crs(coast))
-
-if (inherits(ports, "sf")) {
   ggplot(coast) +
-    geom_sf(fill = "#F6E1B9", color = "#0978AB") +
-    geom_sf(data = ports, fill = "red", shape = 21) +
+    geom_sf(fill = "grey10", color = "grey20") +
+    geom_sf(
+      data = airp, color = "#00F0FF",
+      size = 0.2, alpha = 0.25
+    ) +
     theme_void() +
     theme(
-      panel.background = element_rect(fill = "#C6ECFF"),
+      plot.background = element_rect(fill = "black"),
+      text = element_text(color = "white"),
       panel.grid = element_blank(),
       plot.title = element_text(face = "bold", hjust = 0.5),
       plot.subtitle = element_text(face = "italic", hjust = 0.5)
     ) +
     labs(
-      title = "Ports Worldwide", subtitle = "Year 2013",
-      caption = "(c) European Union, 1995 - today"
+      title = "Airports in Europe", subtitle = "Year 2013",
+      caption = "Source: Eurostat, Airports 2013 dataset."
+    ) +
+    # Center in Europe: EPSG 3035
+    coord_sf(
+      crs = 3035,
+      xlim = c(2377294, 7453440),
+      ylim = c(1313597, 5628510)
     )
 }
-
-# }
 ```

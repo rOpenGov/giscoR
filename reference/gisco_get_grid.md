@@ -1,4 +1,4 @@
-# Get grid cells covering covering Europe for various resolutions
+# Grid dataset
 
 These datasets contain grid cells covering the European land territory,
 for various resolutions from 1km to 100km. Base statistics such as
@@ -8,7 +8,7 @@ population figures are provided for these cells.
 
 ``` r
 gisco_get_grid(
-  resolution = "20",
+  resolution = c(100, 50, 20, 10, 5, 2, 1),
   spatialtype = c("REGION", "POINT"),
   cache_dir = NULL,
   update_cache = FALSE,
@@ -18,7 +18,10 @@ gisco_get_grid(
 
 ## Source
 
-<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
+<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
+
+There are specific downloading provisions, please see
+<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 
 ## Arguments
 
@@ -33,60 +36,33 @@ gisco_get_grid(
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.geojson` file.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 ## Value
 
-A `POLYGON/POINT`
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed on EPSG:3035.
+Files are distributed on [`EPSG:3035`](https://epsg.io/3035).
 
-The file sizes range is from 428Kb (`resolution = "100"`) to 1.7Gb
-`resolution = "1"`. For resolutions 1km and 2km you would need to
-confirm the download.
-
-## Note
-
-There are specific downloading provisions, please see
-<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>
-
-## About caching
-
-You can set your `cache_dir` with
-[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding `.geojson` file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
-
-For a complete list of files available check
-[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
-
-## Author
-
-dieghernan, <https://github.com/dieghernan/>
+The file sizes range is from 428Kb (`resolution = 100`) to 1.7Gb
+`resolution = 1`.
 
 ## Examples
 
 ``` r
-# \donttest{
 grid <- gisco_get_grid(resolution = 20)
 
 # If downloaded correctly proceed
@@ -94,13 +70,13 @@ grid <- gisco_get_grid(resolution = 20)
 if (!is.null(grid)) {
   library(dplyr)
 
-  grid <- grid %>%
+  grid <- grid |>
     mutate(popdens = TOT_P_2021 / 20)
 
   breaks <- c(0, 0.1, 100, 500, 1000, 5000, 10000, Inf)
 
   # Cut groups
-  grid <- grid %>%
+  grid <- grid |>
     mutate(popdens_cut = cut(popdens,
       breaks = breaks,
       include.lowest = TRUE
@@ -134,7 +110,7 @@ if (!is.null(grid)) {
     ) +
     theme_void() +
     labs(
-      title = "Population density in Europe (2021)",
+      title = "Population density in Europe",
       subtitle = "Grid: 20 km.",
       caption = gisco_attributions()
     ) +
@@ -154,14 +130,4 @@ if (!is.null(grid)) {
       legend.key.width = unit(1, "lines")
     )
 }
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-
-# }
 ```

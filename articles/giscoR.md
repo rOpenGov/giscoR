@@ -6,131 +6,169 @@
 <https://ropengov.github.io/giscoR/>*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed
-to provide a clean interaction with the [GISCO
+to provide a simple interface to the [GISCO
 API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-Within Eurostat, GISCO is responsible for meeting the European
-Commission’s geographical information needs at 3 levels: the European
-Union, its member countries, and its regions. GISCO also provides a
-variety of shapefiles on different formats, focusing specially in the
-European Union area, but providing also some worldwide shapefiles, as
-country polygons, labels or borders and coastal lines.
+Within Eurostat, GISCO meets the European Commission’s geographical
+information needs at three levels: the European Union, its member
+countries, and its regions. GISCO provides shapefiles in different
+formats, focusing especially on the European Union but also offering
+some worldwide datasets such as country polygons, labels, borders, and
+coastlines.
 
-GISCO provides data on different resolutions suitable for representing
-small areas (01M, 03M) as well as lightweight datasets specially useful
-for representing wider areas (10M, 20M, 60M). Shapefiles are provided on
-3 different projections: EPSG 4326, 3035 or 3857.
+GISCO supplies data at multiple resolutions: high-detail datasets for
+small areas (01M, 03M) and lightweight datasets for larger areas (10M,
+20M, 60M). Datasets are available in three projections:
+[EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035),
+and [EPSG:3857](https://epsg.io/3857).
 
 **giscoR** returns
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) class objects,
-see <https://r-spatial.github.io/sf/>.
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects; see
+<https://r-spatial.github.io/sf/> for details.
 
 ## Caching
 
-**giscoR** provides a dataset caching capability, that could be set as:
+**giscoR** supports caching of downloaded datasets. Set the cache
+directory with:
 
 ``` r
 gisco_set_cache_dir("./path/to/location")
 ```
 
-If the file is not available locally, it would be downloaded to that
-directory so the next time you need the corresponding data it would be
-loaded from the local directory.
+If a file is not available locally, it will be downloaded to that
+directory so subsequent requests for the same data will load from the
+local cache.
 
-If you experience any problems on downloading, you can also manually
+If you experience any problems downloading, you can also manually
 download the file from the [GISCO API
 website](https://gisco-services.ec.europa.eu/distribution/v2/) and store
-it on your local directory.
+it in your local cache directory.
 
 ## Downloading data
 
-Please be aware that downloading provisions apply when using GISCO data:
+Please note the following attribution and licensing requirements when
+using GISCO data:
 
-> When data downloaded from this page is used in any printed or
-> electronic publication, in addition to any other provisions applicable
-> to the whole Eurostat website, data source will have to be
-> acknowledged in the legend of the map and in the introductory page of
-> the publication with the following copyright notice:
+> [Eurostat’s general copyright notice and licence
+> policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
+> applies. Moreover, there are specific rules that apply to some of the
+> following datasets available for downloading. The download and use of
+> these data are subject to these rules being accepted. See our
+> [administrative
+> units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
+> and [statistical
+> units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
+> for more details.
 >
-> - EN: © EuroGeographics for the administrative boundaries
-> - FR: © EuroGeographics pour les limites administratives
-> - DE: © EuroGeographics bezüglich der Verwaltungsgrenzen
->
-> For publications in languages other than English, French or German,
-> the translation of the copyright notice in the language of the
-> publication shall be used.
->
-> If you intend to use the data commercially, please contact
-> **EuroGeographics** for information regarding their licence
-> agreements.
+> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
 There is a function,
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
-that would guide you on this topic. It also provides attributions on
-several languages.
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md),
+that provides guidance on this topic and returns attributions in several
+languages.
 
 ``` r
 library(giscoR)
-gisco_attributions(lang = "en")
-#> [1] "© EuroGeographics for the administrative boundaries"
-gisco_attributions(lang = "fr")
-#> [1] "© EuroGeographics pour les limites administratives"
-gisco_attributions(lang = "de")
-#> [1] "© EuroGeographics bezuglich der Verwaltungsgrenzen"
+c(
+  gisco_attributions(lang = "en"),
+  gisco_attributions(lang = "fr"),
+  gisco_attributions(lang = "de")
+) |> cat(sep = "\n\n")
+#> © EuroGeographics for the administrative boundaries
+#> 
+#> © EuroGeographics pour les limites administratives
+#> 
+#> © EuroGeographics bezüglich der Verwaltungsgrenzen
 ```
 
 ## Basic example
 
-Some examples on data downloads
+Examples of downloading data: EU member states and candidate countries
+as of 2024:
 
 ``` r
-library(sf)
-library(ggplot2) # Use ggplot for plotting
+library(dplyr)
+library(ggplot2)
+world <- gisco_get_countries(resolution = 3, epsg = 3035)
 
-asia <- gisco_get_countries(region = "Asia")
 
-ggplot(asia) +
-  geom_sf(fill = "cornsilk", color = "#887e6a") +
+world <- world |>
+  mutate(
+    status = case_when(
+      EU_STAT == "T" ~ "Current members",
+      CC_STAT == "T" ~ "Candidate countries",
+      TRUE ~ NA
+    ),
+    # As levels
+    status = factor(status, levels = c("Current members", "Candidate countries"))
+  )
+
+ggplot(world) +
+  geom_sf(fill = "#c1c1c1") +
+  geom_sf(aes(fill = status), color = "white") +
+  guides(fill = guide_legend(direction = "horizontal")) +
+  # Center in Europe: EPSG 3035
+  coord_sf(
+    xlim = c(2377294, 7453440),
+    ylim = c(1313597, 5628510)
+  ) +
+  scale_fill_manual(
+    values = c("#039", "#2782bb"), na.value = "#c1c1c1",
+    na.translate = FALSE
+  ) +
+  theme_minimal() +
   theme(
-    panel.background = element_rect(fill = "#fffff3"),
-    panel.border = element_rect(colour = "#887e6a", fill = NA, linewidth = 1.5),
-    axis.text = element_text(
-      family = "serif", colour = "#887e6a",
-      face = "bold"
-    )
+    panel.background = element_rect(fill = "grey90", color = NA),
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank(),
+    legend.position = "bottom"
+  ) +
+  labs(
+    title = "EU Member states and Candidate countries (2024)",
+    caption = gisco_attributions(),
+    fill = ""
   )
 ```
 
-![Political map of Asia](country-1.png)
+![EU Member states and Candidate countries (2024)](country-1.png)
 
-Political map of Asia
+EU Member states and Candidate countries (2024)
 
-You can select specific countries by name (in any language), ISO 3 codes
-or Eurostat codes. The only restriction is that you can’t mix country
-names, ISO3 and Eurostat codes on one single call.
+You can select specific countries by name (in any language), ISO3 codes,
+or Eurostat codes. However, you cannot mix these identifier types in a
+single call.
 
-It is possible also to combine different shapefiles, just set
-`resolution` and `epsg` (and optionally `year`) to the same value:
+You can also combine different datasets — set `resolution` and `epsg`
+(and optionally `year`) to the same value:
 
 ``` r
+cntr <- c("Morocco", "Algeria", "Tunisia", "Libya", "Egypt")
+
 africa_north <- gisco_get_countries(
-  country = c(
-    "Morocco", "Argelia", "Libia",
-    "Tunisia", "Egypt"
-  ),
-  resolution = "20", epsg = "4326", year = "2016"
+  country = cntr,
+  resolution = "03",
+  epsg = "4326", year = "2024"
 )
 
-# Coastal lines
+# For ordering the plot
 
-coast <- gisco_get_coastallines(resolution = "20", epsg = "4326", year = "2016")
+africa_north$NAME_ENGL <- factor(africa_north$NAME_ENGL, levels = cntr)
+# Coastlines
+
+coast <- gisco_get_coastal_lines(
+  resolution = "03",
+  epsg = "4326",
+  year = "2016"
+)
 
 # Plot
 ggplot(coast) +
-  geom_sf(color = "grey80") +
-  geom_sf(data = africa_north, fill = "grey30", color = "white") +
+  geom_sf(color = "#B9B9B9") +
+  geom_sf(data = africa_north, fill = "#346733", color = "#335033") +
   coord_sf(xlim = c(-13, 37), ylim = c(18.5, 40)) +
-  facet_wrap(vars(NAME_ENGL), ncol = 2)
+  facet_wrap(vars(NAME_ENGL), ncol = 2) +
+  labs(caption = gisco_attributions("fr"))
 ```
 
 ![Political map of North Africa](africa-1.png)
@@ -139,23 +177,17 @@ Political map of North Africa
 
 ## Thematic maps with **giscoR**
 
-This is an example on how **giscoR** can play nicely with some Eurostat
-data. For plotting purposes we would use the
-[**ggplot2**](https://CRAN.R-project.org/package=ggplot2) package
-however any package that handles `sf` objects (e.g.
-[**tmap**](https://CRAN.R-project.org/package=tmap),
-[**mapsf**](https://CRAN.R-project.org/package=mapsf),
-[**leaflet**](https://CRAN.R-project.org/package=leaflet), etc. could be
-used).
-
-Also [**colorspace**](https://CRAN.R-project.org/package=colorspace) and
-[**rcartocolor**](https://CRAN.R-project.org/package=rcartocolor)
-packages are recommended, as they provide great color palettes.
+This example shows how **giscoR** can be used together with Eurostat
+data. For plotting we use **ggplot2**; however, any package that
+supports `sf` objects (e.g., **tmap**, **mapsf**, **leaflet**) can be
+used.
 
 ``` r
 # EU members
+library(giscoR)
 library(dplyr)
 library(eurostat)
+library(ggplot2)
 
 nuts2 <- gisco_get_nuts(
   year = "2021", epsg = "3035", resolution = "10",
@@ -164,15 +196,15 @@ nuts2 <- gisco_get_nuts(
 # Borders from countries
 borders <- gisco_get_countries(epsg = "3035", year = "2020", resolution = "3")
 
-eu_bord <- borders %>%
+eu_bord <- borders |>
   filter(CNTR_ID %in% nuts2$CNTR_CODE)
 
 # Eurostat data - Disposable income
-pps <- get_eurostat("tgs00026") %>%
-  filter(TIME_PERIOD == "2021-01-01")
+pps <- get_eurostat("tgs00026") |>
+  filter(TIME_PERIOD == "2022-01-01")
 
-nuts2_sf <- nuts2 %>%
-  left_join(pps, by = "geo") %>%
+nuts2_sf <- nuts2 |>
+  left_join(pps, by = "geo") |>
   mutate(
     values_th = values / 1000,
     categ = cut(values_th, c(0, 15, 30, 60, 90, 120, Inf))
@@ -215,8 +247,8 @@ ggplot(nuts2_sf) +
       margin = margin(b = 10, t = 5), size = 12
     ),
     plot.caption = element_text(
-      size = 8, hjust = 0.5, margin =
-        margin(b = 2, t = 13)
+      size = 8, hjust = 0, margin =
+        margin(b = 4, t = 8)
     ),
     legend.text = element_text(size = 7, ),
     legend.title = element_text(size = 7),
@@ -229,16 +261,16 @@ ggplot(nuts2_sf) +
   ) +
   # Annotate and labels
   labs(
-    title = "Disposable income of private households (2021)",
+    title = "Disposable income of private households (2022)",
     subtitle = "NUTS-2 level",
     fill = "euros (thousands)",
     caption = paste0(
-      "Source: Eurostat\n ", gisco_attributions()
+      "Source: Eurostat, ", gisco_attributions()
     )
   )
 ```
 
 ![Disposable income of private households by NUTS 2 regions
-(2021)](giscoR-1.png)
+(2022)](giscoR-1.png)
 
-Disposable income of private households by NUTS 2 regions (2021)
+Disposable income of private households by NUTS 2 regions (2022)

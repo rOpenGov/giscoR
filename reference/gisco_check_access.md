@@ -11,12 +11,7 @@ gisco_check_access()
 
 ## Value
 
-a logical.
-
-## See also
-
-Other helper:
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
+A logical.
 
 ## Examples
 

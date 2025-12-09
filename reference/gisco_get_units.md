@@ -1,12 +1,14 @@
 # Get geospatial units data from GISCO API
 
-Download individual shapefiles of units. Unlike
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
-[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
-or
-[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md),
-that downloads a full dataset and applies filters, `gisco_get_units()`
-downloads a single shapefile for each unit.
+**\[deprecated\]**
+
+This function is deprecated. Use:
+
+- [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
+  (equivalent to `mode = "df"`).
+
+- [`?gisco_get_unit`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)functions
+  (equivalent to `mode = "sf"`)
 
 ## Usage
 
@@ -15,13 +17,13 @@ gisco_get_units(
   id_giscoR = c("nuts", "countries", "urban_audit"),
   unit = "ES4",
   mode = c("sf", "df"),
-  year = "2016",
-  epsg = "4326",
+  year = 2016,
+  epsg = 4326,
   cache = TRUE,
   update_cache = FALSE,
   cache_dir = NULL,
   verbose = FALSE,
-  resolution = "20",
+  resolution = 20,
   spatialtype = "RG"
 )
 ```
@@ -29,6 +31,8 @@ gisco_get_units(
 ## Source
 
 <https://gisco-services.ec.europa.eu/distribution/v2/>
+
+All the source files are `.geojson` files.
 
 ## Arguments
 
@@ -39,168 +43,154 @@ gisco_get_units(
 
 - unit:
 
-  Unit ID to be downloaded. See **Details**.
+  Unit ID to be downloaded.
 
 - mode:
 
   Controls the output of the function. Possible values are `"sf"` or
-  `"df"`. See **Value** and **Details**.
+  `"df"`. See **Value**.
 
 - year:
 
-  Release year of the file. One of `"2001"`, `"2006"`, `"2010"`,
-  `"2013"`, `"2016"`, `"2020"` or `"2024"`.
+  character string or number. Release year of the file.
 
 - epsg:
 
-  projection of the map: 4-digit [EPSG code](https://epsg.io/). One of:
+  character string or number. Projection of the map: 4-digit [EPSG
+  code](https://epsg.io/). One of:
 
-  - `"4258"`: ETRS89
+  - `"4326"`: [WGS84](https://epsg.io/4326).
 
-  - `"4326"`: WGS84
+  - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 
-  - `"3035"`: ETRS89 / ETRS-LAEA
-
-  - `"3857"`: Pseudo-Mercator
+  - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 
 - cache:
 
-  A logical whether to do caching. Default is `TRUE`. See **About
-  caching**.
+  logical. Whether to do caching. Default is `TRUE`. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical whether to update cache. Default is `FALSE`. When set to
-  `TRUE` it would force a fresh download of the source `.geojson` file.
+  logical. Should the cached file be refreshed?. Default is `FALSE`.
+  When set to `TRUE` it would force a new download.
 
 - cache_dir:
 
-  A path to a cache directory. See **About caching**.
+  character string. A path to a cache directory. See **Caching
+  strategies** section in
+  [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  Logical, displays information. Useful for debugging, default is
-  `FALSE`.
+  logical. If `TRUE` displays informational messages.
 
 - resolution:
 
-  Resolution of the geospatial data. One of
+  character string or number. Resolution of the geospatial data. One of:
 
-  - `"60"`: 1:60million
+  - `"60"`: 1:60 million.
 
-  - `"20"`: 1:20million
+  - `"20"`: 1:20 million.
 
-  - `"10"`: 1:10million
+  - `"10"`: 1:10 million.
 
-  - `"03"`: 1:3million
+  - `"03"`: 1:3 million.
 
-  - `"01"`: 1:1million
+  - `"01"`: 1:1 million.
 
 - spatialtype:
 
-  Type of geometry to be returned: `"RG"`, for `POLYGON` and `"LB"` for
-  `POINT`.
+  character string. Type of geometry to be returned. Options available
+  are:
+
+  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+
+  - `"LB"`: Labels - `POINT` object.
 
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object on
-`mode = "sf"` or a data frame on `mode = "df"`.
-
-## Details
-
-The function can return a data frame on `mode = "df"` or a
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object on
-`mode = "sf"`.
-
-In order to see the available `unit` ids with the required combination
-of `spatialtype, year`, first run the function on `"df"` mode. Once that
-you get the data frame you can select the required ids on the `unit`
-parameter.
-
-On `mode = "df"` the only relevant parameters are `spatialtype, year`.
+`mode = "sf"` or a
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) on
+`mode = "df"`.
 
 ## Note
-
-Country-level files would be renamed on your `cache_dir` to avoid naming
-conflicts with NUTS-0 datasets.
 
 Please check the download and usage provisions on
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
 
-## About caching
-
-You can set your `cache_dir` with
-[`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
-
-Sometimes cached files may be corrupt. On that case, try re-downloading
-the data setting `update_cache = TRUE`.
-
-If you experience any problem on download, try to download the
-corresponding `.geojson` file by any other method and save it on your
-`cache_dir`. Use the option `verbose = TRUE` for debugging the API
-query.
-
-For a complete list of files available check
-[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md).
-
 ## See also
 
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md)
-
-Other political:
-[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
-[`gisco_get_coastallines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastallines.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get.md),
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
-[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
-[`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postalcodes.md),
-[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
-
-## Author
-
-dieghernan, <https://github.com/dieghernan/>
+[`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md),
+[`?gisco_get_unit`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
+functions.
 
 ## Examples
 
 ``` r
 # \donttest{
-cities <- gisco_get_units(
-  id_giscoR = "urban_audit",
-  mode = "df",
-  year = "2020"
-)
-VAL <- cities[grep("Valencia", cities$URAU_NAME), ]
-#   Order from big to small
-VAL <- VAL[order(as.double(VAL$AREA_SQM), decreasing = TRUE), ]
+# mode df
+gisco_get_units("nuts", mode = "df", year = 2016)
+#> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
+#> ℹ Please use `gisco_get_metadata()` instead.
+#> # A tibble: 2,016 × 7
+#>    CNTR_CODE NUTS_ID NAME_LATN         NUTS_NAME MOUNT_TYPE URBN_TYPE COAST_TYPE
+#>    <chr>     <chr>   <chr>             <chr>          <int>     <int>      <int>
+#>  1 UK        UKL2    East Wales        East Wal…          0         0          0
+#>  2 UK        UKL18   Swansea           Swansea            4         1          1
+#>  3 UK        UKL17   Bridgend and Nea… Bridgend…          2         1          1
+#>  4 UK        UKL16   Gwent Valleys     Gwent Va…          2         1          2
+#>  5 UK        UKL15   Central Valleys   Central …          3         1          2
+#>  6 UK        UKL14   South West Wales  South We…          4         3          1
+#>  7 UK        UKL12   Gwynedd           Gwynedd            2         3          1
+#>  8 UK        UKL11   Isle of Anglesey  Isle of …          4         3          1
+#>  9 UK        UKL1    West Wales and T… West Wal…          0         0          0
+#> 10 UK        UKL     WALES             WALES              0         0          0
+#> # ℹ 2,006 more rows
+# ->
+gisco_get_metadata("nuts", year = 2016)
+#> # A tibble: 2,016 × 7
+#>    CNTR_CODE NUTS_ID NAME_LATN         NUTS_NAME MOUNT_TYPE URBN_TYPE COAST_TYPE
+#>    <chr>     <chr>   <chr>             <chr>          <int>     <int>      <int>
+#>  1 UK        UKL2    East Wales        East Wal…          0         0          0
+#>  2 UK        UKL18   Swansea           Swansea            4         1          1
+#>  3 UK        UKL17   Bridgend and Nea… Bridgend…          2         1          1
+#>  4 UK        UKL16   Gwent Valleys     Gwent Va…          2         1          2
+#>  5 UK        UKL15   Central Valleys   Central …          3         1          2
+#>  6 UK        UKL14   South West Wales  South We…          4         3          1
+#>  7 UK        UKL12   Gwynedd           Gwynedd            2         3          1
+#>  8 UK        UKL11   Isle of Anglesey  Isle of …          4         3          1
+#>  9 UK        UKL1    West Wales and T… West Wal…          0         0          0
+#> 10 UK        UKL     WALES             WALES              0         0          0
+#> # ℹ 2,006 more rows
 
-VAL.sf <- gisco_get_units(
-  id_giscoR = "urban_audit",
-  year = "2020",
-  unit = VAL$URAU_CODE
-)
-# Provincia
-Provincia <-
-  gisco_get_units(
-    id_giscoR = "nuts",
-    unit = c("ES523"),
-    resolution = "01"
-  )
-
-# Reorder
-VAL.sf$URAU_CATG <- factor(VAL.sf$URAU_CATG, levels = c("F", "K", "C"))
-
-# Plot
-library(ggplot2)
-
-ggplot(Provincia) +
-  geom_sf(fill = "gray1") +
-  geom_sf(data = VAL.sf, aes(fill = URAU_CATG)) +
-  scale_fill_viridis_d() +
-  labs(
-    title = "Valencia",
-    subtitle = "Urban Audit",
-    fill = "Urban Audit\ncategory"
-  )
-
+# mode sf for NUTS
+gisco_get_units("nuts", unit = "ES111", mode = "sf", year = 2016)
+#> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
+#> ℹ Please use `gisco_get_unit_nuts()` instead.
+#> Simple feature collection with 1 feature and 9 fields
+#> Geometry type: POLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: -9.2475 ymin: 42.56619 xmax: -7.699736 ymax: 43.73816
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 1 × 10
+#>   COAST_TYPE MOUNT_TYPE NAME_LATN CNTR_CODE NUTS_ID NUTS_NAME LEVL_CODE
+#> *      <int>      <int> <chr>     <chr>     <chr>   <chr>         <int>
+#> 1          1          2 A Coruña  ES        ES111   A Coruña          3
+#> # ℹ 3 more variables: URBN_TYPE <int>, geo <chr>, geometry <POLYGON [°]>
+# ->
+gisco_get_unit_nuts(unit = "ES111", year = 2016)
+#> Simple feature collection with 1 feature and 9 fields
+#> Geometry type: MULTIPOLYGON
+#> Dimension:     XY
+#> Bounding box:  xmin: -9.29841 ymin: 42.4636 xmax: -7.662418 ymax: 43.78793
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 1 × 10
+#>   COAST_TYPE MOUNT_TYPE NAME_LATN CNTR_CODE NUTS_ID NUTS_NAME LEVL_CODE
+#> *      <int>      <int> <chr>     <chr>     <chr>   <chr>         <int>
+#> 1          1          2 A Coruña  ES        ES111   A Coruña          3
+#> # ℹ 3 more variables: URBN_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
 # }
 ```
