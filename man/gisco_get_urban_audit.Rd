@@ -11,7 +11,7 @@ Copyright:
 }
 \usage{
 gisco_get_urban_audit(
-  year = 2021,
+  year = 2024,
   epsg = 4326,
   cache = TRUE,
   update_cache = FALSE,
@@ -107,7 +107,7 @@ Please check the download and usage provisions on \code{\link[=gisco_attribution
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
 
-cities <- gisco_get_urban_audit(year = 2021, level = "CITIES")
+cities <- gisco_get_urban_audit(year = 2024, level = "CITIES")
 
 if (!is.null(cities)) {
   bcn <- cities[cities$URAU_NAME == "Barcelona", ]

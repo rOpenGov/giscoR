@@ -5,7 +5,7 @@ test_that("Test offline", {
   options(gisco_test_offline = TRUE)
   expect_message(
     n <- gisco_get_unit_urban_audit(
-      year = 2021,
+      year = 2024,
       update_cache = TRUE,
       verbose = TRUE
     ),
@@ -22,7 +22,7 @@ test_that("Test 404", {
   options(gisco_test_404 = TRUE)
   expect_message(
     n <- gisco_get_unit_urban_audit(
-      year = 2021,
+      year = 2024,
       update_cache = TRUE,
       verbose = TRUE
     ),
@@ -104,7 +104,7 @@ test_that("unit_urau: Caching", {
       spatialtype = "LB",
       cache = FALSE,
       cache_dir = cdir,
-      year = "2021",
+      year = "2024",
       verbose = TRUE
     ),
     "Reading from"
@@ -121,7 +121,7 @@ test_that("unit_urau: Caching", {
       spatialtype = "LB",
       cache = TRUE,
       cache_dir = cdir,
-      year = "2021",
+      year = "2024",
       verbose = TRUE
     )
   )
@@ -135,7 +135,7 @@ test_that("unit_urau: Caching", {
       spatialtype = "LB",
       cache = TRUE,
       cache_dir = cdir,
-      year = "2021",
+      year = "2024",
       verbose = TRUE
     ),
     "File already cached"

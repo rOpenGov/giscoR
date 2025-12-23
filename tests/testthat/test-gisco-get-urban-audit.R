@@ -186,7 +186,7 @@ test_that("Cache vs non-cached", {
   expect_s3_class(db_online, "tbl_df")
   expect_identical(
     list.files(cdir, recursive = TRUE),
-    "urban_audit/URAU_RG_100K_2021_4326_CITIES.gpkg"
+    "urban_audit/URAU_RG_100K_2024_4326_CITIES.gpkg"
   )
 
   # shp is always cached

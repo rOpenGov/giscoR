@@ -40,7 +40,7 @@ gisco_get_unit_nuts(
 
 gisco_get_unit_urban_audit(
   unit = "ES001F",
-  year = 2021,
+  year = 2024,
   epsg = c(4326, 3857, 3035),
   cache = TRUE,
   update_cache = FALSE,
@@ -113,7 +113,7 @@ Please check the download and usage provisions on \code{\link[=gisco_attribution
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 # Get metadata
-cities <- gisco_get_metadata("urban_audit", 2020)
+cities <- gisco_get_metadata("urban_audit", year = 2024)
 
 
 # Valencia, Spain
@@ -123,7 +123,7 @@ library(dplyr)
 # Now get the sf objects and order by AREA_SQM
 valencia_sf <- gisco_get_unit_urban_audit(
   unit = valencia$URAU_CODE,
-  year = "2020",
+  year = 2024,
 ) |>
   arrange(desc(AREA_SQM))
 # Plot

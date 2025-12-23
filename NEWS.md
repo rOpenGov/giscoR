@@ -3,6 +3,8 @@
 -   Fix a bug that overwrites the internal data base on a new session with the
     cached version. Now the cache should be persistent.
 -   Update `?gisco_db`.
+-   `gisco_get_urban_audit()` and `gisco_get_unit_urban_audit()`: Default year
+    changed to the latest available: 2024.
 
 # giscoR 1.0.0
 
@@ -270,3 +272,4 @@ We updated all bundled datasets to their latest versions and added new ones:
 # giscoR 0.1.0
 
 -   First stable release.
+
