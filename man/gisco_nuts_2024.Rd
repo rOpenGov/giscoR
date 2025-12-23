@@ -8,7 +8,7 @@
 \format{
 A \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. with
-263 rows and 10 variables:
+1798 rows and 10 variables:
 \describe{
 \item{\code{NUTS_ID}}{NUTS identifier.}
 \item{\code{LEVL_CODE}}{NUTS level code \verb{(0,1,2,3)}.}
