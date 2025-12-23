@@ -188,7 +188,7 @@ NULL
 #' @format
 #' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326). with
-#' `r nrow(giscoR::gisco_countries_2024)` rows and 10 variables:
+#' `r nrow(giscoR::gisco_nuts_2024)` rows and 10 variables:
 #' \describe{
 #'   \item{`NUTS_ID`}{NUTS identifier.}
 #'   \item{`LEVL_CODE`}{NUTS level code `(0,1,2,3)`.}
