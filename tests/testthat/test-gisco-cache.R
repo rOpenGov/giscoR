@@ -1,4 +1,5 @@
 test_that("Test cache", {
+  skip_on_cran()
   # Get current cache dir
   expect_message(current <- gisco_detect_cache_dir())
 

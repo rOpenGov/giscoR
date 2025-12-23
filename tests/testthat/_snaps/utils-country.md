@@ -10,8 +10,8 @@
     Code
       convert_country_code("U")
     Condition
-      Error in `FUN()`:
-      ! Invalid country name "U" Try a vector of names or ISO3/Eurostat codes
+      Error:
+      ! Invalid country name "U". Try a vector of names or ISO3/Eurostat codes
 
 ---
 

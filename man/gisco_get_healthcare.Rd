@@ -83,7 +83,7 @@ Brief description of each attribute:\tabular{ll}{
    \code{list_specs} \tab List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). \cr
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
-   \code{url} \tab URL link to the institution’s website. \cr
+   \code{url} \tab URL link to the institution's website. \cr
    \code{ref_date} \tab The date (\code{DD/MM/YYYY}) the data refers to (reference date). \cr
    \code{pub_date} \tab The publication date of the dataset by Eurostat (\code{DD/MM/YYYY}). \cr
    \code{geo_qual} \tab Geolocation quality indicator: 1=Good, 2=Medium, 3=Low, 4=From source, -1=Unknown, -2=Not geocoded. \cr

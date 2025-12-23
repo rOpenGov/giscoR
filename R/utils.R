@@ -139,3 +139,16 @@ rbind_fill <- function(a_list) {
   binded <- do.call(rbind, a_list)
   binded
 }
+
+ensure_null <- function(x) {
+  x_init <- x
+  x <- as.vector(x)
+  x[is.null(x)] <- NA
+  x[is.na(x)] <- NA
+  x[nchar(as.character(x)) == 0] <- NA
+  if (all(is.na(x))) {
+    return(NULL)
+  }
+
+  x_init
+}

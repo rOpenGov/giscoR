@@ -6,7 +6,7 @@
 \title{Set your \CRANpkg{giscoR} cache dir}
 \usage{
 gisco_set_cache_dir(
-  cache_dir,
+  cache_dir = NULL,
   overwrite = FALSE,
   install = FALSE,
   verbose = TRUE
@@ -15,7 +15,7 @@ gisco_set_cache_dir(
 gisco_detect_cache_dir()
 }
 \arguments{
-\item{cache_dir}{A path to a cache directory. On missing value the function
+\item{cache_dir}{A path to a cache directory. On \code{NULL} the function
 would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
 
 \item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing

@@ -12,7 +12,7 @@
     Code
       get_url_db("communes", "9999", fn = "gisco_get_communes")
     Condition
-      Error in `get_url_db()`:
+      Error:
       ! Years available for `giscoR::gisco_get_communes()` are "2001", "2004", "2006", "2008", "2010", "2013", and "2016".
 
 ---
@@ -20,7 +20,7 @@
     Code
       get_url_db("communes", "2016", epsg = "1111", ext = "csv", fn = "gisco_get_communes")
     Condition
-      Error in `get_url_db()`:
+      Error:
       ! No results for `giscoR::gisco_get_communes()` with params:
       * `year` = "2016"
       * `epsg` = "1111"

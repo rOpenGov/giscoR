@@ -64,7 +64,8 @@ get_url_db <- function(
         fn,
         "} are ",
         "{.str {years}}."
-      )
+      ),
+      call = NULL
     )
   }
 
@@ -88,7 +89,8 @@ get_url_db <- function(
         "No results for {.fn {fn}} with params:",
         val,
         i = "Check available combinations in {.fn giscoR::gisco_get_cached_db}."
-      )
+      ),
+      call = NULL
     )
   }
 

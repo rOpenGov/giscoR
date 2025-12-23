@@ -35,7 +35,7 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
 
   # On CRAN do not download
-  if (on_cran()) {
+  if (all(on_cran(), !file.exists(cached_db))) {
     db <- giscoR::gisco_db
     saveRDS(db, cached_db)
 
@@ -276,6 +276,15 @@ scrap_api_data <- function(entry_point) {
 #'
 #' @noRd
 get_db <- function() {
+  cdir <- detect_cache_dir_muted()
+  cdir_db <- create_cache_dir(file.path(cdir, "cache_db"))
+  cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
+
+  if (file.exists(cached_db)) {
+    db <- readRDS(cached_db)
+    return(db)
+  }
+
   db <- gisco_get_cached_db()
   if (is.null(db)) {
     db <- giscoR::gisco_db

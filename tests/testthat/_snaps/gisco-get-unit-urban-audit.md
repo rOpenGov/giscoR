@@ -4,7 +4,7 @@
       gisco_get_unit_urban_audit(year = -1989)
     Condition
       Error:
-      ! `year` should be one of "2021", "2020", "2018", "2014", "2004" or "2001", not "-1989".
+      ! `year` should be one of "2024", "2021", "2020", "2018", "2014", "2004" or "2001", not "-1989".
 
 ---
 

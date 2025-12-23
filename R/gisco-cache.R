@@ -11,7 +11,7 @@
 #' find your cached path or use [gisco_detect_cache_dir()].
 #'
 #' @inheritParams gisco_get_nuts
-#' @param cache_dir A path to a cache directory. On missing value the function
+#' @param cache_dir A path to a cache directory. On `NULL` the function
 #'   would store the cached files on a temporary dir (See [base::tempdir()]).
 #' @param install If `TRUE`, will install the key in your local machine for
 #'   use in future sessions.  Defaults to `FALSE.` If `cache_dir` is `FALSE`
@@ -83,13 +83,15 @@
 #'
 #' @export
 gisco_set_cache_dir <- function(
-  cache_dir,
+  cache_dir = NULL,
   overwrite = FALSE,
   install = FALSE,
   verbose = TRUE
 ) {
+  cache_dir <- ensure_null(cache_dir)
+
   # Default if not provided
-  if (missing(cache_dir) || cache_dir == "") {
+  if (is.null(cache_dir)) {
     make_msg(
       "info",
       verbose,
@@ -235,10 +237,20 @@ gisco_clear_cache <- function(
   }
   # nocov end
   if (cached_data && dir.exists(data_dir)) {
+    siz <- file.size(list.files(
+      data_dir,
+      recursive = TRUE,
+      full.names = TRUE
+    ))
+    siz <- sum(siz, na.rm = TRUE)
+    class(siz) <- class(object.size("a"))
+
+    siz <- format(siz, unit = "auto")
+
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) {
       cli::cli_alert_warning(
-        "{.pkg giscoR} data deleted: {.file {data_dir}}"
+        "{.pkg giscoR} data deleted: {.file {data_dir}} ({siz})."
       )
     }
   }

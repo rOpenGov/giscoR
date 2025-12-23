@@ -17,8 +17,8 @@
 ---
 
     Code
-      gisco_get_metadata("urban_audit")
+      gisco_get_metadata("urban_audit", year = 1990)
     Condition
       Error:
-      ! `year` should be one of "2001", "2004", "2014", "2018", "2020" or "2021", not "2024".
+      ! `year` should be one of "2001", "2004", "2014", "2018", "2020", "2021" or "2024", not "1990".
 

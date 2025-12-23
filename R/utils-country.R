@@ -32,9 +32,10 @@ convert_country_code <- function(names, out = "eurostat") {
     } else {
       cli::cli_abort(
         paste0(
-          "Invalid country name {.str {x}} ",
+          "Invalid country name {.str {x}}. ",
           "Try a vector of names or ISO3/Eurostat codes"
-        )
+        ),
+        call = NULL
       )
     }
     outnames

@@ -146,3 +146,20 @@ test_that("Bind and fill tibble removes NULL", {
 
   expect_null(rbind_fill(new_l))
 })
+test_that("Ensure NULL", {
+  expect_null(ensure_null(NULL))
+  expect_null(ensure_null(c(NULL, NA)))
+  expect_null(ensure_null(c(NULL, NA, "")))
+  expect_null(ensure_null(c("", character(0))))
+  expect_identical(ensure_null(c(1, 2)), c(1, 2))
+  expect_identical(letters, letters)
+})
+
+test_that("Ensure NULL", {
+  expect_null(ensure_null(NULL))
+  expect_null(ensure_null(c(NULL, NA)))
+  expect_null(ensure_null(c(NULL, NA, "")))
+  expect_null(ensure_null(c("", character(0))))
+  expect_identical(ensure_null(c(1, 2)), c(1, 2))
+  expect_identical(letters, letters)
+})
