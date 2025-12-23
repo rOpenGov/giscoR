@@ -6,6 +6,10 @@
   the cached version. Now the cache should be persistent.
 - Update
   [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
+- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md)
+  and
+  [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md):
+  Default year changed to the latest available: 2024.
 
 ## giscoR 1.0.0
 
