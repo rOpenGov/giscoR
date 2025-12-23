@@ -83,35 +83,57 @@ c(
 
 ## Basic example
 
-Examples of downloading data: Plot of Asia as per [UN M49
-Standard](https://unstats.un.org/unsd/methodology/m49/):
+Examples of downloading data: EU member states and candidate countries
+as of 2024:
 
 ``` r
-library(sf)
-library(ggplot2) # Use ggplot for plotting
+library(dplyr)
+library(ggplot2)
+world <- gisco_get_countries(resolution = 3, epsg = 3035)
 
-asia <- gisco_get_countries(region = "Asia")
-world <- gisco_get_countries()
+
+world <- world |>
+  mutate(
+    status = case_when(
+      EU_STAT == "T" ~ "Current members",
+      CC_STAT == "T" ~ "Candidate countries",
+      TRUE ~ NA
+    ),
+    # As levels
+    status = factor(status, levels = c("Current members", "Candidate countries"))
+  )
 
 ggplot(world) +
-  geom_sf(fill = "#DFDFDF", color = "#656565") +
-  geom_sf(data = asia, fill = "#FDFBEA", color = "#656565") +
-  coord_sf(crs = "+proj=laea +lon_0=95 +lat_0=35") +
-  lims(
-    x = c(-5500000, 5500000),
-    y = c(-4500000, 2500000)
+  geom_sf(fill = "#c1c1c1") +
+  geom_sf(aes(fill = status), color = "white") +
+  guides(fill = guide_legend(direction = "horizontal")) +
+  # Center in Europe: EPSG 3035
+  coord_sf(
+    xlim = c(2377294, 7453440),
+    ylim = c(1313597, 5628510)
   ) +
-  theme(panel.background = element_rect(fill = "#C7E7FB")) +
+  scale_fill_manual(
+    values = c("#039", "#2782bb"), na.value = "#c1c1c1",
+    na.translate = FALSE
+  ) +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "grey90", color = NA),
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank(),
+    legend.position = "bottom"
+  ) +
   labs(
-    title = "Asia",
-    subtitle = "UN M49 Standard",
-    caption = gisco_attributions()
+    title = "EU Member states and Candidate countries (2024)",
+    caption = gisco_attributions(),
+    fill = ""
   )
 ```
 
-![Political map of Asia (UN M49)](country-1.png)
+![EU Member states and Candidate countries (2024)](country-1.png)
 
-Political map of Asia (UN M49)
+EU Member states and Candidate countries (2024)
 
 You can select specific countries by name (in any language), ISO3 codes,
 or Eurostat codes. However, you cannot mix these identifier types in a
@@ -180,10 +202,6 @@ eu_bord <- borders |>
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
-                                                                                            
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>

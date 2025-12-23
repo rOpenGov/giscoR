@@ -2,6 +2,15 @@
 
 ## giscoR (development version)
 
+- Fix a bug that overwrites the internal data base on a new session with
+  the cached version. Now the cache should be persistent.
+- Update
+  [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
+
+## giscoR 1.0.0
+
+CRAN release: 2025-12-10
+
 This major release introduces a full overhaul of the codebase and test
 suite. Requests now use **httr2**, and **GeoPackage** (`”gpkg”`) becomes
 the preferred download format when available. Cached files are

@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.9.9.9999</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +40,11 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="giscor-development-version">giscoR (development version)<a class="anchor" aria-label="anchor" href="#giscor-development-version"></a></h2>
+<ul><li>Fix a bug that overwrites the internal data base on a new session with the cached version. Now the cache should be persistent.</li>
+<li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code>.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.0.0" id="giscor-100">giscoR 1.0.0<a class="anchor" aria-label="anchor" href="#giscor-100"></a></h2><p class="text-muted">CRAN release: 2025-12-10</p>
 <p>This major release introduces a full overhaul of the codebase and test suite. Requests now use <strong>httr2</strong>, and <strong>GeoPackage</strong> (<code>”gpkg”</code>) becomes the preferred download format when available. Cached files are reorganized into topic-based subfolders for easier management.</p>
 <blockquote>
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
@@ -51,7 +56,7 @@
 <p>Several new functions and arguments have been added, some functions renamed, and one deprecated. All bundled datasets have been updated to their latest versions.</p>
 <p>We recommend reviewing the updated documentation at <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a>.</p>
 <div class="section level3">
-<h3 id="major-changes-development-version">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-development-version"></a></h3>
+<h3 id="major-changes-1-0-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-1-0-0"></a></h3>
 <ul><li>Refactor code and test suite for improved stability.</li>
 <li>Switch API requests to <strong>httr2</strong>.</li>
 <li>Adopt GeoPackage (<code>”gpkg”</code>) as the preferred download format.</li>
@@ -60,7 +65,7 @@
 <p><strong>Note:</strong> Previous caches must be recreated.</p>
 </blockquote>
 <div class="section level4">
-<h4 id="compatibility-and-performance-development-version">Compatibility and performance<a class="anchor" aria-label="anchor" href="#compatibility-and-performance-development-version"></a></h4>
+<h4 id="compatibility-and-performance-1-0-0">Compatibility and performance<a class="anchor" aria-label="anchor" href="#compatibility-and-performance-1-0-0"></a></h4>
 <ul><li>Require <strong>R ≥ 4.1</strong>.</li>
 <li>Update dependencies:
 <ul><li>Add: <strong>cli</strong>, <strong>httr2</strong>, <strong>lifecycle</strong>, <strong>tibble</strong>
@@ -73,7 +78,7 @@
 </ul></div>
 </div>
 <div class="section level3">
-<h3 id="new-functions-development-version">New functions<a class="anchor" aria-label="anchor" href="#new-functions-development-version"></a></h3>
+<h3 id="new-functions-1-0-0">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-0-0"></a></h3>
 <ul><li>Metadata and database utilities:
 <ul><li><code><a href="../reference/gisco_get_cached_db.html">gisco_get_cached_db()</a></code></li>
 <li><code><a href="../reference/gisco_get_metadata.html">gisco_get_metadata()</a></code></li>
@@ -96,7 +101,7 @@
 </ul></li>
 </ul></div>
 <div class="section level3">
-<h3 id="renamed-functions-development-version">Renamed functions<a class="anchor" aria-label="anchor" href="#renamed-functions-development-version"></a></h3>
+<h3 id="renamed-functions-1-0-0">Renamed functions<a class="anchor" aria-label="anchor" href="#renamed-functions-1-0-0"></a></h3>
 <p>We renamed several functions to improve clarity and consistency:</p>
 <ul><li>
 <code><a href="../reference/gisco_address_api.html">?gisco_addressapi</a></code> → <code><a href="../reference/gisco_address_api.html">?gisco_address_api</a></code>
@@ -112,12 +117,12 @@
 </blockquote>
 </div>
 <div class="section level3">
-<h3 id="argument-updates-development-version">Argument updates<a class="anchor" aria-label="anchor" href="#argument-updates-development-version"></a></h3>
+<h3 id="argument-updates-1-0-0">Argument updates<a class="anchor" aria-label="anchor" href="#argument-updates-1-0-0"></a></h3>
 <ul><li>Add <code>ext</code> argument to control file format (<code>”gpkg”</code>, <code>”shp”</code>, <code>”geojson”</code>).</li>
 <li>Update default <code>year</code> to the latest release (<a href="https://github.com/rOpenGov/giscoR/issues/105" class="external-link">#105</a>).</li>
 </ul></div>
 <div class="section level3">
-<h3 id="dataset-updates-development-version">Dataset updates<a class="anchor" aria-label="anchor" href="#dataset-updates-development-version"></a></h3>
+<h3 id="dataset-updates-1-0-0">Dataset updates<a class="anchor" aria-label="anchor" href="#dataset-updates-1-0-0"></a></h3>
 <p>We updated all bundled datasets to their latest versions and added new ones:</p>
 <ul><li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code> to the newest data.</li>
 <li>Add <code><a href="../reference/gisco_countries_2024.html">?gisco_countries_2024</a></code> (replaces <code>gisco_countries</code>).</li>
@@ -129,7 +134,7 @@
 </blockquote>
 </div>
 <div class="section level3">
-<h3 id="deprecations-development-version">Deprecations<a class="anchor" aria-label="anchor" href="#deprecations-development-version"></a></h3>
+<h3 id="deprecations-1-0-0">Deprecations<a class="anchor" aria-label="anchor" href="#deprecations-1-0-0"></a></h3>
 <ul><li>Deprecate <code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code>.
 <ul><li>Functionality is now available through <code><a href="../reference/gisco_get_metadata.html">gisco_get_metadata()</a></code> and the <code><a href="../reference/gisco_get_unit.html">?gisco_get_unit</a></code> family.</li>
 </ul></li>
@@ -137,7 +142,7 @@
 <li>In <code><a href="../reference/gisco_bulk_download.html">gisco_bulk_download()</a></code>, rename <code>id_giscoR</code> → <code>id</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="other-updates-development-version">Other updates<a class="anchor" aria-label="anchor" href="#other-updates-development-version"></a></h3>
+<h3 id="other-updates-1-0-0">Other updates<a class="anchor" aria-label="anchor" href="#other-updates-1-0-0"></a></h3>
 <ul><li>Add Eurostat as copyright holder.</li>
 <li>Rewrite the full test suite.</li>
 <li>Review and improve documentation.</li>

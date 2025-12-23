@@ -38,8 +38,8 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. One of `"2021"`,
-  `"2020"`, `"2018"`, `"2014"`, `"2004"`, `"2001"` .
+  character string or number. Release year of the file. One of `"2024"`,
+  `"2021"`, `"2020"`, `"2018"`, `"2014"`, `"2004"`, `"2001"` .
 
 - epsg:
 

@@ -132,7 +132,6 @@ We now download the data from Eurostat:
 # Use eurostat
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
-#> indexed 0B in  0s, 0B/sindexed 2.15GB in  0s, 2.15GB/s                                                                              
 ```
 
 Finally, we merge and manipulate the data to create the final plot:
@@ -252,7 +251,7 @@ A BibTeX entry for LaTeX users is
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2025},
-  version = {0.9.9.9999},
+  version = {1.0.0.9000},
   url = {https://ropengov.github.io/giscoR/},
   abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
 }

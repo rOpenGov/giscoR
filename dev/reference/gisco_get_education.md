@@ -98,7 +98,7 @@ Brief description of each attribute:
 | `public_private` | The public or private status of the education service.                                                           |
 | `tel`            | Telephone number.                                                                                                |
 | `email`          | Email address.                                                                                                   |
-| `url`            | URL link to the institution’s website.                                                                           |
+| `url`            | URL link to the institution's website.                                                                           |
 | `ref_date`       | The reference date (`DD/MM/YYYY`) the data refers to. The dataset represents the reality as it was at this date. |
 | `geo_qual`       | Geolocation quality indicator: 1=Good, 2=Medium, 3=Low, 4=From source, -1=Unknown, -2=Not geocoded.              |
 | `comments`       | Some additional information on the education service.                                                            |
