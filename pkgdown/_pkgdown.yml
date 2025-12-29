@@ -10,6 +10,10 @@ template:
       creator: '@dhernangomez'
       card: summary_large_image
 
+figures:
+  dpi: 300
+  fig.retina: 2
+
 development:
   mode: auto
 
