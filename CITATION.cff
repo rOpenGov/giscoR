@@ -31,7 +31,7 @@ preferred-citation:
     email: diego.hernangomezherrero@gmail.com
     orcid: https://orcid.org/0000-0001-8457-4658
   doi: 10.32614/CRAN.package.giscoR
-  year: '2025'
+  year: '2026'
   version: 1.0.0.9000
   url: https://ropengov.github.io/giscoR/
   abstract: Tools to download data from the GISCO (Geographic Information System of
@@ -71,7 +71,7 @@ references:
   institution:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
-  year: '2025'
+  year: '2026'
   version: '>= 4.1'
 - type: software
   title: cli
@@ -83,7 +83,7 @@ references:
   - family-names: Csárdi
     given-names: Gábor
     email: gabor@posit.co
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.cli
 - type: software
   title: countrycode
@@ -96,7 +96,7 @@ references:
     given-names: Vincent
     email: vincent.arel-bundock@umontreal.ca
     orcid: https://orcid.org/0000-0003-2042-7063
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.countrycode
   version: '>= 1.2.0'
 - type: software
@@ -109,7 +109,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.httr2
 - type: software
   title: jsonlite
@@ -122,7 +122,7 @@ references:
     given-names: Jeroen
     email: jeroenooms@gmail.com
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.jsonlite
 - type: software
   title: lifecycle
@@ -138,7 +138,7 @@ references:
     given-names: Hadley
     email: hadley@posit.co
     orcid: https://orcid.org/0000-0003-4757-117X
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.lifecycle
 - type: software
   title: rappdirs
@@ -154,7 +154,7 @@ references:
     given-names: Trent
   - family-names: Davis
     given-names: Trevor
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.rappdirs
   version: '>= 0.3.0'
 - type: software
@@ -168,7 +168,7 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.sf
   version: '>= 1.0.0'
 - type: software
@@ -185,7 +185,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@rstudio.com
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.tibble
 - type: software
   title: utils
@@ -196,7 +196,7 @@ references:
   institution:
     name: R Foundation for Statistical Computing
     address: Vienna, Austria
-  year: '2025'
+  year: '2026'
 - type: software
   title: dplyr
   abstract: 'dplyr: A Grammar of Data Manipulation'
@@ -220,7 +220,7 @@ references:
     given-names: Davis
     email: davis@posit.co
     orcid: https://orcid.org/0000-0003-4777-038X
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.dplyr
 - type: software
   title: eurostat
@@ -239,7 +239,7 @@ references:
     given-names: Markus
   - family-names: Biecek
     given-names: Przemyslaw
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.eurostat
 - type: software
   title: ggplot2
@@ -279,7 +279,7 @@ references:
     given-names: Teun
     name-particle: van den
     orcid: https://orcid.org/0000-0002-9335-7468
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.ggplot2
   version: '>= 3.5.0'
 - type: software
@@ -293,7 +293,7 @@ references:
     given-names: Yihui
     email: xie@yihui.name
     orcid: https://orcid.org/0000-0003-0645-5666
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.knitr
 - type: software
   title: lwgeom
@@ -306,7 +306,7 @@ references:
     given-names: Edzer
     email: edzer.pebesma@uni-muenster.de
     orcid: https://orcid.org/0000-0001-8049-7069
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.lwgeom
   version: '>= 0.2-2'
 - type: software
@@ -351,7 +351,7 @@ references:
     given-names: Richard
     email: rich@posit.co
     orcid: https://orcid.org/0000-0003-3925-190X
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.rmarkdown
 - type: software
   title: testthat
@@ -363,7 +363,7 @@ references:
   - family-names: Wickham
     given-names: Hadley
     email: hadley@posit.co
-  year: '2025'
+  year: '2026'
   doi: 10.32614/CRAN.package.testthat
   version: '>= 3.0.0'
 
