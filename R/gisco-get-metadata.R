@@ -36,7 +36,7 @@ gisco_get_metadata <- function(
   db <- db[db$id_giscor == id, ]
   db <- db[db$year == year, ]
   db <- db[db$ext == "csv", ]
-  db <- db[grepl("_AT", db$api_file), ]
+  db <- db[grepl("_AT", db$api_file, fixed = TRUE), ]
 
   url <- paste0(db$api_entry, "/", db$api_file)
   tmp_file <- basename(tempfile(fileext = ".csv"))
