@@ -27,6 +27,35 @@ jobs:
             dieghernan/pkgdev
           needs: website
 
+      # Linux & macOS
+      - name: Install jarl (Unix)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -LsSf \
+            https://github.com/etiennebacher/jarl/releases/latest/download/jarl-installer.sh | sh
+
+          # Ensure jarl is on PATH for subsequent steps
+          echo "$HOME/.jarl/bin" >> $GITHUB_PATH
+
+      # Windows
+      - name: Install jarl (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force
+          iwr https://github.com/etiennebacher/jarl/releases/latest/download/jarl-installer.ps1 | iex
+
+          # Add to PATH
+          "$env:USERPROFILE\.jarl\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
+
+      - name: Verify jarl installation
+        run: jarl --version
+        
+      - name: Run jarl
+        continue-on-error: true
+        run: jarl check . --fix --min-r-version 4.1
+
       - name: Install Air
         uses: posit-dev/setup-air@v1
 
