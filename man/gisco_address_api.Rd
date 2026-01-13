@@ -108,8 +108,8 @@ A \link[tibble:tbl_df-class]{tibble} in most cases, except
 \code{gisco_address_api_bbox()}, that return a \code{\link[sf:sf]{sf}} object.
 }
 \description{
-Functions to interact with the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}{GISCO Address API}, that
-allows to carry out both geocoding and reverse geocoding using a pan-european
+Functions to interact with the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}{GISCO Address API}, which
+allows for both geocoding and reverse geocoding using a pan-European
 address database.
 
 Each endpoint available is implemented through a specific function, see

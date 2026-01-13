@@ -10,7 +10,7 @@
 There are no specific download rules for the datasets shown below. However,
 please refer to \href{https://ec.europa.eu/eurostat/web/gisco/geodata}{the general copyright notice} and licence
 provisions, which must be complied with. Permission to download and use
-these data is subject to these rules being accepted.
+these data are subject to these rules being accepted.
 
 The data are extracted from official national registers. They may contain
 inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
@@ -33,7 +33,7 @@ gisco_get_healthcare(
 \item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
@@ -56,10 +56,10 @@ to country, but roughly includes the following:
 \emph{"'Hospitals' comprises licensed establishments primarily engaged in
 providing medical, diagnostic, and treatment services that include physician,
 nursing, and other health services to in-patients and the specialised
-accommodation services required by inpatients}.
+accommodation services required by inpatients."}
 }
 \details{
-Files are distributed \href{https://epsg.io/4326}{EPSG:4326}.
+Files are distributed on \href{https://epsg.io/4326}{EPSG:4326}.
 
 Brief description of each attribute:\tabular{ll}{
    \strong{Attribute} \tab \strong{Description} \cr

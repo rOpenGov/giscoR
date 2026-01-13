@@ -21,7 +21,7 @@ A string with the attribution to be used.
 Get the legal text to be used for administrative and statistical data
 downloaded from GISCO, see section \strong{Copyright information}.
 
-For other datasets you may abide to the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat's general copyright notice and licence policy}.
+For other datasets you may abide by the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat's general copyright notice and licence policy}.
 }
 \details{
 Current languages supported are:
@@ -30,7 +30,7 @@ Current languages supported are:
 \item \code{"da"}: Danish.
 \item \code{"de"}: German.
 \item \code{"es"}: Spanish.
-\item \code{"fi"}: Finish.
+\item \code{"fi"}: Finnish.
 \item \code{"fr"}: French.
 \item \code{"no"}: Norwegian.
 \item \code{"sv"}: Swedish.
@@ -41,8 +41,8 @@ Please consider
 mistake or want to add a new language.
 }
 \section{Copyright information}{
-These provisions described in this section apply to administrative and
-statistical data, provided by the following functions:
+The provisions described in this section apply to administrative and
+statistical data provided by the following functions:
 
 \strong{Administrative units}
 \itemize{

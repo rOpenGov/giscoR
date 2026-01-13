@@ -1,7 +1,7 @@
 #' Get metadata
 #'
 #' @description
-#' Get a table with the names and ids of administrative of statistical units.
+#' Get a table with the names and ids of administrative and statistical units.
 #'
 #' @family database
 #' @seealso

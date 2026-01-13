@@ -1,6 +1,6 @@
 #' Retrieve and update the GISCO database in use by \CRANpkg{giscoR}
 #'
-#' Returns an optionally updates the cached database with the endpoints of the
+#' Returns or optionally updates the cached database with the endpoints of the
 #' GISCO API.
 #'
 #' @family database

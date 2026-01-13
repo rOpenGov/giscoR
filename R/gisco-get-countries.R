@@ -37,7 +37,7 @@
 #'   * `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 #' @param cache logical. Whether to do caching. Default is `TRUE`. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
-#' @param update_cache logical. Should the cached file be refreshed?. Default
+#' @param update_cache logical. Should the cached file be refreshed? Default
 #'   is `FALSE`. When set to `TRUE` it would force a new download.
 #' @param cache_dir character string. A path to a cache directory. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].

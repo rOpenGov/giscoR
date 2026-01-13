@@ -17,7 +17,7 @@ with the most updated information of the GISCO API.}
 A \link[tibble:tbl_df-class]{tibble}.
 }
 \description{
-Returns an optionally updates the cached database with the endpoints of the
+Returns or optionally updates the cached database with the endpoints of the
 GISCO API.
 }
 \details{

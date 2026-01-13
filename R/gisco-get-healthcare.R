@@ -8,7 +8,7 @@
 #' *"'Hospitals' comprises licensed establishments primarily engaged in
 #' providing medical, diagnostic, and treatment services that include physician,
 #' nursing, and other health services to in-patients and the specialised
-#' accommodation services required by inpatients*.
+#' accommodation services required by inpatients."*
 #'
 #' @family services
 #' @inherit gisco_get_education return source
@@ -21,7 +21,7 @@
 #'
 #'
 #' @details
-#' Files are distributed [EPSG:4326](https://epsg.io/4326).
+#' Files are distributed on [EPSG:4326](https://epsg.io/4326).
 #'
 #' ```{r child = "man/chunks/healthcare_meta.Rmd"}
 #' ```

@@ -14,7 +14,7 @@
 #' @param cache_dir A path to a cache directory. On `NULL` the function
 #'   would store the cached files on a temporary dir (See [base::tempdir()]).
 #' @param install If `TRUE`, will install the key in your local machine for
-#'   use in future sessions.  Defaults to `FALSE.` If `cache_dir` is `FALSE`
+#'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`
 #'   this argument is set to `FALSE` automatically.
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
 #'   `GISCO_CACHE_DIR` that you already have in local machine.
@@ -33,16 +33,16 @@
 #'
 #' @section Caching strategies:
 #'
-#' Some files can be read from its online source without caching using the
+#' Some files can be read from their online source without caching using the
 #' option `cache = FALSE`. Otherwise the source file would be downloaded to
 #' your computer. \CRANpkg{giscoR} implements the following caching options:
 #'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no
 #'   install).
 #' - Modify the cache for a single session setting
-#'   `gisco_set_cache_dir(cache_dir = "a/path/here)`.
+#'   `gisco_set_cache_dir(cache_dir = "a/path/here")`.
 #' - For reproducible workflows, install a persistent cache with
-#'   `gisco_set_cache_dir(cache_dir = "a/path/here, install = TRUE)` that would
+#'   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that would
 #'   be kept across **R** sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function. See example in [gisco_get_nuts()].
@@ -96,7 +96,7 @@ gisco_set_cache_dir <- function(
       "info",
       verbose,
       "Using a temporary cache dir (see {.fn base::tempdir}). ",
-      "Set {.arg cache_dir} to a value for store permanently."
+      "Set {.arg cache_dir} to a value to store permanently."
     )
 
     # Create a folder on tempdir
@@ -198,7 +198,7 @@ gisco_detect_cache_dir <- function() {
 #'
 #' @details
 #' This is an overkill function that is intended to reset your status
-#' as it you would never have installed and/or used \CRANpkg{giscoR}.
+#' as if you would never have installed and/or used \CRANpkg{giscoR}.
 #'
 #' @examples
 #'

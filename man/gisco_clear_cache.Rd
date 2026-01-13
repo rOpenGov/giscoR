@@ -30,7 +30,7 @@ data and configuration, specifically:
 }
 \details{
 This is an overkill function that is intended to reset your status
-as it you would never have installed and/or used \CRANpkg{giscoR}.
+as if you would never have installed and/or used \CRANpkg{giscoR}.
 }
 \examples{
 

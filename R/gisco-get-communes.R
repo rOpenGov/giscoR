@@ -23,7 +23,7 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 #'   "year",TRUE)}.
 #' @param cache `r lifecycle::badge('deprecated')`. These functions always
-#'   caches the result due to the size. See **See Caching strategies** section
+#'   cache the result due to the size. See **Caching strategies** section
 #'   in [gisco_set_cache_dir()].
 #'
 #' @param spatialtype character string. Type of geometry to be returned. Options
@@ -42,7 +42,7 @@
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
 #' together subdivide the EU economic territory into regions of five different
-#' levels (NUTS 1, 2 and 3 and LAU , respectively, moving from larger to smaller
+#' levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to smaller
 #' territorial units).
 #'
 #' The dataset is based on EuroBoundaryMap from

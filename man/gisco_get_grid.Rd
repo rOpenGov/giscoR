@@ -19,7 +19,7 @@ gisco_get_grid(
 )
 }
 \arguments{
-\item{resolution}{Resolution of the grid cells on kms. Available values are
+\item{resolution}{Resolution of the grid cells in km. Available values are
 \code{"1"}, \code{"2"}, \code{"5"}, \code{"10"}, \code{"20"}, \code{"50"}, \code{"100"}. See \strong{Details}.}
 
 \item{spatialtype}{Select one of \code{"REGION"} or \code{"POINT"}.}
@@ -27,7 +27,7 @@ gisco_get_grid(
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
@@ -43,8 +43,8 @@ as population figures are provided for these cells.
 \details{
 Files are distributed on \href{https://epsg.io/3035}{\code{EPSG:3035}}.
 
-The file sizes range is from 428Kb (\code{resolution = 100})
-to 1.7Gb \code{resolution = 1}.
+The file sizes range from 428 KB (\code{resolution = 100})
+to 1.7 GB (\code{resolution = 1}).
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}

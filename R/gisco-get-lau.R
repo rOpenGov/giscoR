@@ -35,7 +35,7 @@
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
 #' together subdivide the EU economic territory into regions of five different
-#' levels (NUTS 1, 2 and 3 and LAU , respectively, moving from larger to smaller
+#' levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to smaller
 #' territorial units).
 #'
 #' The LAU classification is not covered by any legislative act. Geographical
@@ -46,7 +46,7 @@
 #' joined to LAU lists as well as a field `GISCO_ID` which is a unique
 #' identifier consisting of the Country code and LAU code.
 #'
-#' Total resident population figures (31 December) have also been added ins
+#' Total resident population figures (31 December) have also been added in
 #' some versions based on the associated LAU lists
 #'
 #' @examplesIf gisco_check_access()

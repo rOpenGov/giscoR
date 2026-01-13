@@ -37,10 +37,10 @@ gisco_get_communes(
 }}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. These functions always
-caches the result due to the size. See \strong{See Caching strategies} section
+cache the result due to the size. See \strong{Caching strategies} section
 in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
@@ -79,7 +79,7 @@ see \code{\link[=gisco_get_lau]{gisco_get_lau()}}.
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions that
 together subdivide the EU economic territory into regions of five different
-levels (NUTS 1, 2 and 3 and LAU , respectively, moving from larger to smaller
+levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to smaller
 territorial units).
 
 The dataset is based on EuroBoundaryMap from

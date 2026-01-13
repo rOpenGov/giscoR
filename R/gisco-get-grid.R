@@ -16,15 +16,15 @@
 #' There are specific downloading provisions, please see
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 #'
-#' @param resolution Resolution of the grid cells on kms. Available values are
+#' @param resolution Resolution of the grid cells in km. Available values are
 #' `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"`, `"100"`. See **Details**.
 #' @param spatialtype Select one of `"REGION"` or `"POINT"`.
 #'
 #' @details
 #' Files are distributed on [`EPSG:3035`](https://epsg.io/3035).
 #'
-#' The file sizes range is from 428Kb (`resolution = 100`)
-#' to 1.7Gb `resolution = 1`.
+#' The file sizes range from 428 KB (`resolution = 100`)
+#' to 1.7 GB (`resolution = 1`).
 #'
 #'
 #' @examplesIf gisco_check_access()

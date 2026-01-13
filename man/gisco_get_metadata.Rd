@@ -25,7 +25,7 @@ values are \code{"nuts"}, \code{"countries"} or \code{"urban_audit"}.}
 A \link[tibble:tbl_df-class]{tibble}.
 }
 \description{
-Get a table with the names and ids of administrative of statistical units.
+Get a table with the names and ids of administrative and statistical units.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}

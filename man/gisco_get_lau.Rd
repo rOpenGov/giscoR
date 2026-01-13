@@ -37,10 +37,10 @@ gisco_get_lau(
 }}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. These functions always
-caches the result due to the size. See \strong{See Caching strategies} section
+cache the result due to the size. See \strong{Caching strategies} section
 in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed?. Default
+\item{update_cache}{logical. Should the cached file be refreshed? Default
 is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
@@ -70,7 +70,7 @@ see \code{\link[=gisco_get_communes]{gisco_get_communes()}}.
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions that
 together subdivide the EU economic territory into regions of five different
-levels (NUTS 1, 2 and 3 and LAU , respectively, moving from larger to smaller
+levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to smaller
 territorial units).
 
 The LAU classification is not covered by any legislative act. Geographical
@@ -81,7 +81,7 @@ The data contains the National Statistical agency LAU code which can be
 joined to LAU lists as well as a field \code{GISCO_ID} which is a unique
 identifier consisting of the Country code and LAU code.
 
-Total resident population figures (31 December) have also been added ins
+Total resident population figures (31 December) have also been added in
 some versions based on the associated LAU lists
 }
 \section{Note}{
