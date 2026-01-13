@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   giscoR: giscoR.html
-last_built: 2026-01-13T18:38Z
+last_built: 2026-01-13T18:46Z
 urls:
   reference: https://ropengov.github.io/giscoR/reference
   article: https://ropengov.github.io/giscoR/articles
