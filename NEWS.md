@@ -272,4 +272,3 @@ We updated all bundled datasets to their latest versions and added new ones:
 # giscoR 0.1.0
 
 -   First stable release.
-

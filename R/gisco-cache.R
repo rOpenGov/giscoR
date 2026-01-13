@@ -131,7 +131,7 @@ gisco_set_cache_dir <- function(
 
     giscor_file <- file.path(config_dir, "gisco_cache_dir")
 
-    if (!file.exists(giscor_file) || overwrite == TRUE) {
+    if (!file.exists(giscor_file) || overwrite) {
       # Create file if it doesn't exist
       writeLines(cache_dir, con = giscor_file)
     } else {

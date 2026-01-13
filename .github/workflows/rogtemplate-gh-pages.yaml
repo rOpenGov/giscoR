@@ -7,6 +7,8 @@ on:
   workflow_dispatch:
 
 name: rogtemplate-gh-pages
+permissions:
+  contents: write
 
 jobs:
   rogtemplate-gh-pages:

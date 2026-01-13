@@ -5,6 +5,9 @@ on:
     branches: [main, master]
 
 name: CITATION-cff
+permissions:
+  contents: write
+
 jobs:
   Validate-CITATION-cff:
     runs-on: ubuntu-latest

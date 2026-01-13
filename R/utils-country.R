@@ -13,7 +13,11 @@ convert_country_code <- function(names, out = "eurostat") {
   # Vectorize
   outnames <- lapply(names, function(x) {
     if (
-      any(grepl("kosovo", tolower(x)), "xk" == tolower(x), "xkx" == tolower(x))
+      any(
+        grepl("kosovo", tolower(x), fixed = TRUE),
+        "xk" == tolower(x),
+        "xkx" == tolower(x)
+      )
     ) {
       code <- switch(out,
         "eurostat" = "XK",

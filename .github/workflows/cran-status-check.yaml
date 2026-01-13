@@ -1,4 +1,7 @@
 name: CRAN Status Monitor
+permissions:
+  contents: read
+  issues: write
 
 on:
   workflow_dispatch:

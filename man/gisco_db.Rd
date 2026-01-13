@@ -7,14 +7,14 @@
 \title{Cached GISCO database}
 \format{
 A \link[tibble:tbl_df-class]{tibble} with
-9,700 rows.
+9,714 rows.
 }
 \source{
 GISCO API \code{datasets.json}.
 }
 \description{
 Database with the list of files in the GISCO API as of
-2025-12-22.
+2026-01-12.
 }
 \details{
 This database is used to redirect the corresponding functions to the

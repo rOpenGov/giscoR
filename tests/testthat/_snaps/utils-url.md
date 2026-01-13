@@ -27,26 +27,6 @@
       * `ext` = "csv"
       i Check available combinations in `giscoR::gisco_get_cached_db()`.
 
----
-
-    Code
-      ss <- get_url_db("communes", "2016", fn = "gisco_get_communes")
-    Message
-      ! `giscoR::gisco_get_communes()` has 25 results with params:
-      * `year` = "2016"
-      * `epsg` = "4326"
-      > Returning first value:
-      * `id_giscor` = "communes"
-      * `year` = "2016"
-      * `epsg` = "4326"
-      * `resolution` = "1"
-      * `spatialtype` = "BN"
-      * `nuts_level` = "NA"
-      * `level` = "NA"
-      * `ext` = "csv"
-      * `api_file` = "csv/COMM_BN_01M_2016_4326.csv"
-      * `api_entry` = "https://gisco-services.ec.europa.eu/distribution/v2/communes"
-
 # No connection body
 
     Code

@@ -198,8 +198,9 @@ test_that("Get urls", {
   )
   expect_identical(ss1, ss2)
 
-  expect_snapshot(
-    ss <- get_url_db("communes", "2016", fn = "gisco_get_communes")
+  expect_message(
+    ss <- get_url_db("communes", "2016", fn = "gisco_get_communes"),
+    "results with params"
   )
   expect_type(ss, "character")
 
