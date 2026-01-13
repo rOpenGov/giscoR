@@ -1,6 +1,6 @@
 # Retrieve and update the GISCO database in use by [giscoR](https://CRAN.R-project.org/package=giscoR)
 
-Returns an optionally updates the cached database with the endpoints of
+Returns or optionally updates the cached database with the endpoints of
 the GISCO API.
 
 ## Usage

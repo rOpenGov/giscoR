@@ -7,7 +7,7 @@ country to country, but roughly includes the following:
 *"'Hospitals' comprises licensed establishments primarily engaged in
 providing medical, diagnostic, and treatment services that include
 physician, nursing, and other health services to in-patients and the
-specialised accommodation services required by inpatients*.
+specialised accommodation services required by inpatients."*
 
 ## Usage
 
@@ -30,7 +30,7 @@ There are no specific download rules for the datasets shown below.
 However, please refer to [the general copyright
 notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and licence
 provisions, which must be complied with. Permission to download and use
-these data is subject to these rules being accepted.
+these data are subject to these rules being accepted.
 
 The data are extracted from official national registers. They may
 contain inconsistencies, inaccuracies and gaps, due to the heterogeneity
@@ -51,8 +51,8 @@ of the input national data.
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -77,7 +77,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed [EPSG:4326](https://epsg.io/4326).
+Files are distributed on [EPSG:4326](https://epsg.io/4326).
 
 Brief description of each attribute:
 

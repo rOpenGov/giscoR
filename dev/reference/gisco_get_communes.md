@@ -48,14 +48,14 @@ Copyright:
 
 - cache:
 
-  **\[deprecated\]**. These functions always caches the result due to
-  the size. See **See Caching strategies** section in
+  **\[deprecated\]**. These functions always cache the result due to the
+  size. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -102,7 +102,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions
 that together subdivide the EU economic territory into regions of five
-different levels (NUTS 1, 2 and 3 and LAU , respectively, moving from
+different levels (NUTS 1, 2 and 3 and LAU, respectively, moving from
 larger to smaller territorial units).
 
 The dataset is based on EuroBoundaryMap from
