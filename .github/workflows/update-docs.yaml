@@ -2,8 +2,7 @@ on:
   workflow_dispatch:
 
 name: update-docs
-permissions:
-  contents: write
+permissions: write-all
 
 jobs:
   update-docs:
