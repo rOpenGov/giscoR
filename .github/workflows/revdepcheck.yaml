@@ -2,8 +2,7 @@ on:
   workflow_dispatch:
 
 name: revdepcheck
-permissions:
-  contents: write
+permissions: write-all
 
 jobs:
   revdepcheck:
