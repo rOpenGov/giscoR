@@ -3,6 +3,10 @@ on:
 
 name: update-docs
 permissions: write-all
+# This will cancel running jobs once a new run is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
 
 jobs:
   update-docs:
@@ -33,7 +37,6 @@ jobs:
         continue-on-error: true
         with:
           args: check . --fix --min-r-version 4.1.0
-
 
       - name: Install Air
         uses: posit-dev/setup-air@v1

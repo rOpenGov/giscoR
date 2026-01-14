@@ -20,6 +20,12 @@ name: R-CMD-check
 permissions:
   contents: read
 
+# This will cancel running jobs once a new run is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
@@ -32,11 +38,11 @@ jobs:
         config:
           - {os: windows-latest, r: 'devel'}
           - {os: windows-latest, r: 'release'}
-          - {os: windows-latest, r: 'oldrel'}
           - {os: macOS-latest, r: 'release'}
           - {os: ubuntu-latest, r: 'release'}
           - {os: ubuntu-latest, r: 'devel'}
           - {os: ubuntu-latest, r: 'oldrel'}
+          - {os: ubuntu-latest, r: '4.1.0'}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 

@@ -4,6 +4,13 @@ on:
 name: revdepcheck
 permissions: write-all
 
+# This will cancel running jobs once a new run is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+
+
 jobs:
   revdepcheck:
     runs-on: ${{ matrix.config.os }}

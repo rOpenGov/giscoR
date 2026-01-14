@@ -8,6 +8,12 @@ on:
 
 name: rogtemplate-gh-pages
 permissions: write-all
+# This will cancel running jobs once a new run is triggered
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+
 
 jobs:
   rogtemplate-gh-pages:
