@@ -1,4 +1,4 @@
-R-version
-*.Rds
 *.html
+R-version
+depends.Rds
 *.rds

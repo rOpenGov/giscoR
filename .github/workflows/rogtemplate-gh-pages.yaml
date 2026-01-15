@@ -3,8 +3,7 @@
 on:
   push:
     branches: [main, master]
-    tags: ['*']
-  workflow_dispatch:
+    tags: ["*"]
 
 name: rogtemplate-gh-pages
 permissions: write-all
@@ -12,8 +11,6 @@ permissions: write-all
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
   cancel-in-progress: true
-
-
 
 jobs:
   rogtemplate-gh-pages:
@@ -33,8 +30,10 @@ jobs:
         with:
           extra-packages: |
             local::.
+            dieghernan/rogtemplate
+            any::devtools
             any::reactable
-            ropengov/rogtemplate
+            any::pkgdown
           needs: website
 
       - name: Build logo if not present and prepare template
@@ -49,12 +48,10 @@ jobs:
           }
 
           rogtemplate::rog_add_template_pkgdown()
-
         shell: Rscript {0}
 
       - name: Deploy package
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          Rscript -e 'pkgdown::deploy_to_branch(new_process = TRUE, clean = TRUE, run_dont_run = TRUE)'
-
+          Rscript -e 'pkgdown::deploy_to_branch(clean = TRUE, run_dont_run = TRUE)'

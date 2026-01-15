@@ -10,11 +10,10 @@ on:
   pull_request:
     branches: [main, master]
   schedule:
-    - cron:  '30 12 * * 3,6'
+    - cron: "30 12 * * 3,6"
   repository_dispatch:
     types: [trigger-check-workflow]
   workflow_dispatch:
-
 
 name: R-CMD-check
 permissions:
@@ -25,24 +24,21 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
   cancel-in-progress: true
 
-
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
-
     name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: 'devel'}
-          - {os: windows-latest, r: 'release'}
-          - {os: macOS-latest, r: 'release'}
-          - {os: ubuntu-latest, r: 'release'}
-          - {os: ubuntu-latest, r: 'devel'}
-          - {os: ubuntu-latest, r: 'oldrel'}
-          - {os: ubuntu-latest, r: '4.1.0'}
+          - { os: windows-latest, r: "devel" }
+          - { os: windows-latest, r: "release" }
+          - { os: macOS-latest, r: "release" }
+          - { os: ubuntu-latest, r: "release" }
+          - { os: ubuntu-latest, r: "devel" }
+          - { os: ubuntu-latest, r: "oldrel" }
+          - { os: ubuntu-latest, r: "4.1.0" }
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
@@ -63,4 +59,3 @@ jobs:
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2
-

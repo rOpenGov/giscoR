@@ -22,7 +22,7 @@ on:
       - main
       - master
   schedule:
-    - cron: '12 08 * * 2'
+    - cron: "12 08 * * 2"
 
 permissions:
   contents: read
@@ -32,15 +32,14 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
   cancel-in-progress: true
 
-
 jobs:
   lintr:
     name: Run lintr scanning
     runs-on: ubuntu-latest
     permissions:
-      contents: read # for checkout to fetch code
-      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
-      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
+      contents: read
+      security-events: write
+      actions: read
 
     steps:
       - name: Checkout code
@@ -74,4 +73,3 @@ jobs:
         with:
           sarif_file: lintr-results.sarif
           wait-for-processing: true
-
