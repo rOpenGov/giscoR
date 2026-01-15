@@ -43,7 +43,6 @@ jobs:
             file.exists(file.path("man", "figures", "logo.png")))) {
             rogtemplate::rog_logo()
           } else {
-
             message("The package already has a logo")
           }
 
