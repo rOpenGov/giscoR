@@ -10,7 +10,7 @@
 |collate  |C.UTF-8                                                |
 |ctype    |C.UTF-8                                                |
 |tz       |UTC                                                    |
-|date     |2026-01-14                                             |
+|date     |2026-01-16                                             |
 |pandoc   |3.1.11 @ /opt/hostedtoolcache/pandoc/3.1.11/x64/pandoc |
 |quarto   |NA                                                     |
 
@@ -45,7 +45,7 @@
 |tibble      |3.3.1  |3.3.1      |   |
 |units       |1.0-0  |1.0-0      |   |
 |utf8        |1.2.6  |1.2.6      |   |
-|vctrs       |0.6.5  |0.6.5      |   |
+|vctrs       |0.7.0  |0.7.0      |   |
 |withr       |3.0.2  |3.0.2      |   |
 |wk          |0.9.5  |0.9.5      |   |
 
