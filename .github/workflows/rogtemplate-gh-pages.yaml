@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main, master ]
     tags: [ "*" ]
-  release:
-    types: [published]
+  schedule:
+    - cron: "01 09 07 * *"
   workflow_dispatch:
 
 name: rogtemplate-gh-pages
