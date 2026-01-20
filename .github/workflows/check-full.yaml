@@ -6,13 +6,13 @@
 # usethis::use_github_action("check-standard") will install it.
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
   schedule:
   - cron: "30 12 * * 3,6"
   repository_dispatch:
-    types: [ trigger-check-workflow ]
+    types: [trigger-check-workflow]
   workflow_dispatch:
 
 
@@ -33,13 +33,13 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - { os: windows-latest, r: "devel" }
-        - { os: windows-latest, r: "release" }
-        - { os: macOS-latest, r: "release" }
-        - { os: ubuntu-latest, r: "release" }
-        - { os: ubuntu-latest, r: "devel" }
-        - { os: ubuntu-latest, r: "oldrel" }
-        - { os: ubuntu-latest, r: "4.1.0" }
+        - {os: windows-latest, r: "devel"}
+        - {os: windows-latest, r: "release"}
+        - {os: macOS-latest, r: "release"}
+        - {os: ubuntu-latest, r: "release"}
+        - {os: ubuntu-latest, r: "devel"}
+        - {os: ubuntu-latest, r: "oldrel"}
+        - {os: ubuntu-latest, r: "4.1.0"}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
