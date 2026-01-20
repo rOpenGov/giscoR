@@ -154,6 +154,7 @@ references:
     given-names: Trent
   - family-names: Davis
     given-names: Trevor
+    orcid: https://orcid.org/0000-0001-6341-4639
   year: '2026'
   doi: 10.32614/CRAN.package.rappdirs
   version: '>= 0.3.0'
