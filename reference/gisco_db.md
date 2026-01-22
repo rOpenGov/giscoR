@@ -1,11 +1,11 @@
 # Cached GISCO database
 
-Database with the list of files in the GISCO API as of 2025-12-03.
+Database with the list of files in the GISCO API as of 2026-01-12.
 
 ## Format
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with 9,609 rows.
+with 9,714 rows.
 
 ## Source
 
@@ -39,7 +39,7 @@ Other database utils:
 data("gisco_db")
 gisco_db |>
   dplyr::glimpse()
-#> Rows: 9,609
+#> Rows: 9,714
 #> Columns: 11
 #> $ id_giscor    <chr> "coastal_lines", "coastal_lines", "coastal_lines", "coast…
 #> $ year         <dbl> 2006, 2006, 2006, 2006, 2006, 2006, 2006, 2006, 2006, 200…
@@ -51,5 +51,5 @@ gisco_db |>
 #> $ ext          <chr> "csv", "geojson", "gpkg", "json", "pbf", "shp", "csv", "g…
 #> $ api_file     <chr> "csv/COAS_RG_01M_2006_3035.csv", "geojson/COAS_RG_01M_200…
 #> $ api_entry    <chr> "https://gisco-services.ec.europa.eu/distribution/v2/coas…
-#> $ last_updated <date> 2025-12-03, 2025-12-03, 2025-12-03, 2025-12-03, 2025-12-…
+#> $ last_updated <date> 2026-01-12, 2026-01-12, 2026-01-12, 2026-01-12, 2026-01-…
 ```

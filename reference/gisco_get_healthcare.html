@@ -5,19 +5,19 @@ to country, but roughly includes the following:
 &quot;'Hospitals' comprises licensed establishments primarily engaged in
 providing medical, diagnostic, and treatment services that include physician,
 nursing, and other health services to in-patients and the specialised
-accommodation services required by inpatients."><meta property="og:description" content="The dataset contains information on main healthcare services considered to
+accommodation services required by inpatients.&quot;"><meta property="og:description" content="The dataset contains information on main healthcare services considered to
 be 'hospitals' by Member States. The definition varies slightly from country
 to country, but roughly includes the following:
 &quot;'Hospitals' comprises licensed establishments primarily engaged in
 providing medical, diagnostic, and treatment services that include physician,
 nursing, and other health services to in-patients and the specialised
-accommodation services required by inpatients."><meta property="og:image" content="https://ropengov.github.io/giscoR/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenGov"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-VGVFXGHWRL"></script><script>
+accommodation services required by inpatients.&quot;"><meta property="og:image" content="https://ropengov.github.io/giscoR/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:creator" content="@dhernangomez"><meta name="twitter:site" content="@rOpenGov"><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-VGVFXGHWRL"></script><script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-VGVFXGHWRL');
-</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=B612+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;family=Fira+Code:wght@300..700&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rogtemplate.min.css" rel="stylesheet"></head><body>
+</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=B612+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet"><!-- rogtemplate style sheet --><link href="../BS5/rogtemplate.min.css" rel="stylesheet"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -25,7 +25,7 @@ accommodation services required by inpatients."><meta property="og:image" conten
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,7 @@ to country, but roughly includes the following:</p>
 <p><em>"'Hospitals' comprises licensed establishments primarily engaged in
 providing medical, diagnostic, and treatment services that include physician,
 nursing, and other health services to in-patients and the specialised
-accommodation services required by inpatients</em>.</p>
+accommodation services required by inpatients."</em></p>
     </div>
 
     <div class="section level2">
@@ -79,7 +79,7 @@ accommodation services required by inpatients</em>.</p>
 <p>There are no specific download rules for the datasets shown below. However,
 please refer to <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link">the general copyright notice</a> and licence
 provisions, which must be complied with. Permission to download and use
-these data is subject to these rules being accepted.</p>
+these data are subject to these rules being accepted.</p>
 <p>The data are extracted from official national registers. They may contain
 inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
 input national data.</p>
@@ -99,7 +99,7 @@ input national data.</p>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>logical. Should the cached file be refreshed?. Default
+<dd><p>logical. Should the cached file be refreshed? Default
 is <code>FALSE</code>. When set to <code>TRUE</code> it would force a new download.</p></dd>
 
 
@@ -124,8 +124,8 @@ Eurostat country codes. See also <code><a href="https://vincentarelbundock.githu
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Files are distributed <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>.</p>
-<p>Brief description of each attribute:</p><table class="table table"><tr><td><strong>Attribute</strong></td><td><strong>Description</strong></td></tr><tr><td><code>id</code></td><td>The healthcare service identifier. This identifier is based on national identification codes, if it exists.</td></tr><tr><td><code>hospital_name</code></td><td>The name of the healthcare institution.</td></tr><tr><td><code>site_name</code></td><td>The name of the specific site or branch of a healthcare institution.</td></tr><tr><td><code>lat</code></td><td>Latitude (WGS 84).</td></tr><tr><td><code>lon</code></td><td>Longitude (WGS 84).</td></tr><tr><td><code>street</code></td><td>Street name.</td></tr><tr><td><code>house_number</code></td><td>House number.</td></tr><tr><td><code>postcode</code></td><td>Postcode.</td></tr><tr><td><code>address</code></td><td>Address information when the different components of the address are not separated in the source.</td></tr><tr><td><code>city</code></td><td>City name (sometimes refers to a region or municipality).</td></tr><tr><td><code>cntr_id</code></td><td>Country code (2 letters, ISO 3166-1 alpha-2).</td></tr><tr><td><code>emergency</code></td><td>'yes/no' for whether the healthcare site provides emergency medical services.</td></tr><tr><td><code>cap_beds</code></td><td>Measure of capacity by number of beds (most common).</td></tr><tr><td><code>cap_prac</code></td><td>Measure of capacity by number of practitioners.</td></tr><tr><td><code>cap_rooms</code></td><td>Measure of capacity by number of rooms.</td></tr><tr><td><code>facility_type</code></td><td>Type of healthcare service (e.g., psychiatric hospital), based on national classification.</td></tr><tr><td><code>public_private</code></td><td>'public/private' status of the healthcare service.</td></tr><tr><td><code>list_specs</code></td><td>List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V).</td></tr><tr><td><code>tel</code></td><td>Telephone number.</td></tr><tr><td><code>email</code></td><td>Email address.</td></tr><tr><td><code>url</code></td><td>URL link to the institution’s website.</td></tr><tr><td><code>ref_date</code></td><td>The date (<code>DD/MM/YYYY</code>) the data refers to (reference date).</td></tr><tr><td><code>pub_date</code></td><td>The publication date of the dataset by Eurostat (<code>DD/MM/YYYY</code>).</td></tr><tr><td><code>geo_qual</code></td><td>Geolocation quality indicator: 1=Good, 2=Medium, 3=Low, 4=From source, -1=Unknown, -2=Not geocoded.</td></tr><tr><td><code>comments</code></td><td>Additional information on the healthcare service.</td></tr></table></div>
+    <p>Files are distributed on <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>.</p>
+<p>Brief description of each attribute:</p><table class="table table"><tr><td><strong>Attribute</strong></td><td><strong>Description</strong></td></tr><tr><td><code>id</code></td><td>The healthcare service identifier. This identifier is based on national identification codes, if it exists.</td></tr><tr><td><code>hospital_name</code></td><td>The name of the healthcare institution.</td></tr><tr><td><code>site_name</code></td><td>The name of the specific site or branch of a healthcare institution.</td></tr><tr><td><code>lat</code></td><td>Latitude (WGS 84).</td></tr><tr><td><code>lon</code></td><td>Longitude (WGS 84).</td></tr><tr><td><code>street</code></td><td>Street name.</td></tr><tr><td><code>house_number</code></td><td>House number.</td></tr><tr><td><code>postcode</code></td><td>Postcode.</td></tr><tr><td><code>address</code></td><td>Address information when the different components of the address are not separated in the source.</td></tr><tr><td><code>city</code></td><td>City name (sometimes refers to a region or municipality).</td></tr><tr><td><code>cntr_id</code></td><td>Country code (2 letters, ISO 3166-1 alpha-2).</td></tr><tr><td><code>emergency</code></td><td>'yes/no' for whether the healthcare site provides emergency medical services.</td></tr><tr><td><code>cap_beds</code></td><td>Measure of capacity by number of beds (most common).</td></tr><tr><td><code>cap_prac</code></td><td>Measure of capacity by number of practitioners.</td></tr><tr><td><code>cap_rooms</code></td><td>Measure of capacity by number of rooms.</td></tr><tr><td><code>facility_type</code></td><td>Type of healthcare service (e.g., psychiatric hospital), based on national classification.</td></tr><tr><td><code>public_private</code></td><td>'public/private' status of the healthcare service.</td></tr><tr><td><code>list_specs</code></td><td>List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V).</td></tr><tr><td><code>tel</code></td><td>Telephone number.</td></tr><tr><td><code>email</code></td><td>Email address.</td></tr><tr><td><code>url</code></td><td>URL link to the institution's website.</td></tr><tr><td><code>ref_date</code></td><td>The date (<code>DD/MM/YYYY</code>) the data refers to (reference date).</td></tr><tr><td><code>pub_date</code></td><td>The publication date of the dataset by Eurostat (<code>DD/MM/YYYY</code>).</td></tr><tr><td><code>geo_qual</code></td><td>Geolocation quality indicator: 1=Good, 2=Medium, 3=Low, 4=From source, -1=Unknown, -2=Not geocoded.</td></tr><tr><td><code>comments</code></td><td>Additional information on the healthcare service.</td></tr></table></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other basic services datasets:
@@ -164,7 +164,7 @@ Eurostat country codes. See also <code><a href="https://vincentarelbundock.githu
 <span class="r-in"><span>    <span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>crs <span class="op">=</span> <span class="fl">3035</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-plt img"><img src="gisco_get_healthcare-1.png" alt="" width="700" height="433"></span>
+<span class="r-plt img"><img src="gisco_get_healthcare-1.png" alt="" width="2188" height="1352"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

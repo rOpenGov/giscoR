@@ -1,6 +1,19 @@
 # Changelog
 
+## giscoR 1.0.1
+
+- Fix a bug that overwrites the internal data base on a new session with
+  the cached version. Now the cache should be persistent.
+- Update
+  [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md).
+- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+  and
+  [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md):
+  Default year changed to the latest available: 2024.
+
 ## giscoR 1.0.0
+
+CRAN release: 2025-12-10
 
 This major release introduces a full overhaul of the codebase and test
 suite. Requests now use **httr2**, and **GeoPackage** (`”gpkg”`) becomes
@@ -134,7 +147,7 @@ ones:
 > Please use the updated datasets or, preferably, retrieve them via the
 > corresponding functions such as
 > [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
-> with default parameters.
+> with default arguments.
 
 ### Deprecations
 

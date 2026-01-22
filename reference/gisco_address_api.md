@@ -2,8 +2,8 @@
 
 Functions to interact with the [GISCO Address
 API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home),
-that allows to carry out both geocoding and reverse geocoding using a
-pan-european address database.
+which allows for both geocoding and reverse geocoding using a
+pan-European address database.
 
 Each endpoint available is implemented through a specific function, see
 **Details**.

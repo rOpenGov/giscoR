@@ -25,7 +25,7 @@ There are no specific download rules for the datasets shown below.
 However, please refer to [the general copyright
 notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and licence
 provisions, which must be complied with. Permission to download and use
-these data is subject to these rules being accepted.
+these data are subject to these rules being accepted.
 
 The data are extracted from official national registers. They may
 contain inconsistencies, inaccuracies and gaps, due to the heterogeneity
@@ -46,8 +46,8 @@ of the input national data.
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -72,7 +72,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed [EPSG:4326](https://epsg.io/4326).
+Files are distributed on [EPSG:4326](https://epsg.io/4326).
 
 Brief description of each attribute:
 
@@ -98,7 +98,7 @@ Brief description of each attribute:
 | `public_private` | The public or private status of the education service.                                                           |
 | `tel`            | Telephone number.                                                                                                |
 | `email`          | Email address.                                                                                                   |
-| `url`            | URL link to the institution’s website.                                                                           |
+| `url`            | URL link to the institution's website.                                                                           |
 | `ref_date`       | The reference date (`DD/MM/YYYY`) the data refers to. The dataset represents the reality as it was at this date. |
 | `geo_qual`       | Geolocation quality indicator: 1=Good, 2=Medium, 3=Low, 4=From source, -1=Unknown, -2=Not geocoded.              |
 | `comments`       | Some additional information on the education service.                                                            |

@@ -60,8 +60,8 @@ gisco_bulk_download(
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - verbose:
 
@@ -176,8 +176,8 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmKO9Ye/testexample/countries.
-#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmKO9Ye/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2FhzYw/testexample/countries.
+#> ✔ File already cached: C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2FhzYw/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # Message shows that file is already cached ;)
 # }

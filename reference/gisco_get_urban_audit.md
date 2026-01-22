@@ -14,7 +14,7 @@ files, please use
 
 ``` r
 gisco_get_urban_audit(
-  year = 2021,
+  year = 2024,
   epsg = 4326,
   cache = TRUE,
   update_cache = FALSE,
@@ -38,8 +38,8 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. One of `"2021"`,
-  `"2020"`, `"2018"`, `"2014"`, `"2004"`, `"2001"` .
+  character string or number. Release year of the file. One of `"2024"`,
+  `"2021"`, `"2020"`, `"2018"`, `"2014"`, `"2004"`, `"2001"` .
 
 - epsg:
 
@@ -60,8 +60,8 @@ Copyright:
 
 - update_cache:
 
-  logical. Should the cached file be refreshed?. Default is `FALSE`.
-  When set to `TRUE` it would force a new download.
+  logical. Should the cached file be refreshed? Default is `FALSE`. When
+  set to `TRUE` it would force a new download.
 
 - cache_dir:
 
@@ -152,7 +152,7 @@ Other statistical units datasets:
 ``` r
 # \donttest{
 
-cities <- gisco_get_urban_audit(year = 2021, level = "CITIES")
+cities <- gisco_get_urban_audit(year = 2024, level = "CITIES")
 
 if (!is.null(cities)) {
   bcn <- cities[cities$URAU_NAME == "Barcelona", ]

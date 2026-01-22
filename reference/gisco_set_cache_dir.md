@@ -8,7 +8,7 @@ to find your cached path or use `gisco_detect_cache_dir()`.
 
 ``` r
 gisco_set_cache_dir(
-  cache_dir,
+  cache_dir = NULL,
   overwrite = FALSE,
   install = FALSE,
   verbose = TRUE
@@ -21,8 +21,8 @@ gisco_detect_cache_dir()
 
 - cache_dir:
 
-  A path to a cache directory. On missing value the function would store
-  the cached files on a temporary dir (See
+  A path to a cache directory. On `NULL` the function would store the
+  cached files on a temporary dir (See
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - overwrite:
@@ -33,7 +33,7 @@ gisco_detect_cache_dir()
 - install:
 
   If `TRUE`, will install the key in your local machine for use in
-  future sessions. Defaults to `FALSE.` If `cache_dir` is `FALSE` this
+  future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE` this
   argument is set to `FALSE` automatically.
 
 - verbose:
@@ -70,20 +70,21 @@ informing of the migration.
 
 ## Caching strategies
 
-Some files can be read from its online source without caching using the
-option `cache = FALSE`. Otherwise the source file would be downloaded to
-your computer. [giscoR](https://CRAN.R-project.org/package=giscoR)
-implements the following caching options:
+Some files can be read from their online source without caching using
+the option `cache = FALSE`. Otherwise the source file would be
+downloaded to your computer.
+[giscoR](https://CRAN.R-project.org/package=giscoR) implements the
+following caching options:
 
 - For occasional use, rely on the default
   [`tempdir()`](https://rdrr.io/r/base/tempfile.html)-based cache (no
   install).
 
 - Modify the cache for a single session setting
-  `gisco_set_cache_dir(cache_dir = "a/path/here)`.
+  `gisco_set_cache_dir(cache_dir = "a/path/here")`.
 
 - For reproducible workflows, install a persistent cache with
-  `gisco_set_cache_dir(cache_dir = "a/path/here, install = TRUE)` that
+  `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that
   would be kept across **R** sessions.
 
 - For caching specific files, use the `cache_dir` argument in the
@@ -111,29 +112,29 @@ Other cache utilities:
 # Don't run this! It would modify your current state
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmKO9Ye/giscoR
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2FhzYw/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmKO9Ye/example/cachenew.
+#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2FhzYw/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmKO9Ye/example/cachenew
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpmKO9Ye/example/cachenew"
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2FhzYw/example/cachenew
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmp2FhzYw/example/cachenew"
 
 # Restore initial cache
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmKO9Ye/giscoR.
+#> ℹ giscoR cache dir is C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2FhzYw/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmKO9Ye/giscoR
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2FhzYw/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\RtmpmKO9Ye/giscoR
-#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\RtmpmKO9Ye/giscoR"
+#> ℹ C:\Users\RUNNER~1\AppData\Local\Temp\Rtmp2FhzYw/giscoR
+#> [1] "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\Rtmp2FhzYw/giscoR"
 ```
