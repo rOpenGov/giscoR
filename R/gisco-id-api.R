@@ -307,7 +307,7 @@ prepare_id_query <- function(
 
 #' Helper function to prepare and call the ID API
 #'
-#' @param custom_query A named list with the query parameters.
+#' @param custom_query A named list with the query arguments.
 #' @param apiurl The API endpoint URL.
 #' @param verbose Logical. Whether to print verbose output.
 #'

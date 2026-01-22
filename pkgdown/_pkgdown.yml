@@ -7,7 +7,7 @@ template:
     ganalytics: G-VGVFXGHWRL
   opengraph:
     twitter:
-      creator: '@dhernangomez'
+      creator: "@dhernangomez"
       card: summary_large_image
 
 figures:
