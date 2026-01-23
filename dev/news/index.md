@@ -2,6 +2,10 @@
 
 ## giscoR (development version)
 
+## giscoR 1.0.1
+
+CRAN release: 2026-01-23
+
 - Fix a bug that overwrites the internal data base on a new session with
   the cached version. Now the cache should be persistent.
 - Update
@@ -147,7 +151,7 @@ ones:
 > Please use the updated datasets or, preferably, retrieve them via the
 > corresponding functions such as
 > [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
-> with default parameters.
+> with default arguments.
 
 ### Deprecations
 
