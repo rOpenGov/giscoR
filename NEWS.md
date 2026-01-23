@@ -1,3 +1,5 @@
+# giscoR (development version)
+
 # giscoR 1.0.1
 
 -   Fix a bug that overwrites the internal data base on a new session with the
