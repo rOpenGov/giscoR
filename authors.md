@@ -15,7 +15,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/rOpenGov/giscoR/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/rOpenGov/giscoR/blob/release/inst/CITATION)
 
 Hernangómez D (2026). *giscoR: Download Map Data from GISCO API -
 Eurostat*.

@@ -2,6 +2,8 @@
 
 ## giscoR 1.0.1
 
+CRAN release: 2026-01-23
+
 - Fix a bug that overwrites the internal data base on a new session with
   the cached version. Now the cache should be persistent.
 - Update
