@@ -181,9 +181,7 @@ download_url <- function(
     req <- httr2::req_progress(req)
   }
 
-  test_off <- getOption("gisco_test_offline", FALSE)
-
-  if (any(!httr2::is_online(), test_off)) {
+  if (!is_online_fun()) {
     cli::cli_alert_danger("Offline")
     cli::cli_alert("Returning {.val NULL}")
     return(NULL)
@@ -205,7 +203,7 @@ download_url <- function(
   }
 
   # Testing
-  test_offline <- getOption("gisco_test_404", FALSE)
+  test_offline <- is_404()
   if (test_offline) {
     # Modify to redirect to fake url
     req <- httr2::req_url(
@@ -278,16 +276,14 @@ get_request_body <- function(url, verbose = TRUE) {
     req <- httr2::req_progress(req)
   }
 
-  test_off <- getOption("gisco_test_offline", FALSE)
-
-  if (any(!httr2::is_online(), test_off)) {
+  if (!is_online_fun()) {
     cli::cli_alert_danger("Offline")
     cli::cli_alert("Returning {.val NULL}")
     return(NULL)
   }
 
   # Testing
-  test_offline <- getOption("gisco_test_404", FALSE)
+  test_offline <- is_404()
   if (test_offline) {
     # Modify to redirect to fake url
     req <- httr2::req_url(
@@ -343,4 +339,16 @@ for_import_jsonlite <- function() {
   local <- jsonlite::parse_json(txt)
   local <- NULL
   invisible(local)
+}
+
+#' Wrapper is_online for testing
+#' @noRd
+is_online_fun <- function(...) {
+  httr2::is_online()
+}
+
+#' Wrapper is_404 for testing
+#' @noRd
+is_404 <- function(...) {
+  FALSE
 }

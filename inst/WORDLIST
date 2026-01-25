@@ -11,10 +11,10 @@ EPSG
 ETRS
 EuroBoundaryMap
 Eurostat's
+Eurostat’s
 GDAL
 GDAL's
 GISCO
-Gb
 GeoPackage
 Geolocation
 ICAO
@@ -44,7 +44,6 @@ codebase
 codecov
 colorspace
 der
-european
 eurostat
 geocoded
 geocoding
@@ -52,10 +51,10 @@ geojsonsf
 geonames
 geospatial
 ggplot
+giscoR’
 gpkg
 httr
 jsonlite
-kms
 les
 licence
 lifecycle

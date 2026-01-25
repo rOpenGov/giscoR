@@ -1,7 +1,9 @@
 test_that("Test offline", {
   skip_on_cran()
   skip_if_gisco_offline()
-  options(gisco_test_offline = TRUE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
 
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/",
@@ -24,8 +26,12 @@ test_that("Test offline", {
   expect_length(list.files(cdir, recursive = TRUE), 0)
   unlink(cdir, recursive = TRUE, force = TRUE)
 
-  options(gisco_test_offline = FALSE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    httr2::is_online()
+  })
+  expect_identical(is_online_fun(), httr2::is_online())
 })
+
 test_that("Test 404", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -35,7 +41,10 @@ test_that("Test 404", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  options(gisco_test_404 = TRUE)
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
+
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/countries/",
     "shp/CNTR_LB_2024_4326.shp.zip"
@@ -51,7 +60,9 @@ test_that("Test 404", {
   )
   expect_null(s)
 
-  options(gisco_test_404 = FALSE)
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
 
   # Otherwise work
   expect_silent(
@@ -247,7 +258,9 @@ test_that("Get urls", {
 test_that("No connection body", {
   skip_on_cran()
   skip_if_gisco_offline()
-  options(gisco_test_offline = TRUE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
 
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/",
@@ -258,12 +271,18 @@ test_that("No connection body", {
     fend <- get_request_body(url, verbose = FALSE)
   )
   expect_null(fend)
-  options(gisco_test_offline = FALSE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    httr2::is_online()
+  })
+  expect_identical(is_online_fun(), httr2::is_online())
 })
+
 test_that("Error body", {
   skip_on_cran()
   skip_if_gisco_offline()
-  options(gisco_test_404 = TRUE)
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/",
     "themes.json"
@@ -273,7 +292,9 @@ test_that("Error body", {
     fend <- get_request_body(url, verbose = FALSE)
   )
   expect_null(fend)
-  options(gisco_test_404 = FALSE)
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
 })
 
 

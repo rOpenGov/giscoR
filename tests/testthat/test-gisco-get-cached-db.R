@@ -4,14 +4,18 @@ test_that("Test offline", {
 
   gb <- gisco_get_cached_db()
 
-  options(gisco_test_offline = TRUE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
 
   expect_snapshot(
     fend <- gisco_get_cached_db(update_cache = TRUE),
   )
   expect_null(fend)
 
-  options(gisco_test_offline = FALSE)
+  local_mocked_bindings(is_online_fun = function(...) {
+    httr2::is_online()
+  })
 })
 
 
@@ -19,14 +23,18 @@ test_that("Test 404", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  options(gisco_test_404 = TRUE)
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
   expect_message(
     n <- gisco_get_cached_db(update_cache = TRUE),
     "Can't access"
   )
   expect_null(n)
 
-  options(gisco_test_404 = FALSE)
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
 })
 
 test_that("Offline detection", {
@@ -40,7 +48,9 @@ test_that("Offline detection", {
     unlink(cached_db)
   }
   expect_false(file.exists(cached_db))
-  options(gisco_test_404 = TRUE)
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
   expect_message(
     n <- get_db(),
     "Can't access"
@@ -56,7 +66,9 @@ test_that("Offline detection", {
     unlink(cached_db)
   }
   expect_false(file.exists(cached_db))
-  options(gisco_test_404 = FALSE)
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
 })
 test_that("On CRAN", {
   skip_on_cran()
