@@ -207,14 +207,12 @@ scrap_api_data <- function(entry_point) {
     FALSE
   })
 
-  test_off <- getOption("gisco_test_offline", FALSE)
-
-  if (any(!httr2::is_online(), test_off)) {
+  if (!is_online_fun()) {
     return(NULL)
   }
 
   # Testing
-  test_offline <- getOption("gisco_test_404", FALSE)
+  test_offline <- is_404()
   if (test_offline) {
     # Modify to redirect to fake url
     req <- httr2::req_url(
