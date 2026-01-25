@@ -1,5 +1,7 @@
 # giscoR (development version)
 
+-   Use `testthat::local_mocked_bindings()` on API error testing.
+
 # giscoR 1.0.1
 
 -   Fix a bug that overwrites the internal data base on a new session with the

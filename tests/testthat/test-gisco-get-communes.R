@@ -2,14 +2,18 @@ test_that("offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  options(gisco_test_404 = TRUE)
+  local_mocked_bindings(is_404 = function(...) {
+    TRUE
+  })
   expect_message(
     n <- gisco_get_communes(update_cache = TRUE, spatialtype = "LB"),
     "Error"
   )
   expect_null(n)
 
-  options(gisco_test_404 = FALSE)
+  local_mocked_bindings(is_404 = function(...) {
+    FALSE
+  })
 })
 
 
