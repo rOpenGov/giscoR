@@ -110,7 +110,7 @@ if (!is.null(grid)) {
     ) +
     theme_void() +
     labs(
-      title = "Population density in Europe",
+      title = "Population density in Europe (2021)",
       subtitle = "Grid: 20 km.",
       caption = gisco_attributions()
     ) +

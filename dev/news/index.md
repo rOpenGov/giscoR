@@ -2,6 +2,10 @@
 
 ## giscoR (development version)
 
+- Use
+  [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
+  on API error testing.
+
 ## giscoR 1.0.1
 
 CRAN release: 2026-01-23
