@@ -160,12 +160,17 @@ footer .pkgdown-footer-left {
 
 /* ---Misc--- */
 
+/* Hack to change root variable --bs-body-bg in dark mode */
+[data-bs-theme="dark"] {
+	color-scheme: dark;
+	--bs-body-bg: #2a2e32;
+}
+
 .mini_logo {
 	font-family: "B612 Mono", monospace;
 	text-decoration: none;
 	color: var(--bs-body-color);
 	display: inline-block;
-	margin-left: 0.25rem;
 }
 
 /* Clipboard button */
@@ -183,12 +188,12 @@ footer .pkgdown-footer-left {
 	border-color: var(--bs-warning);
 }
 
-/* Hack to reduce brightness of plots in dark mode */
+/* Hack to reduce color in dark mode */
 [data-bs-theme="dark"] img.r-plt,
 [data-bs-theme="dark"] pre .r-plt.img img,
 [data-bs-theme="dark"] .cell-output-display img,
 [data-bs-theme="dark"] .html-widget {
-	filter: brightness(66%) !important;
+	filter: grayscale(33%) !important;
 }
 
 .pkg {
