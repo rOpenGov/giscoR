@@ -2,16 +2,13 @@
 
 /* ---Images and captions figure spacing--- */
 main img {
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto;
 }
 
 .caption,
 .figure {
 	color: var(--bs-secondary);
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 0.5rem;
+	margin: 0.5rem auto 0;
 	font-size: 85%;
 	width: 100%;
 }
@@ -121,10 +118,8 @@ footer .pkgdown-footer-left {
 @media screen and (max-width: 576px) {
 	footer .pkgdown-footer-right,
 	footer .pkgdown-footer-left {
-		margin-right: 0.75rem;
-		margin-left: 0.75rem;
-		padding-left: 12px;
-		padding-right: 12px;
+		margin: 0 0.75rem;
+		padding: 0 12px;
 	}
 }
 
@@ -167,6 +162,10 @@ footer .pkgdown-footer-left {
 
 .mini_logo {
 	font-family: "B612 Mono", monospace;
+	text-decoration: none;
+	color: var(--bs-body-color);
+	display: inline-block;
+	margin-left: 0.25rem;
 }
 
 /* Clipboard button */
@@ -207,6 +206,16 @@ footer .pkgdown-footer-left {
 	background-color: var(--bs-body-bg);
 	padding: 0;
 	border-radius: 0;
+}
+
+.algolia-autocomplete .aa-dropdown-menu {
+	color: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] {
+	.algolia-autocomplete .aa-dropdown-menu {
+		color: var(--bs-white);
+	}
 }
 
 /* Highlighter based in my theme */
