@@ -42,12 +42,18 @@ labels — directly in **R**.
 
 ## Installation
 
+<div class="pkgdown-release">
+
 Install **giscoR** from
 [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
 ``` r
 install.packages("giscoR")
 ```
+
+</div>
+
+<div class="pkgdown-devel">
 
 You can install the development version of **giscoR** with:
 
@@ -61,8 +67,13 @@ Alternatively, you can install **giscoR** via
 [r-universe](https://ropengov.r-universe.dev/giscoR):
 
 ``` r
-install.packages("giscoR", repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org"))
+install.packages(
+  "giscoR",
+  repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org")
+)
 ```
+
+</div>
 
 ## Quick Example
 
@@ -194,19 +205,25 @@ ggplot(nuts3_sf) +
     values = pal,
     # Label for NA
     labels = labeller_plot,
-    drop = FALSE, guide = guide_legend(direction = "horizontal", nrow = 1)
+    drop = FALSE,
+    guide = guide_legend(direction = "horizontal", nrow = 1)
   ) +
   # Theming
   theme_void() +
   # Theme
   theme(
     plot.title = element_text(
-      color = rev(pal)[2], size = rel(1.5),
-      hjust = 0.5, vjust = -6
+      color = rev(pal)[2],
+      size = rel(1.5),
+      hjust = 0.5,
+      vjust = -6
     ),
     plot.subtitle = element_text(
-      color = rev(pal)[2], size = rel(1.25),
-      hjust = 0.5, vjust = -10, face = "bold"
+      color = rev(pal)[2],
+      size = rel(1.25),
+      hjust = 0.5,
+      vjust = -10,
+      face = "bold"
     ),
     plot.caption = element_text(color = "grey60", hjust = 0.5, vjust = 0),
     legend.text = element_text(color = "grey20", hjust = .5),
@@ -223,7 +240,8 @@ ggplot(nuts3_sf) +
     subtitle = "NUTS-3 level",
     fill = "people per sq. kilometer",
     caption = paste0(
-      "Source: Eurostat, ", gisco_attributions(),
+      "Source: Eurostat, ",
+      gisco_attributions(),
       "\nBased on Milos Popovic: ",
       "https://milospopovic.net/how-to-make-choropleth-map-in-r/"
     )
