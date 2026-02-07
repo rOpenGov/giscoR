@@ -220,6 +220,30 @@ code {
   background-color: var(--body-bg) !important;
 }
 
+@media (max-width: 575.98px) {
+  /* See https://github.com/r-lib/pkgdown/pull/2970 */
+
+  /* Need to override pkgdown */
+  .btn-copy-ex {
+    right: 5px;
+  }
+
+  div > pre {
+    border-radius: 0;
+  }
+
+  :not(li, blockquote) > div > pre {
+    margin-left: calc(var(--bs-gutter-x) * -0.5);
+    margin-right: calc(var(--bs-gutter-x) * -0.5);
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  :not(li, blockquote) > div > .btn-copy-ex {
+    right: calc(var(--bs-gutter-x) * -0.5 + 5px);
+  }
+}
+
 /* Highlighter based in tango for dark theme */
 pre {
   border: none;
