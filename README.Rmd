@@ -4,7 +4,8 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   tidy = "styler",
@@ -59,7 +60,8 @@ labels — directly in **R**.
 ::: pkgdown-release
 Install **giscoR** from [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 install.packages("giscoR")
 ```
 :::
@@ -67,7 +69,8 @@ install.packages("giscoR")
 ::: pkgdown-devel
 You can install the development version of **giscoR** with:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 # install.packages("pak")
 
 pak::pak("rOpenGov/giscoR")
@@ -76,7 +79,8 @@ pak::pak("rOpenGov/giscoR")
 Alternatively, you can install **giscoR** via
 [r-universe](https://ropengov.r-universe.dev/giscoR):
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 install.packages(
   "giscoR",
   repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org")
@@ -88,7 +92,9 @@ install.packages(
 
 This script highlights some features of **giscoR** :
 
-```{r resolution-map, fig.alt="The Netherlands boundaries at different resolutions"}
+```{r}
+#| label: resolution-map
+#| fig-alt: The Netherlands boundaries at different resolutions
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -126,7 +132,9 @@ post](https://milospopovic.net/how-to-make-choropleth-map-in-r/).
 
 We start by extracting the corresponding geographic data:
 
-```{r euroex, fig.asp=1.1}
+```{r}
+#| label: euroex
+#| fig-asp: 1.1
 library(giscoR)
 library(dplyr)
 library(eurostat)
@@ -161,7 +169,10 @@ popdens <- get_eurostat("demo_r_d3dens") |>
 
 Finally, we merge and manipulate the data to create the final plot:
 
-```{r thematic-map, fig.asp=1.1, fig.alt="Population density in 2021"}
+```{r}
+#| label: thematic-map
+#| fig-asp: 1.1
+#| fig-alt: Population density in 2021
 # Merge data
 nuts3_sf <- nuts3 |>
   left_join(popdens, by = "geo")
@@ -244,7 +255,8 @@ ggplot(nuts3_sf) +
 
 Large datasets (e.g., LAU or high-resolution files) can exceed 50MB. Use:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 gisco_set_cache_dir("./path/to/location")
 ```
 
@@ -263,13 +275,17 @@ Contributions are welcome:
 
 ## Citation
 
-```{r echo=FALSE, results='asis'}
+```{r}
+#| echo: false
+#| results: asis
 print(citation("giscoR"), bibtex = FALSE)
 ```
 
 A BibTeX entry for LaTeX users is
 
-```{r echo=FALSE, comment=""}
+```{r}
+#| echo: false
+#| comment: ''
 toBibtex(citation("giscoR"))
 ```
 
