@@ -1,6 +1,7 @@
 # giscoR (development version)
 
 -   Use `testthat::local_mocked_bindings()` on API error testing.
+-   Adapt vignettes to Quarto.
 
 # giscoR 1.0.1
 

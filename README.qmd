@@ -1,25 +1,22 @@
 ---
-output: github_document
+format: gfm
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dev: "ragg_png"
+    tidy: "styler"
+    fig.path: "man/figures/README-"
+    dpi: 150
+    out.width: "100%"
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
-```{r}
-#| include: false
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  tidy = "styler",
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  warning = FALSE,
-  message = FALSE,
-  dev = "ragg_png",
-  dpi = 150,
-  out.width = "100%"
-)
-```
-
-# giscoR <a href='https://ropengov.github.io/giscoR/'><img src="man/figures/logo.png" align="right" height="139"/></a>
+# giscoR <a href='https://ropengov.github.io/giscoR/'><img src="man/figures/logo.png"
+alt="giscoR website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -67,6 +64,9 @@ install.packages("giscoR")
 :::
 
 ::: pkgdown-devel
+Check the docs of the developing version
+in <https://ropengov.github.io/giscoR/dev/>.
+
 You can install the development version of **giscoR** with:
 
 ```{r}
@@ -94,7 +94,7 @@ This script highlights some features of **giscoR** :
 
 ```{r}
 #| label: resolution-map
-#| fig-alt: The Netherlands boundaries at different resolutions
+#| fig-cap: The Netherlands boundaries at different resolutions
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -126,9 +126,7 @@ ggplot(nl_all) +
 ## Advanced Example: Thematic maps
 
 This example shows a thematic map created with the **ggplot2** package. The data
-are obtained via the **eurostat** package. This follows the approach presented
-by [Milos Popovic](https://milospopovic.net/) in [this
-post](https://milospopovic.net/how-to-make-choropleth-map-in-r/).
+are obtained via the **eurostat** package. This follows the work of [Milos Popovic](https://milospopovic.net/).
 
 We start by extracting the corresponding geographic data:
 
@@ -172,7 +170,7 @@ Finally, we merge and manipulate the data to create the final plot:
 ```{r}
 #| label: thematic-map
 #| fig-asp: 1.1
-#| fig-alt: Population density in 2021
+#| fig-cap: Population density in 2021
 # Merge data
 nuts3_sf <- nuts3 |>
   left_join(popdens, by = "geo")
@@ -245,8 +243,7 @@ ggplot(nuts3_sf) +
     caption = paste0(
       "Source: Eurostat, ",
       gisco_attributions(),
-      "\nBased on Milos Popovic: ",
-      "https://milospopovic.net/how-to-make-choropleth-map-in-r/"
+      "\nBased on Milos Popovic's work"
     )
   )
 ```

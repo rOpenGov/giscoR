@@ -2,10 +2,14 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, release]
     tags: ["*"]
   schedule:
   - cron: "01 09 07 * *"
+  workflow_run:
+    workflows: [update-docs]
+    types: completed
+    branches: [main, master]
   workflow_dispatch:
 
 
@@ -18,7 +22,10 @@ concurrency:
 
 jobs:
   rogtemplate-gh-pages:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    if: >
+      github.event_name != 'workflow_run' ||
+      github.event.workflow_run.conclusion == 'success'
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
