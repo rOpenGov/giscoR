@@ -12,9 +12,7 @@ objects.
 On using administrative data for statistical purposes, administrative
 units are the units for which administrative data are recorded. These
 units may or may not be the same as those required for the statistical
-purposes (referred to as statistical units).
-
-See [copyright
+purposes (referred to as statistical units). See [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
@@ -27,9 +25,7 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-unit
 ### Statistical units
 
 A statistical unit is the unit of observation or measurement for which
-data are collected or derived.
-
-See [copyright
+data are collected or derived. See [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 
 - [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md)

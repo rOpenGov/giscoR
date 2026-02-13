@@ -4,3 +4,5 @@
 
 - [Get started with
   giscoR](https://ropengov.github.io/giscoR/articles/giscoR.md):
+
+  A brief introduction

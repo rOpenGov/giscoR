@@ -100,7 +100,9 @@ world <- world |>
       TRUE ~ NA
     ),
     # As levels
-    status = factor(status, levels = c("Current members", "Candidate countries"))
+    status = factor(status,
+      levels = c("Current members", "Candidate countries")
+    )
   )
 
 ggplot(world) +
@@ -131,7 +133,7 @@ ggplot(world) +
   )
 ```
 
-![EU Member states and Candidate countries (2024)](country-1.png)
+![EU Member states and Candidate countries (2024)](./fig-country-1.png)
 
 EU Member states and Candidate countries (2024)
 
@@ -171,7 +173,7 @@ ggplot(coast) +
   labs(caption = gisco_attributions("fr"))
 ```
 
-![Political map of North Africa](africa-1.png)
+![Political map of North Africa](./fig-africa-1.png)
 
 Political map of North Africa
 
@@ -271,6 +273,6 @@ ggplot(nuts2_sf) +
 ```
 
 ![Disposable income of private households by NUTS 2 regions
-(2022)](giscoR-1.png)
+(2022)](./fig-giscor-1.png)
 
 Disposable income of private households by NUTS 2 regions (2022)
