@@ -1,5 +1,6 @@
 ---
 format: gfm
+default-image-extension: ''
 knitr:
   opts_chunk:
     collapse: true
