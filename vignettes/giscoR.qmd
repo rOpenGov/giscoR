@@ -13,8 +13,8 @@ vignette: >
 
 # Introduction
 
-_Full site with more examples and vignettes on
-<https://ropengov.github.io/giscoR/>_
+*Full site with more examples and vignettes on
+<https://ropengov.github.io/giscoR/>*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed to
 provide a simple interface to the [GISCO

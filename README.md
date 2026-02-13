@@ -2,8 +2,7 @@
 
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
-# giscoR <a href='https://ropengov.github.io/giscoR/'><img src="man/figures/logo.png"
-alt="giscoR website" align="right" height="139"/></a>
+# giscoR <a href="https://ropengov.github.io/giscoR/"><img src="man/figures/logo.png" alt="giscoR website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -29,8 +28,8 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 that provides a simple interface to
 [GISCO](https://ec.europa.eu/eurostat/web/gisco) data from Eurostat. It
 allows you to download and work with global and European geospatial
-datasets — such as country boundaries, NUTS regions, coastlines, and
-labels — directly in **R**.
+datasets (such as country boundaries, NUTS regions, coastlines, and
+labels) directly in **R**.
 
 ## Key features
 
