@@ -74,13 +74,12 @@ c(
   gisco_attributions(lang = "fr"),
   gisco_attributions(lang = "de")
 ) |> cat(sep = "\n\n")
+#> © EuroGeographics for the administrative boundaries
+#> 
+#> © EuroGeographics pour les limites administratives
+#> 
+#> © EuroGeographics bezüglich der Verwaltungsgrenzen
 ```
-
-    © EuroGeographics for the administrative boundaries
-
-    © EuroGeographics pour les limites administratives
-
-    © EuroGeographics bezüglich der Verwaltungsgrenzen
 
 ## Basic example
 
@@ -89,19 +88,6 @@ as of 2024:
 
 ``` r
 library(dplyr)
-```
-
-    Attaching package: 'dplyr'
-
-    The following objects are masked from 'package:stats':
-
-        filter, lag
-
-    The following objects are masked from 'package:base':
-
-        intersect, setdiff, setequal, union
-
-``` r
 library(ggplot2)
 world <- gisco_get_countries(resolution = 3, epsg = 3035)
 
@@ -145,9 +131,9 @@ ggplot(world) +
   )
 ```
 
-![](giscoR_files/figure-html/fig-country-1.png)
+![EU Member states and Candidate countries (2024)](./fig-country-1.png)
 
-Figure 1: EU Member states and Candidate countries (2024)
+EU Member states and Candidate countries (2024)
 
 You can select specific countries by name (in any language), ISO3 codes,
 or Eurostat codes. However, you cannot mix these identifier types in a
@@ -185,9 +171,9 @@ ggplot(coast) +
   labs(caption = gisco_attributions("fr"))
 ```
 
-![](giscoR_files/figure-html/fig-africa-1.png)
+![Political map of North Africa](./fig-africa-1.png)
 
-Figure 2: Political map of North Africa
+Political map of North Africa
 
 ## Thematic maps with **giscoR**
 
@@ -216,11 +202,7 @@ eu_bord <- borders |>
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
-```
 
-    Table tgs00026 cached at /tmp/Rtmp7QmBRh/eurostat/5ee94b48afe517a7738683f16793cdac.rds
-
-``` r
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
   mutate(
@@ -288,7 +270,7 @@ ggplot(nuts2_sf) +
   )
 ```
 
-![](giscoR_files/figure-html/fig-giscor-1.png)
+![Disposable income of private households by NUTS 2 regions
+(2022)](./fig-giscor-1.png)
 
-Figure 3: Disposable income of private households by NUTS 2 regions
-(2022)
+Disposable income of private households by NUTS 2 regions (2022)

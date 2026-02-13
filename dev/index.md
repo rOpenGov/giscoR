@@ -19,6 +19,9 @@ labels — directly in **R**.
 
 ## Installation
 
+Check the docs of the developing version in
+<https://ropengov.github.io/giscoR/dev/>.
+
 You can install the development version of **giscoR** with:
 
 ``` r
@@ -92,8 +95,7 @@ resolutions](reference/figures/README-resolution-map-1.png)
 
 This example shows a thematic map created with the **ggplot2** package.
 The data are obtained via the **eurostat** package. This follows the
-approach presented by [Milos Popovic](https://milospopovic.net/) in
-[this post](https://milospopovic.net/how-to-make-choropleth-map-in-r/).
+work of [Milos Popovic](https://milospopovic.net/).
 
 We start by extracting the corresponding geographic data:
 
@@ -205,8 +207,7 @@ ggplot(nuts3_sf) +
     caption = paste0(
       "Source: Eurostat, ",
       gisco_attributions(),
-      "\nBased on Milos Popovic: ",
-      "https://milospopovic.net/how-to-make-choropleth-map-in-r/"
+      "\nBased on Milos Popovic's work"
     )
   )
 ```
