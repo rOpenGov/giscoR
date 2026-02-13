@@ -1,20 +1,20 @@
 ---
 title: "Get started with giscoR"
-output: rmarkdown::html_vignette
+description: A brief introduction
 vignette: >
   %\VignetteIndexEntry{Get started with giscoR}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
 
-<!-- giscoR.Rmd is generated from giscoR.Rmd.orig. Please edit that file -->
+<!-- giscoR.qmd is generated from giscoR.qmd.orig. Please edit that file -->
 
 
 
 # Introduction
 
-_Full site with more examples and vignettes on
-<https://ropengov.github.io/giscoR/>_
+*Full site with more examples and vignettes on
+<https://ropengov.github.io/giscoR/>*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed to
 provide a simple interface to the [GISCO
@@ -107,7 +107,9 @@ world <- world |>
       TRUE ~ NA
     ),
     # As levels
-    status = factor(status, levels = c("Current members", "Candidate countries"))
+    status = factor(status,
+      levels = c("Current members", "Candidate countries")
+    )
   )
 
 ggplot(world) +
@@ -139,7 +141,7 @@ ggplot(world) +
 ```
 
 <div class="figure">
-<img src="./country-1.png" alt="EU Member states and Candidate countries (2024)" width="100%" />
+<img src="./fig-country-1.png" alt="EU Member states and Candidate countries (2024)" width="100%" />
 <p class="caption">EU Member states and Candidate countries (2024)</p>
 </div>
 
@@ -180,7 +182,7 @@ ggplot(coast) +
 ```
 
 <div class="figure">
-<img src="./africa-1.png" alt="Political map of North Africa" width="100%" />
+<img src="./fig-africa-1.png" alt="Political map of North Africa" width="100%" />
 <p class="caption">Political map of North Africa</p>
 </div>
 
@@ -280,6 +282,6 @@ ggplot(nuts2_sf) +
 ```
 
 <div class="figure">
-<img src="./giscor-1.png" alt="Disposable income of private households by NUTS 2 regions (2022)" width="100%" />
+<img src="./fig-giscor-1.png" alt="Disposable income of private households by NUTS 2 regions (2022)" width="100%" />
 <p class="caption">Disposable income of private households by NUTS 2 regions (2022)</p>
 </div>

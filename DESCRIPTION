@@ -35,11 +35,10 @@ Suggests:
     eurostat,
     ggplot2 (>= 3.5.0),
     knitr,
-    lwgeom (>= 0.2-2),
-    rmarkdown,
+    quarto,
     testthat (>= 3.0.0)
 VignetteBuilder: 
-    knitr
+    quarto
 Config/Needs/website: ropengov/rogtemplate, ragg, reactable, styler,
     devtools, remotes, geometries, rapidjsonr, sfheaders, jsonify
 Config/testthat/edition: 3

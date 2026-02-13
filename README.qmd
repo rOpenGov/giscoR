@@ -1,24 +1,22 @@
 ---
-output: github_document
+format: gfm
+default-image-extension: ''
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    warning: false
+    message: false
+    dev: "ragg_png"
+    tidy: "styler"
+    fig.path: "man/figures/README-"
+    dpi: 150
+    out.width: "100%"
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md is generated from README.qmd. Please edit that file -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  tidy = "styler",
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  warning = FALSE,
-  message = FALSE,
-  dev = "ragg_png",
-  dpi = 150,
-  out.width = "100%"
-)
-```
-
-# giscoR <a href='https://ropengov.github.io/giscoR/'><img src="man/figures/logo.png" align="right" height="139"/></a>
+# giscoR <a href="https://ropengov.github.io/giscoR/"><img src="man/figures/logo.png" alt="giscoR website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -43,8 +41,8 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 [**giscoR**](https://ropengov.github.io/giscoR//) is an **R** package that
 provides a simple interface to [GISCO](https://ec.europa.eu/eurostat/web/gisco)
 data from Eurostat. It allows you to download and work with global and European
-geospatial datasets — such as country boundaries, NUTS regions, coastlines, and
-labels — directly in **R**.
+geospatial datasets (such as country boundaries, NUTS regions, coastlines, and
+labels) directly in **R**.
 
 ## Key features
 
@@ -56,15 +54,23 @@ labels — directly in **R**.
 
 ## Installation
 
+::: pkgdown-release
 Install **giscoR** from [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 install.packages("giscoR")
 ```
+:::
+
+::: pkgdown-devel
+Check the docs of the developing version in
+<https://ropengov.github.io/giscoR/dev/>.
 
 You can install the development version of **giscoR** with:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 # install.packages("pak")
 
 pak::pak("rOpenGov/giscoR")
@@ -73,15 +79,22 @@ pak::pak("rOpenGov/giscoR")
 Alternatively, you can install **giscoR** via
 [r-universe](https://ropengov.r-universe.dev/giscoR):
 
-```{r, eval=FALSE}
-install.packages("giscoR", repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org"))
+```{r}
+#| eval: false
+install.packages(
+  "giscoR",
+  repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org")
+)
 ```
+:::
 
 ## Quick Example
 
 This script highlights some features of **giscoR** :
 
-```{r resolution-map, fig.alt="The Netherlands boundaries at different resolutions"}
+```{r}
+#| label: resolution-map
+#| fig-cap: The Netherlands boundaries at different resolutions
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -113,13 +126,14 @@ ggplot(nl_all) +
 ## Advanced Example: Thematic maps
 
 This example shows a thematic map created with the **ggplot2** package. The data
-are obtained via the **eurostat** package. This follows the approach presented
-by [Milos Popovic](https://milospopovic.net/) in [this
-post](https://milospopovic.net/how-to-make-choropleth-map-in-r/).
+are obtained via the **eurostat** package. This follows the work of [Milos
+Popovic](https://milospopovic.net/).
 
 We start by extracting the corresponding geographic data:
 
-```{r euroex, fig.asp=1.1}
+```{r}
+#| label: euroex
+#| fig-asp: 1.1
 library(giscoR)
 library(dplyr)
 library(eurostat)
@@ -154,7 +168,10 @@ popdens <- get_eurostat("demo_r_d3dens") |>
 
 Finally, we merge and manipulate the data to create the final plot:
 
-```{r thematic-map, fig.asp=1.1, fig.alt="Population density in 2021"}
+```{r}
+#| label: thematic-map
+#| fig-asp: 1.1
+#| fig-cap: Population density in 2021
 # Merge data
 nuts3_sf <- nuts3 |>
   left_join(popdens, by = "geo")
@@ -190,19 +207,25 @@ ggplot(nuts3_sf) +
     values = pal,
     # Label for NA
     labels = labeller_plot,
-    drop = FALSE, guide = guide_legend(direction = "horizontal", nrow = 1)
+    drop = FALSE,
+    guide = guide_legend(direction = "horizontal", nrow = 1)
   ) +
   # Theming
   theme_void() +
   # Theme
   theme(
     plot.title = element_text(
-      color = rev(pal)[2], size = rel(1.5),
-      hjust = 0.5, vjust = -6
+      color = rev(pal)[2],
+      size = rel(1.5),
+      hjust = 0.5,
+      vjust = -6
     ),
     plot.subtitle = element_text(
-      color = rev(pal)[2], size = rel(1.25),
-      hjust = 0.5, vjust = -10, face = "bold"
+      color = rev(pal)[2],
+      size = rel(1.25),
+      hjust = 0.5,
+      vjust = -10,
+      face = "bold"
     ),
     plot.caption = element_text(color = "grey60", hjust = 0.5, vjust = 0),
     legend.text = element_text(color = "grey20", hjust = .5),
@@ -219,9 +242,9 @@ ggplot(nuts3_sf) +
     subtitle = "NUTS-3 level",
     fill = "people per sq. kilometer",
     caption = paste0(
-      "Source: Eurostat, ", gisco_attributions(),
-      "\nBased on Milos Popovic: ",
-      "https://milospopovic.net/how-to-make-choropleth-map-in-r/"
+      "Source: Eurostat, ",
+      gisco_attributions(),
+      "\nBased on Milos Popovic's work"
     )
   )
 ```
@@ -230,7 +253,8 @@ ggplot(nuts3_sf) +
 
 Large datasets (e.g., LAU or high-resolution files) can exceed 50MB. Use:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 gisco_set_cache_dir("./path/to/location")
 ```
 
@@ -249,13 +273,17 @@ Contributions are welcome:
 
 ## Citation
 
-```{r echo=FALSE, results='asis'}
+```{r}
+#| echo: false
+#| results: asis
 print(citation("giscoR"), bibtex = FALSE)
 ```
 
 A BibTeX entry for LaTeX users is
 
-```{r echo=FALSE, comment=""}
+```{r}
+#| echo: false
+#| comment: ''
 toBibtex(citation("giscoR"))
 ```
 

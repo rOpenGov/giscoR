@@ -1,7 +1,8 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# giscoR <a href='https://ropengov.github.io/giscoR/'><img src="man/figures/logo.png" align="right" height="139"/></a>
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+# giscoR <a href="https://ropengov.github.io/giscoR/"><img src="man/figures/logo.png" alt="giscoR website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
@@ -27,8 +28,8 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 that provides a simple interface to
 [GISCO](https://ec.europa.eu/eurostat/web/gisco) data from Eurostat. It
 allows you to download and work with global and European geospatial
-datasets — such as country boundaries, NUTS regions, coastlines, and
-labels — directly in **R**.
+datasets (such as country boundaries, NUTS regions, coastlines, and
+labels) directly in **R**.
 
 ## Key features
 
@@ -42,12 +43,21 @@ labels — directly in **R**.
 
 ## Installation
 
+<div class="pkgdown-release">
+
 Install **giscoR** from
 [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
 ``` r
 install.packages("giscoR")
 ```
+
+</div>
+
+<div class="pkgdown-devel">
+
+Check the docs of the developing version in
+<https://ropengov.github.io/giscoR/dev/>.
 
 You can install the development version of **giscoR** with:
 
@@ -61,8 +71,13 @@ Alternatively, you can install **giscoR** via
 [r-universe](https://ropengov.r-universe.dev/giscoR):
 
 ``` r
-install.packages("giscoR", repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org"))
+install.packages(
+  "giscoR",
+  repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org")
+)
 ```
+
+</div>
 
 ## Quick Example
 
@@ -112,14 +127,14 @@ ggplot(nl_all) +
   theme_minimal()
 ```
 
-<img src="man/figures/README-resolution-map-1.png" alt="The Netherlands boundaries at different resolutions" width="100%" />
+<img src="man/figures/README-resolution-map-1.png" style="width:100.0%"
+alt="The Netherlands boundaries at different resolutions" />
 
 ## Advanced Example: Thematic maps
 
 This example shows a thematic map created with the **ggplot2** package.
 The data are obtained via the **eurostat** package. This follows the
-approach presented by [Milos Popovic](https://milospopovic.net/) in
-[this post](https://milospopovic.net/how-to-make-choropleth-map-in-r/).
+work of [Milos Popovic](https://milospopovic.net/).
 
 We start by extracting the corresponding geographic data:
 
@@ -194,19 +209,25 @@ ggplot(nuts3_sf) +
     values = pal,
     # Label for NA
     labels = labeller_plot,
-    drop = FALSE, guide = guide_legend(direction = "horizontal", nrow = 1)
+    drop = FALSE,
+    guide = guide_legend(direction = "horizontal", nrow = 1)
   ) +
   # Theming
   theme_void() +
   # Theme
   theme(
     plot.title = element_text(
-      color = rev(pal)[2], size = rel(1.5),
-      hjust = 0.5, vjust = -6
+      color = rev(pal)[2],
+      size = rel(1.5),
+      hjust = 0.5,
+      vjust = -6
     ),
     plot.subtitle = element_text(
-      color = rev(pal)[2], size = rel(1.25),
-      hjust = 0.5, vjust = -10, face = "bold"
+      color = rev(pal)[2],
+      size = rel(1.25),
+      hjust = 0.5,
+      vjust = -10,
+      face = "bold"
     ),
     plot.caption = element_text(color = "grey60", hjust = 0.5, vjust = 0),
     legend.text = element_text(color = "grey20", hjust = .5),
@@ -223,14 +244,15 @@ ggplot(nuts3_sf) +
     subtitle = "NUTS-3 level",
     fill = "people per sq. kilometer",
     caption = paste0(
-      "Source: Eurostat, ", gisco_attributions(),
-      "\nBased on Milos Popovic: ",
-      "https://milospopovic.net/how-to-make-choropleth-map-in-r/"
+      "Source: Eurostat, ",
+      gisco_attributions(),
+      "\nBased on Milos Popovic's work"
     )
   )
 ```
 
-<img src="man/figures/README-thematic-map-1.png" alt="Population density in 2021" width="100%" />
+<img src="man/figures/README-thematic-map-1.png" style="width:100.0%"
+alt="Population density in 2021" />
 
 ## Caching
 
@@ -260,7 +282,7 @@ Contributions are welcome:
 To cite ‘giscoR’ in publications use:
 
 Hernangómez D (2026). *giscoR: Download Map Data from GISCO API -
-Eurostat*. <doi:10.32614/CRAN.package.giscoR>
+Eurostat*. doi:10.32614/CRAN.package.giscoR
 <https://doi.org/10.32614/CRAN.package.giscoR>,
 <https://ropengov.github.io/giscoR/>.
 

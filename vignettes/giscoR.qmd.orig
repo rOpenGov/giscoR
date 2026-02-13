@@ -1,15 +1,16 @@
 ---
 title: "Get started with giscoR"
-output: rmarkdown::html_vignette
+description: A brief introduction
 vignette: >
   %\VignetteIndexEntry{Get started with giscoR}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
   %\VignetteEncoding{UTF-8}
 ---
 
-<!-- giscoR.Rmd is generated from giscoR.Rmd.orig. Please edit that file -->
+<!-- giscoR.qmd is generated from giscoR.qmd.orig. Please edit that file -->
 
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -28,8 +29,8 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 
 # Introduction
 
-_Full site with more examples and vignettes on
-<https://ropengov.github.io/giscoR/>_
+*Full site with more examples and vignettes on
+<https://ropengov.github.io/giscoR/>*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed to
 provide a simple interface to the [GISCO
@@ -54,7 +55,8 @@ objects; see <https://r-spatial.github.io/sf/> for details.
 **giscoR** supports caching of downloaded datasets. Set the cache directory
 with:
 
-```{r, eval=FALSE}
+```{r}
+#| eval: false
 gisco_set_cache_dir("./path/to/location")
 ```
 
@@ -86,7 +88,8 @@ GISCO data:
 There is a function, `gisco_attributions()`, that provides guidance on this
 topic and returns attributions in several languages.
 
-```{r, message=TRUE}
+```{r}
+#| message: true
 library(giscoR)
 c(
   gisco_attributions(lang = "en"),
@@ -100,7 +103,9 @@ c(
 Examples of downloading data: EU member states and candidate countries as of
 2024:
 
-```{r country, fig.cap="EU Member states and Candidate countries (2024)"}
+```{r}
+#| label: fig-country
+#| fig-cap: EU Member states and Candidate countries (2024)
 library(dplyr)
 library(ggplot2)
 world <- gisco_get_countries(resolution = 3, epsg = 3035)
@@ -114,7 +119,8 @@ world <- world |>
       TRUE ~ NA
     ),
     # As levels
-    status = factor(status, levels = c("Current members", "Candidate countries"))
+    status = factor(status,
+    levels = c("Current members", "Candidate countries"))
   )
 
 ggplot(world) +
@@ -151,7 +157,9 @@ Eurostat codes. However, you cannot mix these identifier types in a single call.
 You can also combine different datasets — set `resolution` and `epsg` (and
 optionally `year`) to the same value:
 
-```{r africa, fig.cap="Political map of North Africa"}
+```{r}
+#| label: fig-africa
+#| fig-cap: Political map of North Africa
 cntr <- c("Morocco", "Algeria", "Tunisia", "Libya", "Egypt")
 
 africa_north <- gisco_get_countries(
@@ -186,7 +194,10 @@ This example shows how **giscoR** can be used together with Eurostat data. For
 plotting we use **ggplot2**; however, any package that supports `sf` objects
 (e.g., **tmap**, **mapsf**, **leaflet**) can be used.
 
-```{r giscor, fig.cap="Disposable income of private households by NUTS 2 regions (2022)", dpi=200}
+```{r}
+#| label: fig-giscor
+#| fig-cap: Disposable income of private households by NUTS 2 regions (2022)
+#| fig-dpi: 200
 # EU members
 library(giscoR)
 library(dplyr)
