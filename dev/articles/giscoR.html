@@ -16,7 +16,13 @@
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/B612_Mono-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get started with giscoR">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="giscoR_files/libs/quarto-html/popper.min.js"></script><script src="giscoR_files/libs/quarto-html/tippy.umd.min.js"></script><link href="giscoR_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="giscoR_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Get started with giscoR">
+<meta property="og:image" content="https://ropengov.github.io/giscoR/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@dhernangomez">
+<meta name="twitter:site" content="@rOpenGov">
 <meta name="robots" content="noindex">
 <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-VGVFXGHWRL"></script><script>
   window.dataLayer = window.dataLayer || [];
@@ -43,7 +49,7 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="../articles/giscoR.html">Get started</a></li>
+<li class="active nav-item"><a class="nav-link" href="../articles/giscoR.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
@@ -65,95 +71,85 @@
 
 
   </div>
-</nav><div class="container template-article">
-
-
-
-
+</nav><div class="container template-quarto">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get started with giscoR</h1>
-            
-      
-      <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/vignettes/giscoR.Rmd" class="external-link"><code>vignettes/giscoR.Rmd</code></a></small>
-      <div class="d-none name"><code>giscoR.Rmd</code></div>
+
+
+
+
+      <small class="dont-index">Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/vignettes/giscoR.qmd" class="external-link"><code>vignettes/giscoR.qmd</code></a></small>
+      <div class="d-none name"><code></code></div>
     </div>
 
-    
-    
-<!-- giscoR.Rmd is generated from giscoR.Rmd.orig. Please edit that file -->
-<div class="section level2">
-<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+
+
+
+
+
+    <!-- giscoR.qmd is generated from giscoR.qmd.orig. Please edit that file --><section class="section level2"><h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p><em>Full site with more examples and vignettes on <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a></em></p>
-<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is
-a package designed to provide a simple interface to the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO
-API</a>.</p>
-<p>Within Eurostat, GISCO meets the European Commission’s geographical
-information needs at three levels: the European Union, its member
-countries, and its regions. GISCO provides shapefiles in different
-formats, focusing especially on the European Union but also offering
-some worldwide datasets such as country polygons, labels, borders, and
-coastlines.</p>
-<p>GISCO supplies data at multiple resolutions: high-detail datasets for
-small areas (01M, 03M) and lightweight datasets for larger areas (10M,
-20M, 60M). Datasets are available in three projections: <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>, <a href="https://epsg.io/3035" class="external-link">EPSG:3035</a>, and <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a>.</p>
-<p><strong>giscoR</strong> returns <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><code>sf</code></a>
-objects; see <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a> for details.</p>
-</div>
-<div class="section level2">
-<h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
+<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is a package designed to provide a simple interface to the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API</a>.</p>
+<p>Within Eurostat, GISCO meets the European Commission’s geographical information needs at three levels: the European Union, its member countries, and its regions. GISCO provides shapefiles in different formats, focusing especially on the European Union but also offering some worldwide datasets such as country polygons, labels, borders, and coastlines.</p>
+<p>GISCO supplies data at multiple resolutions: high-detail datasets for small areas (01M, 03M) and lightweight datasets for larger areas (10M, 20M, 60M). Datasets are available in three projections: <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>, <a href="https://epsg.io/3035" class="external-link">EPSG:3035</a>, and <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a>.</p>
+<p><strong>giscoR</strong> returns <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><code>sf</code></a> objects; see <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a> for details.</p>
+</section><section class="section level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
-<p><strong>giscoR</strong> supports caching of downloaded datasets. Set
-the cache directory with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<p><strong>giscoR</strong> supports caching of downloaded datasets. Set the cache directory with:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/gisco_set_cache_dir.html">gisco_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>If a file is not available locally, it will be downloaded to that
-directory so subsequent requests for the same data will load from the
-local cache.</p>
-<p>If you experience any problems downloading, you can also manually
-download the file from the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API
-website</a> and store it in your local cache directory.</p>
 </div>
-<div class="section level2">
-<h2 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
+<p>If a file is not available locally, it will be downloaded to that directory so subsequent requests for the same data will load from the local cache.</p>
+<p>If you experience any problems downloading, you can also manually download the file from the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API website</a> and store it in your local cache directory.</p>
+</section><section class="section level2"><h2 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
 </h2>
-<p>Please note the following attribution and licensing requirements when
-using GISCO data:</p>
+<p>Please note the following attribution and licensing requirements when using GISCO data:</p>
 <blockquote>
-<p><a href="https://ec.europa.eu/eurostat/web/main/help/copyright-notice" class="external-link">Eurostat’s
-general copyright notice and licence policy</a> applies. Moreover, there
-are specific rules that apply to some of the following datasets
-available for downloading. The download and use of these data are
-subject to these rules being accepted. See our <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units" class="external-link">administrative
-units</a> and <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">statistical
-units</a> for more details.</p>
+<p><a href="https://ec.europa.eu/eurostat/web/main/help/copyright-notice" class="external-link">Eurostat’s general copyright notice and licence policy</a> applies. Moreover, there are specific rules that apply to some of the following datasets available for downloading. The download and use of these data are subject to these rules being accepted. See our <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units" class="external-link">administrative units</a> and <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">statistical units</a> for more details.</p>
 <p>Source: <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link uri">https://ec.europa.eu/eurostat/web/gisco/geodata</a></p>
 </blockquote>
-<p>There is a function, <code><a href="../reference/gisco_attributions.html">gisco_attributions()</a></code>, that provides
-guidance on this topic and returns attributions in several
-languages.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<p>There is a function, <code><a href="../reference/gisco_attributions.html">gisco_attributions()</a></code>, that provides guidance on this topic and returns attributions in several languages.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">"en"</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">"fr"</span><span class="op">)</span>,</span>
 <span>  <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span>lang <span class="op">=</span> <span class="st">"de"</span><span class="op">)</span></span>
-<span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span>sep <span class="op">=</span> <span class="st">"\n\n"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; © EuroGeographics for the administrative boundaries</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; © EuroGeographics pour les limites administratives</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; © EuroGeographics bezüglich der Verwaltungsgrenzen</span></span></code></pre></div>
+<span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/cat.html" class="external-link">cat</a></span><span class="op">(</span>sep <span class="op">=</span> <span class="st">"\n\n"</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>© EuroGeographics for the administrative boundaries
+
+© EuroGeographics pour les limites administratives
+
+© EuroGeographics bezüglich der Verwaltungsgrenzen</code></pre>
 </div>
-<div class="section level2">
-<h2 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
+</div>
+</section><section class="section level2"><h2 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
 </h2>
-<p>Examples of downloading data: EU member states and candidate
-countries as of 2024:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<p>Examples of downloading data: EU member states and candidate countries as of 2024:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="va">world</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get_countries.html">gisco_get_countries</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="fl">3</span>, epsg <span class="op">=</span> <span class="fl">3035</span><span class="op">)</span></span>
 <span></span>
 <span></span>
@@ -194,18 +190,21 @@ countries as of 2024:</p>
 <span>    caption <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">""</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="country-1.png" alt="EU Member states and Candidate countries (2024)" width="100%"><p class="caption">
-EU Member states and Candidate countries (2024)
-</p>
+<div class="cell-output-display">
+<div id="fig-country" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-country-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="giscoR_files/figure-html/fig-country-1.png" width="672">
 </div>
-<p>You can select specific countries by name (in any language), ISO3
-codes, or Eurostat codes. However, you cannot mix these identifier types
-in a single call.</p>
-<p>You can also combine different datasets — set <code>resolution</code>
-and <code>epsg</code> (and optionally <code>year</code>) to the same
-value:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-country-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 1: EU Member states and Candidate countries (2024)
+</figcaption></figure>
+</div>
+</div>
+</div>
+<p>You can select specific countries by name (in any language), ISO3 codes, or Eurostat codes. However, you cannot mix these identifier types in a single call.</p>
+<p>You can also combine different datasets — set <code>resolution</code> and <code>epsg</code> (and optionally <code>year</code>) to the same value:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cntr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Morocco"</span>, <span class="st">"Algeria"</span>, <span class="st">"Tunisia"</span>, <span class="st">"Libya"</span>, <span class="st">"Egypt"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">africa_north</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get_countries.html">gisco_get_countries</a></span><span class="op">(</span></span>
@@ -230,23 +229,25 @@ value:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"#B9B9B9"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">africa_north</span>, fill <span class="op">=</span> <span class="st">"#346733"</span>, color <span class="op">=</span> <span class="st">"#335033"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">13</span>, <span class="fl">37</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">18.5</span>, <span class="fl">40</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">NAME_ENGL</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">NAME_ENGL</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="st">"fr"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="africa-1.png" alt="Political map of North Africa" width="100%"><p class="caption">
-Political map of North Africa
-</p>
+<div class="cell-output-display">
+<div id="fig-africa" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-africa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="giscoR_files/figure-html/fig-africa-1.png" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-africa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 2: Political map of North Africa
+</figcaption></figure>
 </div>
 </div>
-<div class="section level2">
-<h2 id="thematic-maps-with-giscor">Thematic maps with <strong>giscoR</strong><a class="anchor" aria-label="anchor" href="#thematic-maps-with-giscor"></a>
+</div>
+</section><section class="section level2"><h2 id="thematic-maps-with-giscor">Thematic maps with <strong>giscoR</strong>
+<a class="anchor" aria-label="anchor" href="#thematic-maps-with-giscor"></a>
 </h2>
-<p>This example shows how <strong>giscoR</strong> can be used together
-with Eurostat data. For plotting we use <strong>ggplot2</strong>;
-however, any package that supports <code>sf</code> objects (e.g.,
-<strong>tmap</strong>, <strong>mapsf</strong>, <strong>leaflet</strong>)
-can be used.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<p>This example shows how <strong>giscoR</strong> can be used together with Eurostat data. For plotting we use <strong>ggplot2</strong>; however, any package that supports <code>sf</code> objects (e.g., <strong>tmap</strong>, <strong>mapsf</strong>, <strong>leaflet</strong>) can be used.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># EU members</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
@@ -265,9 +266,12 @@ can be used.</p>
 <span></span>
 <span><span class="co"># Eurostat data - Disposable income</span></span>
 <span><span class="va">pps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span><span class="st">"tgs00026"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TIME_PERIOD</span> <span class="op">==</span> <span class="st">"2022-01-01"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">nuts2_sf</span> <span class="op">&lt;-</span> <span class="va">nuts2</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TIME_PERIOD</span> <span class="op">==</span> <span class="st">"2022-01-01"</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Table tgs00026 cached at /tmp/Rtmp7QmBRh/eurostat/5ee94b48afe517a7738683f16793cdac.rds</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">nuts2_sf</span> <span class="op">&lt;-</span> <span class="va">nuts2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">pps</span>, by <span class="op">=</span> <span class="st">"geo"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
 <span>    values_th <span class="op">=</span> <span class="va">values</span> <span class="op">/</span> <span class="fl">1000</span>,</span>
@@ -332,16 +336,102 @@ can be used.</p>
 <span>      <span class="st">"Source: Eurostat, "</span>, <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="giscoR-1.png" alt="Disposable income of private households by NUTS 2 regions (2022)" width="100%"><p class="caption">
-Disposable income of private households by NUTS 2 regions (2022)
-</p>
+<div class="cell-output-display">
+<div id="fig-giscor" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig"><div aria-describedby="fig-giscor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="giscoR_files/figure-html/fig-giscor-1.png" width="1400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-giscor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure 3: Disposable income of private households by NUTS 2 regions (2022)
+</figcaption></figure>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
-    </nav></aside>
 </div>
-
+</section><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
+    }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script></main>
+</div>
 
 
     <footer><div class="pkgdown-footer-left">

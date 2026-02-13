@@ -139,11 +139,11 @@ gisco_attributions(lang = "XXX")
 # Get list of codes from countrycodes
 library(dplyr)
 #> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
+#> Attaching package: ‘dplyr’
+#> The following objects are masked from ‘package:stats’:
 #> 
 #>     filter, lag
-#> The following objects are masked from 'package:base':
+#> The following objects are masked from ‘package:base’:
 #> 
 #>     intersect, setdiff, setequal, union
 

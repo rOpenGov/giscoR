@@ -1,11 +1,11 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://ropengov.github.io/giscoR/dev/CONTRIBUTING.html</loc></url>
+<url><loc>https://ropengov.github.io/giscoR/dev/LICENSE-text.html</loc></url>
+<url><loc>https://ropengov.github.io/giscoR/dev/LICENSE.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/articles/giscoR.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/articles/index.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/authors.html</loc></url>
-<url><loc>https://ropengov.github.io/giscoR/dev/CONTRIBUTING.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/index.html</loc></url>
-<url><loc>https://ropengov.github.io/giscoR/dev/LICENSE-text.html</loc></url>
-<url><loc>https://ropengov.github.io/giscoR/dev/LICENSE.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/news/index.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/giscoR-package.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.html</loc></url>
