@@ -1,22 +1,24 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# giscoR <a href='https://ropengov.github.io/giscoR/'><img src="man/figures/logo.png" align="right" height="139"/></a>
+<!-- README.md is generated from README.qmd. Please edit that file -->
+
+# giscoR <a href='https://ropengov.github.io/giscoR/'><img src="man/figures/logo.png"
+alt="giscoR website" align="right" height="139"/></a>
 
 <!-- badges: start -->
 
 [![rOpenGov
 package](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](https://ropengov.org/)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/giscoR)](https://CRAN.R-project.org/package=giscoR)
+status](https://www.r-pkg.org/badges/version/giscoR.png)](https://CRAN.R-project.org/package=giscoR)
 [![CRAN
 results](https://badges.cranchecks.info/worst/giscoR.svg)](https://cran.r-project.org/web/checks/check_results_giscoR.html)
-[![Downloads](https://cranlogs.r-pkg.org/badges/giscoR)](https://CRAN.R-project.org/package=giscoR)
-[![r-universe](https://ropengov.r-universe.dev/badges/giscoR)](https://ropengov.r-universe.dev/giscoR)
+[![Downloads](https://cranlogs.r-pkg.org/badges/giscoR.png)](https://CRAN.R-project.org/package=giscoR)
+[![r-universe](https://ropengov.r-universe.dev/badges/giscoR.png)](https://ropengov.r-universe.dev/giscoR)
 [![R-CMD-check](https://github.com/rOpenGov/giscoR/actions/workflows/check-full.yaml/badge.svg)](https://github.com/rOpenGov/giscoR/actions/workflows/check-full.yaml)
 [![R-hub](https://github.com/rOpenGov/giscoR/actions/workflows/rhub.yaml/badge.svg)](https://github.com/rOpenGov/giscoR/actions/workflows/rhub.yaml)
 [![codecov](https://codecov.io/gh/ropengov/giscoR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropengov/giscoR)
-[![CodeFactor](https://www.codefactor.io/repository/github/ropengov/giscor/badge)](https://www.codefactor.io/repository/github/ropengov/giscor)
+[![CodeFactor](https://www.codefactor.io/repository/github/ropengov/giscor/badge.png)](https://www.codefactor.io/repository/github/ropengov/giscor)
 [![DOI](https://img.shields.io/badge/DOI-10.32614/CRAN.package.giscoR-blue)](https://doi.org/10.32614/CRAN.package.giscoR)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -54,6 +56,9 @@ install.packages("giscoR")
 </div>
 
 <div class="pkgdown-devel">
+
+Check the docs of the developing version in
+<https://ropengov.github.io/giscoR/dev/>.
 
 You can install the development version of **giscoR** with:
 
@@ -123,14 +128,14 @@ ggplot(nl_all) +
   theme_minimal()
 ```
 
-<img src="man/figures/README-resolution-map-1.png" alt="The Netherlands boundaries at different resolutions" width="100%" />
+<img src="man/figures/README-resolution-map-1.png" style="width:100.0%"
+alt="The Netherlands boundaries at different resolutions" />
 
 ## Advanced Example: Thematic maps
 
 This example shows a thematic map created with the **ggplot2** package.
 The data are obtained via the **eurostat** package. This follows the
-approach presented by [Milos Popovic](https://milospopovic.net/) in
-[this post](https://milospopovic.net/how-to-make-choropleth-map-in-r/).
+work of [Milos Popovic](https://milospopovic.net/).
 
 We start by extracting the corresponding geographic data:
 
@@ -242,13 +247,13 @@ ggplot(nuts3_sf) +
     caption = paste0(
       "Source: Eurostat, ",
       gisco_attributions(),
-      "\nBased on Milos Popovic: ",
-      "https://milospopovic.net/how-to-make-choropleth-map-in-r/"
+      "\nBased on Milos Popovic's work"
     )
   )
 ```
 
-<img src="man/figures/README-thematic-map-1.png" alt="Population density in 2021" width="100%" />
+<img src="man/figures/README-thematic-map-1.png" style="width:100.0%"
+alt="Population density in 2021" />
 
 ## Caching
 
@@ -278,7 +283,7 @@ Contributions are welcome:
 To cite ‘giscoR’ in publications use:
 
 Hernangómez D (2026). *giscoR: Download Map Data from GISCO API -
-Eurostat*. <doi:10.32614/CRAN.package.giscoR>
+Eurostat*. doi:10.32614/CRAN.package.giscoR
 <https://doi.org/10.32614/CRAN.package.giscoR>,
 <https://ropengov.github.io/giscoR/>.
 

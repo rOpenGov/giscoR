@@ -9,6 +9,8 @@ vignette: >
 
 <!-- giscoR.qmd is generated from giscoR.qmd.orig. Please edit that file -->
 
+
+
 # Introduction
 
 _Full site with more examples and vignettes on
@@ -37,8 +39,8 @@ objects; see <https://r-spatial.github.io/sf/> for details.
 **giscoR** supports caching of downloaded datasets. Set the cache directory
 with:
 
-```{r}
-#| eval: false
+
+``` r
 gisco_set_cache_dir("./path/to/location")
 ```
 
@@ -70,14 +72,19 @@ GISCO data:
 There is a function, `gisco_attributions()`, that provides guidance on this
 topic and returns attributions in several languages.
 
-```{r}
-#| message: true
+
+``` r
 library(giscoR)
 c(
   gisco_attributions(lang = "en"),
   gisco_attributions(lang = "fr"),
   gisco_attributions(lang = "de")
 ) |> cat(sep = "\n\n")
+#> © EuroGeographics for the administrative boundaries
+#> 
+#> © EuroGeographics pour les limites administratives
+#> 
+#> © EuroGeographics bezüglich der Verwaltungsgrenzen
 ```
 
 # Basic example
@@ -85,9 +92,8 @@ c(
 Examples of downloading data: EU member states and candidate countries as of
 2024:
 
-```{r}
-#| label: fig-country
-#| fig-cap: EU Member states and Candidate countries (2024)
+
+``` r
 library(dplyr)
 library(ggplot2)
 world <- gisco_get_countries(resolution = 3, epsg = 3035)
@@ -132,15 +138,19 @@ ggplot(world) +
   )
 ```
 
+<div class="figure">
+<img src="./fig-country-1.png" alt="EU Member states and Candidate countries (2024)" width="100%" />
+<p class="caption">EU Member states and Candidate countries (2024)</p>
+</div>
+
 You can select specific countries by name (in any language), ISO3 codes, or
 Eurostat codes. However, you cannot mix these identifier types in a single call.
 
 You can also combine different datasets — set `resolution` and `epsg` (and
 optionally `year`) to the same value:
 
-```{r}
-#| label: fig-africa
-#| fig-cap: Political map of North Africa
+
+``` r
 cntr <- c("Morocco", "Algeria", "Tunisia", "Libya", "Egypt")
 
 africa_north <- gisco_get_countries(
@@ -169,16 +179,19 @@ ggplot(coast) +
   labs(caption = gisco_attributions("fr"))
 ```
 
+<div class="figure">
+<img src="./fig-africa-1.png" alt="Political map of North Africa" width="100%" />
+<p class="caption">Political map of North Africa</p>
+</div>
+
 # Thematic maps with **giscoR**
 
 This example shows how **giscoR** can be used together with Eurostat data. For
 plotting we use **ggplot2**; however, any package that supports `sf` objects
 (e.g., **tmap**, **mapsf**, **leaflet**) can be used.
 
-```{r}
-#| label: fig-giscor
-#| fig-cap: Disposable income of private households by NUTS 2 regions (2022)
-#| fig-dpi: 200
+
+``` r
 # EU members
 library(giscoR)
 library(dplyr)
@@ -265,3 +278,8 @@ ggplot(nuts2_sf) +
     )
   )
 ```
+
+<div class="figure">
+<img src="./fig-giscor-1.png" alt="Disposable income of private households by NUTS 2 regions (2022)" width="100%" />
+<p class="caption">Disposable income of private households by NUTS 2 regions (2022)</p>
+</div>
