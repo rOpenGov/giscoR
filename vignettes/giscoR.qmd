@@ -107,7 +107,9 @@ world <- world |>
       TRUE ~ NA
     ),
     # As levels
-    status = factor(status, levels = c("Current members", "Candidate countries"))
+    status = factor(status,
+      levels = c("Current members", "Candidate countries")
+    )
   )
 
 ggplot(world) +
