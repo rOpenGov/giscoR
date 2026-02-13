@@ -4,8 +4,8 @@
 that provides a simple interface to
 [GISCO](https://ec.europa.eu/eurostat/web/gisco) data from Eurostat. It
 allows you to download and work with global and European geospatial
-datasets — such as country boundaries, NUTS regions, coastlines, and
-labels — directly in **R**.
+datasets (such as country boundaries, NUTS regions, coastlines, and
+labels) directly in **R**.
 
 ## Key features
 
