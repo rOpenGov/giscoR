@@ -76,16 +76,3 @@ jobs:
         git push origin || echo "No changes to commit"
 
     - uses: r-lib/actions/check-r-package@v2
-
-    - name: Build logo if not present and prepare template
-      run: |
-        # Check that logo is not present
-        if (isFALSE(file.exists(file.path("man", "figures", "logo.png")) ||
-          file.exists(file.path("man", "figures", "logo.png")))) {
-          rogtemplate::rog_logo()
-        } else {
-          message("The package already has a logo")
-        }
-
-        rogtemplate::rog_add_template_pkgdown()
-      shell: Rscript {0}
