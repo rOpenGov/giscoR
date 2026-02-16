@@ -2,5 +2,6 @@
 *.R
 /.quarto/
 *_files
-
 **/*.quarto_ipynb
+_quarto.yaml
+_quarto.yml
