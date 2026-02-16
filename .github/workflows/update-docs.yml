@@ -31,7 +31,6 @@ jobs:
           any::reactable
           ropengov/rogtemplate
           dieghernan/pkgdev
-        needs: website
 
     - name: Install optipng
       run: |

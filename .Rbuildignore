@@ -54,3 +54,4 @@
 ^README_files$
 ^README\.html$
 ^\.quarto$
+^\./vignettes/giscoR\.qmd\.orig$
