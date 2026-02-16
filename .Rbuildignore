@@ -53,3 +53,5 @@
 ^README_files$
 ^README\.html$
 ^\.quarto$
+^vignettes/_quarto\.yaml$
+^vignettes/_quarto\.yml$
