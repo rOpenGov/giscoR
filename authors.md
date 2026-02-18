@@ -2,18 +2,20 @@
 
 ## Authors
 
-- **Diego Hernangómez**. Author, maintainer, copyright holder.
+- **[Diego Hernangómez](https://dieghernan.github.io/)**. Author,
+  maintainer, copyright holder.
   [](https://orcid.org/0000-0001-8457-4658)
 
-- **Eurostat**. Copyright holder.
+- **[Eurostat](https://ec.europa.eu/eurostat)**. Copyright holder.
   [![ROR](https://raw.githubusercontent.com/ror-community/ror-logos/main/ror-icon-rgb.svg)](https://ror.org/033d3q980)
 
-- **EuroGeographics**. Copyright holder.
+- **[EuroGeographics](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)**.
+  Copyright holder.
 
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/rOpenGov/giscoR/blob/release/inst/CITATION)
+[`inst/CITATION`](https://github.com/rOpenGov/giscoR/blob/main/inst/CITATION)
 
 Hernangómez D (2026). *giscoR: Download Map Data from GISCO API -
 Eurostat*.
