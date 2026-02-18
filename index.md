@@ -19,11 +19,25 @@ labels) directly in **R**.
 
 ## Installation
 
-Install **giscoR** from
-[**CRAN**](https://CRAN.R-project.org/package=giscoR):
+Check the docs of the developing version in
+<https://ropengov.github.io/giscoR/dev/>.
+
+You can install the development version of **giscoR** with:
 
 ``` r
-install.packages("giscoR")
+# install.packages("pak")
+
+pak::pak("rOpenGov/giscoR")
+```
+
+Alternatively, you can install **giscoR** via
+[r-universe](https://ropengov.r-universe.dev/giscoR):
+
+``` r
+install.packages(
+  "giscoR",
+  repos = c("https://ropengov.r-universe.dev", "https://cloud.r-project.org")
+)
 ```
 
 ## Quick Example
