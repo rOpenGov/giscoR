@@ -21,6 +21,7 @@ gisco_check_access <- function() {
 
   req <- httr2::request("https://gisco-services.ec.europa.eu/distribution/v2/")
   req <- httr2::req_url_path_append(req, "themes.json")
+  req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })

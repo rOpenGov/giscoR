@@ -46,6 +46,7 @@ docs_id_years <- function(endpoint) {
   )
 
   req <- httr2::request(apiurl)
+  req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })

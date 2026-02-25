@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.5.2 (2025-10-31 ucrt)",
+  "runtimePlatform": "R version 4.5.2 (2025-10-31)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -120,16 +120,15 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "testthat",
-      "name": "testthat",
-      "version": ">= 3.0.0",
+      "identifier": "withr",
+      "name": "withr",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=testthat"
+      "sameAs": "https://CRAN.R-project.org/package=withr"
     }
   ],
   "softwareRequirements": {
@@ -228,6 +227,19 @@
     },
     "9": {
       "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    "10": {
+      "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
       "provider": {
@@ -238,7 +250,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    "10": {
+    "11": {
+      "@type": "SoftwareApplication",
+      "identifier": "tools",
+      "name": "tools"
+    },
+    "12": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
@@ -248,7 +265,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis", "cran-r"],
-  "fileSize": "1924.39KB",
+  "fileSize": "2983.63KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

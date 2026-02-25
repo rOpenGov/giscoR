@@ -333,3 +333,33 @@ test_that("Test import jsonlite", {
   expect_silent(p <- for_import_jsonlite())
   expect_null(for_import_jsonlite())
 })
+
+test_that("Test timeout", {
+  skip_on_cran()
+  skip_if_gisco_offline()
+
+  cdir <- file.path(tempdir(), "testthat_timeout")
+  if (dir.exists(cdir)) {
+    unlink(cdir, recursive = TRUE, force = TRUE)
+  }
+
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/distribution/v2/",
+    "countries/geojson/CNTR_BN_20M_2020_4326.geojson"
+  )
+
+  withr::local_options(gisco_timeout = 0.01)
+  expect_error(
+    download_url(url = url, verbose = FALSE, cache_dir = cdir),
+    "Failed to perform HTTP request(.*)Timeout(.*)after 10 milliseconds"
+  )
+
+  withr::local_options(gisco_timeout = 300L)
+  expect_silent(
+    ff <- download_url(url = url, verbose = FALSE, cache_dir = cdir)
+  )
+
+  expect_true(file.exists(ff))
+  unlink(cdir, recursive = TRUE, force = TRUE)
+  expect_false(file.exists(ff))
+})

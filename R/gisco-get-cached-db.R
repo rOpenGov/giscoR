@@ -203,6 +203,7 @@ scrap_api_data <- function(entry_point) {
     max_size = 1024^3 / 2,
     max_age = 3600
   )
+  req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })
@@ -245,6 +246,7 @@ scrap_api_data <- function(entry_point) {
       max_size = 1024^3 / 2,
       max_age = 3600
     )
+    req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
     req <- httr2::req_error(req, is_error = function(x) {
       FALSE
     })

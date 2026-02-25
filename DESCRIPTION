@@ -28,7 +28,9 @@ Imports:
     lifecycle,
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
+    testthat (>= 3.0.0),
     tibble,
+    tools,
     utils
 Suggests:
     dplyr,
@@ -36,7 +38,7 @@ Suggests:
     ggplot2 (>= 3.5.0),
     knitr,
     quarto,
-    testthat (>= 3.0.0)
+    withr
 VignetteBuilder: 
     quarto
 Config/Needs/website: ropengov/rogtemplate, ragg, reactable, styler,
