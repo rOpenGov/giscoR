@@ -49,6 +49,8 @@ it in your local cache directory.
 Please note the following attribution and licensing requirements when
 using GISCO data:
 
+### General copyright
+
 > [Eurostat’s general copyright notice and licence
 > policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
 > applies. Moreover, there are specific rules that apply to some of the
@@ -59,8 +61,8 @@ using GISCO data:
 > and [statistical
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
 > for more details.
->
-> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+
+Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
 There is a function,
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md),

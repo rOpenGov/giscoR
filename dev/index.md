@@ -40,7 +40,7 @@ install.packages(
 )
 ```
 
-## Quick Example
+## Quick example
 
 This script highlights some features of **giscoR** :
 
@@ -70,8 +70,8 @@ glimpse(nl_all)
 #> $ EFTA_STAT <chr> "F", "F", "F", "F"
 #> $ CC_STAT   <chr> "F", "F", "F", "F"
 #> $ NAME_GERM <chr> "Niederlande", "Niederlande", "Niederlande", "Niederlande"
-#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…
 #> $ res       <chr> "60M", "20M", "10M", "03M"
+#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…
 
 # Plot with ggplot2
 
@@ -91,7 +91,7 @@ ggplot(nl_all) +
 ![The Netherlands boundaries at different
 resolutions](reference/figures/README-resolution-map-1.png)
 
-## Advanced Example: Thematic maps
+## Advanced example: Thematic maps
 
 This example shows a thematic map created with the **ggplot2** package.
 The data are obtained via the **eurostat** package. This follows the
@@ -273,8 +273,8 @@ A BibTeX entry for LaTeX users is
 > and [statistical
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
 > for more details.
->
-> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+
+Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
 ## Disclaimer
 
