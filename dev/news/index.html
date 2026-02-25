@@ -48,6 +48,7 @@
 <h2 class="pkg-version" data-toc-text="development version" id="giscor-development-version">giscoR (development version)<a class="anchor" aria-label="anchor" href="#giscor-development-version"></a></h2>
 <ul><li>Use <code><a href="https://testthat.r-lib.org/reference/local_mocked_bindings.html" class="external-link">testthat::local_mocked_bindings()</a></code> on API error testing.</li>
 <li>Adapt vignettes to Quarto.</li>
+<li>Query timeout can be controlled with <code>options(gisco_timeout)</code> using <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code>. Default value is <code>httr2::req_timeout(..., seconds = 300)</code> (5 minutes) (<a href="https://github.com/rOpenGov/giscoR/issues/123" class="external-link">#123</a>).</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.1" id="giscor-101">giscoR 1.0.1<a class="anchor" aria-label="anchor" href="#giscor-101"></a></h2><p class="text-muted">CRAN release: 2026-01-23</p>
