@@ -36,7 +36,7 @@ CRAN-RELEASE
 cran-comments.md
 /doc/
 /Meta/
-/dev/
+/cachetest/
 docs
 CRAN-SUBMISSION
 .github/pkg.lock
