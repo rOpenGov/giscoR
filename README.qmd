@@ -87,7 +87,7 @@ install.packages(
 ```
 :::
 
-## Quick Example
+## Quick example
 
 This script highlights some features of **giscoR** :
 
@@ -122,7 +122,7 @@ ggplot(nl_all) +
   theme_minimal()
 ```
 
-## Advanced Example: Thematic maps
+## Advanced example: Thematic maps
 
 This example shows a thematic map created with the **ggplot2** package. The data
 are obtained via the **eurostat** package. This follows the work of [Milos
@@ -288,17 +288,29 @@ toBibtex(citation("giscoR"))
 
 ## General copyright
 
-> [Eurostat's general copyright notice and licence
-> policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice) applies.
-> Moreover, there are specific rules that apply to some of the following
-> datasets available for downloading. The download and use of these data are
-> subject to these rules being accepted. See our [administrative
-> units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
-> and [statistical
-> units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units) for
-> more details.
->
-> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+<figure>
+
+<blockquote class="blockquote">
+
+[Eurostat's general copyright notice and licence
+policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice) applies.
+Moreover, there are specific rules that apply to some of the following datasets
+available for downloading. The download and use of these data are subject to
+these rules being accepted. See our [administrative
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units) and
+[statistical
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units) for
+more details.
+
+</blockquote>
+
+```{=html}
+<figcaption class="blockquote-footer">Source:
+<cite title="GISCO"><https://ec.europa.eu/eurostat/web/gisco/geodata></cite>
+</figcaption>
+```
+
+</figure>
 
 ## Disclaimer
 

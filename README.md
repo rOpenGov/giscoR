@@ -78,7 +78,7 @@ install.packages(
 
 </div>
 
-## Quick Example
+## Quick example
 
 This script highlights some features of **giscoR** :
 
@@ -108,8 +108,8 @@ glimpse(nl_all)
 #> $ EFTA_STAT <chr> "F", "F", "F", "F"
 #> $ CC_STAT   <chr> "F", "F", "F", "F"
 #> $ NAME_GERM <chr> "Niederlande", "Niederlande", "Niederlande", "Niederlande"
-#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…
 #> $ res       <chr> "60M", "20M", "10M", "03M"
+#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…
 
 # Plot with ggplot2
 
@@ -129,7 +129,7 @@ ggplot(nl_all) +
 <img src="man/figures/README-resolution-map-1.png" style="width:100.0%"
 alt="The Netherlands boundaries at different resolutions" />
 
-## Advanced Example: Thematic maps
+## Advanced example: Thematic maps
 
 This example shows a thematic map created with the **ggplot2** package.
 The data are obtained via the **eurostat** package. This follows the
@@ -299,18 +299,28 @@ A BibTeX entry for LaTeX users is
 
 ## General copyright
 
-> [Eurostat’s general copyright notice and licence
-> policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
-> applies. Moreover, there are specific rules that apply to some of the
-> following datasets available for downloading. The download and use of
-> these data are subject to these rules being accepted. See our
-> [administrative
-> units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
-> and [statistical
-> units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
-> for more details.
->
-> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+<figure>
+
+<blockquote class="blockquote">
+
+[Eurostat’s general copyright notice and licence
+policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
+applies. Moreover, there are specific rules that apply to some of the
+following datasets available for downloading. The download and use of
+these data are subject to these rules being accepted. See our
+[administrative
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
+and [statistical
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
+for more details.
+
+</blockquote>
+
+<figcaption class="blockquote-footer">Source:
+<cite title="GISCO"><https://ec.europa.eu/eurostat/web/gisco/geodata></cite>
+</figcaption>
+
+</figure>
 
 ## Disclaimer
 

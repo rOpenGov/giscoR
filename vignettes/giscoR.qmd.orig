@@ -73,18 +73,33 @@ your local cache directory.
 Please note the following attribution and licensing requirements when using
 GISCO data:
 
-> [Eurostat's general copyright notice and licence
-> policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice) applies.
-> Moreover, there are specific rules that apply to some of the following
-> datasets available for downloading. The download and use of these data are
-> subject to these rules being accepted. See our [administrative
-> units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
-> and [statistical
-> units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units) for
-> more details.
->
-> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+## General copyright
 
+<figure>
+
+<blockquote class="blockquote">
+
+[Eurostat's general copyright notice and licence
+policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice) applies.
+Moreover, there are specific rules that apply to some of the following datasets
+available for downloading. The download and use of these data are subject to
+these rules being accepted. See our [administrative
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units) and
+[statistical
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units) for
+more details.
+
+</blockquote>
+
+```{=html}
+<figcaption class="blockquote-footer">Source: <cite title="GISCO">
+<a href="https://ec.europa.eu/eurostat/web/gisco/geodata"
+class="external-link uri">https://ec.europa.eu/eurostat/web/gisco/geodata</a>
+</cite>
+</figcaption>
+```
+
+</figure>
 There is a function, `gisco_attributions()`, that provides guidance on this
 topic and returns attributions in several languages.
 
