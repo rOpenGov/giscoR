@@ -18,7 +18,7 @@ gisco_attributions(lang = "en", copyright = FALSE)
 - lang:
 
   character. Language (two-letter ISO code). See
-  [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html)
+  [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/man/codelist.html)
   and **Details**.
 
 - copyright:

@@ -111,7 +111,7 @@ Copyright:
   character vector of country codes. It could be either a vector of
   country names, a vector of ISO3 country codes or a vector of Eurostat
   country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
+  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - region:
 
@@ -146,7 +146,7 @@ Please check the download and usage provisions on
 [gisco_countrycode](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [gisco_countries_2024](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md),
-[`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/reference/countrycode.html).
+[`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)

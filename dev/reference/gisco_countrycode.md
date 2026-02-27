@@ -67,7 +67,7 @@ A data frame object with 249 rows and 13 variables:
 
 ## Source
 
-[countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html)
+[countrycode::codelist](https://vincentarelbundock.github.io/countrycode/man/codelist.html)
 **v1.6.1**.
 
 ## World Regions
@@ -79,7 +79,7 @@ is assigned to Asia.
 ## See also
 
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
-[countrycode::codelist](https://vincentarelbundock.github.io/countrycode/reference/codelist.html).
+[countrycode::codelist](https://vincentarelbundock.github.io/countrycode/man/codelist.html).
 
 See also the [Unicode Common Locale Data
 Repository](https://cldr.unicode.org/translation/displaynames/countryregion-territory-names).
