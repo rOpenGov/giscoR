@@ -149,7 +149,7 @@ library(dplyr)
 
 countrycode::codelist |>
   select(country.name.en, iso2c)
-#> # A tibble: 291 × 2
+#> # A tibble: 292 × 2
 #>    country.name.en   iso2c
 #>    <chr>             <chr>
 #>  1 Afghanistan       AF   
@@ -162,5 +162,5 @@ countrycode::codelist |>
 #>  8 Antarctica        AQ   
 #>  9 Antigua & Barbuda AG   
 #> 10 Argentina         AR   
-#> # ℹ 281 more rows
+#> # ℹ 282 more rows
 ```

@@ -153,7 +153,8 @@ The available endpoints are:
 - `gisco_id_api_river_basin()`: Returns the id and - optionally -
   geometry for river basins at specified longitude and latitude (x,y),
   based on the Water Framework Directive (WFD) reference spatial data
-  sets. Accepted `year` is `"2019"` .
+  sets. Accepted `year` are `"2024"`, `"2023"`, `"2022"`, `"2021"`,
+  `"2020"`, `"2019"` .
 
 - `gisco_id_api_biogeo_region()`: Returns the id and - optionally -
   geometry for biogeo regions at specified longitude and latitude (x,y).
@@ -196,8 +197,8 @@ gisco_id_api_geonames(x = -2.5, y = 43.06)
 #>  6 Gesalibar  popu… ES      baq      BUILTUPP           2482. None              
 #>  7 Aramaio I… hydr… ES      baq      Watercou…          2822. None              
 #>  8 Rio Arama… hydr… ES      spa      Watercou…          2822. None              
-#>  9 Arroyo Ko… hydr… ES      spa      Watercou…          3339. None              
-#> 10 Kobato Er… hydr… ES      baq      Watercou…          3339. None              
+#>  9 Kobato Er… hydr… ES      baq      Watercou…          3339. None              
+#> 10 Arroyo Ko… hydr… ES      spa      Watercou…          3339. None              
 #> # ℹ 2 more variables: beginlifespanversion <date>, geometry <POINT [°]>
 
 lau <- gisco_id_api_lau(x = -2.5, y = 43.06)
