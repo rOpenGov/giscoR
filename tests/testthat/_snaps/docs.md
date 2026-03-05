@@ -38,5 +38,5 @@
     Code
       docs_id_years("riverbasin")
     Output
-      [1] "is \\code{\"2019\"}"
+      [1] "are \\code{\"2024\"}, \\code{\"2023\"}, \\code{\"2022\"}, \\code{\"2021\"}, \\code{\"2020\"}, \\code{\"2019\"}"
 

@@ -41,8 +41,6 @@ Suggests:
     withr
 VignetteBuilder: 
     quarto
-Config/Needs/website: ropengov/rogtemplate, ragg, reactable, styler,
-    devtools, remotes, geometries, rapidjsonr, sfheaders, jsonify
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: Eurostat's general copyright notice and licence policy applies
