@@ -6,6 +6,8 @@
   [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
   on API error testing.
 - Adapt vignettes to Quarto.
+- Bump minimal **httr2** version to **1.2.0**
+  ([\#126](https://github.com/rOpenGov/giscoR/issues/126)).
 - Query timeout can be controlled with `options(gisco_timeout)` using
   [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
   Default value is `httr2::req_timeout(..., seconds = 300)` (5 minutes)
