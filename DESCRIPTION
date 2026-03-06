@@ -18,12 +18,12 @@ License: GPL-3
 URL: https://ropengov.github.io/giscoR/,
     https://github.com/rOpenGov/giscoR
 BugReports: https://github.com/rOpenGov/giscoR/issues
-Depends: 
+Depends:
     R (>= 4.1)
-Imports: 
+Imports:
     cli,
     countrycode (>= 1.2.0),
-    httr2,
+    httr2 (>= 1.2.0),
     jsonlite,
     lifecycle,
     rappdirs (>= 0.3.0),
@@ -39,7 +39,7 @@ Suggests:
     knitr,
     quarto,
     withr
-VignetteBuilder: 
+VignetteBuilder:
     quarto
 Config/testthat/edition: 3
 Config/testthat/parallel: true
