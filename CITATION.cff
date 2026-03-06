@@ -111,6 +111,7 @@ references:
     email: hadley@posit.co
   year: '2026'
   doi: 10.32614/CRAN.package.httr2
+  version: '>= 1.2.0'
 - type: software
   title: jsonlite
   abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
