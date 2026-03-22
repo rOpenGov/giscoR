@@ -1,8 +1,8 @@
 # Set your [giscoR](https://CRAN.R-project.org/package=giscoR) cache dir
 
-This function will store your `cache_dir` path on your local machine and
-would load it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")`
-to find your cached path or use `gisco_detect_cache_dir()`.
+This function stores your `cache_dir` path on your local machine and
+loads it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
+find your cached path or use `gisco_detect_cache_dir()`.
 
 ## Usage
 
@@ -21,8 +21,8 @@ gisco_detect_cache_dir()
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL` the function would store the
-  cached files on a temporary dir (See
+  A path to a cache directory. On `NULL`, the function stores the cached
+  files on a temporary dir (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - overwrite:
@@ -63,18 +63,17 @@ path to a small configuration file under
 In [giscoR](https://CRAN.R-project.org/package=giscoR) \>= 1.0.0 the
 location of the configuration file has moved from
 `rappdirs::user_config_dir("giscoR", "R")` to
-`tools::R_user_dir("giscoR", "config")`. We have implemented a
-functionality that would migrate previous configuration files from one
-location to another with a message. This message would appear only once
-informing of the migration.
+`tools::R_user_dir("giscoR", "config")`. We have implemented a function
+that migrates previous configuration files from one location to another
+with a message. This message appears only once informing of the
+migration.
 
 ## Caching strategies
 
 Some files can be read from their online source without caching using
-the option `cache = FALSE`. Otherwise the source file would be
-downloaded to your computer.
-[giscoR](https://CRAN.R-project.org/package=giscoR) implements the
-following caching options:
+the option `cache = FALSE`. Otherwise the source file is downloaded to
+your computer. [giscoR](https://CRAN.R-project.org/package=giscoR)
+implements the following caching options:
 
 - For occasional use, rely on the default
   [`tempdir()`](https://rdrr.io/r/base/tempfile.html)-based cache (no
@@ -85,13 +84,13 @@ following caching options:
 
 - For reproducible workflows, install a persistent cache with
   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that
-  would be kept across **R** sessions.
+  is be kept across **R** sessions.
 
 - For caching specific files, use the `cache_dir` argument in the
   corresponding function. See example in
   [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md).
 
-Sometimes cached files may be corrupt. On that case, try re-downloading
+Sometimes cached files may be corrupt. In that case, try re-downloading
 the data setting `update_cache = TRUE` in the corresponding function.
 
 If you experience any problem on download, try to download the
@@ -109,32 +108,32 @@ Other cache utilities:
 ## Examples
 
 ``` r
-# Don't run this! It would modify your current state
+# Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpGqqomM/giscoR
+#> ℹ /tmp/Rtmp9iUPCX/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache dir is /tmp/RtmpGqqomM/example/cachenew.
+#> ℹ giscoR cache dir is /tmp/Rtmp9iUPCX/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpGqqomM/example/cachenew
-#> [1] "/tmp/RtmpGqqomM/example/cachenew"
+#> ℹ /tmp/Rtmp9iUPCX/example/cachenew
+#> [1] "/tmp/Rtmp9iUPCX/example/cachenew"
 
 # Restore initial cache
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is /tmp/RtmpGqqomM/giscoR.
+#> ℹ giscoR cache dir is /tmp/Rtmp9iUPCX/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/RtmpGqqomM/giscoR
+#> ℹ /tmp/Rtmp9iUPCX/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpGqqomM/giscoR
-#> [1] "/tmp/RtmpGqqomM/giscoR"
+#> ℹ /tmp/Rtmp9iUPCX/giscoR
+#> [1] "/tmp/Rtmp9iUPCX/giscoR"
 ```

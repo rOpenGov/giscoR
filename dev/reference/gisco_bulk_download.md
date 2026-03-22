@@ -61,7 +61,7 @@ gisco_bulk_download(
 - update_cache:
 
   logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  set to `TRUE` it forces a new download.
 
 - verbose:
 
@@ -95,8 +95,8 @@ gisco_bulk_download(
 
 - ...:
 
-  Ignored. The argument `id_giscoR` (**\[deprecated\]**) would be
-  captured via `...` and re-directed to `id` with a
+  Ignored. The argument `id_giscoR` (**\[deprecated\]**) is captured via
+  `...` and redirected to `id` with a
   [warning](https://lifecycle.r-lib.org/reference/deprecate_soft.html).
 
 ## Value
@@ -107,7 +107,7 @@ extracted. See **Examples**.
 ## Details
 
 Some arguments only apply to a specific value of `"id"`. For example
-`"resolution"` would be ignored for values `"communes"`, `"lau"`,
+`"resolution"` is ignored for values `"communes"`, `"lau"`,
 `"urban_audit"` and `"postal_codes"`.
 
 See years available in the corresponding functions:
@@ -176,8 +176,8 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache dir is /tmp/RtmpGqqomM/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpGqqomM/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache dir is /tmp/Rtmp9iUPCX/testexample/countries.
+#> ✔ File already cached: /tmp/Rtmp9iUPCX/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # Message shows that file is already cached ;)
 # }

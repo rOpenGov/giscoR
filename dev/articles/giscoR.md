@@ -17,7 +17,7 @@ some worldwide datasets such as country polygons, labels, borders, and
 coastlines.
 
 GISCO supplies data at multiple resolutions: high-detail datasets for
-small areas (01M, 03M) and lightweight datasets for larger areas (10M,
+small areas (01M, 03M), and lightweight datasets for larger areas (10M,
 20M, 60M). Datasets are available in three projections:
 [EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035),
 and [EPSG:3857](https://epsg.io/3857).
@@ -36,8 +36,8 @@ gisco_set_cache_dir("./path/to/location")
 ```
 
 If a file is not available locally, it will be downloaded to that
-directory so subsequent requests for the same data will load from the
-local cache.
+directory so subsequent requests for the same data will be loaded from
+the local cache.
 
 If you experience any problems downloading, you can also manually
 download the file from the [GISCO API
@@ -206,6 +206,11 @@ eu_bord <- borders |>
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                                     
+
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -273,8 +278,3 @@ ggplot(nuts2_sf) +
     )
   )
 ```
-
-![Disposable income of private households by NUTS 2 regions
-(2022)](./fig-giscor-1.png)
-
-Disposable income of private households by NUTS 2 regions (2022)

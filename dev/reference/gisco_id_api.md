@@ -118,10 +118,10 @@ gisco_id_api_census_grid(
 - geometry:
 
   logical. Whether to return geometry. On `TRUE` a
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object would
-  be returned. On `FALSE` a
-  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-  would be returned.
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
+  returned. On `FALSE` a
+  [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) is
+  returned.
 
 ## Value
 
