@@ -323,7 +323,7 @@ get_request_body <- function(url, verbose = TRUE) {
 #'
 #' The only purpose of this function is to use \CRANpkg{jsonlite} in the
 #' source package code, so it should be included in the Imports file. Otherwise
-#' CRAN would complain as it is not directly used.
+#' CRAN complains as it is not directly used.
 #'
 #' We need to import \CRANpkg{jsonlite} because the package makes heavy use of
 #' it under the hood with [httr2::resp_body_json()], but \CRANpkg{httr2} lists

@@ -19,9 +19,9 @@
 #' This database is used to redirect the corresponding functions to the
 #' right API endpoints.
 #'
-#' This version of the database would be used in case there is any problem on
-#' update. Please use [gisco_get_cached_db()] with `update_cache = TRUE` to
-#' update the corresponding API endpoints.
+#' This version of the database is used if there is a problem during update.
+#' Please use [gisco_get_cached_db()] with `update_cache = TRUE` to update the
+#' corresponding API endpoints.
 #'
 #' @source GISCO API `datasets.json`.
 #' @examples

@@ -38,7 +38,7 @@
 #' @param cache logical. Whether to do caching. Default is `TRUE`. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
 #' @param update_cache logical. Should the cached file be refreshed? Default
-#'   is `FALSE`. When set to `TRUE` it would force a new download.
+#'   is `FALSE`. When set to `TRUE` it forces a new download.
 #' @param cache_dir character string. A path to a cache directory. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
 #' @param spatialtype character string. Type of geometry to be returned.
@@ -49,7 +49,7 @@
 #'   * `"COASTL"`: coastlines - `LINESTRING` object.
 #'   * `"INLAND"`: inland boundaries - `LINESTRING` object.
 #'
-#'   **Note that** arguments `country` and `region` would be
+#'   **Note that** arguments `country` and `region` are
 #'   only applied when `spatialtype` is `"RG"` or `"LB"`.
 #'
 #' @param country character vector of country codes. It could be either a

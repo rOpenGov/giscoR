@@ -31,7 +31,7 @@
 #'   * `"LB"`: Labels - `POINT` object.
 #'
 #' @param level character string. Level of Urban Audit. Possible values `"all"`
-#'   (the default), that would download the full dataset or `"CITIES"`, `"FUA"`,
+#'   (the default), that downloads the full dataset or `"CITIES"`, `"FUA"`,
 #'   and (for versions prior to `year = 2020`) `"GREATER_CITIES"`, `"CITY"`,
 #'   `"KERN"` or `"LUZ"`.
 #' @param ext character. Extension of the file (default `"gpkg"`). One of

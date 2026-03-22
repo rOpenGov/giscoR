@@ -6,13 +6,13 @@
 #' @rdname gisco_set_cache_dir
 #'
 #' @description
-#' This function will store your `cache_dir` path on your local machine and
-#' would load it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
+#' This function stores your `cache_dir` path on your local machine and
+#' loads it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
 #' find your cached path or use [gisco_detect_cache_dir()].
 #'
 #' @inheritParams gisco_get_nuts
-#' @param cache_dir A path to a cache directory. On `NULL` the function
-#'   would store the cached files on a temporary dir (See [base::tempdir()]).
+#' @param cache_dir A path to a cache directory. On `NULL`, the function
+#'   stores the cached files on a temporary dir (see [base::tempdir()]).
 #' @param install If `TRUE`, will install the key in your local machine for
 #'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`
 #'   this argument is set to `FALSE` automatically.
@@ -34,7 +34,7 @@
 #' @section Caching strategies:
 #'
 #' Some files can be read from their online source without caching using the
-#' option `cache = FALSE`. Otherwise the source file would be downloaded to
+#' option `cache = FALSE`. Otherwise the source file is downloaded to
 #' your computer. \CRANpkg{giscoR} implements the following caching options:
 #'
 #' - For occasional use, rely on the default [tempdir()]-based cache (no
@@ -42,12 +42,12 @@
 #' - Modify the cache for a single session setting
 #'   `gisco_set_cache_dir(cache_dir = "a/path/here")`.
 #' - For reproducible workflows, install a persistent cache with
-#'   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that would
+#'   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that is
 #'   be kept across **R** sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function. See example in [gisco_get_nuts()].
 #'
-#' Sometimes cached files may be corrupt. On that case, try re-downloading
+#' Sometimes cached files may be corrupt. In that case, try re-downloading
 #' the data setting `update_cache = TRUE` in the corresponding function.
 #'
 #'  If you experience any problem on download, try to download the
@@ -59,14 +59,13 @@
 #'
 #' In \CRANpkg{giscoR} >= 1.0.0 the location of the configuration file has
 #' moved from `rappdirs::user_config_dir("giscoR", "R")` to
-#' `tools::R_user_dir("giscoR", "config")`. We have implemented a functionality
-#' that would migrate previous configuration files from one location to another
-#' with a message. This message would appear only once informing of the
-#' migration.
+#' `tools::R_user_dir("giscoR", "config")`. We have implemented a function
+#' that migrates previous configuration files from one location to another
+#' with a message. This message appears only once informing of the migration.
 #'
 #' @examples
 #'
-#' # Don't run this! It would modify your current state
+#' # Don't run this! It modifies your current state
 #' \dontrun{
 #' my_cache <- gisco_detect_cache_dir()
 #'
@@ -180,13 +179,13 @@ gisco_detect_cache_dir <- function() {
 #' @return Invisible. This function is called for its side effects.
 #'
 #' @description
-#' **Use this function with caution**. This function would clear your cached
+#' **Use this function with caution**. This function clears your cached
 #' data and configuration, specifically:
 #'
 #' * Deletes the \CRANpkg{giscoR} config directory
 #'   (`tools::R_user_dir("giscoR", "config")`).
 #' * Deletes the `cache_dir` directory.
-#' * Deletes the values on stored on `Sys.getenv("GISCO_CACHE_DIR")`.
+#' * Deletes the values stored on `Sys.getenv("GISCO_CACHE_DIR")`.
 #'
 #' @param config if `TRUE`, will delete the configuration folder of
 #'   \CRANpkg{giscoR}.
@@ -198,11 +197,11 @@ gisco_detect_cache_dir <- function() {
 #'
 #' @details
 #' This is an overkill function that is intended to reset your status
-#' as if you would never have installed and/or used \CRANpkg{giscoR}.
+#' as if you had never installed and/or used \CRANpkg{giscoR}.
 #'
 #' @examples
 #'
-#' # Don't run this! It would modify your current state
+#' # Don't run this! It modifies your current state
 #' \dontrun{
 #' my_cache <- gisco_detect_cache_dir()
 #'
@@ -284,7 +283,7 @@ detect_cache_dir_muted <- function() {
     if (file.exists(cache_config)) {
       cached_path <- readLines(cache_config)
 
-      # Case on empty cached path - would default
+      # Case on empty cached path - defaults
       if (
         any(
           is.null(cached_path),

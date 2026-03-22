@@ -32,7 +32,7 @@
 #'   * `"LB"`: Labels - `POINT` object.
 #'   * `"BN"`: Boundaries - `LINESTRING` object.
 #'
-#'   **Note that** argument `country` would be only applied when
+#'   **Note that** argument `country` is only applied when
 #'   `spatialtype` is `"RG"` or `"LB"`.
 #' @param ext character. Extension of the file (default `"shp"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",

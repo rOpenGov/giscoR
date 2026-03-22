@@ -34,15 +34,15 @@
 #'   child `.zip` files. This is the case of "`shp.zip` inside the top-level
 #'   `.zip`, that won't be unzipped.
 #' @param ... Ignored. The argument `id_giscoR`
-#'   (`r lifecycle::badge("deprecated")`) would be captured via `...` and
-#'   re-directed to `id` with a [warning][lifecycle::deprecate_warn].
+#'   (`r lifecycle::badge("deprecated")`) is captured via `...` and redirected
+#'   to `id` with a [warning][lifecycle::deprecate_warn].
 #'
 #' @param ext Extension of the file(s) to be downloaded. Formats available are
 #' `"shp"`, `"geojson"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.
 #'
 #' @details
 #' Some arguments only apply to a specific value of `"id"`. For example
-#' `"resolution"` would be ignored for values `"communes"`, `"lau"`,
+#' `"resolution"` is ignored for values `"communes"`, `"lau"`,
 #' `"urban_audit"` and `"postal_codes"`.
 #'
 #' See years available in the corresponding functions:
@@ -154,7 +154,8 @@ gisco_bulk_download <- function(
   }
 
   api_entry <- gsub("/shp/.*", "/download", routes)
-  get_alias <- switch(id,
+  get_alias <- switch(
+    id,
     "coastal_lines" = "coastline",
     "urban_audit" = "urau",
     "postal_codes" = "pcode",
@@ -173,10 +174,7 @@ gisco_bulk_download <- function(
 
   url <- file.path(api_entry, zipname)
 
-  subdir <- switch(id,
-    "coastal_lines" = "coastal",
-    id
-  )
+  subdir <- switch(id, "coastal_lines" = "coastal", id)
 
   destfile <- download_url(
     url,

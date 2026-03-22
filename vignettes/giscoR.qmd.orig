@@ -43,7 +43,7 @@ the European Union but also offering some worldwide datasets such as country
 polygons, labels, borders, and coastlines.
 
 GISCO supplies data at multiple resolutions: high-detail datasets for small
-areas (01M, 03M) and lightweight datasets for larger areas (10M, 20M, 60M).
+areas (01M, 03M), and lightweight datasets for larger areas (10M, 20M, 60M).
 Datasets are available in three projections: [EPSG:4326](https://epsg.io/4326),
 [EPSG:3035](https://epsg.io/3035), and [EPSG:3857](https://epsg.io/3857).
 
@@ -61,7 +61,7 @@ gisco_set_cache_dir("./path/to/location")
 ```
 
 If a file is not available locally, it will be downloaded to that directory so
-subsequent requests for the same data will load from the local cache.
+subsequent requests for the same data will be loaded from the local cache.
 
 If you experience any problems downloading, you can also manually download the
 file from the [GISCO API
@@ -100,6 +100,7 @@ class="external-link uri">https://ec.europa.eu/eurostat/web/gisco/geodata</a>
 ```
 
 </figure>
+
 There is a function, `gisco_attributions()`, that provides guidance on this
 topic and returns attributions in several languages.
 

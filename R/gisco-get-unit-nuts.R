@@ -25,10 +25,7 @@ gisco_get_unit_nuts <- function(
   res_txt <- sprintf("%02dm", as.numeric(resolution))
   spatialtype <- match_arg_pretty(spatialtype)
   # Prepare inputs
-  type <- switch(spatialtype,
-    "RG" = "region",
-    "LB" = "label"
-  )
+  type <- switch(spatialtype, "RG" = "region", "LB" = "label")
   # Names has the structure:
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson

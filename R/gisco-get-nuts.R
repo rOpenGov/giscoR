@@ -45,7 +45,7 @@
 #'   * `"LB"`: Labels - `POINT` object.
 #'   * `"BN"`: Boundaries - `LINESTRING` object.
 #'
-#'   **Note that** arguments `country`, `nuts_level` and `nuts_id` would be
+#'   **Note that** arguments `country`, `nuts_level` and `nuts_id` are
 #'   only applied when `spatialtype` is `"RG"` or `"LB"`.
 #' @param nuts_level character string. NUTS level. One of `0`,
 #'   `1`, `2`, `3` or `all` for all levels.

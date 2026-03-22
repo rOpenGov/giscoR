@@ -26,8 +26,8 @@
 #' @param epsg character string or numeric. EPSG code for the coordinate
 #'   reference system.
 #' @param geometry logical. Whether to return geometry. On `TRUE` a
-#'   [`sf`][sf::st_sf] object would be returned. On `FALSE` a
-#'   [tibble][tibble::tbl_df] would be returned.
+#'   [`sf`][sf::st_sf] object is returned. On `FALSE` a
+#'   [tibble][tibble::tbl_df] is returned.
 #' @param year character string or numeric. Year of the dataset, see
 #'   **Details**.
 #' @param nuts_level character string. NUTS level. One of `0`,

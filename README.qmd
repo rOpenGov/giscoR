@@ -45,11 +45,11 @@ labels) directly in **R**.
 
 ## Key features
 
--   Retrieve **GISCO files** for countries, regions, and administrative units.
--   Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`, `01M`.
--   Choose from three projections: **EPSG 4326**, **3035**, or **3857**.
--   Works seamlessly with **sf** objects for spatial analysis.
--   Includes **caching** for faster repeated access.
+- Retrieve **GISCO files** for countries, regions, and administrative units.
+- Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`, `01M`.
+- Choose from three projections: **EPSG 4326**, **3035**, or **3857**.
+- Works seamlessly with **sf** objects for spatial analysis.
+- Includes **caching** for faster repeated access.
 
 ## Installation
 
@@ -89,7 +89,7 @@ install.packages(
 
 ## Quick example
 
-This script highlights some features of **giscoR** :
+This script highlights some features of **giscoR**:
 
 ```{r}
 #| label: resolution-map
@@ -265,10 +265,10 @@ Check the GitHub page for [source code](https://github.com/rOpenGov/giscoR/).
 
 Contributions are welcome:
 
--   [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for feedback
-    and bug reports.
--   [Send pull requests](https://github.com/rOpenGov/giscoR/)
--   [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
+- [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for feedback
+  and bug reports.
+- [Send pull requests](https://github.com/rOpenGov/giscoR/)
+- [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
 
 ## Citation
 
