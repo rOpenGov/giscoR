@@ -41,7 +41,7 @@ cache the result due to the size. See \strong{Caching strategies} section
 in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
@@ -56,7 +56,7 @@ available are:
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
 }
 
-\strong{Note that} argument \code{country} would be only applied when
+\strong{Note that} argument \code{country} is only applied when
 \code{spatialtype} is \code{"RG"} or \code{"LB"}.}
 
 \item{country}{character vector of country codes. It could be either a

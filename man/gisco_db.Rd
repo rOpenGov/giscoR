@@ -20,9 +20,9 @@ Database with the list of files in the GISCO API as of
 This database is used to redirect the corresponding functions to the
 right API endpoints.
 
-This version of the database would be used in case there is any problem on
-update. Please use \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}} with \code{update_cache = TRUE} to
-update the corresponding API endpoints.
+This version of the database is used if there is a problem during update.
+Please use \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}} with \code{update_cache = TRUE} to update the
+corresponding API endpoints.
 }
 \examples{
 data("gisco_db")

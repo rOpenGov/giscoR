@@ -40,7 +40,7 @@ gisco_get_urban_audit(
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
@@ -59,7 +59,7 @@ vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{level}{character string. Level of Urban Audit. Possible values \code{"all"}
-(the default), that would download the full dataset or \code{"CITIES"}, \code{"FUA"},
+(the default), that downloads the full dataset or \code{"CITIES"}, \code{"FUA"},
 and (for versions prior to \code{year = 2020}) \code{"GREATER_CITIES"}, \code{"CITY"},
 \code{"KERN"} or \code{"LUZ"}.}
 

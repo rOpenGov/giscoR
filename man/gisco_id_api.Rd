@@ -101,8 +101,8 @@ reference system.}
 \code{1}, \code{2} or \code{3}.}
 
 \item{geometry}{logical. Whether to return geometry. On \code{TRUE} a
-\code{\link[sf:sf]{sf}} object would be returned. On \code{FALSE} a
-\link[tibble:tbl_df-class]{tibble} would be returned.}
+\code{\link[sf:sf]{sf}} object is returned. On \code{FALSE} a
+\link[tibble:tbl_df-class]{tibble} is returned.}
 }
 \value{
 A \link[tibble:tbl_df-class]{tibble} or a \code{\link[sf:sf]{sf}} object.

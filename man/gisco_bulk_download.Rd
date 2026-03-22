@@ -43,7 +43,7 @@ This argument replaces the previous (deprecated) argument \code{id_giscoR}.}
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
@@ -66,8 +66,8 @@ child \code{.zip} files. This is the case of "\code{shp.zip} inside the top-leve
 \code{.zip}, that won't be unzipped.}
 
 \item{...}{Ignored. The argument \code{id_giscoR}
-(\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}) would be captured via \code{...} and
-re-directed to \code{id} with a \link[lifecycle:deprecate_soft]{warning}.}
+(\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}) is captured via \code{...} and redirected
+to \code{id} with a \link[lifecycle:deprecate_soft]{warning}.}
 }
 \value{
 A (invisible) character vector with the full path of the files extracted.
@@ -79,7 +79,7 @@ and extract the relevant ones.
 }
 \details{
 Some arguments only apply to a specific value of \code{"id"}. For example
-\code{"resolution"} would be ignored for values \code{"communes"}, \code{"lau"},
+\code{"resolution"} is ignored for values \code{"communes"}, \code{"lau"},
 \code{"urban_audit"} and \code{"postal_codes"}.
 
 See years available in the corresponding functions:

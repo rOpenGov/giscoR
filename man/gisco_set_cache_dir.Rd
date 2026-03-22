@@ -15,8 +15,8 @@ gisco_set_cache_dir(
 gisco_detect_cache_dir()
 }
 \arguments{
-\item{cache_dir}{A path to a cache directory. On \code{NULL} the function
-would store the cached files on a temporary dir (See \code{\link[base:tempfile]{base::tempdir()}}).}
+\item{cache_dir}{A path to a cache directory. On \code{NULL}, the function
+stores the cached files on a temporary dir (see \code{\link[base:tempfile]{base::tempdir()}}).}
 
 \item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
 \code{GISCO_CACHE_DIR} that you already have in local machine.}
@@ -35,8 +35,8 @@ your \code{cache_dir}, but it is mainly called for its side effect.
 session.
 }
 \description{
-This function will store your \code{cache_dir} path on your local machine and
-would load it for future sessions. Type \code{Sys.getenv("GISCO_CACHE_DIR")} to
+This function stores your \code{cache_dir} path on your local machine and
+loads it for future sessions. Type \code{Sys.getenv("GISCO_CACHE_DIR")} to
 find your cached path or use \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}}.
 }
 \details{
@@ -50,16 +50,15 @@ path to a small configuration file under
 \note{
 In \CRANpkg{giscoR} >= 1.0.0 the location of the configuration file has
 moved from \code{rappdirs::user_config_dir("giscoR", "R")} to
-\code{tools::R_user_dir("giscoR", "config")}. We have implemented a functionality
-that would migrate previous configuration files from one location to another
-with a message. This message would appear only once informing of the
-migration.
+\code{tools::R_user_dir("giscoR", "config")}. We have implemented a function
+that migrates previous configuration files from one location to another
+with a message. This message appears only once informing of the migration.
 }
 \section{Caching strategies}{
 
 
 Some files can be read from their online source without caching using the
-option \code{cache = FALSE}. Otherwise the source file would be downloaded to
+option \code{cache = FALSE}. Otherwise the source file is downloaded to
 your computer. \CRANpkg{giscoR} implements the following caching options:
 \itemize{
 \item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no
@@ -67,13 +66,13 @@ install).
 \item Modify the cache for a single session setting
 \code{gisco_set_cache_dir(cache_dir = "a/path/here")}.
 \item For reproducible workflows, install a persistent cache with
-\code{gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)} that would
+\code{gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)} that is
 be kept across \strong{R} sessions.
 \item For caching specific files, use the \code{cache_dir} argument in the
 corresponding function. See example in \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}.
 }
 
-Sometimes cached files may be corrupt. On that case, try re-downloading
+Sometimes cached files may be corrupt. In that case, try re-downloading
 the data setting \code{update_cache = TRUE} in the corresponding function.
 
 If you experience any problem on download, try to download the
@@ -84,7 +83,7 @@ and \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to identify 
 
 \examples{
 
-# Don't run this! It would modify your current state
+# Don't run this! It modifies your current state
 \dontrun{
 my_cache <- gisco_detect_cache_dir()
 

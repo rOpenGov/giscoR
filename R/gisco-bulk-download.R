@@ -154,8 +154,7 @@ gisco_bulk_download <- function(
   }
 
   api_entry <- gsub("/shp/.*", "/download", routes)
-  get_alias <- switch(
-    id,
+  get_alias <- switch(id,
     "coastal_lines" = "coastline",
     "urban_audit" = "urau",
     "postal_codes" = "pcode",
@@ -174,7 +173,10 @@ gisco_bulk_download <- function(
 
   url <- file.path(api_entry, zipname)
 
-  subdir <- switch(id, "coastal_lines" = "coastal", id)
+  subdir <- switch(id,
+    "coastal_lines" = "coastal",
+    id
+  )
 
   destfile <- download_url(
     url,

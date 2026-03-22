@@ -43,7 +43,7 @@ gisco_get_countries(
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it would force a new download.}
+is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 
 \item{cache_dir}{character string. A path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
@@ -70,7 +70,7 @@ Options available are:
 \item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
 }
 
-\strong{Note that} arguments \code{country} and \code{region} would be
+\strong{Note that} arguments \code{country} and \code{region} are
 only applied when \code{spatialtype} is \code{"RG"} or \code{"LB"}.}
 
 \item{country}{character vector of country codes. It could be either a

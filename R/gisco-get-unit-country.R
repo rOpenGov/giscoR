@@ -68,12 +68,19 @@ gisco_get_unit_country <- function(
   spatialtype <- match_arg_pretty(spatialtype)
 
   # Prepare inputs
-  type <- switch(spatialtype, "RG" = "region", "LB" = "label")
+  type <- switch(spatialtype,
+    "RG" = "region",
+    "LB" = "label"
+  )
   # Names has the structure:
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson
 
-  use_code <- switch(year, "2001" = "iso3c", "2006" = "iso2c", "eurostat")
+  use_code <- switch(year,
+    "2001" = "iso3c",
+    "2006" = "iso2c",
+    "eurostat"
+  )
   unit_code <- convert_country_code(unit, use_code)
 
   unit_names <- paste0(unit_code, "-", type)

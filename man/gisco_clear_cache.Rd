@@ -19,22 +19,22 @@ gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 Invisible. This function is called for its side effects.
 }
 \description{
-\strong{Use this function with caution}. This function would clear your cached
+\strong{Use this function with caution}. This function clears your cached
 data and configuration, specifically:
 \itemize{
 \item Deletes the \CRANpkg{giscoR} config directory
 (\code{tools::R_user_dir("giscoR", "config")}).
 \item Deletes the \code{cache_dir} directory.
-\item Deletes the values on stored on \code{Sys.getenv("GISCO_CACHE_DIR")}.
+\item Deletes the values stored on \code{Sys.getenv("GISCO_CACHE_DIR")}.
 }
 }
 \details{
 This is an overkill function that is intended to reset your status
-as if you would never have installed and/or used \CRANpkg{giscoR}.
+as if you had never installed and/or used \CRANpkg{giscoR}.
 }
 \examples{
 
-# Don't run this! It would modify your current state
+# Don't run this! It modifies your current state
 \dontrun{
 my_cache <- gisco_detect_cache_dir()
 
