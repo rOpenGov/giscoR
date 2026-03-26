@@ -93,7 +93,7 @@
 </h2>
 <p><em>Full site with more examples and vignettes on <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a></em></p>
 <p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is a package designed to provide a simple interface to the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API</a>.</p>
-<p>Within Eurostat, GISCO meets the European Commission’s geographical information needs at three levels: the European Union, its member countries, and its regions. GISCO provides shapefiles in different formats, focusing especially on the European Union but also offering some worldwide datasets such as country polygons, labels, borders, and coastlines.</p>
+<p>Within Eurostat, GISCO supports geographic data at three levels: the European Union, its member countries, and its regions. GISCO provides shapefiles in different formats, focusing especially on the European Union but also offering worldwide datasets such as country polygons, labels, borders, and coastlines.</p>
 <p>GISCO supplies data at multiple resolutions: high-detail datasets for small areas (01M, 03M), and lightweight datasets for larger areas (10M, 20M, 60M). Datasets are available in three projections: <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>, <a href="https://epsg.io/3035" class="external-link">EPSG:3035</a>, and <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a>.</p>
 <p><strong>giscoR</strong> returns <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><code>sf</code></a> objects; see <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a> for details.</p>
 </section><section class="section level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
@@ -181,7 +181,7 @@ EU Member states and Candidate countries (2024)
 </p>
 </div>
 <p>You can select specific countries by name (in any language), ISO3 codes, or Eurostat codes. However, you cannot mix these identifier types in a single call.</p>
-<p>You can also combine different datasets — set <code>resolution</code> and <code>epsg</code> (and optionally <code>year</code>) to the same value:</p>
+<p>You can also combine datasets by using the same <code>resolution</code>, <code>epsg</code>, and (optionally) <code>year</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cntr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Morocco"</span>, <span class="st">"Algeria"</span>, <span class="st">"Tunisia"</span>, <span class="st">"Libya"</span>, <span class="st">"Egypt"</span><span class="op">)</span></span>
 <span></span>
@@ -293,7 +293,7 @@ Political map of North Africa
 <span>    legend.text.position <span class="op">=</span> <span class="st">"bottom"</span>,</span>
 <span>    legend.title.position <span class="op">=</span> <span class="st">"top"</span>,</span>
 <span>    legend.key.height <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">rel</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>,</span>
-<span>    legend.key.width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">.1</span>, <span class="st">"npc"</span><span class="op">)</span></span>
+<span>    legend.key.width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="st">"npc"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># Annotate and labels</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
@@ -309,6 +309,7 @@ Political map of North Africa
 Disposable income of private households by NUTS 2 regions (2022)
 </p>
 </div>
+<p>Happy mapping!</p>
 </section><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);

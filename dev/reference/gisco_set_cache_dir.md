@@ -28,7 +28,7 @@ gisco_detect_cache_dir()
 - overwrite:
 
   If this is set to `TRUE`, it will overwrite an existing
-  `GISCO_CACHE_DIR` that you already have in local machine.
+  `GISCO_CACHE_DIR` that you already have on your local machine.
 
 - install:
 
@@ -111,29 +111,29 @@ Other cache utilities:
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpMtRIVZ/giscoR
+#> ℹ /tmp/Rtmpn9iQ6D/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache dir is /tmp/RtmpMtRIVZ/example/cachenew.
+#> ℹ giscoR cache dir is /tmp/Rtmpn9iQ6D/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpMtRIVZ/example/cachenew
-#> [1] "/tmp/RtmpMtRIVZ/example/cachenew"
+#> ℹ /tmp/Rtmpn9iQ6D/example/cachenew
+#> [1] "/tmp/Rtmpn9iQ6D/example/cachenew"
 
 # Restore initial cache
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is /tmp/RtmpMtRIVZ/giscoR.
+#> ℹ giscoR cache dir is /tmp/Rtmpn9iQ6D/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/RtmpMtRIVZ/giscoR
+#> ℹ /tmp/Rtmpn9iQ6D/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpMtRIVZ/giscoR
-#> [1] "/tmp/RtmpMtRIVZ/giscoR"
+#> ℹ /tmp/Rtmpn9iQ6D/giscoR
+#> [1] "/tmp/Rtmpn9iQ6D/giscoR"
 ```
