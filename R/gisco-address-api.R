@@ -21,6 +21,7 @@
 #' @inheritParams gisco_get_nuts
 #' @family API tools
 #' @export
+#' @encoding UTF-8
 #'
 #' @param country Country code (`country = "LU"`).
 #' @param x,y x and y coordinates (as longitude and latitude) to be converted

@@ -36,7 +36,8 @@ labels) directly in **R**.
   units.
 - Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
   `01M`.
-- Choose from three projections: **EPSG 4326**, **3035**, or **3857**.
+- Choose from three projections: **EPSG:4326**, **EPSG:3035**, or
+  **EPSG:3857**.
 - Works seamlessly with **sf** objects for spatial analysis.
 - Includes **caching** for faster repeated access.
 
@@ -168,6 +169,10 @@ We now download the data from Eurostat:
 # Use eurostat
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                              
 ```
 
 Finally, we merge and manipulate the data to create the final plot:
@@ -229,12 +234,12 @@ ggplot(nuts3_sf) +
       face = "bold"
     ),
     plot.caption = element_text(color = "grey60", hjust = 0.5, vjust = 0),
-    legend.text = element_text(color = "grey20", hjust = .5),
-    legend.title = element_text(color = "grey20", hjust = .5),
+    legend.text = element_text(color = "grey20", hjust = 0.5),
+    legend.title = element_text(color = "grey20", hjust = 0.5),
     legend.position = "bottom",
     legend.title.position = "top",
     legend.text.position = "bottom",
-    legend.key.height = unit(.5, "line"),
+    legend.key.height = unit(0.5, "line"),
     legend.key.width = unit(2.5, "line")
   ) +
   # Annotate and labs

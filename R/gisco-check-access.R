@@ -1,6 +1,7 @@
 #' Check access to GISCO API
 #'
 #' @keywords internal
+#' @encoding UTF-8
 #' @description
 #' Check if **R** has access to resources at
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.

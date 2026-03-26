@@ -119,8 +119,8 @@ gisco_get_lau <- function(
     return(NULL)
   }
 
-  # Improve speed using querys if country(es) are selected
-  # We construct the query and passed it to the st_read fun
+  # Improve speed using queries if country(es) are selected
+  # We construct the query and pass it to the st_read function
   filter_col_cnt <- get_col_name(file_local)
   filter_col_id <- get_col_name(file_local, "GISCO_ID")
   if (

@@ -36,11 +36,10 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 provide a simple interface to the [GISCO
 API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-Within Eurostat, GISCO meets the European Commission's geographical information
-needs at three levels: the European Union, its member countries, and its
-regions. GISCO provides shapefiles in different formats, focusing especially on
-the European Union but also offering some worldwide datasets such as country
-polygons, labels, borders, and coastlines.
+Within Eurostat, GISCO supports geographic data at three levels: the European
+Union, its member countries, and its regions. GISCO provides shapefiles in
+different formats, focusing especially on the European Union but also offering
+worldwide datasets such as country polygons, labels, borders, and coastlines.
 
 GISCO supplies data at multiple resolutions: high-detail datasets for small
 areas (01M, 03M), and lightweight datasets for larger areas (10M, 20M, 60M).
@@ -170,8 +169,8 @@ ggplot(world) +
 You can select specific countries by name (in any language), ISO3 codes, or
 Eurostat codes. However, you cannot mix these identifier types in a single call.
 
-You can also combine different datasets — set `resolution` and `epsg` (and
-optionally `year`) to the same value:
+You can also combine datasets by using the same `resolution`, `epsg`, and
+(optionally) `year`:
 
 ```{r}
 #| label: fig-africa
@@ -288,7 +287,7 @@ ggplot(nuts2_sf) +
     legend.text.position = "bottom",
     legend.title.position = "top",
     legend.key.height = rel(0.5),
-    legend.key.width = unit(.1, "npc")
+    legend.key.width = unit(0.1, "npc")
   ) +
   # Annotate and labels
   labs(
@@ -300,3 +299,5 @@ ggplot(nuts2_sf) +
     )
   )
 ```
+
+Happy mapping!

@@ -147,7 +147,7 @@ gisco_get_countries <- function(
     return(data_sf)
   }
 
-  # Not cached are read from url
+  # Not cached data are read from URL
   if (all(isFALSE(cache), ext != "shp")) {
     msg <- paste0("{.url ", api_entry, "}.")
     make_msg("info", verbose, "Reading from", msg)
@@ -170,8 +170,8 @@ gisco_get_countries <- function(
     return(NULL)
   }
 
-  # Improve speed using querys if country(es) are selected
-  # We construct the query and passed it to the st_read fun
+  # Improve speed using queries if country(es) are selected
+  # We construct the query and pass it to the st_read function
 
   cnt_region <- get_countrycodes_region(country, region)
   filter_col <- get_col_name(file_local)

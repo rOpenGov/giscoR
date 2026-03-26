@@ -1,4 +1,5 @@
 #' @rdname gisco_get_unit
+#' @encoding UTF-8
 #' @export
 #'
 #' @examplesIf gisco_check_access()

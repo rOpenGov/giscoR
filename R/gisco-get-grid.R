@@ -6,6 +6,7 @@
 #' as population figures are provided for these cells.
 #'
 #' @family grids
+#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @inherit gisco_get_countries return
 #' @export

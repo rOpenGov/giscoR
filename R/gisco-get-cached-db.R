@@ -4,6 +4,7 @@
 #' GISCO API.
 #'
 #' @family database
+#' @encoding UTF-8
 #' @export
 #' @inherit gisco_get_metadata return source
 #'

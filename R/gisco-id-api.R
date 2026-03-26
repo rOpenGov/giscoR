@@ -13,6 +13,7 @@
 #' @rdname gisco_id_api
 #' @inheritParams gisco_address_api
 #' @family API tools
+#' @encoding UTF-8
 #' @export
 #'
 #' @source

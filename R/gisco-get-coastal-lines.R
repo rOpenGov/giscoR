@@ -5,6 +5,7 @@
 #'
 #' @rdname gisco_get_coastal_lines
 #' @family stats
+#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @inheritSection gisco_get_countries Note
 #' @inherit gisco_get_countries return
@@ -85,7 +86,7 @@ gisco_get_coastal_lines <- function(
     return(data_sf)
   }
 
-  # Not cached are read from url
+  # Not cached data are read from URL
   if (all(isFALSE(cache), ext != "shp")) {
     msg <- paste0("{.url ", api_entry, "}.")
     make_msg("info", verbose, "Reading from", msg)

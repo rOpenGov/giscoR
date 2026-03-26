@@ -2,7 +2,7 @@
 #'
 #' @family cache utilities
 #' @seealso [tools::R_user_dir()]
-#'
+#' @encoding UTF-8
 #' @rdname gisco_set_cache_dir
 #'
 #' @description
@@ -17,7 +17,7 @@
 #'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`
 #'   this argument is set to `FALSE` automatically.
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
-#'   `GISCO_CACHE_DIR` that you already have in local machine.
+#'   `GISCO_CACHE_DIR` that you already have on your local machine.
 #'
 #' @details
 #' By default, when no cache `cache_dir` is set the package uses a folder inside
@@ -175,7 +175,7 @@ gisco_detect_cache_dir <- function() {
 #'
 #' @rdname gisco_clear_cache
 #' @family cache utilities
-#'
+#' @encoding UTF-8
 #' @return Invisible. This function is called for its side effects.
 #'
 #' @description
