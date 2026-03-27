@@ -1,5 +1,6 @@
-#' Help Documentation for giscor Package
-#' #' @description
+#' Help Documentation for giscoR package
+#'
+#' @description
 #' Internal function to get possible values from the cached `gisco_db` database.
 #'
 #' @param id character string. The `id_giscor` value to filter the database.

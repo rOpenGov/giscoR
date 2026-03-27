@@ -6,8 +6,8 @@
 #' to country, but roughly includes the following:
 #'
 #' *"'Hospitals' comprises licensed establishments primarily engaged in
-#' providing medical, diagnostic, and treatment services that include physician,
-#' nursing, and other health services to in-patients and the specialised
+#' providing medical, diagnostic and treatment services that include physician,
+#' nursing and other health services to in-patients and the specialised
 #' accommodation services required by inpatients."*
 #'
 #' @family services

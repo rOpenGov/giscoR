@@ -50,18 +50,18 @@ NULL
 #' `r nrow(giscoR::gisco_countries_2024)` rows and 12 variables:
 #' \describe{
 #'   \item{`CNTR_ID`}{Country ID as per Eurostat.}
-#'   \item{`CNTR_NAME`}{Official country name on local language.}
+#'   \item{`CNTR_NAME`}{Official country name in local language.}
 #'   \item{`NAME_ENGL`}{Country name in English.}
 #'   \item{`NAME_FREN`}{Country name in French.}
 #'   \item{`ISO3_CODE`}{ISO 3166-1 alpha-3 code of each country, as provided by
 #'   GISCO.}
 #'   \item{`SVRG_UN`}{Sovereign status as per United Nations.}
-#'   \item{`CAPT`}{Capitol city.}
+#'   \item{`CAPT`}{Capital city.}
 #'   \item{`EU_STAT`}{European Union member.}
 #'   \item{`EFTA_STAT`}{EFTA member.}
 #'   \item{`CC_STAT`}{EU candidate member.}
 #'   \item{`NAME_GERM`}{Country name in German.}
-#'   \item{`geometry`}{geometry field.}
+#'   \item{`geometry`}{Geometry field.}
 #' }
 #' @examples
 #'

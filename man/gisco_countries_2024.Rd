@@ -11,18 +11,18 @@ A \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution
 263 rows and 12 variables:
 \describe{
 \item{\code{CNTR_ID}}{Country ID as per Eurostat.}
-\item{\code{CNTR_NAME}}{Official country name on local language.}
+\item{\code{CNTR_NAME}}{Official country name in local language.}
 \item{\code{NAME_ENGL}}{Country name in English.}
 \item{\code{NAME_FREN}}{Country name in French.}
 \item{\code{ISO3_CODE}}{ISO 3166-1 alpha-3 code of each country, as provided by
 GISCO.}
 \item{\code{SVRG_UN}}{Sovereign status as per United Nations.}
-\item{\code{CAPT}}{Capitol city.}
+\item{\code{CAPT}}{Capital city.}
 \item{\code{EU_STAT}}{European Union member.}
 \item{\code{EFTA_STAT}}{EFTA member.}
 \item{\code{CC_STAT}}{EU candidate member.}
 \item{\code{NAME_GERM}}{Country name in German.}
-\item{\code{geometry}}{geometry field.}
+\item{\code{geometry}}{Geometry field.}
 }
 }
 \source{

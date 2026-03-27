@@ -61,8 +61,8 @@ data. One of:
 \code{"shp"}, \code{"geojson"}, \code{"svg"}, \code{"json"}, \code{"gdb"}. See \strong{Details}.}
 
 \item{recursive}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{recursive} is no
-longer supported; this function will never perform recursive extraction of
-child \code{.zip} files. This is the case of "\code{shp.zip} inside the top-level
+longer supported, and this function will never perform recursive extraction
+of child \code{.zip} files. This is the case of "\code{shp.zip} inside the top-level
 \code{.zip}, that won't be unzipped.}
 
 \item{...}{Ignored. The argument \code{id_giscoR}
@@ -120,7 +120,7 @@ connect <- gisco_get_countries(
   cache_dir = tmp, verbose = TRUE
 )
 
-# Message shows that file is already cached ;)
+# Message shows that file is already cached
 }
 # Clean
 unlink(tmp, force = TRUE)

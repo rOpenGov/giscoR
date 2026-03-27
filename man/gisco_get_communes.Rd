@@ -84,7 +84,7 @@ territorial units).
 
 The dataset is based on EuroBoundaryMap from
 \href{https://eurogeographics.org/}{EuroGeographics}. Geographical extent covers
-the European Union 28, EFTA countries, and candidate countries. The scale of
+the European Union 28, EFTA countries and candidate countries. The scale of
 the dataset is 1:100 000.
 
 The LAU classification is not covered by any legislative act.

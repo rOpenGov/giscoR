@@ -30,8 +30,8 @@
 #'
 #'   This argument replaces the previous (deprecated) argument `id_giscoR`.
 #' @param recursive `r lifecycle::badge("deprecated")` `recursive` is no
-#'   longer supported; this function will never perform recursive extraction of
-#'   child `.zip` files. This is the case of "`shp.zip` inside the top-level
+#'   longer supported, and this function will never perform recursive extraction
+#'   of child `.zip` files. This is the case of "`shp.zip` inside the top-level
 #'   `.zip`, that won't be unzipped.
 #' @param ... Ignored. The argument `id_giscoR`
 #'   (`r lifecycle::badge("deprecated")`) is captured via `...` and redirected
@@ -80,7 +80,7 @@
 #'   cache_dir = tmp, verbose = TRUE
 #' )
 #'
-#' # Message shows that file is already cached ;)
+#' # Message shows that file is already cached
 #' }
 #' # Clean
 #' unlink(tmp, force = TRUE)

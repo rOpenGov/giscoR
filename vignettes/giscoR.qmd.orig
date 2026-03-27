@@ -36,10 +36,10 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 provide a simple interface to the [GISCO
 API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-Within Eurostat, GISCO supports geographic data at three levels: the European
-Union, its member countries, and its regions. GISCO provides shapefiles in
-different formats, focusing especially on the European Union but also offering
-worldwide datasets such as country polygons, labels, borders, and coastlines.
+GISCO provides geographic data for the European Union, its member countries, and
+subnational regions. GISCO provides shapefiles in different formats, focusing
+especially on the EU but also offering worldwide datasets such as country
+polygons, labels, borders, and coastlines.
 
 GISCO supplies data at multiple resolutions: high-detail datasets for small
 areas (01M, 03M), and lightweight datasets for larger areas (10M, 20M, 60M).
@@ -60,7 +60,7 @@ gisco_set_cache_dir("./path/to/location")
 ```
 
 If a file is not available locally, it will be downloaded to that directory so
-subsequent requests for the same data will be loaded from the local cache.
+that subsequent requests for the same data are served from the local cache.
 
 If you experience any problems downloading, you can also manually download the
 file from the [GISCO API

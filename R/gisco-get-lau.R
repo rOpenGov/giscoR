@@ -39,7 +39,7 @@
 #' territorial units).
 #'
 #' The LAU classification is not covered by any legislative act. Geographical
-#' extent covers the European Union, EFTA countries, and candidate countries.
+#' extent covers the European Union, EFTA countries and candidate countries.
 #' The scale of the dataset is 1:100 000.
 #'
 #' The data contains the National Statistical agency LAU code which can be

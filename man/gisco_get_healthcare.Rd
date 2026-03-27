@@ -54,8 +54,8 @@ be 'hospitals' by Member States. The definition varies slightly from country
 to country, but roughly includes the following:
 
 \emph{"'Hospitals' comprises licensed establishments primarily engaged in
-providing medical, diagnostic, and treatment services that include physician,
-nursing, and other health services to in-patients and the specialised
+providing medical, diagnostic and treatment services that include physician,
+nursing and other health services to in-patients and the specialised
 accommodation services required by inpatients."}
 }
 \details{

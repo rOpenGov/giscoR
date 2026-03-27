@@ -1,10 +1,10 @@
-# giscoR (development version)
+# giscoR 1.1.0
 
 -   Use `testthat::local_mocked_bindings()` on API error testing.
 -   Adapt vignettes to Quarto.
 -   Bump minimal **httr2** version to **1.2.0** (#126).
 -   Query timeout can be controlled with `options(gisco_timeout)` using
-    `httr2::req_timeout()`. Default value is
+    `httr2::req_timeout()`. The default value is
     `httr2::req_timeout(..., seconds = 300)` (5 minutes) (#123).
 
 # giscoR 1.0.1
