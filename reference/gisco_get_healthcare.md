@@ -5,8 +5,8 @@ to be 'hospitals' by Member States. The definition varies slightly from
 country to country, but roughly includes the following:
 
 *"'Hospitals' comprises licensed establishments primarily engaged in
-providing medical, diagnostic, and treatment services that include
-physician, nursing, and other health services to in-patients and the
+providing medical, diagnostic and treatment services that include
+physician, nursing and other health services to in-patients and the
 specialised accommodation services required by inpatients."*
 
 ## Usage
@@ -52,7 +52,7 @@ of the input national data.
 - update_cache:
 
   logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  set to `TRUE` it forces a new download.
 
 - cache_dir:
 

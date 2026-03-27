@@ -1,5 +1,18 @@
 # Changelog
 
+## giscoR 1.1.0
+
+- Use
+  [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
+  on API error testing.
+- Adapt vignettes to Quarto.
+- Bump minimal **httr2** version to **1.2.0**
+  ([\#126](https://github.com/rOpenGov/giscoR/issues/126)).
+- Query timeout can be controlled with `options(gisco_timeout)` using
+  [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
+  The default value is `httr2::req_timeout(..., seconds = 300)` (5
+  minutes) ([\#123](https://github.com/rOpenGov/giscoR/issues/123)).
+
 ## giscoR 1.0.1
 
 CRAN release: 2026-01-23
@@ -18,7 +31,7 @@ CRAN release: 2026-01-23
 CRAN release: 2025-12-10
 
 This major release introduces a full overhaul of the codebase and test
-suite. Requests now use **httr2**, and **GeoPackage** (`”gpkg”`) becomes
+suite. Requests now use **httr2**, and **GeoPackage** (`"gpkg"`) becomes
 the preferred download format when available. Cached files are
 reorganized into topic-based subfolders for easier management.
 
@@ -64,7 +77,7 @@ We recommend reviewing the updated documentation at
 
 - Refactor code and test suite for improved stability.
 - Switch API requests to **httr2**.
-- Adopt GeoPackage (`”gpkg”`) as the preferred download format.
+- Adopt GeoPackage (`"gpkg"`) as the preferred download format.
 - Reorganize cache into topic-based subfolders.
 
 > **Note:** Previous caches must be recreated.
@@ -119,8 +132,8 @@ We renamed several functions to improve clarity and consistency:
 
 ### Argument updates
 
-- Add `ext` argument to control file format (`”gpkg”`, `”shp”`,
-  `”geojson”`).
+- Add `ext` argument to control file format (`"gpkg"`, `"shp"`,
+  `"geojson"`).
 - Update default `year` to the latest release
   ([\#105](https://github.com/rOpenGov/giscoR/issues/105)).
 
@@ -222,9 +235,9 @@ CRAN release: 2024-05-29
   [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md).
 - Update defaults:
   - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
-    → `”2021”`
+    → `"2021"`
   - [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
-    → `”2021”`
+    → `"2021"`
 - Update documentation URLs.
 
 ## giscoR 0.4.2

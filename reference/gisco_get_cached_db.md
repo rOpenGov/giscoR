@@ -17,7 +17,7 @@ gisco_get_cached_db(update_cache = FALSE)
 
 - update_cache:
 
-  logical. On `TRUE` the cached database would be rebuilt with the most
+  logical. On `TRUE` the cached database is rebuilt with the most
   updated information of the GISCO API.
 
 ## Value
@@ -29,8 +29,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 The cached database is stored in the
 [giscoR](https://CRAN.R-project.org/package=giscoR) cache path, see
 [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md)
-for details. The cached database would be used in subsequent **R**
-sessions.
+for details. The cached database is used in subsequent **R** sessions.
 
 On new GISCO data releases, you can access the new updated data simply
 by refreshing the cached database without waiting for a new version of
@@ -38,8 +37,8 @@ by refreshing the cached database without waiting for a new version of
 
 A static database
 [gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md) is
-shipped with the package. This database would be used in case there is
-any problem on update.
+shipped with the package. This database is used in case there is any
+problem on update.
 
 ## See also
 
@@ -64,5 +63,5 @@ gisco_get_cached_db() |>
 #> $ ext          <chr> "csv", "geojson", "gpkg", "json", "pbf", "shp", "csv", "g…
 #> $ api_file     <chr> "csv/COAS_RG_01M_2006_3035.csv", "geojson/COAS_RG_01M_200…
 #> $ api_entry    <chr> "https://gisco-services.ec.europa.eu/distribution/v2/coas…
-#> $ last_updated <date> 2026-03-02, 2026-03-02, 2026-03-02, 2026-03-02, 2026-03-…
+#> $ last_updated <date> 2026-03-27, 2026-03-27, 2026-03-27, 2026-03-27, 2026-03-…
 ```

@@ -1,51 +1,70 @@
-# CONTRIBUTING
+# Contributing to giscoR
+
+This outlines how to propose a change to **giscoR**.
 
 ## Fixing typos
 
-Small typos or grammatical errors in documentation may be edited
-directly using the GitHub web interface, so long as the changes are made
-in the *source* file.
+You can fix typos, spelling mistakes, or grammatical errors in the
+documentation directly using the GitHub web interface, as long as the
+changes are made in the *source* file. This generally means you’ll need
+to edit [roxygen2
+comments](https://roxygen2.r-lib.org/articles/roxygen2.html) in an `.R`,
+not a `.Rd` file. You can find the `.R` file that generates the `.Rd` by
+reading the comment in the first line.
 
-- YES ✔️: you edit a roxygen comment in a `.R` file below `R/`.
-- NO ❌: you edit an `.Rd` file below `man/`.
+## Bigger changes
 
-## Prerequisites
+If you want to make a bigger change, it’s a good idea to first file an
+issue and make sure someone from the team agrees that it’s needed. If
+you’ve found a bug, please file an issue that illustrates the bug with a
+minimal [reprex](https://www.tidyverse.org/help/#reprex) (this will also
+help you write a unit test, if needed). See our guide on [how to create
+a great issue](https://code-review.tidyverse.org/issues/) for more
+advice.
 
-Before you make a substantial pull request, you should always file an
-issue and make sure someone from the team agrees that it’s a problem. If
-you’ve found a bug, create an associated issue and illustrate the bug
-with a minimal [reprex](https://www.tidyverse.org/help/#reprex).
+### Pull request process
 
-## Pull request process
+- Fork the package and clone onto your computer. If you haven’t done
+  this before, we recommend using
+  `usethis::create_from_github("rOpenGov/giscoR", fork = TRUE)`.
 
-- We recommend that you create a Git branch for each pull request (PR).
-- Look at the `R-CMD-check` build status before. After making changes,
-  run
-  [`devtools::check()`](https://devtools.r-lib.org/reference/check.html)
-  and ensure no new Notes, Warnings or Errors are appearing.
-- We recommend the tidyverse [style guide](http://style.tidyverse.org).
-  We also use the [styler](https://CRAN.R-project.org/package=styler)
-  package to apply these styles, but please **don’t restyle code that
-  has nothing to do with your PR**.
-- We use [roxygen2](https://cran.r-project.org/package=roxygen2).
-- We use [testthat](https://cran.r-project.org/package=testthat).
-  Contributions with test cases included are easier to accept.
-- For user-facing changes, add a bullet to the top of `NEWS.md` below
-  the current development version header describing the changes made
-  followed by your GitHub username, and links to relevant
-  issue(s)/PR(s).
+- Install all development dependencies with
+  [`devtools::install_dev_deps()`](https://devtools.r-lib.org/reference/install_deps.html),
+  and then make sure the package passes R CMD check by running
+  [`devtools::check()`](https://devtools.r-lib.org/reference/check.html).
+  If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help
+  before continuing.
 
-## Prefer to Email?
+- Create a Git branch for your pull request (PR). We recommend using
+  `usethis::pr_init("brief-description-of-change")`.
 
-Email the person listed as maintainer in the `DESCRIPTION` file of this
-repo.
+- Make your changes, commit to git, and then create a PR by running
+  [`usethis::pr_push()`](https://usethis.r-lib.org/reference/pull-requests.html),
+  and following the prompts in your browser. The title of your PR should
+  briefly describe the change. The body of your PR should contain
+  `Fixes #issue-number`.
 
-Though note that private discussions over email don’t help others - of
-course email is totally warranted if it’s a sensitive problem of any
-kind.
+- For user-facing changes, add a bullet to the top of `NEWS.md`
+  (i.e. just below the first header). Follow the style described in
+  <https://style.tidyverse.org/news.html>.
+
+### Code style
+
+- New code should follow the tidyverse [style
+  guide](https://style.tidyverse.org). You can use
+  [Air](https://posit-dev.github.io/air/) to apply this style, but
+  please don’t restyle code that has nothing to do with your PR.
+
+- We use [roxygen2](https://cran.r-project.org/package=roxygen2), with
+  [Markdown
+  syntax](https://cran.r-project.org/web/packages/roxygen2/vignettes/rd-formatting.html),
+  for documentation.
+
+- We use [testthat](https://cran.r-project.org/package=testthat) for
+  unit tests. Contributions with test cases included are easier to
+  accept.
 
 ## Thanks for contributing!
 
 This contributing guide is adapted from the tidyverse contributing guide
-available at
-<https://raw.githubusercontent.com/r-lib/usethis/master/inst/templates/tidy-contributing.md>
+available at <https://tidyverse.tidyverse.org/CONTRIBUTING.html>.

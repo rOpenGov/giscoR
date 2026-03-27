@@ -16,8 +16,8 @@ GISCO API `datasets.json`.
 This database is used to redirect the corresponding functions to the
 right API endpoints.
 
-This version of the database would be used in case there is any problem
-on update. Please use
+This version of the database is used if there is a problem during
+update. Please use
 [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/reference/gisco_get_cached_db.md)
 with `update_cache = TRUE` to update the corresponding API endpoints.
 

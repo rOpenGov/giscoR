@@ -61,7 +61,7 @@ Copyright:
 - update_cache:
 
   logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  set to `TRUE` it forces a new download.
 
 - cache_dir:
 
@@ -92,9 +92,9 @@ Copyright:
 - level:
 
   character string. Level of Urban Audit. Possible values `"all"` (the
-  default), that would download the full dataset or `"CITIES"`, `"FUA"`,
-  and (for versions prior to `year = 2020`) `"GREATER_CITIES"`,
-  `"CITY"`, `"KERN"` or `"LUZ"`.
+  default), that downloads the full dataset or `"CITIES"`, `"FUA"`, and
+  (for versions prior to `year = 2020`) `"GREATER_CITIES"`, `"CITY"`,
+  `"KERN"` or `"LUZ"`.
 
 - ext:
 

@@ -13,7 +13,8 @@ labels) directly in **R**.
   units.
 - Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
   `01M`.
-- Choose from three projections: **EPSG 4326**, **3035**, or **3857**.
+- Choose from three projections: **EPSG:4326**, **EPSG:3035**, or
+  **EPSG:3857**.
 - Works seamlessly with **sf** objects for spatial analysis.
 - Includes **caching** for faster repeated access.
 
@@ -26,9 +27,9 @@ Install **giscoR** from
 install.packages("giscoR")
 ```
 
-## Quick Example
+## Quick example
 
-This script highlights some features of **giscoR** :
+This script highlights some features of **giscoR**:
 
 ``` r
 library(giscoR)
@@ -56,8 +57,8 @@ glimpse(nl_all)
 #> $ EFTA_STAT <chr> "F", "F", "F", "F"
 #> $ CC_STAT   <chr> "F", "F", "F", "F"
 #> $ NAME_GERM <chr> "Niederlande", "Niederlande", "Niederlande", "Niederlande"
-#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…
 #> $ res       <chr> "60M", "20M", "10M", "03M"
+#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…
 
 # Plot with ggplot2
 
@@ -77,7 +78,7 @@ ggplot(nl_all) +
 ![The Netherlands boundaries at different
 resolutions](reference/figures/README-resolution-map-1.png)
 
-## Advanced Example: Thematic maps
+## Advanced example: Thematic maps
 
 This example shows a thematic map created with the **ggplot2** package.
 The data are obtained via the **eurostat** package. This follows the
@@ -116,6 +117,10 @@ We now download the data from Eurostat:
 # Use eurostat
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                              
 ```
 
 Finally, we merge and manipulate the data to create the final plot:
@@ -177,12 +182,12 @@ ggplot(nuts3_sf) +
       face = "bold"
     ),
     plot.caption = element_text(color = "grey60", hjust = 0.5, vjust = 0),
-    legend.text = element_text(color = "grey20", hjust = .5),
-    legend.title = element_text(color = "grey20", hjust = .5),
+    legend.text = element_text(color = "grey20", hjust = 0.5),
+    legend.title = element_text(color = "grey20", hjust = 0.5),
     legend.position = "bottom",
     legend.title.position = "top",
     legend.text.position = "bottom",
-    legend.key.height = unit(.5, "line"),
+    legend.key.height = unit(0.5, "line"),
     legend.key.width = unit(2.5, "line")
   ) +
   # Annotate and labs
@@ -241,7 +246,7 @@ A BibTeX entry for LaTeX users is
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2026},
-  version = {1.0.1},
+  version = {1.1.0},
   url = {https://ropengov.github.io/giscoR/},
   abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
 }
@@ -259,8 +264,8 @@ A BibTeX entry for LaTeX users is
 > and [statistical
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
 > for more details.
->
-> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+
+Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
 ## Disclaimer
 

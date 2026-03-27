@@ -61,7 +61,7 @@ gisco_bulk_download(
 - update_cache:
 
   logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  set to `TRUE` it forces a new download.
 
 - verbose:
 
@@ -88,15 +88,15 @@ gisco_bulk_download(
 
 - recursive:
 
-  **\[deprecated\]** `recursive` is no longer supported; this function
-  will never perform recursive extraction of child `.zip` files. This is
-  the case of "`shp.zip` inside the top-level `.zip`, that won't be
-  unzipped.
+  **\[deprecated\]** `recursive` is no longer supported, and this
+  function will never perform recursive extraction of child `.zip`
+  files. This is the case of "`shp.zip` inside the top-level `.zip`,
+  that won't be unzipped.
 
 - ...:
 
-  Ignored. The argument `id_giscoR` (**\[deprecated\]**) would be
-  captured via `...` and re-directed to `id` with a
+  Ignored. The argument `id_giscoR` (**\[deprecated\]**) is captured via
+  `...` and redirected to `id` with a
   [warning](https://lifecycle.r-lib.org/reference/deprecate_soft.html).
 
 ## Value
@@ -107,7 +107,7 @@ extracted. See **Examples**.
 ## Details
 
 Some arguments only apply to a specific value of `"id"`. For example
-`"resolution"` would be ignored for values `"communes"`, `"lau"`,
+`"resolution"` is ignored for values `"communes"`, `"lau"`,
 `"urban_audit"` and `"postal_codes"`.
 
 See years available in the corresponding functions:
@@ -176,10 +176,10 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache dir is /tmp/Rtmpb1GNFi/testexample/countries.
-#> ✔ File already cached: /tmp/Rtmpb1GNFi/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache dir is /tmp/Rtmp87e0Zs/testexample/countries.
+#> ✔ File already cached: /tmp/Rtmp87e0Zs/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
-# Message shows that file is already cached ;)
+# Message shows that file is already cached
 # }
 # Clean
 unlink(tmp, force = TRUE)

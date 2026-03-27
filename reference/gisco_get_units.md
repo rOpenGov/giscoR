@@ -74,7 +74,7 @@ All the source files are `.geojson` files.
 - update_cache:
 
   logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  set to `TRUE` it forces a new download.
 
 - cache_dir:
 

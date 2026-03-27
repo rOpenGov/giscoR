@@ -9,15 +9,14 @@
 to provide a simple interface to the [GISCO
 API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-Within Eurostat, GISCO meets the European Commission’s geographical
-information needs at three levels: the European Union, its member
-countries, and its regions. GISCO provides shapefiles in different
-formats, focusing especially on the European Union but also offering
-some worldwide datasets such as country polygons, labels, borders, and
+GISCO provides geographic data for the European Union, its member
+countries, and subnational regions. GISCO provides shapefiles in
+different formats, focusing especially on the EU but also offering
+worldwide datasets such as country polygons, labels, borders, and
 coastlines.
 
 GISCO supplies data at multiple resolutions: high-detail datasets for
-small areas (01M, 03M) and lightweight datasets for larger areas (10M,
+small areas (01M, 03M), and lightweight datasets for larger areas (10M,
 20M, 60M). Datasets are available in three projections:
 [EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035),
 and [EPSG:3857](https://epsg.io/3857).
@@ -36,8 +35,8 @@ gisco_set_cache_dir("./path/to/location")
 ```
 
 If a file is not available locally, it will be downloaded to that
-directory so subsequent requests for the same data will load from the
-local cache.
+directory so that subsequent requests for the same data are served from
+the local cache.
 
 If you experience any problems downloading, you can also manually
 download the file from the [GISCO API
@@ -49,6 +48,8 @@ it in your local cache directory.
 Please note the following attribution and licensing requirements when
 using GISCO data:
 
+### General copyright
+
 > [Eurostat’s general copyright notice and licence
 > policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
 > applies. Moreover, there are specific rules that apply to some of the
@@ -59,8 +60,8 @@ using GISCO data:
 > and [statistical
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
 > for more details.
->
-> Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+
+Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
 There is a function,
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md),
@@ -141,8 +142,8 @@ You can select specific countries by name (in any language), ISO3 codes,
 or Eurostat codes. However, you cannot mix these identifier types in a
 single call.
 
-You can also combine different datasets — set `resolution` and `epsg`
-(and optionally `year`) to the same value:
+You can also combine datasets by using the same `resolution`, `epsg`,
+and (optionally) `year`:
 
 ``` r
 cntr <- c("Morocco", "Algeria", "Tunisia", "Libya", "Egypt")
@@ -204,6 +205,11 @@ eu_bord <- borders |>
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                                     
+
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -259,7 +265,7 @@ ggplot(nuts2_sf) +
     legend.text.position = "bottom",
     legend.title.position = "top",
     legend.key.height = rel(0.5),
-    legend.key.width = unit(.1, "npc")
+    legend.key.width = unit(0.1, "npc")
   ) +
   # Annotate and labels
   labs(
@@ -274,5 +280,3 @@ ggplot(nuts2_sf) +
 
 ![Disposable income of private households by NUTS 2 regions
 (2022)](./fig-giscor-1.png)
-
-Disposable income of private households by NUTS 2 regions (2022)

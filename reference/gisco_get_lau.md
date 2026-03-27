@@ -56,7 +56,7 @@ Copyright:
 - update_cache:
 
   logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  set to `TRUE` it forces a new download.
 
 - cache_dir:
 
@@ -97,7 +97,7 @@ different levels (NUTS 1, 2 and 3 and LAU, respectively, moving from
 larger to smaller territorial units).
 
 The LAU classification is not covered by any legislative act.
-Geographical extent covers the European Union, EFTA countries, and
+Geographical extent covers the European Union, EFTA countries and
 candidate countries. The scale of the dataset is 1:100 000.
 
 The data contains the National Statistical agency LAU code which can be

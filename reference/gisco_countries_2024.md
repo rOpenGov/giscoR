@@ -15,7 +15,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `CNTR_NAME`:
 
-  Official country name on local language.
+  Official country name in local language.
 
 - `NAME_ENGL`:
 
@@ -35,7 +35,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `CAPT`:
 
-  Capitol city.
+  Capital city.
 
 - `EU_STAT`:
 
@@ -55,7 +55,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `geometry`:
 
-  geometry field.
+  Geometry field.
 
 ## Source
 

@@ -55,7 +55,7 @@ Copyright:
 - update_cache:
 
   logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it would force a new download.
+  set to `TRUE` it forces a new download.
 
 - cache_dir:
 
@@ -78,8 +78,8 @@ Copyright:
 
   - `"BN"`: Boundaries - `LINESTRING` object.
 
-  **Note that** argument `country` would be only applied when
-  `spatialtype` is `"RG"` or `"LB"`.
+  **Note that** argument `country` is only applied when `spatialtype` is
+  `"RG"` or `"LB"`.
 
 - country:
 
@@ -107,7 +107,7 @@ larger to smaller territorial units).
 
 The dataset is based on EuroBoundaryMap from
 [EuroGeographics](https://eurogeographics.org/). Geographical extent
-covers the European Union 28, EFTA countries, and candidate countries.
+covers the European Union 28, EFTA countries and candidate countries.
 The scale of the dataset is 1:100 000.
 
 The LAU classification is not covered by any legislative act.
