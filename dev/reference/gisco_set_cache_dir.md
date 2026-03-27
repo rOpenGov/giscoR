@@ -111,29 +111,29 @@ Other cache utilities:
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpn9iQ6D/giscoR
+#> ℹ /tmp/RtmpnfXf0S/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache dir is /tmp/Rtmpn9iQ6D/example/cachenew.
+#> ℹ giscoR cache dir is /tmp/RtmpnfXf0S/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpn9iQ6D/example/cachenew
-#> [1] "/tmp/Rtmpn9iQ6D/example/cachenew"
+#> ℹ /tmp/RtmpnfXf0S/example/cachenew
+#> [1] "/tmp/RtmpnfXf0S/example/cachenew"
 
 # Restore initial cache
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is /tmp/Rtmpn9iQ6D/giscoR.
+#> ℹ giscoR cache dir is /tmp/RtmpnfXf0S/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/Rtmpn9iQ6D/giscoR
+#> ℹ /tmp/RtmpnfXf0S/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpn9iQ6D/giscoR
-#> [1] "/tmp/Rtmpn9iQ6D/giscoR"
+#> ℹ /tmp/RtmpnfXf0S/giscoR
+#> [1] "/tmp/RtmpnfXf0S/giscoR"
 ```
