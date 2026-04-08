@@ -69,7 +69,7 @@ and (for versions prior to \code{year = 2020}) \code{"GREATER_CITIES"}, \code{"C
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 The dataset contains the boundaries of cities (\code{"CITIES"}), greater cities
@@ -126,9 +126,9 @@ See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk 
 See \code{\link[=gisco_get_unit_urban_audit]{gisco_get_unit_urban_audit()}} to download single files.
 
 Other statistical units datasets:
-\code{\link{gisco_get_census}()},
-\code{\link{gisco_get_coastal_lines}()},
-\code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_nuts}()}
+\code{\link[=gisco_get_census]{gisco_get_census()}},
+\code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
+\code{\link[=gisco_get_lau]{gisco_get_lau()}},
+\code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
 }
 \concept{stats}

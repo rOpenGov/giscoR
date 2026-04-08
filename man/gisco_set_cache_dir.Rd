@@ -17,7 +17,7 @@ gisco_detect_cache_dir()
 }
 \arguments{
 \item{cache_dir}{A path to a cache directory. On \code{NULL}, the function
-stores the cached files on a temporary dir (see \code{\link[base:tempfile]{base::tempdir()}}).}
+stores the cached files on a temporary dir (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
 \item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
 \code{GISCO_CACHE_DIR} that you already have on your local machine.}
@@ -42,7 +42,7 @@ find your cached path or use \code{\link[=gisco_detect_cache_dir]{gisco_detect_c
 }
 \details{
 By default, when no cache \code{cache_dir} is set the package uses a folder inside
-\code{\link[base:tempfile]{base::tempdir()}} (so files are temporary and are removed when the \strong{R}
+\code{\link[base:tempdir]{base::tempdir()}} (so files are temporary and are removed when the \strong{R}
 session ends). To persist a cache across \strong{R} sessions, use
 \code{gisco_set_cache_dir(cache_dir, install = TRUE)} which writes the chosen
 path to a small configuration file under
@@ -104,9 +104,9 @@ gisco_detect_cache_dir()
 
 }
 \seealso{
-\code{\link[tools:userdir]{tools::R_user_dir()}}
+\code{\link[tools:R_user_dir]{tools::R_user_dir()}}
 
-Other cache utilities: 
-\code{\link{gisco_clear_cache}()}
+Other cache utilities:
+\code{\link[=gisco_clear_cache]{gisco_clear_cache()}}
 }
 \concept{cache utilities}

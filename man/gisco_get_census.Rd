@@ -38,7 +38,7 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 }}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset shows pan European communal boundaries depicting the situation
@@ -59,9 +59,9 @@ pts
 See \code{\link[=gisco_id_api_census_grid]{gisco_id_api_census_grid()}} to download via GISCO ID service API.
 
 Other statistical units datasets:
-\code{\link{gisco_get_coastal_lines}()},
-\code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_nuts}()},
-\code{\link{gisco_get_urban_audit}()}
+\code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
+\code{\link[=gisco_get_lau]{gisco_get_lau()}},
+\code{\link[=gisco_get_nuts]{gisco_get_nuts()}},
+\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}
 }
 \concept{stats}

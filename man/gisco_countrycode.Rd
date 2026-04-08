@@ -31,7 +31,7 @@ European Union.}
 \link[countrycode:codelist]{countrycode::codelist} \strong{v1.6.1}.
 }
 \description{
-A \link[tibble:tbl_df-class]{tibble} containing conversions between different country
+A \link[tibble:tbl_df]{tibble} containing conversions between different country
 code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
 provided by the World Bank and the UN
 (\href{https://unstats.un.org/unsd/methodology/m49/}{M49 Standard}). This database
@@ -52,7 +52,7 @@ dplyr::glimpse(gisco_countrycode)
 
 See also the \href{https://cldr.unicode.org/translation/displaynames/countryregion-territory-names}{Unicode Common Locale Data Repository}.
 
-Other datasets: 
+Other datasets:
 \code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_db}},

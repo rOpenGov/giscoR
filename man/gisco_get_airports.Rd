@@ -36,7 +36,7 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset includes the location of over 11,800 Pan European airports and
@@ -83,6 +83,6 @@ if (!is.null(airp)) {
 }
 \seealso{
 Other transport networks datasets:
-\code{\link{gisco_get_ports}()}
+\code{\link[=gisco_get_ports]{gisco_get_ports()}}
 }
 \concept{transport}

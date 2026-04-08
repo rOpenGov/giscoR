@@ -85,7 +85,7 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 The GISCO statistical unit dataset represents the NUTS (nomenclature of
@@ -172,9 +172,9 @@ See \code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}} to download single
 See \code{\link[=gisco_id_api_nuts]{gisco_id_api_nuts()}} to download via GISCO ID service API.
 
 Other statistical units datasets:
-\code{\link{gisco_get_census}()},
-\code{\link{gisco_get_coastal_lines}()},
-\code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_urban_audit}()}
+\code{\link[=gisco_get_census]{gisco_get_census()}},
+\code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
+\code{\link[=gisco_get_lau]{gisco_get_lau()}},
+\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}
 }
 \concept{stats}

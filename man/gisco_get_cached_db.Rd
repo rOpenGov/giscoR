@@ -15,7 +15,7 @@ gisco_get_cached_db(update_cache = FALSE)
 with the most updated information of the GISCO API.}
 }
 \value{
-A \link[tibble:tbl_df-class]{tibble}.
+A \link[tibble:tbl_df]{tibble}.
 }
 \description{
 Returns or optionally updates the cached database with the endpoints of the
@@ -43,6 +43,6 @@ gisco_get_cached_db() |>
 \seealso{
 Other database utils:
 \code{\link{gisco_db}},
-\code{\link{gisco_get_metadata}()}
+\code{\link[=gisco_get_metadata]{gisco_get_metadata()}}
 }
 \concept{database}

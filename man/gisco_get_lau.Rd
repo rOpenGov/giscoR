@@ -59,7 +59,7 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset shows pan European administrative boundaries down to commune
@@ -122,9 +122,9 @@ See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk 
 See \code{\link[=gisco_id_api_lau]{gisco_id_api_lau()}} to download via GISCO ID service API.
 
 Other statistical units datasets:
-\code{\link{gisco_get_census}()},
-\code{\link{gisco_get_coastal_lines}()},
-\code{\link{gisco_get_nuts}()},
-\code{\link{gisco_get_urban_audit}()}
+\code{\link[=gisco_get_census]{gisco_get_census()}},
+\code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
+\code{\link[=gisco_get_nuts]{gisco_get_nuts()}},
+\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}
 }
 \concept{stats}

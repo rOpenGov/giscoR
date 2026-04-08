@@ -6,7 +6,7 @@
 \alias{gisco_db}
 \title{Cached GISCO database}
 \format{
-A \link[tibble:tbl_df-class]{tibble} with
+A \link[tibble:tbl_df]{tibble} with
 9,714 rows.
 }
 \source{
@@ -30,15 +30,15 @@ gisco_db |>
   dplyr::glimpse()
 }
 \seealso{
-Other datasets: 
+Other datasets:
 \code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_nuts_2024}}
 
 Other database utils:
-\code{\link{gisco_get_cached_db}()},
-\code{\link{gisco_get_metadata}()}
+\code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}},
+\code{\link[=gisco_get_metadata]{gisco_get_metadata()}}
 }
 \concept{database}
 \concept{datasets}

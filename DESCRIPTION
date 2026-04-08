@@ -41,6 +41,7 @@ Suggests:
     withr
 VignetteBuilder:
     quarto
+Config/roxygen2/version: 7.3.3.9000
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: Eurostat's general copyright notice and licence policy applies
@@ -50,7 +51,6 @@ Copyright: Eurostat's general copyright notice and licence policy applies
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 X-schema.org-applicationCategory: cartography
 X-schema.org-isPartOf: http://ropengov.org/
 X-schema.org-keywords: ropengov, r, spatial, api-wrapper, rstats,

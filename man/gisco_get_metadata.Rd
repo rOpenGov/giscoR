@@ -23,7 +23,7 @@ values are \code{"nuts"}, \code{"countries"} or \code{"urban_audit"}.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \link[tibble:tbl_df-class]{tibble}.
+A \link[tibble:tbl_df]{tibble}.
 }
 \description{
 Get a table with the names and ids of administrative and statistical units.
@@ -40,6 +40,6 @@ cities
 
 Other database utils:
 \code{\link{gisco_db}},
-\code{\link{gisco_get_cached_db}()}
+\code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}}
 }
 \concept{database}

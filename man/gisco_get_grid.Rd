@@ -34,7 +34,7 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 These datasets contain grid cells covering the European land

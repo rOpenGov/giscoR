@@ -91,7 +91,7 @@ Options available are:
 }}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Download datasets of single spatial units from GISCO to the
@@ -143,10 +143,10 @@ ggplot(valencia_sf) +
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}, \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}, \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}.
 
-See \code{\link[=gisco_id_api]{gisco_id_api}} to download via GISCO ID service
+See \code{\link{gisco_id_api}} to download via GISCO ID service
 API.
 
 Additional utils for downloading datasets:
-\code{\link{gisco_bulk_download}()}
+\code{\link[=gisco_bulk_download]{gisco_bulk_download()}}
 }
 \concept{extra}

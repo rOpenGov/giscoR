@@ -62,7 +62,7 @@ data. One of:
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Downloads worldwide coastlines.
@@ -97,9 +97,9 @@ ggplot(coast) +
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
 Other statistical units datasets:
-\code{\link{gisco_get_census}()},
-\code{\link{gisco_get_lau}()},
-\code{\link{gisco_get_nuts}()},
-\code{\link{gisco_get_urban_audit}()}
+\code{\link[=gisco_get_census]{gisco_get_census()}},
+\code{\link[=gisco_get_lau]{gisco_get_lau()}},
+\code{\link[=gisco_get_nuts]{gisco_get_nuts()}},
+\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}
 }
 \concept{stats}

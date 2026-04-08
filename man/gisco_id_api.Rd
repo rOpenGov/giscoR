@@ -102,11 +102,11 @@ reference system.}
 \code{1}, \code{2} or \code{3}.}
 
 \item{geometry}{logical. Whether to return geometry. On \code{TRUE} a
-\code{\link[sf:sf]{sf}} object is returned. On \code{FALSE} a
-\link[tibble:tbl_df-class]{tibble} is returned.}
+\code{\link[sf:st_sf]{sf}} object is returned. On \code{FALSE} a
+\link[tibble:tbl_df]{tibble} is returned.}
 }
 \value{
-A \link[tibble:tbl_df-class]{tibble} or a \code{\link[sf:sf]{sf}} object.
+A \link[tibble:tbl_df]{tibble} or a \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Functions to interact with the \href{https://gisco-services.ec.europa.eu/id/api-docs/}{GISCO ID service API}, which returns
@@ -175,7 +175,7 @@ if (all(!is.null(lau), !is.null(nuts3))) {
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}, \code{\link[=gisco_get_lau]{gisco_get_lau()}}, \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \code{\link[=gisco_get_census]{gisco_get_census()}}.
 
-Other API tools: 
+Other API tools:
 \code{\link{gisco_address_api}}
 }
 \concept{API tools}

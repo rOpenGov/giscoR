@@ -88,7 +88,7 @@ European Union (as per 2021). See \strong{World Regions} and
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset contains the administrative boundaries at country level of the
@@ -135,7 +135,7 @@ See \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}} to download 
 See \code{\link[=gisco_id_api_country]{gisco_id_api_country()}} to download via GISCO ID service API.
 
 Other administrative units datasets:
-\code{\link{gisco_get_communes}()},
-\code{\link{gisco_get_postal_codes}()}
+\code{\link[=gisco_get_communes]{gisco_get_communes()}},
+\code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}
 }
 \concept{admin}

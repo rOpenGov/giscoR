@@ -104,9 +104,9 @@ province use the cities endpoint
 into a human-readable address.}
 }
 \value{
-A \link[tibble:tbl_df-class]{tibble} in most cases, except
+A \link[tibble:tbl_df]{tibble} in most cases, except
 \code{gisco_address_api_search()}, \code{gisco_address_api_reverse()} and
-\code{gisco_address_api_bbox()}, that return a \code{\link[sf:sf]{sf}} object.
+\code{gisco_address_api_bbox()}, that return a \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Functions to interact with the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}{GISCO Address API}, which
@@ -177,7 +177,7 @@ reverse
 See the docs:
 \url{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}.
 
-Other API tools: 
+Other API tools:
 \code{\link{gisco_id_api}}
 }
 \concept{API tools}

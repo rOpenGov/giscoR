@@ -46,7 +46,7 @@ vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset is an integration of Member States official data on the
@@ -119,6 +119,6 @@ if (!is.null(edu_austria)) {
 }
 \seealso{
 Other basic services datasets:
-\code{\link{gisco_get_healthcare}()}
+\code{\link[=gisco_get_healthcare]{gisco_get_healthcare()}}
 }
 \concept{services}

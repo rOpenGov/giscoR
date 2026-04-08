@@ -72,7 +72,7 @@ Options available are:
 }}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object on \code{mode = "sf"} or a \link[tibble:tbl_df-class]{tibble}
+A \code{\link[sf:st_sf]{sf}} object on \code{mode = "sf"} or a \link[tibble:tbl_df]{tibble}
 on \code{mode = "df"}.
 }
 \description{

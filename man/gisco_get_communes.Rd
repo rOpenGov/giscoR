@@ -68,7 +68,7 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset shows pan European administrative boundaries down to commune
@@ -121,7 +121,7 @@ if (!is.null(ire_comm)) {
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
 Other administrative units datasets:
-\code{\link{gisco_get_countries}()},
-\code{\link{gisco_get_postal_codes}()}
+\code{\link[=gisco_get_countries]{gisco_get_countries()}},
+\code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}
 }
 \concept{admin}

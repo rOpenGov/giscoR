@@ -43,7 +43,7 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 The postal code point dataset shows the location of postal codes, NUTS codes
@@ -94,7 +94,7 @@ if (!is.null(pc_bel)) {
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
 Other administrative units datasets:
-\code{\link{gisco_get_communes}()},
-\code{\link{gisco_get_countries}()}
+\code{\link[=gisco_get_communes]{gisco_get_communes()}},
+\code{\link[=gisco_get_countries]{gisco_get_countries()}}
 }
 \concept{admin}

@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{gisco_nuts_2024}
 \alias{gisco_nuts_2024}
-\title{NUTS 2024 \code{\link[sf:sf]{sf}} object}
+\title{NUTS 2024 \code{\link[sf:st_sf]{sf}} object}
 \format{
-A \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
+A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. with
 1798 rows and 10 variables:
 \describe{
@@ -69,7 +69,7 @@ head(gisco_nuts_2024)
 \seealso{
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
 
-Other datasets: 
+Other datasets:
 \code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},

@@ -46,7 +46,7 @@ vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
-A \code{\link[sf:sf]{sf}} object.
+A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 The dataset contains information on main healthcare services considered to
@@ -126,6 +126,6 @@ if (!is.null(health_benelux)) {
 }
 \seealso{
 Other basic services datasets:
-\code{\link{gisco_get_education}()}
+\code{\link[=gisco_get_education]{gisco_get_education()}}
 }
 \concept{services}

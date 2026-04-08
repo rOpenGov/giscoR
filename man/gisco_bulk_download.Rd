@@ -67,7 +67,7 @@ of child \code{.zip} files. This is the case of "\code{shp.zip} inside the top-l
 
 \item{...}{Ignored. The argument \code{id_giscoR}
 (\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}) is captured via \code{...} and redirected
-to \code{id} with a \link[lifecycle:deprecate_soft]{warning}.}
+to \code{id} with a \link[lifecycle:deprecate_warn]{warning}.}
 }
 \value{
 A (invisible) character vector with the full path of the files extracted.

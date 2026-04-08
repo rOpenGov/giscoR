@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{gisco_countries_2024}
 \alias{gisco_countries_2024}
-\title{Countries 2024 \code{\link[sf:sf]{sf}} object}
+\title{Countries 2024 \code{\link[sf:st_sf]{sf}} object}
 \format{
-A \code{\link[sf:sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
+A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. with
 263 rows and 12 variables:
 \describe{
@@ -41,7 +41,7 @@ head(gisco_countries_2024)
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
 
-Other datasets: 
+Other datasets:
 \code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},

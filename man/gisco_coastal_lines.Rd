@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{gisco_coastal_lines}
 \alias{gisco_coastal_lines}
-\title{Coastal lines 2016 \code{\link[sf:sf]{sf}} object}
+\title{Coastal lines 2016 \code{\link[sf:st_sf]{sf}} object}
 \format{
-A \code{\link[sf:sf]{sf}} object with \code{POLYGON} geometries, resolution:
+A \code{\link[sf:st_sf]{sf}} object with \code{POLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}.
 }
 \source{
@@ -24,7 +24,7 @@ gisco_coastal_lines
 \seealso{
 \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}}
 
-Other datasets: 
+Other datasets:
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},
