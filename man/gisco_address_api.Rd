@@ -85,11 +85,11 @@ gisco_address_api_copyright(verbose = FALSE)
 \item{country}{Country code (\code{country = "LU"}).}
 
 \item{province}{A province within a country. For a list of provinces within a
-certain country use the provinces endpoint
+certain country, use the provinces endpoint
 (\code{gisco_address_api_provinces(country = "LU")}).}
 
 \item{city}{A city within a province. For a list of cities within a certain
-province use the cities endpoint
+province, use the cities endpoint
 (\code{gisco_address_api_cities(province = "capellen")}).}
 
 \item{road}{A road within a city.}
@@ -105,15 +105,15 @@ into a human-readable address.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble} in most cases, except
-\code{gisco_address_api_search()}, \code{gisco_address_api_reverse()} and
-\code{gisco_address_api_bbox()}, that return a \code{\link[sf:st_sf]{sf}} object.
+\code{gisco_address_api_search()}, \code{gisco_address_api_reverse()}, and
+\code{gisco_address_api_bbox()}, which return a \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Functions to interact with the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}{GISCO Address API}, which
 allows for both geocoding and reverse geocoding using a pan-European
 address database.
 
-Each endpoint available is implemented through a specific function, see
+Each endpoint is implemented through a specific function, see
 \strong{Details}.
 
 The API supports fuzzy searching (also referred to as approximate string
@@ -174,7 +174,7 @@ reverse
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-See the docs:
+See the docs at
 \url{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}.
 
 Other API tools:

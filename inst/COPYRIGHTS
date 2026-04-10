@@ -4,8 +4,7 @@
 Copyright notice and free re-use of data
 ========================================
 
-General principles
-==================
+# General principles
 
 1. The copyright for the editorial content of this website, which is owned by
    the EU, is licensed under the Creative Commons Attribution 4.0 International
@@ -17,7 +16,7 @@ General principles
 2. Reuse of statistical data, metadata, publications, and other dissemination
    tools published on this website for commercial or non-commercial purposes is
    authorised provided the source is acknowledged. The reuse policy of the
-   European Commission is implemented by the Decision of  12 December 2011
+   European Commission is implemented by the Decision of 12 December 2011
    <https://eur-lex.europa.eu/eli/dec/2011/833/oj>.
 
 3. These general principles can be subject to conditions which may be specified
@@ -26,8 +25,7 @@ General principles
 
 4. Exceptions to these general principles are listed below.
 
-Exceptions
-==========
+# Exceptions
 
 - The permission granted above does not extend to any material whose copyright
   is identified as belonging to a third-party, such as photos or illustrations
@@ -51,14 +49,13 @@ Exceptions
   (c) European Union, year
   Translator: XXXXX
 
-  Xxxx (Language of the translation) translation: (c) copyrightholder  (translator), year of the translation
+  Xxxx (Language of the translation) translation: (c) copyrightholder (translator), year of the translation
   The translation is the sole responsibility of the author or authors of the
-  translation.  In the event of any discrepancy between the original work and
+  translation. In the event of any discrepancy between the original work and
   the translation, only the text of original work shall be considered valid.
 
 - The following Eurostat data and documents may not be reused for commercial
   purposes, but non-commercial reuse is possible without restriction:
-
   - Data identified as belonging to sources other than Eurostat. All data
     published on Eurostat's website can be regarded as belonging to Eurostat
     for the purpose of their reuse, with the exceptions stated below, or if it
@@ -91,47 +88,45 @@ Exceptions
     commodity classifications), but it is allowed to sell Austrian export /
     import data declared by another EU Member State.
 
-How to re-use Eurostat material for commercial purposes
-=======================================================
+# How to re-use Eurostat material for commercial purposes
 
 There is no special procedure or requirement for a written licence. Just
 download the material and use it, unless the material is listed in the
 exceptions above.
 
-How to cite Eurostat products
-=============================
+# How to cite Eurostat products
 
 Parts indicated in squared brackets [ ] should be replaced by the relevant
 information by the user.
 
-  Datasets
-  ========
+Datasets
+========
 
-  Source: [digital object identifier (DOI) number of the Eurostat dataset], [access date]
+Source: [digital object identifier (DOI) number of the Eurostat dataset], [access date]
 
-  In the dataset, you can use the functionality to copy the DOI URL, which is located below the dataset title.
+In the dataset, you can use the functionality to copy the DOI URL, which is located below the dataset title.
 
-  Customised versions of a dataset must be cited as following:
+Customised versions of a dataset must be cited as following:
 
-  Source: [Eurostat dataset datacode link], [access date]
+Source: [Eurostat dataset datacode link], [access date]
 
-  The Data Browser provides an online help on how to copy the title together
-  with the datacode link of the dataset
-  <https://ec.europa.eu/eurostat/web/user-guides/data-browser/data-selection-display/save#bookmark-link>.
+The Data Browser provides an online help on how to copy the title together
+with the datacode link of the dataset
+<https://ec.europa.eu/eurostat/web/user-guides/data-browser/data-selection-display/save#bookmark-link>.
 
-  Publications
-  ============
+Publications
+============
 
-  European Commission, Eurostat, [Title of the publication], Publication Office
-  of the European Union, [year], [link, for example: https://data.europa.eu/doi/10.2785/494153]
+European Commission, Eurostat, [Title of the publication], Publication Office
+of the European Union, [year], [link, for example: https://data.europa.eu/doi/10.2785/494153]
 
-  You can find the DOI number on the publication products page under the section
-  'Additional information'.
+You can find the DOI number on the publication products page under the section
+'Additional information'.
 
-  Other products
-  ==============
+Other products
+==============
 
-  Source: Eurostat, [Title of the product], [link to the product], [access date].
+Source: Eurostat, [Title of the product], [link to the product], [access date].
 
-  This concerns for example interactive tools, data visualisations, webpages,
-  Statistics Explained articles, PDF documents.
+This concerns for example interactive tools, data visualisations, webpages,
+Statistics Explained articles, PDF documents.

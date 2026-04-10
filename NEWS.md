@@ -1,6 +1,6 @@
 # giscoR 1.1.0
 
--   Use `testthat::local_mocked_bindings()` on API error testing.
+-   Use `testthat::local_mocked_bindings()` for API error testing.
 -   Adapt vignettes to Quarto.
 -   Bump minimal **httr2** version to **1.2.0** (#126).
 -   Query timeout can be controlled with `options(gisco_timeout)` using
@@ -9,8 +9,8 @@
 
 # giscoR 1.0.1
 
--   Fix a bug that overwrites the internal data base on a new session with the
-    cached version. Now the cache should be persistent.
+-   Fix a bug that overwrote the internal database with the cached version in a
+    new session. The cache now persists.
 -   Update `?gisco_db`.
 -   `gisco_get_urban_audit()` and `gisco_get_unit_urban_audit()`: Default year
     changed to the latest available: 2024.
@@ -28,16 +28,14 @@ subfolders for easier management.
 Database management has also been improved. Instead of relying on the static
 `?gisco_db` dataset, the package now stores the database in the cache. This
 cached database is used for all API calls and can be updated via
-`gisco_get_cached_db(update_cache = TRUE)`. In practice, this means that when
-GISCO publishes a new yearly release, you can access the new updated data simply
-by refreshing the cached database without waiting for a new version of
-**giscoR**.
+`gisco_get_cached_db(update_cache = TRUE)`. In practice, when GISCO publishes a
+new release, you can access updated data by refreshing the cached database
+without waiting for a new version of **giscoR**.
 
 We have transitioned from `rappdirs::user_config_dir()` to `tools::R_user_dir()`
-for managing your persistent cache directory. If you are a heavy **giscoR** user
-and already have a cache directory in place, you'll receive a one-time friendly
-message informing you about this migration. Consider it a warm welcome to
-**giscoR** 1.0.0 😉.
+for managing your persistent cache directory. If you already have a cache
+directory in place, you'll see a one-time message informing you about this
+migration.
 
 The package now requires **R ≥ 4.1**, and dependency updates improve both
 performance and maintainability. All functions return tidy objects (tibbles or

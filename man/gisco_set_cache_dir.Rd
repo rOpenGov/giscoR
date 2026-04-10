@@ -23,8 +23,8 @@ stores the cached files on a temporary dir (see \code{\link[base:tempdir]{base::
 \code{GISCO_CACHE_DIR} that you already have on your local machine.}
 
 \item{install}{If \code{TRUE}, will install the key in your local machine for
-use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE}
-this argument is set to \code{FALSE} automatically.}
+use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
+\code{install} is automatically set to \code{FALSE}.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 }
@@ -41,10 +41,10 @@ loads it for future sessions. Type \code{Sys.getenv("GISCO_CACHE_DIR")} to
 find your cached path or use \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}}.
 }
 \details{
-By default, when no cache \code{cache_dir} is set the package uses a folder inside
-\code{\link[base:tempdir]{base::tempdir()}} (so files are temporary and are removed when the \strong{R}
-session ends). To persist a cache across \strong{R} sessions, use
-\code{gisco_set_cache_dir(cache_dir, install = TRUE)} which writes the chosen
+By default, when no cache \code{cache_dir} is set, the package uses a folder
+inside \code{\link[base:tempdir]{base::tempdir()}} (so files are temporary and are removed when the
+\strong{R} session ends). To persist a cache across \strong{R} sessions, use
+\code{gisco_set_cache_dir(cache_dir, install = TRUE)}, which writes the chosen
 path to a small configuration file under
 \code{tools::R_user_dir("giscoR", "config")}.
 }
@@ -68,7 +68,7 @@ install).
 \code{gisco_set_cache_dir(cache_dir = "a/path/here")}.
 \item For reproducible workflows, install a persistent cache with
 \code{gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)} that is
-be kept across \strong{R} sessions.
+kept across \strong{R} sessions.
 \item For caching specific files, use the \code{cache_dir} argument in the
 corresponding function. See example in \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}.
 }

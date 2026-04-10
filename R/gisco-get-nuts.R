@@ -242,13 +242,13 @@ gisco_get_nuts <- function(
 
 #' Filter NUTS data sf by country and/or NUTS ID
 #'
-#' @param data_sf sf object
-#' @param country character vector of country codes or names
-#' @param nuts_id character vector of NUTS IDs
+#' @param data_sf An sf object.
+#' @param country character vector of country codes or names.
+#' @param nuts_id character vector of NUTS IDs.
 #' @param nuts_level character string. NUTS level. One of `0`, `1`, `2`, `3`
 #'   or `all` for all levels.
 #'
-#' @return sf object filtered
+#' @return An sf object filtered by country and/or NUTS ID.
 #' @noRd
 filter_country_nuts_level <- function(
   data_sf,

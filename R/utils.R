@@ -4,9 +4,9 @@
 #'  `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #'
 #' @param verbose logical. Whether to print the message or not.
-#' @param ... Character strings to be combined into the message.
+#' @param ... character strings to be combined into the message.
 #'
-#' @returns
+#' @return
 #' Invisibly returns `NULL`. Prints messages to the console if `verbose` is
 #' `TRUE`.
 #'
@@ -41,7 +41,7 @@ make_msg <- function(type = "generic", verbose, ...) {
 #' @param arg The argument to match.
 #' @param choices The possible choices for the argument.
 #'
-#' @returns
+#' @return
 #' The matched argument.
 #'
 #' @noRd
@@ -79,7 +79,7 @@ match_arg_pretty <- function(arg, choices) {
       l_choices <- length(choices)
       msg <- paste0("{.str ", choices[-l_choices], "}", collapse = ", ")
       msg <- paste0(msg, " or {.str ", choices[l_choices], "}")
-      # Add one of at the begining
+      # Add one of at the beginning
       msg <- paste0("one of ", msg)
     }
 

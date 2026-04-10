@@ -71,7 +71,7 @@ available are:
 \strong{Note that} arguments \code{country}, \code{nuts_level} and \code{nuts_id} are
 only applied when \code{spatialtype} is \code{"RG"} or \code{"LB"}.}
 
-\item{country}{character vector of country codes. It could be either a
+\item{country}{character vector of country codes. It can be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 

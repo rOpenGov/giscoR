@@ -11,7 +11,7 @@
 #' @param formatted logical. Whether to format the output values for
 #'   documentation. Default is `TRUE`.
 #'
-#' @returns
+#' @return
 #' A character string with the possible values for the specified field.
 #' @noRd
 db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
@@ -36,7 +36,7 @@ db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
 #' Helper function to get available years for GISCO ID endpoints
 #'
 #' @param endpoint character string. The GISCO ID endpoint to query.
-#' @returns
+#' @return
 #' A character string with the available years for the specified endpoint.
 #' @noRd
 docs_id_years <- function(endpoint) {

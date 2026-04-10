@@ -34,7 +34,7 @@
 #' @param nuts_level character string. NUTS level. One of `0`,
 #'   `1`, `2` or `3`.
 #'
-#' @returns
+#' @return
 #' A [tibble][tibble::tbl_df] or a [`sf`][sf::st_sf] object.
 #'
 #' @details
@@ -249,10 +249,10 @@ gisco_id_api_census_grid <- function(
 #' @param x Longitude coordinate.
 #' @param y Latitude coordinate.
 #' @param epsg EPSG code for the coordinate reference system.
-#' @param geometry Logical. Whether to return geometry.
+#' @param geometry logical. Whether to return geometry.
 #' @param year Year of the dataset.
 #' @param nuts_level NUTS level.
-#' @param verbose Logical. Whether to print verbose output.
+#' @param verbose logical. Whether to print verbose output.
 #' @param endpoint The specific endpoint to query.
 #'
 #' @noRd
@@ -310,7 +310,7 @@ prepare_id_query <- function(
 #'
 #' @param custom_query A named list with the query arguments.
 #' @param apiurl The API endpoint URL.
-#' @param verbose Logical. Whether to print verbose output.
+#' @param verbose logical. Whether to print verbose output.
 #'
 #' @noRd
 call_id_api <- function(custom_query, apiurl, verbose = FALSE) {

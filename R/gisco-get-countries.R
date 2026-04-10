@@ -1,8 +1,8 @@
 #' Countries dataset
 #'
 #' @description
-#' This dataset contains the administrative boundaries at country level of the
-#' world. This dataset consists of 2 feature classes (regions, boundaries) per
+#' This dataset contains world administrative boundaries at the country level.
+#' It consists of 2 feature classes (regions, boundaries) per
 #' scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 #' 60M).
 #'
@@ -52,7 +52,7 @@
 #'   **Note that** arguments `country` and `region` are
 #'   only applied when `spatialtype` is `"RG"` or `"LB"`.
 #'
-#' @param country character vector of country codes. It could be either a
+#' @param country character vector of country codes. It can be either a
 #'   vector of country names, a vector of ISO3 country codes or a vector of
 #'   Eurostat country codes. See also [countrycode::countrycode()].
 #' @param verbose logical. If `TRUE` displays informational messages.
@@ -206,11 +206,11 @@ gisco_get_countries <- function(
 
 #' Filter data sf by country and/or region
 #'
-#' @param data_sf sf object
-#' @param country character vector of country codes or names
-#' @param region character vector of region codes or names
+#' @param data_sf An sf object.
+#' @param country character vector of country codes or names.
+#' @param region character vector of region codes or names.
 #'
-#' @return sf object filtered
+#' @return An sf object filtered by country and/or region.
 #'
 #' @noRd
 filter_country_region <- function(data_sf, country = NULL, region = NULL) {

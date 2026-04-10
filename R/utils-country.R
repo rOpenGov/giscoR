@@ -1,10 +1,10 @@
 #' Convert country names or codes to desired code
 #'
-#' @param names vector of names or codes
+#' @param names A vector of names or codes.
 #'
-#' @param out out code
+#' @param out Output code.
 #'
-#' @return a vector of names
+#' @return A vector of names.
 #'
 #' @noRd
 convert_country_code <- function(names, out = "eurostat") {
@@ -62,10 +62,10 @@ convert_country_code <- function(names, out = "eurostat") {
 
 #' Get country codes from country names and/or region names
 #'
-#' @param country character vector of country codes or names
-#' @param region character vector of region codes or names
-#' @param code desired output code, default is "eurostat"
-#' @return character vector of country codes
+#' @param country character vector of country codes or names.
+#' @param region character vector of region codes or names.
+#' @param code Desired output code. Default is "eurostat".
+#' @return A character vector of country codes.
 #'
 #' @noRd
 get_countrycodes_region <- function(

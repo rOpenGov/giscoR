@@ -49,9 +49,9 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
 #'
 #' Convert to UTF-8
 #'
-#' @param data_sf data_sf
+#' @param data_sf An sf object.
 #'
-#' @return data_sf with UTF-8 encoding.
+#' @return An sf object with UTF-8 encoding.
 #'
 #' @source Extracted from [`sf`][sf::st_sf] package.
 #'
@@ -93,7 +93,7 @@ sanitize_sf <- function(data_sf) {
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  # Some CRS are not properly defined (i.e may have additionalm properties)
+  # Some CRS are not properly defined (i.e. may have additional properties)
   # Normalize with the EPSG number
 
   epsg_num <- sf::st_crs(data_sf)$epsg
@@ -125,7 +125,7 @@ get_geo_file_colnames <- function(file_local) {
 #' Get column name for filtering from a geospatial file
 #'
 #' @param file_local Local file path or URL to the geospatial file.
-#' @param candidates Character vector of candidate column names.
+#' @param candidates character vector of candidate column names.
 #'
 #' @return
 #' A character vector with the matching column names or NULL if none found.

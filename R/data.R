@@ -17,7 +17,7 @@
 #'
 #' @details
 #' This database is used to redirect the corresponding functions to the
-#' right API endpoints.
+#' correct API endpoints.
 #'
 #' This version of the database is used if there is a problem during update.
 #' Please use [gisco_get_cached_db()] with `update_cache = TRUE` to update the
@@ -41,12 +41,11 @@ NULL
 #' @seealso [gisco_get_countries()]
 #'
 #' @description
-#' This object contains the administrative boundaries at country level of the
-#' world.
+#' This object contains world administrative boundaries at the country level.
 #'
 #' @format
 #' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
-#' 1:20 million and [EPSG:4326](https://epsg.io/4326). with
+#' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
 #' `r nrow(giscoR::gisco_countries_2024)` rows and 12 variables:
 #' \describe{
 #'   \item{`CNTR_ID`}{Country ID as per Eurostat.}
@@ -94,14 +93,14 @@ NULL
 #' code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
 #' provided by the World Bank and the UN
 #' ([M49 Standard](https://unstats.un.org/unsd/methodology/m49/)). This database
-#'  has been extracted from the \CRANpkg{countrycode} package.
+#' has been extracted from the \CRANpkg{countrycode} package.
 #'
 #' @source [countrycode::codelist] **v1.6.1**.
 #'
 #' @seealso
 #' [gisco_get_countries()], [countrycode::codelist].
 #'
-#' See also the
+#' See also
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(" [Unicode Common Locale Data Repository]",
 #'       "(https://cldr.unicode.org/translation/displaynames/",
@@ -187,7 +186,7 @@ NULL
 #'
 #' @format
 #' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
-#' 1:20 million and [EPSG:4326](https://epsg.io/4326). with
+#' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
 #' `r nrow(giscoR::gisco_nuts_2024)` rows and 10 variables:
 #' \describe{
 #'   \item{`NUTS_ID`}{NUTS identifier.}

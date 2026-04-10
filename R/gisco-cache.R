@@ -14,16 +14,16 @@
 #' @param cache_dir A path to a cache directory. On `NULL`, the function
 #'   stores the cached files on a temporary dir (see [base::tempdir()]).
 #' @param install If `TRUE`, will install the key in your local machine for
-#'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`
-#'   this argument is set to `FALSE` automatically.
+#'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
+#'   `install` is automatically set to `FALSE`.
 #' @param overwrite If this is set to `TRUE`, it will overwrite an existing
 #'   `GISCO_CACHE_DIR` that you already have on your local machine.
 #'
 #' @details
-#' By default, when no cache `cache_dir` is set the package uses a folder inside
-#' [base::tempdir()] (so files are temporary and are removed when the **R**
-#' session ends). To persist a cache across **R** sessions, use
-#' `gisco_set_cache_dir(cache_dir, install = TRUE)` which writes the chosen
+#' By default, when no cache `cache_dir` is set, the package uses a folder
+#' inside [base::tempdir()] (so files are temporary and are removed when the
+#' **R** session ends). To persist a cache across **R** sessions, use
+#' `gisco_set_cache_dir(cache_dir, install = TRUE)`, which writes the chosen
 #' path to a small configuration file under
 #' `tools::R_user_dir("giscoR", "config")`.
 #'
@@ -43,17 +43,17 @@
 #'   `gisco_set_cache_dir(cache_dir = "a/path/here")`.
 #' - For reproducible workflows, install a persistent cache with
 #'   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that is
-#'   be kept across **R** sessions.
+#'   kept across **R** sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function. See example in [gisco_get_nuts()].
 #'
 #' Sometimes cached files may be corrupt. In that case, try re-downloading
 #' the data setting `update_cache = TRUE` in the corresponding function.
 #'
-#'  If you experience any problem on download, try to download the
-#'  corresponding file by any other method and save it on your
-#'  `cache_dir`. Use the option `verbose = TRUE` for debugging the API query
-#'  and [gisco_detect_cache_dir()] to identify your cached path.
+#' If you experience any problem on download, try to download the
+#' corresponding file by any other method and save it on your
+#' `cache_dir`. Use the option `verbose = TRUE` for debugging the API query
+#' and [gisco_detect_cache_dir()] to identify your cached path.
 #'
 #' @note
 #'
@@ -123,7 +123,8 @@ gisco_set_cache_dir <- function(
 
   if (install) {
     config_dir <- tools::R_user_dir("giscoR", "config")
-    # Create cache dir if not presente
+    # Create cache dir if not present
+
     if (!dir.exists(config_dir)) {
       dir.create(config_dir, recursive = TRUE)
     }
@@ -260,11 +261,11 @@ gisco_clear_cache <- function(
   invisible()
 }
 
-# Internal funs ----
+# Internal functions ----
 
 #' Detects cache dir silently
 #'
-#' @returns path to cache dir
+#' @return Path to cache dir.
 #' @noRd
 detect_cache_dir_muted <- function() {
   migrate_cache()
@@ -311,10 +312,10 @@ detect_cache_dir_muted <- function() {
 }
 
 
-#' Creates `cache_dir` if not exists
+#' Creates `cache_dir` if it does not exist
 #'
-#' @param cache_dir path to cache dir
-#' @returns path to cache dir
+#' @param cache_dir Path to cache dir.
+#' @return Path to cache dir.
 #'
 #' @noRd
 create_cache_dir <- function(cache_dir = NULL) {
@@ -335,8 +336,8 @@ create_cache_dir <- function(cache_dir = NULL) {
 #' Migrate cache config from rappdirs to tools
 #'
 #' One-time function for giscoR >= 1.0.0
-#' @param old old cache config folder
-#' @param new new cache config folder
+#' @param old Path to old cache config folder.
+#' @param new Path to new cache config folder.
 #'
 #' @noRd
 migrate_cache <- function(

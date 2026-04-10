@@ -36,7 +36,7 @@ gisco_check_access <- function() {
 
 #' Skip tests if GISCO API is not reachable
 #'
-#' @return invisible TRUE or skips the test
+#' @return Invisible `TRUE`, or skips the test.
 #'
 #' @noRd
 skip_if_gisco_offline <- function() {
@@ -54,7 +54,7 @@ skip_if_gisco_offline <- function() {
 
 
 #' Internal function to check if we are on CRAN
-#' @return logical
+#' @return A logical.
 #' @noRd
 on_cran <- function() {
   env <- Sys.getenv("NOT_CRAN")

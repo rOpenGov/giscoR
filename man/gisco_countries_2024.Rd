@@ -7,7 +7,7 @@
 \title{Countries 2024 \code{\link[sf:st_sf]{sf}} object}
 \format{
 A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
-1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. with
+1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. It has
 263 rows and 12 variables:
 \describe{
 \item{\code{CNTR_ID}}{Country ID as per Eurostat.}
@@ -29,8 +29,7 @@ GISCO.}
 \href{https://gisco-services.ec.europa.eu/distribution/v2/countries/gpkg/}{CNTR_RG_20M_2024_4326.gpkg} file.
 }
 \description{
-This object contains the administrative boundaries at country level of the
-world.
+This object contains world administrative boundaries at the country level.
 }
 \examples{
 

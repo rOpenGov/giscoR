@@ -17,7 +17,7 @@
 #'   values are `"nuts"`, `"countries"` or `"urban_audit"`.
 #' @param year character string or number. Release year of the metadata.
 #'
-#' @returns
+#' @return
 #' A [tibble][tibble::tbl_df].
 #'
 #' @examplesIf gisco_check_access()

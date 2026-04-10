@@ -157,7 +157,7 @@ country_lines <- gisco_get_nuts(
 )
 ```
 
-We now download the data from Eurostat:
+Next, download the data from Eurostat:
 
 ```{r}
 # Use eurostat
@@ -250,7 +250,7 @@ ggplot(nuts3_sf) +
 
 ## Caching
 
-Large datasets (e.g., LAU or high-resolution files) can exceed 50MB. Use:
+Large datasets (e.g., LAU or high-resolution files) can exceed 50 MB. Use:
 
 ```{r}
 #| eval: false

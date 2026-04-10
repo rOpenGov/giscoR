@@ -6,7 +6,7 @@
 #' allows for both geocoding and reverse geocoding using a pan-European
 #' address database.
 #'
-#' Each endpoint available is implemented through a specific function, see
+#' Each endpoint is implemented through a specific function, see
 #' **Details**.
 #'
 #' The API supports fuzzy searching (also referred to as approximate string
@@ -27,20 +27,20 @@
 #' @param x,y x and y coordinates (as longitude and latitude) to be converted
 #'  into a human-readable address.
 #' @param province A province within a country. For a list of provinces within a
-#'  certain country use the provinces endpoint
+#'  certain country, use the provinces endpoint
 #'  (`gisco_address_api_provinces(country = "LU")`).
 #' @param city A city within a province. For a list of cities within a certain
-#'   province use the cities endpoint
+#'   province, use the cities endpoint
 #'   (`gisco_address_api_cities(province = "capellen")`).
 #' @param road A road within a city.
 #' @param housenumber The house number or house name within a road or street.
 #' @param postcode Can be used in combination with the previous arguments.
 #'
 #'
-#' @returns
+#' @return
 #' A [tibble][tibble::tbl_df] in most cases, except
-#' `gisco_address_api_search()`, `gisco_address_api_reverse()` and
-#' `gisco_address_api_bbox()`, that return a [`sf`][sf::st_sf] object.
+#' `gisco_address_api_search()`, `gisco_address_api_reverse()`, and
+#' `gisco_address_api_bbox()`, which return a [`sf`][sf::st_sf] object.
 #'
 #' @details
 #'
@@ -49,7 +49,7 @@
 #'
 #' @seealso
 #'
-#' See the docs:
+#' See the docs at
 #' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 #'
 #'
@@ -270,9 +270,9 @@ gisco_address_api_copyright <- function(verbose = FALSE) {
 #'
 #' @param custom_query A named list with the query arguments.
 #' @param apiurl The API endpoint URL.
-#' @param verbose Logical. Whether to print verbose output.
+#' @param verbose logical. Whether to print verbose output.
 #'
-#' @returns
+#' @return
 #' A `sf` object or tibble.
 #'
 #' @noRd

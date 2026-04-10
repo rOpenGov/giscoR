@@ -73,7 +73,7 @@ Options available are:
 \strong{Note that} arguments \code{country} and \code{region} are
 only applied when \code{spatialtype} is \code{"RG"} or \code{"LB"}.}
 
-\item{country}{character vector of country codes. It could be either a
+\item{country}{character vector of country codes. It can be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
@@ -91,8 +91,8 @@ European Union (as per 2021). See \strong{World Regions} and
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset contains the administrative boundaries at country level of the
-world. This dataset consists of 2 feature classes (regions, boundaries) per
+This dataset contains world administrative boundaries at the country level.
+It consists of 2 feature classes (regions, boundaries) per
 scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 60M).
 

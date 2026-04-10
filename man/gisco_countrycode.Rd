@@ -50,7 +50,7 @@ dplyr::glimpse(gisco_countrycode)
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \link[countrycode:codelist]{countrycode::codelist}.
 
-See also the \href{https://cldr.unicode.org/translation/displaynames/countryregion-territory-names}{Unicode Common Locale Data Repository}.
+See also \href{https://cldr.unicode.org/translation/displaynames/countryregion-territory-names}{Unicode Common Locale Data Repository}.
 
 Other datasets:
 \code{\link{gisco_coastal_lines}},

@@ -7,7 +7,7 @@
 \title{NUTS 2024 \code{\link[sf:st_sf]{sf}} object}
 \format{
 A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
-1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. with
+1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. It has
 1798 rows and 10 variables:
 \describe{
 \item{\code{NUTS_ID}}{NUTS identifier.}

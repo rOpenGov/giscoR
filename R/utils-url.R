@@ -40,7 +40,7 @@ get_url_db <- function(
     ext = ext
   )
 
-  # Clean and to char
+  # Clean and convert to char
   make_params <- make_params[lengths(make_params) != 0]
   make_params <- lapply(make_params, as.character)
 
@@ -49,7 +49,7 @@ get_url_db <- function(
     make_params$resolution <- resolution
   }
 
-  # Fun with namespace
+  # Prefix with package namespace
   fn <- paste0("giscoR::", fn)
 
   # Initial filter
