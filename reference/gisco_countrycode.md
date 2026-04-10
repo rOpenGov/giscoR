@@ -81,7 +81,7 @@ is assigned to Asia.
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
 [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/man/codelist.html).
 
-See also the [Unicode Common Locale Data
+See also [Unicode Common Locale Data
 Repository](https://cldr.unicode.org/translation/displaynames/countryregion-territory-names).
 
 Other datasets:

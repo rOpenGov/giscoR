@@ -83,8 +83,8 @@ stores the cached files on a temporary dir (see <code><a href="https://rdrr.io/r
 
 <dt id="arg-install">install<a class="anchor" aria-label="anchor" href="#arg-install"></a></dt>
 <dd><p>If <code>TRUE</code>, will install the key in your local machine for
-use in future sessions. Defaults to <code>FALSE</code>. If <code>cache_dir</code> is <code>FALSE</code>
-this argument is set to <code>FALSE</code> automatically.</p></dd>
+use in future sessions. Defaults to <code>FALSE</code>. If <code>cache_dir</code> is <code>FALSE</code>,
+<code>install</code> is automatically set to <code>FALSE</code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -100,10 +100,10 @@ session.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>By default, when no cache <code>cache_dir</code> is set the package uses a folder inside
-<code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code> (so files are temporary and are removed when the <strong>R</strong>
-session ends). To persist a cache across <strong>R</strong> sessions, use
-<code>gisco_set_cache_dir(cache_dir, install = TRUE)</code> which writes the chosen
+    <p>By default, when no cache <code>cache_dir</code> is set, the package uses a folder
+inside <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">base::tempdir()</a></code> (so files are temporary and are removed when the
+<strong>R</strong> session ends). To persist a cache across <strong>R</strong> sessions, use
+<code>gisco_set_cache_dir(cache_dir, install = TRUE)</code>, which writes the chosen
 path to a small configuration file under
 <code>tools::R_user_dir("giscoR", "config")</code>.</p>
     </div>
@@ -128,7 +128,7 @@ install).</p></li>
 <code>gisco_set_cache_dir(cache_dir = "a/path/here")</code>.</p></li>
 <li><p>For reproducible workflows, install a persistent cache with
 <code>gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)</code> that is
-be kept across <strong>R</strong> sessions.</p></li>
+kept across <strong>R</strong> sessions.</p></li>
 <li><p>For caching specific files, use the <code>cache_dir</code> argument in the
 corresponding function. See example in <code><a href="gisco_get_nuts.html">gisco_get_nuts()</a></code>.</p></li>
 </ul><p>Sometimes cached files may be corrupt. In that case, try re-downloading
@@ -151,31 +151,31 @@ and <code>gisco_detect_cache_dir()</code> to identify your cached path.</p>
 <span class="r-in"><span><span class="co"># Don't run this! It modifies your current state</span></span></span>
 <span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">my_cache</span> <span class="op">&lt;-</span> <span class="fu">gisco_detect_cache_dir</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/RtmplZEVd6/giscoR</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/Rtmp7C6wL3/giscoR</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Set an example cache</span></span></span>
 <span class="r-in"><span><span class="va">ex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"example"</span>, <span class="st">"cachenew"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">gisco_set_cache_dir</span><span class="op">(</span><span class="va">ex</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">giscoR</span> cache dir is <span style="color: #0000BB;">/tmp/RtmplZEVd6/example/cachenew</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">giscoR</span> cache dir is <span style="color: #0000BB;">/tmp/Rtmp7C6wL3/example/cachenew</span>.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gisco_detect_cache_dir</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/RtmplZEVd6/example/cachenew</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmplZEVd6/example/cachenew"</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/Rtmp7C6wL3/example/cachenew</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmp7C6wL3/example/cachenew"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Restore initial cache</span></span></span>
 <span class="r-in"><span><span class="fu">gisco_set_cache_dir</span><span class="op">(</span><span class="va">my_cache</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">giscoR</span> cache dir is <span style="color: #0000BB;">/tmp/RtmplZEVd6/giscoR</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">giscoR</span> cache dir is <span style="color: #0000BB;">/tmp/Rtmp7C6wL3/giscoR</span>.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html" class="external-link">identical</a></span><span class="op">(</span><span class="va">my_cache</span>, <span class="fu">gisco_detect_cache_dir</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/RtmplZEVd6/giscoR</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/Rtmp7C6wL3/giscoR</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gisco_detect_cache_dir</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/RtmplZEVd6/giscoR</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/RtmplZEVd6/giscoR"</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> <span style="color: #0000BB;">/tmp/Rtmp7C6wL3/giscoR</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "/tmp/Rtmp7C6wL3/giscoR"</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

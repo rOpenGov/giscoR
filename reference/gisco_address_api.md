@@ -5,7 +5,7 @@ API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home),
 which allows for both geocoding and reverse geocoding using a
 pan-European address database.
 
-Each endpoint available is implemented through a specific function, see
+Each endpoint is implemented through a specific function, see
 **Details**.
 
 The API supports fuzzy searching (also referred to as approximate string
@@ -80,13 +80,13 @@ gisco_address_api_copyright(verbose = FALSE)
 - province:
 
   A province within a country. For a list of provinces within a certain
-  country use the provinces endpoint
+  country, use the provinces endpoint
   (`gisco_address_api_provinces(country = "LU")`).
 
 - city:
 
   A city within a province. For a list of cities within a certain
-  province use the cities endpoint
+  province, use the cities endpoint
   (`gisco_address_api_cities(province = "capellen")`).
 
 - road:
@@ -114,7 +114,7 @@ gisco_address_api_copyright(verbose = FALSE)
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) in
 most cases, except `gisco_address_api_search()`,
-`gisco_address_api_reverse()` and `gisco_address_api_bbox()`, that
+`gisco_address_api_reverse()`, and `gisco_address_api_bbox()`, which
 return a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 object.
 
@@ -157,7 +157,7 @@ The resulting object may present the following variables:
 
 ## See also
 
-See the docs:
+See the docs at
 <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 
 Other API tools:

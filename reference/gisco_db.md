@@ -14,7 +14,7 @@ GISCO API `datasets.json`.
 ## Details
 
 This database is used to redirect the corresponding functions to the
-right API endpoints.
+correct API endpoints.
 
 This version of the database is used if there is a problem during
 update. Please use

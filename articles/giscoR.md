@@ -10,14 +10,13 @@ to provide a simple interface to the [GISCO
 API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
 GISCO provides geographic data for the European Union, its member
-countries, and subnational regions. GISCO provides shapefiles in
-different formats, focusing especially on the EU but also offering
-worldwide datasets such as country polygons, labels, borders, and
-coastlines.
+countries, and subnational regions. It supplies shapefiles in different
+formats, focusing especially on the EU but also offering worldwide
+datasets such as country polygons, labels, borders, and coastlines.
 
 GISCO supplies data at multiple resolutions: high-detail datasets for
-small areas (01M, 03M), and lightweight datasets for larger areas (10M,
-20M, 60M). Datasets are available in three projections:
+small areas (01M, 03M) and lighter datasets for larger areas (10M, 20M,
+60M). Datasets are available in three projections:
 [EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035),
 and [EPSG:3857](https://epsg.io/3857).
 
@@ -35,13 +34,12 @@ gisco_set_cache_dir("./path/to/location")
 ```
 
 If a file is not available locally, it will be downloaded to that
-directory so that subsequent requests for the same data are served from
+directory so subsequent requests for the same data can be served from
 the local cache.
 
-If you experience any problems downloading, you can also manually
-download the file from the [GISCO API
-website](https://gisco-services.ec.europa.eu/distribution/v2/) and store
-it in your local cache directory.
+If downloading fails, you can manually download the file from the [GISCO
+API website](https://gisco-services.ec.europa.eu/distribution/v2/) and
+place it in your local cache directory.
 
 ## Downloading data
 
@@ -63,10 +61,9 @@ using GISCO data:
 
 Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
-There is a function,
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md),
-that provides guidance on this topic and returns attributions in several
-languages.
+The function
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
+provides guidance and returns attributions in several languages.
 
 ``` r
 library(giscoR)
@@ -143,7 +140,7 @@ or Eurostat codes. However, you cannot mix these identifier types in a
 single call.
 
 You can also combine datasets by using the same `resolution`, `epsg`,
-and (optionally) `year`:
+and, optionally, `year`:
 
 ``` r
 cntr <- c("Morocco", "Algeria", "Tunisia", "Libya", "Egypt")
@@ -180,10 +177,9 @@ Political map of North Africa
 
 ## Thematic maps with **giscoR**
 
-This example shows how **giscoR** can be used together with Eurostat
-data. For plotting we use **ggplot2**; however, any package that
-supports `sf` objects (e.g., **tmap**, **mapsf**, **leaflet**) can be
-used.
+This example shows how **giscoR** can be used with Eurostat data. For
+plotting, we use **ggplot2**; however, any package that supports `sf`
+objects (e.g., **tmap**, **mapsf**, **leaflet**) can be used.
 
 ``` r
 # EU members

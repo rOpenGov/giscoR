@@ -33,8 +33,8 @@ gisco_detect_cache_dir()
 - install:
 
   If `TRUE`, will install the key in your local machine for use in
-  future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE` this
-  argument is set to `FALSE` automatically.
+  future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
+  `install` is automatically set to `FALSE`.
 
 - verbose:
 
@@ -50,12 +50,12 @@ this session.
 
 ## Details
 
-By default, when no cache `cache_dir` is set the package uses a folder
+By default, when no cache `cache_dir` is set, the package uses a folder
 inside [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html) (so
 files are temporary and are removed when the **R** session ends). To
 persist a cache across **R** sessions, use
-`gisco_set_cache_dir(cache_dir, install = TRUE)` which writes the chosen
-path to a small configuration file under
+`gisco_set_cache_dir(cache_dir, install = TRUE)`, which writes the
+chosen path to a small configuration file under
 `tools::R_user_dir("giscoR", "config")`.
 
 ## Note
@@ -84,7 +84,7 @@ implements the following caching options:
 
 - For reproducible workflows, install a persistent cache with
   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that
-  is be kept across **R** sessions.
+  is kept across **R** sessions.
 
 - For caching specific files, use the `cache_dir` argument in the
   corresponding function. See example in
@@ -111,29 +111,29 @@ Other cache utilities:
 # Don't run this! It modifies your current state
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/RtmplZEVd6/giscoR
+#> ℹ /tmp/Rtmp7C6wL3/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache dir is /tmp/RtmplZEVd6/example/cachenew.
+#> ℹ giscoR cache dir is /tmp/Rtmp7C6wL3/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmplZEVd6/example/cachenew
-#> [1] "/tmp/RtmplZEVd6/example/cachenew"
+#> ℹ /tmp/Rtmp7C6wL3/example/cachenew
+#> [1] "/tmp/Rtmp7C6wL3/example/cachenew"
 
 # Restore initial cache
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is /tmp/RtmplZEVd6/giscoR.
+#> ℹ giscoR cache dir is /tmp/Rtmp7C6wL3/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/RtmplZEVd6/giscoR
+#> ℹ /tmp/Rtmp7C6wL3/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmplZEVd6/giscoR
-#> [1] "/tmp/RtmplZEVd6/giscoR"
+#> ℹ /tmp/Rtmp7C6wL3/giscoR
+#> [1] "/tmp/Rtmp7C6wL3/giscoR"
 ```

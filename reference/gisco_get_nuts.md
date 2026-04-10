@@ -117,7 +117,7 @@ Copyright:
 
 - country:
 
-  character vector of country codes. It could be either a vector of
+  character vector of country codes. It can be either a vector of
   country names, a vector of ISO3 country codes or a vector of Eurostat
   country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).

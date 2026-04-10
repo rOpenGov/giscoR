@@ -1,9 +1,8 @@
 # Countries dataset
 
-This dataset contains the administrative boundaries at country level of
-the world. This dataset consists of 2 feature classes (regions,
-boundaries) per scale level and there are 5 different scale levels (1M,
-3M, 10M, 20M and 60M).
+This dataset contains world administrative boundaries at the country
+level. It consists of 2 feature classes (regions, boundaries) per scale
+level and there are 5 different scale levels (1M, 3M, 10M, 20M and 60M).
 
 **Please note that** this function gets data from the aggregated GISCO
 country file. If you prefer to download individual country files, please
@@ -108,7 +107,7 @@ Copyright:
 
 - country:
 
-  character vector of country codes. It could be either a vector of
+  character vector of country codes. It can be either a vector of
   country names, a vector of ISO3 country codes or a vector of Eurostat
   country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
