@@ -37,12 +37,12 @@ provide a simple interface to the [GISCO
 API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
 GISCO provides geographic data for the European Union, its member countries, and
-subnational regions. GISCO provides shapefiles in different formats, focusing
+subnational regions. It supplies shapefiles in different formats, focusing
 especially on the EU but also offering worldwide datasets such as country
 polygons, labels, borders, and coastlines.
 
 GISCO supplies data at multiple resolutions: high-detail datasets for small
-areas (01M, 03M), and lightweight datasets for larger areas (10M, 20M, 60M).
+areas (01M, 03M), and lighter datasets for larger areas (10M, 20M, 60M).
 Datasets are available in three projections: [EPSG:4326](https://epsg.io/4326),
 [EPSG:3035](https://epsg.io/3035), and [EPSG:3857](https://epsg.io/3857).
 
@@ -60,11 +60,10 @@ gisco_set_cache_dir("./path/to/location")
 ```
 
 If a file is not available locally, it will be downloaded to that directory so
-that subsequent requests for the same data are served from the local cache.
+subsequent requests for the same data can be served from the local cache.
 
-If you experience any problems downloading, you can also manually download the
-file from the [GISCO API
-website](https://gisco-services.ec.europa.eu/distribution/v2/) and store it in
+If downloading fails, you can manually download the file from the [GISCO API
+website](https://gisco-services.ec.europa.eu/distribution/v2/) and place it in
 your local cache directory.
 
 # Downloading data
@@ -135,7 +134,8 @@ world <- world |>
     ),
     # As levels
     status = factor(status,
-    levels = c("Current members", "Candidate countries"))
+      levels = c("Current members", "Candidate countries")
+    )
   )
 
 ggplot(world) +

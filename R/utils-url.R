@@ -217,8 +217,8 @@ download_url <- function(
 
   if (httr2::resp_is_error(resp)) {
     unlink(file_local, force = TRUE)
-    get_status_code <- httr2::resp_status(resp) # nolint
-    get_status_desc <- httr2::resp_status_desc(resp) # nolint
+    get_status_code <- trimws(httr2::resp_status(resp)) # nolint
+    get_status_desc <- trimws(httr2::resp_status_desc(resp)) # nolint
 
     cli::cli_alert_danger(
       c(
