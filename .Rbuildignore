@@ -60,3 +60,5 @@
 ^index\.html$
 ^index\.md$
 [.]markdown$
+^\.positai$
+^\.claude$

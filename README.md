@@ -283,7 +283,7 @@ To cite ‘giscoR’ in publications use:
 
 Hernangómez D (2026). *giscoR: Download Map Data from GISCO API -
 Eurostat*. doi:10.32614/CRAN.package.giscoR
-<https://doi.org/10.32614/CRAN.package.giscoR>,
+<https://doi.org/10.32614/CRAN.package.giscoR>.
 <https://ropengov.github.io/giscoR/>.
 
 A BibTeX entry for LaTeX users is
