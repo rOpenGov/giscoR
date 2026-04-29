@@ -30,8 +30,8 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. One of `"2024"`,
-  `"2020"` .
+  character string or number. Release year of the file. One of `"2025"`,
+  `"2024"`, `"2020"` .
 
 - country:
 
@@ -94,7 +94,7 @@ Other administrative units datasets:
 # \dontrun{
 
 pc_bel <- gisco_get_postal_codes(country = "BE")
-#> ! The file to be downloaded has size 138.6 Mb.
+#> ! The file to be downloaded has size 196.9 Mb.
 
 if (!is.null(pc_bel)) {
   library(ggplot2)

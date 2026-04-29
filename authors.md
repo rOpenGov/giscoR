@@ -19,7 +19,7 @@ Source:
 
 Hernangómez D (2026). *giscoR: Download Map Data from GISCO API -
 Eurostat*.
-[doi:10.32614/CRAN.package.giscoR](https://doi.org/10.32614/CRAN.package.giscoR),
+[doi:10.32614/CRAN.package.giscoR](https://doi.org/10.32614/CRAN.package.giscoR).
 <https://ropengov.github.io/giscoR/>.
 
     @Manual{R-giscoR,
