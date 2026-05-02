@@ -16,6 +16,7 @@ A logical.
 ## Examples
 
 ``` r
+
 gisco_check_access()
 #> [1] TRUE
 ```

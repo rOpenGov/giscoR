@@ -24,6 +24,7 @@ Install **giscoR** from
 [**CRAN**](https://CRAN.R-project.org/package=giscoR):
 
 ``` r
+
 install.packages("giscoR")
 ```
 
@@ -32,6 +33,7 @@ install.packages("giscoR")
 This script highlights some features of **giscoR**:
 
 ``` r
+
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -45,20 +47,22 @@ nl_all <- lapply(c("60", "20", "10", "03"), function(r) {
 
 glimpse(nl_all)
 #> Rows: 4
-#> Columns: 13
-#> $ CNTR_ID   <chr> "NL", "NL", "NL", "NL"
-#> $ CNTR_NAME <chr> "Nederland", "Nederland", "Nederland", "Nederland"
-#> $ NAME_ENGL <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
-#> $ NAME_FREN <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
-#> $ ISO3_CODE <chr> "NLD", "NLD", "NLD", "NLD"
-#> $ SVRG_UN   <chr> "UN Member State", "UN Member State", "UN Member State", "UN…
-#> $ CAPT      <chr> "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"
-#> $ EU_STAT   <chr> "T", "T", "T", "T"
-#> $ EFTA_STAT <chr> "F", "F", "F", "F"
-#> $ CC_STAT   <chr> "F", "F", "F", "F"
-#> $ NAME_GERM <chr> "Niederlande", "Niederlande", "Niederlande", "Niederlande"
-#> $ res       <chr> "60M", "20M", "10M", "03M"
-#> $ geometry  <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…
+#> Columns: 15
+#> $ CNTR_ID     <chr> "NL", "NL", "NL", "NL"
+#> $ CNTR_NAME   <chr> "Nederland", "Nederland", "Nederland", "Nederland"
+#> $ NAME_ENGL   <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
+#> $ NAME_FREN   <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
+#> $ ISO3_CODE   <chr> "NLD", "NLD", "NLD", "NLD"
+#> $ SVRG_UN     <chr> "UN Member State", "UN Member State", "UN Member State", "…
+#> $ CAPT        <chr> "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"
+#> $ EU_STAT     <chr> "T", "T", "T", "T"
+#> $ EFTA_STAT   <chr> "F", "F", "F", "F"
+#> $ CC_STAT     <chr> "F", "F", "F", "F"
+#> $ NAME_GERM   <chr> "Niederlande", "Niederlande", "Niederlande", "Niederlande"
+#> $ res         <chr> "60M", "20M", "10M", "03M"
+#> $ COUNTRY_URI <chr> NA, NA, "NLD", "NLD"
+#> $ STAT_CODE   <chr> NA, NA, "OA", "OA"
+#> $ geometry    <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 5…
 
 # Plot with ggplot2
 
@@ -87,6 +91,7 @@ work of [Milos Popovic](https://milospopovic.net/).
 We start by extracting the corresponding geographic data:
 
 ``` r
+
 library(giscoR)
 library(dplyr)
 library(eurostat)
@@ -117,11 +122,16 @@ Next, download the data from Eurostat:
 # Use eurostat
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                              
 ```
 
 Finally, we merge and manipulate the data to create the final plot:
 
 ``` r
+
 # Merge data
 nuts3_sf <- nuts3 |>
   left_join(popdens, by = "geo")
@@ -208,6 +218,7 @@ Large datasets (e.g., LAU or high-resolution files) can exceed 50 MB.
 Use:
 
 ``` r
+
 gisco_set_cache_dir("./path/to/location")
 ```
 

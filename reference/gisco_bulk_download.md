@@ -152,22 +152,22 @@ dest_files <- gisco_bulk_download(
 library(sf)
 #> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
 read_sf(dest_files[1]) |> head()
-#> Simple feature collection with 6 features and 11 fields
+#> Simple feature collection with 6 features and 13 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: 2110342 ymin: -3415366 xmax: 13761830 ymax: 2744026
 #> Projected CRS: ETRS89-extended / LAEA Europe
-#> # A tibble: 6 × 12
-#>   CNTR_ID CNTR_NAME          NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT  EU_STAT
-#>   <chr>   <chr>              <chr>     <chr>     <chr>     <chr>   <chr> <chr>  
-#> 1 CC      Cocos Keeling Isl… Cocos (K… Îles des… CCK       AU Ter… West… F      
-#> 2 CD      République Démocr… Democrat… Républiq… COD       UN Mem… Kins… F      
-#> 3 CF      République Centra… Central … Républiq… CAF       UN Mem… Bang… F      
-#> 4 CG      Congo-Kongo-Kongó  Congo     Congo     COG       UN Mem… Braz… F      
-#> 5 CH      Schweiz-Suisse-Sv… Switzerl… Suisse    CHE       UN Mem… Bern  F      
-#> 6 CI      Côte D’Ivoire      Côte D’I… Côte d’I… CIV       UN Mem… Yamo… F      
-#> # ℹ 4 more variables: EFTA_STAT <chr>, CC_STAT <chr>, NAME_GERM <chr>,
-#> #   geometry <MULTIPOLYGON [m]>
+#> # A tibble: 6 × 14
+#>   CNTR_ID COUNTRY_URI CNTR_NAME      NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT 
+#>   <chr>   <chr>       <chr>          <chr>     <chr>     <chr>     <chr>   <chr>
+#> 1 CC      CCK         Cocos Keeling… Cocos (K… Îles des… CCK       AU Ter… West…
+#> 2 CD      COD         République Dé… Democrat… Républiq… COD       UN Mem… Kins…
+#> 3 CF      CAF         République Ce… Central … Républiq… CAF       UN Mem… Bang…
+#> 4 CG      COG         Congo-Kongo-K… Congo     Congo     COG       UN Mem… Braz…
+#> 5 CH      CHE         Schweiz-Suiss… Switzerl… Suisse    CHE       UN Mem… Bern 
+#> 6 CI      CIV         Côte D’Ivoire  Côte D’I… Côte d’I… CIV       UN Mem… Yamo…
+#> # ℹ 6 more variables: STAT_CODE <chr>, EU_STAT <chr>, EFTA_STAT <chr>,
+#> #   CC_STAT <chr>, NAME_GERM <chr>, geometry <MULTIPOLYGON [m]>
 
 # Now we can connect the function with the downloaded data like:
 
@@ -176,8 +176,8 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache dir is /tmp/RtmpOKb9Xq/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpOKb9Xq/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache dir is /tmp/RtmpfaCpCE/testexample/countries.
+#> ✔ File already cached: /tmp/RtmpfaCpCE/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # Message shows that file is already cached
 # }

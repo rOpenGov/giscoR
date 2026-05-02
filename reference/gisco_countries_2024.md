@@ -75,6 +75,7 @@ Other datasets:
 ## Examples
 
 ``` r
+
 data("gisco_countries_2024")
 head(gisco_countries_2024)
 #> Simple feature collection with 6 features and 11 fields

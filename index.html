@@ -124,20 +124,22 @@
 <span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">nl_all</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 4</span></span>
-<span><span class="co">#&gt; Columns: 13</span></span>
-<span><span class="co">#&gt; $ CNTR_ID   &lt;chr&gt; "NL", "NL", "NL", "NL"</span></span>
-<span><span class="co">#&gt; $ CNTR_NAME &lt;chr&gt; "Nederland", "Nederland", "Nederland", "Nederland"</span></span>
-<span><span class="co">#&gt; $ NAME_ENGL &lt;chr&gt; "Netherlands", "Netherlands", "Netherlands", "Netherlands"</span></span>
-<span><span class="co">#&gt; $ NAME_FREN &lt;chr&gt; "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"</span></span>
-<span><span class="co">#&gt; $ ISO3_CODE &lt;chr&gt; "NLD", "NLD", "NLD", "NLD"</span></span>
-<span><span class="co">#&gt; $ SVRG_UN   &lt;chr&gt; "UN Member State", "UN Member State", "UN Member State", "UN…</span></span>
-<span><span class="co">#&gt; $ CAPT      &lt;chr&gt; "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"</span></span>
-<span><span class="co">#&gt; $ EU_STAT   &lt;chr&gt; "T", "T", "T", "T"</span></span>
-<span><span class="co">#&gt; $ EFTA_STAT &lt;chr&gt; "F", "F", "F", "F"</span></span>
-<span><span class="co">#&gt; $ CC_STAT   &lt;chr&gt; "F", "F", "F", "F"</span></span>
-<span><span class="co">#&gt; $ NAME_GERM &lt;chr&gt; "Niederlande", "Niederlande", "Niederlande", "Niederlande"</span></span>
-<span><span class="co">#&gt; $ res       &lt;chr&gt; "60M", "20M", "10M", "03M"</span></span>
-<span><span class="co">#&gt; $ geometry  &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 53.…</span></span>
+<span><span class="co">#&gt; Columns: 15</span></span>
+<span><span class="co">#&gt; $ CNTR_ID     &lt;chr&gt; "NL", "NL", "NL", "NL"</span></span>
+<span><span class="co">#&gt; $ CNTR_NAME   &lt;chr&gt; "Nederland", "Nederland", "Nederland", "Nederland"</span></span>
+<span><span class="co">#&gt; $ NAME_ENGL   &lt;chr&gt; "Netherlands", "Netherlands", "Netherlands", "Netherlands"</span></span>
+<span><span class="co">#&gt; $ NAME_FREN   &lt;chr&gt; "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"</span></span>
+<span><span class="co">#&gt; $ ISO3_CODE   &lt;chr&gt; "NLD", "NLD", "NLD", "NLD"</span></span>
+<span><span class="co">#&gt; $ SVRG_UN     &lt;chr&gt; "UN Member State", "UN Member State", "UN Member State", "…</span></span>
+<span><span class="co">#&gt; $ CAPT        &lt;chr&gt; "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"</span></span>
+<span><span class="co">#&gt; $ EU_STAT     &lt;chr&gt; "T", "T", "T", "T"</span></span>
+<span><span class="co">#&gt; $ EFTA_STAT   &lt;chr&gt; "F", "F", "F", "F"</span></span>
+<span><span class="co">#&gt; $ CC_STAT     &lt;chr&gt; "F", "F", "F", "F"</span></span>
+<span><span class="co">#&gt; $ NAME_GERM   &lt;chr&gt; "Niederlande", "Niederlande", "Niederlande", "Niederlande"</span></span>
+<span><span class="co">#&gt; $ res         &lt;chr&gt; "60M", "20M", "10M", "03M"</span></span>
+<span><span class="co">#&gt; $ COUNTRY_URI &lt;chr&gt; NA, NA, "NLD", "NLD"</span></span>
+<span><span class="co">#&gt; $ STAT_CODE   &lt;chr&gt; NA, NA, "OA", "OA"</span></span>
+<span><span class="co">#&gt; $ geometry    &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 5…</span></span>
 <span></span>
 <span><span class="co"># Plot with ggplot2</span></span>
 <span></span>
@@ -183,10 +185,13 @@
 <span>  nuts_level <span class="op">=</span> <span class="fl">0</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Next, download the data from Eurostat:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Use eurostat</span></span>
-<span><span class="va">popdens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span><span class="st">"demo_r_d3dens"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TIME_PERIOD</span> <span class="op">==</span> <span class="st">"2021-01-01"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Use eurostat</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>popdens <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="st">"demo_r_d3dens"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">filter</span>(TIME_PERIOD <span class="sc">==</span> <span class="st">"2021-01-01"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>indexed <span class="dv">0</span>B <span class="cf">in</span>  <span class="dv">0</span>s, <span class="dv">0</span>B<span class="sc">/</span>s</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>indexed <span class="fl">2.15</span>GB <span class="cf">in</span>  <span class="dv">0</span>s, <span class="fl">2.15</span>GB<span class="sc">/</span>s</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>                                                                              </span></code></pre></div>
 <p>Finally, we merge and manipulate the data to create the final plot:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Merge data</span></span>

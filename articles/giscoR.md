@@ -30,6 +30,7 @@ and [EPSG:3857](https://epsg.io/3857).
 directory with:
 
 ``` r
+
 gisco_set_cache_dir("./path/to/location")
 ```
 
@@ -67,6 +68,7 @@ that provides guidance on this topic and returns attributions in several
 languages.
 
 ``` r
+
 library(giscoR)
 c(
   gisco_attributions(lang = "en"),
@@ -86,6 +88,7 @@ Examples of downloading data: EU member states and candidate countries
 as of 2024:
 
 ``` r
+
 library(dplyr)
 library(ggplot2)
 world <- gisco_get_countries(resolution = 3, epsg = 3035)
@@ -144,6 +147,7 @@ You can also combine datasets by using the same `resolution`, `epsg`,
 and (optionally) `year`:
 
 ``` r
+
 cntr <- c("Morocco", "Algeria", "Tunisia", "Libya", "Egypt")
 
 africa_north <- gisco_get_countries(
@@ -203,6 +207,11 @@ eu_bord <- borders |>
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                                        
+
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -273,7 +282,3 @@ ggplot(nuts2_sf) +
 
 ![Disposable income of private households by NUTS 2 regions
 (2022)](./fig-giscor-1.png)
-
-Disposable income of private households by NUTS 2 regions (2022)
-
-Happy mapping!
