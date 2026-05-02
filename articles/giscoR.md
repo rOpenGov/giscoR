@@ -188,6 +188,7 @@ supports `sf` objects (e.g., **tmap**, **mapsf**, **leaflet**) can be
 used.
 
 ``` r
+
 # EU members
 library(giscoR)
 library(dplyr)
@@ -207,11 +208,6 @@ eu_bord <- borders |>
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
-                                                                                        
-
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -282,3 +278,7 @@ ggplot(nuts2_sf) +
 
 ![Disposable income of private households by NUTS 2 regions
 (2022)](./fig-giscor-1.png)
+
+Disposable income of private households by NUTS 2 regions (2022)
+
+Happy mapping!
