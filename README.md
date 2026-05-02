@@ -99,19 +99,19 @@ glimpse(nl_all)
 #> Rows: 4
 #> Columns: 15
 #> $ CNTR_ID     <chr> "NL", "NL", "NL", "NL"
+#> $ COUNTRY_URI <chr> "NLD", NA, "NLD", "NLD"
 #> $ CNTR_NAME   <chr> "Nederland", "Nederland", "Nederland", "Nederland"
 #> $ NAME_ENGL   <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
 #> $ NAME_FREN   <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
 #> $ ISO3_CODE   <chr> "NLD", "NLD", "NLD", "NLD"
 #> $ SVRG_UN     <chr> "UN Member State", "UN Member State", "UN Member State", "…
 #> $ CAPT        <chr> "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"
+#> $ STAT_CODE   <chr> "OA", NA, "OA", "OA"
 #> $ EU_STAT     <chr> "T", "T", "T", "T"
 #> $ EFTA_STAT   <chr> "F", "F", "F", "F"
 #> $ CC_STAT     <chr> "F", "F", "F", "F"
 #> $ NAME_GERM   <chr> "Niederlande", "Niederlande", "Niederlande", "Niederlande"
 #> $ res         <chr> "60M", "20M", "10M", "03M"
-#> $ COUNTRY_URI <chr> NA, NA, "NLD", "NLD"
-#> $ STAT_CODE   <chr> NA, NA, "OA", "OA"
 #> $ geometry    <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 5…
 
 # Plot with ggplot2
@@ -171,10 +171,6 @@ Next, download the data from Eurostat:
 # Use eurostat
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
-                                                                              
 ```
 
 Finally, we merge and manipulate the data to create the final plot:
