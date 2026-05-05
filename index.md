@@ -38,7 +38,7 @@ library(giscoR)
 library(sf)
 library(dplyr)
 
-# Download The Netherlands boundaries at different resolutions
+# Download Netherlands boundaries at different resolutions
 nl_all <- lapply(c("60", "20", "10", "03"), function(r) {
   gisco_get_countries(country = "Netherlands", year = 2024, resolution = r) |>
     mutate(res = paste0(r, "M"))
@@ -49,19 +49,19 @@ glimpse(nl_all)
 #> Rows: 4
 #> Columns: 15
 #> $ CNTR_ID     <chr> "NL", "NL", "NL", "NL"
-#> $ COUNTRY_URI <chr> "NLD", NA, "NLD", "NLD"
 #> $ CNTR_NAME   <chr> "Nederland", "Nederland", "Nederland", "Nederland"
 #> $ NAME_ENGL   <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
 #> $ NAME_FREN   <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
 #> $ ISO3_CODE   <chr> "NLD", "NLD", "NLD", "NLD"
 #> $ SVRG_UN     <chr> "UN Member State", "UN Member State", "UN Member State", "…
 #> $ CAPT        <chr> "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"
-#> $ STAT_CODE   <chr> "OA", NA, "OA", "OA"
 #> $ EU_STAT     <chr> "T", "T", "T", "T"
 #> $ EFTA_STAT   <chr> "F", "F", "F", "F"
 #> $ CC_STAT     <chr> "F", "F", "F", "F"
 #> $ NAME_GERM   <chr> "Niederlande", "Niederlande", "Niederlande", "Niederlande"
 #> $ res         <chr> "60M", "20M", "10M", "03M"
+#> $ COUNTRY_URI <chr> NA, NA, "NLD", "NLD"
+#> $ STAT_CODE   <chr> NA, NA, "OA", "OA"
 #> $ geometry    <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 5…
 
 # Plot with ggplot2
@@ -72,14 +72,14 @@ ggplot(nl_all) +
   geom_sf(fill = "#AD1D25") +
   facet_wrap(~res) +
   labs(
-    title = "The Netherlands boundaries at different resolutions",
+    title = "Netherlands boundaries at different resolutions",
     subtitle = "Year: 2024",
     caption = gisco_attributions()
   ) +
   theme_minimal()
 ```
 
-![The Netherlands boundaries at different
+![Netherlands boundaries at different
 resolutions](reference/figures/README-resolution-map-1.png)
 
 ## Advanced example: Thematic maps
@@ -97,7 +97,7 @@ library(dplyr)
 library(eurostat)
 library(ggplot2)
 
-# Get sf objects
+# Retrieve sf objects.
 nuts3 <- gisco_get_nuts(
   year = 2021,
   epsg = 3035,
@@ -119,10 +119,13 @@ country_lines <- gisco_get_nuts(
 Next, download the data from Eurostat:
 
 ``` r
-
-# Use eurostat
+# Retrieve Eurostat data.
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                              
 ```
 
 Finally, we merge and manipulate the data to create the final plot:
@@ -197,7 +200,7 @@ ggplot(nuts3_sf) +
   labs(
     title = "Population density in 2021",
     subtitle = "NUTS-3 level",
-    fill = "people per sq. kilometer",
+    fill = "people per sq. kilometre",
     caption = paste0(
       "Source: Eurostat, ",
       gisco_attributions(),
@@ -228,7 +231,7 @@ code](https://github.com/rOpenGov/giscoR/).
 
 Contributions are welcome:
 
-- [Use issue tracker](https://github.com/rOpenGov/giscoR/issues) for
+- [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for
   feedback and bug reports.
 - [Send pull requests](https://github.com/rOpenGov/giscoR/)
 - [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
@@ -252,7 +255,7 @@ A BibTeX entry for LaTeX users is
   year = {2026},
   version = {1.1.0},
   url = {https://ropengov.github.io/giscoR/},
-  abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
+  abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data are available. This package is in no way officially related to or endorsed by Eurostat.},
 }
 ```
 

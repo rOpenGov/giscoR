@@ -92,7 +92,7 @@ Copyright:
 - level:
 
   character string. Level of Urban Audit. Possible values `"all"` (the
-  default), that downloads the full dataset or `"CITIES"`, `"FUA"`, and
+  default), which downloads the full dataset or `"CITIES"`, `"FUA"`, and
   (for versions prior to `year = 2020`) `"GREATER_CITIES"`, `"CITY"`,
   `"KERN"` or `"LUZ"`.
 
@@ -116,7 +116,7 @@ The cities are defined at several conceptual levels:
 
 - The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating
   the functional urban region. The coverage is the EU plus Iceland,
-  Norway and Switzerland . The dataset includes polygon features, point
+  Norway and Switzerland. The dataset includes polygon features, point
   features and a related attribute table which can be joined on the URAU
   code field.
 
@@ -150,6 +150,7 @@ Other statistical units datasets:
 ## Examples
 
 ``` r
+if (FALSE) { # gisco_check_access()
 # \donttest{
 
 cities <- gisco_get_urban_audit(year = 2024, level = "CITIES")
@@ -161,6 +162,6 @@ if (!is.null(cities)) {
   ggplot(bcn) +
     geom_sf()
 }
-
 # }
+}
 ```

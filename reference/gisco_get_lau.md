@@ -1,7 +1,7 @@
 # Local Administrative Units (LAU) dataset
 
-This dataset shows pan European administrative boundaries down to
-commune level. Local Administrative units are equivalent to Communes,
+This dataset shows pan-European administrative boundaries down to
+commune level. Local Administrative Units are equivalent to communes,
 see
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
 
@@ -133,10 +133,10 @@ Other statistical units datasets:
 ## Examples
 
 ``` r
+if (FALSE) { # gisco_check_access()
 # \dontrun{
 
 lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
-#> ! The file to be downloaded has size 74.6 Mb.
 
 if (!is.null(lu_lau)) {
   library(ggplot2)
@@ -155,6 +155,6 @@ if (!is.null(lu_lau)) {
     theme_void() +
     labs(fill = "pop/km2")
 }
-
 # }
+}
 ```

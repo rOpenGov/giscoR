@@ -27,6 +27,7 @@ Other datasets:
 
 ``` r
 library(sf)
+#> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
 data("gisco_coastal_lines")
 gisco_coastal_lines
 #> Simple feature collection with 2129 features and 1 field

@@ -101,8 +101,8 @@ gisco_bulk_download(
 
 ## Value
 
-A (invisible) character vector with the full path of the files
-extracted. See **Examples**.
+An invisible character vector with the full path of the files extracted.
+See **Examples**.
 
 ## Details
 
@@ -141,6 +141,7 @@ Additional utils for downloading datasets:
 ## Examples
 
 ``` r
+if (FALSE) { # gisco_check_access()
 tmp <- file.path(tempdir(), "testexample")
 # \donttest{
 dest_files <- gisco_bulk_download(
@@ -150,24 +151,7 @@ dest_files <- gisco_bulk_download(
 )
 # Read one
 library(sf)
-#> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
 read_sf(dest_files[1]) |> head()
-#> Simple feature collection with 6 features and 13 fields
-#> Geometry type: MULTIPOLYGON
-#> Dimension:     XY
-#> Bounding box:  xmin: 2110342 ymin: -3415366 xmax: 13761830 ymax: 2744026
-#> Projected CRS: ETRS89-extended / LAEA Europe
-#> # A tibble: 6 × 14
-#>   CNTR_ID COUNTRY_URI CNTR_NAME      NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT 
-#>   <chr>   <chr>       <chr>          <chr>     <chr>     <chr>     <chr>   <chr>
-#> 1 CC      CCK         Cocos Keeling… Cocos (K… Îles des… CCK       AU Ter… West…
-#> 2 CD      COD         République Dé… Democrat… Républiq… COD       UN Mem… Kins…
-#> 3 CF      CAF         République Ce… Central … Républiq… CAF       UN Mem… Bang…
-#> 4 CG      COG         Congo-Kongo-K… Congo     Congo     COG       UN Mem… Braz…
-#> 5 CH      CHE         Schweiz-Suiss… Switzerl… Suisse    CHE       UN Mem… Bern 
-#> 6 CI      CIV         Côte D’Ivoire  Côte D’I… Côte d’I… CIV       UN Mem… Yamo…
-#> # ℹ 6 more variables: STAT_CODE <chr>, EU_STAT <chr>, EFTA_STAT <chr>,
-#> #   CC_STAT <chr>, NAME_GERM <chr>, geometry <MULTIPOLYGON [m]>
 
 # Now we can connect the function with the downloaded data like:
 
@@ -176,11 +160,10 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache dir is /tmp/RtmpC5mZsk/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpC5mZsk/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # Message shows that file is already cached
 # }
 # Clean
 unlink(tmp, force = TRUE)
+}
 ```

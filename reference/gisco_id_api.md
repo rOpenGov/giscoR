@@ -136,35 +136,35 @@ The available endpoints are:
   coordinates or a bounding box.
 
 - `gisco_id_api_nuts()`: Returns NUTS regions from either a specified
-  longitude and latitude (x,y) or id. Accepted `year` are `"2024"`,
-  `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
+  longitude and latitude (x,y) or ID. Accepted values for `year` are
+  `"2024"`, `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
 
-- `gisco_id_api_lau()`: Returns the id and - optionally - geometry for
-  Large Urban Areas (LAU) at specified longitude and latitude (x,y).
-  Accepted `year` are `"2024"`, `"2023"`, `"2022"`, `"2021"`, `"2020"`,
-  `"2019"`, `"2018"`, `"2017"`, `"2016"`, `"2015"`, `"2014"`, `"2013"`,
-  `"2012"`, `"2011"` .
+- `gisco_id_api_lau()`: Returns the ID and, optionally, geometry for
+  Local Administrative Units (LAU) at specified longitude and latitude
+  (x,y). Accepted values for `year` are `"2024"`, `"2023"`, `"2022"`,
+  `"2021"`, `"2020"`, `"2019"`, `"2018"`, `"2017"`, `"2016"`, `"2015"`,
+  `"2014"`, `"2013"`, `"2012"`, `"2011"` .
 
-- `gisco_id_api_country()`: Returns the id and - optionally - geometry
-  for countries at specified longitude and latitude (x,y). Accepted
-  `year` are `"2024"`, `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`
-  .
+- `gisco_id_api_country()`: Returns the ID and, optionally, geometry for
+  countries at specified longitude and latitude (x,y). Accepted values
+  for `year` are `"2024"`, `"2020"`, `"2016"`, `"2013"`, `"2010"`,
+  `"2006"` .
 
-- `gisco_id_api_river_basin()`: Returns the id and - optionally -
-  geometry for river basins at specified longitude and latitude (x,y),
-  based on the Water Framework Directive (WFD) reference spatial data
-  sets. Accepted `year` are `"2024"`, `"2023"`, `"2022"`, `"2021"`,
+- `gisco_id_api_river_basin()`: Returns the ID and, optionally, geometry
+  for river basins at specified longitude and latitude (x,y), based on
+  the Water Framework Directive (WFD) reference spatial data sets.
+  Accepted values for `year` are `"2024"`, `"2023"`, `"2022"`, `"2021"`,
   `"2020"`, `"2019"` .
 
-- `gisco_id_api_biogeo_region()`: Returns the id and - optionally -
+- `gisco_id_api_biogeo_region()`: Returns the ID and, optionally,
   geometry for biogeo regions at specified longitude and latitude (x,y).
   The biogeographical regions dataset contains the official delineations
   used in the Habitats Directive (92/43/EEC) and for the EMERALD
-  Network. Accepted `year` is `"2016"` .
+  Network. Accepted values for `year` is `"2016"` .
 
-- `gisco_id_api_census_grid()`: Returns the id and - optionally -
-  geometry for census grid cells at specified longitude and latitude
-  (x,y). Accepted `year` is `"2021"` .
+- `gisco_id_api_census_grid()`: Returns the ID and, optionally, geometry
+  for census grid cells at specified longitude and latitude (x,y).
+  Accepted values for `year` is `"2021"` .
 
 ## See also
 
@@ -179,27 +179,9 @@ Other API tools:
 ## Examples
 
 ``` r
+if (FALSE) { # gisco_check_access()
 # \donttest{
 gisco_id_api_geonames(x = -2.5, y = 43.06)
-#> Simple feature collection with 10 features and 8 fields
-#> Geometry type: POINT
-#> Dimension:     XY
-#> Bounding box:  xmin: -2.534611 ymin: 43.03257 xmax: -2.491494 ymax: 43.07773
-#> Geodetic CRS:  WGS 84
-#> # A tibble: 10 × 9
-#>    name       type  country language localtype distanceMeters endlifespanversion
-#>  * <chr>      <chr> <chr>   <chr>    <chr>              <dbl> <chr>             
-#>  1 Mondragón  admi… ES      spa      Administ…           809. None              
-#>  2 Arrasate   admi… ES      baq      Administ…           809. None              
-#>  3 Arrasate/… popu… ES      spa      BUILTUPP            858. None              
-#>  4 Garagartza popu… ES      baq      BUILTUPP           2052. None              
-#>  5 Aretxabal… popu… ES      baq      BUILTUPP           3082. None              
-#>  6 Gesalibar  popu… ES      baq      BUILTUPP           2482. None              
-#>  7 Aramaio I… hydr… ES      baq      Watercou…          2822. None              
-#>  8 Rio Arama… hydr… ES      spa      Watercou…          2822. None              
-#>  9 Kobato Er… hydr… ES      baq      Watercou…          3339. None              
-#> 10 Arroyo Ko… hydr… ES      spa      Watercou…          3339. None              
-#> # ℹ 2 more variables: beginlifespanversion <date>, geometry <POINT [°]>
 
 lau <- gisco_id_api_lau(x = -2.5, y = 43.06)
 nuts3 <- gisco_id_api_nuts(x = -2.5, y = 43.06, nuts_level = 3)
@@ -216,6 +198,6 @@ if (all(!is.null(lau), !is.null(nuts3))) {
       caption = "Source: GISCO ID service API"
     )
 }
-
 # }
+}
 ```

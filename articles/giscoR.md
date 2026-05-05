@@ -2,7 +2,7 @@
 
 ## Introduction
 
-*Full site with more examples and vignettes on
+*Full site with more examples and vignettes available at
 <https://ropengov.github.io/giscoR/>*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed
@@ -129,15 +129,15 @@ ggplot(world) +
     legend.position = "bottom"
   ) +
   labs(
-    title = "EU Member states and Candidate countries (2024)",
+    title = "EU member states and candidate countries (2024)",
     caption = gisco_attributions(),
     fill = ""
   )
 ```
 
-![EU Member states and Candidate countries (2024)](./fig-country-1.png)
+![EU member states and candidate countries (2024)](./fig-country-1.png)
 
-EU Member states and Candidate countries (2024)
+EU member states and candidate countries (2024)
 
 You can select specific countries by name (in any language), ISO3 codes,
 or Eurostat codes. However, you cannot mix these identifier types in a
@@ -183,12 +183,11 @@ Political map of North Africa
 ## Thematic maps with **giscoR**
 
 This example shows how **giscoR** can be used together with Eurostat
-data. For plotting we use **ggplot2**; however, any package that
+data. For plotting, we use **ggplot2**. However, any package that
 supports `sf` objects (e.g., **tmap**, **mapsf**, **leaflet**) can be
 used.
 
 ``` r
-
 # EU members
 library(giscoR)
 library(dplyr)
@@ -208,6 +207,11 @@ eu_bord <- borders |>
 # Eurostat data - Disposable income
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                                                         
+
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -278,7 +282,3 @@ ggplot(nuts2_sf) +
 
 ![Disposable income of private households by NUTS 2 regions
 (2022)](./fig-giscor-1.png)
-
-Disposable income of private households by NUTS 2 regions (2022)
-
-Happy mapping!

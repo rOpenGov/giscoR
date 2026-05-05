@@ -29,5 +29,5 @@ Eurostat*.
       year = {2026},
       version = {1.1.0},
       url = {https://ropengov.github.io/giscoR/},
-      abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.},
+      abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data are available. This package is in no way officially related to or endorsed by Eurostat.},
     }

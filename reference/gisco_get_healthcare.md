@@ -95,19 +95,19 @@ Brief description of each attribute:
 | `address` | Address information when the different components of the address are not separated in the source. |
 | `city` | City name (sometimes refers to a region or municipality). |
 | `cntr_id` | Country code (2 letters, ISO 3166-1 alpha-2). |
-| `emergency` | 'yes/no' for whether the healthcare site provides emergency medical services. |
+| `emergency` | `yes`/`no`, indicating whether the healthcare site provides emergency medical services. |
 | `cap_beds` | Measure of capacity by number of beds (most common). |
 | `cap_prac` | Measure of capacity by number of practitioners. |
 | `cap_rooms` | Measure of capacity by number of rooms. |
 | `facility_type` | Type of healthcare service (e.g., psychiatric hospital), based on national classification. |
-| `public_private` | 'public/private' status of the healthcare service. |
+| `public_private` | `public`/`private` status of the healthcare service. |
 | `list_specs` | List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). |
 | `tel` | Telephone number. |
 | `email` | Email address. |
-| `url` | URL link to the institution's website. |
+| `url` | URL for the institution's website. |
 | `ref_date` | The date (`DD/MM/YYYY`) the data refers to (reference date). |
 | `pub_date` | The publication date of the dataset by Eurostat (`DD/MM/YYYY`). |
-| `geo_qual` | Geolocation quality indicator: 1=Good, 2=Medium, 3=Low, 4=From source, -1=Unknown, -2=Not geocoded. |
+| `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the healthcare service. |
 
 ## See also
@@ -118,6 +118,7 @@ Other basic services datasets:
 ## Examples
 
 ``` r
+if (FALSE) { # gisco_check_access()
 health_benelux <- gisco_get_healthcare(
   country = c("BE", "NL", "LU"),
   year = 2023
@@ -147,5 +148,6 @@ if (!is.null(health_benelux)) {
       caption = "Source: Eurostat, Healthcare 2023 dataset."
     ) +
     coord_sf(crs = 3035)
+}
 }
 ```

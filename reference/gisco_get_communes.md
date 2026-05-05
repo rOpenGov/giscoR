@@ -1,6 +1,6 @@
 # Communes dataset
 
-This dataset shows pan European administrative boundaries down to
+This dataset shows pan-European administrative boundaries down to
 commune level. Communes are equivalent to Local Administrative Units,
 see
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
@@ -132,6 +132,7 @@ Other administrative units datasets:
 ## Examples
 
 ``` r
+if (FALSE) { # gisco_check_access()
 ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 
 if (!is.null(ire_comm)) {
@@ -149,5 +150,6 @@ if (!is.null(ire_comm)) {
       colour = "#009A44",
       family = "serif", face = "bold"
     ))
+}
 }
 ```

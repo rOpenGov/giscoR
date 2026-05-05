@@ -22,7 +22,7 @@ A data frame object with 249 rows and 13 variables:
 
 - `iso2c`:
 
-  ISO 3166-1 alpha-3 code of each country.
+  ISO 3166-1 alpha-2 code of each country.
 
 - `iso.name.en`:
 

@@ -1,6 +1,6 @@
 # Airports dataset
 
-This dataset includes the location of over 11,800 Pan European airports
+This dataset includes the location of over 11,800 pan-European airports
 and heliports. The airports are identified using the International Civil
 Aviation Organisation (ICAO) airport codes.
 
@@ -67,6 +67,7 @@ Other transport networks datasets:
 ## Examples
 
 ``` r
+if (FALSE) { # gisco_check_access()
 airp <- gisco_get_airports(year = 2013)
 coast <- giscoR::gisco_coastal_lines
 
@@ -97,5 +98,6 @@ if (!is.null(airp)) {
       xlim = c(2377294, 7453440),
       ylim = c(1313597, 5628510)
     )
+}
 }
 ```

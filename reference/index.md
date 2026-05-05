@@ -9,10 +9,10 @@ objects.
 
 ### Administrative units
 
-On using administrative data for statistical purposes, administrative
-units are the units for which administrative data are recorded. These
-units may or may not be the same as those required for the statistical
-purposes (referred to as statistical units). See [copyright
+When administrative data are used for statistical purposes,
+administrative units are the units for which those data are recorded.
+These units may or may not match the statistical units required for
+analysis. See [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
@@ -42,7 +42,7 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 ### Grids
 
 These datasets contain grid cells covering the land territory of the EU,
-in various resolutions from 1 km to 100 km. Base statistics such as
+at various resolutions from 1 km to 100 km. Base statistics such as
 population figures are provided for these cells.
 
 - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
@@ -92,7 +92,7 @@ metadata.
 
 ### Misc
 
-Other functions
+Other functions.
 
 - [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
   : Attribution for administrative and statistical GISCO data
@@ -173,7 +173,7 @@ Datasets included with
 
 ## Deprecated functions
 
-These functions would be removed in the future.
+These functions will be removed in the future.
 
 - [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
   **\[deprecated\]** : Get geospatial units data from GISCO API

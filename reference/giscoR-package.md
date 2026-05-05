@@ -3,8 +3,8 @@
 Tools to download data from the GISCO (Geographic Information System of
 the Commission) Eurostat database
 <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data
-available. This package is in no way officially related to or endorsed
-by Eurostat.
+are available. This package is in no way officially related to or
+endorsed by Eurostat.
 
 ## See also
 

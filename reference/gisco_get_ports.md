@@ -1,6 +1,6 @@
 # Ports dataset
 
-This dataset includes the location of over 2,440 Pan European ports. The
+This dataset includes the location of over 2,440 pan-European ports. The
 ports are identified following the UN LOCODE list.
 
 ## Usage
@@ -69,6 +69,7 @@ Other transport networks datasets:
 ## Examples
 
 ``` r
+if (FALSE) { # gisco_check_access()
 library(sf)
 
 ports <- gisco_get_ports(2013)
@@ -96,5 +97,6 @@ if (!is.null(ports)) {
       caption = "Source: Eurostat, Ports 2013 dataset."
     ) +
     coord_sf(crs = "ESRI:54030")
+}
 }
 ```

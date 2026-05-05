@@ -8,7 +8,7 @@ CRAN release: 2026-03-28
   [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
   for API error testing.
 - Adapt vignettes to Quarto.
-- Bump minimal **httr2** version to **1.2.0**
+- Bump the minimum **httr2** version to **1.2.0**
   ([\#126](https://github.com/rOpenGov/giscoR/issues/126)).
 - Query timeout can be controlled with `options(gisco_timeout)` using
   [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
@@ -53,7 +53,7 @@ We have transitioned from
 [`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
 to [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) for
 managing your persistent cache directory. If you already have a cache
-directory in place, you’ll see a one-time message informing you about
+directory in place, you will see a one-time message informing you about
 this migration.
 
 The package now requires **R ≥ 4.1**, and dependency updates improve
