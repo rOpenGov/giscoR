@@ -1,11 +1,11 @@
 #' Postal codes dataset
 #'
 #' @description
-#' The postal code point dataset shows the location of postal codes, NUTS codes
-#' and the Degree of Urbanisation classification across the EU, EFTA and
-#' candidate countries from a variety of sources. Its primary purpose is to
-#' create correspondence tables for the NUTS classification (EC) 1059/2003 as
-#' part of the Tercet Regulation (EU) 2017/2391.
+#' The postal code point dataset shows the location of postal codes, NUTS
+#' codes and the Degree of Urbanisation classification across the EU, EFTA
+#' and candidate countries from a variety of sources. Its primary purpose is
+#' to create correspondence tables for the NUTS classification (EC) 1059/2003
+#' as part of the Tercet Regulation (EU) 2017/2391.
 #'
 #' @rdname gisco_get_postal_codes
 #' @family admin
@@ -98,7 +98,7 @@ gisco_get_postal_codes <- function(
     return(NULL)
   }
 
-  # Improve speed using queries if country(es) are selected
+  # Improve speed with queries when countries are selected
   # We construct the query and pass it to the st_read function
 
   filter_col <- get_col_name(file_local)
@@ -126,7 +126,7 @@ gisco_get_postal_codes <- function(
     return(data_sf)
   }
 
-  # If not read the whole file
+  # Otherwise, read the whole file
   data_sf <- read_geo_file_sf(file_local)
 
   data_sf

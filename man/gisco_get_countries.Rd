@@ -79,8 +79,8 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 
 \item{region}{Optional. A character vector of UN M49 region codes or
 European Union membership. Possible values are \code{"Africa"}, \code{"Americas"},
-\code{"Asia"}, \code{"Europe"}, \code{"Oceania"} or \code{"EU"} for countries belonging to the
-European Union (as per 2021). See \strong{World Regions} and
+\code{"Asia"}, \code{"Europe"}, \code{"Oceania"} or \code{"EU"} for countries belonging to
+the European Union (as per 2021). See \strong{World Regions} and
 \link{gisco_countrycode}.}
 
 \item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
@@ -97,8 +97,8 @@ scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
 60M).
 
 \strong{Please note that} this function gets data from the aggregated GISCO
-country file. If you prefer to download individual country files, please use
-\code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}}.
+country file. If you prefer to download individual country files, please
+use \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}}.
 }
 \section{World Regions}{
 Regions are defined as per the geographic regions defined by the

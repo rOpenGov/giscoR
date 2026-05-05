@@ -14,8 +14,8 @@ A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolut
 \item{\code{CNTR_NAME}}{Official country name in local language.}
 \item{\code{NAME_ENGL}}{Country name in English.}
 \item{\code{NAME_FREN}}{Country name in French.}
-\item{\code{ISO3_CODE}}{ISO 3166-1 alpha-3 code of each country, as provided by
-GISCO.}
+\item{\code{ISO3_CODE}}{ISO 3166-1 alpha-3 code of each country, as
+provided by GISCO.}
 \item{\code{SVRG_UN}}{Sovereign status as per United Nations.}
 \item{\code{CAPT}}{Capital city.}
 \item{\code{EU_STAT}}{European Union member.}

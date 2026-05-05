@@ -73,13 +73,13 @@ Brief description of each attribute:\tabular{ll}{
    \code{max_students} \tab Measure of capacity by maximum number of students. \cr
    \code{enrollment} \tab Measure of capacity by number of enrolled students. \cr
    \code{fields} \tab Academic disciplines the institution specializes in (ISCED-F 2013). \cr
-   \code{facility_type} \tab Type of institution in reference to ownership and operation e.g. Catholic, International, etc. \cr
+   \code{facility_type} \tab Type of institution in reference to ownership and operation e.g., Catholic, international etc. \cr
    \code{public_private} \tab The public or private status of the education service. \cr
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
-   \code{url} \tab URL link to the institution's website. \cr
+   \code{url} \tab URL for the institution's website. \cr
    \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) the data refers to. The dataset represents the reality as it was at this date. \cr
-   \code{geo_qual} \tab Geolocation quality indicator: 1=Good, 2=Medium, 3=Low, 4=From source, -1=Unknown, -2=Not geocoded. \cr
+   \code{geo_qual} \tab Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. \cr
    \code{comments} \tab Some additional information on the education service. \cr
 }
 }

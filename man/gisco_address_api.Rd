@@ -84,8 +84,8 @@ gisco_address_api_copyright(verbose = FALSE)
 \arguments{
 \item{country}{Country code (\code{country = "LU"}).}
 
-\item{province}{A province within a country. For a list of provinces within a
-certain country, use the provinces endpoint
+\item{province}{A province within a country. For a list of provinces within
+a certain country, use the provinces endpoint
 (\code{gisco_address_api_provinces(country = "LU")}).}
 
 \item{city}{A city within a province. For a list of cities within a certain
@@ -129,7 +129,7 @@ Brief description of the API endpoints (source \href{https://gisco-services.ec.e
    \verb{/housenumbers} \tab Returns all house numbers or names within the specified road. It is possible that in certain countries an address may not have a road component. In this case, if a road is not specified then the number of house numbers returned by \strong{the API is limited to 1000}. \cr
    \verb{/postcodes} \tab Returns all postcodes within the specified address component (Country or Province or City). \cr
    \verb{/search} \tab The search endpoint allows structured queries to the address database. Please note that various combinations of each of the arguments can be used in order to retrieve the addresses that share an address component. \strong{The API is limited to a maximum of 100 addresses}. \cr
-   \verb{/reverse} \tab The API's reverse theme allows you to specify x and y coordinates in order to retrieve a structured address. \cr
+   \verb{/reverse} \tab The reverse endpoint allows you to specify x and y coordinates in order to retrieve a structured address. \cr
    \verb{/bbox} \tab Returns a \href{https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry}{WKT} bounding box for an address component depending on the arguments specified. \cr
    \verb{/copyright} \tab Returns the copyright text for each available country in the Address API. \cr
 }
@@ -148,7 +148,7 @@ The resulting object may present the following variables:\tabular{ll}{
    \code{N2} \tab Refers to "NUTS 2" \cr
    \code{N3} \tab Refers to "NUTS 3" \cr
    \code{X} and \code{Y} \tab Refers to the x and y coordinates of the address point \cr
-   \code{OL} \tab Refers to the address' \href{https://github.com/google/open-location-code}{Open Location Code} \cr
+   \code{OL} \tab Refers to the \href{https://github.com/google/open-location-code}{Open Location Code} for the address \cr
 }
 }
 \examples{

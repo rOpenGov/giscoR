@@ -52,8 +52,8 @@ NULL
 #'   \item{`CNTR_NAME`}{Official country name in local language.}
 #'   \item{`NAME_ENGL`}{Country name in English.}
 #'   \item{`NAME_FREN`}{Country name in French.}
-#'   \item{`ISO3_CODE`}{ISO 3166-1 alpha-3 code of each country, as provided by
-#'   GISCO.}
+#'   \item{`ISO3_CODE`}{ISO 3166-1 alpha-3 code of each country, as
+#'   provided by GISCO.}
 #'   \item{`SVRG_UN`}{Sovereign status as per United Nations.}
 #'   \item{`CAPT`}{Capital city.}
 #'   \item{`EU_STAT`}{European Union member.}
@@ -92,8 +92,8 @@ NULL
 #' A [tibble][tibble::tbl_df] containing conversions between different country
 #' code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
 #' provided by the World Bank and the UN
-#' ([M49 Standard](https://unstats.un.org/unsd/methodology/m49/)). This database
-#' has been extracted from the \CRANpkg{countrycode} package.
+#' ([M49 Standard](https://unstats.un.org/unsd/methodology/m49/)). This
+#' database has been extracted from the \CRANpkg{countrycode} package.
 #'
 #' @source [countrycode::codelist] **v1.6.1**.
 #'
@@ -115,10 +115,10 @@ NULL
 #' \describe{
 #'   \item{`ISO3_CODE`}{Eurostat code of each country.}
 #'   \item{`CNTR_CODE`}{ISO 3166-1 alpha-2 code of each country.}
-#'   \item{`iso2c`}{ISO 3166-1 alpha-3 code of each country.}
+#'   \item{`iso2c`}{ISO 3166-1 alpha-2 code of each country.}
 #'   \item{`iso.name.en`}{ISO English short name.}
-#'   \item{`cldr.short.en`}{English short name as provided by the Unicode Common
-#'     Locale Data Repository.}
+#'   \item{`cldr.short.en`}{English short name as provided by the Unicode
+#'     Common Locale Data Repository.}
 #'   \item{`continent`}{As provided by the World Bank.}
 #'   \item{`un.region.code`}{Numeric region code UN (M49).}
 #'   \item{`un.region.name`}{Region name UN (M49).}

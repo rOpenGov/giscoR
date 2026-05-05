@@ -62,16 +62,16 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset shows pan European administrative boundaries down to commune
-level. Local Administrative units are equivalent to Communes,
+This dataset shows pan-European administrative boundaries down to commune
+level. Local Administrative Units are equivalent to communes,
 see \code{\link[=gisco_get_communes]{gisco_get_communes()}}.
 }
 \details{
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions that
 together subdivide the EU economic territory into regions of five different
-levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to smaller
-territorial units).
+levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to
+smaller territorial units).
 
 The LAU classification is not covered by any legislative act. Geographical
 extent covers the European Union, EFTA countries and candidate countries.

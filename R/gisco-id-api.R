@@ -43,29 +43,30 @@
 #' * `gisco_id_api_geonames()`: Get geographic placenames either from x/y
 #'   coordinates or a bounding box.
 #' * `gisco_id_api_nuts()`: Returns NUTS regions from either a specified
-#'   longitude and latitude (x,y) or id. Accepted `year`
+#'   longitude and latitude (x,y) or ID. Accepted values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("nuts")}.
-#' * `gisco_id_api_lau()`: Returns the id and - optionally - geometry for Large
-#'   Urban Areas (LAU) at specified longitude and latitude (x,y). Accepted
-#'   `year`
+#' * `gisco_id_api_lau()`: Returns the ID and, optionally, geometry for Local
+#'   Administrative Units (LAU) at specified longitude and latitude (x,y).
+#'   Accepted values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("lau")}.
-#' * `gisco_id_api_country()`: Returns the id and - optionally - geometry for
-#'   countries at specified longitude and latitude (x,y). Accepted `year`
+#' * `gisco_id_api_country()`: Returns the ID and, optionally, geometry for
+#'   countries at specified longitude and latitude (x,y). Accepted values for
+#'   `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("country")}.
-#' * `gisco_id_api_river_basin()`: Returns the id and - optionally - geometry
+#' * `gisco_id_api_river_basin()`: Returns the ID and, optionally, geometry
 #'   for river basins at specified longitude and latitude (x,y), based on the
 #'   Water Framework Directive (WFD) reference spatial data sets. Accepted
-#'   `year`
+#'   values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("riverbasin")}.
-#' * `gisco_id_api_biogeo_region()`: Returns the id and - optionally - geometry
-#'   for biogeo regions at specified longitude and latitude (x,y). The
+#' * `gisco_id_api_biogeo_region()`: Returns the ID and, optionally,
+#'   geometry for biogeo regions at specified longitude and latitude (x,y). The
 #'  biogeographical regions dataset contains the official delineations used in
 #'  the Habitats Directive (92/43/EEC) and for the EMERALD Network. Accepted
-#'  `year`
+#'  values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("biogeoregion")}.
-#' * `gisco_id_api_census_grid()`: Returns the id and - optionally - geometry
+#' * `gisco_id_api_census_grid()`: Returns the ID and, optionally, geometry
 #'   for census grid cells at specified longitude and latitude (x,y). Accepted
-#'    `year`
+#'   values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("censusgrid")}.
 #' @seealso
 #' [gisco_get_nuts()], [gisco_get_lau()], [gisco_get_countries()],

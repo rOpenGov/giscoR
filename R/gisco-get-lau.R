@@ -1,8 +1,8 @@
 #' Local Administrative Units (LAU) dataset
 #'
 #' @description
-#' This dataset shows pan European administrative boundaries down to commune
-#' level. Local Administrative units are equivalent to Communes,
+#' This dataset shows pan-European administrative boundaries down to commune
+#' level. Local Administrative Units are equivalent to communes,
 #' see [gisco_get_communes()].
 #'
 #' @family stats
@@ -35,8 +35,8 @@
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
 #' together subdivide the EU economic territory into regions of five different
-#' levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to smaller
-#' territorial units).
+#' levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to
+#' smaller territorial units).
 #'
 #' The LAU classification is not covered by any legislative act. Geographical
 #' extent covers the European Union, EFTA countries and candidate countries.
@@ -119,7 +119,7 @@ gisco_get_lau <- function(
     return(NULL)
   }
 
-  # Improve speed using queries if country(es) are selected
+  # Improve speed with queries when countries are selected
   # We construct the query and pass it to the st_read function
   filter_col_cnt <- get_col_name(file_local)
   filter_col_id <- get_col_name(file_local, "GISCO_ID")

@@ -79,7 +79,7 @@ match_arg_pretty <- function(arg, choices) {
       l_choices <- length(choices)
       msg <- paste0("{.str ", choices[-l_choices], "}", collapse = ", ")
       msg <- paste0(msg, " or {.str ", choices[l_choices], "}")
-      # Add one of at the beginning
+      # Prefix the message with "one of".
       msg <- paste0("one of ", msg)
     }
 
@@ -87,7 +87,7 @@ match_arg_pretty <- function(arg, choices) {
     bad_arg <- paste0("{.str ", arg, "}", collapse = " or ")
     msg <- paste0(msg, bad_arg, ".")
 
-    # Maybe is a regex?
+    # Check for a partial match.
     reg_msg <- NULL
     if (!is.na(aproxmatch)) {
       aprox <- choices[aproxmatch]

@@ -7,8 +7,8 @@
 #' 60M).
 #'
 #' **Please note that** this function gets data from the aggregated GISCO
-#' country file. If you prefer to download individual country files, please use
-#' [gisco_get_unit_country()].
+#' country file. If you prefer to download individual country files, please
+#' use [gisco_get_unit_country()].
 #'
 #' @aliases gisco_get
 #' @family admin
@@ -65,8 +65,8 @@
 #'   * `"01"`: 1:1 million.
 #' @param region Optional. A character vector of UN M49 region codes or
 #'   European Union membership. Possible values are `"Africa"`, `"Americas"`,
-#'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
-#'   European Union (as per 2021). See **World Regions** and
+#'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to
+#'   the European Union (as per 2021). See **World Regions** and
 #'   [gisco_countrycode].
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
@@ -170,7 +170,7 @@ gisco_get_countries <- function(
     return(NULL)
   }
 
-  # Improve speed using queries if country(es) are selected
+  # Improve speed with queries when countries are selected
   # We construct the query and pass it to the st_read function
 
   cnt_region <- get_countrycodes_region(country, region)

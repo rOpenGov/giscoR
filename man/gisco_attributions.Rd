@@ -21,7 +21,7 @@ A string with the attribution to be used.
 Get the legal text to be used for administrative and statistical data
 downloaded from GISCO, see section \strong{Copyright information}.
 
-For other datasets you may abide by the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat's general copyright notice and licence policy}.
+For other datasets you may abide by the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat general copyright notice and licence policy}.
 }
 \details{
 Current languages supported are:
@@ -88,7 +88,7 @@ gisco_attributions(lang = "es", copyright = TRUE)
 
 gisco_attributions(lang = "XXX")
 
-# Get list of codes from countrycodes
+# Get the list of codes from **countrycode**.
 library(dplyr)
 
 countrycode::codelist |>

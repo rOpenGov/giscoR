@@ -29,10 +29,10 @@ repo:
   branch: main
 
 home:
-  title: giscoR | R package for download geodata from GISCO - Eurostat
+  title: giscoR | R package for downloading geodata from GISCO - Eurostat
   description: >
-    giscoR is a R API package that helps to retrieve data from Eurostat - GISCO
-    (the Geographic Information System of the COmmission). It also provides some
+    giscoR is an R API package that helps retrieve data from Eurostat - GISCO
+    (the Geographic Information System of the Commission). It also provides some
     lightweight datasets ready to use without downloading.
 
 reference:
@@ -45,10 +45,9 @@ reference:
     class="external-link"><span class="pkg">sf</span></a> objects.
 - subtitle: Administrative units
   desc: >
-    On using administrative data for statistical purposes, administrative units
-    are the units for which administrative data are recorded. These units may or
-    may not be the same as those required for the statistical purposes (referred
-    to as statistical units).
+    When administrative data are used for statistical purposes, administrative
+    units are the units for which those data are recorded. These units may or
+    may not match the statistical units required for analysis.
 
     See <a
     href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units"
@@ -65,7 +64,7 @@ reference:
   contents: has_concept("stats")
 - subtitle: Grids
   desc: >
-    These datasets contain grid cells covering the land territory of the EU, in
+    These datasets contain grid cells covering the land territory of the EU, at
     various resolutions from 1 km to 100 km. Base statistics such as population
     figures are provided for these cells.
   contents: has_concept("grids")
@@ -83,15 +82,14 @@ reference:
     metadata.
   contents: has_concept("database")
 - subtitle: Misc
-  desc: Other functions
+  desc: Other functions.
   contents: has_concept("misc")
 - title: GISCO Tools
   desc: >
     Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools"
     class="external-link">APIs and tools</a> provided by GISCO.
   contents: has_concept("API tools")
-- title: >
-    Cache management
+- title: Cache management
   contents: has_concept("cache utilities")
 - title: Datasets
   desc: >
@@ -101,5 +99,5 @@ reference:
 - title: About the package
   contents: giscoR-package
 - title: Deprecated functions
-  desc: These functions would be removed in the future.
+  desc: These functions will be removed in the future.
   contents: has_concept("deprecated functions")

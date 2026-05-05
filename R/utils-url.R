@@ -319,7 +319,7 @@ get_request_body <- function(url, verbose = TRUE) {
   resp
 }
 
-#' Allows to use jsonlite in Imports
+#' Allow jsonlite to be listed in Imports
 #'
 #' The only purpose of this function is to use \CRANpkg{jsonlite} in the
 #' source package code, so it should be included in the Imports file. Otherwise
@@ -329,7 +329,7 @@ get_request_body <- function(url, verbose = TRUE) {
 #' it under the hood with [httr2::resp_body_json()], but \CRANpkg{httr2} lists
 #' it on Suggests. So we need to avoid this with this simple trick.
 #'
-#' This function is never used on the package.
+#' This function is never used by the package.
 #'
 #' @noRd
 for_import_jsonlite <- function() {

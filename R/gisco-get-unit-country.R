@@ -5,9 +5,9 @@
 #' [`cache_dir`][gisco_set_cache_dir()].
 #'
 #' Unlike [gisco_get_countries()], [gisco_get_nuts()] or
-#' [gisco_get_urban_audit()] (that downloads a full dataset and applies
-#' filters), these functions download a single per unit, reducing the time
-#' of downloading and reading into your **R** session.
+#' [gisco_get_urban_audit()] (which downloads a full dataset and applies
+#' filters), these functions download a single file per unit, reducing the time
+#' needed to download and read into your **R** session.
 #'
 #' @rdname gisco_get_unit
 #' @name gisco_get_unit
@@ -25,7 +25,7 @@
 #' See [`gisco_id_api`][giscoR::gisco_id_api] to download via GISCO ID service
 #' API.
 #'
-#' @param unit character vector of unit ids to be downloaded. See **Details**.
+#' @param unit character vector of unit IDs to be downloaded. See **Details**.
 #' @param year character string or number. Release year of the file.
 #' @param spatialtype character string. Type of geometry to be returned.
 #'   Options available are:
@@ -38,7 +38,7 @@
 #' All the source files are `.geojson` files.
 #'
 #' @details
-#' Check the available `unit` ids with the required
+#' Check the available `unit` IDs with the required
 #' combination of arguments with [gisco_get_metadata()].
 #'
 gisco_get_unit_country <- function(
@@ -140,7 +140,7 @@ gisco_get_unit_country <- function(
       return(NULL)
     }
 
-    # Now create urls and queries
+    # Now create URLs and queries
 
     api_entry <- paste0(
       "https://gisco-services.ec.europa.eu/",

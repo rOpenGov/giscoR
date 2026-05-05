@@ -26,8 +26,8 @@
 #' @param country Country code (`country = "LU"`).
 #' @param x,y x and y coordinates (as longitude and latitude) to be converted
 #'  into a human-readable address.
-#' @param province A province within a country. For a list of provinces within a
-#'  certain country, use the provinces endpoint
+#' @param province A province within a country. For a list of provinces within
+#'  a certain country, use the provinces endpoint
 #'  (`gisco_address_api_provinces(country = "LU")`).
 #' @param city A city within a province. For a list of cities within a certain
 #'   province, use the cities endpoint

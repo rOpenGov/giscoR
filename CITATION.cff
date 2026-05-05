@@ -15,8 +15,8 @@ identifiers:
   value: 10.32614/CRAN.package.giscoR
 abstract: Tools to download data from the GISCO (Geographic Information System of
   the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global
-  and European map data available. This package is in no way officially related to
-  or endorsed by Eurostat.
+  and European map data are available. This package is in no way officially related
+  to or endorsed by Eurostat.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -36,7 +36,7 @@ preferred-citation:
   url: https://ropengov.github.io/giscoR/
   abstract: Tools to download data from the GISCO (Geographic Information System of
     the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global
-    and European map data available. This package is in no way officially related
+    and European map data are available. This package is in no way officially related
     to or endorsed by Eurostat.
 repository: https://CRAN.R-project.org/package=giscoR
 repository-code: https://github.com/rOpenGov/giscoR
@@ -68,8 +68,10 @@ references:
   url: https://www.R-project.org/
   authors:
   - name: R Core Team
+    website: https://ror.org/02zz1nj61
   institution:
-    name: 'R Foundation for Statistical Computing (ROR: <https://ror.org/05qewa988>)'
+    name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
     address: Vienna, Austria
   year: '2026'
   doi: 10.32614/R.manuals
@@ -209,8 +211,10 @@ references:
   notes: Imports
   authors:
   - name: R Core Team
+    website: https://ror.org/02zz1nj61
   institution:
-    name: 'R Foundation for Statistical Computing (ROR: <https://ror.org/05qewa988>)'
+    name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
     address: Vienna, Austria
   year: '2026'
   doi: 10.32614/R.manuals
@@ -220,8 +224,10 @@ references:
   notes: Imports
   authors:
   - name: R Core Team
+    website: https://ror.org/02zz1nj61
   institution:
-    name: 'R Foundation for Statistical Computing (ROR: <https://ror.org/05qewa988>)'
+    name: R Foundation for Statistical Computing
+    website: https://ror.org/05qewa988
     address: Vienna, Austria
   year: '2026'
   doi: 10.32614/R.manuals

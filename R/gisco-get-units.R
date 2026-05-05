@@ -6,7 +6,7 @@
 #' This function is deprecated. Use:
 #'
 #' - [gisco_get_metadata()] (equivalent to `mode = "df"`).
-#' - [`?gisco_get_unit`][gisco_get_unit]functions (equivalent to
+#' - [`?gisco_get_unit`][gisco_get_unit] functions (equivalent to
 #'   `mode = "sf"`)
 #' @family deprecated functions
 #' @encoding UTF-8
@@ -22,8 +22,8 @@
 #' A [`sf`][sf::st_sf] object on `mode = "sf"` or a [tibble][tibble::tbl_df]
 #' on `mode = "df"`.
 #'
-#' @param id_giscoR Select the `unit` type to be downloaded. Accepted values are
-#'  `"nuts"`, `"countries"` or `"urban_audit"`.
+#' @param id_giscoR Select the `unit` type to be downloaded. Accepted values
+#'   are `"nuts"`, `"countries"` or `"urban_audit"`.
 #' @param unit Unit ID to be downloaded.
 #' @param mode Controls the output of the function. Possible values are `"sf"`
 #'  or `"df"`. See **Value**.

@@ -48,8 +48,8 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{spatialtype}{character string. Type of geometry to be returned. Options
-available are:
+\item{spatialtype}{character string. Type of geometry to be returned.
+Options available are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
@@ -60,7 +60,7 @@ vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{level}{character string. Level of Urban Audit. Possible values \code{"all"}
-(the default), that downloads the full dataset or \code{"CITIES"}, \code{"FUA"},
+(the default), which downloads the full dataset or \code{"CITIES"}, \code{"FUA"},
 and (for versions prior to \code{year = 2020}) \code{"GREATER_CITIES"}, \code{"CITY"},
 \code{"KERN"} or \code{"LUZ"}.}
 
@@ -74,8 +74,8 @@ A \code{\link[sf:st_sf]{sf}} object.
 \description{
 The dataset contains the boundaries of cities (\code{"CITIES"}), greater cities
 (\code{"GREATER_CITIES"}) and functional urban areas (\code{"FUA"}) as defined
-according to the EC-OECD city definition. This is used for the Eurostat Urban
-Audit data collection.
+according to the EC-OECD city definition. This is used for the Eurostat
+Urban Audit data collection.
 
 \strong{Please note that} this function gets data from the aggregated GISCO
 Urban Audit file. If you prefer to download individual urban audit files,
@@ -89,7 +89,7 @@ The cities are defined at several conceptual levels:
 \item The core city (\code{"CITIES"}), using an administrative definition.
 \item The Functional Urban Area/Large Urban Zone (\code{"FUA"}), approximating the
 functional urban region.
-The coverage is the EU plus Iceland, Norway and Switzerland . The dataset
+The coverage is the EU plus Iceland, Norway and Switzerland. The dataset
 includes polygon features, point features and a related attribute table
 which can be joined on the URAU code field.
 }

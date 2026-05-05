@@ -41,7 +41,7 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset shows pan European communal boundaries depicting the situation
+This dataset shows pan-European communal boundaries depicting the situation
 at the corresponding Census.
 }
 \examples{

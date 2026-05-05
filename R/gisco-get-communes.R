@@ -1,7 +1,7 @@
 #' Communes dataset
 #'
 #' @description
-#' This dataset shows pan European administrative boundaries down to commune
+#' This dataset shows pan-European administrative boundaries down to commune
 #' level. Communes are equivalent to Local Administrative Units,
 #' see [gisco_get_lau()].
 #'
@@ -26,8 +26,8 @@
 #'   cache the result due to the size. See **Caching strategies** section
 #'   in [gisco_set_cache_dir()].
 #'
-#' @param spatialtype character string. Type of geometry to be returned. Options
-#'   available are:
+#' @param spatialtype character string. Type of geometry to be returned.
+#'   Options available are:
 #'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #'   * `"LB"`: Labels - `POINT` object.
 #'   * `"BN"`: Boundaries - `LINESTRING` object.
@@ -42,8 +42,8 @@
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
 #' together subdivide the EU economic territory into regions of five different
-#' levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to smaller
-#' territorial units).
+#' levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to
+#' smaller territorial units).
 #'
 #' The dataset is based on EuroBoundaryMap from
 #' [EuroGeographics](https://eurogeographics.org/). Geographical extent covers
@@ -118,7 +118,7 @@ gisco_get_communes <- function(
     return(NULL)
   }
 
-  # Improve speed using queries if country(es) are selected
+  # Improve speed with queries when countries are selected
   # We construct the query and pass it to the st_read function
 
   filter_col <- get_col_name(file_local)

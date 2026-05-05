@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database \url{https://ec.europa.eu/eurostat/web/gisco}. Global and European map data available. This package is in no way officially related to or endorsed by Eurostat.
+Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database \url{https://ec.europa.eu/eurostat/web/gisco}. Global and European map data are available. This package is in no way officially related to or endorsed by Eurostat.
 }
 \seealso{
 Useful links:

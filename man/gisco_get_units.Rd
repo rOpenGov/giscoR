@@ -25,8 +25,8 @@ gisco_get_units(
 )
 }
 \arguments{
-\item{id_giscoR}{Select the \code{unit} type to be downloaded. Accepted values are
-\code{"nuts"}, \code{"countries"} or \code{"urban_audit"}.}
+\item{id_giscoR}{Select the \code{unit} type to be downloaded. Accepted values
+are \code{"nuts"}, \code{"countries"} or \code{"urban_audit"}.}
 
 \item{unit}{Unit ID to be downloaded.}
 
@@ -81,7 +81,7 @@ on \code{mode = "df"}.
 This function is deprecated. Use:
 \itemize{
 \item \code{\link[=gisco_get_metadata]{gisco_get_metadata()}} (equivalent to \code{mode = "df"}).
-\item \code{\link[=gisco_get_unit]{?gisco_get_unit}}functions (equivalent to
+\item \code{\link[=gisco_get_unit]{?gisco_get_unit}} functions (equivalent to
 \code{mode = "sf"})
 }
 }

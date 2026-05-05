@@ -1,7 +1,7 @@
 #' Ports dataset
 #'
 #' @description
-#' This dataset includes the location of over 2,440 Pan European ports. The
+#' This dataset includes the location of over 2,440 pan-European ports. The
 #' ports are identified following the UN LOCODE list.
 #'
 #' @family transport

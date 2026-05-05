@@ -61,16 +61,16 @@ data. One of:
 \code{"shp"}, \code{"geojson"}, \code{"svg"}, \code{"json"}, \code{"gdb"}. See \strong{Details}.}
 
 \item{recursive}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{recursive} is no
-longer supported, and this function will never perform recursive extraction
-of child \code{.zip} files. This is the case of "\code{shp.zip} inside the top-level
-\code{.zip}, that won't be unzipped.}
+longer supported, and this function will never perform recursive
+extraction of child \code{.zip} files. This is the case of "\code{shp.zip} inside
+the top-level \code{.zip}, that won't be unzipped.}
 
 \item{...}{Ignored. The argument \code{id_giscoR}
 (\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}) is captured via \code{...} and redirected
 to \code{id} with a \link[lifecycle:deprecate_warn]{warning}.}
 }
 \value{
-A (invisible) character vector with the full path of the files extracted.
+An invisible character vector with the full path of the files extracted.
 See \strong{Examples}.
 }
 \description{

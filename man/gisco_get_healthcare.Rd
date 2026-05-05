@@ -50,13 +50,13 @@ A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 The dataset contains information on main healthcare services considered to
-be 'hospitals' by Member States. The definition varies slightly from country
-to country, but roughly includes the following:
+be 'hospitals' by Member States. The definition varies slightly from
+country to country, but roughly includes the following:
 
 \emph{"'Hospitals' comprises licensed establishments primarily engaged in
-providing medical, diagnostic and treatment services that include physician,
-nursing and other health services to in-patients and the specialised
-accommodation services required by inpatients."}
+providing medical, diagnostic and treatment services that include
+physician, nursing and other health services to in-patients and the
+specialised accommodation services required by inpatients."}
 }
 \details{
 Files are distributed on \href{https://epsg.io/4326}{EPSG:4326}.
@@ -74,19 +74,19 @@ Brief description of each attribute:\tabular{ll}{
    \code{address} \tab Address information when the different components of the address are not separated in the source. \cr
    \code{city} \tab City name (sometimes refers to a region or municipality). \cr
    \code{cntr_id} \tab Country code (2 letters, ISO 3166-1 alpha-2). \cr
-   \code{emergency} \tab 'yes/no' for whether the healthcare site provides emergency medical services. \cr
+   \code{emergency} \tab \code{yes}/\code{no}, indicating whether the healthcare site provides emergency medical services. \cr
    \code{cap_beds} \tab Measure of capacity by number of beds (most common). \cr
    \code{cap_prac} \tab Measure of capacity by number of practitioners. \cr
    \code{cap_rooms} \tab Measure of capacity by number of rooms. \cr
    \code{facility_type} \tab Type of healthcare service (e.g., psychiatric hospital), based on national classification. \cr
-   \code{public_private} \tab 'public/private' status of the healthcare service. \cr
+   \code{public_private} \tab \code{public}/\code{private} status of the healthcare service. \cr
    \code{list_specs} \tab List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). \cr
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
-   \code{url} \tab URL link to the institution's website. \cr
+   \code{url} \tab URL for the institution's website. \cr
    \code{ref_date} \tab The date (\code{DD/MM/YYYY}) the data refers to (reference date). \cr
    \code{pub_date} \tab The publication date of the dataset by Eurostat (\code{DD/MM/YYYY}). \cr
-   \code{geo_qual} \tab Geolocation quality indicator: 1=Good, 2=Medium, 3=Low, 4=From source, -1=Unknown, -2=Not geocoded. \cr
+   \code{geo_qual} \tab Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. \cr
    \code{comments} \tab Additional information on the healthcare service. \cr
 }
 }

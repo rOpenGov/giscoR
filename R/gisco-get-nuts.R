@@ -39,8 +39,8 @@
 #' @param year character string or number. Release year of the file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "year",TRUE)}.
-#' @param spatialtype character string. Type of geometry to be returned. Options
-#'   available are:
+#' @param spatialtype character string. Type of geometry to be returned.
+#'   Options available are:
 #'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #'   * `"LB"`: Labels - `POINT` object.
 #'   * `"BN"`: Boundaries - `LINESTRING` object.
@@ -57,16 +57,17 @@
 #' @details
 #' The NUTS nomenclature is a hierarchical classification of statistical
 #' regions and subdivides the EU economic territory into regions of three
-#' different levels (NUTS 1, 2 and 3, moving respectively from larger to smaller
-#' territorial units). NUTS 1 is the most aggregated level. An additional
+#' different levels (NUTS 1, 2 and 3, moving respectively from larger to
+#' smaller territorial units). NUTS 1 is the most aggregated level. An
+#' additional
 #' Country level (NUTS 0) is also available for countries where the nation at
 #' statistical level does not coincide with the administrative boundaries.
 #'
 #' The NUTS classification has been officially established through Commission
 #' Delegated Regulation 2019/1755. A non-official NUTS-like classification has
 #' been defined for the EFTA countries, candidate countries and potential
-#' candidates based on a bilateral agreement between Eurostat and the respective
-#' statistical agencies.
+#' candidates based on a bilateral agreement between Eurostat and the
+#' respective statistical agencies.
 #'
 #' An introduction to the NUTS classification is available here:
 #' <https://ec.europa.eu/eurostat/web/nuts/overview>.
@@ -177,7 +178,7 @@ gisco_get_nuts <- function(
     return(NULL)
   }
 
-  # Improve speed using queries if country(es) are selected
+  # Improve speed with queries when countries are selected
   # We construct the query and pass it to the st_read function
   filter_col_cnt <- get_col_name(file_local)
   filter_col_id <- get_col_name(file_local, "NUTS_ID")

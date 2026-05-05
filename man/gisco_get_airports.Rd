@@ -39,7 +39,7 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset includes the location of over 11,800 Pan European airports and
+This dataset includes the location of over 11,800 pan-European airports and
 heliports. The airports are identified using the International Civil
 Aviation Organisation (ICAO) airport codes.
 }

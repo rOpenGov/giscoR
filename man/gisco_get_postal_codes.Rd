@@ -46,11 +46,11 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-The postal code point dataset shows the location of postal codes, NUTS codes
-and the Degree of Urbanisation classification across the EU, EFTA and
-candidate countries from a variety of sources. Its primary purpose is to
-create correspondence tables for the NUTS classification (EC) 1059/2003 as
-part of the Tercet Regulation (EU) 2017/2391.
+The postal code point dataset shows the location of postal codes, NUTS
+codes and the Degree of Urbanisation classification across the EU, EFTA
+and candidate countries from a variety of sources. Its primary purpose is
+to create correspondence tables for the NUTS classification (EC) 1059/2003
+as part of the Tercet Regulation (EU) 2017/2391.
 }
 \section{Copyright}{
 The dataset is released under the CC-BY-SA-4.0 licence and requires the

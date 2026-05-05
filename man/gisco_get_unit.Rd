@@ -50,7 +50,7 @@ gisco_get_unit_urban_audit(
 )
 }
 \arguments{
-\item{unit}{character vector of unit ids to be downloaded. See \strong{Details}.}
+\item{unit}{character vector of unit IDs to be downloaded. See \strong{Details}.}
 
 \item{year}{character string or number. Release year of the file.}
 
@@ -98,12 +98,12 @@ Download datasets of single spatial units from GISCO to the
 \code{\link[=gisco_set_cache_dir]{cache_dir}}.
 
 Unlike \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \code{\link[=gisco_get_nuts]{gisco_get_nuts()}} or
-\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}} (that downloads a full dataset and applies
-filters), these functions download a single per unit, reducing the time
-of downloading and reading into your \strong{R} session.
+\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}} (which downloads a full dataset and applies
+filters), these functions download a single file per unit, reducing the time
+needed to download and read into your \strong{R} session.
 }
 \details{
-Check the available \code{unit} ids with the required
+Check the available \code{unit} IDs with the required
 combination of arguments with \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}.
 }
 \section{Note}{

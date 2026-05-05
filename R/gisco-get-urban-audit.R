@@ -3,8 +3,8 @@
 #' @description
 #' The dataset contains the boundaries of cities (`"CITIES"`), greater cities
 #' (`"GREATER_CITIES"`) and functional urban areas (`"FUA"`) as defined
-#' according to the EC-OECD city definition. This is used for the Eurostat Urban
-#' Audit data collection.
+#' according to the EC-OECD city definition. This is used for the Eurostat
+#' Urban Audit data collection.
 #'
 #' **Please note that** this function gets data from the aggregated GISCO
 #' Urban Audit file. If you prefer to download individual urban audit files,
@@ -26,13 +26,13 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 #'   "year",TRUE)}.
 #'
-#' @param spatialtype character string. Type of geometry to be returned. Options
-#'   available are:
+#' @param spatialtype character string. Type of geometry to be returned.
+#'   Options available are:
 #'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #'   * `"LB"`: Labels - `POINT` object.
 #'
 #' @param level character string. Level of Urban Audit. Possible values `"all"`
-#'   (the default), that downloads the full dataset or `"CITIES"`, `"FUA"`,
+#'   (the default), which downloads the full dataset or `"CITIES"`, `"FUA"`,
 #'   and (for versions prior to `year = 2020`) `"GREATER_CITIES"`, `"CITY"`,
 #'   `"KERN"` or `"LUZ"`.
 #' @param ext character. Extension of the file (default `"gpkg"`). One of
@@ -53,7 +53,7 @@
 #'   - The core city (`"CITIES"`), using an administrative definition.
 #'   - The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating the
 #'     functional urban region.
-#' The coverage is the EU plus Iceland, Norway and Switzerland . The dataset
+#' The coverage is the EU plus Iceland, Norway and Switzerland. The dataset
 #' includes polygon features, point features and a related attribute table
 #' which can be joined on the URAU code field.
 #'
@@ -133,7 +133,7 @@ gisco_get_urban_audit <- function(
     return(NULL)
   }
 
-  # Improve speed using queries if country(es) are selected
+  # Improve speed with queries when countries are selected
   # We construct the query and pass it to the st_read function
 
   filter_col <- get_col_name(file_local)

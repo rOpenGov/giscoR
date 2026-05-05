@@ -122,29 +122,30 @@ The available endpoints are:
 \item \code{gisco_id_api_geonames()}: Get geographic placenames either from x/y
 coordinates or a bounding box.
 \item \code{gisco_id_api_nuts()}: Returns NUTS regions from either a specified
-longitude and latitude (x,y) or id. Accepted \code{year}
+longitude and latitude (x,y) or ID. Accepted values for \code{year}
 \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("nuts")}.
-\item \code{gisco_id_api_lau()}: Returns the id and - optionally - geometry for Large
-Urban Areas (LAU) at specified longitude and latitude (x,y). Accepted
-\code{year}
+\item \code{gisco_id_api_lau()}: Returns the ID and, optionally, geometry for Local
+Administrative Units (LAU) at specified longitude and latitude (x,y).
+Accepted values for \code{year}
 \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("lau")}.
-\item \code{gisco_id_api_country()}: Returns the id and - optionally - geometry for
-countries at specified longitude and latitude (x,y). Accepted \code{year}
+\item \code{gisco_id_api_country()}: Returns the ID and, optionally, geometry for
+countries at specified longitude and latitude (x,y). Accepted values for
+\code{year}
 \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("country")}.
-\item \code{gisco_id_api_river_basin()}: Returns the id and - optionally - geometry
+\item \code{gisco_id_api_river_basin()}: Returns the ID and, optionally, geometry
 for river basins at specified longitude and latitude (x,y), based on the
 Water Framework Directive (WFD) reference spatial data sets. Accepted
-\code{year}
+values for \code{year}
 \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("riverbasin")}.
-\item \code{gisco_id_api_biogeo_region()}: Returns the id and - optionally - geometry
-for biogeo regions at specified longitude and latitude (x,y). The
+\item \code{gisco_id_api_biogeo_region()}: Returns the ID and, optionally,
+geometry for biogeo regions at specified longitude and latitude (x,y). The
 biogeographical regions dataset contains the official delineations used in
 the Habitats Directive (92/43/EEC) and for the EMERALD Network. Accepted
-\code{year}
+values for \code{year}
 \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("biogeoregion")}.
-\item \code{gisco_id_api_census_grid()}: Returns the id and - optionally - geometry
+\item \code{gisco_id_api_census_grid()}: Returns the ID and, optionally, geometry
 for census grid cells at specified longitude and latitude (x,y). Accepted
-\code{year}
+values for \code{year}
 \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("censusgrid")}.
 }
 }

@@ -95,7 +95,7 @@ gisco_get_unit_nuts <- function(
       return(NULL)
     }
 
-    # Now create urls and queries
+    # Now create URLs and queries
 
     api_entry <- paste0(
       "https://gisco-services.ec.europa.eu/",

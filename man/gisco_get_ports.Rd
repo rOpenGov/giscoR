@@ -39,7 +39,7 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset includes the location of over 2,440 Pan European ports. The
+This dataset includes the location of over 2,440 pan-European ports. The
 ports are identified following the UN LOCODE list.
 }
 \details{

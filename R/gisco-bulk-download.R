@@ -12,7 +12,7 @@
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
 #' @return
-#' A (invisible) character vector with the full path of the files extracted.
+#' An invisible character vector with the full path of the files extracted.
 #' See **Examples**.
 #'
 #' @param year character string or number. Release year of the file, see
@@ -30,9 +30,9 @@
 #'
 #'   This argument replaces the previous (deprecated) argument `id_giscoR`.
 #' @param recursive `r lifecycle::badge("deprecated")` `recursive` is no
-#'   longer supported, and this function will never perform recursive extraction
-#'   of child `.zip` files. This is the case of "`shp.zip` inside the top-level
-#'   `.zip`, that won't be unzipped.
+#'   longer supported, and this function will never perform recursive
+#'   extraction of child `.zip` files. This is the case of "`shp.zip` inside
+#'   the top-level `.zip`, that won't be unzipped.
 #' @param ... Ignored. The argument `id_giscoR`
 #'   (`r lifecycle::badge("deprecated")`) is captured via `...` and redirected
 #'   to `id` with a [warning][lifecycle::deprecate_warn].

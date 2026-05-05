@@ -4,7 +4,7 @@
 #' Get the legal text to be used for administrative and statistical data
 #' downloaded from GISCO, see section **Copyright information**.
 #'
-#' For other datasets you may abide by the [Eurostat's general copyright notice
+#' For other datasets you may abide by the [Eurostat general copyright notice
 #' and licence
 #' policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice).
 #'
@@ -86,7 +86,7 @@
 #'
 #' gisco_attributions(lang = "XXX")
 #'
-#' # Get list of codes from countrycodes
+#' # Get the list of codes from **countrycode**.
 #' library(dplyr)
 #'
 #' countrycode::codelist |>

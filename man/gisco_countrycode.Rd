@@ -12,10 +12,10 @@ variables:
 \describe{
 \item{\code{ISO3_CODE}}{Eurostat code of each country.}
 \item{\code{CNTR_CODE}}{ISO 3166-1 alpha-2 code of each country.}
-\item{\code{iso2c}}{ISO 3166-1 alpha-3 code of each country.}
+\item{\code{iso2c}}{ISO 3166-1 alpha-2 code of each country.}
 \item{\code{iso.name.en}}{ISO English short name.}
-\item{\code{cldr.short.en}}{English short name as provided by the Unicode Common
-Locale Data Repository.}
+\item{\code{cldr.short.en}}{English short name as provided by the Unicode
+Common Locale Data Repository.}
 \item{\code{continent}}{As provided by the World Bank.}
 \item{\code{un.region.code}}{Numeric region code UN (M49).}
 \item{\code{un.region.name}}{Region name UN (M49).}
@@ -34,8 +34,8 @@ European Union.}
 A \link[tibble:tbl_df]{tibble} containing conversions between different country
 code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
 provided by the World Bank and the UN
-(\href{https://unstats.un.org/unsd/methodology/m49/}{M49 Standard}). This database
-has been extracted from the \CRANpkg{countrycode} package.
+(\href{https://unstats.un.org/unsd/methodology/m49/}{M49 Standard}). This
+database has been extracted from the \CRANpkg{countrycode} package.
 }
 \section{World Regions}{
 Regions are defined as per the geographic regions defined by the

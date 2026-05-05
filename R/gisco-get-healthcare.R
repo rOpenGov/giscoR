@@ -2,13 +2,13 @@
 #'
 #' @description
 #' The dataset contains information on main healthcare services considered to
-#' be 'hospitals' by Member States. The definition varies slightly from country
-#' to country, but roughly includes the following:
+#' be 'hospitals' by Member States. The definition varies slightly from
+#' country to country, but roughly includes the following:
 #'
 #' *"'Hospitals' comprises licensed establishments primarily engaged in
-#' providing medical, diagnostic and treatment services that include physician,
-#' nursing and other health services to in-patients and the specialised
-#' accommodation services required by inpatients."*
+#' providing medical, diagnostic and treatment services that include
+#' physician, nursing and other health services to in-patients and the
+#' specialised accommodation services required by inpatients."*
 #'
 #' @family services
 #' @inherit gisco_get_education return source

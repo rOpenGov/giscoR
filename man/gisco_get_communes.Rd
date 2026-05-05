@@ -48,8 +48,8 @@ is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
 
 \item{verbose}{logical. If \code{TRUE} displays informational messages.}
 
-\item{spatialtype}{character string. Type of geometry to be returned. Options
-available are:
+\item{spatialtype}{character string. Type of geometry to be returned.
+Options available are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
@@ -71,7 +71,7 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset shows pan European administrative boundaries down to commune
+This dataset shows pan-European administrative boundaries down to commune
 level. Communes are equivalent to Local Administrative Units,
 see \code{\link[=gisco_get_lau]{gisco_get_lau()}}.
 }
@@ -79,8 +79,8 @@ see \code{\link[=gisco_get_lau]{gisco_get_lau()}}.
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions that
 together subdivide the EU economic territory into regions of five different
-levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to smaller
-territorial units).
+levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to
+smaller territorial units).
 
 The dataset is based on EuroBoundaryMap from
 \href{https://eurogeographics.org/}{EuroGeographics}. Geographical extent covers
