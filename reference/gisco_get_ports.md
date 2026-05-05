@@ -69,7 +69,6 @@ Other transport networks datasets:
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 library(sf)
 
 ports <- gisco_get_ports(2013)
@@ -97,6 +96,5 @@ if (!is.null(ports)) {
       caption = "Source: Eurostat, Ports 2013 dataset."
     ) +
     coord_sf(crs = "ESRI:54030")
-}
 }
 ```

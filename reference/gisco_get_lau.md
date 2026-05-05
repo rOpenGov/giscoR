@@ -133,10 +133,10 @@ Other statistical units datasets:
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 # \dontrun{
 
 lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
+#> ! The file to be downloaded has size 74.6 Mb.
 
 if (!is.null(lu_lau)) {
   library(ggplot2)
@@ -155,6 +155,6 @@ if (!is.null(lu_lau)) {
     theme_void() +
     labs(fill = "pop/km2")
 }
+
 # }
-}
 ```

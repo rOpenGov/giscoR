@@ -111,7 +111,6 @@ Other basic services datasets:
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 # \donttest{
 edu_austria <- gisco_get_education(country = "Austria", year = 2023)
 
@@ -141,6 +140,6 @@ if (!is.null(edu_austria)) {
     ) +
     coord_sf(crs = 3035)
 }
+
 # }
-}
 ```

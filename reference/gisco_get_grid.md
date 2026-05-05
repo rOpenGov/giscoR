@@ -63,7 +63,6 @@ The file sizes range from 428 KB (`resolution = 100`) to 1.7 GB
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 grid <- gisco_get_grid(resolution = 20)
 
 # If downloaded correctly proceed
@@ -130,6 +129,5 @@ if (!is.null(grid)) {
       legend.key.height = unit(0.5, "lines"),
       legend.key.width = unit(1, "lines")
     )
-}
 }
 ```

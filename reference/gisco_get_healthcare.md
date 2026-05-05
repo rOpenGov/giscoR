@@ -118,7 +118,6 @@ Other basic services datasets:
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 health_benelux <- gisco_get_healthcare(
   country = c("BE", "NL", "LU"),
   year = 2023
@@ -148,6 +147,5 @@ if (!is.null(health_benelux)) {
       caption = "Source: Eurostat, Healthcare 2023 dataset."
     ) +
     coord_sf(crs = 3035)
-}
 }
 ```

@@ -67,7 +67,6 @@ Other transport networks datasets:
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 airp <- gisco_get_airports(year = 2013)
 coast <- giscoR::gisco_coastal_lines
 
@@ -98,6 +97,5 @@ if (!is.null(airp)) {
       xlim = c(2377294, 7453440),
       ylim = c(1313597, 5628510)
     )
-}
 }
 ```

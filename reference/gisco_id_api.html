@@ -228,9 +228,27 @@ is <code>"2021"</code>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># gisco_check_access()</span></span></span>
-<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="fu">gisco_id_api_geonames</span><span class="op">(</span>x <span class="op">=</span> <span class="op">-</span><span class="fl">2.5</span>, y <span class="op">=</span> <span class="fl">43.06</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 10 features and 8 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -2.534611 ymin: 43.03257 xmax: -2.491494 ymax: 43.07773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name       type  country language localtype distanceMeters endlifespanversion</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  <span style="color: #BCBCBC;">*</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Mondragón  admi… ES      spa      Administ…           809. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Arrasate   admi… ES      baq      Administ…           809. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Arrasate/… popu… ES      spa      BUILTUPP            858. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Garagartza popu… ES      baq      BUILTUPP           <span style="text-decoration: underline;">2</span>052. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Aretxabal… popu… ES      baq      BUILTUPP           <span style="text-decoration: underline;">3</span>082. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Gesalibar  popu… ES      baq      BUILTUPP           <span style="text-decoration: underline;">2</span>482. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Aramaio I… hydr… ES      baq      Watercou…          <span style="text-decoration: underline;">2</span>822. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Rio Arama… hydr… ES      spa      Watercou…          <span style="text-decoration: underline;">2</span>822. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Kobato Er… hydr… ES      baq      Watercou…          <span style="text-decoration: underline;">3</span>339. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Arroyo Ko… hydr… ES      spa      Watercou…          <span style="text-decoration: underline;">3</span>339. None              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: beginlifespanversion &lt;date&gt;, geometry &lt;POINT [°]&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">lau</span> <span class="op">&lt;-</span> <span class="fu">gisco_id_api_lau</span><span class="op">(</span>x <span class="op">=</span> <span class="op">-</span><span class="fl">2.5</span>, y <span class="op">=</span> <span class="fl">43.06</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">nuts3</span> <span class="op">&lt;-</span> <span class="fu">gisco_id_api_nuts</span><span class="op">(</span>x <span class="op">=</span> <span class="op">-</span><span class="fl">2.5</span>, y <span class="op">=</span> <span class="fl">43.06</span>, nuts_level <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
@@ -247,8 +265,8 @@ is <code>"2021"</code>
 <span class="r-in"><span>      caption <span class="op">=</span> <span class="st">"Source: GISCO ID service API"</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-plt img"><img src="gisco_id_api-1.png" alt="" width="2188" height="1352"></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

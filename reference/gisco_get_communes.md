@@ -132,7 +132,6 @@ Other administrative units datasets:
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 
 if (!is.null(ire_comm)) {
@@ -150,6 +149,5 @@ if (!is.null(ire_comm)) {
       colour = "#009A44",
       family = "serif", face = "bold"
     ))
-}
 }
 ```

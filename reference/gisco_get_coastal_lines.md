@@ -108,7 +108,6 @@ Other statistical units datasets:
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 coast <- gisco_get_coastal_lines()
 
 library(ggplot2)
@@ -125,5 +124,4 @@ ggplot(coast) +
     panel.background = element_rect(fill = "#C7E7FB", color = NA),
     panel.border = element_rect(colour = "black", fill = NA)
   )
-}
 ```

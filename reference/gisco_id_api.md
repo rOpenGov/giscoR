@@ -179,9 +179,27 @@ Other API tools:
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 # \donttest{
 gisco_id_api_geonames(x = -2.5, y = 43.06)
+#> Simple feature collection with 10 features and 8 fields
+#> Geometry type: POINT
+#> Dimension:     XY
+#> Bounding box:  xmin: -2.534611 ymin: 43.03257 xmax: -2.491494 ymax: 43.07773
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 10 × 9
+#>    name       type  country language localtype distanceMeters endlifespanversion
+#>  * <chr>      <chr> <chr>   <chr>    <chr>              <dbl> <chr>             
+#>  1 Mondragón  admi… ES      spa      Administ…           809. None              
+#>  2 Arrasate   admi… ES      baq      Administ…           809. None              
+#>  3 Arrasate/… popu… ES      spa      BUILTUPP            858. None              
+#>  4 Garagartza popu… ES      baq      BUILTUPP           2052. None              
+#>  5 Aretxabal… popu… ES      baq      BUILTUPP           3082. None              
+#>  6 Gesalibar  popu… ES      baq      BUILTUPP           2482. None              
+#>  7 Aramaio I… hydr… ES      baq      Watercou…          2822. None              
+#>  8 Rio Arama… hydr… ES      spa      Watercou…          2822. None              
+#>  9 Kobato Er… hydr… ES      baq      Watercou…          3339. None              
+#> 10 Arroyo Ko… hydr… ES      spa      Watercou…          3339. None              
+#> # ℹ 2 more variables: beginlifespanversion <date>, geometry <POINT [°]>
 
 lau <- gisco_id_api_lau(x = -2.5, y = 43.06)
 nuts3 <- gisco_id_api_nuts(x = -2.5, y = 43.06, nuts_level = 3)
@@ -198,6 +216,6 @@ if (all(!is.null(lau), !is.null(nuts3))) {
       caption = "Source: GISCO ID service API"
     )
 }
+
 # }
-}
 ```

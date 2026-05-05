@@ -166,10 +166,21 @@ Other API tools:
 ## Examples
 
 ``` r
-if (FALSE) { # gisco_check_access()
 # Cities in a region
 
 gisco_address_api_cities(country = "PT", province = "LISBOA")
+#> # A tibble: 9 × 1
+#>   L2                 
+#>   <chr>              
+#> 1 AMADORA            
+#> 2 CASCAIS            
+#> 3 LISBOA             
+#> 4 LOURES             
+#> 5 MAFRA              
+#> 6 ODIVELAS           
+#> 7 OEIRAS             
+#> 8 SINTRA             
+#> 9 VILA FRANCA DE XIRA
 
 
 # Geocode and reverse geocode with sf objects
@@ -180,10 +191,43 @@ struct <- gisco_address_api_search(
 )
 
 struct
+#> Simple feature collection with 80 features and 13 fields
+#> Geometry type: POINT
+#> Dimension:     XY
+#> Bounding box:  xmin: 2.145219 ymin: 41.39211 xmax: 2.16427 ymax: 41.39642
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 80 × 14
+#>    LD    TF    L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
+#>  * <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
+#>  1 1     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#>  2 3     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#>  3 7     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#>  4 8     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#>  5 9     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#>  6 10    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#>  7 11    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#>  8 12    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#>  9 14    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#> 10 16    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#> # ℹ 70 more rows
+#> # ℹ 1 more variable: geometry <POINT [°]>
 
 # Reverse geocoding
 reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 
 reverse
-}
+#> Simple feature collection with 5 features and 13 fields
+#> Geometry type: POINT
+#> Dimension:     XY
+#> Bounding box:  xmin: 2.145121 ymin: 41.39326 xmax: 2.145538 ymax: 41.39367
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 5 × 14
+#>   LD    TF     L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
+#> * <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
+#> 1 1     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#> 2 1     CL CA… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#> 3 3     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#> 4 2     CL CA… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#> 5 7     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
+#> # ℹ 1 more variable: geometry <POINT [°]>
 ```
