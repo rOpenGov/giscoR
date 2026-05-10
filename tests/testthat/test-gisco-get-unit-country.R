@@ -76,10 +76,7 @@ test_that("unit_country: Caching", {
   if (dir.exists(cdir)) {
     unlink(cdir, force = TRUE, recursive = TRUE)
   }
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # Not caching
   expect_message(
@@ -94,10 +91,7 @@ test_that("unit_country: Caching", {
     "Reading from"
   )
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # And now caching
   expect_message(
@@ -110,10 +104,7 @@ test_that("unit_country: Caching", {
       verbose = TRUE
     )
   )
-  expect_length(
-    list.files(cdir, recursive = TRUE),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE), 1)
 
   expect_message(
     g <- gisco_get_unit_country(

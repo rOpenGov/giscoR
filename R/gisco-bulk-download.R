@@ -130,11 +130,7 @@ gisco_bulk_download <- function(
   # Standard arguments for the call
   year <- as.character(year)
 
-  make_params <- make_bulk_params(
-    id = id,
-    year = year,
-    resolution = resolution
-  )
+  make_params <- make_bulk_params(id = id, year = year, resolution = resolution)
 
   routes <- get_url_db(
     id = id,

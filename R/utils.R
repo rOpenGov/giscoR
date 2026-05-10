@@ -96,10 +96,7 @@ match_arg_pretty <- function(arg, choices) {
     }
 
     cli::cli_abort(
-      c(
-        paste0("{.arg {arg_name}} should be ", msg),
-        "i" = reg_msg
-      ),
+      c(paste0("{.arg {arg_name}} should be ", msg), "i" = reg_msg),
       call = NULL
     )
   }
@@ -126,15 +123,12 @@ rbind_fill <- function(a_list) {
   # Get all names
   nms <- unique(unlist(lapply(a_list, names)))
 
-  a_list <- lapply(
-    a_list,
-    function(x) {
-      for (i in nms[!nms %in% names(x)]) {
-        x[[i]] <- NA
-      }
-      x
+  a_list <- lapply(a_list, function(x) {
+    for (i in nms[!nms %in% names(x)]) {
+      x[[i]] <- NA
     }
-  )
+    x
+  })
   names(a_list) <- NULL
   binded <- do.call(rbind, a_list)
   binded

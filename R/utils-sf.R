@@ -76,11 +76,10 @@ sanitize_sf <- function(data_sf) {
   g <- sf::st_geometry(data_sf)
 
   nm <- "geometry"
-  data_utf8 <-
-    as.data.frame(
-      set_utf8(sf::st_drop_geometry(data_sf)),
-      stringsAsFactors = FALSE
-    )
+  data_utf8 <- as.data.frame(
+    set_utf8(sf::st_drop_geometry(data_sf)),
+    stringsAsFactors = FALSE
+  )
 
   data_utf8 <- tibble::as_tibble(data_utf8)
 
@@ -132,10 +131,7 @@ get_geo_file_colnames <- function(file_local) {
 #'
 #' @noRd
 #'
-get_col_name <- function(
-  file_local,
-  candidates = c("CNTR_ID", "CNTR_CODE")
-) {
+get_col_name <- function(file_local, candidates = c("CNTR_ID", "CNTR_CODE")) {
   actual_names <- get_geo_file_colnames(file_local)
   match <- intersect(candidates, actual_names)
   if (length(match) == 0) {

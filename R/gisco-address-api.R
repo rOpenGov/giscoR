@@ -98,11 +98,7 @@ gisco_address_api_search <- function(
 #' @export
 gisco_address_api_reverse <- function(x, y, country = NULL, verbose = FALSE) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/reverse?"
-  custom_query <- list(
-    x = x,
-    y = y,
-    country = country
-  )
+  custom_query <- list(x = x, y = y, country = country)
 
   call_address_api(custom_query, apiurl, verbose)
 }
@@ -176,10 +172,7 @@ gisco_address_api_provinces <- function(
   verbose = FALSE
 ) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/provinces?"
-  custom_query <- list(
-    country = country,
-    city = city
-  )
+  custom_query <- list(country = country, city = city)
 
   call_address_api(custom_query, apiurl, verbose)
 }
@@ -192,10 +185,7 @@ gisco_address_api_cities <- function(
   verbose = FALSE
 ) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/cities?"
-  custom_query <- list(
-    country = country,
-    province = province
-  )
+  custom_query <- list(country = country, province = province)
 
   call_address_api(custom_query, apiurl, verbose)
 }
@@ -209,11 +199,7 @@ gisco_address_api_roads <- function(
   verbose = FALSE
 ) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/roads?"
-  custom_query <- list(
-    country = country,
-    province = province,
-    city = city
-  )
+  custom_query <- list(country = country, province = province, city = city)
 
   call_address_api(custom_query, apiurl, verbose)
 }
@@ -250,11 +236,7 @@ gisco_address_api_postcodes <- function(
   verbose = FALSE
 ) {
   apiurl <- "https://gisco-services.ec.europa.eu/addressapi/postcodes?"
-  custom_query <- list(
-    country = country,
-    province = province,
-    city = city
-  )
+  custom_query <- list(country = country, province = province, city = city)
 
   call_address_api(custom_query, apiurl, verbose)
 }

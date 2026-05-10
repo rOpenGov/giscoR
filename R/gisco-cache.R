@@ -107,11 +107,7 @@ gisco_set_cache_dir <- function(
   }
 
   # Validate
-  stopifnot(
-    is.character(cache_dir),
-    is.logical(overwrite),
-    is.logical(install)
-  )
+  stopifnot(is.character(cache_dir), is.logical(overwrite), is.logical(install))
 
   # Create and expand
   cache_dir <- create_cache_dir(cache_dir)
@@ -135,12 +131,10 @@ gisco_set_cache_dir <- function(
       # Create file if it doesn't exist
       writeLines(cache_dir, con = giscor_file)
     } else {
-      cli::cli_abort(
-        c(
-          "A {.arg cache_dir} path already exists.",
-          "You can overwrite it with {.arg overwrite = TRUE}."
-        )
-      )
+      cli::cli_abort(c(
+        "A {.arg cache_dir} path already exists.",
+        "You can overwrite it with {.arg overwrite = TRUE}."
+      ))
     }
     # nocov end
   } else {
@@ -237,11 +231,7 @@ gisco_clear_cache <- function(
   }
   # nocov end
   if (cached_data && dir.exists(data_dir)) {
-    siz <- file.size(list.files(
-      data_dir,
-      recursive = TRUE,
-      full.names = TRUE
-    ))
+    siz <- file.size(list.files(data_dir, recursive = TRUE, full.names = TRUE))
     siz <- sum(siz, na.rm = TRUE)
     class(siz) <- class(object.size("a"))
 
@@ -285,13 +275,7 @@ detect_cache_dir_muted <- function() {
       cached_path <- readLines(cache_config)
 
       # Case on empty cached path - defaults
-      if (
-        any(
-          is.null(cached_path),
-          is.na(cached_path),
-          cached_path == ""
-        )
-      ) {
+      if (any(is.null(cached_path), is.na(cached_path), cached_path == "")) {
         cache_dir <- gisco_set_cache_dir(overwrite = TRUE, verbose = FALSE)
         return(cache_dir)
       }
@@ -357,12 +341,10 @@ migrate_cache <- function(
   if (file.exists(old_fname)) {
     cache_dir <- readLines(old_fname)
     gisco_set_cache_dir(cache_dir, install = TRUE, verbose = FALSE)
-    cli::cli_alert_success(
-      c(
-        "{.pkg giscoR} >= 1.0.0: Cache configuration migrated. ",
-        "See {.strong Note} in {.fn giscoR::gisco_set_cache_dir} for details."
-      )
-    )
+    cli::cli_alert_success(c(
+      "{.pkg giscoR} >= 1.0.0: Cache configuration migrated. ",
+      "See {.strong Note} in {.fn giscoR::gisco_set_cache_dir} for details."
+    ))
     cli::cli_alert_info(
       "This is a one-time message, it won't be displayed in the future."
     )

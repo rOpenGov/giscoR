@@ -6,9 +6,7 @@ test_that("Test offline", {
     FALSE
   })
 
-  expect_snapshot(
-    fend <- gisco_get_metadata()
-  )
+  expect_snapshot(fend <- gisco_get_metadata())
   expect_null(fend)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -23,10 +21,7 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_metadata(),
-    "Error"
-  )
+  expect_message(n <- gisco_get_metadata(), "Error")
   expect_null(n)
   local_mocked_bindings(is_404 = function(...) {
     FALSE
@@ -37,24 +32,16 @@ test_that("Messages", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_message(
-    n <- gisco_get_metadata(verbose = TRUE)
-  )
+  expect_message(n <- gisco_get_metadata(verbose = TRUE))
   expect_s3_class(n, "tbl_df")
 })
 
 test_that("Errors", {
   skip_on_cran()
   skip_if_gisco_offline()
-  expect_snapshot(
-    gisco_get_metadata("grids"),
-    error = TRUE
-  )
+  expect_snapshot(gisco_get_metadata("grids"), error = TRUE)
 
-  expect_snapshot(
-    gisco_get_metadata("urban_audit", year = 1990),
-    error = TRUE
-  )
+  expect_snapshot(gisco_get_metadata("urban_audit", year = 1990), error = TRUE)
 })
 
 

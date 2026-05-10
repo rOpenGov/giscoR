@@ -2,9 +2,7 @@ test_that("Deprecate df mode", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_snapshot(
-    df1 <- gisco_get_units("nuts", year = 2016, mode = "df")
-  )
+  expect_snapshot(df1 <- gisco_get_units("nuts", year = 2016, mode = "df"))
   expect_identical(df1, gisco_get_metadata("nuts", 2016))
 })
 

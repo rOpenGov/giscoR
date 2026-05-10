@@ -56,12 +56,7 @@ test_that("Deprecations", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_snapshot(
-    s <- gisco_get_communes(
-      cache = FALSE,
-      spatialtype = "LB"
-    )
-  )
+  expect_snapshot(s <- gisco_get_communes(cache = FALSE, spatialtype = "LB"))
 })
 
 test_that("Extensions", {
@@ -69,20 +64,14 @@ test_that("Extensions", {
   skip_if_gisco_offline()
 
   # Error
-  expect_snapshot(
-    gisco_get_communes(ext = "docx"),
-    error = TRUE
-  )
+  expect_snapshot(gisco_get_communes(ext = "docx"), error = TRUE)
 
   cdir <- file.path(tempdir(), "testcountry")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   db_geojson <- gisco_get_communes(
     year = 2016,
@@ -102,10 +91,7 @@ test_that("Extensions", {
     verbose = TRUE,
     country = "ES"
   )
-  expect_length(
-    list.files(cdir, recursive = TRUE, pattern = "geojson"),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "geojson"), 1)
 
   db_gpkg <- gisco_get_communes(
     year = 2013,
@@ -126,10 +112,7 @@ test_that("Extensions", {
     verbose = TRUE,
     country = "ES"
   )
-  expect_length(
-    list.files(cdir, recursive = TRUE, pattern = "gpkg"),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "gpkg"), 1)
 
   expect_silent(
     db_gpkg <- gisco_get_communes(

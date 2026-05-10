@@ -265,8 +265,8 @@ Check the GitHub page for [source code](https://github.com/rOpenGov/giscoR/).
 
 Contributions are welcome:
 
-- [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for feedback
-  and bug reports.
+- [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for
+  feedback and bug reports.
 - [Send pull requests](https://github.com/rOpenGov/giscoR/)
 - [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
 

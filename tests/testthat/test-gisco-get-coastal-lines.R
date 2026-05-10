@@ -6,10 +6,7 @@ test_that("Offline", {
     TRUE
   })
   expect_message(
-    n <- gisco_get_coastal_lines(
-      update_cache = TRUE,
-      resolution = 60
-    ),
+    n <- gisco_get_coastal_lines(update_cache = TRUE, resolution = 60),
     "Error"
   )
   expect_null(n)
@@ -35,18 +32,12 @@ test_that("Cached dataset vs updated", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_snapshot(db_cached <- gisco_get_coastal_lines(verbose = TRUE))
 
   # Force download
 
-  db_cached2 <- gisco_get_coastal_lines(
-    update_cache = TRUE,
-    cache_dir = cdir
-  )
+  db_cached2 <- gisco_get_coastal_lines(update_cache = TRUE, cache_dir = cdir)
 
   expect_s3_class(db_cached, "sf")
   expect_s3_class(db_cached, "tbl_df")
@@ -69,10 +60,7 @@ test_that("Cache vs non-cached", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- gisco_get_coastal_lines(
       resolution = "60",
@@ -83,10 +71,7 @@ test_that("Cache vs non-cached", {
     "Reading from"
   )
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # vs cache TRUE
   expect_silent(
@@ -129,10 +114,7 @@ test_that("Extensions", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   db_geojson <- gisco_get_coastal_lines(
     resolution = "60",
@@ -142,10 +124,7 @@ test_that("Extensions", {
   expect_s3_class(db_geojson, "sf")
   expect_s3_class(db_geojson, "tbl_df")
 
-  expect_length(
-    list.files(cdir, recursive = TRUE, pattern = "geojson"),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "geojson"), 1)
 
   db_zip <- gisco_get_coastal_lines(
     resolution = "60",
@@ -157,10 +136,7 @@ test_that("Extensions", {
   expect_s3_class(db_zip, "sf")
   expect_s3_class(db_zip, "tbl_df")
 
-  expect_length(
-    list.files(cdir, recursive = TRUE, pattern = "shp.zip"),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "shp.zip"), 1)
 
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)

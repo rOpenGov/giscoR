@@ -8,9 +8,7 @@ test_that("Test offline", {
     FALSE
   })
 
-  expect_snapshot(
-    fend <- gisco_get_cached_db(update_cache = TRUE),
-  )
+  expect_snapshot(fend <- gisco_get_cached_db(update_cache = TRUE), )
   expect_null(fend)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -26,10 +24,7 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_cached_db(update_cache = TRUE),
-    "Can't access"
-  )
+  expect_message(n <- gisco_get_cached_db(update_cache = TRUE), "Can't access")
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -51,10 +46,7 @@ test_that("Offline detection", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- get_db(),
-    "Can't access"
-  )
+  expect_message(n <- get_db(), "Can't access")
   old_db <- gisco_db
   expect_identical(n, old_db)
 

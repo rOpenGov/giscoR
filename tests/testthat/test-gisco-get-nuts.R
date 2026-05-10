@@ -26,10 +26,7 @@ test_that("Test 404", {
     TRUE
   })
   expect_message(
-    n <- gisco_get_nuts(
-      update_cache = TRUE,
-      resolution = 60
-    ),
+    n <- gisco_get_nuts(update_cache = TRUE, resolution = 60),
     "Error"
   )
   expect_null(n)
@@ -53,20 +50,11 @@ test_that("Valid inputs", {
   l1 <- gisco_get_nuts(nuts_level = "1")
   l2 <- gisco_get_nuts(nuts_level = "2")
   l3 <- gisco_get_nuts(nuts_level = "3")
-  expect_identical(
-    nrow(all[all$LEVL_CODE == 1, ]),
-    nrow(l1)
-  )
+  expect_identical(nrow(all[all$LEVL_CODE == 1, ]), nrow(l1))
 
-  expect_identical(
-    nrow(all[all$LEVL_CODE == 2, ]),
-    nrow(l2)
-  )
+  expect_identical(nrow(all[all$LEVL_CODE == 2, ]), nrow(l2))
 
-  expect_identical(
-    nrow(all[all$LEVL_CODE == 3, ]),
-    nrow(l3)
-  )
+  expect_identical(nrow(all[all$LEVL_CODE == 3, ]), nrow(l3))
 })
 
 test_that("Cached dataset vs updated", {
@@ -78,30 +66,18 @@ test_that("Cached dataset vs updated", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_snapshot(db_cached <- gisco_get_nuts(verbose = TRUE, nuts_id = "ES51"))
 
   # In some levels should also filter from cache
   db_cached_l1 <- gisco_get_nuts(nuts_level = 1)
   db_cached_l2 <- gisco_get_nuts(nuts_level = 2)
   db_cached_l3 <- gisco_get_nuts(nuts_level = 3)
-  expect_true(
-    all(db_cached_l1$LEVL_CODE == 1)
-  )
-  expect_true(
-    all(db_cached_l2$LEVL_CODE == 2)
-  )
+  expect_true(all(db_cached_l1$LEVL_CODE == 1))
+  expect_true(all(db_cached_l2$LEVL_CODE == 2))
 
-  expect_true(
-    all(db_cached_l3$LEVL_CODE == 3)
-  )
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_true(all(db_cached_l3$LEVL_CODE == 3))
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   # Force download
 
   db_cached2 <- gisco_get_nuts(
@@ -134,10 +110,7 @@ test_that("Cache vs non-cached", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
     db_online <- gisco_get_nuts(
       resolution = "60",
@@ -148,10 +121,7 @@ test_that("Cache vs non-cached", {
     "Reading from"
   )
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # vs cache TRUE
   expect_silent(
@@ -222,10 +192,7 @@ test_that("Filter countries", {
     nuts_id = "ES511"
   )
   expect_identical(nrow(db_cached_full), 1L)
-  expect_identical(
-    db_cached_full$NUTS_ID,
-    "ES511"
-  )
+  expect_identical(db_cached_full$NUTS_ID, "ES511")
 })
 
 test_that("Filter countries no cached", {
@@ -286,10 +253,7 @@ test_that("Extensions", {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   db_geojson <- gisco_get_nuts(
     resolution = "60",
@@ -300,10 +264,7 @@ test_that("Extensions", {
   expect_s3_class(db_geojson, "sf")
   expect_s3_class(db_geojson, "tbl_df")
 
-  expect_length(
-    list.files(cdir, recursive = TRUE, pattern = "geojson"),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "geojson"), 1)
 
   db_zip <- gisco_get_nuts(
     resolution = "60",
@@ -316,10 +277,7 @@ test_that("Extensions", {
   expect_s3_class(db_zip, "sf")
   expect_s3_class(db_zip, "tbl_df")
 
-  expect_length(
-    list.files(cdir, recursive = TRUE, pattern = "shp.zip"),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE, pattern = "shp.zip"), 1)
 
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)

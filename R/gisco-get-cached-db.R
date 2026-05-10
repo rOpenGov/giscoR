@@ -58,13 +58,11 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   if (is.null(final_db)) {
     url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/" # nolint
 
-    cli::cli_alert_warning(
-      c(
-        "Can't access {.url {url_api}}. ",
-        "If you think this is a bug please consider opening an issue on ",
-        "{.url https://github.com/ropengov/giscoR/issues}"
-      )
-    )
+    cli::cli_alert_warning(c(
+      "Can't access {.url {url_api}}. ",
+      "If you think this is a bug please consider opening an issue on ",
+      "{.url https://github.com/ropengov/giscoR/issues}"
+    ))
     cli::cli_alert("Returning {.val NULL}")
     return(NULL)
   }
@@ -72,10 +70,7 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
 
   # Remove non-useful extensions
   final_db <- final_db[
-    !grepl(
-      "cpg$|dbf$|shp$|prj$|svg$|svg.zip$",
-      final_db$api_file
-    ),
+    !grepl("cpg$|dbf$|shp$|prj$|svg$|svg.zip$", final_db$api_file),
   ]
 
   final_db$year <- as.numeric(final_db$year)
@@ -299,23 +294,19 @@ get_db <- function() {
     # Msg
     url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/" # nolint
 
-    cli::cli_alert_warning(
-      c(
-        "Can't get the latest database from {.url {url_api}}.\n",
-        "Try later with {.fn giscoR::gisco_get_cached_db}",
-        "option {.arg update_cache = TRUE}"
-      )
-    )
+    cli::cli_alert_warning(c(
+      "Can't get the latest database from {.url {url_api}}.\n",
+      "Try later with {.fn giscoR::gisco_get_cached_db}",
+      "option {.arg update_cache = TRUE}"
+    ))
 
     date <- unique(db$last_updated)
 
-    cli::cli_alert_info(
-      c(
-        "Using cached ",
-        "{.help [{.value gisco_db}](giscoR::gisco_db)} ",
-        paste0("information (as of ", date, ", may be outdated)")
-      )
-    )
+    cli::cli_alert_info(c(
+      "Using cached ",
+      "{.help [{.value gisco_db}](giscoR::gisco_db)} ",
+      paste0("information (as of ", date, ", may be outdated)")
+    ))
   }
   db
 }

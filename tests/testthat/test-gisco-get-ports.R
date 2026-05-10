@@ -5,10 +5,7 @@ test_that("Offline", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_ports(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- gisco_get_ports(update_cache = TRUE), "Error")
   expect_null(n)
   local_mocked_bindings(is_404 = function(...) {
     FALSE
@@ -32,15 +29,9 @@ test_that("Get ports", {
   expect_true("CNTR_ISO2" %in% names(es))
   expect_lt(nrow(es), nrow(all))
 
-  expect_identical(
-    sf::st_crs(all),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(all), sf::st_crs(4326))
 
-  expect_identical(
-    sf::st_crs(es),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(es), sf::st_crs(4326))
 
   expect_identical(as.character(unique(es$CNTR_ISO2)), "ES")
 
@@ -55,15 +46,9 @@ test_that("Get ports", {
   expect_true("CNTR_ISO2" %in% names(es))
   expect_lt(nrow(es), nrow(all))
 
-  expect_identical(
-    sf::st_crs(all),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(all), sf::st_crs(4326))
 
-  expect_identical(
-    sf::st_crs(es),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(es), sf::st_crs(4326))
 
   expect_identical(as.character(unique(es$CNTR_ISO2)), "ES")
 })

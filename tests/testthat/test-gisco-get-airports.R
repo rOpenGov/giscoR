@@ -5,10 +5,7 @@ test_that("Offline", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_airports(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- gisco_get_airports(update_cache = TRUE), "Error")
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -28,15 +25,9 @@ test_that("Get airports", {
   expect_s3_class(es, "tbl_df")
   expect_s3_class(es, "sf")
   expect_lt(nrow(es), nrow(all))
-  expect_identical(
-    sf::st_crs(all),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(all), sf::st_crs(4326))
 
-  expect_identical(
-    sf::st_crs(es),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(es), sf::st_crs(4326))
 
   expect_identical(as.character(unique(es$CNTR_CODE)), "ES")
   expect_true(nrow(all) > nrow(es))
@@ -50,15 +41,9 @@ test_that("Get airports", {
   expect_s3_class(es, "tbl_df")
   expect_s3_class(es, "sf")
   expect_lt(nrow(es), nrow(all))
-  expect_identical(
-    sf::st_crs(all),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(all), sf::st_crs(4326))
 
-  expect_identical(
-    sf::st_crs(es),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(es), sf::st_crs(4326))
 
   expect_identical(as.character(unique(es$CNTR_CODE)), "ES")
   expect_true(nrow(all) > nrow(es))

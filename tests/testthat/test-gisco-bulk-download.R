@@ -5,10 +5,7 @@ test_that("Test offline", {
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(
-    n <- gisco_bulk_download(update_cache = TRUE),
-    "Offline"
-  )
+  expect_message(n <- gisco_bulk_download(update_cache = TRUE), "Offline")
   expect_null(n)
 
   local_mocked_bindings(is_online_fun = function(...) {
@@ -23,10 +20,7 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_bulk_download(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- gisco_bulk_download(update_cache = TRUE), "Error")
   expect_null(n)
 
   local_mocked_bindings(is_404 = function(...) {
@@ -60,14 +54,12 @@ test_that("Deprecations", {
   )
   expect_identical(s, s1)
 
-  expect_snapshot(
-    gisco_bulk_download(
-      "nuts",
-      resolution = 60,
-      recursive = TRUE,
-      cache_dir = cdir
-    )
-  )
+  expect_snapshot(gisco_bulk_download(
+    "nuts",
+    resolution = 60,
+    recursive = TRUE,
+    cache_dir = cdir
+  ))
   if (dir.exists(cdir)) {
     unlink(cdir, force = TRUE, recursive = TRUE)
   }

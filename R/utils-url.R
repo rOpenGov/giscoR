@@ -59,12 +59,7 @@ get_url_db <- function(
   # Only inform valids in year
   if (!make_params$year %in% db$year) {
     cli::cli_abort(
-      paste0(
-        "Years available for {.fn ",
-        fn,
-        "} are ",
-        "{.str {years}}."
-      ),
+      paste0("Years available for {.fn ", fn, "} are ", "{.str {years}}."),
       call = NULL
     )
   }
@@ -220,18 +215,14 @@ download_url <- function(
     get_status_code <- httr2::resp_status(resp) # nolint
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
-    cli::cli_alert_danger(
-      c(
-        "{.strong Error {get_status_code}} ({get_status_desc}):",
-        " {.url {url}}."
-      )
-    )
-    cli::cli_alert_warning(
-      c(
-        "If you think this is a bug please consider opening an issue on ",
-        "{.url https://github.com/ropengov/giscoR/issues}"
-      )
-    )
+    cli::cli_alert_danger(c(
+      "{.strong Error {get_status_code}} ({get_status_desc}):",
+      " {.url {url}}."
+    ))
+    cli::cli_alert_warning(c(
+      "If you think this is a bug please consider opening an issue on ",
+      "{.url https://github.com/ropengov/giscoR/issues}"
+    ))
     cli::cli_alert("Returning {.val NULL}")
     return(NULL)
   }
@@ -299,18 +290,14 @@ get_request_body <- function(url, verbose = TRUE) {
     get_status_code <- httr2::resp_status(resp) # nolint
     get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
-    cli::cli_alert_danger(
-      c(
-        "{.strong Error {get_status_code}} ({get_status_desc}):",
-        " {.url {url}}."
-      )
-    )
-    cli::cli_alert_warning(
-      c(
-        "If you think this is a bug please consider opening an issue on ",
-        "{.url https://github.com/ropengov/giscoR/issues}"
-      )
-    )
+    cli::cli_alert_danger(c(
+      "{.strong Error {get_status_code}} ({get_status_desc}):",
+      " {.url {url}}."
+    ))
+    cli::cli_alert_warning(c(
+      "If you think this is a bug please consider opening an issue on ",
+      "{.url https://github.com/ropengov/giscoR/issues}"
+    ))
     cli::cli_alert("Returning {.val NULL}")
     return(NULL)
   }

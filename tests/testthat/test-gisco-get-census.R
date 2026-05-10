@@ -25,10 +25,7 @@ test_that("Get Census POINT", {
   expect_s3_class(all, "tbl_df")
   expect_s3_class(all, "sf")
   expect_true(unique(sf::st_geometry_type(all)) == "POINT")
-  expect_identical(
-    sf::st_crs(all),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(all), sf::st_crs(4326))
 })
 test_that("Get Census POLYGON", {
   skip_on_cran()
@@ -39,8 +36,5 @@ test_that("Get Census POLYGON", {
   expect_s3_class(all, "tbl_df")
   expect_s3_class(all, "sf")
   expect_true(unique(sf::st_geometry_type(all)) == "MULTIPOLYGON")
-  expect_identical(
-    sf::st_crs(all),
-    sf::st_crs(4326)
-  )
+  expect_identical(sf::st_crs(all), sf::st_crs(4326))
 })

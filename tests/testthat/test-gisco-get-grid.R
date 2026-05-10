@@ -31,10 +31,7 @@ test_that("Offline", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_grid(update_cache = TRUE),
-    "Error"
-  )
+  expect_message(n <- gisco_get_grid(update_cache = TRUE), "Error")
   expect_null(n)
   local_mocked_bindings(is_404 = function(...) {
     FALSE

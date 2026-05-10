@@ -6,11 +6,7 @@ test_that("Test offline", {
     FALSE
   })
   expect_message(
-    n <- gisco_get_unit_nuts(
-      year = 2024,
-      update_cache = TRUE,
-      verbose = TRUE
-    ),
+    n <- gisco_get_unit_nuts(year = 2024, update_cache = TRUE, verbose = TRUE),
     "Offline"
   )
   expect_null(n)
@@ -27,11 +23,7 @@ test_that("Test 404", {
     TRUE
   })
   expect_message(
-    n <- gisco_get_unit_nuts(
-      year = 2024,
-      update_cache = TRUE,
-      verbose = TRUE
-    ),
+    n <- gisco_get_unit_nuts(year = 2024, update_cache = TRUE, verbose = TRUE),
     "Error"
   )
   expect_null(n)
@@ -75,10 +67,7 @@ test_that("unit_nuts: Caching", {
   if (dir.exists(cdir)) {
     unlink(cdir, force = TRUE, recursive = TRUE)
   }
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # Not caching
   expect_message(
@@ -94,10 +83,7 @@ test_that("unit_nuts: Caching", {
   )
   expect_identical(rev(names(g))[1:2], c("geometry", "geo"))
 
-  expect_identical(
-    list.files(cdir, recursive = TRUE),
-    character(0)
-  )
+  expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # And now caching
   expect_message(
@@ -112,10 +98,7 @@ test_that("unit_nuts: Caching", {
   )
   expect_identical(rev(names(g))[1:2], c("geometry", "geo"))
 
-  expect_length(
-    list.files(cdir, recursive = TRUE),
-    1
-  )
+  expect_length(list.files(cdir, recursive = TRUE), 1)
 
   expect_message(
     g <- gisco_get_unit_nuts(

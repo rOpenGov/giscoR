@@ -12,12 +12,7 @@ gisco_get_unit_nuts <- function(
   resolution = c(1, 3, 10, 20, 60),
   spatialtype = c("RG", "LB")
 ) {
-  valid_years <- db_values(
-    "nuts",
-    "year",
-    formatted = FALSE,
-    decreasing = TRUE
-  )
+  valid_years <- db_values("nuts", "year", formatted = FALSE, decreasing = TRUE)
 
   year <- match_arg_pretty(year, valid_years)
   epsg <- match_arg_pretty(epsg)
