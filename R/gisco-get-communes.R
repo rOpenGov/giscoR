@@ -28,9 +28,9 @@
 #'
 #' @param spatialtype character string. Type of geometry to be returned.
 #'   Options available are:
-#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   * `"LB"`: Labels - `POINT` object.
-#'   * `"BN"`: Boundaries - `LINESTRING` object.
+#'   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#'   - `"LB"`: Labels - `POINT` object.
+#'   - `"BN"`: Boundaries - `LINESTRING` object.
 #'
 #'   **Note that** argument `country` is only applied when
 #'   `spatialtype` is `"RG"` or `"LB"`.

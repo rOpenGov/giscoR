@@ -12,8 +12,8 @@
 - Fix a bug that overwrote the internal database with the cached version in a
   new session. The cache now persists.
 - Update `?gisco_db`.
-- `gisco_get_urban_audit()` and `gisco_get_unit_urban_audit()`: Default year
-  changed to the latest available: 2024.
+- `gisco_get_unit_urban_audit()` and `gisco_get_urban_audit()` now default to
+  the latest available year, 2024.
 
 # giscoR 1.0.0
 
@@ -72,23 +72,24 @@ We recommend reviewing the updated documentation at
 
 ## New functions
 
-- Metadata and database utilities:
+- Database and metadata utilities:
   - `gisco_get_cached_db()`
   - `gisco_get_metadata()`
 - `gisco_get_census()` for accessing census grid data.
-- New separate functions to access unit data (replacing `gisco_get_units()`):
+- `gisco_get_unit_*()` functions for accessing unit data, replacing
+  `gisco_get_units()`:
   - `gisco_get_unit_country()`
   - `gisco_get_unit_nuts()`
   - `gisco_get_unit_urban_audit()`
-- Functions to access the [GISCO ID service
-  API](https://gisco-services.ec.europa.eu/id/api-docs/)
-  - `gisco_id_api_geonames()`
-  - `gisco_id_api_nuts()`
-  - `gisco_id_api_lau()`
-  - `gisco_id_api_country()`
-  - `gisco_id_api_river_basin()`
+- `gisco_id_api_*()` functions for accessing the [GISCO ID service
+  API](https://gisco-services.ec.europa.eu/id/api-docs/):
   - `gisco_id_api_biogeo_region()`
   - `gisco_id_api_census_grid()`
+  - `gisco_id_api_country()`
+  - `gisco_id_api_geonames()`
+  - `gisco_id_api_lau()`
+  - `gisco_id_api_nuts()`
+  - `gisco_id_api_river_basin()`
 
 ## Renamed functions
 
@@ -102,17 +103,18 @@ We renamed several functions to improve clarity and consistency:
 
 ## Argument updates
 
-- Add `ext` argument to control file format (`"gpkg"`, `"shp"`, `"geojson"`).
-- Update default `year` to the latest release (#105).
+- `ext` argument added to control file format (`"gpkg"`, `"shp"`,
+  `"geojson"`).
+- `year` defaults updated to the latest release (#105).
 
 ## Dataset updates
 
 We updated all bundled datasets to their latest versions and added new ones:
 
-- Update `?gisco_db` to the newest data.
-- Add `?gisco_countries_2024` (replaces `gisco_countries`).
-- Add `?gisco_nuts_2024` (replaces `gisco_nuts`).
-- Add `?gisco_coastal_lines` (replaced `gisco_coastallines`).
+- `?gisco_coastal_lines` added, replacing `gisco_coastallines`.
+- `?gisco_countries_2024` added, replacing `gisco_countries`.
+- `?gisco_db` updated to the newest data.
+- `?gisco_nuts_2024` added, replacing `gisco_nuts`.
 
 > The datasets `gisco_countries`, `gisco_nuts`, and `gisco_coastallines` are no
 > longer available. Any code that accessed them directly (e.g.,
@@ -124,12 +126,12 @@ We updated all bundled datasets to their latest versions and added new ones:
 
 ## Deprecations
 
-- Deprecate `gisco_get_units()`.
+- `gisco_get_units()` deprecated.
   - Functionality is now available through `gisco_get_metadata()` and the
     `?gisco_get_unit` family.
-- Deprecate `cache` argument in heavy-download functions (`gisco_get_lau()`,
-  `gisco_get_communes()`).
-- In `gisco_bulk_download()`, rename `id_giscoR` → `id`.
+- `gisco_bulk_download()` renames `id_giscoR` to `id`.
+- `gisco_get_communes()` and `gisco_get_lau()` deprecate the `cache` argument
+  in heavy-download functions.
 
 ## Other updates
 
@@ -141,33 +143,33 @@ We updated all bundled datasets to their latest versions and added new ones:
 
 # giscoR 0.6.1
 
-- Fix source filtering in `gisco_get_lau()`.
+- `gisco_get_lau()` fixes source filtering.
 
 # giscoR 0.6.0
 
 ## Data updates
 
-- Add `year` argument to `gisco_get_education()` and `gisco_get_healthcare()`;
-  support 2020 and 2023 data.
-- Add support for 2024 datasets in `gisco_get_nuts()` and
-  `gisco_get_countries()` (#93, @hannesaddec).
+- `gisco_get_countries()` and `gisco_get_nuts()` add support for 2024 datasets
+  (#93, @hannesaddec).
+- `gisco_get_education()` and `gisco_get_healthcare()` add the `year` argument
+  and support 2020 and 2023 data.
 
 # giscoR 0.5.1
 
 - Use CRAN DOI.
-- Fix API entry points in `gisco_get_education()`.
 - Review failing examples.
+- `gisco_get_education()` fixes API entry points.
 
 # giscoR 0.5.0
 
-- Add `gisco_get_education()`.
-- Add support for the GISCO Address API (see `?gisco_addressapi`).
 - Add **jsonlite** to Imports.
 - Update `?gisco_db`.
-- Update defaults:
+- Update documentation URLs.
+- `?gisco_addressapi` adds support for the GISCO Address API.
+- `gisco_get_education()` added.
+- `gisco_get_lau()` and `gisco_get_urban_audit()` update defaults:
   - `gisco_get_lau()` → `"2021"`
   - `gisco_get_urban_audit()` → `"2021"`
-- Update documentation URLs.
 
 # giscoR 0.4.2
 
@@ -182,15 +184,15 @@ We updated all bundled datasets to their latest versions and added new ones:
 
 # giscoR 0.4.0
 
-- Add `geo` column to `gisco_get_nuts()` (#62).
 - Update CRAN examples.
 - Add **httr** dependency.
+- `gisco_get_nuts()` adds the `geo` column (#62).
 
 # giscoR 0.3.5
 
 - Review examples for CRAN issues.
-- Add `gisco_detect_cache_dir()`.
 - Improve error handling: return informative message and `NULL`.
+- `gisco_detect_cache_dir()` added.
 
 # giscoR 0.3.4
 
@@ -198,7 +200,7 @@ We updated all bundled datasets to their latest versions and added new ones:
 
 # giscoR 0.3.3
 
-- Fix URLs in `gisco_get_healthcare()` (#51).
+- `gisco_get_healthcare()` fixes URLs (#51).
 
 # giscoR 0.3.2
 
@@ -208,11 +210,11 @@ We updated all bundled datasets to their latest versions and added new ones:
 
 - Add copyright section.
 - Add **lwgeom** to Suggests.
-- Update behavior of `gisco_get_airports()` and `gisco_get_ports()`:
+- Update `?gisco_db`.
+- `gisco_get_airports()` and `gisco_get_ports()` update behavior:
   - Only year available: 2013
   - Always download fresh data
-- Add `gisco_get_postalcodes()`.
-- Update `?gisco_db`.
+- `gisco_get_postalcodes()` added.
 
 # giscoR 0.3.0
 
@@ -224,20 +226,20 @@ We updated all bundled datasets to their latest versions and added new ones:
 - Fix `cache = FALSE` behavior.
 - Add new tests.
 - Update documentation and examples.
-- Refactor `?gisco_get` documentation.
 - Add **eurostat** to Suggests.
 - Remove **lwgeom**.
 - Update internal grid.
 - Replace **tmap** with **ggplot2**.
+- `?gisco_get` documentation refactored.
 
 # giscoR 0.2.4
 
-- Add `eu` field to `?gisco_countrycode`.
 - Fix documentation typos.
 - Add vignette.
 - Move to **roxygen2**.
 - Move **lwgeom** to Imports.
 - Replace **cartography** with **tmap**.
+- `?gisco_countrycode` adds the `eu` field.
 
 # giscoR 0.2.3
 
@@ -258,10 +260,10 @@ We updated all bundled datasets to their latest versions and added new ones:
 
 - Remove **colorspace**.
 - Require **R ≥ 3.6.0**.
-- Reorder arguments in `?gisco_get` functions.
 - Rewrite internal utilities.
-- Add `verbose` argument.
 - Rewrite `?gisco_db`.
+- `?gisco_get` functions reorder arguments.
+- `verbose` argument added.
 - Add:
   - `gisco_bulk_download()`
   - `gisco_check_access()`
@@ -269,7 +271,7 @@ We updated all bundled datasets to their latest versions and added new ones:
   - `gisco_get_grid()`
   - `gisco_get_ports()`
   - `gisco_get_units()`
-- Update `gisco_get_countries()` and `gisco_get_nuts()` for faster downloads.
+- `gisco_get_countries()` and `gisco_get_nuts()` get faster downloads.
 
 # giscoR 0.1.1
 

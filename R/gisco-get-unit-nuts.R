@@ -20,7 +20,7 @@ gisco_get_unit_nuts <- function(
 
   res_txt <- sprintf("%02dm", as.numeric(resolution))
   spatialtype <- match_arg_pretty(spatialtype)
-  # Prepare inputs
+  # Prepare inputs.
   type <- switch(spatialtype,
     "RG" = "region",
     "LB" = "label"
@@ -50,7 +50,7 @@ gisco_get_unit_nuts <- function(
       paste0("File {.str ", single_unit, "} requested.")
     )
 
-    # First look in cache
+    # First look in cache.
     guess_path <- file.path(
       create_cache_dir(cache_dir),
       "nuts",
@@ -68,7 +68,7 @@ gisco_get_unit_nuts <- function(
       return(data_sf)
     }
 
-    # Now check online
+    # Check online.
     db_path <- paste0(
       "https://gisco-services.ec.europa.eu/distribution/",
       "v2/nuts/nuts-",
@@ -85,12 +85,12 @@ gisco_get_unit_nuts <- function(
 
     if (!single_unit %in% db) {
       cli::cli_alert_warning(c(
-        "Skipping {.arg unit = {.str {unit_txt}}} (not found online)"
+        "Skipping {.arg unit = {.str {unit_txt}}} (not found online)."
       ))
       return(NULL)
     }
 
-    # Now create URLs and queries
+    # Create URLs and queries.
 
     api_entry <- paste0(
       "https://gisco-services.ec.europa.eu/",

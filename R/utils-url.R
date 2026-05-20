@@ -56,7 +56,7 @@ get_url_db <- function(
   db <- db[db$id_giscor == id, ]
   years <- sort(unique(db$year)) # nolint
 
-  # Only inform valids in year
+  # Only report valid years.
   if (!make_params$year %in% db$year) {
     cli::cli_abort(
       paste0("Years available for {.fn ", fn, "} are ", "{.str {years}}."),
@@ -73,7 +73,7 @@ get_url_db <- function(
     db <- db[filt_db, ]
   }
 
-  # Prepare msg
+  # Prepare message.
   val <- unlist(make_params)
   val <- paste0("{.arg ", names(make_params), "} = {.val ", val, "}")
   names(val) <- rep("*", length(val))
@@ -129,7 +129,7 @@ download_url <- function(
   cache_dir <- create_cache_dir(cache_dir)
   cache_dir <- create_cache_dir(file.path(cache_dir, subdir))
 
-  # Create destfile and clean
+  # Create destination file and clean path.
   file_local <- file.path(cache_dir, name)
   file_local <- gsub("//", "/", file_local, fixed = TRUE)
 
@@ -139,7 +139,7 @@ download_url <- function(
   # Check if file already exists
   fileoncache <- file.exists(file_local)
 
-  # If already cached return
+  # Return if the file is already cached.
   if (isFALSE(update_cache) && fileoncache) {
     msg <- paste0("File already cached: {.file ", file_local, "}.")
     make_msg("success", verbose, msg)
@@ -148,7 +148,7 @@ download_url <- function(
   }
 
   if (fileoncache) {
-    make_msg("warning", verbose, "Updating cached file")
+    make_msg("warning", verbose, "Updating cached file.")
   }
 
   msg <- paste0("Downloading {.url ", url, "}.")
@@ -178,13 +178,13 @@ download_url <- function(
 
   if (!is_online_fun()) {
     cli::cli_alert_danger("Offline")
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
 
   # Response
 
-  # Check before the size to see if we need to inform with HEAD
+  # Check the size first to see if HEAD should report it.
   get_header <- httr2::req_method(req, "HEAD")
   getsize <- httr2::req_perform(get_header)
 
@@ -193,7 +193,7 @@ download_url <- function(
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
     sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
-    make_msg("warning", TRUE, "The file to be downloaded has size", sz_dwn)
+    make_msg("warning", TRUE, "The file to download has size", sz_dwn)
     req <- httr2::req_progress(req)
   }
 
@@ -220,13 +220,13 @@ download_url <- function(
       " {.url {url}}."
     ))
     cli::cli_alert_warning(c(
-      "If you think this is a bug please consider opening an issue on ",
+      "If you think this is a bug, please consider opening an issue on ",
       "{.url https://github.com/ropengov/giscoR/issues}"
     ))
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
-  msg <- paste0("Download successful on {.file ", file_local, "}.")
+  msg <- paste0("Download successful to {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
 
   file_local
@@ -270,7 +270,7 @@ get_request_body <- function(url, verbose = TRUE) {
 
   if (!is_online_fun()) {
     cli::cli_alert_danger("Offline")
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
 
@@ -295,14 +295,14 @@ get_request_body <- function(url, verbose = TRUE) {
       " {.url {url}}."
     ))
     cli::cli_alert_warning(c(
-      "If you think this is a bug please consider opening an issue on ",
+      "If you think this is a bug, please consider opening an issue on ",
       "{.url https://github.com/ropengov/giscoR/issues}"
     ))
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
 
-  make_msg("success", verbose, "Success")
+  make_msg("success", verbose, "Success.")
   resp
 }
 

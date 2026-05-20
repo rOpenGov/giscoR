@@ -29,14 +29,14 @@ repo:
   branch: main
 
 home:
-  title: giscoR | R package for downloading geodata from GISCO - Eurostat
+  title: giscoR | Download map data from the GISCO API
   description: >
-    giscoR is an R API package that helps retrieve data from Eurostat - GISCO
-    (the Geographic Information System of the Commission). It also provides some
-    lightweight datasets ready to use without downloading.
+    giscoR helps retrieve global and European map data from GISCO (the
+    Geographic Information System of the Commission). It also provides
+    lightweight datasets that can be used without downloading additional files.
 
 reference:
-- title: GISCO Geodata
+- title: GISCO geodata
   desc: >
     Download datasets from the <a
     href="https://ec.europa.eu/eurostat/web/gisco/geodata"
@@ -72,19 +72,18 @@ reference:
   contents: has_concept("transport")
 - subtitle: Basic services
   contents: has_concept("services")
-- subtitle: Additional helpers
+- subtitle: Additional downloads
   desc: >
-    Additional functions for downloading GISCO API datasets.
+    Additional functions for downloading datasets from the GISCO API.
   contents: has_concept("extra")
-- subtitle: <span class="pkg">giscoR</span> database management
+- subtitle: <span class="pkg">giscoR</span> database
   desc: >
-    Get the current database in use by the package and the corresponding
-    metadata.
+    Get the current database used by the package and its corresponding metadata.
   contents: has_concept("database")
-- subtitle: Misc
-  desc: Other functions.
+- subtitle: Miscellaneous
+  desc: Other helpers.
   contents: has_concept("misc")
-- title: GISCO Tools
+- title: GISCO tools
   desc: >
     Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools"
     class="external-link">APIs and tools</a> provided by GISCO.
@@ -93,7 +92,7 @@ reference:
   contents: has_concept("cache utilities")
 - title: Datasets
   desc: >
-    Datasets included with <a href="https://CRAN.R-project.org/package=giscoR"
+    Datasets included in <a href="https://CRAN.R-project.org/package=giscoR"
     class="external-link"><span class="pkg">giscoR</span></a>.
   contents: has_concept("datasets")
 - title: About the package

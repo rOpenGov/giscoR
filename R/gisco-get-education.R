@@ -19,14 +19,13 @@
 #'
 #' There are no specific download rules for the datasets shown below. However,
 #' please refer to [the general copyright
-#' notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and licence
+#' notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
 #' provisions, which must be complied with. Permission to download and use
 #' these data are subject to these rules being accepted.
 #'
 #' The data are extracted from official national registers. They may contain
 #' inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
 #' input national data.
-#'
 #'
 #' @details
 #' Files are distributed on [EPSG:4326](https://epsg.io/4326).

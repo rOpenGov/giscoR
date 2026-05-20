@@ -21,7 +21,7 @@ A string with the attribution to be used.
 Get the legal text to be used for administrative and statistical data
 downloaded from GISCO, see section \strong{Copyright information}.
 
-For other datasets you may abide by the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat general copyright notice and licence policy}.
+For other datasets you may follow the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat general copyright notice and license policy}.
 }
 \details{
 Current languages supported are:
@@ -77,7 +77,7 @@ the translation of the copyright notice in the language of the publication
 shall be used.
 
 If you intend to use the data commercially, please contact EuroGeographics
-for information regarding their licence agreements.
+for information about their license agreements.
 }
 }
 

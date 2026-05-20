@@ -41,9 +41,9 @@
 #'   "year",TRUE)}.
 #' @param spatialtype character string. Type of geometry to be returned.
 #'   Options available are:
-#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   * `"LB"`: Labels - `POINT` object.
-#'   * `"BN"`: Boundaries - `LINESTRING` object.
+#'   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#'   - `"LB"`: Labels - `POINT` object.
+#'   - `"BN"`: Boundaries - `LINESTRING` object.
 #'
 #'   **Note that** arguments `country`, `nuts_level` and `nuts_id` are
 #'   only applied when `spatialtype` is `"RG"` or `"LB"`.
@@ -95,7 +95,6 @@
 #'     subtitle = "Germany",
 #'     caption = gisco_attributions()
 #'   )
-#'
 #'
 #' # Select specific regions
 #' select_nuts <- gisco_get_nuts(nuts_id = c("ES2", "FRJ", "FRL", "ITC"))

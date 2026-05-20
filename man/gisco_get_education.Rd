@@ -8,7 +8,7 @@
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services}.
 
 There are no specific download rules for the datasets shown below. However,
-please refer to \href{https://ec.europa.eu/eurostat/web/gisco/geodata}{the general copyright notice} and licence
+please refer to \href{https://ec.europa.eu/eurostat/web/gisco/geodata}{the general copyright notice} and license
 provisions, which must be complied with. Permission to download and use
 these data are subject to these rules being accepted.
 

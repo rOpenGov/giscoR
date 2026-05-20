@@ -23,7 +23,6 @@
 #' A static database [gisco_db] is shipped with the package. This database is
 #' used in case there is any problem on update.
 #'
-#'
 #' @examplesIf gisco_check_access()
 #'
 #' gisco_get_cached_db() |>
@@ -59,11 +58,11 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
     url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/" # nolint
 
     cli::cli_alert_warning(c(
-      "Can't access {.url {url_api}}. ",
-      "If you think this is a bug please consider opening an issue on ",
+      "Cannot access {.url {url_api}}. ",
+      "If you think this is a bug, please consider opening an issue on ",
       "{.url https://github.com/ropengov/giscoR/issues}"
     ))
-    cli::cli_alert("Returning {.val NULL}")
+    cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
   final_db <- tibble::as_tibble(final_db)
@@ -144,9 +143,9 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   id_giscor[id_giscor == "pcode"] <- "postal_codes"
   final_db_2$id_giscor <- id_giscor
 
-  # get extensions
+  # Get extensions.
   extension <- final_db_2$api_file
-  # remove ending zip
+  # Remove ending zip.
   extension <- gsub(".zip$", "", extension)
   ext_end <- tools::file_ext(extension)
   final_db_2$ext <- ext_end
@@ -295,8 +294,8 @@ get_db <- function() {
     url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/" # nolint
 
     cli::cli_alert_warning(c(
-      "Can't get the latest database from {.url {url_api}}.\n",
-      "Try later with {.fn giscoR::gisco_get_cached_db}",
+      "Cannot get the latest database from {.url {url_api}}.\n",
+      "Try again later with {.fn giscoR::gisco_get_cached_db}",
       "option {.arg update_cache = TRUE}"
     ))
 

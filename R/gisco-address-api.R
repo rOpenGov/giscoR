@@ -36,7 +36,6 @@
 #' @param housenumber The house number or house name within a road or street.
 #' @param postcode Can be used in combination with the previous arguments.
 #'
-#'
 #' @return
 #' A [tibble][tibble::tbl_df] in most cases, except
 #' `gisco_address_api_search()`, `gisco_address_api_reverse()`, and
@@ -52,12 +51,10 @@
 #' See the docs at
 #' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 #'
-#'
 #' @examplesIf gisco_check_access()
 #' # Cities in a region
 #'
 #' gisco_address_api_cities(country = "PT", province = "LISBOA")
-#'
 #'
 #' # Geocode and reverse geocode with sf objects
 #' # Structured search
@@ -126,12 +123,12 @@ gisco_address_api_bbox <- function(
   res <- call_address_api(custom_query, apiurl, verbose)
 
   if (any(nrow(res) == 0, is.na(res$bbox), is.null(res$bbox))) {
-    cli::cli_alert_warning("No results. Returning {.val NULL}")
+    cli::cli_alert_warning("No results. Returning {.val NULL}.")
 
     return(NULL)
   }
 
-  # Create polygon from WKT
+  # Create polygon from WKT.
   wkt_str <- res$bbox
 
   wkt_str <- gsub("[A-Za-z]|\\(|\\)", "", wkt_str)

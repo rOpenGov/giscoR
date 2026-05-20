@@ -24,7 +24,7 @@
       
       If you intend to use the data commercially, please
       contact EuroGeographics for information regarding
-      their licence agreements.
+      their license agreements.
       
     Output
       [1] "© EuroGeographics for the administrative boundaries"

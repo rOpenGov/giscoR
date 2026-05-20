@@ -28,8 +28,8 @@
 #'
 #' @param spatialtype character string. Type of geometry to be returned.
 #'   Options available are:
-#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   * `"LB"`: Labels - `POINT` object.
+#'   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#'   - `"LB"`: Labels - `POINT` object.
 #'
 #' @param level character string. Level of Urban Audit. Possible values `"all"`
 #'   (the default), which downloads the full dataset or `"CITIES"`, `"FUA"`,
@@ -60,7 +60,6 @@
 #' The `"URAU_CATG"` field defines the Urban Audit category:
 #'   - `"C"` = City.
 #'   - `"F"` = Functional Urban Area Service Type.
-#'
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{

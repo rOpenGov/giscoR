@@ -46,13 +46,13 @@
 #' `"urban_audit"` and `"postal_codes"`.
 #'
 #' See years available in the corresponding functions:
-#'  * [gisco_get_countries()].
-#'  * [gisco_get_coastal_lines()].
-#'  * [gisco_get_communes()].
-#'  * [gisco_get_lau()].
-#'  * [gisco_get_nuts()].
-#'  * [gisco_get_urban_audit()].
-#'  * [gisco_get_postal_codes()].
+#'  - [gisco_get_countries()].
+#'  - [gisco_get_coastal_lines()].
+#'  - [gisco_get_communes()].
+#'  - [gisco_get_lau()].
+#'  - [gisco_get_nuts()].
+#'  - [gisco_get_urban_audit()].
+#'  - [gisco_get_postal_codes()].
 #'
 #' The usual extensions used across \CRANpkg{giscoR} are `"gpkg"` and `"shp"`,
 #' however other formats are already available on GISCO. Note that after

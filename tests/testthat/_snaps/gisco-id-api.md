@@ -4,7 +4,7 @@
       fend <- gisco_id_api_geonames(x = 4, y = 52)
     Message
       x Offline
-      > Returning "NULL"
+      > Returning "NULL".
 
 ---
 
@@ -12,7 +12,7 @@
       fend <- gisco_id_api_nuts(x = 4, y = 52, geometry = FALSE)
     Message
       x Offline
-      > Returning "NULL"
+      > Returning "NULL".
 
 # gisco_id_api_nuts online
 
@@ -28,8 +28,8 @@
       n <- gisco_id_api_nuts(nuts_level = 2, epsg = 4258)
     Message
       x Error 500 (Internal Server Error): <https://gisco-services.ec.europa.eu/id/nuts?epsg=4258&year=2024&nuts_level=2&format=geojson&geometry=yes>.
-      ! If you think this is a bug please consider opening an issue on <https://github.com/ropengov/giscoR/issues>
-      > Returning "NULL"
+      ! If you think this is a bug, please consider opening an issue on <https://github.com/ropengov/giscoR/issues>
+      > Returning "NULL".
 
 ---
 

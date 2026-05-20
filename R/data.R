@@ -75,7 +75,6 @@ NULL
 #'       "(https://gisco-services.ec.europa.eu/distribution/v2/",
 #'       "countries/gpkg/) file."))
 #'
-#'
 #' ```
 NULL
 
@@ -171,7 +170,6 @@ NULL
 
 #' NUTS 2024 [`sf`][sf::st_sf] object
 #'
-#'
 #' @docType data
 #' @name gisco_nuts_2024
 #' @family datasets
@@ -182,7 +180,6 @@ NULL
 #' @description
 #' This dataset represents the regions for levels 0, 1, 2 and 3 of the
 #' Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
-#'
 #'
 #' @format
 #' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
@@ -227,7 +224,6 @@ NULL
 #'        coastline).
 #'   - `3`: Non-coastal region.
 #'   - `0`: No classification provided.
-#'
 #'
 #' @source
 #'

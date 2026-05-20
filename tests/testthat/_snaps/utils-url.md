@@ -5,7 +5,7 @@
         verbose = FALSE)
     Message
       x Offline
-      > Returning "NULL"
+      > Returning "NULL".
 
 # Get urls
 
@@ -33,7 +33,7 @@
       fend <- get_request_body(url, verbose = FALSE)
     Message
       x Offline
-      > Returning "NULL"
+      > Returning "NULL".
 
 # Error body
 
@@ -41,6 +41,6 @@
       fend <- get_request_body(url, verbose = FALSE)
     Message
       x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/distribution/v2/themes.json>.
-      ! If you think this is a bug please consider opening an issue on <https://github.com/ropengov/giscoR/issues>
-      > Returning "NULL"
+      ! If you think this is a bug, please consider opening an issue on <https://github.com/ropengov/giscoR/issues>
+      > Returning "NULL".
 

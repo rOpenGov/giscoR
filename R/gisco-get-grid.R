@@ -27,7 +27,6 @@
 #' The file sizes range from 428 KB (`resolution = 100`)
 #' to 1.7 GB (`resolution = 1`).
 #'
-#'
 #' @examplesIf gisco_check_access()
 #' grid <- gisco_get_grid(resolution = 20)
 #'

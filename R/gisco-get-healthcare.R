@@ -19,7 +19,6 @@
 #' @param year character string or number. Release year of the file. One of
 #'   `2023`, `2020`.
 #'
-#'
 #' @details
 #' Files are distributed on [EPSG:4326](https://epsg.io/4326).
 #'

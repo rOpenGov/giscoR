@@ -53,9 +53,8 @@ to create correspondence tables for the NUTS classification (EC) 1059/2003
 as part of the Tercet Regulation (EU) 2017/2391.
 }
 \section{Copyright}{
-The dataset is released under the CC-BY-SA-4.0 licence and requires the
+The dataset is released under the CC-BY-SA-4.0 license and requires the
 following attribution whenever used:
-
 © European Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
 }
 
@@ -82,7 +81,7 @@ if (!is.null(pc_bel)) {
       subtitle = "2024",
       caption = paste("\u00a9 European Union - GISCO, 2024,",
         "postal code point dataset",
-        "Licence CC-BY-SA 4.0",
+        "License CC-BY-SA 4.0",
         sep = "\n"
       )
     )

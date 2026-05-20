@@ -115,7 +115,6 @@ Please check the download and usage provisions on \code{\link[=gisco_attribution
 # Get metadata
 cities <- gisco_get_metadata("urban_audit", year = 2024)
 
-
 # Valencia, Spain
 valencia <- cities[grep("Valencia", cities$URAU_NAME), ]
 valencia

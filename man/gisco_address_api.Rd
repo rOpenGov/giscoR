@@ -157,7 +157,6 @@ The resulting object may present the following variables:\tabular{ll}{
 
 gisco_address_api_cities(country = "PT", province = "LISBOA")
 
-
 # Geocode and reverse geocode with sf objects
 # Structured search
 struct <- gisco_address_api_search(

@@ -32,9 +32,9 @@
 #'   "year",TRUE)}.
 #' @param epsg character string or number. Projection of the map: 4-digit
 #'   [EPSG code](https://epsg.io/). One of:
-#'   * `"4326"`: [WGS84](https://epsg.io/4326).
-#'   * `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
-#'   * `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
+#'   - `"4326"`: [WGS84](https://epsg.io/4326).
+#'   - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
+#'   - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 #' @param cache logical. Whether to do caching. Default is `TRUE`. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
 #' @param update_cache logical. Should the cached file be refreshed? Default
@@ -43,11 +43,11 @@
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
 #' @param spatialtype character string. Type of geometry to be returned.
 #'   Options available are:
-#'   * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   * `"LB"`: Labels - `POINT` object.
-#'   * `"BN"`: Boundaries - `LINESTRING` object.
-#'   * `"COASTL"`: coastlines - `LINESTRING` object.
-#'   * `"INLAND"`: inland boundaries - `LINESTRING` object.
+#'   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#'   - `"LB"`: Labels - `POINT` object.
+#'   - `"BN"`: Boundaries - `LINESTRING` object.
+#'   - `"COASTL"`: coastlines - `LINESTRING` object.
+#'   - `"INLAND"`: inland boundaries - `LINESTRING` object.
 #'
 #'   **Note that** arguments `country` and `region` are
 #'   only applied when `spatialtype` is `"RG"` or `"LB"`.
@@ -58,11 +58,11 @@
 #' @param verbose logical. If `TRUE` displays informational messages.
 #' @param resolution character string or number. Resolution of the geospatial
 #'   data. One of:
-#'   * `"60"`: 1:60 million.
-#'   * `"20"`: 1:20 million.
-#'   * `"10"`: 1:10 million.
-#'   * `"03"`: 1:3 million.
-#'   * `"01"`: 1:1 million.
+#'   - `"60"`: 1:60 million.
+#'   - `"20"`: 1:20 million.
+#'   - `"10"`: 1:10 million.
+#'   - `"03"`: 1:3 million.
+#'   - `"01"`: 1:1 million.
 #' @param region Optional. A character vector of UN M49 region codes or
 #'   European Union membership. Possible values are `"Africa"`, `"Americas"`,
 #'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to

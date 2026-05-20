@@ -119,7 +119,7 @@ gisco_set_cache_dir <- function(
 
   if (install) {
     config_dir <- tools::R_user_dir("giscoR", "config")
-    # Create cache dir if not present
+    # Create cache directory if not present.
 
     if (!dir.exists(config_dir)) {
       dir.create(config_dir, recursive = TRUE)
@@ -128,7 +128,7 @@ gisco_set_cache_dir <- function(
     giscor_file <- file.path(config_dir, "gisco_cache_dir")
 
     if (!file.exists(giscor_file) || overwrite) {
-      # Create file if it doesn't exist
+      # Create file if it does not exist.
       writeLines(cache_dir, con = giscor_file)
     } else {
       cli::cli_abort(c(
@@ -177,10 +177,10 @@ gisco_detect_cache_dir <- function() {
 #' **Use this function with caution**. This function clears your cached
 #' data and configuration, specifically:
 #'
-#' * Deletes the \CRANpkg{giscoR} config directory
+#' - Deletes the \CRANpkg{giscoR} config directory
 #'   (`tools::R_user_dir("giscoR", "config")`).
-#' * Deletes the `cache_dir` directory.
-#' * Deletes the values stored on `Sys.getenv("GISCO_CACHE_DIR")`.
+#' - Deletes the `cache_dir` directory.
+#' - Deletes the values stored on `Sys.getenv("GISCO_CACHE_DIR")`.
 #'
 #' @param config if `TRUE`, will delete the configuration folder of
 #'   \CRANpkg{giscoR}.
@@ -226,7 +226,7 @@ gisco_clear_cache <- function(
     unlink(config_dir, recursive = TRUE, force = TRUE)
 
     if (verbose) {
-      cli::cli_alert_warning("{.pkg giscoR} cache config deleted")
+      cli::cli_alert_warning("{.pkg giscoR} cache config deleted.")
     }
   }
   # nocov end
@@ -247,7 +247,7 @@ gisco_clear_cache <- function(
 
   Sys.setenv(GISCO_CACHE_DIR = "")
 
-  # Reset cache dir
+  # Reset cache directory.
   invisible()
 }
 

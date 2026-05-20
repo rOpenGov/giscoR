@@ -155,7 +155,6 @@ ggplot(germany_nuts3) +
     caption = gisco_attributions()
   )
 
-
 # Select specific regions
 select_nuts <- gisco_get_nuts(nuts_id = c("ES2", "FRJ", "FRL", "ITC"))
 

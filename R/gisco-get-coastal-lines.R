@@ -24,7 +24,6 @@
 #' Copyright:
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 #'
-#'
 #' @seealso
 #' [gisco_coastal_lines].
 #'

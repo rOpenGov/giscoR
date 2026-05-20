@@ -23,7 +23,7 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 
 <!-- badges: end -->
 
-[**giscoR**](https://ropengov.github.io/giscoR//) is an **R** package
+[**giscoR**](https://ropengov.github.io/giscoR/) is an **R** package
 that provides a simple interface to
 [GISCO](https://ec.europa.eu/eurostat/web/gisco) data from Eurostat. It
 allows you to download and work with global and European geospatial
@@ -38,8 +38,8 @@ labels) directly in **R**.
   `01M`.
 - Choose from three projections: **EPSG:4326**, **EPSG:3035**, or
   **EPSG:3857**.
-- Works seamlessly with **sf** objects for spatial analysis.
-- Includes **caching** for faster repeated access.
+- Returns **sf** objects for spatial analysis.
+- Caches downloads for faster repeated access.
 
 ## Installation
 
@@ -88,7 +88,7 @@ library(giscoR)
 library(sf)
 library(dplyr)
 
-# Download Netherlands boundaries at different resolutions
+# Download Netherlands boundaries at different resolutions.
 nl_all <- lapply(c("60", "20", "10", "03"), function(r) {
   gisco_get_countries(country = "Netherlands", year = 2024, resolution = r) |>
     mutate(res = paste0(r, "M"))
@@ -114,7 +114,7 @@ glimpse(nl_all)
 #> $ res         <chr> "60M", "20M", "10M", "03M"
 #> $ geometry    <MULTIPOLYGON [°]> MULTIPOLYGON (((7.208935 53..., MULTIPOLYGON (((7.202794 5…
 
-# Plot with ggplot2
+# Plot with ggplot2.
 
 library(ggplot2)
 
@@ -154,7 +154,7 @@ nuts3 <- gisco_get_nuts(
   nuts_level = 3
 )
 
-# Get country lines (NUTS 0 level)
+# Get country lines at NUTS 0 level.
 
 country_lines <- gisco_get_nuts(
   year = 2021,
@@ -180,37 +180,35 @@ indexed 2.15GB in  0s, 2.15GB/s
 Finally, we merge and manipulate the data to create the final plot:
 
 ``` r
-# Merge data
+# Merge data.
 nuts3_sf <- nuts3 |>
   left_join(popdens, by = "geo")
 
-# Breaks and labels
+# Create breaks and labels.
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
 labs <- prettyNum(br[-1], big.mark = ",")
 
-# Label function used in the plot, mainly for NAs
+# Label function used in the plot, mainly for missing values.
 labeller_plot <- function(x) {
   ifelse(is.na(x), "No Data", x)
 }
 nuts3_sf <- nuts3_sf |>
-  # Cut with labels
+  # Cut with labels.
   mutate(values_cut = cut(values, br, labels = labs))
 
-
-# Palette
+# Create palette.
 pal <- hcl.colors(length(labs), "Lajolla")
 
-
-# Plot
+# Create plot.
 ggplot(nuts3_sf) +
   geom_sf(aes(fill = values_cut), linewidth = 0, color = NA, alpha = 0.9) +
   geom_sf(data = country_lines, col = "black", linewidth = 0.1) +
-  # Center in Europe: EPSG 3035
+  # Center on Europe with EPSG 3035.
   coord_sf(
     xlim = c(2377294, 7453440),
     ylim = c(1313597, 5628510)
   ) +
-  # Legends
+  # Configure legends.
   scale_fill_manual(
     values = pal,
     # Label for NA
@@ -248,7 +246,7 @@ ggplot(nuts3_sf) +
   labs(
     title = "Population density in 2021",
     subtitle = "NUTS-3 level",
-    fill = "people per sq. kilometre",
+    fill = "people per sq. kilometer",
     caption = paste0(
       "Source: Eurostat, ",
       gisco_attributions(),
@@ -280,28 +278,28 @@ Contributions are welcome:
 
 - [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for
   feedback and bug reports.
-- [Send pull requests](https://github.com/rOpenGov/giscoR/)
-- [Star us on the GitHub page](https://github.com/rOpenGov/giscoR)
+- [Send pull requests](https://github.com/rOpenGov/giscoR/).
+- [Star us on the GitHub page](https://github.com/rOpenGov/giscoR).
 
 ## Citation
 
 To cite ‘giscoR’ in publications use:
 
-Hernangómez D (2026). *giscoR: Download Map Data from GISCO API -
-Eurostat*. doi:10.32614/CRAN.package.giscoR
+Hernangómez D (2026). *giscoR: Download Map Data from the GISCO API*.
+doi:10.32614/CRAN.package.giscoR
 <https://doi.org/10.32614/CRAN.package.giscoR>.
 <https://ropengov.github.io/giscoR/>.
 
-A BibTeX entry for LaTeX users is
+A BibTeX entry for LaTeX users is:
 
     @Manual{R-giscoR,
-      title = {{giscoR}: Download Map Data from GISCO API - Eurostat},
+      title = {{giscoR}: Download Map Data from the GISCO API},
       doi = {10.32614/CRAN.package.giscoR},
       author = {Diego Hernangómez},
       year = {2026},
       version = {1.1.0},
       url = {https://ropengov.github.io/giscoR/},
-      abstract = {Tools to download data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. Global and European map data are available. This package is in no way officially related to or endorsed by Eurostat.},
+      abstract = {Tools to download global and European map data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.},
     }
 
 ## General copyright
@@ -310,7 +308,7 @@ A BibTeX entry for LaTeX users is
 
 <blockquote class="blockquote">
 
-[Eurostat’s general copyright notice and licence
+[Eurostat’s general copyright notice and license
 policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
 applies. Moreover, there are specific rules that apply to some of the
 following datasets available for downloading. The download and use of

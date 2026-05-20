@@ -4,7 +4,7 @@
       fend <- gisco_get_metadata()
     Message
       x Offline
-      > Returning "NULL"
+      > Returning "NULL".
 
 # Errors
 

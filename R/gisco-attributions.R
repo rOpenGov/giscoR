@@ -4,8 +4,8 @@
 #' Get the legal text to be used for administrative and statistical data
 #' downloaded from GISCO, see section **Copyright information**.
 #'
-#' For other datasets you may abide by the [Eurostat general copyright notice
-#' and licence
+#' For other datasets you may follow the [Eurostat general copyright notice
+#' and license
 #' policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice).
 #'
 #' @family misc
@@ -21,19 +21,18 @@
 #'
 #' @details
 #' Current languages supported are:
-#' * `"en"`: English.
-#' * `"da"`: Danish.
-#' * `"de"`: German.
-#' * `"es"`: Spanish.
-#' * `"fi"`: Finnish.
-#' * `"fr"`: French.
-#' * `"no"`: Norwegian.
-#' * `"sv"`: Swedish.
+#' - `"en"`: English.
+#' - `"da"`: Danish.
+#' - `"de"`: German.
+#' - `"es"`: Spanish.
+#' - `"fi"`: Finnish.
+#' - `"fr"`: French.
+#' - `"no"`: Norwegian.
+#' - `"sv"`: Swedish.
 #'
 #' Please consider
 #' [contributing](https://github.com/rOpenGov/giscoR/issues) if you spot any
 #' mistake or want to add a new language.
-#'
 #'
 #' # Copyright information
 #'
@@ -53,7 +52,6 @@
 #' - [gisco_get_lau()]
 #' - [gisco_get_nuts()]
 #' - [gisco_get_urban_audit()]
-#'
 #'
 #' ## Copyright Notice
 #'
@@ -77,7 +75,7 @@
 #' shall be used.
 #'
 #' If you intend to use the data commercially, please contact EuroGeographics
-#' for information regarding their licence agreements.
+#' for information about their license agreements.
 #'
 #' @examples
 #' gisco_attributions()
@@ -117,7 +115,7 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
 
     If you intend to use the data commercially, please
     contact EuroGeographics for information regarding
-    their licence agreements.
+    their license agreements.
 
       "
     )

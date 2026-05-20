@@ -17,8 +17,8 @@
 #' @param year character string or number. Release year of the file. Currently
 #'   only `"2011"` is provided.
 #' @param spatialtype Type of geometry to be returned:
-#'  * `"PT"`: Points - `POINT` object.
-#'  * `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#'  - `"PT"`: Points - `POINT` object.
+#'  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census>.
