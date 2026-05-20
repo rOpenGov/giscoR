@@ -3,8 +3,8 @@
 Get the legal text to be used for administrative and statistical data
 downloaded from GISCO, see section **Copyright information**.
 
-For other datasets you may abide by the [Eurostat general copyright
-notice and licence
+For other datasets you may follow the [Eurostat general copyright notice
+and license
 policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice).
 
 ## Usage
@@ -98,7 +98,7 @@ translation of the copyright notice in the language of the publication
 shall be used.
 
 If you intend to use the data commercially, please contact
-EuroGeographics for information regarding their licence agreements.
+EuroGeographics for information about their license agreements.
 
 ## Examples
 
@@ -128,7 +128,7 @@ gisco_attributions(lang = "es", copyright = TRUE)
 #> 
 #> If you intend to use the data commercially, please
 #> contact EuroGeographics for information regarding
-#> their licence agreements.
+#> their license agreements.
 #> [1] "© Eurogeographics para los límites administrativos"
 
 gisco_attributions(lang = "XXX")

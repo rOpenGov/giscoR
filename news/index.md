@@ -23,10 +23,10 @@ CRAN release: 2026-01-23
   in a new session. The cache now persists.
 - Update
   [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md).
-- [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+- [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
   and
-  [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md):
-  Default year changed to the latest available: 2024.
+  [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+  now default to the latest available year, 2024.
 
 ## giscoR 1.0.0
 
@@ -94,25 +94,25 @@ We recommend reviewing the updated documentation at
 
 ### New functions
 
-- Metadata and database utilities:
+- Database and metadata utilities:
   - [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/reference/gisco_get_cached_db.md)
   - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
 - [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md)
   for accessing census grid data.
-- New separate functions to access unit data (replacing
-  [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)):
+- `gisco_get_unit_*()` functions for accessing unit data, replacing
+  [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md):
   - [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
   - [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
   - [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
-- Functions to access the [GISCO ID service
-  API](https://gisco-services.ec.europa.eu/id/api-docs/)
-  - [`gisco_id_api_geonames()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
-  - [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
-  - [`gisco_id_api_lau()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
-  - [`gisco_id_api_country()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
-  - [`gisco_id_api_river_basin()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+- `gisco_id_api_*()` functions for accessing the [GISCO ID service
+  API](https://gisco-services.ec.europa.eu/id/api-docs/):
   - [`gisco_id_api_biogeo_region()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
   - [`gisco_id_api_census_grid()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+  - [`gisco_id_api_country()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+  - [`gisco_id_api_geonames()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+  - [`gisco_id_api_lau()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+  - [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+  - [`gisco_id_api_river_basin()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
 
 ### Renamed functions
 
@@ -132,9 +132,9 @@ We renamed several functions to improve clarity and consistency:
 
 ### Argument updates
 
-- Add `ext` argument to control file format (`"gpkg"`, `"shp"`,
+- `ext` argument added to control file format (`"gpkg"`, `"shp"`,
   `"geojson"`).
-- Update default `year` to the latest release
+- `year` defaults updated to the latest release
   ([\#105](https://github.com/rOpenGov/giscoR/issues/105)).
 
 ### Dataset updates
@@ -142,18 +142,14 @@ We renamed several functions to improve clarity and consistency:
 We updated all bundled datasets to their latest versions and added new
 ones:
 
-- Update
-  [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md)
-  to the newest data.
-- Add
-  [`?gisco_countries_2024`](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md)
-  (replaces `gisco_countries`).
-- Add
-  [`?gisco_nuts_2024`](https://ropengov.github.io/giscoR/reference/gisco_nuts_2024.md)
-  (replaces `gisco_nuts`).
-- Add
-  [`?gisco_coastal_lines`](https://ropengov.github.io/giscoR/reference/gisco_coastal_lines.md)
-  (replaced `gisco_coastallines`).
+- [`?gisco_coastal_lines`](https://ropengov.github.io/giscoR/reference/gisco_coastal_lines.md)
+  added, replacing `gisco_coastallines`.
+- [`?gisco_countries_2024`](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md)
+  added, replacing `gisco_countries`.
+- [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md)
+  updated to the newest data.
+- [`?gisco_nuts_2024`](https://ropengov.github.io/giscoR/reference/gisco_nuts_2024.md)
+  added, replacing `gisco_nuts`.
 
 > The datasets `gisco_countries`, `gisco_nuts`, and `gisco_coastallines`
 > are no longer available. Any code that accessed them directly (e.g.,
@@ -166,19 +162,19 @@ ones:
 
 ### Deprecations
 
-- Deprecate
-  [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md).
+- [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
+  deprecated.
   - Functionality is now available through
     [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
     and the
     [`?gisco_get_unit`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
     family.
-- Deprecate `cache` argument in heavy-download functions
-  ([`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
-  [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)).
-- In
-  [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md),
-  rename `id_giscoR` → `id`.
+- [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
+  renames `id_giscoR` to `id`.
+- [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
+  and
+  [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+  deprecate the `cache` argument in heavy-download functions.
 
 ### Other updates
 
@@ -192,8 +188,8 @@ ones:
 
 CRAN release: 2025-01-27
 
-- Fix source filtering in
-  [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
+- [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+  fixes source filtering.
 
 ## giscoR 0.6.0
 
@@ -201,44 +197,46 @@ CRAN release: 2024-08-28
 
 ### Data updates
 
-- Add `year` argument to
-  [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md)
+- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
   and
-  [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/reference/gisco_get_healthcare.md);
-  support 2020 and 2023 data.
-- Add support for 2024 datasets in
   [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
-  and
-  [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+  add support for 2024 datasets
   ([\#93](https://github.com/rOpenGov/giscoR/issues/93),
   [@hannesaddec](https://github.com/hannesaddec)).
+- [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md)
+  and
+  [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/reference/gisco_get_healthcare.md)
+  add the `year` argument and support 2020 and 2023 data.
 
 ## giscoR 0.5.1
 
 CRAN release: 2024-07-06
 
 - Use CRAN DOI.
-- Fix API entry points in
-  [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md).
 - Review failing examples.
+- [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md)
+  fixes API entry points.
 
 ## giscoR 0.5.0
 
 CRAN release: 2024-05-29
 
-- Add
-  [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md).
-- Add support for the GISCO Address API (see
-  [`?gisco_addressapi`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)).
 - Add **jsonlite** to Imports.
 - Update
   [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md).
-- Update defaults:
+- Update documentation URLs.
+- [`?gisco_addressapi`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+  adds support for the GISCO Address API.
+- [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md)
+  added.
+- [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+  and
+  [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
+  update defaults:
   - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
     → `"2021"`
   - [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
     → `"2021"`
-- Update documentation URLs.
 
 ## giscoR 0.4.2
 
@@ -262,20 +260,20 @@ CRAN release: 2024-03-15
 
 CRAN release: 2023-10-30
 
-- Add `geo` column to
-  [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
-  ([\#62](https://github.com/rOpenGov/giscoR/issues/62)).
 - Update CRAN examples.
 - Add **httr** dependency.
+- [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
+  adds the `geo` column
+  ([\#62](https://github.com/rOpenGov/giscoR/issues/62)).
 
 ## giscoR 0.3.5
 
 CRAN release: 2023-06-30
 
 - Review examples for CRAN issues.
-- Add
-  [`gisco_detect_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 - Improve error handling: return informative message and `NULL`.
+- [`gisco_detect_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md)
+  added.
 
 ## giscoR 0.3.4
 
@@ -287,9 +285,8 @@ CRAN release: 2023-05-26
 
 CRAN release: 2023-02-16
 
-- Fix URLs in
-  [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/reference/gisco_get_healthcare.md)
-  ([\#51](https://github.com/rOpenGov/giscoR/issues/51)).
+- [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/reference/gisco_get_healthcare.md)
+  fixes URLs ([\#51](https://github.com/rOpenGov/giscoR/issues/51)).
 
 ## giscoR 0.3.2
 
@@ -303,16 +300,16 @@ CRAN release: 2021-10-06
 
 - Add copyright section.
 - Add **lwgeom** to Suggests.
-- Update behavior of
-  [`gisco_get_airports()`](https://ropengov.github.io/giscoR/reference/gisco_get_airports.md)
-  and
-  [`gisco_get_ports()`](https://ropengov.github.io/giscoR/reference/gisco_get_ports.md):
-  - Only year available: 2013
-  - Always download fresh data
-- Add
-  [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postal_codes.md).
 - Update
   [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md).
+- [`gisco_get_airports()`](https://ropengov.github.io/giscoR/reference/gisco_get_airports.md)
+  and
+  [`gisco_get_ports()`](https://ropengov.github.io/giscoR/reference/gisco_get_ports.md)
+  update behavior:
+  - Only year available: 2013
+  - Always download fresh data
+- [`gisco_get_postalcodes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postal_codes.md)
+  added.
 
 ## giscoR 0.3.0
 
@@ -328,25 +325,24 @@ CRAN release: 2021-09-27
 - Fix `cache = FALSE` behavior.
 - Add new tests.
 - Update documentation and examples.
-- Refactor
-  [`?gisco_get`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
-  documentation.
 - Add **eurostat** to Suggests.
 - Remove **lwgeom**.
 - Update internal grid.
 - Replace **tmap** with **ggplot2**.
+- [`?gisco_get`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+  documentation refactored.
 
 ## giscoR 0.2.4
 
 CRAN release: 2021-04-13
 
-- Add `eu` field to
-  [`?gisco_countrycode`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md).
 - Fix documentation typos.
 - Add vignette.
 - Move to **roxygen2**.
 - Move **lwgeom** to Imports.
 - Replace **cartography** with **tmap**.
+- [`?gisco_countrycode`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md)
+  adds the `eu` field.
 
 ## giscoR 0.2.3
 
@@ -371,13 +367,12 @@ CRAN release: 2020-11-12
 
 - Remove **colorspace**.
 - Require **R ≥ 3.6.0**.
-- Reorder arguments in
-  [`?gisco_get`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
-  functions.
 - Rewrite internal utilities.
-- Add `verbose` argument.
 - Rewrite
   [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md).
+- [`?gisco_get`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+  functions reorder arguments.
+- `verbose` argument added.
 - Add:
   - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
   - [`gisco_check_access()`](https://ropengov.github.io/giscoR/reference/gisco_check_access.md)
@@ -385,11 +380,10 @@ CRAN release: 2020-11-12
   - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
   - [`gisco_get_ports()`](https://ropengov.github.io/giscoR/reference/gisco_get_ports.md)
   - [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
-- Update
-  [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
+- [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
   and
   [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
-  for faster downloads.
+  get faster downloads.
 
 ## giscoR 0.1.1
 

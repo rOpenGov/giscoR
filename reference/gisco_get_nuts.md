@@ -215,7 +215,6 @@ ggplot(germany_nuts3) +
   )
 
 
-
 # Select specific regions
 select_nuts <- gisco_get_nuts(nuts_id = c("ES2", "FRJ", "FRL", "ITC"))
 

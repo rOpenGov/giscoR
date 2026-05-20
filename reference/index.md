@@ -1,6 +1,6 @@
 # Package index
 
-## GISCO Geodata
+## GISCO geodata
 
 Download datasets from the [GISCO Geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco/geodata). These
@@ -62,9 +62,9 @@ population figures are provided for these cells.
 - [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/reference/gisco_get_healthcare.md)
   : Healthcare services in Europe
 
-### Additional helpers
+### Additional downloads
 
-Additional functions for downloading GISCO API datasets.
+Additional functions for downloading datasets from the GISCO API.
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
   : GISCO API bulk download
@@ -73,9 +73,9 @@ Additional functions for downloading GISCO API datasets.
   [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
   : GISCO API single download
 
-### giscoR database management
+### giscoR database
 
-Get the current database in use by the package and the corresponding
+Get the current database used by the package and its corresponding
 metadata.
 
 - [`gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md)
@@ -90,14 +90,14 @@ metadata.
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
   : Get metadata
 
-### Misc
+### Miscellaneous
 
-Other functions.
+Other helpers.
 
 - [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
   : Attribution for administrative and statistical GISCO data
 
-## GISCO Tools
+## GISCO tools
 
 Query additional [APIs and
 tools](https://ec.europa.eu/eurostat/web/gisco/tools) provided by GISCO.
@@ -138,7 +138,7 @@ tools](https://ec.europa.eu/eurostat/web/gisco/tools) provided by GISCO.
 
 ## Datasets
 
-Datasets included with
+Datasets included in
 [giscoR](https://CRAN.R-project.org/package=giscoR).
 
 - [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/reference/gisco_coastal_lines.md)
@@ -169,7 +169,7 @@ Datasets included with
 
 - [`giscoR`](https://ropengov.github.io/giscoR/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/reference/giscoR-package.md)
-  : giscoR: Download Map Data from GISCO API - Eurostat
+  : giscoR: Download Map Data from the GISCO API
 
 ## Deprecated functions
 

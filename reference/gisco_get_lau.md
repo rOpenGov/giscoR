@@ -136,7 +136,7 @@ Other statistical units datasets:
 # \dontrun{
 
 lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
-#> ! The file to be downloaded has size 74.6 Mb.
+#> ! The file to download has size 74.6 Mb.
 
 if (!is.null(lu_lau)) {
   library(ggplot2)

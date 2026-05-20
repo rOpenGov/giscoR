@@ -182,7 +182,6 @@ gisco_address_api_cities(country = "PT", province = "LISBOA")
 #> 8 SINTRA             
 #> 9 VILA FRANCA DE XIRA
 
-
 # Geocode and reverse geocode with sf objects
 # Structured search
 struct <- gisco_address_api_search(

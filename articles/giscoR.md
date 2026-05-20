@@ -2,7 +2,7 @@
 
 ## Introduction
 
-*Full site with more examples and vignettes available at
+*The full site with more examples and vignettes is available at
 <https://ropengov.github.io/giscoR/>*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed
@@ -10,18 +10,19 @@ to provide a simple interface to the [GISCO
 API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
 GISCO provides geographic data for the European Union, its member
-countries, and subnational regions. It supplies shapefiles in different
-formats, focusing especially on the EU but also offering worldwide
-datasets such as country polygons, labels, borders, and coastlines.
+countries, and subnational regions. It supplies geospatial files in
+different formats, focusing especially on the EU but also offering
+worldwide datasets such as country polygons, labels, borders, and
+coastlines.
 
 GISCO supplies data at multiple resolutions: high-detail datasets for
-small areas (01M, 03M), and lighter datasets for larger areas (10M, 20M,
+small areas (01M, 03M) and lighter datasets for larger areas (10M, 20M,
 60M). Datasets are available in three projections:
 [EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035),
 and [EPSG:3857](https://epsg.io/3857).
 
 **giscoR** returns
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects; see
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects. See
 <https://r-spatial.github.io/sf/> for details.
 
 ## Caching
@@ -44,12 +45,12 @@ place it in your local cache directory.
 
 ## Downloading data
 
-Please note the following attribution and licensing requirements when
-using GISCO data:
+Review the following attribution and licensing requirements when using
+GISCO data:
 
 ### General copyright
 
-> [Eurostat’s general copyright notice and licence
+> [Eurostat’s general copyright notice and license
 > policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
 > applies. Moreover, there are specific rules that apply to some of the
 > following datasets available for downloading. The download and use of
@@ -62,10 +63,10 @@ using GISCO data:
 
 Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
-There is a function,
-[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md),
-that provides guidance on this topic and returns attributions in several
-languages.
+The
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
+function provides guidance on this topic and returns attributions in
+several languages.
 
 ``` r
 
@@ -84,15 +85,14 @@ c(
 
 ## Basic example
 
-Examples of downloading data: EU member states and candidate countries
-as of 2024:
+The following example downloads EU member states and candidate countries
+as of 2024.
 
 ``` r
 
 library(dplyr)
 library(ggplot2)
 world <- gisco_get_countries(resolution = 3, epsg = 3035)
-
 
 world <- world |>
   mutate(
@@ -101,7 +101,7 @@ world <- world |>
       CC_STAT == "T" ~ "Candidate countries",
       TRUE ~ NA
     ),
-    # As levels
+    # Set levels.
     status = factor(status,
       levels = c("Current members", "Candidate countries")
     )
@@ -156,10 +156,10 @@ africa_north <- gisco_get_countries(
   epsg = "4326", year = "2024"
 )
 
-# For ordering the plot
+# Order plot facets.
 
 africa_north$NAME_ENGL <- factor(africa_north$NAME_ENGL, levels = cntr)
-# Coastlines
+# Get coastlines.
 
 coast <- gisco_get_coastal_lines(
   resolution = "03",
@@ -167,7 +167,7 @@ coast <- gisco_get_coastal_lines(
   year = "2016"
 )
 
-# Plot
+# Create plot.
 ggplot(coast) +
   geom_sf(color = "#B9B9B9") +
   geom_sf(data = africa_north, fill = "#346733", color = "#335033") +
@@ -183,9 +183,8 @@ Political map of North Africa
 ## Thematic maps with **giscoR**
 
 This example shows how **giscoR** can be used together with Eurostat
-data. For plotting, we use **ggplot2**. However, any package that
-supports `sf` objects (e.g., **tmap**, **mapsf**, **leaflet**) can be
-used.
+data. For plotting, we use **ggplot2**. Any package that supports `sf`
+objects (e.g., **tmap**, **mapsf**, **leaflet**) can be used.
 
 ``` r
 # EU members
@@ -204,14 +203,13 @@ borders <- gisco_get_countries(epsg = "3035", year = "2020", resolution = "3")
 eu_bord <- borders |>
   filter(CNTR_ID %in% nuts2$CNTR_CODE)
 
-# Eurostat data - Disposable income
+# Eurostat data: Disposable income.
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
 #> 
 indexed 0B in  0s, 0B/s
 indexed 2.15GB in  0s, 2.15GB/s
-                                                                                               
-
+                                                                                             
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -220,26 +218,24 @@ nuts2_sf <- nuts2 |>
     categ = cut(values_th, c(0, 15, 30, 60, 90, 120, Inf))
   )
 
-
-# Adjust the labels
+# Adjust labels.
 labs <- levels(nuts2_sf$categ)
 labs[1] <- "< 15"
 labs[6] <- "> 120"
 levels(nuts2_sf$categ) <- labs
 
-
-# Finally the plot
+# Create the plot.
 ggplot(nuts2_sf) +
   # Background
   geom_sf(data = borders, fill = "#e1e1e1", color = NA) +
   geom_sf(aes(fill = categ), color = "grey20", linewidth = .1) +
   geom_sf(data = eu_bord, fill = NA, color = "black", linewidth = .15) +
-  # Center in Europe: EPSG 3035
+  # Center on Europe with EPSG 3035.
   coord_sf(xlim = c(2377294, 6500000), ylim = c(1413597, 5228510)) +
-  # Legends and color
+  # Configure legends and color.
   scale_fill_manual(
     values = hcl.colors(length(labs), "Geyser", rev = TRUE),
-    # Label NA
+    # Label missing values.
     labels = function(x) {
       ifelse(is.na(x), "No Data", x)
     },
@@ -269,7 +265,7 @@ ggplot(nuts2_sf) +
     legend.key.height = rel(0.5),
     legend.key.width = unit(0.1, "npc")
   ) +
-  # Annotate and labels
+  # Annotate and label.
   labs(
     title = "Disposable income of private households (2022)",
     subtitle = "NUTS-2 level",
@@ -282,3 +278,5 @@ ggplot(nuts2_sf) +
 
 ![Disposable income of private households by NUTS 2 regions
 (2022)](./fig-giscor-1.png)
+
+Disposable income of private households by NUTS 2 regions (2022)

@@ -66,11 +66,9 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Copyright
 
-The dataset is released under the CC-BY-SA-4.0 licence and requires the
-following attribution whenever used:
-
-© European Union - GISCO, 2024, postal code point dataset, Licence
-CC-BY-SA 4.0.
+The dataset is released under the CC-BY-SA-4.0 license and requires the
+following attribution whenever used: © European Union - GISCO, 2024,
+postal code point dataset, Licence CC-BY-SA 4.0.
 
 ## Note
 
@@ -95,7 +93,7 @@ Other administrative units datasets:
 # \dontrun{
 
 pc_bel <- gisco_get_postal_codes(country = "BE")
-#> ! The file to be downloaded has size 196.9 Mb.
+#> ! The file to download has size 196.9 Mb.
 
 if (!is.null(pc_bel)) {
   library(ggplot2)
@@ -108,7 +106,7 @@ if (!is.null(pc_bel)) {
       subtitle = "2024",
       caption = paste("\u00a9 European Union - GISCO, 2024,",
         "postal code point dataset",
-        "Licence CC-BY-SA 4.0",
+        "License CC-BY-SA 4.0",
         sep = "\n"
       )
     )

@@ -28,7 +28,7 @@ gisco_get_healthcare(
 
 There are no specific download rules for the datasets shown below.
 However, please refer to [the general copyright
-notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and licence
+notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
 provisions, which must be complied with. Permission to download and use
 these data are subject to these rules being accepted.
 

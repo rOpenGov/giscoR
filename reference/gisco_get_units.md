@@ -135,62 +135,70 @@ functions.
 gisco_get_units("nuts", mode = "df", year = 2016)
 #> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
 #> ℹ Please use `gisco_get_metadata()` instead.
-#> # A tibble: 2,016 × 7
-#>    CNTR_CODE NUTS_ID NAME_LATN         NUTS_NAME MOUNT_TYPE URBN_TYPE COAST_TYPE
-#>    <chr>     <chr>   <chr>             <chr>          <int>     <int>      <int>
-#>  1 UK        UKL2    East Wales        East Wal…          0         0          0
-#>  2 UK        UKL18   Swansea           Swansea            4         1          1
-#>  3 UK        UKL17   Bridgend and Nea… Bridgend…          2         1          1
-#>  4 UK        UKL16   Gwent Valleys     Gwent Va…          2         1          2
-#>  5 UK        UKL15   Central Valleys   Central …          3         1          2
-#>  6 UK        UKL14   South West Wales  South We…          4         3          1
-#>  7 UK        UKL12   Gwynedd           Gwynedd            2         3          1
-#>  8 UK        UKL11   Isle of Anglesey  Isle of …          4         3          1
-#>  9 UK        UKL1    West Wales and T… West Wal…          0         0          0
-#> 10 UK        UKL     WALES             WALES              0         0          0
+#> # A tibble: 2,016 × 9
+#>    CNTR_CODE NUTS_ID NAME_LATN          NUTS_NAME NAME_ASCI NAME_HTML MOUNT_TYPE
+#>    <chr>     <chr>   <chr>              <chr>     <chr>     <chr>          <int>
+#>  1 UK        UKL2    East Wales         East Wal… East Wal… East Wal…          0
+#>  2 UK        UKL18   Swansea            Swansea   Swansea   Swansea            4
+#>  3 UK        UKL17   Bridgend and Neat… Bridgend… Bridgend… Bridgend…          2
+#>  4 UK        UKL16   Gwent Valleys      Gwent Va… Gwent Va… Gwent Va…          2
+#>  5 UK        UKL15   Central Valleys    Central … Central … Central …          3
+#>  6 UK        UKL14   South West Wales   South We… South We… South We…          4
+#>  7 UK        UKL12   Gwynedd            Gwynedd   Gwynedd   Gwynedd            2
+#>  8 UK        UKL11   Isle of Anglesey   Isle of … Isle of … Isle of …          4
+#>  9 UK        UKL1    West Wales and Th… West Wal… West Wal… West Wal…          0
+#> 10 UK        UKL     WALES              WALES     WALES     WALES              0
 #> # ℹ 2,006 more rows
+#> # ℹ 2 more variables: URBN_TYPE <int>, COAST_TYPE <int>
 # ->
 gisco_get_metadata("nuts", year = 2016)
-#> # A tibble: 2,016 × 7
-#>    CNTR_CODE NUTS_ID NAME_LATN         NUTS_NAME MOUNT_TYPE URBN_TYPE COAST_TYPE
-#>    <chr>     <chr>   <chr>             <chr>          <int>     <int>      <int>
-#>  1 UK        UKL2    East Wales        East Wal…          0         0          0
-#>  2 UK        UKL18   Swansea           Swansea            4         1          1
-#>  3 UK        UKL17   Bridgend and Nea… Bridgend…          2         1          1
-#>  4 UK        UKL16   Gwent Valleys     Gwent Va…          2         1          2
-#>  5 UK        UKL15   Central Valleys   Central …          3         1          2
-#>  6 UK        UKL14   South West Wales  South We…          4         3          1
-#>  7 UK        UKL12   Gwynedd           Gwynedd            2         3          1
-#>  8 UK        UKL11   Isle of Anglesey  Isle of …          4         3          1
-#>  9 UK        UKL1    West Wales and T… West Wal…          0         0          0
-#> 10 UK        UKL     WALES             WALES              0         0          0
+#> # A tibble: 2,016 × 9
+#>    CNTR_CODE NUTS_ID NAME_LATN          NUTS_NAME NAME_ASCI NAME_HTML MOUNT_TYPE
+#>    <chr>     <chr>   <chr>              <chr>     <chr>     <chr>          <int>
+#>  1 UK        UKL2    East Wales         East Wal… East Wal… East Wal…          0
+#>  2 UK        UKL18   Swansea            Swansea   Swansea   Swansea            4
+#>  3 UK        UKL17   Bridgend and Neat… Bridgend… Bridgend… Bridgend…          2
+#>  4 UK        UKL16   Gwent Valleys      Gwent Va… Gwent Va… Gwent Va…          2
+#>  5 UK        UKL15   Central Valleys    Central … Central … Central …          3
+#>  6 UK        UKL14   South West Wales   South We… South We… South We…          4
+#>  7 UK        UKL12   Gwynedd            Gwynedd   Gwynedd   Gwynedd            2
+#>  8 UK        UKL11   Isle of Anglesey   Isle of … Isle of … Isle of …          4
+#>  9 UK        UKL1    West Wales and Th… West Wal… West Wal… West Wal…          0
+#> 10 UK        UKL     WALES              WALES     WALES     WALES              0
 #> # ℹ 2,006 more rows
+#> # ℹ 2 more variables: URBN_TYPE <int>, COAST_TYPE <int>
 
 # mode sf for NUTS
 gisco_get_units("nuts", unit = "ES111", mode = "sf", year = 2016)
 #> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
 #> ℹ Please use `gisco_get_unit_nuts()` instead.
-#> Simple feature collection with 1 feature and 9 fields
+#> Simple feature collection with 1 feature and 19 fields
 #> Geometry type: POLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: -9.2475 ymin: 42.56619 xmax: -7.699736 ymax: 43.73816
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 1 × 10
-#>   COAST_TYPE MOUNT_TYPE NAME_LATN CNTR_CODE NUTS_ID NUTS_NAME LEVL_CODE
-#> *      <int>      <int> <chr>     <chr>     <chr>   <chr>         <int>
-#> 1          1          2 A Coruña  ES        ES111   A Coruña          3
-#> # ℹ 3 more variables: URBN_TYPE <int>, geo <chr>, geometry <POLYGON [°]>
+#> # A tibble: 1 × 20
+#>   SVRG_UN      COAST_TYPE EU_STAT MOUNT_TYPE NAME_FREN NAME_LATN ISO3_CODE CAPT 
+#> * <chr>             <int> <chr>        <int> <chr>     <chr>     <chr>     <chr>
+#> 1 UN Member S…          1 T                2 Espagne   A Coruña  ESP       Madr…
+#> # ℹ 12 more variables: CNTR_CODE <chr>, CC_STAT <chr>, NAME_ASCI <chr>,
+#> #   NAME_GERM <chr>, NUTS_ID <chr>, EFTA_STAT <chr>, NUTS_NAME <chr>,
+#> #   LEVL_CODE <int>, URBN_TYPE <int>, NAME_ENGL <chr>, geo <chr>,
+#> #   geometry <POLYGON [°]>
 # ->
 gisco_get_unit_nuts(unit = "ES111", year = 2016)
-#> Simple feature collection with 1 feature and 9 fields
+#> Simple feature collection with 1 feature and 19 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: -9.29841 ymin: 42.4636 xmax: -7.662418 ymax: 43.78793
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 1 × 10
-#>   COAST_TYPE MOUNT_TYPE NAME_LATN CNTR_CODE NUTS_ID NUTS_NAME LEVL_CODE
-#> *      <int>      <int> <chr>     <chr>     <chr>   <chr>         <int>
-#> 1          1          2 A Coruña  ES        ES111   A Coruña          3
-#> # ℹ 3 more variables: URBN_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
+#> # A tibble: 1 × 20
+#>   SVRG_UN      COAST_TYPE EU_STAT MOUNT_TYPE NAME_FREN NAME_LATN ISO3_CODE CAPT 
+#> * <chr>             <int> <chr>        <int> <chr>     <chr>     <chr>     <chr>
+#> 1 UN Member S…          1 T                2 Espagne   A Coruña  ESP       Madr…
+#> # ℹ 12 more variables: CNTR_CODE <chr>, CC_STAT <chr>, NAME_ASCI <chr>,
+#> #   NAME_GERM <chr>, NUTS_ID <chr>, EFTA_STAT <chr>, NUTS_NAME <chr>,
+#> #   LEVL_CODE <int>, URBN_TYPE <int>, NAME_ENGL <chr>, geo <chr>,
+#> #   geometry <MULTIPOLYGON [°]>
 # }
 ```
