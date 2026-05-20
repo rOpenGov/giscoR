@@ -168,7 +168,7 @@ test_that("Caching errors", {
       update_cache = FALSE,
       verbose = FALSE
     ),
-    "The file to be downloaded has size"
+    "The file to download has size"
   )
 
   unlink(cdir, recursive = TRUE, force = TRUE)
