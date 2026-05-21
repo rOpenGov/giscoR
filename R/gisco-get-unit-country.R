@@ -25,12 +25,13 @@
 #' See [`gisco_id_api`][giscoR::gisco_id_api] to download via GISCO ID service
 #' API.
 #'
-#' @param unit character vector of unit IDs to be downloaded. See **Details**.
-#' @param year character string or number. Release year of the file.
-#' @param spatialtype character string. Type of geometry to be returned.
+#' @param unit A character vector of unit IDs to be downloaded. See **Details**.
+#' @param year A character string or numeric value with the release year of the
+#'   file.
+#' @param spatialtype A character string with the type of geometry to return.
 #'   Options available are:
-#'   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   - `"LB"`: Labels - `POINT` object.
+#' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#' - `"LB"`: Labels - `POINT` object.
 #'
 #' @source
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>

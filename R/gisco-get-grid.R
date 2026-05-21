@@ -17,9 +17,10 @@
 #' There are specific downloading provisions, please see
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 #'
-#' @param resolution Resolution of the grid cells in km. Available values are
-#' `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"`, `"100"`. See **Details**.
-#' @param spatialtype Select one of `"REGION"` or `"POINT"`.
+#' @param resolution The grid cell resolution in km. Available values are
+#'   `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"` and `"100"`. See
+#'   **Details**.
+#' @param spatialtype A character string selecting `"REGION"` or `"POINT"`.
 #'
 #' @details
 #' Files are distributed on [`EPSG:3035`](https://epsg.io/3035).
@@ -40,7 +41,7 @@
 #'
 #'   breaks <- c(0, 0.1, 100, 500, 1000, 5000, 10000, Inf)
 #'
-#'   # Cut groups
+#'   # Cut groups.
 #'   grid <- grid |>
 #'     mutate(popdens_cut = cut(popdens,
 #'       breaks = breaks,
@@ -66,7 +67,7 @@
 #'     ) +
 #'     scale_fill_manual(
 #'       values = pal, na.value = "black",
-#'       name = "people per sq. kilometer",
+#'       name = "people per square kilometer",
 #'       labels = cut_labs,
 #'       guide = guide_legend(
 #'         direction = "horizontal",

@@ -11,10 +11,12 @@
 #' @inherit gisco_get_countries return
 #' @export
 #'
-#' @param year character string or number. Release year of the file. One of
-#'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
+#' @param year A character string or numeric value with the release year of the
+#'   file.
+#'   One of \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 #'   "year",TRUE)}.
-#' @param ext character. Extension of the file (default `"gpkg"`). One of
+#' @param ext A character value with the extension of the file (default
+#'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 #'   "ext",TRUE)}.
 #'
@@ -36,7 +38,7 @@
 #'
 #' ggplot(coast) +
 #'   geom_sf(color = "#1278AB", fill = "#FDFBEA") +
-#'   # Zoom on Mediterranean Sea
+#'   # Zoom on the Mediterranean Sea.
 #'   coord_sf(
 #'     xlim = c(-4, 35),
 #'     ylim = c(31, 45)
@@ -79,13 +81,13 @@ gisco_get_coastal_lines <- function(
       "info",
       verbose,
       "Loaded from {.help giscoR::gisco_coastal_lines} dataset.",
-      "Use {.arg update_cache = TRUE} to re-load from file"
+      "Use {.arg update_cache = TRUE} to reload from file."
     )
 
     return(data_sf)
   }
 
-  # Not cached data are read from URL
+  # Read uncached data from the URL.
   if (all(isFALSE(cache), ext != "shp")) {
     msg <- paste0("{.url ", api_entry, "}.")
     make_msg("info", verbose, "Reading from", msg)

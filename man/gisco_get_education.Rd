@@ -27,21 +27,23 @@ gisco_get_education(
 )
 }
 \arguments{
-\item{year}{character string or number. Release year of the file. One of
+\item{year}{A character string or numeric value with the release year of the
+file. One of
 \code{2023}, \code{2020}.}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\item{cache}{A logical value indicating whether to cache results. Default
+is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+
+\item{update_cache}{A logical value indicating whether to refresh the
+cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+download.}
+
+\item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
-
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
-
-\item{country}{character vector of country codes. It can be either a
+\item{country}{A character vector of country codes. It can be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
@@ -73,14 +75,14 @@ Brief description of each attribute:\tabular{ll}{
    \code{max_students} \tab Measure of capacity by maximum number of students. \cr
    \code{enrollment} \tab Measure of capacity by number of enrolled students. \cr
    \code{fields} \tab Academic disciplines the institution specializes in (ISCED-F 2013). \cr
-   \code{facility_type} \tab Type of institution in reference to ownership and operation e.g., Catholic, international etc. \cr
+   \code{facility_type} \tab Type of institution in reference to ownership and operation, such as Catholic or international. \cr
    \code{public_private} \tab The public or private status of the education service. \cr
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
    \code{url} \tab URL for the institution's website. \cr
    \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) the data refers to. The dataset represents the reality as it was at this date. \cr
    \code{geo_qual} \tab Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. \cr
-   \code{comments} \tab Some additional information on the education service. \cr
+   \code{comments} \tab Additional information on the education service. \cr
 }
 }
 \examples{

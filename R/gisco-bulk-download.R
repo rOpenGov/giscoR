@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Download zipped data from GISCO to the [`cache_dir`][gisco_set_cache_dir()]
-#' and extract the relevant ones.
+#' and extract the relevant files.
 #'
 #' @family extra
 #' @encoding UTF-8
@@ -15,30 +15,31 @@
 #' An invisible character vector with the full path of the files extracted.
 #' See **Examples**.
 #'
-#' @param year character string or number. Release year of the file, see
-#'   **Details**.
+#' @param year A character string or numeric value with the release year of the
+#'   file, see **Details**.
 #'
-#' @param id character string or number. Type of dataset to be
-#'   downloaded, see **Details**. Values supported are:
-#'   - `"countries"`
-#'   - `"coastal_lines"`
-#'   - `"communes"`
-#'   - `"lau"`
-#'   - `"nuts"`
-#'   - `"urban_audit"`
-#'   - `"postal_codes"`
+#' @param id A character string or numeric value with the dataset type to
+#'   download, see **Details**. Values supported are:
+#' - `"countries"`
+#' - `"coastal_lines"`
+#' - `"communes"`
+#' - `"lau"`
+#' - `"nuts"`
+#' - `"urban_audit"`
+#' - `"postal_codes"`
 #'
 #'   This argument replaces the previous (deprecated) argument `id_giscoR`.
 #' @param recursive `r lifecycle::badge("deprecated")` `recursive` is no
 #'   longer supported, and this function will never perform recursive
-#'   extraction of child `.zip` files. This is the case of "`shp.zip` inside
-#'   the top-level `.zip`, that won't be unzipped.
+#'   extraction of child `.zip` files. This is the case for "`shp.zip` inside
+#'   the top-level `.zip`, which will not be unzipped.
 #' @param ... Ignored. The argument `id_giscoR`
 #'   (`r lifecycle::badge("deprecated")`) is captured via `...` and redirected
 #'   to `id` with a [warning][lifecycle::deprecate_warn].
 #'
-#' @param ext Extension of the file(s) to be downloaded. Formats available are
-#' `"shp"`, `"geojson"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.
+#' @param ext The extension of the file or files to download. Available
+#'   formats are `"shp"`, `"geojson"`, `"svg"`, `"json"` and `"gdb"`. See
+#'   **Details**.
 #'
 #' @details
 #' Some arguments only apply to a specific value of `"id"`. For example
@@ -46,19 +47,18 @@
 #' `"urban_audit"` and `"postal_codes"`.
 #'
 #' See years available in the corresponding functions:
-#'  - [gisco_get_countries()].
-#'  - [gisco_get_coastal_lines()].
-#'  - [gisco_get_communes()].
-#'  - [gisco_get_lau()].
-#'  - [gisco_get_nuts()].
-#'  - [gisco_get_urban_audit()].
-#'  - [gisco_get_postal_codes()].
+#' - [gisco_get_countries()].
+#' - [gisco_get_coastal_lines()].
+#' - [gisco_get_communes()].
+#' - [gisco_get_lau()].
+#' - [gisco_get_nuts()].
+#' - [gisco_get_urban_audit()].
+#' - [gisco_get_postal_codes()].
 #'
 #' The usual extensions used across \CRANpkg{giscoR} are `"gpkg"` and `"shp"`,
-#' however other formats are already available on GISCO. Note that after
-#' performing a bulk download you may need to adjust the default `"ext"` value
-#' in the corresponding function to connect it with the downloaded files (see
-#' **Examples**).
+#' but other formats are already available on GISCO. After a bulk download, you
+#' may need to adjust the default `"ext"` value in the corresponding function
+#' to connect it with the downloaded files (see **Examples**).
 #'
 #' @examplesIf gisco_check_access()
 #' tmp <- file.path(tempdir(), "testexample")
@@ -68,7 +68,7 @@
 #'   year = 2024, ext = "geojson",
 #'   cache_dir = tmp
 #' )
-#' # Read one
+#' # Read one file.
 #' library(sf)
 #' read_sf(dest_files[1]) |> head()
 #'
@@ -80,9 +80,9 @@
 #'   cache_dir = tmp, verbose = TRUE
 #' )
 #'
-#' # Message shows that file is already cached
+#' # The message shows that the file is already cached.
 #' }
-#' # Clean
+#' # Clean up.
 #' unlink(tmp, force = TRUE)
 gisco_bulk_download <- function(
   id = c(
@@ -110,7 +110,7 @@ gisco_bulk_download <- function(
       "1.0.0",
       "giscoR::gisco_bulk_download(recursive)",
       details = paste0(
-        "Child `.zip` files inside the top-level `.zip` won't be unzipped."
+        "Child `.zip` files inside the top-level `.zip` will not be unzipped."
       )
     )
   }
@@ -127,7 +127,7 @@ gisco_bulk_download <- function(
   id <- match_arg_pretty(id)
   ext <- match_arg_pretty(ext)
 
-  # Standard arguments for the call
+  # Set standard arguments for the call.
   year <- as.character(year)
 
   make_params <- make_bulk_params(id = id, year = year, resolution = resolution)
@@ -144,7 +144,7 @@ gisco_bulk_download <- function(
     fn = "gisco_bulk_download"
   )
 
-  # Restore
+  # Restore legacy commune resolution handling.
   if (id == "communes" && as.character(year) %in% c("2004", "2006", "2008")) {
     make_params$resolution <- 1
   }
@@ -187,11 +187,11 @@ gisco_bulk_download <- function(
     return(NULL)
   }
 
-  # Clean cache dir name for extracting
+  # Clean the cache dir name before extracting.
   unzip_dir <- gsub(paste0("/", zipname), "", destfile)
 
   infiles <- unzip(destfile, list = TRUE, junkpaths = TRUE)
-  # Extract files
+  # Extract files.
   outfiles <- infiles[grep(ext, infiles$Name), ]$Name
 
   if (verbose) {
@@ -212,14 +212,14 @@ gisco_bulk_download <- function(
 
 #' Internal function to set arguments for bulk download
 #'
-#' @param id Dataset ID.
-#' @param year Year.
-#' @param resolution Resolution.
+#' @param id A dataset ID.
+#' @param year A year.
+#' @param resolution A resolution.
 #'
 #' @return A list of arguments.
 #' @noRd
 make_bulk_params <- function(id, year, resolution = NULL) {
-  # Need this to ensure everything is captured
+  # Keep every bulk-download parameter explicit.
   make_params <- list(
     year = year,
     epsg = 4326,

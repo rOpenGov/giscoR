@@ -5,7 +5,7 @@
 #' be 'hospitals' by Member States. The definition varies slightly from
 #' country to country, but roughly includes the following:
 #'
-#' *"'Hospitals' comprises licensed establishments primarily engaged in
+#' - "'Hospitals' comprises licensed establishments primarily engaged in
 #' providing medical, diagnostic and treatment services that include
 #' physician, nursing and other health services to in-patients and the
 #' specialised accommodation services required by inpatients."*
@@ -16,7 +16,8 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @param year character string or number. Release year of the file. One of
+#' @param year A character string or numeric value with the release year of the
+#'   file. One of
 #'   `2023`, `2020`.
 #'
 #' @details
@@ -64,7 +65,7 @@ gisco_get_healthcare <- function(
   verbose = FALSE,
   country = NULL
 ) {
-  # Given vars
+  # Set required variables.
   year <- match_arg_pretty(year)
 
   api_entry <- paste0(
@@ -75,7 +76,7 @@ gisco_get_healthcare <- function(
   filename <- paste0("health_", year, "_", basename(api_entry))
 
   if (cache) {
-    # Guess source to load
+    # Guess the source to load.
     namefileload <- download_url(
       api_entry,
       filename,

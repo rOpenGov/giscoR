@@ -8,20 +8,20 @@
 #' @export
 #' @inherit gisco_get_metadata return source
 #'
-#' @param update_cache logical. On `TRUE` the cached database is rebuilt
-#'   with the most updated information of the GISCO API.
+#' @param update_cache A logical value. If `TRUE`, rebuild the cached database
+#'   with the most recent information from the GISCO API.
 #'
 #' @details
 #' The cached database is stored in the \CRANpkg{giscoR} cache path, see
 #' [gisco_set_cache_dir()] for details. The cached database is used
 #' in subsequent **R** sessions.
 #'
-#' On new GISCO data releases, you can access the new updated data simply by
-#' refreshing the cached database without waiting for a new version of
+#' On new GISCO data releases, you can access the updated data by refreshing
+#' the cached database without waiting for a new version of
 #' \CRANpkg{giscoR}.
 #'
 #' A static database [gisco_db] is shipped with the package. This database is
-#' used in case there is any problem on update.
+#' used if there is any problem during update.
 #'
 #' @examplesIf gisco_check_access()
 #'
@@ -34,7 +34,7 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
 
   cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
 
-  # On CRAN do not download
+  # On CRAN, do not download.
   if (all(on_cran(), !file.exists(cached_db))) {
     db <- giscoR::gisco_db
     saveRDS(db, cached_db)
@@ -43,7 +43,7 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   }
 
   if (file.exists(cached_db) && isFALSE(update_cache)) {
-    # Read the db, not update
+    # Read the database without updating.
     db <- readRDS(cached_db)
     return(db)
   }
@@ -67,20 +67,20 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   }
   final_db <- tibble::as_tibble(final_db)
 
-  # Remove non-useful extensions
+  # Remove non-useful extensions.
   final_db <- final_db[
     !grepl("cpg$|dbf$|shp$|prj$|svg$|svg.zip$", final_db$api_file),
   ]
 
   final_db$year <- as.numeric(final_db$year)
 
-  # EPSG
+  # EPSG.
   final_db$epsg <- NA
   final_db[grep("3857", final_db$api_file), ]$epsg <- 3857
   final_db[grep("4326", final_db$api_file), ]$epsg <- 4326
   final_db[grep("3035", final_db$api_file), ]$epsg <- 3035
 
-  # Resolution--
+  # Resolution.
   final_db$resolution <- NA
   final_db[grep("01M", final_db$api_file), ]$resolution <- 1
   final_db[grep("03M", final_db$api_file), ]$resolution <- 3
@@ -89,7 +89,7 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   final_db[grep("60M", final_db$api_file), ]$resolution <- 60
   final_db[grep("100K", final_db$api_file), ]$resolution <- 100
 
-  # spatialtype - Order matters
+  # Spatial type. Order matters.
   avspatialtype <- c("BN", "RG", "LB", "COASTL", "INLAND")
   final_db$spatialtype <- NA
   for (i in seq_along(avspatialtype)) {
@@ -100,7 +100,7 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
     }
   }
 
-  # nuts_level: Different for NUTS and URBAN AUDIT
+  # NUTS level: different for NUTS and Urban Audit.
   final_db$nuts_level <- NA
   final_db$level <- NA
   clean <- final_db[!final_db$id_giscor %in% c("nuts", "urau"), ]
@@ -133,10 +133,10 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
     }
   }
 
-  # Almost there: regenerate and add file extension
+  # Regenerate and add the file extension.
   final_db_2 <- rbind(clean, urau, nuts)
 
-  # Recode
+  # Recode identifiers.
   id_giscor <- final_db_2$id_giscor
   id_giscor[id_giscor == "coas"] <- "coastal_lines"
   id_giscor[id_giscor == "urau"] <- "urban_audit"
@@ -168,26 +168,26 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   final_db_2 <- final_db_2[do.call(order, final_db_2), ]
   final_db_2$last_updated <- Sys.Date()
 
-  # Write in temp
+  # Write to the cache.
 
   saveRDS(final_db_2, cached_db)
 
   final_db_2
 }
 
-#' Internal function to get all data from GISCO API for a given entry point
+#' Internal function to get all data from the GISCO API for an entry point
 #'
-#' @param entry_point character. The GISCO API entry point.
+#' @param entry_point A character value with the GISCO API entry point.
 #' @return A tibble with the data from the API.
 #' @noRd
 scrap_api_data <- function(entry_point) {
   url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/"
 
-  # Create a folder for caching httr2 requests
+  # Create a folder for caching httr2 requests.
   cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
   cache_httr2 <- create_cache_dir(cache_httr2)
 
-  # Compose url
+  # Compose the URL.
   req <- httr2::request(url_api)
   req <- httr2::req_url_path_append(req, entry_point)
   api_entry <- httr2::req_get_url(req)
@@ -207,10 +207,10 @@ scrap_api_data <- function(entry_point) {
     return(NULL)
   }
 
-  # Testing
+  # Testing.
   test_offline <- is_404()
   if (test_offline) {
-    # Modify to redirect to fake url
+    # Redirect to a fake URL during tests.
     req <- httr2::req_url(
       req,
       "https://gisco-services.ec.europa.eu/distribution/v2/fake"
@@ -228,7 +228,7 @@ scrap_api_data <- function(entry_point) {
   iter <- seq_along(master)
 
   all_data <- lapply(iter, function(i) {
-    # Create a folder for caching httr2 requests
+    # Create a folder for caching httr2 requests.
     cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
     cache_httr2 <- create_cache_dir(cache_httr2)
 
@@ -290,7 +290,7 @@ get_db <- function() {
     cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
     saveRDS(db, cached_db)
 
-    # Msg
+    # Warn that the static fallback is being used.
     url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/" # nolint
 
     cli::cli_alert_warning(c(

@@ -15,7 +15,7 @@
     Condition
       Warning:
       The `recursive` argument of `gisco_bulk_download()` is deprecated as of giscoR 1.0.0.
-      i Child `.zip` files inside the top-level `.zip` won't be unzipped.
+      i Child `.zip` files inside the top-level `.zip` will not be unzipped.
 
 # Errors
 

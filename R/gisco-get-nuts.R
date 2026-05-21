@@ -8,17 +8,16 @@
 #' help lines to better visualise multipart polygonal regions.
 #'
 #' The NUTS are a hierarchical system divided into 3 levels:
-#'  - NUTS 1: major socio-economic regions
-#'  - NUTS 2: basic regions for the application of regional policies
-#'  - NUTS 3: small regions for specific diagnoses.
+#' - NUTS 1: major socio-economic regions.
+#' - NUTS 2: basic regions for the application of regional policies.
+#' - NUTS 3: small regions for specific diagnoses.
 #'
 #' Also, there is a NUTS 0 level, which usually corresponds to the national
 #' boundaries.
 #'
-#' **Please note that** this function gets data from the aggregated GISCO
-#' NUTS file, that contains data of all the countries at the requested NUTS
-#' level(s). If you prefer to download individual NUTS files, please use
-#' [gisco_get_unit_nuts()].
+#' This function gets data from the aggregated GISCO NUTS file, which contains
+#' data for all countries at the requested NUTS level or levels. To download
+#' individual NUTS files, use [gisco_get_unit_nuts()].
 #'
 #' @encoding UTF-8
 #' @family stats
@@ -36,21 +35,23 @@
 #'
 #' See [gisco_id_api_nuts()] to download via GISCO ID service API.
 #'
-#' @param year character string or number. Release year of the file. One of
+#' @param year A character string or numeric value with the release year of the
+#'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "year",TRUE)}.
-#' @param spatialtype character string. Type of geometry to be returned.
+#' @param spatialtype A character string with the type of geometry to return.
 #'   Options available are:
-#'   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   - `"LB"`: Labels - `POINT` object.
-#'   - `"BN"`: Boundaries - `LINESTRING` object.
+#' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#' - `"LB"`: Labels - `POINT` object.
+#' - `"BN"`: Boundaries - `LINESTRING` object.
 #'
-#'   **Note that** arguments `country`, `nuts_level` and `nuts_id` are
-#'   only applied when `spatialtype` is `"RG"` or `"LB"`.
-#' @param nuts_level character string. NUTS level. One of `0`,
+#'   Arguments `country`, `nuts_level` and `nuts_id` are only applied when
+#'   `spatialtype` is `"RG"` or `"LB"`.
+#' @param nuts_level A character string with the NUTS level. One of `0`,
 #'   `1`, `2`, `3` or `all` for all levels.
-#' @param nuts_id Optional. A character vector of NUTS IDs.
-#' @param ext character. Extension of the file (default `"gpkg"`). One of
+#' @param nuts_id An optional character vector of NUTS IDs.
+#' @param ext A character value with the extension of the file (default
+#'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "ext",TRUE)}.
 #'
@@ -144,7 +145,7 @@ gisco_get_nuts <- function(
       "info",
       verbose,
       "Loaded from {.help giscoR::gisco_nuts_2024} dataset.",
-      "Use {.arg update_cache = TRUE} to re-load from file"
+      "Use {.arg update_cache = TRUE} to reload from file."
     )
 
     data_sf <- filter_country_nuts_level(data_sf, country, nuts_id, nuts_level)
@@ -152,7 +153,7 @@ gisco_get_nuts <- function(
     return(data_sf)
   }
 
-  # Not cached data are read from URL
+  # Read uncached data from the URL.
   if (all(isFALSE(cache), ext != "shp")) {
     msg <- paste0("{.url ", api_entry, "}.")
     make_msg("info", verbose, "Reading from", msg)
@@ -177,23 +178,22 @@ gisco_get_nuts <- function(
     return(NULL)
   }
 
-  # Improve speed with queries when countries are selected
-  # We construct the query and pass it to the st_read function
+  # Use an sf query when filtering can reduce read time.
   filter_col_cnt <- get_col_name(file_local)
   filter_col_id <- get_col_name(file_local, "NUTS_ID")
   if (
     all(!is.null(country), !is.null(filter_col_cnt)) ||
       all(!is.null(nuts_id), !is.null(filter_col_id))
   ) {
-    make_msg("info", verbose, "Speed up using {.pkg sf} query")
+    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
     if (!is.null(country)) {
       country <- convert_country_code(country)
     }
 
-    # Get layer name
+    # Get the layer name.
     layer <- get_sf_layer_name(file_local)
 
-    # Construct query
+    # Construct the query.
     q <- paste0("SELECT * from \"", layer, "\" WHERE")
 
     where <- NULL
@@ -240,15 +240,15 @@ gisco_get_nuts <- function(
 }
 
 
-#' Filter NUTS data sf by country and/or NUTS ID
+#' Filter NUTS `sf` data by country and/or NUTS ID
 #'
-#' @param data_sf An sf object.
-#' @param country character vector of country codes or names.
-#' @param nuts_id character vector of NUTS IDs.
-#' @param nuts_level character string. NUTS level. One of `0`, `1`, `2`, `3`
-#'   or `all` for all levels.
+#' @param data_sf An `sf` object.
+#' @param country A character vector of country codes or names.
+#' @param nuts_id A character vector of NUTS IDs.
+#' @param nuts_level A character string with the NUTS level. One of `0`,
+#'   `1`, `2`, `3` or `all` for all levels.
 #'
-#' @return An sf object filtered by country and/or NUTS ID.
+#' @return An `sf` object filtered by country and/or NUTS ID.
 #' @noRd
 filter_country_nuts_level <- function(
   data_sf,

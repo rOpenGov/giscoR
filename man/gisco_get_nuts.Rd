@@ -27,31 +27,33 @@ gisco_get_nuts(
 )
 }
 \arguments{
-\item{year}{character string or number. Release year of the file. One of
+\item{year}{A character string or numeric value with the release year of the
+file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 "year",TRUE)}.}
 
-\item{epsg}{character string or number. Projection of the map: 4-digit
-\href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the map projection as a
+4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\item{cache}{A logical value indicating whether to cache results. Default
+is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+
+\item{update_cache}{A logical value indicating whether to refresh the
+cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+download.}
+
+\item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
-
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
-
-\item{resolution}{character string or number. Resolution of the geospatial
-data. One of:
+\item{resolution}{A character string or numeric value with the geospatial
+data resolution. One of:
 \itemize{
 \item \code{"60"}: 1:60 million.
 \item \code{"20"}: 1:20 million.
@@ -60,27 +62,28 @@ data. One of:
 \item \code{"01"}: 1:1 million.
 }}
 
-\item{spatialtype}{character string. Type of geometry to be returned.
+\item{spatialtype}{A character string with the type of geometry to return.
 Options available are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
-}
 
-\strong{Note that} arguments \code{country}, \code{nuts_level} and \code{nuts_id} are
-only applied when \code{spatialtype} is \code{"RG"} or \code{"LB"}.}
+Arguments \code{country}, \code{nuts_level} and \code{nuts_id} are only applied when
+\code{spatialtype} is \code{"RG"} or \code{"LB"}.
+}}
 
-\item{country}{character vector of country codes. It can be either a
+\item{country}{A character vector of country codes. It can be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
-\item{nuts_id}{Optional. A character vector of NUTS IDs.}
+\item{nuts_id}{An optional character vector of NUTS IDs.}
 
-\item{nuts_level}{character string. NUTS level. One of \code{0},
+\item{nuts_level}{A character string with the NUTS level. One of \code{0},
 \code{1}, \code{2}, \code{3} or \code{all} for all levels.}
 
-\item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
+\item{ext}{A character value with the extension of the file (default
+\code{"gpkg"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 "ext",TRUE)}.}
 }
@@ -96,18 +99,17 @@ help lines to better visualise multipart polygonal regions.
 
 The NUTS are a hierarchical system divided into 3 levels:
 \itemize{
-\item NUTS 1: major socio-economic regions
-\item NUTS 2: basic regions for the application of regional policies
+\item NUTS 1: major socio-economic regions.
+\item NUTS 2: basic regions for the application of regional policies.
 \item NUTS 3: small regions for specific diagnoses.
 }
 
 Also, there is a NUTS 0 level, which usually corresponds to the national
 boundaries.
 
-\strong{Please note that} this function gets data from the aggregated GISCO
-NUTS file, that contains data of all the countries at the requested NUTS
-level(s). If you prefer to download individual NUTS files, please use
-\code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}}.
+This function gets data from the aggregated GISCO NUTS file, which contains
+data for all countries at the requested NUTS level or levels. To download
+individual NUTS files, use \code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}}.
 }
 \details{
 The NUTS nomenclature is a hierarchical classification of statistical
@@ -128,7 +130,7 @@ An introduction to the NUTS classification is available here:
 \url{https://ec.europa.eu/eurostat/web/nuts/overview}.
 }
 \section{Note}{
-Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
+Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
 
 \examples{

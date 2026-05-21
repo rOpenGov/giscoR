@@ -6,7 +6,7 @@
 #' allows for both geocoding and reverse geocoding using a pan-European
 #' address database.
 #'
-#' Each endpoint is implemented through a specific function, see
+#' Each endpoint is implemented through a specific function. See
 #' **Details**.
 #'
 #' The API supports fuzzy searching (also referred to as approximate string
@@ -24,17 +24,17 @@
 #' @encoding UTF-8
 #'
 #' @param country Country code (`country = "LU"`).
-#' @param x,y x and y coordinates (as longitude and latitude) to be converted
-#'  into a human-readable address.
+#' @param x,y X and Y coordinates (as longitude and latitude) to convert into
+#'   a human-readable address.
 #' @param province A province within a country. For a list of provinces within
-#'  a certain country, use the provinces endpoint
-#'  (`gisco_address_api_provinces(country = "LU")`).
+#'   a country, use the provinces endpoint
+#'   (`gisco_address_api_provinces(country = "LU")`).
 #' @param city A city within a province. For a list of cities within a certain
 #'   province, use the cities endpoint
 #'   (`gisco_address_api_cities(province = "capellen")`).
 #' @param road A road within a city.
 #' @param housenumber The house number or house name within a road or street.
-#' @param postcode Can be used in combination with the previous arguments.
+#' @param postcode A postcode to use with the previous arguments.
 #'
 #' @return
 #' A [tibble][tibble::tbl_df] in most cases, except
@@ -135,10 +135,10 @@ gisco_address_api_bbox <- function(
 
   bbox <- as.double(unlist(strsplit(wkt_str, " |,")))
 
-  # Mock class
+  # Create a template bounding box class.
   mock <- sf::st_as_sfc("POINT (10 10)", crs = 4326)
   bboxclass <- sf::st_bbox(mock)
-  # Input values
+  # Add the input values.
   bboxclass[1:4] <- bbox
 
   bbox <- sf::st_as_sfc(bboxclass)
@@ -249,14 +249,14 @@ gisco_address_api_copyright <- function(verbose = FALSE) {
 #'
 #' @param custom_query A named list with the query arguments.
 #' @param apiurl The API endpoint URL.
-#' @param verbose logical. Whether to print verbose output.
+#' @param verbose A logical value indicating whether to print verbose output.
 #'
 #' @return
 #' A `sf` object or tibble.
 #'
 #' @noRd
 call_address_api <- function(custom_query, apiurl, verbose = FALSE) {
-  # Prepare the query
+  # Prepare the query.
   clean_q <- unlist(custom_query)
   url <- httr2::url_modify(apiurl, query = as.list(clean_q))
 
@@ -272,7 +272,7 @@ call_address_api <- function(custom_query, apiurl, verbose = FALSE) {
     return(resp_df)
   }
 
-  # If XY then can convert to sf
+  # Convert responses with XY coordinates to sf.
   xy_coords <- as.data.frame(matrix(unlist(resp_df$XY), ncol = 2, byrow = TRUE))
   names(xy_coords) <- c("X", "Y")
   resp_df <- cbind(resp_df, xy_coords)

@@ -19,19 +19,19 @@
 #' @source
 #' <https://gisco-services.ec.europa.eu/id/api-docs/>.
 #'
-#' @param x,y character string or numeric. x and y coordinates (as longitude
-#'   and latitude) to be identified.
-#' @param xmin,ymin,xmax,ymax character string or numeric. Bounding box
-#'   coordinates to identify all geonames within the box.
-#' @param nuts_id character. NUTS ID code.
-#' @param epsg character string or numeric. EPSG code for the coordinate
-#'   reference system.
-#' @param geometry logical. Whether to return geometry. On `TRUE` a
-#'   [`sf`][sf::st_sf] object is returned. On `FALSE` a
+#' @param x,y A character string or numeric value with the x and y coordinates
+#'   (as longitude and latitude) to identify.
+#' @param xmin,ymin,xmax,ymax A character string or numeric value with bounding
+#'   box coordinates to identify all geonames within the box.
+#' @param nuts_id A character value with the NUTS ID code.
+#' @param epsg A character string or numeric value with the EPSG code for the
+#'   coordinate reference system.
+#' @param geometry A logical value indicating whether to return geometry. If
+#'   `TRUE`, a [`sf`][sf::st_sf] object is returned. If `FALSE`, a
 #'   [tibble][tibble::tbl_df] is returned.
-#' @param year character string or numeric. Year of the dataset, see
+#' @param year A character string or numeric value with the dataset year, see
 #'   **Details**.
-#' @param nuts_level character string. NUTS level. One of `0`,
+#' @param nuts_level A character string with the NUTS level. One of `0`,
 #'   `1`, `2` or `3`.
 #'
 #' @return
@@ -246,14 +246,14 @@ gisco_id_api_census_grid <- function(
 
 #' Helper function to prepare the ID API query
 #'
-#' @param nuts_id NUTS ID code.
-#' @param x Longitude coordinate.
-#' @param y Latitude coordinate.
-#' @param epsg EPSG code for the coordinate reference system.
-#' @param geometry logical. Whether to return geometry.
-#' @param year Year of the dataset.
-#' @param nuts_level NUTS level.
-#' @param verbose logical. Whether to print verbose output.
+#' @param nuts_id A NUTS ID code.
+#' @param x A longitude coordinate.
+#' @param y A latitude coordinate.
+#' @param epsg A numeric EPSG code for the coordinate reference system.
+#' @param geometry A logical value indicating whether to return geometry.
+#' @param year A character string or numeric value with the dataset year.
+#' @param nuts_level A character string with the NUTS level.
+#' @param verbose A logical value indicating whether to print verbose output.
 #' @param endpoint The specific endpoint to query.
 #'
 #' @noRd
@@ -311,7 +311,7 @@ prepare_id_query <- function(
 #'
 #' @param custom_query A named list with the query arguments.
 #' @param apiurl The API endpoint URL.
-#' @param verbose logical. Whether to print verbose output.
+#' @param verbose A logical value indicating whether to print verbose output.
 #'
 #' @noRd
 call_id_api <- function(custom_query, apiurl, verbose = FALSE) {

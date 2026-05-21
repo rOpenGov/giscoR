@@ -85,7 +85,7 @@ gisco_address_api_copyright(verbose = FALSE)
 \item{country}{Country code (\code{country = "LU"}).}
 
 \item{province}{A province within a country. For a list of provinces within
-a certain country, use the provinces endpoint
+a country, use the provinces endpoint
 (\code{gisco_address_api_provinces(country = "LU")}).}
 
 \item{city}{A city within a province. For a list of cities within a certain
@@ -96,12 +96,12 @@ province, use the cities endpoint
 
 \item{housenumber}{The house number or house name within a road or street.}
 
-\item{postcode}{Can be used in combination with the previous arguments.}
+\item{postcode}{A postcode to use with the previous arguments.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{x, y}{x and y coordinates (as longitude and latitude) to be converted
-into a human-readable address.}
+\item{x, y}{X and Y coordinates (as longitude and latitude) to convert into
+a human-readable address.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble} in most cases, except
@@ -113,42 +113,42 @@ Functions to interact with the \href{https://gisco-services.ec.europa.eu/address
 allows for both geocoding and reverse geocoding using a pan-European
 address database.
 
-Each endpoint is implemented through a specific function, see
+Each endpoint is implemented through a specific function. See
 \strong{Details}.
 
 The API supports fuzzy searching (also referred to as approximate string
 matching) for all arguments of each endpoint.
 }
 \details{
-Brief description of the API endpoints (source \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API Endpoints}):\tabular{ll}{
+Brief description of the API endpoints (source: \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API Endpoints}):\tabular{ll}{
    \strong{Endpoint} \tab \strong{Description} \cr
-   \verb{/countries} \tab Returns all country codes that are compatible with the address API. Check the coverage map for available countries and see \href{https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies}{here for a list of official country codes}. \cr
+   \verb{/countries} \tab Returns all country codes that are compatible with the address API. Check the coverage map for available countries and see the \href{https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies}{list of official country codes}. \cr
    \verb{/provinces} \tab Returns all provinces within the specified country. Can also be used to get the province of a specified city. \cr
    \verb{/cities} \tab Returns all cities within a specified province or country. \cr
    \verb{/roads} \tab Returns all roads or streets within a specified city. \cr
-   \verb{/housenumbers} \tab Returns all house numbers or names within the specified road. It is possible that in certain countries an address may not have a road component. In this case, if a road is not specified then the number of house numbers returned by \strong{the API is limited to 1000}. \cr
-   \verb{/postcodes} \tab Returns all postcodes within the specified address component (Country or Province or City). \cr
-   \verb{/search} \tab The search endpoint allows structured queries to the address database. Please note that various combinations of each of the arguments can be used in order to retrieve the addresses that share an address component. \strong{The API is limited to a maximum of 100 addresses}. \cr
-   \verb{/reverse} \tab The reverse endpoint allows you to specify x and y coordinates in order to retrieve a structured address. \cr
+   \verb{/housenumbers} \tab Returns all house numbers or names within the specified road. In some countries, an address may not have a road component. If a road is not specified, \strong{the API returns at most 1,000 house numbers}. \cr
+   \verb{/postcodes} \tab Returns all postcodes within the specified address component: country, province or city. \cr
+   \verb{/search} \tab Allows structured queries to the address database. Various argument combinations can be used to retrieve addresses that share an address component. \strong{The API returns at most 100 addresses}. \cr
+   \verb{/reverse} \tab Allows you to specify x and y coordinates to retrieve a structured address. \cr
    \verb{/bbox} \tab Returns a \href{https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry}{WKT} bounding box for an address component depending on the arguments specified. \cr
    \verb{/copyright} \tab Returns the copyright text for each available country in the Address API. \cr
 }
 
 
-The resulting object may present the following variables:\tabular{ll}{
+The resulting object may include the following variables:\tabular{ll}{
    \strong{Property name} \tab \strong{Description} \cr
-   \code{LD} \tab Refers to "Locator Designator" and represents the house number part of the address \cr
-   \code{TF} \tab Refers to "Thoroughfare" and represents the street or road part of the address \cr
+   \code{LD} \tab Refers to "locator designator" and represents the house number part of the address. \cr
+   \code{TF} \tab Refers to "thoroughfare" and represents the street or road part of the address. \cr
    \code{L0} \tab Refers to Level 0 of the API administrative levels. Values are country codes consisting of 2 characters. \cr
    \code{L1} \tab Refers to Level 1 of the API administrative levels. Values are province names. Please note that "province" is a generic term that may differ between countries. \cr
    \code{L2} \tab Refers to Level 2 of the API administrative levels. Values are town or city names. Please note that "city" is a generic term that may differ between countries. \cr
-   \code{PC} \tab Postal Code \cr
-   \code{N0} \tab Refers to "NUTS 0" \cr
-   \code{N1} \tab Refers to "NUTS 1" \cr
-   \code{N2} \tab Refers to "NUTS 2" \cr
-   \code{N3} \tab Refers to "NUTS 3" \cr
-   \code{X} and \code{Y} \tab Refers to the x and y coordinates of the address point \cr
-   \code{OL} \tab Refers to the \href{https://github.com/google/open-location-code}{Open Location Code} for the address \cr
+   \code{PC} \tab Postal code. \cr
+   \code{N0} \tab Refers to "NUTS 0". \cr
+   \code{N1} \tab Refers to "NUTS 1". \cr
+   \code{N2} \tab Refers to "NUTS 2". \cr
+   \code{N3} \tab Refers to "NUTS 3". \cr
+   \code{X} and \code{Y} \tab Refer to the x and y coordinates of the address point. \cr
+   \code{OL} \tab Refers to the \href{https://github.com/google/open-location-code}{Open Location Code} for the address. \cr
 }
 }
 \examples{

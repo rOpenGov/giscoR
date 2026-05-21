@@ -82,27 +82,27 @@ gisco_id_api_census_grid(
 )
 }
 \arguments{
-\item{x, y}{character string or numeric. x and y coordinates (as longitude
-and latitude) to be identified.}
+\item{x, y}{A character string or numeric value with the x and y coordinates
+(as longitude and latitude) to identify.}
 
-\item{xmin, ymin, xmax, ymax}{character string or numeric. Bounding box
-coordinates to identify all geonames within the box.}
+\item{xmin, ymin, xmax, ymax}{A character string or numeric value with bounding
+box coordinates to identify all geonames within the box.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{year}{character string or numeric. Year of the dataset, see
+\item{year}{A character string or numeric value with the dataset year, see
 \strong{Details}.}
 
-\item{epsg}{character string or numeric. EPSG code for the coordinate
-reference system.}
+\item{epsg}{A character string or numeric value with the EPSG code for the
+coordinate reference system.}
 
-\item{nuts_id}{character. NUTS ID code.}
+\item{nuts_id}{A character value with the NUTS ID code.}
 
-\item{nuts_level}{character string. NUTS level. One of \code{0},
+\item{nuts_level}{A character string with the NUTS level. One of \code{0},
 \code{1}, \code{2} or \code{3}.}
 
-\item{geometry}{logical. Whether to return geometry. On \code{TRUE} a
-\code{\link[sf:st_sf]{sf}} object is returned. On \code{FALSE} a
+\item{geometry}{A logical value indicating whether to return geometry. If
+\code{TRUE}, a \code{\link[sf:st_sf]{sf}} object is returned. If \code{FALSE}, a
 \link[tibble:tbl_df]{tibble} is returned.}
 }
 \value{

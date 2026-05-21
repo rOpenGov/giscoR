@@ -4,13 +4,15 @@
 #' Internal function to get possible values from the cached `gisco_db`
 #' database.
 #'
-#' @param id character string. The `id_giscor` value to filter the database.
-#' @param field character string. The field/column name from which to extract
-#'   values.
-#' @param decreasing logical. Whether to sort the values in decreasing order.
+#' @param id A character string with the `id_giscor` value to filter the
+#'   database.
+#' @param field A character string with the field/column name from which to
+#'   extract values.
+#' @param decreasing A logical value indicating whether to sort the values in
+#'   decreasing order.
 #'   Default is `FALSE`.
-#' @param formatted logical. Whether to format the output values for
-#'   documentation. Default is `TRUE`.
+#' @param formatted A logical value indicating whether to format the output
+#'   values for documentation. Default is `TRUE`.
 #'
 #' @return
 #' A character string with the possible values for the specified field.
@@ -36,7 +38,7 @@ db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
 
 #' Helper function to get available years for GISCO ID endpoints
 #'
-#' @param endpoint character string. The GISCO ID endpoint to query.
+#' @param endpoint A character string with the GISCO ID endpoint to query.
 #' @return
 #' A character string with the available years for the specified endpoint.
 #' @noRd

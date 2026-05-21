@@ -11,8 +11,9 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @param year character string or number. Release year of the file. One of
-#'   `2013`, `2006`.
+#' @param year A character string or numeric value with the release year of the
+#'   file.
+#'   One of `2013`, `2006`.
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
@@ -48,7 +49,7 @@
 #'       title = "Airports in Europe", subtitle = "Year 2013",
 #'       caption = "Source: Eurostat, Airports 2013 dataset."
 #'     ) +
-#'     # Center in Europe: EPSG 3035
+#'     # Center on Europe with EPSG 3035.
 #'     coord_sf(
 #'       crs = 3035,
 #'       xlim = c(2377294, 7453440),
@@ -95,7 +96,7 @@ gisco_get_airports <- function(
 
   data_sf <- read_geo_file_sf(namefileload)
 
-  # Normalize to lonlat
+  # Normalize to longitude and latitude.
   data_sf <- sf::st_transform(data_sf, 4326)
 
   if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {

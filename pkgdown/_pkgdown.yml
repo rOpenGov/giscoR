@@ -31,14 +31,15 @@ repo:
 home:
   title: giscoR | Download map data from the GISCO API
   description: >
-    giscoR helps retrieve global and European map data from GISCO (the
-    Geographic Information System of the Commission). It also provides
-    lightweight datasets that can be used without downloading additional files.
+    giscoR helps download global and European map data from Eurostat's GISCO
+    (Geographic Information System of the Commission) database. It also
+    provides lightweight datasets that can be used without downloading
+    additional files.
 
 reference:
 - title: GISCO geodata
   desc: >
-    Download datasets from the <a
+    Download geospatial datasets from the <a
     href="https://ec.europa.eu/eurostat/web/gisco/geodata"
     class="external-link">GISCO Geodata distribution</a>. These functions return
     <a href="https://r-spatial.github.io/sf/reference/sf.html"
@@ -69,26 +70,33 @@ reference:
     figures are provided for these cells.
   contents: has_concept("grids")
 - subtitle: Transport networks
+  desc: >
+    Download transport network data such as airports and ports.
   contents: has_concept("transport")
 - subtitle: Basic services
+  desc: >
+    Download basic service locations such as education and healthcare sites.
   contents: has_concept("services")
 - subtitle: Additional downloads
   desc: >
-    Additional functions for downloading datasets from the GISCO API.
+    Download unit datasets and other GISCO resources.
   contents: has_concept("extra")
 - subtitle: <span class="pkg">giscoR</span> database
   desc: >
     Get the current database used by the package and its corresponding metadata.
   contents: has_concept("database")
 - subtitle: Miscellaneous
-  desc: Other helpers.
+  desc: >
+    Helpers for attribution and other package utilities.
   contents: has_concept("misc")
-- title: GISCO tools
+- title: GISCO API tools
   desc: >
     Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools"
     class="external-link">APIs and tools</a> provided by GISCO.
   contents: has_concept("API tools")
 - title: Cache management
+  desc: >
+    Configure, inspect and clear the local GISCO cache.
   contents: has_concept("cache utilities")
 - title: Datasets
   desc: >

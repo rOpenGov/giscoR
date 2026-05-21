@@ -2,13 +2,11 @@
 #'
 #' @description
 #' This dataset contains world administrative boundaries at the country level.
-#' It consists of 2 feature classes (regions, boundaries) per
-#' scale level and there are 5 different scale levels (1M, 3M, 10M, 20M and
-#' 60M).
+#' It provides 2 feature classes (regions and boundaries) for each scale
+#' level, with 5 scale levels available (1M, 3M, 10M, 20M and 60M).
 #'
-#' **Please note that** this function gets data from the aggregated GISCO
-#' country file. If you prefer to download individual country files, please
-#' use [gisco_get_unit_country()].
+#' This function gets data from the aggregated GISCO country file. To download
+#' individual country files, use [gisco_get_unit_country()].
 #'
 #' @aliases gisco_get
 #' @family admin
@@ -27,48 +25,51 @@
 #'
 #' @export
 #'
-#' @param year character string or number. Release year of the file. One of
+#' @param year A character string or numeric value with the release year of the
+#'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 #'   "year",TRUE)}.
-#' @param epsg character string or number. Projection of the map: 4-digit
-#'   [EPSG code](https://epsg.io/). One of:
-#'   - `"4326"`: [WGS84](https://epsg.io/4326).
-#'   - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
-#'   - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
-#' @param cache logical. Whether to do caching. Default is `TRUE`. See
+#' @param epsg A character string or numeric value with the map projection as a
+#'   4-digit [EPSG code](https://epsg.io/). One of:
+#' - `"4326"`: [WGS84](https://epsg.io/4326).
+#' - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
+#' - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
+#' @param cache A logical value indicating whether to cache results. Default
+#'   is `TRUE`. See **Caching strategies** section in [gisco_set_cache_dir()].
+#' @param update_cache A logical value indicating whether to refresh the
+#'   cached file. Default is `FALSE`. When set to `TRUE`, it forces a new
+#'   download.
+#' @param cache_dir A character string with a path to a cache directory. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
-#' @param update_cache logical. Should the cached file be refreshed? Default
-#'   is `FALSE`. When set to `TRUE` it forces a new download.
-#' @param cache_dir character string. A path to a cache directory. See
-#'   **Caching strategies** section in [gisco_set_cache_dir()].
-#' @param spatialtype character string. Type of geometry to be returned.
+#' @param spatialtype A character string with the type of geometry to return.
 #'   Options available are:
-#'   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   - `"LB"`: Labels - `POINT` object.
-#'   - `"BN"`: Boundaries - `LINESTRING` object.
-#'   - `"COASTL"`: coastlines - `LINESTRING` object.
-#'   - `"INLAND"`: inland boundaries - `LINESTRING` object.
+#' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#' - `"LB"`: Labels - `POINT` object.
+#' - `"BN"`: Boundaries - `LINESTRING` object.
+#' - `"COASTL"`: coastlines - `LINESTRING` object.
+#' - `"INLAND"`: inland boundaries - `LINESTRING` object.
 #'
-#'   **Note that** arguments `country` and `region` are
-#'   only applied when `spatialtype` is `"RG"` or `"LB"`.
+#'   Arguments `country` and `region` are only applied when `spatialtype` is
+#'   `"RG"` or `"LB"`.
 #'
-#' @param country character vector of country codes. It can be either a
+#' @param country A character vector of country codes. It can be either a
 #'   vector of country names, a vector of ISO3 country codes or a vector of
 #'   Eurostat country codes. See also [countrycode::countrycode()].
-#' @param verbose logical. If `TRUE` displays informational messages.
-#' @param resolution character string or number. Resolution of the geospatial
-#'   data. One of:
-#'   - `"60"`: 1:60 million.
-#'   - `"20"`: 1:20 million.
-#'   - `"10"`: 1:10 million.
-#'   - `"03"`: 1:3 million.
-#'   - `"01"`: 1:1 million.
-#' @param region Optional. A character vector of UN M49 region codes or
+#' @param verbose A logical value. If `TRUE` displays informational messages.
+#' @param resolution A character string or numeric value with the geospatial
+#'   data resolution. One of:
+#' - `"60"`: 1:60 million.
+#' - `"20"`: 1:20 million.
+#' - `"10"`: 1:10 million.
+#' - `"03"`: 1:3 million.
+#' - `"01"`: 1:1 million.
+#' @param region An optional character vector of UN M49 region codes or
 #'   European Union membership. Possible values are `"Africa"`, `"Americas"`,
 #'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to
 #'   the European Union (as per 2021). See **World Regions** and
 #'   [gisco_countrycode].
-#' @param ext character. Extension of the file (default `"gpkg"`). One of
+#' @param ext A character value with the extension of the file (default
+#'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 #'   "ext",TRUE)}.
 #'
@@ -87,7 +88,7 @@
 #' Under this scheme Cyprus is assigned to Asia.
 #'
 #' # Note
-#' Please check the download and usage provisions on [gisco_attributions()].
+#' Check the download and usage provisions in [gisco_attributions()].
 
 #'
 #' @examples
@@ -140,14 +141,14 @@ gisco_get_countries <- function(
       "info",
       verbose,
       "Loaded from {.help giscoR::gisco_countries_2024} dataset.",
-      "Use {.arg update_cache = TRUE} to re-load from file"
+      "Use {.arg update_cache = TRUE} to reload from file."
     )
     data_sf <- filter_country_region(data_sf, country, region)
 
     return(data_sf)
   }
 
-  # Not cached data are read from URL
+  # Read uncached data from the URL.
   if (all(isFALSE(cache), ext != "shp")) {
     msg <- paste0("{.url ", api_entry, "}.")
     make_msg("info", verbose, "Reading from", msg)
@@ -170,21 +171,20 @@ gisco_get_countries <- function(
     return(NULL)
   }
 
-  # Improve speed with queries when countries are selected
-  # We construct the query and pass it to the st_read function
+  # Use an sf query when filtering can reduce read time.
 
   cnt_region <- get_countrycodes_region(country, region)
   filter_col <- get_col_name(file_local)
   q <- NULL
 
   if (all(!is.null(cnt_region), !is.null(filter_col))) {
-    make_msg("info", verbose, "Speed up using {.pkg sf} query")
+    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
     cnt_region <- sort(cnt_region)
 
-    # Get layer name
+    # Get the layer name.
     layer <- get_sf_layer_name(file_local)
 
-    # Construct query
+    # Construct the query.
     q <- paste0(
       "SELECT * from \"",
       layer,
@@ -204,13 +204,13 @@ gisco_get_countries <- function(
 }
 
 
-#' Filter data sf by country and/or region
+#' Filter `sf` data by country and/or region
 #'
-#' @param data_sf An sf object.
-#' @param country character vector of country codes or names.
-#' @param region character vector of region codes or names.
+#' @param data_sf An `sf` object.
+#' @param country A character vector of country codes or names.
+#' @param region A character vector of region codes or names.
 #'
-#' @return An sf object filtered by country and/or region.
+#' @return An `sf` object filtered by country and/or region.
 #'
 #' @noRd
 filter_country_region <- function(data_sf, country = NULL, region = NULL) {

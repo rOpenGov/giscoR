@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Tools to download global and European map data from the GISCO (Geographic Information System of the Commission) Eurostat database \url{https://ec.europa.eu/eurostat/web/gisco}. The package provides helpers for working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.
+Tools to download global and European map data from Eurostat's GISCO (Geographic Information System of the Commission) database \url{https://ec.europa.eu/eurostat/web/gisco}. The package provides helpers for working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.
 }
 \seealso{
 Useful links:

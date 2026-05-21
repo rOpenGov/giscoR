@@ -1,10 +1,11 @@
 #' Create messages based on type
 #'
-#' @param type character string. Type of message. Accepted values are
-#'  `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
+#' @param type A character string with the message type. Accepted values are
+#'   `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #'
-#' @param verbose logical. Whether to print the message or not.
-#' @param ... character strings to be combined into the message.
+#' @param verbose A logical value indicating whether to print the message or
+#'   not.
+#' @param ... Character strings to combine into the message.
 #'
 #' @return
 #' Invisibly returns `NULL`. Prints messages to the console if `verbose` is
@@ -68,11 +69,11 @@ match_arg_pretty <- function(arg, choices) {
   }
 
   lmatch <- match(arg, choices)
-  # Hint
+  # Build the hint.
   aproxmatch <- pmatch(arg, choices)[1]
 
   if (length(arg) > 1 || is.na(lmatch)) {
-    # Create error message
+    # Create the error message.
     if (length(choices) == 1) {
       msg <- paste0("{.str ", choices, "}")
     } else {
@@ -114,13 +115,13 @@ match_arg_pretty <- function(arg, choices) {
 #'
 #' @noRd
 rbind_fill <- function(a_list) {
-  # Drop nulls
+  # Drop nulls.
   is_null <- vapply(a_list, is.null, FUN.VALUE = logical(1))
   a_list <- a_list[!is_null]
   if (length(a_list) == 0) {
     return(NULL)
   }
-  # Get all names
+  # Get all names.
   nms <- unique(unlist(lapply(a_list, names)))
 
   a_list <- lapply(a_list, function(x) {

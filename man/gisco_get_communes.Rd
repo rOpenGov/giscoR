@@ -24,12 +24,13 @@ gisco_get_communes(
 )
 }
 \arguments{
-\item{year}{character string or number. Release year of the file. One of
+\item{year}{A character string or numeric value with the release year of the
+file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 "year",TRUE)}.}
 
-\item{epsg}{character string or number. Projection of the map: 4-digit
-\href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the map projection as a
+4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -40,30 +41,32 @@ gisco_get_communes(
 cache the result due to the size. See \strong{Caching strategies} section
 in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
+\item{update_cache}{A logical value indicating whether to refresh the
+cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{spatialtype}{character string. Type of geometry to be returned.
+\item{spatialtype}{A character string with the type of geometry to return.
 Options available are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
-}
 
-\strong{Note that} argument \code{country} is only applied when
-\code{spatialtype} is \code{"RG"} or \code{"LB"}.}
+Argument \code{country} is only applied when \code{spatialtype} is \code{"RG"} or
+\code{"LB"}.
+}}
 
-\item{country}{character vector of country codes. It can be either a
+\item{country}{A character vector of country codes. It can be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
-\item{ext}{character. Extension of the file (default \code{"shp"}). One of
+\item{ext}{A character value with the extension of the file (default
+\code{"shp"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 "ext",TRUE)}.}
 }
@@ -72,8 +75,8 @@ A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset shows pan-European administrative boundaries down to commune
-level. Communes are equivalent to Local Administrative Units,
-see \code{\link[=gisco_get_lau]{gisco_get_lau()}}.
+level. Communes are equivalent to Local Administrative Units. See
+\code{\link[=gisco_get_lau]{gisco_get_lau()}}.
 }
 \details{
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
@@ -90,7 +93,7 @@ the dataset is 1:100 000.
 The LAU classification is not covered by any legislative act.
 }
 \section{Note}{
-Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
+Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
 
 \examples{

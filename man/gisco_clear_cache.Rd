@@ -8,13 +8,12 @@
 gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
 \arguments{
-\item{config}{if \code{TRUE}, will delete the configuration folder of
+\item{config}{If \code{TRUE}, delete the configuration folder of
 \CRANpkg{giscoR}.}
 
-\item{cached_data}{If this is set to \code{TRUE}, it will delete your
-\code{cache_dir} and all its content.}
+\item{cached_data}{If \code{TRUE}, delete your \code{cache_dir} and all its content.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
 Invisible. This function is called for its side effects.
@@ -30,12 +29,12 @@ data and configuration, specifically:
 }
 }
 \details{
-This is an overkill function that is intended to reset your status
-as if you had never installed and/or used \CRANpkg{giscoR}.
+This function fully resets your status as if you had never installed or
+used \CRANpkg{giscoR}.
 }
 \examples{
 
-# Don't run this! It modifies your current state
+# Do not run this. It modifies your current state.
 \dontrun{
 my_cache <- gisco_detect_cache_dir()
 

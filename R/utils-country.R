@@ -1,4 +1,4 @@
-#' Convert country names or codes to desired code
+#' Convert country names or codes to the desired code
 #'
 #' @param names A vector of names or codes.
 #'
@@ -10,7 +10,7 @@
 convert_country_code <- function(names, out = "eurostat") {
   names[tolower(names) == "antartica"] <- "Antarctica"
 
-  # Vectorize
+  # Vectorize country conversion.
   outnames <- lapply(names, function(x) {
     if (
       any(
@@ -54,7 +54,7 @@ convert_country_code <- function(names, out = "eurostat") {
     cli::cli_alert_warning(
       "Some country names/codes were not matched unambiguously: {.str {ff}}."
     )
-    cli::cli_alert_info("Review the names/codes or switch to ISO3 codes.")
+    cli::cli_alert_info("Review the names or codes, or switch to ISO3 codes.")
   }
 
   outnames2
@@ -62,8 +62,8 @@ convert_country_code <- function(names, out = "eurostat") {
 
 #' Get country codes from country names and/or region names
 #'
-#' @param country character vector of country codes or names.
-#' @param region character vector of region codes or names.
+#' @param country A character vector of country codes or names.
+#' @param region A character vector of region codes or names.
 #' @param code Desired output code. Default is "eurostat".
 #' @return A character vector of country codes.
 #'
@@ -91,8 +91,7 @@ get_countrycodes_region <- function(
     cnt_region <- cnt_region[!is.na(cnt_region)]
     cnt_region <- convert_country_code(cnt_region, code)
 
-    # Condition in both country and region is AND
-    # so we intersect
+    # Intersect when both country and region are provided.
     if (!is.null(store)) {
       store <- sort(unique(intersect(store, cnt_region)))
     } else {

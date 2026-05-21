@@ -1,16 +1,17 @@
 #' Find URL in the local cached database
 #'
-#' Internal function to find the correct URL from the local cached database
+#' Internal function to find the correct URL from the local cached database.
 #'
-#' @param id character string. The `id_giscor` value to filter the database.
-#' @param year character string or number. Release year.
-#' @param epsg numeric. EPSG code.
-#' @param resolution numeric. Resolution in meters.
-#' @param spatialtype character string. Spatial type.
-#' @param nuts_level character string. NUTS level.
-#' @param level character string. Level for Urban Audit datasets.
-#' @param ext character string. File extension.
-#' @param fn character string. Function name for messages.
+#' @param id A character string with the `id_giscor` value to filter the
+#'   database.
+#' @param year A character string or numeric value with the release year.
+#' @param epsg A numeric EPSG code.
+#' @param resolution A numeric value with the resolution in meters.
+#' @param spatialtype A character string with the spatial type.
+#' @param nuts_level A character string with the NUTS level.
+#' @param level A character string with the level for Urban Audit datasets.
+#' @param ext A character string with the file extension.
+#' @param fn A character string with the function name for messages.
 #'
 #' @return A character string with the URL.
 #' @noRd
@@ -40,7 +41,7 @@ get_url_db <- function(
     ext = ext
   )
 
-  # Clean and convert to char
+  # Clean and convert to character.
   make_params <- make_params[lengths(make_params) != 0]
   make_params <- lapply(make_params, as.character)
 
@@ -49,10 +50,10 @@ get_url_db <- function(
     make_params$resolution <- resolution
   }
 
-  # Prefix with package namespace
+  # Prefix with the package namespace.
   fn <- paste0("giscoR::", fn)
 
-  # Initial filter
+  # Apply the initial filter.
   db <- db[db$id_giscor == id, ]
   years <- sort(unique(db$year)) # nolint
 
@@ -64,7 +65,7 @@ get_url_db <- function(
     )
   }
 
-  # Loop and check final results
+  # Filter each parameter and check the final results.
   for (n in names(make_params)) {
     check_val <- make_params[[n]]
     vec_val <- db[[n]]
@@ -96,7 +97,7 @@ get_url_db <- function(
     val2 <- unlist(db_res)
     val2 <- paste0("{.arg ", names(db_res), "} = {.val ", val2, "}")
     names(val2) <- rep("*", length(val2))
-    cli::cli_alert("Returning first value:")
+    cli::cli_alert("Returning the first value:")
     cli::cli_bullets(val2)
   }
   db <- db[1, ]
@@ -108,12 +109,14 @@ get_url_db <- function(
 
 #' Internal function to download and cache a file from a URL
 #'
-#' @param url character string. The URL to download.
-#' @param name character string. The name of the file to save.
-#' @param cache_dir character string. The base cache directory.
-#' @param subdir character string. The subdirectory inside the cache directory.
-#' @param update_cache logical. Whether to update the cached file.
-#' @param verbose logical. Whether to print messages.
+#' @param url A character string with the URL to download.
+#' @param name A character string with the name of the file to save.
+#' @param cache_dir A character string with the base cache directory.
+#' @param subdir A character string with the subdirectory inside the cache
+#'   directory.
+#' @param update_cache A logical value indicating whether to update the cached
+#'   file.
+#' @param verbose A logical value indicating whether to print messages.
 #'
 #' @return The local file path of the downloaded file.
 #'
@@ -136,7 +139,7 @@ download_url <- function(
   msg <- paste0("Cache dir is {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
-  # Check if file already exists
+  # Check if the file already exists.
   fileoncache <- file.exists(file_local)
 
   # Return if the file is already cached.
@@ -159,7 +162,7 @@ download_url <- function(
     FALSE
   })
 
-  # Create a folder for caching httr2 requests
+  # Create a folder for caching httr2 requests.
   cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
   cache_httr2 <- create_cache_dir(cache_httr2)
 
@@ -200,7 +203,7 @@ download_url <- function(
   # Testing
   test_offline <- is_404()
   if (test_offline) {
-    # Modify to redirect to fake url
+    # Redirect to a fake URL during tests.
     req <- httr2::req_url(
       req,
       "https://gisco-services.ec.europa.eu/distribution/v2/fake"
@@ -235,8 +238,8 @@ download_url <- function(
 
 #' Internal function to get the response body from a URL
 #'
-#' @param url character string. The URL to download.
-#' @param verbose logical. Whether to print messages.
+#' @param url A character string with the URL to download.
+#' @param verbose A logical value indicating whether to print messages.
 #'
 #' @return The response object from httr2.
 #'
@@ -251,7 +254,7 @@ get_request_body <- function(url, verbose = TRUE) {
     FALSE
   })
 
-  # Create a folder for caching httr2 requests
+  # Create a folder for caching httr2 requests.
   cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
   cache_httr2 <- create_cache_dir(cache_httr2)
 
@@ -277,7 +280,7 @@ get_request_body <- function(url, verbose = TRUE) {
   # Testing
   test_offline <- is_404()
   if (test_offline) {
-    # Modify to redirect to fake url
+    # Redirect to a fake URL during tests.
     req <- httr2::req_url(
       req,
       "https://gisco-services.ec.europa.eu/distribution/v2/fake"
@@ -309,18 +312,18 @@ get_request_body <- function(url, verbose = TRUE) {
 #' Allow jsonlite to be listed in Imports
 #'
 #' The only purpose of this function is to use \CRANpkg{jsonlite} in the
-#' source package code, so it should be included in the Imports file. Otherwise
-#' CRAN complains as it is not directly used.
+#' source package code, so it is included in Imports. Otherwise, CRAN complains
+#' because it is not used directly.
 #'
 #' We need to import \CRANpkg{jsonlite} because the package makes heavy use of
 #' it under the hood with [httr2::resp_body_json()], but \CRANpkg{httr2} lists
-#' it on Suggests. So we need to avoid this with this simple trick.
+#' it in Suggests. This helper avoids that issue.
 #'
 #' This function is never used by the package.
 #'
 #' @noRd
 for_import_jsonlite <- function() {
-  # To json on our website
+  # Request JSON from the package website.
   url <- "https://ropengov.github.io/giscoR/search.json"
   resp <- get_request_body(url, verbose = FALSE)
   txt <- httr2::resp_body_string(resp)

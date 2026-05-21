@@ -13,9 +13,10 @@
 #' @source
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
-#' @param id character string. Select the unit type to be downloaded. Accepted
-#'   values are `"nuts"`, `"countries"` or `"urban_audit"`.
-#' @param year character string or number. Release year of the metadata.
+#' @param id A character string with the unit type to download. Accepted values
+#'   are `"nuts"`, `"countries"` or `"urban_audit"`.
+#' @param year A character string or numeric value with the release year of the
+#'   metadata.
 #'
 #' @return
 #' A [tibble][tibble::tbl_df].

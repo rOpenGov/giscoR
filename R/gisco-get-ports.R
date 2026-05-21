@@ -10,7 +10,8 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @param year character string or number. Release year of the file. One of
+#' @param year A character string or numeric value with the release year of the
+#'   file. One of
 #'   `2013`, `2009`.
 #'
 #' @details
@@ -88,10 +89,10 @@ gisco_get_ports <- function(
 
   data_sf <- read_geo_file_sf(namefileload)
 
-  # Normalize to lonlat
+  # Normalize to longitude and latitude.
   data_sf <- sf::st_transform(data_sf, 4326)
 
-  # Add ISO2 country
+  # Add ISO2 country code.
   data_sf$CNTR_ISO2 <- substr(data_sf$PORT_ID, 1, 2)
 
   if (!is.null(country) && "PORT_ID" %in% names(data_sf)) {

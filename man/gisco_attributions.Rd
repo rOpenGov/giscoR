@@ -8,11 +8,11 @@
 gisco_attributions(lang = "en", copyright = FALSE)
 }
 \arguments{
-\item{lang}{character. Language (two-letter ISO code). See
+\item{lang}{A character value with the language (two-letter ISO code). See
 \link[countrycode:codelist]{countrycode::codelist} and \strong{Details}.}
 
-\item{copyright}{logical \code{TRUE/FALSE}. Whether to display the copyright
-notice or not on the console.}
+\item{copyright}{A logical value indicating whether to display the
+copyright notice on the console.}
 }
 \value{
 A string with the attribution to be used.

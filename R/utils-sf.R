@@ -1,4 +1,4 @@
-#' Read geospatial file into sf object with optional query
+#' Read a geospatial file into an sf object with an optional query
 #'
 #' @param file_local Local file path or URL to the geospatial file.
 #' @param q Optional SQL query string to filter the data during reading.
@@ -8,7 +8,7 @@
 #'
 #' @noRd
 read_geo_file_sf <- function(file_local, q = NULL, ...) {
-  # Warn if file size is huge and no query
+  # Warn if the file is large and no query is used.
 
   if (all(!grepl("^http", file_local), file.exists(file_local), is.null(q))) {
     fsize <- file.size(file_local)
@@ -18,18 +18,18 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
     if (fsize > thr) {
       fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
       make_msg("warning", TRUE, "Reading large file", fsize_unit)
-      make_msg("generic", TRUE, "It can take a while. Hold on!")
+      make_msg("generic", TRUE, "This can take a while. Hold on.")
     }
   }
 
-  # Create and read 'vsizip' construct for shp.zip
+  # Create and read a 'vsizip' path for shp.zip files.
   if (grepl(".zip$", file_local, ignore.case = TRUE)) {
     shp_zip <- unzip(file_local, list = TRUE)
     shp_zip <- shp_zip$Name
     shp_zip <- shp_zip[grepl("shp$", shp_zip)]
     shp_end <- shp_zip[1]
 
-    # Read with vszip
+    # Read with vsizip.
     file_local <- file.path("/vsizip/", file_local, shp_end)
     file_local <- gsub("//", "/", file_local, fixed = TRUE)
   }
@@ -45,13 +45,13 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
   data_sf
 }
 
-#' Convert sf object to UTF-8
+#' Convert an sf object to UTF-8
 #'
-#' Convert to UTF-8
+#' Convert names and character columns to UTF-8.
 #'
-#' @param data_sf An sf object.
+#' @param data_sf An `sf` object.
 #'
-#' @return An sf object with UTF-8 encoding.
+#' @return An `sf` object with UTF-8 encoding.
 #'
 #' @source Extracted from [`sf`][sf::st_sf] package.
 #'
@@ -69,9 +69,9 @@ sanitize_sf <- function(data_sf) {
     }
     structure(lapply(x, to_utf8), names = n)
   }
-  # end
+  # End of code adapted from sf.
 
-  # To UTF-8
+  # Convert to UTF-8.
   names <- names(data_sf)
   g <- sf::st_geometry(data_sf)
 
@@ -83,17 +83,16 @@ sanitize_sf <- function(data_sf) {
 
   data_utf8 <- tibble::as_tibble(data_utf8)
 
-  # Regenerate with right encoding
+  # Regenerate with the corrected encoding.
   data_sf <- sf::st_as_sf(data_utf8, g)
 
-  # Rename geometry to geometry
+  # Restore the geometry column name.
   newnames <- names(data_sf)
   newnames[newnames == "g"] <- nm
   colnames(data_sf) <- newnames
   data_sf <- sf::st_set_geometry(data_sf, nm)
 
-  # Some CRS are not properly defined (i.e. may have additional properties)
-  # Normalize with the EPSG number
+  # Normalize CRS definitions that include extra properties.
 
   epsg_num <- sf::st_crs(data_sf)$epsg
   if (!identical(sf::st_crs(data_sf), sf::st_crs(epsg_num))) {
@@ -113,7 +112,7 @@ sanitize_sf <- function(data_sf) {
 #' @noRd
 get_geo_file_colnames <- function(file_local) {
   layer <- get_sf_layer_name(file_local)
-  # Get column names
+  # Get column names.
   q_base <- paste0("SELECT * FROM \"", layer, "\"")
   get_cols <- read_geo_file_sf(file_local, q = paste(q_base, "LIMIT 1"))
 
@@ -124,7 +123,7 @@ get_geo_file_colnames <- function(file_local) {
 #' Get column name for filtering from a geospatial file
 #'
 #' @param file_local Local file path or URL to the geospatial file.
-#' @param candidates character vector of candidate column names.
+#' @param candidates A character vector of candidate column names.
 #'
 #' @return
 #' A character vector with the matching column names or NULL if none found.

@@ -24,31 +24,33 @@ gisco_get_coastal_lines(
 )
 }
 \arguments{
-\item{year}{character string or number. Release year of the file. One of
-\Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
+\item{year}{A character string or numeric value with the release year of the
+file.
+One of \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 "year",TRUE)}.}
 
-\item{epsg}{character string or number. Projection of the map: 4-digit
-\href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the map projection as a
+4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\item{cache}{A logical value indicating whether to cache results. Default
+is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+
+\item{update_cache}{A logical value indicating whether to refresh the
+cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+download.}
+
+\item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
-
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
-
-\item{resolution}{character string or number. Resolution of the geospatial
-data. One of:
+\item{resolution}{A character string or numeric value with the geospatial
+data resolution. One of:
 \itemize{
 \item \code{"60"}: 1:60 million.
 \item \code{"20"}: 1:20 million.
@@ -57,7 +59,8 @@ data. One of:
 \item \code{"01"}: 1:1 million.
 }}
 
-\item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
+\item{ext}{A character value with the extension of the file (default
+\code{"gpkg"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 "ext",TRUE)}.}
 }
@@ -68,7 +71,7 @@ A \code{\link[sf:st_sf]{sf}} object.
 Downloads worldwide coastlines.
 }
 \section{Note}{
-Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
+Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
 
 \examples{
@@ -79,7 +82,7 @@ library(ggplot2)
 
 ggplot(coast) +
   geom_sf(color = "#1278AB", fill = "#FDFBEA") +
-  # Zoom on Mediterranean Sea
+  # Zoom on the Mediterranean Sea.
   coord_sf(
     xlim = c(-4, 35),
     ylim = c(31, 45)

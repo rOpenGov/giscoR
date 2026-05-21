@@ -11,7 +11,8 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @param year character string or number. Release year of the file. One of
+#' @param year A character string or numeric value with the release year of the
+#'   file. One of
 #'   `2023`, `2020`.
 #'
 #' @source
@@ -73,7 +74,7 @@ gisco_get_education <- function(
   verbose = FALSE,
   country = NULL
 ) {
-  # Given vars
+  # Set required variables.
   year <- match_arg_pretty(year)
 
   if (!is.null(country)) {
@@ -97,7 +98,7 @@ gisco_get_education <- function(
     filename <- paste0("edu_", year, "_", basename(api))
 
     if (cache) {
-      # Guess source to load
+      # Guess the source to load.
       namefileload <- download_url(
         api,
         filename,

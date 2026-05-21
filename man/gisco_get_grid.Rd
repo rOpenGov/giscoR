@@ -20,18 +20,20 @@ gisco_get_grid(
 )
 }
 \arguments{
-\item{resolution}{Resolution of the grid cells in km. Available values are
-\code{"1"}, \code{"2"}, \code{"5"}, \code{"10"}, \code{"20"}, \code{"50"}, \code{"100"}. See \strong{Details}.}
+\item{resolution}{The grid cell resolution in km. Available values are
+\code{"1"}, \code{"2"}, \code{"5"}, \code{"10"}, \code{"20"}, \code{"50"} and \code{"100"}. See
+\strong{Details}.}
 
-\item{spatialtype}{Select one of \code{"REGION"} or \code{"POINT"}.}
+\item{spatialtype}{A character string selecting \code{"REGION"} or \code{"POINT"}.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
+\item{update_cache}{A logical value indicating whether to refresh the
+cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+download.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
 A \code{\link[sf:st_sf]{sf}} object.
@@ -61,7 +63,7 @@ if (!is.null(grid)) {
 
   breaks <- c(0, 0.1, 100, 500, 1000, 5000, 10000, Inf)
 
-  # Cut groups
+  # Cut groups.
   grid <- grid |>
     mutate(popdens_cut = cut(popdens,
       breaks = breaks,
@@ -87,7 +89,7 @@ if (!is.null(grid)) {
     ) +
     scale_fill_manual(
       values = pal, na.value = "black",
-      name = "people per sq. kilometer",
+      name = "people per square kilometer",
       labels = cut_labs,
       guide = guide_legend(
         direction = "horizontal",

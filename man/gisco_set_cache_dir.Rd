@@ -16,17 +16,17 @@ gisco_set_cache_dir(
 gisco_detect_cache_dir()
 }
 \arguments{
-\item{cache_dir}{A path to a cache directory. On \code{NULL}, the function
-stores the cached files on a temporary dir (see \code{\link[base:tempdir]{base::tempdir()}}).}
+\item{cache_dir}{A path to a cache directory. If \code{NULL}, the function
+stores cached files in a temporary directory (see \code{\link[base:tempdir]{base::tempdir()}}).}
 
-\item{overwrite}{If this is set to \code{TRUE}, it will overwrite an existing
+\item{overwrite}{If \code{TRUE}, overwrite an existing
 \code{GISCO_CACHE_DIR} that you already have on your local machine.}
 
-\item{install}{If \code{TRUE}, will install the key in your local machine for
-use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
+\item{install}{If \code{TRUE}, install the key on your local machine for use in
+future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
 \code{install} is automatically set to \code{FALSE}.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
 \code{gisco_set_cache_dir()} returns an (invisible) character with the path to
@@ -53,7 +53,8 @@ In \CRANpkg{giscoR} >= 1.0.0 the location of the configuration file has
 moved from \code{rappdirs::user_config_dir("giscoR", "R")} to
 \code{tools::R_user_dir("giscoR", "config")}. We have implemented a function
 that migrates previous configuration files from one location to another
-with a message. This message appears only once informing of the migration.
+with a message. This message appears only once to inform you of the
+migration.
 }
 \section{Caching strategies}{
 
@@ -64,7 +65,7 @@ your computer. \CRANpkg{giscoR} implements the following caching options:
 \itemize{
 \item For occasional use, rely on the default \code{\link[=tempdir]{tempdir()}}-based cache (no
 install).
-\item Modify the cache for a single session setting
+\item Modify the cache for a single session by setting
 \code{gisco_set_cache_dir(cache_dir = "a/path/here")}.
 \item For reproducible workflows, install a persistent cache with
 \code{gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)} that is
@@ -73,18 +74,18 @@ kept across \strong{R} sessions.
 corresponding function. See example in \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}.
 }
 
-Sometimes cached files may be corrupt. In that case, try re-downloading
-the data setting \code{update_cache = TRUE} in the corresponding function.
+Sometimes cached files may be corrupt. In that case, try re-downloading the
+data by setting \code{update_cache = TRUE} in the corresponding function.
 
-If you experience any problem on download, try to download the
-corresponding file by any other method and save it on your
+If you experience any download problem, try to download the corresponding
+file by another method and save it in your
 \code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query
 and \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to identify your cached path.
 }
 
 \examples{
 
-# Don't run this! It modifies your current state
+# Do not run this. It modifies your current state.
 \dontrun{
 my_cache <- gisco_detect_cache_dir()
 

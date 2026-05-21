@@ -2,8 +2,8 @@
 #'
 #' @description
 #' This dataset shows pan-European administrative boundaries down to commune
-#' level. Local Administrative Units are equivalent to communes,
-#' see [gisco_get_communes()].
+#' level. Local Administrative Units are equivalent to communes. See
+#' [gisco_get_communes()].
 #'
 #' @family stats
 #' @inheritParams gisco_get_communes
@@ -20,11 +20,13 @@
 #'
 #' @export
 #'
-#' @param year character string or number. Release year of the file. One of
+#' @param year A character string or numeric value with the release year of the
+#'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "year",TRUE)}.
-#' @param gisco_id Optional. A character vector of `GISCO_ID` LAU values.
-#' @param ext character. Extension of the file (default `"gpkg"`). One of
+#' @param gisco_id An optional character vector of `GISCO_ID` LAU values.
+#' @param ext A character value with the extension of the file (default
+#'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "ext",TRUE)}.
 #'
@@ -42,12 +44,12 @@
 #' extent covers the European Union, EFTA countries and candidate countries.
 #' The scale of the dataset is 1:100 000.
 #'
-#' The data contains the National Statistical agency LAU code which can be
-#' joined to LAU lists as well as a field `GISCO_ID` which is a unique
-#' identifier consisting of the Country code and LAU code.
+#' The data contains the National Statistical Agency LAU code, which can be
+#' joined to LAU lists, and a `GISCO_ID` field, which is a unique identifier
+#' consisting of the country code and LAU code.
 #'
 #' Total resident population figures (31 December) have also been added in
-#' some versions based on the associated LAU lists
+#' some versions based on the associated LAU lists.
 #'
 #' @examplesIf gisco_check_access()
 #' \dontrun{
@@ -119,23 +121,22 @@ gisco_get_lau <- function(
     return(NULL)
   }
 
-  # Improve speed with queries when countries are selected
-  # We construct the query and pass it to the st_read function
+  # Use an sf query when filtering can reduce read time.
   filter_col_cnt <- get_col_name(file_local)
   filter_col_id <- get_col_name(file_local, "GISCO_ID")
   if (
     all(!is.null(country), !is.null(filter_col_cnt)) ||
       all(!is.null(gisco_id), !is.null(filter_col_id))
   ) {
-    make_msg("info", verbose, "Speed up using {.pkg sf} query")
+    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
     if (!is.null(country)) {
       country <- convert_country_code(country)
     }
 
-    # Get layer name
+    # Get the layer name.
     layer <- get_sf_layer_name(file_local)
 
-    # Construct query
+    # Construct the query.
     q <- paste0("SELECT * from \"", layer, "\" WHERE")
 
     where <- NULL

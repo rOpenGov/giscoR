@@ -1,14 +1,13 @@
 #' Urban Audit dataset
 #'
 #' @description
-#' The dataset contains the boundaries of cities (`"CITIES"`), greater cities
+#' This dataset contains the boundaries of cities (`"CITIES"`), greater cities
 #' (`"GREATER_CITIES"`) and functional urban areas (`"FUA"`) as defined
 #' according to the EC-OECD city definition. This is used for the Eurostat
 #' Urban Audit data collection.
 #'
-#' **Please note that** this function gets data from the aggregated GISCO
-#' Urban Audit file. If you prefer to download individual urban audit files,
-#' please use [gisco_get_unit_urban_audit()].
+#' This function gets data from the aggregated GISCO Urban Audit file. To
+#' download individual Urban Audit files, use [gisco_get_unit_urban_audit()].
 #'
 #' @family stats
 #' @encoding UTF-8
@@ -22,25 +21,27 @@
 #'
 #' See [gisco_get_unit_urban_audit()] to download single files.
 #'
-#' @param year character string or number. Release year of the file. One of
+#' @param year A character string or numeric value with the release year of the
+#'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 #'   "year",TRUE)}.
 #'
-#' @param spatialtype character string. Type of geometry to be returned.
+#' @param spatialtype A character string with the type of geometry to return.
 #'   Options available are:
-#'   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   - `"LB"`: Labels - `POINT` object.
+#' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#' - `"LB"`: Labels - `POINT` object.
 #'
-#' @param level character string. Level of Urban Audit. Possible values `"all"`
-#'   (the default), which downloads the full dataset or `"CITIES"`, `"FUA"`,
-#'   and (for versions prior to `year = 2020`) `"GREATER_CITIES"`, `"CITY"`,
-#'   `"KERN"` or `"LUZ"`.
-#' @param ext character. Extension of the file (default `"gpkg"`). One of
+#' @param level A character string with the Urban Audit level. Possible values
+#'   are `"all"` (the default), which downloads the full dataset, `"CITIES"`,
+#'   `"FUA"` and, for versions prior to `year = 2020`, `"GREATER_CITIES"`,
+#'   `"CITY"`, `"KERN"` or `"LUZ"`.
+#' @param ext A character value with the extension of the file (default
+#'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 #'   "ext",TRUE)}.
 #'
 #' @details
-#' See more in
+#' See more at:
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(" [Eurostat - Statistics Explained]",
 #' "(https://ec.europa.eu/eurostat/statistics-explained/index.php?",
@@ -50,16 +51,16 @@
 #' ```
 #'
 #' The cities are defined at several conceptual levels:
-#'   - The core city (`"CITIES"`), using an administrative definition.
-#'   - The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating the
+#' - The core city (`"CITIES"`), using an administrative definition.
+#' - The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating the
 #'     functional urban region.
 #' The coverage is the EU plus Iceland, Norway and Switzerland. The dataset
 #' includes polygon features, point features and a related attribute table
 #' which can be joined on the URAU code field.
 #'
 #' The `"URAU_CATG"` field defines the Urban Audit category:
-#'   - `"C"` = City.
-#'   - `"F"` = Functional Urban Area Service Type.
+#' - `"C"` = City.
+#' - `"F"` = Functional urban area service type.
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{
@@ -132,19 +133,18 @@ gisco_get_urban_audit <- function(
     return(NULL)
   }
 
-  # Improve speed with queries when countries are selected
-  # We construct the query and pass it to the st_read function
+  # Use an sf query when filtering can reduce read time.
 
   filter_col <- get_col_name(file_local)
   if (all(!is.null(country), !is.null(filter_col))) {
-    make_msg("info", verbose, "Speed up using {.pkg sf} query")
+    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
 
     country <- convert_country_code(country)
 
-    # Get layer name
+    # Get the layer name.
     layer <- get_sf_layer_name(file_local)
 
-    # Construct query
+    # Construct the query.
     q <- paste0(
       "SELECT * from \"",
       layer,

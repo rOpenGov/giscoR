@@ -19,5 +19,5 @@
     Code
       db_cached <- gisco_get_nuts(verbose = TRUE, nuts_id = "ES51")
     Message
-      i Loaded from `?giscoR::gisco_nuts_2024()` dataset. Use `update_cache = TRUE` to re-load from file
+      i Loaded from `?giscoR::gisco_nuts_2024()` dataset. Use `update_cache = TRUE` to reload from file.
 

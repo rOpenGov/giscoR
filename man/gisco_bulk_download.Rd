@@ -22,8 +22,8 @@ gisco_bulk_download(
 )
 }
 \arguments{
-\item{id}{character string or number. Type of dataset to be
-downloaded, see \strong{Details}. Values supported are:
+\item{id}{A character string or numeric value with the dataset type to
+download, see \strong{Details}. Values supported are:
 \itemize{
 \item \code{"countries"}
 \item \code{"coastal_lines"}
@@ -32,23 +32,24 @@ downloaded, see \strong{Details}. Values supported are:
 \item \code{"nuts"}
 \item \code{"urban_audit"}
 \item \code{"postal_codes"}
-}
 
-This argument replaces the previous (deprecated) argument \code{id_giscoR}.}
+This argument replaces the previous (deprecated) argument \code{id_giscoR}.
+}}
 
-\item{year}{character string or number. Release year of the file, see
-\strong{Details}.}
+\item{year}{A character string or numeric value with the release year of the
+file, see \strong{Details}.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
+\item{update_cache}{A logical value indicating whether to refresh the
+cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+download.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{resolution}{character string or number. Resolution of the geospatial
-data. One of:
+\item{resolution}{A character string or numeric value with the geospatial
+data resolution. One of:
 \itemize{
 \item \code{"60"}: 1:60 million.
 \item \code{"20"}: 1:20 million.
@@ -57,13 +58,14 @@ data. One of:
 \item \code{"01"}: 1:1 million.
 }}
 
-\item{ext}{Extension of the file(s) to be downloaded. Formats available are
-\code{"shp"}, \code{"geojson"}, \code{"svg"}, \code{"json"}, \code{"gdb"}. See \strong{Details}.}
+\item{ext}{The extension of the file or files to download. Available
+formats are \code{"shp"}, \code{"geojson"}, \code{"svg"}, \code{"json"} and \code{"gdb"}. See
+\strong{Details}.}
 
 \item{recursive}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{recursive} is no
 longer supported, and this function will never perform recursive
-extraction of child \code{.zip} files. This is the case of "\code{shp.zip} inside
-the top-level \code{.zip}, that won't be unzipped.}
+extraction of child \code{.zip} files. This is the case for "\code{shp.zip} inside
+the top-level \code{.zip}, which will not be unzipped.}
 
 \item{...}{Ignored. The argument \code{id_giscoR}
 (\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}) is captured via \code{...} and redirected
@@ -75,7 +77,7 @@ See \strong{Examples}.
 }
 \description{
 Download zipped data from GISCO to the \code{\link[=gisco_set_cache_dir]{cache_dir}}
-and extract the relevant ones.
+and extract the relevant files.
 }
 \details{
 Some arguments only apply to a specific value of \code{"id"}. For example
@@ -94,10 +96,9 @@ See years available in the corresponding functions:
 }
 
 The usual extensions used across \CRANpkg{giscoR} are \code{"gpkg"} and \code{"shp"},
-however other formats are already available on GISCO. Note that after
-performing a bulk download you may need to adjust the default \code{"ext"} value
-in the corresponding function to connect it with the downloaded files (see
-\strong{Examples}).
+but other formats are already available on GISCO. After a bulk download, you
+may need to adjust the default \code{"ext"} value in the corresponding function
+to connect it with the downloaded files (see \strong{Examples}).
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
@@ -108,7 +109,7 @@ dest_files <- gisco_bulk_download(
   year = 2024, ext = "geojson",
   cache_dir = tmp
 )
-# Read one
+# Read one file.
 library(sf)
 read_sf(dest_files[1]) |> head()
 
@@ -120,9 +121,9 @@ connect <- gisco_get_countries(
   cache_dir = tmp, verbose = TRUE
 )
 
-# Message shows that file is already cached
+# The message shows that the file is already cached.
 }
-# Clean
+# Clean up.
 unlink(tmp, force = TRUE)
 \dontshow{\}) # examplesIf}
 }

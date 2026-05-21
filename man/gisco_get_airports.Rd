@@ -20,20 +20,22 @@ gisco_get_airports(
 )
 }
 \arguments{
-\item{year}{character string or number. Release year of the file. One of
-\code{2013}, \code{2006}.}
+\item{year}{A character string or numeric value with the release year of the
+file.
+One of \code{2013}, \code{2006}.}
 
-\item{country}{character vector of country codes. It can be either a
+\item{country}{A character vector of country codes. It can be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
+\item{update_cache}{A logical value indicating whether to refresh the
+cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+download.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
 A \code{\link[sf:st_sf]{sf}} object.
@@ -72,7 +74,7 @@ if (!is.null(airp)) {
       title = "Airports in Europe", subtitle = "Year 2013",
       caption = "Source: Eurostat, Airports 2013 dataset."
     ) +
-    # Center in Europe: EPSG 3035
+    # Center on Europe with EPSG 3035.
     coord_sf(
       crs = 3035,
       xlim = c(2377294, 7453440),

@@ -24,12 +24,13 @@ gisco_get_lau(
 )
 }
 \arguments{
-\item{year}{character string or number. Release year of the file. One of
+\item{year}{A character string or numeric value with the release year of the
+file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 "year",TRUE)}.}
 
-\item{epsg}{character string or number. Projection of the map: 4-digit
-\href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the map projection as a
+4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -40,21 +41,23 @@ gisco_get_lau(
 cache the result due to the size. See \strong{Caching strategies} section
 in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
+\item{update_cache}{A logical value indicating whether to refresh the
+cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+download.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
+\item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{country}{character vector of country codes. It can be either a
+\item{country}{A character vector of country codes. It can be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
-\item{gisco_id}{Optional. A character vector of \code{GISCO_ID} LAU values.}
+\item{gisco_id}{An optional character vector of \code{GISCO_ID} LAU values.}
 
-\item{ext}{character. Extension of the file (default \code{"gpkg"}). One of
+\item{ext}{A character value with the extension of the file (default
+\code{"gpkg"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 "ext",TRUE)}.}
 }
@@ -63,8 +66,8 @@ A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset shows pan-European administrative boundaries down to commune
-level. Local Administrative Units are equivalent to communes,
-see \code{\link[=gisco_get_communes]{gisco_get_communes()}}.
+level. Local Administrative Units are equivalent to communes. See
+\code{\link[=gisco_get_communes]{gisco_get_communes()}}.
 }
 \details{
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
@@ -77,15 +80,15 @@ The LAU classification is not covered by any legislative act. Geographical
 extent covers the European Union, EFTA countries and candidate countries.
 The scale of the dataset is 1:100 000.
 
-The data contains the National Statistical agency LAU code which can be
-joined to LAU lists as well as a field \code{GISCO_ID} which is a unique
-identifier consisting of the Country code and LAU code.
+The data contains the National Statistical Agency LAU code, which can be
+joined to LAU lists, and a \code{GISCO_ID} field, which is a unique identifier
+consisting of the country code and LAU code.
 
 Total resident population figures (31 December) have also been added in
-some versions based on the associated LAU lists
+some versions based on the associated LAU lists.
 }
 \section{Note}{
-Please check the download and usage provisions on \code{\link[=gisco_attributions]{gisco_attributions()}}.
+Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
 
 \examples{

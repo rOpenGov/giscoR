@@ -17,10 +17,12 @@
 #' @seealso
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
-#' @param year character string or number. Release year of the file. One of
+#' @param year A character string or numeric value with the release year of the
+#'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("postal_codes",
 #'   "year",TRUE)}.
-#' @param ext character. Extension of the file (default `"gpkg"`). One of
+#' @param ext A character value with the extension of the file (default
+#'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("postal_codes",
 #'   "ext",TRUE)}.
 #' @inheritParams gisco_get_countries
@@ -96,18 +98,17 @@ gisco_get_postal_codes <- function(
     return(NULL)
   }
 
-  # Improve speed with queries when countries are selected
-  # We construct the query and pass it to the st_read function
+  # Use an sf query when filtering can reduce read time.
 
   filter_col <- get_col_name(file_local)
   if (all(!is.null(country), !is.null(filter_col))) {
-    make_msg("info", verbose, "Speed up using {.pkg sf} query")
+    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
     country <- convert_country_code(country)
 
-    # Get layer name
+    # Get the layer name.
     layer <- get_sf_layer_name(file_local)
 
-    # Construct query
+    # Construct the query.
     q <- paste0(
       "SELECT * from \"",
       layer,
@@ -124,7 +125,7 @@ gisco_get_postal_codes <- function(
     return(data_sf)
   }
 
-  # Otherwise, read the whole file
+  # Otherwise, read the whole file.
   data_sf <- read_geo_file_sf(file_local)
 
   data_sf

@@ -22,11 +22,11 @@
 #' A [`sf`][sf::st_sf] object on `mode = "sf"` or a [tibble][tibble::tbl_df]
 #' on `mode = "df"`.
 #'
-#' @param id_giscoR Select the `unit` type to be downloaded. Accepted values
-#'   are `"nuts"`, `"countries"` or `"urban_audit"`.
-#' @param unit Unit ID to be downloaded.
-#' @param mode Controls the output of the function. Possible values are `"sf"`
-#'  or `"df"`. See **Value**.
+#' @param id_giscoR A character string with the `unit` type to download.
+#'   Accepted values are `"nuts"`, `"countries"` or `"urban_audit"`.
+#' @param unit A unit ID to download.
+#' @param mode A character string controlling the output of the function.
+#'   Possible values are `"sf"` or `"df"`. See **Value**.
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{
@@ -105,7 +105,7 @@ gisco_get_units <- function(
     )
     return(data_sf)
   }
-  # Else if urban_audit
+  # Otherwise, use Urban Audit units.
   lifecycle::deprecate_warn(
     "1.0.0",
     "giscoR::gisco_get_units()",

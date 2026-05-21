@@ -2,8 +2,8 @@
 #'
 #' @description
 #' This dataset shows pan-European administrative boundaries down to commune
-#' level. Communes are equivalent to Local Administrative Units,
-#' see [gisco_get_lau()].
+#' level. Communes are equivalent to Local Administrative Units. See
+#' [gisco_get_lau()].
 #'
 #' @family admin
 #' @inheritParams gisco_get_countries
@@ -19,22 +19,24 @@
 #'
 #' @export
 #'
-#' @param year character string or number. Release year of the file. One of
+#' @param year A character string or numeric value with the release year of the
+#'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 #'   "year",TRUE)}.
 #' @param cache `r lifecycle::badge('deprecated')`. These functions always
 #'   cache the result due to the size. See **Caching strategies** section
 #'   in [gisco_set_cache_dir()].
 #'
-#' @param spatialtype character string. Type of geometry to be returned.
+#' @param spatialtype A character string with the type of geometry to return.
 #'   Options available are:
-#'   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#'   - `"LB"`: Labels - `POINT` object.
-#'   - `"BN"`: Boundaries - `LINESTRING` object.
+#' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#' - `"LB"`: Labels - `POINT` object.
+#' - `"BN"`: Boundaries - `LINESTRING` object.
 #'
-#'   **Note that** argument `country` is only applied when
-#'   `spatialtype` is `"RG"` or `"LB"`.
-#' @param ext character. Extension of the file (default `"shp"`). One of
+#'   Argument `country` is only applied when `spatialtype` is `"RG"` or
+#'   `"LB"`.
+#' @param ext A character value with the extension of the file (default
+#'   `"shp"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 #'   "ext",TRUE)}.
 #'
@@ -118,19 +120,18 @@ gisco_get_communes <- function(
     return(NULL)
   }
 
-  # Improve speed with queries when countries are selected
-  # We construct the query and pass it to the st_read function
+  # Use an sf query when filtering can reduce read time.
 
   filter_col <- get_col_name(file_local)
   if (all(!is.null(country), !is.null(filter_col))) {
-    make_msg("info", verbose, "Speed up using {.pkg sf} query")
+    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
 
     country <- convert_country_code(country)
 
-    # Get layer name
+    # Get the layer name.
     layer <- get_sf_layer_name(file_local)
 
-    # Construct query
+    # Construct the query.
     q <- paste0(
       "SELECT * from \"",
       layer,

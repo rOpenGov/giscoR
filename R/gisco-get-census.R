@@ -14,11 +14,12 @@
 #' See [gisco_id_api_census_grid()] to download via GISCO ID service API.
 
 #'
-#' @param year character string or number. Release year of the file. Currently
-#'   only `"2011"` is provided.
-#' @param spatialtype Type of geometry to be returned:
-#'  - `"PT"`: Points - `POINT` object.
-#'  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#' @param year A character string or numeric value with the release year of the
+#'   file.
+#'   Currently only `"2011"` is provided.
+#' @param spatialtype The type of geometry to return:
+#' - `"PT"`: Points - `POINT` object.
+#' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census>.
@@ -71,7 +72,7 @@ gisco_get_census <- function(
 
   data_sf <- read_geo_file_sf(namefileload)
 
-  # Normalize to lonlat
+  # Normalize to longitude and latitude.
   data_sf <- sf::st_transform(data_sf, 4326)
   data_sf
 }

@@ -12,10 +12,10 @@
 #' @encoding UTF-8
 #' @export
 #'
-#' @param lang character. Language (two-letter ISO code). See
+#' @param lang A character value with the language (two-letter ISO code). See
 #'   [countrycode::codelist] and **Details**.
-#' @param copyright logical `TRUE/FALSE`. Whether to display the copyright
-#'   notice or not on the console.
+#' @param copyright A logical value indicating whether to display the
+#'   copyright notice on the console.
 #'
 #' @return A string with the attribution to be used.
 #'

@@ -27,21 +27,23 @@ gisco_get_healthcare(
 )
 }
 \arguments{
-\item{year}{character string or number. Release year of the file. One of
+\item{year}{A character string or numeric value with the release year of the
+file. One of
 \code{2023}, \code{2020}.}
 
-\item{cache}{logical. Whether to do caching. Default is \code{TRUE}. See
+\item{cache}{A logical value indicating whether to cache results. Default
+is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+
+\item{update_cache}{A logical value indicating whether to refresh the
+cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+download.}
+
+\item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{update_cache}{logical. Should the cached file be refreshed? Default
-is \code{FALSE}. When set to \code{TRUE} it forces a new download.}
+\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{cache_dir}{character string. A path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
-
-\item{verbose}{logical. If \code{TRUE} displays informational messages.}
-
-\item{country}{character vector of country codes. It can be either a
+\item{country}{A character vector of country codes. It can be either a
 vector of country names, a vector of ISO3 country codes or a vector of
 Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
@@ -52,11 +54,12 @@ A \code{\link[sf:st_sf]{sf}} object.
 The dataset contains information on main healthcare services considered to
 be 'hospitals' by Member States. The definition varies slightly from
 country to country, but roughly includes the following:
-
-\emph{"'Hospitals' comprises licensed establishments primarily engaged in
+\itemize{
+\item "'Hospitals' comprises licensed establishments primarily engaged in
 providing medical, diagnostic and treatment services that include
 physician, nursing and other health services to in-patients and the
-specialised accommodation services required by inpatients."}
+specialised accommodation services required by inpatients."*
+}
 }
 \details{
 Files are distributed on \href{https://epsg.io/4326}{EPSG:4326}.
@@ -74,12 +77,12 @@ Brief description of each attribute:\tabular{ll}{
    \code{address} \tab Address information when the different components of the address are not separated in the source. \cr
    \code{city} \tab City name (sometimes refers to a region or municipality). \cr
    \code{cntr_id} \tab Country code (2 letters, ISO 3166-1 alpha-2). \cr
-   \code{emergency} \tab \code{yes}/\code{no}, indicating whether the healthcare site provides emergency medical services. \cr
+   \code{emergency} \tab \code{yes} or \code{no}, indicating whether the healthcare site provides emergency medical services. \cr
    \code{cap_beds} \tab Measure of capacity by number of beds (most common). \cr
    \code{cap_prac} \tab Measure of capacity by number of practitioners. \cr
    \code{cap_rooms} \tab Measure of capacity by number of rooms. \cr
    \code{facility_type} \tab Type of healthcare service (e.g., psychiatric hospital), based on national classification. \cr
-   \code{public_private} \tab \code{public}/\code{private} status of the healthcare service. \cr
+   \code{public_private} \tab \code{public} or \code{private} status of the healthcare service. \cr
    \code{list_specs} \tab List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). \cr
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
