@@ -20,17 +20,16 @@ gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - config:
 
-  if `TRUE`, will delete the configuration folder of
+  If `TRUE`, delete the configuration folder of
   [giscoR](https://CRAN.R-project.org/package=giscoR).
 
 - cached_data:
 
-  If this is set to `TRUE`, it will delete your `cache_dir` and all its
-  content.
+  If `TRUE`, delete your `cache_dir` and all its content.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -38,9 +37,8 @@ Invisible. This function is called for its side effects.
 
 ## Details
 
-This is an overkill function that is intended to reset your status as if
-you had never installed and/or used
-[giscoR](https://CRAN.R-project.org/package=giscoR).
+This function fully resets your status as if you had never installed or
+used [giscoR](https://CRAN.R-project.org/package=giscoR).
 
 ## See also
 
@@ -53,10 +51,10 @@ Other cache utilities:
 
 ``` r
 
-# Don't run this! It modifies your current state
+# Do not run this. It modifies your current state.
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmp8CVnDd/giscoR
+#> ℹ /tmp/Rtmpuuz8jc/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cache")
@@ -64,13 +62,13 @@ gisco_set_cache_dir(ex, verbose = FALSE)
 
 # Restore initial cache
 gisco_clear_cache(verbose = TRUE)
-#> ! giscoR data deleted: /tmp/Rtmp8CVnDd/example/cache (0 bytes).
+#> ! giscoR data deleted: /tmp/Rtmpuuz8jc/example/cache (0 bytes).
 
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is /tmp/Rtmp8CVnDd/giscoR.
+#> ℹ giscoR cache dir is /tmp/Rtmpuuz8jc/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/Rtmp8CVnDd/giscoR
+#> ℹ /tmp/Rtmpuuz8jc/giscoR
 #> [1] TRUE
 # }
 ```

@@ -4,18 +4,18 @@
 that provides a simple interface to
 [GISCO](https://ec.europa.eu/eurostat/web/gisco) data from Eurostat. It
 allows you to download and work with global and European geospatial
-datasets (such as country boundaries, NUTS regions, coastlines, and
-labels) directly in **R**.
+datasets directly in **R**, including country boundaries, NUTS regions,
+coastlines and labels.
 
 ## Key features
 
-- Retrieve **GISCO files** for countries, regions, and administrative
+- Retrieve **GISCO files** for countries, regions and administrative
   units.
 - Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
   `01M`.
 - Choose from three projections: **EPSG:4326**, **EPSG:3035**, or
   **EPSG:3857**.
-- Returns **sf** objects for spatial analysis.
+- Return `sf` objects for spatial analysis.
 - Caches downloads for faster repeated access.
 
 ## Installation
@@ -140,7 +140,7 @@ nuts3_sf <- nuts3 |>
 br <- c(0, 25, 50, 100, 200, 500, 1000, 2500, 5000, 10000, 30000)
 labs <- prettyNum(br[-1], big.mark = ",")
 
-# Label function used in the plot, mainly for missing values.
+# Label missing values in the plot.
 labeller_plot <- function(x) {
   ifelse(is.na(x), "No Data", x)
 }
@@ -163,14 +163,13 @@ ggplot(nuts3_sf) +
   # Configure legends.
   scale_fill_manual(
     values = pal,
-    # Label for NA
+    # Label missing values.
     labels = labeller_plot,
     drop = FALSE,
     guide = guide_legend(direction = "horizontal", nrow = 1)
   ) +
-  # Theming
   theme_void() +
-  # Theme
+  # Configure the theme.
   theme(
     plot.title = element_text(
       color = rev(pal)[2],
@@ -194,11 +193,11 @@ ggplot(nuts3_sf) +
     legend.key.height = unit(0.5, "line"),
     legend.key.width = unit(2.5, "line")
   ) +
-  # Annotate and labs
+  # Add labels.
   labs(
     title = "Population density in 2021",
     subtitle = "NUTS-3 level",
-    fill = "people per sq. kilometer",
+    fill = "people per square kilometer",
     caption = paste0(
       "Source: Eurostat, ",
       gisco_attributions(),
@@ -224,15 +223,15 @@ Files will be stored locally for faster access.
 
 ## Contribute
 
-Check the GitHub page for [source
-code](https://github.com/rOpenGov/giscoR/).
+See the [GitHub repository](https://github.com/rOpenGov/giscoR/) for
+source code.
 
 Contributions are welcome:
 
 - [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for
   feedback and bug reports.
 - [Send pull requests](https://github.com/rOpenGov/giscoR/).
-- [Star us on the GitHub page](https://github.com/rOpenGov/giscoR).
+- [Star **giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
 
 ## Citation
 
@@ -253,7 +252,7 @@ A BibTeX entry for LaTeX users is:
   year = {2026},
   version = {1.1.0},
   url = {https://ropengov.github.io/giscoR/},
-  abstract = {Tools to download global and European map data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.},
+  abstract = {Tools to download global and European map data from Eurostats GISCO (Geographic Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.},
 }
 ```
 
@@ -263,7 +262,7 @@ A BibTeX entry for LaTeX users is:
 > policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
 > applies. Moreover, there are specific rules that apply to some of the
 > following datasets available for downloading. The download and use of
-> these data are subject to these rules being accepted. See our
+> these data are subject to acceptance of these rules. See the
 > [administrative
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
 > and [statistical

@@ -86,40 +86,41 @@ gisco_id_api_census_grid(
 
 - x, y:
 
-  character string or numeric. x and y coordinates (as longitude and
-  latitude) to be identified.
+  A character string or numeric value with the x and y coordinates (as
+  longitude and latitude) to identify.
 
 - xmin, ymin, xmax, ymax:
 
-  character string or numeric. Bounding box coordinates to identify all
-  geonames within the box.
+  A character string or numeric value with bounding box coordinates to
+  identify all geonames within the box.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - year:
 
-  character string or numeric. Year of the dataset, see **Details**.
+  A character string or numeric value with the dataset year, see
+  **Details**.
 
 - epsg:
 
-  character string or numeric. EPSG code for the coordinate reference
-  system.
+  A character string or numeric value with the EPSG code for the
+  coordinate reference system.
 
 - nuts_id:
 
-  character. NUTS ID code.
+  A character value with the NUTS ID code.
 
 - nuts_level:
 
-  character string. NUTS level. One of `0`, `1`, `2` or `3`.
+  A character string with the NUTS level. One of `0`, `1`, `2` or `3`.
 
 - geometry:
 
-  logical. Whether to return geometry. On `TRUE` a
+  A logical value indicating whether to return geometry. If `TRUE`, a
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
-  returned. On `FALSE` a
+  returned. If `FALSE`, a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) is
   returned.
 

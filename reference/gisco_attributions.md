@@ -17,14 +17,14 @@ gisco_attributions(lang = "en", copyright = FALSE)
 
 - lang:
 
-  character. Language (two-letter ISO code). See
+  A character value with the language (two-letter ISO code). See
   [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/man/codelist.html)
   and **Details**.
 
 - copyright:
 
-  logical `TRUE/FALSE`. Whether to display the copyright notice or not
-  on the console.
+  A logical value indicating whether to display the copyright notice on
+  the console.
 
 ## Value
 

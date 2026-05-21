@@ -18,9 +18,9 @@
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="giscoR | Download map data from the GISCO API">
-<meta name="description" content="giscoR helps retrieve global and European map data from GISCO (the Geographic Information System of the Commission). It also provides lightweight datasets that can be used without downloading additional files.
+<meta name="description" content="giscoR helps download global and European map data from Eurostat's GISCO (Geographic Information System of the Commission) database. It also provides lightweight datasets that can be used without downloading additional files.
 ">
-<meta property="og:description" content="giscoR helps retrieve global and European map data from GISCO (the Geographic Information System of the Commission). It also provides lightweight datasets that can be used without downloading additional files.
+<meta property="og:description" content="giscoR helps download global and European map data from Eurostat's GISCO (Geographic Information System of the Commission) database. It also provides lightweight datasets that can be used without downloading additional files.
 ">
 <meta property="og:image" content="https://ropengov.github.io/giscoR/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -84,15 +84,15 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is an <strong>R</strong> package that provides a simple interface to <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO</a> data from Eurostat. It allows you to download and work with global and European geospatial datasets (such as country boundaries, NUTS regions, coastlines, and labels) directly in <strong>R</strong>.</p>
+<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is an <strong>R</strong> package that provides a simple interface to <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO</a> data from Eurostat. It allows you to download and work with global and European geospatial datasets directly in <strong>R</strong>, including country boundaries, NUTS regions, coastlines and labels.</p>
 <div class="section level2">
 <h2 id="key-features">Key features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h2>
 <ul>
-<li>Retrieve <strong>GISCO files</strong> for countries, regions, and administrative units.</li>
+<li>Retrieve <strong>GISCO files</strong> for countries, regions and administrative units.</li>
 <li>Access data at multiple resolutions: <code>60M</code>, <code>20M</code>, <code>10M</code>, <code>03M</code>, <code>01M</code>.</li>
 <li>Choose from three projections: <strong>EPSG:4326</strong>, <strong>EPSG:3035</strong>, or <strong>EPSG:3857</strong>.</li>
-<li>Returns <strong>sf</strong> objects for spatial analysis.</li>
+<li>Return <code>sf</code> objects for spatial analysis.</li>
 <li>Caches downloads for faster repeated access.</li>
 </ul>
 </div>
@@ -202,7 +202,7 @@
 <span><span class="va">br</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">25</span>, <span class="fl">50</span>, <span class="fl">100</span>, <span class="fl">200</span>, <span class="fl">500</span>, <span class="fl">1000</span>, <span class="fl">2500</span>, <span class="fl">5000</span>, <span class="fl">10000</span>, <span class="fl">30000</span><span class="op">)</span></span>
 <span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/formatc.html" class="external-link">prettyNum</a></span><span class="op">(</span><span class="va">br</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>, big.mark <span class="op">=</span> <span class="st">","</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Label function used in the plot, mainly for missing values.</span></span>
+<span><span class="co"># Label missing values in the plot.</span></span>
 <span><span class="va">labeller_plot</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"No Data"</span>, <span class="va">x</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -225,14 +225,13 @@
 <span>  <span class="co"># Configure legends.</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span></span>
 <span>    values <span class="op">=</span> <span class="va">pal</span>,</span>
-<span>    <span class="co"># Label for NA</span></span>
+<span>    <span class="co"># Label missing values.</span></span>
 <span>    labels <span class="op">=</span> <span class="va">labeller_plot</span>,</span>
 <span>    drop <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>    guide <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>direction <span class="op">=</span> <span class="st">"horizontal"</span>, nrow <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="co"># Theming</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="co"># Theme</span></span>
+<span>  <span class="co"># Configure the theme.</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
 <span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span></span>
 <span>      color <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rev.html" class="external-link">rev</a></span><span class="op">(</span><span class="va">pal</span><span class="op">)</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>,</span>
@@ -256,11 +255,11 @@
 <span>    legend.key.height <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">0.5</span>, <span class="st">"line"</span><span class="op">)</span>,</span>
 <span>    legend.key.width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">2.5</span>, <span class="st">"line"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="co"># Annotate and labs</span></span>
+<span>  <span class="co"># Add labels.</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Population density in 2021"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="st">"NUTS-3 level"</span>,</span>
-<span>    fill <span class="op">=</span> <span class="st">"people per sq. kilometer"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"people per square kilometer"</span>,</span>
 <span>    caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
 <span>      <span class="st">"Source: Eurostat, "</span>,</span>
 <span>      <span class="fu"><a href="reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span>,</span>
@@ -280,7 +279,7 @@
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
 </h2>
-<p>Check the GitHub page for <a href="https://github.com/rOpenGov/giscoR/" class="external-link">source code</a>.</p>
+<p>See the <a href="https://github.com/rOpenGov/giscoR/" class="external-link">GitHub repository</a> for source code.</p>
 <p>Contributions are welcome:</p>
 <ul>
 <li>
@@ -288,7 +287,7 @@
 <li>
 <a href="https://github.com/rOpenGov/giscoR/" class="external-link">Send pull requests</a>.</li>
 <li>
-<a href="https://github.com/rOpenGov/giscoR" class="external-link">Star us on the GitHub page</a>.</li>
+<a href="https://github.com/rOpenGov/giscoR" class="external-link">Star <strong>giscoR</strong> on GitHub</a>.</li>
 </ul>
 </div>
 <div class="section level2">
@@ -304,14 +303,14 @@
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
 <span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="fl">1.0</span>},</span>
 <span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropengov.github.io<span class="sc">/</span>giscoR<span class="sc">/</span>},</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools to download global and European map data from the <span class="fu">GISCO</span> (Geographic Information System of the Commission) Eurostat database <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span>. The package provides helpers <span class="cf">for</span> working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.},</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools to download global and European map data from Eurostats <span class="fu">GISCO</span> (Geographic Information System of the Commission) database <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span>. The package provides helpers <span class="cf">for</span> working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.},</span>
 <span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="general-copyright">General copyright<a class="anchor" aria-label="anchor" href="#general-copyright"></a>
 </h2>
 <figure><blockquote class="blockquote">
-<p><a href="https://ec.europa.eu/eurostat/web/main/help/copyright-notice" class="external-link">Eurostat’s general copyright notice and license policy</a> applies. Moreover, there are specific rules that apply to some of the following datasets available for downloading. The download and use of these data are subject to these rules being accepted. See our <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units" class="external-link">administrative units</a> and <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">statistical units</a> for more details.</p>
+<p><a href="https://ec.europa.eu/eurostat/web/main/help/copyright-notice" class="external-link">Eurostat’s general copyright notice and license policy</a> applies. Moreover, there are specific rules that apply to some of the following datasets available for downloading. The download and use of these data are subject to acceptance of these rules. See the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units" class="external-link">administrative units</a> and <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">statistical units</a> for more details.</p>
 </blockquote>
 <figcaption class="blockquote-footer">
 Source: <cite title="GISCO"><a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link uri">https://ec.europa.eu/eurostat/web/gisco/geodata</a></cite>

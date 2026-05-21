@@ -92,7 +92,7 @@
 </h2>
 <p><em>The full site with more examples and vignettes is available at <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a></em></p>
 <p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is a package designed to provide a simple interface to the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO API</a>.</p>
-<p>GISCO provides geographic data for the European Union, its member countries, and subnational regions. It supplies geospatial files in different formats, focusing especially on the EU but also offering worldwide datasets such as country polygons, labels, borders, and coastlines.</p>
+<p>GISCO provides geographic data for the European Union, its member countries and subnational regions. It supplies geospatial files in different formats, focusing especially on the EU but also offering worldwide datasets such as country polygons, labels, borders and coastlines.</p>
 <p>GISCO supplies data at multiple resolutions: high-detail datasets for small areas (01M, 03M) and lighter datasets for larger areas (10M, 20M, 60M). Datasets are available in three projections: <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>, <a href="https://epsg.io/3035" class="external-link">EPSG:3035</a>, and <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a>.</p>
 <p><strong>giscoR</strong> returns <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><code>sf</code></a> objects. See <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a> for details.</p>
 </section><section class="section level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
@@ -108,7 +108,7 @@
 <section class="level2"><h3 id="general-copyright">General copyright<a class="anchor" aria-label="anchor" href="#general-copyright"></a>
 </h3>
 <figure><blockquote class="blockquote">
-<p><a href="https://ec.europa.eu/eurostat/web/main/help/copyright-notice" class="external-link">Eurostat’s general copyright notice and license policy</a> applies. Moreover, there are specific rules that apply to some of the following datasets available for downloading. The download and use of these data are subject to these rules being accepted. See our <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units" class="external-link">administrative units</a> and <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">statistical units</a> for more details.</p>
+<p><a href="https://ec.europa.eu/eurostat/web/main/help/copyright-notice" class="external-link">Eurostat’s general copyright notice and license policy</a> applies. Moreover, there are specific rules that apply to some of the following datasets available for downloading. The download and use of these data are subject to acceptance of these rules. See the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units" class="external-link">administrative units</a> and <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">statistical units</a> for more details.</p>
 </blockquote>
 <figcaption class="blockquote-footer">Source: <cite title="GISCO">
 <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link uri">https://ec.europa.eu/eurostat/web/gisco/geodata</a>
@@ -151,7 +151,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#c1c1c1"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">status</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>direction <span class="op">=</span> <span class="st">"horizontal"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="co"># Center in Europe: EPSG 3035</span></span>
+<span>  <span class="co"># Center on Europe with EPSG 3035.</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span></span>
 <span>    xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2377294</span>, <span class="fl">7453440</span><span class="op">)</span>,</span>
 <span>    ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1313597</span>, <span class="fl">5628510</span><span class="op">)</span></span>
@@ -190,10 +190,9 @@ EU member states and candidate countries (2024)
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Order plot facets.</span></span>
-<span></span>
 <span><span class="va">africa_north</span><span class="op">$</span><span class="va">NAME_ENGL</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">africa_north</span><span class="op">$</span><span class="va">NAME_ENGL</span>, levels <span class="op">=</span> <span class="va">cntr</span><span class="op">)</span></span>
-<span><span class="co"># Get coastlines.</span></span>
 <span></span>
+<span><span class="co"># Get coastlines.</span></span>
 <span><span class="va">coast</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get_coastal_lines.html">gisco_get_coastal_lines</a></span><span class="op">(</span></span>
 <span>  resolution <span class="op">=</span> <span class="st">"03"</span>,</span>
 <span>  epsg <span class="op">=</span> <span class="st">"4326"</span>,</span>
@@ -216,7 +215,7 @@ Political map of North Africa
 <a class="anchor" aria-label="anchor" href="#thematic-maps-with-giscor"></a>
 </h2>
 <p>This example shows how <strong>giscoR</strong> can be used together with Eurostat data. For plotting, we use <strong>ggplot2</strong>. Any package that supports <code>sf</code> objects (e.g., <strong>tmap</strong>, <strong>mapsf</strong>, <strong>leaflet</strong>) can be used.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># EU members</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load EU member data.</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(giscoR)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(eurostat)</span>
@@ -226,19 +225,19 @@ Political map of North Africa
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">year =</span> <span class="st">"2021"</span>, <span class="at">epsg =</span> <span class="st">"3035"</span>, <span class="at">resolution =</span> <span class="st">"10"</span>,</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">nuts_level =</span> <span class="st">"2"</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Borders from countries</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get country borders.</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>borders <span class="ot">&lt;-</span> <span class="fu">gisco_get_countries</span>(<span class="at">epsg =</span> <span class="st">"3035"</span>, <span class="at">year =</span> <span class="st">"2020"</span>, <span class="at">resolution =</span> <span class="st">"3"</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>eu_bord <span class="ot">&lt;-</span> borders <span class="sc">|&gt;</span></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(CNTR_ID <span class="sc">%in%</span> nuts2<span class="sc">$</span>CNTR_CODE)</span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Eurostat data: Disposable income.</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve disposable income data from Eurostat.</span></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>pps <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="st">"tgs00026"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TIME_PERIOD <span class="sc">==</span> <span class="st">"2022-01-01"</span>)</span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>indexed <span class="dv">0</span>B <span class="cf">in</span>  <span class="dv">0</span>s, <span class="dv">0</span>B<span class="sc">/</span>s</span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>indexed <span class="fl">2.15</span>GB <span class="cf">in</span>  <span class="dv">0</span>s, <span class="fl">2.15</span>GB<span class="sc">/</span>s</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                                                                                             </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                                                                                            </span>
 <span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>nuts2_sf <span class="ot">&lt;-</span> nuts2 <span class="sc">|&gt;</span></span>
 <span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pps, <span class="at">by =</span> <span class="st">"geo"</span>) <span class="sc">|&gt;</span></span>
@@ -255,7 +254,7 @@ Political map of North Africa
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot.</span></span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(nuts2_sf) <span class="sc">+</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Background</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add background geometry.</span></span>
 <span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> borders, <span class="at">fill =</span> <span class="st">"#e1e1e1"</span>, <span class="at">color =</span> <span class="cn">NA</span>) <span class="sc">+</span></span>
 <span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> categ), <span class="at">color =</span> <span class="st">"grey20"</span>, <span class="at">linewidth =</span> .<span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> eu_bord, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">linewidth =</span> .<span class="dv">15</span>) <span class="sc">+</span></span>
@@ -294,7 +293,7 @@ Political map of North Africa
 <span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key.height =</span> <span class="fu">rel</span>(<span class="fl">0.5</span>),</span>
 <span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.key.width =</span> <span class="fu">unit</span>(<span class="fl">0.1</span>, <span class="st">"npc"</span>)</span>
 <span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Annotate and label.</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add labels.</span></span>
 <span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Disposable income of private households (2022)"</span>,</span>
 <span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"NUTS-2 level"</span>,</span>

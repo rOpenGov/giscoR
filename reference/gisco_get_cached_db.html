@@ -66,8 +66,8 @@ GISCO API.</p>
 
 
 <dl><dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
-<dd><p>logical. On <code>TRUE</code> the cached database is rebuilt
-with the most updated information of the GISCO API.</p></dd>
+<dd><p>A logical value. If <code>TRUE</code>, rebuild the cached database
+with the most recent information from the GISCO API.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -79,11 +79,11 @@ with the most updated information of the GISCO API.</p></dd>
     <p>The cached database is stored in the <a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><span class="pkg">giscoR</span></a> cache path, see
 <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code> for details. The cached database is used
 in subsequent <strong>R</strong> sessions.</p>
-<p>On new GISCO data releases, you can access the new updated data simply by
-refreshing the cached database without waiting for a new version of
+<p>On new GISCO data releases, you can access the updated data by refreshing
+the cached database without waiting for a new version of
 <a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><span class="pkg">giscoR</span></a>.</p>
 <p>A static database <a href="gisco_db.html">gisco_db</a> is shipped with the package. This database is
-used in case there is any problem on update.</p>
+used if there is any problem during update.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -109,7 +109,7 @@ used in case there is any problem on update.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ ext          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "csv"<span style="color: #949494;">, </span>"geojson"<span style="color: #949494;">, </span>"gpkg"<span style="color: #949494;">, </span>"json"<span style="color: #949494;">, </span>"pbf"<span style="color: #949494;">, </span>"shp"<span style="color: #949494;">, </span>"csv"<span style="color: #949494;">, </span>"g…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ api_file     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "csv/COAS_RG_01M_2006_3035.csv"<span style="color: #949494;">, </span>"geojson/COAS_RG_01M_200…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $ api_entry    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "https://gisco-services.ec.europa.eu/distribution/v2/coas…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $ last_updated <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2026-05-20<span style="color: #949494;">, </span>2026-05-20<span style="color: #949494;">, </span>2026-05-20<span style="color: #949494;">, </span>2026-05-20<span style="color: #949494;">, </span>2026-05-…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ last_updated <span style="color: #949494; font-style: italic;">&lt;date&gt;</span> 2026-05-21<span style="color: #949494;">, </span>2026-05-21<span style="color: #949494;">, </span>2026-05-21<span style="color: #949494;">, </span>2026-05-21<span style="color: #949494;">, </span>2026-05-…</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

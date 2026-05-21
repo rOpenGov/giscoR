@@ -35,33 +35,33 @@ of the input national data.
 
 - year:
 
-  character string or number. Release year of the file. One of `2023`,
-  `2020`.
+  A character string or numeric value with the release year of the file.
+  One of `2023`, `2020`.
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  A logical value indicating whether to cache results. Default is
+  `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - country:
 
-  character vector of country codes. It can be either a vector of
+  A character vector of country codes. It can be either a vector of
   country names, a vector of ISO3 country codes or a vector of Eurostat
   country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
@@ -94,14 +94,14 @@ Brief description of each attribute:
 | `max_students` | Measure of capacity by maximum number of students. |
 | `enrollment` | Measure of capacity by number of enrolled students. |
 | `fields` | Academic disciplines the institution specializes in (ISCED-F 2013). |
-| `facility_type` | Type of institution in reference to ownership and operation e.g., Catholic, international etc. |
+| `facility_type` | Type of institution in reference to ownership and operation, such as Catholic or international. |
 | `public_private` | The public or private status of the education service. |
 | `tel` | Telephone number. |
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
 | `ref_date` | The reference date (`DD/MM/YYYY`) the data refers to. The dataset represents the reality as it was at this date. |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
-| `comments` | Some additional information on the education service. |
+| `comments` | Additional information on the education service. |
 
 ## See also
 

@@ -1,8 +1,8 @@
 # Communes dataset
 
 This dataset shows pan-European administrative boundaries down to
-commune level. Communes are equivalent to Local Administrative Units,
-see
+commune level. Communes are equivalent to Local Administrative Units.
+See
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
 
 ## Usage
@@ -32,13 +32,14 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. One of `"2016"`,
-  `"2013"`, `"2010"`, `"2008"`, `"2006"`, `"2004"`, `"2001"` .
+  A character string or numeric value with the release year of the file.
+  One of `"2016"`, `"2013"`, `"2010"`, `"2008"`, `"2006"`, `"2004"`,
+  `"2001"` .
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
-  code](https://epsg.io/). One of:
+  A character string or numeric value with the map projection as a
+  4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -54,23 +55,23 @@ Copyright:
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - spatialtype:
 
-  character string. Type of geometry to be returned. Options available
-  are:
+  A character string with the type of geometry to return. Options
+  available are:
 
   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
@@ -78,20 +79,20 @@ Copyright:
 
   - `"BN"`: Boundaries - `LINESTRING` object.
 
-  **Note that** argument `country` is only applied when `spatialtype` is
-  `"RG"` or `"LB"`.
+    Argument `country` is only applied when `spatialtype` is `"RG"` or
+    `"LB"`.
 
 - country:
 
-  character vector of country codes. It can be either a vector of
+  A character vector of country codes. It can be either a vector of
   country names, a vector of ISO3 country codes or a vector of Eurostat
   country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - ext:
 
-  character. Extension of the file (default `"shp"`). One of `"shp"`,
-  `"gpkg"`, `"geojson"` .
+  A character value with the extension of the file (default `"shp"`).
+  One of `"shp"`, `"gpkg"`, `"geojson"` .
 
 ## Value
 
@@ -114,7 +115,7 @@ The LAU classification is not covered by any legislative act.
 
 ## Note
 
-Please check the download and usage provisions on
+Check the download and usage provisions in
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
 
 ## See also

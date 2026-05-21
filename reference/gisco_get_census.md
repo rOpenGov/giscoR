@@ -26,27 +26,27 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. Currently only
-  `"2011"` is provided.
+  A character string or numeric value with the release year of the file.
+  Currently only `"2011"` is provided.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - spatialtype:
 
-  Type of geometry to be returned:
+  The type of geometry to return:
 
   - `"PT"`: Points - `POINT` object.
 

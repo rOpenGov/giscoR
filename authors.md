@@ -28,5 +28,5 @@ Hernangómez D (2026). *giscoR: Download Map Data from the GISCO API*.
       year = {2026},
       version = {1.1.0},
       url = {https://ropengov.github.io/giscoR/},
-      abstract = {Tools to download global and European map data from the GISCO (Geographic Information System of the Commission) Eurostat database <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.},
+      abstract = {Tools to download global and European map data from Eurostats GISCO (Geographic Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.},
     }

@@ -21,24 +21,24 @@ gisco_detect_cache_dir()
 
 - cache_dir:
 
-  A path to a cache directory. On `NULL`, the function stores the cached
-  files on a temporary dir (see
+  A path to a cache directory. If `NULL`, the function stores cached
+  files in a temporary directory (see
   [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html)).
 
 - overwrite:
 
-  If this is set to `TRUE`, it will overwrite an existing
-  `GISCO_CACHE_DIR` that you already have on your local machine.
+  If `TRUE`, overwrite an existing `GISCO_CACHE_DIR` that you already
+  have on your local machine.
 
 - install:
 
-  If `TRUE`, will install the key in your local machine for use in
-  future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
-  `install` is automatically set to `FALSE`.
+  If `TRUE`, install the key on your local machine for use in future
+  sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`, `install` is
+  automatically set to `FALSE`.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -65,7 +65,7 @@ location of the configuration file has moved from
 `rappdirs::user_config_dir("giscoR", "R")` to
 `tools::R_user_dir("giscoR", "config")`. We have implemented a function
 that migrates previous configuration files from one location to another
-with a message. This message appears only once informing of the
+with a message. This message appears only once to inform you of the
 migration.
 
 ## Caching strategies
@@ -79,7 +79,7 @@ implements the following caching options:
   [`tempdir()`](https://rdrr.io/r/base/tempfile.html)-based cache (no
   install).
 
-- Modify the cache for a single session setting
+- Modify the cache for a single session by setting
   `gisco_set_cache_dir(cache_dir = "a/path/here")`.
 
 - For reproducible workflows, install a persistent cache with
@@ -91,10 +91,10 @@ implements the following caching options:
   [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md).
 
 Sometimes cached files may be corrupt. In that case, try re-downloading
-the data setting `update_cache = TRUE` in the corresponding function.
+the data by setting `update_cache = TRUE` in the corresponding function.
 
-If you experience any problem on download, try to download the
-corresponding file by any other method and save it on your `cache_dir`.
+If you experience any download problem, try to download the
+corresponding file by another method and save it in your `cache_dir`.
 Use the option `verbose = TRUE` for debugging the API query and
 `gisco_detect_cache_dir()` to identify your cached path.
 
@@ -109,32 +109,32 @@ Other cache utilities:
 
 ``` r
 
-# Don't run this! It modifies your current state
+# Do not run this. It modifies your current state.
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmp8CVnDd/giscoR
+#> ℹ /tmp/Rtmpuuz8jc/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache dir is /tmp/Rtmp8CVnDd/example/cachenew.
+#> ℹ giscoR cache dir is /tmp/Rtmpuuz8jc/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmp8CVnDd/example/cachenew
-#> [1] "/tmp/Rtmp8CVnDd/example/cachenew"
+#> ℹ /tmp/Rtmpuuz8jc/example/cachenew
+#> [1] "/tmp/Rtmpuuz8jc/example/cachenew"
 
 # Restore initial cache
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is /tmp/Rtmp8CVnDd/giscoR.
+#> ℹ giscoR cache dir is /tmp/Rtmpuuz8jc/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/Rtmp8CVnDd/giscoR
+#> ℹ /tmp/Rtmpuuz8jc/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmp8CVnDd/giscoR
-#> [1] "/tmp/Rtmp8CVnDd/giscoR"
+#> ℹ /tmp/Rtmpuuz8jc/giscoR
+#> [1] "/tmp/Rtmpuuz8jc/giscoR"
 ```

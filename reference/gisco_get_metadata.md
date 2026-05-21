@@ -21,16 +21,17 @@ gisco_get_metadata(
 
 - id:
 
-  character string. Select the unit type to be downloaded. Accepted
-  values are `"nuts"`, `"countries"` or `"urban_audit"`.
+  A character string with the unit type to download. Accepted values are
+  `"nuts"`, `"countries"` or `"urban_audit"`.
 
 - year:
 
-  character string or number. Release year of the metadata.
+  A character string or numeric value with the release year of the
+  metadata.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 

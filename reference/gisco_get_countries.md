@@ -1,12 +1,11 @@
 # Countries dataset
 
 This dataset contains world administrative boundaries at the country
-level. It consists of 2 feature classes (regions, boundaries) per scale
-level and there are 5 different scale levels (1M, 3M, 10M, 20M and 60M).
+level. It provides 2 feature classes (regions and boundaries) for each
+scale level, with 5 scale levels available (1M, 3M, 10M, 20M and 60M).
 
-**Please note that** this function gets data from the aggregated GISCO
-country file. If you prefer to download individual country files, please
-use
+This function gets data from the aggregated GISCO country file. To
+download individual country files, use
 [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md).
 
 ## Usage
@@ -38,13 +37,14 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. One of `"2024"`,
-  `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`, `"2001"` .
+  A character string or numeric value with the release year of the file.
+  One of `"2024"`, `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`,
+  `"2001"` .
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
-  code](https://epsg.io/). One of:
+  A character string or numeric value with the map projection as a
+  4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -54,28 +54,29 @@ Copyright:
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  A logical value indicating whether to cache results. Default is
+  `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  A character string or numeric value with the geospatial data
+  resolution. One of:
 
   - `"60"`: 1:60 million.
 
@@ -89,8 +90,8 @@ Copyright:
 
 - spatialtype:
 
-  character string. Type of geometry to be returned. Options available
-  are:
+  A character string with the type of geometry to return. Options
+  available are:
 
   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
@@ -102,19 +103,19 @@ Copyright:
 
   - `"INLAND"`: inland boundaries - `LINESTRING` object.
 
-  **Note that** arguments `country` and `region` are only applied when
-  `spatialtype` is `"RG"` or `"LB"`.
+    Arguments `country` and `region` are only applied when `spatialtype`
+    is `"RG"` or `"LB"`.
 
 - country:
 
-  character vector of country codes. It can be either a vector of
+  A character vector of country codes. It can be either a vector of
   country names, a vector of ISO3 country codes or a vector of Eurostat
   country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - region:
 
-  Optional. A character vector of UN M49 region codes or European Union
+  An optional character vector of UN M49 region codes or European Union
   membership. Possible values are `"Africa"`, `"Americas"`, `"Asia"`,
   `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
   European Union (as per 2021). See **World Regions** and
@@ -122,8 +123,8 @@ Copyright:
 
 - ext:
 
-  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
-  `"gpkg"`, `"geojson"` .
+  A character value with the extension of the file (default `"gpkg"`).
+  One of `"shp"`, `"gpkg"`, `"geojson"` .
 
 ## Value
 
@@ -137,7 +138,7 @@ is assigned to Asia.
 
 ## Note
 
-Please check the download and usage provisions on
+Check the download and usage provisions in
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
 
 ## See also

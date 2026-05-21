@@ -2,7 +2,7 @@
 
 ## GISCO geodata
 
-Download datasets from the [GISCO Geodata
+Download geospatial datasets from the [GISCO Geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco/geodata). These
 functions return [sf](https://r-spatial.github.io/sf/reference/sf.html)
 objects.
@@ -50,12 +50,16 @@ population figures are provided for these cells.
 
 ### Transport networks
 
+Download transport network data such as airports and ports.
+
 - [`gisco_get_airports()`](https://ropengov.github.io/giscoR/reference/gisco_get_airports.md)
   : Airports dataset
 - [`gisco_get_ports()`](https://ropengov.github.io/giscoR/reference/gisco_get_ports.md)
   : Ports dataset
 
 ### Basic services
+
+Download basic service locations such as education and healthcare sites.
 
 - [`gisco_get_education()`](https://ropengov.github.io/giscoR/reference/gisco_get_education.md)
   : Education services in Europe
@@ -64,7 +68,7 @@ population figures are provided for these cells.
 
 ### Additional downloads
 
-Additional functions for downloading datasets from the GISCO API.
+Download unit datasets and other GISCO resources.
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
   : GISCO API bulk download
@@ -92,12 +96,12 @@ metadata.
 
 ### Miscellaneous
 
-Other helpers.
+Helpers for attribution and other package utilities.
 
 - [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
   : Attribution for administrative and statistical GISCO data
 
-## GISCO tools
+## GISCO API tools
 
 Query additional [APIs and
 tools](https://ec.europa.eu/eurostat/web/gisco/tools) provided by GISCO.
@@ -123,6 +127,8 @@ tools](https://ec.europa.eu/eurostat/web/gisco/tools) provided by GISCO.
   : GISCO ID service API
 
 ## Cache management
+
+Configure, inspect and clear the local GISCO cache.
 
 - [`gisco_clear_cache()`](https://ropengov.github.io/giscoR/reference/gisco_clear_cache.md)
   :

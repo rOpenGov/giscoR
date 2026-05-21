@@ -10,9 +10,9 @@ to provide a simple interface to the [GISCO
 API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
 GISCO provides geographic data for the European Union, its member
-countries, and subnational regions. It supplies geospatial files in
+countries and subnational regions. It supplies geospatial files in
 different formats, focusing especially on the EU but also offering
-worldwide datasets such as country polygons, labels, borders, and
+worldwide datasets such as country polygons, labels, borders and
 coastlines.
 
 GISCO supplies data at multiple resolutions: high-detail datasets for
@@ -54,7 +54,7 @@ GISCO data:
 > policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
 > applies. Moreover, there are specific rules that apply to some of the
 > following datasets available for downloading. The download and use of
-> these data are subject to these rules being accepted. See our
+> these data are subject to acceptance of these rules. See the
 > [administrative
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
 > and [statistical
@@ -111,7 +111,7 @@ ggplot(world) +
   geom_sf(fill = "#c1c1c1") +
   geom_sf(aes(fill = status), color = "white") +
   guides(fill = guide_legend(direction = "horizontal")) +
-  # Center in Europe: EPSG 3035
+  # Center on Europe with EPSG 3035.
   coord_sf(
     xlim = c(2377294, 7453440),
     ylim = c(1313597, 5628510)
@@ -157,10 +157,9 @@ africa_north <- gisco_get_countries(
 )
 
 # Order plot facets.
-
 africa_north$NAME_ENGL <- factor(africa_north$NAME_ENGL, levels = cntr)
-# Get coastlines.
 
+# Get coastlines.
 coast <- gisco_get_coastal_lines(
   resolution = "03",
   epsg = "4326",
@@ -187,7 +186,7 @@ data. For plotting, we use **ggplot2**. Any package that supports `sf`
 objects (e.g., **tmap**, **mapsf**, **leaflet**) can be used.
 
 ``` r
-# EU members
+# Load EU member data.
 library(giscoR)
 library(dplyr)
 library(eurostat)
@@ -197,19 +196,19 @@ nuts2 <- gisco_get_nuts(
   year = "2021", epsg = "3035", resolution = "10",
   nuts_level = "2"
 )
-# Borders from countries
+# Get country borders.
 borders <- gisco_get_countries(epsg = "3035", year = "2020", resolution = "3")
 
 eu_bord <- borders |>
   filter(CNTR_ID %in% nuts2$CNTR_CODE)
 
-# Eurostat data: Disposable income.
+# Retrieve disposable income data from Eurostat.
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
 #> 
 indexed 0B in  0s, 0B/s
 indexed 2.15GB in  0s, 2.15GB/s
-                                                                                             
+                                                                                            
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -226,7 +225,7 @@ levels(nuts2_sf$categ) <- labs
 
 # Create the plot.
 ggplot(nuts2_sf) +
-  # Background
+  # Add background geometry.
   geom_sf(data = borders, fill = "#e1e1e1", color = NA) +
   geom_sf(aes(fill = categ), color = "grey20", linewidth = .1) +
   geom_sf(data = eu_bord, fill = NA, color = "black", linewidth = .15) +
@@ -265,7 +264,7 @@ ggplot(nuts2_sf) +
     legend.key.height = rel(0.5),
     legend.key.width = unit(0.1, "npc")
   ) +
-  # Annotate and label.
+  # Add labels.
   labs(
     title = "Disposable income of private households (2022)",
     subtitle = "NUTS-2 level",
