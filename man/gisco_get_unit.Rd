@@ -102,7 +102,7 @@ Download datasets of single spatial units from GISCO to the
 Unlike \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \code{\link[=gisco_get_nuts]{gisco_get_nuts()}} or
 \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}} (which downloads a full dataset and applies
 filters), these functions download a single file per unit, reducing the time
-needed to download and read into your \strong{R} session.
+needed to download and read into your \R session.
 }
 \details{
 Check the available \code{unit} IDs with the required

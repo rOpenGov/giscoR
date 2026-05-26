@@ -22,7 +22,7 @@
 #' @details
 #' By default, when no cache `cache_dir` is set, the package uses a folder
 #' inside [base::tempdir()] (so files are temporary and are removed when the
-#' **R** session ends). To persist a cache across **R** sessions, use
+#' \R session ends). To persist a cache across \R sessions, use
 #' `gisco_set_cache_dir(cache_dir, install = TRUE)`, which writes the chosen
 #' path to a small configuration file under
 #' `tools::R_user_dir("giscoR", "config")`.
@@ -43,7 +43,7 @@
 #'   `gisco_set_cache_dir(cache_dir = "a/path/here")`.
 #' - For reproducible workflows, install a persistent cache with
 #'   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that is
-#'   kept across **R** sessions.
+#'   kept across \R sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function. See example in [gisco_get_nuts()].
 #'

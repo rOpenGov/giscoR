@@ -7,7 +7,7 @@
 #' Unlike [gisco_get_countries()], [gisco_get_nuts()] or
 #' [gisco_get_urban_audit()] (which downloads a full dataset and applies
 #' filters), these functions download a single file per unit, reducing the time
-#' needed to download and read into your **R** session.
+#' needed to download and read into your \R session.
 #'
 #' @rdname gisco_get_unit
 #' @name gisco_get_unit

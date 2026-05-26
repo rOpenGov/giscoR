@@ -11,7 +11,7 @@ gisco_check_access()
 A logical.
 }
 \description{
-Check if \strong{R} has access to resources at
+Check if \R has access to resources at
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 }
 \examples{

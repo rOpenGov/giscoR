@@ -43,7 +43,7 @@ find your cached path or use \code{\link[=gisco_detect_cache_dir]{gisco_detect_c
 \details{
 By default, when no cache \code{cache_dir} is set, the package uses a folder
 inside \code{\link[base:tempdir]{base::tempdir()}} (so files are temporary and are removed when the
-\strong{R} session ends). To persist a cache across \strong{R} sessions, use
+\R session ends). To persist a cache across \R sessions, use
 \code{gisco_set_cache_dir(cache_dir, install = TRUE)}, which writes the chosen
 path to a small configuration file under
 \code{tools::R_user_dir("giscoR", "config")}.
@@ -69,7 +69,7 @@ install).
 \code{gisco_set_cache_dir(cache_dir = "a/path/here")}.
 \item For reproducible workflows, install a persistent cache with
 \code{gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)} that is
-kept across \strong{R} sessions.
+kept across \R sessions.
 \item For caching specific files, use the \code{cache_dir} argument in the
 corresponding function. See example in \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}.
 }
