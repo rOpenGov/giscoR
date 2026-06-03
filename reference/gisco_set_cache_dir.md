@@ -52,8 +52,8 @@ this session.
 
 By default, when no cache `cache_dir` is set, the package uses a folder
 inside [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html) (so
-files are temporary and are removed when the **R** session ends). To
-persist a cache across **R** sessions, use
+files are temporary and are removed when the R session ends). To persist
+a cache across R sessions, use
 `gisco_set_cache_dir(cache_dir, install = TRUE)`, which writes the
 chosen path to a small configuration file under
 `tools::R_user_dir("giscoR", "config")`.
@@ -84,7 +84,7 @@ implements the following caching options:
 
 - For reproducible workflows, install a persistent cache with
   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that
-  is kept across **R** sessions.
+  is kept across R sessions.
 
 - For caching specific files, use the `cache_dir` argument in the
   corresponding function. See example in
@@ -112,29 +112,29 @@ Other cache utilities:
 # Do not run this. It modifies your current state.
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpuuz8jc/giscoR
+#> ℹ /tmp/RtmpsmC0dv/giscoR
 
 # Set an example cache
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache dir is /tmp/Rtmpuuz8jc/example/cachenew.
+#> ℹ giscoR cache dir is /tmp/RtmpsmC0dv/example/cachenew.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpuuz8jc/example/cachenew
-#> [1] "/tmp/Rtmpuuz8jc/example/cachenew"
+#> ℹ /tmp/RtmpsmC0dv/example/cachenew
+#> [1] "/tmp/RtmpsmC0dv/example/cachenew"
 
 # Restore initial cache
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is /tmp/Rtmpuuz8jc/giscoR.
+#> ℹ giscoR cache dir is /tmp/RtmpsmC0dv/giscoR.
 #> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/Rtmpuuz8jc/giscoR
+#> ℹ /tmp/RtmpsmC0dv/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpuuz8jc/giscoR
-#> [1] "/tmp/Rtmpuuz8jc/giscoR"
+#> ℹ /tmp/RtmpsmC0dv/giscoR
+#> [1] "/tmp/RtmpsmC0dv/giscoR"
 ```

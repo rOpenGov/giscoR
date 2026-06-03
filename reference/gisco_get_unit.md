@@ -10,7 +10,7 @@ or
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
 (which downloads a full dataset and applies filters), these functions
 download a single file per unit, reducing the time needed to download
-and read into your **R** session.
+and read into your R session.
 
 ## Usage
 

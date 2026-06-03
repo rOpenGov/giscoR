@@ -1,6 +1,6 @@
 # Check access to GISCO API
 
-Check if **R** has access to resources at
+Check if R has access to resources at
 <https://gisco-services.ec.europa.eu/distribution/v2/>.
 
 ## Usage
