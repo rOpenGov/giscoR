@@ -5,7 +5,7 @@ API](https://gisco-services.ec.europa.eu/id/api-docs/), which returns
 attributes and, optionally, geometry for different datasets at specified
 longitude and latitude coordinates.
 
-Each endpoint available is implemented through a specific function, see
+Each available endpoint is implemented through a specific function, see
 **Details**.
 
 ## Usage
@@ -86,40 +86,41 @@ gisco_id_api_census_grid(
 
 - x, y:
 
-  character string or numeric. x and y coordinates (as longitude and
-  latitude) to be identified.
+  A character string or numeric value with the longitude and latitude
+  coordinates to identify.
 
 - xmin, ymin, xmax, ymax:
 
-  character string or numeric. Bounding box coordinates to identify all
-  geonames within the box.
+  A character string or numeric value with bounding box coordinates to
+  identify all geonames within the box.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - year:
 
-  character string or numeric. Year of the dataset, see **Details**.
+  A character string or numeric value with the dataset year, see
+  **Details**.
 
 - epsg:
 
-  character string or numeric. EPSG code for the coordinate reference
-  system.
+  A character string or numeric value with the EPSG code for the
+  coordinate reference system.
 
 - nuts_id:
 
-  character. NUTS ID code.
+  A character value with the NUTS ID code.
 
 - nuts_level:
 
-  character string. NUTS level. One of `0`, `1`, `2` or `3`.
+  A character string with the NUTS level. One of `0`, `1`, `2` or `3`.
 
 - geometry:
 
-  logical. Whether to return geometry. On `TRUE` a
+  A logical value indicating whether to return geometry. If `TRUE`, a
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
-  returned. On `FALSE` a
+  returned. If `FALSE`, a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) is
   returned.
 
@@ -132,39 +133,40 @@ a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 The available endpoints are:
 
-- `gisco_id_api_geonames()`: Get geographic placenames either from x/y
-  coordinates or a bounding box.
+- `gisco_id_api_geonames()`: Get geographic placenames from longitude
+  and latitude coordinates or a bounding box.
 
 - `gisco_id_api_nuts()`: Returns NUTS regions from either a specified
-  longitude and latitude (x,y) or id. Accepted `year` are `"2024"`,
-  `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
-
-- `gisco_id_api_lau()`: Returns the id and - optionally - geometry for
-  Large Urban Areas (LAU) at specified longitude and latitude (x,y).
-  Accepted `year` are `"2024"`, `"2023"`, `"2022"`, `"2021"`, `"2020"`,
-  `"2019"`, `"2018"`, `"2017"`, `"2016"`, `"2015"`, `"2014"`, `"2013"`,
-  `"2012"`, `"2011"` .
-
-- `gisco_id_api_country()`: Returns the id and - optionally - geometry
-  for countries at specified longitude and latitude (x,y). Accepted
-  `year` are `"2024"`, `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`
+  longitude and latitude coordinates or an ID. Accepted values for
+  `year` are `"2024"`, `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`
   .
 
-- `gisco_id_api_river_basin()`: Returns the id and - optionally -
-  geometry for river basins at specified longitude and latitude (x,y),
-  based on the Water Framework Directive (WFD) reference spatial data
-  sets. Accepted `year` are `"2024"`, `"2023"`, `"2022"`, `"2021"`,
-  `"2020"`, `"2019"` .
+- `gisco_id_api_lau()`: Returns the ID and, optionally, geometry for
+  Local Administrative Units (LAU) at specified longitude and latitude
+  coordinates. Accepted values for `year` are `"2024"`, `"2023"`,
+  `"2022"`, `"2021"`, `"2020"`, `"2019"`, `"2018"`, `"2017"`, `"2016"`,
+  `"2015"`, `"2014"`, `"2013"`, `"2012"`, `"2011"` .
 
-- `gisco_id_api_biogeo_region()`: Returns the id and - optionally -
-  geometry for biogeo regions at specified longitude and latitude (x,y).
-  The biogeographical regions dataset contains the official delineations
-  used in the Habitats Directive (92/43/EEC) and for the EMERALD
-  Network. Accepted `year` is `"2016"` .
+- `gisco_id_api_country()`: Returns the ID and, optionally, geometry for
+  countries at specified longitude and latitude coordinates. Accepted
+  values for `year` are `"2024"`, `"2020"`, `"2016"`, `"2013"`,
+  `"2010"`, `"2006"` .
 
-- `gisco_id_api_census_grid()`: Returns the id and - optionally -
-  geometry for census grid cells at specified longitude and latitude
-  (x,y). Accepted `year` is `"2021"` .
+- `gisco_id_api_river_basin()`: Returns the ID and, optionally, geometry
+  for river basins at specified longitude and latitude coordinates,
+  based on the Water Framework Directive (WFD) reference spatial
+  datasets. Accepted values for `year` are `"2024"`, `"2023"`, `"2022"`,
+  `"2021"`, `"2020"`, `"2019"` .
+
+- `gisco_id_api_biogeo_region()`: Returns the ID and, optionally,
+  geometry for biogeo regions at specified longitude and latitude
+  coordinates. The biogeographical regions dataset contains the official
+  delineations used in the Habitats Directive (92/43/EEC) and for the
+  EMERALD Network. Accepted values for `year` is `"2016"` .
+
+- `gisco_id_api_census_grid()`: Returns the ID and, optionally, geometry
+  for census grid cells at specified longitude and latitude coordinates.
+  Accepted values for `year` is `"2021"` .
 
 ## See also
 

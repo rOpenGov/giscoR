@@ -4,22 +4,22 @@ The GISCO statistical unit dataset represents the NUTS (nomenclature of
 territorial units for statistics) and statistical regions by means of
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
-help lines to better visualise multipart polygonal regions.
+help lines to better visualize multipart polygonal regions.
 
 The NUTS are a hierarchical system divided into 3 levels:
 
-- NUTS 1: major socio-economic regions
+- NUTS 1: major socio-economic regions.
 
-- NUTS 2: basic regions for the application of regional policies
+- NUTS 2: basic regions for the application of regional policies.
 
 - NUTS 3: small regions for specific diagnoses.
 
 Also, there is a NUTS 0 level, which usually corresponds to the national
 boundaries.
 
-**Please note that** this function gets data from the aggregated GISCO
-NUTS file, that contains data of all the countries at the requested NUTS
-level(s). If you prefer to download individual NUTS files, please use
+This function gets data from the aggregated GISCO NUTS file, which
+contains data for all countries at the requested NUTS level or levels.
+To download individual NUTS files, use
 [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md).
 
 ## Usage
@@ -52,13 +52,14 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. One of `"2024"`,
-  `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`, `"2003"` .
+  A character string or numeric value with the release year of the file.
+  One of `"2024"`, `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`,
+  `"2003"` .
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
-  code](https://epsg.io/). One of:
+  A character string or numeric value with the map projection as a
+  4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -68,28 +69,29 @@ Copyright:
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  A logical value indicating whether to cache results. Default is
+  `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  A character string or numeric value with the geospatial data
+  resolution. One of:
 
   - `"60"`: 1:60 million.
 
@@ -103,8 +105,8 @@ Copyright:
 
 - spatialtype:
 
-  character string. Type of geometry to be returned. Options available
-  are:
+  A character string with the type of geometry to return. Options
+  available are:
 
   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
@@ -112,29 +114,29 @@ Copyright:
 
   - `"BN"`: Boundaries - `LINESTRING` object.
 
-  **Note that** arguments `country`, `nuts_level` and `nuts_id` are only
-  applied when `spatialtype` is `"RG"` or `"LB"`.
+    Arguments `country`, `nuts_level` and `nuts_id` are only applied
+    when `spatialtype` is `"RG"` or `"LB"`.
 
 - country:
 
-  character vector of country codes. It could be either a vector of
+  A character vector of country codes. It can be either a vector of
   country names, a vector of ISO3 country codes or a vector of Eurostat
   country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - nuts_id:
 
-  Optional. A character vector of NUTS IDs.
+  An optional character vector of NUTS IDs.
 
 - nuts_level:
 
-  character string. NUTS level. One of `0`, `1`, `2`, `3` or `all` for
-  all levels.
+  A character string with the NUTS level. One of `0`, `1`, `2`, `3` or
+  `all` for all levels.
 
 - ext:
 
-  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
-  `"gpkg"`, `"geojson"` .
+  A character value with the extension of the file (default `"gpkg"`).
+  One of `"shp"`, `"gpkg"`, `"geojson"` .
 
 ## Value
 
@@ -161,7 +163,7 @@ An introduction to the NUTS classification is available here:
 
 ## Note
 
-Please check the download and usage provisions on
+Check the download and usage provisions in
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md).
 
 ## See also
@@ -213,7 +215,6 @@ ggplot(germany_nuts3) +
     subtitle = "Germany",
     caption = gisco_attributions()
   )
-
 
 
 # Select specific regions

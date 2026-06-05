@@ -1,18 +1,18 @@
 # Package index
 
-## GISCO Geodata
+## GISCO geodata
 
-Download datasets from the [GISCO Geodata
+Download geospatial datasets from the [GISCO geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco/geodata). These
 functions return [sf](https://r-spatial.github.io/sf/reference/sf.html)
 objects.
 
 ### Administrative units
 
-On using administrative data for statistical purposes, administrative
-units are the units for which administrative data are recorded. These
-units may or may not be the same as those required for the statistical
-purposes (referred to as statistical units). See [copyright
+When administrative data are used for statistical purposes,
+administrative units are the units for which those data are recorded.
+These units may or may not match the statistical units required for
+analysis. See [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md)
@@ -42,13 +42,15 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 ### Grids
 
 These datasets contain grid cells covering the land territory of the EU,
-in various resolutions from 1 km to 100 km. Base statistics such as
+at various resolutions from 1 km to 100 km. Base statistics such as
 population figures are provided for these cells.
 
 - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_grid.md)
   : Grid dataset
 
 ### Transport networks
+
+Download transport network data such as airports and ports.
 
 - [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
   : Airports dataset
@@ -57,14 +59,17 @@ population figures are provided for these cells.
 
 ### Basic services
 
+Download basic service locations such as education and healthcare
+services.
+
 - [`gisco_get_education()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_education.md)
   : Education services in Europe
 - [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_healthcare.md)
   : Healthcare services in Europe
 
-### Additional helpers
+### Additional downloads
 
-Additional functions for downloading GISCO API datasets.
+Download individual unit datasets and other GISCO resources.
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
   : GISCO API bulk download
@@ -73,9 +78,9 @@ Additional functions for downloading GISCO API datasets.
   [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
   : GISCO API single download
 
-### giscoR database management
+### giscoR database
 
-Get the current database in use by the package and the corresponding
+Get the cached GISCO database used by the package and its corresponding
 metadata.
 
 - [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
@@ -90,14 +95,14 @@ metadata.
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
   : Get metadata
 
-### Misc
+### Miscellaneous
 
-Other functions
+Helpers for attribution and other package utilities.
 
 - [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md)
   : Attribution for administrative and statistical GISCO data
 
-## GISCO Tools
+## GISCO API tools
 
 Query additional [APIs and
 tools](https://ec.europa.eu/eurostat/web/gisco/tools) provided by GISCO.
@@ -124,21 +129,24 @@ tools](https://ec.europa.eu/eurostat/web/gisco/tools) provided by GISCO.
 
 ## Cache management
 
+Configure, inspect and clear the local GISCO cache.
+
 - [`gisco_clear_cache()`](https://ropengov.github.io/giscoR/dev/reference/gisco_clear_cache.md)
   :
 
   Clear your [giscoR](https://CRAN.R-project.org/package=giscoR) cache
-  dir
+  directory
 
 - [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md)
   [`gisco_detect_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md)
   :
 
-  Set your [giscoR](https://CRAN.R-project.org/package=giscoR) cache dir
+  Set your [giscoR](https://CRAN.R-project.org/package=giscoR) cache
+  directory
 
 ## Datasets
 
-Datasets included with
+Datasets included in
 [giscoR](https://CRAN.R-project.org/package=giscoR).
 
 - [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md)
@@ -169,11 +177,11 @@ Datasets included with
 
 - [`giscoR`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
-  : giscoR: Download Map Data from GISCO API - Eurostat
+  : giscoR: Download Geospatial Data from the GISCO API
 
 ## Deprecated functions
 
-These functions would be removed in the future.
+These functions will be removed in the future.
 
 - [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
   **\[deprecated\]** : Get geospatial units data from GISCO API

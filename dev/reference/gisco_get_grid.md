@@ -27,27 +27,27 @@ There are specific downloading provisions, please see
 
 - resolution:
 
-  Resolution of the grid cells in km. Available values are `"1"`, `"2"`,
-  `"5"`, `"10"`, `"20"`, `"50"`, `"100"`. See **Details**.
+  The grid cell resolution in km. Available values are `"1"`, `"2"`,
+  `"5"`, `"10"`, `"20"`, `"50"` and `"100"`. See **Details**.
 
 - spatialtype:
 
-  Select one of `"REGION"` or `"POINT"`.
+  A character string selecting `"REGION"` or `"POINT"`.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 ## Value
 
@@ -75,7 +75,7 @@ if (!is.null(grid)) {
 
   breaks <- c(0, 0.1, 100, 500, 1000, 5000, 10000, Inf)
 
-  # Cut groups
+  # Cut groups.
   grid <- grid |>
     mutate(popdens_cut = cut(popdens,
       breaks = breaks,
@@ -101,7 +101,7 @@ if (!is.null(grid)) {
     ) +
     scale_fill_manual(
       values = pal, na.value = "black",
-      name = "people per sq. kilometer",
+      name = "people per square kilometer",
       labels = cut_labs,
       guide = guide_legend(
         direction = "horizontal",

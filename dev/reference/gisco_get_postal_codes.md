@@ -30,35 +30,35 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. One of `"2024"`,
-  `"2020"` .
+  A character string or numeric value with the release year of the file.
+  One of `"2025"`, `"2024"`, `"2020"` .
 
 - country:
 
-  character vector of country codes. It could be either a vector of
+  A character vector of country codes. It can be either a vector of
   country names, a vector of ISO3 country codes or a vector of Eurostat
   country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - ext:
 
-  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
-  `"gpkg"`, `"geojson"` .
+  A character value with the extension of the file (default `"gpkg"`).
+  One of `"shp"`, `"gpkg"`, `"geojson"` .
 
 ## Value
 
@@ -66,15 +66,13 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Copyright
 
-The dataset is released under the CC-BY-SA-4.0 licence and requires the
-following attribution whenever used:
-
-© European Union - GISCO, 2024, postal code point dataset, Licence
-CC-BY-SA 4.0.
+The dataset is released under the CC-BY-SA-4.0 license and requires the
+following attribution whenever used: © European Union - GISCO, 2024,
+postal code point dataset, License CC-BY-SA 4.0.
 
 ## Note
 
-Please check the download and usage provisions on
+Check the download and usage provisions in
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md).
 
 ## See also
@@ -90,11 +88,12 @@ Other administrative units datasets:
 ## Examples
 
 ``` r
-# Heavy-weight download!
+
+# Large download.
 # \dontrun{
 
 pc_bel <- gisco_get_postal_codes(country = "BE")
-#> ! The file to be downloaded has size 138.6 Mb.
+#> ! The file to download is 196.9 Mb.
 
 if (!is.null(pc_bel)) {
   library(ggplot2)
@@ -107,7 +106,7 @@ if (!is.null(pc_bel)) {
       subtitle = "2024",
       caption = paste("\u00a9 European Union - GISCO, 2024,",
         "postal code point dataset",
-        "Licence CC-BY-SA 4.0",
+        "License CC-BY-SA 4.0",
         sep = "\n"
       )
     )

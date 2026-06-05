@@ -7,8 +7,8 @@ This function is deprecated. Use:
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
   (equivalent to `mode = "df"`).
 
-- [`?gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)functions
-  (equivalent to `mode = "sf"`)
+- [`?gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+  functions (equivalent to `mode = "sf"`)
 
 ## Usage
 
@@ -38,26 +38,26 @@ All the source files are `.geojson` files.
 
 - id_giscoR:
 
-  Select the `unit` type to be downloaded. Accepted values are `"nuts"`,
-  `"countries"` or `"urban_audit"`.
+  A character string with the `unit` type to download. Accepted values
+  are `"nuts"`, `"countries"` or `"urban_audit"`.
 
 - unit:
 
-  Unit ID to be downloaded.
+  A unit ID to download.
 
 - mode:
 
-  Controls the output of the function. Possible values are `"sf"` or
-  `"df"`. See **Value**.
+  A character string controlling the output of the function. Possible
+  values are `"sf"` or `"df"`. See **Value**.
 
 - year:
 
-  character string or number. Release year of the file.
+  A character string or numeric value with the release year of the file.
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
-  code](https://epsg.io/). One of:
+  A character string or numeric value with the map projection as a
+  4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -67,28 +67,29 @@ All the source files are `.geojson` files.
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  A logical value indicating whether to cache results. Default is
+  `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  A character string or numeric value with the geospatial data
+  resolution. One of:
 
   - `"60"`: 1:60 million.
 
@@ -102,8 +103,8 @@ All the source files are `.geojson` files.
 
 - spatialtype:
 
-  character string. Type of geometry to be returned. Options available
-  are:
+  A character string with the type of geometry to return. Options
+  available are:
 
   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
@@ -118,7 +119,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object on
 
 ## Note
 
-Please check the download and usage provisions on
+Check the download and usage provisions in
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md).
 
 ## See also
@@ -135,62 +136,70 @@ functions.
 gisco_get_units("nuts", mode = "df", year = 2016)
 #> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
 #> ℹ Please use `gisco_get_metadata()` instead.
-#> # A tibble: 2,016 × 7
-#>    CNTR_CODE NUTS_ID NAME_LATN         NUTS_NAME MOUNT_TYPE URBN_TYPE COAST_TYPE
-#>    <chr>     <chr>   <chr>             <chr>          <int>     <int>      <int>
-#>  1 UK        UKL2    East Wales        East Wal…          0         0          0
-#>  2 UK        UKL18   Swansea           Swansea            4         1          1
-#>  3 UK        UKL17   Bridgend and Nea… Bridgend…          2         1          1
-#>  4 UK        UKL16   Gwent Valleys     Gwent Va…          2         1          2
-#>  5 UK        UKL15   Central Valleys   Central …          3         1          2
-#>  6 UK        UKL14   South West Wales  South We…          4         3          1
-#>  7 UK        UKL12   Gwynedd           Gwynedd            2         3          1
-#>  8 UK        UKL11   Isle of Anglesey  Isle of …          4         3          1
-#>  9 UK        UKL1    West Wales and T… West Wal…          0         0          0
-#> 10 UK        UKL     WALES             WALES              0         0          0
+#> # A tibble: 2,016 × 9
+#>    CNTR_CODE NUTS_ID NAME_LATN          NUTS_NAME NAME_ASCI NAME_HTML MOUNT_TYPE
+#>    <chr>     <chr>   <chr>              <chr>     <chr>     <chr>          <int>
+#>  1 UK        UKL2    East Wales         East Wal… East Wal… East Wal…          0
+#>  2 UK        UKL18   Swansea            Swansea   Swansea   Swansea            4
+#>  3 UK        UKL17   Bridgend and Neat… Bridgend… Bridgend… Bridgend…          2
+#>  4 UK        UKL16   Gwent Valleys      Gwent Va… Gwent Va… Gwent Va…          2
+#>  5 UK        UKL15   Central Valleys    Central … Central … Central …          3
+#>  6 UK        UKL14   South West Wales   South We… South We… South We…          4
+#>  7 UK        UKL12   Gwynedd            Gwynedd   Gwynedd   Gwynedd            2
+#>  8 UK        UKL11   Isle of Anglesey   Isle of … Isle of … Isle of …          4
+#>  9 UK        UKL1    West Wales and Th… West Wal… West Wal… West Wal…          0
+#> 10 UK        UKL     WALES              WALES     WALES     WALES              0
 #> # ℹ 2,006 more rows
+#> # ℹ 2 more variables: URBN_TYPE <int>, COAST_TYPE <int>
 # ->
 gisco_get_metadata("nuts", year = 2016)
-#> # A tibble: 2,016 × 7
-#>    CNTR_CODE NUTS_ID NAME_LATN         NUTS_NAME MOUNT_TYPE URBN_TYPE COAST_TYPE
-#>    <chr>     <chr>   <chr>             <chr>          <int>     <int>      <int>
-#>  1 UK        UKL2    East Wales        East Wal…          0         0          0
-#>  2 UK        UKL18   Swansea           Swansea            4         1          1
-#>  3 UK        UKL17   Bridgend and Nea… Bridgend…          2         1          1
-#>  4 UK        UKL16   Gwent Valleys     Gwent Va…          2         1          2
-#>  5 UK        UKL15   Central Valleys   Central …          3         1          2
-#>  6 UK        UKL14   South West Wales  South We…          4         3          1
-#>  7 UK        UKL12   Gwynedd           Gwynedd            2         3          1
-#>  8 UK        UKL11   Isle of Anglesey  Isle of …          4         3          1
-#>  9 UK        UKL1    West Wales and T… West Wal…          0         0          0
-#> 10 UK        UKL     WALES             WALES              0         0          0
+#> # A tibble: 2,016 × 9
+#>    CNTR_CODE NUTS_ID NAME_LATN          NUTS_NAME NAME_ASCI NAME_HTML MOUNT_TYPE
+#>    <chr>     <chr>   <chr>              <chr>     <chr>     <chr>          <int>
+#>  1 UK        UKL2    East Wales         East Wal… East Wal… East Wal…          0
+#>  2 UK        UKL18   Swansea            Swansea   Swansea   Swansea            4
+#>  3 UK        UKL17   Bridgend and Neat… Bridgend… Bridgend… Bridgend…          2
+#>  4 UK        UKL16   Gwent Valleys      Gwent Va… Gwent Va… Gwent Va…          2
+#>  5 UK        UKL15   Central Valleys    Central … Central … Central …          3
+#>  6 UK        UKL14   South West Wales   South We… South We… South We…          4
+#>  7 UK        UKL12   Gwynedd            Gwynedd   Gwynedd   Gwynedd            2
+#>  8 UK        UKL11   Isle of Anglesey   Isle of … Isle of … Isle of …          4
+#>  9 UK        UKL1    West Wales and Th… West Wal… West Wal… West Wal…          0
+#> 10 UK        UKL     WALES              WALES     WALES     WALES              0
 #> # ℹ 2,006 more rows
+#> # ℹ 2 more variables: URBN_TYPE <int>, COAST_TYPE <int>
 
 # mode sf for NUTS
 gisco_get_units("nuts", unit = "ES111", mode = "sf", year = 2016)
 #> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
 #> ℹ Please use `gisco_get_unit_nuts()` instead.
-#> Simple feature collection with 1 feature and 9 fields
+#> Simple feature collection with 1 feature and 19 fields
 #> Geometry type: POLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: -9.2475 ymin: 42.56619 xmax: -7.699736 ymax: 43.73816
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 1 × 10
-#>   COAST_TYPE MOUNT_TYPE NAME_LATN CNTR_CODE NUTS_ID NUTS_NAME LEVL_CODE
-#> *      <int>      <int> <chr>     <chr>     <chr>   <chr>         <int>
-#> 1          1          2 A Coruña  ES        ES111   A Coruña          3
-#> # ℹ 3 more variables: URBN_TYPE <int>, geo <chr>, geometry <POLYGON [°]>
+#> # A tibble: 1 × 20
+#>   SVRG_UN      COAST_TYPE EU_STAT MOUNT_TYPE NAME_FREN NAME_LATN ISO3_CODE CAPT 
+#> * <chr>             <int> <chr>        <int> <chr>     <chr>     <chr>     <chr>
+#> 1 UN Member S…          1 T                2 Espagne   A Coruña  ESP       Madr…
+#> # ℹ 12 more variables: CNTR_CODE <chr>, CC_STAT <chr>, NAME_ASCI <chr>,
+#> #   NAME_GERM <chr>, NUTS_ID <chr>, EFTA_STAT <chr>, NUTS_NAME <chr>,
+#> #   LEVL_CODE <int>, URBN_TYPE <int>, NAME_ENGL <chr>, geo <chr>,
+#> #   geometry <POLYGON [°]>
 # ->
 gisco_get_unit_nuts(unit = "ES111", year = 2016)
-#> Simple feature collection with 1 feature and 9 fields
+#> Simple feature collection with 1 feature and 19 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: -9.29841 ymin: 42.4636 xmax: -7.662418 ymax: 43.78793
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 1 × 10
-#>   COAST_TYPE MOUNT_TYPE NAME_LATN CNTR_CODE NUTS_ID NUTS_NAME LEVL_CODE
-#> *      <int>      <int> <chr>     <chr>     <chr>   <chr>         <int>
-#> 1          1          2 A Coruña  ES        ES111   A Coruña          3
-#> # ℹ 3 more variables: URBN_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
+#> # A tibble: 1 × 20
+#>   SVRG_UN      COAST_TYPE EU_STAT MOUNT_TYPE NAME_FREN NAME_LATN ISO3_CODE CAPT 
+#> * <chr>             <int> <chr>        <int> <chr>     <chr>     <chr>     <chr>
+#> 1 UN Member S…          1 T                2 Espagne   A Coruña  ESP       Madr…
+#> # ℹ 12 more variables: CNTR_CODE <chr>, CC_STAT <chr>, NAME_ASCI <chr>,
+#> #   NAME_GERM <chr>, NUTS_ID <chr>, EFTA_STAT <chr>, NUTS_NAME <chr>,
+#> #   LEVL_CODE <int>, URBN_TYPE <int>, NAME_ENGL <chr>, geo <chr>,
+#> #   geometry <MULTIPOLYGON [°]>
 # }
 ```

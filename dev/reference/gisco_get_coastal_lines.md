@@ -1,6 +1,6 @@
 # Coastal lines dataset
 
-Downloads worldwide coastlines.
+Downloads global coastal lines.
 
 ## Usage
 
@@ -28,13 +28,13 @@ Copyright:
 
 - year:
 
-  character string or number. Release year of the file. One of `"2016"`,
-  `"2013"`, `"2010"`, `"2006"` .
+  A character string or numeric value with the release year of the file.
+  One of `"2016"`, `"2013"`, `"2010"`, `"2006"` .
 
 - epsg:
 
-  character string or number. Projection of the map: 4-digit [EPSG
-  code](https://epsg.io/). One of:
+  A character string or numeric value with the map projection as a
+  4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -44,28 +44,29 @@ Copyright:
 
 - cache:
 
-  logical. Whether to do caching. Default is `TRUE`. See **Caching
-  strategies** section in
+  A logical value indicating whether to cache results. Default is
+  `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  A character string or numeric value with the geospatial data
+  resolution. One of:
 
   - `"60"`: 1:60 million.
 
@@ -79,8 +80,8 @@ Copyright:
 
 - ext:
 
-  character. Extension of the file (default `"gpkg"`). One of `"shp"`,
-  `"gpkg"`, `"geojson"` .
+  A character value with the extension of the file (default `"gpkg"`).
+  One of `"shp"`, `"gpkg"`, `"geojson"` .
 
 ## Value
 
@@ -88,7 +89,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Note
 
-Please check the download and usage provisions on
+Check the download and usage provisions in
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md).
 
 ## See also
@@ -114,7 +115,7 @@ library(ggplot2)
 
 ggplot(coast) +
   geom_sf(color = "#1278AB", fill = "#FDFBEA") +
-  # Zoom on Mediterranean Sea
+  # Zoom on the Mediterranean Sea.
   coord_sf(
     xlim = c(-4, 35),
     ylim = c(31, 45)

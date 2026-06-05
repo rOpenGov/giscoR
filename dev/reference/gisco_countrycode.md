@@ -22,7 +22,7 @@ A data frame object with 249 rows and 13 variables:
 
 - `iso2c`:
 
-  ISO 3166-1 alpha-3 code of each country.
+  ISO 3166-1 alpha-2 code of each country.
 
 - `iso.name.en`:
 
@@ -47,11 +47,11 @@ A data frame object with 249 rows and 13 variables:
 
 - `un.regionintermediate.code`:
 
-  Numeric intermediate Region.
+  Numeric intermediate region.
 
 - `un.regionintermediate.name`:
 
-  Intermediate Region name UN (M49).
+  Intermediate region name UN (M49).
 
 - `un.regionsub.code`:
 
@@ -59,7 +59,7 @@ A data frame object with 249 rows and 13 variables:
 
 - `un.regionsub.name`:
 
-  Sub-Region name UN (M49).
+  Sub-region name UN (M49).
 
 - `eu`:
 
@@ -73,15 +73,15 @@ A data frame object with 249 rows and 13 variables:
 ## World Regions
 
 Regions are defined as per the geographic regions defined by the UN (see
-<https://unstats.un.org/unsd/methodology/m49/>. Under this scheme Cyprus
-is assigned to Asia.
+<https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
+Cyprus is assigned to Asia.
 
 ## See also
 
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
 [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/man/codelist.html).
 
-See also the [Unicode Common Locale Data
+See also [Unicode Common Locale Data
 Repository](https://cldr.unicode.org/translation/displaynames/countryregion-territory-names).
 
 Other datasets:

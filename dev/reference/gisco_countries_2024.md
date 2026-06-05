@@ -1,13 +1,13 @@
 # Countries 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
-This object contains the administrative boundaries at country level of
-the world.
+This object contains world administrative boundaries at the country
+level.
 
 ## Format
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 `MULTIPOLYGON` geometries, resolution: 1:20 million and
-[EPSG:4326](https://epsg.io/4326). with 263 rows and 12 variables:
+[EPSG:4326](https://epsg.io/4326). It has 263 rows and 12 variables:
 
 - `CNTR_ID`:
 
@@ -15,7 +15,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `CNTR_NAME`:
 
-  Official country name on local language.
+  Official country name in local language.
 
 - `NAME_ENGL`:
 
@@ -35,7 +35,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `CAPT`:
 
-  Capitol city.
+  Capital city.
 
 - `EU_STAT`:
 
@@ -55,7 +55,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `geometry`:
 
-  geometry field.
+  Geometry field.
 
 ## Source
 
@@ -75,6 +75,7 @@ Other datasets:
 ## Examples
 
 ``` r
+
 data("gisco_countries_2024")
 head(gisco_countries_2024)
 #> Simple feature collection with 6 features and 11 fields

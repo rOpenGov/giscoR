@@ -3,8 +3,8 @@
 Get the legal text to be used for administrative and statistical data
 downloaded from GISCO, see section **Copyright information**.
 
-For other datasets you may abide by the [Eurostat's general copyright
-notice and licence
+For other datasets you may follow the [Eurostat general copyright notice
+and license
 policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice).
 
 ## Usage
@@ -17,14 +17,14 @@ gisco_attributions(lang = "en", copyright = FALSE)
 
 - lang:
 
-  character. Language (two-letter ISO code). See
+  A character value with the language (two-letter ISO code). See
   [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/man/codelist.html)
   and **Details**.
 
 - copyright:
 
-  logical `TRUE/FALSE`. Whether to display the copyright notice or not
-  on the console.
+  A logical value indicating whether to display the copyright notice on
+  the console.
 
 ## Value
 
@@ -79,7 +79,7 @@ statistical data provided by the following functions:
 
 - [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md)
 
-### Copyright Notice
+### Copyright notice
 
 When data downloaded from GISCO is used in any printed or electronic
 publication, in addition to any other provisions applicable to the whole
@@ -98,7 +98,7 @@ translation of the copyright notice in the language of the publication
 shall be used.
 
 If you intend to use the data commercially, please contact
-EuroGeographics for information regarding their licence agreements.
+EuroGeographics for information about their license agreements.
 
 ## Examples
 
@@ -107,7 +107,7 @@ gisco_attributions()
 #> [1] "© EuroGeographics for the administrative boundaries"
 
 gisco_attributions(lang = "es", copyright = TRUE)
-#> ℹ COPYRIGHT NOTICE
+#> ℹ Copyright notice
 #> 
 #> When data downloaded from GISCO
 #> is used in any printed or electronic publication,
@@ -128,15 +128,15 @@ gisco_attributions(lang = "es", copyright = TRUE)
 #> 
 #> If you intend to use the data commercially, please
 #> contact EuroGeographics for information regarding
-#> their licence agreements.
+#> their license agreements.
 #> [1] "© Eurogeographics para los límites administrativos"
 
 gisco_attributions(lang = "XXX")
-#> ! Language xxx not supported. Switching to English.
-#> ℹ Consider contributing: <https://github.com/rOpenGov/giscoR/issues>
+#> ! Language xxx is not supported. Switching to English.
+#> ℹ Consider contributing a translation: <https://github.com/rOpenGov/giscoR/issues>.
 #> [1] "© EuroGeographics for the administrative boundaries"
 
-# Get list of codes from countrycodes
+# Get the list of codes from **countrycode**.
 library(dplyr)
 #> 
 #> Attaching package: ‘dplyr’

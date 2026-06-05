@@ -14,7 +14,7 @@ GISCO API `datasets.json`.
 ## Details
 
 This database is used to redirect the corresponding functions to the
-right API endpoints.
+correct API endpoints.
 
 This version of the database is used if there is a problem during
 update. Please use
@@ -29,7 +29,7 @@ Other datasets:
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
 
-Other database utils:
+Other database utilities:
 [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md),
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
 

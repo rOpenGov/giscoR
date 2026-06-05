@@ -2,7 +2,7 @@
 
 Download zipped data from GISCO to the
 [`cache_dir`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md)
-and extract the relevant ones.
+and extract the relevant files.
 
 ## Usage
 
@@ -29,8 +29,8 @@ gisco_bulk_download(
 
 - id:
 
-  character string or number. Type of dataset to be downloaded, see
-  **Details**. Values supported are:
+  A character string or numeric value with the dataset type to download,
+  see **Details**. Values supported are:
 
   - `"countries"`
 
@@ -46,30 +46,33 @@ gisco_bulk_download(
 
   - `"postal_codes"`
 
-  This argument replaces the previous (deprecated) argument `id_giscoR`.
+    This argument replaces the previous (deprecated) argument
+    `id_giscoR`.
 
 - year:
 
-  character string or number. Release year of the file, see **Details**.
+  A character string or numeric value with the release year of the file,
+  see **Details**.
 
 - cache_dir:
 
-  character string. A path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  logical. Should the cached file be refreshed? Default is `FALSE`. When
-  set to `TRUE` it forces a new download.
+  A logical value indicating whether to refresh the cached file. Default
+  is `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
-  logical. If `TRUE` displays informational messages.
+  A logical value. If `TRUE` displays informational messages.
 
 - resolution:
 
-  character string or number. Resolution of the geospatial data. One of:
+  A character string or numeric value with the geospatial data
+  resolution. One of:
 
   - `"60"`: 1:60 million.
 
@@ -83,15 +86,15 @@ gisco_bulk_download(
 
 - ext:
 
-  Extension of the file(s) to be downloaded. Formats available are
-  `"shp"`, `"geojson"`, `"svg"`, `"json"`, `"gdb"`. See **Details**.
+  The extension of the file or files to download. Available formats are
+  `"shp"`, `"geojson"`, `"svg"`, `"json"` and `"gdb"`. See **Details**.
 
 - recursive:
 
-  **\[deprecated\]** `recursive` is no longer supported; this function
-  will never perform recursive extraction of child `.zip` files. This is
-  the case of "`shp.zip` inside the top-level `.zip`, that won't be
-  unzipped.
+  **\[deprecated\]** `recursive` is no longer supported, and this
+  function will never perform recursive extraction of child `.zip`
+  files. This is the case for "`shp.zip` inside the top-level `.zip`,
+  which will not be unzipped.
 
 - ...:
 
@@ -101,8 +104,8 @@ gisco_bulk_download(
 
 ## Value
 
-A (invisible) character vector with the full path of the files
-extracted. See **Examples**.
+An invisible character vector with the full path of the files extracted.
+See **Examples**.
 
 ## Details
 
@@ -128,14 +131,14 @@ See years available in the corresponding functions:
 
 The usual extensions used across
 [giscoR](https://CRAN.R-project.org/package=giscoR) are `"gpkg"` and
-`"shp"`, however other formats are already available on GISCO. Note that
-after performing a bulk download you may need to adjust the default
-`"ext"` value in the corresponding function to connect it with the
-downloaded files (see **Examples**).
+`"shp"`, but other formats are already available on GISCO. After a bulk
+download, you may need to adjust the default `"ext"` value in the
+corresponding function to connect it with the downloaded files (see
+**Examples**).
 
 ## See also
 
-Additional utils for downloading datasets:
+Additional utilities for downloading datasets:
 [`gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
 
 ## Examples
@@ -148,26 +151,26 @@ dest_files <- gisco_bulk_download(
   year = 2024, ext = "geojson",
   cache_dir = tmp
 )
-# Read one
+# Read one file.
 library(sf)
 #> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
 read_sf(dest_files[1]) |> head()
-#> Simple feature collection with 6 features and 11 fields
+#> Simple feature collection with 6 features and 13 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: 2110342 ymin: -3415366 xmax: 13761830 ymax: 2744026
 #> Projected CRS: ETRS89-extended / LAEA Europe
-#> # A tibble: 6 × 12
-#>   CNTR_ID CNTR_NAME          NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT  EU_STAT
-#>   <chr>   <chr>              <chr>     <chr>     <chr>     <chr>   <chr> <chr>  
-#> 1 CC      Cocos Keeling Isl… Cocos (K… Îles des… CCK       AU Ter… West… F      
-#> 2 CD      République Démocr… Democrat… Républiq… COD       UN Mem… Kins… F      
-#> 3 CF      République Centra… Central … Républiq… CAF       UN Mem… Bang… F      
-#> 4 CG      Congo-Kongo-Kongó  Congo     Congo     COG       UN Mem… Braz… F      
-#> 5 CH      Schweiz-Suisse-Sv… Switzerl… Suisse    CHE       UN Mem… Bern  F      
-#> 6 CI      Côte D’Ivoire      Côte D’I… Côte d’I… CIV       UN Mem… Yamo… F      
-#> # ℹ 4 more variables: EFTA_STAT <chr>, CC_STAT <chr>, NAME_GERM <chr>,
-#> #   geometry <MULTIPOLYGON [m]>
+#> # A tibble: 6 × 14
+#>   CNTR_ID COUNTRY_URI CNTR_NAME      NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT 
+#>   <chr>   <chr>       <chr>          <chr>     <chr>     <chr>     <chr>   <chr>
+#> 1 CC      CCK         Cocos Keeling… Cocos (K… Îles des… CCK       AU Ter… West…
+#> 2 CD      COD         République Dé… Democrat… Républiq… COD       UN Mem… Kins…
+#> 3 CF      CAF         République Ce… Central … Républiq… CAF       UN Mem… Bang…
+#> 4 CG      COG         Congo-Kongo-K… Congo     Congo     COG       UN Mem… Braz…
+#> 5 CH      CHE         Schweiz-Suiss… Switzerl… Suisse    CHE       UN Mem… Bern 
+#> 6 CI      CIV         Côte D’Ivoire  Côte D’I… Côte d’I… CIV       UN Mem… Yamo…
+#> # ℹ 6 more variables: STAT_CODE <chr>, EU_STAT <chr>, EFTA_STAT <chr>,
+#> #   CC_STAT <chr>, NAME_GERM <chr>, geometry <MULTIPOLYGON [m]>
 
 # Now we can connect the function with the downloaded data like:
 
@@ -176,11 +179,11 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache dir is /tmp/RtmpnfXf0S/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpnfXf0S/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/Rtmpf19eiy/testexample/countries.
+#> ✔ File already cached: /tmp/Rtmpf19eiy/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
-# Message shows that file is already cached ;)
+# The message shows that the file is already cached.
 # }
-# Clean
+# Clean up.
 unlink(tmp, force = TRUE)
 ```

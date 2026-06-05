@@ -7,7 +7,7 @@ Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 `MULTIPOLYGON` geometries, resolution: 1:20 million and
-[EPSG:4326](https://epsg.io/4326). with 1798 rows and 10 variables:
+[EPSG:4326](https://epsg.io/4326). It has 1798 rows and 10 variables:
 
 - `NUTS_ID`:
 
@@ -19,7 +19,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `CNTR_CODE`:
 
-  Eurostat Country code.
+  Eurostat country code.
 
 - `NAME_LATN`:
 
@@ -31,15 +31,15 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `MOUNT_TYPE`:
 
-  Mount Type, see **Details**.
+  Mountain type, see **Details**.
 
 - `URBN_TYPE`:
 
-  Urban Type, see **Details**.
+  Urban type, see **Details**.
 
 - `COAST_TYPE`:
 
-  Coast Type, see **Details**.
+  Coastal type, see **Details**.
 
 - `geo`:
 
@@ -48,7 +48,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `geometry`:
 
-  geometry field.
+  Geometry field.
 
 ## Source
 
@@ -87,7 +87,7 @@ file.
 
 - `1`: Coastal (on coast).
 
-- `2`: Coastal (less than 50% of population living within 50 km. of the
+- `2`: Coastal (less than 50 % of population living within 50 km of the
   coastline).
 
 - `3`: Non-coastal region.
