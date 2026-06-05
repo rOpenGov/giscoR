@@ -25,3 +25,21 @@ test_that("GISCO ID docs handle unavailable API", {
 
   expect_identical(docs_id_years("nuts"), "are unavailable")
 })
+
+test_that("GISCO ID docs use singular wording for one available year", {
+  local_mocked_bindings(
+    gisco_perform_request = function(...) {
+      structure(list(), class = "mock_response")
+    }
+  )
+  local_mocked_bindings(
+    .package = "httr2",
+    resp_body_json = function(resp, simplifyVector = FALSE) {
+      expect_s3_class(resp, "mock_response")
+      expect_true(simplifyVector)
+      list(details = "Available year: 2024")
+    }
+  )
+
+  expect_identical(docs_id_years("nuts"), 'is \\code{"2024"}')
+})
