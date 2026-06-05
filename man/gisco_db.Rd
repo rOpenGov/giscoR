@@ -36,7 +36,7 @@ Other datasets:
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_nuts_2024}}
 
-Other database utils:
+Other database utilities:
 \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}},
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}
 }

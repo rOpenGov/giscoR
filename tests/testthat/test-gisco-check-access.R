@@ -3,6 +3,12 @@ test_that("Access", {
   skip_if_gisco_offline()
 
   expect_true(gisco_check_access())
+
+  local_mocked_bindings(is_online_fun = function(...) {
+    FALSE
+  })
+
+  expect_false(gisco_check_access())
 })
 
 test_that("On CRAN", {
@@ -14,6 +20,9 @@ test_that("On CRAN", {
   Sys.setenv("NOT_CRAN" = "false")
   expect_true(on_cran())
   expect_false(gisco_check_access())
+
+  Sys.setenv("NOT_CRAN" = "")
+  expect_identical(!interactive(), on_cran())
 
   # Restore
   Sys.setenv("NOT_CRAN" = env_orig)

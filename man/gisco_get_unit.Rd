@@ -147,7 +147,7 @@ ggplot(valencia_sf) +
 See \code{\link{gisco_id_api}} to download via GISCO ID service
 API.
 
-Additional utils for downloading datasets:
+Additional utilities for downloading datasets:
 \code{\link[=gisco_bulk_download]{gisco_bulk_download()}}
 }
 \concept{extra}

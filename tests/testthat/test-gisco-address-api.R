@@ -75,7 +75,7 @@ test_that("gisco_address_api_bbox online", {
 
   expect_message(
     n <- gisco_address_api_bbox("Namibia"),
-    "No results. Returning"
+    "No results found. Returning"
   )
 
   expect_null(n)

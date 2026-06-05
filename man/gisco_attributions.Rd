@@ -59,7 +59,7 @@ statistical data provided by the following functions:
 \item \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
 \item \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}
 }
-\subsection{Copyright Notice}{
+\subsection{Copyright notice}{
 
 When data downloaded from GISCO is used in any printed or electronic
 publication, in addition to any other provisions applicable to the whole

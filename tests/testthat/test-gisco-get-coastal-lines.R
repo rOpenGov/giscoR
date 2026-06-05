@@ -15,6 +15,43 @@ test_that("Offline", {
   })
 })
 
+test_that("Coastal lines use resolved GISCO files", {
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/COAS_RG_20M_2016_4326.gpkg",
+        name = "COAS_RG_20M_2016_4326.gpkg"
+      )
+    },
+    read_packaged_gisco_dataset = function(...) NULL,
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  ...) {
+      expect_match(url, "COAS_RG_20M_2016_4326[.]gpkg$")
+      expect_identical(name, "COAS_RG_20M_2016_4326.gpkg")
+      expect_false(cache)
+      expect_identical(cache_dir, "cache")
+      expect_identical(subdir, "coastal")
+      expect_true(update_cache)
+      expect_true(verbose)
+      data.frame(id = 1, name = "coast")
+    }
+  )
+
+  coast <- gisco_get_coastal_lines(
+    cache = FALSE,
+    cache_dir = "cache",
+    update_cache = TRUE,
+    verbose = TRUE
+  )
+  expect_identical(coast$id, 1)
+})
+
 
 test_that("Errors", {
   skip_on_cran()

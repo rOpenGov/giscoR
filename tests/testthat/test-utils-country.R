@@ -1,10 +1,25 @@
 test_that("Utils names", {
   skip_on_cran()
 
+  expect_null(convert_country_code_or_null(NULL))
+  expect_identical(convert_country_code_or_null("ES"), "ES")
+
   expect_snapshot(convert_country_code(c("Espagne", "United Kingdom")))
   expect_snapshot(convert_country_code("U"), error = TRUE)
   expect_snapshot(convert_country_code(c("ESP", "POR", "RTA", "USA"), "iso3c"))
   expect_snapshot(convert_country_code(c("ESP", "Alemania")))
+})
+
+test_that("Country column filter works", {
+  data <- data.frame(
+    CNTR_CODE = c("ES", "FR", "PT"),
+    value = 1:3
+  )
+
+  expect_identical(filter_by_country_col(data, NULL), data)
+  expect_identical(filter_by_country_col(data, "ES")$value, 1L)
+  expect_identical(filter_by_country_col(data, c("ES", "PT"))$value, c(1L, 3L))
+  expect_identical(filter_by_country_col(data, "ES", "missing"), data)
 })
 
 test_that("Problematic names", {

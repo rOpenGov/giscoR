@@ -30,18 +30,18 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 # Introduction
 
 *The full site with more examples and vignettes is available at
-<https://ropengov.github.io/giscoR/>*
+<https://ropengov.github.io/giscoR/>.*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed to
 provide a simple interface to the [GISCO
 API](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-GISCO provides geographic data for the European Union, its member countries and
+GISCO provides geographic data for the European Union, EU member states and
 subnational regions. It supplies geospatial files in different formats, focusing
-especially on the EU but also offering worldwide datasets such as country
-polygons, labels, borders and coastlines.
+especially on the EU but also offering global datasets such as country
+boundaries, labels and coastal lines.
 
-GISCO supplies data at multiple resolutions: high-detail datasets for small
+GISCO supplies data at multiple resolutions: high-resolution datasets for small
 areas (01M, 03M) and lighter datasets for larger areas (10M, 20M, 60M).
 Datasets are available in three projections: [EPSG:4326](https://epsg.io/4326),
 [EPSG:3035](https://epsg.io/3035), and [EPSG:3857](https://epsg.io/3857).
@@ -79,11 +79,11 @@ data:
 
 [Eurostat's general copyright notice and license
 policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice) applies.
-Moreover, there are specific rules that apply to some of the following datasets
-available for downloading. The download and use of these data are subject to
-acceptance of these rules. See the [administrative
-units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units) and
-[statistical
+Some datasets have additional download and usage provisions. The download and
+use of these data are subject to acceptance of those provisions. See the
+[administrative
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
+and [statistical
 units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units) for
 more details.
 
@@ -185,7 +185,7 @@ africa_north <- gisco_get_countries(
 # Order plot facets.
 africa_north$NAME_ENGL <- factor(africa_north$NAME_ENGL, levels = cntr)
 
-# Get coastlines.
+# Get coastal lines.
 coast <- gisco_get_coastal_lines(
   resolution = "03",
   epsg = "4326",
@@ -296,4 +296,4 @@ ggplot(nuts2_sf) +
   )
 ```
 
-Happy mapping!
+Use these examples as a starting point for your own maps.

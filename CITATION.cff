@@ -7,14 +7,14 @@ cff-version: 1.2.0
 message: 'To cite package "giscoR" in publications use:'
 type: software
 license: GPL-3.0-only
-title: 'giscoR: Download Map Data from the GISCO API'
-version: 1.1.0
+title: 'giscoR: Download Geospatial Data from the GISCO API'
+version: 1.1.0.9000
 doi: 10.32614/CRAN.package.giscoR
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.giscoR
-abstract: Tools to download global and European map data from Eurostat's GISCO (Geographic
-  Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>.
+abstract: Tools to download global and European geospatial data from Eurostat's GISCO
+  (Geographic Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>.
   The package provides helpers for working with country boundaries, NUTS regions,
   statistical units, transport networks and other geospatial datasets. This package
   is not officially related to or endorsed by Eurostat.
@@ -25,7 +25,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
   type: manual
-  title: 'giscoR: Download Map Data from the GISCO API'
+  title: 'giscoR: Download Geospatial Data from the GISCO API'
   authors:
   - family-names: Hernangómez
     given-names: Diego
@@ -33,10 +33,10 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
   doi: 10.32614/CRAN.package.giscoR
   year: '2026'
-  version: 1.1.0
+  version: 1.1.0.9000
   url: https://ropengov.github.io/giscoR/
-  abstract: Tools to download global and European map data from Eurostats GISCO (Geographic
-    Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>.
+  abstract: Tools to download global and European geospatial data from Eurostats GISCO
+    (Geographic Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>.
     The package provides helpers for working with country boundaries, NUTS regions,
     statistical units, transport networks and other geospatial datasets. This package
     is not officially related to or endorsed by Eurostat.
@@ -178,19 +178,6 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.sf
   version: '>= 1.0.0'
-- type: software
-  title: testthat
-  abstract: 'testthat: Unit Testing for R'
-  notes: Imports
-  url: https://testthat.r-lib.org
-  repository: https://CRAN.R-project.org/package=testthat
-  authors:
-  - family-names: Wickham
-    given-names: Hadley
-    email: hadley@posit.co
-  year: '2026'
-  doi: 10.32614/CRAN.package.testthat
-  version: '>= 3.0.0'
 - type: software
   title: tibble
   abstract: 'tibble: Simple Data Frames'
@@ -348,6 +335,19 @@ references:
     orcid: https://orcid.org/0000-0003-4474-2498
   year: '2026'
   doi: 10.32614/CRAN.package.quarto
+- type: software
+  title: testthat
+  abstract: 'testthat: Unit Testing for R'
+  notes: Suggests
+  url: https://testthat.r-lib.org
+  repository: https://CRAN.R-project.org/package=testthat
+  authors:
+  - family-names: Wickham
+    given-names: Hadley
+    email: hadley@posit.co
+  year: '2026'
+  doi: 10.32614/CRAN.package.testthat
+  version: '>= 3.0.0'
 - type: software
   title: withr
   abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'

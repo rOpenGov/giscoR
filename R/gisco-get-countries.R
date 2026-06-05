@@ -1,5 +1,6 @@
 #' Countries dataset
 #'
+#' @aliases gisco_get
 #' @description
 #' This dataset contains world administrative boundaries at the country level.
 #' It provides 2 feature classes (regions and boundaries) for each scale
@@ -8,23 +9,8 @@
 #' This function gets data from the aggregated GISCO country file. To download
 #' individual country files, use [gisco_get_unit_country()].
 #'
-#' @aliases gisco_get
 #' @family admin
 #' @encoding UTF-8
-#' @return A [`sf`][sf::st_sf] object.
-#'
-#' @seealso
-#' [gisco_countrycode], [gisco_countries_2024], [gisco_get_metadata()],
-#' [countrycode::countrycode()].
-#'
-#' See [gisco_bulk_download()] to perform a bulk download of datasets.
-#'
-#' See [gisco_get_unit_country()] to download single files.
-#'
-#' See [gisco_id_api_country()] to download via GISCO ID service API.
-#'
-#' @export
-#'
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
@@ -46,8 +32,8 @@
 #' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #' - `"LB"`: Labels - `POINT` object.
 #' - `"BN"`: Boundaries - `LINESTRING` object.
-#' - `"COASTL"`: coastlines - `LINESTRING` object.
-#' - `"INLAND"`: inland boundaries - `LINESTRING` object.
+#' - `"COASTL"`: Coastal lines - `LINESTRING` object.
+#' - `"INLAND"`: Inland boundaries - `LINESTRING` object.
 #'
 #'   Arguments `country` and `region` are only applied when `spatialtype` is
 #'   `"RG"` or `"LB"`.
@@ -73,23 +59,33 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 #'   "ext",TRUE)}.
 #'
-#' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/>.
-#'
-#' Copyright:
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+#' @return A [`sf`][sf::st_sf] object.
 #'
 #' @details
 #'
 #' # World Regions
 #'
 #' Regions are defined as per the geographic regions defined by the
-#' UN (see <https://unstats.un.org/unsd/methodology/m49/>.
+#' UN (see <https://unstats.un.org/unsd/methodology/m49/>).
 #' Under this scheme Cyprus is assigned to Asia.
 #'
 #' # Note
 #' Check the download and usage provisions in [gisco_attributions()].
-
+#' @source
+#' <https://gisco-services.ec.europa.eu/distribution/v2/>.
+#'
+#' Copyright:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+#'
+#' @seealso
+#' [gisco_countrycode], [gisco_countries_2024], [gisco_get_metadata()],
+#' [countrycode::countrycode()].
+#'
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
+#'
+#' See [gisco_get_unit_country()] to download single files.
+#'
+#' See [gisco_id_api_country()] to download via GISCO ID service API.
 #'
 #' @examples
 #' cntries <- gisco_get_countries()
@@ -104,6 +100,8 @@
 #' ggplot(africa) +
 #'   geom_sf(fill = "#078930", col = "white") +
 #'   theme_minimal()
+#' @export
+#'
 gisco_get_countries <- function(
   year = 2024,
   epsg = 4326,
@@ -120,7 +118,7 @@ gisco_get_countries <- function(
   valid_ext <- db_values("countries", "ext", formatted = FALSE)
   ext <- match_arg_pretty(ext, valid_ext)
 
-  api_entry <- get_url_db(
+  file <- resolve_gisco_file(
     id = "countries",
     year = year,
     epsg = epsg,
@@ -130,77 +128,38 @@ gisco_get_countries <- function(
     fn = "gisco_get_countries"
   )
 
-  filename <- basename(api_entry)
-
-  # Check if data is already available
-  checkdata <- grepl("CNTR_RG_20M_2024_4326.gpkg", filename)
-  if (all(isFALSE(update_cache), checkdata)) {
-    data_sf <- giscoR::gisco_countries_2024
-
-    make_msg(
-      "info",
-      verbose,
-      "Loaded from {.help giscoR::gisco_countries_2024} dataset.",
-      "Use {.arg update_cache = TRUE} to reload from file."
-    )
-    data_sf <- filter_country_region(data_sf, country, region)
-
-    return(data_sf)
-  }
-
-  # Read uncached data from the URL.
-  if (all(isFALSE(cache), ext != "shp")) {
-    msg <- paste0("{.url ", api_entry, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf <- read_geo_file_sf(api_entry)
-    data_sf <- filter_country_region(data_sf, country, region)
-    return(data_sf)
-  }
-
-  # Cache
-  file_local <- download_url(
-    api_entry,
-    filename,
-    cache_dir,
-    "countries",
-    update_cache,
-    verbose
+  data_sf <- read_packaged_gisco_dataset(
+    filename = file$name,
+    pattern = "CNTR_RG_20M_2024_4326.gpkg",
+    data = giscoR::gisco_countries_2024,
+    data_name = "gisco_countries_2024",
+    update_cache = update_cache,
+    verbose = verbose,
+    post_process = function(data_sf) {
+      filter_country_region(data_sf, country, region)
+    }
   )
-  if (is.null(file_local)) {
-    return(NULL)
+  if (!is.null(data_sf)) {
+    return(data_sf)
   }
-
-  # Use an sf query when filtering can reduce read time.
 
   cnt_region <- get_countrycodes_region(country, region)
-  filter_col <- get_col_name(file_local)
-  q <- NULL
-
-  if (all(!is.null(cnt_region), !is.null(filter_col))) {
-    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
-    cnt_region <- sort(cnt_region)
-
-    # Get the layer name.
-    layer <- get_sf_layer_name(file_local)
-
-    # Construct the query.
-    q <- paste0(
-      "SELECT * from \"",
-      layer,
-      "\" WHERE ",
-      filter_col[1],
-      " IN (",
-      paste0("'", cnt_region, "'", collapse = ", "),
-      ")"
-    )
-
-    msg <- paste0("{.code ", q, "}")
-    make_msg("info", verbose, "Using query:\n   ", msg)
-  }
-  data_sf <- read_geo_file_sf(file_local, q)
-
-  data_sf
+  cnt_region <- sort(cnt_region)
+  read_gisco_dataset(
+    url = file$url,
+    name = file$name,
+    cache = cache,
+    cache_dir = cache_dir,
+    subdir = "countries",
+    update_cache = update_cache,
+    verbose = verbose,
+    filters = function(file_local) {
+      make_sf_filter(file_local, cnt_region)
+    },
+    post_process = function(data_sf) {
+      filter_country_region(data_sf, country, region)
+    }
+  )
 }
 
 
@@ -222,7 +181,7 @@ filter_country_region <- function(data_sf, country = NULL, region = NULL) {
     return(data_sf)
   }
 
-  data_sf <- data_sf[data_sf$CNTR_ID %in% fil_codes, ]
+  data_sf <- filter_by_country_col(data_sf, fil_codes, "CNTR_ID")
   data_sf <- data_sf[order(data_sf$CNTR_ID), ]
 
   data_sf

@@ -12,7 +12,7 @@ test_that("Test offline", {
       update_cache = TRUE,
       verbose = TRUE
     ),
-    "Offline"
+    "No internet"
   )
   expect_null(n)
   local_mocked_bindings(is_online_fun = function(...) {

@@ -1,11 +1,10 @@
-#' Create messages based on type
+#' Create messages by type
 #'
 #' @param type A character string with the message type. Accepted values are
 #'   `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #'
-#' @param verbose A logical value indicating whether to print the message or
-#'   not.
-#' @param ... Character strings to combine into the message.
+#' @param verbose A logical value indicating whether to print the message.
+#' @param ... Character strings to be combined into the message.
 #'
 #' @return
 #' Invisibly returns `NULL`. Prints messages to the console if `verbose` is
@@ -19,21 +18,15 @@ make_msg <- function(type = "generic", verbose, ...) {
   dots <- list(...)
   msg <- paste(dots, collapse = " ")
 
-  if (type == "generic") {
-    cli::cli_alert(msg)
-  }
-  if (type == "success") {
-    cli::cli_alert_success(msg)
-  }
-  if (type == "warning") {
-    cli::cli_alert_warning(msg)
-  }
-  if (type == "danger") {
-    cli::cli_alert_danger(msg)
-  }
-  if (type == "info") {
-    cli::cli_alert_info(msg)
-  }
+  alert <- switch(type,
+    generic = cli::cli_alert,
+    success = cli::cli_alert_success,
+    warning = cli::cli_alert_warning,
+    danger = cli::cli_alert_danger,
+    info = cli::cli_alert_info,
+    cli::cli_alert
+  )
+  alert(msg)
   invisible()
 }
 
@@ -68,60 +61,67 @@ match_arg_pretty <- function(arg, choices) {
     return(arg[1])
   }
 
-  lmatch <- match(arg, choices)
-  # Build the hint.
-  aproxmatch <- pmatch(arg, choices)[1]
-
-  if (length(arg) > 1 || is.na(lmatch)) {
-    # Create the error message.
-    if (length(choices) == 1) {
-      msg <- paste0("{.str ", choices, "}")
-    } else {
-      l_choices <- length(choices)
-      msg <- paste0("{.str ", choices[-l_choices], "}", collapse = ", ")
-      msg <- paste0(msg, " or {.str ", choices[l_choices], "}")
-      # Prefix the message with "one of".
-      msg <- paste0("one of ", msg)
-    }
-
-    msg <- paste0(msg, ", not ")
-    bad_arg <- paste0("{.str ", arg, "}", collapse = " or ")
-    msg <- paste0(msg, bad_arg, ".")
-
-    # Check for a partial match.
-    reg_msg <- NULL
-    if (!is.na(aproxmatch)) {
-      aprox <- choices[aproxmatch]
-      aprox_val <- paste0("{.str ", aprox, "}", collapse = " or ")
-      reg_msg <- paste0("Did you mean ", aprox_val, "?")
-    }
-
-    cli::cli_abort(
-      c(paste0("{.arg {arg_name}} should be ", msg), "i" = reg_msg),
-      call = NULL
-    )
+  if (length(arg) == 1 && arg %in% choices) {
+    return(arg)
   }
 
-  choices[lmatch]
+  msg <- paste0(
+    "{.arg {arg_name}} must be {.or {.str {choices}}}, not ",
+    "{.or {.str {arg}}}."
+  )
+
+  hint <- NULL
+  if (length(arg) == 1) {
+    partial_match <- pmatch(arg, choices)[1]
+    if (!is.na(partial_match)) {
+      hint <- paste0("Did you mean {.str ", choices[partial_match], "}?")
+    }
+  }
+
+  cli::cli_abort(c(msg, i = hint), call = NULL)
 }
 
 
-#' Row bind data frames or lists with different columns, filling missing
-#' columns with `NA`.
+#' Warn for deprecated cache arguments on always-cached functions
+#'
+#' @param cache Deprecated cache argument.
+#' @param what A character string identifying the deprecated call.
+#'
+#' @return Invisibly returns `NULL`.
+#' @noRd
+warn_deprecated_cache <- function(cache, what) {
+  if (!lifecycle::is_present(cache)) {
+    return(invisible(NULL))
+  }
+
+  lifecycle::deprecate_warn(
+    when = "1.0.0",
+    what = what,
+    details = paste0(
+      "Results are always cached. To avoid persistent cache files, use ",
+      "`cache_dir = tempdir()`."
+    )
+  )
+  invisible(NULL)
+}
+
+
+#' Row-bind data frames filling missing columns with `NA`
 #'
 #' @param a_list A list of data frames or lists to row bind.
 #' @return
-#' A data frame resulting from row binding the input data frames or sf objects.
+#' A data frame resulting from row binding the input data frames or `sf`
+#' objects.
 #'
 #' @noRd
 rbind_fill <- function(a_list) {
-  # Drop nulls.
+  # Drop NULL values.
   is_null <- vapply(a_list, is.null, FUN.VALUE = logical(1))
   a_list <- a_list[!is_null]
   if (length(a_list) == 0) {
     return(NULL)
   }
-  # Get all names.
+  # Collect all column names across data frames.
   nms <- unique(unlist(lapply(a_list, names)))
 
   a_list <- lapply(a_list, function(x) {
@@ -146,4 +146,45 @@ ensure_null <- function(x) {
   }
 
   x_init
+}
+
+#' Format GISCO unit resolution text
+#'
+#' @param resolution A numeric or character resolution value.
+#'
+#' @return A character string used in GISCO file names.
+#' @noRd
+format_unit_resolution <- function(resolution) {
+  sprintf("%02dm", as.numeric(resolution))
+}
+
+#' Format Urban Audit unit resolution text
+#'
+#' @param year A character string or numeric value with the release year.
+#'
+#' @return A character string used in Urban Audit unit file names.
+#' @noRd
+format_urau_unit_resolution <- function(year) {
+  year <- as.numeric(year)
+  if (year < 2014) {
+    return("03M")
+  }
+  if (year == 2014) {
+    return("100K")
+  }
+  "100k"
+}
+
+#' Format GISCO bulk download resolution text
+#'
+#' @param resolution A numeric or character resolution value.
+#'
+#' @return A character string used in GISCO bulk download file names.
+#' @noRd
+format_bulk_resolution <- function(resolution) {
+  if (as.character(resolution) == "100") {
+    return("100k")
+  }
+
+  format_unit_resolution(resolution)
 }

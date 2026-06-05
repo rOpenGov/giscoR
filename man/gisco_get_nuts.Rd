@@ -95,7 +95,7 @@ The GISCO statistical unit dataset represents the NUTS (nomenclature of
 territorial units for statistics) and statistical regions by means of
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
-help lines to better visualise multipart polygonal regions.
+help lines to better visualize multipart polygonal regions.
 
 The NUTS are a hierarchical system divided into 3 levels:
 \itemize{

@@ -1,3 +1,7 @@
+# giscoR (development version)
+
+- Refactor internal helpers, documentation and tests with AI assistance, including clearer CLI messages, more consistent roxygen2 documentation, reused documentation blocks and faster mocked tests for selected download-heavy paths.
+
 # giscoR 1.1.0
 
 - Adapt vignettes to Quarto.

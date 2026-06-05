@@ -35,5 +35,5 @@
     Condition
       Warning:
       `gisco_get_units()` was deprecated in giscoR 1.0.0.
-      i Please use `gisco_get_unit_country()` instead.
+      i Please use `gisco_get_unit_urban_audit()` instead.
 

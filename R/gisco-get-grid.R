@@ -8,25 +8,23 @@
 #' @family grids
 #' @encoding UTF-8
 #' @inheritParams gisco_get_countries
+#' @param resolution The grid cell resolution in km. Available values are
+#'   `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"` and `"100"`. See
+#'   **Details**.
+#' @param spatialtype A character string selecting `"REGION"` or `"POINT"`.
+#'
 #' @inherit gisco_get_countries return
-#' @export
+#' @details
+#' Files are distributed on [`EPSG:3035`](https://epsg.io/3035).
+#'
+#' The file sizes range from 428 KB (`resolution = 100`)
+#' to 1.7 GB (`resolution = 1`).
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 #'
 #' There are specific downloading provisions, please see
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
-#'
-#' @param resolution The grid cell resolution in km. Available values are
-#'   `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"` and `"100"`. See
-#'   **Details**.
-#' @param spatialtype A character string selecting `"REGION"` or `"POINT"`.
-#'
-#' @details
-#' Files are distributed on [`EPSG:3035`](https://epsg.io/3035).
-#'
-#' The file sizes range from 428 KB (`resolution = 100`)
-#' to 1.7 GB (`resolution = 1`).
 #'
 #' @examplesIf gisco_check_access()
 #' grid <- gisco_get_grid(resolution = 20)
@@ -96,6 +94,8 @@
 #'       legend.key.width = unit(1, "lines")
 #'     )
 #' }
+#' @export
+#'
 gisco_get_grid <- function(
   resolution = c(100, 50, 20, 10, 5, 2, 1),
   spatialtype = c("REGION", "POINT"),
@@ -111,23 +111,15 @@ gisco_get_grid <- function(
   translate <- c("surf", "point")
   ftrans <- translate[valid == spatialtype]
   filename <- paste0("grid_", resolution, "km_", ftrans, ".gpkg")
-  api_entry <- "https://gisco-services.ec.europa.eu/grid"
+  api_entry <- paste0(gisco_services_url(), "/grid")
   url <- file.path(api_entry, filename)
 
-  file_local <- download_url(
-    url,
-    basename(url),
-    cache_dir,
-    "grid",
-    update_cache,
-    verbose
+  read_gisco_dataset(
+    url = url,
+    name = basename(url),
+    cache_dir = cache_dir,
+    subdir = "grid",
+    update_cache = update_cache,
+    verbose = verbose
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  data_sf <- read_geo_file_sf(file_local)
-
-  data_sf
 }

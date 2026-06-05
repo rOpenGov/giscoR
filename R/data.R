@@ -35,13 +35,11 @@ NULL
 #'
 #' @docType data
 #' @name gisco_countries_2024
-#' @family datasets
-#' @encoding UTF-8
-#'
-#' @seealso [gisco_get_countries()]
-#'
 #' @description
 #' This object contains world administrative boundaries at the country level.
+#'
+#' @family datasets
+#' @encoding UTF-8
 #'
 #' @format
 #' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
@@ -62,11 +60,6 @@ NULL
 #'   \item{`NAME_GERM`}{Country name in German.}
 #'   \item{`geometry`}{Geometry field.}
 #' }
-#' @examples
-#'
-#' data("gisco_countries_2024")
-#' head(gisco_countries_2024)
-#'
 #' @source
 #'
 #' ```{r, echo=FALSE, results='asis'}
@@ -76,17 +69,19 @@ NULL
 #'       "countries/gpkg/) file."))
 #'
 #' ```
+#' @seealso [gisco_get_countries()]
+#'
+#' @examples
+#'
+#' data("gisco_countries_2024")
+#' head(gisco_countries_2024)
+#'
 NULL
 
 #' Database with different country code schemes and world regions
 #'
 #' @docType data
 #' @name gisco_countrycode
-#' @family datasets
-#' @encoding UTF-8
-#'
-#' @inheritSection gisco_get_countries World Regions
-#'
 #' @description
 #' A [tibble][tibble::tbl_df] containing conversions between different country
 #' code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
@@ -94,18 +89,10 @@ NULL
 #' ([M49 Standard](https://unstats.un.org/unsd/methodology/m49/)). This
 #' database has been extracted from the \CRANpkg{countrycode} package.
 #'
-#' @source [countrycode::codelist] **v1.6.1**.
+#' @family datasets
+#' @encoding UTF-8
 #'
-#' @seealso
-#' [gisco_get_countries()], [countrycode::codelist].
-#'
-#' See also
-#' ```{r, echo=FALSE, results='asis'}
-#' cat(paste0(" [Unicode Common Locale Data Repository]",
-#'       "(https://cldr.unicode.org/translation/displaynames/",
-#'       "countryregion-territory-names)."))
-#'
-#' ```
+#' @inheritSection gisco_get_countries World Regions
 #'
 #' @format
 #' A data frame object with
@@ -121,13 +108,26 @@ NULL
 #'   \item{`continent`}{As provided by the World Bank.}
 #'   \item{`un.region.code`}{Numeric region code UN (M49).}
 #'   \item{`un.region.name`}{Region name UN (M49).}
-#'   \item{`un.regionintermediate.code`}{Numeric intermediate Region.}
-#'   \item{`un.regionintermediate.name`}{Intermediate Region name UN (M49).}
+#'   \item{`un.regionintermediate.code`}{Numeric intermediate region.}
+#'   \item{`un.regionintermediate.name`}{Intermediate region name UN (M49).}
 #'   \item{`un.regionsub.code`}{Numeric sub-region code UN (M49).}
-#'   \item{`un.regionsub.name`}{Sub-Region name UN (M49).}
+#'   \item{`un.regionsub.name`}{Sub-region name UN (M49).}
 #'   \item{`eu`}{Logical indicating if the country belongs to the
-#'    European Union.}
+#'     European Union.}
 #' }
+#'
+#' @source [countrycode::codelist] **v1.6.1**.
+#'
+#' @seealso
+#' [gisco_get_countries()], [countrycode::codelist].
+#'
+#' See also
+#' ```{r, echo=FALSE, results='asis'}
+#' cat(paste0(" [Unicode Common Locale Data Repository]",
+#'       "(https://cldr.unicode.org/translation/displaynames/",
+#'       "countryregion-territory-names)."))
+#'
+#' ```
 #'
 #' @examples
 #' data("gisco_countrycode")
@@ -139,13 +139,11 @@ NULL
 #'
 #' @docType data
 #' @name gisco_coastal_lines
-#' @family datasets
-#' @encoding UTF-8
-#'
-#' @seealso [gisco_get_coastal_lines()]
-#'
 #' @description
 #' This object contains the coastal lines of the world.
+#'
+#' @family datasets
+#' @encoding UTF-8
 #'
 #' @format
 #' A [`sf`][sf::st_sf] object with `POLYGON` geometries, resolution:
@@ -161,6 +159,8 @@ NULL
 #'
 #' ```
 #'
+#' @seealso [gisco_get_coastal_lines()]
+#'
 #' @examples
 #' library(sf)
 #' data("gisco_coastal_lines")
@@ -172,14 +172,12 @@ NULL
 #'
 #' @docType data
 #' @name gisco_nuts_2024
-#' @family datasets
-#' @encoding UTF-8
-#'
-#' @seealso [gisco_get_nuts()]
-#'
 #' @description
 #' This dataset represents the regions for levels 0, 1, 2 and 3 of the
 #' Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
+#'
+#' @family datasets
+#' @encoding UTF-8
 #'
 #' @format
 #' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
@@ -188,27 +186,27 @@ NULL
 #' \describe{
 #'   \item{`NUTS_ID`}{NUTS identifier.}
 #'   \item{`LEVL_CODE`}{NUTS level code `(0,1,2,3)`.}
-#'   \item{`CNTR_CODE`}{Eurostat Country code.}
+#'   \item{`CNTR_CODE`}{Eurostat country code.}
 #'   \item{`NAME_LATN`}{NUTS name on Latin characters.}
 #'   \item{`NUTS_NAME`}{NUTS name on local alphabet.}
-#'   \item{`MOUNT_TYPE`}{Mount Type, see **Details**.}
-#'   \item{`URBN_TYPE`}{Urban Type, see **Details**.}
-#'   \item{`COAST_TYPE`}{Coast Type, see **Details**.}
+#'   \item{`MOUNT_TYPE`}{Mountain type, see **Details**.}
+#'   \item{`URBN_TYPE`}{Urban type, see **Details**.}
+#'   \item{`COAST_TYPE`}{Coastal type, see **Details**.}
 #'   \item{`geo`}{Same as `NUTS_ID`, provided for compatibility with
 #'     \CRANpkg{eurostat}.}
-#'   \item{`geometry`}{geometry field.}
+#'   \item{`geometry`}{Geometry field.}
 #' }
 #'
 #' @details
 #'
 #' `MOUNT_TYPE`: Mountain typology:
 #' - `1`: More than 50 % of the surface is covered by topographic mountain
-#'    areas.
+#'   areas.
 #' - `2`: More than 50 % of the regional population lives in topographic
-#'    mountain areas.
+#'   mountain areas.
 #' - `3`: More than 50 % of the surface is covered by topographic mountain
-#'    areas and where more than 50 % of the regional population lives in these
-#'    mountain areas.
+#'   areas and where more than 50 % of the regional population lives in these
+#'   mountain areas.
 #' - `4`: Non-mountain region / other regions.
 #' - `0`: No classification provided.
 #'
@@ -220,8 +218,8 @@ NULL
 #'
 #' `COAST_TYPE`: Coastal typology:
 #' - `1`: Coastal (on coast).
-#' - `2`: Coastal (less than 50% of population living within 50 km. of the
-#'        coastline).
+#' - `2`: Coastal (less than 50 % of population living within 50 km of the
+#'   coastline).
 #' - `3`: Non-coastal region.
 #' - `0`: No classification provided.
 #'
@@ -234,6 +232,8 @@ NULL
 #'       "nuts/gpkg/) file."))
 #'
 #' ```
+#'
+#' @seealso [gisco_get_nuts()]
 #'
 #' @examples
 #' data("gisco_nuts_2024")

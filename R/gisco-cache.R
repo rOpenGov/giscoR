@@ -1,8 +1,5 @@
-#' Set your \CRANpkg{giscoR} cache dir
+#' Set your \CRANpkg{giscoR} cache directory
 #'
-#' @family cache utilities
-#' @seealso [tools::R_user_dir()]
-#' @encoding UTF-8
 #' @rdname gisco_set_cache_dir
 #'
 #' @description
@@ -10,6 +7,8 @@
 #' loads it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
 #' find your cached path or use [gisco_detect_cache_dir()].
 #'
+#' @family cache utilities
+#' @encoding UTF-8
 #' @inheritParams gisco_get_nuts
 #' @param cache_dir A path to a cache directory. If `NULL`, the function
 #'   stores cached files in a temporary directory (see [base::tempdir()]).
@@ -19,6 +18,10 @@
 #' @param overwrite If `TRUE`, overwrite an existing
 #'   `GISCO_CACHE_DIR` that you already have on your local machine.
 #'
+#' @return
+#' `gisco_set_cache_dir()` returns an (invisible) character with the path to
+#' your `cache_dir`, but it is mainly called for its side effect.
+#'
 #' @details
 #' By default, when no cache `cache_dir` is set, the package uses a folder
 #' inside [base::tempdir()] (so files are temporary and are removed when the
@@ -26,10 +29,6 @@
 #' `gisco_set_cache_dir(cache_dir, install = TRUE)`, which writes the chosen
 #' path to a small configuration file under
 #' `tools::R_user_dir("giscoR", "config")`.
-#'
-#' @return
-#' `gisco_set_cache_dir()` returns an (invisible) character with the path to
-#' your `cache_dir`, but it is mainly called for its side effect.
 #'
 #' @section Caching strategies:
 #'
@@ -64,19 +63,20 @@
 #' with a message. This message appears only once to inform you of the
 #' migration.
 #'
+#' @seealso [tools::R_user_dir()]
 #' @examples
 #'
 #' # Do not run this. It modifies your current state.
 #' \dontrun{
 #' my_cache <- gisco_detect_cache_dir()
 #'
-#' # Set an example cache
+#' # Set an example cache.
 #' ex <- file.path(tempdir(), "example", "cachenew")
 #' gisco_set_cache_dir(ex)
 #'
 #' gisco_detect_cache_dir()
 #'
-#' # Restore initial cache
+#' # Restore the initial cache.
 #' gisco_set_cache_dir(my_cache)
 #' identical(my_cache, gisco_detect_cache_dir())
 #' }
@@ -90,16 +90,16 @@ gisco_set_cache_dir <- function(
 ) {
   cache_dir <- ensure_null(cache_dir)
 
-  # Default if not provided
+  # Use a temporary cache when no path is provided.
   if (is.null(cache_dir)) {
     make_msg(
       "info",
       verbose,
-      "Using a temporary cache dir (see {.fn base::tempdir}). ",
+      "Using a temporary cache directory, see {.fn base::tempdir}.",
       "Set {.arg cache_dir} to a value to store permanently."
     )
 
-    # Create a folder on tempdir
+    # Create a folder in the session temporary directory.
     cache_dir <- file.path(tempdir(), "giscoR")
     is_temp <- TRUE
     install <- FALSE
@@ -107,15 +107,15 @@ gisco_set_cache_dir <- function(
     is_temp <- FALSE
   }
 
-  # Validate
+  # Validate inputs.
   stopifnot(is.character(cache_dir), is.logical(overwrite), is.logical(install))
 
-  # Create and expand
+  # Create and expand the cache path.
   cache_dir <- create_cache_dir(cache_dir)
-  msg <- paste0("{.pkg giscoR} cache dir is {.path ", cache_dir, "}.")
+  msg <- paste0("{.pkg giscoR} cache directory is {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
-  # Install path on environ var.
+  # Install the cache path in the environment variable.
   # nocov start
 
   if (install) {
@@ -142,7 +142,7 @@ gisco_set_cache_dir <- function(
     make_msg(
       "info",
       verbose && !is_temp,
-      "To install your {.arg cache_dir} path for use in future sessions",
+      "To install your {.arg cache_dir} path for future sessions,",
       "run this function with {.arg install = TRUE}."
     )
   }
@@ -151,7 +151,6 @@ gisco_set_cache_dir <- function(
   invisible(cache_dir)
 }
 
-#' @export
 #' @rdname gisco_set_cache_dir
 #' @return
 #' `gisco_detect_cache_dir()` returns the path to the `cache_dir` used in this
@@ -161,19 +160,16 @@ gisco_set_cache_dir <- function(
 #'
 #' gisco_detect_cache_dir()
 #'
+#' @export
 gisco_detect_cache_dir <- function() {
   cd <- detect_cache_dir_muted()
   cli::cli_alert_info("{.path {cd}}")
   cd
 }
 
-#' Clear your \CRANpkg{giscoR} cache dir
+#' Clear your \CRANpkg{giscoR} cache directory
 #'
 #' @rdname gisco_clear_cache
-#' @family cache utilities
-#' @encoding UTF-8
-#' @return Invisible. This function is called for its side effects.
-#'
 #' @description
 #' **Use this function with caution**. This function clears your cached
 #' data and configuration, specifically:
@@ -183,16 +179,20 @@ gisco_detect_cache_dir <- function() {
 #' - Deletes the `cache_dir` directory.
 #' - Deletes the values stored on `Sys.getenv("GISCO_CACHE_DIR")`.
 #'
+#' @family cache utilities
+#' @encoding UTF-8
+#' @inheritParams gisco_set_cache_dir
+#'
 #' @param config If `TRUE`, delete the configuration folder of
 #'   \CRANpkg{giscoR}.
 #' @param cached_data If `TRUE`, delete your `cache_dir` and all its content.
-#' @inheritParams gisco_set_cache_dir
-#'
-#' @seealso [tools::R_user_dir()]
+#' @return Invisible. This function is called for its side effects.
 #'
 #' @details
 #' This function fully resets your status as if you had never installed or
 #' used \CRANpkg{giscoR}.
+#'
+#' @seealso [tools::R_user_dir()]
 #'
 #' @examples
 #'
@@ -200,11 +200,11 @@ gisco_detect_cache_dir <- function() {
 #' \dontrun{
 #' my_cache <- gisco_detect_cache_dir()
 #'
-#' # Set an example cache
+#' # Set an example cache.
 #' ex <- file.path(tempdir(), "example", "cache")
 #' gisco_set_cache_dir(ex, verbose = FALSE)
 #'
-#' # Restore initial cache
+#' # Restore the initial cache.
 #' gisco_clear_cache(verbose = TRUE)
 #'
 #' gisco_set_cache_dir(my_cache)
@@ -226,7 +226,7 @@ gisco_clear_cache <- function(
     unlink(config_dir, recursive = TRUE, force = TRUE)
 
     if (verbose) {
-      cli::cli_alert_warning("{.pkg giscoR} cache config deleted.")
+      cli::cli_alert_warning("{.pkg giscoR} cache configuration deleted.")
     }
   }
   # nocov end
@@ -253,9 +253,9 @@ gisco_clear_cache <- function(
 
 # Internal functions ----
 
-#' Detect cache dir silently
+#' Detect cache directory silently
 #'
-#' @return Path to cache dir.
+#' @return Path to cache directory.
 #' @noRd
 detect_cache_dir_muted <- function() {
   migrate_cache()
@@ -303,14 +303,14 @@ detect_cache_dir_muted <- function() {
 #'
 #' @noRd
 create_cache_dir <- function(cache_dir = NULL) {
-  # Check the cache dir from options if it is not set.
+  # Check the cache directory from options if it is not set.
   if (is.null(cache_dir)) {
     cache_dir <- detect_cache_dir_muted()
   }
 
   cache_dir <- path.expand(cache_dir)
 
-  # Create the cache dir if needed.
+  # Create the cache directory if needed.
   if (isFALSE(dir.exists(cache_dir))) {
     dir.create(cache_dir, recursive = TRUE)
   }

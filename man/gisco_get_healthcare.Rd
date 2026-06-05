@@ -64,9 +64,9 @@ specialised accommodation services required by inpatients."*
 \details{
 Files are distributed on \href{https://epsg.io/4326}{EPSG:4326}.
 
-Brief description of each attribute:\tabular{ll}{
+Brief descriptions of each attribute:\tabular{ll}{
    \strong{Attribute} \tab \strong{Description} \cr
-   \code{id} \tab The healthcare service identifier. This identifier is based on national identification codes, if it exists. \cr
+   \code{id} \tab The healthcare service identifier. It is based on national identification codes, if they exist. \cr
    \code{hospital_name} \tab The name of the healthcare institution. \cr
    \code{site_name} \tab The name of the specific site or branch of a healthcare institution. \cr
    \code{lat} \tab Latitude (WGS 84). \cr

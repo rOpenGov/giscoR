@@ -11,7 +11,7 @@ test_that("Test offline", {
       cache_dir = tempdir(),
       resolution = 60
     ),
-    "Offline"
+    "No internet"
   )
   expect_null(n)
   local_mocked_bindings(is_online_fun = function(...) {
@@ -33,6 +33,51 @@ test_that("Test 404", {
   local_mocked_bindings(is_404 = function(...) {
     FALSE
   })
+})
+
+test_that("NUTS use resolved GISCO files", {
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/NUTS_RG_60M_2024_4326.gpkg",
+        name = "NUTS_RG_60M_2024_4326.gpkg"
+      )
+    },
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  post_process = NULL,
+                                  ...) {
+      expect_match(url, "NUTS_RG_60M_2024_4326[.]gpkg$")
+      expect_identical(name, "NUTS_RG_60M_2024_4326.gpkg")
+      expect_false(cache)
+      expect_identical(cache_dir, "cache")
+      expect_identical(subdir, "nuts")
+      expect_true(update_cache)
+      expect_true(verbose)
+      expect_true(is.function(filters))
+      expect_true(is.function(post_process))
+      data.frame(
+        CNTR_CODE = c("ES", "FR"),
+        NUTS_ID = c("ES51", "FR1"),
+        LEVL_CODE = c(2, 1)
+      )
+    }
+  )
+
+  nuts <- gisco_get_nuts(
+    resolution = 60,
+    cache = FALSE,
+    cache_dir = "cache",
+    update_cache = TRUE,
+    verbose = TRUE
+  )
+  expect_identical(nuts$NUTS_ID, c("ES51", "FR1"))
 })
 
 test_that("Valid inputs", {

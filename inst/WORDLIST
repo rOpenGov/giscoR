@@ -1,3 +1,4 @@
+CLI
 CMD
 CNTR
 COAS
@@ -14,12 +15,12 @@ GDAL
 GISCO
 GeoPackage
 Geolocation
+Geospatial
 ICAO
 ISCED
 LAEA
 LAU
 LOCODE
-Licence
 Milos
 ORCID
 Organisation
@@ -71,4 +72,3 @@ subnational
 tibble
 tibbles
 tmap
-visualise

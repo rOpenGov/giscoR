@@ -106,6 +106,69 @@ get_url_db <- function(
   url
 }
 
+#' Resolve a GISCO database URL and local file name
+#'
+#' @inheritParams get_url_db
+#'
+#' @return A list with `url` and `name`.
+#' @noRd
+resolve_gisco_file <- function(...) {
+  url <- get_url_db(...)
+  list(url = url, name = basename(url))
+}
+
+#' GISCO services base URL
+#'
+#' @return A character string with the GISCO services base URL.
+#' @noRd
+gisco_services_url <- function() {
+  "https://gisco-services.ec.europa.eu"
+}
+
+#' GISCO distribution API base URL
+#'
+#' @return A character string with the GISCO distribution API base URL.
+#' @noRd
+gisco_distribution_url <- function() {
+  paste0(gisco_services_url(), "/distribution/v2/")
+}
+
+#' GISCO ID API base URL
+#'
+#' @return A character string with the GISCO ID API base URL.
+#' @noRd
+gisco_id_url <- function() {
+  paste0(gisco_services_url(), "/id/")
+}
+
+#' GISCO address API base URL
+#'
+#' @return A character string with the GISCO address API base URL.
+#' @noRd
+gisco_address_url <- function() {
+  paste0(gisco_services_url(), "/addressapi/")
+}
+
+#' GISCO public data base URL
+#'
+#' @return A character string with the GISCO public data base URL.
+#' @noRd
+gisco_pub_url <- function() {
+  paste0(gisco_services_url(), "/pub/")
+}
+
+#' Eurostat GISCO geodata files base URL
+#'
+#' @param filename A character string with the file name.
+#'
+#' @return A character string with the full geodata file URL.
+#' @noRd
+eurostat_gisco_geodata_url <- function(filename) {
+  paste0(
+    "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/",
+    filename
+  )
+}
 
 #' Internal function to download and cache a file from a URL
 #'
@@ -125,7 +188,7 @@ download_url <- function(
   url = NULL,
   name = basename(url),
   cache_dir = NULL,
-  subdir = "fixme",
+  subdir = "downloads",
   update_cache = FALSE,
   verbose = TRUE
 ) {
@@ -136,7 +199,7 @@ download_url <- function(
   file_local <- file.path(cache_dir, name)
   file_local <- gsub("//", "/", file_local, fixed = TRUE)
 
-  msg <- paste0("Cache dir is {.path ", cache_dir, "}.")
+  msg <- paste0("Cache directory is {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
   # Check if the file already exists.
@@ -157,35 +220,13 @@ download_url <- function(
   msg <- paste0("Downloading {.url ", url, "}.")
   make_msg("info", verbose, msg)
 
-  req <- httr2::request(url)
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
-
-  # Create a folder for caching httr2 requests.
-  cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
-  cache_httr2 <- create_cache_dir(cache_httr2)
-
-  req <- httr2::req_cache(
-    req,
-    cache_httr2,
-    max_size = 1024^3 / 2,
-    max_age = 3600
-  )
-
-  req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
-  req <- httr2::req_retry(req, max_tries = 3)
-  if (verbose) {
-    req <- httr2::req_progress(req)
-  }
+  req <- gisco_request(url, verbose = verbose)
 
   if (!is_online_fun()) {
-    cli::cli_alert_danger("Offline")
+    cli::cli_alert_danger("No internet connection.")
     cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
-
-  # Response
 
   # Check the size first to see if HEAD should report it.
   get_header <- httr2::req_method(req, "HEAD")
@@ -196,40 +237,27 @@ download_url <- function(
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
     sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
-    make_msg("warning", TRUE, "The file to download has size", sz_dwn)
+    make_msg("warning", TRUE, "The file to download is", sz_dwn)
     req <- httr2::req_progress(req)
   }
 
-  # Testing
-  test_offline <- is_404()
-  if (test_offline) {
-    # Redirect to a fake URL during tests.
-    req <- httr2::req_url(
-      req,
-      "https://gisco-services.ec.europa.eu/distribution/v2/fake"
-    )
+  # Redirect to a fake URL during tests.
+  if (is_404()) {
+    req <- gisco_request_fake_404(req)
     file_local <- tempfile(fileext = ".txt")
   }
 
-  resp <- httr2::req_perform(req, path = file_local)
-
-  if (httr2::resp_is_error(resp)) {
-    unlink(file_local, force = TRUE)
-    get_status_code <- httr2::resp_status(resp) # nolint
-    get_status_desc <- httr2::resp_status_desc(resp) # nolint
-
-    cli::cli_alert_danger(c(
-      "{.strong Error {get_status_code}} ({get_status_desc}):",
-      " {.url {url}}."
-    ))
-    cli::cli_alert_warning(c(
-      "If you think this is a bug, please consider opening an issue on ",
-      "{.url https://github.com/ropengov/giscoR/issues}"
-    ))
-    cli::cli_alert("Returning {.val NULL}.")
+  resp <- gisco_perform_request(
+    req,
+    url,
+    path = file_local,
+    check_online = FALSE,
+    fake_404 = FALSE
+  )
+  if (is.null(resp)) {
     return(NULL)
   }
-  msg <- paste0("Download successful to {.file ", file_local, "}.")
+  msg <- paste0("Download completed: {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
 
   file_local
@@ -248,60 +276,10 @@ get_request_body <- function(url, verbose = TRUE) {
   msg <- paste0("GET {.url ", url, "}.")
   make_msg("info", verbose, msg)
 
-  req <- httr2::request(url)
-  req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
+  req <- gisco_request(url, verbose = verbose)
 
-  # Create a folder for caching httr2 requests.
-  cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
-  cache_httr2 <- create_cache_dir(cache_httr2)
-
-  req <- httr2::req_cache(
-    req,
-    cache_httr2,
-    max_size = 1024^3 / 2,
-    max_age = 3600
-  )
-
-  req <- httr2::req_timeout(req, 300)
-  req <- httr2::req_retry(req, max_tries = 3)
-  if (verbose) {
-    req <- httr2::req_progress(req)
-  }
-
-  if (!is_online_fun()) {
-    cli::cli_alert_danger("Offline")
-    cli::cli_alert("Returning {.val NULL}.")
-    return(NULL)
-  }
-
-  # Testing
-  test_offline <- is_404()
-  if (test_offline) {
-    # Redirect to a fake URL during tests.
-    req <- httr2::req_url(
-      req,
-      "https://gisco-services.ec.europa.eu/distribution/v2/fake"
-    )
-  }
-
-  resp <- httr2::req_perform(req)
-
-  if (httr2::resp_is_error(resp)) {
-    get_status_code <- httr2::resp_status(resp) # nolint
-    get_status_desc <- httr2::resp_status_desc(resp) # nolint
-
-    cli::cli_alert_danger(c(
-      "{.strong Error {get_status_code}} ({get_status_desc}):",
-      " {.url {url}}."
-    ))
-    cli::cli_alert_warning(c(
-      "If you think this is a bug, please consider opening an issue on ",
-      "{.url https://github.com/ropengov/giscoR/issues}"
-    ))
-    cli::cli_alert("Returning {.val NULL}.")
+  resp <- gisco_perform_request(req, url)
+  if (is.null(resp)) {
     return(NULL)
   }
 
@@ -326,6 +304,9 @@ for_import_jsonlite <- function() {
   # Request JSON from the package website.
   url <- "https://ropengov.github.io/giscoR/search.json"
   resp <- get_request_body(url, verbose = FALSE)
+  if (is.null(resp)) {
+    return(invisible(NULL))
+  }
   txt <- httr2::resp_body_string(resp)
   local <- jsonlite::parse_json(txt)
   local <- NULL

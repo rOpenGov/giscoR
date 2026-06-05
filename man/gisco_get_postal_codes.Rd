@@ -58,7 +58,7 @@ as part of the Tercet Regulation (EU) 2017/2391.
 \section{Copyright}{
 The dataset is released under the CC-BY-SA-4.0 license and requires the
 following attribution whenever used:
-© European Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
+© European Union - GISCO, 2024, postal code point dataset, License CC-BY-SA 4.0.
 }
 
 \section{Note}{
@@ -68,7 +68,7 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 
-# Heavy-weight download!
+# Large download.
 \dontrun{
 
 pc_bel <- gisco_get_postal_codes(country = "BE")

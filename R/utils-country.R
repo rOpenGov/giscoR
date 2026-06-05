@@ -2,12 +2,13 @@
 #'
 #' @param names A vector of names or codes.
 #'
-#' @param out Output code.
+#' @param out A character string with the output code.
 #'
-#' @return A vector of names.
+#' @return A character vector with country codes.
 #'
 #' @noRd
 convert_country_code <- function(names, out = "eurostat") {
+  names[tolower(names) == "antarctica"] <- "Antarctica"
   names[tolower(names) == "antartica"] <- "Antarctica"
 
   # Vectorize country conversion.
@@ -60,6 +61,36 @@ convert_country_code <- function(names, out = "eurostat") {
   outnames2
 }
 
+#' Convert country names or codes unless the input is `NULL`
+#'
+#' @inheritParams convert_country_code
+#'
+#' @return A vector of names, or `NULL` when `names` is `NULL`.
+#' @noRd
+convert_country_code_or_null <- function(names, out = "eurostat") {
+  if (is.null(names)) {
+    return(NULL)
+  }
+
+  convert_country_code(names, out)
+}
+
+#' Filter a data frame by country values in one column
+#'
+#' @param data A data frame or `sf` object.
+#' @param country A character vector of country codes.
+#' @param col A character string with the column to filter.
+#'
+#' @return `data`, filtered when `country` is not `NULL` and `col` exists.
+#' @noRd
+filter_by_country_col <- function(data, country = NULL, col = "CNTR_CODE") {
+  if (is.null(country) || !col %in% names(data)) {
+    return(data)
+  }
+
+  data[data[[col]] %in% country, ]
+}
+
 #' Get country codes from country names and/or region names
 #'
 #' @param country A character vector of country codes or names.
@@ -74,10 +105,8 @@ get_countrycodes_region <- function(
   code = "eurostat"
 ) {
   store <- NULL
-  if (!is.null(country)) {
-    country <- convert_country_code(country, code)
-    store <- c(store, country)
-  }
+  country <- convert_country_code_or_null(country, code)
+  store <- c(store, country)
 
   if (!is.null(region)) {
     region_df <- giscoR::gisco_countrycode

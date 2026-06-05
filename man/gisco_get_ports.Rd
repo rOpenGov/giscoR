@@ -75,7 +75,7 @@ if (!is.null(ports)) {
       plot.subtitle = element_text(face = "italic", hjust = 0.5)
     ) +
     labs(
-      title = "Ports Worldwide", subtitle = "Year 2013",
+      title = "Ports worldwide", subtitle = "Year 2013",
       caption = "Source: Eurostat, Ports 2013 dataset."
     ) +
     coord_sf(crs = "ESRI:54030")

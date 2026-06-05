@@ -15,6 +15,49 @@ test_that("Offline", {
   })
 })
 
+test_that("Countries use resolved GISCO files", {
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/CNTR_RG_60M_2024_4326.gpkg",
+        name = "CNTR_RG_60M_2024_4326.gpkg"
+      )
+    },
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  post_process = NULL,
+                                  ...) {
+      expect_match(url, "CNTR_RG_60M_2024_4326[.]gpkg$")
+      expect_identical(name, "CNTR_RG_60M_2024_4326.gpkg")
+      expect_false(cache)
+      expect_identical(cache_dir, "cache")
+      expect_identical(subdir, "countries")
+      expect_true(update_cache)
+      expect_true(verbose)
+      expect_true(is.function(filters))
+      expect_true(is.function(post_process))
+      data <- data.frame(CNTR_ID = c("ES", "FR"), name = c("a", "b"))
+      post_process(data)
+    }
+  )
+
+  countries <- gisco_get_countries(
+    resolution = 60,
+    country = "ES",
+    cache = FALSE,
+    cache_dir = "cache",
+    update_cache = TRUE,
+    verbose = TRUE
+  )
+  expect_identical(countries$CNTR_ID, "ES")
+})
+
 test_that("Cached dataset vs updated", {
   skip_on_cran()
   skip_if_gisco_offline()

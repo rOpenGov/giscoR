@@ -17,3 +17,11 @@ test_that("Check GISCO ID docs", {
   expect_snapshot(docs_id_years("nuts"))
   expect_snapshot(docs_id_years("riverbasin"))
 })
+
+test_that("GISCO ID docs handle unavailable API", {
+  local_mocked_bindings(
+    gisco_perform_request = function(...) NULL
+  )
+
+  expect_identical(docs_id_years("nuts"), "are unavailable")
+})

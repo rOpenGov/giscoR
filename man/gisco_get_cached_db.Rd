@@ -41,7 +41,7 @@ gisco_get_cached_db() |>
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other database utils:
+Other database utilities:
 \code{\link{gisco_db}},
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}
 }

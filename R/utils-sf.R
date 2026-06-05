@@ -17,8 +17,8 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
     thr <- 20 * (1024^2)
     if (fsize > thr) {
       fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
-      make_msg("warning", TRUE, "Reading large file", fsize_unit)
-      make_msg("generic", TRUE, "This can take a while. Hold on.")
+      make_msg("warning", TRUE, "Reading a large file", fsize_unit)
+      make_msg("generic", TRUE, "This can take a while.")
     }
   }
 
@@ -43,6 +43,16 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
   data_sf <- sanitize_sf(data_sf)
 
   data_sf
+}
+
+#' Transform an sf object to longitude and latitude
+#'
+#' @param data_sf An `sf` object.
+#'
+#' @return An `sf` object in EPSG:4326.
+#' @noRd
+transform_to_wgs84 <- function(data_sf) {
+  sf::st_transform(data_sf, 4326)
 }
 
 #' Convert an sf object to UTF-8
@@ -126,10 +136,9 @@ get_geo_file_colnames <- function(file_local) {
 #' @param candidates A character vector of candidate column names.
 #'
 #' @return
-#' A character vector with the matching column names or NULL if none found.
+#' A character vector with the matching column names, or `NULL` if none found.
 #'
 #' @noRd
-#'
 get_col_name <- function(file_local, candidates = c("CNTR_ID", "CNTR_CODE")) {
   actual_names <- get_geo_file_colnames(file_local)
   match <- intersect(candidates, actual_names)
@@ -137,6 +146,96 @@ get_col_name <- function(file_local, candidates = c("CNTR_ID", "CNTR_CODE")) {
     return(NULL)
   }
   match
+}
+
+#' Build a named sf filter when a candidate column exists
+#'
+#' @inheritParams get_col_name
+#' @param values Values to match.
+#'
+#' @return A named list suitable for `build_sf_filter_query()`, or an empty
+#'   list when there are no values or no matching column.
+#' @noRd
+make_sf_filter <- function(
+  file_local,
+  values,
+  candidates = c("CNTR_ID", "CNTR_CODE")
+) {
+  if (is.null(values)) {
+    return(list())
+  }
+
+  filter_col <- get_col_name(file_local, candidates)
+  if (is.null(filter_col)) {
+    return(list())
+  }
+
+  filters <- list(values)
+  names(filters) <- filter_col[1]
+  filters
+}
+
+#' Build an sf SQL filter query
+#'
+#' @param file_local Local file path or URL to the geospatial file.
+#' @param filters A named list where names are column names and values are the
+#'   values to match.
+#' @param operator A character string used to combine filters.
+#'
+#' @return A SQL query string, or `NULL` if no filters are supplied.
+#' @noRd
+build_sf_filter_query <- function(file_local, filters, operator = "AND") {
+  filters <- filters[lengths(filters) != 0]
+  if (length(filters) == 0) {
+    return(NULL)
+  }
+
+  layer <- get_sf_layer_name(file_local)
+  where <- Map(
+    function(column, values) {
+      paste0(
+        column,
+        " IN (",
+        paste0("'", values, "'", collapse = ", "),
+        ")"
+      )
+    },
+    names(filters),
+    filters
+  )
+
+  paste0(
+    "SELECT * from \"",
+    layer,
+    "\" WHERE ",
+    paste(unlist(where), collapse = paste0(" ", operator, " "))
+  )
+}
+
+#' Read a geospatial file with an optional sf SQL filter
+#'
+#' @inheritParams read_geo_file_sf
+#' @param filters A named list where names are column names and values are the
+#'   values to match.
+#' @param operator A character string used to combine filters.
+#' @param verbose A logical value indicating whether to print messages.
+#'
+#' @return An `sf` object.
+#' @noRd
+read_geo_file_sf_filtered <- function(
+  file_local,
+  filters = NULL,
+  operator = "AND",
+  verbose = FALSE
+) {
+  q <- build_sf_filter_query(file_local, filters, operator)
+  if (!is.null(q)) {
+    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
+    msg <- paste0("{.code ", q, "}")
+    make_msg("info", verbose, "Using query:\n   ", msg)
+  }
+
+  read_geo_file_sf(file_local, q = q)
 }
 
 get_sf_layer_name <- function(file_local) {

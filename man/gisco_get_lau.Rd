@@ -37,8 +37,8 @@ file. One of
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. These functions always
-cache the result due to the size. See \strong{Caching strategies} section
+\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. This function always
+caches the result due to its size. See \strong{Caching strategies} section
 in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
@@ -103,7 +103,7 @@ if (!is.null(lu_lau)) {
   ggplot(lu_lau) +
     geom_sf(aes(fill = POP_DENS_2024)) +
     labs(
-      title = "Population Density in Luxembourg",
+      title = "Population density in Luxembourg",
       subtitle = "Year 2024",
       caption = gisco_attributions()
     ) +

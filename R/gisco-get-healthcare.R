@@ -11,15 +11,13 @@
 #' specialised accommodation services required by inpatients."*
 #'
 #' @family services
-#' @inherit gisco_get_education return source
-#' @inheritParams gisco_get_countries
 #' @encoding UTF-8
-#' @export
-#'
+#' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   `2023`, `2020`.
 #'
+#' @inherit gisco_get_education return source
 #' @details
 #' Files are distributed on [EPSG:4326](https://epsg.io/4326).
 #'
@@ -57,6 +55,8 @@
 #'     ) +
 #'     coord_sf(crs = 3035)
 #' }
+#' @export
+#'
 gisco_get_healthcare <- function(
   year = c(2023, 2020),
   cache = TRUE,
@@ -68,37 +68,20 @@ gisco_get_healthcare <- function(
   # Set required variables.
   year <- match_arg_pretty(year)
 
-  api_entry <- paste0(
-    "https://gisco-services.ec.europa.eu/pub/healthcare/",
-    year,
-    "/gpkg/EU.gpkg"
+  api_entry <- basic_service_url("healthcare", year)
+  filename <- basic_service_filename("health", year, api_entry)
+
+  country <- convert_country_code_or_null(country)
+  read_gisco_dataset(
+    url = api_entry,
+    name = filename,
+    cache = cache,
+    cache_dir = cache_dir,
+    subdir = "health",
+    update_cache = update_cache,
+    verbose = verbose,
+    post_process = function(data_sf) {
+      filter_by_country_col(data_sf, country, "cntr_id")
+    }
   )
-  filename <- paste0("health_", year, "_", basename(api_entry))
-
-  if (cache) {
-    # Guess the source to load.
-    namefileload <- download_url(
-      api_entry,
-      filename,
-      cache_dir,
-      "health",
-      update_cache,
-      verbose
-    )
-  } else {
-    namefileload <- api_entry
-  }
-
-  if (is.null(namefileload)) {
-    return(NULL)
-  }
-
-  data_sf <- read_geo_file_sf(namefileload)
-
-  if (!is.null(country) && "cntr_id" %in% names(data_sf)) {
-    country <- convert_country_code(country)
-    data_sf <- data_sf[data_sf$cntr_id %in% country, ]
-  }
-
-  data_sf
 }

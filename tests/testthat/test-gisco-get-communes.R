@@ -16,10 +16,49 @@ test_that("offline", {
   })
 })
 
+test_that("Communes use resolved GISCO files", {
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/COMM_RG_2016_4326.shp.zip",
+        name = "COMM_RG_2016_4326.shp.zip"
+      )
+    },
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  ...) {
+      expect_match(url, "COMM_RG_2016_4326[.]shp[.]zip$")
+      expect_identical(name, "COMM_RG_2016_4326.shp.zip")
+      expect_true(cache)
+      expect_identical(cache_dir, "cache")
+      expect_identical(subdir, "communes")
+      expect_true(update_cache)
+      expect_true(verbose)
+      expect_true(is.function(filters))
+      data.frame(CNTR_CODE = c("ES", "FR"), name = c("a", "b"))
+    }
+  )
+
+  communes <- gisco_get_communes(
+    country = "ES",
+    cache_dir = "cache",
+    update_cache = TRUE,
+    verbose = TRUE
+  )
+  expect_identical(communes$CNTR_CODE, c("ES", "FR"))
+})
+
 
 test_that("Communes errors", {
   skip_on_cran()
   skip_if_gisco_offline()
+
   expect_error(gisco_get_communes(year = "2007"))
   expect_error(gisco_get_communes(epsg = "9999"))
   expect_error(gisco_get_communes(year = "2004", spatialtype = "COASTL"))
@@ -27,34 +66,75 @@ test_that("Communes errors", {
   expect_error(gisco_get_communes(spatialtype = "ERR"))
 })
 
-test_that("Communes online", {
-  skip_on_cran()
-  skip_if_gisco_offline()
+test_that("Communes pass country filters to the reader", {
+  filter_calls <- list()
 
-  expect_silent(gisco_get_communes(spatialtype = "COASTL"))
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/COMM_LB_2016_4326.gpkg",
+        name = "COMM_LB_2016_4326.gpkg"
+      )
+    },
+    convert_country_code_or_null = function(country) {
+      country
+    },
+    make_sf_filter = function(file_local,
+                              values,
+                              candidates = c("CNTR_ID", "CNTR_CODE")) {
+      filter_calls[[length(filter_calls) + 1L]] <<- list(
+        file_local = file_local,
+        values = values,
+        candidates = candidates
+      )
+      stats::setNames(list(values), paste(candidates, collapse = "|"))
+    },
+    read_gisco_dataset = function(url,
+                                  name,
+                                  filters = NULL,
+                                  verbose = FALSE,
+                                  ...) {
+      expect_match(url, "COMM_LB_2016_4326[.]gpkg$")
+      expect_true(is.function(filters))
+      expect_true(verbose)
+      expect_identical(
+        filters("communes.gpkg"),
+        list("CNTR_ID|CNTR_CODE" = "LU")
+      )
+      data.frame(CNTR_CODE = "LU", name = "a")
+    }
+  )
 
-  # Trying to query a dataset without a country field. Should show a message
-  # even with verbose TRUE
-
-  # Fixed now
-  expect_silent(gisco_get_communes(
-    spatialtype = "COASTL",
+  communes <- gisco_get_communes(
+    spatialtype = "LB",
     country = "LU",
-    verbose = FALSE
-  ))
-
-  expect_message(s2 <- gisco_get_communes(spatialtype = "LB", verbose = TRUE))
-  expect_s3_class(s2, "tbl_df")
-  expect_s3_class(s2, "sf")
-  expect_silent(lu <- gisco_get_communes(spatialtype = "LB", country = "LU"))
-  expect_s3_class(lu, "tbl_df")
-  expect_s3_class(lu, "sf")
-  expect_equal(as.character(unique(lu$CNTR_CODE)), "LU")
+    verbose = TRUE
+  )
+  expect_identical(communes$CNTR_CODE, "LU")
+  expect_identical(
+    filter_calls,
+    list(
+      list(
+        file_local = "communes.gpkg",
+        values = "LU",
+        candidates = c("CNTR_ID", "CNTR_CODE")
+      )
+    )
+  )
 })
 
 test_that("Deprecations", {
-  skip_on_cran()
-  skip_if_gisco_offline()
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/COMM_LB_2016_4326.gpkg",
+        name = "COMM_LB_2016_4326.gpkg"
+      )
+    },
+    read_gisco_dataset = function(...) {
+      data.frame(CNTR_CODE = "LU", name = "a")
+    }
+  )
 
   expect_snapshot(s <- gisco_get_communes(cache = FALSE, spatialtype = "LB"))
 })
@@ -63,67 +143,21 @@ test_that("Extensions", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  # Error
   expect_snapshot(gisco_get_communes(ext = "docx"), error = TRUE)
 
-  cdir <- file.path(tempdir(), "testcountry")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
-  expect_identical(list.files(cdir, recursive = TRUE), character(0))
-
-  db_geojson <- gisco_get_communes(
-    year = 2016,
-    spatialtype = "LB",
-    cache_dir = cdir,
-    ext = "geojson"
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/COMM_LB_2016_4326.geojson",
+        name = "COMM_LB_2016_4326.geojson"
+      )
+    },
+    read_gisco_dataset = function(url, name, ...) {
+      expect_match(url, "[.]geojson$")
+      expect_identical(name, "COMM_LB_2016_4326.geojson")
+      data.frame(CNTR_CODE = "ES", name = "a")
+    }
   )
-  expect_s3_class(db_geojson, "sf")
-  expect_s3_class(db_geojson, "tbl_df")
-
-  # Filter
-  db_geojson <- gisco_get_communes(
-    year = 2016,
-    spatialtype = "LB",
-    cache_dir = cdir,
-    ext = "geojson",
-    verbose = TRUE,
-    country = "ES"
-  )
-  expect_length(list.files(cdir, recursive = TRUE, pattern = "geojson"), 1)
-
-  db_gpkg <- gisco_get_communes(
-    year = 2013,
-    spatialtype = "LB",
-    cache_dir = cdir,
-    ext = "gpkg"
-  )
-
-  expect_s3_class(db_gpkg, "sf")
-  expect_s3_class(db_gpkg, "tbl_df")
-
-  # Filter
-  db_gpkg <- gisco_get_communes(
-    year = 2013,
-    spatialtype = "LB",
-    cache_dir = cdir,
-    ext = "gpkg",
-    verbose = TRUE,
-    country = "ES"
-  )
-  expect_length(list.files(cdir, recursive = TRUE, pattern = "gpkg"), 1)
-
-  expect_silent(
-    db_gpkg <- gisco_get_communes(
-      year = 2013,
-      spatialtype = "COASTL",
-      cache_dir = cdir,
-      ext = "gpkg",
-      country = "ES"
-    )
-  )
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  communes <- gisco_get_communes(ext = "geojson", country = "ES")
+  expect_identical(communes$CNTR_CODE, "ES")
 })

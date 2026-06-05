@@ -41,15 +41,15 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 provides a simple interface to [GISCO](https://ec.europa.eu/eurostat/web/gisco)
 data from Eurostat. It allows you to download and work with global and European
 geospatial datasets directly in **R**, including country boundaries, NUTS
-regions, coastlines and labels.
+regions, coastal lines and labels.
 
 ## Key features
 
-- Retrieve **GISCO files** for countries, regions and administrative units.
+- Retrieve GISCO datasets for countries, regions and administrative units.
 - Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`, `01M`.
 - Choose from three projections: **EPSG:4326**, **EPSG:3035**, or **EPSG:3857**.
 - Return `sf` objects for spatial analysis.
-- Caches downloads for faster repeated access.
+- Cache downloads for faster repeated access.
 
 ## Installation
 
@@ -122,7 +122,7 @@ ggplot(nl_all) +
   theme_minimal()
 ```
 
-## Advanced example: Thematic maps
+## Advanced example: thematic maps
 
 This example shows a thematic map created with the **ggplot2** package. The data
 are obtained via the **eurostat** package. This follows the work of [Milos
@@ -146,7 +146,7 @@ nuts3 <- gisco_get_nuts(
   nuts_level = 3
 )
 
-# Get country lines at NUTS 0 level.
+# Get country boundaries at NUTS 0 level.
 
 country_lines <- gisco_get_nuts(
   year = 2021,
@@ -247,7 +247,8 @@ ggplot(nuts3_sf) +
 
 ## Caching
 
-Large datasets (e.g., LAU or high-resolution files) can exceed 50 MB. Use:
+Large datasets, such as LAU or high-resolution files, can exceed 50 MB. Set a
+cache directory with:
 
 ```{r}
 #| eval: false
@@ -292,11 +293,11 @@ toBibtex(citation("giscoR"))
 
 [Eurostat's general copyright notice and license
 policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice) applies.
-Moreover, there are specific rules that apply to some of the following datasets
-available for downloading. The download and use of these data are subject to
-acceptance of these rules. See the [administrative
-units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units) and
-[statistical
+Some datasets have additional download and usage provisions. The download and
+use of these data are subject to acceptance of those provisions. See the
+[administrative
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
+and [statistical
 units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units) for
 more details.
 

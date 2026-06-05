@@ -5,15 +5,13 @@
 #' ports are identified following the UN LOCODE list.
 #'
 #' @family transport
-#' @inherit gisco_get_airports
-#' @inheritParams gisco_get_countries
 #' @encoding UTF-8
-#' @export
-#'
+#' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   `2013`, `2009`.
 #'
+#' @inherit gisco_get_airports source return
 #' @details
 #' Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
 #'
@@ -44,11 +42,13 @@
 #'       plot.subtitle = element_text(face = "italic", hjust = 0.5)
 #'     ) +
 #'     labs(
-#'       title = "Ports Worldwide", subtitle = "Year 2013",
+#'       title = "Ports worldwide", subtitle = "Year 2013",
 #'       caption = "Source: Eurostat, Ports 2013 dataset."
 #'     ) +
 #'     coord_sf(crs = "ESRI:54030")
 #' }
+#' @export
+#'
 gisco_get_ports <- function(
   year = c(2013, 2009),
   country = NULL,
@@ -59,45 +59,24 @@ gisco_get_ports <- function(
   year <- as.character(year)
   valid_years <- as.character(c(2013, 2009))
   year <- match_arg_pretty(year, valid_years)
-
-  if (year == "2009") {
-    url <- paste0(
-      "https://ec.europa.eu/eurostat/cache/GISCO/",
-      "geodatafiles/PORT_2009_SH.zip"
-    )
-  }
-  if (year == "2013") {
-    url <- paste0(
-      "https://ec.europa.eu/eurostat/cache/GISCO/",
-      "geodatafiles/PORT_2013_SH.zip"
-    )
-  }
-
-  filename <- basename(url)
-  namefileload <- download_url(
-    url,
-    filename,
-    cache_dir,
-    "ports",
-    update_cache,
-    verbose
+  files <- c(
+    "2009" = "PORT_2009_SH.zip",
+    "2013" = "PORT_2013_SH.zip"
   )
-
-  if (is.null(namefileload)) {
+  url <- eurostat_gisco_geodata_url(files[[year]])
+  data_sf <- read_gisco_dataset(
+    url,
+    cache_dir = cache_dir,
+    subdir = "ports",
+    update_cache = update_cache,
+    verbose = verbose,
+    post_process = transform_to_wgs84
+  )
+  if (is.null(data_sf)) {
     return(NULL)
   }
 
-  data_sf <- read_geo_file_sf(namefileload)
-
-  # Normalize to longitude and latitude.
-  data_sf <- sf::st_transform(data_sf, 4326)
-
-  # Add ISO2 country code.
+  country <- convert_country_code_or_null(country, "iso2c")
   data_sf$CNTR_ISO2 <- substr(data_sf$PORT_ID, 1, 2)
-
-  if (!is.null(country) && "PORT_ID" %in% names(data_sf)) {
-    country <- convert_country_code(country, "iso2c")
-    data_sf <- data_sf[data_sf$CNTR_ISO2 %in% country, ]
-  }
-  data_sf
+  filter_by_country_col(data_sf, country, "CNTR_ISO2")
 }

@@ -1,7 +1,7 @@
 Type: Package
 Package: giscoR
-Title: Download Map Data from the GISCO API
-Version: 1.1.0
+Title: Download Geospatial Data from the GISCO API
+Version: 1.1.0.9000
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658")),
@@ -9,7 +9,7 @@ Authors@R: c(
            comment = c(ROR = "033d3q980")),
     person("EuroGeographics", role = "cph")
   )
-Description: Tools to download global and European map data from
+Description: Tools to download global and European geospatial data from
     Eurostat's GISCO (Geographic Information System of the Commission)
     database <https://ec.europa.eu/eurostat/web/gisco>. The package
     provides helpers for working with country boundaries, NUTS regions,
@@ -29,7 +29,6 @@ Imports:
     lifecycle,
     rappdirs (>= 0.3.0),
     sf (>= 1.0.0),
-    testthat (>= 3.0.0),
     tibble,
     tools,
     utils
@@ -39,6 +38,7 @@ Suggests:
     ggplot2 (>= 3.5.0),
     knitr,
     quarto,
+    testthat (>= 3.0.0),
     withr
 VignetteBuilder:
     quarto
@@ -47,8 +47,8 @@ Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Copyright: Eurostat's general copyright notice and license policy applies
-    (see file COPYRIGHTS). Moreover, there are specific rules that apply
-    to administrative and statistical data, see
+    (see file COPYRIGHTS). Some datasets have additional download and
+    usage provisions, see
     <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 Encoding: UTF-8
 LazyData: true

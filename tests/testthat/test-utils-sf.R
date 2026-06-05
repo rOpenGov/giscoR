@@ -91,7 +91,7 @@ test_that("Read gpkg", {
     subdir = "fixme",
     verbose = FALSE
   )
-  expect_message(af <- read_geo_file_sf(file_local), "Reading large file")
+  expect_message(af <- read_geo_file_sf(file_local), "Reading a large file")
   # With query doesn't warn
   lay <- as.vector(sf::st_layers(file_local)[1, 1])[1]
   q <- paste0("SELECT * from \"", lay, "\" ", "WHERE CNTR_CODE IN ('LU')")

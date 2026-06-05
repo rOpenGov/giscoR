@@ -4,7 +4,7 @@
       gisco_get_urban_audit(ext = "docx")
     Condition
       Error:
-      ! `ext` should be one of "geojson", "gpkg" or "shp", not "docx".
+      ! `ext` must be "geojson", "gpkg", or "shp", not "docx".
 
 ---
 
@@ -12,5 +12,5 @@
       gisco_get_urban_audit(level = "docx")
     Condition
       Error:
-      ! `level` should be one of "all", "CITIES", "FUA", "GREATER_CITIES", "CITY", "KERN" or "LUZ", not "docx".
+      ! `level` must be "all", "CITIES", "FUA", "GREATER_CITIES", "CITY", "KERN", or "LUZ", not "docx".
 

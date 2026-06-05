@@ -28,6 +28,61 @@ test_that("Test 404", {
   })
 })
 
+test_that("Metadata helpers build URL and read CSV", {
+  db <- data.frame(
+    id_giscor = c("countries", "countries"),
+    year = c("2024", "2024"),
+    ext = c("csv", "gpkg"),
+    api_entry = c("https://example.com/csv", "https://example.com/gpkg"),
+    api_file = c("CNTR_AT_2024.csv", "CNTR_RG_2024.gpkg")
+  )
+  expect_identical(
+    metadata_url("countries", "2024", db),
+    "https://example.com/csv/CNTR_AT_2024.csv"
+  )
+
+  csv_file <- tempfile(fileext = ".csv")
+  write.csv(
+    data.frame(id = "ES", name = "Spain"),
+    csv_file,
+    row.names = FALSE,
+    fileEncoding = "UTF-8"
+  )
+  metadata <- read_metadata_csv(csv_file)
+  expect_s3_class(metadata, "tbl_df")
+  expect_identical(metadata$id, "ES")
+})
+
+test_that("Metadata downloads to the metadata cache", {
+  local_mocked_bindings(
+    download_url = function(url,
+                            name,
+                            cache_dir,
+                            subdir,
+                            verbose = FALSE,
+                            ...) {
+      expect_match(url, "_AT")
+      expect_match(name, "[.]csv$")
+      expect_identical(cache_dir, tempdir())
+      expect_identical(subdir, "gisco_metadata")
+      expect_true(verbose)
+
+      csv_file <- tempfile(fileext = ".csv")
+      write.csv(
+        data.frame(id = "ES", name = "Spain"),
+        csv_file,
+        row.names = FALSE,
+        fileEncoding = "UTF-8"
+      )
+      csv_file
+    }
+  )
+
+  metadata <- gisco_get_metadata("countries", year = 2024, verbose = TRUE)
+  expect_s3_class(metadata, "tbl_df")
+  expect_identical(metadata$id, "ES")
+})
+
 test_that("Messages", {
   skip_on_cran()
   skip_if_gisco_offline()

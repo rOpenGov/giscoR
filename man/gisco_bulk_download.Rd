@@ -128,7 +128,7 @@ unlink(tmp, force = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Additional utils for downloading datasets:
+Additional utilities for downloading datasets:
 \code{\link{gisco_get_unit}}
 }
 \concept{extra}
