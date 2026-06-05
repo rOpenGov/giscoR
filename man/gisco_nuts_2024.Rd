@@ -55,7 +55,7 @@ mountain areas.
 \code{COAST_TYPE}: Coastal typology:
 \itemize{
 \item \code{1}: Coastal (on coast).
-\item \code{2}: Coastal (less than 50\% of population living within 50 km of the
+\item \code{2}: Coastal (less than 50 \% of population living within 50 km of the
 coastline).
 \item \code{3}: Non-coastal region.
 \item \code{0}: No classification provided.

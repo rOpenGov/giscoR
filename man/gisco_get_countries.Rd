@@ -68,8 +68,8 @@ Options available are:
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
 \item \code{"BN"}: Boundaries - \code{LINESTRING} object.
-\item \code{"COASTL"}: coastlines - \code{LINESTRING} object.
-\item \code{"INLAND"}: inland boundaries - \code{LINESTRING} object.
+\item \code{"COASTL"}: Coastal lines - \code{LINESTRING} object.
+\item \code{"INLAND"}: Inland boundaries - \code{LINESTRING} object.
 
 Arguments \code{country} and \code{region} are only applied when \code{spatialtype} is
 \code{"RG"} or \code{"LB"}.

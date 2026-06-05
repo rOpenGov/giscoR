@@ -95,7 +95,7 @@ gisco_response_is_error <- function(
 
   cli::cli_alert_danger(c(
     "{.strong Error {get_status_code}} ({get_status_desc}): ",
-    " {.url {url}}."
+    "{.url {url}}."
   ))
   cli::cli_alert_warning(c(
     "If this looks like a bug, please open an issue at ",

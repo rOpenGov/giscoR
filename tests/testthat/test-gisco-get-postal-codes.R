@@ -27,12 +27,27 @@ test_that("Offline", {
 })
 
 test_that("Postal codes use resolved GISCO files", {
+  filter_calls <- list()
+
   local_mocked_bindings(
     resolve_gisco_file = function(...) {
       list(
         url = "https://example.com/PCODE_PT_2024_4326.gpkg",
         name = "PCODE_PT_2024_4326.gpkg"
       )
+    },
+    convert_country_code_or_null = function(country) {
+      c("MT", "LU")
+    },
+    make_sf_filter = function(file_local,
+                              values,
+                              candidates = c("CNTR_ID", "CNTR_CODE")) {
+      filter_calls[[length(filter_calls) + 1L]] <<- list(
+        file_local = file_local,
+        values = values,
+        candidates = candidates
+      )
+      stats::setNames(list(values), paste(candidates, collapse = "|"))
     },
     read_gisco_dataset = function(url,
                                   name,
@@ -51,6 +66,10 @@ test_that("Postal codes use resolved GISCO files", {
       expect_true(update_cache)
       expect_true(verbose)
       expect_true(is.function(filters))
+      expect_identical(
+        filters("postal_codes.gpkg"),
+        list("CNTR_ID|CNTR_CODE" = c("MT", "LU"))
+      )
       data.frame(CNTR_ID = c("MT", "LU"), name = c("a", "b"))
     }
   )
@@ -62,6 +81,16 @@ test_that("Postal codes use resolved GISCO files", {
     verbose = TRUE
   )
   expect_identical(postal_codes$CNTR_ID, c("MT", "LU"))
+  expect_identical(
+    filter_calls,
+    list(
+      list(
+        file_local = "postal_codes.gpkg",
+        values = c("MT", "LU"),
+        candidates = c("CNTR_ID", "CNTR_CODE")
+      )
+    )
+  )
 })
 test_that("Extensions", {
   skip_on_cran()

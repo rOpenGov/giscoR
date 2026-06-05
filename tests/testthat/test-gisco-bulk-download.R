@@ -155,10 +155,21 @@ test_that("Errors", {
   expect_error(gisco_bulk_download(ext = "aa"))
 })
 
-test_that("Online", {
+test_that("Online mocked", {
   skip_on_cran()
   skip_if_gisco_offline()
-  skip("Need to refactor this test on bulk.")
+
+  local_mocked_bindings(
+    download_url = function(url = url, ...) {
+      url <- gsub(
+        "https://gisco-services.ec.europa.eu/distribution/v2",
+        "<masked_entry>",
+        url
+      )
+      cli::cli_alert_info("Mocked url is {.str {url}}.")
+      NULL
+    }
+  )
 
   cdir <- file.path(tempdir(), "testthat", "bulk")
   if (dir.exists(cdir)) {
@@ -181,45 +192,39 @@ test_that("Online", {
       range()
 
     aa <- lapply(y, function(x) {
-      s <- gisco_bulk_download(
-        iii,
-        year = x,
-        resolution = 20,
-        cache_dir = cdir,
-        ext = "shp"
+      expect_snapshot(
+        s <- gisco_bulk_download(
+          iii,
+          year = x,
+          resolution = 20,
+          cache_dir = cdir,
+          ext = "shp"
+        )
       )
-
-      expect_true(all(file.exists(s)))
     })
   }
 
   # Additional and extensions
-  ss <- gisco_bulk_download(
+  expect_snapshot(gisco_bulk_download(
     "communes",
     year = 2004,
     ext = "svg",
     cache_dir = cdir
-  )
+  ))
 
-  expect_true(all(file.exists(ss)))
-  ss <- gisco_bulk_download(
+  expect_snapshot(gisco_bulk_download(
     "countries",
     year = 2024,
     ext = "json",
     cache_dir = cdir,
     resolution = 60
-  )
-  expect_true(all(file.exists(ss)))
-  ss <- gisco_bulk_download(
+  ))
+
+  expect_snapshot(gisco_bulk_download(
     "countries",
     year = 2024,
     ext = "gdb",
     cache_dir = cdir,
     resolution = 60
-  )
-  expect_true(all(file.exists(ss)))
-
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  ))
 })

@@ -63,12 +63,27 @@ test_that("LAU Errors", {
 
 
 test_that("LAU combines country and GISCO ID filters", {
+  filter_calls <- list()
+
   local_mocked_bindings(
     resolve_gisco_file = function(...) {
       list(
         url = "https://example.com/LAU_RG_2024_4326.gpkg",
         name = "LAU_RG_2024_4326.gpkg"
       )
+    },
+    convert_country_code_or_null = function(country) {
+      country
+    },
+    make_sf_filter = function(file_local,
+                              values,
+                              candidates = c("CNTR_ID", "CNTR_CODE")) {
+      filter_calls[[length(filter_calls) + 1L]] <<- list(
+        file_local = file_local,
+        values = values,
+        candidates = candidates
+      )
+      stats::setNames(list(values), paste(candidates, collapse = "|"))
     },
     read_gisco_dataset = function(url,
                                   name,
@@ -83,6 +98,14 @@ test_that("LAU combines country and GISCO ID filters", {
       expect_identical(subdir, "lau")
       expect_identical(operator, "OR")
       expect_true(is.function(filters))
+      filter_result <- filters("lau.gpkg")
+      expect_identical(
+        filter_result,
+        list(
+          "CNTR_ID|CNTR_CODE" = "LI",
+          GISCO_ID = "ES_12016"
+        )
+      )
       data.frame(
         CNTR_CODE = c("LI", "ES"),
         GISCO_ID = c("LI_0101", "ES_12016")
@@ -93,6 +116,21 @@ test_that("LAU combines country and GISCO ID filters", {
   lau <- gisco_get_lau(year = 2024, country = "LI", gisco_id = "ES_12016")
   expect_identical(lau$CNTR_CODE, c("LI", "ES"))
   expect_identical(lau$GISCO_ID, c("LI_0101", "ES_12016"))
+  expect_identical(
+    filter_calls,
+    list(
+      list(
+        file_local = "lau.gpkg",
+        values = "LI",
+        candidates = c("CNTR_ID", "CNTR_CODE")
+      ),
+      list(
+        file_local = "lau.gpkg",
+        values = "ES_12016",
+        candidates = "GISCO_ID"
+      )
+    )
+  )
 })
 
 test_that("Deprecations", {

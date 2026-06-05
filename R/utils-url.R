@@ -188,7 +188,7 @@ download_url <- function(
   url = NULL,
   name = basename(url),
   cache_dir = NULL,
-  subdir = "fixme",
+  subdir = "downloads",
   update_cache = FALSE,
   verbose = TRUE
 ) {
@@ -228,8 +228,6 @@ download_url <- function(
     return(NULL)
   }
 
-  # Response
-
   # Check the size first to see if HEAD should report it.
   get_header <- httr2::req_method(req, "HEAD")
   getsize <- httr2::req_perform(get_header)
@@ -243,9 +241,8 @@ download_url <- function(
     req <- httr2::req_progress(req)
   }
 
-  # Testing
+  # Redirect to a fake URL during tests.
   if (is_404()) {
-    # Redirect to a fake URL during tests.
     req <- gisco_request_fake_404(req)
     file_local <- tempfile(fileext = ".txt")
   }

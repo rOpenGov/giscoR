@@ -2,12 +2,13 @@
 #'
 #' @param names A vector of names or codes.
 #'
-#' @param out Output code.
+#' @param out A character string with the output code.
 #'
-#' @return A vector of names.
+#' @return A character vector with country codes.
 #'
 #' @noRd
 convert_country_code <- function(names, out = "eurostat") {
+  names[tolower(names) == "antarctica"] <- "Antarctica"
   names[tolower(names) == "antartica"] <- "Antarctica"
 
   # Vectorize country conversion.

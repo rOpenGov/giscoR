@@ -68,7 +68,7 @@ data resolution. One of:
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Downloads worldwide coastlines.
+Downloads global coastal lines.
 }
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.

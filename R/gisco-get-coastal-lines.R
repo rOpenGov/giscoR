@@ -2,7 +2,7 @@
 #'
 #' @rdname gisco_get_coastal_lines
 #' @description
-#' Downloads worldwide coastlines.
+#' Downloads global coastal lines.
 #'
 #' @family stats
 #' @encoding UTF-8

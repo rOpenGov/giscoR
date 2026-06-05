@@ -8,14 +8,14 @@
 #' attributes and, optionally, geometry for different datasets at specified
 #' longitude and latitude coordinates.
 #'
-#' Each endpoint available is implemented through a specific function, see
+#' Each available endpoint is implemented through a specific function, see
 #' **Details**.
 #'
 #' @family API tools
 #' @encoding UTF-8
 #' @inheritParams gisco_address_api
-#' @param x,y A character string or numeric value with the x and y coordinates
-#'   (as longitude and latitude) to identify.
+#' @param x,y A character string or numeric value with the longitude and
+#'   latitude coordinates to identify.
 #' @param xmin,ymin,xmax,ymax A character string or numeric value with bounding
 #'   box coordinates to identify all geonames within the box.
 #' @param nuts_id A character value with the NUTS ID code.
@@ -35,33 +35,33 @@
 #' @details
 #' The available endpoints are:
 #'
-#' - `gisco_id_api_geonames()`: Get geographic placenames either from x/y
-#'   coordinates or a bounding box.
+#' - `gisco_id_api_geonames()`: Get geographic placenames from longitude and
+#'   latitude coordinates or a bounding box.
 #' - `gisco_id_api_nuts()`: Returns NUTS regions from either a specified
-#'   longitude and latitude (x,y) or ID. Accepted values for `year`
+#'   longitude and latitude coordinates or an ID. Accepted values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("nuts")}.
 #' - `gisco_id_api_lau()`: Returns the ID and, optionally, geometry for Local
-#'   Administrative Units (LAU) at specified longitude and latitude (x,y).
+#'   Administrative Units (LAU) at specified longitude and latitude coordinates.
 #'   Accepted values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("lau")}.
 #' - `gisco_id_api_country()`: Returns the ID and, optionally, geometry for
-#'   countries at specified longitude and latitude (x,y). Accepted values for
-#'   `year`
+#'   countries at specified longitude and latitude coordinates. Accepted values
+#'   for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("country")}.
 #' - `gisco_id_api_river_basin()`: Returns the ID and, optionally, geometry
-#'   for river basins at specified longitude and latitude (x,y), based on the
-#'   Water Framework Directive (WFD) reference spatial data sets. Accepted
+#'   for river basins at specified longitude and latitude coordinates, based on
+#'   the Water Framework Directive (WFD) reference spatial datasets. Accepted
 #'   values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("riverbasin")}.
 #' - `gisco_id_api_biogeo_region()`: Returns the ID and, optionally,
-#'   geometry for biogeo regions at specified longitude and latitude (x,y). The
-#'  biogeographical regions dataset contains the official delineations used in
-#'  the Habitats Directive (92/43/EEC) and for the EMERALD Network. Accepted
-#'  values for `year`
+#'   geometry for biogeo regions at specified longitude and latitude
+#'   coordinates. The biogeographical regions dataset contains the official
+#'   delineations used in the Habitats Directive (92/43/EEC) and for the
+#'   EMERALD Network. Accepted values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("biogeoregion")}.
 #' - `gisco_id_api_census_grid()`: Returns the ID and, optionally, geometry
-#'   for census grid cells at specified longitude and latitude (x,y). Accepted
-#'   values for `year`
+#'   for census grid cells at specified longitude and latitude coordinates.
+#'   Accepted values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("censusgrid")}.
 #' @source
 #' <https://gisco-services.ec.europa.eu/id/api-docs/>.

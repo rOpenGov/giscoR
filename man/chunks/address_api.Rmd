@@ -1,20 +1,20 @@
-Brief description of the API endpoints (source: [GISCO Address API
+Brief descriptions of the API endpoints (source: [GISCO Address API
 Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)):
 
 | **Endpoint** | **Description** |
 |-----------------|--------------------------------------------------------------|
 | `/countries` | Returns all country codes that are compatible with the address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
-| `/provinces` | Returns all provinces within the specified country. Can also be used to get the province of a specified city. |
+| `/provinces` | Returns all provinces within the specified country. It can also be used to get the province of a specified city. |
 | `/cities` | Returns all cities within a specified province or country. |
 | `/roads` | Returns all roads or streets within a specified city. |
 | `/housenumbers` | Returns all house numbers or names within the specified road. In some countries, an address may not have a road component. If a road is not specified, **the API returns at most 1,000 house numbers**. |
 | `/postcodes` | Returns all postcodes within the specified address component: country, province or city. |
 | `/search` | Allows structured queries to the address database. Various argument combinations can be used to retrieve addresses that share an address component. **The API returns at most 100 addresses**. |
-| `/reverse` | Allows you to specify x and y coordinates to retrieve a structured address. |
+| `/reverse` | Allows you to specify longitude and latitude coordinates to retrieve a structured address. |
 | `/bbox` | Returns a [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component depending on the arguments specified. |
 | `/copyright` | Returns the copyright text for each available country in the Address API. |
 
-The resulting object may include the following variables:
+The resulting object may include these variables:
 
 | **Property name** | **Description** |
 |------------------|-------------------------------------------------------------|
@@ -28,5 +28,5 @@ The resulting object may include the following variables:
 | `N1` | Refers to "NUTS 1". |
 | `N2` | Refers to "NUTS 2". |
 | `N3` | Refers to "NUTS 3". |
-| `X` and `Y` | Refer to the x and y coordinates of the address point. |
+| `X` and `Y` | Refer to the longitude and latitude coordinates of the address point. |
 | `OL` | Refers to the [Open Location Code](https://github.com/google/open-location-code) for the address. |

@@ -182,7 +182,7 @@ gisco_bulk_download <- function(
   if (verbose) {
     for_bullets <- outfiles
     names(for_bullets) <- rep(">", length(for_bullets))
-    cli::cli_alert_info(c("Extracting files:"))
+    cli::cli_alert_info("Extracting files:")
     cli::cli_bullets(for_bullets)
   }
 

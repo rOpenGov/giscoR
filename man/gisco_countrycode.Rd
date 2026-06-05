@@ -19,10 +19,10 @@ Common Locale Data Repository.}
 \item{\code{continent}}{As provided by the World Bank.}
 \item{\code{un.region.code}}{Numeric region code UN (M49).}
 \item{\code{un.region.name}}{Region name UN (M49).}
-\item{\code{un.regionintermediate.code}}{Numeric intermediate Region.}
-\item{\code{un.regionintermediate.name}}{Intermediate Region name UN (M49).}
+\item{\code{un.regionintermediate.code}}{Numeric intermediate region.}
+\item{\code{un.regionintermediate.name}}{Intermediate region name UN (M49).}
 \item{\code{un.regionsub.code}}{Numeric sub-region code UN (M49).}
-\item{\code{un.regionsub.name}}{Sub-Region name UN (M49).}
+\item{\code{un.regionsub.name}}{Sub-region name UN (M49).}
 \item{\code{eu}}{Logical indicating if the country belongs to the
 European Union.}
 }

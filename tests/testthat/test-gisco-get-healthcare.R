@@ -1,17 +1,18 @@
 test_that("Offline", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-  local_mocked_bindings(is_404 = function(...) {
-    TRUE
-  })
+  local_mocked_bindings(
+    is_404 = function(...) {
+      TRUE
+    },
+    read_gisco_dataset = function(...) {
+      message("Error")
+      NULL
+    }
+  )
   expect_message(
     n <- gisco_get_healthcare(update_cache = TRUE, year = 2020),
     "Error"
   )
   expect_null(n)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("Healthcare uses the basic service dataset", {
@@ -50,15 +51,50 @@ test_that("Healthcare uses the basic service dataset", {
   expect_identical(healthcare$cntr_id, "LU")
 })
 
-test_that("Healthcare online", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-
+test_that("Healthcare reads, filters and caches mocked data", {
   cdir <- file.path(tempdir(), "test_health")
   unlink(cdir, force = TRUE, recursive = TRUE)
   expect_false(dir.exists(cdir))
   create_cache_dir(cdir)
   expect_true(dir.exists(cdir))
+
+  local_mocked_bindings(
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  verbose = FALSE,
+                                  post_process = NULL,
+                                  ...) {
+      expect_identical(url, basic_service_url("healthcare", "2023"))
+      expect_identical(name, "health_2023_EU.gpkg")
+      expect_identical(subdir, "health")
+      if (!is.null(cache_dir)) {
+        expect_identical(cache_dir, cdir)
+      }
+
+      if (cache) {
+        create_cache_dir(file.path(cache_dir, subdir))
+        file.create(file.path(cache_dir, subdir, name))
+      }
+      if (verbose) {
+        message("Mocked healthcare read.")
+      }
+
+      data <- sf::st_as_sf(tibble::tibble(
+        cntr_id = c("LU", "ES", "BE", "ES"),
+        geometry = sf::st_sfc(
+          sf::st_point(c(1, 1)),
+          sf::st_point(c(2, 2)),
+          sf::st_point(c(3, 3)),
+          sf::st_point(c(4, 4)),
+          crs = 4326
+        )
+      ))
+      post_process(data)
+    }
+  )
 
   # No Cache
   expect_silent(

@@ -108,12 +108,12 @@ NULL
 #'   \item{`continent`}{As provided by the World Bank.}
 #'   \item{`un.region.code`}{Numeric region code UN (M49).}
 #'   \item{`un.region.name`}{Region name UN (M49).}
-#'   \item{`un.regionintermediate.code`}{Numeric intermediate Region.}
-#'   \item{`un.regionintermediate.name`}{Intermediate Region name UN (M49).}
+#'   \item{`un.regionintermediate.code`}{Numeric intermediate region.}
+#'   \item{`un.regionintermediate.name`}{Intermediate region name UN (M49).}
 #'   \item{`un.regionsub.code`}{Numeric sub-region code UN (M49).}
-#'   \item{`un.regionsub.name`}{Sub-Region name UN (M49).}
+#'   \item{`un.regionsub.name`}{Sub-region name UN (M49).}
 #'   \item{`eu`}{Logical indicating if the country belongs to the
-#'    European Union.}
+#'     European Union.}
 #' }
 #'
 #' @source [countrycode::codelist] **v1.6.1**.
@@ -201,12 +201,12 @@ NULL
 #'
 #' `MOUNT_TYPE`: Mountain typology:
 #' - `1`: More than 50 % of the surface is covered by topographic mountain
-#'    areas.
+#'   areas.
 #' - `2`: More than 50 % of the regional population lives in topographic
-#'    mountain areas.
+#'   mountain areas.
 #' - `3`: More than 50 % of the surface is covered by topographic mountain
-#'    areas and where more than 50 % of the regional population lives in these
-#'    mountain areas.
+#'   areas and where more than 50 % of the regional population lives in these
+#'   mountain areas.
 #' - `4`: Non-mountain region / other regions.
 #' - `0`: No classification provided.
 #'
@@ -218,8 +218,8 @@ NULL
 #'
 #' `COAST_TYPE`: Coastal typology:
 #' - `1`: Coastal (on coast).
-#' - `2`: Coastal (less than 50% of population living within 50 km of the
-#'        coastline).
+#' - `2`: Coastal (less than 50 % of population living within 50 km of the
+#'   coastline).
 #' - `3`: Non-coastal region.
 #' - `0`: No classification provided.
 #'

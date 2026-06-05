@@ -136,10 +136,9 @@ get_geo_file_colnames <- function(file_local) {
 #' @param candidates A character vector of candidate column names.
 #'
 #' @return
-#' A character vector with the matching column names or NULL if none found.
+#' A character vector with the matching column names, or `NULL` if none found.
 #'
 #' @noRd
-#'
 get_col_name <- function(file_local, candidates = c("CNTR_ID", "CNTR_CODE")) {
   actual_names <- get_geo_file_colnames(file_local)
   match <- intersect(candidates, actual_names)

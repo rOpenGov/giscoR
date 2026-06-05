@@ -7,14 +7,14 @@ cff-version: 1.2.0
 message: 'To cite package "giscoR" in publications use:'
 type: software
 license: GPL-3.0-only
-title: 'giscoR: Download Map Data from the GISCO API'
+title: 'giscoR: Download Geospatial Data from the GISCO API'
 version: 1.1.0.9000
 doi: 10.32614/CRAN.package.giscoR
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.giscoR
-abstract: Tools to download global and European map data from Eurostat's GISCO (Geographic
-  Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>.
+abstract: Tools to download global and European geospatial data from Eurostat's GISCO
+  (Geographic Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>.
   The package provides helpers for working with country boundaries, NUTS regions,
   statistical units, transport networks and other geospatial datasets. This package
   is not officially related to or endorsed by Eurostat.
@@ -25,7 +25,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
   type: manual
-  title: 'giscoR: Download Map Data from the GISCO API'
+  title: 'giscoR: Download Geospatial Data from the GISCO API'
   authors:
   - family-names: Hernangómez
     given-names: Diego
@@ -35,8 +35,8 @@ preferred-citation:
   year: '2026'
   version: 1.1.0.9000
   url: https://ropengov.github.io/giscoR/
-  abstract: Tools to download global and European map data from Eurostats GISCO (Geographic
-    Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>.
+  abstract: Tools to download global and European geospatial data from Eurostats GISCO
+    (Geographic Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>.
     The package provides helpers for working with country boundaries, NUTS regions,
     statistical units, transport networks and other geospatial datasets. This package
     is not officially related to or endorsed by Eurostat.

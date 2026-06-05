@@ -32,8 +32,8 @@
 #' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #' - `"LB"`: Labels - `POINT` object.
 #' - `"BN"`: Boundaries - `LINESTRING` object.
-#' - `"COASTL"`: coastlines - `LINESTRING` object.
-#' - `"INLAND"`: inland boundaries - `LINESTRING` object.
+#' - `"COASTL"`: Coastal lines - `LINESTRING` object.
+#' - `"INLAND"`: Inland boundaries - `LINESTRING` object.
 #'
 #'   Arguments `country` and `region` are only applied when `spatialtype` is
 #'   `"RG"` or `"LB"`.

@@ -67,12 +67,27 @@ test_that("Communes errors", {
 })
 
 test_that("Communes pass country filters to the reader", {
+  filter_calls <- list()
+
   local_mocked_bindings(
     resolve_gisco_file = function(...) {
       list(
         url = "https://example.com/COMM_LB_2016_4326.gpkg",
         name = "COMM_LB_2016_4326.gpkg"
       )
+    },
+    convert_country_code_or_null = function(country) {
+      country
+    },
+    make_sf_filter = function(file_local,
+                              values,
+                              candidates = c("CNTR_ID", "CNTR_CODE")) {
+      filter_calls[[length(filter_calls) + 1L]] <<- list(
+        file_local = file_local,
+        values = values,
+        candidates = candidates
+      )
+      stats::setNames(list(values), paste(candidates, collapse = "|"))
     },
     read_gisco_dataset = function(url,
                                   name,
@@ -82,6 +97,10 @@ test_that("Communes pass country filters to the reader", {
       expect_match(url, "COMM_LB_2016_4326[.]gpkg$")
       expect_true(is.function(filters))
       expect_true(verbose)
+      expect_identical(
+        filters("communes.gpkg"),
+        list("CNTR_ID|CNTR_CODE" = "LU")
+      )
       data.frame(CNTR_CODE = "LU", name = "a")
     }
   )
@@ -92,6 +111,16 @@ test_that("Communes pass country filters to the reader", {
     verbose = TRUE
   )
   expect_identical(communes$CNTR_CODE, "LU")
+  expect_identical(
+    filter_calls,
+    list(
+      list(
+        file_local = "communes.gpkg",
+        values = "LU",
+        candidates = c("CNTR_ID", "CNTR_CODE")
+      )
+    )
+  )
 })
 
 test_that("Deprecations", {

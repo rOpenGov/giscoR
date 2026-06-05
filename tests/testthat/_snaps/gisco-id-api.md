@@ -27,7 +27,7 @@
     Code
       n <- gisco_id_api_nuts(nuts_level = 2, epsg = 4258)
     Message
-      x Error 500 (Internal Server Error):  <https://gisco-services.ec.europa.eu/id/nuts?epsg=4258&year=2024&nuts_level=2&format=geojson&geometry=yes>.
+      x Error 500 (Internal Server Error): <https://gisco-services.ec.europa.eu/id/nuts?epsg=4258&year=2024&nuts_level=2&format=geojson&geometry=yes>.
       ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
       > Returning "NULL".
 

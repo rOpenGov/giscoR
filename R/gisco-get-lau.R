@@ -8,12 +8,14 @@
 #' @family stats
 #' @encoding UTF-8
 #'
-#' @inheritParams gisco_get_communes
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "year",TRUE)}.
+#' @param cache `r lifecycle::badge('deprecated')`. This function always
+#'   caches the result due to its size. See **Caching strategies** section
+#'   in [gisco_set_cache_dir()].
 #' @param gisco_id An optional character vector of `GISCO_ID` LAU values.
 #' @param ext A character value with the extension of the file (default
 #'   `"gpkg"`). One of
@@ -58,7 +60,7 @@
 #'   ggplot(lu_lau) +
 #'     geom_sf(aes(fill = POP_DENS_2024)) +
 #'     labs(
-#'       title = "Population Density in Luxembourg",
+#'       title = "Population density in Luxembourg",
 #'       subtitle = "Year 2024",
 #'       caption = gisco_attributions()
 #'     ) +

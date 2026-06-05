@@ -58,9 +58,9 @@ included when available (see \strong{Details}).
 \details{
 Files are distributed on \href{https://epsg.io/4326}{EPSG:4326}.
 
-Brief description of each attribute:\tabular{ll}{
+Brief descriptions of each attribute:\tabular{ll}{
    \strong{Attribute} \tab \strong{Description} \cr
-   \code{id} \tab The education service identifier. This identifier is based on national identification codes, if it exists. \cr
+   \code{id} \tab The education service identifier. It is based on national identification codes, if they exist. \cr
    \code{name} \tab The name of the education institution. \cr
    \code{site_name} \tab The name of the specific site or branch of an education institution. \cr
    \code{lat} \tab Latitude (WGS 84). \cr
@@ -80,7 +80,7 @@ Brief description of each attribute:\tabular{ll}{
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
    \code{url} \tab URL for the institution's website. \cr
-   \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) the data refers to. The dataset represents the reality as it was at this date. \cr
+   \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) the data refers to. The dataset represents the state at this date. \cr
    \code{geo_qual} \tab Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. \cr
    \code{comments} \tab Additional information on the education service. \cr
 }
