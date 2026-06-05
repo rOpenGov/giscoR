@@ -106,12 +106,14 @@ test_that("Bulk download orchestrates download and extraction", {
         "countries/shp/CNTR_RG_60M_2024_4326.shp.zip"
       )
     },
-    download_url = function(url,
-                            name,
-                            cache_dir,
-                            subdir,
-                            update_cache = FALSE,
-                            verbose = FALSE) {
+    download_url = function(
+      url,
+      name,
+      cache_dir,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE
+    ) {
       expect_match(url, "countries/download/ref-countries-2024-60m.geojson.zip")
       expect_identical(name, "ref-countries-2024-60m.geojson.zip")
       expect_identical(cache_dir, cdir)
@@ -161,12 +163,8 @@ test_that("Online mocked", {
 
   local_mocked_bindings(
     download_url = function(url = url, ...) {
-      url <- gsub(
-        "https://gisco-services.ec.europa.eu/distribution/v2",
-        "<masked_entry>",
-        url
-      )
-      cli::cli_alert_info("Mocked url is {.str {url}}.")
+      url <- basename(url)
+      cli::cli_alert_info("Mocked {.str {url}}.")
       NULL
     }
   )
