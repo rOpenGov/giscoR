@@ -54,7 +54,7 @@ Other cache utilities:
 # Do not run this. It modifies your current state.
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpf19eiy/giscoR
+#> ℹ /tmp/RtmpS5vMTC/giscoR
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cache")
@@ -62,13 +62,13 @@ gisco_set_cache_dir(ex, verbose = FALSE)
 
 # Restore the initial cache.
 gisco_clear_cache(verbose = TRUE)
-#> ! giscoR data deleted: /tmp/Rtmpf19eiy/example/cache (0 bytes).
+#> ! giscoR data deleted: /tmp/RtmpS5vMTC/example/cache (0 bytes).
 
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache directory is /tmp/Rtmpf19eiy/giscoR.
+#> ℹ giscoR cache directory is /tmp/RtmpS5vMTC/giscoR.
 #> ℹ To install your `cache_dir` path for future sessions, run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/Rtmpf19eiy/giscoR
+#> ℹ /tmp/RtmpS5vMTC/giscoR
 #> [1] TRUE
 # }
 ```
