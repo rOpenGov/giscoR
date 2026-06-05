@@ -5,7 +5,7 @@
 #' territorial units for statistics) and statistical regions by means of
 #' multipart polygon, polyline and point topology. The NUTS geographical
 #' information is completed by attribute tables and a set of cartographic
-#' help lines to better visualise multipart polygonal regions.
+#' help lines to better visualize multipart polygonal regions.
 #'
 #' The NUTS are a hierarchical system divided into 3 levels:
 #' - NUTS 1: major socio-economic regions.
@@ -19,22 +19,9 @@
 #' data for all countries at the requested NUTS level or levels. To download
 #' individual NUTS files, use [gisco_get_unit_nuts()].
 #'
-#' @encoding UTF-8
 #' @family stats
+#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
-#' @inheritSection gisco_get_countries Note
-#' @inherit gisco_get_communes source return
-#' @export
-#'
-#' @seealso
-#' [gisco_nuts_2024], [eurostat::get_eurostat_geospatial()].
-#'
-#' See [gisco_bulk_download()] to perform a bulk download of datasets.
-#'
-#' See [gisco_get_unit_nuts()] to download single files.
-#'
-#' See [gisco_id_api_nuts()] to download via GISCO ID service API.
-#'
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
@@ -55,6 +42,8 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "ext",TRUE)}.
 #'
+#' @inherit gisco_get_communes source return
+#' @inheritSection gisco_get_countries Note
 #' @details
 #' The NUTS nomenclature is a hierarchical classification of statistical
 #' regions and subdivides the EU economic territory into regions of three
@@ -72,6 +61,15 @@
 #'
 #' An introduction to the NUTS classification is available here:
 #' <https://ec.europa.eu/eurostat/web/nuts/overview>.
+#'
+#' @seealso
+#' [gisco_nuts_2024], [eurostat::get_eurostat_geospatial()].
+#'
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
+#'
+#' See [gisco_get_unit_nuts()] to download single files.
+#'
+#' See [gisco_id_api_nuts()] to download via GISCO ID service API.
 #'
 #' @examples
 #' nuts2 <- gisco_get_nuts(nuts_level = 2)
@@ -103,6 +101,8 @@
 #' ggplot(select_nuts) +
 #'   geom_sf(aes(fill = CNTR_CODE)) +
 #'   scale_fill_viridis_d()
+#' @export
+#'
 gisco_get_nuts <- function(
   year = 2024,
   epsg = 4326,
@@ -123,7 +123,7 @@ gisco_get_nuts <- function(
 
   resolution <- as.character(resolution)
 
-  api_entry <- get_url_db(
+  file <- resolve_gisco_file(
     id = "nuts",
     year = year,
     epsg = epsg,
@@ -134,10 +134,8 @@ gisco_get_nuts <- function(
     fn = "gisco_get_nuts"
   )
 
-  filename <- basename(api_entry)
-
   data_sf <- read_packaged_gisco_dataset(
-    filename = filename,
+    filename = file$name,
     pattern = "NUTS_RG_20M_2024_4326.*.gpkg$",
     data = giscoR::gisco_nuts_2024,
     data_name = "gisco_nuts_2024",
@@ -157,8 +155,8 @@ gisco_get_nuts <- function(
   }
 
   read_gisco_dataset(
-    url = api_entry,
-    name = filename,
+    url = file$url,
+    name = file$name,
     cache = cache,
     cache_dir = cache_dir,
     subdir = "nuts",
@@ -208,7 +206,7 @@ filter_country_nuts_level <- function(
 
   if (all(!is.null(country), "CNTR_CODE" %in% names(data_sf))) {
     country <- convert_country_code(country, "eurostat")
-    data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
+    data_sf <- filter_by_country_col(data_sf, country, "CNTR_CODE")
   }
 
   if (all(!is.null(nuts_id), "NUTS_ID" %in% names(data_sf))) {

@@ -6,20 +6,10 @@
 #' [gisco_get_communes()].
 #'
 #' @family stats
-#' @inheritParams gisco_get_communes
-#' @inherit gisco_get_coastal_lines source return
-#' @inheritSection gisco_get_coastal_lines Note
 #' @encoding UTF-8
 #'
-#' @seealso
-#' [gisco_get_communes()].
-#'
-#' See [gisco_bulk_download()] to perform a bulk download of datasets.
-#'
-#' See [gisco_id_api_lau()] to download via GISCO ID service API.
-#'
-#' @export
-#'
+#' @inheritParams gisco_get_communes
+#' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
@@ -30,9 +20,8 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "ext",TRUE)}.
 #'
-#' @inheritParams gisco_get_countries
-#' @export
-#'
+#' @inherit gisco_get_coastal_lines source return
+#' @inheritSection gisco_get_coastal_lines Note
 #' @details
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
@@ -50,6 +39,13 @@
 #'
 #' Total resident population figures (31 December) have also been added in
 #' some versions based on the associated LAU lists.
+#'
+#' @seealso
+#' [gisco_get_communes()].
+#'
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
+#'
+#' See [gisco_id_api_lau()] to download via GISCO ID service API.
 #'
 #' @examplesIf gisco_check_access()
 #' \dontrun{
@@ -74,6 +70,8 @@
 #'     labs(fill = "pop/km2")
 #' }
 #' }
+#' @export
+#'
 gisco_get_lau <- function(
   year = 2024,
   epsg = 4326,
@@ -85,20 +83,12 @@ gisco_get_lau <- function(
   gisco_id = NULL,
   ext = "gpkg"
 ) {
-  if (lifecycle::is_present(cache)) {
-    lifecycle::deprecate_warn(
-      when = "1.0.0",
-      what = "giscoR::gisco_get_lau(cache)",
-      details = paste0(
-        "Results are always cached. To avoid persistency use ",
-        "`cache_dir = tempdir()`."
-      )
-    )
-  }
+  warn_deprecated_cache(cache, "giscoR::gisco_get_lau(cache)")
+
   valid_ext <- c("geojson", "gpkg", "shp")
   ext <- match_arg_pretty(ext, valid_ext)
 
-  url <- get_url_db(
+  file <- resolve_gisco_file(
     "lau",
     year = year,
     epsg = epsg,
@@ -106,13 +96,11 @@ gisco_get_lau <- function(
     fn = "gisco_get_lau"
   )
 
-  basename <- basename(url)
-
   country <- convert_country_code_or_null(country)
 
   read_gisco_dataset(
-    url = url,
-    name = basename,
+    url = file$url,
+    name = file$name,
     cache = TRUE,
     cache_dir = cache_dir,
     subdir = "lau",

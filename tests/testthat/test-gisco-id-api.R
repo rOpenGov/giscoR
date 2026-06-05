@@ -47,6 +47,64 @@ test_that("Test 404", {
   })
 })
 
+test_that("ID API delegates GeoJSON responses to the spatial reader", {
+  local_mocked_bindings(
+    read_id_api_geojson = function(url, verbose = FALSE) {
+      expect_match(url, "format=geojson")
+      expect_true(verbose)
+      data.frame(id = "ES")
+    }
+  )
+
+  out <- gisco_id_api_country(x = 1, y = 2, verbose = TRUE)
+  expect_identical(out$id, "ES")
+})
+
+test_that("ID API delegates JSON responses to the JSON helper", {
+  local_mocked_bindings(
+    call_gisco_json_api = function(custom_query,
+                                   apiurl,
+                                   result_field,
+                                   verbose = FALSE) {
+      expect_identical(custom_query$format, "json")
+      expect_identical(custom_query$geometry, "no")
+      expect_match(apiurl, "country")
+      expect_identical(result_field, "attributes")
+      expect_true(verbose)
+      data.frame(id = "ES")
+    }
+  )
+
+  out <- gisco_id_api_country(x = 1, y = 2, geometry = FALSE, verbose = TRUE)
+  expect_identical(out$id, "ES")
+})
+
+test_that("ID API spatial reader downloads and reads GeoJSON", {
+  local_mocked_bindings(
+    download_url = function(url,
+                            name,
+                            cache_dir,
+                            subdir,
+                            update_cache = FALSE,
+                            verbose = FALSE) {
+      expect_identical(url, "https://example.com/file.geojson")
+      expect_match(name, "[.]geojson$")
+      expect_identical(cache_dir, tempdir())
+      expect_identical(subdir, "gisco_id_api")
+      expect_true(update_cache)
+      expect_true(verbose)
+      "local.geojson"
+    },
+    read_geo_file_sf = function(file_local) {
+      expect_identical(file_local, "local.geojson")
+      data.frame(id = "ES")
+    }
+  )
+
+  out <- read_id_api_geojson("https://example.com/file.geojson", verbose = TRUE)
+  expect_identical(out$id, "ES")
+})
+
 
 test_that("gisco_id_api_geonames online", {
   skip_on_cran()

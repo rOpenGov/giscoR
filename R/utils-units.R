@@ -52,11 +52,11 @@ read_unit_file_sf <- function(file, post_process = NULL) {
 
 #' Download or read GISCO single-unit files
 #'
+#' @inheritParams download_url
 #' @param dataset A character string with the local dataset name.
 #' @param api_id A character string with the GISCO API path identifier.
 #' @param unit_names A character vector with GISCO unit file names.
 #' @param unit_labels A character vector with user-facing unit labels.
-#' @inheritParams download_url
 #' @param year A character string or numeric value with the release year.
 #' @param post_process Optional function applied after reading each file.
 #'
@@ -110,7 +110,7 @@ get_unit_files <- function(
     make_msg(
       "info",
       verbose,
-      paste0("File {.str ", single_unit, "} requested.")
+      paste0("Requested file {.str ", single_unit, "}.")
     )
 
     guess_path <- file.path(base_cache_dir, cache_subdir, single_unit)
@@ -128,9 +128,9 @@ get_unit_files <- function(
     }
 
     if (!single_unit %in% units_db) {
-      cli::cli_alert_warning(c(
+      cli::cli_alert_warning(
         "Skipping {.arg unit = {.str {unit_txt}}} (not found online)."
-      ))
+      )
       return(NULL)
     }
 

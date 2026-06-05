@@ -11,16 +11,7 @@
 #'
 #' @family stats
 #' @encoding UTF-8
-#' @export
 #' @inheritParams gisco_get_countries
-#' @inheritSection gisco_get_countries Note
-#' @inherit gisco_get_nuts source return
-#'
-#' @seealso
-#' See [gisco_bulk_download()] to perform a bulk download of datasets.
-#'
-#' See [gisco_get_unit_urban_audit()] to download single files.
-#'
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
@@ -40,6 +31,9 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 #'   "ext",TRUE)}.
 #'
+#' @inherit gisco_get_nuts source return
+#'
+#' @inheritSection gisco_get_countries Note
 #' @details
 #' See more at:
 #' ```{r, echo=FALSE, results='asis'}
@@ -62,6 +56,11 @@
 #' - `"C"` = City.
 #' - `"F"` = Functional urban area service type.
 #'
+#' @seealso
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
+#'
+#' See [gisco_get_unit_urban_audit()] to download single files.
+#'
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #'
@@ -75,6 +74,7 @@
 #'     geom_sf()
 #' }
 #' }
+#' @export
 gisco_get_urban_audit <- function(
   year = 2024,
   epsg = 4326,
@@ -97,7 +97,7 @@ gisco_get_urban_audit <- function(
   level <- match_arg_pretty(level)
   spatialtype <- match_arg_pretty(spatialtype)
 
-  api_entry <- get_url_db(
+  file <- resolve_gisco_file(
     id = "urban_audit",
     year = year,
     epsg = epsg,
@@ -107,12 +107,11 @@ gisco_get_urban_audit <- function(
     fn = "gisco_get_urban_audit"
   )
 
-  filename <- basename(api_entry)
   country <- convert_country_code_or_null(country)
 
   read_gisco_dataset(
-    url = api_entry,
-    name = filename,
+    url = file$url,
+    name = file$name,
     cache = cache,
     cache_dir = cache_dir,
     subdir = "urban_audit",

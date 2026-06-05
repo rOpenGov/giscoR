@@ -10,8 +10,6 @@
 #'
 #' @family misc
 #' @encoding UTF-8
-#' @export
-#'
 #' @param lang A character value with the language (two-letter ISO code). See
 #'   [countrycode::codelist] and **Details**.
 #' @param copyright A logical value indicating whether to display the
@@ -53,7 +51,7 @@
 #' - [gisco_get_nuts()]
 #' - [gisco_get_urban_audit()]
 #'
-#' ## Copyright Notice
+#' ## Copyright notice
 #'
 #' When data downloaded from GISCO is used in any printed or electronic
 #' publication, in addition to any other provisions applicable to the whole
@@ -89,12 +87,14 @@
 #'
 #' countrycode::codelist |>
 #'   select(country.name.en, iso2c)
+#' @export
+#'
 gisco_attributions <- function(lang = "en", copyright = FALSE) {
   lang <- tolower(lang)
   if (copyright) {
     cli::cli_alert_info(
       "
-    COPYRIGHT NOTICE
+    Copyright notice
 
     When data downloaded from GISCO
     is used in any printed or electronic publication,
@@ -121,7 +121,7 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     )
   }
 
-  # Display message
+  # Warn when the requested language is not supported.
   verbose <- !lang %in% c("en", "da", "de", "es", "fi", "fr", "no", "sv")
 
   make_msg(
@@ -129,14 +129,14 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     verbose,
     "Language",
     lang,
-    "not supported.",
+    "is not supported.",
     "Switching to English."
   )
   make_msg(
     "info",
     verbose,
-    "Consider contributing:",
-    "{.url https://github.com/rOpenGov/giscoR/issues}"
+    "Consider contributing a translation:",
+    "{.url https://github.com/rOpenGov/giscoR/issues}."
   )
 
   attr <- switch(lang,

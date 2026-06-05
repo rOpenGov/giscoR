@@ -1,5 +1,8 @@
 #' GISCO Address API
 #'
+#' @name gisco_address_api
+#' @rdname gisco_address_api
+#' @aliases gisco_addressapi
 #' @description
 #' Functions to interact with the [GISCO Address
 #' API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home), which
@@ -12,20 +15,13 @@
 #' The API supports fuzzy searching (also referred to as approximate string
 #' matching) for all arguments of each endpoint.
 #'
-#' @source
-#' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
-#'
-#' @name gisco_address_api
-#' @rdname gisco_address_api
-#' @aliases gisco_addressapi
-#' @inheritParams gisco_get_nuts
 #' @family API tools
-#' @export
 #' @encoding UTF-8
 #'
-#' @param country Country code (`country = "LU"`).
-#' @param x,y X and Y coordinates (as longitude and latitude) to convert into
-#'   a human-readable address.
+#' @inheritParams gisco_get_nuts
+#' @param country A country code (`country = "LU"`).
+#' @param x,y Longitude and latitude coordinates to convert into a
+#'   human-readable address.
 #' @param province A province within a country. For a list of provinces within
 #'   a country, use the provinces endpoint
 #'   (`gisco_address_api_provinces(country = "LU")`).
@@ -45,6 +41,9 @@
 #'
 #' ```{r child = "man/chunks/address_api.Rmd"}
 #' ```
+#'
+#' @source
+#' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 #'
 #' @seealso
 #'
@@ -69,6 +68,7 @@
 #' reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 #'
 #' reverse
+#' @export
 gisco_address_api_search <- function(
   country = NULL,
   province = NULL,
@@ -123,7 +123,7 @@ gisco_address_api_bbox <- function(
   res <- call_address_api(custom_query, apiurl, verbose)
 
   if (any(nrow(res) == 0, is.na(res$bbox), is.null(res$bbox))) {
-    cli::cli_alert_warning("No results. Returning {.val NULL}.")
+    cli::cli_alert_warning("No results found. Returning {.val NULL}.")
 
     return(NULL)
   }
@@ -278,52 +278,52 @@ call_address_api <- function(custom_query, apiurl, verbose = FALSE) {
 
 # Export alias ----
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_bbox <- gisco_address_api_bbox
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_cities <- gisco_address_api_cities
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_copyright <- gisco_address_api_copyright
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_countries <- gisco_address_api_countries
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_housenumbers <- gisco_address_api_housenumbers
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_postcodes <- gisco_address_api_postcodes
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_provinces <- gisco_address_api_provinces
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_reverse <- gisco_address_api_reverse
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_roads <- gisco_address_api_roads
 
-#' @export
 #' @rdname gisco_address_api
+#' @export
 #' @usage NULL
 gisco_addressapi_search <- gisco_address_api_search

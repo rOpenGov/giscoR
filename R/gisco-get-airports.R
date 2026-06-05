@@ -6,23 +6,21 @@
 #' Aviation Organisation (ICAO) airport codes.
 #'
 #' @family transport
-#' @inherit gisco_get_countries return
-#' @inheritParams gisco_get_countries
 #' @encoding UTF-8
-#' @export
-#'
+#' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file.
 #'   One of `2013`, `2006`.
+#'
+#' @inherit gisco_get_countries return
+#' @details
+#' Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
 #'
 #' Copyright:
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata>.
-#'
-#' @details
-#' Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
 #'
 #' @examplesIf gisco_check_access()
 #' airp <- gisco_get_airports(year = 2013)
@@ -56,6 +54,8 @@
 #'       ylim = c(1313597, 5628510)
 #'     )
 #' }
+#' @export
+#'
 gisco_get_airports <- function(
   year = c(2013, 2006),
   country = NULL,
@@ -66,42 +66,23 @@ gisco_get_airports <- function(
   year <- as.character(year)
   valid_years <- as.character(c(2013, 2006))
   year <- match_arg_pretty(year, valid_years)
-  if (year == "2006") {
-    url <- paste0(
-      "https://ec.europa.eu/eurostat/cache/GISCO/",
-      "geodatafiles/AIRP_SH.zip"
-    )
-  }
-
-  if (year == "2013") {
-    url <- paste0(
-      "https://ec.europa.eu/eurostat/cache/GISCO/",
-      "geodatafiles/Airports-2013-SHP.zip"
-    )
-  }
-
-  filename <- basename(url)
-  namefileload <- download_url(
-    url,
-    filename,
-    cache_dir,
-    "airports",
-    update_cache,
-    verbose
+  files <- c(
+    "2006" = "AIRP_SH.zip",
+    "2013" = "Airports-2013-SHP.zip"
   )
-
-  if (is.null(namefileload)) {
+  url <- eurostat_gisco_geodata_url(files[[year]])
+  data_sf <- read_gisco_dataset(
+    url,
+    cache_dir = cache_dir,
+    subdir = "airports",
+    update_cache = update_cache,
+    verbose = verbose,
+    post_process = transform_to_wgs84
+  )
+  if (is.null(data_sf)) {
     return(NULL)
   }
 
-  data_sf <- read_geo_file_sf(namefileload)
-
-  # Normalize to longitude and latitude.
-  data_sf <- sf::st_transform(data_sf, 4326)
-
   country <- convert_country_code_or_null(country)
-  if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
-    data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
-  }
-  data_sf
+  filter_by_country_col(data_sf, country, "CNTR_CODE")
 }

@@ -3,7 +3,7 @@
     Code
       gisco_attributions(copyright = TRUE)
     Message
-      i COPYRIGHT NOTICE
+      i Copyright notice
       
       When data downloaded from GISCO
       is used in any printed or electronic publication,
@@ -83,8 +83,8 @@
     Code
       gisco_attributions("xx")
     Message
-      ! Language xx not supported. Switching to English.
-      i Consider contributing: <https://github.com/rOpenGov/giscoR/issues>
+      ! Language xx is not supported. Switching to English.
+      i Consider contributing a translation: <https://github.com/rOpenGov/giscoR/issues>.
     Output
       [1] "© EuroGeographics for the administrative boundaries"
 

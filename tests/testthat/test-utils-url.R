@@ -19,6 +19,13 @@ test_that("GISCO URL helpers work", {
     gisco_pub_url(),
     "https://gisco-services.ec.europa.eu/pub/"
   )
+  expect_identical(
+    eurostat_gisco_geodata_url("PORT_2013_SH.zip"),
+    paste0(
+      "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/",
+      "PORT_2013_SH.zip"
+    )
+  )
 })
 
 test_that("Packaged dataset helper returns matching data", {
@@ -38,6 +45,18 @@ test_that("Packaged dataset helper returns matching data", {
     post_process = function(x) x[1, , drop = FALSE]
   )
   expect_identical(out, data[1, , drop = FALSE])
+})
+
+test_that("GISCO file resolver returns URL and file name", {
+  local_mocked_bindings(
+    get_url_db = function(...) {
+      "https://example.com/path/file.gpkg"
+    }
+  )
+
+  file <- resolve_gisco_file("countries", year = 2024, fn = "test")
+  expect_identical(file$url, "https://example.com/path/file.gpkg")
+  expect_identical(file$name, "file.gpkg")
 })
 
 test_that("Request helper handles offline before performing", {
@@ -83,6 +102,46 @@ test_that("Dataset reader delegates cache and non-cache paths", {
   )
   expect_identical(cached$source, "cached.gpkg")
   expect_identical(cached$operator, "OR")
+})
+
+test_that("JSON API helper returns requested field", {
+  response <- list(results = data.frame(id = 1:2, name = c("a", "b")))
+  local_mocked_bindings(
+    get_request_body = function(url, verbose = FALSE) {
+      expect_match(url, "q=test")
+      structure(response, class = "mock_response")
+    }
+  )
+  local_mocked_bindings(
+    .package = "httr2",
+    resp_body_json = function(resp, ...) {
+      args <- list(...)
+      expect_s3_class(resp, "mock_response")
+      expect_true(args$simplifyVector)
+      unclass(resp)
+    }
+  )
+
+  result <- call_gisco_json_api(
+    custom_query = list(q = "test"),
+    apiurl = "https://example.com/search?",
+    result_field = "results"
+  )
+
+  expect_s3_class(result, "tbl_df")
+  expect_identical(result$id, 1:2)
+})
+
+test_that("JSON API helper returns NULL for missing responses", {
+  local_mocked_bindings(
+    get_request_body = function(...) NULL
+  )
+
+  expect_null(call_gisco_json_api(
+    custom_query = list(q = "test"),
+    apiurl = "https://example.com/search?",
+    result_field = "results"
+  ))
 })
 
 test_that("Test offline", {
@@ -188,7 +247,7 @@ test_that("Caching tests", {
       update_cache = FALSE,
       verbose = TRUE
     ),
-    "Cache dir is"
+    "Cache directory is"
   )
 
   expect_length(list.files(cdir, recursive = TRUE), 1)
@@ -255,7 +314,7 @@ test_that("Caching errors", {
       update_cache = FALSE,
       verbose = FALSE
     ),
-    "The file to download has size"
+    "The file to download is"
   )
 
   unlink(cdir, recursive = TRUE, force = TRUE)
@@ -404,10 +463,11 @@ test_that("Tests body", {
   expect_null(fend)
 })
 
-test_that("Test import jsonlite", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-  expect_silent(p <- for_import_jsonlite())
+test_that("Test import jsonlite with missing response", {
+  local_mocked_bindings(
+    get_request_body = function(...) NULL
+  )
+
   expect_null(for_import_jsonlite())
 })
 

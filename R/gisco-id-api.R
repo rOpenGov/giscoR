@@ -1,5 +1,7 @@
 #' GISCO ID service API
 #'
+#' @name gisco_id_api
+#' @rdname gisco_id_api
 #' @description
 #' Functions to interact with the [GISCO ID service
 #' API](https://gisco-services.ec.europa.eu/id/api-docs/), which returns
@@ -9,16 +11,9 @@
 #' Each endpoint available is implemented through a specific function, see
 #' **Details**.
 #'
-#' @name gisco_id_api
-#' @rdname gisco_id_api
-#' @inheritParams gisco_address_api
 #' @family API tools
 #' @encoding UTF-8
-#' @export
-#'
-#' @source
-#' <https://gisco-services.ec.europa.eu/id/api-docs/>.
-#'
+#' @inheritParams gisco_address_api
 #' @param x,y A character string or numeric value with the x and y coordinates
 #'   (as longitude and latitude) to identify.
 #' @param xmin,ymin,xmax,ymax A character string or numeric value with bounding
@@ -68,6 +63,9 @@
 #'   for census grid cells at specified longitude and latitude (x,y). Accepted
 #'   values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("censusgrid")}.
+#' @source
+#' <https://gisco-services.ec.europa.eu/id/api-docs/>.
+#'
 #' @seealso
 #' [gisco_get_nuts()], [gisco_get_lau()], [gisco_get_countries()],
 #' [gisco_get_census()].
@@ -92,6 +90,8 @@
 #'     )
 #' }
 #' }
+#' @export
+#'
 gisco_id_api_geonames <- function(
   x = NULL,
   y = NULL,
@@ -324,21 +324,32 @@ call_id_api <- function(custom_query, apiurl, verbose = FALSE) {
 
   # On spatial download file
   if (any(custom_query$format == "geojson", endpoint == "geonames")) {
-    tmp <- basename(tempfile(fileext = ".geojson"))
-    resp <- download_url(
-      url,
-      tmp,
-      cache_dir = tempdir(),
-      subdir = "gisco_id_api",
-      update_cache = TRUE,
-      verbose = verbose
-    )
-    if (is.null(resp)) {
-      return(NULL)
-    }
-
-    return(read_geo_file_sf(resp))
+    return(read_id_api_geojson(url, verbose))
   }
 
   call_gisco_json_api(custom_query, apiurl, "attributes", verbose)
+}
+
+#' Download and read an ID API GeoJSON response
+#'
+#' @param url A GISCO ID API URL.
+#' @param verbose A logical value indicating whether to print verbose output.
+#'
+#' @return An `sf` object, or `NULL` when the response cannot be downloaded.
+#' @noRd
+read_id_api_geojson <- function(url, verbose = FALSE) {
+  tmp <- basename(tempfile(fileext = ".geojson"))
+  file_local <- download_url(
+    url,
+    tmp,
+    cache_dir = tempdir(),
+    subdir = "gisco_id_api",
+    update_cache = TRUE,
+    verbose = verbose
+  )
+  if (is.null(file_local)) {
+    return(NULL)
+  }
+
+  read_geo_file_sf(file_local)
 }

@@ -7,7 +7,7 @@ test_that("Test offline", {
   })
   expect_message(
     n <- gisco_get_unit_nuts(year = 2024, update_cache = TRUE, verbose = TRUE),
-    "Offline"
+    "No internet"
   )
   expect_null(n)
   local_mocked_bindings(is_online_fun = function(...) {

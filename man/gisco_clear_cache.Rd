@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{gisco_clear_cache}
 \alias{gisco_clear_cache}
-\title{Clear your \CRANpkg{giscoR} cache dir}
+\title{Clear your \CRANpkg{giscoR} cache directory}
 \usage{
 gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 }
@@ -38,11 +38,11 @@ used \CRANpkg{giscoR}.
 \dontrun{
 my_cache <- gisco_detect_cache_dir()
 
-# Set an example cache
+# Set an example cache.
 ex <- file.path(tempdir(), "example", "cache")
 gisco_set_cache_dir(ex, verbose = FALSE)
 
-# Restore initial cache
+# Restore the initial cache.
 gisco_clear_cache(verbose = TRUE)
 
 gisco_set_cache_dir(my_cache)

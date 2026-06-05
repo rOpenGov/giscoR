@@ -13,6 +13,46 @@ test_that("Offline", {
   })
 })
 
+test_that("Airports use the legacy geodata reader", {
+  local_mocked_bindings(
+    read_gisco_dataset = function(url,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  post_process = NULL,
+                                  ...) {
+      expect_match(url, "Airports-2013-SHP[.]zip$")
+      expect_identical(cache_dir, "cache")
+      expect_identical(subdir, "airports")
+      expect_true(update_cache)
+      expect_true(verbose)
+      expect_identical(post_process, transform_to_wgs84)
+      data.frame(CNTR_CODE = c("ES", "FR"), name = c("a", "b"))
+    }
+  )
+
+  airports <- gisco_get_airports(
+    country = "ES",
+    cache_dir = "cache",
+    update_cache = TRUE,
+    verbose = TRUE
+  )
+  expect_identical(airports$CNTR_CODE, "ES")
+})
+
+test_that("Airports select the 2006 file", {
+  local_mocked_bindings(
+    read_gisco_dataset = function(url, ...) {
+      expect_match(url, "AIRP_SH[.]zip$")
+      data.frame(CNTR_CODE = "ES", name = "a")
+    }
+  )
+
+  airports <- gisco_get_airports(year = 2006)
+  expect_identical(airports$CNTR_CODE, "ES")
+})
+
 test_that("Get airports", {
   expect_error(gisco_get_airports(year = 2020))
 

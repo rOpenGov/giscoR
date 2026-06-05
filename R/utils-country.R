@@ -74,6 +74,22 @@ convert_country_code_or_null <- function(names, out = "eurostat") {
   convert_country_code(names, out)
 }
 
+#' Filter a data frame by country values in one column
+#'
+#' @param data A data frame or `sf` object.
+#' @param country A character vector of country codes.
+#' @param col A character string with the column to filter.
+#'
+#' @return `data`, filtered when `country` is not `NULL` and `col` exists.
+#' @noRd
+filter_by_country_col <- function(data, country = NULL, col = "CNTR_CODE") {
+  if (is.null(country) || !col %in% names(data)) {
+    return(data)
+  }
+
+  data[data[[col]] %in% country, ]
+}
+
 #' Get country codes from country names and/or region names
 #'
 #' @param country A character vector of country codes or names.

@@ -4,7 +4,7 @@
 \name{gisco_set_cache_dir}
 \alias{gisco_set_cache_dir}
 \alias{gisco_detect_cache_dir}
-\title{Set your \CRANpkg{giscoR} cache dir}
+\title{Set your \CRANpkg{giscoR} cache directory}
 \usage{
 gisco_set_cache_dir(
   cache_dir = NULL,
@@ -89,13 +89,13 @@ and \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to identify 
 \dontrun{
 my_cache <- gisco_detect_cache_dir()
 
-# Set an example cache
+# Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
 
 gisco_detect_cache_dir()
 
-# Restore initial cache
+# Restore the initial cache.
 gisco_set_cache_dir(my_cache)
 identical(my_cache, gisco_detect_cache_dir())
 }

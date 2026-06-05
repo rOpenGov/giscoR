@@ -82,7 +82,7 @@ gisco_address_api_postcodes(
 gisco_address_api_copyright(verbose = FALSE)
 }
 \arguments{
-\item{country}{Country code (\code{country = "LU"}).}
+\item{country}{A country code (\code{country = "LU"}).}
 
 \item{province}{A province within a country. For a list of provinces within
 a country, use the provinces endpoint
@@ -100,8 +100,8 @@ province, use the cities endpoint
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
-\item{x, y}{X and Y coordinates (as longitude and latitude) to convert into
-a human-readable address.}
+\item{x, y}{Longitude and latitude coordinates to convert into a
+human-readable address.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble} in most cases, except

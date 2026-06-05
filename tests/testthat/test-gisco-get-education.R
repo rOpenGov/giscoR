@@ -14,6 +14,55 @@ test_that("Offline", {
     FALSE
   })
 })
+
+test_that("Education uses basic service URLs", {
+  urls <- character()
+  local_mocked_bindings(
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  ...) {
+      urls <<- c(urls, url)
+      expect_match(name, "^edu_2023_")
+      expect_false(cache)
+      expect_identical(cache_dir, "cache")
+      expect_identical(subdir, "education")
+      expect_true(update_cache)
+      expect_true(verbose)
+      data.frame(cntr_id = basename(tools::file_path_sans_ext(url)))
+    }
+  )
+
+  education <- gisco_get_education(
+    country = c("LU", "BE"),
+    cache = FALSE,
+    cache_dir = "cache",
+    update_cache = TRUE,
+    verbose = TRUE
+  )
+  expect_identical(
+    urls,
+    basic_service_url("education", "2023", c("LU", "BE"))
+  )
+  expect_identical(education$cntr_id, c("LU", "BE"))
+})
+
+test_that("Basic service helpers build URLs and file names", {
+  url <- basic_service_url("healthcare", "2020")
+  expect_identical(
+    url,
+    paste0(gisco_pub_url(), "healthcare/2020/gpkg/EU.gpkg")
+  )
+  expect_identical(
+    basic_service_filename("health", "2020", url),
+    "health_2020_EU.gpkg"
+  )
+})
+
 test_that("Education online", {
   skip_on_cran()
   skip_if_gisco_offline()

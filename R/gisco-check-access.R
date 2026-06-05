@@ -1,11 +1,11 @@
 #' Check access to GISCO API
 #'
 #' @keywords internal
-#' @encoding UTF-8
 #' @description
 #' Check if \R has access to resources at
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
+#' @encoding UTF-8
 #' @return A logical.
 #'
 #' @examples
@@ -14,7 +14,7 @@
 #' @export
 gisco_check_access <- function() {
   if (!is_online_fun()) {
-    return(FALSE) # nocov
+    return(FALSE)
   }
   if (on_cran()) {
     return(FALSE)
@@ -34,26 +34,18 @@ gisco_check_access <- function() {
     check_online = FALSE,
     fake_404 = FALSE
   )
-  if (is.null(resp)) {
-    FALSE # nocov
-  } else {
-    TRUE
-  }
+
+  !is.null(resp)
 }
 
-#' Skip tests if GISCO API is not reachable
+#' Check whether the current session is running on CRAN
 #'
-#' @return Invisible `TRUE`, or skips the test.
-#'
-#' @noRd
-
-#' Internal function to check if we are on CRAN
 #' @return A logical.
 #' @noRd
 on_cran <- function() {
   env <- Sys.getenv("NOT_CRAN")
   if (identical(env, "")) {
-    !interactive() # nocov
+    !interactive()
   } else {
     !isTRUE(as.logical(env))
   }

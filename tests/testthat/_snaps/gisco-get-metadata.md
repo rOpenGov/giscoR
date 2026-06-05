@@ -3,7 +3,7 @@
     Code
       fend <- gisco_get_metadata()
     Message
-      x Offline
+      x No internet connection.
       > Returning "NULL".
 
 # Errors

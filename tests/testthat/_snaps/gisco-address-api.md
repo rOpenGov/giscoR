@@ -3,7 +3,7 @@
     Code
       fend <- gisco_address_api_bbox()
     Message
-      x Offline
+      x No internet connection.
       > Returning "NULL".
-      ! No results. Returning "NULL".
+      ! No results found. Returning "NULL".
 

@@ -56,11 +56,11 @@ read_gisco_dataset <- function(
 
 #' Read a packaged GISCO dataset when it matches the requested file
 #'
+#' @inheritParams download_url
 #' @param filename A character string with the requested file name.
 #' @param pattern A regular expression matching the packaged dataset file.
 #' @param data An `sf` object included in the package.
 #' @param data_name A character string with the packaged dataset object name.
-#' @inheritParams download_url
 #' @param post_process Optional function applied before returning the data.
 #'
 #' @return An `sf` object, or `NULL` when the packaged dataset does not match.

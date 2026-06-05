@@ -1,12 +1,12 @@
-#' Create messages based on type
+#' Create messages by type
 #'
-#' @param type A character string. Type of message. Accepted values are
-#'  `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
+#' @param type A character string with the message type. Accepted values are
+#'   `"generic"`, `"success"`, `"warning"`, `"danger"` or `"info"`.
 #'
-#' @param verbose A logical. Whether to print the message or not.
+#' @param verbose A logical value indicating whether to print the message.
 #' @param ... Character strings to be combined into the message.
 #'
-#' @returns
+#' @return
 #' Invisibly returns `NULL`. Prints messages to the console if `verbose` is
 #' `TRUE`.
 #'
@@ -82,6 +82,30 @@ match_arg_pretty <- function(arg, choices) {
 }
 
 
+#' Warn for deprecated cache arguments on always-cached functions
+#'
+#' @param cache Deprecated cache argument.
+#' @param what A character string identifying the deprecated call.
+#'
+#' @return Invisibly returns `NULL`.
+#' @noRd
+warn_deprecated_cache <- function(cache, what) {
+  if (!lifecycle::is_present(cache)) {
+    return(invisible(NULL))
+  }
+
+  lifecycle::deprecate_warn(
+    when = "1.0.0",
+    what = what,
+    details = paste0(
+      "Results are always cached. To avoid persistent cache files, use ",
+      "`cache_dir = tempdir()`."
+    )
+  )
+  invisible(NULL)
+}
+
+
 #' Row-bind data frames filling missing columns with `NA`
 #'
 #' @param a_list A list of data frames or lists to row bind.
@@ -91,7 +115,7 @@ match_arg_pretty <- function(arg, choices) {
 #'
 #' @noRd
 rbind_fill <- function(a_list) {
-  # Drop nulls
+  # Drop NULL values.
   is_null <- vapply(a_list, is.null, FUN.VALUE = logical(1))
   a_list <- a_list[!is_null]
   if (length(a_list) == 0) {

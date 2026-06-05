@@ -1,16 +1,12 @@
 #' Coastal lines dataset
 #'
+#' @rdname gisco_get_coastal_lines
 #' @description
 #' Downloads worldwide coastlines.
 #'
-#' @rdname gisco_get_coastal_lines
 #' @family stats
 #' @encoding UTF-8
 #' @inheritParams gisco_get_countries
-#' @inheritSection gisco_get_countries Note
-#' @inherit gisco_get_countries return
-#' @export
-#'
 #' @param year A character string or numeric value with the release year of the
 #'   file.
 #'   One of \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
@@ -20,6 +16,8 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 #'   "ext",TRUE)}.
 #'
+#' @inherit gisco_get_countries return
+#' @inheritSection gisco_get_countries Note
 #' @source
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
@@ -48,6 +46,8 @@
 #'     panel.background = element_rect(fill = "#C7E7FB", color = NA),
 #'     panel.border = element_rect(colour = "black", fill = NA)
 #'   )
+#' @export
+#'
 gisco_get_coastal_lines <- function(
   year = 2016,
   epsg = 4326,
@@ -61,7 +61,7 @@ gisco_get_coastal_lines <- function(
   valid_ext <- db_values("coastal_lines", "ext", formatted = FALSE)
   ext <- match_arg_pretty(ext, valid_ext)
 
-  api_entry <- get_url_db(
+  file <- resolve_gisco_file(
     id = "coastal_lines",
     year = year,
     epsg = epsg,
@@ -70,10 +70,8 @@ gisco_get_coastal_lines <- function(
     fn = "gisco_get_coastal_lines"
   )
 
-  filename <- basename(api_entry)
-
   data_sf <- read_packaged_gisco_dataset(
-    filename = filename,
+    filename = file$name,
     pattern = "COAS_RG_20M_2016_4326.gpkg",
     data = giscoR::gisco_coastal_lines,
     data_name = "gisco_coastal_lines",
@@ -85,8 +83,8 @@ gisco_get_coastal_lines <- function(
   }
 
   read_gisco_dataset(
-    url = api_entry,
-    name = filename,
+    url = file$url,
+    name = file$name,
     cache = cache,
     cache_dir = cache_dir,
     subdir = "coastal",
@@ -97,7 +95,7 @@ gisco_get_coastal_lines <- function(
 
 # Export alias ----
 
-#' @export
 #' @rdname gisco_get_coastal_lines
+#' @export
 #' @usage NULL
 gisco_get_coastallines <- gisco_get_coastal_lines

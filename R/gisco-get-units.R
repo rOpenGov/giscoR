@@ -11,22 +11,20 @@
 #' @family deprecated functions
 #' @encoding UTF-8
 #' @inheritParams gisco_get_unit
-#' @inherit gisco_get_unit source
-#' @inheritSection gisco_get_unit Note
-#' @export
-#'
-#' @seealso
-#' [gisco_get_metadata()], [`?gisco_get_unit`][gisco_get_unit] functions.
-#'
-#' @return
-#' A [`sf`][sf::st_sf] object on `mode = "sf"` or a [tibble][tibble::tbl_df]
-#' on `mode = "df"`.
-#'
 #' @param id_giscoR A character string with the `unit` type to download.
 #'   Accepted values are `"nuts"`, `"countries"` or `"urban_audit"`.
 #' @param unit A unit ID to download.
 #' @param mode A character string controlling the output of the function.
 #'   Possible values are `"sf"` or `"df"`. See **Value**.
+#'
+#' @inherit gisco_get_unit source
+#' @inheritSection gisco_get_unit Note
+#' @return
+#' A [`sf`][sf::st_sf] object on `mode = "sf"` or a [tibble][tibble::tbl_df]
+#' on `mode = "df"`.
+#'
+#' @seealso
+#' [gisco_get_metadata()], [`?gisco_get_unit`][gisco_get_unit] functions.
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{
@@ -40,6 +38,8 @@
 #' # ->
 #' gisco_get_unit_nuts(unit = "ES111", year = 2016)
 #' }
+#' @export
+#'
 gisco_get_units <- function(
   id_giscoR = c("nuts", "countries", "urban_audit"),
   unit = "ES4",
@@ -66,53 +66,7 @@ gisco_get_units <- function(
     return(df)
   }
 
-  if (id == "nuts") {
-    lifecycle::deprecate_warn(
-      "1.0.0",
-      "giscoR::gisco_get_units()",
-      "giscoR::gisco_get_unit_nuts()"
-    )
-
-    data_sf <- gisco_get_unit_nuts(
-      unit = unit,
-      year = year,
-      epsg = epsg,
-      cache = cache,
-      update_cache = update_cache,
-      verbose = verbose,
-      resolution = resolution,
-      spatialtype = spatialtype
-    )
-    return(data_sf)
-  }
-
-  if (id == "countries") {
-    lifecycle::deprecate_warn(
-      "1.0.0",
-      "giscoR::gisco_get_units()",
-      "giscoR::gisco_get_unit_country()"
-    )
-
-    data_sf <- gisco_get_unit_country(
-      unit = unit,
-      year = year,
-      epsg = epsg,
-      cache = cache,
-      update_cache = update_cache,
-      verbose = verbose,
-      resolution = resolution,
-      spatialtype = spatialtype
-    )
-    return(data_sf)
-  }
-  # Otherwise, use Urban Audit units.
-  lifecycle::deprecate_warn(
-    "1.0.0",
-    "giscoR::gisco_get_units()",
-    "giscoR::gisco_get_unit_urban_audit()"
-  )
-
-  gisco_get_unit_urban_audit(
+  unit_args <- list(
     unit = unit,
     year = year,
     epsg = epsg,
@@ -121,4 +75,30 @@ gisco_get_units <- function(
     verbose = verbose,
     spatialtype = spatialtype
   )
+  dispatch <- list(
+    nuts = list(
+      replacement = "giscoR::gisco_get_unit_nuts()",
+      fun = gisco_get_unit_nuts,
+      args = c(unit_args, resolution = resolution)
+    ),
+    countries = list(
+      replacement = "giscoR::gisco_get_unit_country()",
+      fun = gisco_get_unit_country,
+      args = c(unit_args, resolution = resolution)
+    ),
+    urban_audit = list(
+      replacement = "giscoR::gisco_get_unit_urban_audit()",
+      fun = gisco_get_unit_urban_audit,
+      args = unit_args
+    )
+  )
+  selection <- dispatch[[id]]
+
+  lifecycle::deprecate_warn(
+    "1.0.0",
+    "giscoR::gisco_get_units()",
+    selection$replacement
+  )
+
+  do.call(selection$fun, selection$args)
 }

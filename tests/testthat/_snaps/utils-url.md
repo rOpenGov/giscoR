@@ -4,7 +4,7 @@
       fend <- download_url(url, cache_dir = cdir, subdir = "fixme", update_cache = FALSE,
         verbose = FALSE)
     Message
-      x Offline
+      x No internet connection.
       > Returning "NULL".
 
 # Get urls
@@ -32,7 +32,7 @@
     Code
       fend <- get_request_body(url, verbose = FALSE)
     Message
-      x Offline
+      x No internet connection.
       > Returning "NULL".
 
 # Error body
@@ -40,7 +40,7 @@
     Code
       fend <- get_request_body(url, verbose = FALSE)
     Message
-      x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/distribution/v2/themes.json>.
-      ! If you think this is a bug, please consider opening an issue on <https://github.com/ropengov/giscoR/issues>
+      x Error 404 (Not Found):  <https://gisco-services.ec.europa.eu/distribution/v2/themes.json>.
+      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
       > Returning "NULL".
 

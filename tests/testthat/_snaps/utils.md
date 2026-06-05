@@ -99,3 +99,12 @@
       Error:
       ! `year` must be "2013" or "2006", not "2050".
 
+# Deprecated cache helper warns only when cache is supplied
+
+    Code
+      warn_deprecated_cache(TRUE, "x(cache)")
+    Condition
+      Warning:
+      The `cache` argument of `x()` is deprecated as of giscoR 1.0.0.
+      i Results are always cached. To avoid persistent cache files, use `cache_dir = tempdir()`.
+

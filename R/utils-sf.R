@@ -17,8 +17,8 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
     thr <- 20 * (1024^2)
     if (fsize > thr) {
       fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
-      make_msg("warning", TRUE, "Reading large file", fsize_unit)
-      make_msg("generic", TRUE, "This can take a while. Hold on.")
+      make_msg("warning", TRUE, "Reading a large file", fsize_unit)
+      make_msg("generic", TRUE, "This can take a while.")
     }
   }
 
@@ -43,6 +43,16 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
   data_sf <- sanitize_sf(data_sf)
 
   data_sf
+}
+
+#' Transform an sf object to longitude and latitude
+#'
+#' @param data_sf An `sf` object.
+#'
+#' @return An `sf` object in EPSG:4326.
+#' @noRd
+transform_to_wgs84 <- function(data_sf) {
+  sf::st_transform(data_sf, 4326)
 }
 
 #' Convert an sf object to UTF-8
@@ -144,7 +154,7 @@ get_col_name <- function(file_local, candidates = c("CNTR_ID", "CNTR_CODE")) {
 #' @inheritParams get_col_name
 #' @param values Values to match.
 #'
-#' @return A named list suitable for [build_sf_filter_query()], or an empty
+#' @return A named list suitable for `build_sf_filter_query()`, or an empty
 #'   list when there are no values or no matching column.
 #' @noRd
 make_sf_filter <- function(

@@ -6,14 +6,18 @@
 #' included when available (see **Details**).
 #'
 #' @family services
-#' @inherit gisco_get_countries return
-#' @inheritParams gisco_get_countries
 #' @encoding UTF-8
-#' @export
-#'
+#' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   `2023`, `2020`.
+#'
+#' @inherit gisco_get_countries return
+#' @details
+#' Files are distributed on [EPSG:4326](https://epsg.io/4326).
+#'
+#' ```{r child = "man/chunks/education_meta.Rmd"}
+#' ```
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>.
@@ -27,12 +31,6 @@
 #' The data are extracted from official national registers. They may contain
 #' inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
 #' input national data.
-#'
-#' @details
-#' Files are distributed on [EPSG:4326](https://epsg.io/4326).
-#'
-#' ```{r child = "man/chunks/education_meta.Rmd"}
-#' ```
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{
@@ -66,6 +64,8 @@
 #' }
 #' }
 #'
+#' @export
+#'
 gisco_get_education <- function(
   year = c(2023, 2020),
   cache = TRUE,
@@ -82,20 +82,13 @@ gisco_get_education <- function(
     country_get <- "EU"
   }
 
-  api_entry <- paste0(
-    gisco_pub_url(),
-    "education/",
-    year,
-    "/gpkg/",
-    country_get,
-    ".gpkg"
-  )
+  api_entry <- basic_service_url("education", year, country_get)
 
   n_cnt <- seq_along(api_entry)
 
   ress <- lapply(n_cnt, function(x) {
     api <- api_entry[x]
-    filename <- paste0("edu_", year, "_", basename(api))
+    filename <- basic_service_filename("edu", year, api)
 
     read_gisco_dataset(
       url = api,
@@ -114,4 +107,28 @@ gisco_get_education <- function(
   }
 
   data_sf_all
+}
+
+#' Build a basic service dataset URL
+#'
+#' @param service A basic service name.
+#' @param year A dataset year.
+#' @param country A country code.
+#'
+#' @return A character string with the dataset URL.
+#' @noRd
+basic_service_url <- function(service, year, country = "EU") {
+  paste0(gisco_pub_url(), service, "/", year, "/gpkg/", country, ".gpkg")
+}
+
+#' Build a cached basic service file name
+#'
+#' @param prefix A cache file prefix.
+#' @param year A dataset year.
+#' @param url A dataset URL.
+#'
+#' @return A character string with the cache file name.
+#' @noRd
+basic_service_filename <- function(prefix, year, url) {
+  paste0(prefix, "_", year, "_", basename(url))
 }

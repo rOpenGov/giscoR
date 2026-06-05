@@ -94,12 +94,12 @@ gisco_response_is_error <- function(
   get_status_desc <- httr2::resp_status_desc(resp) # nolint
 
   cli::cli_alert_danger(c(
-    "{.strong Error {get_status_code}} ({get_status_desc}):",
+    "{.strong Error {get_status_code}} ({get_status_desc}): ",
     " {.url {url}}."
   ))
   cli::cli_alert_warning(c(
-    "If you think this is a bug, please consider opening an issue on ",
-    "{.url https://github.com/ropengov/giscoR/issues}"
+    "If this looks like a bug, please open an issue at ",
+    "{.url https://github.com/ropengov/giscoR/issues}."
   ))
   cli::cli_alert("Returning {.val NULL}.")
   TRUE
@@ -137,7 +137,7 @@ gisco_perform_request <- function(
 ) {
   if (check_online && !is_online_fun()) {
     if (offline_verbose) {
-      cli::cli_alert_danger("Offline")
+      cli::cli_alert_danger("No internet connection.")
       cli::cli_alert("Returning {.val NULL}.")
     }
     return(NULL)

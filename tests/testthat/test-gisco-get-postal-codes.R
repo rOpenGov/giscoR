@@ -26,54 +26,62 @@ test_that("Offline", {
   })
 })
 
-test_that("Postal codes online", {
-  skip_on_cran()
-  skip_if_gisco_offline()
+test_that("Postal codes use resolved GISCO files", {
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/PCODE_PT_2024_4326.gpkg",
+        name = "PCODE_PT_2024_4326.gpkg"
+      )
+    },
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  ...) {
+      expect_match(url, "PCODE_PT_2024_4326[.]gpkg$")
+      expect_identical(name, "PCODE_PT_2024_4326.gpkg")
+      expect_true(cache)
+      expect_identical(cache_dir, "cache")
+      expect_identical(subdir, "postal_codes")
+      expect_true(update_cache)
+      expect_true(verbose)
+      expect_true(is.function(filters))
+      data.frame(CNTR_ID = c("MT", "LU"), name = c("a", "b"))
+    }
+  )
 
-  expect_message(gisco_get_postal_codes(country = "Malta", verbose = TRUE))
-
-  expect_silent(li <- gisco_get_postal_codes(country = "Malta"))
-  expect_s3_class(li, "sf")
-  expect_s3_class(li, "tbl_df")
-  expect_length(unique(li$CNTR_ID), 1)
-  expect_identical(as.character(unique(li$CNTR_ID)), "MT")
-
-  # Several
-  expect_silent(li2 <- gisco_get_postal_codes(country = c("MT", "LU")))
-  expect_length(unique(li2$CNTR_ID), 2)
-  expect_s3_class(li2, "sf")
-  expect_s3_class(li2, "tbl_df")
-
-  expect_identical(sort(unique(li2$CNTR_ID)), c("LU", "MT"))
-
-  # All
-  all <- gisco_get_postal_codes()
-  expect_s3_class(all, "sf")
-  expect_s3_class(all, "tbl_df")
+  postal_codes <- gisco_get_postal_codes(
+    country = c("Malta", "LU"),
+    cache_dir = "cache",
+    update_cache = TRUE,
+    verbose = TRUE
+  )
+  expect_identical(postal_codes$CNTR_ID, c("MT", "LU"))
 })
 test_that("Extensions", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  # Error
   expect_snapshot(gisco_get_postal_codes(ext = "docx"), error = TRUE)
 
-  cdir <- file.path(tempdir(), "testpcode")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
-
-  expect_identical(list.files(cdir, recursive = TRUE), character(0))
-
-  # Filter
-  db_shp <- gisco_get_postal_codes(
-    cache_dir = cdir,
-    ext = "shp",
-    verbose = TRUE,
-    country = "LU"
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/PCODE_PT_2024_4326.shp.zip",
+        name = "PCODE_PT_2024_4326.shp.zip"
+      )
+    },
+    read_gisco_dataset = function(url, name, ...) {
+      expect_match(url, "[.]shp[.]zip$")
+      expect_identical(name, "PCODE_PT_2024_4326.shp.zip")
+      data.frame(CNTR_ID = "LU", name = "a")
+    }
   )
-  expect_length(list.files(cdir, recursive = TRUE, pattern = "shp.zip"), 1)
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
+  postal_codes <- gisco_get_postal_codes(ext = "shp", country = "LU")
+  expect_identical(postal_codes$CNTR_ID, "LU")
 })

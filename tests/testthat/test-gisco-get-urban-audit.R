@@ -23,6 +23,49 @@ test_that("Mock offline", {
   })
 })
 
+test_that("Urban Audit uses resolved GISCO files", {
+  local_mocked_bindings(
+    resolve_gisco_file = function(...) {
+      list(
+        url = "https://example.com/URAU_RG_100K_2024_4326_CITIES.gpkg",
+        name = "URAU_RG_100K_2024_4326_CITIES.gpkg"
+      )
+    },
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  post_process = NULL,
+                                  ...) {
+      expect_match(url, "URAU_RG_100K_2024_4326_CITIES[.]gpkg$")
+      expect_identical(name, "URAU_RG_100K_2024_4326_CITIES.gpkg")
+      expect_false(cache)
+      expect_identical(cache_dir, "cache")
+      expect_identical(subdir, "urban_audit")
+      expect_true(update_cache)
+      expect_true(verbose)
+      expect_true(is.function(filters))
+      expect_true(is.function(post_process))
+      data <- data.frame(CNTR_CODE = c("LU", "BE"), name = c("a", "b"))
+      post_process(data)
+    }
+  )
+
+  urban <- gisco_get_urban_audit(
+    level = "CITIES",
+    country = "LU",
+    cache = FALSE,
+    cache_dir = "cache",
+    update_cache = TRUE,
+    verbose = TRUE
+  )
+  expect_identical(urban$CNTR_CODE, "LU")
+})
+
 
 test_that("Urban Audit online", {
   skip_on_cran()

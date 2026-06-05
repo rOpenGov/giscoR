@@ -6,19 +6,8 @@
 #' [gisco_get_lau()].
 #'
 #' @family admin
-#' @inheritParams gisco_get_countries
-#' @inherit gisco_get_countries source return
-#' @inheritSection gisco_get_countries Note
 #' @encoding UTF-8
-#' @export
-#'
-#' @seealso
-#' [gisco_get_lau()].
-#'
-#' See [gisco_bulk_download()] to perform a bulk download of datasets.
-#'
-#' @export
-#'
+#' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
@@ -40,6 +29,8 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 #'   "ext",TRUE)}.
 #'
+#' @inherit gisco_get_countries source return
+#' @inheritSection gisco_get_countries Note
 #' @details
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
@@ -53,6 +44,11 @@
 #' the dataset is 1:100 000.
 #'
 #' The LAU classification is not covered by any legislative act.
+#'
+#' @seealso
+#' [gisco_get_lau()].
+#'
+#' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
 #' @examplesIf gisco_check_access()
 #' ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
@@ -73,6 +69,8 @@
 #'       family = "serif", face = "bold"
 #'     ))
 #' }
+#' @export
+#'
 gisco_get_communes <- function(
   year = 2016,
   epsg = 4326,
@@ -84,19 +82,11 @@ gisco_get_communes <- function(
   country = NULL,
   ext = "shp"
 ) {
-  if (lifecycle::is_present(cache)) {
-    lifecycle::deprecate_warn(
-      when = "1.0.0",
-      what = "giscoR::gisco_get_communes(cache)",
-      details = paste0(
-        "Results are always cached. To avoid persistency use ",
-        "`cache_dir = tempdir()`."
-      )
-    )
-  }
+  warn_deprecated_cache(cache, "giscoR::gisco_get_communes(cache)")
+
   valid_ext <- c("geojson", "gpkg", "shp")
   ext <- match_arg_pretty(ext, valid_ext)
-  url <- get_url_db(
+  file <- resolve_gisco_file(
     "communes",
     year = year,
     epsg = epsg,
@@ -105,12 +95,10 @@ gisco_get_communes <- function(
     fn = "gisco_get_communes"
   )
 
-  basename <- basename(url)
-
   country <- convert_country_code_or_null(country)
   read_gisco_dataset(
-    url = url,
-    name = basename,
+    url = file$url,
+    name = file$name,
     cache = TRUE,
     cache_dir = cache_dir,
     subdir = "communes",

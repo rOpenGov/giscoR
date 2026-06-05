@@ -14,6 +14,42 @@ test_that("Offline", {
   })
 })
 
+test_that("Healthcare uses the basic service dataset", {
+  local_mocked_bindings(
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  post_process = NULL,
+                                  ...) {
+      expect_identical(url, basic_service_url("healthcare", "2020"))
+      expect_identical(name, "health_2020_EU.gpkg")
+      expect_false(cache)
+      expect_identical(cache_dir, "cache")
+      expect_identical(subdir, "health")
+      expect_true(update_cache)
+      expect_true(verbose)
+      expect_true(is.function(post_process))
+
+      data <- data.frame(cntr_id = c("LU", "BE"), name = c("a", "b"))
+      post_process(data)
+    }
+  )
+
+  healthcare <- gisco_get_healthcare(
+    year = 2020,
+    country = "LU",
+    cache = FALSE,
+    cache_dir = "cache",
+    update_cache = TRUE,
+    verbose = TRUE
+  )
+  expect_identical(healthcare$cntr_id, "LU")
+})
+
 test_that("Healthcare online", {
   skip_on_cran()
   skip_if_gisco_offline()

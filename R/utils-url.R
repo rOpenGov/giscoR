@@ -106,6 +106,17 @@ get_url_db <- function(
   url
 }
 
+#' Resolve a GISCO database URL and local file name
+#'
+#' @inheritParams get_url_db
+#'
+#' @return A list with `url` and `name`.
+#' @noRd
+resolve_gisco_file <- function(...) {
+  url <- get_url_db(...)
+  list(url = url, name = basename(url))
+}
+
 #' GISCO services base URL
 #'
 #' @return A character string with the GISCO services base URL.
@@ -146,6 +157,19 @@ gisco_pub_url <- function() {
   paste0(gisco_services_url(), "/pub/")
 }
 
+#' Eurostat GISCO geodata files base URL
+#'
+#' @param filename A character string with the file name.
+#'
+#' @return A character string with the full geodata file URL.
+#' @noRd
+eurostat_gisco_geodata_url <- function(filename) {
+  paste0(
+    "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/",
+    filename
+  )
+}
+
 #' Internal function to download and cache a file from a URL
 #'
 #' @param url A character string with the URL to download.
@@ -175,7 +199,7 @@ download_url <- function(
   file_local <- file.path(cache_dir, name)
   file_local <- gsub("//", "/", file_local, fixed = TRUE)
 
-  msg <- paste0("Cache dir is {.path ", cache_dir, "}.")
+  msg <- paste0("Cache directory is {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
   # Check if the file already exists.
@@ -199,7 +223,7 @@ download_url <- function(
   req <- gisco_request(url, verbose = verbose)
 
   if (!is_online_fun()) {
-    cli::cli_alert_danger("Offline")
+    cli::cli_alert_danger("No internet connection.")
     cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
@@ -215,7 +239,7 @@ download_url <- function(
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
     sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
-    make_msg("warning", TRUE, "The file to download has size", sz_dwn)
+    make_msg("warning", TRUE, "The file to download is", sz_dwn)
     req <- httr2::req_progress(req)
   }
 
@@ -236,7 +260,7 @@ download_url <- function(
   if (is.null(resp)) {
     return(NULL)
   }
-  msg <- paste0("Download successful to {.file ", file_local, "}.")
+  msg <- paste0("Download completed: {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
 
   file_local
