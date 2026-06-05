@@ -190,39 +190,49 @@ test_that("Online mocked", {
       range()
 
     aa <- lapply(y, function(x) {
-      expect_snapshot(
+      expect_message(
         s <- gisco_bulk_download(
           iii,
           year = x,
           resolution = 20,
           cache_dir = cdir,
           ext = "shp"
-        )
+        ),
+        "shp.zip"
       )
     })
   }
 
   # Additional and extensions
-  expect_snapshot(gisco_bulk_download(
-    "communes",
-    year = 2004,
-    ext = "svg",
-    cache_dir = cdir
-  ))
+  expect_message(
+    gisco_bulk_download(
+      "communes",
+      year = 2004,
+      ext = "svg",
+      cache_dir = cdir
+    ),
+    "svg.zip"
+  )
 
-  expect_snapshot(gisco_bulk_download(
-    "countries",
-    year = 2024,
-    ext = "json",
-    cache_dir = cdir,
-    resolution = 60
-  ))
+  expect_message(
+    gisco_bulk_download(
+      "countries",
+      year = 2024,
+      ext = "json",
+      cache_dir = cdir,
+      resolution = 60
+    ),
+    "json.zip"
+  )
 
-  expect_snapshot(gisco_bulk_download(
-    "countries",
-    year = 2024,
-    ext = "gdb",
-    cache_dir = cdir,
-    resolution = 60
-  ))
+  expect_message(
+    gisco_bulk_download(
+      "countries",
+      year = 2024,
+      ext = "gdb",
+      cache_dir = cdir,
+      resolution = 60
+    ),
+    "gdb.zip"
+  )
 })
