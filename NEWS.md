@@ -1,3 +1,5 @@
+# giscoR (development version)
+
 # giscoR 1.1.0
 
 - Adapt vignettes to Quarto.
