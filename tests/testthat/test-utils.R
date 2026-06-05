@@ -69,6 +69,16 @@ test_that("Pretty match", {
   expect_s3_class(gisco_get_airports(2013), "sf")
 })
 
+test_that("Resolution format helpers work", {
+  expect_identical(format_unit_resolution(1), "01m")
+  expect_identical(format_unit_resolution("20"), "20m")
+  expect_identical(format_bulk_resolution("100"), "100k")
+  expect_identical(format_bulk_resolution("3"), "03m")
+  expect_identical(format_urau_unit_resolution(2013), "03M")
+  expect_identical(format_urau_unit_resolution(2014), "100K")
+  expect_identical(format_urau_unit_resolution(2024), "100k")
+})
+
 test_that("Bind and fill sf", {
   skip_on_cran()
   gb <- giscoR::gisco_countries_2024[1, ]

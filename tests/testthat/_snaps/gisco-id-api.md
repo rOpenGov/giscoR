@@ -20,7 +20,7 @@
       gisco_id_api_nuts(epsg = 222)
     Condition
       Error:
-      ! `epsg` should be one of "4326", "4258" or "3035", not "222".
+      ! `epsg` must be "4326", "4258", or "3035", not "222".
 
 ---
 
@@ -45,7 +45,7 @@
       gisco_id_api_lau(epsg = 222, x = 1, y = 1)
     Condition
       Error:
-      ! `epsg` should be one of "4326", "4258" or "3035", not "222".
+      ! `epsg` must be "4326", "4258", or "3035", not "222".
 
 # gisco_id_api_country online
 
@@ -53,5 +53,5 @@
       gisco_id_api_country(epsg = 222, x = 1, y = 1)
     Condition
       Error:
-      ! `epsg` should be one of "4326", "4258" or "3035", not "222".
+      ! `epsg` must be "4326", "4258", or "3035", not "222".
 

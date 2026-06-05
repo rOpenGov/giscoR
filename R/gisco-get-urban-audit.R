@@ -107,61 +107,25 @@ gisco_get_urban_audit <- function(
     fn = "gisco_get_urban_audit"
   )
 
-  if (all(isFALSE(cache), ext != "shp")) {
-    msg <- paste0("{.url ", api_entry, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf <- read_geo_file_sf(api_entry)
-    if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
-      country <- convert_country_code(country)
-      data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
-    }
-    return(data_sf)
-  }
-
   filename <- basename(api_entry)
-  file_local <- download_url(
-    api_entry,
-    filename,
-    cache_dir,
-    "urban_audit",
-    update_cache,
-    verbose
+  country <- convert_country_code_or_null(country)
+
+  read_gisco_dataset(
+    url = api_entry,
+    name = filename,
+    cache = cache,
+    cache_dir = cache_dir,
+    subdir = "urban_audit",
+    update_cache = update_cache,
+    verbose = verbose,
+    filters = function(file_local) {
+      make_sf_filter(file_local, country)
+    },
+    post_process = function(data_sf) {
+      if (!is.null(country) && "CNTR_CODE" %in% names(data_sf)) {
+        data_sf <- data_sf[data_sf$CNTR_CODE %in% country, ]
+      }
+      data_sf
+    }
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  # Use an sf query when filtering can reduce read time.
-
-  filter_col <- get_col_name(file_local)
-  if (all(!is.null(country), !is.null(filter_col))) {
-    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
-
-    country <- convert_country_code(country)
-
-    # Get the layer name.
-    layer <- get_sf_layer_name(file_local)
-
-    # Construct the query.
-    q <- paste0(
-      "SELECT * from \"",
-      layer,
-      "\" WHERE ",
-      filter_col[1],
-      " IN (",
-      paste0("'", country, "'", collapse = ", "),
-      ")"
-    )
-
-    msg <- paste0("{.code ", q, "}")
-    make_msg("info", verbose, "Using query:\n   ", msg)
-
-    data_sf <- read_geo_file_sf(file_local, q)
-  } else {
-    data_sf <- read_geo_file_sf(file_local)
-  }
-
-  data_sf
 }

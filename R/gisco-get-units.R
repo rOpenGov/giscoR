@@ -109,7 +109,7 @@ gisco_get_units <- function(
   lifecycle::deprecate_warn(
     "1.0.0",
     "giscoR::gisco_get_units()",
-    "giscoR::gisco_get_unit_country()"
+    "giscoR::gisco_get_unit_urban_audit()"
   )
 
   gisco_get_unit_urban_audit(

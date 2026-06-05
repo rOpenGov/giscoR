@@ -77,14 +77,14 @@ gisco_get_education <- function(
   # Set required variables.
   year <- match_arg_pretty(year)
 
-  if (!is.null(country)) {
-    country_get <- convert_country_code(country)
-  } else {
+  country_get <- convert_country_code_or_null(country)
+  if (is.null(country_get)) {
     country_get <- "EU"
   }
 
   api_entry <- paste0(
-    "https://gisco-services.ec.europa.eu/pub/education/",
+    gisco_pub_url(),
+    "education/",
     year,
     "/gpkg/",
     country_get,
@@ -97,27 +97,15 @@ gisco_get_education <- function(
     api <- api_entry[x]
     filename <- paste0("edu_", year, "_", basename(api))
 
-    if (cache) {
-      # Guess the source to load.
-      namefileload <- download_url(
-        api,
-        filename,
-        cache_dir,
-        "education",
-        update_cache,
-        verbose
-      )
-    } else {
-      namefileload <- api
-    }
-
-    if (is.null(namefileload)) {
-      return(NULL)
-    }
-
-    data_sf <- read_geo_file_sf(namefileload)
-
-    data_sf
+    read_gisco_dataset(
+      url = api,
+      name = filename,
+      cache = cache,
+      cache_dir = cache_dir,
+      subdir = "education",
+      update_cache = update_cache,
+      verbose = verbose
+    )
   })
 
   data_sf_all <- rbind_fill(ress)

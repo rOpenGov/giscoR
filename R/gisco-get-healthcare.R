@@ -69,36 +69,27 @@ gisco_get_healthcare <- function(
   year <- match_arg_pretty(year)
 
   api_entry <- paste0(
-    "https://gisco-services.ec.europa.eu/pub/healthcare/",
+    gisco_pub_url(),
+    "healthcare/",
     year,
     "/gpkg/EU.gpkg"
   )
   filename <- paste0("health_", year, "_", basename(api_entry))
 
-  if (cache) {
-    # Guess the source to load.
-    namefileload <- download_url(
-      api_entry,
-      filename,
-      cache_dir,
-      "health",
-      update_cache,
-      verbose
-    )
-  } else {
-    namefileload <- api_entry
-  }
-
-  if (is.null(namefileload)) {
-    return(NULL)
-  }
-
-  data_sf <- read_geo_file_sf(namefileload)
-
-  if (!is.null(country) && "cntr_id" %in% names(data_sf)) {
-    country <- convert_country_code(country)
-    data_sf <- data_sf[data_sf$cntr_id %in% country, ]
-  }
-
-  data_sf
+  country <- convert_country_code_or_null(country)
+  read_gisco_dataset(
+    url = api_entry,
+    name = filename,
+    cache = cache,
+    cache_dir = cache_dir,
+    subdir = "health",
+    update_cache = update_cache,
+    verbose = verbose,
+    post_process = function(data_sf) {
+      if (!is.null(country) && "cntr_id" %in% names(data_sf)) {
+        data_sf <- data_sf[data_sf$cntr_id %in% country, ]
+      }
+      data_sf
+    }
+  )
 }

@@ -111,23 +111,15 @@ gisco_get_grid <- function(
   translate <- c("surf", "point")
   ftrans <- translate[valid == spatialtype]
   filename <- paste0("grid_", resolution, "km_", ftrans, ".gpkg")
-  api_entry <- "https://gisco-services.ec.europa.eu/grid"
+  api_entry <- paste0(gisco_services_url(), "/grid")
   url <- file.path(api_entry, filename)
 
-  file_local <- download_url(
-    url,
-    basename(url),
-    cache_dir,
-    "grid",
-    update_cache,
-    verbose
+  read_gisco_dataset(
+    url = url,
+    name = basename(url),
+    cache_dir = cache_dir,
+    subdir = "grid",
+    update_cache = update_cache,
+    verbose = verbose
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  data_sf <- read_geo_file_sf(file_local)
-
-  data_sf
 }

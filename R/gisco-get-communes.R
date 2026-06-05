@@ -107,48 +107,17 @@ gisco_get_communes <- function(
 
   basename <- basename(url)
 
-  file_local <- download_url(
-    url,
-    basename,
+  country <- convert_country_code_or_null(country)
+  read_gisco_dataset(
+    url = url,
+    name = basename,
+    cache = TRUE,
     cache_dir = cache_dir,
     subdir = "communes",
     update_cache = update_cache,
-    verbose = verbose
+    verbose = verbose,
+    filters = function(file_local) {
+      make_sf_filter(file_local, country)
+    }
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  # Use an sf query when filtering can reduce read time.
-
-  filter_col <- get_col_name(file_local)
-  if (all(!is.null(country), !is.null(filter_col))) {
-    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
-
-    country <- convert_country_code(country)
-
-    # Get the layer name.
-    layer <- get_sf_layer_name(file_local)
-
-    # Construct the query.
-    q <- paste0(
-      "SELECT * from \"",
-      layer,
-      "\" WHERE ",
-      filter_col[1],
-      " IN (",
-      paste0("'", country, "'", collapse = ", "),
-      ")"
-    )
-
-    msg <- paste0("{.code ", q, "}")
-    make_msg("info", verbose, "Using query:\n   ", msg)
-
-    data_sf <- read_geo_file_sf(file_local, q)
-  } else {
-    data_sf <- read_geo_file_sf(file_local)
-  }
-
-  data_sf
 }

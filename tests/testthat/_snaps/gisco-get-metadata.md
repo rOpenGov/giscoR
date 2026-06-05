@@ -12,7 +12,7 @@
       gisco_get_metadata("grids")
     Condition
       Error:
-      ! `id` should be one of "nuts", "countries" or "urban_audit", not "grids".
+      ! `id` must be "nuts", "countries", or "urban_audit", not "grids".
 
 ---
 
@@ -20,5 +20,5 @@
       gisco_get_metadata("urban_audit", year = 1990)
     Condition
       Error:
-      ! `year` should be one of "2001", "2004", "2014", "2018", "2020", "2021" or "2024", not "1990".
+      ! `year` must be "2001", "2004", "2014", "2018", "2020", "2021", or "2024", not "1990".
 

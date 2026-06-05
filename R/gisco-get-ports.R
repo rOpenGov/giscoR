@@ -95,8 +95,8 @@ gisco_get_ports <- function(
   # Add ISO2 country code.
   data_sf$CNTR_ISO2 <- substr(data_sf$PORT_ID, 1, 2)
 
+  country <- convert_country_code_or_null(country, "iso2c")
   if (!is.null(country) && "PORT_ID" %in% names(data_sf)) {
-    country <- convert_country_code(country, "iso2c")
     data_sf <- data_sf[data_sf$CNTR_ISO2 %in% country, ]
   }
   data_sf

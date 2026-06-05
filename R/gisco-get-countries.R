@@ -132,75 +132,38 @@ gisco_get_countries <- function(
 
   filename <- basename(api_entry)
 
-  # Check if data is already available
-  checkdata <- grepl("CNTR_RG_20M_2024_4326.gpkg", filename)
-  if (all(isFALSE(update_cache), checkdata)) {
-    data_sf <- giscoR::gisco_countries_2024
-
-    make_msg(
-      "info",
-      verbose,
-      "Loaded from {.help giscoR::gisco_countries_2024} dataset.",
-      "Use {.arg update_cache = TRUE} to reload from file."
-    )
-    data_sf <- filter_country_region(data_sf, country, region)
-
-    return(data_sf)
-  }
-
-  # Read uncached data from the URL.
-  if (all(isFALSE(cache), ext != "shp")) {
-    msg <- paste0("{.url ", api_entry, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf <- read_geo_file_sf(api_entry)
-    data_sf <- filter_country_region(data_sf, country, region)
-    return(data_sf)
-  }
-
-  # Cache
-  file_local <- download_url(
-    api_entry,
-    filename,
-    cache_dir,
-    "countries",
-    update_cache,
-    verbose
+  data_sf <- read_packaged_gisco_dataset(
+    filename = filename,
+    pattern = "CNTR_RG_20M_2024_4326.gpkg",
+    data = giscoR::gisco_countries_2024,
+    data_name = "gisco_countries_2024",
+    update_cache = update_cache,
+    verbose = verbose,
+    post_process = function(data_sf) {
+      filter_country_region(data_sf, country, region)
+    }
   )
-  if (is.null(file_local)) {
-    return(NULL)
+  if (!is.null(data_sf)) {
+    return(data_sf)
   }
-
-  # Use an sf query when filtering can reduce read time.
 
   cnt_region <- get_countrycodes_region(country, region)
-  filter_col <- get_col_name(file_local)
-  q <- NULL
-
-  if (all(!is.null(cnt_region), !is.null(filter_col))) {
-    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
-    cnt_region <- sort(cnt_region)
-
-    # Get the layer name.
-    layer <- get_sf_layer_name(file_local)
-
-    # Construct the query.
-    q <- paste0(
-      "SELECT * from \"",
-      layer,
-      "\" WHERE ",
-      filter_col[1],
-      " IN (",
-      paste0("'", cnt_region, "'", collapse = ", "),
-      ")"
-    )
-
-    msg <- paste0("{.code ", q, "}")
-    make_msg("info", verbose, "Using query:\n   ", msg)
-  }
-  data_sf <- read_geo_file_sf(file_local, q)
-
-  data_sf
+  cnt_region <- sort(cnt_region)
+  read_gisco_dataset(
+    url = api_entry,
+    name = filename,
+    cache = cache,
+    cache_dir = cache_dir,
+    subdir = "countries",
+    update_cache = update_cache,
+    verbose = verbose,
+    filters = function(file_local) {
+      make_sf_filter(file_local, cnt_region)
+    },
+    post_process = function(data_sf) {
+      filter_country_region(data_sf, country, region)
+    }
+  )
 }
 
 

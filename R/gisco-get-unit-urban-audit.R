@@ -46,112 +46,28 @@ gisco_get_unit_urban_audit <- function(
 
   year <- as.numeric(match_arg_pretty(year, valid_years))
   epsg <- match_arg_pretty(epsg)
-  if (year < 2014) {
-    res_txt <- "03M"
-  } else if (year == 2014) {
-    res_txt <- "100K"
-  } else {
-    res_txt <- "100k"
-  }
+  res_txt <- format_urau_unit_resolution(year)
 
   spatialtype <- match_arg_pretty(spatialtype)
-  # Prepare inputs.
-  type <- switch(spatialtype,
-    "RG" = "region",
-    "LB" = "label"
-  )
+  type <- unit_spatialtype_to_file_type(spatialtype)
   # Names has the structure:
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson
 
   unit_code <- unique(unit)
 
-  unit_names <- paste0(unit_code, "-", type)
-  if (type == "region") {
-    unit_names <- paste0(unit_names, "-", res_txt)
-  }
-  unit_names <- paste0(unit_names, "-", epsg)
-  unit_names <- paste0(unit_names, "-", year)
-  unit_names <- paste0(unit_names, ".geojson")
+  unit_names <- build_unit_filenames(unit_code, type, epsg, year, res_txt)
+  unit_labels <- unit[seq_along(unit_names)]
 
-  iter <- seq_along(unit_names)
-
-  alldata <- lapply(iter, function(i) {
-    single_unit <- unit_names[i]
-    unit_txt <- unit[i] # nolint
-    make_msg(
-      "info",
-      verbose,
-      paste0("File {.str ", single_unit, "} requested.")
-    )
-
-    # First look in cache.
-    guess_path <- file.path(
-      create_cache_dir(cache_dir),
-      "urban_audit",
-      "units",
-      single_unit
-    )
-    is_cached <- file.exists(guess_path)
-
-    if (all(cache, !update_cache, is_cached)) {
-      msg <- paste0("File already cached: {.file ", guess_path, "}.")
-      make_msg("success", verbose, msg)
-      data_sf <- read_geo_file_sf(guess_path)
-      return(data_sf)
-    }
-
-    # Check online.
-    db_path <- paste0(
-      "https://gisco-services.ec.europa.eu/distribution/",
-      "v2/urau/urau-",
-      year,
-      "-units.json"
-    )
-
-    resp <- get_request_body(db_path, FALSE)
-    if (is.null(resp)) {
-      return(NULL)
-    }
-    resp_json <- httr2::resp_body_json(resp)
-    db <- unname(unlist(resp_json))
-
-    if (!single_unit %in% db) {
-      cli::cli_alert_warning(c(
-        "Skipping {.arg unit = {.str {unit_txt}}} (not found online)."
-      ))
-      return(NULL)
-    }
-
-    # Create URLs and queries.
-
-    api_entry <- paste0(
-      "https://gisco-services.ec.europa.eu/",
-      "distribution/v2/urau/distribution/"
-    )
-    url <- file.path(api_entry, single_unit)
-
-    if (!cache) {
-      msg <- paste0("{.url ", url, "}.")
-      make_msg("info", verbose, "Reading from", msg)
-
-      data_sf <- read_geo_file_sf(url)
-      return(data_sf)
-    }
-
-    file_local <- download_url(
-      url,
-      cache_dir = cache_dir,
-      subdir = "urban_audit/units",
-      verbose = verbose,
-      update_cache = update_cache
-    )
-    read_geo_file_sf(file_local)
-  })
-  alldata <- rbind_fill(alldata)
-  if (is.null(alldata)) {
-    return(NULL)
-  }
-  alldata <- sanitize_sf(alldata)
-  alldata
+  get_unit_files(
+    dataset = "urban_audit",
+    api_id = "urau",
+    unit_names = unit_names,
+    unit_labels = unit_labels,
+    year = year,
+    cache = cache,
+    update_cache = update_cache,
+    cache_dir = cache_dir,
+    verbose = verbose
+  )
 }

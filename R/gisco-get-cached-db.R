@@ -55,7 +55,7 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
 
   final_db <- rbind_fill(final_db)
   if (is.null(final_db)) {
-    url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/" # nolint
+    url_api <- gisco_distribution_url() # nolint
 
     cli::cli_alert_warning(c(
       "Cannot access {.url {url_api}}. ",
@@ -181,45 +181,21 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
 #' @return A tibble with the data from the API.
 #' @noRd
 scrap_api_data <- function(entry_point) {
-  url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/"
-
-  # Create a folder for caching httr2 requests.
-  cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
-  cache_httr2 <- create_cache_dir(cache_httr2)
+  url_api <- gisco_distribution_url()
 
   # Compose the URL.
-  req <- httr2::request(url_api)
+  req <- gisco_request(url_api, retry = FALSE)
   req <- httr2::req_url_path_append(req, entry_point)
   api_entry <- httr2::req_get_url(req)
   req <- httr2::req_url_path_append(req, "datasets.json")
-  req <- httr2::req_cache(
+
+  resp <- gisco_perform_request(
     req,
-    cache_httr2,
-    max_size = 1024^3 / 2,
-    max_age = 3600
+    httr2::req_get_url(req),
+    error_verbose = FALSE,
+    offline_verbose = FALSE
   )
-  req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
-
-  if (!is_online_fun()) {
-    return(NULL)
-  }
-
-  # Testing.
-  test_offline <- is_404()
-  if (test_offline) {
-    # Redirect to a fake URL during tests.
-    req <- httr2::req_url(
-      req,
-      "https://gisco-services.ec.europa.eu/distribution/v2/fake"
-    )
-  }
-
-  resp <- httr2::req_perform(req)
-
-  if (httr2::resp_is_error(resp)) {
+  if (is.null(resp)) {
     return(NULL)
   }
 
@@ -228,26 +204,18 @@ scrap_api_data <- function(entry_point) {
   iter <- seq_along(master)
 
   all_data <- lapply(iter, function(i) {
-    # Create a folder for caching httr2 requests.
-    cache_httr2 <- file.path(tempdir(), "giscoR", "cache_request")
-    cache_httr2 <- create_cache_dir(cache_httr2)
-
-    req <- httr2::request(url_api)
+    req <- gisco_request(url_api, retry = FALSE)
     req <- httr2::req_url_path_append(req, entry_point)
     req <- httr2::req_url_path_append(req, master[[i]]$files)
-    req <- httr2::req_cache(
+    resp <- gisco_perform_request(
       req,
-      cache_httr2,
-      max_size = 1024^3 / 2,
-      max_age = 3600
+      httr2::req_get_url(req),
+      error_verbose = FALSE,
+      offline_verbose = FALSE,
+      fake_404 = FALSE
     )
-    req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
-    req <- httr2::req_error(req, is_error = function(x) {
-      FALSE
-    })
-    resp <- httr2::req_perform(req)
     # nocov start
-    if (httr2::resp_is_error(resp)) {
+    if (is.null(resp)) {
       return(NULL)
     }
     # nocov end
@@ -291,7 +259,7 @@ get_db <- function() {
     saveRDS(db, cached_db)
 
     # Warn that the static fallback is being used.
-    url_api <- "https://gisco-services.ec.europa.eu/distribution/v2/" # nolint
+    url_api <- gisco_distribution_url() # nolint
 
     cli::cli_alert_warning(c(
       "Cannot get the latest database from {.url {url_api}}.\n",

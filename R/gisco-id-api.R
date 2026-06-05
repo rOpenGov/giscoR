@@ -101,7 +101,7 @@ gisco_id_api_geonames <- function(
   ymax = NULL,
   verbose = FALSE
 ) {
-  apiurl <- "https://gisco-services.ec.europa.eu/id/geonames?"
+  apiurl <- paste0(gisco_id_url(), "geonames?")
   custom_query <- list(
     x = x,
     y = y,
@@ -291,7 +291,7 @@ prepare_id_query <- function(
     geom <- "no"
   }
 
-  apiurl <- paste0("https://gisco-services.ec.europa.eu/id/", endpoint, "?")
+  apiurl <- paste0(gisco_id_url(), endpoint, "?")
   custom_query <- list(
     id = nuts_id,
     x = x,
@@ -340,12 +340,5 @@ call_id_api <- function(custom_query, apiurl, verbose = FALSE) {
     return(read_geo_file_sf(resp))
   }
 
-  resp <- get_request_body(url, verbose)
-  if (is.null(resp)) {
-    return(NULL)
-  }
-
-  resp_df <- httr2::resp_body_json(resp, simplifyVector = TRUE)
-  resp_df <- tibble::as_tibble(resp_df$attributes)
-  resp_df
+  call_gisco_json_api(custom_query, apiurl, "attributes", verbose)
 }

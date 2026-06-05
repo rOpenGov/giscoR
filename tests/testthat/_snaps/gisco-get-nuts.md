@@ -4,7 +4,7 @@
       gisco_get_nuts(ext = "docx")
     Condition
       Error:
-      ! `ext` should be one of "geojson", "gpkg" or "shp", not "docx".
+      ! `ext` must be "geojson", "gpkg", or "shp", not "docx".
 
 ---
 
@@ -12,7 +12,7 @@
       gisco_get_nuts(nuts_level = "docx")
     Condition
       Error:
-      ! `nuts_level` should be one of "all", "0", "1", "2" or "3", not "docx".
+      ! `nuts_level` must be "all", "0", "1", "2", or "3", not "docx".
 
 # Cached dataset vs updated
 

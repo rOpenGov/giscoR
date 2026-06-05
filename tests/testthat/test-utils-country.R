@@ -1,6 +1,9 @@
 test_that("Utils names", {
   skip_on_cran()
 
+  expect_null(convert_country_code_or_null(NULL))
+  expect_identical(convert_country_code_or_null("ES"), "ES")
+
   expect_snapshot(convert_country_code(c("Espagne", "United Kingdom")))
   expect_snapshot(convert_country_code("U"), error = TRUE)
   expect_snapshot(convert_country_code(c("ESP", "POR", "RTA", "USA"), "iso3c"))

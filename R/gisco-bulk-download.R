@@ -159,11 +159,11 @@ gisco_bulk_download <- function(
   zipname <- paste0("ref-", get_alias)
   zipname <- paste0(zipname, "-", year)
   if (!is.null(make_params$resolution)) {
-    r <- sprintf("%02dm", as.numeric(make_params$resolution))
-    if (make_params$resolution == "100") {
-      r <- "100k"
-    }
-    zipname <- paste0(zipname, "-", r)
+    zipname <- paste0(
+      zipname,
+      "-",
+      format_bulk_resolution(make_params$resolution)
+    )
   }
   zipname <- paste0(zipname, ".", ext, ".zip")
 

@@ -44,17 +44,21 @@ db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
 #' @noRd
 docs_id_years <- function(endpoint) {
   apiurl <- paste0(
-    "https://gisco-services.ec.europa.eu/id/",
+    gisco_id_url(),
     endpoint,
     "?year=9999"
   )
 
-  req <- httr2::request(apiurl)
-  req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
-  req <- httr2::req_error(req, is_error = function(x) {
-    FALSE
-  })
-  resp <- httr2::req_perform(req)
+  req <- gisco_request(apiurl, cache = FALSE, retry = FALSE)
+  resp <- gisco_perform_request(
+    req,
+    apiurl,
+    fake_404 = FALSE,
+    check_error = FALSE
+  )
+  if (is.null(resp)) {
+    return("are unavailable")
+  }
   get_years <- httr2::resp_body_json(resp, simplifyVector = TRUE)
   get_years <- get_years$details
   available_years <- gsub("[^0-9]", " ", get_years)

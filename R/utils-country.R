@@ -60,6 +60,20 @@ convert_country_code <- function(names, out = "eurostat") {
   outnames2
 }
 
+#' Convert country names or codes unless the input is `NULL`
+#'
+#' @inheritParams convert_country_code
+#'
+#' @return A vector of names, or `NULL` when `names` is `NULL`.
+#' @noRd
+convert_country_code_or_null <- function(names, out = "eurostat") {
+  if (is.null(names)) {
+    return(NULL)
+  }
+
+  convert_country_code(names, out)
+}
+
 #' Get country codes from country names and/or region names
 #'
 #' @param country A character vector of country codes or names.
@@ -74,10 +88,8 @@ get_countrycodes_region <- function(
   code = "eurostat"
 ) {
   store <- NULL
-  if (!is.null(country)) {
-    country <- convert_country_code(country, code)
-    store <- c(store, country)
-  }
+  country <- convert_country_code_or_null(country, code)
+  store <- c(store, country)
 
   if (!is.null(region)) {
     region_df <- giscoR::gisco_countrycode

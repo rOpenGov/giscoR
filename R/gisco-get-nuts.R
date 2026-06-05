@@ -136,107 +136,44 @@ gisco_get_nuts <- function(
 
   filename <- basename(api_entry)
 
-  # Check if data is already available
-  checkdata <- grepl("NUTS_RG_20M_2024_4326.*.gpkg$", filename)
-  if (all(isFALSE(update_cache), checkdata)) {
-    data_sf <- giscoR::gisco_nuts_2024
-
-    make_msg(
-      "info",
-      verbose,
-      "Loaded from {.help giscoR::gisco_nuts_2024} dataset.",
-      "Use {.arg update_cache = TRUE} to reload from file."
-    )
-
-    data_sf <- filter_country_nuts_level(data_sf, country, nuts_id, nuts_level)
-
-    return(data_sf)
-  }
-
-  # Read uncached data from the URL.
-  if (all(isFALSE(cache), ext != "shp")) {
-    msg <- paste0("{.url ", api_entry, "}.")
-    make_msg("info", verbose, "Reading from", msg)
-
-    data_sf <- read_geo_file_sf(api_entry)
-
-    data_sf <- filter_country_nuts_level(data_sf, country, nuts_id, nuts_level)
-
-    return(data_sf)
-  }
-
-  # Cache
-  file_local <- download_url(
-    api_entry,
-    filename,
-    cache_dir,
-    "nuts",
-    update_cache,
-    verbose
+  data_sf <- read_packaged_gisco_dataset(
+    filename = filename,
+    pattern = "NUTS_RG_20M_2024_4326.*.gpkg$",
+    data = giscoR::gisco_nuts_2024,
+    data_name = "gisco_nuts_2024",
+    update_cache = update_cache,
+    verbose = verbose,
+    post_process = function(data_sf) {
+      filter_country_nuts_level(data_sf, country, nuts_id, nuts_level)
+    }
   )
-  if (is.null(file_local)) {
-    return(NULL)
+  if (!is.null(data_sf)) {
+    return(data_sf)
   }
 
-  # Use an sf query when filtering can reduce read time.
-  filter_col_cnt <- get_col_name(file_local)
-  filter_col_id <- get_col_name(file_local, "NUTS_ID")
-  if (
-    all(!is.null(country), !is.null(filter_col_cnt)) ||
-      all(!is.null(nuts_id), !is.null(filter_col_id))
-  ) {
-    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
-    if (!is.null(country)) {
-      country <- convert_country_code(country)
-    }
+  country_filter <- NULL
+  if (!is.null(country)) {
+    country_filter <- convert_country_code(country)
+  }
 
-    # Get the layer name.
-    layer <- get_sf_layer_name(file_local)
-
-    # Construct the query.
-    q <- paste0("SELECT * from \"", layer, "\" WHERE")
-
-    where <- NULL
-
-    if (all(!is.null(country), !is.null(filter_col_cnt))) {
-      where <- c(
-        where,
-        paste0(
-          filter_col_cnt,
-          " IN (",
-          paste0("'", country, "'", collapse = ", "),
-          ")"
-        )
+  read_gisco_dataset(
+    url = api_entry,
+    name = filename,
+    cache = cache,
+    cache_dir = cache_dir,
+    subdir = "nuts",
+    update_cache = update_cache,
+    verbose = verbose,
+    filters = function(file_local) {
+      c(
+        make_sf_filter(file_local, country_filter),
+        make_sf_filter(file_local, nuts_id, "NUTS_ID")
       )
+    },
+    post_process = function(data_sf) {
+      filter_country_nuts_level(data_sf, country, nuts_id, nuts_level)
     }
-
-    if (all(!is.null(nuts_id), !is.null(filter_col_id))) {
-      where <- c(
-        where,
-        paste0(
-          filter_col_id,
-          " IN (",
-          paste0("'", nuts_id, "'", collapse = ", "),
-          ")"
-        )
-      )
-    }
-
-    where <- paste(where, collapse = " AND ")
-    q <- paste(q, where)
-
-    msg <- paste0("{.code ", q, "}")
-    make_msg("info", verbose, "Using query:\n   ", msg)
-    data_sf <- read_geo_file_sf(file_local, q = q)
-  } else {
-    data_sf <- read_geo_file_sf(file_local)
-  }
-  if ("NUTS_ID" %in% names(data_sf)) {
-    data_sf$geo <- data_sf$NUTS_ID
-    data_sf <- sanitize_sf(data_sf)
-  }
-
-  data_sf
+  )
 }
 
 

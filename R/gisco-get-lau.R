@@ -108,72 +108,22 @@ gisco_get_lau <- function(
 
   basename <- basename(url)
 
-  file_local <- download_url(
-    url,
-    basename,
+  country <- convert_country_code_or_null(country)
+
+  read_gisco_dataset(
+    url = url,
+    name = basename,
+    cache = TRUE,
     cache_dir = cache_dir,
     subdir = "lau",
     update_cache = update_cache,
-    verbose = verbose
+    verbose = verbose,
+    filters = function(file_local) {
+      c(
+        make_sf_filter(file_local, country),
+        make_sf_filter(file_local, gisco_id, "GISCO_ID")
+      )
+    },
+    operator = "OR"
   )
-
-  if (is.null(file_local)) {
-    return(NULL)
-  }
-
-  # Use an sf query when filtering can reduce read time.
-  filter_col_cnt <- get_col_name(file_local)
-  filter_col_id <- get_col_name(file_local, "GISCO_ID")
-  if (
-    all(!is.null(country), !is.null(filter_col_cnt)) ||
-      all(!is.null(gisco_id), !is.null(filter_col_id))
-  ) {
-    make_msg("info", verbose, "Speeding up with an {.pkg sf} query.")
-    if (!is.null(country)) {
-      country <- convert_country_code(country)
-    }
-
-    # Get the layer name.
-    layer <- get_sf_layer_name(file_local)
-
-    # Construct the query.
-    q <- paste0("SELECT * from \"", layer, "\" WHERE")
-
-    where <- NULL
-
-    if (all(!is.null(country), !is.null(filter_col_cnt))) {
-      where <- c(
-        where,
-        paste0(
-          filter_col_cnt,
-          " IN (",
-          paste0("'", country, "'", collapse = ", "),
-          ")"
-        )
-      )
-    }
-
-    if (all(!is.null(gisco_id), !is.null(filter_col_id))) {
-      where <- c(
-        where,
-        paste0(
-          filter_col_id,
-          " IN (",
-          paste0("'", gisco_id, "'", collapse = ", "),
-          ")"
-        )
-      )
-    }
-
-    where <- paste(where, collapse = " OR ")
-    q <- paste(q, where)
-
-    msg <- paste0("{.code ", q, "}")
-    make_msg("info", verbose, "Using query:\n   ", msg)
-    data_sf <- read_geo_file_sf(file_local, q = q)
-  } else {
-    data_sf <- read_geo_file_sf(file_local)
-  }
-
-  data_sf
 }
