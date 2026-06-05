@@ -471,6 +471,28 @@ test_that("Test import jsonlite with missing response", {
   expect_null(for_import_jsonlite())
 })
 
+test_that("Test import jsonlite with mocked response body", {
+  local_mocked_bindings(
+    get_request_body = function(url, verbose = FALSE) {
+      expect_identical(
+        url,
+        "https://ropengov.github.io/giscoR/search.json"
+      )
+      expect_false(verbose)
+      structure(list(), class = "mock_response")
+    }
+  )
+  local_mocked_bindings(
+    .package = "httr2",
+    resp_body_string = function(resp) {
+      expect_s3_class(resp, "mock_response")
+      "{\"items\":[]}"
+    }
+  )
+
+  expect_null(for_import_jsonlite())
+})
+
 test_that("Test timeout", {
   skip_on_cran()
   skip_if_gisco_offline()
