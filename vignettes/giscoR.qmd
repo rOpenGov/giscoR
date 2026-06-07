@@ -26,8 +26,8 @@ especially on the EU but also offering global datasets such as country
 boundaries, labels and coastal lines.
 
 GISCO supplies data at multiple resolutions: high-resolution datasets for small
-areas (01M, 03M) and lighter datasets for larger areas (10M, 20M, 60M).
-Datasets are available in three projections: [EPSG:4326](https://epsg.io/4326),
+areas (01M, 03M) and lighter datasets for larger areas (10M, 20M, 60M). Datasets
+are available in three projections: [EPSG:4326](https://epsg.io/4326),
 [EPSG:3035](https://epsg.io/3035), and [EPSG:3857](https://epsg.io/3857).
 
 **giscoR** returns [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
@@ -66,8 +66,8 @@ policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice) applies.
 Some datasets have additional download and usage provisions. The download and
 use of these data are subject to acceptance of those provisions. See the
 [administrative
-units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
-and [statistical
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units) and
+[statistical
 units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units) for
 more details.
 
@@ -201,8 +201,8 @@ ggplot(coast) +
 # Thematic maps with **giscoR**
 
 This example shows how **giscoR** can be used together with Eurostat data. For
-plotting, we use **ggplot2**. Any package that supports `sf` objects
-(e.g., **tmap**, **mapsf**, **leaflet**) can be used.
+plotting, we use **ggplot2**. Any package that supports `sf` objects (e.g.,
+**tmap**, **mapsf**, **leaflet**) can be used.
 
 
 ``` r
@@ -225,6 +225,7 @@ eu_bord <- borders |>
 # Retrieve disposable income data from Eurostat.
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
+#> indexed 0B in  0s, 0B/sindexed 2.15GB in  0s, 2.15GB/s                                                                                            
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
