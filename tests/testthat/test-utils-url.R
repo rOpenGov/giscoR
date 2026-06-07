@@ -220,7 +220,7 @@ test_that("Test 404", {
     )
   )
   expect_length(s, 1)
-  expect_true(is.character(s))
+  expect_type(s, "character")
   if (dir.exists(cdir)) {
     unlink(cdir, recursive = TRUE, force = TRUE)
   }

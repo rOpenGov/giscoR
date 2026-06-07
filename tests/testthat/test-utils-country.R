@@ -94,5 +94,5 @@ test_that("Get regions and countries", {
   expect_length(eu, 27)
   l_and_eu <- get_countrycodes_region(region = c("Americas", "EU"))
 
-  expect_identical(length(l_and_eu), length(eu) + length(l))
+  expect_length(l_and_eu, length(eu) + length(l))
 })
