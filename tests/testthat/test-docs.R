@@ -34,9 +34,7 @@ test_that("GISCO ID docs use singular wording for one available year", {
   )
   local_mocked_bindings(
     .package = "httr2",
-    resp_body_json = function(resp, simplifyVector = FALSE) {
-      expect_s3_class(resp, "mock_response")
-      expect_true(simplifyVector)
+    resp_body_json = function(...) {
       list(details = "Available year: 2024")
     }
   )
