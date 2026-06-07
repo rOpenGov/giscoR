@@ -184,7 +184,6 @@ data. For plotting, we use **ggplot2**. Any package that supports `sf`
 objects (e.g., **tmap**, **mapsf**, **leaflet**) can be used.
 
 ``` r
-
 # Load EU member data.
 library(giscoR)
 library(dplyr)
@@ -204,6 +203,10 @@ eu_bord <- borders |>
 # Retrieve disposable income data from Eurostat.
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                                            
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -274,5 +277,3 @@ ggplot(nuts2_sf) +
 (2022)](./fig-giscor-1.png)
 
 Disposable income of private households by NUTS 2 regions (2022)
-
-Use these examples as a starting point for your own maps.
