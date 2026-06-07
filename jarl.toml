@@ -1,2 +1,11 @@
 [lint]
 ignore = ["implicit_assignment"]
+extend-select = ["TESTTHAT"]
+check-roxygen = true
+fix-roxygen = true
+
+[lint.assignment]
+operator = "<-"
+
+[lint.quotes]
+quote = "double"
