@@ -68,7 +68,7 @@ test_that("Get regions and countries", {
 
   expect_identical(
     get_countrycodes_region(c("Japan", "Spain"), code = "iso3c"),
-    c("JPN", "ESP"),
+    c("JPN", "ESP")
   )
 
   expect_identical(

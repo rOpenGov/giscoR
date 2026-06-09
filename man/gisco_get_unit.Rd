@@ -124,7 +124,7 @@ library(dplyr)
 # Now get the sf objects and order by AREA_SQM
 valencia_sf <- gisco_get_unit_urban_audit(
   unit = valencia$URAU_CODE,
-  year = 2024,
+  year = 2024
 ) |>
   arrange(desc(AREA_SQM))
 # Plot

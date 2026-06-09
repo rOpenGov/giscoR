@@ -49,7 +49,7 @@ test_that("Deprecate country", {
       unit = "LU",
       year = 2016,
       cache = FALSE,
-      spatialtype = "LB",
+      spatialtype = "LB"
     )
   )
 })

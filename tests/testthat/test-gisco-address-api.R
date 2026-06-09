@@ -5,7 +5,7 @@ test_that("Test offline", {
     FALSE
   })
 
-  expect_snapshot(fend <- gisco_address_api_bbox(), )
+  expect_snapshot(fend <- gisco_address_api_bbox())
   expect_null(fend)
 
   local_mocked_bindings(is_online_fun = function(...) {
