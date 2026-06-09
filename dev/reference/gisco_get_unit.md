@@ -159,7 +159,7 @@ Additional utilities for downloading datasets:
 cities <- gisco_get_metadata("urban_audit", year = 2024)
 
 # Valencia, Spain
-valencia <- cities[grep("Valencia", cities$URAU_NAME), ]
+valencia <- cities[grep("Valencia", cities$URAU_NAME, fixed = TRUE), ]
 valencia
 #> # A tibble: 2 × 8
 #>   URAU_CODE URAU_CATG CNTR_CODE URAU_NAME CITY_CPTL FUA_CODE AREA_SQM NUTS3_2024
