@@ -118,7 +118,7 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 cities <- gisco_get_metadata("urban_audit", year = 2024)
 
 # Valencia, Spain
-valencia <- cities[grep("Valencia", cities$URAU_NAME), ]
+valencia <- cities[grep("Valencia", cities$URAU_NAME, fixed = TRUE), ]
 valencia
 library(dplyr)
 # Now get the sf objects and order by AREA_SQM

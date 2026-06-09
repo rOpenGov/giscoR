@@ -55,7 +55,7 @@ test_that("Mock restart", {
     stored_val <- readLines(cache_config)
     gisco_clear_cache(cached_data = FALSE, config = TRUE)
     expect_false(file.exists(cache_config))
-    expect_true(Sys.getenv("GISCO_CACHE_DIR") == "")
+    expect_false(nzchar(Sys.getenv("GISCO_CACHE_DIR")))
 
     # We are clear now, we should detect default cache location
     default_loc <- detect_cache_dir_muted()
@@ -80,7 +80,7 @@ test_that("Mock restart", {
 
   expect_identical(muted, created)
   expect_identical(muted, muted2)
-  expect_false(Sys.getenv("GISCO_CACHE_DIR") == "")
+  expect_true(nzchar(Sys.getenv("GISCO_CACHE_DIR")))
 
   # Restore cache
   if (tester_has_config_installed) {

@@ -263,7 +263,7 @@ detect_cache_dir_muted <- function() {
   # Try the environment variable.
   getvar <- Sys.getenv("GISCO_CACHE_DIR")
 
-  if (is.null(getvar) || is.na(getvar) || getvar == "") {
+  if (is.null(getvar) || is.na(getvar) || !nzchar(getvar)) {
     # If unset, try to retrieve the value from the cache config.
     cache_config <- file.path(
       tools::R_user_dir("giscoR", "config"),
@@ -275,7 +275,7 @@ detect_cache_dir_muted <- function() {
       cached_path <- readLines(cache_config)
 
       # Use the default when the cached path is empty.
-      if (any(is.null(cached_path), is.na(cached_path), cached_path == "")) {
+      if (any(is.null(cached_path), is.na(cached_path), !nzchar(cached_path))) {
         cache_dir <- gisco_set_cache_dir(overwrite = TRUE, verbose = FALSE)
         return(cache_dir)
       }
