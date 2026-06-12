@@ -1,7 +1,7 @@
 # Healthcare services in Europe
 
-The dataset contains information on main healthcare services considered
-to be 'hospitals' by Member States. The definition varies slightly from
+The dataset contains information on healthcare services considered to be
+'hospitals' by Member States. The definition varies slightly from
 country to country, but roughly includes the following:
 
 - "'Hospitals' comprises licensed establishments primarily engaged in
@@ -30,11 +30,11 @@ There are no specific download rules for the datasets shown below.
 However, please refer to [the general copyright
 notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
 provisions, which must be complied with. Permission to download and use
-these data are subject to these rules being accepted.
+these data is subject to acceptance of these rules.
 
 The data are extracted from official national registers. They may
 contain inconsistencies, inaccuracies and gaps, due to the heterogeneity
-of the input national data.
+of the national input data.
 
 ## Arguments
 
@@ -77,7 +77,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed on [EPSG:4326](https://epsg.io/4326).
+Files are distributed in [EPSG:4326](https://epsg.io/4326).
 
 Brief descriptions of each attribute:
 
@@ -86,7 +86,7 @@ Brief descriptions of each attribute:
 | **Attribute** | **Description** |
 | `id` | The healthcare service identifier. It is based on national identification codes, if they exist. |
 | `hospital_name` | The name of the healthcare institution. |
-| `site_name` | The name of the specific site or branch of a healthcare institution. |
+| `site_name` | The name of a specific site or branch of a healthcare institution. |
 | `lat` | Latitude (WGS 84). |
 | `lon` | Longitude (WGS 84). |
 | `street` | Street name. |
@@ -105,7 +105,7 @@ Brief descriptions of each attribute:
 | `tel` | Telephone number. |
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
-| `ref_date` | The date (`DD/MM/YYYY`) the data refers to (reference date). |
+| `ref_date` | The reference date (`DD/MM/YYYY`) the data refers to. |
 | `pub_date` | The publication date of the dataset by Eurostat (`DD/MM/YYYY`). |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the healthcare service. |
@@ -123,7 +123,7 @@ health_benelux <- gisco_get_healthcare(
   year = 2023
 )
 
-# Plot if downloaded
+# Plot if downloaded.
 if (!is.null(health_benelux)) {
   benelux <- gisco_get_countries(country = c("BE", "NL", "LU"))
 

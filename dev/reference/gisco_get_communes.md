@@ -38,8 +38,8 @@ Copyright:
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -49,8 +49,8 @@ Copyright:
 
 - cache:
 
-  **\[deprecated\]**. These functions always cache the result due to the
-  size. See **Caching strategies** section in
+  **\[deprecated\]**. These functions always cache the result because of
+  its size. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
@@ -126,7 +126,7 @@ See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
 to perform a bulk download of datasets.
 
-Other administrative units datasets:
+Other administrative unit datasets:
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
 [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
 

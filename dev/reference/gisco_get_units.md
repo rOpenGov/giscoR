@@ -1,4 +1,4 @@
-# Get geospatial units data from GISCO API
+# Get geospatial unit data from GISCO
 
 **\[deprecated\]**
 
@@ -32,7 +32,7 @@ gisco_get_units(
 
 <https://gisco-services.ec.europa.eu/distribution/v2/>
 
-All the source files are `.geojson` files.
+All source files are `.geojson` files.
 
 ## Arguments
 
@@ -56,8 +56,8 @@ All the source files are `.geojson` files.
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -112,9 +112,9 @@ All the source files are `.geojson` files.
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object on
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object when
 `mode = "sf"` or a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) on
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) when
 `mode = "df"`.
 
 ## Note

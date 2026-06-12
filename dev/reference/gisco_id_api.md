@@ -5,7 +5,7 @@ API](https://gisco-services.ec.europa.eu/id/api-docs/), which returns
 attributes and, optionally, geometry for different datasets at specified
 longitude and latitude coordinates.
 
-Each available endpoint is implemented through a specific function, see
+Each available endpoint is implemented through a specific function. See
 **Details**.
 
 ## Usage
@@ -136,10 +136,9 @@ The available endpoints are:
 - `gisco_id_api_geonames()`: Get geographic placenames from longitude
   and latitude coordinates or a bounding box.
 
-- `gisco_id_api_nuts()`: Returns NUTS regions from either a specified
-  longitude and latitude coordinates or an ID. Accepted values for
-  `year` are `"2024"`, `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"`
-  .
+- `gisco_id_api_nuts()`: Returns NUTS regions from either longitude and
+  latitude coordinates or an ID. Accepted values for `year` are
+  `"2024"`, `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
 
 - `gisco_id_api_lau()`: Returns the ID and, optionally, geometry for
   Local Administrative Units (LAU) at specified longitude and latitude

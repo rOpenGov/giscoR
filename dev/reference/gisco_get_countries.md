@@ -1,8 +1,8 @@
 # Countries dataset
 
 This dataset contains world administrative boundaries at the country
-level. It provides 2 feature classes (regions and boundaries) for each
-scale level, with 5 scale levels available (1M, 3M, 10M, 20M and 60M).
+level. It provides 2 feature classes (regions and boundaries) at 5 scale
+levels (1M, 3M, 10M, 20M and 60M).
 
 This function gets data from the aggregated GISCO country file. To
 download individual country files, use
@@ -43,8 +43,8 @@ Copyright:
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -132,7 +132,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## World Regions
 
-Regions are defined as per the geographic regions defined by the UN (see
+Regions follow the UN geographic regions (see
 <https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
 Cyprus is assigned to Asia.
 
@@ -160,7 +160,7 @@ See
 [`gisco_id_api_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Other administrative units datasets:
+Other administrative unit datasets:
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md),
 [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
 

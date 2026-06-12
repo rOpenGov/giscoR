@@ -1,4 +1,4 @@
-# Check access to GISCO API
+# Check access to the GISCO geodata distribution
 
 Check if R has access to resources at
 <https://gisco-services.ec.europa.eu/distribution/v2/>.

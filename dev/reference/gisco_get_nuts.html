@@ -4,13 +4,13 @@ territorial units for statistics) and statistical regions by means of
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
-The NUTS are a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into 3 levels:
 NUTS 1: major socio-economic regions.
 NUTS 2: basic regions for the application of regional policies.
 NUTS 3: small regions for specific diagnoses.
 
 
-Also, there is a NUTS 0 level, which usually corresponds to the national
+There is also a NUTS 0 level, which usually corresponds to national
 boundaries.
 This function gets data from the aggregated GISCO NUTS file, which contains
 data for all countries at the requested NUTS level or levels. To download
@@ -19,13 +19,13 @@ territorial units for statistics) and statistical regions by means of
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
-The NUTS are a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into 3 levels:
 NUTS 1: major socio-economic regions.
 NUTS 2: basic regions for the application of regional policies.
 NUTS 3: small regions for specific diagnoses.
 
 
-Also, there is a NUTS 0 level, which usually corresponds to the national
+There is also a NUTS 0 level, which usually corresponds to national
 boundaries.
 This function gets data from the aggregated GISCO NUTS file, which contains
 data for all countries at the requested NUTS level or levels. To download
@@ -81,10 +81,10 @@ territorial units for statistics) and statistical regions by means of
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.</p>
-<p>The NUTS are a hierarchical system divided into 3 levels:</p><ul><li><p>NUTS 1: major socio-economic regions.</p></li>
+<p>NUTS is a hierarchical system divided into 3 levels:</p><ul><li><p>NUTS 1: major socio-economic regions.</p></li>
 <li><p>NUTS 2: basic regions for the application of regional policies.</p></li>
 <li><p>NUTS 3: small regions for specific diagnoses.</p></li>
-</ul><p>Also, there is a NUTS 0 level, which usually corresponds to the national
+</ul><p>There is also a NUTS 0 level, which usually corresponds to national
 boundaries.</p>
 <p>This function gets data from the aggregated GISCO NUTS file, which contains
 data for all countries at the requested NUTS level or levels. To download
@@ -127,8 +127,8 @@ file. One of
 
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
-<dd><p>A character string or numeric value with the map projection as a
-4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
+<dd><p>A character string or numeric value with the coordinate
+reference system as a 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
 <li><p><code>"3035"</code>: <a href="https://epsg.io/3035" class="external-link">ETRS89 / ETRS-LAEA</a>.</p></li>
 <li><p><code>"3857"</code>: <a href="https://epsg.io/3857" class="external-link">Pseudo-Mercator</a>.</p></li>
 </ul></dd>
@@ -206,9 +206,9 @@ Eurostat country codes. See also <code><a href="https://vincentarelbundock.githu
 regions and subdivides the EU economic territory into regions of three
 different levels (NUTS 1, 2 and 3, moving respectively from larger to
 smaller territorial units). NUTS 1 is the most aggregated level. An
-additional
-Country level (NUTS 0) is also available for countries where the nation at
-statistical level does not coincide with the administrative boundaries.</p>
+Additional country level (NUTS 0) data is also available for countries
+where the statistical national level does not coincide with the
+administrative boundaries.</p>
 <p>The NUTS classification has been officially established through Commission
 Delegated Regulation 2019/1755. A non-official NUTS-like classification has
 been defined for the EFTA countries, candidate countries and potential
@@ -227,7 +227,7 @@ respective statistical agencies.</p>
 <p>See <code><a href="gisco_bulk_download.html">gisco_bulk_download()</a></code> to perform a bulk download of datasets.</p>
 <p>See <code><a href="gisco_get_unit.html">gisco_get_unit_nuts()</a></code> to download single files.</p>
 <p>See <code><a href="gisco_id_api.html">gisco_id_api_nuts()</a></code> to download via GISCO ID service API.</p>
-<p>Other statistical units datasets:
+<p>Other statistical unit datasets:
 <code><a href="gisco_get_census.html">gisco_get_census()</a></code>,
 <code><a href="gisco_get_coastal_lines.html">gisco_get_coastal_lines()</a></code>,
 <code><a href="gisco_get_lau.html">gisco_get_lau()</a></code>,

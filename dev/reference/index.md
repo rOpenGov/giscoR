@@ -41,9 +41,9 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 
 ### Grids
 
-These datasets contain grid cells covering the land territory of the EU,
-at various resolutions from 1 km to 100 km. Base statistics such as
-population figures are provided for these cells.
+These datasets contain grid cells covering the European land territory
+at resolutions from 1 km to 100 km. Base statistics such as population
+figures are provided for these cells.
 
 - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_grid.md)
   : Grid dataset
@@ -72,11 +72,11 @@ services.
 Download individual unit datasets and other GISCO resources.
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
-  : GISCO API bulk download
+  : GISCO geodata bulk download
 - [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
   [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
   [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-  : GISCO API single download
+  : GISCO geodata single-unit download
 
 ### giscoR database
 
@@ -89,7 +89,7 @@ metadata.
 - [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md)
   :
 
-  Retrieve and update the GISCO database in use by
+  Retrieve and update the GISCO database used by
   [giscoR](https://CRAN.R-project.org/package=giscoR)
 
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
@@ -177,11 +177,11 @@ Datasets included in
 
 - [`giscoR`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
-  : giscoR: Download Geospatial Data from the GISCO API
+  : giscoR: Download Geospatial Data from Eurostat's GISCO API
 
 ## Deprecated functions
 
 These functions will be removed in the future.
 
 - [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
-  **\[deprecated\]** : Get geospatial units data from GISCO API
+  **\[deprecated\]** : Get geospatial unit data from GISCO

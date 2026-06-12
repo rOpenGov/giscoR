@@ -1,6 +1,6 @@
 # Coastal lines dataset
 
-Downloads global coastal lines.
+Download global coastal lines.
 
 ## Usage
 
@@ -33,8 +33,8 @@ Copyright:
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -100,7 +100,7 @@ See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
 to perform a bulk download of datasets.
 
-Other statistical units datasets:
+Other statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md),

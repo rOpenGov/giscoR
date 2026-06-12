@@ -6,7 +6,7 @@ multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
 
-The NUTS are a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into 3 levels:
 
 - NUTS 1: major socio-economic regions.
 
@@ -14,7 +14,7 @@ The NUTS are a hierarchical system divided into 3 levels:
 
 - NUTS 3: small regions for specific diagnoses.
 
-Also, there is a NUTS 0 level, which usually corresponds to the national
+There is also a NUTS 0 level, which usually corresponds to national
 boundaries.
 
 This function gets data from the aggregated GISCO NUTS file, which
@@ -58,8 +58,8 @@ Copyright:
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -148,8 +148,8 @@ The NUTS nomenclature is a hierarchical classification of statistical
 regions and subdivides the EU economic territory into regions of three
 different levels (NUTS 1, 2 and 3, moving respectively from larger to
 smaller territorial units). NUTS 1 is the most aggregated level. An
-additional Country level (NUTS 0) is also available for countries where
-the nation at statistical level does not coincide with the
+Additional country level (NUTS 0) data is also available for countries
+where the statistical national level does not coincide with the
 administrative boundaries.
 
 The NUTS classification has been officially established through
@@ -183,7 +183,7 @@ See
 [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Other statistical units datasets:
+Other statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),

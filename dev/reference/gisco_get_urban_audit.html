@@ -98,8 +98,8 @@ file. One of
 
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
-<dd><p>A character string or numeric value with the map projection as a
-4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
+<dd><p>A character string or numeric value with the coordinate
+reference system as a 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
 <li><p><code>"3035"</code>: <a href="https://epsg.io/3035" class="external-link">ETRS89 / ETRS-LAEA</a>.</p></li>
 <li><p><code>"3857"</code>: <a href="https://epsg.io/3857" class="external-link">Pseudo-Mercator</a>.</p></li>
 </ul></dd>
@@ -158,11 +158,11 @@ are <code>"all"</code> (the default), which downloads the full dataset, <code>"C
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>See more at: <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions" class="external-link">Eurostat - Statistics Explained</a>.</p>
+    <p>For more information, see: <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions" class="external-link">Eurostat - Statistics Explained</a>.</p>
 <p>The cities are defined at several conceptual levels:</p><ul><li><p>The core city (<code>"CITIES"</code>), using an administrative definition.</p></li>
 <li><p>The Functional Urban Area/Large Urban Zone (<code>"FUA"</code>), approximating the
 functional urban region.
-The coverage is the EU plus Iceland, Norway and Switzerland. The dataset
+Coverage is the EU plus Iceland, Norway and Switzerland. The dataset
 includes polygon features, point features and a related attribute table
 which can be joined on the URAU code field.</p></li>
 </ul><p>The <code>"URAU_CATG"</code> field defines the Urban Audit category:</p><ul><li><p><code>"C"</code> = City.</p></li>
@@ -176,7 +176,7 @@ which can be joined on the URAU code field.</p></li>
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>See <code><a href="gisco_bulk_download.html">gisco_bulk_download()</a></code> to perform a bulk download of datasets.</p>
 <p>See <code><a href="gisco_get_unit.html">gisco_get_unit_urban_audit()</a></code> to download single files.</p>
-<p>Other statistical units datasets:
+<p>Other statistical unit datasets:
 <code><a href="gisco_get_census.html">gisco_get_census()</a></code>,
 <code><a href="gisco_get_coastal_lines.html">gisco_get_coastal_lines()</a></code>,
 <code><a href="gisco_get_lau.html">gisco_get_lau()</a></code>,

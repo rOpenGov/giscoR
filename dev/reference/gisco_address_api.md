@@ -2,8 +2,8 @@
 
 Functions to interact with the [GISCO Address
 API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home),
-which allows for both geocoding and reverse geocoding using a
-pan-European address database.
+which supports geocoding and reverse geocoding with a pan-European
+address database.
 
 Each endpoint is implemented through a specific function. See
 **Details**.
@@ -85,8 +85,8 @@ gisco_address_api_copyright(verbose = FALSE)
 
 - city:
 
-  A city within a province. For a list of cities within a certain
-  province, use the cities endpoint
+  A city within a province. For a list of cities within a province, use
+  the cities endpoint
   (`gisco_address_api_cities(province = "capellen")`).
 
 - road:
@@ -126,7 +126,7 @@ Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)
 |  |  |
 |----|----|
 | **Endpoint** | **Description** |
-| `/countries` | Returns all country codes that are compatible with the address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
+| `/countries` | Returns all country codes compatible with the address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
 | `/provinces` | Returns all provinces within the specified country. It can also be used to get the province of a specified city. |
 | `/cities` | Returns all cities within a specified province or country. |
 | `/roads` | Returns all roads or streets within a specified city. |
@@ -134,7 +134,7 @@ Endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints)
 | `/postcodes` | Returns all postcodes within the specified address component: country, province or city. |
 | `/search` | Allows structured queries to the address database. Various argument combinations can be used to retrieve addresses that share an address component. **The API returns at most 100 addresses**. |
 | `/reverse` | Allows you to specify longitude and latitude coordinates to retrieve a structured address. |
-| `/bbox` | Returns a [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component depending on the arguments specified. |
+| `/bbox` | Returns a [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component, depending on the arguments specified. |
 | `/copyright` | Returns the copyright text for each available country in the Address API. |
 
 The resulting object may include these variables:
@@ -144,7 +144,7 @@ The resulting object may include these variables:
 | **Property name** | **Description** |
 | `LD` | Refers to "locator designator" and represents the house number part of the address. |
 | `TF` | Refers to "thoroughfare" and represents the street or road part of the address. |
-| `L0` | Refers to Level 0 of the API administrative levels. Values are country codes consisting of 2 characters. |
+| `L0` | Refers to level 0 of the API administrative levels. Values are country codes consisting of 2 characters. |
 | `L1` | Refers to Level 1 of the API administrative levels. Values are province names. Please note that "province" is a generic term that may differ between countries. |
 | `L2` | Refers to Level 2 of the API administrative levels. Values are town or city names. Please note that "city" is a generic term that may differ between countries. |
 | `PC` | Postal code. |
@@ -182,7 +182,7 @@ gisco_address_api_cities(country = "PT", province = "LISBOA")
 #> 8 SINTRA             
 #> 9 VILA FRANCA DE XIRA
 
-# Geocode and reverse geocode with sf objects
+# Geocode and reverse geocode with `sf` objects.
 # Structured search
 struct <- gisco_address_api_search(
   country = "ES", city = "BARCELONA",

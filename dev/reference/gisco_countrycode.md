@@ -1,16 +1,15 @@
 # Database with different country code schemes and world regions
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-containing conversions between different country code schemes
-(Eurostat/ISO2 and 3) as well as geographic regions as provided by the
-World Bank and the UN ([M49
-Standard](https://unstats.un.org/unsd/methodology/m49/)). This database
-has been extracted from the
+containing conversions between country code schemes (Eurostat, ISO2 and
+ISO3) and geographic regions as provided by the World Bank and the UN
+([M49 Standard](https://unstats.un.org/unsd/methodology/m49/)). This
+database was extracted from the
 [countrycode](https://CRAN.R-project.org/package=countrycode) package.
 
 ## Format
 
-A data frame object with 249 rows and 13 variables:
+A data frame with 249 rows and 13 variables:
 
 - `ISO3_CODE`:
 
@@ -72,7 +71,7 @@ A data frame object with 249 rows and 13 variables:
 
 ## World Regions
 
-Regions are defined as per the geographic regions defined by the UN (see
+Regions follow the UN geographic regions (see
 <https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
 Cyprus is assigned to Asia.
 

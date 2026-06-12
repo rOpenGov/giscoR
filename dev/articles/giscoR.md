@@ -6,28 +6,28 @@
 <https://ropengov.github.io/giscoR/>.*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed
-to provide a simple interface to the [GISCO
-API](https://gisco-services.ec.europa.eu/distribution/v2/).
+to provide a simple interface to Eurostat’s [GISCO geodata
+distribution](https://gisco-services.ec.europa.eu/distribution/v2/).
 
 GISCO provides geographic data for the European Union, EU member states
 and subnational regions. It supplies geospatial files in different
-formats, focusing especially on the EU but also offering global datasets
+formats, focusing especially on Europe but also offering global datasets
 such as country boundaries, labels and coastal lines.
 
 GISCO supplies data at multiple resolutions: high-resolution datasets
 for small areas (01M, 03M) and lighter datasets for larger areas (10M,
-20M, 60M). Datasets are available in three projections:
-[EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035),
-and [EPSG:3857](https://epsg.io/3857).
+20M, 60M). Datasets are available in three coordinate reference systems:
+[EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035) and
+[EPSG:3857](https://epsg.io/3857).
 
 **giscoR** returns
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects. See
+[**sf**](https://r-spatial.github.io/sf/reference/sf.html) objects. See
 <https://r-spatial.github.io/sf/> for details.
 
 ## Caching
 
-**giscoR** supports caching of downloaded datasets. Set the cache
-directory with:
+**giscoR** supports caching downloaded datasets. Set the cache directory
+with:
 
 ``` r
 
@@ -39,7 +39,8 @@ directory so subsequent requests for the same data can be served from
 the local cache.
 
 If downloading fails, you can manually download the file from the [GISCO
-API website](https://gisco-services.ec.europa.eu/distribution/v2/) and
+geodata
+distribution](https://gisco-services.ec.europa.eu/distribution/v2/) and
 place it in your local cache directory.
 
 ## Downloading data
@@ -179,12 +180,11 @@ Political map of North Africa
 
 ## Thematic maps with **giscoR**
 
-This example shows how **giscoR** can be used together with Eurostat
-data. For plotting, we use **ggplot2**. Any package that supports `sf`
-objects (e.g., **tmap**, **mapsf**, **leaflet**) can be used.
+This example shows how **giscoR** can be used with Eurostat data. For
+plotting, we use **ggplot2**. Any package that supports **sf** objects,
+such as **tmap**, **mapsf** or **leaflet**, can be used.
 
 ``` r
-
 # Load EU member data.
 library(giscoR)
 library(dplyr)
@@ -204,6 +204,10 @@ eu_bord <- borders |>
 # Retrieve disposable income data from Eurostat.
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                                       
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -274,5 +278,3 @@ ggplot(nuts2_sf) +
 (2022)](./fig-giscor-1.png)
 
 Disposable income of private households by NUTS 2 regions (2022)
-
-Use these examples as a starting point for your own maps.

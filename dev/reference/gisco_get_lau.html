@@ -88,8 +88,8 @@ file. One of
 
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
-<dd><p>A character string or numeric value with the map projection as a
-4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
+<dd><p>A character string or numeric value with the coordinate
+reference system as a 4-digit <a href="https://epsg.io/" class="external-link">EPSG code</a>. One of:</p><ul><li><p><code>"4326"</code>: <a href="https://epsg.io/4326" class="external-link">WGS84</a>.</p></li>
 <li><p><code>"3035"</code>: <a href="https://epsg.io/3035" class="external-link">ETRS89 / ETRS-LAEA</a>.</p></li>
 <li><p><code>"3857"</code>: <a href="https://epsg.io/3857" class="external-link">Pseudo-Mercator</a>.</p></li>
 </ul></dd>
@@ -147,7 +147,7 @@ smaller territorial units).</p>
 <p>The LAU classification is not covered by any legislative act. Geographical
 extent covers the European Union, EFTA countries and candidate countries.
 The scale of the dataset is 1:100 000.</p>
-<p>The data contains the National Statistical Agency LAU code, which can be
+<p>The data contain the National Statistical Agency LAU code, which can be
 joined to LAU lists, and a <code>GISCO_ID</code> field, which is a unique identifier
 consisting of the country code and LAU code.</p>
 <p>Total resident population figures (31 December) have also been added in
@@ -162,7 +162,7 @@ some versions based on the associated LAU lists.</p>
     <div class="dont-index"><p><code><a href="gisco_get_communes.html">gisco_get_communes()</a></code>.</p>
 <p>See <code><a href="gisco_bulk_download.html">gisco_bulk_download()</a></code> to perform a bulk download of datasets.</p>
 <p>See <code><a href="gisco_id_api.html">gisco_id_api_lau()</a></code> to download via GISCO ID service API.</p>
-<p>Other statistical units datasets:
+<p>Other statistical unit datasets:
 <code><a href="gisco_get_census.html">gisco_get_census()</a></code>,
 <code><a href="gisco_get_coastal_lines.html">gisco_get_coastal_lines()</a></code>,
 <code><a href="gisco_get_nuts.html">gisco_get_nuts()</a></code>,

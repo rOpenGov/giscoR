@@ -1,6 +1,7 @@
 # Cached GISCO database
 
-Database with the list of files in the GISCO API as of 2026-01-12.
+Database with the list of files in the GISCO geodata distribution as of
+2026-01-12.
 
 ## Format
 
@@ -9,7 +10,7 @@ with 9,714 rows.
 
 ## Source
 
-GISCO API `datasets.json`.
+GISCO geodata distribution `datasets.json`.
 
 ## Details
 

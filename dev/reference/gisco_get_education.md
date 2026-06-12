@@ -1,8 +1,8 @@
 # Education services in Europe
 
-This dataset is an integration of Member States official data on the
-location of education services. Additional information on these services
-is included when available (see **Details**).
+This dataset integrates Member States' official data on the location of
+education services. Additional information on these services is included
+when available (see **Details**).
 
 ## Usage
 
@@ -25,11 +25,11 @@ There are no specific download rules for the datasets shown below.
 However, please refer to [the general copyright
 notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
 provisions, which must be complied with. Permission to download and use
-these data are subject to these rules being accepted.
+these data is subject to acceptance of these rules.
 
 The data are extracted from official national registers. They may
 contain inconsistencies, inaccuracies and gaps, due to the heterogeneity
-of the input national data.
+of the national input data.
 
 ## Arguments
 
@@ -72,7 +72,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed on [EPSG:4326](https://epsg.io/4326).
+Files are distributed in [EPSG:4326](https://epsg.io/4326).
 
 Brief descriptions of each attribute:
 
@@ -81,7 +81,7 @@ Brief descriptions of each attribute:
 | **Attribute** | **Description** |
 | `id` | The education service identifier. It is based on national identification codes, if they exist. |
 | `name` | The name of the education institution. |
-| `site_name` | The name of the specific site or branch of an education institution. |
+| `site_name` | The name of a specific site or branch of an education institution. |
 | `lat` | Latitude (WGS 84). |
 | `lon` | Longitude (WGS 84). |
 | `street` | Street name. |
@@ -94,12 +94,12 @@ Brief descriptions of each attribute:
 | `max_students` | Measure of capacity by maximum number of students. |
 | `enrollment` | Measure of capacity by number of enrolled students. |
 | `fields` | Academic disciplines the institution specializes in (ISCED-F 2013). |
-| `facility_type` | Type of institution in reference to ownership and operation, such as Catholic or international. |
+| `facility_type` | Type of institution by ownership and operation, such as Catholic or international. |
 | `public_private` | The public or private status of the education service. |
 | `tel` | Telephone number. |
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
-| `ref_date` | The reference date (`DD/MM/YYYY`) the data refers to. The dataset represents the state at this date. |
+| `ref_date` | The reference date (`DD/MM/YYYY`) the data refers to. The dataset represents the state on this date. |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the education service. |
 
@@ -114,7 +114,7 @@ Other basic services datasets:
 # \donttest{
 edu_austria <- gisco_get_education(country = "Austria", year = 2023)
 
-# Plot if downloaded
+# Plot if downloaded.
 if (!is.null(edu_austria)) {
   austria_nuts3 <- gisco_get_nuts(country = "Austria", nuts_level = 3)
 

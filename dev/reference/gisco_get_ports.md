@@ -56,14 +56,14 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
+Files are distributed in [EPSG:4326](https://epsg.io/4326).
 
-`gisco_get_ports()` adds a new field CNTR_ISO2 to the original data
+`gisco_get_ports()` adds a new field, `CNTR_ISO2`, to the original data
 identifying the country of the port.
 
 ## See also
 
-Other transport networks datasets:
+Other transport network datasets:
 [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
 
 ## Examples

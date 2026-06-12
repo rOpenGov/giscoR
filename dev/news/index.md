@@ -3,7 +3,7 @@
 ## giscoR (development version)
 
 - Refactor internal helpers, documentation and tests with AI assistance,
-  including clearer CLI messages, more consistent roxygen2
+  including clearer user-facing messages, more consistent roxygen2
   documentation, reused documentation blocks and faster mocked tests for
   selected download-heavy paths.
 
@@ -27,8 +27,8 @@ CRAN release: 2026-03-28
 
 CRAN release: 2026-01-23
 
-- Fix a bug that overwrote the internal database with the cached version
-  in a new session. The cache now persists.
+- Fix a bug that overwrote the bundled GISCO database with the cached
+  version in a new session. The cache now persists.
 - Update
   [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
 - [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
@@ -51,8 +51,8 @@ into topic-based subfolders for easier management.
 Database management has also been improved. Instead of relying on the
 static
 [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
-dataset, the package now stores the database in the cache. This cached
-database is used for all API calls and can be updated via
+dataset, the package now stores the GISCO database in the cache. This
+cached database is used for all API calls and can be updated via
 `gisco_get_cached_db(update_cache = TRUE)`. In practice, when GISCO
 publishes a new release, you can access updated data by refreshing the
 cached database without waiting for a new version of **giscoR**.
@@ -102,7 +102,7 @@ We recommend reviewing the updated documentation at
 ### New functions
 
 - [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md)
-  provides access to the cached internal database.
+  provides access to the cached GISCO database.
 - [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md)
   provides access to census grid data.
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)

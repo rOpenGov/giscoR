@@ -43,8 +43,8 @@ Copyright:
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -107,7 +107,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-See more at: [Eurostat - Statistics
+For more information, see: [Eurostat - Statistics
 Explained](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions).
 
 The cities are defined at several conceptual levels:
@@ -115,10 +115,10 @@ The cities are defined at several conceptual levels:
 - The core city (`"CITIES"`), using an administrative definition.
 
 - The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating
-  the functional urban region. The coverage is the EU plus Iceland,
-  Norway and Switzerland. The dataset includes polygon features, point
-  features and a related attribute table which can be joined on the URAU
-  code field.
+  the functional urban region. Coverage is the EU plus Iceland, Norway
+  and Switzerland. The dataset includes polygon features, point features
+  and a related attribute table which can be joined on the URAU code
+  field.
 
 The `"URAU_CATG"` field defines the Urban Audit category:
 
@@ -141,7 +141,7 @@ See
 [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
 to download single files.
 
-Other statistical units datasets:
+Other statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),

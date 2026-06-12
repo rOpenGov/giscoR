@@ -23,11 +23,11 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `NAME_LATN`:
 
-  NUTS name on Latin characters.
+  NUTS name in Latin characters.
 
 - `NUTS_NAME`:
 
-  NUTS name on local alphabet.
+  NUTS name in the local alphabet.
 
 - `MOUNT_TYPE`:
 

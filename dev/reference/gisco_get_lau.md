@@ -39,8 +39,8 @@ Copyright:
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -101,7 +101,7 @@ The LAU classification is not covered by any legislative act.
 Geographical extent covers the European Union, EFTA countries and
 candidate countries. The scale of the dataset is 1:100 000.
 
-The data contains the National Statistical Agency LAU code, which can be
+The data contain the National Statistical Agency LAU code, which can be
 joined to LAU lists, and a `GISCO_ID` field, which is a unique
 identifier consisting of the country code and LAU code.
 
@@ -125,7 +125,7 @@ See
 [`gisco_id_api_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Other statistical units datasets:
+Other statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md),

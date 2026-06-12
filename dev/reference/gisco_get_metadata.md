@@ -1,7 +1,6 @@
 # Get metadata
 
-Get a table with the names and IDs of administrative and statistical
-units.
+Get a table with names and IDs of administrative and statistical units.
 
 ## Usage
 

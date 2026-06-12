@@ -1,8 +1,8 @@
 # Set your [giscoR](https://CRAN.R-project.org/package=giscoR) cache directory
 
 This function stores your `cache_dir` path on your local machine and
-loads it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
-find your cached path or use `gisco_detect_cache_dir()`.
+loads the path for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")`
+to find your cached path or use `gisco_detect_cache_dir()`.
 
 ## Usage
 
@@ -32,9 +32,9 @@ gisco_detect_cache_dir()
 
 - install:
 
-  If `TRUE`, install the key on your local machine for use in future
-  sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`, `install` is
-  automatically set to `FALSE`.
+  If `TRUE`, install the cache path on your local machine for use in
+  future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
+  `install` is automatically set to `FALSE`.
 
 - verbose:
 
@@ -112,29 +112,29 @@ Other cache utilities:
 # Do not run this. It modifies your current state.
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpyP8kRK/giscoR
+#> ℹ /tmp/RtmpGgPf1J/giscoR
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache directory is /tmp/RtmpyP8kRK/example/cachenew.
+#> ℹ giscoR cache directory is /tmp/RtmpGgPf1J/example/cachenew.
 #> ℹ To install your `cache_dir` path for future sessions, run this function with `install = TRUE`.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpyP8kRK/example/cachenew
-#> [1] "/tmp/RtmpyP8kRK/example/cachenew"
+#> ℹ /tmp/RtmpGgPf1J/example/cachenew
+#> [1] "/tmp/RtmpGgPf1J/example/cachenew"
 
 # Restore the initial cache.
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache directory is /tmp/RtmpyP8kRK/giscoR.
+#> ℹ giscoR cache directory is /tmp/RtmpGgPf1J/giscoR.
 #> ℹ To install your `cache_dir` path for future sessions, run this function with `install = TRUE`.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/RtmpyP8kRK/giscoR
+#> ℹ /tmp/RtmpGgPf1J/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpyP8kRK/giscoR
-#> [1] "/tmp/RtmpyP8kRK/giscoR"
+#> ℹ /tmp/RtmpGgPf1J/giscoR
+#> [1] "/tmp/RtmpGgPf1J/giscoR"
 ```
