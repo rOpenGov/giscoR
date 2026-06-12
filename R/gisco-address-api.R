@@ -6,11 +6,10 @@
 #' @description
 #' Functions to interact with the [GISCO Address
 #' API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home), which
-#' allows for both geocoding and reverse geocoding using a pan-European
-#' address database.
+#' supports geocoding and reverse geocoding with a pan-European address
+#' database.
 #'
-#' Each endpoint is implemented through a specific function. See
-#' **Details**.
+#' Each endpoint is implemented through a specific function. See **Details**.
 #'
 #' The API supports fuzzy searching (also referred to as approximate string
 #' matching) for all arguments of each endpoint.
@@ -25,7 +24,7 @@
 #' @param province A province within a country. For a list of provinces within
 #'   a country, use the provinces endpoint
 #'   (`gisco_address_api_provinces(country = "LU")`).
-#' @param city A city within a province. For a list of cities within a certain
+#' @param city A city within a province. For a list of cities within a
 #'   province, use the cities endpoint
 #'   (`gisco_address_api_cities(province = "capellen")`).
 #' @param road A road within a city.
@@ -55,7 +54,7 @@
 #'
 #' gisco_address_api_cities(country = "PT", province = "LISBOA")
 #'
-#' # Geocode and reverse geocode with sf objects
+#' # Geocode and reverse geocode with `sf` objects.
 #' # Structured search
 #' struct <- gisco_address_api_search(
 #'   country = "ES", city = "BARCELONA",
@@ -99,7 +98,6 @@ gisco_address_api_reverse <- function(x, y, country = NULL, verbose = FALSE) {
 
   call_address_api(custom_query, apiurl, verbose)
 }
-
 
 #' @rdname gisco_address_api
 #' @export
@@ -223,7 +221,6 @@ gisco_address_api_housenumbers <- function(
   call_address_api(custom_query, apiurl, verbose)
 }
 
-
 #' @rdname gisco_address_api
 #' @export
 gisco_address_api_postcodes <- function(
@@ -245,7 +242,7 @@ gisco_address_api_copyright <- function(verbose = FALSE) {
   call_address_api(custom_query = NULL, apiurl, verbose)
 }
 
-#' Helper function to prepare and call the Address API
+#' Prepare and call the Address API
 #'
 #' @param custom_query A named list with the query arguments.
 #' @param apiurl The API endpoint URL.
@@ -279,51 +276,51 @@ call_address_api <- function(custom_query, apiurl, verbose = FALSE) {
 # Export alias ----
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_bbox <- gisco_address_api_bbox
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_cities <- gisco_address_api_cities
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_copyright <- gisco_address_api_copyright
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_countries <- gisco_address_api_countries
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_housenumbers <- gisco_address_api_housenumbers
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_postcodes <- gisco_address_api_postcodes
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_provinces <- gisco_address_api_provinces
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_reverse <- gisco_address_api_reverse
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_roads <- gisco_address_api_roads
 
 #' @rdname gisco_address_api
-#' @export
 #' @usage NULL
+#' @export
 gisco_addressapi_search <- gisco_address_api_search

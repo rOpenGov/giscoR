@@ -8,8 +8,8 @@
       When data downloaded from GISCO
       is used in any printed or electronic publication,
       in addition to any other provisions applicable to
-      the whole Eurostat website, data source will have
-      to be acknowledged in the legend of the map and in
+      the whole Eurostat website, the data source must
+      be acknowledged in the legend of the map and on
       the introductory page of the publication with the
       following copyright notice:
       
@@ -23,7 +23,7 @@
       used.
       
       If you intend to use the data commercially, please
-      contact EuroGeographics for information regarding
+      contact EuroGeographics for information about
       their license agreements.
       
     Output

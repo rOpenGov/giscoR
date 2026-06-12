@@ -1,4 +1,4 @@
-#' Check access to GISCO API
+#' Check access to the GISCO geodata distribution
 #'
 #' @keywords internal
 #' @description

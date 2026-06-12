@@ -32,8 +32,8 @@ file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 "year",TRUE)}.}
 
-\item{epsg}{A character string or numeric value with the map projection as a
-4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the coordinate
+reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -95,15 +95,15 @@ A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset contains world administrative boundaries at the country level.
-It provides 2 feature classes (regions and boundaries) for each scale
-level, with 5 scale levels available (1M, 3M, 10M, 20M and 60M).
+It provides 2 feature classes (regions and boundaries) at 5 scale levels
+(1M, 3M, 10M, 20M and 60M).
 
 This function gets data from the aggregated GISCO country file. To download
 individual country files, use \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}}.
 }
 \section{World Regions}{
-Regions are defined as per the geographic regions defined by the
-UN (see \url{https://unstats.un.org/unsd/methodology/m49/}).
+Regions follow the UN geographic regions
+(see \url{https://unstats.un.org/unsd/methodology/m49/}).
 Under this scheme Cyprus is assigned to Asia.
 }
 
@@ -135,7 +135,7 @@ See \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}} to download 
 
 See \code{\link[=gisco_id_api_country]{gisco_id_api_country()}} to download via GISCO ID service API.
 
-Other administrative units datasets:
+Other administrative unit datasets:
 \code{\link[=gisco_get_communes]{gisco_get_communes()}},
 \code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}
 }

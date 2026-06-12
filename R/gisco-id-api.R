@@ -8,7 +8,7 @@
 #' attributes and, optionally, geometry for different datasets at specified
 #' longitude and latitude coordinates.
 #'
-#' Each available endpoint is implemented through a specific function, see
+#' Each available endpoint is implemented through a specific function. See
 #' **Details**.
 #'
 #' @family API tools
@@ -37,8 +37,8 @@
 #'
 #' - `gisco_id_api_geonames()`: Get geographic placenames from longitude and
 #'   latitude coordinates or a bounding box.
-#' - `gisco_id_api_nuts()`: Returns NUTS regions from either a specified
-#'   longitude and latitude coordinates or an ID. Accepted values for `year`
+#' - `gisco_id_api_nuts()`: Returns NUTS regions from either longitude and
+#'   latitude coordinates or an ID. Accepted values for `year`
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("nuts")}.
 #' - `gisco_id_api_lau()`: Returns the ID and, optionally, geometry for Local
 #'   Administrative Units (LAU) at specified longitude and latitude coordinates.
@@ -244,7 +244,7 @@ gisco_id_api_census_grid <- function(
   )
 }
 
-#' Helper function to prepare the ID API query
+#' Prepare the ID API query
 #'
 #' @param nuts_id A NUTS ID code.
 #' @param x A longitude coordinate.
@@ -306,8 +306,7 @@ prepare_id_query <- function(
   call_id_api(custom_query, apiurl, verbose)
 }
 
-
-#' Helper function to prepare and call the ID API
+#' Prepare and call the ID API
 #'
 #' @param custom_query A named list with the query arguments.
 #' @param apiurl The API endpoint URL.
@@ -315,14 +314,14 @@ prepare_id_query <- function(
 #'
 #' @noRd
 call_id_api <- function(custom_query, apiurl, verbose = FALSE) {
-  # Identify endpoint
+  # Identify endpoint.
   endpoint <- gsub("?", "", basename(apiurl), fixed = TRUE)
 
-  # Prepare the query
+  # Prepare the query.
   clean_q <- unlist(custom_query)
   url <- httr2::url_modify(apiurl, query = as.list(clean_q))
 
-  # On spatial download file
+  # Read spatial download files.
   if (any(custom_query$format == "geojson", endpoint == "geonames")) {
     return(read_id_api_geojson(url, verbose))
   }

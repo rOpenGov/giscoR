@@ -13,9 +13,9 @@
 #'
 #' @inherit gisco_get_airports source return
 #' @details
-#' Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
+#' Files are distributed in [EPSG:4326](https://epsg.io/4326).
 #'
-#' [gisco_get_ports()] adds a new field CNTR_ISO2 to the original data
+#' [gisco_get_ports()] adds a new field, `CNTR_ISO2`, to the original data
 #' identifying the country of the port.
 #'
 #' @examplesIf gisco_check_access()

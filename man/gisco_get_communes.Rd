@@ -29,8 +29,8 @@ file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 "year",TRUE)}.}
 
-\item{epsg}{A character string or numeric value with the map projection as a
-4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the coordinate
+reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -38,7 +38,7 @@ file. One of
 }}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. These functions always
-cache the result due to the size. See \strong{Caching strategies} section
+cache the result because of its size. See \strong{Caching strategies} section
 in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
@@ -123,7 +123,7 @@ if (!is.null(ire_comm)) {
 
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
-Other administrative units datasets:
+Other administrative unit datasets:
 \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}
 }

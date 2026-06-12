@@ -44,7 +44,7 @@ A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset shows pan-European communal boundaries depicting the situation
-at the corresponding Census.
+at the corresponding census.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
@@ -60,7 +60,7 @@ pts
 \seealso{
 See \code{\link[=gisco_id_api_census_grid]{gisco_id_api_census_grid()}} to download via GISCO ID service API.
 
-Other statistical units datasets:
+Other statistical unit datasets:
 \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
 \code{\link[=gisco_get_lau]{gisco_get_lau()}},
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}},

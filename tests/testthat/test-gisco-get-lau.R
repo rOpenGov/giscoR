@@ -61,7 +61,6 @@ test_that("LAU Errors", {
   expect_error(gisco_get_lau(epsg = "9999"))
 })
 
-
 test_that("LAU combines country and GISCO ID filters", {
   filter_calls <- list()
 

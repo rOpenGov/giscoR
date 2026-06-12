@@ -66,7 +66,6 @@ test_that("Urban Audit uses resolved GISCO files", {
   expect_identical(urban$CNTR_CODE, "LU")
 })
 
-
 test_that("Urban Audit online", {
   skip_on_cran()
   skip_if_gisco_offline()

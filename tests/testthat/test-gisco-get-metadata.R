@@ -99,7 +99,6 @@ test_that("Errors", {
   expect_snapshot(gisco_get_metadata("urban_audit", year = 1990), error = TRUE)
 })
 
-
 test_that("Check all nuts", {
   skip_on_cran()
   skip_if_gisco_offline()

@@ -1,8 +1,7 @@
-#' Help documentation for the giscoR package
+#' Help documentation for \CRANpkg{giscoR}
 #'
 #' @description
-#' Internal function to get possible values from the cached `gisco_db`
-#' database.
+#' Internal function to get possible values from the cached GISCO database.
 #'
 #' @param id A character string with the `id_giscor` value to filter the
 #'   database.
@@ -36,7 +35,7 @@ db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
   paste0(ftext, collapse = ", ")
 }
 
-#' Helper function to get available years for GISCO ID endpoints
+#' Get available years for GISCO ID endpoints
 #'
 #' @param endpoint A character string with the GISCO ID endpoint to query.
 #' @return

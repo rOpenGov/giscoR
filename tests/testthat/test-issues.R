@@ -5,7 +5,6 @@ test_that("#18 Cyprus in EU / Europe", {
   expect_true(cy_code %in% get_countrycodes_region(region = c("Europe", "EU")))
 })
 
-
 test_that("#62 geo column to NUTS", {
   # https://github.com/rOpenGov/giscoR/issues/62
 

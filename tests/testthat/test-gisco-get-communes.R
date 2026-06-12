@@ -54,7 +54,6 @@ test_that("Communes use resolved GISCO files", {
   expect_identical(communes$CNTR_CODE, c("ES", "FR"))
 })
 
-
 test_that("Communes errors", {
   skip_on_cran()
   skip_if_gisco_offline()

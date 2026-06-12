@@ -1,7 +1,7 @@
 #' Census dataset
 #'
 #' This dataset shows pan-European communal boundaries depicting the situation
-#' at the corresponding Census.
+#' at the corresponding census.
 #'
 #' @family stats
 #' @encoding UTF-8

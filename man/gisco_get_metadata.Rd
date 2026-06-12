@@ -27,7 +27,7 @@ metadata.}
 A \link[tibble:tbl_df]{tibble}.
 }
 \description{
-Get a table with the names and IDs of administrative and statistical units.
+Get a table with names and IDs of administrative and statistical units.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}

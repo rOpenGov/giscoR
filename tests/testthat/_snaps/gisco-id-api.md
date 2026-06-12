@@ -3,7 +3,7 @@
     Code
       fend <- gisco_id_api_geonames(x = 4, y = 52)
     Message
-      x No internet connection.
+      x No internet connection available.
       > Returning "NULL".
 
 ---
@@ -11,7 +11,7 @@
     Code
       fend <- gisco_id_api_nuts(x = 4, y = 52, geometry = FALSE)
     Message
-      x No internet connection.
+      x No internet connection available.
       > Returning "NULL".
 
 # gisco_id_api_nuts online

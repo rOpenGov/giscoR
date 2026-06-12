@@ -29,8 +29,8 @@ file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 "year",TRUE)}.}
 
-\item{epsg}{A character string or numeric value with the map projection as a
-4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the coordinate
+reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -80,7 +80,7 @@ The LAU classification is not covered by any legislative act. Geographical
 extent covers the European Union, EFTA countries and candidate countries.
 The scale of the dataset is 1:100 000.
 
-The data contains the National Statistical Agency LAU code, which can be
+The data contain the National Statistical Agency LAU code, which can be
 joined to LAU lists, and a \code{GISCO_ID} field, which is a unique identifier
 consisting of the country code and LAU code.
 
@@ -124,7 +124,7 @@ See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk 
 
 See \code{\link[=gisco_id_api_lau]{gisco_id_api_lau()}} to download via GISCO ID service API.
 
-Other statistical units datasets:
+Other statistical unit datasets:
 \code{\link[=gisco_get_census]{gisco_get_census()}},
 \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}},

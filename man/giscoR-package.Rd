@@ -4,11 +4,11 @@
 \name{giscoR-package}
 \alias{giscoR}
 \alias{giscoR-package}
-\title{giscoR: Download Geospatial Data from the GISCO API}
+\title{giscoR: Download Geospatial Data from Eurostat's GISCO API}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Tools to download global and European geospatial data from Eurostat's GISCO (Geographic Information System of the Commission) database \url{https://ec.europa.eu/eurostat/web/gisco}. The package provides helpers for working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.
+Tools to download global and European geospatial data from Eurostat's GISCO (Geographic Information System of the Commission) database \url{https://ec.europa.eu/eurostat/web/gisco}. The package provides helpers for working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.
 }
 \seealso{
 Useful links:

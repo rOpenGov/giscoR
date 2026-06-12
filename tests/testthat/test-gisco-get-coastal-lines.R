@@ -52,7 +52,6 @@ test_that("Coastal lines use resolved GISCO files", {
   expect_identical(coast$id, 1)
 })
 
-
 test_that("Errors", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -178,7 +177,6 @@ test_that("Extensions", {
   # Cleanup
   unlink(cdir, recursive = TRUE, force = TRUE)
 })
-
 
 test_that("Coastal online", {
   skip_on_cran()

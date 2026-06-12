@@ -101,6 +101,6 @@ gisco_get_postal_codes <- function(
 # Export alias ----
 
 #' @rdname gisco_get_postal_codes
-#' @export
 #' @usage NULL
+#' @export
 gisco_get_postalcodes <- gisco_get_postal_codes

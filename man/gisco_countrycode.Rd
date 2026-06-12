@@ -6,7 +6,7 @@
 \alias{gisco_countrycode}
 \title{Database with different country code schemes and world regions}
 \format{
-A data frame object with
+A data frame with
 249 rows and 13
 variables:
 \describe{
@@ -31,15 +31,15 @@ European Union.}
 \link[countrycode:codelist]{countrycode::codelist} \strong{v1.6.1}.
 }
 \description{
-A \link[tibble:tbl_df]{tibble} containing conversions between different country
-code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
-provided by the World Bank and the UN
+A \link[tibble:tbl_df]{tibble} containing conversions between country code
+schemes (Eurostat, ISO2 and ISO3) and geographic regions as provided by
+the World Bank and the UN
 (\href{https://unstats.un.org/unsd/methodology/m49/}{M49 Standard}). This
-database has been extracted from the \CRANpkg{countrycode} package.
+database was extracted from the \CRANpkg{countrycode} package.
 }
 \section{World Regions}{
-Regions are defined as per the geographic regions defined by the
-UN (see \url{https://unstats.un.org/unsd/methodology/m49/}).
+Regions follow the UN geographic regions
+(see \url{https://unstats.un.org/unsd/methodology/m49/}).
 Under this scheme Cyprus is assigned to Asia.
 }
 

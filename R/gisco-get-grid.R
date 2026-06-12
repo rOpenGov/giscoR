@@ -2,7 +2,7 @@
 #'
 #' @description
 #' These datasets contain grid cells covering the European land
-#' territory, for various resolutions from 1km to 100km. Base statistics such
+#' territory at resolutions from 1 km to 100 km. Base statistics such
 #' as population figures are provided for these cells.
 #'
 #' @family grids
@@ -15,7 +15,7 @@
 #'
 #' @inherit gisco_get_countries return
 #' @details
-#' Files are distributed on [`EPSG:3035`](https://epsg.io/3035).
+#' Files are distributed in [`EPSG:3035`](https://epsg.io/3035).
 #'
 #' The file sizes range from 428 KB (`resolution = 100`)
 #' to 1.7 GB (`resolution = 1`).
@@ -23,13 +23,13 @@
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 #'
-#' There are specific downloading provisions, please see
+#' Specific download provisions apply, see
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 #'
 #' @examplesIf gisco_check_access()
 #' grid <- gisco_get_grid(resolution = 20)
 #'
-#' # If downloaded correctly proceed
+#' # Proceed if downloaded correctly.
 #'
 #' if (!is.null(grid)) {
 #'   library(dplyr)

@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{gisco_bulk_download}
 \alias{gisco_bulk_download}
-\title{GISCO API bulk download}
+\title{GISCO geodata bulk download}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 }
@@ -63,7 +63,7 @@ formats are \code{"shp"}, \code{"geojson"}, \code{"svg"}, \code{"json"} and \cod
 \strong{Details}.}
 
 \item{recursive}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{recursive} is no
-longer supported, and this function will never perform recursive
+longer supported. This function will never perform recursive
 extraction of child \code{.zip} files. This is the case for "\code{shp.zip} inside
 the top-level \code{.zip}, which will not be unzipped.}
 
@@ -97,7 +97,7 @@ See years available in the corresponding functions:
 
 The usual extensions used across \CRANpkg{giscoR} are \code{"gpkg"} and \code{"shp"},
 but other formats are already available on GISCO. After a bulk download, you
-may need to adjust the default \code{"ext"} value in the corresponding function
+may need to adjust the default \code{ext} value in the corresponding function
 to connect it with the downloaded files (see \strong{Examples}).
 }
 \examples{
@@ -113,7 +113,7 @@ dest_files <- gisco_bulk_download(
 library(sf)
 read_sf(dest_files[1]) |> head()
 
-# Now we can connect the function with the downloaded data like:
+# Connect the function with the downloaded data.
 
 connect <- gisco_get_countries(
   resolution = 60,

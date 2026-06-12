@@ -10,11 +10,11 @@
 There are no specific download rules for the datasets shown below. However,
 please refer to \href{https://ec.europa.eu/eurostat/web/gisco/geodata}{the general copyright notice} and license
 provisions, which must be complied with. Permission to download and use
-these data are subject to these rules being accepted.
+these data is subject to acceptance of these rules.
 
 The data are extracted from official national registers. They may contain
 inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
-input national data.
+national input data.
 }
 \usage{
 gisco_get_healthcare(
@@ -51,7 +51,7 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-The dataset contains information on main healthcare services considered to
+The dataset contains information on healthcare services considered to
 be 'hospitals' by Member States. The definition varies slightly from
 country to country, but roughly includes the following:
 \itemize{
@@ -62,13 +62,13 @@ specialised accommodation services required by inpatients."*
 }
 }
 \details{
-Files are distributed on \href{https://epsg.io/4326}{EPSG:4326}.
+Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
 
 Brief descriptions of each attribute:\tabular{ll}{
    \strong{Attribute} \tab \strong{Description} \cr
    \code{id} \tab The healthcare service identifier. It is based on national identification codes, if they exist. \cr
    \code{hospital_name} \tab The name of the healthcare institution. \cr
-   \code{site_name} \tab The name of the specific site or branch of a healthcare institution. \cr
+   \code{site_name} \tab The name of a specific site or branch of a healthcare institution. \cr
    \code{lat} \tab Latitude (WGS 84). \cr
    \code{lon} \tab Longitude (WGS 84). \cr
    \code{street} \tab Street name. \cr
@@ -87,7 +87,7 @@ Brief descriptions of each attribute:\tabular{ll}{
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
    \code{url} \tab URL for the institution's website. \cr
-   \code{ref_date} \tab The date (\code{DD/MM/YYYY}) the data refers to (reference date). \cr
+   \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) the data refers to. \cr
    \code{pub_date} \tab The publication date of the dataset by Eurostat (\code{DD/MM/YYYY}). \cr
    \code{geo_qual} \tab Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. \cr
    \code{comments} \tab Additional information on the healthcare service. \cr
@@ -100,7 +100,7 @@ health_benelux <- gisco_get_healthcare(
   year = 2023
 )
 
-# Plot if downloaded
+# Plot if downloaded.
 if (!is.null(health_benelux)) {
   benelux <- gisco_get_countries(country = c("BE", "NL", "LU"))
 

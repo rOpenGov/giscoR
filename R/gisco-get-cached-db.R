@@ -1,17 +1,17 @@
-#' Retrieve and update the GISCO database in use by \CRANpkg{giscoR}
+#' Retrieve and update the GISCO database used by \CRANpkg{giscoR}
 #'
-#' Returns or optionally updates the cached database with the endpoints of the
-#' GISCO API.
+#' Returns or optionally updates the cached database with endpoints from the
+#' GISCO geodata distribution.
 #'
 #' @family database
 #' @encoding UTF-8
 #' @param update_cache A logical value. If `TRUE`, rebuild the cached database
-#'   with the most recent information from the GISCO API.
+#'   with the most recent information from the GISCO geodata distribution.
 #'
 #' @inherit gisco_get_metadata return source
 #'
 #' @details
-#' The cached database is stored in the \CRANpkg{giscoR} cache path, see
+#' The cached database is stored in the \CRANpkg{giscoR} cache path. See
 #' [gisco_set_cache_dir()] for details. The cached database is used
 #' in subsequent \R sessions.
 #'
@@ -20,7 +20,7 @@
 #' \CRANpkg{giscoR}.
 #'
 #' A static database [gisco_db] is shipped with the package. This database is
-#' used if there is any problem during update.
+#' used if there is any problem during the update.
 #'
 #' @examplesIf gisco_check_access()
 #'
@@ -216,9 +216,10 @@ recode_distribution_db_ids <- function(db) {
   db
 }
 
-#' Internal function to get all data from the GISCO API for an entry point
+#' Get data from a GISCO geodata distribution entry point
 #'
-#' @param entry_point A character value with the GISCO API entry point.
+#' @param entry_point A character value with the GISCO geodata distribution
+#'   entry point.
 #' @return A tibble with the data from the API.
 #' @noRd
 scrap_api_data <- function(entry_point) {
@@ -300,7 +301,7 @@ get_db <- function() {
     url_api <- gisco_distribution_url() # nolint
 
     cli::cli_alert_warning(c(
-      "Cannot get the latest database from {.url {url_api}}.\n",
+      "Cannot retrieve the latest database from {.url {url_api}}.\n",
       "Try again later with {.fn giscoR::gisco_get_cached_db} ",
       "and {.arg update_cache = TRUE}."
     ))
@@ -310,7 +311,7 @@ get_db <- function() {
     cli::cli_alert_info(c(
       "Using cached ",
       "{.help [{.value gisco_db}](giscoR::gisco_db)} ",
-      paste0("information, as of ", date, ". It may be outdated.")
+      paste0("information as of ", date, ". It may be outdated.")
     ))
   }
   db

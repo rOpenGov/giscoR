@@ -46,7 +46,7 @@ heliports. The airports are identified using the International Civil
 Aviation Organisation (ICAO) airport codes.
 }
 \details{
-Dataset includes objects in \href{https://epsg.io/4326}{EPSG:4326}.
+Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
@@ -84,7 +84,7 @@ if (!is.null(airp)) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other transport networks datasets:
+Other transport network datasets:
 \code{\link[=gisco_get_ports]{gisco_get_ports()}}
 }
 \concept{transport}

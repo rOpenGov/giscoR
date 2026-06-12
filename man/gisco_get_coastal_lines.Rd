@@ -29,8 +29,8 @@ file.
 One of \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 "year",TRUE)}.}
 
-\item{epsg}{A character string or numeric value with the map projection as a
-4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the coordinate
+reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -68,7 +68,7 @@ data resolution. One of:
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-Downloads global coastal lines.
+Download global coastal lines.
 }
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
@@ -99,7 +99,7 @@ ggplot(coast) +
 
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
-Other statistical units datasets:
+Other statistical unit datasets:
 \code{\link[=gisco_get_census]{gisco_get_census()}},
 \code{\link[=gisco_get_lau]{gisco_get_lau()}},
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}},

@@ -1,4 +1,4 @@
-#' GISCO API single download
+#' GISCO geodata single-unit download
 #'
 #' @name gisco_get_unit
 #' @rdname gisco_get_unit
@@ -9,7 +9,7 @@
 #' Unlike [gisco_get_countries()], [gisco_get_nuts()] or
 #' [gisco_get_urban_audit()] (which downloads a full dataset and applies
 #' filters), these functions download a single file per unit, reducing the time
-#' needed to download and read into your \R session.
+#' needed to download and read data into your \R session.
 #'
 #' @family extra
 #' @encoding UTF-8
@@ -25,13 +25,13 @@
 #' @inherit gisco_get_countries return
 #' @inheritSection gisco_get_countries Note
 #' @details
-#' Check the available `unit` IDs with the required
-#' combination of arguments with [gisco_get_metadata()].
+#' Check the available `unit` IDs for the required argument combination with
+#' [gisco_get_metadata()].
 #'
 #' @source
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'
-#' All the source files are `.geojson` files.
+#' All source files are `.geojson` files.
 #'
 #' @seealso
 #' [gisco_get_metadata()], [gisco_get_countries()],
@@ -69,7 +69,7 @@ gisco_get_unit_country <- function(
   spatialtype <- match_arg_pretty(spatialtype)
 
   type <- unit_spatialtype_to_file_type(spatialtype)
-  # Names has the structure:
+  # Names have this structure:
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson
 

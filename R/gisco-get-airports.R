@@ -14,7 +14,7 @@
 #'
 #' @inherit gisco_get_countries return
 #' @details
-#' Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
+#' Files are distributed in [EPSG:4326](https://epsg.io/4326).
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.

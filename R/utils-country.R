@@ -38,7 +38,7 @@ convert_country_code <- function(names, out = "eurostat") {
       cli::cli_abort(
         paste0(
           "Invalid country name {.str {x}}. ",
-          "Try a vector of names or ISO3/Eurostat codes."
+          "Try a vector of names, ISO3 codes or Eurostat codes."
         ),
         call = NULL
       )
@@ -53,7 +53,7 @@ convert_country_code <- function(names, out = "eurostat") {
   if (linit != lend) {
     ff <- names[is.na(outnames)] # nolint
     cli::cli_alert_warning(
-      "Some country names/codes were not matched unambiguously: {.str {ff}}."
+      "Some country names or codes were not matched unambiguously: {.str {ff}}."
     )
     cli::cli_alert_info("Review the names or codes, or switch to ISO3 codes.")
   }

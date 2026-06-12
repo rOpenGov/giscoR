@@ -95,7 +95,7 @@ if (!is.null(pc_bel)) {
 \seealso{
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
-Other administrative units datasets:
+Other administrative unit datasets:
 \code{\link[=gisco_get_communes]{gisco_get_communes()}},
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
 }

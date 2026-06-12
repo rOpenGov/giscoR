@@ -4,7 +4,7 @@ Brief descriptions of each attribute:
 |----|----|
 | `id` | The healthcare service identifier. It is based on national identification codes, if they exist. |
 | `hospital_name` | The name of the healthcare institution. |
-| `site_name` | The name of the specific site or branch of a healthcare institution. |
+| `site_name` | The name of a specific site or branch of a healthcare institution. |
 | `lat` | Latitude (WGS 84). |
 | `lon` | Longitude (WGS 84). |
 | `street` | Street name. |
@@ -23,7 +23,7 @@ Brief descriptions of each attribute:
 | `tel` | Telephone number. |
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
-| `ref_date` | The date (`DD/MM/YYYY`) the data refers to (reference date). |
+| `ref_date` | The reference date (`DD/MM/YYYY`) the data refers to. |
 | `pub_date` | The publication date of the dataset by Eurostat (`DD/MM/YYYY`). |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the healthcare service. |

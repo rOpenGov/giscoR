@@ -35,7 +35,7 @@
 #' extent covers the European Union, EFTA countries and candidate countries.
 #' The scale of the dataset is 1:100 000.
 #'
-#' The data contains the National Statistical Agency LAU code, which can be
+#' The data contain the National Statistical Agency LAU code, which can be
 #' joined to LAU lists, and a `GISCO_ID` field, which is a unique identifier
 #' consisting of the country code and LAU code.
 #'

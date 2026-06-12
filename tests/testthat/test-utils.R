@@ -22,7 +22,6 @@ test_that("Messages", {
   expect_snapshot(make_msg("success", TRUE, "Hooray!", "5/5 ;)"))
 })
 
-
 test_that("Pretty match", {
   skip_on_cran()
   my_fun <- function(arg_one = c(10, 1000, 3000, 5000)) {

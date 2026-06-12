@@ -35,7 +35,7 @@
 #'
 #' @inheritSection gisco_get_countries Note
 #' @details
-#' See more at:
+#' For more information, see:
 #' ```{r, echo=FALSE, results='asis'}
 #' cat(paste0(" [Eurostat - Statistics Explained]",
 #' "(https://ec.europa.eu/eurostat/statistics-explained/index.php?",
@@ -48,7 +48,7 @@
 #' - The core city (`"CITIES"`), using an administrative definition.
 #' - The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating the
 #'     functional urban region.
-#' The coverage is the EU plus Iceland, Norway and Switzerland. The dataset
+#' Coverage is the EU plus Iceland, Norway and Switzerland. The dataset
 #' includes polygon features, point features and a related attribute table
 #' which can be joined on the URAU code field.
 #'

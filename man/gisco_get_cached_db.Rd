@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{gisco_get_cached_db}
 \alias{gisco_get_cached_db}
-\title{Retrieve and update the GISCO database in use by \CRANpkg{giscoR}}
+\title{Retrieve and update the GISCO database used by \CRANpkg{giscoR}}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 }
@@ -12,17 +12,17 @@ gisco_get_cached_db(update_cache = FALSE)
 }
 \arguments{
 \item{update_cache}{A logical value. If \code{TRUE}, rebuild the cached database
-with the most recent information from the GISCO API.}
+with the most recent information from the GISCO geodata distribution.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble}.
 }
 \description{
-Returns or optionally updates the cached database with the endpoints of the
-GISCO API.
+Returns or optionally updates the cached database with endpoints from the
+GISCO geodata distribution.
 }
 \details{
-The cached database is stored in the \CRANpkg{giscoR} cache path, see
+The cached database is stored in the \CRANpkg{giscoR} cache path. See
 \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}} for details. The cached database is used
 in subsequent \R sessions.
 
@@ -31,7 +31,7 @@ the cached database without waiting for a new version of
 \CRANpkg{giscoR}.
 
 A static database \link{gisco_db} is shipped with the package. This database is
-used if there is any problem during update.
+used if there is any problem during the update.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}

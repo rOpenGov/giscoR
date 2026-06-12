@@ -30,8 +30,8 @@ file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 "year",TRUE)}.}
 
-\item{epsg}{A character string or numeric value with the map projection as a
-4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the coordinate
+reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -84,14 +84,14 @@ This function gets data from the aggregated GISCO Urban Audit file. To
 download individual Urban Audit files, use \code{\link[=gisco_get_unit_urban_audit]{gisco_get_unit_urban_audit()}}.
 }
 \details{
-See more at: \href{https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions}{Eurostat - Statistics Explained}.
+For more information, see: \href{https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions}{Eurostat - Statistics Explained}.
 
 The cities are defined at several conceptual levels:
 \itemize{
 \item The core city (\code{"CITIES"}), using an administrative definition.
 \item The Functional Urban Area/Large Urban Zone (\code{"FUA"}), approximating the
 functional urban region.
-The coverage is the EU plus Iceland, Norway and Switzerland. The dataset
+Coverage is the EU plus Iceland, Norway and Switzerland. The dataset
 includes polygon features, point features and a related attribute table
 which can be joined on the URAU code field.
 }
@@ -127,7 +127,7 @@ See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk 
 
 See \code{\link[=gisco_get_unit_urban_audit]{gisco_get_unit_urban_audit()}} to download single files.
 
-Other statistical units datasets:
+Other statistical unit datasets:
 \code{\link[=gisco_get_census]{gisco_get_census()}},
 \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
 \code{\link[=gisco_get_lau]{gisco_get_lau()}},

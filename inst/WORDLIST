@@ -1,4 +1,3 @@
-CLI
 CMD
 CNTR
 COAS
@@ -47,6 +46,7 @@ doi
 eurostat
 geocoded
 geocoding
+geodata
 geojsonsf
 geonames
 geospatial

@@ -3,11 +3,11 @@
 \encoding{UTF-8}
 \name{gisco_get_units}
 \alias{gisco_get_units}
-\title{Get geospatial units data from GISCO API}
+\title{Get geospatial unit data from GISCO}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
-All the source files are \code{.geojson} files.
+All source files are \code{.geojson} files.
 }
 \usage{
 gisco_get_units(
@@ -36,8 +36,8 @@ Possible values are \code{"sf"} or \code{"df"}. See \strong{Value}.}
 \item{year}{A character string or numeric value with the release year of the
 file.}
 
-\item{epsg}{A character string or numeric value with the map projection as a
-4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the coordinate
+reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -74,8 +74,8 @@ Options available are:
 }}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object on \code{mode = "sf"} or a \link[tibble:tbl_df]{tibble}
-on \code{mode = "df"}.
+A \code{\link[sf:st_sf]{sf}} object when \code{mode = "sf"} or a
+\link[tibble:tbl_df]{tibble} when \code{mode = "df"}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}

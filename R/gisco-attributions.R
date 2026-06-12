@@ -1,8 +1,8 @@
 #' Attribution for administrative and statistical GISCO data
 #'
 #' @description
-#' Get the legal text to be used for administrative and statistical data
-#' downloaded from GISCO, see section **Copyright information**.
+#' Get the legal text to use for administrative and statistical data
+#' downloaded from GISCO. See section **Copyright information**.
 #'
 #' For other datasets you may follow the [Eurostat general copyright notice
 #' and license
@@ -18,7 +18,7 @@
 #' @return A string with the attribution to be used.
 #'
 #' @details
-#' Current languages supported are:
+#' Supported languages are:
 #' - `"en"`: English.
 #' - `"da"`: Danish.
 #' - `"de"`: German.
@@ -29,7 +29,7 @@
 #' - `"sv"`: Swedish.
 #'
 #' Please consider
-#' [contributing](https://github.com/rOpenGov/giscoR/issues) if you spot any
+#' [contributing](https://github.com/rOpenGov/giscoR/issues) if you spot a
 #' mistake or want to add a new language.
 #'
 #' # Copyright information
@@ -55,8 +55,8 @@
 #'
 #' When data downloaded from GISCO is used in any printed or electronic
 #' publication, in addition to any other provisions applicable to the whole
-#' Eurostat website, data source will have to be acknowledged in the legend of
-#' the map and in the introductory page of the publication with the following
+#' Eurostat website, the data source must be acknowledged in the legend of
+#' the map and on the introductory page of the publication with the following
 #' copyright notice:
 #'
 #' ```{r, echo=FALSE, results='asis'}
@@ -99,8 +99,8 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     When data downloaded from GISCO
     is used in any printed or electronic publication,
     in addition to any other provisions applicable to
-    the whole Eurostat website, data source will have
-    to be acknowledged in the legend of the map and in
+    the whole Eurostat website, the data source must
+    be acknowledged in the legend of the map and on
     the introductory page of the publication with the
     following copyright notice:
 
@@ -114,7 +114,7 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     used.
 
     If you intend to use the data commercially, please
-    contact EuroGeographics for information regarding
+    contact EuroGeographics for information about
     their license agreements.
 
       "

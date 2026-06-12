@@ -4,7 +4,7 @@
 #'
 #' @description
 #' This function stores your `cache_dir` path on your local machine and
-#' loads it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
+#' loads the path for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
 #' find your cached path or use [gisco_detect_cache_dir()].
 #'
 #' @family cache utilities
@@ -12,8 +12,8 @@
 #' @inheritParams gisco_get_nuts
 #' @param cache_dir A path to a cache directory. If `NULL`, the function
 #'   stores cached files in a temporary directory (see [base::tempdir()]).
-#' @param install If `TRUE`, install the key on your local machine for use in
-#'   future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
+#' @param install If `TRUE`, install the cache path on your local machine for
+#'   use in future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
 #'   `install` is automatically set to `FALSE`.
 #' @param overwrite If `TRUE`, overwrite an existing
 #'   `GISCO_CACHE_DIR` that you already have on your local machine.
@@ -177,7 +177,7 @@ gisco_detect_cache_dir <- function() {
 #' - Deletes the \CRANpkg{giscoR} config directory
 #'   (`tools::R_user_dir("giscoR", "config")`).
 #' - Deletes the `cache_dir` directory.
-#' - Deletes the values stored on `Sys.getenv("GISCO_CACHE_DIR")`.
+#' - Deletes the value stored in `Sys.getenv("GISCO_CACHE_DIR")`.
 #'
 #' @family cache utilities
 #' @encoding UTF-8
@@ -189,8 +189,8 @@ gisco_detect_cache_dir <- function() {
 #' @return Invisible. This function is called for its side effects.
 #'
 #' @details
-#' This function fully resets your status as if you had never installed or
-#' used \CRANpkg{giscoR}.
+#' This function fully resets your cache state as if you had never installed
+#' or used \CRANpkg{giscoR}.
 #'
 #' @seealso [tools::R_user_dir()]
 #'
@@ -295,7 +295,6 @@ detect_cache_dir_muted <- function() {
   }
 }
 
-
 #' Create `cache_dir` if it does not exist
 #'
 #' @param cache_dir A path to a cache directory.
@@ -319,7 +318,7 @@ create_cache_dir <- function(cache_dir = NULL) {
 
 #' Migrate cache config from rappdirs to tools
 #'
-#' One-time function for giscoR >= 1.0.0.
+#' One-time function for \CRANpkg{giscoR} >= 1.0.0.
 #' @param old A path to the old cache config folder.
 #' @param new A path to the new cache config folder.
 #'
@@ -346,7 +345,7 @@ migrate_cache <- function(
       "See {.strong Note} in {.fn giscoR::gisco_set_cache_dir} for details."
     ))
     cli::cli_alert_info(
-      "This is a one-time message, it will not be displayed again."
+      "This is a one-time message and will not be displayed again."
     )
   }
   unlink(old, force = TRUE, recursive = TRUE)

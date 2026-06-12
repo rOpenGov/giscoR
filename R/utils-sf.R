@@ -1,4 +1,4 @@
-#' Read a geospatial file into an sf object with an optional query
+#' Read a geospatial file into an `sf` object with an optional query
 #'
 #' @param file_local Local file path or URL to the geospatial file.
 #' @param q Optional SQL query string to filter the data during reading.
@@ -45,7 +45,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
   data_sf
 }
 
-#' Transform an sf object to longitude and latitude
+#' Transform an `sf` object to longitude and latitude
 #'
 #' @param data_sf An `sf` object.
 #'
@@ -55,7 +55,7 @@ transform_to_wgs84 <- function(data_sf) {
   sf::st_transform(data_sf, 4326)
 }
 
-#' Convert an sf object to UTF-8
+#' Convert an `sf` object to UTF-8
 #'
 #' Convert names and character columns to UTF-8.
 #'
@@ -129,7 +129,6 @@ get_geo_file_colnames <- function(file_local) {
   names(get_cols)
 }
 
-
 #' Get column name for filtering from a geospatial file
 #'
 #' @param file_local Local file path or URL to the geospatial file.
@@ -148,7 +147,7 @@ get_col_name <- function(file_local, candidates = c("CNTR_ID", "CNTR_CODE")) {
   match
 }
 
-#' Build a named sf filter when a candidate column exists
+#' Build a named `sf` filter when a candidate column exists
 #'
 #' @inheritParams get_col_name
 #' @param values Values to match.
@@ -175,7 +174,7 @@ make_sf_filter <- function(
   filters
 }
 
-#' Build an sf SQL filter query
+#' Build an `sf` SQL filter query
 #'
 #' @param file_local Local file path or URL to the geospatial file.
 #' @param filters A named list where names are column names and values are the
@@ -212,7 +211,7 @@ build_sf_filter_query <- function(file_local, filters, operator = "AND") {
   )
 }
 
-#' Read a geospatial file with an optional sf SQL filter
+#' Read a geospatial file with an optional `sf` SQL filter
 #'
 #' @inheritParams read_geo_file_sf
 #' @param filters A named list where names are column names and values are the

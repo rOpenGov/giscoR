@@ -1,7 +1,7 @@
 #' Healthcare services in Europe
 #'
 #' @description
-#' The dataset contains information on main healthcare services considered to
+#' The dataset contains information on healthcare services considered to
 #' be 'hospitals' by Member States. The definition varies slightly from
 #' country to country, but roughly includes the following:
 #'
@@ -19,7 +19,7 @@
 #'
 #' @inherit gisco_get_education return source
 #' @details
-#' Files are distributed on [EPSG:4326](https://epsg.io/4326).
+#' Files are distributed in [EPSG:4326](https://epsg.io/4326).
 #'
 #' ```{r child = "man/chunks/healthcare_meta.Rmd"}
 #' ```
@@ -30,7 +30,7 @@
 #'   year = 2023
 #' )
 #'
-#' # Plot if downloaded
+#' # Plot if downloaded.
 #' if (!is.null(health_benelux)) {
 #'   benelux <- gisco_get_countries(country = c("BE", "NL", "LU"))
 #'

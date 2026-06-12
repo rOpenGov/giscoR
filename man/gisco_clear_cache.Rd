@@ -25,12 +25,12 @@ data and configuration, specifically:
 \item Deletes the \CRANpkg{giscoR} config directory
 (\code{tools::R_user_dir("giscoR", "config")}).
 \item Deletes the \code{cache_dir} directory.
-\item Deletes the values stored on \code{Sys.getenv("GISCO_CACHE_DIR")}.
+\item Deletes the value stored in \code{Sys.getenv("GISCO_CACHE_DIR")}.
 }
 }
 \details{
-This function fully resets your status as if you had never installed or
-used \CRANpkg{giscoR}.
+This function fully resets your cache state as if you had never installed
+or used \CRANpkg{giscoR}.
 }
 \examples{
 

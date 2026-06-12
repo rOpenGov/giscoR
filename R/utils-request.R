@@ -122,7 +122,7 @@ gisco_response_is_error <- function(
 #' @param check_error A logical value indicating whether HTTP error responses
 #'   should return `NULL`.
 #'
-#' @return An `httr2_response` object, or `NULL` on offline/error responses.
+#' @return An `httr2_response` object, or `NULL` for offline/error responses.
 #' @noRd
 gisco_perform_request <- function(
   req,
@@ -137,7 +137,7 @@ gisco_perform_request <- function(
 ) {
   if (check_online && !is_online_fun()) {
     if (offline_verbose) {
-      cli::cli_alert_danger("No internet connection.")
+      cli::cli_alert_danger("No internet connection available.")
       cli::cli_alert("Returning {.val NULL}.")
     }
     return(NULL)

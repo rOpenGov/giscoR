@@ -4,7 +4,7 @@
       fend <- download_url(url, cache_dir = cdir, subdir = "fixme", update_cache = FALSE,
         verbose = FALSE)
     Message
-      x No internet connection.
+      x No internet connection available.
       > Returning "NULL".
 
 # Get urls
@@ -21,7 +21,7 @@
       get_url_db("communes", "2016", epsg = "1111", ext = "csv", fn = "gisco_get_communes")
     Condition
       Error:
-      ! No results for `giscoR::gisco_get_communes()` with params:
+      ! No results for `giscoR::gisco_get_communes()` with these parameters:
       * `year` = "2016"
       * `epsg` = "1111"
       * `ext` = "csv"
@@ -32,7 +32,7 @@
     Code
       fend <- get_request_body(url, verbose = FALSE)
     Message
-      x No internet connection.
+      x No internet connection available.
       > Returning "NULL".
 
 # Error body

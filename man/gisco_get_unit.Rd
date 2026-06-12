@@ -7,11 +7,11 @@
 \alias{gisco_get_unit_country}
 \alias{gisco_get_unit_nuts}
 \alias{gisco_get_unit_urban_audit}
-\title{GISCO API single download}
+\title{GISCO geodata single-unit download}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}
 
-All the source files are \code{.geojson} files.
+All source files are \code{.geojson} files.
 }
 \usage{
 gisco_get_unit_country(
@@ -55,8 +55,8 @@ gisco_get_unit_urban_audit(
 \item{year}{A character string or numeric value with the release year of the
 file.}
 
-\item{epsg}{A character string or numeric value with the map projection as a
-4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the coordinate
+reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -102,11 +102,11 @@ Download datasets of single spatial units from GISCO to the
 Unlike \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \code{\link[=gisco_get_nuts]{gisco_get_nuts()}} or
 \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}} (which downloads a full dataset and applies
 filters), these functions download a single file per unit, reducing the time
-needed to download and read into your \R session.
+needed to download and read data into your \R session.
 }
 \details{
-Check the available \code{unit} IDs with the required
-combination of arguments with \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}.
+Check the available \code{unit} IDs for the required argument combination with
+\code{\link[=gisco_get_metadata]{gisco_get_metadata()}}.
 }
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
@@ -114,20 +114,20 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-# Get metadata
+# Get metadata.
 cities <- gisco_get_metadata("urban_audit", year = 2024)
 
-# Valencia, Spain
+# Valencia, Spain.
 valencia <- cities[grep("Valencia", cities$URAU_NAME, fixed = TRUE), ]
 valencia
 library(dplyr)
-# Now get the sf objects and order by AREA_SQM
+# Get `sf` objects and order by `AREA_SQM`.
 valencia_sf <- gisco_get_unit_urban_audit(
   unit = valencia$URAU_CODE,
   year = 2024
 ) |>
   arrange(desc(AREA_SQM))
-# Plot
+# Plot.
 library(ggplot2)
 
 ggplot(valencia_sf) +

@@ -1,7 +1,7 @@
 #' Education services in Europe
 #'
 #' @description
-#' This dataset is an integration of Member States official data on the
+#' This dataset integrates Member States' official data on the
 #' location of education services. Additional information on these services is
 #' included when available (see **Details**).
 #'
@@ -14,7 +14,7 @@
 #'
 #' @inherit gisco_get_countries return
 #' @details
-#' Files are distributed on [EPSG:4326](https://epsg.io/4326).
+#' Files are distributed in [EPSG:4326](https://epsg.io/4326).
 #'
 #' ```{r child = "man/chunks/education_meta.Rmd"}
 #' ```
@@ -26,17 +26,17 @@
 #' please refer to [the general copyright
 #' notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
 #' provisions, which must be complied with. Permission to download and use
-#' these data are subject to these rules being accepted.
+#' these data is subject to acceptance of these rules.
 #'
 #' The data are extracted from official national registers. They may contain
 #' inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
-#' input national data.
+#' national input data.
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #' edu_austria <- gisco_get_education(country = "Austria", year = 2023)
 #'
-#' # Plot if downloaded
+#' # Plot if downloaded.
 #' if (!is.null(edu_austria)) {
 #'   austria_nuts3 <- gisco_get_nuts(country = "Austria", nuts_level = 3)
 #'

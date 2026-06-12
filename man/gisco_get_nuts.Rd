@@ -32,8 +32,8 @@ file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 "year",TRUE)}.}
 
-\item{epsg}{A character string or numeric value with the map projection as a
-4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\item{epsg}{A character string or numeric value with the coordinate
+reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \itemize{
 \item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
 \item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
@@ -97,14 +97,14 @@ multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
 
-The NUTS are a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into 3 levels:
 \itemize{
 \item NUTS 1: major socio-economic regions.
 \item NUTS 2: basic regions for the application of regional policies.
 \item NUTS 3: small regions for specific diagnoses.
 }
 
-Also, there is a NUTS 0 level, which usually corresponds to the national
+There is also a NUTS 0 level, which usually corresponds to national
 boundaries.
 
 This function gets data from the aggregated GISCO NUTS file, which contains
@@ -116,9 +116,9 @@ The NUTS nomenclature is a hierarchical classification of statistical
 regions and subdivides the EU economic territory into regions of three
 different levels (NUTS 1, 2 and 3, moving respectively from larger to
 smaller territorial units). NUTS 1 is the most aggregated level. An
-additional
-Country level (NUTS 0) is also available for countries where the nation at
-statistical level does not coincide with the administrative boundaries.
+Additional country level (NUTS 0) data is also available for countries
+where the statistical national level does not coincide with the
+administrative boundaries.
 
 The NUTS classification has been officially established through Commission
 Delegated Regulation 2019/1755. A non-official NUTS-like classification has
@@ -173,7 +173,7 @@ See \code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}} to download single
 
 See \code{\link[=gisco_id_api_nuts]{gisco_id_api_nuts()}} to download via GISCO ID service API.
 
-Other statistical units datasets:
+Other statistical unit datasets:
 \code{\link[=gisco_get_census]{gisco_get_census()}},
 \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
 \code{\link[=gisco_get_lau]{gisco_get_lau()}},

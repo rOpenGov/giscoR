@@ -29,11 +29,11 @@ repo:
   branch: main
 
 home:
-  title: giscoR | Download geospatial data from the GISCO API
+  title: giscoR | Download geospatial data from Eurostat's GISCO API
   description: >
     giscoR helps download global and European geospatial data from Eurostat's
     GISCO (Geographic Information System of the Commission) database. It also
-    provides lightweight datasets that can be used without downloading
+    provides lightweight GISCO datasets that can be used without downloading
     additional files.
 
 reference:
@@ -65,9 +65,9 @@ reference:
   contents: has_concept("stats")
 - subtitle: Grids
   desc: >
-    These datasets contain grid cells covering the land territory of the EU, at
-    various resolutions from 1 km to 100 km. Base statistics such as population
-    figures are provided for these cells.
+    These datasets contain grid cells covering the European land territory at
+    resolutions from 1 km to 100 km. Base statistics such as population figures
+    are provided for these cells.
   contents: has_concept("grids")
 - subtitle: Transport networks
   desc: >

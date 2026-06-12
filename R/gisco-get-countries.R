@@ -3,8 +3,8 @@
 #' @aliases gisco_get
 #' @description
 #' This dataset contains world administrative boundaries at the country level.
-#' It provides 2 feature classes (regions and boundaries) for each scale
-#' level, with 5 scale levels available (1M, 3M, 10M, 20M and 60M).
+#' It provides 2 feature classes (regions and boundaries) at 5 scale levels
+#' (1M, 3M, 10M, 20M and 60M).
 #'
 #' This function gets data from the aggregated GISCO country file. To download
 #' individual country files, use [gisco_get_unit_country()].
@@ -15,8 +15,8 @@
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 #'   "year",TRUE)}.
-#' @param epsg A character string or numeric value with the map projection as a
-#'   4-digit [EPSG code](https://epsg.io/). One of:
+#' @param epsg A character string or numeric value with the coordinate
+#'   reference system as a 4-digit [EPSG code](https://epsg.io/). One of:
 #' - `"4326"`: [WGS84](https://epsg.io/4326).
 #' - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 #' - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
@@ -65,8 +65,8 @@
 #'
 #' # World Regions
 #'
-#' Regions are defined as per the geographic regions defined by the
-#' UN (see <https://unstats.un.org/unsd/methodology/m49/>).
+#' Regions follow the UN geographic regions
+#' (see <https://unstats.un.org/unsd/methodology/m49/>).
 #' Under this scheme Cyprus is assigned to Asia.
 #'
 #' # Note
@@ -161,7 +161,6 @@ gisco_get_countries <- function(
     }
   )
 }
-
 
 #' Filter `sf` data by country and/or region
 #'

@@ -1,20 +1,20 @@
 #' @rdname gisco_get_unit
 #' @encoding UTF-8
 #' @examplesIf gisco_check_access()
-#' # Get metadata
+#' # Get metadata.
 #' cities <- gisco_get_metadata("urban_audit", year = 2024)
 #'
-#' # Valencia, Spain
+#' # Valencia, Spain.
 #' valencia <- cities[grep("Valencia", cities$URAU_NAME, fixed = TRUE), ]
 #' valencia
 #' library(dplyr)
-#' # Now get the sf objects and order by AREA_SQM
+#' # Get `sf` objects and order by `AREA_SQM`.
 #' valencia_sf <- gisco_get_unit_urban_audit(
 #'   unit = valencia$URAU_CODE,
 #'   year = 2024
 #' ) |>
 #'   arrange(desc(AREA_SQM))
-#' # Plot
+#' # Plot.
 #' library(ggplot2)
 #'
 #' ggplot(valencia_sf) +
@@ -50,7 +50,7 @@ gisco_get_unit_urban_audit <- function(
 
   spatialtype <- match_arg_pretty(spatialtype)
   type <- unit_spatialtype_to_file_type(spatialtype)
-  # Names has the structure:
+  # Names have this structure:
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson
 

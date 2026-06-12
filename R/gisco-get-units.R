@@ -1,4 +1,4 @@
-#' Get geospatial units data from GISCO API
+#' Get geospatial unit data from GISCO
 #'
 #' @description
 #' `r lifecycle::badge("deprecated")`
@@ -20,8 +20,8 @@
 #' @inherit gisco_get_unit source
 #' @inheritSection gisco_get_unit Note
 #' @return
-#' A [`sf`][sf::st_sf] object on `mode = "sf"` or a [tibble][tibble::tbl_df]
-#' on `mode = "df"`.
+#' A [`sf`][sf::st_sf] object when `mode = "sf"` or a
+#' [tibble][tibble::tbl_df] when `mode = "df"`.
 #'
 #' @seealso
 #' [gisco_get_metadata()], [`?gisco_get_unit`][gisco_get_unit] functions.

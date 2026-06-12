@@ -226,7 +226,6 @@ test_that("Test 404", {
   }
 })
 
-
 test_that("Caching tests", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -357,7 +356,7 @@ test_that("Get urls", {
 
   expect_message(
     ss <- get_url_db("communes", "2016", fn = "gisco_get_communes"),
-    "results with params"
+    "results with these parameters"
   )
   expect_type(ss, "character")
 
@@ -438,7 +437,6 @@ test_that("Error body", {
     FALSE
   })
 })
-
 
 test_that("Tests body", {
   skip_on_cran()

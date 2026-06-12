@@ -17,7 +17,6 @@ test_that("Test offline", {
   })
 })
 
-
 test_that("Test 404", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -105,7 +104,6 @@ test_that("ID API spatial reader downloads and reads GeoJSON", {
   expect_identical(out$id, "ES")
 })
 
-
 test_that("gisco_id_api_geonames online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -128,7 +126,6 @@ test_that("gisco_id_api_geonames online", {
   expect_s3_class(n, "sf")
   expect_s3_class(n, "tbl_df")
 })
-
 
 test_that("gisco_id_api_nuts online", {
   skip_on_cran()
@@ -169,7 +166,6 @@ test_that("gisco_id_api_nuts online", {
 
   expect_false(inherits(n, "sf"))
 })
-
 
 test_that("gisco_id_api_lau online", {
   skip_on_cran()

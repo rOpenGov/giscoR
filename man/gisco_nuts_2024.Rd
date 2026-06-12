@@ -13,8 +13,8 @@ A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolut
 \item{\code{NUTS_ID}}{NUTS identifier.}
 \item{\code{LEVL_CODE}}{NUTS level code \verb{(0,1,2,3)}.}
 \item{\code{CNTR_CODE}}{Eurostat country code.}
-\item{\code{NAME_LATN}}{NUTS name on Latin characters.}
-\item{\code{NUTS_NAME}}{NUTS name on local alphabet.}
+\item{\code{NAME_LATN}}{NUTS name in Latin characters.}
+\item{\code{NUTS_NAME}}{NUTS name in the local alphabet.}
 \item{\code{MOUNT_TYPE}}{Mountain type, see \strong{Details}.}
 \item{\code{URBN_TYPE}}{Urban type, see \strong{Details}.}
 \item{\code{COAST_TYPE}}{Coastal type, see \strong{Details}.}

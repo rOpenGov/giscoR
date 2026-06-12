@@ -45,9 +45,9 @@ This dataset includes the location of over 2,440 pan-European ports. The
 ports are identified following the UN LOCODE list.
 }
 \details{
-Dataset includes objects in \href{https://epsg.io/4326}{EPSG:4326}.
+Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
 
-\code{\link[=gisco_get_ports]{gisco_get_ports()}} adds a new field CNTR_ISO2 to the original data
+\code{\link[=gisco_get_ports]{gisco_get_ports()}} adds a new field, \code{CNTR_ISO2}, to the original data
 identifying the country of the port.
 }
 \examples{
@@ -83,7 +83,7 @@ if (!is.null(ports)) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other transport networks datasets:
+Other transport network datasets:
 \code{\link[=gisco_get_airports]{gisco_get_airports()}}
 }
 \concept{transport}

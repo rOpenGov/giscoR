@@ -242,7 +242,6 @@ test_that("Filter countries no cached", {
   expect_identical(nrow(bn), nrow(bn_nocach))
 })
 
-
 test_that("Spatial types", {
   skip_on_cran()
   skip_if_gisco_offline()

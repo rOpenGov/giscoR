@@ -81,7 +81,6 @@ match_arg_pretty <- function(arg, choices) {
   cli::cli_abort(c(msg, i = hint), call = NULL)
 }
 
-
 #' Warn for deprecated cache arguments on always-cached functions
 #'
 #' @param cache Deprecated cache argument.
@@ -104,7 +103,6 @@ warn_deprecated_cache <- function(cache, what) {
   )
   invisible(NULL)
 }
-
 
 #' Row-bind data frames filling missing columns with `NA`
 #'

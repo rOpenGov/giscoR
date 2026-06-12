@@ -22,8 +22,8 @@ stores cached files in a temporary directory (see \code{\link[base:tempdir]{base
 \item{overwrite}{If \code{TRUE}, overwrite an existing
 \code{GISCO_CACHE_DIR} that you already have on your local machine.}
 
-\item{install}{If \code{TRUE}, install the key on your local machine for use in
-future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
+\item{install}{If \code{TRUE}, install the cache path on your local machine for
+use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
 \code{install} is automatically set to \code{FALSE}.}
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
@@ -37,7 +37,7 @@ session.
 }
 \description{
 This function stores your \code{cache_dir} path on your local machine and
-loads it for future sessions. Type \code{Sys.getenv("GISCO_CACHE_DIR")} to
+loads the path for future sessions. Type \code{Sys.getenv("GISCO_CACHE_DIR")} to
 find your cached path or use \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}}.
 }
 \details{

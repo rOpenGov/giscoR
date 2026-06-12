@@ -13,7 +13,7 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 #'   "year",TRUE)}.
 #' @param cache `r lifecycle::badge('deprecated')`. These functions always
-#'   cache the result due to the size. See **Caching strategies** section
+#'   cache the result because of its size. See **Caching strategies** section
 #'   in [gisco_set_cache_dir()].
 #'
 #' @param spatialtype A character string with the type of geometry to return.

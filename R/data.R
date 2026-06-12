@@ -1,10 +1,10 @@
 #' Cached GISCO database
 #'
-#' Database with the list of files in the GISCO API as of
+#' Database with the list of files in the GISCO geodata distribution as of
 #' `r unique(giscoR::gisco_db$last_updated)`.
 #'
-#' @docType data
 #' @name gisco_db
+#' @docType data
 #' @family datasets
 #' @family database
 #' @encoding UTF-8
@@ -23,18 +23,17 @@
 #' Please use [gisco_get_cached_db()] with `update_cache = TRUE` to update the
 #' corresponding API endpoints.
 #'
-#' @source GISCO API `datasets.json`.
+#' @source GISCO geodata distribution `datasets.json`.
 #' @examples
 #' data("gisco_db")
 #' gisco_db |>
 #'   dplyr::glimpse()
 NULL
 
-
 #' Countries 2024 [`sf`][sf::st_sf] object
 #'
-#' @docType data
 #' @name gisco_countries_2024
+#' @docType data
 #' @description
 #' This object contains world administrative boundaries at the country level.
 #'
@@ -80,14 +79,14 @@ NULL
 
 #' Database with different country code schemes and world regions
 #'
-#' @docType data
 #' @name gisco_countrycode
+#' @docType data
 #' @description
-#' A [tibble][tibble::tbl_df] containing conversions between different country
-#' code schemes (Eurostat/ISO2 and 3) as well as geographic regions as
-#' provided by the World Bank and the UN
+#' A [tibble][tibble::tbl_df] containing conversions between country code
+#' schemes (Eurostat, ISO2 and ISO3) and geographic regions as provided by
+#' the World Bank and the UN
 #' ([M49 Standard](https://unstats.un.org/unsd/methodology/m49/)). This
-#' database has been extracted from the \CRANpkg{countrycode} package.
+#' database was extracted from the \CRANpkg{countrycode} package.
 #'
 #' @family datasets
 #' @encoding UTF-8
@@ -95,7 +94,7 @@ NULL
 #' @inheritSection gisco_get_countries World Regions
 #'
 #' @format
-#' A data frame object with
+#' A data frame with
 #' `r prettyNum(nrow(giscoR::gisco_countrycode), big.mark = ",")` rows and 13
 #' variables:
 #' \describe{
@@ -134,11 +133,10 @@ NULL
 #' dplyr::glimpse(gisco_countrycode)
 NULL
 
-
 #' Coastal lines 2016 [`sf`][sf::st_sf] object
 #'
-#' @docType data
 #' @name gisco_coastal_lines
+#' @docType data
 #' @description
 #' This object contains the coastal lines of the world.
 #'
@@ -170,8 +168,8 @@ NULL
 
 #' NUTS 2024 [`sf`][sf::st_sf] object
 #'
-#' @docType data
 #' @name gisco_nuts_2024
+#' @docType data
 #' @description
 #' This dataset represents the regions for levels 0, 1, 2 and 3 of the
 #' Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
@@ -187,8 +185,8 @@ NULL
 #'   \item{`NUTS_ID`}{NUTS identifier.}
 #'   \item{`LEVL_CODE`}{NUTS level code `(0,1,2,3)`.}
 #'   \item{`CNTR_CODE`}{Eurostat country code.}
-#'   \item{`NAME_LATN`}{NUTS name on Latin characters.}
-#'   \item{`NUTS_NAME`}{NUTS name on local alphabet.}
+#'   \item{`NAME_LATN`}{NUTS name in Latin characters.}
+#'   \item{`NUTS_NAME`}{NUTS name in the local alphabet.}
 #'   \item{`MOUNT_TYPE`}{Mountain type, see **Details**.}
 #'   \item{`URBN_TYPE`}{Urban type, see **Details**.}
 #'   \item{`COAST_TYPE`}{Coastal type, see **Details**.}

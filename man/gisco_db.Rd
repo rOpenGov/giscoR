@@ -10,10 +10,10 @@ A \link[tibble:tbl_df]{tibble} with
 9,714 rows.
 }
 \source{
-GISCO API \code{datasets.json}.
+GISCO geodata distribution \code{datasets.json}.
 }
 \description{
-Database with the list of files in the GISCO API as of
+Database with the list of files in the GISCO geodata distribution as of
 2026-01-12.
 }
 \details{

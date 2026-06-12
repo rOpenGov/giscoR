@@ -54,7 +54,8 @@ read_unit_file_sf <- function(file, post_process = NULL) {
 #'
 #' @inheritParams download_url
 #' @param dataset A character string with the local dataset name.
-#' @param api_id A character string with the GISCO API path identifier.
+#' @param api_id A character string with the GISCO geodata distribution path
+#'   identifier.
 #' @param unit_names A character vector with GISCO unit file names.
 #' @param unit_labels A character vector with user-facing unit labels.
 #' @param year A character string or numeric value with the release year.

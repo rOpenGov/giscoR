@@ -2,7 +2,7 @@
 #'
 #' @rdname gisco_get_coastal_lines
 #' @description
-#' Downloads global coastal lines.
+#' Download global coastal lines.
 #'
 #' @family stats
 #' @encoding UTF-8
@@ -96,6 +96,6 @@ gisco_get_coastal_lines <- function(
 # Export alias ----
 
 #' @rdname gisco_get_coastal_lines
-#' @export
 #' @usage NULL
+#' @export
 gisco_get_coastallines <- gisco_get_coastal_lines

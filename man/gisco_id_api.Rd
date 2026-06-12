@@ -113,7 +113,7 @@ Functions to interact with the \href{https://gisco-services.ec.europa.eu/id/api-
 attributes and, optionally, geometry for different datasets at specified
 longitude and latitude coordinates.
 
-Each available endpoint is implemented through a specific function, see
+Each available endpoint is implemented through a specific function. See
 \strong{Details}.
 }
 \details{
@@ -121,8 +121,8 @@ The available endpoints are:
 \itemize{
 \item \code{gisco_id_api_geonames()}: Get geographic placenames from longitude and
 latitude coordinates or a bounding box.
-\item \code{gisco_id_api_nuts()}: Returns NUTS regions from either a specified
-longitude and latitude coordinates or an ID. Accepted values for \code{year}
+\item \code{gisco_id_api_nuts()}: Returns NUTS regions from either longitude and
+latitude coordinates or an ID. Accepted values for \code{year}
 \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("nuts")}.
 \item \code{gisco_id_api_lau()}: Returns the ID and, optionally, geometry for Local
 Administrative Units (LAU) at specified longitude and latitude coordinates.

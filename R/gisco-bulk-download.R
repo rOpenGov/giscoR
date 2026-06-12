@@ -1,4 +1,4 @@
-#' GISCO API bulk download
+#' GISCO geodata bulk download
 #'
 #' @description
 #' Download zipped data from GISCO to the [`cache_dir`][gisco_set_cache_dir()]
@@ -22,7 +22,7 @@
 #'
 #'   This argument replaces the previous (deprecated) argument `id_giscoR`.
 #' @param recursive `r lifecycle::badge("deprecated")` `recursive` is no
-#'   longer supported, and this function will never perform recursive
+#'   longer supported. This function will never perform recursive
 #'   extraction of child `.zip` files. This is the case for "`shp.zip` inside
 #'   the top-level `.zip`, which will not be unzipped.
 #' @param ... Ignored. The argument `id_giscoR`
@@ -53,7 +53,7 @@
 #'
 #' The usual extensions used across \CRANpkg{giscoR} are `"gpkg"` and `"shp"`,
 #' but other formats are already available on GISCO. After a bulk download, you
-#' may need to adjust the default `"ext"` value in the corresponding function
+#' may need to adjust the default `ext` value in the corresponding function
 #' to connect it with the downloaded files (see **Examples**).
 #'
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>.
@@ -70,7 +70,7 @@
 #' library(sf)
 #' read_sf(dest_files[1]) |> head()
 #'
-#' # Now we can connect the function with the downloaded data like:
+#' # Connect the function with the downloaded data.
 #'
 #' connect <- gisco_get_countries(
 #'   resolution = 60,
@@ -272,7 +272,7 @@ extract_bulk_zip_files <- function(zipfile, files, exdir) {
   unzip(zipfile, files = files, exdir = exdir)
 }
 
-#' Internal function to set arguments for bulk download
+#' Set arguments for bulk download
 #'
 #' @param id A dataset ID.
 #' @param year A year.

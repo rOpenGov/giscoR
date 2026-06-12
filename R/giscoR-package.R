@@ -1,7 +1,6 @@
 #' @keywords internal
 "_PACKAGE"
 
-
 ## usethis namespace: start
 #' @importFrom cli qty
 #' @importFrom lifecycle deprecated

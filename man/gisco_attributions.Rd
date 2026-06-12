@@ -18,13 +18,13 @@ copyright notice on the console.}
 A string with the attribution to be used.
 }
 \description{
-Get the legal text to be used for administrative and statistical data
-downloaded from GISCO, see section \strong{Copyright information}.
+Get the legal text to use for administrative and statistical data
+downloaded from GISCO. See section \strong{Copyright information}.
 
 For other datasets you may follow the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat general copyright notice and license policy}.
 }
 \details{
-Current languages supported are:
+Supported languages are:
 \itemize{
 \item \code{"en"}: English.
 \item \code{"da"}: Danish.
@@ -37,7 +37,7 @@ Current languages supported are:
 }
 
 Please consider
-\href{https://github.com/rOpenGov/giscoR/issues}{contributing} if you spot any
+\href{https://github.com/rOpenGov/giscoR/issues}{contributing} if you spot a
 mistake or want to add a new language.
 }
 \section{Copyright information}{
@@ -63,8 +63,8 @@ statistical data provided by the following functions:
 
 When data downloaded from GISCO is used in any printed or electronic
 publication, in addition to any other provisions applicable to the whole
-Eurostat website, data source will have to be acknowledged in the legend of
-the map and in the introductory page of the publication with the following
+Eurostat website, the data source must be acknowledged in the legend of
+the map and on the introductory page of the publication with the following
 copyright notice:
 \itemize{
 \item EN: © EuroGeographics for the administrative boundaries.

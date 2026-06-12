@@ -82,7 +82,7 @@ get_url_db <- function(
   if (nrow(db) == 0) {
     cli::cli_abort(
       c(
-        "No results for {.fn {fn}} with params:",
+        "No results for {.fn {fn}} with these parameters:",
         val,
         i = "Check available combinations in {.fn giscoR::gisco_get_cached_db}."
       ),
@@ -91,13 +91,15 @@ get_url_db <- function(
   }
 
   if (nrow(db) > 1) {
-    cli::cli_alert_warning("{.fn {fn}} has {nrow(db)} results with params:")
+    cli::cli_alert_warning(
+      "{.fn {fn}} returned {nrow(db)} results with these parameters:"
+    )
     cli::cli_bullets(val)
     db_res <- db[1, setdiff(names(db), "last_updated")]
     val2 <- unlist(db_res)
     val2 <- paste0("{.arg ", names(db_res), "} = {.val ", val2, "}")
     names(val2) <- rep("*", length(val2))
-    cli::cli_alert("Returning the first value:")
+    cli::cli_alert("Returning the first result:")
     cli::cli_bullets(val2)
   }
   db <- db[1, ]
@@ -149,9 +151,9 @@ gisco_address_url <- function() {
   paste0(gisco_services_url(), "/addressapi/")
 }
 
-#' GISCO public data base URL
+#' GISCO public database URL
 #'
-#' @return A character string with the GISCO public data base URL.
+#' @return A character string with the GISCO public database URL.
 #' @noRd
 gisco_pub_url <- function() {
   paste0(gisco_services_url(), "/pub/")
@@ -223,7 +225,7 @@ download_url <- function(
   req <- gisco_request(url, verbose = verbose)
 
   if (!is_online_fun()) {
-    cli::cli_alert_danger("No internet connection.")
+    cli::cli_alert_danger("No internet connection available.")
     cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
   }
@@ -262,7 +264,6 @@ download_url <- function(
 
   file_local
 }
-
 
 #' Internal function to get the response body from a URL
 #'
@@ -313,13 +314,13 @@ for_import_jsonlite <- function() {
   invisible(local)
 }
 
-#' Wrapper is_online for testing
+#' Wrapper for `is_online()` in tests
 #' @noRd
 is_online_fun <- function(...) {
   httr2::is_online()
 }
 
-#' Wrapper is_404 for testing
+#' Wrapper for `is_404()` in tests
 #' @noRd
 is_404 <- function(...) {
   FALSE

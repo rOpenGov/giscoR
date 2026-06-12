@@ -13,7 +13,6 @@ test_that("Test offline", {
   })
 })
 
-
 test_that("Test 404", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -58,7 +57,6 @@ test_that("Test 404", {
   })
 })
 
-
 test_that("gisco_address_api_bbox online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -81,7 +79,6 @@ test_that("gisco_address_api_bbox online", {
   expect_null(n)
 })
 
-
 test_that("gisco_address_api_search online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -101,7 +98,6 @@ test_that("gisco_address_api_search online", {
   expect_null(gisco_address_api_search(country = "XYZ"))
 })
 
-
 test_that("gisco_address_api_reverse online", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -114,7 +110,6 @@ test_that("gisco_address_api_reverse online", {
 
   expect_shape(gisco_address_api_reverse(-10, -30), nrow = 0)
 })
-
 
 test_that("gisco_address_api_country online", {
   skip_on_cran()

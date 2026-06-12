@@ -10,11 +10,11 @@
 There are no specific download rules for the datasets shown below. However,
 please refer to \href{https://ec.europa.eu/eurostat/web/gisco/geodata}{the general copyright notice} and license
 provisions, which must be complied with. Permission to download and use
-these data are subject to these rules being accepted.
+these data is subject to acceptance of these rules.
 
 The data are extracted from official national registers. They may contain
 inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
-input national data.
+national input data.
 }
 \usage{
 gisco_get_education(
@@ -51,18 +51,18 @@ Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycod
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset is an integration of Member States official data on the
+This dataset integrates Member States' official data on the
 location of education services. Additional information on these services is
 included when available (see \strong{Details}).
 }
 \details{
-Files are distributed on \href{https://epsg.io/4326}{EPSG:4326}.
+Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
 
 Brief descriptions of each attribute:\tabular{ll}{
    \strong{Attribute} \tab \strong{Description} \cr
    \code{id} \tab The education service identifier. It is based on national identification codes, if they exist. \cr
    \code{name} \tab The name of the education institution. \cr
-   \code{site_name} \tab The name of the specific site or branch of an education institution. \cr
+   \code{site_name} \tab The name of a specific site or branch of an education institution. \cr
    \code{lat} \tab Latitude (WGS 84). \cr
    \code{lon} \tab Longitude (WGS 84). \cr
    \code{street} \tab Street name. \cr
@@ -75,12 +75,12 @@ Brief descriptions of each attribute:\tabular{ll}{
    \code{max_students} \tab Measure of capacity by maximum number of students. \cr
    \code{enrollment} \tab Measure of capacity by number of enrolled students. \cr
    \code{fields} \tab Academic disciplines the institution specializes in (ISCED-F 2013). \cr
-   \code{facility_type} \tab Type of institution in reference to ownership and operation, such as Catholic or international. \cr
+   \code{facility_type} \tab Type of institution by ownership and operation, such as Catholic or international. \cr
    \code{public_private} \tab The public or private status of the education service. \cr
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
    \code{url} \tab URL for the institution's website. \cr
-   \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) the data refers to. The dataset represents the state at this date. \cr
+   \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) the data refers to. The dataset represents the state on this date. \cr
    \code{geo_qual} \tab Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. \cr
    \code{comments} \tab Additional information on the education service. \cr
 }
@@ -90,7 +90,7 @@ Brief descriptions of each attribute:\tabular{ll}{
 \donttest{
 edu_austria <- gisco_get_education(country = "Austria", year = 2023)
 
-# Plot if downloaded
+# Plot if downloaded.
 if (!is.null(edu_austria)) {
   austria_nuts3 <- gisco_get_nuts(country = "Austria", nuts_level = 3)
 

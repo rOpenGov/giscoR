@@ -21,7 +21,7 @@ gisco_get_unit_nuts <- function(
   res_txt <- format_unit_resolution(resolution)
   spatialtype <- match_arg_pretty(spatialtype)
   type <- unit_spatialtype_to_file_type(spatialtype)
-  # Names has the structure:
+  # Names have this structure:
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson
 

@@ -7,7 +7,7 @@
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}.
 
-There are specific downloading provisions, please see
+Specific download provisions apply, see
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}.
 }
 \usage{
@@ -40,11 +40,11 @@ A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 These datasets contain grid cells covering the European land
-territory, for various resolutions from 1km to 100km. Base statistics such
+territory at resolutions from 1 km to 100 km. Base statistics such
 as population figures are provided for these cells.
 }
 \details{
-Files are distributed on \href{https://epsg.io/3035}{\code{EPSG:3035}}.
+Files are distributed in \href{https://epsg.io/3035}{\code{EPSG:3035}}.
 
 The file sizes range from 428 KB (\code{resolution = 100})
 to 1.7 GB (\code{resolution = 1}).
@@ -53,7 +53,7 @@ to 1.7 GB (\code{resolution = 1}).
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 grid <- gisco_get_grid(resolution = 20)
 
-# If downloaded correctly proceed
+# Proceed if downloaded correctly.
 
 if (!is.null(grid)) {
   library(dplyr)

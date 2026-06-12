@@ -54,7 +54,6 @@ test_that("Deprecate country", {
   )
 })
 
-
 test_that("Deprecate urban audit", {
   skip_on_cran()
   skip_if_gisco_offline()
