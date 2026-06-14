@@ -40,18 +40,19 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is an **R** package that
 provides a simple interface to Eurostat's
-[GISCO](https://ec.europa.eu/eurostat/web/gisco) database. It lets you download
-and work with global and European geospatial datasets directly in **R**,
-including country boundaries, NUTS regions, coastal lines and labels.
+[GISCO geodata distribution](https://ec.europa.eu/eurostat/web/gisco). It lets
+you download and work with global and European geospatial datasets directly in
+**R**, including country boundaries, NUTS regions, administrative units and
+statistical units.
 
 ## Key features
 
-- Retrieve GISCO datasets for countries, regions, administrative units and
-  statistical units.
+- Retrieve GISCO datasets for country boundaries, NUTS regions, administrative
+  units and statistical units.
 - Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`, `01M`.
 - Choose from three coordinate reference systems: **EPSG:4326**,
   **EPSG:3035** or **EPSG:3857**.
-- Return **sf** objects for spatial analysis.
+- Return **sf** package objects for spatial analysis.
 - Cache downloaded files for faster repeated access.
 
 ## Installation
@@ -141,7 +142,7 @@ library(dplyr)
 library(eurostat)
 library(ggplot2)
 
-# Retrieve **sf** objects.
+# Retrieve **sf** package objects.
 nuts3 <- gisco_get_nuts(
   year = 2021,
   epsg = 3035,
@@ -238,7 +239,7 @@ ggplot(nuts3_sf) +
   # Add labels.
   labs(
     title = "Population density in 2021",
-    subtitle = "NUTS-3 level",
+    subtitle = "NUTS 3 level",
     fill = "people per square kilometer",
     caption = paste0(
       "Source: Eurostat, ",
@@ -258,7 +259,7 @@ cache directory with:
 gisco_set_cache_dir("./path/to/location")
 ```
 
-Files will be stored in the local cache for faster repeated access.
+Files are stored in the local cache for faster repeated access.
 
 ## Contribute
 

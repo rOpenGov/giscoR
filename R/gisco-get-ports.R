@@ -11,13 +11,14 @@
 #'   file. One of
 #'   `2013`, `2009`.
 #'
-#' @inherit gisco_get_airports source return
+#' @inherit gisco_get_airports return
 #' @details
 #' Files are distributed in [EPSG:4326](https://epsg.io/4326).
 #'
-#' [gisco_get_ports()] adds a new field, `CNTR_ISO2`, to the original data
-#' identifying the country of the port.
+#' [gisco_get_ports()] adds a new field, `CNTR_ISO2`, to identify the country
+#' of the port.
 #'
+#' @inherit gisco_get_airports source
 #' @examplesIf gisco_check_access()
 #' library(sf)
 #'

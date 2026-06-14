@@ -23,8 +23,8 @@ GISCO geodata distribution.
 }
 \details{
 The cached database is stored in the \CRANpkg{giscoR} cache path. See
-\code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}} for details. The cached database is used
-in subsequent \R sessions.
+\code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}} for details. The cached database is used in
+subsequent \R sessions.
 
 On new GISCO data releases, you can access the updated data by refreshing
 the cached database without waiting for a new version of
@@ -41,7 +41,7 @@ gisco_get_cached_db() |>
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other database utilities:
+Database utilities:
 \code{\link{gisco_db}},
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}
 }

@@ -122,7 +122,8 @@ gisco_response_is_error <- function(
 #' @param check_error A logical value indicating whether HTTP error responses
 #'   should return `NULL`.
 #'
-#' @return An `httr2_response` object, or `NULL` for offline/error responses.
+#' @return An `httr2_response` object, or `NULL` for offline or error
+#'   responses.
 #' @noRd
 gisco_perform_request <- function(
   req,

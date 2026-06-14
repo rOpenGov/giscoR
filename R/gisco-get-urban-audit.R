@@ -2,12 +2,12 @@
 #'
 #' @description
 #' This dataset contains the boundaries of cities (`"CITIES"`), greater cities
-#' (`"GREATER_CITIES"`) and functional urban areas (`"FUA"`) as defined
-#' according to the EC-OECD city definition. This is used for the Eurostat
-#' Urban Audit data collection.
+#' (`"GREATER_CITIES"`) and functional urban areas (`"FUA"`) defined according
+#' to the EC-OECD city definition. It is used for the Eurostat Urban Audit data
+#' collection.
 #'
-#' This function gets data from the aggregated GISCO Urban Audit file. To
-#' download individual Urban Audit files, use [gisco_get_unit_urban_audit()].
+#' Downloads data from the aggregated GISCO Urban Audit file. To download
+#' single-unit Urban Audit files, use [gisco_get_unit_urban_audit()].
 #'
 #' @family stats
 #' @encoding UTF-8
@@ -31,9 +31,7 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 #'   "ext",TRUE)}.
 #'
-#' @inherit gisco_get_nuts source return
-#'
-#' @inheritSection gisco_get_countries Note
+#' @inherit gisco_get_nuts return
 #' @details
 #' For more information, see:
 #' ```{r, echo=FALSE, results='asis'}
@@ -44,11 +42,11 @@
 #'
 #' ```
 #'
-#' The cities are defined at several conceptual levels:
+#' Cities are defined at several conceptual levels:
 #' - The core city (`"CITIES"`), using an administrative definition.
 #' - The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating the
 #'     functional urban region.
-#' Coverage is the EU plus Iceland, Norway and Switzerland. The dataset
+#' Coverage includes the EU, Iceland, Norway and Switzerland. The dataset
 #' includes polygon features, point features and a related attribute table
 #' which can be joined on the URAU code field.
 #'
@@ -56,10 +54,12 @@
 #' - `"C"` = City.
 #' - `"F"` = Functional urban area service type.
 #'
+#' @inheritSection gisco_get_countries Note
+#' @inherit gisco_get_nuts source
 #' @seealso
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
-#' See [gisco_get_unit_urban_audit()] to download single files.
+#' See [gisco_get_unit_urban_audit()] to download single-unit files.
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{

@@ -39,7 +39,7 @@ cities
 \seealso{
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}, \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}.
 
-Other database utilities:
+Database utilities:
 \code{\link{gisco_db}},
 \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}}
 }

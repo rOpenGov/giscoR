@@ -16,11 +16,11 @@ gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
-Invisible. This function is called for its side effects.
+Invisible. Called for its side effects.
 }
 \description{
-\strong{Use this function with caution}. This function clears your cached
-data and configuration, specifically:
+\strong{Use this function with caution}. It clears your cached data and
+configuration, specifically:
 \itemize{
 \item Deletes the \CRANpkg{giscoR} config directory
 (\code{tools::R_user_dir("giscoR", "config")}).
@@ -29,8 +29,8 @@ data and configuration, specifically:
 }
 }
 \details{
-This function fully resets your cache state as if you had never installed
-or used \CRANpkg{giscoR}.
+Fully resets your cache state as if you had never installed or used
+\CRANpkg{giscoR}.
 }
 \examples{
 

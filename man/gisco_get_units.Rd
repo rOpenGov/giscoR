@@ -44,11 +44,11 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{A logical value indicating whether to cache results. Default
-is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+\item{cache}{A logical value indicating whether to cache results. Defaults
+to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
@@ -80,11 +80,11 @@ A \code{\link[sf:st_sf]{sf}} object when \code{mode = "sf"} or a
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 
-This function is deprecated. Use:
+Deprecated. Use one of these replacements:
 \itemize{
 \item \code{\link[=gisco_get_metadata]{gisco_get_metadata()}} (equivalent to \code{mode = "df"}).
 \item \code{\link[=gisco_get_unit]{?gisco_get_unit}} functions (equivalent to
-\code{mode = "sf"})
+\code{mode = "sf"}).
 }
 }
 \section{Note}{

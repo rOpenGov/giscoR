@@ -8,12 +8,12 @@
 #' @param update_cache A logical value. If `TRUE`, rebuild the cached database
 #'   with the most recent information from the GISCO geodata distribution.
 #'
-#' @inherit gisco_get_metadata return source
+#' @inherit gisco_get_metadata return
 #'
 #' @details
 #' The cached database is stored in the \CRANpkg{giscoR} cache path. See
-#' [gisco_set_cache_dir()] for details. The cached database is used
-#' in subsequent \R sessions.
+#' [gisco_set_cache_dir()] for details. The cached database is used in
+#' subsequent \R sessions.
 #'
 #' On new GISCO data releases, you can access the updated data by refreshing
 #' the cached database without waiting for a new version of
@@ -22,6 +22,7 @@
 #' A static database [gisco_db] is shipped with the package. This database is
 #' used if there is any problem during the update.
 #'
+#' @inherit gisco_get_metadata source
 #' @examplesIf gisco_check_access()
 #'
 #' gisco_get_cached_db() |>
@@ -61,7 +62,6 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
   final_db_2 <- normalize_distribution_db(final_db)
 
   # Write to the cache.
-
   saveRDS(final_db_2, cached_db)
 
   final_db_2

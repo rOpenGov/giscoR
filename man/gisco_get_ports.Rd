@@ -25,14 +25,14 @@ file. One of
 \code{2013}, \code{2009}.}
 
 \item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO3 country codes or a vector of
-Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
+vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
@@ -47,8 +47,8 @@ ports are identified following the UN LOCODE list.
 \details{
 Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
 
-\code{\link[=gisco_get_ports]{gisco_get_ports()}} adds a new field, \code{CNTR_ISO2}, to the original data
-identifying the country of the port.
+\code{\link[=gisco_get_ports]{gisco_get_ports()}} adds a new field, \code{CNTR_ISO2}, to identify the country
+of the port.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
@@ -83,7 +83,7 @@ if (!is.null(ports)) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other transport network datasets:
+Transport network datasets:
 \code{\link[=gisco_get_airports]{gisco_get_airports()}}
 }
 \concept{transport}

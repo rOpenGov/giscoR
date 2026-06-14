@@ -7,7 +7,7 @@
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}.
 
-Specific download provisions apply, see
+Specific download provisions apply. See
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/grids}.
 }
 \usage{
@@ -30,7 +30,7 @@ gisco_get_grid(
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
@@ -39,9 +39,9 @@ download.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-These datasets contain grid cells covering the European land
-territory at resolutions from 1 km to 100 km. Base statistics such
-as population figures are provided for these cells.
+These datasets contain grid cells covering the European land territory at
+resolutions from 1 km to 100 km. Base statistics such as population figures
+are provided for these cells.
 }
 \details{
 Files are distributed in \href{https://epsg.io/3035}{\code{EPSG:3035}}.

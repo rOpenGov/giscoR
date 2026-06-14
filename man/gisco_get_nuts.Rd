@@ -3,7 +3,7 @@
 \encoding{UTF-8}
 \name{gisco_get_nuts}
 \alias{gisco_get_nuts}
-\title{Territorial units for statistics (NUTS) dataset}
+\title{NUTS statistical units dataset}
 \source{
 \url{https://gisco-services.ec.europa.eu/distribution/v2/}.
 
@@ -40,11 +40,11 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{A logical value indicating whether to cache results. Default
-is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+\item{cache}{A logical value indicating whether to cache results. Defaults
+to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
@@ -74,8 +74,8 @@ Arguments \code{country}, \code{nuts_level} and \code{nuts_id} are only applied 
 }}
 
 \item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO3 country codes or a vector of
-Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
+vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{nuts_id}{An optional character vector of NUTS IDs.}
 
@@ -97,7 +97,7 @@ multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
 
-NUTS is a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into three levels:
 \itemize{
 \item NUTS 1: major socio-economic regions.
 \item NUTS 2: basic regions for the application of regional policies.
@@ -107,18 +107,18 @@ NUTS is a hierarchical system divided into 3 levels:
 There is also a NUTS 0 level, which usually corresponds to national
 boundaries.
 
-This function gets data from the aggregated GISCO NUTS file, which contains
-data for all countries at the requested NUTS level or levels. To download
-individual NUTS files, use \code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}}.
+Downloads data from the aggregated GISCO NUTS file, which contains data for
+all countries at the requested NUTS level or levels. To download single-unit
+NUTS files, use \code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}}.
 }
 \details{
 The NUTS nomenclature is a hierarchical classification of statistical
 regions and subdivides the EU economic territory into regions of three
 different levels (NUTS 1, 2 and 3, moving respectively from larger to
-smaller territorial units). NUTS 1 is the most aggregated level. An
-Additional country level (NUTS 0) data is also available for countries
-where the statistical national level does not coincide with the
-administrative boundaries.
+smaller territorial units). NUTS 1 is the most aggregated level. Additional
+country-level NUTS 0 data are also available for countries where the
+statistical national level does not coincide with the administrative
+boundaries.
 
 The NUTS classification has been officially established through Commission
 Delegated Regulation 2019/1755. A non-official NUTS-like classification has
@@ -145,14 +145,14 @@ ggplot(nuts2) +
     crs = 3035, xlim = c(2377294, 7453440),
     ylim = c(1313597, 5628510)
   ) +
-  labs(title = "NUTS-2 levels")
-# NUTS-3 for Germany
+  labs(title = "NUTS 2 levels")
+# NUTS 3 for Germany.
 germany_nuts3 <- gisco_get_nuts(nuts_level = 3, country = "Germany")
 
 ggplot(germany_nuts3) +
   geom_sf() +
   labs(
-    title = "NUTS-3 levels",
+    title = "NUTS 3 levels",
     subtitle = "Germany",
     caption = gisco_attributions()
   )
@@ -169,11 +169,11 @@ ggplot(select_nuts) +
 
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
-See \code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}} to download single files.
+See \code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}} to download single-unit files.
 
 See \code{\link[=gisco_id_api_nuts]{gisco_id_api_nuts()}} to download via GISCO ID service API.
 
-Other statistical unit datasets:
+Statistical unit datasets:
 \code{\link[=gisco_get_census]{gisco_get_census()}},
 \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
 \code{\link[=gisco_get_lau]{gisco_get_lau()}},

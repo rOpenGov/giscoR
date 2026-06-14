@@ -43,7 +43,7 @@ file, see \strong{Details}.}
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
@@ -63,9 +63,9 @@ formats are \code{"shp"}, \code{"geojson"}, \code{"svg"}, \code{"json"} and \cod
 \strong{Details}.}
 
 \item{recursive}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{recursive} is no
-longer supported. This function will never perform recursive
-extraction of child \code{.zip} files. This is the case for "\code{shp.zip} inside
-the top-level \code{.zip}, which will not be unzipped.}
+longer supported. It will never perform recursive extraction of child
+\code{.zip} files. This is the case for \code{shp.zip} inside the top-level \code{.zip},
+which will not be unzipped.}
 
 \item{...}{Ignored. The argument \code{id_giscoR}
 (\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}) is captured via \code{...} and redirected
@@ -128,7 +128,7 @@ unlink(tmp, force = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Additional utilities for downloading datasets:
+Single-unit and additional download utilities:
 \code{\link{gisco_get_unit}}
 }
 \concept{extra}

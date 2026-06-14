@@ -40,11 +40,11 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{A logical value indicating whether to cache results. Default
-is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+\item{cache}{A logical value indicating whether to cache results. Defaults
+to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
@@ -76,13 +76,13 @@ Arguments \code{country} and \code{region} are only applied when \code{spatialty
 }}
 
 \item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO3 country codes or a vector of
-Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
+vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{region}{An optional character vector of UN M49 region codes or
 European Union membership. Possible values are \code{"Africa"}, \code{"Americas"},
 \code{"Asia"}, \code{"Europe"}, \code{"Oceania"} or \code{"EU"} for countries belonging to
-the European Union (as per 2021). See \strong{World Regions} and
+the European Union as of 2021. See \strong{World Regions} and
 \link{gisco_countrycode}.}
 
 \item{ext}{A character value with the extension of the file (default
@@ -95,11 +95,11 @@ A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset contains world administrative boundaries at the country level.
-It provides 2 feature classes (regions and boundaries) at 5 scale levels
-(1M, 3M, 10M, 20M and 60M).
+It provides two feature classes, regions and boundaries, at five scale
+levels: 1M, 3M, 10M, 20M and 60M.
 
-This function gets data from the aggregated GISCO country file. To download
-individual country files, use \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}}.
+Downloads data from the aggregated GISCO country file. To download
+single-unit country files, use \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}}.
 }
 \section{World Regions}{
 Regions follow the UN geographic regions
@@ -131,11 +131,11 @@ ggplot(africa) +
 
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
-See \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}} to download single files.
+See \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}} to download single-unit files.
 
 See \code{\link[=gisco_id_api_country]{gisco_id_api_country()}} to download via GISCO ID service API.
 
-Other administrative unit datasets:
+Administrative unit datasets:
 \code{\link[=gisco_get_communes]{gisco_get_communes()}},
 \code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}
 }

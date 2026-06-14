@@ -1,6 +1,6 @@
 Type: Package
 Package: giscoR
-Title: Download Geospatial Data from Eurostat's GISCO API
+Title: Download Eurostat GISCO Geospatial Data
 Version: 1.1.0.9000
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
@@ -11,11 +11,11 @@ Authors@R: c(
   )
 Description: Tools to download global and European geospatial data from
     Eurostat's GISCO (Geographic Information System of the Commission)
-    database <https://ec.europa.eu/eurostat/web/gisco>. The package
-    provides helpers for working with country boundaries, NUTS regions,
-    administrative and statistical units, transport networks, basic
-    services and other GISCO datasets.  This package is not officially
-    related to or endorsed by Eurostat.
+    geodata distribution <https://ec.europa.eu/eurostat/web/gisco>. The
+    package provides helpers for working with country boundaries, NUTS
+    regions, administrative and statistical units, transport networks,
+    basic services and other GISCO datasets. This package is not
+    officially related to or endorsed by Eurostat.
 License: GPL-3
 URL: https://ropengov.github.io/giscoR/,
     https://github.com/rOpenGov/giscoR

@@ -22,9 +22,9 @@
 #'
 #'   This argument replaces the previous (deprecated) argument `id_giscoR`.
 #' @param recursive `r lifecycle::badge("deprecated")` `recursive` is no
-#'   longer supported. This function will never perform recursive
-#'   extraction of child `.zip` files. This is the case for "`shp.zip` inside
-#'   the top-level `.zip`, which will not be unzipped.
+#'   longer supported. It will never perform recursive extraction of child
+#'   `.zip` files. This is the case for `shp.zip` inside the top-level `.zip`,
+#'   which will not be unzipped.
 #' @param ... Ignored. The argument `id_giscoR`
 #'   (`r lifecycle::badge("deprecated")`) is captured via `...` and redirected
 #'   to `id` with a [warning][lifecycle::deprecate_warn].

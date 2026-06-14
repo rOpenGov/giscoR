@@ -99,7 +99,7 @@ get_url_db <- function(
     val2 <- unlist(db_res)
     val2 <- paste0("{.arg ", names(db_res), "} = {.val ", val2, "}")
     names(val2) <- rep("*", length(val2))
-    cli::cli_alert("Returning the first result:")
+    cli::cli_alert("Returning the first result.")
     cli::cli_bullets(val2)
   }
   db <- db[1, ]
@@ -135,9 +135,9 @@ gisco_distribution_url <- function() {
   paste0(gisco_services_url(), "/distribution/v2/")
 }
 
-#' GISCO ID API base URL
+#' GISCO ID service API base URL
 #'
-#' @return A character string with the GISCO ID API base URL.
+#' @return A character string with the GISCO ID service API base URL.
 #' @noRd
 gisco_id_url <- function() {
   paste0(gisco_services_url(), "/id/")
@@ -298,7 +298,7 @@ get_request_body <- function(url, verbose = TRUE) {
 #' it under the hood with [httr2::resp_body_json()], but \CRANpkg{httr2} lists
 #' it in Suggests. This helper avoids that issue.
 #'
-#' This function is never used by the package.
+#' Never used by the package.
 #'
 #' @noRd
 for_import_jsonlite <- function() {

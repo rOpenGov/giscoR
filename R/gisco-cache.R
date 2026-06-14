@@ -3,8 +3,8 @@
 #' @rdname gisco_set_cache_dir
 #'
 #' @description
-#' This function stores your `cache_dir` path on your local machine and
-#' loads the path for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
+#' Stores your `cache_dir` path on your local machine and loads the path for
+#' future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
 #' find your cached path or use [gisco_detect_cache_dir()].
 #'
 #' @family cache utilities
@@ -46,13 +46,13 @@
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function. See example in [gisco_get_nuts()].
 #'
-#' Sometimes cached files may be corrupt. In that case, try re-downloading the
+#' Sometimes cached files may be corrupt. In that case, try downloading the
 #' data by setting `update_cache = TRUE` in the corresponding function.
 #'
-#' If you experience any download problem, try to download the corresponding
-#' file by another method and save it in your
-#' `cache_dir`. Use the option `verbose = TRUE` for debugging the API query
-#' and [gisco_detect_cache_dir()] to identify your cached path.
+#' If you experience a download problem, try to download the corresponding
+#' file by another method and save it in your `cache_dir`. Use
+#' `verbose = TRUE` to debug the API query and [gisco_detect_cache_dir()] to
+#' identify your cached path.
 #'
 #' @note
 #'
@@ -60,7 +60,7 @@
 #' moved from `rappdirs::user_config_dir("giscoR", "R")` to
 #' `tools::R_user_dir("giscoR", "config")`. We have implemented a function
 #' that migrates previous configuration files from one location to another
-#' with a message. This message appears only once to inform you of the
+#' with a message. The message appears only once to inform you of the
 #' migration.
 #'
 #' @seealso [tools::R_user_dir()]
@@ -171,8 +171,8 @@ gisco_detect_cache_dir <- function() {
 #'
 #' @rdname gisco_clear_cache
 #' @description
-#' **Use this function with caution**. This function clears your cached
-#' data and configuration, specifically:
+#' **Use this function with caution**. It clears your cached data and
+#' configuration, specifically:
 #'
 #' - Deletes the \CRANpkg{giscoR} config directory
 #'   (`tools::R_user_dir("giscoR", "config")`).
@@ -186,11 +186,11 @@ gisco_detect_cache_dir <- function() {
 #' @param config If `TRUE`, delete the configuration folder of
 #'   \CRANpkg{giscoR}.
 #' @param cached_data If `TRUE`, delete your `cache_dir` and all its content.
-#' @return Invisible. This function is called for its side effects.
+#' @return Invisible. Called for its side effects.
 #'
 #' @details
-#' This function fully resets your cache state as if you had never installed
-#' or used \CRANpkg{giscoR}.
+#' Fully resets your cache state as if you had never installed or used
+#' \CRANpkg{giscoR}.
 #'
 #' @seealso [tools::R_user_dir()]
 #'
@@ -341,7 +341,7 @@ migrate_cache <- function(
     cache_dir <- readLines(old_fname)
     gisco_set_cache_dir(cache_dir, install = TRUE, verbose = FALSE)
     cli::cli_alert_success(c(
-      "{.pkg giscoR} >= 1.0.0: Cache configuration migrated. ",
+      "{.pkg giscoR} >= 1.0.0: cache configuration migrated. ",
       "See {.strong Note} in {.fn giscoR::gisco_set_cache_dir} for details."
     ))
     cli::cli_alert_info(

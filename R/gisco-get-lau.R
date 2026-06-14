@@ -13,23 +13,22 @@
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "year",TRUE)}.
-#' @param cache `r lifecycle::badge('deprecated')`. This function always
-#'   caches the result due to its size. See **Caching strategies** section
-#'   in [gisco_set_cache_dir()].
+#' @param cache `r lifecycle::badge('deprecated')`. Always caches the result
+#'   due to its size. See **Caching strategies** section in
+#'   [gisco_set_cache_dir()].
 #' @param gisco_id An optional character vector of `GISCO_ID` LAU values.
 #' @param ext A character value with the extension of the file (default
 #'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "ext",TRUE)}.
 #'
-#' @inherit gisco_get_coastal_lines source return
-#' @inheritSection gisco_get_coastal_lines Note
+#' @inherit gisco_get_coastal_lines return
 #' @details
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
 #' together subdivide the EU economic territory into regions of five different
-#' levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to
-#' smaller territorial units).
+#' levels, moving from larger to smaller territorial units: NUTS 1, 2 and 3
+#' and LAU.
 #'
 #' The LAU classification is not covered by any legislative act. Geographical
 #' extent covers the European Union, EFTA countries and candidate countries.
@@ -42,6 +41,8 @@
 #' Total resident population figures (31 December) have also been added in
 #' some versions based on the associated LAU lists.
 #'
+#' @inheritSection gisco_get_coastal_lines Note
+#' @inherit gisco_get_coastal_lines source
 #' @seealso
 #' [gisco_get_communes()].
 #'

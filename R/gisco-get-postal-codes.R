@@ -20,8 +20,7 @@
 #'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("postal_codes",
 #'   "ext",TRUE)}.
-#' @inherit gisco_get_countries source return
-#' @inheritSection gisco_get_countries Note
+#' @inherit gisco_get_countries return
 #' @details
 #' # Copyright
 #'
@@ -35,6 +34,8 @@
 #'
 #' ```
 #'
+#' @inheritSection gisco_get_countries Note
+#' @inherit gisco_get_countries source
 #' @seealso
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'

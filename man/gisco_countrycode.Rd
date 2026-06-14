@@ -16,14 +16,14 @@ variables:
 \item{\code{iso.name.en}}{ISO English short name.}
 \item{\code{cldr.short.en}}{English short name as provided by the Unicode
 Common Locale Data Repository.}
-\item{\code{continent}}{As provided by the World Bank.}
+\item{\code{continent}}{Continent from the World Bank.}
 \item{\code{un.region.code}}{Numeric region code UN (M49).}
 \item{\code{un.region.name}}{Region name UN (M49).}
 \item{\code{un.regionintermediate.code}}{Numeric intermediate region.}
 \item{\code{un.regionintermediate.name}}{Intermediate region name UN (M49).}
 \item{\code{un.regionsub.code}}{Numeric sub-region code UN (M49).}
 \item{\code{un.regionsub.name}}{Sub-region name UN (M49).}
-\item{\code{eu}}{Logical indicating if the country belongs to the
+\item{\code{eu}}{Logical value indicating whether the country belongs to the
 European Union.}
 }
 }
@@ -32,8 +32,8 @@ European Union.}
 }
 \description{
 A \link[tibble:tbl_df]{tibble} containing conversions between country code
-schemes (Eurostat, ISO2 and ISO3) and geographic regions as provided by
-the World Bank and the UN
+schemes (Eurostat, ISO 3166-1 alpha-2 and ISO 3166-1 alpha-3) and
+geographic regions from the World Bank and the UN
 (\href{https://unstats.un.org/unsd/methodology/m49/}{M49 Standard}). This
 database was extracted from the \CRANpkg{countrycode} package.
 }

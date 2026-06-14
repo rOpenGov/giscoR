@@ -36,8 +36,8 @@ your \code{cache_dir}, but it is mainly called for its side effect.
 session.
 }
 \description{
-This function stores your \code{cache_dir} path on your local machine and
-loads the path for future sessions. Type \code{Sys.getenv("GISCO_CACHE_DIR")} to
+Stores your \code{cache_dir} path on your local machine and loads the path for
+future sessions. Type \code{Sys.getenv("GISCO_CACHE_DIR")} to
 find your cached path or use \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}}.
 }
 \details{
@@ -53,7 +53,7 @@ In \CRANpkg{giscoR} >= 1.0.0 the location of the configuration file has
 moved from \code{rappdirs::user_config_dir("giscoR", "R")} to
 \code{tools::R_user_dir("giscoR", "config")}. We have implemented a function
 that migrates previous configuration files from one location to another
-with a message. This message appears only once to inform you of the
+with a message. The message appears only once to inform you of the
 migration.
 }
 \section{Caching strategies}{
@@ -74,13 +74,13 @@ kept across \R sessions.
 corresponding function. See example in \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}.
 }
 
-Sometimes cached files may be corrupt. In that case, try re-downloading the
+Sometimes cached files may be corrupt. In that case, try downloading the
 data by setting \code{update_cache = TRUE} in the corresponding function.
 
-If you experience any download problem, try to download the corresponding
-file by another method and save it in your
-\code{cache_dir}. Use the option \code{verbose = TRUE} for debugging the API query
-and \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to identify your cached path.
+If you experience a download problem, try to download the corresponding
+file by another method and save it in your \code{cache_dir}. Use
+\code{verbose = TRUE} to debug the API query and \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to
+identify your cached path.
 }
 
 \examples{

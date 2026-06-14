@@ -50,7 +50,7 @@ gisco_get_unit_urban_audit(
 )
 }
 \arguments{
-\item{unit}{A character vector of unit IDs to be downloaded. See \strong{Details}.}
+\item{unit}{A character vector of unit IDs to download. See \strong{Details}.}
 
 \item{year}{A character string or numeric value with the release year of the
 file.}
@@ -63,11 +63,11 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{A logical value indicating whether to cache results. Default
-is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+\item{cache}{A logical value indicating whether to cache results. Defaults
+to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
@@ -100,8 +100,8 @@ Download datasets of single spatial units from GISCO to the
 \code{\link[=gisco_set_cache_dir]{cache_dir}}.
 
 Unlike \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \code{\link[=gisco_get_nuts]{gisco_get_nuts()}} or
-\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}} (which downloads a full dataset and applies
-filters), these functions download a single file per unit, reducing the time
+\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}} (which download full datasets and apply filters),
+these functions download a single-unit file, reducing the time
 needed to download and read data into your \R session.
 }
 \details{
@@ -147,7 +147,7 @@ ggplot(valencia_sf) +
 See \code{\link{gisco_id_api}} to download via GISCO ID service
 API.
 
-Additional utilities for downloading datasets:
+Single-unit and additional download utilities:
 \code{\link[=gisco_bulk_download]{gisco_bulk_download()}}
 }
 \concept{extra}

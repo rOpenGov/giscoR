@@ -1,7 +1,7 @@
 #' Census dataset
 #'
-#' This dataset shows pan-European communal boundaries depicting the situation
-#' at the corresponding census.
+#' This dataset shows pan-European communal boundaries for the corresponding
+#' census.
 #'
 #' @family stats
 #' @encoding UTF-8
@@ -23,6 +23,7 @@
 #' @seealso
 #'
 #' See [gisco_id_api_census_grid()] to download via GISCO ID service API.
+#'
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #' library(sf)

@@ -45,13 +45,13 @@ NULL
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
 #' `r nrow(giscoR::gisco_countries_2024)` rows and 12 variables:
 #' \describe{
-#'   \item{`CNTR_ID`}{Country ID as per Eurostat.}
+#'   \item{`CNTR_ID`}{Country ID from Eurostat.}
 #'   \item{`CNTR_NAME`}{Official country name in local language.}
 #'   \item{`NAME_ENGL`}{Country name in English.}
 #'   \item{`NAME_FREN`}{Country name in French.}
-#'   \item{`ISO3_CODE`}{ISO 3166-1 alpha-3 code of each country, as
-#'   provided by GISCO.}
-#'   \item{`SVRG_UN`}{Sovereign status as per United Nations.}
+#'   \item{`ISO3_CODE`}{ISO 3166-1 alpha-3 code of each country from
+#'   GISCO.}
+#'   \item{`SVRG_UN`}{Sovereign status according to the United Nations.}
 #'   \item{`CAPT`}{Capital city.}
 #'   \item{`EU_STAT`}{European Union member.}
 #'   \item{`EFTA_STAT`}{EFTA member.}
@@ -83,8 +83,8 @@ NULL
 #' @docType data
 #' @description
 #' A [tibble][tibble::tbl_df] containing conversions between country code
-#' schemes (Eurostat, ISO2 and ISO3) and geographic regions as provided by
-#' the World Bank and the UN
+#' schemes (Eurostat, ISO 3166-1 alpha-2 and ISO 3166-1 alpha-3) and
+#' geographic regions from the World Bank and the UN
 #' ([M49 Standard](https://unstats.un.org/unsd/methodology/m49/)). This
 #' database was extracted from the \CRANpkg{countrycode} package.
 #'
@@ -104,14 +104,14 @@ NULL
 #'   \item{`iso.name.en`}{ISO English short name.}
 #'   \item{`cldr.short.en`}{English short name as provided by the Unicode
 #'     Common Locale Data Repository.}
-#'   \item{`continent`}{As provided by the World Bank.}
+#'   \item{`continent`}{Continent from the World Bank.}
 #'   \item{`un.region.code`}{Numeric region code UN (M49).}
 #'   \item{`un.region.name`}{Region name UN (M49).}
 #'   \item{`un.regionintermediate.code`}{Numeric intermediate region.}
 #'   \item{`un.regionintermediate.name`}{Intermediate region name UN (M49).}
 #'   \item{`un.regionsub.code`}{Numeric sub-region code UN (M49).}
 #'   \item{`un.regionsub.name`}{Sub-region name UN (M49).}
-#'   \item{`eu`}{Logical indicating if the country belongs to the
+#'   \item{`eu`}{Logical value indicating whether the country belongs to the
 #'     European Union.}
 #' }
 #'
@@ -190,8 +190,8 @@ NULL
 #'   \item{`MOUNT_TYPE`}{Mountain type, see **Details**.}
 #'   \item{`URBN_TYPE`}{Urban type, see **Details**.}
 #'   \item{`COAST_TYPE`}{Coastal type, see **Details**.}
-#'   \item{`geo`}{Same as `NUTS_ID`, provided for compatibility with
-#'     \CRANpkg{eurostat}.}
+#'   \item{`geo`}{Same value as `NUTS_ID`, provided for compatibility with
+#'   \CRANpkg{eurostat}.}
 #'   \item{`geometry`}{Geometry field.}
 #' }
 #'

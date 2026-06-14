@@ -9,11 +9,11 @@
 
 There are no specific download rules for the datasets shown below. However,
 please refer to \href{https://ec.europa.eu/eurostat/web/gisco/geodata}{the general copyright notice} and license
-provisions, which must be complied with. Permission to download and use
-these data is subject to acceptance of these rules.
+provisions, which apply to these datasets. Permission to download and use
+these data is subject to acceptance of those rules.
 
 The data are extracted from official national registers. They may contain
-inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
+inconsistencies, inaccuracies and gaps due to the heterogeneity of the
 national input data.
 }
 \usage{
@@ -31,11 +31,11 @@ gisco_get_education(
 file. One of
 \code{2023}, \code{2020}.}
 
-\item{cache}{A logical value indicating whether to cache results. Default
-is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+\item{cache}{A logical value indicating whether to cache results. Defaults
+to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
@@ -44,23 +44,23 @@ download.}
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 
 \item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO3 country codes or a vector of
-Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
+vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset integrates Member States' official data on the
-location of education services. Additional information on these services is
-included when available (see \strong{Details}).
+This dataset integrates Member States' official data on the location of
+education services. Additional information on these services is included
+when available. See \strong{Details}.
 }
 \details{
 Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
 
-Brief descriptions of each attribute:\tabular{ll}{
+The following table describes each attribute:\tabular{ll}{
    \strong{Attribute} \tab \strong{Description} \cr
-   \code{id} \tab The education service identifier. It is based on national identification codes, if they exist. \cr
+   \code{id} \tab The education service identifier, based on national identification codes when available. \cr
    \code{name} \tab The name of the education institution. \cr
    \code{site_name} \tab The name of a specific site or branch of an education institution. \cr
    \code{lat} \tab Latitude (WGS 84). \cr
@@ -80,7 +80,7 @@ Brief descriptions of each attribute:\tabular{ll}{
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
    \code{url} \tab URL for the institution's website. \cr
-   \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) the data refers to. The dataset represents the state on this date. \cr
+   \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) for the data. The dataset represents the state on this date. \cr
    \code{geo_qual} \tab Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. \cr
    \code{comments} \tab Additional information on the education service. \cr
 }
@@ -120,7 +120,7 @@ if (!is.null(edu_austria)) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other basic services datasets:
+Basic services datasets:
 \code{\link[=gisco_get_healthcare]{gisco_get_healthcare()}}
 }
 \concept{services}

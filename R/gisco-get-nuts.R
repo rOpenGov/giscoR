@@ -1,4 +1,4 @@
-#' Territorial units for statistics (NUTS) dataset
+#' NUTS statistical units dataset
 #'
 #' @description
 #' The GISCO statistical unit dataset represents the NUTS (nomenclature of
@@ -7,7 +7,7 @@
 #' information is completed by attribute tables and a set of cartographic
 #' help lines to better visualize multipart polygonal regions.
 #'
-#' NUTS is a hierarchical system divided into 3 levels:
+#' NUTS is a hierarchical system divided into three levels:
 #' - NUTS 1: major socio-economic regions.
 #' - NUTS 2: basic regions for the application of regional policies.
 #' - NUTS 3: small regions for specific diagnoses.
@@ -15,9 +15,9 @@
 #' There is also a NUTS 0 level, which usually corresponds to national
 #' boundaries.
 #'
-#' This function gets data from the aggregated GISCO NUTS file, which contains
-#' data for all countries at the requested NUTS level or levels. To download
-#' individual NUTS files, use [gisco_get_unit_nuts()].
+#' Downloads data from the aggregated GISCO NUTS file, which contains data for
+#' all countries at the requested NUTS level or levels. To download single-unit
+#' NUTS files, use [gisco_get_unit_nuts()].
 #'
 #' @family stats
 #' @encoding UTF-8
@@ -42,16 +42,15 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "ext",TRUE)}.
 #'
-#' @inherit gisco_get_communes source return
-#' @inheritSection gisco_get_countries Note
+#' @inherit gisco_get_communes return
 #' @details
 #' The NUTS nomenclature is a hierarchical classification of statistical
 #' regions and subdivides the EU economic territory into regions of three
 #' different levels (NUTS 1, 2 and 3, moving respectively from larger to
-#' smaller territorial units). NUTS 1 is the most aggregated level. An
-#' Additional country level (NUTS 0) data is also available for countries
-#' where the statistical national level does not coincide with the
-#' administrative boundaries.
+#' smaller territorial units). NUTS 1 is the most aggregated level. Additional
+#' country-level NUTS 0 data are also available for countries where the
+#' statistical national level does not coincide with the administrative
+#' boundaries.
 #'
 #' The NUTS classification has been officially established through Commission
 #' Delegated Regulation 2019/1755. A non-official NUTS-like classification has
@@ -62,12 +61,14 @@
 #' An introduction to the NUTS classification is available here:
 #' <https://ec.europa.eu/eurostat/web/nuts/overview>.
 #'
+#' @inheritSection gisco_get_countries Note
+#' @inherit gisco_get_communes source
 #' @seealso
 #' [gisco_nuts_2024], [eurostat::get_eurostat_geospatial()].
 #'
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
-#' See [gisco_get_unit_nuts()] to download single files.
+#' See [gisco_get_unit_nuts()] to download single-unit files.
 #'
 #' See [gisco_id_api_nuts()] to download via GISCO ID service API.
 #'
@@ -83,14 +84,14 @@
 #'     crs = 3035, xlim = c(2377294, 7453440),
 #'     ylim = c(1313597, 5628510)
 #'   ) +
-#'   labs(title = "NUTS-2 levels")
-#' # NUTS-3 for Germany
+#'   labs(title = "NUTS 2 levels")
+#' # NUTS 3 for Germany.
 #' germany_nuts3 <- gisco_get_nuts(nuts_level = 3, country = "Germany")
 #'
 #' ggplot(germany_nuts3) +
 #'   geom_sf() +
 #'   labs(
-#'     title = "NUTS-3 levels",
+#'     title = "NUTS 3 levels",
 #'     subtitle = "Germany",
 #'     caption = gisco_attributions()
 #'   )

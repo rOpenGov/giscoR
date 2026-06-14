@@ -1,14 +1,14 @@
 #' Healthcare services in Europe
 #'
 #' @description
-#' The dataset contains information on healthcare services considered to
-#' be 'hospitals' by Member States. The definition varies slightly from
-#' country to country, but roughly includes the following:
+#' The dataset contains information on healthcare services considered
+#' hospitals by Member States. The definition varies slightly from country to
+#' country, but roughly includes the following:
 #'
-#' - "'Hospitals' comprises licensed establishments primarily engaged in
+#' - Hospitals comprise licensed establishments primarily engaged in
 #' providing medical, diagnostic and treatment services that include
-#' physician, nursing and other health services to in-patients and the
-#' specialised accommodation services required by inpatients."*
+#' physician, nursing and other health services to inpatients and the
+#' specialized accommodation services required by inpatients.
 #'
 #' @family services
 #' @encoding UTF-8
@@ -17,13 +17,14 @@
 #'   file. One of
 #'   `2023`, `2020`.
 #'
-#' @inherit gisco_get_education return source
+#' @inherit gisco_get_education return
 #' @details
 #' Files are distributed in [EPSG:4326](https://epsg.io/4326).
 #'
 #' ```{r child = "man/chunks/healthcare_meta.Rmd"}
 #' ```
 #'
+#' @inherit gisco_get_education source
 #' @examplesIf gisco_check_access()
 #' health_benelux <- gisco_get_healthcare(
 #'   country = c("BE", "NL", "LU"),

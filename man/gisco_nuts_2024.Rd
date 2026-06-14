@@ -18,7 +18,7 @@ A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolut
 \item{\code{MOUNT_TYPE}}{Mountain type, see \strong{Details}.}
 \item{\code{URBN_TYPE}}{Urban type, see \strong{Details}.}
 \item{\code{COAST_TYPE}}{Coastal type, see \strong{Details}.}
-\item{\code{geo}}{Same as \code{NUTS_ID}, provided for compatibility with
+\item{\code{geo}}{Same value as \code{NUTS_ID}, provided for compatibility with
 \CRANpkg{eurostat}.}
 \item{\code{geometry}}{Geometry field.}
 }

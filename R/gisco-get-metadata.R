@@ -54,11 +54,11 @@ gisco_get_metadata <- function(
   meta_df
 }
 
-#' Get the metadata CSV URL from the GISCO database
+#' Get the metadata CSV URL from the cached GISCO database
 #'
 #' @param id A unit type.
 #' @param year A metadata year.
-#' @param db GISCO database.
+#' @param db A cached GISCO database.
 #'
 #' @return A character string with the metadata CSV URL.
 #' @noRd

@@ -38,7 +38,7 @@ convert_country_code <- function(names, out = "eurostat") {
       cli::cli_abort(
         paste0(
           "Invalid country name {.str {x}}. ",
-          "Try a vector of names, ISO3 codes or Eurostat codes."
+          "Try a vector of names, ISO 3166-1 alpha-3 codes or Eurostat codes."
         ),
         call = NULL
       )
@@ -55,7 +55,9 @@ convert_country_code <- function(names, out = "eurostat") {
     cli::cli_alert_warning(
       "Some country names or codes were not matched unambiguously: {.str {ff}}."
     )
-    cli::cli_alert_info("Review the names or codes, or switch to ISO3 codes.")
+    cli::cli_alert_info(
+      "Review the names or codes, or switch to ISO 3166-1 alpha-3 codes."
+    )
   }
 
   outnames2
@@ -95,7 +97,7 @@ filter_by_country_col <- function(data, country = NULL, col = "CNTR_CODE") {
 #'
 #' @param country A character vector of country codes or names.
 #' @param region A character vector of region codes or names.
-#' @param code Desired output code. Default is "eurostat".
+#' @param code Desired output code. Defaults to `"eurostat"`.
 #' @return A character vector of country codes.
 #'
 #' @noRd

@@ -29,14 +29,13 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 #'   "ext",TRUE)}.
 #'
-#' @inherit gisco_get_countries source return
-#' @inheritSection gisco_get_countries Note
+#' @inherit gisco_get_countries return
 #' @details
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
 #' together subdivide the EU economic territory into regions of five different
-#' levels (NUTS 1, 2 and 3 and LAU, respectively, moving from larger to
-#' smaller territorial units).
+#' levels, moving from larger to smaller territorial units: NUTS 1, 2 and 3
+#' and LAU.
 #'
 #' The dataset is based on EuroBoundaryMap from
 #' [EuroGeographics](https://eurogeographics.org/). Geographical extent covers
@@ -45,6 +44,8 @@
 #'
 #' The LAU classification is not covered by any legislative act.
 #'
+#' @inheritSection gisco_get_countries Note
+#' @inherit gisco_get_countries source
 #' @seealso
 #' [gisco_get_lau()].
 #'

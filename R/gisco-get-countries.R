@@ -3,11 +3,11 @@
 #' @aliases gisco_get
 #' @description
 #' This dataset contains world administrative boundaries at the country level.
-#' It provides 2 feature classes (regions and boundaries) at 5 scale levels
-#' (1M, 3M, 10M, 20M and 60M).
+#' It provides two feature classes, regions and boundaries, at five scale
+#' levels: 1M, 3M, 10M, 20M and 60M.
 #'
-#' This function gets data from the aggregated GISCO country file. To download
-#' individual country files, use [gisco_get_unit_country()].
+#' Downloads data from the aggregated GISCO country file. To download
+#' single-unit country files, use [gisco_get_unit_country()].
 #'
 #' @family admin
 #' @encoding UTF-8
@@ -20,10 +20,10 @@
 #' - `"4326"`: [WGS84](https://epsg.io/4326).
 #' - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 #' - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
-#' @param cache A logical value indicating whether to cache results. Default
-#'   is `TRUE`. See **Caching strategies** section in [gisco_set_cache_dir()].
+#' @param cache A logical value indicating whether to cache results. Defaults
+#'   to `TRUE`. See **Caching strategies** section in [gisco_set_cache_dir()].
 #' @param update_cache A logical value indicating whether to refresh the
-#'   cached file. Default is `FALSE`. When set to `TRUE`, it forces a new
+#'   cached file. Defaults to `FALSE`. When set to `TRUE`, it forces a new
 #'   download.
 #' @param cache_dir A character string with a path to a cache directory. See
 #'   **Caching strategies** section in [gisco_set_cache_dir()].
@@ -39,8 +39,8 @@
 #'   `"RG"` or `"LB"`.
 #'
 #' @param country A character vector of country codes. It can be either a
-#'   vector of country names, a vector of ISO3 country codes or a vector of
-#'   Eurostat country codes. See also [countrycode::countrycode()].
+#'   vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
+#'   vector of Eurostat country codes. See also [countrycode::countrycode()].
 #' @param verbose A logical value. If `TRUE` displays informational messages.
 #' @param resolution A character string or numeric value with the geospatial
 #'   data resolution. One of:
@@ -52,7 +52,7 @@
 #' @param region An optional character vector of UN M49 region codes or
 #'   European Union membership. Possible values are `"Africa"`, `"Americas"`,
 #'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to
-#'   the European Union (as per 2021). See **World Regions** and
+#'   the European Union as of 2021. See **World Regions** and
 #'   [gisco_countrycode].
 #' @param ext A character value with the extension of the file (default
 #'   `"gpkg"`). One of
@@ -83,7 +83,7 @@
 #'
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
-#' See [gisco_get_unit_country()] to download single files.
+#' See [gisco_get_unit_country()] to download single-unit files.
 #'
 #' See [gisco_id_api_country()] to download via GISCO ID service API.
 #'

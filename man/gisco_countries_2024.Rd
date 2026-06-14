@@ -10,13 +10,13 @@ A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolut
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. It has
 263 rows and 12 variables:
 \describe{
-\item{\code{CNTR_ID}}{Country ID as per Eurostat.}
+\item{\code{CNTR_ID}}{Country ID from Eurostat.}
 \item{\code{CNTR_NAME}}{Official country name in local language.}
 \item{\code{NAME_ENGL}}{Country name in English.}
 \item{\code{NAME_FREN}}{Country name in French.}
-\item{\code{ISO3_CODE}}{ISO 3166-1 alpha-3 code of each country, as
-provided by GISCO.}
-\item{\code{SVRG_UN}}{Sovereign status as per United Nations.}
+\item{\code{ISO3_CODE}}{ISO 3166-1 alpha-3 code of each country from
+GISCO.}
+\item{\code{SVRG_UN}}{Sovereign status according to the United Nations.}
 \item{\code{CAPT}}{Capital city.}
 \item{\code{EU_STAT}}{European Union member.}
 \item{\code{EFTA_STAT}}{EFTA member.}

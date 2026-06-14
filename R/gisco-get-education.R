@@ -1,9 +1,9 @@
 #' Education services in Europe
 #'
 #' @description
-#' This dataset integrates Member States' official data on the
-#' location of education services. Additional information on these services is
-#' included when available (see **Details**).
+#' This dataset integrates Member States' official data on the location of
+#' education services. Additional information on these services is included
+#' when available. See **Details**.
 #'
 #' @family services
 #' @encoding UTF-8
@@ -25,11 +25,11 @@
 #' There are no specific download rules for the datasets shown below. However,
 #' please refer to [the general copyright
 #' notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
-#' provisions, which must be complied with. Permission to download and use
-#' these data is subject to acceptance of these rules.
+#' provisions, which apply to these datasets. Permission to download and use
+#' these data is subject to acceptance of those rules.
 #'
 #' The data are extracted from official national registers. They may contain
-#' inconsistencies, inaccuracies and gaps, due to the heterogeneity of the
+#' inconsistencies, inaccuracies and gaps due to the heterogeneity of the
 #' national input data.
 #'
 #' @examplesIf gisco_check_access()

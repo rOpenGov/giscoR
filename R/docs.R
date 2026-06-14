@@ -1,4 +1,4 @@
-#' Help documentation for \CRANpkg{giscoR}
+#' Documentation helpers for \CRANpkg{giscoR}
 #'
 #' @description
 #' Internal function to get possible values from the cached GISCO database.
@@ -8,10 +8,9 @@
 #' @param field A character string with the field/column name from which to
 #'   extract values.
 #' @param decreasing A logical value indicating whether to sort the values in
-#'   decreasing order.
-#'   Default is `FALSE`.
+#'   decreasing order. Defaults to `FALSE`.
 #' @param formatted A logical value indicating whether to format the output
-#'   values for documentation. Default is `TRUE`.
+#'   values for documentation. Defaults to `TRUE`.
 #'
 #' @return
 #' A character string with the possible values for the specified field.

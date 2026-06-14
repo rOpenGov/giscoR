@@ -1,8 +1,8 @@
-Brief descriptions of each attribute:
+The following table describes each attribute:
 
 | **Attribute** | **Description** |
 |----------------------------------------|----------------------------------------|
-| `id` | The education service identifier. It is based on national identification codes, if they exist. |
+| `id` | The education service identifier, based on national identification codes when available. |
 | `name` | The name of the education institution. |
 | `site_name` | The name of a specific site or branch of an education institution. |
 | `lat` | Latitude (WGS 84). |
@@ -22,6 +22,6 @@ Brief descriptions of each attribute:
 | `tel` | Telephone number. |
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
-| `ref_date` | The reference date (`DD/MM/YYYY`) the data refers to. The dataset represents the state on this date. |
+| `ref_date` | The reference date (`DD/MM/YYYY`) for the data. The dataset represents the state on this date. |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the education service. |

@@ -38,11 +38,11 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{A logical value indicating whether to cache results. Default
-is \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+\item{cache}{A logical value indicating whether to cache results. Defaults
+to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
@@ -58,8 +58,8 @@ Options available are:
 }}
 
 \item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO3 country codes or a vector of
-Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
+vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{level}{A character string with the Urban Audit level. Possible values
 are \code{"all"} (the default), which downloads the full dataset, \code{"CITIES"},
@@ -76,22 +76,22 @@ A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset contains the boundaries of cities (\code{"CITIES"}), greater cities
-(\code{"GREATER_CITIES"}) and functional urban areas (\code{"FUA"}) as defined
-according to the EC-OECD city definition. This is used for the Eurostat
-Urban Audit data collection.
+(\code{"GREATER_CITIES"}) and functional urban areas (\code{"FUA"}) defined according
+to the EC-OECD city definition. It is used for the Eurostat Urban Audit data
+collection.
 
-This function gets data from the aggregated GISCO Urban Audit file. To
-download individual Urban Audit files, use \code{\link[=gisco_get_unit_urban_audit]{gisco_get_unit_urban_audit()}}.
+Downloads data from the aggregated GISCO Urban Audit file. To download
+single-unit Urban Audit files, use \code{\link[=gisco_get_unit_urban_audit]{gisco_get_unit_urban_audit()}}.
 }
 \details{
 For more information, see: \href{https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions}{Eurostat - Statistics Explained}.
 
-The cities are defined at several conceptual levels:
+Cities are defined at several conceptual levels:
 \itemize{
 \item The core city (\code{"CITIES"}), using an administrative definition.
 \item The Functional Urban Area/Large Urban Zone (\code{"FUA"}), approximating the
 functional urban region.
-Coverage is the EU plus Iceland, Norway and Switzerland. The dataset
+Coverage includes the EU, Iceland, Norway and Switzerland. The dataset
 includes polygon features, point features and a related attribute table
 which can be joined on the URAU code field.
 }
@@ -125,9 +125,9 @@ if (!is.null(cities)) {
 \seealso{
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
-See \code{\link[=gisco_get_unit_urban_audit]{gisco_get_unit_urban_audit()}} to download single files.
+See \code{\link[=gisco_get_unit_urban_audit]{gisco_get_unit_urban_audit()}} to download single-unit files.
 
-Other statistical unit datasets:
+Statistical unit datasets:
 \code{\link[=gisco_get_census]{gisco_get_census()}},
 \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
 \code{\link[=gisco_get_lau]{gisco_get_lau()}},

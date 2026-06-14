@@ -28,7 +28,7 @@ Currently only \code{"2011"} is provided.}
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
-cached file. Default is \code{FALSE}. When set to \code{TRUE}, it forces a new
+cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
@@ -43,8 +43,8 @@ download.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset shows pan-European communal boundaries depicting the situation
-at the corresponding census.
+This dataset shows pan-European communal boundaries for the corresponding
+census.
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
@@ -60,7 +60,7 @@ pts
 \seealso{
 See \code{\link[=gisco_id_api_census_grid]{gisco_id_api_census_grid()}} to download via GISCO ID service API.
 
-Other statistical unit datasets:
+Statistical unit datasets:
 \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
 \code{\link[=gisco_get_lau]{gisco_get_lau()}},
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}},

@@ -7,14 +7,14 @@
 #' [`cache_dir`][gisco_set_cache_dir()].
 #'
 #' Unlike [gisco_get_countries()], [gisco_get_nuts()] or
-#' [gisco_get_urban_audit()] (which downloads a full dataset and applies
-#' filters), these functions download a single file per unit, reducing the time
+#' [gisco_get_urban_audit()] (which download full datasets and apply filters),
+#' these functions download a single-unit file, reducing the time
 #' needed to download and read data into your \R session.
 #'
 #' @family extra
 #' @encoding UTF-8
 #' @inheritParams gisco_get_countries
-#' @param unit A character vector of unit IDs to be downloaded. See **Details**.
+#' @param unit A character vector of unit IDs to download. See **Details**.
 #' @param year A character string or numeric value with the release year of the
 #'   file.
 #' @param spatialtype A character string with the type of geometry to return.
@@ -23,11 +23,11 @@
 #' - `"LB"`: Labels - `POINT` object.
 #'
 #' @inherit gisco_get_countries return
-#' @inheritSection gisco_get_countries Note
 #' @details
 #' Check the available `unit` IDs for the required argument combination with
 #' [gisco_get_metadata()].
 #'
+#' @inheritSection gisco_get_countries Note
 #' @source
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>
 #'

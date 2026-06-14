@@ -3,11 +3,12 @@
 #' @description
 #' `r lifecycle::badge("deprecated")`
 #'
-#' This function is deprecated. Use:
+#' Deprecated. Use one of these replacements:
 #'
 #' - [gisco_get_metadata()] (equivalent to `mode = "df"`).
 #' - [`?gisco_get_unit`][gisco_get_unit] functions (equivalent to
-#'   `mode = "sf"`)
+#'   `mode = "sf"`).
+#'
 #' @family deprecated functions
 #' @encoding UTF-8
 #' @inheritParams gisco_get_unit
@@ -17,12 +18,12 @@
 #' @param mode A character string controlling the output of the function.
 #'   Possible values are `"sf"` or `"df"`. See **Value**.
 #'
-#' @inherit gisco_get_unit source
-#' @inheritSection gisco_get_unit Note
 #' @return
 #' A [`sf`][sf::st_sf] object when `mode = "sf"` or a
 #' [tibble][tibble::tbl_df] when `mode = "df"`.
 #'
+#' @inheritSection gisco_get_unit Note
+#' @inherit gisco_get_unit source
 #' @seealso
 #' [gisco_get_metadata()], [`?gisco_get_unit`][gisco_get_unit] functions.
 #'

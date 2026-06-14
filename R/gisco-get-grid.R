@@ -1,9 +1,9 @@
 #' Grid dataset
 #'
 #' @description
-#' These datasets contain grid cells covering the European land
-#' territory at resolutions from 1 km to 100 km. Base statistics such
-#' as population figures are provided for these cells.
+#' These datasets contain grid cells covering the European land territory at
+#' resolutions from 1 km to 100 km. Base statistics such as population figures
+#' are provided for these cells.
 #'
 #' @family grids
 #' @encoding UTF-8
@@ -23,7 +23,7 @@
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 #'
-#' Specific download provisions apply, see
+#' Specific download provisions apply. See
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 #'
 #' @examplesIf gisco_check_access()
