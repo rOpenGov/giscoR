@@ -43,7 +43,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `geo`:
 
-  Same as `NUTS_ID`, provided for compatibility with
+  Same value as `NUTS_ID`, provided for compatibility with
   [eurostat](https://CRAN.R-project.org/package=eurostat).
 
 - `geometry`:

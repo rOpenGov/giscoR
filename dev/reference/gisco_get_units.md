@@ -2,13 +2,13 @@
 
 **\[deprecated\]**
 
-This function is deprecated. Use:
+Deprecated. Use one of these replacements:
 
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
   (equivalent to `mode = "df"`).
 
 - [`?gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-  functions (equivalent to `mode = "sf"`)
+  functions (equivalent to `mode = "sf"`).
 
 ## Usage
 
@@ -67,14 +67,14 @@ All source files are `.geojson` files.
 
 - cache:
 
-  A logical value indicating whether to cache results. Default is
+  A logical value indicating whether to cache results. Defaults to
   `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 

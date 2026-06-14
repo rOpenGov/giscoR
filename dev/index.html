@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>giscoR | Download geospatial data from Eurostat's GISCO API • giscoR</title>
+<title>giscoR | Download Eurostat GISCO geospatial data • giscoR</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
 <link rel="icon" type="”image/svg+xml”" href="favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -17,10 +17,10 @@
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/B612_Mono-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="giscoR | Download geospatial data from Eurostat's GISCO API">
-<meta name="description" content="giscoR helps download global and European geospatial data from Eurostat's GISCO (Geographic Information System of the Commission) database. It also provides lightweight GISCO datasets that can be used without downloading additional files.
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="giscoR | Download Eurostat GISCO geospatial data">
+<meta name="description" content="giscoR helps download global and European geospatial data from Eurostat's GISCO (Geographic Information System of the Commission) geodata distribution. It also provides lightweight GISCO datasets that can be used without downloading additional files.
 ">
-<meta property="og:description" content="giscoR helps download global and European geospatial data from Eurostat's GISCO (Geographic Information System of the Commission) database. It also provides lightweight GISCO datasets that can be used without downloading additional files.
+<meta property="og:description" content="giscoR helps download global and European geospatial data from Eurostat's GISCO (Geographic Information System of the Commission) geodata distribution. It also provides lightweight GISCO datasets that can be used without downloading additional files.
 ">
 <meta property="og:image" content="https://ropengov.github.io/giscoR/logo.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -85,15 +85,15 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is an <strong>R</strong> package that provides a simple interface to Eurostat’s <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO</a> database. It lets you download and work with global and European geospatial datasets directly in <strong>R</strong>, including country boundaries, NUTS regions, coastal lines and labels.</p>
+<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is an <strong>R</strong> package that provides a simple interface to Eurostat’s <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO geodata distribution</a>. It lets you download and work with global and European geospatial datasets directly in <strong>R</strong>, including country boundaries, NUTS regions, administrative units and statistical units.</p>
 <div class="section level2">
 <h2 id="key-features">Key features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h2>
 <ul>
-<li>Retrieve GISCO datasets for countries, regions, administrative units and statistical units.</li>
+<li>Retrieve GISCO datasets for country boundaries, NUTS regions, administrative units and statistical units.</li>
 <li>Access data at multiple resolutions: <code>60M</code>, <code>20M</code>, <code>10M</code>, <code>03M</code>, <code>01M</code>.</li>
 <li>Choose from three coordinate reference systems: <strong>EPSG:4326</strong>, <strong>EPSG:3035</strong> or <strong>EPSG:3857</strong>.</li>
-<li>Return <strong>sf</strong> objects for spatial analysis.</li>
+<li>Return <strong>sf</strong> package objects for spatial analysis.</li>
 <li>Cache downloaded files for faster repeated access.</li>
 </ul>
 </div>
@@ -177,7 +177,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/eurostat/" class="external-link">eurostat</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Retrieve **sf** objects.</span></span>
+<span><span class="co"># Retrieve **sf** package objects.</span></span>
 <span><span class="va">nuts3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/gisco_get_nuts.html">gisco_get_nuts</a></span><span class="op">(</span></span>
 <span>  year <span class="op">=</span> <span class="fl">2021</span>,</span>
 <span>  epsg <span class="op">=</span> <span class="fl">3035</span>,</span>
@@ -268,7 +268,7 @@
 <span>  <span class="co"># Add labels.</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
 <span>    title <span class="op">=</span> <span class="st">"Population density in 2021"</span>,</span>
-<span>    subtitle <span class="op">=</span> <span class="st">"NUTS-3 level"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"NUTS 3 level"</span>,</span>
 <span>    fill <span class="op">=</span> <span class="st">"people per square kilometer"</span>,</span>
 <span>    caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
 <span>      <span class="st">"Source: Eurostat, "</span>,</span>
@@ -284,7 +284,7 @@
 <p>Large datasets, such as LAU or high-resolution files, can exceed 50 MB. Set a cache directory with:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/gisco_set_cache_dir.html">gisco_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>Files will be stored in the local cache for faster repeated access.</p>
+<p>Files are stored in the local cache for faster repeated access.</p>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
@@ -304,16 +304,16 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite ‘giscoR’ in publications use:</p>
-<p>Hernangómez D (2026). <em>giscoR: Download Geospatial Data from Eurostats GISCO API</em>. <a href="doi:10.32614/CRAN.package.giscoR" class="uri">doi:10.32614/CRAN.package.giscoR</a> <a href="https://doi.org/10.32614/CRAN.package.giscoR" class="external-link uri">https://doi.org/10.32614/CRAN.package.giscoR</a>. <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a>.</p>
+<p>Hernangómez D (2026). <em>giscoR: Download Eurostat GISCO Geospatial Data</em>. <a href="doi:10.32614/CRAN.package.giscoR" class="uri">doi:10.32614/CRAN.package.giscoR</a> <a href="https://doi.org/10.32614/CRAN.package.giscoR" class="external-link uri">https://doi.org/10.32614/CRAN.package.giscoR</a>. <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a>.</p>
 <p>A BibTeX entry for LaTeX users is:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>giscoR,</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  title <span class="ot">=</span> {{giscoR}<span class="sc">:</span> Download Geospatial Data from Eurostats GISCO API},</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  title <span class="ot">=</span> {{giscoR}<span class="sc">:</span> Download Eurostat GISCO Geospatial Data},</span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.giscoR},</span>
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
 <span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="dv">1</span>.<span class="fl">0.9000</span>},</span>
 <span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropengov.github.io<span class="sc">/</span>giscoR<span class="sc">/</span>},</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools to download global and European geospatial data from Eurostats <span class="fu">GISCO</span> (Geographic Information System of the Commission) database <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span>. The package provides helpers <span class="cf">for</span> working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools to download global and European geospatial data from Eurostats <span class="fu">GISCO</span> (Geographic Information System of the Commission) geodata distribution <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span>. The package provides helpers <span class="cf">for</span> working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},</span>
 <span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">

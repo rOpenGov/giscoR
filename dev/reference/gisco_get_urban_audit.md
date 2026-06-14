@@ -1,12 +1,12 @@
 # Urban Audit dataset
 
 This dataset contains the boundaries of cities (`"CITIES"`), greater
-cities (`"GREATER_CITIES"`) and functional urban areas (`"FUA"`) as
-defined according to the EC-OECD city definition. This is used for the
-Eurostat Urban Audit data collection.
+cities (`"GREATER_CITIES"`) and functional urban areas (`"FUA"`) defined
+according to the EC-OECD city definition. It is used for the Eurostat
+Urban Audit data collection.
 
-This function gets data from the aggregated GISCO Urban Audit file. To
-download individual Urban Audit files, use
+Downloads data from the aggregated GISCO Urban Audit file. To download
+single-unit Urban Audit files, use
 [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md).
 
 ## Usage
@@ -54,14 +54,14 @@ Copyright:
 
 - cache:
 
-  A logical value indicating whether to cache results. Default is
+  A logical value indicating whether to cache results. Defaults to
   `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -85,8 +85,8 @@ Copyright:
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - level:
@@ -110,12 +110,12 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 For more information, see: [Eurostat - Statistics
 Explained](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Territorial_typologies_for_European_cities_and_metropolitan_regions).
 
-The cities are defined at several conceptual levels:
+Cities are defined at several conceptual levels:
 
 - The core city (`"CITIES"`), using an administrative definition.
 
 - The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating
-  the functional urban region. Coverage is the EU plus Iceland, Norway
+  the functional urban region. Coverage includes the EU, Iceland, Norway
   and Switzerland. The dataset includes polygon features, point features
   and a related attribute table which can be joined on the URAU code
   field.
@@ -139,9 +139,9 @@ to perform a bulk download of datasets.
 
 See
 [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-to download single files.
+to download single-unit files.
 
-Other statistical unit datasets:
+Statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),

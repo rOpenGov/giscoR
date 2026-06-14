@@ -36,8 +36,8 @@ Copyright:
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - cache_dir:
@@ -48,8 +48,8 @@ Copyright:
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
@@ -81,7 +81,7 @@ See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
 to perform a bulk download of datasets.
 
-Other administrative unit datasets:
+Administrative unit datasets:
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md),
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md)
 

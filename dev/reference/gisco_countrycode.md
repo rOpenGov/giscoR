@@ -1,10 +1,11 @@
 # Database with different country code schemes and world regions
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-containing conversions between country code schemes (Eurostat, ISO2 and
-ISO3) and geographic regions as provided by the World Bank and the UN
-([M49 Standard](https://unstats.un.org/unsd/methodology/m49/)). This
-database was extracted from the
+containing conversions between country code schemes (Eurostat, ISO
+3166-1 alpha-2 and ISO 3166-1 alpha-3) and geographic regions from the
+World Bank and the UN ([M49
+Standard](https://unstats.un.org/unsd/methodology/m49/)). This database
+was extracted from the
 [countrycode](https://CRAN.R-project.org/package=countrycode) package.
 
 ## Format
@@ -34,7 +35,7 @@ A data frame with 249 rows and 13 variables:
 
 - `continent`:
 
-  As provided by the World Bank.
+  Continent from the World Bank.
 
 - `un.region.code`:
 
@@ -62,7 +63,8 @@ A data frame with 249 rows and 13 variables:
 
 - `eu`:
 
-  Logical indicating if the country belongs to the European Union.
+  Logical value indicating whether the country belongs to the European
+  Union.
 
 ## Source
 

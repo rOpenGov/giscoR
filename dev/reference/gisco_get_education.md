@@ -2,7 +2,7 @@
 
 This dataset integrates Member States' official data on the location of
 education services. Additional information on these services is included
-when available (see **Details**).
+when available. See **Details**.
 
 ## Usage
 
@@ -24,11 +24,11 @@ gisco_get_education(
 There are no specific download rules for the datasets shown below.
 However, please refer to [the general copyright
 notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
-provisions, which must be complied with. Permission to download and use
-these data is subject to acceptance of these rules.
+provisions, which apply to these datasets. Permission to download and
+use these data is subject to acceptance of those rules.
 
 The data are extracted from official national registers. They may
-contain inconsistencies, inaccuracies and gaps, due to the heterogeneity
+contain inconsistencies, inaccuracies and gaps due to the heterogeneity
 of the national input data.
 
 ## Arguments
@@ -40,14 +40,14 @@ of the national input data.
 
 - cache:
 
-  A logical value indicating whether to cache results. Default is
+  A logical value indicating whether to cache results. Defaults to
   `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -62,8 +62,8 @@ of the national input data.
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 ## Value
@@ -74,12 +74,12 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 Files are distributed in [EPSG:4326](https://epsg.io/4326).
 
-Brief descriptions of each attribute:
+The following table describes each attribute:
 
 |  |  |
 |----|----|
 | **Attribute** | **Description** |
-| `id` | The education service identifier. It is based on national identification codes, if they exist. |
+| `id` | The education service identifier, based on national identification codes when available. |
 | `name` | The name of the education institution. |
 | `site_name` | The name of a specific site or branch of an education institution. |
 | `lat` | Latitude (WGS 84). |
@@ -99,13 +99,13 @@ Brief descriptions of each attribute:
 | `tel` | Telephone number. |
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
-| `ref_date` | The reference date (`DD/MM/YYYY`) the data refers to. The dataset represents the state on this date. |
+| `ref_date` | The reference date (`DD/MM/YYYY`) for the data. The dataset represents the state on this date. |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the education service. |
 
 ## See also
 
-Other basic services datasets:
+Basic services datasets:
 [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_healthcare.md)
 
 ## Examples

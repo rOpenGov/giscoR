@@ -1,7 +1,7 @@
 # Census dataset
 
-This dataset shows pan-European communal boundaries depicting the
-situation at the corresponding census.
+This dataset shows pan-European communal boundaries for the
+corresponding census.
 
 ## Usage
 
@@ -37,8 +37,8 @@ Copyright:
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
@@ -62,7 +62,7 @@ See
 [`gisco_id_api_census_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Other statistical unit datasets:
+Statistical unit datasets:
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md),

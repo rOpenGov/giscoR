@@ -11,8 +11,8 @@ distribution](https://gisco-services.ec.europa.eu/distribution/v2/).
 
 GISCO provides geographic data for the European Union, EU member states
 and subnational regions. It supplies geospatial files in different
-formats, focusing especially on Europe but also offering global datasets
-such as country boundaries, labels and coastal lines.
+formats, with a focus on Europe and global datasets such as country
+boundaries, labels and coastal lines.
 
 GISCO supplies data at multiple resolutions: high-resolution datasets
 for small areas (01M, 03M) and lighter datasets for larger areas (10M,
@@ -20,8 +20,8 @@ for small areas (01M, 03M) and lighter datasets for larger areas (10M,
 [EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035) and
 [EPSG:3857](https://epsg.io/3857).
 
-**giscoR** returns
-[**sf**](https://r-spatial.github.io/sf/reference/sf.html) objects. See
+**giscoR** returns [**sf** package
+objects](https://r-spatial.github.io/sf/reference/sf.html). See
 <https://r-spatial.github.io/sf/> for details.
 
 ## Caching
@@ -35,8 +35,8 @@ gisco_set_cache_dir("./path/to/location")
 ```
 
 If a file is not available locally, it will be downloaded to that
-directory so subsequent requests for the same data can be served from
-the local cache.
+directory so subsequent requests for the same data can read from the
+local cache.
 
 If downloading fails, you can manually download the file from the [GISCO
 geodata
@@ -138,9 +138,9 @@ ggplot(world) +
 
 EU member states and candidate countries (2024)
 
-You can select specific countries by name (in any language), ISO3 codes,
-or Eurostat codes. However, you cannot mix these identifier types in a
-single call.
+You can select specific countries by name in any language, ISO 3166-1
+alpha-3 codes or Eurostat codes. However, you cannot mix these
+identifier types in a single call.
 
 You can also combine datasets by using the same `resolution`, `epsg`,
 and (optionally) `year`:
@@ -181,8 +181,9 @@ Political map of North Africa
 ## Thematic maps with **giscoR**
 
 This example shows how **giscoR** can be used with Eurostat data. For
-plotting, we use **ggplot2**. Any package that supports **sf** objects,
-such as **tmap**, **mapsf** or **leaflet**, can be used.
+plotting, we use the **ggplot2** package. Any package that supports
+**sf** package objects, such as **tmap**, **mapsf** or **leaflet**, can
+be used.
 
 ``` r
 # Load EU member data.
@@ -207,7 +208,7 @@ pps <- get_eurostat("tgs00026") |>
 #> 
 indexed 0B in  0s, 0B/s
 indexed 2.15GB in  0s, 2.15GB/s
-                                                                                       
+                                                                                         
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -266,7 +267,7 @@ ggplot(nuts2_sf) +
   # Add labels.
   labs(
     title = "Disposable income of private households (2022)",
-    subtitle = "NUTS-2 level",
+    subtitle = "NUTS 2 level",
     fill = "euros (thousands)",
     caption = paste0(
       "Source: Eurostat, ", gisco_attributions()

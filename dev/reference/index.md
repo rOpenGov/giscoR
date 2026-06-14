@@ -35,7 +35,7 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 - [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md)
   : Local Administrative Units (LAU) dataset
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md)
-  : Territorial units for statistics (NUTS) dataset
+  : NUTS statistical units dataset
 - [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md)
   : Urban Audit dataset
 
@@ -67,9 +67,9 @@ services.
 - [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_healthcare.md)
   : Healthcare services in Europe
 
-### Additional downloads
+### Single-unit and additional downloads
 
-Download individual unit datasets and other GISCO resources.
+Download single-unit datasets and other GISCO resources.
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
   : GISCO geodata bulk download
@@ -104,8 +104,9 @@ Helpers for attribution and other package utilities.
 
 ## GISCO API tools
 
-Query additional [APIs and
-tools](https://ec.europa.eu/eurostat/web/gisco/tools) provided by GISCO.
+Query additional [GISCO APIs and
+tools](https://ec.europa.eu/eurostat/web/gisco/tools), including the
+GISCO ID service API and GISCO Address API.
 
 - [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_reverse()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
@@ -177,7 +178,7 @@ Datasets included in
 
 - [`giscoR`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
-  : giscoR: Download Geospatial Data from Eurostat's GISCO API
+  : giscoR: Download Eurostat GISCO Geospatial Data
 
 ## Deprecated functions
 

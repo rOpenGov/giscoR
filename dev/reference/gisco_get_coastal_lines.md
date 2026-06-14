@@ -44,14 +44,14 @@ Copyright:
 
 - cache:
 
-  A logical value indicating whether to cache results. Default is
+  A logical value indicating whether to cache results. Defaults to
   `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -100,7 +100,7 @@ See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
 to perform a bulk download of datasets.
 
-Other statistical unit datasets:
+Statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md),

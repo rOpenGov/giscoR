@@ -1,4 +1,4 @@
-# Territorial units for statistics (NUTS) dataset
+# NUTS statistical units dataset
 
 The GISCO statistical unit dataset represents the NUTS (nomenclature of
 territorial units for statistics) and statistical regions by means of
@@ -6,7 +6,7 @@ multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
 
-NUTS is a hierarchical system divided into 3 levels:
+NUTS is a hierarchical system divided into three levels:
 
 - NUTS 1: major socio-economic regions.
 
@@ -17,9 +17,9 @@ NUTS is a hierarchical system divided into 3 levels:
 There is also a NUTS 0 level, which usually corresponds to national
 boundaries.
 
-This function gets data from the aggregated GISCO NUTS file, which
-contains data for all countries at the requested NUTS level or levels.
-To download individual NUTS files, use
+Downloads data from the aggregated GISCO NUTS file, which contains data
+for all countries at the requested NUTS level or levels. To download
+single-unit NUTS files, use
 [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md).
 
 ## Usage
@@ -69,14 +69,14 @@ Copyright:
 
 - cache:
 
-  A logical value indicating whether to cache results. Default is
+  A logical value indicating whether to cache results. Defaults to
   `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -120,8 +120,8 @@ Copyright:
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - nuts_id:
@@ -147,8 +147,8 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 The NUTS nomenclature is a hierarchical classification of statistical
 regions and subdivides the EU economic territory into regions of three
 different levels (NUTS 1, 2 and 3, moving respectively from larger to
-smaller territorial units). NUTS 1 is the most aggregated level. An
-Additional country level (NUTS 0) data is also available for countries
+smaller territorial units). NUTS 1 is the most aggregated level.
+Additional country-level NUTS 0 data are also available for countries
 where the statistical national level does not coincide with the
 administrative boundaries.
 
@@ -177,13 +177,13 @@ to perform a bulk download of datasets.
 
 See
 [`gisco_get_unit_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-to download single files.
+to download single-unit files.
 
 See
 [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Other statistical unit datasets:
+Statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),
@@ -203,15 +203,15 @@ ggplot(nuts2) +
     crs = 3035, xlim = c(2377294, 7453440),
     ylim = c(1313597, 5628510)
   ) +
-  labs(title = "NUTS-2 levels")
+  labs(title = "NUTS 2 levels")
 
-# NUTS-3 for Germany
+# NUTS 3 for Germany.
 germany_nuts3 <- gisco_get_nuts(nuts_level = 3, country = "Germany")
 
 ggplot(germany_nuts3) +
   geom_sf() +
   labs(
-    title = "NUTS-3 levels",
+    title = "NUTS 3 levels",
     subtitle = "Germany",
     caption = gisco_attributions()
   )

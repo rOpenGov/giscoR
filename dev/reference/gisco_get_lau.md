@@ -50,14 +50,14 @@ Copyright:
 
 - cache:
 
-  **\[deprecated\]**. This function always caches the result due to its
-  size. See **Caching strategies** section in
+  **\[deprecated\]**. Always caches the result due to its size. See
+  **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -72,8 +72,8 @@ Copyright:
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - gisco_id:
@@ -94,8 +94,8 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions
 that together subdivide the EU economic territory into regions of five
-different levels (NUTS 1, 2 and 3 and LAU, respectively, moving from
-larger to smaller territorial units).
+different levels, moving from larger to smaller territorial units: NUTS
+1, 2 and 3 and LAU.
 
 The LAU classification is not covered by any legislative act.
 Geographical extent covers the European Union, EFTA countries and
@@ -125,7 +125,7 @@ See
 [`gisco_id_api_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Other statistical unit datasets:
+Statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md),

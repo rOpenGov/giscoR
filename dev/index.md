@@ -1,21 +1,21 @@
 # giscoR
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is an **R** package
-that provides a simple interface to Eurostat’s
-[GISCO](https://ec.europa.eu/eurostat/web/gisco) database. It lets you
+that provides a simple interface to Eurostat’s [GISCO geodata
+distribution](https://ec.europa.eu/eurostat/web/gisco). It lets you
 download and work with global and European geospatial datasets directly
-in **R**, including country boundaries, NUTS regions, coastal lines and
-labels.
+in **R**, including country boundaries, NUTS regions, administrative
+units and statistical units.
 
 ## Key features
 
-- Retrieve GISCO datasets for countries, regions, administrative units
-  and statistical units.
+- Retrieve GISCO datasets for country boundaries, NUTS regions,
+  administrative units and statistical units.
 - Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
   `01M`.
 - Choose from three coordinate reference systems: **EPSG:4326**,
   **EPSG:3035** or **EPSG:3857**.
-- Return **sf** objects for spatial analysis.
+- Return **sf** package objects for spatial analysis.
 - Cache downloaded files for faster repeated access.
 
 ## Installation
@@ -112,7 +112,7 @@ library(dplyr)
 library(eurostat)
 library(ggplot2)
 
-# Retrieve **sf** objects.
+# Retrieve **sf** package objects.
 nuts3 <- gisco_get_nuts(
   year = 2021,
   epsg = 3035,
@@ -211,7 +211,7 @@ ggplot(nuts3_sf) +
   # Add labels.
   labs(
     title = "Population density in 2021",
-    subtitle = "NUTS-3 level",
+    subtitle = "NUTS 3 level",
     fill = "people per square kilometer",
     caption = paste0(
       "Source: Eurostat, ",
@@ -234,7 +234,7 @@ Set a cache directory with:
 gisco_set_cache_dir("./path/to/location")
 ```
 
-Files will be stored in the local cache for faster repeated access.
+Files are stored in the local cache for faster repeated access.
 
 ## Contribute
 
@@ -252,8 +252,8 @@ Contributions are welcome:
 
 To cite ‘giscoR’ in publications use:
 
-Hernangómez D (2026). *giscoR: Download Geospatial Data from Eurostats
-GISCO API*. <doi:10.32614/CRAN.package.giscoR>
+Hernangómez D (2026). *giscoR: Download Eurostat GISCO Geospatial Data*.
+<doi:10.32614/CRAN.package.giscoR>
 <https://doi.org/10.32614/CRAN.package.giscoR>.
 <https://ropengov.github.io/giscoR/>.
 
@@ -261,13 +261,13 @@ A BibTeX entry for LaTeX users is:
 
 ``` R
 @Manual{R-giscoR,
-  title = {{giscoR}: Download Geospatial Data from Eurostats GISCO API},
+  title = {{giscoR}: Download Eurostat GISCO Geospatial Data},
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2026},
   version = {1.1.0.9000},
   url = {https://ropengov.github.io/giscoR/},
-  abstract = {Tools to download global and European geospatial data from Eurostats GISCO (Geographic Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
+  abstract = {Tools to download global and European geospatial data from Eurostats GISCO (Geographic Information System of the Commission) geodata distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
 }
 ```
 

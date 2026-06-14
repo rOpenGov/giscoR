@@ -62,8 +62,8 @@ gisco_bulk_download(
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
@@ -91,10 +91,9 @@ gisco_bulk_download(
 
 - recursive:
 
-  **\[deprecated\]** `recursive` is no longer supported. This function
-  will never perform recursive extraction of child `.zip` files. This is
-  the case for "`shp.zip` inside the top-level `.zip`, which will not be
-  unzipped.
+  **\[deprecated\]** `recursive` is no longer supported. It will never
+  perform recursive extraction of child `.zip` files. This is the case
+  for `shp.zip` inside the top-level `.zip`, which will not be unzipped.
 
 - ...:
 
@@ -138,7 +137,7 @@ corresponding function to connect it with the downloaded files (see
 
 ## See also
 
-Additional utilities for downloading datasets:
+Single-unit and additional download utilities:
 [`gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
 
 ## Examples
@@ -179,8 +178,8 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache directory is /tmp/RtmpGgPf1J/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpGgPf1J/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/RtmpQlOsMw/testexample/countries.
+#> ✔ File already cached: /tmp/RtmpQlOsMw/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }

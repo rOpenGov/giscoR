@@ -11,7 +11,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `CNTR_ID`:
 
-  Country ID as per Eurostat.
+  Country ID from Eurostat.
 
 - `CNTR_NAME`:
 
@@ -27,11 +27,11 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `ISO3_CODE`:
 
-  ISO 3166-1 alpha-3 code of each country, as provided by GISCO.
+  ISO 3166-1 alpha-3 code of each country from GISCO.
 
 - `SVRG_UN`:
 
-  Sovereign status as per United Nations.
+  Sovereign status according to the United Nations.
 
 - `CAPT`:
 

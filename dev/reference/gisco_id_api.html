@@ -185,34 +185,34 @@ coordinate reference system.</p></dd>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The available endpoints are:</p><ul><li><p><code>gisco_id_api_geonames()</code>: Get geographic placenames from longitude and
 latitude coordinates or a bounding box.</p></li>
-<li><p><code>gisco_id_api_nuts()</code>: Returns NUTS regions from either longitude and
+<li><p><code>gisco_id_api_nuts()</code>: Return NUTS regions from either longitude and
 latitude coordinates or an ID. Accepted values for <code>year</code>
 are <code>"2024"</code>, <code>"2021"</code>, <code>"2016"</code>, <code>"2013"</code>, <code>"2010"</code>, <code>"2006"</code>
 .</p></li>
-<li><p><code>gisco_id_api_lau()</code>: Returns the ID and, optionally, geometry for Local
+<li><p><code>gisco_id_api_lau()</code>: Return the ID and, optionally, geometry for Local
 Administrative Units (LAU) at specified longitude and latitude coordinates.
 Accepted values for <code>year</code>
 are <code>"2024"</code>, <code>"2023"</code>, <code>"2022"</code>, <code>"2021"</code>, <code>"2020"</code>, <code>"2019"</code>, <code>"2018"</code>, <code>"2017"</code>, <code>"2016"</code>, <code>"2015"</code>, <code>"2014"</code>, <code>"2013"</code>, <code>"2012"</code>, <code>"2011"</code>
 .</p></li>
-<li><p><code>gisco_id_api_country()</code>: Returns the ID and, optionally, geometry for
+<li><p><code>gisco_id_api_country()</code>: Return the ID and, optionally, geometry for
 countries at specified longitude and latitude coordinates. Accepted values
 for <code>year</code>
 are <code>"2024"</code>, <code>"2020"</code>, <code>"2016"</code>, <code>"2013"</code>, <code>"2010"</code>, <code>"2006"</code>
 .</p></li>
-<li><p><code>gisco_id_api_river_basin()</code>: Returns the ID and, optionally, geometry
+<li><p><code>gisco_id_api_river_basin()</code>: Return the ID and, optionally, geometry
 for river basins at specified longitude and latitude coordinates, based on
 the Water Framework Directive (WFD) reference spatial datasets. Accepted
 values for <code>year</code>
 are <code>"2024"</code>, <code>"2023"</code>, <code>"2022"</code>, <code>"2021"</code>, <code>"2020"</code>, <code>"2019"</code>
 .</p></li>
-<li><p><code>gisco_id_api_biogeo_region()</code>: Returns the ID and, optionally,
+<li><p><code>gisco_id_api_biogeo_region()</code>: Return the ID and, optionally,
 geometry for biogeo regions at specified longitude and latitude
 coordinates. The biogeographical regions dataset contains the official
 delineations used in the Habitats Directive (92/43/EEC) and for the
 EMERALD Network. Accepted values for <code>year</code>
 is <code>"2016"</code>
 .</p></li>
-<li><p><code>gisco_id_api_census_grid()</code>: Returns the ID and, optionally, geometry
+<li><p><code>gisco_id_api_census_grid()</code>: Return the ID and, optionally, geometry
 for census grid cells at specified longitude and latitude coordinates.
 Accepted values for <code>year</code>
 is <code>"2021"</code>
@@ -260,7 +260,7 @@ is <code>"2021"</code>
 <span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">lau</span>, fill <span class="op">=</span> <span class="st">"orange"</span>, color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span></span></span>
 <span class="r-in"><span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>      title <span class="op">=</span> <span class="st">"NUTS3 and LAU boundaries"</span>,</span></span>
+<span class="r-in"><span>      title <span class="op">=</span> <span class="st">"NUTS 3 and LAU boundaries"</span>,</span></span>
 <span class="r-in"><span>      subtitle <span class="op">=</span> <span class="st">"Arrasate, Basque Country, Spain"</span>,</span></span>
 <span class="r-in"><span>      caption <span class="op">=</span> <span class="st">"Source: GISCO ID service API"</span></span></span>
 <span class="r-in"><span>    <span class="op">)</span></span></span>
