@@ -139,7 +139,7 @@ popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
 #> 
 indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
+indexed 1.00TB in  0s, 331.46TB/s
                                                                               
 ```
 
@@ -254,7 +254,7 @@ To cite ‘giscoR’ in publications use:
 
 Hernangómez D (2026). *giscoR: Download Eurostat GISCO Geospatial Data*.
 <doi:10.32614/CRAN.package.giscoR>
-<https://doi.org/10.32614/CRAN.package.giscoR>.
+<https://doi.org/10.32614/CRAN.package.giscoR>,
 <https://ropengov.github.io/giscoR/>.
 
 A BibTeX entry for LaTeX users is:
@@ -470,7 +470,7 @@ Datasets included in
 
 - [`giscoR`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
-  : giscoR: Download Eurostat GISCO Geospatial Data
+  : giscoR: Download GISCO Spatial Data from Eurostat
 
 ## Deprecated functions
 

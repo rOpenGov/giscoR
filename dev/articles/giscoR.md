@@ -279,3 +279,5 @@ ggplot(nuts2_sf) +
 (2022)](./fig-giscor-1.png)
 
 Disposable income of private households by NUTS 2 regions (2022)
+
+Use these examples as a starting point for your own maps.

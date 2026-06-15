@@ -178,7 +178,7 @@ Datasets included in
 
 - [`giscoR`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
-  : giscoR: Download Eurostat GISCO Geospatial Data
+  : giscoR: Download GISCO Spatial Data from Eurostat
 
 ## Deprecated functions
 
