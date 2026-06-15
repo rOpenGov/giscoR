@@ -172,10 +172,6 @@ Next, download the data from Eurostat.
 # Retrieve Eurostat data.
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 1.00TB in  0s, 331.46TB/s
-                                                                              
 ```
 
 Finally, merge and transform the data to create the plot.
@@ -285,21 +281,21 @@ Contributions are welcome:
 
 To cite ‘giscoR’ in publications use:
 
-Hernangómez D (2026). *giscoR: Download Eurostat GISCO Geospatial Data*.
-doi:10.32614/CRAN.package.giscoR
-<https://doi.org/10.32614/CRAN.package.giscoR>,
+Hernangómez D (2026). *giscoR: Download GISCO Spatial Data from
+Eurostat*. doi:10.32614/CRAN.package.giscoR
+<https://doi.org/10.32614/CRAN.package.giscoR>.
 <https://ropengov.github.io/giscoR/>.
 
 A BibTeX entry for LaTeX users is:
 
     @Manual{R-giscoR,
-      title = {{giscoR}: Download Eurostat GISCO Geospatial Data},
+      title = {{giscoR}: Download GISCO Spatial Data from Eurostat},
       doi = {10.32614/CRAN.package.giscoR},
       author = {Diego Hernangómez},
       year = {2026},
       version = {1.1.0.9000},
       url = {https://ropengov.github.io/giscoR/},
-      abstract = {Tools to download global and European geospatial data from Eurostats GISCO (Geographic Information System of the Commission) geodata distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
+      abstract = {Tools to download global and European spatial data from GISCO, the Geographic Information System of the Commission, provided by Eurostat <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
     }
 
 ## General copyright
