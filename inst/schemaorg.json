@@ -24,9 +24,9 @@
           "name": "EuroGeographics"
         }
       ],
-      "description": "Tools to download global and European geospatial data from Eurostat's GISCO (Geographic Information System of the Commission) geodata distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.",
+      "description": "Tools to download global and European spatial data from GISCO, the Geographic Information System of the Commission, provided by Eurostat <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, 'NUTS' regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.",
       "license": "https://spdx.org/licenses/GPL-3.0",
-      "name": "giscoR: Download Eurostat GISCO Geospatial Data",
+      "name": "giscoR: Download GISCO Spatial Data from Eurostat",
       "programmingLanguage": {
         "type": "ComputerLanguage",
         "name": "R",
@@ -38,7 +38,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "runtimePlatform": "R version 4.6.0 (2026-04-24 ucrt)",
+      "runtimePlatform": "R version 4.5.3 (2026-03-11)",
       "version": "1.1.0.9000"
     },
     {
@@ -49,7 +49,7 @@
         "familyName": "Hernangómez",
         "givenName": "Diego"
       },
-      "name": "{giscoR}: Download Eurostat GISCO Geospatial Data"
+      "name": "{giscoR}: Download GISCO Spatial Data from Eurostat"
     }
   ]
 }

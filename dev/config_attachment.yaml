@@ -3,12 +3,10 @@ path.d: DESCRIPTION
 dir.r: R
 dir.v: vignettes
 dir.t: tests
-extra.suggests:
-  - quarto
-  - eurostat
-pkg_ignore: rmarkdown
+extra.suggests: eurostat
+pkg_ignore: ~
 document: yes
 normalize: yes
-inside_rmd: no
+inside_rmd: ~
 must.exist: yes
 check_if_suggests_is_installed: yes

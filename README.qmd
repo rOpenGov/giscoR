@@ -39,21 +39,20 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 <!-- badges: end -->
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is an **R** package that
-provides a simple interface to Eurostat's
-[GISCO geodata distribution](https://ec.europa.eu/eurostat/web/gisco). It lets
-you download and work with global and European geospatial datasets directly in
-**R**, including country boundaries, NUTS regions, administrative units and
-statistical units.
+provides a simple interface to Eurostat's [GISCO geodata
+distribution](https://ec.europa.eu/eurostat/web/gisco). It lets you download and
+work with global and European geospatial datasets directly in **R**, including
+country boundaries, NUTS regions, administrative units and statistical units.
 
 ## Key features
 
-- Retrieve GISCO datasets for country boundaries, NUTS regions, administrative
-  units and statistical units.
-- Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`, `01M`.
-- Choose from three coordinate reference systems: **EPSG:4326**,
-  **EPSG:3035** or **EPSG:3857**.
-- Return **sf** package objects for spatial analysis.
-- Cache downloaded files for faster repeated access.
+-   Retrieve GISCO datasets for country boundaries, NUTS regions, administrative
+    units and statistical units.
+-   Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`, `01M`.
+-   Choose from three coordinate reference systems: **EPSG:4326**, **EPSG:3035**
+    or **EPSG:3857**.
+-   Return **sf** package objects for spatial analysis.
+-   Cache downloaded files for faster repeated access.
 
 ## Installation
 
@@ -268,10 +267,10 @@ code.
 
 Contributions are welcome:
 
-- [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for
-  feedback and bug reports.
-- [Send pull requests](https://github.com/rOpenGov/giscoR/).
-- [Star **giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
+-   [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for
+    feedback and bug reports.
+-   [Send pull requests](https://github.com/rOpenGov/giscoR/).
+-   [Star **giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
 
 ## Citation
 

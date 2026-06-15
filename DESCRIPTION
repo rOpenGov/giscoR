@@ -1,6 +1,6 @@
 Type: Package
 Package: giscoR
-Title: Download Eurostat GISCO Geospatial Data
+Title: Download GISCO Spatial Data from Eurostat
 Version: 1.1.0.9000
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
@@ -9,13 +9,13 @@ Authors@R: c(
            comment = c(ROR = "033d3q980")),
     person("EuroGeographics", role = "cph")
   )
-Description: Tools to download global and European geospatial data from
-    Eurostat's GISCO (Geographic Information System of the Commission)
-    geodata distribution <https://ec.europa.eu/eurostat/web/gisco>. The
-    package provides helpers for working with country boundaries, NUTS
-    regions, administrative and statistical units, transport networks,
-    basic services and other GISCO datasets. This package is not
-    officially related to or endorsed by Eurostat.
+Description: Tools to download global and European spatial data from
+    GISCO, the Geographic Information System of the Commission, provided
+    by Eurostat <https://ec.europa.eu/eurostat/web/gisco>. The package
+    provides helpers for working with country boundaries, 'NUTS' regions,
+    administrative and statistical units, transport networks, basic
+    services and other GISCO datasets. This package is not officially
+    related to or endorsed by Eurostat.
 License: GPL-3
 URL: https://ropengov.github.io/giscoR/,
     https://github.com/rOpenGov/giscoR
@@ -39,6 +39,7 @@ Suggests:
     ggplot2 (>= 3.5.0),
     knitr,
     quarto,
+    stats,
     testthat (>= 3.0.0),
     withr
 VignetteBuilder:
@@ -47,9 +48,9 @@ Config/roxygen2/markdown: TRUE
 Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
 Config/testthat/parallel: true
-Copyright: Eurostat's general copyright notice and license policy applies
-    (see file COPYRIGHTS). Some datasets have additional download and
-    usage provisions. See
+Copyright: The general copyright notice and license policy from Eurostat
+    applies (see file COPYRIGHTS). Some datasets have additional download
+    and usage provisions. See
     <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 Encoding: UTF-8
 LazyData: true
