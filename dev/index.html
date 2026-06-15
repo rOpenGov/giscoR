@@ -195,13 +195,10 @@
 <span>  nuts_level <span class="op">=</span> <span class="fl">0</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Next, download the data from Eurostat.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Retrieve Eurostat data.</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>popdens <span class="ot">&lt;-</span> <span class="fu">get_eurostat</span>(<span class="st">"demo_r_d3dens"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  <span class="fu">filter</span>(TIME_PERIOD <span class="sc">==</span> <span class="st">"2021-01-01"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>indexed <span class="dv">0</span>B <span class="cf">in</span>  <span class="dv">0</span>s, <span class="dv">0</span>B<span class="sc">/</span>s</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>indexed <span class="fl">1.00</span>TB <span class="cf">in</span>  <span class="dv">0</span>s, <span class="fl">331.46</span>TB<span class="sc">/</span>s</span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>                                                                              </span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Retrieve Eurostat data.</span></span>
+<span><span class="va">popdens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span><span class="st">"demo_r_d3dens"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TIME_PERIOD</span> <span class="op">==</span> <span class="st">"2021-01-01"</span><span class="op">)</span></span></code></pre></div>
 <p>Finally, merge and transform the data to create the plot.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Merge data.</span></span>
@@ -304,16 +301,16 @@
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite ‘giscoR’ in publications use:</p>
-<p>Hernangómez D (2026). <em>giscoR: Download Eurostat GISCO Geospatial Data</em>. <a href="doi:10.32614/CRAN.package.giscoR" class="uri">doi:10.32614/CRAN.package.giscoR</a> <a href="https://doi.org/10.32614/CRAN.package.giscoR" class="external-link uri">https://doi.org/10.32614/CRAN.package.giscoR</a>, <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a>.</p>
+<p>Hernangómez D (2026). <em>giscoR: Download GISCO Spatial Data from Eurostat</em>. <a href="doi:10.32614/CRAN.package.giscoR" class="uri">doi:10.32614/CRAN.package.giscoR</a> <a href="https://doi.org/10.32614/CRAN.package.giscoR" class="external-link uri">https://doi.org/10.32614/CRAN.package.giscoR</a>. <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a>.</p>
 <p>A BibTeX entry for LaTeX users is:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="sc">@</span>Manual{R<span class="sc">-</span>giscoR,</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  title <span class="ot">=</span> {{giscoR}<span class="sc">:</span> Download Eurostat GISCO Geospatial Data},</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  title <span class="ot">=</span> {{giscoR}<span class="sc">:</span> Download GISCO Spatial Data from Eurostat},</span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.32614</span><span class="sc">/</span>CRAN.package.giscoR},</span>
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  author <span class="ot">=</span> {Diego Hernangómez},</span>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2026</span>},</span>
 <span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  version <span class="ot">=</span> {<span class="dv">1</span>.<span class="dv">1</span>.<span class="fl">0.9000</span>},</span>
 <span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  url <span class="ot">=</span> {https<span class="sc">:</span><span class="er">//</span>ropengov.github.io<span class="sc">/</span>giscoR<span class="sc">/</span>},</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools to download global and European geospatial data from Eurostats <span class="fu">GISCO</span> (Geographic Information System of the Commission) geodata distribution <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span>. The package provides helpers <span class="cf">for</span> working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>  abstract <span class="ot">=</span> {Tools to download global and European spatial data from GISCO, the Geographic Information System of the Commission, provided by Eurostat <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>ec.europa.eu<span class="sc">/</span>eurostat<span class="sc">/</span>web<span class="sc">/</span>gisco<span class="sc">&gt;</span>. The package provides helpers <span class="cf">for</span> working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},</span>
 <span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div class="section level2">
