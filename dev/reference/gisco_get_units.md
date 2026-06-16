@@ -5,10 +5,10 @@
 Deprecated. Use one of these replacements:
 
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
-  (equivalent to `mode = "df"`).
+  for `mode = "df"`.
 
 - [`?gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-  functions (equivalent to `mode = "sf"`).
+  functions for `mode = "sf"`.
 
 ## Usage
 
@@ -132,7 +132,7 @@ functions.
 
 ``` r
 # \donttest{
-# mode df
+# Equivalent metadata call.
 gisco_get_units("nuts", mode = "df", year = 2016)
 #> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
 #> ℹ Please use `gisco_get_metadata()` instead.
@@ -169,7 +169,7 @@ gisco_get_metadata("nuts", year = 2016)
 #> # ℹ 2,006 more rows
 #> # ℹ 2 more variables: URBN_TYPE <int>, COAST_TYPE <int>
 
-# mode sf for NUTS
+# Equivalent `sf` call for NUTS.
 gisco_get_units("nuts", unit = "ES111", mode = "sf", year = 2016)
 #> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
 #> ℹ Please use `gisco_get_unit_nuts()` instead.

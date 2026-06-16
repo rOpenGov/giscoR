@@ -92,8 +92,8 @@
     <!-- giscoR.qmd is generated from giscoR.qmd.orig. Please edit that file --><section class="section level2"><h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p><em>The full site with more examples and vignettes is available at <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a>.</em></p>
-<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is a package designed to provide a simple interface to Eurostat’s <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO geodata distribution</a>.</p>
-<p>GISCO provides geographic data for the European Union, EU member states and subnational regions. It supplies geospatial files in different formats, with a focus on Europe and global datasets such as country boundaries, labels and coastal lines.</p>
+<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is a package designed to provide a simple interface to the Eurostat <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO geodata distribution</a>.</p>
+<p>GISCO provides geospatial data for the European Union, its member states and subnational regions. It supplies geospatial files in different formats, with a focus on Europe and global datasets such as country boundaries, labels and coastal lines.</p>
 <p>GISCO supplies data at multiple resolutions: high-resolution datasets for small areas (01M, 03M) and lighter datasets for larger areas (10M, 20M, 60M). Datasets are available in three coordinate reference systems: <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>, <a href="https://epsg.io/3035" class="external-link">EPSG:3035</a> and <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a>.</p>
 <p><strong>giscoR</strong> returns <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><strong>sf</strong> package objects</a>. See <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a> for details.</p>
 </section><section class="section level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
@@ -101,11 +101,11 @@
 <p><strong>giscoR</strong> supports caching downloaded datasets. Set the cache directory with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/gisco_set_cache_dir.html">gisco_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>If a file is not available locally, it will be downloaded to that directory so subsequent requests for the same data can read from the local cache.</p>
+<p>If a file is not available locally, it is downloaded to that directory so subsequent requests for the same data can read from the local cache.</p>
 <p>If downloading fails, you can manually download the file from the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO geodata distribution</a> and place it in your local cache directory.</p>
 </section><section class="section level2"><h2 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
 </h2>
-<p>Review the following attribution and licensing requirements when using GISCO data:</p>
+<p>Review the following attribution and licensing requirements before using GISCO data:</p>
 <section class="level2"><h3 id="general-copyright">General copyright<a class="anchor" aria-label="anchor" href="#general-copyright"></a>
 </h3>
 <figure><blockquote class="blockquote">
@@ -114,7 +114,7 @@
 <figcaption class="blockquote-footer">Source: <cite title="GISCO">
 <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link uri">https://ec.europa.eu/eurostat/web/gisco/geodata</a>
 </cite>
-</figcaption></figure><p>The <code><a href="../reference/gisco_attributions.html">gisco_attributions()</a></code> function provides guidance on this topic and returns attributions in several languages.</p>
+</figcaption></figure><p>The <code><a href="../reference/gisco_attributions.html">gisco_attributions()</a></code> function provides guidance on this topic and returns attribution text in several languages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -129,7 +129,7 @@
 <span><span class="co">#&gt; © EuroGeographics bezüglich der Verwaltungsgrenzen</span></span></code></pre></div>
 </section></section><section class="section level2"><h2 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
 </h2>
-<p>The following example downloads EU member states and candidate countries as of 2024.</p>
+<p>The following example downloads EU member states and candidate countries for 2024.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -180,7 +180,7 @@ EU member states and candidate countries (2024)
 </p>
 </div>
 <p>You can select specific countries by name in any language, ISO 3166-1 alpha-3 codes or Eurostat codes. However, you cannot mix these identifier types in a single call.</p>
-<p>You can also combine datasets by using the same <code>resolution</code>, <code>epsg</code>, and (optionally) <code>year</code>:</p>
+<p>You can also combine datasets by using the same <code>resolution</code>, <code>epsg</code> and (optionally) <code>year</code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cntr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Morocco"</span>, <span class="st">"Algeria"</span>, <span class="st">"Tunisia"</span>, <span class="st">"Libya"</span>, <span class="st">"Egypt"</span><span class="op">)</span></span>
 <span></span>

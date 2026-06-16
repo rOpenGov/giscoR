@@ -1,6 +1,6 @@
 # Package index
 
-## GISCO geodata
+## GISCO geodata distribution
 
 Download geospatial datasets from the [GISCO geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco/geodata). These
@@ -57,9 +57,9 @@ Download transport network data such as airports and ports.
 - [`gisco_get_ports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_ports.md)
   : Ports dataset
 
-### Basic services
+### Basic service locations
 
-Download basic service locations such as education and healthcare
+Download basic service locations, such as education and healthcare
 services.
 
 - [`gisco_get_education()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_education.md)
@@ -106,7 +106,7 @@ Helpers for attribution and other package utilities.
 
 Query additional [GISCO APIs and
 tools](https://ec.europa.eu/eurostat/web/gisco/tools), including the
-GISCO ID service API and GISCO Address API.
+GISCO Address API and the GISCO ID service API.
 
 - [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_reverse()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
@@ -178,7 +178,7 @@ Datasets included in
 
 - [`giscoR`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
-  : giscoR: Download GISCO Spatial Data from Eurostat
+  : giscoR: Download Eurostat GISCO Geospatial Data
 
 ## Deprecated functions
 

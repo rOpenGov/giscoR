@@ -17,17 +17,16 @@
 Source:
 [`inst/CITATION`](https://github.com/rOpenGov/giscoR/blob/main/inst/CITATION)
 
-Hernangómez D (2026). *giscoR: Download GISCO Spatial Data from
-Eurostat*.
+Hernangómez D (2026). *giscoR: Download Eurostat GISCO Geospatial Data*.
 [doi:10.32614/CRAN.package.giscoR](https://doi.org/10.32614/CRAN.package.giscoR).
 <https://ropengov.github.io/giscoR/>.
 
     @Manual{R-giscoR,
-      title = {{giscoR}: Download GISCO Spatial Data from Eurostat},
+      title = {{giscoR}: Download Eurostat GISCO Geospatial Data},
       doi = {10.32614/CRAN.package.giscoR},
       author = {Diego Hernangómez},
       year = {2026},
       version = {1.1.0.9000},
       url = {https://ropengov.github.io/giscoR/},
-      abstract = {Tools to download global and European spatial data from GISCO, the Geographic Information System of the Commission, provided by Eurostat <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
+      abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, NUTS regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
     }

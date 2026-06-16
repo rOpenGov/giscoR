@@ -6,10 +6,10 @@
 <https://ropengov.github.io/giscoR/>.*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed
-to provide a simple interface to Eurostat’s [GISCO geodata
+to provide a simple interface to the Eurostat [GISCO geodata
 distribution](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-GISCO provides geographic data for the European Union, EU member states
+GISCO provides geospatial data for the European Union, its member states
 and subnational regions. It supplies geospatial files in different
 formats, with a focus on Europe and global datasets such as country
 boundaries, labels and coastal lines.
@@ -34,9 +34,8 @@ with:
 gisco_set_cache_dir("./path/to/location")
 ```
 
-If a file is not available locally, it will be downloaded to that
-directory so subsequent requests for the same data can read from the
-local cache.
+If a file is not available locally, it is downloaded to that directory
+so subsequent requests for the same data can read from the local cache.
 
 If downloading fails, you can manually download the file from the [GISCO
 geodata
@@ -45,7 +44,7 @@ place it in your local cache directory.
 
 ## Downloading data
 
-Review the following attribution and licensing requirements when using
+Review the following attribution and licensing requirements before using
 GISCO data:
 
 ### General copyright
@@ -64,7 +63,7 @@ Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
 The
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md)
-function provides guidance on this topic and returns attributions in
+function provides guidance on this topic and returns attribution text in
 several languages.
 
 ``` r
@@ -85,7 +84,7 @@ c(
 ## Basic example
 
 The following example downloads EU member states and candidate countries
-as of 2024.
+for 2024.
 
 ``` r
 
@@ -142,8 +141,8 @@ You can select specific countries by name in any language, ISO 3166-1
 alpha-3 codes or Eurostat codes. However, you cannot mix these
 identifier types in a single call.
 
-You can also combine datasets by using the same `resolution`, `epsg`,
-and (optionally) `year`:
+You can also combine datasets by using the same `resolution`, `epsg` and
+(optionally) `year`:
 
 ``` r
 

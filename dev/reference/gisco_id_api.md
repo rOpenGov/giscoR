@@ -136,36 +136,36 @@ The available endpoints are:
 - `gisco_id_api_geonames()`: Get geographic placenames from longitude
   and latitude coordinates or a bounding box.
 
-- `gisco_id_api_nuts()`: Return NUTS regions from either longitude and
-  latitude coordinates or an ID. Accepted values for `year` are
-  `"2024"`, `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
+- `gisco_id_api_nuts()`: Return NUTS regions from longitude and latitude
+  coordinates or an ID. Accepted values for `year` are are `"2024"`,
+  `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
 
 - `gisco_id_api_lau()`: Return the ID and, optionally, geometry for
   Local Administrative Units (LAU) at specified longitude and latitude
-  coordinates. Accepted values for `year` are `"2024"`, `"2023"`,
+  coordinates. Accepted values for `year` are are `"2024"`, `"2023"`,
   `"2022"`, `"2021"`, `"2020"`, `"2019"`, `"2018"`, `"2017"`, `"2016"`,
   `"2015"`, `"2014"`, `"2013"`, `"2012"`, `"2011"` .
 
 - `gisco_id_api_country()`: Return the ID and, optionally, geometry for
   countries at specified longitude and latitude coordinates. Accepted
-  values for `year` are `"2024"`, `"2020"`, `"2016"`, `"2013"`,
+  values for `year` are are `"2024"`, `"2020"`, `"2016"`, `"2013"`,
   `"2010"`, `"2006"` .
 
 - `gisco_id_api_river_basin()`: Return the ID and, optionally, geometry
   for river basins at specified longitude and latitude coordinates,
   based on the Water Framework Directive (WFD) reference spatial
-  datasets. Accepted values for `year` are `"2024"`, `"2023"`, `"2022"`,
-  `"2021"`, `"2020"`, `"2019"` .
+  datasets. Accepted values for `year` are are `"2024"`, `"2023"`,
+  `"2022"`, `"2021"`, `"2020"`, `"2019"` .
 
 - `gisco_id_api_biogeo_region()`: Return the ID and, optionally,
-  geometry for biogeo regions at specified longitude and latitude
-  coordinates. The biogeographical regions dataset contains the official
-  delineations used in the Habitats Directive (92/43/EEC) and for the
-  EMERALD Network. Accepted values for `year` is `"2016"` .
+  geometry for biogeographical regions at specified longitude and
+  latitude coordinates. The biogeographical regions dataset contains the
+  official delineations used in the Habitats Directive (92/43/EEC) and
+  for the EMERALD Network. Accepted values for `year` are is `"2016"` .
 
 - `gisco_id_api_census_grid()`: Return the ID and, optionally, geometry
   for census grid cells at specified longitude and latitude coordinates.
-  Accepted values for `year` is `"2021"` .
+  Accepted values for `year` are is `"2021"` .
 
 ## See also
 

@@ -1,16 +1,18 @@
 # giscoR
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is an **R** package
-that provides a simple interface to Eurostat’s [GISCO geodata
+that provides a simple interface to the Eurostat [GISCO geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco). It lets you
 download and work with global and European geospatial datasets directly
 in **R**, including country boundaries, NUTS regions, administrative
-units and statistical units.
+units, statistical units, transport networks and basic service
+locations.
 
 ## Key features
 
 - Retrieve GISCO datasets for country boundaries, NUTS regions,
-  administrative units and statistical units.
+  administrative units, statistical units, transport networks and basic
+  service locations.
 - Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
   `01M`.
 - Choose from three coordinate reference systems: **EPSG:4326**,
@@ -45,7 +47,7 @@ install.packages(
 
 ## Quick example
 
-This script highlights some features of **giscoR**:
+This script highlights selected **giscoR** features:
 
 ``` r
 
@@ -100,10 +102,10 @@ resolutions](reference/figures/README-resolution-map-1.png)
 ## Advanced example: thematic maps
 
 This example shows a thematic map created with the **ggplot2** package.
-The data are obtained with the **eurostat** package, following the work
-of [Milos Popovic](https://milospopovic.net/).
+The statistical data are obtained with the **eurostat** package,
+following the work of [Milos Popovic](https://milospopovic.net/).
 
-We start by extracting the corresponding geographic data:
+Start by downloading the corresponding geospatial data:
 
 ``` r
 
@@ -131,7 +133,7 @@ country_lines <- gisco_get_nuts(
 )
 ```
 
-Next, download the data from Eurostat.
+Next, download the statistical data from Eurostat.
 
 ``` r
 
@@ -140,7 +142,7 @@ popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
 ```
 
-Finally, merge and transform the data to create the plot.
+Finally, merge and transform the datasets to create the plot.
 
 ``` r
 
@@ -238,19 +240,19 @@ Files are stored in the local cache for faster repeated access.
 See the [GitHub repository](https://github.com/rOpenGov/giscoR/) for
 source code.
 
-Contributions are welcome:
+Contributions are welcome.
 
-- [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for
+- Use the [issue tracker](https://github.com/rOpenGov/giscoR/issues) for
   feedback and bug reports.
-- [Send pull requests](https://github.com/rOpenGov/giscoR/).
-- [Star **giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
+- Send [pull requests](https://github.com/rOpenGov/giscoR/).
+- Star [**giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
 
 ## Citation
 
 To cite ‘giscoR’ in publications use:
 
-Hernangómez D (2026). *giscoR: Download GISCO Spatial Data from
-Eurostat*. <doi:10.32614/CRAN.package.giscoR>
+Hernangómez D (2026). *giscoR: Download Eurostat GISCO Geospatial Data*.
+<doi:10.32614/CRAN.package.giscoR>
 <https://doi.org/10.32614/CRAN.package.giscoR>.
 <https://ropengov.github.io/giscoR/>.
 
@@ -258,13 +260,13 @@ A BibTeX entry for LaTeX users is:
 
 ``` R
 @Manual{R-giscoR,
-  title = {{giscoR}: Download GISCO Spatial Data from Eurostat},
+  title = {{giscoR}: Download Eurostat GISCO Geospatial Data},
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2026},
   version = {1.1.0.9000},
   url = {https://ropengov.github.io/giscoR/},
-  abstract = {Tools to download global and European spatial data from GISCO, the Geographic Information System of the Commission, provided by Eurostat <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, administrative and statistical units, transport networks, basic services and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
+  abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, NUTS regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
 }
 ```
 

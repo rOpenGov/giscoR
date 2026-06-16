@@ -8,8 +8,8 @@ address database.
 Each endpoint is implemented through a specific function. See
 **Details**.
 
-The API supports fuzzy searching (also referred to as approximate string
-matching) for all arguments of each endpoint.
+The API supports fuzzy searching, also referred to as approximate string
+matching, for all arguments of each endpoint.
 
 ## Usage
 
@@ -114,28 +114,28 @@ gisco_address_api_copyright(verbose = FALSE)
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) in
 most cases, except `gisco_address_api_search()`,
-`gisco_address_api_reverse()`, and `gisco_address_api_bbox()`, which
+`gisco_address_api_reverse()` and `gisco_address_api_bbox()`, which
 return a [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 object.
 
 ## Details
 
 The following table describes the API endpoints, based on the [GISCO
-Address API
-endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints):
+Address API endpoint
+documentation](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints):
 
 |  |  |
 |----|----|
 | **Endpoint** | **Description** |
 | `/countries` | All country codes compatible with the address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
-| `/provinces` | All provinces within the specified country. It can also retrieve the province of a specified city. |
+| `/provinces` | All provinces within the specified country. It can also retrieve the province for a specified city. |
 | `/cities` | All cities within a specified province or country. |
 | `/roads` | All roads or streets within a specified city. |
 | `/housenumbers` | All house numbers or names within the specified road. In some countries, an address may not have a road component. If a road is not specified, **the API returns at most 1,000 house numbers**. |
-| `/postcodes` | All postcodes within the specified address component: country, province or city. |
+| `/postcodes` | All postcodes within the specified address component, such as country, province or city. |
 | `/search` | Structured queries to the address database. Various argument combinations can retrieve addresses that share an address component. **The API returns at most 100 addresses**. |
 | `/reverse` | A structured address for longitude and latitude coordinates. |
-| `/bbox` | A [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component, depending on the arguments specified. |
+| `/bbox` | A [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component, depending on the specified arguments. |
 | `/copyright` | The copyright text for each available country in the Address API. |
 
 The resulting object may include these variables:
@@ -146,8 +146,8 @@ The resulting object may include these variables:
 | `LD` | Locator designator, which represents the house number part of the address. |
 | `TF` | Thoroughfare, which represents the street or road part of the address. |
 | `L0` | Level 0 of the API administrative levels. Values are two-character country codes. |
-| `L1` | Level 1 of the API administrative levels. Values are province names. "Province" is a generic term that may differ between countries. |
-| `L2` | Level 2 of the API administrative levels. Values are town or city names. "City" is a generic term that may differ between countries. |
+| `L1` | Level 1 of the API administrative levels. Values are province names. "Province" is a generic term that may vary by country. |
+| `L2` | Level 2 of the API administrative levels. Values are town or city names. "City" is a generic term that may vary by country. |
 | `PC` | Postal code. |
 | `N0` | NUTS 0. |
 | `N1` | NUTS 1. |
@@ -158,7 +158,7 @@ The resulting object may include these variables:
 
 ## See also
 
-See the docs at
+See the GISCO Address API documentation at
 <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 
 Other API tools:
@@ -167,7 +167,7 @@ Other API tools:
 ## Examples
 
 ``` r
-# Cities in a region
+# Cities in a region.
 
 gisco_address_api_cities(country = "PT", province = "LISBOA")
 #> # A tibble: 9 × 1
@@ -184,7 +184,7 @@ gisco_address_api_cities(country = "PT", province = "LISBOA")
 #> 9 VILA FRANCA DE XIRA
 
 # Geocode and reverse geocode with `sf` objects.
-# Structured search
+# Structured search.
 struct <- gisco_address_api_search(
   country = "ES", city = "BARCELONA",
   road = "GRACIA"
@@ -212,7 +212,7 @@ struct
 #> # ℹ 70 more rows
 #> # ℹ 1 more variable: geometry <POINT [°]>
 
-# Reverse geocoding
+# Reverse geocoding.
 reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 
 reverse

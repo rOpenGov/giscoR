@@ -30,21 +30,21 @@ gisco_bulk_download(
 - id:
 
   A character string or numeric value with the dataset type to download,
-  see **Details**. Values supported are:
+  see **Details**. Supported values are:
 
-  - `"countries"`
+  - `"countries"`.
 
-  - `"coastal_lines"`
+  - `"coastal_lines"`.
 
-  - `"communes"`
+  - `"communes"`.
 
-  - `"lau"`
+  - `"lau"`.
 
-  - `"nuts"`
+  - `"nuts"`.
 
-  - `"urban_audit"`
+  - `"urban_audit"`.
 
-  - `"postal_codes"`
+  - `"postal_codes"`.
 
     This argument replaces the previous (deprecated) argument
     `id_giscoR`.
@@ -112,7 +112,7 @@ Some arguments only apply to a specific value of `"id"`. For example
 `"resolution"` is ignored for values `"communes"`, `"lau"`,
 `"urban_audit"` and `"postal_codes"`.
 
-See years available in the corresponding functions:
+See available years in the corresponding functions:
 
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md).
 
@@ -178,8 +178,8 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache directory is /tmp/RtmpH3rx3h/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpH3rx3h/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/Rtmpw6BKMO/testexample/countries.
+#> ✔ File already cached: /tmp/Rtmpw6BKMO/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }
