@@ -7,17 +7,17 @@ cff-version: 1.2.0
 message: 'To cite package "giscoR" in publications use:'
 type: software
 license: GPL-3.0-only
-title: 'giscoR: Download Eurostat GISCO Geospatial Data'
-version: 1.1.0.9000
+title: 'giscoR: Download ''Eurostat'' ''GISCO'' Spatial Data'
+version: 1.1.1
 doi: 10.32614/CRAN.package.giscoR
 identifiers:
 - type: doi
   value: 10.32614/CRAN.package.giscoR
-abstract: Tools to download global and European spatial data from the Eurostat GISCO
+abstract: Tools to download global and European spatial data from the 'Eurostat' 'GISCO'
   (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>.
   The package provides helpers for country boundaries, 'NUTS' regions, administrative
   units, statistical units, transport networks, basic service locations and other
-  GISCO datasets. This package is not officially related to or endorsed by Eurostat.
+  'GISCO' datasets. This package is not officially related to or endorsed by 'Eurostat'.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -25,7 +25,7 @@ authors:
   orcid: https://orcid.org/0000-0001-8457-4658
 preferred-citation:
   type: manual
-  title: 'giscoR: Download Eurostat GISCO Geospatial Data'
+  title: 'giscoR: Download Eurostat GISCO Spatial Data'
   authors:
   - family-names: Hernangómez
     given-names: Diego
@@ -33,7 +33,7 @@ preferred-citation:
     orcid: https://orcid.org/0000-0001-8457-4658
   doi: 10.32614/CRAN.package.giscoR
   year: '2026'
-  version: 1.1.0.9000
+  version: 1.1.1
   url: https://ropengov.github.io/giscoR/
   abstract: Tools to download global and European spatial data from the Eurostat GISCO
     (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>.

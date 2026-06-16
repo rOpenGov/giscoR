@@ -2,13 +2,13 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "giscoR",
-  "description": "Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, 'NUTS' regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.",
-  "name": "giscoR: Download Eurostat GISCO Geospatial Data",
+  "description": "Tools to download global and European spatial data from the 'Eurostat' 'GISCO' (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, 'NUTS' regions, administrative units, statistical units, transport networks, basic service locations and other 'GISCO' datasets. This package is not officially related to or endorsed by 'Eurostat'.",
+  "name": "giscoR: Download 'Eurostat' 'GISCO' Spatial Data",
   "relatedLink": ["https://ropengov.github.io/giscoR/", "https://CRAN.R-project.org/package=giscoR"],
   "codeRepository": "https://github.com/rOpenGov/giscoR",
   "issueTracker": "https://github.com/rOpenGov/giscoR/issues",
   "license": "https://spdx.org/licenses/GPL-3.0",
-  "version": "1.1.0.9000",
+  "version": "1.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -271,7 +271,7 @@
   "applicationCategory": "cartography",
   "isPartOf": "http://ropengov.org/",
   "keywords": ["ropengov", "r", "spatial", "api-wrapper", "rstats", "r-package", "eurostat", "gisco", "thematic-maps", "eurostat-data", "cran", "ggplot2", "gis", "cran-r"],
-  "fileSize": "1956.425KB",
+  "fileSize": "1956.388KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -283,7 +283,7 @@
           "familyName": "Hernangómez"
         }
       ],
-      "name": "{giscoR}: Download Eurostat GISCO Geospatial Data",
+      "name": "{giscoR}: Download Eurostat GISCO Spatial Data",
       "identifier": "10.32614/CRAN.package.giscoR",
       "url": "https://ropengov.github.io/giscoR/",
       "@id": "https://doi.org/10.32614/CRAN.package.giscoR",

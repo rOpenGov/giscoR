@@ -1,4 +1,4 @@
-# giscoR (development version)
+# giscoR 1.1.1
 
 - Refactor internal helpers, documentation and tests, including clearer
   user-facing messages, more consistent roxygen2 documentation, reused
@@ -16,8 +16,8 @@
 
 # giscoR 1.0.1
 
-- Fix a bug that overwrote the bundled GISCO database with the cached version
-  in a new session. The cache now persists.
+- Fix a bug that overwrote the bundled GISCO database with the cached version in
+  a new session. The cache now persists.
 - Update `?gisco_db`.
 - `gisco_get_unit_urban_audit()` and `gisco_get_urban_audit()` now default to
   the latest available year, 2024.
@@ -25,9 +25,9 @@
 # giscoR 1.0.0
 
 This major release introduces a full overhaul of the codebase and test suite.
-Requests now use **httr2**, and GeoPackage (`"gpkg"`) is the preferred
-download format when available. Cached files are reorganized into topic-based
-subfolders for easier management.
+Requests now use **httr2**, and GeoPackage (`"gpkg"`) is the preferred download
+format when available. Cached files are reorganized into topic-based subfolders
+for easier management.
 
 > Because of internal changes, **existing caches are not compatible** with this
 > release and must be rebuilt.

@@ -283,7 +283,7 @@ Contributions are welcome.
 
 To cite ‘giscoR’ in publications use:
 
-Hernangómez D (2026). *giscoR: Download Eurostat GISCO Geospatial Data*.
+Hernangómez D (2026). *giscoR: Download Eurostat GISCO Spatial Data*.
 doi:10.32614/CRAN.package.giscoR
 <https://doi.org/10.32614/CRAN.package.giscoR>.
 <https://ropengov.github.io/giscoR/>.
@@ -291,11 +291,11 @@ doi:10.32614/CRAN.package.giscoR
 A BibTeX entry for LaTeX users is:
 
     @Manual{R-giscoR,
-      title = {{giscoR}: Download Eurostat GISCO Geospatial Data},
+      title = {{giscoR}: Download Eurostat GISCO Spatial Data},
       doi = {10.32614/CRAN.package.giscoR},
       author = {Diego Hernangómez},
       year = {2026},
-      version = {1.1.0.9000},
+      version = {1.1.1},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, NUTS regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
     }
