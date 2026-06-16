@@ -9,8 +9,6 @@
 #' @family database
 #' @encoding UTF-8
 #'
-#' @inherit gisco_get_cached_db source
-#'
 #' @format
 #' A [tibble][tibble::tbl_df] with
 #' `r prettyNum(nrow(giscoR::gisco_db), big.mark = ",")` rows.
@@ -23,6 +21,8 @@
 #' Please use [gisco_get_cached_db()] with `update_cache = TRUE` to update the
 #' corresponding API endpoints.
 #'
+#' @inherit gisco_get_cached_db source
+#'
 #' @source GISCO geodata distribution `datasets.json`.
 #' @examples
 #' data("gisco_db")
@@ -32,11 +32,11 @@ NULL
 
 #' Countries 2024 [`sf`][sf::st_sf] object
 #'
-#' @name gisco_countries_2024
-#' @docType data
 #' @description
 #' This object contains world administrative boundaries at the country level.
 #'
+#' @name gisco_countries_2024
+#' @docType data
 #' @family datasets
 #' @encoding UTF-8
 #'
@@ -79,8 +79,6 @@ NULL
 
 #' Database with different country code schemes and world regions
 #'
-#' @name gisco_countrycode
-#' @docType data
 #' @description
 #' A [tibble][tibble::tbl_df] containing conversions between country code
 #' schemes (Eurostat, ISO 3166-1 alpha-2 and ISO 3166-1 alpha-3) and
@@ -88,10 +86,10 @@ NULL
 #' ([M49 Standard](https://unstats.un.org/unsd/methodology/m49/)). This
 #' database was extracted from the \CRANpkg{countrycode} package.
 #'
+#' @name gisco_countrycode
+#' @docType data
 #' @family datasets
 #' @encoding UTF-8
-#'
-#' @inheritSection gisco_get_countries World Regions
 #'
 #' @format
 #' A data frame with
@@ -115,6 +113,8 @@ NULL
 #'     European Union.}
 #' }
 #'
+#' @inheritSection gisco_get_countries World Regions
+#'
 #' @source [countrycode::codelist] **v1.6.1**.
 #'
 #' @seealso
@@ -135,11 +135,11 @@ NULL
 
 #' Coastal lines 2016 [`sf`][sf::st_sf] object
 #'
-#' @name gisco_coastal_lines
-#' @docType data
 #' @description
 #' This object contains the coastal lines of the world.
 #'
+#' @name gisco_coastal_lines
+#' @docType data
 #' @family datasets
 #' @encoding UTF-8
 #'
@@ -168,12 +168,12 @@ NULL
 
 #' NUTS 2024 [`sf`][sf::st_sf] object
 #'
-#' @name gisco_nuts_2024
-#' @docType data
 #' @description
 #' This dataset represents the regions for levels 0, 1, 2 and 3 of the
 #' Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
 #'
+#' @name gisco_nuts_2024
+#' @docType data
 #' @family datasets
 #' @encoding UTF-8
 #'

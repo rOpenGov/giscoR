@@ -1,11 +1,11 @@
 #' Set your \CRANpkg{giscoR} cache directory
 #'
-#' @rdname gisco_set_cache_dir
-#'
 #' @description
-#' Stores your `cache_dir` path on your local machine and loads the path for
-#' future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
-#' find your cached path or use [gisco_detect_cache_dir()].
+#' Stores your `cache_dir` path on your local machine and loads it in future
+#' sessions. Use `Sys.getenv("GISCO_CACHE_DIR")` or
+#' [gisco_detect_cache_dir()] to find your cached path.
+#'
+#' @rdname gisco_set_cache_dir
 #'
 #' @family cache utilities
 #' @encoding UTF-8
@@ -19,8 +19,8 @@
 #'   `GISCO_CACHE_DIR` that you already have on your local machine.
 #'
 #' @return
-#' `gisco_set_cache_dir()` returns an (invisible) character with the path to
-#' your `cache_dir`, but it is mainly called for its side effect.
+#' `gisco_set_cache_dir()` invisibly returns a character string with the path
+#' to your `cache_dir`, but it is mainly called for its side effect.
 #'
 #' @details
 #' By default, when no cache `cache_dir` is set, the package uses a folder
@@ -41,8 +41,8 @@
 #' - Modify the cache for a single session by setting
 #'   `gisco_set_cache_dir(cache_dir = "a/path/here")`.
 #' - For reproducible workflows, install a persistent cache with
-#'   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that is
-#'   kept across \R sessions.
+#'   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`, which
+#'   keeps the path across \R sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
 #'   corresponding function. See example in [gisco_get_nuts()].
 #'
@@ -169,7 +169,6 @@ gisco_detect_cache_dir <- function() {
 
 #' Clear your \CRANpkg{giscoR} cache directory
 #'
-#' @rdname gisco_clear_cache
 #' @description
 #' **Use this function with caution**. It clears your cached data and
 #' configuration, specifically:
@@ -179,6 +178,7 @@ gisco_detect_cache_dir <- function() {
 #' - Deletes the `cache_dir` directory.
 #' - Deletes the value stored in `Sys.getenv("GISCO_CACHE_DIR")`.
 #'
+#' @rdname gisco_clear_cache
 #' @family cache utilities
 #' @encoding UTF-8
 #' @inheritParams gisco_set_cache_dir
@@ -226,7 +226,7 @@ gisco_clear_cache <- function(
     unlink(config_dir, recursive = TRUE, force = TRUE)
 
     if (verbose) {
-      cli::cli_alert_warning("{.pkg giscoR} cache configuration deleted.")
+      cli::cli_alert_warning("Deleted {.pkg giscoR} cache configuration.")
     }
   }
   # nocov end
@@ -240,7 +240,7 @@ gisco_clear_cache <- function(
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) {
       cli::cli_alert_warning(
-        "{.pkg giscoR} data deleted: {.file {data_dir}} ({siz})."
+        "Deleted {.pkg giscoR} data: {.file {data_dir}} ({siz})."
       )
     }
   }

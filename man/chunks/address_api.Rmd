@@ -1,17 +1,17 @@
 The following table describes the API endpoints, based on the [GISCO Address
-API endpoints](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints):
+API endpoint documentation](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints):
 
 | **Endpoint** | **Description** |
 |-----------------|--------------------------------------------------------------|
 | `/countries` | All country codes compatible with the address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
-| `/provinces` | All provinces within the specified country. It can also retrieve the province of a specified city. |
+| `/provinces` | All provinces within the specified country. It can also retrieve the province for a specified city. |
 | `/cities` | All cities within a specified province or country. |
 | `/roads` | All roads or streets within a specified city. |
 | `/housenumbers` | All house numbers or names within the specified road. In some countries, an address may not have a road component. If a road is not specified, **the API returns at most 1,000 house numbers**. |
-| `/postcodes` | All postcodes within the specified address component: country, province or city. |
+| `/postcodes` | All postcodes within the specified address component, such as country, province or city. |
 | `/search` | Structured queries to the address database. Various argument combinations can retrieve addresses that share an address component. **The API returns at most 100 addresses**. |
 | `/reverse` | A structured address for longitude and latitude coordinates. |
-| `/bbox` | A [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component, depending on the arguments specified. |
+| `/bbox` | A [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component, depending on the specified arguments. |
 | `/copyright` | The copyright text for each available country in the Address API. |
 
 The resulting object may include these variables:
@@ -21,8 +21,8 @@ The resulting object may include these variables:
 | `LD` | Locator designator, which represents the house number part of the address. |
 | `TF` | Thoroughfare, which represents the street or road part of the address. |
 | `L0` | Level 0 of the API administrative levels. Values are two-character country codes. |
-| `L1` | Level 1 of the API administrative levels. Values are province names. "Province" is a generic term that may differ between countries. |
-| `L2` | Level 2 of the API administrative levels. Values are town or city names. "City" is a generic term that may differ between countries. |
+| `L1` | Level 1 of the API administrative levels. Values are province names. "Province" is a generic term that may vary by country. |
+| `L2` | Level 2 of the API administrative levels. Values are town or city names. "City" is a generic term that may vary by country. |
 | `PC` | Postal code. |
 | `N0` | NUTS 0. |
 | `N1` | NUTS 1. |

@@ -11,14 +11,14 @@
 #'   file, see **Details**.
 #'
 #' @param id A character string or numeric value with the dataset type to
-#'   download, see **Details**. Values supported are:
-#' - `"countries"`
-#' - `"coastal_lines"`
-#' - `"communes"`
-#' - `"lau"`
-#' - `"nuts"`
-#' - `"urban_audit"`
-#' - `"postal_codes"`
+#'   download, see **Details**. Supported values are:
+#' - `"countries"`.
+#' - `"coastal_lines"`.
+#' - `"communes"`.
+#' - `"lau"`.
+#' - `"nuts"`.
+#' - `"urban_audit"`.
+#' - `"postal_codes"`.
 #'
 #'   This argument replaces the previous (deprecated) argument `id_giscoR`.
 #' @param recursive `r lifecycle::badge("deprecated")` `recursive` is no
@@ -42,7 +42,7 @@
 #' `"resolution"` is ignored for values `"communes"`, `"lau"`,
 #' `"urban_audit"` and `"postal_codes"`.
 #'
-#' See years available in the corresponding functions:
+#' See available years in the corresponding functions:
 #' - [gisco_get_countries()].
 #' - [gisco_get_coastal_lines()].
 #' - [gisco_get_communes()].

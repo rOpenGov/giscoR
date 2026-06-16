@@ -23,15 +23,15 @@ gisco_bulk_download(
 }
 \arguments{
 \item{id}{A character string or numeric value with the dataset type to
-download, see \strong{Details}. Values supported are:
+download, see \strong{Details}. Supported values are:
 \itemize{
-\item \code{"countries"}
-\item \code{"coastal_lines"}
-\item \code{"communes"}
-\item \code{"lau"}
-\item \code{"nuts"}
-\item \code{"urban_audit"}
-\item \code{"postal_codes"}
+\item \code{"countries"}.
+\item \code{"coastal_lines"}.
+\item \code{"communes"}.
+\item \code{"lau"}.
+\item \code{"nuts"}.
+\item \code{"urban_audit"}.
+\item \code{"postal_codes"}.
 
 This argument replaces the previous (deprecated) argument \code{id_giscoR}.
 }}
@@ -84,7 +84,7 @@ Some arguments only apply to a specific value of \code{"id"}. For example
 \code{"resolution"} is ignored for values \code{"communes"}, \code{"lau"},
 \code{"urban_audit"} and \code{"postal_codes"}.
 
-See years available in the corresponding functions:
+See available years in the corresponding functions:
 \itemize{
 \item \code{\link[=gisco_get_countries]{gisco_get_countries()}}.
 \item \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}}.

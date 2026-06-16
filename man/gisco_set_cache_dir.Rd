@@ -29,16 +29,16 @@ use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{F
 \item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
 }
 \value{
-\code{gisco_set_cache_dir()} returns an (invisible) character with the path to
-your \code{cache_dir}, but it is mainly called for its side effect.
+\code{gisco_set_cache_dir()} invisibly returns a character string with the path
+to your \code{cache_dir}, but it is mainly called for its side effect.
 
 \code{gisco_detect_cache_dir()} returns the path to the \code{cache_dir} used in this
 session.
 }
 \description{
-Stores your \code{cache_dir} path on your local machine and loads the path for
-future sessions. Type \code{Sys.getenv("GISCO_CACHE_DIR")} to
-find your cached path or use \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}}.
+Stores your \code{cache_dir} path on your local machine and loads it in future
+sessions. Use \code{Sys.getenv("GISCO_CACHE_DIR")} or
+\code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to find your cached path.
 }
 \details{
 By default, when no cache \code{cache_dir} is set, the package uses a folder
@@ -68,8 +68,8 @@ install).
 \item Modify the cache for a single session by setting
 \code{gisco_set_cache_dir(cache_dir = "a/path/here")}.
 \item For reproducible workflows, install a persistent cache with
-\code{gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)} that is
-kept across \R sessions.
+\code{gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)}, which
+keeps the path across \R sessions.
 \item For caching specific files, use the \code{cache_dir} argument in the
 corresponding function. See example in \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}.
 }

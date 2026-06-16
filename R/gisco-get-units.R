@@ -5,9 +5,8 @@
 #'
 #' Deprecated. Use one of these replacements:
 #'
-#' - [gisco_get_metadata()] (equivalent to `mode = "df"`).
-#' - [`?gisco_get_unit`][gisco_get_unit] functions (equivalent to
-#'   `mode = "sf"`).
+#' - [gisco_get_metadata()] for `mode = "df"`.
+#' - [`?gisco_get_unit`][gisco_get_unit] functions for `mode = "sf"`.
 #'
 #' @family deprecated functions
 #' @encoding UTF-8
@@ -29,12 +28,12 @@
 #'
 #' @examplesIf gisco_check_access()
 #' \donttest{
-#' # mode df
+#' # Equivalent metadata call.
 #' gisco_get_units("nuts", mode = "df", year = 2016)
 #' # ->
 #' gisco_get_metadata("nuts", year = 2016)
 #'
-#' # mode sf for NUTS
+#' # Equivalent `sf` call for NUTS.
 #' gisco_get_units("nuts", unit = "ES111", mode = "sf", year = 2016)
 #' # ->
 #' gisco_get_unit_nuts(unit = "ES111", year = 2016)

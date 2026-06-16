@@ -39,17 +39,17 @@
 #'
 #' **Administrative units**
 #'
-#' - [gisco_get_communes()]
-#' - [gisco_get_countries()]
-#' - [gisco_get_postal_codes()]
+#' - [gisco_get_communes()].
+#' - [gisco_get_countries()].
+#' - [gisco_get_postal_codes()].
 #'
 #' **Statistical units**
 #'
-#' - [gisco_get_census()]
-#' - [gisco_get_coastal_lines()]
-#' - [gisco_get_lau()]
-#' - [gisco_get_nuts()]
-#' - [gisco_get_urban_audit()]
+#' - [gisco_get_census()].
+#' - [gisco_get_coastal_lines()].
+#' - [gisco_get_lau()].
+#' - [gisco_get_nuts()].
+#' - [gisco_get_urban_audit()].
 #'
 #' ## Copyright notice
 #'
@@ -82,7 +82,7 @@
 #'
 #' gisco_attributions(lang = "XXX")
 #'
-#' # Get the list of codes from **countrycode**.
+#' # Get the list of codes from countrycode.
 #' library(dplyr)
 #'
 #' countrycode::codelist |>

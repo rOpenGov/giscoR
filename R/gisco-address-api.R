@@ -1,8 +1,5 @@
 #' GISCO Address API
 #'
-#' @name gisco_address_api
-#' @rdname gisco_address_api
-#' @aliases gisco_addressapi
 #' @description
 #' Functions to interact with the [GISCO Address
 #' API](https://gisco-services.ec.europa.eu/addressapi/docs/screen/home), which
@@ -11,9 +8,12 @@
 #'
 #' Each endpoint is implemented through a specific function. See **Details**.
 #'
-#' The API supports fuzzy searching (also referred to as approximate string
-#' matching) for all arguments of each endpoint.
+#' The API supports fuzzy searching, also referred to as approximate string
+#' matching, for all arguments of each endpoint.
 #'
+#' @name gisco_address_api
+#' @rdname gisco_address_api
+#' @aliases gisco_addressapi
 #' @family API tools
 #' @encoding UTF-8
 #'
@@ -33,7 +33,7 @@
 #'
 #' @return
 #' A [tibble][tibble::tbl_df] in most cases, except
-#' `gisco_address_api_search()`, `gisco_address_api_reverse()`, and
+#' `gisco_address_api_search()`, `gisco_address_api_reverse()` and
 #' `gisco_address_api_bbox()`, which return a [`sf`][sf::st_sf] object.
 #'
 #' @details
@@ -45,17 +45,16 @@
 #' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 #'
 #' @seealso
-#'
-#' See the docs at
+#' See the GISCO Address API documentation at
 #' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 #'
 #' @examplesIf gisco_check_access()
-#' # Cities in a region
+#' # Cities in a region.
 #'
 #' gisco_address_api_cities(country = "PT", province = "LISBOA")
 #'
 #' # Geocode and reverse geocode with `sf` objects.
-#' # Structured search
+#' # Structured search.
 #' struct <- gisco_address_api_search(
 #'   country = "ES", city = "BARCELONA",
 #'   road = "GRACIA"
@@ -63,7 +62,7 @@
 #'
 #' struct
 #'
-#' # Reverse geocoding
+#' # Reverse geocoding.
 #' reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 #'
 #' reverse

@@ -58,25 +58,25 @@ when available. See \strong{Details}.
 \details{
 Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
 
-The following table describes each attribute:\tabular{ll}{
+The following table describes the education service attributes:\tabular{ll}{
    \strong{Attribute} \tab \strong{Description} \cr
    \code{id} \tab The education service identifier, based on national identification codes when available. \cr
    \code{name} \tab The name of the education institution. \cr
-   \code{site_name} \tab The name of a specific site or branch of an education institution. \cr
+   \code{site_name} \tab The name of a specific site or branch of the education institution. \cr
    \code{lat} \tab Latitude (WGS 84). \cr
    \code{lon} \tab Longitude (WGS 84). \cr
    \code{street} \tab Street name. \cr
    \code{house_number} \tab House number. \cr
    \code{postcode} \tab Postcode. \cr
    \code{address} \tab Address information when the different components of the address are not separated in the source. \cr
-   \code{city} \tab City name (sometimes refers to a region or municipality). \cr
+   \code{city} \tab City name. In some sources, this refers to a region or municipality. \cr
    \code{cntr_id} \tab Country code (2 letters, ISO 3166-1 alpha-2). \cr
-   \code{levels} \tab Education levels represented by a single integer or range (ISCED 2011). \cr
+   \code{levels} \tab Education levels represented by a single integer or range, using ISCED 2011. \cr
    \code{max_students} \tab Measure of capacity by maximum number of students. \cr
    \code{enrollment} \tab Measure of capacity by number of enrolled students. \cr
-   \code{fields} \tab Academic disciplines the institution specializes in (ISCED-F 2013). \cr
+   \code{fields} \tab Academic disciplines in which the institution specializes, using ISCED-F 2013. \cr
    \code{facility_type} \tab Type of institution by ownership and operation, such as Catholic or international. \cr
-   \code{public_private} \tab The public or private status of the education service. \cr
+   \code{public_private} \tab Public or private status of the education service. \cr
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
    \code{url} \tab URL for the institution's website. \cr
@@ -120,7 +120,7 @@ if (!is.null(edu_austria)) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Basic services datasets:
+Basic service datasets:
 \code{\link[=gisco_get_healthcare]{gisco_get_healthcare()}}
 }
 \concept{services}

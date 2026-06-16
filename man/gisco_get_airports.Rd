@@ -43,7 +43,7 @@ A \code{\link[sf:st_sf]{sf}} object.
 \description{
 This dataset includes the location of over 11,800 pan-European airports and
 heliports. The airports are identified using the International Civil
-Aviation Organisation (ICAO) airport codes.
+Aviation Organization (ICAO) airport codes.
 }
 \details{
 Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.

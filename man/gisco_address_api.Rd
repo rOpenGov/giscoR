@@ -105,7 +105,7 @@ human-readable address.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble} in most cases, except
-\code{gisco_address_api_search()}, \code{gisco_address_api_reverse()}, and
+\code{gisco_address_api_search()}, \code{gisco_address_api_reverse()} and
 \code{gisco_address_api_bbox()}, which return a \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
@@ -115,21 +115,21 @@ database.
 
 Each endpoint is implemented through a specific function. See \strong{Details}.
 
-The API supports fuzzy searching (also referred to as approximate string
-matching) for all arguments of each endpoint.
+The API supports fuzzy searching, also referred to as approximate string
+matching, for all arguments of each endpoint.
 }
 \details{
-The following table describes the API endpoints, based on the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API endpoints}:\tabular{ll}{
+The following table describes the API endpoints, based on the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API endpoint documentation}:\tabular{ll}{
    \strong{Endpoint} \tab \strong{Description} \cr
    \verb{/countries} \tab All country codes compatible with the address API. Check the coverage map for available countries and see the \href{https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies}{list of official country codes}. \cr
-   \verb{/provinces} \tab All provinces within the specified country. It can also retrieve the province of a specified city. \cr
+   \verb{/provinces} \tab All provinces within the specified country. It can also retrieve the province for a specified city. \cr
    \verb{/cities} \tab All cities within a specified province or country. \cr
    \verb{/roads} \tab All roads or streets within a specified city. \cr
    \verb{/housenumbers} \tab All house numbers or names within the specified road. In some countries, an address may not have a road component. If a road is not specified, \strong{the API returns at most 1,000 house numbers}. \cr
-   \verb{/postcodes} \tab All postcodes within the specified address component: country, province or city. \cr
+   \verb{/postcodes} \tab All postcodes within the specified address component, such as country, province or city. \cr
    \verb{/search} \tab Structured queries to the address database. Various argument combinations can retrieve addresses that share an address component. \strong{The API returns at most 100 addresses}. \cr
    \verb{/reverse} \tab A structured address for longitude and latitude coordinates. \cr
-   \verb{/bbox} \tab A \href{https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry}{WKT} bounding box for an address component, depending on the arguments specified. \cr
+   \verb{/bbox} \tab A \href{https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry}{WKT} bounding box for an address component, depending on the specified arguments. \cr
    \verb{/copyright} \tab The copyright text for each available country in the Address API. \cr
 }
 
@@ -139,8 +139,8 @@ The resulting object may include these variables:\tabular{ll}{
    \code{LD} \tab Locator designator, which represents the house number part of the address. \cr
    \code{TF} \tab Thoroughfare, which represents the street or road part of the address. \cr
    \code{L0} \tab Level 0 of the API administrative levels. Values are two-character country codes. \cr
-   \code{L1} \tab Level 1 of the API administrative levels. Values are province names. "Province" is a generic term that may differ between countries. \cr
-   \code{L2} \tab Level 2 of the API administrative levels. Values are town or city names. "City" is a generic term that may differ between countries. \cr
+   \code{L1} \tab Level 1 of the API administrative levels. Values are province names. "Province" is a generic term that may vary by country. \cr
+   \code{L2} \tab Level 2 of the API administrative levels. Values are town or city names. "City" is a generic term that may vary by country. \cr
    \code{PC} \tab Postal code. \cr
    \code{N0} \tab NUTS 0. \cr
    \code{N1} \tab NUTS 1. \cr
@@ -152,12 +152,12 @@ The resulting object may include these variables:\tabular{ll}{
 }
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
-# Cities in a region
+# Cities in a region.
 
 gisco_address_api_cities(country = "PT", province = "LISBOA")
 
 # Geocode and reverse geocode with `sf` objects.
-# Structured search
+# Structured search.
 struct <- gisco_address_api_search(
   country = "ES", city = "BARCELONA",
   road = "GRACIA"
@@ -165,14 +165,14 @@ struct <- gisco_address_api_search(
 
 struct
 
-# Reverse geocoding
+# Reverse geocoding.
 reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 
 reverse
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-See the docs at
+See the GISCO Address API documentation at
 \url{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}.
 
 Other API tools:

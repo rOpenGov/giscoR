@@ -3,7 +3,7 @@
 #' @description
 #' This dataset includes the location of over 11,800 pan-European airports and
 #' heliports. The airports are identified using the International Civil
-#' Aviation Organisation (ICAO) airport codes.
+#' Aviation Organization (ICAO) airport codes.
 #'
 #' @family transport
 #' @encoding UTF-8

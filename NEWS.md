@@ -1,9 +1,9 @@
 # giscoR (development version)
 
-- Refactor internal helpers, documentation and tests with AI assistance,
-  including clearer user-facing messages, more consistent roxygen2
-  documentation, reused documentation blocks and faster mocked tests for
-  selected download-heavy paths.
+- Refactor internal helpers, documentation and tests, including clearer
+  user-facing messages, more consistent roxygen2 documentation, reused
+  documentation blocks and faster mocked tests for selected download-heavy
+  paths.
 
 # giscoR 1.1.0
 
@@ -25,7 +25,7 @@
 # giscoR 1.0.0
 
 This major release introduces a full overhaul of the codebase and test suite.
-Requests now use **httr2**, and **GeoPackage** (`"gpkg"`) is the preferred
+Requests now use **httr2**, and GeoPackage (`"gpkg"`) is the preferred
 download format when available. Cached files are reorganized into topic-based
 subfolders for easier management.
 
@@ -40,15 +40,15 @@ new release, you can access updated data by refreshing the cached database
 without waiting for a new version of **giscoR**.
 
 The package now uses `tools::R_user_dir()` instead of
-`rappdirs::user_config_dir()` for managing the persistent cache directory. If
-you already have a cache directory in place, you will see a one-time message
-about this migration.
+`rappdirs::user_config_dir()` to manage the persistent cache directory. If you
+already have a cache directory in place, you will see a one-time message about
+this migration.
 
 The package now requires **R ≥ 4.1**, and dependency updates improve both
 performance and maintainability. All functions return tidy objects (tibbles or
 `sf` objects with tibble data).
 
-Dataset subsetting is now performed at read time using GDAL query capabilities
+Dataset subsetting is now performed at read time with GDAL query capabilities
 (`sf::read_sf()`), improving performance and reducing file size. The
 **geojsonsf** dependency is no longer required.
 

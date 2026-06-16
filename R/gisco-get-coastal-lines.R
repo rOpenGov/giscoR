@@ -1,9 +1,9 @@
 #' Coastal lines dataset
 #'
-#' @rdname gisco_get_coastal_lines
 #' @description
 #' Download global coastal lines.
 #'
+#' @rdname gisco_get_coastal_lines
 #' @family stats
 #' @encoding UTF-8
 #' @inheritParams gisco_get_countries

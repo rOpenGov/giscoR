@@ -3,7 +3,7 @@
     Code
       fend <- gisco_get_cached_db(update_cache = TRUE)
     Message
-      ! Cannot access <https://gisco-services.ec.europa.eu/distribution/v2/>. If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! Could not access <https://gisco-services.ec.europa.eu/distribution/v2/>. If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
       > Returning "NULL".
 
 # Get database

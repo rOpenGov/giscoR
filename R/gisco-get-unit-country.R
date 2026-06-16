@@ -1,7 +1,5 @@
 #' GISCO geodata single-unit download
 #'
-#' @name gisco_get_unit
-#' @rdname gisco_get_unit
 #' @description
 #' Download datasets of single spatial units from GISCO to the
 #' [`cache_dir`][gisco_set_cache_dir()].
@@ -11,6 +9,8 @@
 #' these functions download a single-unit file, reducing the time
 #' needed to download and read data into your \R session.
 #'
+#' @name gisco_get_unit
+#' @rdname gisco_get_unit
 #' @family extra
 #' @encoding UTF-8
 #' @inheritParams gisco_get_countries

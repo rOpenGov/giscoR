@@ -52,7 +52,7 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
     url_api <- gisco_distribution_url() # nolint
 
     cli::cli_alert_warning(c(
-      "Cannot access {.url {url_api}}. ",
+      "Could not access {.url {url_api}}. ",
       "If this looks like a bug, please open an issue at ",
       "{.url https://github.com/ropengov/giscoR/issues}."
     ))
@@ -301,7 +301,7 @@ get_db <- function() {
     url_api <- gisco_distribution_url() # nolint
 
     cli::cli_alert_warning(c(
-      "Cannot retrieve the latest database from {.url {url_api}}.\n",
+      "Could not retrieve the latest database from {.url {url_api}}.\n",
       "Try again later with {.fn giscoR::gisco_get_cached_db} ",
       "and {.arg update_cache = TRUE}."
     ))

@@ -1,10 +1,10 @@
 #' Check access to the GISCO geodata distribution
 #'
-#' @keywords internal
 #' @description
 #' Check if \R has access to resources at
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
+#' @keywords internal
 #' @encoding UTF-8
 #' @return A logical.
 #'

@@ -1,7 +1,5 @@
 #' GISCO ID service API
 #'
-#' @name gisco_id_api
-#' @rdname gisco_id_api
 #' @description
 #' Functions to interact with the [GISCO ID service
 #' API](https://gisco-services.ec.europa.eu/id/api-docs/), which returns
@@ -11,6 +9,8 @@
 #' Each available endpoint is implemented through a specific function. See
 #' **Details**.
 #'
+#' @name gisco_id_api
+#' @rdname gisco_id_api
 #' @family API tools
 #' @encoding UTF-8
 #' @inheritParams gisco_address_api
@@ -37,31 +37,31 @@
 #'
 #' - `gisco_id_api_geonames()`: Get geographic placenames from longitude and
 #'   latitude coordinates or a bounding box.
-#' - `gisco_id_api_nuts()`: Return NUTS regions from either longitude and
-#'   latitude coordinates or an ID. Accepted values for `year`
+#' - `gisco_id_api_nuts()`: Return NUTS regions from longitude and latitude
+#'   coordinates or an ID. Accepted values for `year` are
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("nuts")}.
 #' - `gisco_id_api_lau()`: Return the ID and, optionally, geometry for Local
 #'   Administrative Units (LAU) at specified longitude and latitude coordinates.
-#'   Accepted values for `year`
+#'   Accepted values for `year` are
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("lau")}.
 #' - `gisco_id_api_country()`: Return the ID and, optionally, geometry for
 #'   countries at specified longitude and latitude coordinates. Accepted values
-#'   for `year`
+#'   for `year` are
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("country")}.
 #' - `gisco_id_api_river_basin()`: Return the ID and, optionally, geometry
 #'   for river basins at specified longitude and latitude coordinates, based on
 #'   the Water Framework Directive (WFD) reference spatial datasets. Accepted
-#'   values for `year`
+#'   values for `year` are
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("riverbasin")}.
 #' - `gisco_id_api_biogeo_region()`: Return the ID and, optionally,
-#'   geometry for biogeo regions at specified longitude and latitude
+#'   geometry for biogeographical regions at specified longitude and latitude
 #'   coordinates. The biogeographical regions dataset contains the official
 #'   delineations used in the Habitats Directive (92/43/EEC) and for the
-#'   EMERALD Network. Accepted values for `year`
+#'   EMERALD Network. Accepted values for `year` are
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("biogeoregion")}.
 #' - `gisco_id_api_census_grid()`: Return the ID and, optionally, geometry
 #'   for census grid cells at specified longitude and latitude coordinates.
-#'   Accepted values for `year`
+#'   Accepted values for `year` are
 #'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("censusgrid")}.
 #' @source
 #' <https://gisco-services.ec.europa.eu/id/api-docs/>.
@@ -270,10 +270,10 @@ prepare_id_query <- function(
 ) {
   if (length(nuts_id) > 1) {
     msg <- paste0(
-      "{.arg nuts_id} should have length {.val 1}, ",
-      "not {.val ",
+      "{.arg nuts_id} should have length {.val {1}}, ",
+      "not {.val {",
       length(nuts_id),
-      "}."
+      "}}."
     )
     make_msg("warning", TRUE, msg)
     msg2 <- paste0("Using {.arg nuts_id = {.str ", nuts_id[1], "}}.")
@@ -282,7 +282,7 @@ prepare_id_query <- function(
     nuts_id <- nuts_id[1]
   }
 
-  # Should geometry be returned?
+  # Choose the response format based on geometry.
   if (geometry) {
     format <- "geojson"
     geom <- "yes"

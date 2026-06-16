@@ -1,24 +1,24 @@
-The following table describes each attribute:
+The following table describes the healthcare service attributes:
 
 | **Attribute** | **Description** |
 |----|----|
 | `id` | The healthcare service identifier, based on national identification codes when available. |
 | `hospital_name` | The name of the healthcare institution. |
-| `site_name` | The name of a specific site or branch of a healthcare institution. |
+| `site_name` | The name of a specific site or branch of the healthcare institution. |
 | `lat` | Latitude (WGS 84). |
 | `lon` | Longitude (WGS 84). |
 | `street` | Street name. |
 | `house_number` | House number. |
 | `postcode` | Postcode. |
 | `address` | Address information when the different components of the address are not separated in the source. |
-| `city` | City name (sometimes refers to a region or municipality). |
+| `city` | City name. In some sources, this refers to a region or municipality. |
 | `cntr_id` | Country code (2 letters, ISO 3166-1 alpha-2). |
 | `emergency` | `yes` or `no`, indicating whether the healthcare site provides emergency medical services. |
 | `cap_beds` | Measure of capacity by number of beds (most common). |
 | `cap_prac` | Measure of capacity by number of practitioners. |
 | `cap_rooms` | Measure of capacity by number of rooms. |
-| `facility_type` | Type of healthcare service (e.g., psychiatric hospital), based on national classification. |
-| `public_private` | `public` or `private` status of the healthcare service. |
+| `facility_type` | Type of healthcare service, such as psychiatric hospital, based on national classification. |
+| `public_private` | Public or private status of the healthcare service. |
 | `list_specs` | List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). |
 | `tel` | Telephone number. |
 | `email` | Email address. |

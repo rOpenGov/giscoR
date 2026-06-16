@@ -82,9 +82,8 @@ A \code{\link[sf:st_sf]{sf}} object when \code{mode = "sf"} or a
 
 Deprecated. Use one of these replacements:
 \itemize{
-\item \code{\link[=gisco_get_metadata]{gisco_get_metadata()}} (equivalent to \code{mode = "df"}).
-\item \code{\link[=gisco_get_unit]{?gisco_get_unit}} functions (equivalent to
-\code{mode = "sf"}).
+\item \code{\link[=gisco_get_metadata]{gisco_get_metadata()}} for \code{mode = "df"}.
+\item \code{\link[=gisco_get_unit]{?gisco_get_unit}} functions for \code{mode = "sf"}.
 }
 }
 \section{Note}{
@@ -94,12 +93,12 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{
-# mode df
+# Equivalent metadata call.
 gisco_get_units("nuts", mode = "df", year = 2016)
 # ->
 gisco_get_metadata("nuts", year = 2016)
 
-# mode sf for NUTS
+# Equivalent `sf` call for NUTS.
 gisco_get_units("nuts", unit = "ES111", mode = "sf", year = 2016)
 # ->
 gisco_get_unit_nuts(unit = "ES111", year = 2016)

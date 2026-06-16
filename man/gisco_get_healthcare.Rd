@@ -64,25 +64,25 @@ specialized accommodation services required by inpatients.
 \details{
 Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
 
-The following table describes each attribute:\tabular{ll}{
+The following table describes the healthcare service attributes:\tabular{ll}{
    \strong{Attribute} \tab \strong{Description} \cr
    \code{id} \tab The healthcare service identifier, based on national identification codes when available. \cr
    \code{hospital_name} \tab The name of the healthcare institution. \cr
-   \code{site_name} \tab The name of a specific site or branch of a healthcare institution. \cr
+   \code{site_name} \tab The name of a specific site or branch of the healthcare institution. \cr
    \code{lat} \tab Latitude (WGS 84). \cr
    \code{lon} \tab Longitude (WGS 84). \cr
    \code{street} \tab Street name. \cr
    \code{house_number} \tab House number. \cr
    \code{postcode} \tab Postcode. \cr
    \code{address} \tab Address information when the different components of the address are not separated in the source. \cr
-   \code{city} \tab City name (sometimes refers to a region or municipality). \cr
+   \code{city} \tab City name. In some sources, this refers to a region or municipality. \cr
    \code{cntr_id} \tab Country code (2 letters, ISO 3166-1 alpha-2). \cr
    \code{emergency} \tab \code{yes} or \code{no}, indicating whether the healthcare site provides emergency medical services. \cr
    \code{cap_beds} \tab Measure of capacity by number of beds (most common). \cr
    \code{cap_prac} \tab Measure of capacity by number of practitioners. \cr
    \code{cap_rooms} \tab Measure of capacity by number of rooms. \cr
-   \code{facility_type} \tab Type of healthcare service (e.g., psychiatric hospital), based on national classification. \cr
-   \code{public_private} \tab \code{public} or \code{private} status of the healthcare service. \cr
+   \code{facility_type} \tab Type of healthcare service, such as psychiatric hospital, based on national classification. \cr
+   \code{public_private} \tab Public or private status of the healthcare service. \cr
    \code{list_specs} \tab List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). \cr
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
@@ -128,7 +128,7 @@ if (!is.null(health_benelux)) {
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Basic services datasets:
+Basic service datasets:
 \code{\link[=gisco_get_education]{gisco_get_education()}}
 }
 \concept{services}

@@ -46,18 +46,18 @@ statistical data provided by the following functions:
 
 \strong{Administrative units}
 \itemize{
-\item \code{\link[=gisco_get_communes]{gisco_get_communes()}}
-\item \code{\link[=gisco_get_countries]{gisco_get_countries()}}
-\item \code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}
+\item \code{\link[=gisco_get_communes]{gisco_get_communes()}}.
+\item \code{\link[=gisco_get_countries]{gisco_get_countries()}}.
+\item \code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}.
 }
 
 \strong{Statistical units}
 \itemize{
-\item \code{\link[=gisco_get_census]{gisco_get_census()}}
-\item \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}}
-\item \code{\link[=gisco_get_lau]{gisco_get_lau()}}
-\item \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
-\item \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}
+\item \code{\link[=gisco_get_census]{gisco_get_census()}}.
+\item \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}}.
+\item \code{\link[=gisco_get_lau]{gisco_get_lau()}}.
+\item \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}.
+\item \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}.
 }
 \subsection{Copyright notice}{
 
@@ -88,7 +88,7 @@ gisco_attributions(lang = "es", copyright = TRUE)
 
 gisco_attributions(lang = "XXX")
 
-# Get the list of codes from **countrycode**.
+# Get the list of codes from countrycode.
 library(dplyr)
 
 countrycode::codelist |>

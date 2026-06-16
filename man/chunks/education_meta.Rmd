@@ -1,24 +1,24 @@
-The following table describes each attribute:
+The following table describes the education service attributes:
 
 | **Attribute** | **Description** |
 |----------------------------------------|----------------------------------------|
 | `id` | The education service identifier, based on national identification codes when available. |
 | `name` | The name of the education institution. |
-| `site_name` | The name of a specific site or branch of an education institution. |
+| `site_name` | The name of a specific site or branch of the education institution. |
 | `lat` | Latitude (WGS 84). |
 | `lon` | Longitude (WGS 84). |
 | `street` | Street name. |
 | `house_number` | House number. |
 | `postcode` | Postcode. |
 | `address` | Address information when the different components of the address are not separated in the source. |
-| `city` | City name (sometimes refers to a region or municipality). |
+| `city` | City name. In some sources, this refers to a region or municipality. |
 | `cntr_id` | Country code (2 letters, ISO 3166-1 alpha-2). |
-| `levels` | Education levels represented by a single integer or range (ISCED 2011). |
+| `levels` | Education levels represented by a single integer or range, using ISCED 2011. |
 | `max_students` | Measure of capacity by maximum number of students. |
 | `enrollment` | Measure of capacity by number of enrolled students. |
-| `fields` | Academic disciplines the institution specializes in (ISCED-F 2013). |
+| `fields` | Academic disciplines in which the institution specializes, using ISCED-F 2013. |
 | `facility_type` | Type of institution by ownership and operation, such as Catholic or international. |
-| `public_private` | The public or private status of the education service. |
+| `public_private` | Public or private status of the education service. |
 | `tel` | Telephone number. |
 | `email` | Email address. |
 | `url` | URL for the institution's website. |

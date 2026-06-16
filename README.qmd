@@ -39,20 +39,21 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 <!-- badges: end -->
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is an **R** package that
-provides a simple interface to Eurostat's [GISCO geodata
+provides a simple interface to the Eurostat [GISCO geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco). It lets you download and
 work with global and European geospatial datasets directly in **R**, including
-country boundaries, NUTS regions, administrative units and statistical units.
+country boundaries, NUTS regions, administrative units, statistical units,
+transport networks and basic service locations.
 
 ## Key features
 
--   Retrieve GISCO datasets for country boundaries, NUTS regions, administrative
-    units and statistical units.
--   Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`, `01M`.
--   Choose from three coordinate reference systems: **EPSG:4326**, **EPSG:3035**
-    or **EPSG:3857**.
--   Return **sf** package objects for spatial analysis.
--   Cache downloaded files for faster repeated access.
+- Retrieve GISCO datasets for country boundaries, NUTS regions, administrative
+  units, statistical units, transport networks and basic service locations.
+- Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`, `01M`.
+- Choose from three coordinate reference systems: **EPSG:4326**, **EPSG:3035**
+  or **EPSG:3857**.
+- Return **sf** package objects for spatial analysis.
+- Cache downloaded files for faster repeated access.
 
 ## Installation
 
@@ -92,7 +93,7 @@ install.packages(
 
 ## Quick example
 
-This script highlights some features of **giscoR**:
+This script highlights selected **giscoR** features:
 
 ```{r}
 #| label: resolution-map
@@ -127,11 +128,11 @@ ggplot(nl_all) +
 
 ## Advanced example: thematic maps
 
-This example shows a thematic map created with the **ggplot2** package. The data
-are obtained with the **eurostat** package, following the work of [Milos
-Popovic](https://milospopovic.net/).
+This example shows a thematic map created with the **ggplot2** package. The
+statistical data are obtained with the **eurostat** package, following the work
+of [Milos Popovic](https://milospopovic.net/).
 
-We start by extracting the corresponding geographic data:
+Start by downloading the corresponding geospatial data:
 
 ```{r}
 #| label: euroex
@@ -160,7 +161,7 @@ country_lines <- gisco_get_nuts(
 )
 ```
 
-Next, download the data from Eurostat.
+Next, download the statistical data from Eurostat.
 
 ```{r}
 # Retrieve Eurostat data.
@@ -168,7 +169,7 @@ popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
 ```
 
-Finally, merge and transform the data to create the plot.
+Finally, merge and transform the datasets to create the plot.
 
 ```{r}
 #| label: thematic-map
@@ -265,12 +266,12 @@ Files are stored in the local cache for faster repeated access.
 See the [GitHub repository](https://github.com/rOpenGov/giscoR/) for source
 code.
 
-Contributions are welcome:
+Contributions are welcome.
 
--   [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for
-    feedback and bug reports.
--   [Send pull requests](https://github.com/rOpenGov/giscoR/).
--   [Star **giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
+- Use the [issue tracker](https://github.com/rOpenGov/giscoR/issues) for
+  feedback and bug reports.
+- Send [pull requests](https://github.com/rOpenGov/giscoR/).
+- Star [**giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
 
 ## Citation
 

@@ -31,13 +31,13 @@ repo:
 home:
   title: giscoR | Download Eurostat GISCO geospatial data
   description: >
-    giscoR helps download global and European geospatial data from Eurostat's
+    giscoR helps download global and European geospatial data from the Eurostat
     GISCO (Geographic Information System of the Commission) geodata
     distribution. It also provides lightweight GISCO datasets that can be used
-    without downloading additional files.
+    without additional downloads.
 
 reference:
-- title: GISCO geodata
+- title: GISCO geodata distribution
   desc: >
     Download geospatial datasets from the <a
     href="https://ec.europa.eu/eurostat/web/gisco/geodata"
@@ -73,9 +73,10 @@ reference:
   desc: >
     Download transport network data such as airports and ports.
   contents: has_concept("transport")
-- subtitle: Basic services
+- subtitle: Basic service locations
   desc: >
-    Download basic service locations such as education and healthcare services.
+    Download basic service locations, such as education and healthcare
+    services.
   contents: has_concept("services")
 - subtitle: Single-unit and additional downloads
   desc: >
@@ -93,8 +94,8 @@ reference:
 - title: GISCO API tools
   desc: >
     Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools"
-    class="external-link">GISCO APIs and tools</a>, including the GISCO ID
-    service API and GISCO Address API.
+    class="external-link">GISCO APIs and tools</a>, including the GISCO Address
+    API and the GISCO ID service API.
   contents: has_concept("API tools")
 - title: Cache management
   desc: >

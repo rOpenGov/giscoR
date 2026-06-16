@@ -1,6 +1,5 @@
 #' Countries dataset
 #'
-#' @aliases gisco_get
 #' @description
 #' This dataset contains world administrative boundaries at the country level.
 #' It provides two feature classes, regions and boundaries, at five scale
@@ -9,6 +8,7 @@
 #' Downloads data from the aggregated GISCO country file. To download
 #' single-unit country files, use [gisco_get_unit_country()].
 #'
+#' @aliases gisco_get
 #' @family admin
 #' @encoding UTF-8
 #' @param year A character string or numeric value with the release year of the

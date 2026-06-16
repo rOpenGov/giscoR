@@ -35,8 +35,8 @@
 #' The scale of the dataset is 1:100 000.
 #'
 #' The data contain the National Statistical Agency LAU code, which can be
-#' joined to LAU lists, and a `GISCO_ID` field, which is a unique identifier
-#' consisting of the country code and LAU code.
+#' joined to LAU lists. They also contain a `GISCO_ID` field, which is a
+#' unique identifier consisting of the country code and LAU code.
 #'
 #' Total resident population figures (31 December) have also been added in
 #' some versions based on the associated LAU lists.

@@ -1,6 +1,5 @@
 #' Postal codes dataset
 #'
-#' @rdname gisco_get_postal_codes
 #' @description
 #' The postal code point dataset shows the location of postal codes, NUTS
 #' codes and the Degree of Urbanisation classification across the EU, EFTA
@@ -8,6 +7,7 @@
 #' to create correspondence tables for the NUTS classification (EC) 1059/2003
 #' as part of the Tercet Regulation (EU) 2017/2391.
 #'
+#' @rdname gisco_get_postal_codes
 #' @family admin
 #' @encoding UTF-8
 #'
