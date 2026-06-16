@@ -132,7 +132,7 @@ gisco_attributions(lang = "es", copyright = TRUE)
 #> [1] "© Eurogeographics para los límites administrativos"
 
 gisco_attributions(lang = "XXX")
-#> ! Language xxx is not supported. Switching to English.
+#> ! `lang` = "xxx" is not supported. Switching to English.
 #> ℹ Consider contributing a translation: <https://github.com/rOpenGov/giscoR/issues>.
 #> [1] "© EuroGeographics for the administrative boundaries"
 
