@@ -1,6 +1,7 @@
 # Cached GISCO database
 
-Database with the list of files in the GISCO API as of 2026-01-12.
+Database with the list of files in the GISCO geodata distribution as of
+2026-01-12.
 
 ## Format
 
@@ -9,7 +10,7 @@ with 9,714 rows.
 
 ## Source
 
-GISCO API `datasets.json`.
+GISCO geodata distribution `datasets.json`.
 
 ## Details
 
@@ -29,7 +30,7 @@ Other datasets:
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md),
 [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/reference/gisco_nuts_2024.md)
 
-Other database utils:
+Database utilities:
 [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/reference/gisco_get_cached_db.md),
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
 

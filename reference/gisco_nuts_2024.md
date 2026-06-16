@@ -19,36 +19,36 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `CNTR_CODE`:
 
-  Eurostat Country code.
+  Eurostat country code.
 
 - `NAME_LATN`:
 
-  NUTS name on Latin characters.
+  NUTS name in Latin characters.
 
 - `NUTS_NAME`:
 
-  NUTS name on local alphabet.
+  NUTS name in the local alphabet.
 
 - `MOUNT_TYPE`:
 
-  Mount Type, see **Details**.
+  Mountain type, see **Details**.
 
 - `URBN_TYPE`:
 
-  Urban Type, see **Details**.
+  Urban type, see **Details**.
 
 - `COAST_TYPE`:
 
-  Coast Type, see **Details**.
+  Coastal type, see **Details**.
 
 - `geo`:
 
-  Same as `NUTS_ID`, provided for compatibility with
+  Same value as `NUTS_ID`, provided for compatibility with
   [eurostat](https://CRAN.R-project.org/package=eurostat).
 
 - `geometry`:
 
-  geometry field.
+  Geometry field.
 
 ## Source
 
@@ -87,7 +87,7 @@ file.
 
 - `1`: Coastal (on coast).
 
-- `2`: Coastal (less than 50% of population living within 50 km. of the
+- `2`: Coastal (less than 50 % of population living within 50 km of the
   coastline).
 
 - `3`: Non-coastal region.

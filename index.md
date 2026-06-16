@@ -1,22 +1,24 @@
 # giscoR
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is an **R** package
-that provides a simple interface to
-[GISCO](https://ec.europa.eu/eurostat/web/gisco) data from Eurostat. It
-allows you to download and work with global and European geospatial
-datasets directly in **R**, including country boundaries, NUTS regions,
-coastlines and labels.
+that provides a simple interface to the Eurostat [GISCO geodata
+distribution](https://ec.europa.eu/eurostat/web/gisco). It lets you
+download and work with global and European geospatial datasets directly
+in **R**, including country boundaries, NUTS regions, administrative
+units, statistical units, transport networks and basic service
+locations.
 
 ## Key features
 
-- Retrieve **GISCO files** for countries, regions and administrative
-  units.
+- Retrieve GISCO datasets for country boundaries, NUTS regions,
+  administrative units, statistical units, transport networks and basic
+  service locations.
 - Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
   `01M`.
-- Choose from three projections: **EPSG:4326**, **EPSG:3035**, or
-  **EPSG:3857**.
-- Return `sf` objects for spatial analysis.
-- Caches downloads for faster repeated access.
+- Choose from three coordinate reference systems: **EPSG:4326**,
+  **EPSG:3035** or **EPSG:3857**.
+- Return **sf** package objects for spatial analysis.
+- Cache downloaded files for faster repeated access.
 
 ## Installation
 
@@ -30,7 +32,7 @@ install.packages("giscoR")
 
 ## Quick example
 
-This script highlights some features of **giscoR**:
+This script highlights selected **giscoR** features:
 
 ``` r
 
@@ -82,13 +84,13 @@ ggplot(nl_all) +
 ![Netherlands boundaries at different
 resolutions](reference/figures/README-resolution-map-1.png)
 
-## Advanced example: Thematic maps
+## Advanced example: thematic maps
 
 This example shows a thematic map created with the **ggplot2** package.
-The data are obtained via the **eurostat** package. This follows the
-work of [Milos Popovic](https://milospopovic.net/).
+The statistical data are obtained with the **eurostat** package,
+following the work of [Milos Popovic](https://milospopovic.net/).
 
-We start by extracting the corresponding geographic data:
+Start by downloading the corresponding geospatial data:
 
 ``` r
 
@@ -97,7 +99,7 @@ library(dplyr)
 library(eurostat)
 library(ggplot2)
 
-# Retrieve sf objects.
+# Retrieve **sf** package objects.
 nuts3 <- gisco_get_nuts(
   year = 2021,
   epsg = 3035,
@@ -105,7 +107,7 @@ nuts3 <- gisco_get_nuts(
   nuts_level = 3
 )
 
-# Get country lines at NUTS 0 level.
+# Get country boundaries at NUTS 0 level.
 
 country_lines <- gisco_get_nuts(
   year = 2021,
@@ -116,19 +118,16 @@ country_lines <- gisco_get_nuts(
 )
 ```
 
-Next, download the data from Eurostat:
+Next, download the statistical data from Eurostat.
 
 ``` r
+
 # Retrieve Eurostat data.
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
-                                                                              
 ```
 
-Finally, we merge and manipulate the data to create the final plot:
+Finally, merge and transform the datasets to create the plot.
 
 ``` r
 
@@ -196,7 +195,7 @@ ggplot(nuts3_sf) +
   # Add labels.
   labs(
     title = "Population density in 2021",
-    subtitle = "NUTS-3 level",
+    subtitle = "NUTS 3 level",
     fill = "people per square kilometer",
     caption = paste0(
       "Source: Eurostat, ",
@@ -211,33 +210,33 @@ ggplot(nuts3_sf) +
 
 ## Caching
 
-Large datasets (e.g., LAU or high-resolution files) can exceed 50 MB.
-Use:
+Large datasets, such as LAU or high-resolution files, can exceed 50 MB.
+Set a cache directory with:
 
 ``` r
 
 gisco_set_cache_dir("./path/to/location")
 ```
 
-Files will be stored locally for faster access.
+Files are stored in the local cache for faster repeated access.
 
 ## Contribute
 
 See the [GitHub repository](https://github.com/rOpenGov/giscoR/) for
 source code.
 
-Contributions are welcome:
+Contributions are welcome.
 
-- [Use the issue tracker](https://github.com/rOpenGov/giscoR/issues) for
+- Use the [issue tracker](https://github.com/rOpenGov/giscoR/issues) for
   feedback and bug reports.
-- [Send pull requests](https://github.com/rOpenGov/giscoR/).
-- [Star **giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
+- Send [pull requests](https://github.com/rOpenGov/giscoR/).
+- Star [**giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
 
 ## Citation
 
 To cite ‘giscoR’ in publications use:
 
-Hernangómez D (2026). *giscoR: Download Map Data from the GISCO API*.
+Hernangómez D (2026). *giscoR: Download Eurostat GISCO Spatial Data*.
 <doi:10.32614/CRAN.package.giscoR>
 <https://doi.org/10.32614/CRAN.package.giscoR>.
 <https://ropengov.github.io/giscoR/>.
@@ -246,13 +245,13 @@ A BibTeX entry for LaTeX users is:
 
 ``` R
 @Manual{R-giscoR,
-  title = {{giscoR}: Download Map Data from the GISCO API},
+  title = {{giscoR}: Download Eurostat GISCO Spatial Data},
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2026},
-  version = {1.1.0},
+  version = {1.1.1},
   url = {https://ropengov.github.io/giscoR/},
-  abstract = {Tools to download global and European map data from Eurostats GISCO (Geographic Information System of the Commission) database <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for working with country boundaries, NUTS regions, statistical units, transport networks and other geospatial datasets. This package is not officially related to or endorsed by Eurostat.},
+  abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, NUTS regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
 }
 ```
 
@@ -260,10 +259,9 @@ A BibTeX entry for LaTeX users is:
 
 > [Eurostat’s general copyright notice and license
 > policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
-> applies. Moreover, there are specific rules that apply to some of the
-> following datasets available for downloading. The download and use of
-> these data are subject to acceptance of these rules. See the
-> [administrative
+> applies. Some datasets have additional download and usage provisions.
+> The download and use of these data are subject to acceptance of those
+> provisions. See the [administrative
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
 > and [statistical
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)

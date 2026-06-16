@@ -3,59 +3,57 @@
 ## Introduction
 
 *The full site with more examples and vignettes is available at
-<https://ropengov.github.io/giscoR/>*
+<https://ropengov.github.io/giscoR/>.*
 
 [**giscoR**](https://ropengov.github.io/giscoR/) is a package designed
-to provide a simple interface to the [GISCO
-API](https://gisco-services.ec.europa.eu/distribution/v2/).
+to provide a simple interface to the Eurostat [GISCO geodata
+distribution](https://gisco-services.ec.europa.eu/distribution/v2/).
 
-GISCO provides geographic data for the European Union, its member
-countries and subnational regions. It supplies geospatial files in
-different formats, focusing especially on the EU but also offering
-worldwide datasets such as country polygons, labels, borders and
-coastlines.
+GISCO provides geospatial data for the European Union, its member states
+and subnational regions. It supplies geospatial files in different
+formats, with a focus on Europe and global datasets such as country
+boundaries, labels and coastal lines.
 
-GISCO supplies data at multiple resolutions: high-detail datasets for
-small areas (01M, 03M) and lighter datasets for larger areas (10M, 20M,
-60M). Datasets are available in three projections:
-[EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035),
-and [EPSG:3857](https://epsg.io/3857).
+GISCO supplies data at multiple resolutions: high-resolution datasets
+for small areas (01M, 03M) and lighter datasets for larger areas (10M,
+20M, 60M). Datasets are available in three coordinate reference systems:
+[EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035) and
+[EPSG:3857](https://epsg.io/3857).
 
-**giscoR** returns
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects. See
+**giscoR** returns [**sf** package
+objects](https://r-spatial.github.io/sf/reference/sf.html). See
 <https://r-spatial.github.io/sf/> for details.
 
 ## Caching
 
-**giscoR** supports caching of downloaded datasets. Set the cache
-directory with:
+**giscoR** supports caching downloaded datasets. Set the cache directory
+with:
 
 ``` r
 
 gisco_set_cache_dir("./path/to/location")
 ```
 
-If a file is not available locally, it will be downloaded to that
-directory so subsequent requests for the same data can be served from
-the local cache.
+If a file is not available locally, it is downloaded to that directory
+so subsequent requests for the same data can read from the local cache.
 
 If downloading fails, you can manually download the file from the [GISCO
-API website](https://gisco-services.ec.europa.eu/distribution/v2/) and
+geodata
+distribution](https://gisco-services.ec.europa.eu/distribution/v2/) and
 place it in your local cache directory.
 
 ## Downloading data
 
-Review the following attribution and licensing requirements when using
+Review the following attribution and licensing requirements before using
 GISCO data:
 
 ### General copyright
 
 > [Eurostat’s general copyright notice and license
 > policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice)
-> applies. Moreover, there are specific rules that apply to some of the
-> following datasets available for downloading. The download and use of
-> these data are subject to acceptance of these rules. See the
-> [administrative
+> applies. Some datasets have additional download and usage provisions.
+> The download and use of these data are subject to acceptance of those
+> provisions. See the [administrative
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
 > and [statistical
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
@@ -65,7 +63,7 @@ Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 
 The
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
-function provides guidance on this topic and returns attributions in
+function provides guidance on this topic and returns attribution text in
 several languages.
 
 ``` r
@@ -86,7 +84,7 @@ c(
 ## Basic example
 
 The following example downloads EU member states and candidate countries
-as of 2024.
+for 2024.
 
 ``` r
 
@@ -139,12 +137,12 @@ ggplot(world) +
 
 EU member states and candidate countries (2024)
 
-You can select specific countries by name (in any language), ISO3 codes,
-or Eurostat codes. However, you cannot mix these identifier types in a
-single call.
+You can select specific countries by name in any language, ISO 3166-1
+alpha-3 codes or Eurostat codes. However, you cannot mix these
+identifier types in a single call.
 
-You can also combine datasets by using the same `resolution`, `epsg`,
-and (optionally) `year`:
+You can also combine datasets by using the same `resolution`, `epsg` and
+(optionally) `year`:
 
 ``` r
 
@@ -159,7 +157,7 @@ africa_north <- gisco_get_countries(
 # Order plot facets.
 africa_north$NAME_ENGL <- factor(africa_north$NAME_ENGL, levels = cntr)
 
-# Get coastlines.
+# Get coastal lines.
 coast <- gisco_get_coastal_lines(
   resolution = "03",
   epsg = "4326",
@@ -181,11 +179,13 @@ Political map of North Africa
 
 ## Thematic maps with **giscoR**
 
-This example shows how **giscoR** can be used together with Eurostat
-data. For plotting, we use **ggplot2**. Any package that supports `sf`
-objects (e.g., **tmap**, **mapsf**, **leaflet**) can be used.
+This example shows how **giscoR** can be used with Eurostat data. For
+plotting, we use the **ggplot2** package. Any package that supports
+**sf** package objects, such as **tmap**, **mapsf** or **leaflet**, can
+be used.
 
 ``` r
+
 # Load EU member data.
 library(giscoR)
 library(dplyr)
@@ -205,10 +205,6 @@ eu_bord <- borders |>
 # Retrieve disposable income data from Eurostat.
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
-                                                                                            
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -267,7 +263,7 @@ ggplot(nuts2_sf) +
   # Add labels.
   labs(
     title = "Disposable income of private households (2022)",
-    subtitle = "NUTS-2 level",
+    subtitle = "NUTS 2 level",
     fill = "euros (thousands)",
     caption = paste0(
       "Source: Eurostat, ", gisco_attributions()
@@ -279,3 +275,5 @@ ggplot(nuts2_sf) +
 (2022)](./fig-giscor-1.png)
 
 Disposable income of private households by NUTS 2 regions (2022)
+
+Use these examples as a starting point for your own maps.

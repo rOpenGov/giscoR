@@ -1,16 +1,16 @@
 # Database with different country code schemes and world regions
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-containing conversions between different country code schemes
-(Eurostat/ISO2 and 3) as well as geographic regions as provided by the
+containing conversions between country code schemes (Eurostat, ISO
+3166-1 alpha-2 and ISO 3166-1 alpha-3) and geographic regions from the
 World Bank and the UN ([M49
 Standard](https://unstats.un.org/unsd/methodology/m49/)). This database
-has been extracted from the
+was extracted from the
 [countrycode](https://CRAN.R-project.org/package=countrycode) package.
 
 ## Format
 
-A data frame object with 249 rows and 13 variables:
+A data frame with 249 rows and 13 variables:
 
 - `ISO3_CODE`:
 
@@ -35,7 +35,7 @@ A data frame object with 249 rows and 13 variables:
 
 - `continent`:
 
-  As provided by the World Bank.
+  Continent from the World Bank.
 
 - `un.region.code`:
 
@@ -47,11 +47,11 @@ A data frame object with 249 rows and 13 variables:
 
 - `un.regionintermediate.code`:
 
-  Numeric intermediate Region.
+  Numeric intermediate region.
 
 - `un.regionintermediate.name`:
 
-  Intermediate Region name UN (M49).
+  Intermediate region name UN (M49).
 
 - `un.regionsub.code`:
 
@@ -59,11 +59,12 @@ A data frame object with 249 rows and 13 variables:
 
 - `un.regionsub.name`:
 
-  Sub-Region name UN (M49).
+  Sub-region name UN (M49).
 
 - `eu`:
 
-  Logical indicating if the country belongs to the European Union.
+  Logical value indicating whether the country belongs to the European
+  Union.
 
 ## Source
 
@@ -72,9 +73,9 @@ A data frame object with 249 rows and 13 variables:
 
 ## World Regions
 
-Regions are defined as per the geographic regions defined by the UN (see
-<https://unstats.un.org/unsd/methodology/m49/>. Under this scheme Cyprus
-is assigned to Asia.
+Regions follow the UN geographic regions (see
+<https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
+Cyprus is assigned to Asia.
 
 ## See also
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## giscoR 1.1.1
+
+- Refactor internal helpers, documentation and tests, including clearer
+  user-facing messages, more consistent roxygen2 documentation, reused
+  documentation blocks and faster mocked tests for selected
+  download-heavy paths.
+
 ## giscoR 1.1.0
 
 CRAN release: 2026-03-28
@@ -20,8 +27,8 @@ CRAN release: 2026-03-28
 
 CRAN release: 2026-01-23
 
-- Fix a bug that overwrote the internal database with the cached version
-  in a new session. The cache now persists.
+- Fix a bug that overwrote the bundled GISCO database with the cached
+  version in a new session. The cache now persists.
 - Update
   [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md).
 - [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
@@ -34,7 +41,7 @@ CRAN release: 2026-01-23
 CRAN release: 2025-12-10
 
 This major release introduces a full overhaul of the codebase and test
-suite. Requests now use **httr2**, and **GeoPackage** (`"gpkg"`) is the
+suite. Requests now use **httr2**, and GeoPackage (`"gpkg"`) is the
 preferred download format when available. Cached files are reorganized
 into topic-based subfolders for easier management.
 
@@ -44,8 +51,8 @@ into topic-based subfolders for easier management.
 Database management has also been improved. Instead of relying on the
 static
 [`?gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md)
-dataset, the package now stores the database in the cache. This cached
-database is used for all API calls and can be updated via
+dataset, the package now stores the GISCO database in the cache. This
+cached database is used for all API calls and can be updated via
 `gisco_get_cached_db(update_cache = TRUE)`. In practice, when GISCO
 publishes a new release, you can access updated data by refreshing the
 cached database without waiting for a new version of **giscoR**.
@@ -53,7 +60,7 @@ cached database without waiting for a new version of **giscoR**.
 The package now uses
 [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html) instead of
 [`rappdirs::user_config_dir()`](https://rappdirs.r-lib.org/reference/user_data_dir.html)
-for managing the persistent cache directory. If you already have a cache
+to manage the persistent cache directory. If you already have a cache
 directory in place, you will see a one-time message about this
 migration.
 
@@ -61,7 +68,7 @@ The package now requires **R ≥ 4.1**, and dependency updates improve
 both performance and maintainability. All functions return tidy objects
 (tibbles or `sf` objects with tibble data).
 
-Dataset subsetting is now performed at read time using GDAL query
+Dataset subsetting is now performed at read time with GDAL query
 capabilities
 ([`sf::read_sf()`](https://r-spatial.github.io/sf/reference/st_read.html)),
 improving performance and reducing file size. The **geojsonsf**
@@ -95,7 +102,7 @@ We recommend reviewing the updated documentation at
 ### New functions
 
 - [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/reference/gisco_get_cached_db.md)
-  provides access to the cached internal database.
+  provides access to the cached GISCO database.
 - [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md)
   provides access to census grid data.
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)

@@ -1,8 +1,8 @@
 # Grid dataset
 
-These datasets contain grid cells covering the European land territory,
-for various resolutions from 1km to 100km. Base statistics such as
-population figures are provided for these cells.
+These datasets contain grid cells covering the European land territory
+at resolutions from 1 km to 100 km. Base statistics such as population
+figures are provided for these cells.
 
 ## Usage
 
@@ -20,7 +20,7 @@ gisco_get_grid(
 
 <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 
-There are specific downloading provisions, please see
+Specific download provisions apply. See
 <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 
 ## Arguments
@@ -42,8 +42,8 @@ There are specific downloading provisions, please see
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
@@ -55,7 +55,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed on [`EPSG:3035`](https://epsg.io/3035).
+Files are distributed in [`EPSG:3035`](https://epsg.io/3035).
 
 The file sizes range from 428 KB (`resolution = 100`) to 1.7 GB
 (`resolution = 1`).
@@ -65,7 +65,7 @@ The file sizes range from 428 KB (`resolution = 100`) to 1.7 GB
 ``` r
 grid <- gisco_get_grid(resolution = 20)
 
-# If downloaded correctly proceed
+# Proceed if downloaded correctly.
 
 if (!is.null(grid)) {
   library(dplyr)

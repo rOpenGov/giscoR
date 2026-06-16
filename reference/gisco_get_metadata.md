@@ -1,7 +1,6 @@
 # Get metadata
 
-Get a table with the names and IDs of administrative and statistical
-units.
+Get a table with names and IDs of administrative and statistical units.
 
 ## Usage
 
@@ -43,7 +42,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md).
 
-Other database utils:
+Database utilities:
 [`gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md),
 [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/reference/gisco_get_cached_db.md)
 

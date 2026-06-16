@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,6 +45,10 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.1.1" id="giscor-111">giscoR 1.1.1<a class="anchor" aria-label="anchor" href="#giscor-111"></a></h2>
+<ul><li>Refactor internal helpers, documentation and tests, including clearer user-facing messages, more consistent roxygen2 documentation, reused documentation blocks and faster mocked tests for selected download-heavy paths.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="giscor-110">giscoR 1.1.0<a class="anchor" aria-label="anchor" href="#giscor-110"></a></h2><p class="text-muted">CRAN release: 2026-03-28</p>
 <ul><li>Adapt vignettes to Quarto.</li>
 <li>Bump the minimum <strong>httr2</strong> version to <strong>1.2.0</strong> (<a href="https://github.com/rOpenGov/giscoR/issues/126" class="external-link">#126</a>).</li>
@@ -53,21 +57,21 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.1" id="giscor-101">giscoR 1.0.1<a class="anchor" aria-label="anchor" href="#giscor-101"></a></h2><p class="text-muted">CRAN release: 2026-01-23</p>
-<ul><li>Fix a bug that overwrote the internal database with the cached version in a new session. The cache now persists.</li>
+<ul><li>Fix a bug that overwrote the bundled GISCO database with the cached version in a new session. The cache now persists.</li>
 <li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code>.</li>
 <li>
 <code><a href="../reference/gisco_get_unit.html">gisco_get_unit_urban_audit()</a></code> and <code><a href="../reference/gisco_get_urban_audit.html">gisco_get_urban_audit()</a></code> now default to the latest available year, 2024.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.0" id="giscor-100">giscoR 1.0.0<a class="anchor" aria-label="anchor" href="#giscor-100"></a></h2><p class="text-muted">CRAN release: 2025-12-10</p>
-<p>This major release introduces a full overhaul of the codebase and test suite. Requests now use <strong>httr2</strong>, and <strong>GeoPackage</strong> (<code>"gpkg"</code>) is the preferred download format when available. Cached files are reorganized into topic-based subfolders for easier management.</p>
+<p>This major release introduces a full overhaul of the codebase and test suite. Requests now use <strong>httr2</strong>, and GeoPackage (<code>"gpkg"</code>) is the preferred download format when available. Cached files are reorganized into topic-based subfolders for easier management.</p>
 <blockquote>
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
 </blockquote>
-<p>Database management has also been improved. Instead of relying on the static <code><a href="../reference/gisco_db.html">?gisco_db</a></code> dataset, the package now stores the database in the cache. This cached database is used for all API calls and can be updated via <code>gisco_get_cached_db(update_cache = TRUE)</code>. In practice, when GISCO publishes a new release, you can access updated data by refreshing the cached database without waiting for a new version of <strong>giscoR</strong>.</p>
-<p>The package now uses <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> instead of <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code> for managing the persistent cache directory. If you already have a cache directory in place, you will see a one-time message about this migration.</p>
+<p>Database management has also been improved. Instead of relying on the static <code><a href="../reference/gisco_db.html">?gisco_db</a></code> dataset, the package now stores the GISCO database in the cache. This cached database is used for all API calls and can be updated via <code>gisco_get_cached_db(update_cache = TRUE)</code>. In practice, when GISCO publishes a new release, you can access updated data by refreshing the cached database without waiting for a new version of <strong>giscoR</strong>.</p>
+<p>The package now uses <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> instead of <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code> to manage the persistent cache directory. If you already have a cache directory in place, you will see a one-time message about this migration.</p>
 <p>The package now requires <strong>R ≥ 4.1</strong>, and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
-<p>Dataset subsetting is now performed at read time using GDAL query capabilities (<code><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">sf::read_sf()</a></code>), improving performance and reducing file size. The <strong>geojsonsf</strong> dependency is no longer required.</p>
+<p>Dataset subsetting is now performed at read time with GDAL query capabilities (<code><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">sf::read_sf()</a></code>), improving performance and reducing file size. The <strong>geojsonsf</strong> dependency is no longer required.</p>
 <p>Several new functions and arguments have been added, some functions have been renamed and one function has been deprecated. All bundled datasets have been updated to their latest versions.</p>
 <p>We recommend reviewing the updated documentation at <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a>.</p>
 <div class="section level3">
@@ -91,7 +95,7 @@
 <div class="section level3">
 <h3 id="new-functions-1-0-0">New functions<a class="anchor" aria-label="anchor" href="#new-functions-1-0-0"></a></h3>
 <ul><li>
-<code><a href="../reference/gisco_get_cached_db.html">gisco_get_cached_db()</a></code> provides access to the cached internal database.</li>
+<code><a href="../reference/gisco_get_cached_db.html">gisco_get_cached_db()</a></code> provides access to the cached GISCO database.</li>
 <li>
 <code><a href="../reference/gisco_get_census.html">gisco_get_census()</a></code> provides access to census grid data.</li>
 <li>

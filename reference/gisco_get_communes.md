@@ -38,8 +38,8 @@ Copyright:
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -49,14 +49,14 @@ Copyright:
 
 - cache:
 
-  **\[deprecated\]**. These functions always cache the result due to the
-  size. See **Caching strategies** section in
+  **\[deprecated\]**. These functions always cache the result because of
+  its size. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -85,8 +85,8 @@ Copyright:
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - ext:
@@ -103,8 +103,8 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions
 that together subdivide the EU economic territory into regions of five
-different levels (NUTS 1, 2 and 3 and LAU, respectively, moving from
-larger to smaller territorial units).
+different levels, moving from larger to smaller territorial units: NUTS
+1, 2 and 3 and LAU.
 
 The dataset is based on EuroBoundaryMap from
 [EuroGeographics](https://eurogeographics.org/). Geographical extent
@@ -126,7 +126,7 @@ See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
 to perform a bulk download of datasets.
 
-Other administrative units datasets:
+Administrative unit datasets:
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
 [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postal_codes.md)
 

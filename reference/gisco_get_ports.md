@@ -31,8 +31,8 @@ Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - cache_dir:
@@ -43,8 +43,8 @@ Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
@@ -56,14 +56,14 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
+Files are distributed in [EPSG:4326](https://epsg.io/4326).
 
-`gisco_get_ports()` adds a new field CNTR_ISO2 to the original data
-identifying the country of the port.
+`gisco_get_ports()` adds a new field, `CNTR_ISO2`, to identify the
+country of the port.
 
 ## See also
 
-Other transport networks datasets:
+Transport network datasets:
 [`gisco_get_airports()`](https://ropengov.github.io/giscoR/reference/gisco_get_airports.md)
 
 ## Examples
@@ -92,7 +92,7 @@ if (!is.null(ports)) {
       plot.subtitle = element_text(face = "italic", hjust = 0.5)
     ) +
     labs(
-      title = "Ports Worldwide", subtitle = "Year 2013",
+      title = "Ports worldwide", subtitle = "Year 2013",
       caption = "Source: Eurostat, Ports 2013 dataset."
     ) +
     coord_sf(crs = "ESRI:54030")

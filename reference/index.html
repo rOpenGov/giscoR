@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +44,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="gisco-geodata">GISCO geodata<a class="anchor" aria-label="anchor" href="#gisco-geodata"></a></h2>
+      <h2 id="gisco-geodata-distribution">GISCO geodata distribution<a class="anchor" aria-label="anchor" href="#gisco-geodata-distribution"></a></h2>
 
-      <div class="section-desc"><p>Download geospatial datasets from the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link">GISCO Geodata distribution</a>. These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><span class="pkg">sf</span></a> objects.</p></div>
+      <div class="section-desc"><p>Download geospatial datasets from the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link">GISCO geodata distribution</a>. These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><span class="pkg">sf</span></a> objects.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -114,7 +114,7 @@
           <code><a href="gisco_get_nuts.html">gisco_get_nuts()</a></code>
 
         </dt>
-        <dd>Territorial units for statistics (NUTS) dataset</dd>
+        <dd>NUTS statistical units dataset</dd>
 
         <dt>
 
@@ -125,7 +125,7 @@
       </dl></div><div class="section level2">
 
       <h3 id="grids">Grids<a class="anchor" aria-label="anchor" href="#grids"></a></h3>
-      <div class="section-desc"><p>These datasets contain grid cells covering the land territory of the EU, at various resolutions from 1 km to 100 km. Base statistics such as population figures are provided for these cells.</p></div>
+      <div class="section-desc"><p>These datasets contain grid cells covering the European land territory at resolutions from 1 km to 100 km. Base statistics such as population figures are provided for these cells.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -163,8 +163,8 @@
         <dd>Ports dataset</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="basic-services">Basic services<a class="anchor" aria-label="anchor" href="#basic-services"></a></h3>
-      <div class="section-desc"><p>Download basic service locations such as education and healthcare sites.</p></div>
+      <h3 id="basic-service-locations">Basic service locations<a class="anchor" aria-label="anchor" href="#basic-service-locations"></a></h3>
+      <div class="section-desc"><p>Download basic service locations, such as education and healthcare services.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -186,8 +186,8 @@
         <dd>Healthcare services in Europe</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="additional-downloads">Additional downloads<a class="anchor" aria-label="anchor" href="#additional-downloads"></a></h3>
-      <div class="section-desc"><p>Download unit datasets and other GISCO resources.</p></div>
+      <h3 id="single-unit-and-additional-downloads">Single-unit and additional downloads<a class="anchor" aria-label="anchor" href="#single-unit-and-additional-downloads"></a></h3>
+      <div class="section-desc"><p>Download single-unit datasets and other GISCO resources.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -199,18 +199,18 @@
           <code><a href="gisco_bulk_download.html">gisco_bulk_download()</a></code>
 
         </dt>
-        <dd>GISCO API bulk download</dd>
+        <dd>GISCO geodata bulk download</dd>
 
         <dt>
 
           <code><a href="gisco_get_unit.html">gisco_get_unit_country()</a></code> <code><a href="gisco_get_unit.html">gisco_get_unit_nuts()</a></code> <code><a href="gisco_get_unit.html">gisco_get_unit_urban_audit()</a></code>
 
         </dt>
-        <dd>GISCO API single download</dd>
+        <dd>GISCO geodata single-unit download</dd>
       </dl></div><div class="section level2">
 
       <h3 id="giscor-database"><span class="pkg">giscoR</span> database<a class="anchor" aria-label="anchor" href="#giscor-database"></a></h3>
-      <div class="section-desc"><p>Get the current database used by the package and its corresponding metadata.</p></div>
+      <div class="section-desc"><p>Get the cached GISCO database used by the package and its corresponding metadata.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -229,7 +229,7 @@
           <code><a href="gisco_get_cached_db.html">gisco_get_cached_db()</a></code>
 
         </dt>
-        <dd>Retrieve and update the GISCO database in use by <a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><span class="pkg">giscoR</span></a></dd>
+        <dd>Retrieve and update the GISCO database used by <a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><span class="pkg">giscoR</span></a></dd>
 
         <dt>
 
@@ -256,7 +256,7 @@
       </dl></div><div class="section level2">
       <h2 id="gisco-api-tools">GISCO API tools<a class="anchor" aria-label="anchor" href="#gisco-api-tools"></a></h2>
 
-      <div class="section-desc"><p>Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools" class="external-link">APIs and tools</a> provided by GISCO.</p></div>
+      <div class="section-desc"><p>Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools" class="external-link">GISCO APIs and tools</a>, including the GISCO Address API and the GISCO ID service API.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -291,14 +291,14 @@
           <code><a href="gisco_clear_cache.html">gisco_clear_cache()</a></code>
 
         </dt>
-        <dd>Clear your <a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><span class="pkg">giscoR</span></a> cache dir</dd>
+        <dd>Clear your <a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><span class="pkg">giscoR</span></a> cache directory</dd>
 
         <dt>
 
           <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code> <code><a href="gisco_set_cache_dir.html">gisco_detect_cache_dir()</a></code>
 
         </dt>
-        <dd>Set your <a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><span class="pkg">giscoR</span></a> cache dir</dd>
+        <dd>Set your <a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><span class="pkg">giscoR</span></a> cache directory</dd>
       </dl></div><div class="section level2">
       <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
 
@@ -358,7 +358,7 @@
           <code><a href="giscoR-package.html">giscoR</a></code> <code><a href="giscoR-package.html">giscoR-package</a></code>
 
         </dt>
-        <dd>giscoR: Download Map Data from the GISCO API</dd>
+        <dd>giscoR: Download 'Eurostat' 'GISCO' Spatial Data</dd>
       </dl></div><div class="section level2">
       <h2 id="deprecated-functions">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions"></a></h2>
 
@@ -374,7 +374,7 @@
           <code><a href="gisco_get_units.html">gisco_get_units()</a></code>
           <span class="badge lifecycle lifecycle-deprecated">deprecated</span>
         </dt>
-        <dd>Get geospatial units data from GISCO API</dd>
+        <dd>Get geospatial unit data from GISCO</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

@@ -1,4 +1,4 @@
-# GISCO API bulk download
+# GISCO geodata bulk download
 
 Download zipped data from GISCO to the
 [`cache_dir`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md)
@@ -30,21 +30,21 @@ gisco_bulk_download(
 - id:
 
   A character string or numeric value with the dataset type to download,
-  see **Details**. Values supported are:
+  see **Details**. Supported values are:
 
-  - `"countries"`
+  - `"countries"`.
 
-  - `"coastal_lines"`
+  - `"coastal_lines"`.
 
-  - `"communes"`
+  - `"communes"`.
 
-  - `"lau"`
+  - `"lau"`.
 
-  - `"nuts"`
+  - `"nuts"`.
 
-  - `"urban_audit"`
+  - `"urban_audit"`.
 
-  - `"postal_codes"`
+  - `"postal_codes"`.
 
     This argument replaces the previous (deprecated) argument
     `id_giscoR`.
@@ -62,8 +62,8 @@ gisco_bulk_download(
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
@@ -91,10 +91,9 @@ gisco_bulk_download(
 
 - recursive:
 
-  **\[deprecated\]** `recursive` is no longer supported, and this
-  function will never perform recursive extraction of child `.zip`
-  files. This is the case for "`shp.zip` inside the top-level `.zip`,
-  which will not be unzipped.
+  **\[deprecated\]** `recursive` is no longer supported. It will never
+  perform recursive extraction of child `.zip` files. This is the case
+  for `shp.zip` inside the top-level `.zip`, which will not be unzipped.
 
 - ...:
 
@@ -113,7 +112,7 @@ Some arguments only apply to a specific value of `"id"`. For example
 `"resolution"` is ignored for values `"communes"`, `"lau"`,
 `"urban_audit"` and `"postal_codes"`.
 
-See years available in the corresponding functions:
+See available years in the corresponding functions:
 
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md).
 
@@ -132,13 +131,13 @@ See years available in the corresponding functions:
 The usual extensions used across
 [giscoR](https://CRAN.R-project.org/package=giscoR) are `"gpkg"` and
 `"shp"`, but other formats are already available on GISCO. After a bulk
-download, you may need to adjust the default `"ext"` value in the
+download, you may need to adjust the default `ext` value in the
 corresponding function to connect it with the downloaded files (see
 **Examples**).
 
 ## See also
 
-Additional utils for downloading datasets:
+Single-unit and additional download utilities:
 [`gisco_get_unit`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
 
 ## Examples
@@ -172,15 +171,15 @@ read_sf(dest_files[1]) |> head()
 #> # ℹ 6 more variables: STAT_CODE <chr>, EU_STAT <chr>, EFTA_STAT <chr>,
 #> #   CC_STAT <chr>, NAME_GERM <chr>, geometry <MULTIPOLYGON [m]>
 
-# Now we can connect the function with the downloaded data like:
+# Connect the function with the downloaded data.
 
 connect <- gisco_get_countries(
   resolution = 60,
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache dir is /tmp/RtmpsmC0dv/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpsmC0dv/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/RtmpuOxXjL/testexample/countries.
+#> ✔ File already cached: /tmp/RtmpuOxXjL/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }

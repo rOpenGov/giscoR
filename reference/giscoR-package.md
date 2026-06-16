@@ -1,11 +1,12 @@
-# giscoR: Download Map Data from the GISCO API
+# giscoR: Download 'Eurostat' 'GISCO' Spatial Data
 
-Tools to download global and European map data from Eurostat's GISCO
-(Geographic Information System of the Commission) database
-<https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers
-for working with country boundaries, NUTS regions, statistical units,
-transport networks and other geospatial datasets. This package is not
-officially related to or endorsed by Eurostat.
+Tools to download global and European spatial data from the 'Eurostat'
+'GISCO' (Geographic Information System of the Commission) data
+distribution <https://ec.europa.eu/eurostat/web/gisco>. The package
+provides helpers for country boundaries, 'NUTS' regions, administrative
+units, statistical units, transport networks, basic service locations
+and other 'GISCO' datasets. This package is not officially related to or
+endorsed by 'Eurostat'.
 
 ## See also
 

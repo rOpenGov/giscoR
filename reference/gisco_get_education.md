@@ -1,8 +1,8 @@
 # Education services in Europe
 
-This dataset is an integration of Member States official data on the
-location of education services. Additional information on these services
-is included when available (see **Details**).
+This dataset integrates Member States' official data on the location of
+education services. Additional information on these services is included
+when available. See **Details**.
 
 ## Usage
 
@@ -24,12 +24,12 @@ gisco_get_education(
 There are no specific download rules for the datasets shown below.
 However, please refer to [the general copyright
 notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
-provisions, which must be complied with. Permission to download and use
-these data are subject to these rules being accepted.
+provisions, which apply to these datasets. Permission to download and
+use these data is subject to acceptance of those rules.
 
 The data are extracted from official national registers. They may
-contain inconsistencies, inaccuracies and gaps, due to the heterogeneity
-of the input national data.
+contain inconsistencies, inaccuracies and gaps due to the heterogeneity
+of the national input data.
 
 ## Arguments
 
@@ -40,14 +40,14 @@ of the input national data.
 
 - cache:
 
-  A logical value indicating whether to cache results. Default is
+  A logical value indicating whether to cache results. Defaults to
   `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -62,8 +62,8 @@ of the input national data.
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 ## Value
@@ -72,40 +72,40 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed on [EPSG:4326](https://epsg.io/4326).
+Files are distributed in [EPSG:4326](https://epsg.io/4326).
 
-Brief description of each attribute:
+The following table describes the education service attributes:
 
 |  |  |
 |----|----|
 | **Attribute** | **Description** |
-| `id` | The education service identifier. This identifier is based on national identification codes, if it exists. |
+| `id` | The education service identifier, based on national identification codes when available. |
 | `name` | The name of the education institution. |
-| `site_name` | The name of the specific site or branch of an education institution. |
+| `site_name` | The name of a specific site or branch of the education institution. |
 | `lat` | Latitude (WGS 84). |
 | `lon` | Longitude (WGS 84). |
 | `street` | Street name. |
 | `house_number` | House number. |
 | `postcode` | Postcode. |
 | `address` | Address information when the different components of the address are not separated in the source. |
-| `city` | City name (sometimes refers to a region or municipality). |
+| `city` | City name. In some sources, this refers to a region or municipality. |
 | `cntr_id` | Country code (2 letters, ISO 3166-1 alpha-2). |
-| `levels` | Education levels represented by a single integer or range (ISCED 2011). |
+| `levels` | Education levels represented by a single integer or range, using ISCED 2011. |
 | `max_students` | Measure of capacity by maximum number of students. |
 | `enrollment` | Measure of capacity by number of enrolled students. |
-| `fields` | Academic disciplines the institution specializes in (ISCED-F 2013). |
-| `facility_type` | Type of institution in reference to ownership and operation, such as Catholic or international. |
-| `public_private` | The public or private status of the education service. |
+| `fields` | Academic disciplines in which the institution specializes, using ISCED-F 2013. |
+| `facility_type` | Type of institution by ownership and operation, such as Catholic or international. |
+| `public_private` | Public or private status of the education service. |
 | `tel` | Telephone number. |
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
-| `ref_date` | The reference date (`DD/MM/YYYY`) the data refers to. The dataset represents the reality as it was at this date. |
+| `ref_date` | The reference date (`DD/MM/YYYY`) for the data. The dataset represents the state on this date. |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the education service. |
 
 ## See also
 
-Other basic services datasets:
+Basic service datasets:
 [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/reference/gisco_get_healthcare.md)
 
 ## Examples
@@ -114,7 +114,7 @@ Other basic services datasets:
 # \donttest{
 edu_austria <- gisco_get_education(country = "Austria", year = 2023)
 
-# Plot if downloaded
+# Plot if downloaded.
 if (!is.null(edu_austria)) {
   austria_nuts3 <- gisco_get_nuts(country = "Austria", nuts_level = 3)
 

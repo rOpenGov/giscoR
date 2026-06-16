@@ -2,7 +2,7 @@
 
 This dataset includes the location of over 11,800 pan-European airports
 and heliports. The airports are identified using the International Civil
-Aviation Organisation (ICAO) airport codes.
+Aviation Organization (ICAO) airport codes.
 
 ## Usage
 
@@ -32,8 +32,8 @@ Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - cache_dir:
@@ -44,8 +44,8 @@ Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
@@ -57,11 +57,11 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Dataset includes objects in [EPSG:4326](https://epsg.io/4326).
+Files are distributed in [EPSG:4326](https://epsg.io/4326).
 
 ## See also
 
-Other transport networks datasets:
+Transport network datasets:
 [`gisco_get_ports()`](https://ropengov.github.io/giscoR/reference/gisco_get_ports.md)
 
 ## Examples

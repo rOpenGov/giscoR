@@ -1,7 +1,7 @@
-# Retrieve and update the GISCO database in use by [giscoR](https://CRAN.R-project.org/package=giscoR)
+# Retrieve and update the GISCO database used by [giscoR](https://CRAN.R-project.org/package=giscoR)
 
-Returns or optionally updates the cached database with the endpoints of
-the GISCO API.
+Returns or optionally updates the cached database with endpoints from
+the GISCO geodata distribution.
 
 ## Usage
 
@@ -18,7 +18,7 @@ gisco_get_cached_db(update_cache = FALSE)
 - update_cache:
 
   A logical value. If `TRUE`, rebuild the cached database with the most
-  recent information from the GISCO API.
+  recent information from the GISCO geodata distribution.
 
 ## Value
 
@@ -27,7 +27,7 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 ## Details
 
 The cached database is stored in the
-[giscoR](https://CRAN.R-project.org/package=giscoR) cache path, see
+[giscoR](https://CRAN.R-project.org/package=giscoR) cache path. See
 [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md)
 for details. The cached database is used in subsequent R sessions.
 
@@ -38,11 +38,11 @@ refreshing the cached database without waiting for a new version of
 A static database
 [gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md) is
 shipped with the package. This database is used if there is any problem
-during update.
+during the update.
 
 ## See also
 
-Other database utils:
+Database utilities:
 [`gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md),
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
 
@@ -64,5 +64,5 @@ gisco_get_cached_db() |>
 #> $ ext          <chr> "csv", "geojson", "gpkg", "json", "pbf", "shp", "csv", "g…
 #> $ api_file     <chr> "csv/COAS_RG_01M_2006_3035.csv", "geojson/COAS_RG_01M_200…
 #> $ api_entry    <chr> "https://gisco-services.ec.europa.eu/distribution/v2/coas…
-#> $ last_updated <date> 2026-06-03, 2026-06-03, 2026-06-03, 2026-06-03, 2026-06-…
+#> $ last_updated <date> 2026-06-16, 2026-06-16, 2026-06-16, 2026-06-16, 2026-06-…
 ```

@@ -39,8 +39,8 @@ Copyright:
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -50,14 +50,14 @@ Copyright:
 
 - cache:
 
-  **\[deprecated\]**. These functions always cache the result due to the
-  size. See **Caching strategies** section in
+  **\[deprecated\]**. Always caches the result due to its size. See
+  **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -72,8 +72,8 @@ Copyright:
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - gisco_id:
@@ -94,16 +94,16 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions
 that together subdivide the EU economic territory into regions of five
-different levels (NUTS 1, 2 and 3 and LAU, respectively, moving from
-larger to smaller territorial units).
+different levels, moving from larger to smaller territorial units: NUTS
+1, 2 and 3 and LAU.
 
 The LAU classification is not covered by any legislative act.
 Geographical extent covers the European Union, EFTA countries and
 candidate countries. The scale of the dataset is 1:100 000.
 
-The data contains the National Statistical Agency LAU code, which can be
-joined to LAU lists, and a `GISCO_ID` field, which is a unique
-identifier consisting of the country code and LAU code.
+The data contain the National Statistical Agency LAU code, which can be
+joined to LAU lists. They also contain a `GISCO_ID` field, which is a
+unique identifier consisting of the country code and LAU code.
 
 Total resident population figures (31 December) have also been added in
 some versions based on the associated LAU lists.
@@ -125,7 +125,7 @@ See
 [`gisco_id_api_lau()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Other statistical units datasets:
+Statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md),
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/reference/gisco_get_coastal_lines.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
@@ -137,7 +137,7 @@ Other statistical units datasets:
 # \dontrun{
 
 lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
-#> ! The file to download has size 74.6 Mb.
+#> ! The file to download is "74.6 Mb".
 
 if (!is.null(lu_lau)) {
   library(ggplot2)
@@ -145,7 +145,7 @@ if (!is.null(lu_lau)) {
   ggplot(lu_lau) +
     geom_sf(aes(fill = POP_DENS_2024)) +
     labs(
-      title = "Population Density in Luxembourg",
+      title = "Population density in Luxembourg",
       subtitle = "Year 2024",
       caption = gisco_attributions()
     ) +

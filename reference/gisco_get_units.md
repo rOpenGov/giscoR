@@ -1,14 +1,14 @@
-# Get geospatial units data from GISCO API
+# Get geospatial unit data from GISCO
 
 **\[deprecated\]**
 
-This function is deprecated. Use:
+Deprecated. Use one of these replacements:
 
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
-  (equivalent to `mode = "df"`).
+  for `mode = "df"`.
 
 - [`?gisco_get_unit`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
-  functions (equivalent to `mode = "sf"`)
+  functions for `mode = "sf"`.
 
 ## Usage
 
@@ -32,7 +32,7 @@ gisco_get_units(
 
 <https://gisco-services.ec.europa.eu/distribution/v2/>
 
-All the source files are `.geojson` files.
+All source files are `.geojson` files.
 
 ## Arguments
 
@@ -56,8 +56,8 @@ All the source files are `.geojson` files.
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -67,14 +67,14 @@ All the source files are `.geojson` files.
 
 - cache:
 
-  A logical value indicating whether to cache results. Default is
+  A logical value indicating whether to cache results. Defaults to
   `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -112,9 +112,9 @@ All the source files are `.geojson` files.
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object on
+A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object when
 `mode = "sf"` or a
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) on
+[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) when
 `mode = "df"`.
 
 ## Note
@@ -132,7 +132,7 @@ functions.
 
 ``` r
 # \donttest{
-# mode df
+# Equivalent metadata call.
 gisco_get_units("nuts", mode = "df", year = 2016)
 #> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
 #> ℹ Please use `gisco_get_metadata()` instead.
@@ -169,7 +169,7 @@ gisco_get_metadata("nuts", year = 2016)
 #> # ℹ 2,006 more rows
 #> # ℹ 2 more variables: URBN_TYPE <int>, COAST_TYPE <int>
 
-# mode sf for NUTS
+# Equivalent `sf` call for NUTS.
 gisco_get_units("nuts", unit = "ES111", mode = "sf", year = 2016)
 #> Warning: `gisco_get_units()` was deprecated in giscoR 1.0.0.
 #> ℹ Please use `gisco_get_unit_nuts()` instead.

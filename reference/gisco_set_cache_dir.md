@@ -1,8 +1,8 @@
-# Set your [giscoR](https://CRAN.R-project.org/package=giscoR) cache dir
+# Set your [giscoR](https://CRAN.R-project.org/package=giscoR) cache directory
 
-This function stores your `cache_dir` path on your local machine and
-loads it for future sessions. Type `Sys.getenv("GISCO_CACHE_DIR")` to
-find your cached path or use `gisco_detect_cache_dir()`.
+Stores your `cache_dir` path on your local machine and loads it in
+future sessions. Use `Sys.getenv("GISCO_CACHE_DIR")` or
+`gisco_detect_cache_dir()` to find your cached path.
 
 ## Usage
 
@@ -32,9 +32,9 @@ gisco_detect_cache_dir()
 
 - install:
 
-  If `TRUE`, install the key on your local machine for use in future
-  sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`, `install` is
-  automatically set to `FALSE`.
+  If `TRUE`, install the cache path on your local machine for use in
+  future sessions. Defaults to `FALSE`. If `cache_dir` is `FALSE`,
+  `install` is automatically set to `FALSE`.
 
 - verbose:
 
@@ -42,8 +42,8 @@ gisco_detect_cache_dir()
 
 ## Value
 
-`gisco_set_cache_dir()` returns an (invisible) character with the path
-to your `cache_dir`, but it is mainly called for its side effect.
+`gisco_set_cache_dir()` invisibly returns a character string with the
+path to your `cache_dir`, but it is mainly called for its side effect.
 
 `gisco_detect_cache_dir()` returns the path to the `cache_dir` used in
 this session.
@@ -65,7 +65,7 @@ location of the configuration file has moved from
 `rappdirs::user_config_dir("giscoR", "R")` to
 `tools::R_user_dir("giscoR", "config")`. We have implemented a function
 that migrates previous configuration files from one location to another
-with a message. This message appears only once to inform you of the
+with a message. The message appears only once to inform you of the
 migration.
 
 ## Caching strategies
@@ -83,20 +83,20 @@ implements the following caching options:
   `gisco_set_cache_dir(cache_dir = "a/path/here")`.
 
 - For reproducible workflows, install a persistent cache with
-  `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)` that
-  is kept across R sessions.
+  `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`,
+  which keeps the path across R sessions.
 
 - For caching specific files, use the `cache_dir` argument in the
   corresponding function. See example in
   [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md).
 
-Sometimes cached files may be corrupt. In that case, try re-downloading
-the data by setting `update_cache = TRUE` in the corresponding function.
+Sometimes cached files may be corrupt. In that case, try downloading the
+data by setting `update_cache = TRUE` in the corresponding function.
 
-If you experience any download problem, try to download the
-corresponding file by another method and save it in your `cache_dir`.
-Use the option `verbose = TRUE` for debugging the API query and
-`gisco_detect_cache_dir()` to identify your cached path.
+If you experience a download problem, try to download the corresponding
+file by another method and save it in your `cache_dir`. Use
+`verbose = TRUE` to debug the API query and `gisco_detect_cache_dir()`
+to identify your cached path.
 
 ## See also
 
@@ -112,29 +112,29 @@ Other cache utilities:
 # Do not run this. It modifies your current state.
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpsmC0dv/giscoR
+#> ℹ /tmp/RtmpuOxXjL/giscoR
 
-# Set an example cache
+# Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache dir is /tmp/RtmpsmC0dv/example/cachenew.
-#> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
+#> ℹ giscoR cache directory is /tmp/RtmpuOxXjL/example/cachenew.
+#> ℹ To install your `cache_dir` path for future sessions, run this function with `install` = TRUE.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpsmC0dv/example/cachenew
-#> [1] "/tmp/RtmpsmC0dv/example/cachenew"
+#> ℹ /tmp/RtmpuOxXjL/example/cachenew
+#> [1] "/tmp/RtmpuOxXjL/example/cachenew"
 
-# Restore initial cache
+# Restore the initial cache.
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache dir is /tmp/RtmpsmC0dv/giscoR.
-#> ℹ To install your `cache_dir` path for use in future sessions run this function with `install = TRUE`.
+#> ℹ giscoR cache directory is /tmp/RtmpuOxXjL/giscoR.
+#> ℹ To install your `cache_dir` path for future sessions, run this function with `install` = TRUE.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/RtmpsmC0dv/giscoR
+#> ℹ /tmp/RtmpuOxXjL/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpsmC0dv/giscoR
-#> [1] "/tmp/RtmpsmC0dv/giscoR"
+#> ℹ /tmp/RtmpuOxXjL/giscoR
+#> [1] "/tmp/RtmpuOxXjL/giscoR"
 ```

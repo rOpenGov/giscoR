@@ -36,8 +36,8 @@ Copyright:
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - cache_dir:
@@ -48,8 +48,8 @@ Copyright:
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - verbose:
 
@@ -68,7 +68,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 The dataset is released under the CC-BY-SA-4.0 license and requires the
 following attribution whenever used: © European Union - GISCO, 2024,
-postal code point dataset, Licence CC-BY-SA 4.0.
+postal code point dataset, License CC-BY-SA 4.0.
 
 ## Note
 
@@ -81,7 +81,7 @@ See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
 to perform a bulk download of datasets.
 
-Other administrative units datasets:
+Administrative unit datasets:
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md),
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md)
 
@@ -89,11 +89,11 @@ Other administrative units datasets:
 
 ``` r
 
-# Heavy-weight download!
+# Large download.
 # \dontrun{
 
 pc_bel <- gisco_get_postal_codes(country = "BE")
-#> ! The file to download has size 196.9 Mb.
+#> ! The file to download is "196.9 Mb".
 
 if (!is.null(pc_bel)) {
   library(ggplot2)

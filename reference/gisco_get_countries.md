@@ -1,11 +1,11 @@
 # Countries dataset
 
 This dataset contains world administrative boundaries at the country
-level. It provides 2 feature classes (regions and boundaries) for each
-scale level, with 5 scale levels available (1M, 3M, 10M, 20M and 60M).
+level. It provides two feature classes, regions and boundaries, at five
+scale levels: 1M, 3M, 10M, 20M and 60M.
 
-This function gets data from the aggregated GISCO country file. To
-download individual country files, use
+Downloads data from the aggregated GISCO country file. To download
+single-unit country files, use
 [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md).
 
 ## Usage
@@ -43,8 +43,8 @@ Copyright:
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -54,14 +54,14 @@ Copyright:
 
 - cache:
 
-  A logical value indicating whether to cache results. Default is
+  A logical value indicating whether to cache results. Defaults to
   `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -99,9 +99,9 @@ Copyright:
 
   - `"BN"`: Boundaries - `LINESTRING` object.
 
-  - `"COASTL"`: coastlines - `LINESTRING` object.
+  - `"COASTL"`: Coastal lines - `LINESTRING` object.
 
-  - `"INLAND"`: inland boundaries - `LINESTRING` object.
+  - `"INLAND"`: Inland boundaries - `LINESTRING` object.
 
     Arguments `country` and `region` are only applied when `spatialtype`
     is `"RG"` or `"LB"`.
@@ -109,8 +109,8 @@ Copyright:
 - country:
 
   A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO3 country codes or a vector of Eurostat
-  country codes. See also
+  country names, a vector of ISO 3166-1 alpha-3 country codes or a
+  vector of Eurostat country codes. See also
   [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
 
 - region:
@@ -118,7 +118,7 @@ Copyright:
   An optional character vector of UN M49 region codes or European Union
   membership. Possible values are `"Africa"`, `"Americas"`, `"Asia"`,
   `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
-  European Union (as per 2021). See **World Regions** and
+  European Union as of 2021. See **World Regions** and
   [gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md).
 
 - ext:
@@ -132,9 +132,9 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## World Regions
 
-Regions are defined as per the geographic regions defined by the UN (see
-<https://unstats.un.org/unsd/methodology/m49/>. Under this scheme Cyprus
-is assigned to Asia.
+Regions follow the UN geographic regions (see
+<https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
+Cyprus is assigned to Asia.
 
 ## Note
 
@@ -154,13 +154,13 @@ to perform a bulk download of datasets.
 
 See
 [`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
-to download single files.
+to download single-unit files.
 
 See
 [`gisco_id_api_country()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Other administrative units datasets:
+Administrative unit datasets:
 [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md),
 [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postal_codes.md)
 

@@ -1,4 +1,4 @@
-# GISCO API single download
+# GISCO geodata single-unit download
 
 Download datasets of single spatial units from GISCO to the
 [`cache_dir`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
@@ -8,9 +8,9 @@ Unlike
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
 or
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
-(which downloads a full dataset and applies filters), these functions
-download a single file per unit, reducing the time needed to download
-and read into your R session.
+(which download full datasets and apply filters), these functions
+download a single-unit file, reducing the time needed to download and
+read data into your R session.
 
 ## Usage
 
@@ -55,13 +55,13 @@ gisco_get_unit_urban_audit(
 
 <https://gisco-services.ec.europa.eu/distribution/v2/>
 
-All the source files are `.geojson` files.
+All source files are `.geojson` files.
 
 ## Arguments
 
 - unit:
 
-  A character vector of unit IDs to be downloaded. See **Details**.
+  A character vector of unit IDs to download. See **Details**.
 
 - year:
 
@@ -69,8 +69,8 @@ All the source files are `.geojson` files.
 
 - epsg:
 
-  A character string or numeric value with the map projection as a
-  4-digit [EPSG code](https://epsg.io/). One of:
+  A character string or numeric value with the coordinate reference
+  system as a 4-digit [EPSG code](https://epsg.io/). One of:
 
   - `"4326"`: [WGS84](https://epsg.io/4326).
 
@@ -80,14 +80,14 @@ All the source files are `.geojson` files.
 
 - cache:
 
-  A logical value indicating whether to cache results. Default is
+  A logical value indicating whether to cache results. Defaults to
   `TRUE`. See **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
 
-  A logical value indicating whether to refresh the cached file. Default
-  is `FALSE`. When set to `TRUE`, it forces a new download.
+  A logical value indicating whether to refresh the cached file.
+  Defaults to `FALSE`. When set to `TRUE`, it forces a new download.
 
 - cache_dir:
 
@@ -129,8 +129,8 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Check the available `unit` IDs with the required combination of
-arguments with
+Check the available `unit` IDs for the required argument combination
+with
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md).
 
 ## Note
@@ -149,17 +149,17 @@ See
 [`gisco_id_api`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Additional utils for downloading datasets:
+Single-unit and additional download utilities:
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
 
 ## Examples
 
 ``` r
-# Get metadata
+# Get metadata.
 cities <- gisco_get_metadata("urban_audit", year = 2024)
 
-# Valencia, Spain
-valencia <- cities[grep("Valencia", cities$URAU_NAME), ]
+# Valencia, Spain.
+valencia <- cities[grep("Valencia", cities$URAU_NAME, fixed = TRUE), ]
 valencia
 #> # A tibble: 2 × 8
 #>   URAU_CODE URAU_CATG CNTR_CODE URAU_NAME CITY_CPTL FUA_CODE AREA_SQM NUTS3_2024
@@ -167,13 +167,13 @@ valencia
 #> 1 ES003C    C         ES        Valencia  ""        "ES003F"     402. ES523     
 #> 2 ES003F    F         ES        Valencia  ""        ""          5430. ES523     
 library(dplyr)
-# Now get the sf objects and order by AREA_SQM
+# Get `sf` objects and order by `AREA_SQM`.
 valencia_sf <- gisco_get_unit_urban_audit(
   unit = valencia$URAU_CODE,
-  year = 2024,
+  year = 2024
 ) |>
   arrange(desc(AREA_SQM))
-# Plot
+# Plot.
 library(ggplot2)
 
 ggplot(valencia_sf) +
