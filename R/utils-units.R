@@ -111,7 +111,7 @@ get_unit_files <- function(
     make_msg(
       "info",
       verbose,
-      paste0("Requested file {.str ", single_unit, "}.")
+      paste0("Requested file {.file ", single_unit, "}.")
     )
 
     guess_path <- file.path(base_cache_dir, cache_subdir, single_unit)
@@ -130,7 +130,7 @@ get_unit_files <- function(
 
     if (!single_unit %in% units_db) {
       cli::cli_alert_warning(
-        "Skipping {.arg unit = {.str {unit_txt}}} (not found online)."
+        "Skipping {.arg unit} = {.str {unit_txt}} (not found online)."
       )
       return(NULL)
     }

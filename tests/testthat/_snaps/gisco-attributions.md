@@ -83,7 +83,7 @@
     Code
       gisco_attributions("xx")
     Message
-      ! Language xx is not supported. Switching to English.
+      ! `lang` = "xx" is not supported. Switching to English.
       i Consider contributing a translation: <https://github.com/rOpenGov/giscoR/issues>.
     Output
       [1] "© EuroGeographics for the administrative boundaries"

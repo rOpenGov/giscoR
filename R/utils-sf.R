@@ -16,7 +16,7 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
     class(fsize_unit) <- class(object.size("a"))
     thr <- 20 * (1024^2)
     if (fsize > thr) {
-      fsize_unit <- paste0("(", format(fsize_unit, units = "auto"), ").")
+      fsize_unit <- paste0("({.val ", format(fsize_unit, units = "auto"), "}).")
       make_msg("warning", TRUE, "Reading a large file", fsize_unit)
       make_msg("generic", TRUE, "This can take a while.")
     }

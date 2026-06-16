@@ -60,7 +60,7 @@ get_url_db <- function(
   # Only report valid years.
   if (!make_params$year %in% db$year) {
     cli::cli_abort(
-      paste0("Years available for {.fn ", fn, "} are ", "{.str {years}}."),
+      paste0("Years available for {.fn ", fn, "} are ", "{.val {years}}."),
       call = NULL
     )
   }
@@ -238,7 +238,7 @@ download_url <- function(
   class(size_dwn) <- class(object.size("a"))
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
-    sz_dwn <- paste0(format(size_dwn, units = "auto"), ".")
+    sz_dwn <- paste0("{.val ", format(size_dwn, units = "auto"), "}.")
     make_msg("warning", TRUE, "The file to download is", sz_dwn)
     req <- httr2::req_progress(req)
   }

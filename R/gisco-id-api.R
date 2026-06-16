@@ -276,7 +276,7 @@ prepare_id_query <- function(
       "}}."
     )
     make_msg("warning", TRUE, msg)
-    msg2 <- paste0("Using {.arg nuts_id = {.str ", nuts_id[1], "}}.")
+    msg2 <- paste0("Using {.arg nuts_id} = {.str ", nuts_id[1], "}.")
     make_msg("info", TRUE, msg2)
 
     nuts_id <- nuts_id[1]

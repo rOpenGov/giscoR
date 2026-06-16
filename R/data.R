@@ -21,8 +21,6 @@
 #' Please use [gisco_get_cached_db()] with `update_cache = TRUE` to update the
 #' corresponding API endpoints.
 #'
-#' @inherit gisco_get_cached_db source
-#'
 #' @source GISCO geodata distribution `datasets.json`.
 #' @examples
 #' data("gisco_db")

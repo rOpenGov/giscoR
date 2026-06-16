@@ -37,7 +37,7 @@
       n <- gisco_id_api_nuts(epsg = 3035, nuts_id = c("ES11", "ES12"))
     Message
       ! `nuts_id` should have length 1, not 2.
-      i Using `nuts_id = "ES11"`.
+      i Using `nuts_id` = "ES11".
 
 # gisco_id_api_lau online
 

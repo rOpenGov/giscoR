@@ -134,7 +134,7 @@ gisco_set_cache_dir <- function(
     } else {
       cli::cli_abort(c(
         "A {.arg cache_dir} path already exists.",
-        "You can overwrite it with {.arg overwrite = TRUE}."
+        "You can overwrite it with {.arg overwrite} = {.val {TRUE}}."
       ))
     }
     # nocov end
@@ -143,7 +143,7 @@ gisco_set_cache_dir <- function(
       "info",
       verbose && !is_temp,
       "To install your {.arg cache_dir} path for future sessions,",
-      "run this function with {.arg install = TRUE}."
+      "run this function with {.arg install} = {.val {TRUE}}."
     )
   }
 

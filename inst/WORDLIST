@@ -9,6 +9,7 @@ EPSG
 ETRS
 EuroBoundaryMap
 Eurostat's
+Eurostat’s
 GDAL
 GISCO
 GeoPackage
@@ -48,6 +49,7 @@ geojsonsf
 geonames
 geospatial
 ggplot
+giscoR’
 gpkg
 httr
 jsonlite

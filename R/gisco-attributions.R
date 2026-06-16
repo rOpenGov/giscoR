@@ -127,9 +127,7 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
   make_msg(
     "warning",
     verbose,
-    "Language",
-    lang,
-    "is not supported.",
+    paste0("{.arg lang} = {.val ", lang, "} is not supported."),
     "Switching to English."
   )
   make_msg(
@@ -139,7 +137,8 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     "{.url https://github.com/rOpenGov/giscoR/issues}."
   )
 
-  attr <- switch(lang,
+  attr <- switch(
+    lang,
     "en" = "\u00a9 EuroGeographics for the administrative boundaries",
     "da" = "\u00a9 EuroGeographics for administrative gr\u00e6nser",
     "de" = "\u00a9 EuroGeographics bez\u00fcglich der Verwaltungsgrenzen",

@@ -303,15 +303,15 @@ get_db <- function() {
     cli::cli_alert_warning(c(
       "Could not retrieve the latest database from {.url {url_api}}.\n",
       "Try again later with {.fn giscoR::gisco_get_cached_db} ",
-      "and {.arg update_cache = TRUE}."
+      "and {.arg update_cache} = {.val {TRUE}}."
     ))
 
     date <- unique(db$last_updated)
 
     cli::cli_alert_info(c(
       "Using cached ",
-      "{.help [{.value gisco_db}](giscoR::gisco_db)} ",
-      paste0("information as of ", date, ". It may be outdated.")
+      "{.help [{.val gisco_db}](giscoR::gisco_db)} ",
+      paste0("information as of {.val ", date, "}. It may be outdated.")
     ))
   }
   db

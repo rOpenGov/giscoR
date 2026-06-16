@@ -82,7 +82,7 @@ read_packaged_gisco_dataset <- function(
     "info",
     verbose,
     paste0("Loaded from {.help giscoR::", data_name, "} dataset."),
-    "Use {.arg update_cache = TRUE} to reload from file."
+    "Use {.arg update_cache} = {.val {TRUE}} to reload from file."
   )
 
   if (!is.null(post_process)) {
