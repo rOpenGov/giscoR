@@ -10,7 +10,7 @@
 |collate  |C.UTF-8                                              |
 |ctype    |C.UTF-8                                              |
 |tz       |UTC                                                  |
-|date     |2026-06-15                                           |
+|date     |2026-06-16                                           |
 |pandoc   |3.8.3 @ /opt/hostedtoolcache/pandoc/3.8.3/x64/pandoc |
 |quarto   |1.9.38 @ /usr/local/bin/quarto                       |
 
@@ -43,7 +43,7 @@
 |pillar      |1.11.1    |1.11.1     |   |
 |pkgbuild    |1.4.8     |NA         |*  |
 |pkgconfig   |2.0.3     |2.0.3      |   |
-|pkgload     |1.5.2     |NA         |*  |
+|pkgload     |1.5.3     |NA         |*  |
 |praise      |1.0.0     |NA         |*  |
 |processx    |3.9.0     |NA         |*  |
 |proxy       |0.4-29    |0.4-29     |   |
