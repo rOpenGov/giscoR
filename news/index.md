@@ -2,6 +2,8 @@
 
 ## giscoR 1.1.1
 
+CRAN release: 2026-06-17
+
 - Refactor internal helpers, documentation and tests, including clearer
   user-facing messages, more consistent roxygen2 documentation, reused
   documentation blocks and faster mocked tests for selected
