@@ -107,7 +107,7 @@ gisco_detect_cache_dir()
 \seealso{
 \code{\link[tools:R_user_dir]{tools::R_user_dir()}}
 
-Other cache utilities:
+Cache management utilities:
 \code{\link[=gisco_clear_cache]{gisco_clear_cache()}}
 }
-\concept{cache utilities}
+\concept{cache_utils}

@@ -14,7 +14,7 @@
 #' @name gisco_address_api
 #' @rdname gisco_address_api
 #' @aliases gisco_addressapi
-#' @family API tools
+#' @family api
 #' @encoding UTF-8
 #'
 #' @inheritParams gisco_get_nuts

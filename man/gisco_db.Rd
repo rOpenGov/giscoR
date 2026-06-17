@@ -30,7 +30,7 @@ gisco_db |>
   dplyr::glimpse()
 }
 \seealso{
-Other datasets:
+Included datasets:
 \code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},

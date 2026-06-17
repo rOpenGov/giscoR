@@ -52,7 +52,7 @@ dplyr::glimpse(gisco_countrycode)
 
 See also \href{https://cldr.unicode.org/translation/displaynames/countryregion-territory-names}{Unicode Common Locale Data Repository}.
 
-Other datasets:
+Included datasets:
 \code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_db}},

@@ -53,7 +53,7 @@ reference:
     See <a
     href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units"
     class="external-link">copyright information</a>.
-  contents: has_concept("admin")
+- contents: has_concept("admin")
 - subtitle: Statistical units
   desc: >
     A statistical unit is the unit of observation or measurement for which data
@@ -62,52 +62,49 @@ reference:
     See <a
     href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units"
     class="external-link">copyright information</a>.
-  contents: has_concept("stats")
+- contents: has_concept("stats")
 - subtitle: Grids
   desc: >
     These datasets contain grid cells covering the European land territory at
     resolutions from 1 km to 100 km. Base statistics such as population figures
     are provided for these cells.
-  contents: has_concept("grids")
+- contents: has_concept("grids")
 - subtitle: Transport networks
   desc: >
     Download transport network data such as airports and ports.
-  contents: has_concept("transport")
+- contents: has_concept("transport")
 - subtitle: Basic service locations
   desc: >
     Download basic service locations, such as education and healthcare
     services.
-  contents: has_concept("services")
+- contents: has_concept("services")
 - subtitle: Single-unit and additional downloads
   desc: >
     Download single-unit datasets and other GISCO resources.
-  contents: has_concept("extra")
+- contents: has_concept("extra")
 - subtitle: <span class="pkg">giscoR</span> database
   desc: >
     Get the cached GISCO database used by the package and its corresponding
     metadata.
-  contents: has_concept("database")
+- contents: has_concept("database")
 - subtitle: Miscellaneous
   desc: >
     Helpers for attribution and other package utilities.
-  contents: has_concept("misc")
+- contents: has_concept("misc")
 - title: GISCO API tools
   desc: >
     Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools"
     class="external-link">GISCO APIs and tools</a>, including the GISCO Address
     API and the GISCO ID service API.
-  contents: has_concept("API tools")
+- contents: has_concept("api")
 - title: Cache management
   desc: >
     Configure, inspect and clear the local GISCO cache.
-  contents: has_concept("cache utilities")
+- contents: has_concept("cache_utils")
 - title: Datasets
   desc: >
     Datasets included in <a href="https://CRAN.R-project.org/package=giscoR"
     class="external-link"><span class="pkg">giscoR</span></a>.
-  contents: has_concept("datasets")
+- contents: has_concept("datasets")
 - title: About the package
-  contents: giscoR-package
-- title: Deprecated functions
-  desc: These functions will be removed in the future.
-  contents: has_concept("deprecated functions")
+- contents: giscoR-package

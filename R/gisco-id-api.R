@@ -11,7 +11,7 @@
 #'
 #' @name gisco_id_api
 #' @rdname gisco_id_api
-#' @family API tools
+#' @family api
 #' @encoding UTF-8
 #' @inheritParams gisco_address_api
 #' @param x,y A character string or numeric value with the longitude and

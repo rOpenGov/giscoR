@@ -69,7 +69,7 @@ head(gisco_nuts_2024)
 \seealso{
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}
 
-Other datasets:
+Included datasets:
 \code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countries_2024}},
 \code{\link{gisco_countrycode}},

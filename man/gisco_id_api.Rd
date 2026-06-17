@@ -176,7 +176,7 @@ if (all(!is.null(lau), !is.null(nuts3))) {
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}, \code{\link[=gisco_get_lau]{gisco_get_lau()}}, \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \code{\link[=gisco_get_census]{gisco_get_census()}}.
 
-Other API tools:
+GISCO API tools:
 \code{\link{gisco_address_api}}
 }
-\concept{API tools}
+\concept{api}

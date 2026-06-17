@@ -175,7 +175,7 @@ reverse
 See the GISCO Address API documentation at
 \url{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}.
 
-Other API tools:
+GISCO API tools:
 \code{\link{gisco_id_api}}
 }
-\concept{API tools}
+\concept{api}

@@ -7,7 +7,7 @@
 #'
 #' @rdname gisco_set_cache_dir
 #'
-#' @family cache utilities
+#' @family cache_utils
 #' @encoding UTF-8
 #' @inheritParams gisco_get_nuts
 #' @param cache_dir A path to a cache directory. If `NULL`, the function
@@ -179,7 +179,7 @@ gisco_detect_cache_dir <- function() {
 #' - Deletes the value stored in `Sys.getenv("GISCO_CACHE_DIR")`.
 #'
 #' @rdname gisco_clear_cache
-#' @family cache utilities
+#' @family cache_utils
 #' @encoding UTF-8
 #' @inheritParams gisco_set_cache_dir
 #'

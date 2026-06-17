@@ -40,7 +40,7 @@ head(gisco_countries_2024)
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}
 
-Other datasets:
+Included datasets:
 \code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_db}},

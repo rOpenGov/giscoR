@@ -8,7 +8,8 @@
 #' - [gisco_get_metadata()] for `mode = "df"`.
 #' - [`?gisco_get_unit`][gisco_get_unit] functions for `mode = "sf"`.
 #'
-#' @family deprecated functions
+#' @family deprecated
+#' @keywords internal
 #' @encoding UTF-8
 #' @inheritParams gisco_get_unit
 #' @param id_giscoR A character string with the `unit` type to download.
