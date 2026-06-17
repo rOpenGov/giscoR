@@ -121,10 +121,13 @@ country_lines <- gisco_get_nuts(
 Next, download the statistical data from Eurostat.
 
 ``` r
-
 # Retrieve Eurostat data.
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
+#> 
+indexed 0B in  0s, 0B/s
+indexed 2.15GB in  0s, 2.15GB/s
+                                                                              
 ```
 
 Finally, merge and transform the datasets to create the plot.

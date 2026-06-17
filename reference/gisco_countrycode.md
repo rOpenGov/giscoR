@@ -85,7 +85,7 @@ Cyprus is assigned to Asia.
 See also [Unicode Common Locale Data
 Repository](https://cldr.unicode.org/translation/displaynames/countryregion-territory-names).
 
-Other datasets:
+Included datasets:
 [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/reference/gisco_coastal_lines.md),
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/reference/gisco_db.md),

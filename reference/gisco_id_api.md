@@ -174,7 +174,7 @@ The available endpoints are:
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md).
 
-Other API tools:
+GISCO API tools:
 [`gisco_address_api`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
 
 ## Examples

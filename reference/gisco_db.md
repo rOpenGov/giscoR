@@ -24,7 +24,7 @@ with `update_cache = TRUE` to update the corresponding API endpoints.
 
 ## See also
 
-Other datasets:
+Included datasets:
 [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/reference/gisco_coastal_lines.md),
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md),

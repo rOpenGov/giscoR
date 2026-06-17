@@ -179,10 +179,3 @@ Datasets included in
 - [`giscoR`](https://ropengov.github.io/giscoR/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/reference/giscoR-package.md)
   : giscoR: Download 'Eurostat' 'GISCO' Spatial Data
-
-## Deprecated functions
-
-These functions will be removed in the future.
-
-- [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
-  **\[deprecated\]** : Get geospatial unit data from GISCO

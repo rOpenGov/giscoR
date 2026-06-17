@@ -161,7 +161,7 @@ The resulting object may include these variables:
 See the GISCO Address API documentation at
 <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 
-Other API tools:
+GISCO API tools:
 [`gisco_id_api`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
 
 ## Examples
