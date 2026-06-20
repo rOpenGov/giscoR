@@ -20,7 +20,6 @@
 #' NUTS files, use [gisco_get_unit_nuts()].
 #'
 #' @family stats
-#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
@@ -42,7 +41,7 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "ext",TRUE)}.
 #'
-#' @inherit gisco_get_communes return
+#' @inherit gisco_get_countries return
 #' @details
 #' The NUTS nomenclature is a hierarchical classification of statistical
 #' regions and subdivides the EU economic territory into regions of three
@@ -52,17 +51,24 @@
 #' statistical national level does not coincide with the administrative
 #' boundaries.
 #'
-#' The NUTS classification has been officially established through Commission
-#' Delegated Regulation 2019/1755. A non-official NUTS-like classification has
-#' been defined for the EFTA countries, candidate countries and potential
-#' candidates based on a bilateral agreement between Eurostat and the
-#' respective statistical agencies.
+#' NUTS legislation is amended periodically, so GISCO provides multiple
+#' classification vintages. A non-official NUTS-like classification is defined
+#' for EFTA countries, candidate countries and potential candidates based on
+#' bilateral agreements between Eurostat and the respective statistical
+#' agencies.
 #'
 #' An introduction to the NUTS classification is available here:
 #' <https://ec.europa.eu/eurostat/web/nuts/overview>.
 #'
+#' # Copyright
+#'
+#' See the GISCO statistical unit copyright provisions:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+#'
 #' @inheritSection gisco_get_countries Note
-#' @inherit gisco_get_communes source
+#' @source
+#' GISCO NUTS distribution API:
+#' <https://gisco-services.ec.europa.eu/distribution/v2/nuts/>.
 #' @seealso
 #' [gisco_nuts_2024], [eurostat::get_eurostat_geospatial()].
 #'
@@ -72,6 +78,8 @@
 #'
 #' See [gisco_id_api_nuts()] to download via GISCO ID service API.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examples
 #' nuts2 <- gisco_get_nuts(nuts_level = 2)
 #'
@@ -102,7 +110,6 @@
 #' ggplot(select_nuts) +
 #'   geom_sf(aes(fill = CNTR_CODE)) +
 #'   scale_fill_viridis_d()
-#' @export
 #'
 gisco_get_nuts <- function(
   year = 2024,

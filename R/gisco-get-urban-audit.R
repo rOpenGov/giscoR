@@ -10,7 +10,6 @@
 #' single-unit Urban Audit files, use [gisco_get_unit_urban_audit()].
 #'
 #' @family stats
-#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
@@ -31,7 +30,7 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 #'   "ext",TRUE)}.
 #'
-#' @inherit gisco_get_nuts return
+#' @inherit gisco_get_countries return
 #' @details
 #' For more information, see:
 #' ```{r, echo=FALSE, results='asis'}
@@ -45,7 +44,7 @@
 #' Cities are defined at several conceptual levels:
 #' - The core city (`"CITIES"`), using an administrative definition.
 #' - The Functional Urban Area/Large Urban Zone (`"FUA"`), approximating the
-#'     functional urban region.
+#'   functional urban region.
 #' Coverage includes the EU, Iceland, Norway and Switzerland. The dataset
 #' includes polygon features, point features and a related attribute table
 #' which can be joined on the URAU code field.
@@ -54,13 +53,22 @@
 #' - `"C"` = City.
 #' - `"F"` = Functional urban area service type.
 #'
+#' # Copyright
+#'
+#' See the GISCO statistical unit copyright provisions:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+#'
 #' @inheritSection gisco_get_countries Note
-#' @inherit gisco_get_nuts source
+#' @source
+#' GISCO Urban Audit distribution API:
+#' <https://gisco-services.ec.europa.eu/distribution/v2/urau/>.
 #' @seealso
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
 #' See [gisco_get_unit_urban_audit()] to download single-unit files.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #'
@@ -74,7 +82,6 @@
 #'     geom_sf()
 #' }
 #' }
-#' @export
 gisco_get_urban_audit <- function(
   year = 2024,
   epsg = 4326,

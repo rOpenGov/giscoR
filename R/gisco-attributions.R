@@ -2,14 +2,13 @@
 #'
 #' @description
 #' Get the legal text to use for administrative and statistical data
-#' downloaded from GISCO. See section **Copyright information**.
+#' downloaded from GISCO. See section **Copyright**.
 #'
 #' For other datasets you may follow the [Eurostat general copyright notice
 #' and license
 #' policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice).
 #'
-#' @family misc
-#' @encoding UTF-8
+#' @family attribution
 #' @param lang A character value with the language (two-letter ISO code). See
 #'   [countrycode::codelist] and **Details**.
 #' @param copyright A logical value indicating whether to display the
@@ -32,7 +31,7 @@
 #' [contributing](https://github.com/rOpenGov/giscoR/issues) if you spot a
 #' mistake or want to add a new language.
 #'
-#' # Copyright information
+#' # Copyright
 #'
 #' The provisions described in this section apply to administrative and
 #' statistical data provided by the following functions:
@@ -41,7 +40,6 @@
 #'
 #' - [gisco_get_communes()].
 #' - [gisco_get_countries()].
-#' - [gisco_get_postal_codes()].
 #'
 #' **Statistical units**
 #'
@@ -50,6 +48,9 @@
 #' - [gisco_get_lau()].
 #' - [gisco_get_nuts()].
 #' - [gisco_get_urban_audit()].
+#'
+#' Postal code data use a separate CC-BY-SA-4.0 attribution. See
+#' [gisco_get_postal_codes()].
 #'
 #' ## Copyright notice
 #'
@@ -75,6 +76,8 @@
 #' If you intend to use the data commercially, please contact EuroGeographics
 #' for information about their license agreements.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examples
 #' gisco_attributions()
 #'
@@ -87,7 +90,6 @@
 #'
 #' countrycode::codelist |>
 #'   select(country.name.en, iso2c)
-#' @export
 #'
 gisco_attributions <- function(lang = "en", copyright = FALSE) {
   lang <- tolower(lang)

@@ -92,6 +92,29 @@ test_that("Postal codes use resolved GISCO files", {
     )
   )
 })
+
+test_that("Postal codes select the requested EPSG", {
+  local_mocked_bindings(
+    resolve_gisco_file = function(id, year, epsg, ext, fn) {
+      expect_identical(id, "postal_codes")
+      expect_identical(year, 2025)
+      expect_identical(epsg, 3035)
+      expect_identical(ext, "gpkg")
+      expect_identical(fn, "gisco_get_postal_codes")
+      list(
+        url = "https://example.com/PCODE_PT_2025_3035.gpkg",
+        name = "PCODE_PT_2025_3035.gpkg"
+      )
+    },
+    read_gisco_dataset = function(...) {
+      data.frame(CNTR_ID = "LU", name = "a")
+    }
+  )
+
+  postal_codes <- gisco_get_postal_codes(epsg = 3035)
+  expect_identical(postal_codes$CNTR_ID, "LU")
+})
+
 test_that("Extensions", {
   skip_on_cran()
   skip_if_gisco_offline()

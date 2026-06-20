@@ -8,8 +8,7 @@
 #' @rdname gisco_set_cache_dir
 #'
 #' @family cache_utils
-#' @encoding UTF-8
-#' @inheritParams gisco_get_nuts
+#' @inheritParams gisco_get_countries verbose
 #' @param cache_dir A path to a cache directory. If `NULL`, the function
 #'   stores cached files in a temporary directory (see [base::tempdir()]).
 #' @param install If `TRUE`, install the cache path on your local machine for
@@ -64,6 +63,8 @@
 #' migration.
 #'
 #' @seealso [tools::R_user_dir()]
+#' @encoding UTF-8
+#' @export
 #' @examples
 #'
 #' # Do not run this. It modifies your current state.
@@ -81,7 +82,6 @@
 #' identical(my_cache, gisco_detect_cache_dir())
 #' }
 #'
-#' @export
 gisco_set_cache_dir <- function(
   cache_dir = NULL,
   overwrite = FALSE,
@@ -156,11 +156,11 @@ gisco_set_cache_dir <- function(
 #' `gisco_detect_cache_dir()` returns the path to the `cache_dir` used in this
 #' session.
 #'
+#' @export
 #' @examples
 #'
 #' gisco_detect_cache_dir()
 #'
-#' @export
 gisco_detect_cache_dir <- function() {
   cd <- detect_cache_dir_muted()
   cli::cli_alert_info("{.path {cd}}")
@@ -180,8 +180,7 @@ gisco_detect_cache_dir <- function() {
 #'
 #' @rdname gisco_clear_cache
 #' @family cache_utils
-#' @encoding UTF-8
-#' @inheritParams gisco_set_cache_dir
+#' @inheritParams gisco_set_cache_dir verbose
 #'
 #' @param config If `TRUE`, delete the configuration folder of
 #'   \CRANpkg{giscoR}.
@@ -194,6 +193,8 @@ gisco_detect_cache_dir <- function() {
 #'
 #' @seealso [tools::R_user_dir()]
 #'
+#' @encoding UTF-8
+#' @export
 #' @examples
 #'
 #' # Do not run this. It modifies your current state.
@@ -210,7 +211,6 @@ gisco_detect_cache_dir <- function() {
 #' gisco_set_cache_dir(my_cache)
 #' identical(my_cache, gisco_detect_cache_dir())
 #' }
-#' @export
 gisco_clear_cache <- function(
   config = FALSE,
   cached_data = TRUE,

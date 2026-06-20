@@ -13,7 +13,8 @@ gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 \item{cached_data}{If \code{TRUE}, delete your \code{cache_dir} and all its content.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 }
 \value{
 Invisible. Called for its side effects.

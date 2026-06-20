@@ -4,7 +4,6 @@
 #' GISCO geodata distribution.
 #'
 #' @family database
-#' @encoding UTF-8
 #' @param update_cache A logical value. If `TRUE`, rebuild the cached database
 #'   with the most recent information from the GISCO geodata distribution.
 #'
@@ -23,12 +22,13 @@
 #' used if there is any problem during the update.
 #'
 #' @inherit gisco_get_metadata source
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #'
 #' gisco_get_cached_db() |>
 #'   dplyr::glimpse()
 #'
-#' @export
 gisco_get_cached_db <- function(update_cache = FALSE) {
   cdir <- create_cache_dir()
   cached_db <- cached_db_file(cdir)

@@ -5,10 +5,8 @@
 \alias{gisco_get_communes}
 \title{Communes dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+GISCO communes distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/communes/}.
 }
 \usage{
 gisco_get_communes(
@@ -48,7 +46,8 @@ download.}
 \item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{spatialtype}{A character string with the type of geometry to return.
 Options available are:
@@ -74,9 +73,9 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset shows pan-European administrative boundaries down to commune
-level. Communes are equivalent to Local Administrative Units. See
-\code{\link[=gisco_get_lau]{gisco_get_lau()}}.
+This dataset provides pan-European administrative boundaries at commune
+level. Communes may correspond to municipalities represented in the
+separate Local Administrative Units dataset. See \code{\link[=gisco_get_lau]{gisco_get_lau()}}.
 }
 \details{
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
@@ -92,6 +91,11 @@ the dataset is 1:100 000.
 
 The LAU classification is not covered by any legislative act.
 }
+\section{Copyright}{
+See the GISCO administrative unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+}
+
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }

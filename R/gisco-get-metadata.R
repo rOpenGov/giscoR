@@ -4,8 +4,7 @@
 #' Get a table with names and IDs of administrative and statistical units.
 #'
 #' @family database
-#' @encoding UTF-8
-#' @inheritParams gisco_get_countries
+#' @inheritParams gisco_get_countries verbose
 #'
 #' @param id A character string with the unit type to download. Accepted values
 #'   are `"nuts"`, `"countries"` or `"urban_audit"`.
@@ -19,12 +18,15 @@
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
 #' @seealso
-#' [gisco_get_nuts()], [gisco_get_countries()], [gisco_get_urban_audit()].
+#' [gisco_bulk_download()] for bulk downloads and
+#' [`gisco_get_unit`][gisco_get_unit] for single-unit downloads.
+#'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' cities <- gisco_get_metadata(id = "urban_audit", year = 2020)
 #'
 #' cities
-#' @export
 gisco_get_metadata <- function(
   id = c("nuts", "countries", "urban_audit"),
   year = 2024,

@@ -9,7 +9,14 @@
 \alias{gisco_get_unit_urban_audit}
 \title{GISCO geodata single-unit download}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}
+GISCO countries distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/countries/}.
+
+GISCO NUTS distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}.
+
+GISCO Urban Audit distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/urau/}.
 
 All source files are \code{.geojson} files.
 }
@@ -73,7 +80,8 @@ download.}
 \item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{resolution}{A character string or numeric value with the geospatial
 data resolution. One of:
@@ -108,6 +116,17 @@ needed to download and read data into your \R session.
 Check the available \code{unit} IDs for the required argument combination with
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}.
 }
+\section{Copyright}{
+See the GISCO copyright provisions for administrative and statistical
+units:
+\itemize{
+\item Administrative units:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+\item Statistical units:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+}
+}
+
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
@@ -144,10 +163,9 @@ ggplot(valencia_sf) +
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}, \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}, \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}.
 
-See \code{\link{gisco_id_api}} to download via GISCO ID service
-API.
+See \link{gisco_id_api} to download via GISCO ID service API.
 
-Single-unit and additional download utilities:
+Bulk and single-unit downloads:
 \code{\link[=gisco_bulk_download]{gisco_bulk_download()}}
 }
-\concept{extra}
+\concept{downloads}

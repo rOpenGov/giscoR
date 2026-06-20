@@ -34,6 +34,7 @@ test_that("Airports use the legacy geodata reader", {
 
   airports <- gisco_get_airports(
     country = "ES",
+    year = 2013,
     cache_dir = "cache",
     update_cache = TRUE,
     verbose = TRUE

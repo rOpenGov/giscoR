@@ -1,5 +1,5 @@
 #' @rdname gisco_get_unit
-#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' # Get metadata.
 #' cities <- gisco_get_metadata("urban_audit", year = 2024)
@@ -25,7 +25,6 @@
 #'     subtitle = "Urban Audit 2020",
 #'     fill = "Category"
 #'   )
-#' @export
 #'
 gisco_get_unit_urban_audit <- function(
   unit = "ES001F",

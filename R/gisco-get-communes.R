@@ -1,12 +1,11 @@
 #' Communes dataset
 #'
 #' @description
-#' This dataset shows pan-European administrative boundaries down to commune
-#' level. Communes are equivalent to Local Administrative Units. See
-#' [gisco_get_lau()].
+#' This dataset provides pan-European administrative boundaries at commune
+#' level. Communes may correspond to municipalities represented in the
+#' separate Local Administrative Units dataset. See [gisco_get_lau()].
 #'
 #' @family admin
-#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
@@ -44,13 +43,22 @@
 #'
 #' The LAU classification is not covered by any legislative act.
 #'
+#' # Copyright
+#'
+#' See the GISCO administrative unit copyright provisions:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+#'
 #' @inheritSection gisco_get_countries Note
-#' @inherit gisco_get_countries source
+#' @source
+#' GISCO communes distribution API:
+#' <https://gisco-services.ec.europa.eu/distribution/v2/communes/>.
 #' @seealso
 #' [gisco_get_lau()].
 #'
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 #'
@@ -70,7 +78,6 @@
 #'       family = "serif", face = "bold"
 #'     ))
 #' }
-#' @export
 #'
 gisco_get_communes <- function(
   year = 2016,

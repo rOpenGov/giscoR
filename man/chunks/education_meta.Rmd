@@ -23,5 +23,6 @@ The following table describes the education service attributes:
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
 | `ref_date` | The reference date (`DD/MM/YYYY`) for the data. The dataset represents the state on this date. |
+| `pub_date` | The publication date of the dataset by Eurostat (`DD/MM/YYYY`). |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the education service. |

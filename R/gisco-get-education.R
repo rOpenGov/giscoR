@@ -6,7 +6,6 @@
 #' when available. See **Details**.
 #'
 #' @family services
-#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
@@ -19,19 +18,23 @@
 #' ```{r child = "man/chunks/education_meta.Rmd"}
 #' ```
 #'
-#' @source
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>.
+#' # Copyright
 #'
-#' There are no specific download rules for the datasets shown below. However,
-#' please refer to [the general copyright
-#' notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
-#' provisions, which apply to these datasets. Permission to download and use
-#' these data is subject to acceptance of those rules.
+#' The general Eurostat copyright and licence provisions apply. Detailed
+#' metadata also list source-specific licensing conditions by country and data
+#' provider. Review the conditions for the selected data before use.
+#'
+#' # Data quality
 #'
 #' The data are extracted from official national registers. They may contain
 #' inconsistencies, inaccuracies and gaps due to the heterogeneity of the
 #' national input data.
 #'
+#' @source
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>.
+#'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #' edu_austria <- gisco_get_education(country = "Austria", year = 2023)
@@ -63,8 +66,6 @@
 #'     coord_sf(crs = 3035)
 #' }
 #' }
-#'
-#' @export
 #'
 gisco_get_education <- function(
   year = c(2023, 2020),

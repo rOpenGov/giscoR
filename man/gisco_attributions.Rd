@@ -19,7 +19,7 @@ A string with the attribution to be used.
 }
 \description{
 Get the legal text to use for administrative and statistical data
-downloaded from GISCO. See section \strong{Copyright information}.
+downloaded from GISCO. See section \strong{Copyright}.
 
 For other datasets you may follow the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat general copyright notice and license policy}.
 }
@@ -40,7 +40,7 @@ Please consider
 \href{https://github.com/rOpenGov/giscoR/issues}{contributing} if you spot a
 mistake or want to add a new language.
 }
-\section{Copyright information}{
+\section{Copyright}{
 The provisions described in this section apply to administrative and
 statistical data provided by the following functions:
 
@@ -48,7 +48,6 @@ statistical data provided by the following functions:
 \itemize{
 \item \code{\link[=gisco_get_communes]{gisco_get_communes()}}.
 \item \code{\link[=gisco_get_countries]{gisco_get_countries()}}.
-\item \code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}.
 }
 
 \strong{Statistical units}
@@ -59,6 +58,9 @@ statistical data provided by the following functions:
 \item \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}.
 \item \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}.
 }
+
+Postal code data use a separate CC-BY-SA-4.0 attribution. See
+\code{\link[=gisco_get_postal_codes]{gisco_get_postal_codes()}}.
 \subsection{Copyright notice}{
 
 When data downloaded from GISCO is used in any printed or electronic
@@ -93,5 +95,6 @@ library(dplyr)
 
 countrycode::codelist |>
   select(country.name.en, iso2c)
+
 }
-\concept{misc}
+\concept{attribution}

@@ -6,9 +6,6 @@
 \title{Ports dataset}
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata}.
 }
 \usage{
 gisco_get_ports(
@@ -35,21 +32,27 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 }
 \value{
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset includes the location of over 2,440 pan-European ports. The
-ports are identified following the UN LOCODE list.
+This dataset includes port locations worldwide. The ports are identified
+following the UN LOCODE list.
 }
 \details{
-Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
+The returned object is transformed to \href{https://epsg.io/4326}{EPSG:4326}.
 
 \code{\link[=gisco_get_ports]{gisco_get_ports()}} adds a new field, \code{CNTR_ISO2}, to identify the country
 of the port.
 }
+\section{Copyright}{
+See the Eurostat general copyright and licence provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata}.
+}
+
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 library(sf)

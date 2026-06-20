@@ -10,7 +10,6 @@
 #'
 #' @aliases gisco_get
 #' @family admin
-#' @encoding UTF-8
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
@@ -41,7 +40,8 @@
 #' @param country A character vector of country codes. It can be either a
 #'   vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
 #'   vector of Eurostat country codes. See also [countrycode::countrycode()].
-#' @param verbose A logical value. If `TRUE` displays informational messages.
+#' @param verbose A logical value indicating whether to display informational
+#'   messages.
 #' @param resolution A character string or numeric value with the geospatial
 #'   data resolution. One of:
 #' - `"60"`: 1:60 million.
@@ -52,7 +52,7 @@
 #' @param region An optional character vector of UN M49 region codes or
 #'   European Union membership. Possible values are `"Africa"`, `"Americas"`,
 #'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to
-#'   the European Union as of 2021. See **World Regions** and
+#'   the European Union as of 2021. See **World regions** and
 #'   [gisco_countrycode].
 #' @param ext A character value with the extension of the file (default
 #'   `"gpkg"`). One of
@@ -63,19 +63,23 @@
 #'
 #' @details
 #'
-#' # World Regions
+#' # World regions
 #'
 #' Regions follow the UN geographic regions
 #' (see <https://unstats.un.org/unsd/methodology/m49/>).
 #' Under this scheme Cyprus is assigned to Asia.
 #'
+#' # Copyright
+#'
+#' See the GISCO administrative unit copyright provisions:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+#'
 #' # Note
+#'
 #' Check the download and usage provisions in [gisco_attributions()].
 #' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/>.
-#'
-#' Copyright:
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+#' GISCO countries distribution API:
+#' <https://gisco-services.ec.europa.eu/distribution/v2/countries/>.
 #'
 #' @seealso
 #' [gisco_countrycode], [gisco_countries_2024], [gisco_get_metadata()],
@@ -87,6 +91,8 @@
 #'
 #' See [gisco_id_api_country()] to download via GISCO ID service API.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examples
 #' cntries <- gisco_get_countries()
 #'
@@ -100,7 +106,6 @@
 #' ggplot(africa) +
 #'   geom_sf(fill = "#078930", col = "white") +
 #'   theme_minimal()
-#' @export
 #'
 gisco_get_countries <- function(
   year = 2024,

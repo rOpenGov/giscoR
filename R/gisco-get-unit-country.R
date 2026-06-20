@@ -11,8 +11,7 @@
 #'
 #' @name gisco_get_unit
 #' @rdname gisco_get_unit
-#' @family extra
-#' @encoding UTF-8
+#' @family downloads
 #' @inheritParams gisco_get_countries
 #' @param unit A character vector of unit IDs to download. See **Details**.
 #' @param year A character string or numeric value with the release year of the
@@ -27,9 +26,25 @@
 #' Check the available `unit` IDs for the required argument combination with
 #' [gisco_get_metadata()].
 #'
+#' # Copyright
+#'
+#' See the GISCO copyright provisions for administrative and statistical
+#' units:
+#' - Administrative units:
+#'   <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+#' - Statistical units:
+#'   <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+#'
 #' @inheritSection gisco_get_countries Note
 #' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/>
+#' GISCO countries distribution API:
+#' <https://gisco-services.ec.europa.eu/distribution/v2/countries/>.
+#'
+#' GISCO NUTS distribution API:
+#' <https://gisco-services.ec.europa.eu/distribution/v2/nuts/>.
+#'
+#' GISCO Urban Audit distribution API:
+#' <https://gisco-services.ec.europa.eu/distribution/v2/urau/>.
 #'
 #' All source files are `.geojson` files.
 #'
@@ -37,9 +52,9 @@
 #' [gisco_get_metadata()], [gisco_get_countries()],
 #' [gisco_get_nuts()], [gisco_get_urban_audit()].
 #'
-#' See [`gisco_id_api`][giscoR::gisco_id_api] to download via GISCO ID service
-#' API.
+#' See [gisco_id_api] to download via GISCO ID service API.
 #'
+#' @encoding UTF-8
 #' @export
 #'
 gisco_get_unit_country <- function(

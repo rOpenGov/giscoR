@@ -97,7 +97,7 @@
       gisco_get_airports(2050)
     Condition
       Error:
-      ! `year` must be "2013" or "2006", not "2050".
+      ! `year` must be "2024", "2013", or "2006", not "2050".
 
 # Deprecated cache helper warns only when cache is supplied
 

@@ -6,11 +6,9 @@
 #' Deprecated. Use one of these replacements:
 #'
 #' - [gisco_get_metadata()] for `mode = "df"`.
-#' - [`?gisco_get_unit`][gisco_get_unit] functions for `mode = "sf"`.
+#' - [Single-unit download functions][gisco_get_unit] for `mode = "sf"`.
 #'
-#' @family deprecated
 #' @keywords internal
-#' @encoding UTF-8
 #' @inheritParams gisco_get_unit
 #' @param id_giscoR A character string with the `unit` type to download.
 #'   Accepted values are `"nuts"`, `"countries"` or `"urban_audit"`.
@@ -22,11 +20,14 @@
 #' A [`sf`][sf::st_sf] object when `mode = "sf"` or a
 #' [tibble][tibble::tbl_df] when `mode = "df"`.
 #'
+#' @inheritSection gisco_get_unit Copyright
 #' @inheritSection gisco_get_unit Note
 #' @inherit gisco_get_unit source
 #' @seealso
-#' [gisco_get_metadata()], [`?gisco_get_unit`][gisco_get_unit] functions.
+#' [gisco_get_metadata()] and [single-unit download functions][gisco_get_unit].
 #'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #' # Equivalent metadata call.
@@ -39,7 +40,6 @@
 #' # ->
 #' gisco_get_unit_nuts(unit = "ES111", year = 2016)
 #' }
-#' @export
 #'
 gisco_get_units <- function(
   id_giscoR = c("nuts", "countries", "urban_audit"),

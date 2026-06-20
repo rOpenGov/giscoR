@@ -36,38 +36,39 @@ home:
     distribution. It also provides lightweight GISCO datasets that can be used
     without additional downloads.
 
+articles:
+- title: Get started
+  contents:
+  - giscoR
+
 reference:
 - title: GISCO geodata distribution
   desc: >
-    Download geospatial datasets from the <a
-    href="https://ec.europa.eu/eurostat/web/gisco/geodata"
-    class="external-link">GISCO geodata distribution</a>. These functions return
-    <a href="https://r-spatial.github.io/sf/reference/sf.html"
-    class="external-link"><span class="pkg">sf</span></a> objects.
+    Download [`sf` objects](https://r-spatial.github.io/sf/reference/sf.html)
+    from the [GISCO geodata
+    distribution](https://ec.europa.eu/eurostat/web/gisco/geodata).
 - subtitle: Administrative units
   desc: >
     When administrative data are used for statistical purposes, administrative
     units are the units for which those data are recorded. These units may or
     may not match the statistical units required for analysis.
 
-    See <a
-    href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units"
-    class="external-link">copyright information</a>.
+    See the [copyright
+    information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
 - contents: has_concept("admin")
 - subtitle: Statistical units
   desc: >
     A statistical unit is the unit of observation or measurement for which data
     are collected or derived.
 
-    See <a
-    href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units"
-    class="external-link">copyright information</a>.
+    See the [copyright
+    information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 - contents: has_concept("stats")
 - subtitle: Grids
   desc: >
-    These datasets contain grid cells covering the European land territory at
-    resolutions from 1 km to 100 km. Base statistics such as population figures
-    are provided for these cells.
+    Download population grids covering the EU and neighbouring countries at
+    resolutions from 1 km to 100 km. Grid geometries use EPSG:3035 and
+    population variables have year- and country-specific licensing conditions.
 - contents: has_concept("grids")
 - subtitle: Transport networks
   desc: >
@@ -76,26 +77,26 @@ reference:
 - subtitle: Basic service locations
   desc: >
     Download basic service locations, such as education and healthcare
-    services.
+    services. Dataset metadata may specify licensing conditions by country and
+    data provider.
 - contents: has_concept("services")
-- subtitle: Single-unit and additional downloads
+- subtitle: Bulk and single-unit downloads
   desc: >
-    Download single-unit datasets and other GISCO resources.
-- contents: has_concept("extra")
-- subtitle: <span class="pkg">giscoR</span> database
+    Download complete archives or individual GISCO spatial units.
+- contents: has_concept("downloads")
+- subtitle: GISCO database and metadata
   desc: >
-    Get the cached GISCO database used by the package and its corresponding
-    metadata.
+    Inspect the static or cached GISCO database and query its metadata.
 - contents: has_concept("database")
-- subtitle: Miscellaneous
+- subtitle: Attribution and licensing
   desc: >
-    Helpers for attribution and other package utilities.
-- contents: has_concept("misc")
+    Generate attribution text and review licensing information for GISCO data.
+- contents: has_concept("attribution")
 - title: GISCO API tools
   desc: >
-    Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools"
-    class="external-link">GISCO APIs and tools</a>, including the GISCO Address
-    API and the GISCO ID service API.
+    Query additional [GISCO APIs and
+    tools](https://ec.europa.eu/eurostat/web/gisco/tools), including the GISCO
+    Address API and GISCO ID service API.
 - contents: has_concept("api")
 - title: Cache management
   desc: >
@@ -103,8 +104,10 @@ reference:
 - contents: has_concept("cache_utils")
 - title: Datasets
   desc: >
-    Datasets included in <a href="https://CRAN.R-project.org/package=giscoR"
-    class="external-link"><span class="pkg">giscoR</span></a>.
+    Use lightweight datasets included with **giscoR** without additional
+    downloads.
 - contents: has_concept("datasets")
 - title: About the package
-- contents: giscoR-package
+  desc: Package overview and metadata.
+- contents:
+  - giscoR-package

@@ -1,7 +1,7 @@
 Type: Package
 Package: giscoR
 Title: Download 'Eurostat' 'GISCO' Spatial Data
-Version: 1.1.1
+Version: 1.1.1.9000
 Authors@R: c(
     person("Diego", "Hernangómez", , "diego.hernangomezherrero@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0001-8457-4658")),

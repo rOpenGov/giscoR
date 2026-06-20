@@ -5,12 +5,11 @@ list(
     grids = "Grid datasets:",
     transport = "Transport network datasets:",
     services = "Basic service datasets:",
-    extra = "Single-unit and additional download utilities:",
-    database = "Database utilities:",
-    misc = "Miscellaneous helpers:",
+    downloads = "Bulk and single-unit downloads:",
+    database = "GISCO database and metadata:",
+    attribution = "Attribution and licensing:",
     api = "GISCO API tools:",
     cache_utils = "Cache management utilities:",
-    datasets = "Included datasets:",
-    deprecated = "Deprecated functions:"
+    datasets = "Included datasets:"
   )
 )

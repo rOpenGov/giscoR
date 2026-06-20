@@ -15,9 +15,8 @@
 #' @rdname gisco_address_api
 #' @aliases gisco_addressapi
 #' @family api
-#' @encoding UTF-8
 #'
-#' @inheritParams gisco_get_nuts
+#' @inheritParams gisco_get_countries verbose
 #' @param country A country code (`country = "LU"`).
 #' @param x,y Longitude and latitude coordinates to convert into a
 #'   human-readable address.
@@ -48,6 +47,8 @@
 #' See the GISCO Address API documentation at
 #' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' # Cities in a region.
 #'
@@ -66,7 +67,6 @@
 #' reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 #'
 #' reverse
-#' @export
 gisco_address_api_search <- function(
   country = NULL,
   province = NULL,

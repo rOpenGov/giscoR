@@ -5,13 +5,13 @@
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
 #' @keywords internal
-#' @encoding UTF-8
 #' @return A logical.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examples
 #'
 #' gisco_check_access()
-#' @export
 gisco_check_access <- function() {
   if (!is_online_fun()) {
     return(FALSE)

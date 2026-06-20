@@ -7,14 +7,14 @@
 \title{Cached GISCO database}
 \format{
 A \link[tibble:tbl_df]{tibble} with
-9,714 rows.
+10,987 rows.
 }
 \source{
 GISCO geodata distribution \code{datasets.json}.
 }
 \description{
 Database with the list of files in the GISCO geodata distribution as of
-2026-01-12.
+2026-06-19.
 }
 \details{
 This database is used to redirect the corresponding functions to the
@@ -36,7 +36,7 @@ Included datasets:
 \code{\link{gisco_countrycode}},
 \code{\link{gisco_nuts_2024}}
 
-Database utilities:
+GISCO database and metadata:
 \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}},
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}
 }

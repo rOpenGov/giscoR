@@ -6,14 +6,16 @@
 \alias{gisco_get_postalcodes}
 \title{Postal codes dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
-
-Copyright:
+GISCO administrative units:
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+
+GISCO postal code distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/pcode/}.
 }
 \usage{
 gisco_get_postal_codes(
-  year = 2024,
+  year = 2025,
+  epsg = 4326,
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -27,6 +29,14 @@ file. One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("postal_codes",
 "year",TRUE)}.}
 
+\item{epsg}{A character string or numeric value with the coordinate
+reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
+\itemize{
+\item \code{"4326"}: \href{https://epsg.io/4326}{WGS84}.
+\item \code{"3035"}: \href{https://epsg.io/3035}{ETRS89 / ETRS-LAEA}.
+\item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
+}}
+
 \item{country}{A character vector of country codes. It can be either a
 vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
 vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
@@ -38,7 +48,8 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{ext}{A character value with the extension of the file (default
 \code{"gpkg"}). One of
@@ -49,20 +60,30 @@ download.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-The postal code point dataset shows the location of postal codes, NUTS
-codes and the Degree of Urbanisation classification across the EU, EFTA
-and candidate countries from a variety of sources. Its primary purpose is
-to create correspondence tables for the NUTS classification (EC) 1059/2003
-as part of the Tercet Regulation (EU) 2017/2391.
+The postal code point dataset shows the location of postal codes, NUTS codes
+and the degree of urbanisation classification across the EU, EFTA and
+candidate countries. Its primary purpose is to create correspondence tables
+for the NUTS classification established by Regulation (EC) No 1059/2003 as
+part of the Tercet Regulation (EU) 2017/2391.
+}
+\details{
+The GISCO distribution API provides postal code releases for 2025, 2024 and
+2020. The 2025 release has a reference date of 1 January 2025.
 }
 \section{Copyright}{
-The dataset is released under the CC-BY-SA-4.0 license and requires the
-following attribution whenever used:
-© European Union - GISCO, 2024, postal code point dataset, License CC-BY-SA 4.0.
+The dataset is released under the CC-BY-SA-4.0 license. Although the
+distribution API provides a 2025 release, the official GISCO licensing page
+currently requires the following attribution:
+© European Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
 }
 
 \section{Note}{
-Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
+This dataset is not covered by \code{\link[=gisco_attributions]{gisco_attributions()}}. Use the attribution
+specified above until GISCO publishes revised licensing text.
+
+Non-geographical postal codes, such as post boxes and codes used by large
+organizations, are not included. The dataset may omit or incorrectly locate
+postal codes because the source data vary considerably among countries.
 }
 
 \examples{
@@ -71,7 +92,7 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 # Large download.
 \dontrun{
 
-pc_bel <- gisco_get_postal_codes(country = "BE")
+pc_bel <- gisco_get_postal_codes(year = 2025, country = "BE")
 
 if (!is.null(pc_bel)) {
   library(ggplot2)
@@ -81,10 +102,10 @@ if (!is.null(pc_bel)) {
     theme_bw() +
     labs(
       title = "Postcodes of Belgium",
-      subtitle = "2024",
+      subtitle = "2025",
       caption = paste("\u00a9 European Union - GISCO, 2024,",
         "postal code point dataset",
-        "License CC-BY-SA 4.0",
+        "Licence CC-BY-SA 4.0",
         sep = "\n"
       )
     )

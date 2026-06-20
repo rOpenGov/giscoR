@@ -5,7 +5,6 @@
 #'
 #' @rdname gisco_get_coastal_lines
 #' @family stats
-#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file.
@@ -17,18 +16,24 @@
 #'   "ext",TRUE)}.
 #'
 #' @inherit gisco_get_countries return
+#' @details
+#' # Copyright
+#'
+#' See the GISCO statistical unit copyright provisions:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+#'
 #' @inheritSection gisco_get_countries Note
 #' @source
-#' <https://gisco-services.ec.europa.eu/distribution/v2/>.
-#'
-#' Copyright:
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+#' GISCO coastal lines distribution API:
+#' <https://gisco-services.ec.europa.eu/distribution/v2/coas/>.
 #'
 #' @seealso
 #' [gisco_coastal_lines].
 #'
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' coast <- gisco_get_coastal_lines()
 #'
@@ -46,7 +51,6 @@
 #'     panel.background = element_rect(fill = "#C7E7FB", color = NA),
 #'     panel.border = element_rect(colour = "black", fill = NA)
 #'   )
-#' @export
 #'
 gisco_get_coastal_lines <- function(
   year = 2016,

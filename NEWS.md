@@ -1,3 +1,10 @@
+# giscoR (development version)
+
+- `gisco_get_airports()` adds support for the Airports 2024 point dataset.
+- Update `?gisco_db`.
+- `gisco_get_postal_codes()` now defaults to the 2025 release and adds an
+  `epsg` argument.
+
 # giscoR 1.1.1
 
 - Refactor internal helpers, documentation and tests, including clearer

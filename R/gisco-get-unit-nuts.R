@@ -1,5 +1,4 @@
 #' @rdname gisco_get_unit
-#' @encoding UTF-8
 #' @export
 gisco_get_unit_nuts <- function(
   unit = "ES416",

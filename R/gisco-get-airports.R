@@ -1,30 +1,32 @@
 #' Airports dataset
 #'
 #' @description
-#' This dataset includes the location of over 11,800 pan-European airports and
-#' heliports. The airports are identified using the International Civil
-#' Aviation Organization (ICAO) airport codes.
+#' This function accesses the GISCO airport and heliport datasets. Airports are
+#' identified using International Civil Aviation Organization (ICAO) airport
+#' codes.
 #'
 #' @family transport
-#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
-#'   file.
-#'   One of `2013`, `2006`.
+#'   file. One of `2024`, `2013`, `2006`.
 #'
 #' @inherit gisco_get_countries return
 #' @details
-#' Files are distributed in [EPSG:4326](https://epsg.io/4326).
+#' The returned object is transformed to [EPSG:4326](https://epsg.io/4326).
+#'
+#' # Copyright
+#'
+#' See the Eurostat general copyright and licence provisions:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 #'
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
 #'
-#' Copyright:
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata>.
-#'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
-#' airp <- gisco_get_airports(year = 2013)
-#' coast <- giscoR::gisco_coastal_lines
+#' airp <- gisco_get_airports(year = 2024)
+#' coast <- giscoR::gisco_get_countries(year = 2024)
 #'
 #' if (!is.null(airp)) {
 #'   library(ggplot2)
@@ -44,8 +46,8 @@
 #'       plot.subtitle = element_text(face = "italic", hjust = 0.5)
 #'     ) +
 #'     labs(
-#'       title = "Airports in Europe", subtitle = "Year 2013",
-#'       caption = "Source: Eurostat, Airports 2013 dataset."
+#'       title = "Airports in Europe", subtitle = "Year 2024",
+#'       caption = "Source: Eurostat, Airports 2024 dataset."
 #'     ) +
 #'     # Center on Europe with EPSG 3035.
 #'     coord_sf(
@@ -54,25 +56,33 @@
 #'       ylim = c(1313597, 5628510)
 #'     )
 #' }
-#' @export
 #'
 gisco_get_airports <- function(
-  year = c(2013, 2006),
+  year = c(2024, 2013, 2006),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
   verbose = FALSE
 ) {
   year <- as.character(year)
-  valid_years <- as.character(c(2013, 2006))
+  valid_years <- as.character(c(2024, 2013, 2006))
   year <- match_arg_pretty(year, valid_years)
   files <- c(
     "2006" = "AIRP_SH.zip",
-    "2013" = "Airports-2013-SHP.zip"
+    "2013" = "Airports-2013-SHP.zip",
+    "2024" = "airp-pt-2024-sh"
   )
-  url <- eurostat_gisco_geodata_url(files[[year]])
+  if (year == "2024") {
+    url <- "https://ec.europa.eu/eurostat/documents/d/gisco/airp-pt-2024-sh"
+    name <- "AIRP-PT-2024-SH.zip"
+  } else {
+    url <- eurostat_gisco_geodata_url(files[[year]])
+    name <- basename(url)
+  }
+
   data_sf <- read_gisco_dataset(
     url,
+    name = name,
     cache_dir = cache_dir,
     subdir = "airports",
     update_cache = update_cache,

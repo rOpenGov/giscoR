@@ -21,7 +21,8 @@ are \code{"nuts"}, \code{"countries"} or \code{"urban_audit"}.}
 \item{year}{A character string or numeric value with the release year of the
 metadata.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble}.
@@ -37,9 +38,10 @@ cities
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=gisco_get_nuts]{gisco_get_nuts()}}, \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}.
+\code{\link[=gisco_bulk_download]{gisco_bulk_download()}} for bulk downloads and
+\code{\link{gisco_get_unit}} for single-unit downloads.
 
-Database utilities:
+GISCO database and metadata:
 \code{\link{gisco_db}},
 \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}}
 }

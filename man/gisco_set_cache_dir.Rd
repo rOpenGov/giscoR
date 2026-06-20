@@ -26,7 +26,8 @@ stores cached files in a temporary directory (see \code{\link[base:tempdir]{base
 use in future sessions. Defaults to \code{FALSE}. If \code{cache_dir} is \code{FALSE},
 \code{install} is automatically set to \code{FALSE}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 }
 \value{
 \code{gisco_set_cache_dir()} invisibly returns a character string with the path

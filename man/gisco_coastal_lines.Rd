@@ -15,6 +15,15 @@ A \code{\link[sf:st_sf]{sf}} object with \code{POLYGON} geometries, resolution:
 \description{
 This object contains the coastal lines of the world.
 }
+\section{Copyright}{
+See the GISCO statistical unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+}
+
+\section{Note}{
+Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
+}
+
 \examples{
 library(sf)
 data("gisco_coastal_lines")

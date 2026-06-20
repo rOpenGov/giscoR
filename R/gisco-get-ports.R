@@ -1,11 +1,10 @@
 #' Ports dataset
 #'
 #' @description
-#' This dataset includes the location of over 2,440 pan-European ports. The
-#' ports are identified following the UN LOCODE list.
+#' This dataset includes port locations worldwide. The ports are identified
+#' following the UN LOCODE list.
 #'
 #' @family transport
-#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file. One of
@@ -13,12 +12,15 @@
 #'
 #' @inherit gisco_get_airports return
 #' @details
-#' Files are distributed in [EPSG:4326](https://epsg.io/4326).
+#' The returned object is transformed to [EPSG:4326](https://epsg.io/4326).
 #'
 #' [gisco_get_ports()] adds a new field, `CNTR_ISO2`, to identify the country
 #' of the port.
 #'
+#' @inheritSection gisco_get_airports Copyright
 #' @inherit gisco_get_airports source
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' library(sf)
 #'
@@ -48,7 +50,6 @@
 #'     ) +
 #'     coord_sf(crs = "ESRI:54030")
 #' }
-#' @export
 #'
 gisco_get_ports <- function(
   year = c(2013, 2009),

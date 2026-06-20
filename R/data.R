@@ -57,6 +57,9 @@ NULL
 #'   \item{`NAME_GERM`}{Country name in German.}
 #'   \item{`geometry`}{Geometry field.}
 #' }
+#'
+#' @inheritSection gisco_get_countries Copyright
+#' @inheritSection gisco_get_countries Note
 #' @source
 #'
 #' ```{r, echo=FALSE, results='asis'}
@@ -111,7 +114,7 @@ NULL
 #'     European Union.}
 #' }
 #'
-#' @inheritSection gisco_get_countries World Regions
+#' @inheritSection gisco_get_countries World regions
 #'
 #' @source [countrycode::codelist] **v1.6.1**.
 #'
@@ -145,6 +148,8 @@ NULL
 #' A [`sf`][sf::st_sf] object with `POLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326).
 #'
+#' @inheritSection gisco_get_coastal_lines Copyright
+#' @inheritSection gisco_get_coastal_lines Note
 #' @source
 #'
 #' ```{r, echo=FALSE, results='asis'}
@@ -219,6 +224,8 @@ NULL
 #' - `3`: Non-coastal region.
 #' - `0`: No classification provided.
 #'
+#' @inheritSection gisco_get_nuts Copyright
+#' @inheritSection gisco_get_nuts Note
 #' @source
 #'
 #' ```{r, echo=FALSE, results='asis'}

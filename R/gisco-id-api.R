@@ -12,8 +12,7 @@
 #' @name gisco_id_api
 #' @rdname gisco_id_api
 #' @family api
-#' @encoding UTF-8
-#' @inheritParams gisco_address_api
+#' @inheritParams gisco_get_countries verbose
 #' @param x,y A character string or numeric value with the longitude and
 #'   latitude coordinates to identify.
 #' @param xmin,ymin,xmax,ymax A character string or numeric value with bounding
@@ -70,6 +69,8 @@
 #' [gisco_get_nuts()], [gisco_get_lau()], [gisco_get_countries()],
 #' [gisco_get_census()].
 #'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #' gisco_id_api_geonames(x = -2.5, y = 43.06)
@@ -90,7 +91,6 @@
 #'     )
 #' }
 #' }
-#' @export
 #'
 gisco_id_api_geonames <- function(
   x = NULL,

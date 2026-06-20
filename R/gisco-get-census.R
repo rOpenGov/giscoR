@@ -1,10 +1,8 @@
 #' Census dataset
 #'
-#' This dataset shows pan-European communal boundaries for the corresponding
-#' census.
+#' This dataset provides 2011 census units as region or point geometries.
 #'
 #' @family stats
-#' @encoding UTF-8
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file.
@@ -14,16 +12,22 @@
 #' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #'
 #' @inherit gisco_get_countries return
+#' @details
+#' # Copyright
+#'
+#' See the GISCO statistical unit copyright provisions:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+#'
+#' @inheritSection gisco_get_countries Note
 #' @source
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census>.
-#'
-#' Copyright:
-#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 #'
 #' @seealso
 #'
 #' See [gisco_id_api_census_grid()] to download via GISCO ID service API.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' \donttest{
 #' library(sf)
@@ -32,7 +36,6 @@
 #'
 #' pts
 #' }
-#' @export
 #'
 gisco_get_census <- function(
   year = 2011,

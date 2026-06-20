@@ -4,8 +4,7 @@
 #' Download zipped data from GISCO to the [`cache_dir`][gisco_set_cache_dir()]
 #' and extract the relevant files.
 #'
-#' @family extra
-#' @encoding UTF-8
+#' @family downloads
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
 #'   file, see **Details**.
@@ -58,6 +57,11 @@
 #'
 #' @source <https://gisco-services.ec.europa.eu/distribution/v2/>.
 #'
+#' @seealso [gisco_get_metadata()] to inspect available datasets, years and
+#'   file formats before downloading.
+#'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' tmp <- file.path(tempdir(), "testexample")
 #' \donttest{
@@ -82,7 +86,6 @@
 #' }
 #' # Clean up.
 #' unlink(tmp, force = TRUE)
-#' @export
 #'
 gisco_bulk_download <- function(
   id = c(

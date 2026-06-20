@@ -98,7 +98,8 @@ province, use the cities endpoint
 
 \item{postcode}{A postcode to use with the previous arguments.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{x, y}{Longitude and latitude coordinates to convert into a
 human-readable address.}

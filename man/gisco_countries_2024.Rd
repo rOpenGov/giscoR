@@ -31,6 +31,15 @@ GISCO.}
 \description{
 This object contains world administrative boundaries at the country level.
 }
+\section{Copyright}{
+See the GISCO administrative unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+}
+
+\section{Note}{
+Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
+}
+
 \examples{
 
 data("gisco_countries_2024")

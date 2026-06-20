@@ -61,6 +61,15 @@ coastline).
 \item \code{0}: No classification provided.
 }
 }
+\section{Copyright}{
+See the GISCO statistical unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+}
+
+\section{Note}{
+Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
+}
+
 \examples{
 data("gisco_nuts_2024")
 head(gisco_nuts_2024)

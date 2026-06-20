@@ -39,7 +39,7 @@
         "url": "https://cran.r-project.org"
       },
       "runtimePlatform": "R version 4.6.0 (2026-04-24 ucrt)",
-      "version": "1.1.1"
+      "version": "1.1.1.9000"
     },
     {
       "id": "https://doi.org/10.32614/CRAN.package.giscoR",

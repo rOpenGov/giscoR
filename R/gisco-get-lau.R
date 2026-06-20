@@ -1,12 +1,12 @@
 #' Local Administrative Units (LAU) dataset
 #'
 #' @description
-#' This dataset shows pan-European administrative boundaries down to commune
-#' level. Local Administrative Units are equivalent to communes. See
-#' [gisco_get_communes()].
+#' Local Administrative Units are the building blocks of NUTS and other
+#' statistical regions. They comprise municipalities and communes in the
+#' European Statistical System. See [gisco_get_communes()] for the separate
+#' commune dataset.
 #'
 #' @family stats
-#' @encoding UTF-8
 #'
 #' @inheritParams gisco_get_countries
 #' @param year A character string or numeric value with the release year of the
@@ -22,7 +22,7 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "ext",TRUE)}.
 #'
-#' @inherit gisco_get_coastal_lines return
+#' @inherit gisco_get_countries return
 #' @details
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
@@ -41,8 +41,15 @@
 #' Total resident population figures (31 December) have also been added in
 #' some versions based on the associated LAU lists.
 #'
-#' @inheritSection gisco_get_coastal_lines Note
-#' @inherit gisco_get_coastal_lines source
+#' # Copyright
+#'
+#' See the GISCO statistical unit copyright provisions:
+#' <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+#'
+#' @inheritSection gisco_get_countries Note
+#' @source
+#' GISCO Local Administrative Units distribution API:
+#' <https://gisco-services.ec.europa.eu/distribution/v2/lau/>.
 #' @seealso
 #' [gisco_get_communes()].
 #'
@@ -50,6 +57,8 @@
 #'
 #' See [gisco_id_api_lau()] to download via GISCO ID service API.
 #'
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' \dontrun{
 #'
@@ -73,7 +82,6 @@
 #'     labs(fill = "pop/km2")
 #' }
 #' }
-#' @export
 #'
 gisco_get_lau <- function(
   year = 2024,

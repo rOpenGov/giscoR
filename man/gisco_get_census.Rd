@@ -6,9 +6,6 @@
 \title{Census dataset}
 \source{
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
 }
 \usage{
 gisco_get_census(
@@ -31,7 +28,8 @@ Currently only \code{"2011"} is provided.}
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{spatialtype}{The type of geometry to return:
 \itemize{
@@ -43,9 +41,17 @@ download.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset shows pan-European communal boundaries for the corresponding
-census.
+This dataset provides 2011 census units as region or point geometries.
 }
+\section{Copyright}{
+See the GISCO statistical unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+}
+
+\section{Note}{
+Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
+}
+
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{

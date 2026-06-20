@@ -5,7 +5,14 @@
 \alias{gisco_get_units}
 \title{Get geospatial unit data from GISCO}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}
+GISCO countries distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/countries/}.
+
+GISCO NUTS distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}.
+
+GISCO Urban Audit distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/urau/}.
 
 All source files are \code{.geojson} files.
 }
@@ -54,7 +61,8 @@ download.}
 \item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{resolution}{A character string or numeric value with the geospatial
 data resolution. One of:
@@ -83,9 +91,20 @@ A \code{\link[sf:st_sf]{sf}} object when \code{mode = "sf"} or a
 Deprecated. Use one of these replacements:
 \itemize{
 \item \code{\link[=gisco_get_metadata]{gisco_get_metadata()}} for \code{mode = "df"}.
-\item \code{\link[=gisco_get_unit]{?gisco_get_unit}} functions for \code{mode = "sf"}.
+\item \link[=gisco_get_unit]{Single-unit download functions} for \code{mode = "sf"}.
 }
 }
+\section{Copyright}{
+See the GISCO copyright provisions for administrative and statistical
+units:
+\itemize{
+\item Administrative units:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+\item Statistical units:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+}
+}
+
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
@@ -106,7 +125,6 @@ gisco_get_unit_nuts(unit = "ES111", year = 2016)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-\code{\link[=gisco_get_metadata]{gisco_get_metadata()}}, \code{\link[=gisco_get_unit]{?gisco_get_unit}} functions.
+\code{\link[=gisco_get_metadata]{gisco_get_metadata()}} and \link[=gisco_get_unit]{single-unit download functions}.
 }
-\concept{deprecated}
 \keyword{internal}

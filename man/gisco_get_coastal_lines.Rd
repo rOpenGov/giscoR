@@ -6,10 +6,8 @@
 \alias{gisco_get_coastallines}
 \title{Coastal lines dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+GISCO coastal lines distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/coas/}.
 }
 \usage{
 gisco_get_coastal_lines(
@@ -47,7 +45,8 @@ download.}
 \item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{resolution}{A character string or numeric value with the geospatial
 data resolution. One of:
@@ -70,6 +69,11 @@ A \code{\link[sf:st_sf]{sf}} object.
 \description{
 Download global coastal lines.
 }
+\section{Copyright}{
+See the GISCO statistical unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+}
+
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }

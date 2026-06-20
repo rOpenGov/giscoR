@@ -88,7 +88,8 @@ latitude coordinates to identify.}
 \item{xmin, ymin, xmax, ymax}{A character string or numeric value with bounding
 box coordinates to identify all geonames within the box.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{year}{A character string or numeric value with the dataset year, see
 \strong{Details}.}

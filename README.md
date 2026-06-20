@@ -37,12 +37,24 @@ locations.
 - Retrieve GISCO datasets for country boundaries, NUTS regions,
   administrative units, statistical units, transport networks and basic
   service locations.
-- Access data at multiple resolutions: `60M`, `20M`, `10M`, `03M`,
-  `01M`.
-- Choose from three coordinate reference systems: **EPSG:4326**,
-  **EPSG:3035** or **EPSG:3857**.
+- For compatible administrative and statistical datasets, select among
+  resolutions `60M`, `20M`, `10M`, `03M` and `01M` and coordinate
+  reference systems **EPSG:4326**, **EPSG:3035** and **EPSG:3857**.
+- Use each grid, transport or basic service dataset in its documented
+  format and coordinate reference system.
 - Return **sf** package objects for spatial analysis.
 - Cache downloaded files for faster repeated access.
+
+### Population grids
+
+`gisco_get_grid()` downloads polygon or cell-centre point GeoPackages in
+**EPSG:3035** at resolutions from 1 km to 100 km. Population columns use
+names such as `TOT_P_2021`. Divide these values by `resolution^2`, not
+by `resolution`, to calculate people per square kilometre. Population
+variables have year- and country-specific licensing conditions; consult
+the official [grid
+documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
+before publication or redistribution.
 
 ## Installation
 
@@ -299,7 +311,7 @@ A BibTeX entry for LaTeX users is:
       doi = {10.32614/CRAN.package.giscoR},
       author = {Diego Hernangómez},
       year = {2026},
-      version = {1.1.1},
+      version = {1.1.1.9000},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, NUTS regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
     }
@@ -317,8 +329,11 @@ The download and use of these data are subject to acceptance of those
 provisions. See the [administrative
 units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
 and [statistical
-units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
-for more details.
+units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units),
+[grids](https://ec.europa.eu/eurostat/web/gisco/geodata/grids) and
+[basic
+services](https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services)
+for more details, including source-specific conditions.
 
 </blockquote>
 

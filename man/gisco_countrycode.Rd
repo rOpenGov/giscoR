@@ -37,7 +37,7 @@ geographic regions from the World Bank and the UN
 (\href{https://unstats.un.org/unsd/methodology/m49/}{M49 Standard}). This
 database was extracted from the \CRANpkg{countrycode} package.
 }
-\section{World Regions}{
+\section{World regions}{
 Regions follow the UN geographic regions
 (see \url{https://unstats.un.org/unsd/methodology/m49/}).
 Under this scheme Cyprus is assigned to Asia.

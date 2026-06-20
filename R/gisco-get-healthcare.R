@@ -11,11 +11,7 @@
 #' specialized accommodation services required by inpatients.
 #'
 #' @family services
-#' @encoding UTF-8
-#' @inheritParams gisco_get_countries
-#' @param year A character string or numeric value with the release year of the
-#'   file. One of
-#'   `2023`, `2020`.
+#' @inheritParams gisco_get_education
 #'
 #' @inherit gisco_get_education return
 #' @details
@@ -24,7 +20,11 @@
 #' ```{r child = "man/chunks/healthcare_meta.Rmd"}
 #' ```
 #'
+#' @inheritSection gisco_get_education Copyright
+#' @inheritSection gisco_get_education Data quality
 #' @inherit gisco_get_education source
+#' @encoding UTF-8
+#' @export
 #' @examplesIf gisco_check_access()
 #' health_benelux <- gisco_get_healthcare(
 #'   country = c("BE", "NL", "LU"),
@@ -56,7 +56,6 @@
 #'     ) +
 #'     coord_sf(crs = 3035)
 #' }
-#' @export
 #'
 gisco_get_healthcare <- function(
   year = c(2023, 2020),

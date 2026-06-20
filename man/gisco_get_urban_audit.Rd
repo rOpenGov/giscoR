@@ -5,10 +5,8 @@
 \alias{gisco_get_urban_audit}
 \title{Urban Audit dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+GISCO Urban Audit distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/urau/}.
 }
 \usage{
 gisco_get_urban_audit(
@@ -48,7 +46,8 @@ download.}
 \item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{spatialtype}{A character string with the type of geometry to return.
 Options available are:
@@ -102,6 +101,11 @@ The \code{"URAU_CATG"} field defines the Urban Audit category:
 \item \code{"F"} = Functional urban area service type.
 }
 }
+\section{Copyright}{
+See the GISCO statistical unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+}
+
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }

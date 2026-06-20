@@ -46,7 +46,8 @@ file, see \strong{Details}.}
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{resolution}{A character string or numeric value with the geospatial
 data resolution. One of:
@@ -128,7 +129,10 @@ unlink(tmp, force = TRUE)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Single-unit and additional download utilities:
+\code{\link[=gisco_get_metadata]{gisco_get_metadata()}} to inspect available datasets, years and
+file formats before downloading.
+
+Bulk and single-unit downloads:
 \code{\link{gisco_get_unit}}
 }
-\concept{extra}
+\concept{downloads}

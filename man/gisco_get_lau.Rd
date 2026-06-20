@@ -5,10 +5,8 @@
 \alias{gisco_get_lau}
 \title{Local Administrative Units (LAU) dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+GISCO Local Administrative Units distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/lau/}.
 }
 \usage{
 gisco_get_lau(
@@ -48,7 +46,8 @@ download.}
 \item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{country}{A character vector of country codes. It can be either a
 vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
@@ -65,9 +64,10 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-This dataset shows pan-European administrative boundaries down to commune
-level. Local Administrative Units are equivalent to communes. See
-\code{\link[=gisco_get_communes]{gisco_get_communes()}}.
+Local Administrative Units are the building blocks of NUTS and other
+statistical regions. They comprise municipalities and communes in the
+European Statistical System. See \code{\link[=gisco_get_communes]{gisco_get_communes()}} for the separate
+commune dataset.
 }
 \details{
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
@@ -87,6 +87,11 @@ unique identifier consisting of the country code and LAU code.
 Total resident population figures (31 December) have also been added in
 some versions based on the associated LAU lists.
 }
+\section{Copyright}{
+See the GISCO statistical unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+}
+
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }

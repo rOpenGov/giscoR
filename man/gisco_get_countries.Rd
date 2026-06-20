@@ -6,10 +6,8 @@
 \alias{gisco_get}
 \title{Countries dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+GISCO countries distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/countries/}.
 }
 \usage{
 gisco_get_countries(
@@ -50,7 +48,8 @@ download.}
 \item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{resolution}{A character string or numeric value with the geospatial
 data resolution. One of:
@@ -82,7 +81,7 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 \item{region}{An optional character vector of UN M49 region codes or
 European Union membership. Possible values are \code{"Africa"}, \code{"Americas"},
 \code{"Asia"}, \code{"Europe"}, \code{"Oceania"} or \code{"EU"} for countries belonging to
-the European Union as of 2021. See \strong{World Regions} and
+the European Union as of 2021. See \strong{World regions} and
 \link{gisco_countrycode}.}
 
 \item{ext}{A character value with the extension of the file (default
@@ -101,10 +100,15 @@ levels: 1M, 3M, 10M, 20M and 60M.
 Downloads data from the aggregated GISCO country file. To download
 single-unit country files, use \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}}.
 }
-\section{World Regions}{
+\section{World regions}{
 Regions follow the UN geographic regions
 (see \url{https://unstats.un.org/unsd/methodology/m49/}).
 Under this scheme Cyprus is assigned to Asia.
+}
+
+\section{Copyright}{
+See the GISCO administrative unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
 }
 
 \section{Note}{
@@ -124,6 +128,7 @@ africa <- gisco_get_countries(region = "Africa")
 ggplot(africa) +
   geom_sf(fill = "#078930", col = "white") +
   theme_minimal()
+
 }
 \seealso{
 \link{gisco_countrycode}, \link{gisco_countries_2024}, \code{\link[=gisco_get_metadata]{gisco_get_metadata()}},

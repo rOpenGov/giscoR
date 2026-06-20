@@ -5,10 +5,8 @@
 \alias{gisco_get_nuts}
 \title{NUTS statistical units dataset}
 \source{
-\url{https://gisco-services.ec.europa.eu/distribution/v2/}.
-
-Copyright:
-\url{https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units}.
+GISCO NUTS distribution API:
+\url{https://gisco-services.ec.europa.eu/distribution/v2/nuts/}.
 }
 \usage{
 gisco_get_nuts(
@@ -50,7 +48,8 @@ download.}
 \item{cache_dir}{A character string with a path to a cache directory. See
 \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
-\item{verbose}{A logical value. If \code{TRUE} displays informational messages.}
+\item{verbose}{A logical value indicating whether to display informational
+messages.}
 
 \item{resolution}{A character string or numeric value with the geospatial
 data resolution. One of:
@@ -120,15 +119,20 @@ country-level NUTS 0 data are also available for countries where the
 statistical national level does not coincide with the administrative
 boundaries.
 
-The NUTS classification has been officially established through Commission
-Delegated Regulation 2019/1755. A non-official NUTS-like classification has
-been defined for the EFTA countries, candidate countries and potential
-candidates based on a bilateral agreement between Eurostat and the
-respective statistical agencies.
+NUTS legislation is amended periodically, so GISCO provides multiple
+classification vintages. A non-official NUTS-like classification is defined
+for EFTA countries, candidate countries and potential candidates based on
+bilateral agreements between Eurostat and the respective statistical
+agencies.
 
 An introduction to the NUTS classification is available here:
 \url{https://ec.europa.eu/eurostat/web/nuts/overview}.
 }
+\section{Copyright}{
+See the GISCO statistical unit copyright provisions:
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units}.
+}
+
 \section{Note}{
 Check the download and usage provisions in \code{\link[=gisco_attributions]{gisco_attributions()}}.
 }
@@ -163,6 +167,7 @@ select_nuts <- gisco_get_nuts(nuts_id = c("ES2", "FRJ", "FRL", "ITC"))
 ggplot(select_nuts) +
   geom_sf(aes(fill = CNTR_CODE)) +
   scale_fill_viridis_d()
+
 }
 \seealso{
 \link{gisco_nuts_2024}, \code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}.
