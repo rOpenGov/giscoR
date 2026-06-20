@@ -43,14 +43,13 @@
 #' grid <- gisco_get_grid(resolution = 20)
 #'
 #' # Proceed if downloaded correctly.
-#'
 #' if (!is.null(grid)) {
 #'   library(dplyr)
 #'
 #'   grid <- grid |>
 #'     mutate(popdens = TOT_P_2021 / 20^2)
 #'
-#'   breaks <- c(0, 0.1, 100, 500, 1000, 5000, 10000, Inf)
+#'   breaks <- c(0, 1, 10, 25, 50, 100, 250, 500, 1000, Inf)
 #'
 #'   # Cut groups.
 #'   grid <- grid |>
@@ -61,12 +60,12 @@
 #'
 #'   cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
 #'   cut_labs[1] <- "0"
-#'   cut_labs[7] <- "> 10 000"
+#'   cut_labs[9] <- "> 1000"
 #'
-#'   pal <- c("black", hcl.colors(length(breaks) - 2,
-#'     palette = "Spectral",
-#'     alpha = 0.9
-#'   ))
+#'   pal <- c(
+#'     "black",
+#'     hcl.colors(length(breaks) - 2, palette = "Spectral", alpha = 0.9)
+#'   )
 #'
 #'   library(ggplot2)
 #'
@@ -78,19 +77,15 @@
 #'     ) +
 #'     scale_fill_manual(
 #'       values = pal, na.value = "black",
-#'       name = "people per square kilometer",
-#'       labels = cut_labs,
-#'       guide = guide_legend(
-#'         direction = "horizontal",
-#'         nrow = 1
-#'       )
+#'       name = "",
+#'       labels = cut_labs
 #'     ) +
 #'     theme_void() +
 #'     labs(
 #'       title = "Population density in Europe (2021)",
-#'       subtitle = "Grid: 20 km.",
+#'       subtitle = "Grid: 20 km. People by square km.",
 #'       caption = paste(
-#'         "Source: Eurostat GISCO grid dataset.",
+#'         "Source: Eurostat GISCO grid dataset.\n",
 #'         "Review the applicable population-data licence."
 #'       )
 #'     ) +
@@ -103,14 +98,10 @@
 #'         color = "grey60", hjust = 0.5, vjust = 0,
 #'         margin = margin(t = 5, b = 10)
 #'       ),
-#'       legend.position = "bottom",
-#'       legend.title.position = "top",
-#'       legend.text.position = "bottom",
 #'       legend.key.height = unit(0.5, "lines"),
 #'       legend.key.width = unit(1, "lines")
 #'     )
 #' }
-#'
 gisco_get_grid <- function(
   resolution = c(100, 50, 20, 10, 5, 2, 1),
   spatialtype = c("REGION", "POINT"),
