@@ -33,6 +33,22 @@ test_that("Test cache", {
   expect_silent(gisco_set_cache_dir(current, verbose = FALSE))
   expect_equal(current, Sys.getenv("GISCO_CACHE_DIR"))
   expect_true(dir.exists(current))
+
+  # Try cleaning
+  new_dir <- file.path(tempdir(), "newtest")
+  dir.create(new_dir, recursive = TRUE)
+  old_dir <- file.path(tempdir(), "oldtest")
+  dir.create(old_dir, recursive = TRUE)
+
+  writeLines("a", file.path(new_dir, "gisco_cache_dir"))
+  writeLines("b", file.path(old_dir, "gisco_cache_dir"))
+  expect_true(file.exists(file.path(new_dir, "gisco_cache_dir")))
+  expect_true(file.exists(file.path(old_dir, "gisco_cache_dir")))
+  expect_silent(migrate_cache(old_dir, new_dir))
+  expect_true(file.exists(file.path(new_dir, "gisco_cache_dir")))
+  expect_false(file.exists(file.path(old_dir, "gisco_cache_dir")))
+  unlink(old_dir, recursive = TRUE, force = TRUE)
+  unlink(new_dir, recursive = TRUE, force = TRUE)
 })
 
 test_that("Mock restart", {
