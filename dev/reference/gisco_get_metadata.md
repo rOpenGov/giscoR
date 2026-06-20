@@ -30,7 +30,7 @@ gisco_get_metadata(
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 
@@ -38,11 +38,12 @@ A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
 
 ## See also
 
-[`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md),
-[`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
-[`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_urban_audit.md).
+[`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
+for bulk downloads and
+[`gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+for single-unit downloads.
 
-Database utilities:
+GISCO database and metadata:
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),
 [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md)
 

@@ -1,7 +1,6 @@
 # Census dataset
 
-This dataset shows pan-European communal boundaries for the
-corresponding census.
+This dataset provides 2011 census units as region or point geometries.
 
 ## Usage
 
@@ -18,9 +17,6 @@ gisco_get_census(
 ## Source
 
 <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/census>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 
 ## Arguments
 
@@ -42,7 +38,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - spatialtype:
 
@@ -55,6 +51,16 @@ Copyright:
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+
+## Note
+
+Check the download and usage provisions in
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md).
 
 ## See also
 

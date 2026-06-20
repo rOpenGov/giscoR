@@ -1,7 +1,7 @@
 # Ports dataset
 
-This dataset includes the location of over 2,440 pan-European ports. The
-ports are identified following the UN LOCODE list.
+This dataset includes port locations worldwide. The ports are identified
+following the UN LOCODE list.
 
 ## Usage
 
@@ -18,8 +18,6 @@ gisco_get_ports(
 ## Source
 
 <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
-
-Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 ## Arguments
 
@@ -48,7 +46,7 @@ Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 
@@ -56,10 +54,15 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed in [EPSG:4326](https://epsg.io/4326).
+The returned object is transformed to [EPSG:4326](https://epsg.io/4326).
 
 `gisco_get_ports()` adds a new field, `CNTR_ISO2`, to identify the
 country of the port.
+
+## Copyright
+
+See the Eurostat general copyright and licence provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 ## See also
 

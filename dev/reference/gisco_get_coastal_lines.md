@@ -19,10 +19,8 @@ gisco_get_coastal_lines(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+GISCO coastal lines distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/coas/>.
 
 ## Arguments
 
@@ -61,7 +59,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -86,6 +84,11 @@ Copyright:
 ## Value
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 
 ## Note
 

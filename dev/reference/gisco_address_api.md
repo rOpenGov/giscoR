@@ -103,7 +103,7 @@ gisco_address_api_copyright(verbose = FALSE)
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - x, y:
 
@@ -161,7 +161,7 @@ The resulting object may include these variables:
 See the GISCO Address API documentation at
 <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 
-Other API tools:
+GISCO API tools:
 [`gisco_id_api`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
 
 ## Examples

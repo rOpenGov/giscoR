@@ -1,12 +1,12 @@
 # Cached GISCO database
 
 Database with the list of files in the GISCO geodata distribution as of
-2026-01-12.
+2026-06-19.
 
 ## Format
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with 9,714 rows.
+with 10,987 rows.
 
 ## Source
 
@@ -24,13 +24,13 @@ with `update_cache = TRUE` to update the corresponding API endpoints.
 
 ## See also
 
-Other datasets:
+Included datasets:
 [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md),
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
 
-Database utilities:
+GISCO database and metadata:
 [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md),
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
 
@@ -40,7 +40,7 @@ Database utilities:
 data("gisco_db")
 gisco_db |>
   dplyr::glimpse()
-#> Rows: 9,714
+#> Rows: 10,987
 #> Columns: 11
 #> $ id_giscor    <chr> "coastal_lines", "coastal_lines", "coastal_lines", "coast…
 #> $ year         <dbl> 2006, 2006, 2006, 2006, 2006, 2006, 2006, 2006, 2006, 200…
@@ -52,5 +52,5 @@ gisco_db |>
 #> $ ext          <chr> "csv", "geojson", "gpkg", "json", "pbf", "shp", "csv", "g…
 #> $ api_file     <chr> "csv/COAS_RG_01M_2006_3035.csv", "geojson/COAS_RG_01M_200…
 #> $ api_entry    <chr> "https://gisco-services.ec.europa.eu/distribution/v2/coas…
-#> $ last_updated <date> 2026-01-12, 2026-01-12, 2026-01-12, 2026-01-12, 2026-01-…
+#> $ last_updated <date> 2026-06-19, 2026-06-19, 2026-06-19, 2026-06-19, 2026-06-…
 ```

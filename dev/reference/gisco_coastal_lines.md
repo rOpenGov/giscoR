@@ -13,11 +13,21 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 [COAS_RG_20M_2016_4326.gpkg](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/)
 file.
 
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+
+## Note
+
+Check the download and usage provisions in
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md).
+
 ## See also
 
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md)
 
-Other datasets:
+Included datasets:
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),

@@ -1,8 +1,8 @@
 # Communes dataset
 
-This dataset shows pan-European administrative boundaries down to
-commune level. Communes are equivalent to Local Administrative Units.
-See
+This dataset provides pan-European administrative boundaries at commune
+level. Communes may correspond to municipalities represented in the
+separate Local Administrative Units dataset. See
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md).
 
 ## Usage
@@ -23,10 +23,8 @@ gisco_get_communes(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+GISCO communes distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/communes/>.
 
 ## Arguments
 
@@ -66,7 +64,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - spatialtype:
 
@@ -112,6 +110,11 @@ covers the European Union 28, EFTA countries and candidate countries.
 The scale of the dataset is 1:100 000.
 
 The LAU classification is not covered by any legislative act.
+
+## Copyright
+
+See the GISCO administrative unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
 
 ## Note
 

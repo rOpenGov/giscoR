@@ -67,7 +67,7 @@ gisco_bulk_download(
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -137,7 +137,11 @@ corresponding function to connect it with the downloaded files (see
 
 ## See also
 
-Single-unit and additional download utilities:
+[`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
+to inspect available datasets, years and file formats before
+downloading.
+
+Bulk and single-unit downloads:
 [`gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
 
 ## Examples
@@ -178,8 +182,8 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache directory is /tmp/RtmpvdEzfM/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpvdEzfM/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/RtmpfiYTkB/testexample/countries.
+#> ✔ File already cached: /tmp/RtmpfiYTkB/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }

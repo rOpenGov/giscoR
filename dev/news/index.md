@@ -2,6 +2,17 @@
 
 ## giscoR (development version)
 
+- [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
+  adds support for the Airports 2024 point dataset.
+- Update
+  [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
+- [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
+  now defaults to the 2025 release and adds an `epsg` argument.
+
+## giscoR 1.1.1
+
+CRAN release: 2026-06-17
+
 - Refactor internal helpers, documentation and tests, including clearer
   user-facing messages, more consistent roxygen2 documentation, reused
   documentation blocks and faster mocked tests for selected

@@ -2,17 +2,17 @@
 
 ## GISCO geodata distribution
 
-Download geospatial datasets from the [GISCO geodata
-distribution](https://ec.europa.eu/eurostat/web/gisco/geodata). These
-functions return [sf](https://r-spatial.github.io/sf/reference/sf.html)
-objects.
+Download [`sf`
+objects](https://r-spatial.github.io/sf/reference/sf.html) from the
+[GISCO geodata
+distribution](https://ec.europa.eu/eurostat/web/gisco/geodata).
 
 ### Administrative units
 
 When administrative data are used for statistical purposes,
 administrative units are the units for which those data are recorded.
 These units may or may not match the statistical units required for
-analysis. See [copyright
+analysis. See the [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units).
 
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md)
@@ -25,7 +25,7 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-unit
 ### Statistical units
 
 A statistical unit is the unit of observation or measurement for which
-data are collected or derived. See [copyright
+data are collected or derived. See the [copyright
 information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 
 - [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md)
@@ -41,9 +41,10 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 
 ### Grids
 
-These datasets contain grid cells covering the European land territory
-at resolutions from 1 km to 100 km. Base statistics such as population
-figures are provided for these cells.
+Download population grids covering the EU and neighbouring countries at
+resolutions from 1 km to 100 km. Grid geometries use EPSG:3035 and
+population variables have year- and country-specific licensing
+conditions.
 
 - [`gisco_get_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_grid.md)
   : Grid dataset
@@ -60,16 +61,17 @@ Download transport network data such as airports and ports.
 ### Basic service locations
 
 Download basic service locations, such as education and healthcare
-services.
+services. Dataset metadata may specify licensing conditions by country
+and data provider.
 
 - [`gisco_get_education()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_education.md)
   : Education services in Europe
 - [`gisco_get_healthcare()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_healthcare.md)
   : Healthcare services in Europe
 
-### Single-unit and additional downloads
+### Bulk and single-unit downloads
 
-Download single-unit datasets and other GISCO resources.
+Download complete archives or individual GISCO spatial units.
 
 - [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
   : GISCO geodata bulk download
@@ -78,10 +80,9 @@ Download single-unit datasets and other GISCO resources.
   [`gisco_get_unit_urban_audit()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
   : GISCO geodata single-unit download
 
-### giscoR database
+### GISCO database and metadata
 
-Get the cached GISCO database used by the package and its corresponding
-metadata.
+Inspect the static or cached GISCO database and query its metadata.
 
 - [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
   : Cached GISCO database
@@ -95,9 +96,10 @@ metadata.
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
   : Get metadata
 
-### Miscellaneous
+### Attribution and licensing
 
-Helpers for attribution and other package utilities.
+Generate attribution text and review licensing information for GISCO
+data.
 
 - [`gisco_attributions()`](https://ropengov.github.io/giscoR/dev/reference/gisco_attributions.md)
   : Attribution for administrative and statistical GISCO data
@@ -106,7 +108,7 @@ Helpers for attribution and other package utilities.
 
 Query additional [GISCO APIs and
 tools](https://ec.europa.eu/eurostat/web/gisco/tools), including the
-GISCO Address API and the GISCO ID service API.
+GISCO Address API and GISCO ID service API.
 
 - [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_reverse()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
@@ -147,8 +149,8 @@ Configure, inspect and clear the local GISCO cache.
 
 ## Datasets
 
-Datasets included in
-[giscoR](https://CRAN.R-project.org/package=giscoR).
+Use lightweight datasets included with **giscoR** without additional
+downloads.
 
 - [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md)
   :
@@ -176,13 +178,8 @@ Datasets included in
 
 ## About the package
 
+Package overview and metadata.
+
 - [`giscoR`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
   [`giscoR-package`](https://ropengov.github.io/giscoR/dev/reference/giscoR-package.md)
-  : giscoR: Download Eurostat GISCO Geospatial Data
-
-## Deprecated functions
-
-These functions will be removed in the future.
-
-- [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
-  **\[deprecated\]** : Get geospatial unit data from GISCO
+  : giscoR: Download 'Eurostat' 'GISCO' Spatial Data

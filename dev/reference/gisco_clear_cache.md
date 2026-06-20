@@ -29,7 +29,7 @@ gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 
@@ -44,7 +44,7 @@ Fully resets your cache state as if you had never installed or used
 
 [`tools::R_user_dir()`](https://rdrr.io/r/tools/userdir.html)
 
-Other cache utilities:
+Cache management utilities:
 [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md)
 
 ## Examples
@@ -54,7 +54,7 @@ Other cache utilities:
 # Do not run this. It modifies your current state.
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpvdEzfM/giscoR
+#> ℹ /tmp/RtmpfiYTkB/giscoR
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cache")
@@ -62,13 +62,13 @@ gisco_set_cache_dir(ex, verbose = FALSE)
 
 # Restore the initial cache.
 gisco_clear_cache(verbose = TRUE)
-#> ! Deleted giscoR data: /tmp/RtmpvdEzfM/example/cache (0 bytes).
+#> ! Deleted giscoR data: /tmp/RtmpfiYTkB/example/cache (0 bytes).
 
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache directory is /tmp/RtmpvdEzfM/giscoR.
+#> ℹ giscoR cache directory is /tmp/RtmpfiYTkB/giscoR.
 #> ℹ To install your `cache_dir` path for future sessions, run this function with `install` = TRUE.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/RtmpvdEzfM/giscoR
+#> ℹ /tmp/RtmpfiYTkB/giscoR
 #> [1] TRUE
 # }
 ```

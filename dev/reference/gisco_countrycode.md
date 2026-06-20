@@ -71,7 +71,7 @@ A data frame with 249 rows and 13 variables:
 [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/man/codelist.html)
 **v1.6.1**.
 
-## World Regions
+## World regions
 
 Regions follow the UN geographic regions (see
 <https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
@@ -85,7 +85,7 @@ Cyprus is assigned to Asia.
 See also [Unicode Common Locale Data
 Repository](https://cldr.unicode.org/translation/displaynames/countryregion-territory-names).
 
-Other datasets:
+Included datasets:
 [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md),
 [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md),

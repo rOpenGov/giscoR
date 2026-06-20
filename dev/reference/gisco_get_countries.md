@@ -28,10 +28,8 @@ gisco_get_countries(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+GISCO countries distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/countries/>.
 
 ## Arguments
 
@@ -71,7 +69,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -118,7 +116,7 @@ Copyright:
   An optional character vector of UN M49 region codes or European Union
   membership. Possible values are `"Africa"`, `"Americas"`, `"Asia"`,
   `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
-  European Union as of 2021. See **World Regions** and
+  European Union as of 2021. See **World regions** and
   [gisco_countrycode](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md).
 
 - ext:
@@ -130,11 +128,16 @@ Copyright:
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
-## World Regions
+## World regions
 
 Regions follow the UN geographic regions (see
 <https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
 Cyprus is assigned to Asia.
+
+## Copyright
+
+See the GISCO administrative unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
 
 ## Note
 
@@ -180,4 +183,5 @@ africa <- gisco_get_countries(region = "Africa")
 ggplot(africa) +
   geom_sf(fill = "#078930", col = "white") +
   theme_minimal()
+
 ```

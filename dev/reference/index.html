@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,6 +23,7 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/giscoR.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item"><a class="nav-link" href="../articles/index.html">Articles</a></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
@@ -46,12 +47,12 @@
     <div class="section level2">
       <h2 id="gisco-geodata-distribution">GISCO geodata distribution<a class="anchor" aria-label="anchor" href="#gisco-geodata-distribution"></a></h2>
 
-      <div class="section-desc"><p>Download geospatial datasets from the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link">GISCO geodata distribution</a>. These functions return <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><span class="pkg">sf</span></a> objects.</p></div>
+      <div class="section-desc"><p>Download <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><code>sf</code> objects</a> from the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata" class="external-link">GISCO geodata distribution</a>.</p></div>
 
       <dl></dl></div><div class="section level2">
 
       <h3 id="administrative-units">Administrative units<a class="anchor" aria-label="anchor" href="#administrative-units"></a></h3>
-      <div class="section-desc"><p>When administrative data are used for statistical purposes, administrative units are the units for which those data are recorded. These units may or may not match the statistical units required for analysis. See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units" class="external-link">copyright information</a>.</p></div>
+      <div class="section-desc"><p>When administrative data are used for statistical purposes, administrative units are the units for which those data are recorded. These units may or may not match the statistical units required for analysis. See the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units" class="external-link">copyright information</a>.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -81,7 +82,7 @@
       </dl></div><div class="section level2">
 
       <h3 id="statistical-units">Statistical units<a class="anchor" aria-label="anchor" href="#statistical-units"></a></h3>
-      <div class="section-desc"><p>A statistical unit is the unit of observation or measurement for which data are collected or derived. See <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">copyright information</a>.</p></div>
+      <div class="section-desc"><p>A statistical unit is the unit of observation or measurement for which data are collected or derived. See the <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units" class="external-link">copyright information</a>.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -125,7 +126,7 @@
       </dl></div><div class="section level2">
 
       <h3 id="grids">Grids<a class="anchor" aria-label="anchor" href="#grids"></a></h3>
-      <div class="section-desc"><p>These datasets contain grid cells covering the European land territory at resolutions from 1 km to 100 km. Base statistics such as population figures are provided for these cells.</p></div>
+      <div class="section-desc"><p>Download population grids covering the EU and neighbouring countries at resolutions from 1 km to 100 km. Grid geometries use EPSG:3035 and population variables have year- and country-specific licensing conditions.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -164,7 +165,7 @@
       </dl></div><div class="section level2">
 
       <h3 id="basic-service-locations">Basic service locations<a class="anchor" aria-label="anchor" href="#basic-service-locations"></a></h3>
-      <div class="section-desc"><p>Download basic service locations, such as education and healthcare services.</p></div>
+      <div class="section-desc"><p>Download basic service locations, such as education and healthcare services. Dataset metadata may specify licensing conditions by country and data provider.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -186,8 +187,8 @@
         <dd>Healthcare services in Europe</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="single-unit-and-additional-downloads">Single-unit and additional downloads<a class="anchor" aria-label="anchor" href="#single-unit-and-additional-downloads"></a></h3>
-      <div class="section-desc"><p>Download single-unit datasets and other GISCO resources.</p></div>
+      <h3 id="bulk-and-single-unit-downloads">Bulk and single-unit downloads<a class="anchor" aria-label="anchor" href="#bulk-and-single-unit-downloads"></a></h3>
+      <div class="section-desc"><p>Download complete archives or individual GISCO spatial units.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -209,8 +210,8 @@
         <dd>GISCO geodata single-unit download</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="giscor-database"><span class="pkg">giscoR</span> database<a class="anchor" aria-label="anchor" href="#giscor-database"></a></h3>
-      <div class="section-desc"><p>Get the cached GISCO database used by the package and its corresponding metadata.</p></div>
+      <h3 id="gisco-database-and-metadata">GISCO database and metadata<a class="anchor" aria-label="anchor" href="#gisco-database-and-metadata"></a></h3>
+      <div class="section-desc"><p>Inspect the static or cached GISCO database and query its metadata.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -239,8 +240,8 @@
         <dd>Get metadata</dd>
       </dl></div><div class="section level2">
 
-      <h3 id="miscellaneous">Miscellaneous<a class="anchor" aria-label="anchor" href="#miscellaneous"></a></h3>
-      <div class="section-desc"><p>Helpers for attribution and other package utilities.</p></div>
+      <h3 id="attribution-and-licensing">Attribution and licensing<a class="anchor" aria-label="anchor" href="#attribution-and-licensing"></a></h3>
+      <div class="section-desc"><p>Generate attribution text and review licensing information for GISCO data.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -256,7 +257,7 @@
       </dl></div><div class="section level2">
       <h2 id="gisco-api-tools">GISCO API tools<a class="anchor" aria-label="anchor" href="#gisco-api-tools"></a></h2>
 
-      <div class="section-desc"><p>Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools" class="external-link">GISCO APIs and tools</a>, including the GISCO Address API and the GISCO ID service API.</p></div>
+      <div class="section-desc"><p>Query additional <a href="https://ec.europa.eu/eurostat/web/gisco/tools" class="external-link">GISCO APIs and tools</a>, including the GISCO Address API and GISCO ID service API.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -302,7 +303,7 @@
       </dl></div><div class="section level2">
       <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
 
-      <div class="section-desc"><p>Datasets included in <a href="https://CRAN.R-project.org/package=giscoR" class="external-link"><span class="pkg">giscoR</span></a>.</p></div>
+      <div class="section-desc"><p>Use lightweight datasets included with <strong>giscoR</strong> without additional downloads.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -346,7 +347,7 @@
       </dl></div><div class="section level2">
       <h2 id="about-the-package">About the package<a class="anchor" aria-label="anchor" href="#about-the-package"></a></h2>
 
-
+      <div class="section-desc"><p>Package overview and metadata.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -358,23 +359,7 @@
           <code><a href="giscoR-package.html">giscoR</a></code> <code><a href="giscoR-package.html">giscoR-package</a></code>
 
         </dt>
-        <dd>giscoR: Download Eurostat GISCO Geospatial Data</dd>
-      </dl></div><div class="section level2">
-      <h2 id="deprecated-functions">Deprecated functions<a class="anchor" aria-label="anchor" href="#deprecated-functions"></a></h2>
-
-      <div class="section-desc"><p>These functions will be removed in the future.</p></div>
-
-      <dl></dl></div><div class="section level2">
-
-
-
-
-      <dl><dt>
-
-          <code><a href="gisco_get_units.html">gisco_get_units()</a></code>
-          <span class="badge lifecycle lifecycle-deprecated">deprecated</span>
-        </dt>
-        <dd>Get geospatial unit data from GISCO</dd>
+        <dd>giscoR: Download 'Eurostat' 'GISCO' Spatial Data</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

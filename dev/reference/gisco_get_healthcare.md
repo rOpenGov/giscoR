@@ -26,16 +26,6 @@ gisco_get_healthcare(
 
 <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>.
 
-There are no specific download rules for the datasets shown below.
-However, please refer to [the general copyright
-notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
-provisions, which apply to these datasets. Permission to download and
-use these data is subject to acceptance of those rules.
-
-The data are extracted from official national registers. They may
-contain inconsistencies, inaccuracies and gaps due to the heterogeneity
-of the national input data.
-
 ## Arguments
 
 - year:
@@ -62,7 +52,7 @@ of the national input data.
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - country:
 
@@ -109,6 +99,18 @@ The following table describes the healthcare service attributes:
 | `pub_date` | The publication date of the dataset by Eurostat (`DD/MM/YYYY`). |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the healthcare service. |
+
+## Copyright
+
+The general Eurostat copyright and licence provisions apply. Detailed
+metadata also list source-specific licensing conditions by country and
+data provider. Review the conditions for the selected data before use.
+
+## Data quality
+
+The data are extracted from official national registers. They may
+contain inconsistencies, inaccuracies and gaps due to the heterogeneity
+of the national input data.
 
 ## See also
 

@@ -7,8 +7,9 @@ Deprecated. Use one of these replacements:
 - [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
   for `mode = "df"`.
 
-- [`?gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-  functions for `mode = "sf"`.
+- [Single-unit download
+  functions](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
+  for `mode = "sf"`.
 
 ## Usage
 
@@ -30,7 +31,14 @@ gisco_get_units(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>
+GISCO countries distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/countries/>.
+
+GISCO NUTS distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/nuts/>.
+
+GISCO Urban Audit distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/urau/>.
 
 All source files are `.geojson` files.
 
@@ -84,7 +92,7 @@ All source files are `.geojson` files.
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -117,6 +125,17 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object when
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) when
 `mode = "df"`.
 
+## Copyright
+
+See the GISCO copyright provisions for administrative and statistical
+units:
+
+- Administrative units:
+  <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+
+- Statistical units:
+  <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+
 ## Note
 
 Check the download and usage provisions in
@@ -124,9 +143,9 @@ Check the download and usage provisions in
 
 ## See also
 
-[`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md),
-[`?gisco_get_unit`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md)
-functions.
+[`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md)
+and [single-unit download
+functions](https://ropengov.github.io/giscoR/dev/reference/gisco_get_unit.md).
 
 ## Examples
 

@@ -96,7 +96,7 @@ gisco_id_api_census_grid(
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - year:
 
@@ -174,7 +174,7 @@ The available endpoints are:
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md).
 
-Other API tools:
+GISCO API tools:
 [`gisco_address_api`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
 
 ## Examples

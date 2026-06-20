@@ -1,9 +1,10 @@
 # Local Administrative Units (LAU) dataset
 
-This dataset shows pan-European administrative boundaries down to
-commune level. Local Administrative Units are equivalent to communes.
-See
-[`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md).
+Local Administrative Units are the building blocks of NUTS and other
+statistical regions. They comprise municipalities and communes in the
+European Statistical System. See
+[`gisco_get_communes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_communes.md)
+for the separate commune dataset.
 
 ## Usage
 
@@ -23,10 +24,8 @@ gisco_get_lau(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+GISCO Local Administrative Units distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/lau/>.
 
 ## Arguments
 
@@ -67,7 +66,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - country:
 
@@ -107,6 +106,11 @@ unique identifier consisting of the country code and LAU code.
 
 Total resident population figures (31 December) have also been added in
 some versions based on the associated LAU lists.
+
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 
 ## Note
 
