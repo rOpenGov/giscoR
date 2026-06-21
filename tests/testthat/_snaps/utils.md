@@ -108,3 +108,26 @@
       The `cache` argument of `x()` is deprecated as of giscoR 1.0.0.
       i Results are always cached. To avoid persistent cache files, use `cache_dir = tempdir()`.
 
+# Test cli_abort_if_not
+
+    Code
+      cli_abort_if_not(`Message supports {.cls inline} {.str markup}.` = is.logical(1))
+    Condition
+      Error:
+      ! Message supports <inline> "markup".
+
+---
+
+    Code
+      test_msg("Testing fun reference.", verbose = TRUE)
+    Message
+      x Testing fun reference.
+
+---
+
+    Code
+      test_msg("Testing fun reference with error.", verbose = 1)
+    Condition
+      Error in `test_msg()`:
+      ! `verbose` must be a <logical>.
+

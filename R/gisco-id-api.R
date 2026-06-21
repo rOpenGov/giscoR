@@ -313,7 +313,17 @@ prepare_id_query <- function(
 #' @param verbose A logical value indicating whether to print verbose output.
 #'
 #' @noRd
-call_id_api <- function(custom_query, apiurl, verbose = FALSE) {
+call_id_api <- function(
+  custom_query,
+  apiurl,
+  verbose = FALSE,
+  .envir = parent.frame()
+) {
+  cli_abort_if_not(
+    "{.arg verbose} must be a {.cls logical}." = is.logical(verbose),
+    .envir = .envir
+  )
+
   # Identify endpoint.
   endpoint <- gsub("?", "", basename(apiurl), fixed = TRUE)
 

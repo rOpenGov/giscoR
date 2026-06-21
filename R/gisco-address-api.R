@@ -57,8 +57,8 @@
 #' # Geocode and reverse geocode with `sf` objects.
 #' # Structured search.
 #' struct <- gisco_address_api_search(
-#'   country = "ES", city = "BARCELONA",
-#'   road = "GRACIA"
+#'   country = "LU", city = "Luxembourg",
+#'   road = "Rue Alphonse Weicker"
 #' )
 #'
 #' struct
@@ -251,7 +251,17 @@ gisco_address_api_copyright <- function(verbose = FALSE) {
 #' A `sf` object or tibble.
 #'
 #' @noRd
-call_address_api <- function(custom_query, apiurl, verbose = FALSE) {
+call_address_api <- function(
+  custom_query,
+  apiurl,
+  verbose = FALSE,
+  .envir = parent.frame()
+) {
+  cli_abort_if_not(
+    "{.arg verbose} must be a {.cls logical}." = is.logical(verbose),
+    .envir = .envir
+  )
+
   resp_df <- call_gisco_json_api(custom_query, apiurl, "results", verbose)
   if (is.null(resp_df)) {
     return(NULL)

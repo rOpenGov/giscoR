@@ -72,8 +72,15 @@ read_packaged_gisco_dataset <- function(
   data_name,
   update_cache = FALSE,
   verbose = FALSE,
-  post_process = NULL
+  post_process = NULL,
+  .envir = parent.frame()
 ) {
+  cli_abort_if_not(
+    "{.arg verbose} must be a {.cls logical}." = is.logical(verbose),
+    "{.arg update_cache} must be a {.cls logical}." = is.logical(update_cache),
+    .envir = .envir
+  )
+
   if (!all(isFALSE(update_cache), grepl(pattern, filename))) {
     return(NULL)
   }

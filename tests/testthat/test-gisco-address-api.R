@@ -60,7 +60,7 @@ test_that("Test 404", {
 test_that("gisco_address_api_bbox online", {
   skip_on_cran()
   skip_if_gisco_offline()
-  expect_silent(n <- gisco_address_api_bbox(country = "Spain", city = "NIEVA"))
+  expect_silent(n <- gisco_address_api_bbox(country = "ES", city = "NIEVA"))
   expect_s3_class(n, "sf")
   expect_s3_class(n, "tbl_df")
   expect_message(
@@ -84,10 +84,9 @@ test_that("gisco_address_api_search online", {
   skip_if_gisco_offline()
   expect_silent(
     n <- gisco_address_api_search(
-      country = "ES",
-      province = "CASTILLA Y LEON",
-      city = "NIEVA",
-      road = "MAYOR"
+      country = "LU",
+      city = "Luxembourg",
+      road = "Rue Alphonse Weicker"
     )
   )
   expect_s3_class(n, "sf")

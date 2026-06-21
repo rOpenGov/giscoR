@@ -176,3 +176,27 @@ test_that("Ensure NULL", {
   expect_identical(ensure_null(c(1, 2)), c(1, 2))
   expect_identical(letters, letters)
 })
+
+test_that("Test cli_abort_if_not", {
+  skip_on_cran()
+
+  expect_silent(cli_abort_if_not("Noting" = is.logical(TRUE)))
+
+  expect_snapshot(
+    error = TRUE,
+    cli_abort_if_not(
+      "Message supports {.cls inline} {.str markup}." = is.logical(1)
+    )
+  )
+
+  # Correct call
+  test_msg <- function(x, verbose = TRUE) {
+    make_msg(type = "danger", verbose, x)
+  }
+
+  expect_snapshot(test_msg("Testing fun reference.", verbose = TRUE))
+  expect_snapshot(
+    error = TRUE,
+    test_msg("Testing fun reference with error.", verbose = 1)
+  )
+})
