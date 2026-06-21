@@ -186,21 +186,41 @@ gisco_address_api_cities(country = "PT", province = "LISBOA")
 # Geocode and reverse geocode with `sf` objects.
 # Structured search.
 struct <- gisco_address_api_search(
-  country = "ES", city = "BARCELONA",
-  road = "GRACIA"
+  country = "LU", city = "Luxembourg",
+  road = "Rue Alphonse Weicker"
 )
 
 struct
-#> # A tibble: 0 × 0
+#> Simple feature collection with 4 features and 14 fields
+#> Geometry type: POINT
+#> Dimension:     XY
+#> Bounding box:  xmin: 6.168695 ymin: 49.63166 xmax: 6.169666 ymax: 49.63328
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 4 × 15
+#>   LD    TF     L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X
+#> * <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl>
+#> 1 4     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 2 8A    RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 3 8B    RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 4 5     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> # ℹ 2 more variables: Y <dbl>, geometry <POINT [°]>
 
 # Reverse geocoding.
 reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
-#> Warning: Unknown or uninitialised column: `X`.
-#> Warning: Unknown or uninitialised column: `Y`.
-#> ✖ Error 422 (Unprocessable Entity): <https://gisco-services.ec.europa.eu/addressapi/reverse>.
-#> ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
-#> → Returning "NULL".
 
 reverse
-#> NULL
+#> Simple feature collection with 5 features and 14 fields
+#> Geometry type: POINT
+#> Dimension:     XY
+#> Bounding box:  xmin: 6.16786 ymin: 49.6315 xmax: 6.169307 ymax: 49.63328
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 5 × 15
+#>   LD    TF     L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X
+#> * <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl>
+#> 1 4     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 2 3     RUE J… LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 3 41B   AVENU… LUXE… LUXE… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 4 2     RUE J… LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 5 5     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> # ℹ 2 more variables: Y <dbl>, geometry <POINT [°]>
 ```
