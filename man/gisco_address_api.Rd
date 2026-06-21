@@ -160,8 +160,8 @@ gisco_address_api_cities(country = "PT", province = "LISBOA")
 # Geocode and reverse geocode with `sf` objects.
 # Structured search.
 struct <- gisco_address_api_search(
-  country = "ES", city = "BARCELONA",
-  road = "GRACIA"
+  country = "LU", city = "Luxembourg",
+  road = "Rue Alphonse Weicker"
 )
 
 struct
