@@ -68,33 +68,23 @@ test_that("On CRAN", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  # Imagine we are in CRAN
-  env_orig <- Sys.getenv("NOT_CRAN")
-  Sys.setenv("NOT_CRAN" = "false")
+  withr::local_envvar(c(NOT_CRAN = "false"))
+
   expect_true(on_cran())
 
   cdir <- detect_cache_dir_muted()
   cdir_db <- create_cache_dir(file.path(cdir, "cache_db"))
-
   cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
-  if (file.exists(cached_db)) {
-    unlink(cached_db)
-  }
+
+  withr::defer(unlink(cached_db))
+
+  unlink(cached_db)
   expect_false(file.exists(cached_db))
+
   expect_silent(n <- gisco_get_cached_db())
-  old_db <- gisco_db
-  expect_identical(n, old_db)
-
-  if (file.exists(cached_db)) {
-    unlink(cached_db)
-  }
-  expect_false(file.exists(cached_db))
-
-  # Restore
-  Sys.setenv("NOT_CRAN" = env_orig)
-  expect_identical(Sys.getenv("NOT_CRAN"), env_orig)
+  expect_identical(n, gisco_db)
+  expect_true(file.exists(cached_db))
 })
-
 test_that("Cached DB helpers build cache paths and scrape entries", {
   cdir <- file.path(tempdir(), "testthat", "cache-db-helper")
   unlink(cdir, force = TRUE, recursive = TRUE)
