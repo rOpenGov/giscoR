@@ -203,7 +203,7 @@ cli_abort_if_not <- function(
     if (!all(...elt(i))) {
       cli::cli_abort(
         ...names()[i],
-        .call = .call,
+        call = .call,
         .envir = .envir,
         .frame = .frame
       )
