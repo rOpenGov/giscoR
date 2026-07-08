@@ -40,6 +40,9 @@ articles:
 - title: Get started
   contents:
   - giscoR
+- title: Guides
+  contents:
+  - apis
 
 reference:
 - title: GISCO geodata distribution
@@ -96,7 +99,7 @@ reference:
   desc: >
     Query additional [GISCO APIs and
     tools](https://ec.europa.eu/eurostat/web/gisco/tools), including the GISCO
-    Address API and GISCO ID service API.
+    ID service API and GISCO Address API.
 - contents: has_concept("api")
 - title: Cache management
   desc: >

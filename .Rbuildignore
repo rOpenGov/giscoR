@@ -63,3 +63,4 @@
 ^\.positai$
 ^\.claude$
 ^\.gitattributes$
+^vignettes/apis\.qmd\.orig$

@@ -62,6 +62,7 @@ licence
 lifecycle
 limites
 lwgeom
+mapsf
 neighbouring
 pkgdown
 placenames
@@ -70,6 +71,7 @@ rOpenGov
 roxygen
 socio
 subfolders
+subnational
 tibble
 tibbles
 tmap
