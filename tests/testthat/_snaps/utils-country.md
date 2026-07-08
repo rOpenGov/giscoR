@@ -1,4 +1,4 @@
-# Utils names
+# Country code conversion handles standard names and codes
 
     Code
       convert_country_code(c("Espagne", "United Kingdom"))
@@ -30,7 +30,7 @@
     Output
       [1] "ES" "DE"
 
-# Problematic names
+# Country code conversion reports unresolved names
 
     Code
       convert_country_code(c("Espagne", "Antartica"))
@@ -96,7 +96,7 @@
     Output
       [1] "XKX"
 
-# Test mixed countries
+# Country filters accept mixed country identifiers
 
     Code
       convert_country_code(c("Germany", "USA", "Greece", "united Kingdom"))

@@ -1,4 +1,4 @@
-test_that("Offline", {
+test_that("Coastal lines return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -10,9 +10,6 @@ test_that("Offline", {
     "Error"
   )
   expect_null(n)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("Coastal lines use resolved GISCO files", {
@@ -52,21 +49,18 @@ test_that("Coastal lines use resolved GISCO files", {
   expect_identical(coast$id, 1)
 })
 
-test_that("Errors", {
+test_that("Coastal lines validate unsupported extensions", {
   skip_on_cran()
   skip_if_gisco_offline()
 
   expect_snapshot(gisco_get_coastal_lines(ext = "docx"), error = TRUE)
 })
 
-test_that("Cached dataset vs updated", {
+test_that("Coastal lines can refresh an existing cached dataset", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testcoast")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testcoast-")
 
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_snapshot(db_cached <- gisco_get_coastal_lines(verbose = TRUE))
@@ -82,19 +76,13 @@ test_that("Cached dataset vs updated", {
     list.files(cdir, recursive = TRUE),
     "coastal/COAS_RG_20M_2016_4326.gpkg"
   )
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Cache vs non-cached", {
+test_that("Coastal lines return matching data with and without cache", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testcoast")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testcoast-")
 
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
@@ -136,19 +124,13 @@ test_that("Cache vs non-cached", {
     cache = FALSE
   )
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 1)
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Extensions", {
+test_that("Coastal lines support GeoJSON and zipped shapefile downloads", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testcoast")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testcoast-")
 
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
@@ -173,12 +155,9 @@ test_that("Extensions", {
   expect_s3_class(db_zip, "tbl_df")
 
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp.zip"), 1)
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Coastal online", {
+test_that("Coastal lines keep deprecated alias behavior online", {
   skip_on_cran()
   skip_if_gisco_offline()
 

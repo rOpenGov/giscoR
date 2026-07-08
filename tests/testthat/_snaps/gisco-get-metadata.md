@@ -1,4 +1,4 @@
-# Test offline
+# Metadata returns NULL when offline
 
     Code
       fend <- gisco_get_metadata()
@@ -6,7 +6,7 @@
       x No internet connection available.
       > Returning "NULL".
 
-# Errors
+# Metadata validates dataset and year inputs
 
     Code
       gisco_get_metadata("grids")

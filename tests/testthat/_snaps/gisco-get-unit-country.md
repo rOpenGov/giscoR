@@ -1,4 +1,4 @@
-# unit_country: Validate inputs
+# Country unit validates year, EPSG, resolution and spatial type
 
     Code
       gisco_get_unit_country(year = -1989)

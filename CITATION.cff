@@ -10,9 +10,6 @@ license: GPL-3.0-only
 title: 'giscoR: Download ''Eurostat'' ''GISCO'' Spatial Data'
 version: 1.1.1.9000
 doi: 10.32614/CRAN.package.giscoR
-identifiers:
-- type: doi
-  value: 10.32614/CRAN.package.giscoR
 abstract: Tools to download global and European spatial data from the 'Eurostat' 'GISCO'
   (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>.
   The package provides helpers for country boundaries, 'NUTS' regions, administrative
@@ -40,7 +37,6 @@ preferred-citation:
     The package provides helpers for country boundaries, NUTS regions, administrative
     units, statistical units, transport networks, basic service locations and other
     GISCO datasets. This package is not officially related to or endorsed by Eurostat.
-repository: https://CRAN.R-project.org/package=giscoR
 repository-code: https://github.com/rOpenGov/giscoR
 url: https://ropengov.github.io/giscoR/
 contact:
@@ -323,7 +319,6 @@ references:
   abstract: 'quarto: R Interface to ''Quarto'' Markdown Publishing System'
   notes: Suggests
   url: https://quarto-dev.github.io/quarto-r/
-  repository: https://CRAN.R-project.org/package=quarto
   authors:
   - family-names: Allaire
     given-names: JJ
@@ -334,7 +329,6 @@ references:
     email: cderv@posit.co
     orcid: https://orcid.org/0000-0003-4474-2498
   year: '2026'
-  doi: 10.32614/CRAN.package.quarto
 - type: software
   title: stats
   abstract: 'R: A Language and Environment for Statistical Computing'

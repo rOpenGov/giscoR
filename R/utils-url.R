@@ -166,10 +166,7 @@ gisco_pub_url <- function() {
 #' @return A character string with the full geodata file URL.
 #' @noRd
 eurostat_gisco_geodata_url <- function(filename) {
-  paste0(
-    "https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/",
-    filename
-  )
+  paste0("https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/", filename)
 }
 
 #' Internal function to download and cache a file from a URL
@@ -308,10 +305,20 @@ for_import_jsonlite <- function() {
   if (is.null(resp)) {
     return(invisible(NULL))
   }
-  txt <- httr2::resp_body_string(resp)
+  txt <- gisco_resp_body_string(resp)
   local <- jsonlite::parse_json(txt)
   local <- NULL
   invisible(local)
+}
+
+#' Parse a response body as a string
+#'
+#' @param resp An httr2 response.
+#'
+#' @return A character string with the response body.
+#' @noRd
+gisco_resp_body_string <- function(resp) {
+  httr2::resp_body_string(resp)
 }
 
 #' Wrapper for `is_online()` in tests

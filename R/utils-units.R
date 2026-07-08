@@ -84,11 +84,7 @@ get_unit_files <- function(
     year,
     "-units.json"
   )
-  api_entry <- paste0(
-    gisco_distribution_url(),
-    api_id,
-    "/distribution/"
-  )
+  api_entry <- paste0(gisco_distribution_url(), api_id, "/distribution/")
   cache_subdir <- file.path(dataset, "units")
   base_cache_dir <- create_cache_dir(cache_dir)
   db <- NULL

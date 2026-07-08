@@ -1,4 +1,4 @@
-# Extensions
+# Postal codes reject unsupported extensions and read shapefiles
 
     Code
       gisco_get_postal_codes(ext = "docx")

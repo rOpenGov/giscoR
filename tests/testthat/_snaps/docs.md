@@ -1,4 +1,4 @@
-# Check docs
+# Dataset documentation includes current metadata
 
     Code
       db_values("communes", "year")
@@ -26,7 +26,7 @@
     Output
       [1] "BN"     "COASTL" "INLAND" "LB"     "RG"    
 
-# Check GISCO ID docs
+# GISCO ID documentation includes available years
 
     Code
       docs_id_years("nuts")

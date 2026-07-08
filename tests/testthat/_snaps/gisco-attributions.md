@@ -1,4 +1,4 @@
-# Testing attributions
+# Attribution text is exposed as package data
 
     Code
       gisco_attributions(copyright = TRUE)

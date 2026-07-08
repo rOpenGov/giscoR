@@ -1,4 +1,4 @@
-# Errors
+# Coastal lines validate unsupported extensions
 
     Code
       gisco_get_coastal_lines(ext = "docx")
@@ -6,7 +6,7 @@
       Error:
       ! `ext` must be "geojson", "gpkg", or "shp", not "docx".
 
-# Cached dataset vs updated
+# Coastal lines can refresh an existing cached dataset
 
     Code
       db_cached <- gisco_get_coastal_lines(verbose = TRUE)

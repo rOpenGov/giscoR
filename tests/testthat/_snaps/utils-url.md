@@ -1,4 +1,4 @@
-# Test offline
+# Downloads return NULL when offline
 
     Code
       fend <- download_url(url, cache_dir = cdir, subdir = "fixme", update_cache = FALSE,
@@ -7,7 +7,7 @@
       x No internet connection available.
       > Returning "NULL".
 
-# Get urls
+# URL database lookup validates and returns matching entries
 
     Code
       get_url_db("communes", "9999", fn = "gisco_get_communes")
@@ -27,7 +27,7 @@
       * `ext` = "csv"
       i Check available combinations in `giscoR::gisco_get_cached_db()`.
 
-# No connection body
+# Request body returns NULL when offline
 
     Code
       fend <- get_request_body(url, verbose = FALSE)
@@ -35,7 +35,7 @@
       x No internet connection available.
       > Returning "NULL".
 
-# Error body
+# Request body returns NULL for 404 responses
 
     Code
       fend <- get_request_body(url, verbose = FALSE)

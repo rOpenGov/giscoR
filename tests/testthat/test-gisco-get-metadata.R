@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("Metadata returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -8,13 +8,9 @@ test_that("Test offline", {
 
   expect_snapshot(fend <- gisco_get_metadata())
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
 })
 
-test_that("Test 404", {
+test_that("Metadata returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -23,9 +19,6 @@ test_that("Test 404", {
   })
   expect_message(n <- gisco_get_metadata(), "Error")
   expect_null(n)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("Metadata helpers build URL and read CSV", {
@@ -54,44 +47,44 @@ test_that("Metadata helpers build URL and read CSV", {
 })
 
 test_that("Metadata downloads to the metadata cache", {
-  local_mocked_bindings(
-    download_url = function(url,
-                            name,
-                            cache_dir,
-                            subdir,
-                            verbose = FALSE,
-                            ...) {
-      expect_match(url, "_AT")
-      expect_match(name, "[.]csv$")
-      expect_identical(cache_dir, tempdir())
-      expect_identical(subdir, "gisco_metadata")
-      expect_true(verbose)
+  local_mocked_bindings(download_url = function(
+    url,
+    name,
+    cache_dir,
+    subdir,
+    verbose = FALSE,
+    ...
+  ) {
+    expect_match(url, "_AT")
+    expect_match(name, "[.]csv$")
+    expect_identical(cache_dir, tempdir())
+    expect_identical(subdir, "gisco_metadata")
+    expect_true(verbose)
 
-      csv_file <- tempfile(fileext = ".csv")
-      write.csv(
-        data.frame(id = "ES", name = "Spain"),
-        csv_file,
-        row.names = FALSE,
-        fileEncoding = "UTF-8"
-      )
-      csv_file
-    }
-  )
+    csv_file <- tempfile(fileext = ".csv")
+    write.csv(
+      data.frame(id = "ES", name = "Spain"),
+      csv_file,
+      row.names = FALSE,
+      fileEncoding = "UTF-8"
+    )
+    csv_file
+  })
 
   metadata <- gisco_get_metadata("countries", year = 2024, verbose = TRUE)
   expect_s3_class(metadata, "tbl_df")
   expect_identical(metadata$id, "ES")
 })
 
-test_that("Messages", {
+test_that("Metadata reports downloads in verbose mode", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_message(n <- gisco_get_metadata(verbose = TRUE))
+  expect_message(n <- gisco_get_metadata(verbose = TRUE), "Cache directory")
   expect_s3_class(n, "tbl_df")
 })
 
-test_that("Errors", {
+test_that("Metadata validates dataset and year inputs", {
   skip_on_cran()
   skip_if_gisco_offline()
   expect_snapshot(gisco_get_metadata("grids"), error = TRUE)
@@ -99,7 +92,7 @@ test_that("Errors", {
   expect_snapshot(gisco_get_metadata("urban_audit", year = 1990), error = TRUE)
 })
 
-test_that("Check all nuts", {
+test_that("Metadata is available for every NUTS year", {
   skip_on_cran()
   skip_if_gisco_offline()
   val_years <- db_values("nuts", "year", formatted = FALSE)
@@ -109,7 +102,7 @@ test_that("Check all nuts", {
   }
 })
 
-test_that("Check all countries", {
+test_that("Metadata is available for every countries year", {
   skip_on_cran()
   skip_if_gisco_offline()
   val_years <- db_values("countries", "year", formatted = FALSE)
@@ -119,7 +112,7 @@ test_that("Check all countries", {
   }
 })
 
-test_that("Check all urban_audit", {
+test_that("Metadata is available for every urban audit year", {
   skip_on_cran()
   skip_if_gisco_offline()
   val_years <- db_values("urban_audit", "year", formatted = FALSE)

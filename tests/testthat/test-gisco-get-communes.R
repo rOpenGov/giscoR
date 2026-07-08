@@ -1,4 +1,4 @@
-test_that("offline", {
+test_that("Communes return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -10,10 +10,6 @@ test_that("offline", {
     "Error"
   )
   expect_null(n)
-
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("Communes use resolved GISCO files", {
@@ -54,15 +50,21 @@ test_that("Communes use resolved GISCO files", {
   expect_identical(communes$CNTR_CODE, c("ES", "FR"))
 })
 
-test_that("Communes errors", {
+test_that("Communes validate year, EPSG and spatial type", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(gisco_get_communes(year = "2007"))
-  expect_error(gisco_get_communes(epsg = "9999"))
-  expect_error(gisco_get_communes(year = "2004", spatialtype = "COASTL"))
-  expect_error(gisco_get_communes(year = "2004", spatialtype = "INLAND"))
-  expect_error(gisco_get_communes(spatialtype = "ERR"))
+  expect_error(gisco_get_communes(year = "2007"), "Years available")
+  expect_error(gisco_get_communes(epsg = "9999"), "No results")
+  expect_error(
+    gisco_get_communes(year = "2004", spatialtype = "COASTL"),
+    "No results"
+  )
+  expect_error(
+    gisco_get_communes(year = "2004", spatialtype = "INLAND"),
+    "No results"
+  )
+  expect_error(gisco_get_communes(spatialtype = "ERR"), "No results")
 })
 
 test_that("Communes pass country filters to the reader", {
@@ -112,17 +114,15 @@ test_that("Communes pass country filters to the reader", {
   expect_identical(communes$CNTR_CODE, "LU")
   expect_identical(
     filter_calls,
-    list(
-      list(
-        file_local = "communes.gpkg",
-        values = "LU",
-        candidates = c("CNTR_ID", "CNTR_CODE")
-      )
-    )
+    list(list(
+      file_local = "communes.gpkg",
+      values = "LU",
+      candidates = c("CNTR_ID", "CNTR_CODE")
+    ))
   )
 })
 
-test_that("Deprecations", {
+test_that("Communes report deprecated cache usage", {
   local_mocked_bindings(
     resolve_gisco_file = function(...) {
       list(
@@ -138,7 +138,7 @@ test_that("Deprecations", {
   expect_snapshot(s <- gisco_get_communes(cache = FALSE, spatialtype = "LB"))
 })
 
-test_that("Extensions", {
+test_that("Communes reject unsupported extensions and read GeoJSON", {
   skip_on_cran()
   skip_if_gisco_offline()
 

@@ -1,24 +1,18 @@
-test_that("Test offline", {
+test_that("NUTS return NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
+  cdir <- local_test_cache_dir("testnuts-offline-")
   expect_message(
-    n <- gisco_get_nuts(
-      update_cache = TRUE,
-      cache_dir = tempdir(),
-      resolution = 60
-    ),
+    n <- gisco_get_nuts(update_cache = TRUE, cache_dir = cdir, resolution = 60),
     "No internet"
   )
   expect_null(n)
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
 })
-test_that("Test 404", {
+test_that("NUTS return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -30,9 +24,6 @@ test_that("Test 404", {
     "Error"
   )
   expect_null(n)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("NUTS use resolved GISCO files", {
@@ -80,7 +71,7 @@ test_that("NUTS use resolved GISCO files", {
   expect_identical(nuts$NUTS_ID, c("ES51", "FR1"))
 })
 
-test_that("Valid inputs", {
+test_that("NUTS validate extensions and level inputs", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -102,14 +93,11 @@ test_that("Valid inputs", {
   expect_identical(nrow(all[all$LEVL_CODE == 3, ]), nrow(l3))
 })
 
-test_that("Cached dataset vs updated", {
+test_that("NUTS can refresh an existing cached dataset", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testnuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testnuts-")
 
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_snapshot(db_cached <- gisco_get_nuts(verbose = TRUE, nuts_id = "ES51"))
@@ -142,18 +130,13 @@ test_that("Cached dataset vs updated", {
   expect_identical(db_cached$NUTS_ID, db_cached2$NUTS_ID)
   expect_true("geo" %in% names(db_cached))
   expect_true("geo" %in% names(db_cached2))
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Cache vs non-cached", {
+test_that("NUTS return matching data with and without cache", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testnuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testnuts-")
 
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
@@ -195,12 +178,9 @@ test_that("Cache vs non-cached", {
     cache = FALSE
   )
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 1)
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Filter countries", {
+test_that("NUTS can be filtered by country and level", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -240,7 +220,7 @@ test_that("Filter countries", {
   expect_identical(db_cached_full$NUTS_ID, "ES511")
 })
 
-test_that("Filter countries no cached", {
+test_that("NUTS filters also work without cache", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -267,7 +247,7 @@ test_that("Filter countries no cached", {
 
   expect_identical(nrow(bn), nrow(bn_nocach))
 })
-test_that("Spatial types", {
+test_that("NUTS support boundary and label spatial types", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -289,14 +269,11 @@ test_that("Spatial types", {
   )
 })
 
-test_that("Extensions", {
+test_that("NUTS support GeoJSON and zipped shapefile downloads", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testnuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testnuts-")
 
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
@@ -323,7 +300,4 @@ test_that("Extensions", {
   expect_s3_class(db_zip, "tbl_df")
 
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp.zip"), 1)
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })

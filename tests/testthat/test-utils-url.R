@@ -1,24 +1,15 @@
 test_that("GISCO URL helpers work", {
-  expect_identical(
-    gisco_services_url(),
-    "https://gisco-services.ec.europa.eu"
-  )
+  expect_identical(gisco_services_url(), "https://gisco-services.ec.europa.eu")
   expect_identical(
     gisco_distribution_url(),
     "https://gisco-services.ec.europa.eu/distribution/v2/"
   )
-  expect_identical(
-    gisco_id_url(),
-    "https://gisco-services.ec.europa.eu/id/"
-  )
+  expect_identical(gisco_id_url(), "https://gisco-services.ec.europa.eu/id/")
   expect_identical(
     gisco_address_url(),
     "https://gisco-services.ec.europa.eu/addressapi/"
   )
-  expect_identical(
-    gisco_pub_url(),
-    "https://gisco-services.ec.europa.eu/pub/"
-  )
+  expect_identical(gisco_pub_url(), "https://gisco-services.ec.europa.eu/pub/")
   expect_identical(
     eurostat_gisco_geodata_url("PORT_2013_SH.zip"),
     paste0(
@@ -48,11 +39,9 @@ test_that("Packaged dataset helper returns matching data", {
 })
 
 test_that("GISCO file resolver returns URL and file name", {
-  local_mocked_bindings(
-    get_url_db = function(...) {
-      "https://example.com/path/file.gpkg"
-    }
-  )
+  local_mocked_bindings(get_url_db = function(...) {
+    "https://example.com/path/file.gpkg"
+  })
 
   file <- resolve_gisco_file("countries", year = 2024, fn = "test")
   expect_identical(file$url, "https://example.com/path/file.gpkg")
@@ -106,21 +95,16 @@ test_that("Dataset reader delegates cache and non-cache paths", {
 
 test_that("JSON API helper returns requested field", {
   response <- list(results = data.frame(id = 1:2, name = c("a", "b")))
-  local_mocked_bindings(
-    get_request_body = function(url, verbose = FALSE) {
-      expect_match(url, "q=test")
-      structure(response, class = "mock_response")
-    }
-  )
-  local_mocked_bindings(
-    .package = "httr2",
-    resp_body_json = function(resp, ...) {
-      args <- list(...)
-      expect_s3_class(resp, "mock_response")
-      expect_true(args$simplifyVector)
-      unclass(resp)
-    }
-  )
+  local_mocked_bindings(get_request_body = function(url, verbose = FALSE) {
+    expect_match(url, "q=test")
+    structure(response, class = "mock_response")
+  })
+  local_mocked_bindings(gisco_resp_body_json = function(resp, ...) {
+    args <- list(...)
+    expect_s3_class(resp, "mock_response")
+    expect_true(args$simplifyVector)
+    unclass(resp)
+  })
 
   result <- call_gisco_json_api(
     custom_query = list(q = "test"),
@@ -133,9 +117,7 @@ test_that("JSON API helper returns requested field", {
 })
 
 test_that("JSON API helper returns NULL for missing responses", {
-  local_mocked_bindings(
-    get_request_body = function(...) NULL
-  )
+  local_mocked_bindings(get_request_body = function(...) NULL)
 
   expect_null(call_gisco_json_api(
     custom_query = list(q = "test"),
@@ -144,7 +126,7 @@ test_that("JSON API helper returns NULL for missing responses", {
   ))
 })
 
-test_that("Test offline", {
+test_that("Downloads return NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
   local_mocked_bindings(is_online_fun = function(...) {
@@ -155,10 +137,7 @@ test_that("Test offline", {
     "https://gisco-services.ec.europa.eu/distribution/v2/",
     "nuts/geojson/NUTS_LB_2016_4326_LEVL_0.geojson"
   )
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testthat-ex-")
   expect_snapshot(
     fend <- download_url(
       url,
@@ -170,22 +149,13 @@ test_that("Test offline", {
   )
   expect_null(fend)
   expect_length(list.files(cdir, recursive = TRUE), 0)
-  unlink(cdir, recursive = TRUE, force = TRUE)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Test 404", {
+test_that("Downloads return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testthat-ex-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -205,12 +175,18 @@ test_that("Test 404", {
     "Error "
   )
   expect_null(s)
+})
 
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
+test_that("Download works after remote file is available", {
+  skip_on_cran()
+  skip_if_gisco_offline()
 
-  # Otherwise work
+  cdir <- local_test_cache_dir("testthat-ex-")
+
+  url <- paste0(
+    "https://gisco-services.ec.europa.eu/distribution/v2/countries/",
+    "shp/CNTR_LB_2024_4326.shp.zip"
+  )
   expect_silent(
     s <- download_url(
       url,
@@ -221,12 +197,9 @@ test_that("Test 404", {
   )
   expect_length(s, 1)
   expect_type(s, "character")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
 })
 
-test_that("Caching tests", {
+test_that("Downloads reuse and refresh cached files", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -234,10 +207,7 @@ test_that("Caching tests", {
     "https://gisco-services.ec.europa.eu/distribution/v2/",
     "nuts/geojson/NUTS_LB_2016_4326_LEVL_0.geojson"
   )
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testthat-ex-")
   expect_message(
     fend <- download_url(
       url,
@@ -272,11 +242,9 @@ test_that("Caching tests", {
     ),
     "Updating cached"
   )
-
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Caching errors", {
+test_that("Downloads report missing remote files", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -284,10 +252,7 @@ test_that("Caching errors", {
     "https://gisco-services.ec.europa.eu/distribution/v2/",
     "fake-file.txt"
   )
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testthat-ex-")
   expect_message(
     fend <- download_url(
       url,
@@ -315,11 +280,9 @@ test_that("Caching errors", {
     ),
     "The file to download is"
   )
-
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
 
-test_that("Get urls", {
+test_that("URL database lookup validates and returns matching entries", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -400,7 +363,7 @@ test_that("Get urls", {
   expect_equal(httr2::resp_status(resp), 200)
 })
 
-test_that("No connection body", {
+test_that("Request body returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
   local_mocked_bindings(is_online_fun = function(...) {
@@ -414,13 +377,9 @@ test_that("No connection body", {
 
   expect_snapshot(fend <- get_request_body(url, verbose = FALSE))
   expect_null(fend)
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
-  expect_identical(is_online_fun(), httr2::is_online())
 })
 
-test_that("Error body", {
+test_that("Request body returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
   local_mocked_bindings(is_404 = function(...) {
@@ -433,12 +392,9 @@ test_that("Error body", {
 
   expect_snapshot(fend <- get_request_body(url, verbose = FALSE))
   expect_null(fend)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
-test_that("Tests body", {
+test_that("Request body returns content for successful responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -461,44 +417,37 @@ test_that("Tests body", {
   expect_null(fend)
 })
 
-test_that("Test import jsonlite with missing response", {
-  local_mocked_bindings(
-    get_request_body = function(...) NULL
-  )
+test_that("JSON import returns NULL for missing responses", {
+  local_mocked_bindings(get_request_body = function(...) NULL)
 
   expect_null(for_import_jsonlite())
 })
 
-test_that("Test import jsonlite with mocked response body", {
-  local_mocked_bindings(
-    get_request_body = function(url, verbose = FALSE) {
-      expect_identical(
-        url,
-        "https://ropengov.github.io/giscoR/search.json"
-      )
-      expect_false(verbose)
-      structure(list(), class = "mock_response")
-    }
-  )
-  local_mocked_bindings(
-    .package = "httr2",
-    resp_body_string = function(resp) {
-      expect_s3_class(resp, "mock_response")
-      "{\"items\":[]}"
-    }
-  )
+test_that("JSON import parses mocked response bodies", {
+  local_mocked_bindings(get_request_body = function(url, verbose = FALSE) {
+    expect_identical(url, "https://ropengov.github.io/giscoR/search.json")
+    expect_false(verbose)
+    structure(list(), class = "mock_response")
+  })
+  local_mocked_bindings(gisco_resp_body_string = function(resp) {
+    expect_s3_class(resp, "mock_response")
+    "{\"items\":[]}"
+  })
 
   expect_null(for_import_jsonlite())
 })
 
-test_that("Test timeout", {
+test_that("Response body string wrapper delegates to httr2", {
+  resp <- httr2::response(200, body = charToRaw("abc"))
+
+  expect_identical(gisco_resp_body_string(resp), "abc")
+})
+
+test_that("Downloads retry successfully after a timeout", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testthat_timeout")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testthat-timeout-")
 
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/",
@@ -517,6 +466,4 @@ test_that("Test timeout", {
   )
 
   expect_true(file.exists(ff))
-  unlink(cdir, recursive = TRUE, force = TRUE)
-  expect_false(file.exists(ff))
 })

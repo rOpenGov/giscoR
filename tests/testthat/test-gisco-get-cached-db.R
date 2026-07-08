@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("Cached database returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -10,13 +10,9 @@ test_that("Test offline", {
 
   expect_snapshot(fend <- gisco_get_cached_db(update_cache = TRUE))
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
 })
 
-test_that("Test 404", {
+test_that("Cached database returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -28,22 +24,18 @@ test_that("Test 404", {
     "Could not access"
   )
   expect_null(n)
-
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
-test_that("Offline detection", {
+test_that("Cached database stores fallback data when remote access fails", {
   skip_on_cran()
   skip_if_gisco_offline()
+  cdir <- local_test_cache_dir("cache-db-offline-")
+  withr::local_envvar(GISCO_CACHE_DIR = cdir)
+
   cdir <- detect_cache_dir_muted()
   cdir_db <- create_cache_dir(file.path(cdir, "cache_db"))
 
   cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
-  if (file.exists(cached_db)) {
-    unlink(cached_db)
-  }
   expect_false(file.exists(cached_db))
   local_mocked_bindings(is_404 = function(...) {
     TRUE
@@ -55,20 +47,13 @@ test_that("Offline detection", {
   # Next time silent and cached
   expect_silent(n2 <- get_db())
   expect_identical(n2, gisco_db)
-
-  if (file.exists(cached_db)) {
-    unlink(cached_db)
-  }
-  expect_false(file.exists(cached_db))
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
-test_that("On CRAN", {
+test_that("Cached database is still created under CRAN settings", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  withr::local_envvar(c(NOT_CRAN = "false"))
+  cdir <- local_test_cache_dir("cache-db-cran-")
+  withr::local_envvar(GISCO_CACHE_DIR = cdir, NOT_CRAN = "false")
 
   expect_true(on_cran())
 
@@ -76,9 +61,6 @@ test_that("On CRAN", {
   cdir_db <- create_cache_dir(file.path(cdir, "cache_db"))
   cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
 
-  withr::defer(unlink(cached_db))
-
-  unlink(cached_db)
   expect_false(file.exists(cached_db))
 
   expect_silent(n <- gisco_get_cached_db())
@@ -86,8 +68,7 @@ test_that("On CRAN", {
   expect_true(file.exists(cached_db))
 })
 test_that("Cached DB helpers build cache paths and scrape entries", {
-  cdir <- file.path(tempdir(), "testthat", "cache-db-helper")
-  unlink(cdir, force = TRUE, recursive = TRUE)
+  cdir <- local_test_cache_dir("cache-db-helper-")
 
   expect_identical(
     cached_db_file(cdir),
@@ -95,11 +76,9 @@ test_that("Cached DB helpers build cache paths and scrape entries", {
   )
   expect_true(dir.exists(file.path(cdir, "cache_db")))
 
-  local_mocked_bindings(
-    scrap_api_data = function(entry_point) {
-      data.frame(id_giscor = entry_point, year = "2024")
-    }
-  )
+  local_mocked_bindings(scrap_api_data = function(entry_point) {
+    data.frame(id_giscor = entry_point, year = "2024")
+  })
   db <- scrape_distribution_db(c("nuts", "lau"))
   expect_identical(db$id_giscor, c("nuts", "lau"))
 })
@@ -138,7 +117,7 @@ test_that("Cached DB normalization adds derived columns", {
   expect_true("CITIES" %in% out$level)
 })
 
-test_that("Get database", {
+test_that("Cached database refreshes from the remote metadata", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -155,14 +134,16 @@ test_that("Get database", {
   expect_snapshot(sort(unique(new_db$year)))
 })
 
-test_that("Test cached database", {
+test_that("Cached database reuses the local RDS file", {
   skip_on_cran()
   skip_if_gisco_offline()
+  cdir <- local_test_cache_dir("cache-db-")
+  withr::local_envvar(GISCO_CACHE_DIR = cdir)
+
   cdir <- detect_cache_dir_muted()
   cdir_db <- create_cache_dir(file.path(cdir, "cache_db"))
 
   cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
-  unlink(cached_db)
   expect_false(file.exists(cached_db))
 
   # Get db

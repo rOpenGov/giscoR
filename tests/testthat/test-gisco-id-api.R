@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("ID API returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
   local_mocked_bindings(is_online_fun = function(...) {
@@ -11,13 +11,9 @@ test_that("Test offline", {
   # json
   expect_snapshot(fend <- gisco_id_api_nuts(x = 4, y = 52, geometry = FALSE))
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
 })
 
-test_that("Test 404", {
+test_that("ID API returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -41,38 +37,33 @@ test_that("Test 404", {
     "Error"
   )
   expect_null(n)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("ID API delegates GeoJSON responses to the spatial reader", {
-  local_mocked_bindings(
-    read_id_api_geojson = function(url, verbose = FALSE) {
-      expect_match(url, "format=geojson")
-      expect_true(verbose)
-      data.frame(id = "ES")
-    }
-  )
+  local_mocked_bindings(read_id_api_geojson = function(url, verbose = FALSE) {
+    expect_match(url, "format=geojson")
+    expect_true(verbose)
+    data.frame(id = "ES")
+  })
 
   out <- gisco_id_api_country(x = 1, y = 2, verbose = TRUE)
   expect_identical(out$id, "ES")
 })
 
 test_that("ID API delegates JSON responses to the JSON helper", {
-  local_mocked_bindings(
-    call_gisco_json_api = function(custom_query,
-                                   apiurl,
-                                   result_field,
-                                   verbose = FALSE) {
-      expect_identical(custom_query$format, "json")
-      expect_identical(custom_query$geometry, "no")
-      expect_match(apiurl, "country")
-      expect_identical(result_field, "attributes")
-      expect_true(verbose)
-      data.frame(id = "ES")
-    }
-  )
+  local_mocked_bindings(call_gisco_json_api = function(
+    custom_query,
+    apiurl,
+    result_field,
+    verbose = FALSE
+  ) {
+    expect_identical(custom_query$format, "json")
+    expect_identical(custom_query$geometry, "no")
+    expect_match(apiurl, "country")
+    expect_identical(result_field, "attributes")
+    expect_true(verbose)
+    data.frame(id = "ES")
+  })
 
   out <- gisco_id_api_country(x = 1, y = 2, geometry = FALSE, verbose = TRUE)
   expect_identical(out$id, "ES")

@@ -1,4 +1,4 @@
-# unit_urban_audit: Validate inputs
+# Urban audit unit validates year, EPSG and spatial type
 
     Code
       gisco_get_unit_urban_audit(year = -1989)

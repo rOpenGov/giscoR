@@ -1,4 +1,4 @@
-# Test offline
+# ID API returns NULL when offline
 
     Code
       fend <- gisco_id_api_geonames(x = 4, y = 52)

@@ -1,4 +1,4 @@
-# Messages
+# Message helper emits each supported message type
 
     Code
       make_msg("generic", TRUE, "Hi", "I am a generic.", "See {.var avar}.")
@@ -33,7 +33,7 @@
     Message
       v Hooray! 5/5 ;)
 
-# Pretty match
+# Argument matcher reports exact and invalid values
 
     Code
       my_fun("error here")
@@ -108,7 +108,7 @@
       The `cache` argument of `x()` is deprecated as of giscoR 1.0.0.
       i Results are always cached. To avoid persistent cache files, use `cache_dir = tempdir()`.
 
-# Test cli_abort_if_not
+# cli_abort_if_not aborts when conditions fail
 
     Code
       cli_abort_if_not(`Message supports {.cls inline} {.str markup}.` = is.logical(1))
