@@ -1,4 +1,4 @@
-# Test offline
+# Address API returns NULL when offline
 
     Code
       fend <- gisco_address_api_bbox()

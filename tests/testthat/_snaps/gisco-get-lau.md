@@ -1,4 +1,4 @@
-# Deprecations
+# LAU reports deprecated cache usage
 
     Code
       s <- gisco_get_lau(year = 2024, cache = TRUE, gisco_id = "ES_12016")
@@ -7,7 +7,7 @@
       The `cache` argument of `gisco_get_lau()` is deprecated as of giscoR 1.0.0.
       i Results are always cached. To avoid persistent cache files, use `cache_dir = tempdir()`.
 
-# Extensions
+# LAU rejects unsupported extensions and reads GeoJSON
 
     Code
       gisco_get_lau(ext = "docx")

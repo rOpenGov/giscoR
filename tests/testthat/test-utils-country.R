@@ -1,5 +1,6 @@
-test_that("Utils names", {
+test_that("Country code conversion handles standard names and codes", {
   skip_on_cran()
+  skip_if_gisco_offline()
 
   expect_null(convert_country_code_or_null(NULL))
   expect_identical(convert_country_code_or_null("ES"), "ES")
@@ -11,10 +12,7 @@ test_that("Utils names", {
 })
 
 test_that("Country column filter works", {
-  data <- data.frame(
-    CNTR_CODE = c("ES", "FR", "PT"),
-    value = 1:3
-  )
+  data <- data.frame(CNTR_CODE = c("ES", "FR", "PT"), value = 1:3)
 
   expect_identical(filter_by_country_col(data, NULL), data)
   expect_identical(filter_by_country_col(data, "ES")$value, 1L)
@@ -22,8 +20,9 @@ test_that("Country column filter works", {
   expect_identical(filter_by_country_col(data, "ES", "missing"), data)
 })
 
-test_that("Problematic names", {
+test_that("Country code conversion reports unresolved names", {
   skip_on_cran()
+  skip_if_gisco_offline()
 
   expect_snapshot(convert_country_code(c("Espagne", "Antartica")))
   expect_snapshot(convert_country_code(c("spain", "antartica")))
@@ -49,8 +48,9 @@ test_that("Problematic names", {
   expect_identical(convert_country_code("ES"), "ES")
 })
 
-test_that("Test mixed countries", {
+test_that("Country filters accept mixed country identifiers", {
   skip_on_cran()
+  skip_if_gisco_offline()
 
   expect_snapshot(convert_country_code(c(
     "Germany",
@@ -60,8 +60,9 @@ test_that("Test mixed countries", {
   )))
 })
 
-test_that("Get regions and countries", {
+test_that("Country region filters return matching country codes", {
   skip_on_cran()
+  skip_if_gisco_offline()
 
   expect_null(get_countrycodes_region())
   expect_identical(get_countrycodes_region(c("Japan", "Spain")), c("JP", "ES"))

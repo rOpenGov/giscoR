@@ -1,11 +1,8 @@
-test_that("Read shp", {
+test_that("Spatial reader imports downloaded shapefiles", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testthat-ex-")
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/countries/",
     "shp/CNTR_LB_2024_4326.shp.zip"
@@ -36,18 +33,13 @@ test_that("Read shp", {
     q = "SELECT * from \"CNTR_LB_2024_4326\" LIMIT 1"
   )
   expect_equal(sq, s[1, ])
-  unlink(cdir, recursive = TRUE, force = TRUE)
-  expect_false(dir.exists(cdir))
 })
 
-test_that("Read gpkg", {
+test_that("Spatial reader imports downloaded GeoPackages", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testthat_ex")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testthat-ex-")
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/countries/",
     "gpkg/CNTR_LB_2024_4326.gpkg"
@@ -99,7 +91,4 @@ test_that("Read gpkg", {
 
   # From url doesn't warn
   expect_silent(f2 <- read_geo_file_sf(url))
-
-  unlink(cdir, recursive = TRUE, force = TRUE)
-  expect_false(dir.exists(cdir))
 })

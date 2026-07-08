@@ -1,4 +1,4 @@
-# Deprecations
+# Communes report deprecated cache usage
 
     Code
       s <- gisco_get_communes(cache = FALSE, spatialtype = "LB")
@@ -7,7 +7,7 @@
       The `cache` argument of `gisco_get_communes()` is deprecated as of giscoR 1.0.0.
       i Results are always cached. To avoid persistent cache files, use `cache_dir = tempdir()`.
 
-# Extensions
+# Communes reject unsupported extensions and read GeoJSON
 
     Code
       gisco_get_communes(ext = "docx")

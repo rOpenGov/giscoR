@@ -1,4 +1,4 @@
-# Test inputs
+# Urban audit validates extensions and level inputs
 
     Code
       gisco_get_urban_audit(ext = "docx")

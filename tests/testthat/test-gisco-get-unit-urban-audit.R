@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("Urban audit unit returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -14,12 +14,9 @@ test_that("Test offline", {
     "No internet"
   )
   expect_null(n)
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
 })
 
-test_that("Test 404", {
+test_that("Urban audit unit returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -35,19 +32,13 @@ test_that("Test 404", {
     "Error"
   )
   expect_null(n)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
-test_that("unit_urau: Several years", {
+test_that("Urban audit unit reads city geometries for several years", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_urau")
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  cdir <- local_test_cache_dir("test-unit-urau-")
   years <- db_values("urban_audit", "year", formatted = FALSE)
 
   for (y in years) {
@@ -63,17 +54,12 @@ test_that("unit_urau: Several years", {
     expect_s3_class(gr, "sf")
     expect_s3_class(gr, "tbl_df")
   }
-
-  if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
-test_that("unit_urau: Several years polygon", {
+test_that("Urban audit unit reads polygon geometries for several years", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_urau")
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  cdir <- local_test_cache_dir("test-unit-urau-")
   years <- db_values("urban_audit", "year", formatted = FALSE)
 
   for (y in years) {
@@ -89,18 +75,13 @@ test_that("unit_urau: Several years polygon", {
     expect_s3_class(gr, "sf")
     expect_s3_class(gr, "tbl_df")
   }
-
-  if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("unit_urau: Caching", {
+test_that("Urban audit unit returns matching data with and without cache", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_urau")
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  cdir <- local_test_cache_dir("test-unit-urau-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # Not caching
@@ -139,18 +120,13 @@ test_that("unit_urau: Caching", {
     ),
     "File already cached"
   )
-
-  if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("unit_urau: Multi calls", {
+test_that("Urban audit unit supports multiple calls and units", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_urau")
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  cdir <- local_test_cache_dir("test-unit-urau-")
 
   # Message even when verbose FALSE
   expect_message(
@@ -192,11 +168,9 @@ test_that("unit_urau: Multi calls", {
   )
   expect_equal(nrow(pol), 3)
   expect_true(all(sf::st_geometry_type(pol) == "MULTIPOLYGON"))
-
-  if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("unit_urban_audit: Validate inputs", {
+test_that("Urban audit unit validates year, EPSG and spatial type", {
   skip_on_cran()
   skip_if_gisco_offline()
   expect_snapshot(gisco_get_unit_urban_audit(year = -1989), error = TRUE)

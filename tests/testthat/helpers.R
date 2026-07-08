@@ -7,3 +7,12 @@ skip_if_gisco_offline <- function() {
 
   invisible()
 }
+
+local_test_cache_dir <- function(pattern = "gisco-test-") {
+  path <- withr::local_tempdir(pattern = pattern, .local_envir = parent.frame())
+  withr::defer(
+    unlink(path, recursive = TRUE, force = TRUE),
+    envir = parent.frame()
+  )
+  path
+}

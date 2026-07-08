@@ -1,4 +1,4 @@
-# Deprecations
+# Bulk download reports deprecated arguments
 
     Code
       s <- gisco_bulk_download(id_giscoR = "coastal_lines", resolution = 60,
@@ -17,7 +17,7 @@
       The `recursive` argument of `gisco_bulk_download()` is deprecated as of giscoR 1.0.0.
       i Child `.zip` files inside the top-level `.zip` will not be unzipped.
 
-# Errors
+# Bulk download validates user inputs
 
     Code
       gisco_bulk_download(id_giscoR = "nutes")

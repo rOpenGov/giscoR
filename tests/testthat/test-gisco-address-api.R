@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("Address API returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
   local_mocked_bindings(is_online_fun = function(...) {
@@ -7,13 +7,9 @@ test_that("Test offline", {
 
   expect_snapshot(fend <- gisco_address_api_bbox())
   expect_null(fend)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
 })
 
-test_that("Test 404", {
+test_that("Address API returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -51,10 +47,6 @@ test_that("Test 404", {
 
   expect_message(n <- gisco_address_api_copyright(), "Error")
   expect_null(n)
-
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("gisco_address_api_bbox online", {

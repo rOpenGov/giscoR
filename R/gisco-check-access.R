@@ -20,11 +20,7 @@ gisco_check_access <- function() {
     return(FALSE)
   }
 
-  req <- gisco_request(
-    gisco_distribution_url(),
-    cache = FALSE,
-    retry = FALSE
-  )
+  req <- gisco_request(gisco_distribution_url(), cache = FALSE, retry = FALSE)
   req <- httr2::req_url_path_append(req, "themes.json")
   resp <- gisco_perform_request(
     req,

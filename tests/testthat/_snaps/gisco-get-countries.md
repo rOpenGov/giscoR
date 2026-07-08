@@ -1,11 +1,11 @@
-# Cached dataset vs updated
+# Countries can refresh an existing cached dataset
 
     Code
       db_cached <- gisco_get_countries(verbose = TRUE)
     Message
       i Loaded from `?giscoR::gisco_countries_2024()` dataset. Use `update_cache` = TRUE to reload from file.
 
-# Extensions
+# Countries support GeoJSON and zipped shapefile downloads
 
     Code
       gisco_get_countries(ext = "docx")

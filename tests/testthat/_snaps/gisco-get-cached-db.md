@@ -1,4 +1,4 @@
-# Test offline
+# Cached database returns NULL when offline
 
     Code
       fend <- gisco_get_cached_db(update_cache = TRUE)
@@ -6,7 +6,7 @@
       ! Could not access <https://gisco-services.ec.europa.eu/distribution/v2/>. If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
       > Returning "NULL".
 
-# Get database
+# Cached database refreshes from the remote metadata
 
     Code
       unique(new_db$id_giscor)

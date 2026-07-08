@@ -1,4 +1,4 @@
-# Valid inputs
+# NUTS validate extensions and level inputs
 
     Code
       gisco_get_nuts(ext = "docx")
@@ -14,7 +14,7 @@
       Error:
       ! `nuts_level` must be "all", "0", "1", "2", or "3", not "docx".
 
-# Cached dataset vs updated
+# NUTS can refresh an existing cached dataset
 
     Code
       db_cached <- gisco_get_nuts(verbose = TRUE, nuts_id = "ES51")

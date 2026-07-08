@@ -153,12 +153,7 @@ gisco_bulk_download <- function(
   }
 
   api_entry <- bulk_download_api_entry(routes)
-  zipname <- build_bulk_zip_name(
-    id,
-    year,
-    make_params$resolution,
-    ext
-  )
+  zipname <- build_bulk_zip_name(id, year, make_params$resolution, ext)
   url <- file.path(api_entry, zipname)
   subdir <- bulk_download_subdir(id)
 

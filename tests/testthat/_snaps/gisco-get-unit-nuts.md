@@ -1,4 +1,4 @@
-# unit_nuts: Validate inputs
+# NUTS unit validates year, EPSG, resolution and spatial type
 
     Code
       gisco_get_unit_nuts(year = -1989)

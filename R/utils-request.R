@@ -58,10 +58,7 @@ gisco_request_fake_404 <- function(req) {
     return(req)
   }
 
-  httr2::req_url(
-    req,
-    paste0(gisco_distribution_url(), "fake")
-  )
+  httr2::req_url(req, paste0(gisco_distribution_url(), "fake"))
 }
 
 #' Handle an HTTP error response
@@ -186,6 +183,17 @@ call_gisco_json_api <- function(
     return(NULL)
   }
 
-  resp_json <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  resp_json <- gisco_resp_body_json(resp, simplifyVector = TRUE)
   tibble::as_tibble(resp_json[[result_field]])
+}
+
+#' Parse a response body as JSON
+#'
+#' @param resp An httr2 response.
+#' @param ... Arguments passed to [httr2::resp_body_json()].
+#'
+#' @return Parsed JSON response body.
+#' @noRd
+gisco_resp_body_json <- function(resp, ...) {
+  httr2::resp_body_json(resp, ...)
 }

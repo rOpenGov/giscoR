@@ -1,4 +1,4 @@
-# Mock migration
+# Legacy cache configuration migrates to the current location
 
     Code
       migrate_cache(old = old, new = new)

@@ -1,4 +1,4 @@
-test_that("offline", {
+test_that("LAU returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -7,10 +7,6 @@ test_that("offline", {
   })
   expect_message(n <- gisco_get_lau(update_cache = TRUE, year = 2020), "Error")
   expect_null(n)
-
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("LAU use resolved GISCO files", {
@@ -53,12 +49,12 @@ test_that("LAU use resolved GISCO files", {
   expect_identical(lau$GISCO_ID, "ES_12016")
 })
 
-test_that("LAU Errors", {
+test_that("LAU validates year and EPSG", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(gisco_get_lau(year = "2001"))
-  expect_error(gisco_get_lau(epsg = "9999"))
+  expect_error(gisco_get_lau(year = "2001"), "Years available")
+  expect_error(gisco_get_lau(epsg = "9999"), "No results")
 })
 
 test_that("LAU combines country and GISCO ID filters", {
@@ -100,15 +96,9 @@ test_that("LAU combines country and GISCO ID filters", {
       filter_result <- filters("lau.gpkg")
       expect_identical(
         filter_result,
-        list(
-          "CNTR_ID|CNTR_CODE" = "LI",
-          GISCO_ID = "ES_12016"
-        )
+        list("CNTR_ID|CNTR_CODE" = "LI", GISCO_ID = "ES_12016")
       )
-      data.frame(
-        CNTR_CODE = c("LI", "ES"),
-        GISCO_ID = c("LI_0101", "ES_12016")
-      )
+      data.frame(CNTR_CODE = c("LI", "ES"), GISCO_ID = c("LI_0101", "ES_12016"))
     }
   )
 
@@ -132,7 +122,7 @@ test_that("LAU combines country and GISCO ID filters", {
   )
 })
 
-test_that("Deprecations", {
+test_that("LAU reports deprecated cache usage", {
   local_mocked_bindings(
     resolve_gisco_file = function(...) {
       list(
@@ -152,7 +142,7 @@ test_that("Deprecations", {
   expect_equal(s$GISCO_ID, "ES_12016")
 })
 
-test_that("Extensions", {
+test_that("LAU rejects unsupported extensions and reads GeoJSON", {
   skip_on_cran()
   skip_if_gisco_offline()
 

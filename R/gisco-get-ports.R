@@ -61,10 +61,7 @@ gisco_get_ports <- function(
   year <- as.character(year)
   valid_years <- as.character(c(2013, 2009))
   year <- match_arg_pretty(year, valid_years)
-  files <- c(
-    "2009" = "PORT_2009_SH.zip",
-    "2013" = "PORT_2013_SH.zip"
-  )
+  files <- c("2009" = "PORT_2009_SH.zip", "2013" = "PORT_2013_SH.zip")
   url <- eurostat_gisco_geodata_url(files[[year]])
   data_sf <- read_gisco_dataset(
     url,

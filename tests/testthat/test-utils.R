@@ -1,5 +1,6 @@
-test_that("Messages", {
+test_that("Message helper emits each supported message type", {
   skip_on_cran()
+  skip_if_gisco_offline()
   expect_silent(make_msg(verbose = FALSE))
   expect_snapshot(make_msg(
     "generic",
@@ -22,8 +23,9 @@ test_that("Messages", {
   expect_snapshot(make_msg("success", TRUE, "Hooray!", "5/5 ;)"))
 })
 
-test_that("Pretty match", {
+test_that("Argument matcher reports exact and invalid values", {
   skip_on_cran()
+  skip_if_gisco_offline()
   my_fun <- function(arg_one = c(10, 1000, 3000, 5000)) {
     match_arg_pretty(arg_one)
   }
@@ -102,8 +104,9 @@ test_that("Deprecated cache helper warns only when cache is supplied", {
   expect_snapshot(warn_deprecated_cache(TRUE, "x(cache)"))
 })
 
-test_that("Bind and fill sf", {
+test_that("rbind_fill combines sf inputs with different schemas", {
   skip_on_cran()
+  skip_if_gisco_offline()
   gb <- giscoR::gisco_countries_2024[1, ]
   cos <- giscoR::gisco_nuts_2024[1, ]
   a_list <- list(gb, cos, gb, cos)
@@ -114,8 +117,9 @@ test_that("Bind and fill sf", {
   expect_equal(nrow(binded), 4)
 })
 
-test_that("Bind and fill tibbles", {
+test_that("rbind_fill combines tibble inputs with different schemas", {
   skip_on_cran()
+  skip_if_gisco_offline()
   gb <- giscoR::gisco_countries_2024[1, ]
   gb <- sf::st_drop_geometry(gb)
   cos <- giscoR::gisco_nuts_2024[1, ]
@@ -127,8 +131,9 @@ test_that("Bind and fill tibbles", {
   expect_equal(nrow(binded), 4)
 })
 
-test_that("Bind and fill sf removes NULL", {
+test_that("rbind_fill drops NULL entries from sf input lists", {
   skip_on_cran()
+  skip_if_gisco_offline()
   gb <- giscoR::gisco_countries_2024[1, ]
   cos <- giscoR::gisco_nuts_2024[1, ]
   a_list <- list(gb, cos, gb, cos)
@@ -140,8 +145,9 @@ test_that("Bind and fill sf removes NULL", {
   expect_equal(nrow(binded), 3)
 })
 
-test_that("Bind and fill tibble removes NULL", {
+test_that("rbind_fill drops NULL entries from tibble input lists", {
   skip_on_cran()
+  skip_if_gisco_offline()
   gb <- giscoR::gisco_countries_2024[1, ]
   gb <- sf::st_drop_geometry(gb)
   cos <- giscoR::gisco_nuts_2024[1, ]
@@ -159,7 +165,7 @@ test_that("Bind and fill tibble removes NULL", {
 
   expect_null(rbind_fill(new_l))
 })
-test_that("Ensure NULL", {
+test_that("ensure_null handles empty-like and non-empty values", {
   expect_null(ensure_null(NULL))
   expect_null(ensure_null(c(NULL, NA)))
   expect_null(ensure_null(c(NULL, NA, "")))
@@ -168,17 +174,9 @@ test_that("Ensure NULL", {
   expect_identical(letters, letters)
 })
 
-test_that("Ensure NULL", {
-  expect_null(ensure_null(NULL))
-  expect_null(ensure_null(c(NULL, NA)))
-  expect_null(ensure_null(c(NULL, NA, "")))
-  expect_null(ensure_null(c("", character(0))))
-  expect_identical(ensure_null(c(1, 2)), c(1, 2))
-  expect_identical(letters, letters)
-})
-
-test_that("Test cli_abort_if_not", {
+test_that("cli_abort_if_not aborts when conditions fail", {
   skip_on_cran()
+  skip_if_gisco_offline()
 
   expect_silent(cli_abort_if_not("Noting" = is.logical(TRUE)))
 

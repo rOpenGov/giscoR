@@ -192,12 +192,7 @@ build_sf_filter_query <- function(file_local, filters, operator = "AND") {
   layer <- get_sf_layer_name(file_local)
   where <- Map(
     function(column, values) {
-      paste0(
-        column,
-        " IN (",
-        paste0("'", values, "'", collapse = ", "),
-        ")"
-      )
+      paste0(column, " IN (", paste0("'", values, "'", collapse = ", "), ")")
     },
     names(filters),
     filters

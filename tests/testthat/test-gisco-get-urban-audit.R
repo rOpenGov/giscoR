@@ -1,15 +1,18 @@
-test_that("Urban Audit offline", {
+test_that("Urban audit validates inputs before remote access", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(gisco_get_urban_audit(year = "1999"))
-  expect_error(gisco_get_urban_audit(epsg = "9999"))
-  expect_error(gisco_get_urban_audit(level = "9999"))
-  expect_error(gisco_get_urban_audit(spatialtype = "BN"))
-  expect_error(gisco_get_urban_audit(year = 2001))
+  expect_error(gisco_get_urban_audit(year = "1999"), "Years available")
+  expect_error(gisco_get_urban_audit(epsg = "9999"), "No results")
+  expect_error(gisco_get_urban_audit(level = "9999"), "`level` must be")
+  expect_error(
+    gisco_get_urban_audit(spatialtype = "BN"),
+    "`spatialtype` must be"
+  )
+  expect_error(gisco_get_urban_audit(year = 2001), "No results")
 })
 
-test_that("Mock offline", {
+test_that("Urban audit returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -18,9 +21,6 @@ test_that("Mock offline", {
   })
   expect_message(n <- gisco_get_urban_audit(update_cache = TRUE), "Error")
   expect_null(n)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("Urban Audit uses resolved GISCO files", {
@@ -66,7 +66,7 @@ test_that("Urban Audit uses resolved GISCO files", {
   expect_identical(urban$CNTR_CODE, "LU")
 })
 
-test_that("Urban Audit online", {
+test_that("Urban audit downloads and filters online data", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -145,7 +145,7 @@ test_that("Urban Audit online", {
   expect_length(setdiff(unique(check$CNTR_CODE), c("IT", "PL")), 0)
 })
 
-test_that("Test inputs", {
+test_that("Urban audit validates extensions and level inputs", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -158,14 +158,11 @@ test_that("Test inputs", {
   expect_identical(db_null, db_all)
 })
 
-test_that("Cache vs non-cached", {
+test_that("Urban audit returns matching data with and without cache", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testurbanaudit")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testurbanaudit-")
 
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   expect_message(
@@ -210,18 +207,12 @@ test_that("Cache vs non-cached", {
     cache = FALSE
   )
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 1)
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })
-test_that("Extensions", {
+test_that("Urban audit supports GeoJSON and zipped shapefile downloads", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "testurbanaudit")
-  if (dir.exists(cdir)) {
-    unlink(cdir, recursive = TRUE, force = TRUE)
-  }
+  cdir <- local_test_cache_dir("testurbanaudit-")
 
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
@@ -246,7 +237,4 @@ test_that("Extensions", {
   expect_s3_class(db_zip, "tbl_df")
 
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp.zip"), 1)
-
-  # Cleanup
-  unlink(cdir, recursive = TRUE, force = TRUE)
 })

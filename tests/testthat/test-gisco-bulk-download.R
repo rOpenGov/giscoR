@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("Bulk download returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -7,13 +7,9 @@ test_that("Test offline", {
   })
   expect_message(n <- gisco_bulk_download(update_cache = TRUE), "No internet")
   expect_null(n)
-
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
 })
 
-test_that("Test 404", {
+test_that("Bulk download returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -22,19 +18,12 @@ test_that("Test 404", {
   })
   expect_message(n <- gisco_bulk_download(update_cache = TRUE), "Error")
   expect_null(n)
-
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
-test_that("Deprecations", {
+test_that("Bulk download reports deprecated arguments", {
   skip_on_cran()
   skip_if_gisco_offline()
-  cdir <- file.path(tempdir(), "testthat", "bulk")
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  cdir <- local_test_cache_dir("bulk-")
 
   expect_snapshot(
     s <- gisco_bulk_download(
@@ -60,9 +49,6 @@ test_that("Deprecations", {
     recursive = TRUE,
     cache_dir = cdir
   ))
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
 })
 
 test_that("Bulk download helpers build names and routes", {
@@ -96,8 +82,7 @@ test_that("Bulk download helpers build names and routes", {
 })
 
 test_that("Bulk download orchestrates download and extraction", {
-  cdir <- file.path(tempdir(), "testthat", "bulk-mock")
-  unlink(cdir, force = TRUE, recursive = TRUE)
+  cdir <- local_test_cache_dir("bulk-mock-")
 
   local_mocked_bindings(
     get_url_db = function(...) {
@@ -122,10 +107,7 @@ test_that("Bulk download orchestrates download and extraction", {
     },
     list_bulk_zip_files = function(zipfile) {
       expect_match(zipfile, "ref-countries-2024-60m.geojson.zip$")
-      data.frame(
-        Name = c("country.geojson", "country.txt"),
-        Length = c(1, 1)
-      )
+      data.frame(Name = c("country.geojson", "country.txt"), Length = c(1, 1))
     },
     extract_bulk_zip_files = function(zipfile, files, exdir) {
       expect_identical(files, "country.geojson")
@@ -145,32 +127,27 @@ test_that("Bulk download orchestrates download and extraction", {
   expect_true(file.exists(out))
 })
 
-test_that("Errors", {
+test_that("Bulk download validates user inputs", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(gisco_bulk_download(year = "2000"))
-  expect_error(gisco_bulk_download(resolution = "35"))
+  expect_error(gisco_bulk_download(year = "2000"), "Years available")
+  expect_error(gisco_bulk_download(resolution = "35"), "No results")
   expect_snapshot(gisco_bulk_download(id_giscoR = "nutes"), error = TRUE)
-  expect_error(gisco_bulk_download(ext = "aa"))
+  expect_error(gisco_bulk_download(ext = "aa"), "`ext` must be")
 })
 
-test_that("Online mocked", {
+test_that("Bulk download builds recursive downloads from mocked metadata", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  local_mocked_bindings(
-    download_url = function(url = url, ...) {
-      url <- basename(url)
-      cli::cli_alert_info("Mocked {.str {url}}.")
-      NULL
-    }
-  )
+  local_mocked_bindings(download_url = function(url = url, ...) {
+    url <- basename(url)
+    cli::cli_alert_info("Mocked {.str {url}}.")
+    NULL
+  })
 
-  cdir <- file.path(tempdir(), "testthat", "bulk")
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  cdir <- local_test_cache_dir("bulk-")
 
   id <- c(
     "countries",
@@ -203,12 +180,7 @@ test_that("Online mocked", {
 
   # Additional and extensions
   expect_message(
-    gisco_bulk_download(
-      "communes",
-      year = 2004,
-      ext = "svg",
-      cache_dir = cdir
-    ),
+    gisco_bulk_download("communes", year = 2004, ext = "svg", cache_dir = cdir),
     "svg.zip"
   )
 

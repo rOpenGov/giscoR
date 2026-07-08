@@ -1,4 +1,4 @@
-test_that("Access", {
+test_that("Access checks report GISCO availability", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -11,17 +11,17 @@ test_that("Access", {
   expect_false(gisco_check_access())
 })
 
-test_that("On CRAN", {
+test_that("CRAN environment is detected from NOT_CRAN", {
   skip_on_cran()
   skip_if_gisco_offline()
 
   # Automatically restored when the test exits
-  withr::local_envvar(c(NOT_CRAN = "false"))
+  withr::local_envvar(NOT_CRAN = "false")
 
   expect_true(on_cran())
   expect_false(gisco_check_access())
 
-  withr::local_envvar(c(NOT_CRAN = ""))
+  withr::local_envvar(NOT_CRAN = "")
 
   expect_identical(!interactive(), on_cran())
 })

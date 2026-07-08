@@ -1,11 +1,11 @@
-test_that("Error on postal codes", {
+test_that("Postal codes validate available years", {
   skip_on_cran()
   skip_if_gisco_offline()
 
   expect_error(gisco_get_postal_codes("1991", "Years available for"))
 })
 
-test_that("Offline", {
+test_that("Postal codes return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -21,9 +21,6 @@ test_that("Offline", {
     "Error"
   )
   expect_null(n)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
 test_that("Postal codes use resolved GISCO files", {
@@ -83,13 +80,11 @@ test_that("Postal codes use resolved GISCO files", {
   expect_identical(postal_codes$CNTR_ID, c("MT", "LU"))
   expect_identical(
     filter_calls,
-    list(
-      list(
-        file_local = "postal_codes.gpkg",
-        values = c("MT", "LU"),
-        candidates = c("CNTR_ID", "CNTR_CODE")
-      )
-    )
+    list(list(
+      file_local = "postal_codes.gpkg",
+      values = c("MT", "LU"),
+      candidates = c("CNTR_ID", "CNTR_CODE")
+    ))
   )
 })
 
@@ -115,7 +110,7 @@ test_that("Postal codes select the requested EPSG", {
   expect_identical(postal_codes$CNTR_ID, "LU")
 })
 
-test_that("Extensions", {
+test_that("Postal codes reject unsupported extensions and read shapefiles", {
   skip_on_cran()
   skip_if_gisco_offline()
 

@@ -41,11 +41,7 @@ db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
 #' A character string with the available years for the specified endpoint.
 #' @noRd
 docs_id_years <- function(endpoint) {
-  apiurl <- paste0(
-    gisco_id_url(),
-    endpoint,
-    "?year=9999"
-  )
+  apiurl <- paste0(gisco_id_url(), endpoint, "?year=9999")
 
   req <- gisco_request(apiurl, cache = FALSE, retry = FALSE)
   resp <- gisco_perform_request(
@@ -57,7 +53,7 @@ docs_id_years <- function(endpoint) {
   if (is.null(resp)) {
     return("are unavailable")
   }
-  get_years <- httr2::resp_body_json(resp, simplifyVector = TRUE)
+  get_years <- gisco_resp_body_json(resp, simplifyVector = TRUE)
   get_years <- get_years$details
   available_years <- gsub("[^0-9]", " ", get_years)
   available_years <- unique(unlist(strsplit(available_years, " ")))

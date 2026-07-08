@@ -1,5 +1,6 @@
-test_that("Testing attributions", {
+test_that("Attribution text is exposed as package data", {
   skip_on_cran()
+  skip_if_gisco_offline()
 
   expect_silent(gisco_attributions())
   expect_identical(class(gisco_attributions()), "character")

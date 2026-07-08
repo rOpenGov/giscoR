@@ -1,4 +1,4 @@
-test_that("Test offline", {
+test_that("NUTS unit returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -10,12 +10,9 @@ test_that("Test offline", {
     "No internet"
   )
   expect_null(n)
-  local_mocked_bindings(is_online_fun = function(...) {
-    httr2::is_online()
-  })
 })
 
-test_that("Test 404", {
+test_that("NUTS unit returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
 
@@ -27,19 +24,13 @@ test_that("Test 404", {
     "Error"
   )
   expect_null(n)
-  local_mocked_bindings(is_404 = function(...) {
-    FALSE
-  })
 })
 
-test_that("unit_nuts: ES416", {
+test_that("NUTS unit reads ES416 for several spatial types", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_nuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  cdir <- local_test_cache_dir("test-unit-nuts-")
   years <- db_values("nuts", "year", formatted = FALSE)
 
   for (y in years) {
@@ -55,18 +46,13 @@ test_that("unit_nuts: ES416", {
     expect_s3_class(gr, "sf")
     expect_s3_class(gr, "tbl_df")
   }
-
-  if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("unit_nuts: Caching", {
+test_that("NUTS unit returns matching data with and without cache", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_nuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  cdir <- local_test_cache_dir("test-unit-nuts-")
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
 
   # Not caching
@@ -112,18 +98,13 @@ test_that("unit_nuts: Caching", {
     "File already cached"
   )
   expect_identical(rev(names(g))[1:2], c("geometry", "geo"))
-
-  if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("unit_nuts: Multi calls", {
+test_that("NUTS unit supports multiple calls and units", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  cdir <- file.path(tempdir(), "test_unit_nuts")
-  if (dir.exists(cdir)) {
-    unlink(cdir, force = TRUE, recursive = TRUE)
-  }
+  cdir <- local_test_cache_dir("test-unit-nuts-")
 
   # Message even when verbose FALSE
   expect_message(
@@ -166,11 +147,9 @@ test_that("unit_nuts: Multi calls", {
   )
   expect_equal(nrow(pol), 3)
   expect_true(all(sf::st_geometry_type(pol) == "POLYGON"))
-
-  if (dir.exists(cdir)) unlink(cdir, force = TRUE, recursive = TRUE)
 })
 
-test_that("unit_nuts: Validate inputs", {
+test_that("NUTS unit validates year, EPSG, resolution and spatial type", {
   skip_on_cran()
   skip_if_gisco_offline()
   expect_snapshot(gisco_get_unit_nuts(year = -1989), error = TRUE)

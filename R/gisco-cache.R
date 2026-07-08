@@ -122,10 +122,8 @@ gisco_set_cache_dir <- function(
   make_msg("info", verbose, msg)
 
   # Install the cache path in the environment variable.
-  # nocov start
-
   if (install) {
-    config_dir <- tools::R_user_dir("giscoR", "config")
+    config_dir <- gisco_user_dir("config")
     # Create cache directory if not present.
 
     if (!dir.exists(config_dir)) {
@@ -143,7 +141,6 @@ gisco_set_cache_dir <- function(
         "You can overwrite it with {.arg overwrite} = {.val {TRUE}}."
       ))
     }
-    # nocov end
   } else {
     make_msg(
       "info",
@@ -224,10 +221,9 @@ gisco_clear_cache <- function(
 ) {
   migrate_cache()
 
-  config_dir <- tools::R_user_dir("giscoR", "config")
+  config_dir <- gisco_user_dir("config")
   data_dir <- detect_cache_dir_muted()
 
-  # nocov start
   if (config && dir.exists(config_dir)) {
     unlink(config_dir, recursive = TRUE, force = TRUE)
 
@@ -235,7 +231,6 @@ gisco_clear_cache <- function(
       cli::cli_alert_warning("Deleted {.pkg giscoR} cache configuration.")
     }
   }
-  # nocov end
   if (cached_data && dir.exists(data_dir)) {
     siz <- file.size(list.files(data_dir, recursive = TRUE, full.names = TRUE))
     siz <- sum(siz, na.rm = TRUE)
@@ -271,12 +266,8 @@ detect_cache_dir_muted <- function() {
 
   if (is.null(getvar) || is.na(getvar) || !nzchar(getvar)) {
     # If unset, try to retrieve the value from the cache config.
-    cache_config <- file.path(
-      tools::R_user_dir("giscoR", "config"),
-      "gisco_cache_dir"
-    )
+    cache_config <- file.path(gisco_user_dir("config"), "gisco_cache_dir")
 
-    # nocov start
     if (file.exists(cache_config)) {
       cached_path <- readLines(cache_config)
 
@@ -289,7 +280,6 @@ detect_cache_dir_muted <- function() {
       # Return the cached path.
       Sys.setenv(GISCO_CACHE_DIR = cached_path)
       cached_path
-      # nocov end
     } else {
       # Use the default cache location.
 
@@ -331,7 +321,7 @@ create_cache_dir <- function(cache_dir = NULL) {
 #' @noRd
 migrate_cache <- function(
   old = rappdirs::user_config_dir("giscoR", "R"),
-  new = tools::R_user_dir("giscoR", "config")
+  new = gisco_user_dir("config")
 ) {
   fname <- "gisco_cache_dir"
 
@@ -357,4 +347,14 @@ migrate_cache <- function(
   unlink(old, force = TRUE, recursive = TRUE)
 
   invisible()
+}
+
+#' Return a user directory for giscoR
+#'
+#' @param which Directory type passed to [tools::R_user_dir()].
+#' @return Path to the requested user directory.
+#'
+#' @noRd
+gisco_user_dir <- function(which = "config") {
+  tools::R_user_dir("giscoR", which)
 }
