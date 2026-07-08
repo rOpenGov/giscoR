@@ -59,3 +59,4 @@ Included datasets:
 \code{\link{gisco_nuts_2024}}
 }
 \concept{datasets}
+\keyword{datasets}

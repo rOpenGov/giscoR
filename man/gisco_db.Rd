@@ -30,6 +30,8 @@ gisco_db |>
   dplyr::glimpse()
 }
 \seealso{
+\code{\link[=gisco_get_metadata]{gisco_get_metadata()}} and \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}}.
+
 Included datasets:
 \code{\link{gisco_coastal_lines}},
 \code{\link{gisco_countries_2024}},
@@ -42,3 +44,4 @@ GISCO database and metadata:
 }
 \concept{database}
 \concept{datasets}
+\keyword{datasets}

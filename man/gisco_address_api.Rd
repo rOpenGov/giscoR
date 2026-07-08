@@ -173,6 +173,8 @@ reverse
 \dontshow{\}) # examplesIf}
 }
 \seealso{
+\link{gisco_id_api} for GISCO ID service API lookups.
+
 See the GISCO Address API documentation at
 \url{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}.
 

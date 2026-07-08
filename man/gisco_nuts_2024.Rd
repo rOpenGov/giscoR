@@ -4,7 +4,7 @@
 \encoding{UTF-8}
 \name{gisco_nuts_2024}
 \alias{gisco_nuts_2024}
-\title{NUTS 2024 \code{\link[sf:st_sf]{sf}} object}
+\title{NUTS 2024 \CRANpkg{sf} object}
 \format{
 A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. It has
@@ -85,3 +85,4 @@ Included datasets:
 \code{\link{gisco_db}}
 }
 \concept{datasets}
+\keyword{datasets}

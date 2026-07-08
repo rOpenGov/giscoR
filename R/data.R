@@ -7,8 +7,7 @@
 #' @docType data
 #' @family datasets
 #' @family database
-#' @encoding UTF-8
-#'
+#' @keywords datasets
 #' @format
 #' A [tibble][tibble::tbl_df] with
 #' `r prettyNum(nrow(giscoR::gisco_db), big.mark = ",")` rows.
@@ -22,13 +21,17 @@
 #' corresponding API endpoints.
 #'
 #' @source GISCO geodata distribution `datasets.json`.
+#'
+#' @seealso [gisco_get_metadata()] and [gisco_get_cached_db()].
+#' @encoding UTF-8
+#'
 #' @examples
 #' data("gisco_db")
 #' gisco_db |>
 #'   dplyr::glimpse()
 NULL
 
-#' Countries 2024 [`sf`][sf::st_sf] object
+#' Countries 2024 \CRANpkg{sf} object
 #'
 #' @description
 #' This object contains world administrative boundaries at the country level.
@@ -36,8 +39,7 @@ NULL
 #' @name gisco_countries_2024
 #' @docType data
 #' @family datasets
-#' @encoding UTF-8
-#'
+#' @keywords datasets
 #' @format
 #' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
@@ -71,6 +73,8 @@ NULL
 #' ```
 #' @seealso [gisco_get_countries()]
 #'
+#' @encoding UTF-8
+#'
 #' @examples
 #'
 #' data("gisco_countries_2024")
@@ -90,8 +94,7 @@ NULL
 #' @name gisco_countrycode
 #' @docType data
 #' @family datasets
-#' @encoding UTF-8
-#'
+#' @keywords datasets
 #' @format
 #' A data frame with
 #' `r prettyNum(nrow(giscoR::gisco_countrycode), big.mark = ",")` rows and 13
@@ -129,12 +132,14 @@ NULL
 #'
 #' ```
 #'
+#' @encoding UTF-8
+#'
 #' @examples
 #' data("gisco_countrycode")
 #' dplyr::glimpse(gisco_countrycode)
 NULL
 
-#' Coastal lines 2016 [`sf`][sf::st_sf] object
+#' Coastal lines 2016 \CRANpkg{sf} object
 #'
 #' @description
 #' This object contains the coastal lines of the world.
@@ -142,8 +147,7 @@ NULL
 #' @name gisco_coastal_lines
 #' @docType data
 #' @family datasets
-#' @encoding UTF-8
-#'
+#' @keywords datasets
 #' @format
 #' A [`sf`][sf::st_sf] object with `POLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326).
@@ -162,6 +166,8 @@ NULL
 #'
 #' @seealso [gisco_get_coastal_lines()]
 #'
+#' @encoding UTF-8
+#'
 #' @examples
 #' library(sf)
 #' data("gisco_coastal_lines")
@@ -169,7 +175,7 @@ NULL
 #'
 NULL
 
-#' NUTS 2024 [`sf`][sf::st_sf] object
+#' NUTS 2024 \CRANpkg{sf} object
 #'
 #' @description
 #' This dataset represents the regions for levels 0, 1, 2 and 3 of the
@@ -178,8 +184,7 @@ NULL
 #' @name gisco_nuts_2024
 #' @docType data
 #' @family datasets
-#' @encoding UTF-8
-#'
+#' @keywords datasets
 #' @format
 #' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
@@ -237,6 +242,8 @@ NULL
 #' ```
 #'
 #' @seealso [gisco_get_nuts()]
+#'
+#' @encoding UTF-8
 #'
 #' @examples
 #' data("gisco_nuts_2024")

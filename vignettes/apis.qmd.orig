@@ -93,25 +93,23 @@ mapping.
 #| label: fig-api-id
 #| fig-cap: NUTS 3 and LAU geometries returned by the GISCO ID service API
 
-if (!is.null(nuts3) && !is.null(lau)) {
-  ggplot(nuts3) +
-    geom_sf(fill = "#cfe8f3", color = "#2a6f97", linewidth = 0.4) +
-    geom_sf(data = lau, fill = "#f4a261", color = "#9c4221", linewidth = 0.3) +
-    geom_sf(data = place, color = "#b00020", size = 2.5) +
-    coord_sf() +
-    theme_minimal() +
-    theme(
-      panel.background = element_rect(fill = "grey95", color = NA),
-      axis.line = element_blank(),
-      axis.text = element_blank(),
-      panel.grid = element_blank()
-    ) +
-    labs(
-      title = "GISCO ID service API lookup",
-      subtitle = "NUTS 3 region and LAU containing the input coordinate",
-      caption = gisco_attributions()
-    )
-}
+ggplot(nuts3) +
+  geom_sf(fill = "#cfe8f3", color = "#2a6f97", linewidth = 0.4) +
+  geom_sf(data = lau, fill = "#f4a261", color = "#9c4221", linewidth = 0.3) +
+  geom_sf(data = place, color = "#b00020", size = 2.5) +
+  coord_sf() +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "grey95", color = NA),
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank()
+  ) +
+  labs(
+    title = "GISCO ID service API lookup",
+    subtitle = "NUTS 3 region and LAU containing the input coordinate",
+    caption = gisco_attributions()
+  )
 ```
 
 You can also query NUTS regions by ID:
@@ -132,7 +130,7 @@ Use the lookup helpers to inspect available address components:
 gisco_address_api_countries()
 gisco_address_api_provinces(country = "LU")
 gisco_address_api_cities(country = "LU")
-gisco_address_api_roads(country = "LU", city = "Luxembourg")
+gisco_address_api_roads(country = "LU", province = "Capellen", city = "Dippach")
 ```
 
 Use `gisco_address_api_search()` for structured geocoding. Search endpoints
@@ -156,13 +154,11 @@ Search, reverse and bounding-box calls return `sf` objects. If a search result
 contains coordinates, they can be passed to the reverse endpoint:
 
 ```{r}
-if (!is.null(address) && nrow(address) > 0) {
-  gisco_address_api_reverse(
-    x = address$X[1],
-    y = address$Y[1],
-    country = "LU"
-  )
-}
+gisco_address_api_reverse(
+  x = address$X[1],
+  y = address$Y[1],
+  country = "LU"
+)
 ```
 
 Use the returned geometries directly with **ggplot2**:
@@ -171,24 +167,22 @@ Use the returned geometries directly with **ggplot2**:
 #| label: fig-address-api
 #| fig-cap: Structured address search result and city bounding box
 
-if (!is.null(address) && !is.null(bbox)) {
-  ggplot(bbox) +
-    geom_sf(fill = "#f1faee", color = "#457b9d", linewidth = 0.5) +
-    geom_sf(data = address, color = "#d00000", size = 2) +
-    coord_sf() +
-    theme_minimal() +
-    theme(
-      panel.background = element_rect(fill = "grey95", color = NA),
-      axis.line = element_blank(),
-      axis.text = element_blank(),
-      panel.grid = element_blank()
-    ) +
-    labs(
-      title = "GISCO Address API lookup",
-      subtitle = "Address search results inside the Luxembourg city bbox",
-      caption = gisco_attributions()
-    )
-}
+ggplot(bbox) +
+  geom_sf(fill = "#f1faee", color = "#457b9d", linewidth = 0.5) +
+  geom_sf(data = address, color = "#d00000", size = 2) +
+  coord_sf() +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "grey95", color = NA),
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank()
+  ) +
+  labs(
+    title = "GISCO Address API lookup",
+    subtitle = "Address search results inside the Luxembourg city bbox",
+    caption = gisco_attributions()
+  )
 ```
 
 # Choosing between APIs and downloads

@@ -38,9 +38,17 @@ home:
 
 articles:
 - title: Get started
+  desc: >
+    Learn the main **giscoR** workflow for downloading GISCO geospatial data,
+    caching files and creating maps with `sf` objects.
+  navbar: ~
   contents:
   - giscoR
 - title: Guides
+  desc: >
+    Use focused guides for GISCO services that complement the main download
+    functions.
+  navbar: Guides
   contents:
   - apis
 
@@ -109,7 +117,9 @@ reference:
   desc: >
     Use lightweight datasets included with **giscoR** without additional
     downloads.
-- contents: has_concept("datasets")
+- contents:
+  - has_keyword("datasets")
+  - -has_concept("database")
 - title: About the package
   desc: Package overview and metadata.
 - contents:

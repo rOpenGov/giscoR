@@ -82,25 +82,23 @@ mapping.
 
 
 ``` r
-if (!is.null(nuts3) && !is.null(lau)) {
-  ggplot(nuts3) +
-    geom_sf(fill = "#cfe8f3", color = "#2a6f97", linewidth = 0.4) +
-    geom_sf(data = lau, fill = "#f4a261", color = "#9c4221", linewidth = 0.3) +
-    geom_sf(data = place, color = "#b00020", size = 2.5) +
-    coord_sf() +
-    theme_minimal() +
-    theme(
-      panel.background = element_rect(fill = "grey95", color = NA),
-      axis.line = element_blank(),
-      axis.text = element_blank(),
-      panel.grid = element_blank()
-    ) +
-    labs(
-      title = "GISCO ID service API lookup",
-      subtitle = "NUTS 3 region and LAU containing the input coordinate",
-      caption = gisco_attributions()
-    )
-}
+ggplot(nuts3) +
+  geom_sf(fill = "#cfe8f3", color = "#2a6f97", linewidth = 0.4) +
+  geom_sf(data = lau, fill = "#f4a261", color = "#9c4221", linewidth = 0.3) +
+  geom_sf(data = place, color = "#b00020", size = 2.5) +
+  coord_sf() +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "grey95", color = NA),
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank()
+  ) +
+  labs(
+    title = "GISCO ID service API lookup",
+    subtitle = "NUTS 3 region and LAU containing the input coordinate",
+    caption = gisco_attributions()
+  )
 ```
 
 <div class="figure">
@@ -180,8 +178,26 @@ gisco_address_api_cities(country = "LU")
 #>  9 ANGELSBERG
 #> 10 ANSEMBOURG
 #> # ℹ 532 more rows
-gisco_address_api_roads(country = "LU", city = "Luxembourg")
-#> NULL
+gisco_address_api_roads(country = "LU", province = "Capellen", city = "Dippach")
+#> # A tibble: 16 × 2
+#>    TF                      PC   
+#>    <chr>                   <chr>
+#>  1 BEIM WAASSERTUERM       4972 
+#>  2 ECKERBIERG              4974 
+#>  3 IM INBERG               4974 
+#>  4 OP WAISSE MUOR          4974 
+#>  5 ROUTE DE LUXEMBOURG     4972 
+#>  6 ROUTE DE LUXEMBOURG     4973 
+#>  7 ROUTE DES TROIS CANTONS 4972 
+#>  8 RUE BELLE-VUE           4974 
+#>  9 RUE CENTRALE            4974 
+#> 10 RUE DE BETTANGE         4974 
+#> 11 RUE DE HOLZEM           4974 
+#> 12 RUE DE LA FONTAINE      4974 
+#> 13 RUE DES ROMAINS         4974 
+#> 14 RUE DU CIMETIÈRE        4974 
+#> 15 RUE JEAN-PIERRE KIRSCH  4974 
+#> 16 SAUER AARBECHT          4974
 ```
 
 Use `gisco_address_api_search()` for structured geocoding. Search endpoints
@@ -207,13 +223,11 @@ contains coordinates, they can be passed to the reverse endpoint:
 
 
 ``` r
-if (!is.null(address) && nrow(address) > 0) {
-  gisco_address_api_reverse(
-    x = address$X[1],
-    y = address$Y[1],
-    country = "LU"
-  )
-}
+gisco_address_api_reverse(
+  x = address$X[1],
+  y = address$Y[1],
+  country = "LU"
+)
 #> Simple feature collection with 5 features and 14 fields
 #> Geometry type: POINT
 #> Dimension:     XY
@@ -234,24 +248,22 @@ Use the returned geometries directly with **ggplot2**:
 
 
 ``` r
-if (!is.null(address) && !is.null(bbox)) {
-  ggplot(bbox) +
-    geom_sf(fill = "#f1faee", color = "#457b9d", linewidth = 0.5) +
-    geom_sf(data = address, color = "#d00000", size = 2) +
-    coord_sf() +
-    theme_minimal() +
-    theme(
-      panel.background = element_rect(fill = "grey95", color = NA),
-      axis.line = element_blank(),
-      axis.text = element_blank(),
-      panel.grid = element_blank()
-    ) +
-    labs(
-      title = "GISCO Address API lookup",
-      subtitle = "Address search results inside the Luxembourg city bbox",
-      caption = gisco_attributions()
-    )
-}
+ggplot(bbox) +
+  geom_sf(fill = "#f1faee", color = "#457b9d", linewidth = 0.5) +
+  geom_sf(data = address, color = "#d00000", size = 2) +
+  coord_sf() +
+  theme_minimal() +
+  theme(
+    panel.background = element_rect(fill = "grey95", color = NA),
+    axis.line = element_blank(),
+    axis.text = element_blank(),
+    panel.grid = element_blank()
+  ) +
+  labs(
+    title = "GISCO Address API lookup",
+    subtitle = "Address search results inside the Luxembourg city bbox",
+    caption = gisco_attributions()
+  )
 ```
 
 <div class="figure">

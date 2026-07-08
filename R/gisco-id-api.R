@@ -67,7 +67,7 @@
 #'
 #' @seealso
 #' [gisco_get_nuts()], [gisco_get_lau()], [gisco_get_countries()],
-#' [gisco_get_census()].
+#' [gisco_get_census()] and [gisco_address_api].
 #'
 #' @encoding UTF-8
 #' @export

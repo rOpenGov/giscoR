@@ -44,6 +44,8 @@
 #' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 #'
 #' @seealso
+#' [gisco_id_api] for GISCO ID service API lookups.
+#'
 #' See the GISCO Address API documentation at
 #' <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 #'
