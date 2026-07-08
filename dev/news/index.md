@@ -8,6 +8,8 @@
   [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
 - [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
   now defaults to the 2025 release and adds an `epsg` argument.
+- Refactor tests to isolate cache state, use temporary cache directories
+  and improve mocked coverage of cache and request helpers.
 
 ## giscoR 1.1.1
 
