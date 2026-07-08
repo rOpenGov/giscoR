@@ -28,7 +28,7 @@ downloads polygon or cell-centre point GeoPackages in **EPSG:3035** at
 resolutions from 1 km to 100 km. Population columns use names such as
 `TOT_P_2021`. Divide these values by `resolution^2`, not by
 `resolution`, to calculate people per square kilometre. Population
-variables have year- and country-specific licensing conditions; consult
+variables have year- and country-specific licensing conditions, consult
 the official [grid
 documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
 before publication or redistribution.
@@ -462,26 +462,20 @@ downloads.
 - [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md)
   :
 
-  Coastal lines 2016
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+  Coastal lines 2016 [sf](https://CRAN.R-project.org/package=sf) object
 
 - [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md)
   :
 
-  Countries 2024
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+  Countries 2024 [sf](https://CRAN.R-project.org/package=sf) object
 
 - [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md)
   : Database with different country code schemes and world regions
 
-- [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
-  : Cached GISCO database
-
 - [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
   :
 
-  NUTS 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-  object
+  NUTS 2024 [sf](https://CRAN.R-project.org/package=sf) object
 
 ## About the package
 
@@ -495,12 +489,18 @@ Package overview and metadata.
 
 ### Get started
 
+Learn the main **giscoR** workflow for downloading GISCO geospatial
+data, caching files and creating maps with `sf` objects.
+
 - [Get started with
   giscoR](https://ropengov.github.io/giscoR/dev/articles/giscoR.md):
 
   A brief introduction to giscoR
 
 ### Guides
+
+Use focused guides for GISCO services that complement the main download
+functions.
 
 - [GISCO APIs with
   giscoR](https://ropengov.github.io/giscoR/dev/articles/apis.md):

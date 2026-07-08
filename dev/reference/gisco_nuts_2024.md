@@ -1,4 +1,4 @@
-# NUTS 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+# NUTS 2024 [sf](https://CRAN.R-project.org/package=sf) object
 
 This dataset represents the regions for levels 0, 1, 2 and 3 of the
 Nomenclature of Territorial Units for Statistics (NUTS) for 2024.

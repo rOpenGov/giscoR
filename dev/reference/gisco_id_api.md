@@ -172,7 +172,9 @@ The available endpoints are:
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md),
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_countries.md),
-[`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md).
+[`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md)
+and
+[gisco_address_api](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md).
 
 GISCO API tools:
 [`gisco_address_api`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)

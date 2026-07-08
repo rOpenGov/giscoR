@@ -155,26 +155,20 @@ downloads.
 - [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md)
   :
 
-  Coastal lines 2016
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+  Coastal lines 2016 [sf](https://CRAN.R-project.org/package=sf) object
 
 - [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md)
   :
 
-  Countries 2024
-  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+  Countries 2024 [sf](https://CRAN.R-project.org/package=sf) object
 
 - [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md)
   : Database with different country code schemes and world regions
 
-- [`gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
-  : Cached GISCO database
-
 - [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
   :
 
-  NUTS 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
-  object
+  NUTS 2024 [sf](https://CRAN.R-project.org/package=sf) object
 
 ## About the package
 

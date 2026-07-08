@@ -158,6 +158,9 @@ The resulting object may include these variables:
 
 ## See also
 
+[gisco_id_api](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+for GISCO ID service API lookups.
+
 See the GISCO Address API documentation at
 <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 

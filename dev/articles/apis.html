@@ -52,7 +52,14 @@
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="../articles/giscoR.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="active nav-item"><a class="nav-link" href="../articles/index.html">Articles</a></li>
+<li class="active nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/apis.html">GISCO APIs with giscoR</a></li>
+  </ul>
+</li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
@@ -135,25 +142,23 @@
 <span><span class="co">#&gt; 1 ES212              3 ES212</span></span></code></pre></div>
 <p>Use <code>geometry = TRUE</code>, the default, when you want an <code>sf</code> object suitable for mapping.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">nuts3</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">lau</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">nuts3</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#cfe8f3"</span>, color <span class="op">=</span> <span class="st">"#2a6f97"</span>, linewidth <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">lau</span>, fill <span class="op">=</span> <span class="st">"#f4a261"</span>, color <span class="op">=</span> <span class="st">"#9c4221"</span>, linewidth <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">place</span>, color <span class="op">=</span> <span class="st">"#b00020"</span>, size <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
-<span>      panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey95"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>      axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>      axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>      panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>    <span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>      title <span class="op">=</span> <span class="st">"GISCO ID service API lookup"</span>,</span>
-<span>      subtitle <span class="op">=</span> <span class="st">"NUTS 3 region and LAU containing the input coordinate"</span>,</span>
-<span>      caption <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">nuts3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#cfe8f3"</span>, color <span class="op">=</span> <span class="st">"#2a6f97"</span>, linewidth <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">lau</span>, fill <span class="op">=</span> <span class="st">"#f4a261"</span>, color <span class="op">=</span> <span class="st">"#9c4221"</span>, linewidth <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">place</span>, color <span class="op">=</span> <span class="st">"#b00020"</span>, size <span class="op">=</span> <span class="fl">2.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey95"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>    axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"GISCO ID service API lookup"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"NUTS 3 region and LAU containing the input coordinate"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="./fig-api-id-1.png" alt="NUTS 3 and LAU geometries returned by the GISCO ID service API" width="100%"><p class="caption">
 NUTS 3 and LAU geometries returned by the GISCO ID service API
@@ -222,8 +227,26 @@ NUTS 3 and LAU geometries returned by the GISCO ID service API
 <span><span class="co">#&gt;  9 ANGELSBERG</span></span>
 <span><span class="co">#&gt; 10 ANSEMBOURG</span></span>
 <span><span class="co">#&gt; # ℹ 532 more rows</span></span>
-<span><span class="fu"><a href="../reference/gisco_address_api.html">gisco_address_api_roads</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"LU"</span>, city <span class="op">=</span> <span class="st">"Luxembourg"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; NULL</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/gisco_address_api.html">gisco_address_api_roads</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"LU"</span>, province <span class="op">=</span> <span class="st">"Capellen"</span>, city <span class="op">=</span> <span class="st">"Dippach"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 16 × 2</span></span>
+<span><span class="co">#&gt;    TF                      PC   </span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;                   &lt;chr&gt;</span></span>
+<span><span class="co">#&gt;  1 BEIM WAASSERTUERM       4972 </span></span>
+<span><span class="co">#&gt;  2 ECKERBIERG              4974 </span></span>
+<span><span class="co">#&gt;  3 IM INBERG               4974 </span></span>
+<span><span class="co">#&gt;  4 OP WAISSE MUOR          4974 </span></span>
+<span><span class="co">#&gt;  5 ROUTE DE LUXEMBOURG     4972 </span></span>
+<span><span class="co">#&gt;  6 ROUTE DE LUXEMBOURG     4973 </span></span>
+<span><span class="co">#&gt;  7 ROUTE DES TROIS CANTONS 4972 </span></span>
+<span><span class="co">#&gt;  8 RUE BELLE-VUE           4974 </span></span>
+<span><span class="co">#&gt;  9 RUE CENTRALE            4974 </span></span>
+<span><span class="co">#&gt; 10 RUE DE BETTANGE         4974 </span></span>
+<span><span class="co">#&gt; 11 RUE DE HOLZEM           4974 </span></span>
+<span><span class="co">#&gt; 12 RUE DE LA FONTAINE      4974 </span></span>
+<span><span class="co">#&gt; 13 RUE DES ROMAINS         4974 </span></span>
+<span><span class="co">#&gt; 14 RUE DU CIMETIÈRE        4974 </span></span>
+<span><span class="co">#&gt; 15 RUE JEAN-PIERRE KIRSCH  4974 </span></span>
+<span><span class="co">#&gt; 16 SAUER AARBECHT          4974</span></span></code></pre></div>
 <p>Use <code><a href="../reference/gisco_address_api.html">gisco_address_api_search()</a></code> for structured geocoding. Search endpoints support approximate string matching, so exact spelling is not always required. The bounding-box endpoint can provide context for the returned address points.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">address</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_address_api.html">gisco_address_api_search</a></span><span class="op">(</span></span>
@@ -238,13 +261,11 @@ NUTS 3 and LAU geometries returned by the GISCO ID service API
 <span><span class="op">)</span></span></code></pre></div>
 <p>Search, reverse and bounding-box calls return <code>sf</code> objects. If a search result contains coordinates, they can be passed to the reverse endpoint:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">address</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">address</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="../reference/gisco_address_api.html">gisco_address_api_reverse</a></span><span class="op">(</span></span>
-<span>    x <span class="op">=</span> <span class="va">address</span><span class="op">$</span><span class="va">X</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
-<span>    y <span class="op">=</span> <span class="va">address</span><span class="op">$</span><span class="va">Y</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
-<span>    country <span class="op">=</span> <span class="st">"LU"</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/gisco_address_api.html">gisco_address_api_reverse</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="va">address</span><span class="op">$</span><span class="va">X</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  y <span class="op">=</span> <span class="va">address</span><span class="op">$</span><span class="va">Y</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>,</span>
+<span>  country <span class="op">=</span> <span class="st">"LU"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 5 features and 14 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
@@ -261,24 +282,22 @@ NUTS 3 and LAU geometries returned by the GISCO ID service API
 <span><span class="co">#&gt; # ℹ 1 more variable: geometry &lt;POINT [°]&gt;</span></span></code></pre></div>
 <p>Use the returned geometries directly with <strong>ggplot2</strong>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">address</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#f1faee"</span>, color <span class="op">=</span> <span class="st">"#457b9d"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">address</span>, color <span class="op">=</span> <span class="st">"#d00000"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
-<span>      panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey95"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>      axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>      axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>      panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>    <span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>      title <span class="op">=</span> <span class="st">"GISCO Address API lookup"</span>,</span>
-<span>      subtitle <span class="op">=</span> <span class="st">"Address search results inside the Luxembourg city bbox"</span>,</span>
-<span>      caption <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span><span class="op">}</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"#f1faee"</span>, color <span class="op">=</span> <span class="st">"#457b9d"</span>, linewidth <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">address</span>, color <span class="op">=</span> <span class="st">"#d00000"</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"grey95"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span>,</span>
+<span>    axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>    panel.grid <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"GISCO Address API lookup"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Address search results inside the Luxembourg city bbox"</span>,</span>
+<span>    caption <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <img src="./fig-address-api-1.png" alt="Structured address search result and city bounding box" width="100%"><p class="caption">
 Structured address search result and city bounding box

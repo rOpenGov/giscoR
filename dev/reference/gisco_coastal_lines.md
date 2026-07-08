@@ -1,4 +1,4 @@
-# Coastal lines 2016 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+# Coastal lines 2016 [sf](https://CRAN.R-project.org/package=sf) object
 
 This object contains the coastal lines of the world.
 

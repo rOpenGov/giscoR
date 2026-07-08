@@ -52,7 +52,14 @@
       <ul class="navbar-nav me-auto">
 <li class="active nav-item"><a class="nav-link" href="../articles/giscoR.html">Get started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item"><a class="nav-link" href="../articles/index.html">Articles</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><hr class="dropdown-divider"></li>
+    <li><h6 class="dropdown-header" data-toc-skip>Guides</h6></li>
+    <li><a class="dropdown-item" href="../articles/apis.html">GISCO APIs with giscoR</a></li>
+  </ul>
+</li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
@@ -117,7 +124,7 @@
 </cite>
 </figcaption></figure></section><section class="level2"><h3 id="population-grids">Population grids<a class="anchor" aria-label="anchor" href="#population-grids"></a>
 </h3>
-<p><code><a href="../reference/gisco_get_grid.html">gisco_get_grid()</a></code> downloads polygon or cell-centre point GeoPackages in <strong>EPSG:3035</strong> at resolutions from 1 km to 100 km. Population columns use names such as <code>TOT_P_2021</code>. Divide these values by <code>resolution^2</code>, not by <code>resolution</code>, to calculate people per square kilometre. Population variables have year- and country-specific licensing conditions; consult the official <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/grids" class="external-link">grid documentation</a> before publication or redistribution.</p>
+<p><code><a href="../reference/gisco_get_grid.html">gisco_get_grid()</a></code> downloads polygon or cell-centre point GeoPackages in <strong>EPSG:3035</strong> at resolutions from 1 km to 100 km. Population columns use names such as <code>TOT_P_2021</code>. Divide these values by <code>resolution^2</code>, not by <code>resolution</code>, to calculate people per square kilometre. Population variables have year- and country-specific licensing conditions, consult the official <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/grids" class="external-link">grid documentation</a> before publication or redistribution.</p>
 <p>The <code><a href="../reference/gisco_attributions.html">gisco_attributions()</a></code> function provides guidance on this topic and returns attribution text in several languages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>

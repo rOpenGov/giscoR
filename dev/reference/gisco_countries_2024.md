@@ -1,4 +1,4 @@
-# Countries 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+# Countries 2024 [sf](https://CRAN.R-project.org/package=sf) object
 
 This object contains world administrative boundaries at the country
 level.
