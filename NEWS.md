@@ -4,6 +4,8 @@
 - Update `?gisco_db`.
 - `gisco_get_postal_codes()` now defaults to the 2025 release and adds an
   `epsg` argument.
+- Refactor tests to isolate cache state, use temporary cache directories and
+  improve mocked coverage of cache and request helpers.
 
 # giscoR 1.1.1
 

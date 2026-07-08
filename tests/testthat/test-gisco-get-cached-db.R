@@ -83,6 +83,30 @@ test_that("Cached DB helpers build cache paths and scrape entries", {
   expect_identical(db$id_giscor, c("nuts", "lau"))
 })
 
+test_that("API scraping skips child datasets that cannot be fetched", {
+  calls <- 0L
+  master <- paste0(
+    '{"2024": {"files": "missing-child.json"}}'
+  )
+
+  local_mocked_bindings(
+    gisco_perform_request = function(...) {
+      calls <<- calls + 1L
+      if (calls == 1L) {
+        return(httr2::response(
+          200,
+          headers = list("content-type" = "application/json"),
+          body = charToRaw(master)
+        ))
+      }
+      NULL
+    }
+  )
+
+  expect_null(scrap_api_data("nuts"))
+  expect_identical(calls, 2L)
+})
+
 test_that("Cached DB normalization adds derived columns", {
   db <- data.frame(
     id_giscor = c("coas", "nuts", "urau", "pcode"),

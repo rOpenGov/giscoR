@@ -256,11 +256,9 @@ scrap_api_data <- function(entry_point) {
       offline_verbose = FALSE,
       fake_404 = FALSE
     )
-    # nocov start
     if (is.null(resp)) {
       return(NULL)
     }
-    # nocov end
 
     child <- httr2::resp_body_json(resp)
     tibble::tibble(
