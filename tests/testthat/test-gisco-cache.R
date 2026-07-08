@@ -75,6 +75,22 @@ test_that("Cache configuration is restored after a restart", {
   expect_true(nzchar(Sys.getenv("GISCO_CACHE_DIR")))
 })
 
+test_that("Cache configuration restores a persisted cache path", {
+  config_dir <- withr::local_tempdir("gisco-config-")
+  cache_dir <- withr::local_tempdir("gisco-cache-")
+  writeLines(cache_dir, file.path(config_dir, "gisco_cache_dir"))
+  withr::local_envvar(GISCO_CACHE_DIR = NA_character_)
+  local_mocked_bindings(
+    gisco_user_dir = function(which = "config") config_dir,
+    migrate_cache = function(...) invisible()
+  )
+
+  muted <- detect_cache_dir_muted()
+
+  expect_identical(muted, cache_dir)
+  expect_identical(Sys.getenv("GISCO_CACHE_DIR"), cache_dir)
+})
+
 test_that("Persistent cache config can be installed and overwritten", {
   skip_on_cran()
   skip_if_gisco_offline()
