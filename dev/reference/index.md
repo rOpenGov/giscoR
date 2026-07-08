@@ -108,7 +108,7 @@ data.
 
 Query additional [GISCO APIs and
 tools](https://ec.europa.eu/eurostat/web/gisco/tools), including the
-GISCO Address API and GISCO ID service API.
+GISCO ID service API and GISCO Address API.
 
 - [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_reverse()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)

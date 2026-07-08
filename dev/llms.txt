@@ -415,7 +415,7 @@ data.
 
 Query additional [GISCO APIs and
 tools](https://ec.europa.eu/eurostat/web/gisco/tools), including the
-GISCO Address API and GISCO ID service API.
+GISCO ID service API and GISCO Address API.
 
 - [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_reverse()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
@@ -499,3 +499,11 @@ Package overview and metadata.
   giscoR](https://ropengov.github.io/giscoR/dev/articles/giscoR.md):
 
   A brief introduction to giscoR
+
+### Guides
+
+- [GISCO APIs with
+  giscoR](https://ropengov.github.io/giscoR/dev/articles/apis.md):
+
+  Use the GISCO ID service API and Address API from R when you need
+  geocoding, reverse geocoding or feature lookup from coordinates.

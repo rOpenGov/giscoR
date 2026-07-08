@@ -2,6 +2,8 @@
 
 ## giscoR (development version)
 
+- Add a precomputed article showing GISCO ID service API and GISCO
+  Address API workflows with **ggplot2** examples.
 - [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
   adds support for the Airports 2024 point dataset.
 - Update
