@@ -64,3 +64,4 @@
 ^\.claude$
 ^\.gitattributes$
 ^vignettes/apis\.qmd\.orig$
+^AGENTS\.md$

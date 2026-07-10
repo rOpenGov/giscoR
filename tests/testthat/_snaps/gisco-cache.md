@@ -1,3 +1,12 @@
+# Persistent cache config can be installed and overwritten
+
+    Code
+      gisco_set_cache_dir(cache_dir2, install = TRUE, verbose = FALSE)
+    Condition
+      Error in `gisco_set_cache_dir()`:
+      ! A `cache_dir` path already exists.
+      You can overwrite it with `overwrite` = TRUE.
+
 # Legacy cache configuration migrates to the current location
 
     Code

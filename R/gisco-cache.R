@@ -320,7 +320,7 @@ create_cache_dir <- function(cache_dir = NULL) {
 #'
 #' @noRd
 migrate_cache <- function(
-  old = rappdirs::user_config_dir("giscoR", "R"),
+  old = gisco_legacy_user_dir(),
   new = gisco_user_dir("config")
 ) {
   fname <- "gisco_cache_dir"
@@ -357,4 +357,13 @@ migrate_cache <- function(
 #' @noRd
 gisco_user_dir <- function(which = "config") {
   tools::R_user_dir("giscoR", which)
+}
+
+#' Return the legacy user configuration directory for giscoR
+#'
+#' @return Path to the legacy user configuration directory.
+#'
+#' @noRd
+gisco_legacy_user_dir <- function() {
+  rappdirs::user_config_dir("giscoR", "R")
 }

@@ -106,9 +106,9 @@ test_that("Persistent cache config can be installed and overwritten", {
   expect_true(dir.exists(config_dir))
   expect_identical(readLines(giscor_file), cache_dir)
 
-  expect_error(
-    gisco_set_cache_dir(cache_dir2, install = TRUE, verbose = FALSE),
-    "already exists"
+  expect_snapshot(
+    error = TRUE,
+    gisco_set_cache_dir(cache_dir2, install = TRUE, verbose = FALSE)
   )
 
   expect_silent(gisco_set_cache_dir(
