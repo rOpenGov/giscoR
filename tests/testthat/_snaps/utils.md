@@ -131,3 +131,51 @@
       Error in `test_msg()`:
       ! `verbose` must be a <logical>.
 
+# Argument matching reports invalid values
+
+    Code
+      match_year(2030)
+    Condition
+      Error:
+      ! `year` must be "2020" or "2024", not "2030".
+
+---
+
+    Code
+      match_year(c(2020, 2030))
+    Condition
+      Error:
+      ! `year` must be "2020" or "2024", not "2020" or "2030".
+
+# rbind_fill combines sf inputs with different schemas
+
+    Code
+      err <- do.call(rbind, a_list)
+    Condition
+      Error in `rbind.data.frame()`:
+      ! numbers of columns of arguments do not match
+
+# rbind_fill combines tibble inputs with different schemas
+
+    Code
+      err <- do.call(rbind, a_list)
+    Condition
+      Error in `rbind()`:
+      ! numbers of columns of arguments do not match
+
+# rbind_fill drops NULL entries from sf input lists
+
+    Code
+      err <- do.call(rbind, a_list)
+    Condition
+      Error in `rbind.data.frame()`:
+      ! numbers of columns of arguments do not match
+
+# rbind_fill drops NULL entries from tibble input lists
+
+    Code
+      err <- do.call(rbind, a_list)
+    Condition
+      Error in `rbind()`:
+      ! numbers of columns of arguments do not match
+

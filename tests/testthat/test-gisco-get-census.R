@@ -8,9 +8,8 @@ test_that("Census returns NULL for 404 responses", {
       NULL
     }
   )
-  expect_message(
-    n <- gisco_get_census(update_cache = TRUE, spatialtype = "PT"),
-    "Error"
+  expect_snapshot(
+    n <- gisco_get_census(update_cache = TRUE, spatialtype = "PT")
   )
   expect_null(n)
 })
@@ -53,7 +52,7 @@ test_that("Census selects the point file", {
 })
 
 test_that("Census reads point geometries", {
-  expect_error(gisco_get_census(year = 2020), "`year` must be")
+  expect_snapshot(gisco_get_census(year = 2020), error = TRUE)
 
   local_mocked_bindings(read_gisco_dataset = function(
     url,
@@ -100,10 +99,7 @@ test_that("Census reads polygon geometries", {
   })
 
   # On read should warn
-  expect_message(
-    all <- gisco_get_census(spatialtype = "RG"),
-    "Mocked census polygon read"
-  )
+  expect_snapshot(all <- gisco_get_census(spatialtype = "RG"))
   expect_s3_class(all, "tbl_df")
   expect_s3_class(all, "sf")
   expect_true(unique(sf::st_geometry_type(all)) == "MULTIPOLYGON")

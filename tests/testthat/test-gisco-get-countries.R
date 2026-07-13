@@ -1,13 +1,13 @@
 test_that("Countries return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("countries-db-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_countries(update_cache = TRUE, resolution = 60),
-    "Error"
+  expect_snapshot(
+    n <- gisco_get_countries(update_cache = TRUE, resolution = 60)
   )
   expect_null(n)
 })
@@ -20,16 +20,18 @@ test_that("Countries use resolved GISCO files", {
         name = "CNTR_RG_60M_2024_4326.gpkg"
       )
     },
-    read_gisco_dataset = function(url,
-                                  name,
-                                  cache = TRUE,
-                                  cache_dir = NULL,
-                                  subdir,
-                                  update_cache = FALSE,
-                                  verbose = FALSE,
-                                  filters = NULL,
-                                  post_process = NULL,
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      cache = TRUE,
+      cache_dir = NULL,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE,
+      filters = NULL,
+      post_process = NULL,
+      ...
+    ) {
       expect_match(url, "CNTR_RG_60M_2024_4326[.]gpkg$")
       expect_identical(name, "CNTR_RG_60M_2024_4326.gpkg")
       expect_false(cache)

@@ -1,13 +1,13 @@
 test_that("NUTS unit returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("unit-nuts-db-")
 
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(
-    n <- gisco_get_unit_nuts(year = 2024, update_cache = TRUE, verbose = TRUE),
-    "No internet"
+  expect_snapshot(
+    n <- gisco_get_unit_nuts(year = 2024, update_cache = TRUE, verbose = TRUE)
   )
   expect_null(n)
 })
@@ -15,13 +15,13 @@ test_that("NUTS unit returns NULL when offline", {
 test_that("NUTS unit returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("unit-nuts-db-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_unit_nuts(year = 2024, update_cache = TRUE, verbose = TRUE),
-    "Error"
+  expect_snapshot(
+    n <- gisco_get_unit_nuts(year = 2024, update_cache = TRUE, verbose = TRUE)
   )
   expect_null(n)
 })

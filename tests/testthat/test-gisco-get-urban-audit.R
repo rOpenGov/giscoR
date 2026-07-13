@@ -2,24 +2,25 @@ test_that("Urban audit validates inputs before remote access", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(gisco_get_urban_audit(year = "1999"), "Years available")
-  expect_error(gisco_get_urban_audit(epsg = "9999"), "No results")
-  expect_error(gisco_get_urban_audit(level = "9999"), "`level` must be")
-  expect_error(
+  expect_snapshot(gisco_get_urban_audit(year = "1999"), error = TRUE)
+  expect_snapshot(gisco_get_urban_audit(epsg = "9999"), error = TRUE)
+  expect_snapshot(gisco_get_urban_audit(level = "9999"), error = TRUE)
+  expect_snapshot(
     gisco_get_urban_audit(spatialtype = "BN"),
-    "`spatialtype` must be"
+    error = TRUE
   )
-  expect_error(gisco_get_urban_audit(year = 2001), "No results")
+  expect_snapshot(gisco_get_urban_audit(year = 2001), error = TRUE)
 })
 
 test_that("Urban audit returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("urau-db-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- gisco_get_urban_audit(update_cache = TRUE), "Error")
+  expect_snapshot(n <- gisco_get_urban_audit(update_cache = TRUE))
   expect_null(n)
 })
 
@@ -31,16 +32,18 @@ test_that("Urban Audit uses resolved GISCO files", {
         name = "URAU_RG_100K_2024_4326_CITIES.gpkg"
       )
     },
-    read_gisco_dataset = function(url,
-                                  name,
-                                  cache = TRUE,
-                                  cache_dir = NULL,
-                                  subdir,
-                                  update_cache = FALSE,
-                                  verbose = FALSE,
-                                  filters = NULL,
-                                  post_process = NULL,
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      cache = TRUE,
+      cache_dir = NULL,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE,
+      filters = NULL,
+      post_process = NULL,
+      ...
+    ) {
       expect_match(url, "URAU_RG_100K_2024_4326_CITIES[.]gpkg$")
       expect_identical(name, "URAU_RG_100K_2024_4326_CITIES.gpkg")
       expect_false(cache)

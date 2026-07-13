@@ -19,10 +19,7 @@ test_that("Cached database returns NULL for 404 responses", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_cached_db(update_cache = TRUE),
-    "Could not access"
-  )
+  expect_snapshot(n <- gisco_get_cached_db(update_cache = TRUE))
   expect_null(n)
 })
 
@@ -40,7 +37,7 @@ test_that("Cached database stores fallback data when remote access fails", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- get_db(), "Could not access")
+  expect_snapshot(n <- get_db())
   old_db <- gisco_db
   expect_identical(n, old_db)
 

@@ -1,6 +1,6 @@
 test_that("Grid validates inputs", {
-  expect_error(gisco_get_grid(resolution = 24), "`resolution` must be")
-  expect_error(gisco_get_grid(spatialtype = "9999"), "`spatialtype` must be")
+  expect_snapshot(gisco_get_grid(resolution = 24), error = TRUE)
+  expect_snapshot(gisco_get_grid(spatialtype = "9999"), error = TRUE)
 })
 
 test_that("Grids use the grid dataset reader", {
@@ -49,6 +49,6 @@ test_that("Grids return NULL for 404 responses", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- gisco_get_grid(update_cache = TRUE), "Error")
+  expect_snapshot(n <- gisco_get_grid(update_cache = TRUE))
   expect_null(n)
 })

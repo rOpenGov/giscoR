@@ -8,10 +8,7 @@ test_that("Education returns NULL for 404 responses", {
       NULL
     }
   )
-  expect_message(
-    n <- gisco_get_education(country = "LU", update_cache = TRUE),
-    "Error"
-  )
+  expect_snapshot(n <- gisco_get_education(country = "LU", update_cache = TRUE))
   expect_null(n)
 })
 
@@ -89,7 +86,7 @@ test_that("Education reads mocked 2023 service data", {
 
   expect_silent(gisco_get_education(country = "LU", cache = FALSE))
   expect_silent(gisco_get_education(country = "Denmark"))
-  expect_message(gisco_get_education(verbose = TRUE, country = "BE"))
+  expect_snapshot(gisco_get_education(verbose = TRUE, country = "BE"))
 
   # Several countries
   nn <- gisco_get_education(country = c("LU", "DK", "BE"))
@@ -129,7 +126,7 @@ test_that("Education reads mocked 2020 service data", {
 
   expect_silent(gisco_get_education(country = "LU", cache = FALSE, year = 2020))
   expect_silent(gisco_get_education(country = "Denmark", year = 2020))
-  expect_message(gisco_get_education(
+  expect_snapshot(gisco_get_education(
     verbose = TRUE,
     country = "BE",
     year = 2020

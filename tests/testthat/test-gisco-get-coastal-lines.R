@@ -1,13 +1,13 @@
 test_that("Coastal lines return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("coastal-db-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_coastal_lines(update_cache = TRUE, resolution = 60),
-    "Error"
+  expect_snapshot(
+    n <- gisco_get_coastal_lines(update_cache = TRUE, resolution = 60)
   )
   expect_null(n)
 })
@@ -21,14 +21,16 @@ test_that("Coastal lines use resolved GISCO files", {
       )
     },
     read_packaged_gisco_dataset = function(...) NULL,
-    read_gisco_dataset = function(url,
-                                  name,
-                                  cache = TRUE,
-                                  cache_dir = NULL,
-                                  subdir,
-                                  update_cache = FALSE,
-                                  verbose = FALSE,
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      cache = TRUE,
+      cache_dir = NULL,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE,
+      ...
+    ) {
       expect_match(url, "COAS_RG_20M_2016_4326[.]gpkg$")
       expect_identical(name, "COAS_RG_20M_2016_4326.gpkg")
       expect_false(cache)

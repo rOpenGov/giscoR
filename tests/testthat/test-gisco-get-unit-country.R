@@ -1,18 +1,18 @@
 test_that("Country unit returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("unit-country-db-")
 
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(
+  expect_snapshot(
     n <- gisco_get_unit_country(
       year = 2024,
       unit = "ES",
       update_cache = TRUE,
       verbose = TRUE
-    ),
-    "No internet"
+    )
   )
   expect_null(n)
 })
@@ -20,18 +20,18 @@ test_that("Country unit returns NULL when offline", {
 test_that("Country unit returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("unit-country-db-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
+  expect_snapshot(
     n <- gisco_get_unit_country(
       year = 2024,
       unit = "ES",
       update_cache = TRUE,
       verbose = TRUE
-    ),
-    "Error"
+    )
   )
   expect_null(n)
 })

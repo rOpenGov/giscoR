@@ -10,6 +10,14 @@
 # URL database lookup validates and returns matching entries
 
     Code
+      get_url_db("postal_codes", year = "1991", fn = "gisco_get_postalcodes")
+    Condition
+      Error:
+      ! Years available for `giscoR::gisco_get_postalcodes()` are 2020, 2024, and 2025.
+
+---
+
+    Code
       get_url_db("communes", "9999", fn = "gisco_get_communes")
     Condition
       Error:
