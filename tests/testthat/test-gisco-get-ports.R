@@ -5,7 +5,7 @@ test_that("Ports return NULL for 404 responses", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- gisco_get_ports(update_cache = TRUE), "Error")
+  expect_snapshot(n <- gisco_get_ports(update_cache = TRUE))
   expect_null(n)
 })
 
@@ -49,8 +49,8 @@ test_that("Ports select the 2009 file", {
 })
 
 test_that("Ports download current and legacy point data", {
-  expect_error(gisco_get_ports(year = 2020), "`year` must be")
-  expect_error(gisco_get_ports(year = 2020, country = "ES"), "`year` must be")
+  expect_snapshot(gisco_get_ports(year = 2020), error = TRUE)
+  expect_snapshot(gisco_get_ports(year = 2020, country = "ES"), error = TRUE)
 
   skip_on_cran()
   skip_if_gisco_offline()

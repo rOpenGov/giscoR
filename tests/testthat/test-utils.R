@@ -85,8 +85,8 @@ test_that("Argument matching reports invalid values", {
     match_arg_pretty(year)
   }
 
-  expect_error(match_year(2030), "must be")
-  expect_error(match_year(c(2020, 2030)), "must be")
+  expect_snapshot(match_year(2030), error = TRUE)
+  expect_snapshot(match_year(c(2020, 2030)), error = TRUE)
 })
 
 test_that("Resolution format helpers work", {
@@ -110,7 +110,7 @@ test_that("rbind_fill combines sf inputs with different schemas", {
   gb <- giscoR::gisco_countries_2024[1, ]
   cos <- giscoR::gisco_nuts_2024[1, ]
   a_list <- list(gb, cos, gb, cos)
-  expect_error(err <- do.call(rbind, a_list))
+  expect_snapshot(err <- do.call(rbind, a_list), error = TRUE)
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "sf")
   expect_s3_class(binded, "tbl_df")
@@ -125,7 +125,7 @@ test_that("rbind_fill combines tibble inputs with different schemas", {
   cos <- giscoR::gisco_nuts_2024[1, ]
   cos <- sf::st_drop_geometry(cos)
   a_list <- list(gb, cos, gb, cos)
-  expect_error(err <- do.call(rbind, a_list))
+  expect_snapshot(err <- do.call(rbind, a_list), error = TRUE)
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "tbl_df")
   expect_equal(nrow(binded), 4)
@@ -138,7 +138,7 @@ test_that("rbind_fill drops NULL entries from sf input lists", {
   cos <- giscoR::gisco_nuts_2024[1, ]
   a_list <- list(gb, cos, gb, cos)
   a_list[[3]] <- NULL
-  expect_error(err <- do.call(rbind, a_list))
+  expect_snapshot(err <- do.call(rbind, a_list), error = TRUE)
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "sf")
   expect_s3_class(binded, "tbl_df")
@@ -155,7 +155,7 @@ test_that("rbind_fill drops NULL entries from tibble input lists", {
 
   a_list <- list(gb, cos, gb, cos)
   a_list[[3]] <- NULL
-  expect_error(err <- do.call(rbind, a_list))
+  expect_snapshot(err <- do.call(rbind, a_list), error = TRUE)
   expect_silent(binded <- rbind_fill(a_list))
   expect_s3_class(binded, "tbl_df")
   expect_equal(nrow(binded), 3)

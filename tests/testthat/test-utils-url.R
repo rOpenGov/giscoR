@@ -67,10 +67,12 @@ test_that("Dataset reader delegates cache and non-cache paths", {
     download_url = function(...) {
       "cached.gpkg"
     },
-    read_geo_file_sf_filtered = function(file_local,
-                                         filters = NULL,
-                                         operator = "AND",
-                                         verbose = FALSE) {
+    read_geo_file_sf_filtered = function(
+      file_local,
+      filters = NULL,
+      operator = "AND",
+      verbose = FALSE
+    ) {
       data.frame(source = file_local, operator = operator)
     }
   )
@@ -286,11 +288,14 @@ test_that("URL database lookup validates and returns matching entries", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(get_url_db(
-    "postal_codes",
-    year = "1991",
-    fn = "gisco_get_postalcodes"
-  ))
+  expect_snapshot(
+    get_url_db(
+      "postal_codes",
+      year = "1991",
+      fn = "gisco_get_postalcodes"
+    ),
+    error = TRUE
+  )
 
   expect_snapshot(
     get_url_db("communes", "9999", fn = "gisco_get_communes"),

@@ -20,22 +20,16 @@ test_that("ID API returns NULL for 404 responses", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- gisco_id_api_geonames(x = 4, y = 52), "Error")
+  expect_snapshot(n <- gisco_id_api_geonames(x = 4, y = 52))
   expect_null(n)
 
-  expect_message(
-    n <- gisco_id_api_nuts(x = 4, y = 52, geometry = TRUE),
-    "Error"
-  )
+  expect_snapshot(n <- gisco_id_api_nuts(x = 4, y = 52, geometry = TRUE))
   expect_null(n)
 
-  expect_message(n <- gisco_id_api_lau(x = 4, y = 52, geometry = TRUE), "Error")
+  expect_snapshot(n <- gisco_id_api_lau(x = 4, y = 52, geometry = TRUE))
   expect_null(n)
 
-  expect_message(
-    n <- gisco_id_api_country(x = 4, y = 52, geometry = FALSE),
-    "Error"
-  )
+  expect_snapshot(n <- gisco_id_api_country(x = 4, y = 52, geometry = FALSE))
   expect_null(n)
 })
 
@@ -71,12 +65,14 @@ test_that("ID API delegates JSON responses to the JSON helper", {
 
 test_that("ID API spatial reader downloads and reads GeoJSON", {
   local_mocked_bindings(
-    download_url = function(url,
-                            name,
-                            cache_dir,
-                            subdir,
-                            update_cache = FALSE,
-                            verbose = FALSE) {
+    download_url = function(
+      url,
+      name,
+      cache_dir,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE
+    ) {
       expect_identical(url, "https://example.com/file.geojson")
       expect_match(name, "[.]geojson$")
       expect_identical(cache_dir, tempdir())

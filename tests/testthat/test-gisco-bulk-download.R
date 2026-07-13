@@ -1,22 +1,24 @@
 test_that("Bulk download returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("bulk-db-")
 
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
   })
-  expect_message(n <- gisco_bulk_download(update_cache = TRUE), "No internet")
+  expect_snapshot(n <- gisco_bulk_download(update_cache = TRUE))
   expect_null(n)
 })
 
 test_that("Bulk download returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("bulk-db-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- gisco_bulk_download(update_cache = TRUE), "Error")
+  expect_snapshot(n <- gisco_bulk_download(update_cache = TRUE))
   expect_null(n)
 })
 
@@ -91,12 +93,14 @@ test_that("Bulk download orchestrates download and extraction", {
         "countries/shp/CNTR_RG_60M_2024_4326.shp.zip"
       )
     },
-    download_url = function(url,
-                            name,
-                            cache_dir,
-                            subdir,
-                            update_cache = FALSE,
-                            verbose = FALSE) {
+    download_url = function(
+      url,
+      name,
+      cache_dir,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE
+    ) {
       expect_match(url, "countries/download/ref-countries-2024-60m.geojson.zip")
       expect_identical(name, "ref-countries-2024-60m.geojson.zip")
       expect_identical(cache_dir, cdir)
@@ -131,10 +135,10 @@ test_that("Bulk download validates user inputs", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(gisco_bulk_download(year = "2000"), "Years available")
-  expect_error(gisco_bulk_download(resolution = "35"), "No results")
+  expect_snapshot(gisco_bulk_download(year = "2000"), error = TRUE)
+  expect_snapshot(gisco_bulk_download(resolution = "35"), error = TRUE)
   expect_snapshot(gisco_bulk_download(id_giscoR = "nutes"), error = TRUE)
-  expect_error(gisco_bulk_download(ext = "aa"), "`ext` must be")
+  expect_snapshot(gisco_bulk_download(ext = "aa"), error = TRUE)
 })
 
 test_that("Bulk download builds recursive downloads from mocked metadata", {

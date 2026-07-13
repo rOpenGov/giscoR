@@ -5,7 +5,7 @@ test_that("Airports return NULL for 404 responses", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- gisco_get_airports(update_cache = TRUE), "Error")
+  expect_snapshot(n <- gisco_get_airports(update_cache = TRUE))
   expect_null(n)
 })
 
@@ -49,7 +49,7 @@ test_that("Airports select the 2006 file", {
 })
 
 test_that("Airports download current and legacy point data", {
-  expect_error(gisco_get_airports(year = 2020), "`year` must be")
+  expect_snapshot(gisco_get_airports(year = 2020), error = TRUE)
 
   skip_on_cran()
   skip_if_gisco_offline()

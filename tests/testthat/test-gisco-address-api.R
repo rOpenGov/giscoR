@@ -16,36 +16,36 @@ test_that("Address API returns NULL for 404 responses", {
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- gisco_address_api_bbox(), "Error")
+  expect_snapshot(n <- gisco_address_api_bbox())
   expect_null(n)
 
-  expect_message(n <- gisco_address_api_cities(), "Error")
+  expect_snapshot(n <- gisco_address_api_cities())
 
-  expect_message(n <- gisco_address_api_copyright(), "Error")
+  expect_snapshot(n <- gisco_address_api_copyright())
   expect_null(n)
 
-  expect_message(n <- gisco_address_api_housenumbers(), "Error")
+  expect_snapshot(n <- gisco_address_api_housenumbers())
   expect_null(n)
 
-  expect_message(n <- gisco_address_api_postcodes(), "Error")
+  expect_snapshot(n <- gisco_address_api_postcodes())
   expect_null(n)
 
-  expect_message(n <- gisco_address_api_provinces(), "Error")
+  expect_snapshot(n <- gisco_address_api_provinces())
   expect_null(n)
 
-  expect_message(n <- gisco_address_api_reverse(x = 0, y = 0), "Error")
+  expect_snapshot(n <- gisco_address_api_reverse(x = 0, y = 0))
   expect_null(n)
 
-  expect_message(n <- gisco_address_api_roads(), "Error")
+  expect_snapshot(n <- gisco_address_api_roads())
   expect_null(n)
 
-  expect_message(n <- gisco_address_api_search(), "Error")
+  expect_snapshot(n <- gisco_address_api_search())
   expect_null(n)
 
-  expect_message(n <- gisco_address_api_countries(), "Error")
+  expect_snapshot(n <- gisco_address_api_countries())
   expect_null(n)
 
-  expect_message(n <- gisco_address_api_copyright(), "Error")
+  expect_snapshot(n <- gisco_address_api_copyright())
   expect_null(n)
 })
 

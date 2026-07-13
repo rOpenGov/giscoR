@@ -2,23 +2,26 @@ test_that("Postal codes validate available years", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(gisco_get_postal_codes("1991", "Years available for"))
+  expect_snapshot(
+    gisco_get_postal_codes("1991", "Years available for"),
+    error = TRUE
+  )
 })
 
 test_that("Postal codes return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("postal-db-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
+  expect_snapshot(
     n <- gisco_get_postal_codes(
       year = 2024,
       country = "ES",
       update_cache = TRUE
-    ),
-    "Error"
+    )
   )
   expect_null(n)
 })
@@ -36,9 +39,11 @@ test_that("Postal codes use resolved GISCO files", {
     convert_country_code_or_null = function(country) {
       c("MT", "LU")
     },
-    make_sf_filter = function(file_local,
-                              values,
-                              candidates = c("CNTR_ID", "CNTR_CODE")) {
+    make_sf_filter = function(
+      file_local,
+      values,
+      candidates = c("CNTR_ID", "CNTR_CODE")
+    ) {
       filter_calls[[length(filter_calls) + 1L]] <<- list(
         file_local = file_local,
         values = values,
@@ -46,15 +51,17 @@ test_that("Postal codes use resolved GISCO files", {
       )
       stats::setNames(list(values), paste(candidates, collapse = "|"))
     },
-    read_gisco_dataset = function(url,
-                                  name,
-                                  cache = TRUE,
-                                  cache_dir = NULL,
-                                  subdir,
-                                  update_cache = FALSE,
-                                  verbose = FALSE,
-                                  filters = NULL,
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      cache = TRUE,
+      cache_dir = NULL,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE,
+      filters = NULL,
+      ...
+    ) {
       expect_match(url, "PCODE_PT_2024_4326[.]gpkg$")
       expect_identical(name, "PCODE_PT_2024_4326.gpkg")
       expect_true(cache)

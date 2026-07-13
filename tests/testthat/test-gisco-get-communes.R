@@ -1,13 +1,13 @@
 test_that("Communes return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("communes-db-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(
-    n <- gisco_get_communes(update_cache = TRUE, spatialtype = "LB"),
-    "Error"
+  expect_snapshot(
+    n <- gisco_get_communes(update_cache = TRUE, spatialtype = "LB")
   )
   expect_null(n)
 })
@@ -20,15 +20,17 @@ test_that("Communes use resolved GISCO files", {
         name = "COMM_RG_2016_4326.shp.zip"
       )
     },
-    read_gisco_dataset = function(url,
-                                  name,
-                                  cache = TRUE,
-                                  cache_dir = NULL,
-                                  subdir,
-                                  update_cache = FALSE,
-                                  verbose = FALSE,
-                                  filters = NULL,
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      cache = TRUE,
+      cache_dir = NULL,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE,
+      filters = NULL,
+      ...
+    ) {
       expect_match(url, "COMM_RG_2016_4326[.]shp[.]zip$")
       expect_identical(name, "COMM_RG_2016_4326.shp.zip")
       expect_true(cache)
@@ -54,17 +56,17 @@ test_that("Communes validate year, EPSG and spatial type", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  expect_error(gisco_get_communes(year = "2007"), "Years available")
-  expect_error(gisco_get_communes(epsg = "9999"), "No results")
-  expect_error(
+  expect_snapshot(gisco_get_communes(year = "2007"), error = TRUE)
+  expect_snapshot(gisco_get_communes(epsg = "9999"), error = TRUE)
+  expect_snapshot(
     gisco_get_communes(year = "2004", spatialtype = "COASTL"),
-    "No results"
+    error = TRUE
   )
-  expect_error(
+  expect_snapshot(
     gisco_get_communes(year = "2004", spatialtype = "INLAND"),
-    "No results"
+    error = TRUE
   )
-  expect_error(gisco_get_communes(spatialtype = "ERR"), "No results")
+  expect_snapshot(gisco_get_communes(spatialtype = "ERR"), error = TRUE)
 })
 
 test_that("Communes pass country filters to the reader", {
@@ -80,9 +82,11 @@ test_that("Communes pass country filters to the reader", {
     convert_country_code_or_null = function(country) {
       country
     },
-    make_sf_filter = function(file_local,
-                              values,
-                              candidates = c("CNTR_ID", "CNTR_CODE")) {
+    make_sf_filter = function(
+      file_local,
+      values,
+      candidates = c("CNTR_ID", "CNTR_CODE")
+    ) {
       filter_calls[[length(filter_calls) + 1L]] <<- list(
         file_local = file_local,
         values = values,
@@ -90,11 +94,13 @@ test_that("Communes pass country filters to the reader", {
       )
       stats::setNames(list(values), paste(candidates, collapse = "|"))
     },
-    read_gisco_dataset = function(url,
-                                  name,
-                                  filters = NULL,
-                                  verbose = FALSE,
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      filters = NULL,
+      verbose = FALSE,
+      ...
+    ) {
       expect_match(url, "COMM_LB_2016_4326[.]gpkg$")
       expect_true(is.function(filters))
       expect_true(verbose)

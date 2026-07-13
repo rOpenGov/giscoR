@@ -1,6 +1,7 @@
 test_that("Metadata returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("metadata-db-")
 
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
@@ -13,11 +14,12 @@ test_that("Metadata returns NULL when offline", {
 test_that("Metadata returns NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
+  local_test_cached_db("metadata-db-")
 
   local_mocked_bindings(is_404 = function(...) {
     TRUE
   })
-  expect_message(n <- gisco_get_metadata(), "Error")
+  expect_snapshot(n <- gisco_get_metadata())
   expect_null(n)
 })
 
@@ -34,7 +36,7 @@ test_that("Metadata helpers build URL and read CSV", {
     "https://example.com/csv/CNTR_AT_2024.csv"
   )
 
-  csv_file <- tempfile(fileext = ".csv")
+  csv_file <- withr::local_tempfile(fileext = ".csv")
   write.csv(
     data.frame(id = "ES", name = "Spain"),
     csv_file,
@@ -61,7 +63,10 @@ test_that("Metadata downloads to the metadata cache", {
     expect_identical(subdir, "gisco_metadata")
     expect_true(verbose)
 
-    csv_file <- tempfile(fileext = ".csv")
+    csv_file <- withr::local_tempfile(
+      fileext = ".csv",
+      .local_envir = testthat::teardown_env()
+    )
     write.csv(
       data.frame(id = "ES", name = "Spain"),
       csv_file,

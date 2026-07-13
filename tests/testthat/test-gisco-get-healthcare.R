@@ -8,10 +8,7 @@ test_that("Healthcare returns NULL for 404 responses", {
       NULL
     }
   )
-  expect_message(
-    n <- gisco_get_healthcare(update_cache = TRUE, year = 2020),
-    "Error"
-  )
+  expect_snapshot(n <- gisco_get_healthcare(update_cache = TRUE, year = 2020))
   expect_null(n)
 })
 
@@ -119,5 +116,5 @@ test_that("Healthcare reads, filters and caches mocked data", {
   )
   expect_lt(nrow(esp), nrow(n))
 
-  expect_message(gisco_get_healthcare(verbose = TRUE), "Mocked healthcare read")
+  expect_snapshot(gisco_get_healthcare(verbose = TRUE))
 })

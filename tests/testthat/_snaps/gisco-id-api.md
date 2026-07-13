@@ -14,6 +14,42 @@
       x No internet connection available.
       > Returning "NULL".
 
+# ID API returns NULL for 404 responses
+
+    Code
+      n <- gisco_id_api_geonames(x = 4, y = 52)
+    Message
+      x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/id/geonames?x=4&y=52>.
+      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      > Returning "NULL".
+
+---
+
+    Code
+      n <- gisco_id_api_nuts(x = 4, y = 52, geometry = TRUE)
+    Message
+      x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/id/nuts?x=4&y=52&epsg=4326&year=2024&format=geojson&geometry=yes>.
+      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      > Returning "NULL".
+
+---
+
+    Code
+      n <- gisco_id_api_lau(x = 4, y = 52, geometry = TRUE)
+    Message
+      x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/id/lau?x=4&y=52&epsg=4326&year=2024&format=geojson&geometry=yes>.
+      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      > Returning "NULL".
+
+---
+
+    Code
+      n <- gisco_id_api_country(x = 4, y = 52, geometry = FALSE)
+    Message
+      x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/id/country?x=4&y=52&epsg=4326&year=2024&format=json&geometry=no>.
+      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      > Returning "NULL".
+
 # gisco_id_api_nuts online
 
     Code
