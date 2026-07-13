@@ -1,6 +1,9 @@
 # Contributing to giscoR
 
-This outlines how to propose a change to **giscoR**.
+This outlines how to propose a change to giscoR. For a detailed
+discussion on contributing to this package, please see the [development
+contributing guide](https://rstd.io/tidy-contrib) and our [code review
+principles](https://code-review.tidyverse.org/).
 
 ## Fixing typos
 
@@ -29,18 +32,21 @@ advice.
   `usethis::create_from_github("rOpenGov/giscoR", fork = TRUE)`.
 
 - Install all development dependencies with
-  [`devtools::install_dev_deps()`](https://devtools.r-lib.org/reference/install_deps.html),
-  and then make sure the package passes R CMD check by running
+  [`pak::local_install_dev_deps()`](https://pak.r-lib.org/reference/local_install_dev_deps.html),
+  and then make sure the package passes `R CMD check` by running
   [`devtools::check()`](https://devtools.r-lib.org/reference/check.html).
-  If R CMD check doesn’t pass cleanly, it’s a good idea to ask for help
-  before continuing.
+  If `R CMD check` doesn’t pass cleanly, it’s a good idea to ask for
+  help before continuing.
 
 - Create a Git branch for your pull request (PR). We recommend using
   `usethis::pr_init("brief-description-of-change")`.
 
-- Make your changes, commit to git, and then create a PR by running
+- Make your changes and check that the package passes `R CMD check` by
+  running
+  [`devtools::check()`](https://devtools.r-lib.org/reference/check.html)
+  again. Commit the changes to git, and then create a PR by running
   [`usethis::pr_push()`](https://usethis.r-lib.org/reference/pull-requests.html),
-  and following the prompts in your browser. The title of your PR should
+  and follow the prompts in your browser. The title of your PR should
   briefly describe the change. The body of your PR should contain
   `Fixes #issue-number`.
 
@@ -64,7 +70,8 @@ advice.
   unit tests. Contributions with test cases included are easier to
   accept.
 
-## Thanks for contributing!
+## Code of Conduct
 
-This contributing guide is adapted from the tidyverse contributing guide
-available at <https://tidyverse.tidyverse.org/CONTRIBUTING.html>.
+Please note that the giscoR project is released with a [Contributor Code
+of Conduct](https://ropengov.github.io/giscoR/dev/CODE_OF_CONDUCT.md).
+By contributing to this project you agree to abide by its terms.
