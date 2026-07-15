@@ -65,14 +65,12 @@ test_that("ID API delegates JSON responses to the JSON helper", {
 
 test_that("ID API spatial reader downloads and reads GeoJSON", {
   local_mocked_bindings(
-    download_url = function(
-      url,
-      name,
-      cache_dir,
-      subdir,
-      update_cache = FALSE,
-      verbose = FALSE
-    ) {
+    download_url = function(url,
+                            name,
+                            cache_dir,
+                            subdir,
+                            update_cache = FALSE,
+                            verbose = FALSE) {
       expect_identical(url, "https://example.com/file.geojson")
       expect_match(name, "[.]geojson$")
       expect_identical(cache_dir, tempdir())

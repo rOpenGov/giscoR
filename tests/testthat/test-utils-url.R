@@ -67,12 +67,10 @@ test_that("Dataset reader delegates cache and non-cache paths", {
     download_url = function(...) {
       "cached.gpkg"
     },
-    read_geo_file_sf_filtered = function(
-      file_local,
-      filters = NULL,
-      operator = "AND",
-      verbose = FALSE
-    ) {
+    read_geo_file_sf_filtered = function(file_local,
+                                         filters = NULL,
+                                         operator = "AND",
+                                         verbose = FALSE) {
       data.frame(source = file_local, operator = operator)
     }
   )

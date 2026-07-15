@@ -32,18 +32,16 @@ test_that("Urban Audit uses resolved GISCO files", {
         name = "URAU_RG_100K_2024_4326_CITIES.gpkg"
       )
     },
-    read_gisco_dataset = function(
-      url,
-      name,
-      cache = TRUE,
-      cache_dir = NULL,
-      subdir,
-      update_cache = FALSE,
-      verbose = FALSE,
-      filters = NULL,
-      post_process = NULL,
-      ...
-    ) {
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  post_process = NULL,
+                                  ...) {
       expect_match(url, "URAU_RG_100K_2024_4326_CITIES[.]gpkg$")
       expect_identical(name, "URAU_RG_100K_2024_4326_CITIES.gpkg")
       expect_false(cache)

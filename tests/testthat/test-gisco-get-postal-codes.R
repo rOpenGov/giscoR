@@ -39,11 +39,9 @@ test_that("Postal codes use resolved GISCO files", {
     convert_country_code_or_null = function(country) {
       c("MT", "LU")
     },
-    make_sf_filter = function(
-      file_local,
-      values,
-      candidates = c("CNTR_ID", "CNTR_CODE")
-    ) {
+    make_sf_filter = function(file_local,
+                              values,
+                              candidates = c("CNTR_ID", "CNTR_CODE")) {
       filter_calls[[length(filter_calls) + 1L]] <<- list(
         file_local = file_local,
         values = values,
@@ -51,17 +49,15 @@ test_that("Postal codes use resolved GISCO files", {
       )
       stats::setNames(list(values), paste(candidates, collapse = "|"))
     },
-    read_gisco_dataset = function(
-      url,
-      name,
-      cache = TRUE,
-      cache_dir = NULL,
-      subdir,
-      update_cache = FALSE,
-      verbose = FALSE,
-      filters = NULL,
-      ...
-    ) {
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  ...) {
       expect_match(url, "PCODE_PT_2024_4326[.]gpkg$")
       expect_identical(name, "PCODE_PT_2024_4326.gpkg")
       expect_true(cache)
