@@ -84,18 +84,19 @@ get_unit_files <- function(
   api_entry <- paste0(gisco_distribution_url(), api_id, "/distribution/")
   cache_subdir <- file.path(dataset, "units")
   base_cache_dir <- create_cache_dir(cache_dir)
-  db <- NULL
+  units_db_cache <- new.env(parent = emptyenv())
 
   get_units_db <- function() {
-    if (!is.null(db)) {
-      return(db)
+    if (exists("value", envir = units_db_cache, inherits = FALSE)) {
+      return(get("value", envir = units_db_cache, inherits = FALSE))
     }
     resp <- get_request_body(db_path, FALSE)
     if (is.null(resp)) {
       return(NULL)
     }
-    db <<- unname(unlist(httr2::resp_body_json(resp)))
-    db
+    value <- unname(unlist(httr2::resp_body_json(resp)))
+    assign("value", value, envir = units_db_cache)
+    value
   }
 
   alldata <- lapply(seq_along(unit_names), function(i) {
