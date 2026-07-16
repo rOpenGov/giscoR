@@ -47,6 +47,11 @@ caption {
   color: var(--bs-navbar-color) !important;
 }
 
+/* Dev version badge in navbar: fixed vivid red outside brand tokens. */
+.navbar .text-danger {
+  color: #ff6b7b !important;
+}
+
 /* Hovers */
 #navbar .nav-link:hover,
 #navbar .nav-link:focus {
