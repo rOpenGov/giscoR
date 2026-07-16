@@ -3,6 +3,8 @@
 [data-bs-theme="dark"] {
   color-scheme: dark;
   --bs-body-bg: hsla(210, 10%, 25%, 1);
+  --bs-body-bg-rgb: 57, 64, 70;
+  --bs-danger-text-emphasis: #ee99a1;
 }
 
 .dropdown-menu {
@@ -258,7 +260,7 @@ a > code {
 code {
   font-size: 87.5%;
   word-wrap: break-word;
-  background-color: var(--body-bg) !important;
+  background-color: var(--bs-body-bg) !important;
 }
 
 @media (max-width: 575.98px) {
