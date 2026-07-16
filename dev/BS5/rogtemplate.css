@@ -2,8 +2,8 @@
 
 [data-bs-theme="dark"] {
   color-scheme: dark;
-  --bs-body-bg: hsla(210, 10%, 25%, 1);
-  --bs-body-bg-rgb: 57, 64, 70;
+  --bs-body-bg: #262b30;
+  --bs-body-bg-rgb: 38, 43, 48;
   --bs-danger-text-emphasis: #ee99a1;
 }
 
@@ -44,7 +44,7 @@ caption {
 }
 
 .navbar .text-muted {
-  color: var(--bs-gray-500) !important;
+  color: var(--bs-navbar-color) !important;
 }
 
 /* Hovers */
@@ -261,6 +261,11 @@ code {
   font-size: 87.5%;
   word-wrap: break-word;
   background-color: var(--bs-body-bg) !important;
+}
+
+pre code,
+pre code span {
+  background-color: transparent !important;
 }
 
 @media (max-width: 575.98px) {
