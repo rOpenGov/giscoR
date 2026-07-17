@@ -2,18 +2,6 @@
 
 [data-bs-theme="dark"] {
   color-scheme: dark;
-  --bs-body-bg: #262b30;
-  --bs-body-bg-rgb: 38, 43, 48;
-  --bs-danger-text-emphasis: #ee99a1;
-}
-
-.dropdown-menu {
-  --bs-dropdown-bg: var(--brand-gray_dark);
-  --bs-dropdown-link-active-bg: var(--bs-dropdown-bg);
-  --bs-dropdown-link-color: var(--bs-navbar-color);
-  --bs-dropdown-link-hover-color: rgba(255, 255, 255, 0.75);
-  --bs-dropdown-link-hover-bg: var(--bs-dropdown-bg);
-  --bs-dropdown-header-color: var(--bs-dropdown-link-hover-color);
 }
 
 /* ---Image and figure caption spacing--- */
@@ -39,7 +27,6 @@ caption {
 /* ---Navbar tweaks--- */
 .navbar-brand {
   font-family: "B612 Mono", monospace;
-  font-size: 1.5rem;
   color: var(--bs-white);
 }
 
@@ -52,23 +39,16 @@ caption {
   color: #ff6b7b !important;
 }
 
-/* Hovers */
+/* Actives */
 #navbar .nav-link:hover,
 #navbar .nav-link:focus {
-  color: rgba(255, 255, 255, 0.75);
-  background-color: transparent;
+  color: var(--bs-navbar-hover-color);
+  background-color: RGBA(var(--bs-warning-rgb), 0.05);
 }
 
-#navbar .dropdown-menu .dropdown-item.active:hover,
-#navbar .dropdown-menu .dropdown-item.active:focus {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-/* Actives */
-#navbar .nav-item.active .nav-link,
-#navbar .dropdown-menu .dropdown-item.active {
-  color: var(--bs-white);
-  background: transparent;
+#navbar .nav-item.active .nav-link {
+  color: var(--bs-navbar-active-color);
+  background-color: RGBA(var(--bs-warning-rgb), 0.05);
 }
 
 #navbar .dropdown-menu .dropdown-item .fa {
@@ -209,7 +189,7 @@ blockquote,
 .blockquote {
   margin: 0 0 1rem;
   padding: 0.625rem 1.25rem;
-  font-size: 1.25rem;
+  font-size: var(--bs-blockquote-font-size);
 }
 
 /* Clipboard button */
@@ -262,17 +242,6 @@ a > code {
   color: var(--bs-code-color);
 }
 
-code {
-  font-size: 87.5%;
-  word-wrap: break-word;
-  background-color: var(--bs-body-bg) !important;
-}
-
-pre code,
-pre code span {
-  background-color: transparent !important;
-}
-
 @media (max-width: 575.98px) {
   /* See https://github.com/r-lib/pkgdown/pull/2970 */
 
@@ -314,6 +283,9 @@ pre {
   pre code span.al, /* Alert */
   pre code span.er /* Error */ {
     color: var(--bs-danger-text-emphasis);
+  }
+  pre code span.al /* Alert */ {
+    background-color: transparent;
   }
   pre code span.at /* Attribute */ {
     color: var(--bs-form-valid-color);
