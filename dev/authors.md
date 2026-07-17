@@ -9,7 +9,7 @@
 - **[Eurostat](https://ec.europa.eu/eurostat)**. Copyright holder.
   [![ROR](https://raw.githubusercontent.com/ror-community/ror-logos/main/ror-icon-rgb.svg)](https://ror.org/033d3q980)
 
-- **[EuroGeographics](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)**.
+- **[EuroGeographics](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)**.
   Copyright holder.
 
 ## Citation
