@@ -220,6 +220,10 @@ units:</p><ul><li><p>Administrative units:
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ES003C    C         ES        Valencia  <span style="color: #949494;">""</span>        <span style="color: #949494;">"</span>ES003F<span style="color: #949494;">"</span>     402. ES523     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ES003F    F         ES        Valencia  <span style="color: #949494;">""</span>        <span style="color: #949494;">""</span>          <span style="text-decoration: underline;">5</span>430. ES523     </span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"dplyr"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;&amp;</span></span></span>
+<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"ggplot2"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Get `sf` objects and order by `AREA_SQM`.</span></span></span>
 <span class="r-in"><span><span class="va">valencia_sf</span> <span class="op">&lt;-</span> <span class="fu">gisco_get_unit_urban_audit</span><span class="op">(</span></span></span>
@@ -238,6 +242,7 @@ units:</p><ul><li><p>Administrative units:
 <span class="r-in"><span>    subtitle <span class="op">=</span> <span class="st">"Urban Audit 2020"</span>,</span></span>
 <span class="r-in"><span>    fill <span class="op">=</span> <span class="st">"Category"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-plt img"><img src="gisco_get_unit-1.png" alt="" width="2188" height="1352"></span>
 </code></pre></div>
     </div>

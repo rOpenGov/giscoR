@@ -138,7 +138,12 @@ gisco_attributions(lang = "XXX")
 #> [1] "© EuroGeographics for the administrative boundaries"
 
 # Get the list of codes from countrycode.
+if (requireNamespace("dplyr", quietly = TRUE)) {
 library(dplyr)
+
+countrycode::codelist |>
+  select(country.name.en, iso2c)
+}
 #> 
 #> Attaching package: ‘dplyr’
 #> The following objects are masked from ‘package:stats’:
@@ -147,9 +152,6 @@ library(dplyr)
 #> The following objects are masked from ‘package:base’:
 #> 
 #>     intersect, setdiff, setequal, union
-
-countrycode::codelist |>
-  select(country.name.en, iso2c)
 #> # A tibble: 292 × 2
 #>    country.name.en   iso2c
 #>    <chr>             <chr>

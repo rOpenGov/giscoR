@@ -226,5 +226,4 @@ select_nuts <- gisco_get_nuts(nuts_id = c("ES2", "FRJ", "FRL", "ITC"))
 ggplot(select_nuts) +
   geom_sf(aes(fill = CNTR_CODE)) +
   scale_fill_viridis_d()
-
 ```

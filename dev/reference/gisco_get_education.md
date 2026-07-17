@@ -118,7 +118,7 @@ Basic service datasets:
 edu_austria <- gisco_get_education(country = "Austria", year = 2023)
 
 # Plot if downloaded.
-if (!is.null(edu_austria)) {
+if (!is.null(edu_austria) && requireNamespace("ggplot2", quietly = TRUE)) {
   austria_nuts3 <- gisco_get_nuts(country = "Austria", nuts_level = 3)
 
   library(ggplot2)

@@ -184,6 +184,10 @@ valencia
 #>   <chr>     <chr>     <chr>     <chr>     <chr>     <chr>       <dbl> <chr>     
 #> 1 ES003C    C         ES        Valencia  ""        "ES003F"     402. ES523     
 #> 2 ES003F    F         ES        Valencia  ""        ""          5430. ES523     
+if (
+  requireNamespace("dplyr", quietly = TRUE) &&
+    requireNamespace("ggplot2", quietly = TRUE)
+) {
 library(dplyr)
 # Get `sf` objects and order by `AREA_SQM`.
 valencia_sf <- gisco_get_unit_urban_audit(
@@ -202,4 +206,5 @@ ggplot(valencia_sf) +
     subtitle = "Urban Audit 2020",
     fill = "Category"
   )
+}
 ```

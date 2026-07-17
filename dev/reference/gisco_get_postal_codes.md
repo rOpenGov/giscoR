@@ -121,7 +121,7 @@ Administrative unit datasets:
 pc_bel <- gisco_get_postal_codes(year = 2025, country = "BE")
 #> ! The file to download is "200.4 Mb".
 
-if (!is.null(pc_bel)) {
+if (!is.null(pc_bel) && requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
 
   ggplot(pc_bel) +
