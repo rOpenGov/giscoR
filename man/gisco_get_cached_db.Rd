@@ -34,7 +34,7 @@ A static database \link{gisco_db} is shipped with the package. This database is
 used if there is any problem during the update.
 }
 \examples{
-\dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
+\dontshow{if (gisco_check_access() && requireNamespace("dplyr", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 
 gisco_get_cached_db() |>
   dplyr::glimpse()

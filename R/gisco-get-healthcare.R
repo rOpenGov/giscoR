@@ -32,7 +32,10 @@
 #' )
 #'
 #' # Plot if downloaded.
-#' if (!is.null(health_benelux)) {
+#' if (
+#'   !is.null(health_benelux) &&
+#'     requireNamespace("ggplot2", quietly = TRUE)
+#' ) {
 #'   benelux <- gisco_get_countries(country = c("BE", "NL", "LU"))
 #'
 #'   library(ggplot2)

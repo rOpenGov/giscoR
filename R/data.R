@@ -25,7 +25,7 @@
 #' @seealso [gisco_get_metadata()] and [gisco_get_cached_db()].
 #' @encoding UTF-8
 #'
-#' @examples
+#' @examplesIf requireNamespace("dplyr", quietly = TRUE)
 #' data("gisco_db")
 #' gisco_db |>
 #'   dplyr::glimpse()
@@ -134,7 +134,7 @@ NULL
 #'
 #' @encoding UTF-8
 #'
-#' @examples
+#' @examplesIf requireNamespace("dplyr", quietly = TRUE)
 #' data("gisco_countrycode")
 #' dplyr::glimpse(gisco_countrycode)
 NULL

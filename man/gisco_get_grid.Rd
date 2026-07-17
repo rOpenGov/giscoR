@@ -67,7 +67,11 @@ official grid page before redistributing or publishing the data.
 grid <- gisco_get_grid(resolution = 20)
 
 # Proceed if downloaded correctly.
-if (!is.null(grid)) {
+if (
+  !is.null(grid) &&
+    requireNamespace("dplyr", quietly = TRUE) &&
+    requireNamespace("ggplot2", quietly = TRUE)
+) {
   library(dplyr)
 
   grid <- grid |>

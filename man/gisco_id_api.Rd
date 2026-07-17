@@ -158,7 +158,10 @@ gisco_id_api_geonames(x = -2.5, y = 43.06)
 lau <- gisco_id_api_lau(x = -2.5, y = 43.06)
 nuts3 <- gisco_id_api_nuts(x = -2.5, y = 43.06, nuts_level = 3)
 
-if (all(!is.null(lau), !is.null(nuts3))) {
+if (
+  all(!is.null(lau), !is.null(nuts3)) &&
+    requireNamespace("ggplot2", quietly = TRUE)
+) {
   library(ggplot2)
 
   ggplot(nuts3) +

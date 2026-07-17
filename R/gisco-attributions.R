@@ -86,10 +86,12 @@
 #' gisco_attributions(lang = "XXX")
 #'
 #' # Get the list of codes from countrycode.
+#' if (requireNamespace("dplyr", quietly = TRUE)) {
 #' library(dplyr)
 #'
 #' countrycode::codelist |>
 #'   select(country.name.en, iso2c)
+#' }
 #'
 gisco_attributions <- function(lang = "en", copyright = FALSE) {
   lang <- tolower(lang)
@@ -139,7 +141,8 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     "{.url https://github.com/rOpenGov/giscoR/issues}."
   )
 
-  attr <- switch(lang,
+  attr <- switch(
+    lang,
     "en" = "\u00a9 EuroGeographics for the administrative boundaries",
     "da" = "\u00a9 EuroGeographics for administrative gr\u00e6nser",
     "de" = "\u00a9 EuroGeographics bez\u00fcglich der Verwaltungsgrenzen",

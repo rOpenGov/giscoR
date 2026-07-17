@@ -7,6 +7,10 @@
 #' # Valencia, Spain.
 #' valencia <- cities[grep("Valencia", cities$URAU_NAME, fixed = TRUE), ]
 #' valencia
+#' if (
+#'   requireNamespace("dplyr", quietly = TRUE) &&
+#'     requireNamespace("ggplot2", quietly = TRUE)
+#' ) {
 #' library(dplyr)
 #' # Get `sf` objects and order by `AREA_SQM`.
 #' valencia_sf <- gisco_get_unit_urban_audit(
@@ -25,6 +29,7 @@
 #'     subtitle = "Urban Audit 2020",
 #'     fill = "Category"
 #'   )
+#' }
 #'
 gisco_get_unit_urban_audit <- function(
   unit = "ES001F",

@@ -104,7 +104,7 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 
-if (!is.null(ire_comm)) {
+if (!is.null(ire_comm) && requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
 
   ggplot(ire_comm) +

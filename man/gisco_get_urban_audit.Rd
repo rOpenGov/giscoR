@@ -116,7 +116,7 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 
 cities <- gisco_get_urban_audit(year = 2024, level = "CITIES")
 
-if (!is.null(cities)) {
+if (!is.null(cities) && requireNamespace("ggplot2", quietly = TRUE)) {
   bcn <- cities[cities$URAU_NAME == "Barcelona", ]
 
   library(ggplot2)

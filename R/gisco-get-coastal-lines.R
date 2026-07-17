@@ -37,6 +37,7 @@
 #' @examplesIf gisco_check_access()
 #' coast <- gisco_get_coastal_lines()
 #'
+#' if (requireNamespace("ggplot2", quietly = TRUE)) {
 #' library(ggplot2)
 #'
 #' ggplot(coast) +
@@ -51,6 +52,7 @@
 #'     panel.background = element_rect(fill = "#C7E7FB", color = NA),
 #'     panel.border = element_rect(colour = "black", fill = NA)
 #'   )
+#' }
 #'
 gisco_get_coastal_lines <- function(
   year = 2016,

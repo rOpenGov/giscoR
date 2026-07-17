@@ -93,7 +93,7 @@
 #'
 #' @encoding UTF-8
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
 #' cntries <- gisco_get_countries()
 #'
 #' library(ggplot2)

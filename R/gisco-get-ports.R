@@ -27,7 +27,7 @@
 #' ports <- gisco_get_ports(2013)
 #' coast <- giscoR::gisco_coastal_lines
 #'
-#' if (!is.null(ports)) {
+#' if (!is.null(ports) && requireNamespace("ggplot2", quietly = TRUE)) {
 #'   library(ggplot2)
 #'
 #'   ggplot(coast) +

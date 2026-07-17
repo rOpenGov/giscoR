@@ -24,7 +24,7 @@
 #' @inherit gisco_get_metadata source
 #' @encoding UTF-8
 #' @export
-#' @examplesIf gisco_check_access()
+#' @examplesIf gisco_check_access() && requireNamespace("dplyr", quietly = TRUE)
 #'
 #' gisco_get_cached_db() |>
 #'   dplyr::glimpse()

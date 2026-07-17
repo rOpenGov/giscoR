@@ -94,7 +94,7 @@ postal codes because the source data vary considerably among countries.
 
 pc_bel <- gisco_get_postal_codes(year = 2025, country = "BE")
 
-if (!is.null(pc_bel)) {
+if (!is.null(pc_bel) && requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
 
   ggplot(pc_bel) +

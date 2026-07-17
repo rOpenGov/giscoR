@@ -25,9 +25,11 @@ Please use \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}} with \code{
 corresponding API endpoints.
 }
 \examples{
+\dontshow{if (requireNamespace("dplyr", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 data("gisco_db")
 gisco_db |>
   dplyr::glimpse()
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}} and \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}}.

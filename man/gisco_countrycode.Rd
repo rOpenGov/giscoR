@@ -44,8 +44,10 @@ Under this scheme Cyprus is assigned to Asia.
 }
 
 \examples{
+\dontshow{if (requireNamespace("dplyr", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 data("gisco_countrycode")
 dplyr::glimpse(gisco_countrycode)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \link[countrycode:codelist]{countrycode::codelist}.

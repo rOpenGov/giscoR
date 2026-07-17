@@ -138,6 +138,7 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 }
 
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 nuts2 <- gisco_get_nuts(nuts_level = 2)
 
 library(ggplot2)
@@ -167,7 +168,7 @@ select_nuts <- gisco_get_nuts(nuts_id = c("ES2", "FRJ", "FRL", "ITC"))
 ggplot(select_nuts) +
   geom_sf(aes(fill = CNTR_CODE)) +
   scale_fill_viridis_d()
-
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \link{gisco_nuts_2024}, \code{\link[eurostat:get_eurostat_geospatial]{eurostat::get_eurostat_geospatial()}}.

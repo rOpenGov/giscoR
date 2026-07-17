@@ -80,7 +80,7 @@
 #'
 #' @encoding UTF-8
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("ggplot2", quietly = TRUE)
 #' nuts2 <- gisco_get_nuts(nuts_level = 2)
 #'
 #' library(ggplot2)

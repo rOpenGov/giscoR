@@ -28,7 +28,7 @@
 #' airp <- gisco_get_airports(year = 2024)
 #' coast <- giscoR::gisco_get_countries(year = 2024)
 #'
-#' if (!is.null(airp)) {
+#' if (!is.null(airp) && requireNamespace("ggplot2", quietly = TRUE)) {
 #'   library(ggplot2)
 #'
 #'   ggplot(coast) +

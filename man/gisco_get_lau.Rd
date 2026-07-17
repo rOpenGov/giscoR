@@ -102,7 +102,7 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 
 lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
 
-if (!is.null(lu_lau)) {
+if (!is.null(lu_lau) && requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
 
   ggplot(lu_lau) +

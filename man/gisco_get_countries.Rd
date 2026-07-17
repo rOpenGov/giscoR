@@ -116,6 +116,7 @@ Check the download and usage provisions in \code{\link[=gisco_attributions]{gisc
 }
 
 \examples{
+\dontshow{if (requireNamespace("ggplot2", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 cntries <- gisco_get_countries()
 
 library(ggplot2)
@@ -128,7 +129,7 @@ africa <- gisco_get_countries(region = "Africa")
 ggplot(africa) +
   geom_sf(fill = "#078930", col = "white") +
   theme_minimal()
-
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \link{gisco_countrycode}, \link{gisco_countries_2024}, \code{\link[=gisco_get_metadata]{gisco_get_metadata()}},

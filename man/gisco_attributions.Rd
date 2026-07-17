@@ -91,10 +91,12 @@ gisco_attributions(lang = "es", copyright = TRUE)
 gisco_attributions(lang = "XXX")
 
 # Get the list of codes from countrycode.
+if (requireNamespace("dplyr", quietly = TRUE)) {
 library(dplyr)
 
 countrycode::codelist |>
   select(country.name.en, iso2c)
+}
 
 }
 \concept{attribution}
