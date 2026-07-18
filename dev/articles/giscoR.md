@@ -69,11 +69,11 @@ Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 ### Population grids
 
 [`gisco_get_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_grid.md)
-downloads polygon or cell-centre point GeoPackages in **EPSG:3035** at
+downloads polygon or cell-center point GeoPackages in **EPSG:3035** at
 resolutions from 1 km to 100 km. Population columns use names such as
 `TOT_P_2021`. Divide these values by `resolution^2`, not by
-`resolution`, to calculate people per square kilometre. Population
-variables have year- and country-specific licensing conditions, consult
+`resolution`, to calculate people per square kilometer. Population
+variables have year- and country-specific licensing conditions. Consult
 the official [grid
 documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
 before publication or redistribution.
@@ -249,7 +249,7 @@ ggplot(nuts2_sf) +
     values = hcl.colors(length(labs), "Geyser", rev = TRUE),
     # Label missing values.
     labels = function(x) {
-      ifelse(is.na(x), "No Data", x)
+      ifelse(is.na(x), "No data", x)
     },
     na.value = "#e1e1e1"
   ) +

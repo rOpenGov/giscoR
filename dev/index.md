@@ -24,11 +24,11 @@ locations.
 ### Population grids
 
 [`gisco_get_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_grid.md)
-downloads polygon or cell-centre point GeoPackages in **EPSG:3035** at
+downloads polygon or cell-center point GeoPackages in **EPSG:3035** at
 resolutions from 1 km to 100 km. Population columns use names such as
 `TOT_P_2021`. Divide these values by `resolution^2`, not by
-`resolution`, to calculate people per square kilometre. Population
-variables have year- and country-specific licensing conditions, consult
+`resolution`, to calculate people per square kilometer. Population
+variables have year- and country-specific licensing conditions. Consult
 the official [grid
 documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
 before publication or redistribution.
@@ -127,7 +127,7 @@ library(dplyr)
 library(eurostat)
 library(ggplot2)
 
-# Retrieve **sf** package objects.
+# Retrieve sf objects.
 nuts3 <- gisco_get_nuts(
   year = 2021,
   epsg = 3035,
@@ -169,7 +169,7 @@ labs <- prettyNum(br[-1], big.mark = ",")
 
 # Label missing values in the plot.
 labeller_plot <- function(x) {
-  ifelse(is.na(x), "No Data", x)
+  ifelse(is.na(x), "No data", x)
 }
 nuts3_sf <- nuts3_sf |>
   # Cut with labels.

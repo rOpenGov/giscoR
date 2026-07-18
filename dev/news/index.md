@@ -4,16 +4,16 @@
 
 - Add a precomputed article showing GISCO ID service API and GISCO
   Address API workflows with **ggplot2** examples.
-- [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
-  adds support for the Airports 2024 point dataset.
 - Query timeout can now also be controlled with the `GISCO_TIMEOUT`
   environment variable when `options(gisco_timeout)` is not set.
-- Update
-  [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
-- [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
-  now defaults to the 2025 release and adds an `epsg` argument.
 - Refactor tests to isolate cache state, use temporary cache directories
   and improve mocked coverage of cache and request helpers.
+- Update
+  [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
+- [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
+  adds support for the Airports 2024 point dataset.
+- [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
+  now defaults to the 2025 release and adds an `epsg` argument.
 
 ## giscoR 1.1.1
 
