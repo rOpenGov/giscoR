@@ -3,6 +3,8 @@
 - Add a precomputed article showing GISCO ID service API and GISCO Address API
   workflows with **ggplot2** examples.
 - `gisco_get_airports()` adds support for the Airports 2024 point dataset.
+- Query timeout can now also be controlled with the `GISCO_TIMEOUT` environment
+  variable when `options(gisco_timeout)` is not set.
 - Update `?gisco_db`.
 - `gisco_get_postal_codes()` now defaults to the 2025 release and adds an `epsg`
   argument.

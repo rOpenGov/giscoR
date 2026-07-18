@@ -27,7 +27,7 @@ gisco_request <- function(
   req <- httr2::req_error(req, is_error = function(x) {
     FALSE
   })
-  req <- httr2::req_timeout(req, getOption("gisco_timeout", 300L))
+  req <- httr2::req_timeout(req, gisco_timeout())
 
   if (cache) {
     req <- httr2::req_cache(
@@ -196,4 +196,31 @@ call_gisco_json_api <- function(
 #' @noRd
 gisco_resp_body_json <- function(resp, ...) {
   httr2::resp_body_json(resp, ...)
+}
+
+#' Get an HTTP configuration value from options or environment variables
+#' @noRd
+gisco_http_config <- function(option, envvar, default) {
+  opt <- getOption(option, NULL)
+  if (!is.null(opt)) {
+    return(opt)
+  }
+
+  env <- Sys.getenv(envvar, unset = NA_character_)
+  if (is.na(env) || identical(env, "")) {
+    return(default)
+  }
+
+  env_num <- suppressWarnings(as.numeric(env))
+  if (is.na(env_num)) {
+    return(default)
+  }
+
+  env_num
+}
+
+#' Get the timeout setting for GISCO HTTP requests
+#' @noRd
+gisco_timeout <- function() {
+  gisco_http_config("gisco_timeout", "GISCO_TIMEOUT", 300L)
 }
