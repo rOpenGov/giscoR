@@ -38,20 +38,20 @@
 #' coast <- gisco_get_coastal_lines()
 #'
 #' if (requireNamespace("ggplot2", quietly = TRUE)) {
-#' library(ggplot2)
+#'   library(ggplot2)
 #'
-#' ggplot(coast) +
-#'   geom_sf(color = "#1278AB", fill = "#FDFBEA") +
-#'   # Zoom on the Mediterranean Sea.
-#'   coord_sf(
-#'     xlim = c(-4, 35),
-#'     ylim = c(31, 45)
-#'   ) +
-#'   theme_minimal() +
-#'   theme(
-#'     panel.background = element_rect(fill = "#C7E7FB", color = NA),
-#'     panel.border = element_rect(colour = "black", fill = NA)
-#'   )
+#'   ggplot(coast) +
+#'     geom_sf(color = "#1278AB", fill = "#FDFBEA") +
+#'     # Zoom on the Mediterranean Sea.
+#'     coord_sf(
+#'       xlim = c(-4, 35),
+#'       ylim = c(31, 45)
+#'     ) +
+#'     theme_minimal() +
+#'     theme(
+#'       panel.background = element_rect(fill = "#C7E7FB", color = NA),
+#'       panel.border = element_rect(colour = "black", fill = NA)
+#'     )
 #' }
 #'
 gisco_get_coastal_lines <- function(

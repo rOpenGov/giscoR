@@ -143,24 +143,24 @@ if (
   requireNamespace("dplyr", quietly = TRUE) &&
     requireNamespace("ggplot2", quietly = TRUE)
 ) {
-library(dplyr)
-# Get `sf` objects and order by `AREA_SQM`.
-valencia_sf <- gisco_get_unit_urban_audit(
-  unit = valencia$URAU_CODE,
-  year = 2024
-) |>
-  arrange(desc(AREA_SQM))
-# Plot.
-library(ggplot2)
+  library(dplyr)
+  # Get `sf` objects and order by `AREA_SQM`.
+  valencia_sf <- gisco_get_unit_urban_audit(
+    unit = valencia$URAU_CODE,
+    year = 2024
+  ) |>
+    arrange(desc(AREA_SQM))
+  # Plot.
+  library(ggplot2)
 
-ggplot(valencia_sf) +
-  geom_sf(aes(fill = URAU_CATG)) +
-  scale_fill_viridis_d() +
-  labs(
-    title = "Valencia",
-    subtitle = "Urban Audit 2020",
-    fill = "Category"
-  )
+  ggplot(valencia_sf) +
+    geom_sf(aes(fill = URAU_CATG)) +
+    scale_fill_viridis_d() +
+    labs(
+      title = "Valencia",
+      subtitle = "Urban Audit 2020",
+      fill = "Category"
+    )
 }
 \dontshow{\}) # examplesIf}
 }
