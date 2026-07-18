@@ -1,7 +1,6 @@
 # giscoR (development version)
 
-- Add a precomputed article showing GISCO ID service API and GISCO Address API
-  workflows with **ggplot2** examples.
+- Add an article showing GISCO ID service API and GISCO Address API workflows with **ggplot2** examples.
 - Query timeout can now also be controlled with the `GISCO_TIMEOUT` environment
   variable when `options(gisco_timeout)` is not set.
 - Refactor tests to isolate cache state, use temporary cache directories and

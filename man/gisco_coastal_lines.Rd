@@ -10,7 +10,7 @@ A \code{\link[sf:st_sf]{sf}} object with \code{POLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}.
 }
 \source{
-\href{https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/}{COAS_RG_20M_2016_4326.gpkg} file.
+\href{https://gisco-services.ec.europa.eu/distribution/v2/coas/gpkg/}{COAS_RG_20M_2016_4326.gpkg} file.
 }
 \description{
 This object contains the coastal lines of the world.

@@ -122,7 +122,7 @@ matching, for all arguments of each endpoint.
 \details{
 The following table describes the API endpoints, based on the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API endpoint documentation}:\tabular{ll}{
    \strong{Endpoint} \tab \strong{Description} \cr
-   \verb{/countries} \tab All country codes compatible with the address API. Check the coverage map for available countries and see the \href{https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies}{list of official country codes}. \cr
+   \verb{/countries} \tab All country codes compatible with the GISCO Address API. Check the coverage map for available countries and see the \href{https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies}{list of official country codes}. \cr
    \verb{/provinces} \tab All provinces within the specified country. It can also retrieve the province for a specified city. \cr
    \verb{/cities} \tab All cities within a specified province or country. \cr
    \verb{/roads} \tab All roads or streets within a specified city. \cr

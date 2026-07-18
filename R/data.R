@@ -160,7 +160,7 @@ NULL
 #'
 #' cat(paste0("[COAS_RG_20M_2016_4326.gpkg]",
 #'       "(https://gisco-services.ec.europa.eu/distribution/v2/",
-#'       "coas/geojson/) file."))
+#'       "coas/gpkg/) file."))
 #'
 #' ```
 #'
