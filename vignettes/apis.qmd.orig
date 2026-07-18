@@ -180,7 +180,7 @@ ggplot(bbox) +
   ) +
   labs(
     title = "GISCO Address API lookup",
-    subtitle = "Address search results inside the Luxembourg city bbox",
+    subtitle = "Address search results inside the Luxembourg city bounding box",
     caption = gisco_attributions()
   )
 ```
