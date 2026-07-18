@@ -6,6 +6,8 @@
   Address API workflows with **ggplot2** examples.
 - [`gisco_get_airports()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_airports.md)
   adds support for the Airports 2024 point dataset.
+- Query timeout can now also be controlled with the `GISCO_TIMEOUT`
+  environment variable when `options(gisco_timeout)` is not set.
 - Update
   [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).
 - [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
