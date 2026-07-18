@@ -139,10 +139,10 @@ gisco_attributions(lang = "XXX")
 
 # Get the list of codes from countrycode.
 if (requireNamespace("dplyr", quietly = TRUE)) {
-library(dplyr)
+  library(dplyr)
 
-countrycode::codelist |>
-  select(country.name.en, iso2c)
+  countrycode::codelist |>
+    select(country.name.en, iso2c)
 }
 #> 
 #> Attaching package: ‘dplyr’
