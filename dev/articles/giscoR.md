@@ -198,8 +198,7 @@ Political map of North Africa
 
 This example shows how **giscoR** can be used with Eurostat data. For
 plotting, we use the **ggplot2** package. Any package that supports
-**sf** package objects, such as **tmap**, **mapsf** or **leaflet**, can
-be used.
+**sf** objects, such as **tmap**, **mapsf** or **leaflet**, can be used.
 
 ``` r
 

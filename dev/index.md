@@ -18,7 +18,7 @@ locations.
   reference systems **EPSG:4326**, **EPSG:3035** and **EPSG:3857**.
 - Use each grid, transport or basic service dataset in its documented
   format and coordinate reference system.
-- Return **sf** package objects for spatial analysis.
+- Return **sf** objects for spatial analysis.
 - Cache downloaded files for faster repeated access.
 
 ### Population grids

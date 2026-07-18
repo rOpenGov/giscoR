@@ -127,7 +127,7 @@ documentation](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoi
 |  |  |
 |----|----|
 | **Endpoint** | **Description** |
-| `/countries` | All country codes compatible with the address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
+| `/countries` | All country codes compatible with the GISCO Address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
 | `/provinces` | All provinces within the specified country. It can also retrieve the province for a specified city. |
 | `/cities` | All cities within a specified province or country. |
 | `/roads` | All roads or streets within a specified city. |

@@ -10,7 +10,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 ## Source
 
-[COAS_RG_20M_2016_4326.gpkg](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/)
+[COAS_RG_20M_2016_4326.gpkg](https://gisco-services.ec.europa.eu/distribution/v2/coas/gpkg/)
 file.
 
 ## Copyright
