@@ -51,8 +51,8 @@ locations.
 **EPSG:3035** at resolutions from 1 km to 100 km. Population columns use
 names such as `TOT_P_2021`. Divide these values by `resolution^2`, not
 by `resolution`, to calculate people per square kilometer. Population
-variables have year- and country-specific licensing conditions. Consult the
-official [grid
+variables have year- and country-specific licensing conditions. Consult
+the official [grid
 documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
 before publication or redistribution.
 
