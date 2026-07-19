@@ -103,7 +103,7 @@ test_that("Metadata is available for every NUTS year", {
   val_years <- db_values("nuts", "year", formatted = FALSE)
   for (i in val_years) {
     db <- gisco_get_metadata("nuts", i)
-    expect_s3_class(db, "tbl_df")
+    expect_true(inherits(db, "tbl_df"), info = paste("dataset: nuts; year:", i))
   }
 })
 
@@ -113,7 +113,10 @@ test_that("Metadata is available for every countries year", {
   val_years <- db_values("countries", "year", formatted = FALSE)
   for (i in val_years) {
     db <- gisco_get_metadata("countries", i)
-    expect_s3_class(db, "tbl_df")
+    expect_true(
+      inherits(db, "tbl_df"),
+      info = paste("dataset: countries; year:", i)
+    )
   }
 })
 
@@ -123,6 +126,9 @@ test_that("Metadata is available for every urban audit year", {
   val_years <- db_values("urban_audit", "year", formatted = FALSE)
   for (i in val_years) {
     db <- gisco_get_metadata("urban_audit", i)
-    expect_s3_class(db, "tbl_df")
+    expect_true(
+      inherits(db, "tbl_df"),
+      info = paste("dataset: urban_audit; year:", i)
+    )
   }
 })

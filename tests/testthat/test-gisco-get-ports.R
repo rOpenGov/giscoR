@@ -56,13 +56,16 @@ test_that("Ports download current and legacy point data", {
   skip_if_gisco_offline()
 
   all <- expect_silent(gisco_get_ports())
-  expect_true(all(sf::st_geometry_type(all) == "POINT"))
+  expect_identical(
+    as.character(sf::st_geometry_type(all)),
+    rep("POINT", nrow(all))
+  )
 
   expect_silent(gisco_get_ports())
   es <- expect_silent(gisco_get_ports(country = "ES"))
   expect_s3_class(es, "tbl_df")
   expect_s3_class(es, "sf")
-  expect_true("CNTR_ISO2" %in% names(es))
+  expect_equal(setdiff("CNTR_ISO2", names(es)), character(0))
   expect_lt(nrow(es), nrow(all))
 
   expect_identical(sf::st_crs(all), sf::st_crs(4326))
@@ -73,13 +76,16 @@ test_that("Ports download current and legacy point data", {
 
   # 2009
   all <- expect_silent(gisco_get_ports(2009))
-  expect_true(all(sf::st_geometry_type(all) == "POINT"))
+  expect_identical(
+    as.character(sf::st_geometry_type(all)),
+    rep("POINT", nrow(all))
+  )
 
   expect_silent(gisco_get_ports(2009))
   es <- expect_silent(gisco_get_ports(country = "ES"))
   expect_s3_class(es, "tbl_df")
   expect_s3_class(es, "sf")
-  expect_true("CNTR_ISO2" %in% names(es))
+  expect_equal(setdiff("CNTR_ISO2", names(es)), character(0))
   expect_lt(nrow(es), nrow(all))
 
   expect_identical(sf::st_crs(all), sf::st_crs(4326))

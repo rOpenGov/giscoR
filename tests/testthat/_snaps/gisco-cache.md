@@ -5,7 +5,7 @@
     Condition
       Error in `gisco_set_cache_dir()`:
       ! A `cache_dir` path already exists.
-      You can overwrite it with `overwrite` = TRUE.
+      i Set `overwrite` to "TRUE" to replace it.
 
 # Legacy cache configuration migrates to the current location
 

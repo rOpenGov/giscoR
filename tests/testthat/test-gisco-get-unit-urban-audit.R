@@ -155,8 +155,8 @@ test_that("Urban audit unit supports multiple calls and units", {
     "Skipping"
   )
   expect_equal(nrow(g), 3)
-  expect_true(all(g$CNTR_CODE == c("BE", "RO", "FI")))
-  expect_true(all(sf::st_geometry_type(g) == "POINT"))
+  expect_identical(g$CNTR_CODE, c("BE", "RO", "FI"))
+  expect_identical(as.character(sf::st_geometry_type(g)), rep("POINT", 3))
 
   # Polygon
 
@@ -167,7 +167,10 @@ test_that("Urban audit unit supports multiple calls and units", {
     cache_dir = cdir
   )
   expect_equal(nrow(pol), 3)
-  expect_true(all(sf::st_geometry_type(pol) == "MULTIPOLYGON"))
+  expect_identical(
+    as.character(sf::st_geometry_type(pol)),
+    rep("MULTIPOLYGON", 3)
+  )
 })
 
 test_that("Urban audit unit validates year, EPSG and spatial type", {

@@ -124,7 +124,7 @@ test_that("gisco_id_api_nuts online", {
   )
 
   expect_s3_class(n, "tbl_df")
-  expect_true(inherits(n, "sf"))
+  expect_s3_class(n, "sf")
   # epsg
   expect_snapshot(gisco_id_api_nuts(epsg = 222), error = TRUE)
 
@@ -135,7 +135,7 @@ test_that("gisco_id_api_nuts online", {
   )
 
   expect_s3_class(n, "tbl_df")
-  expect_true(inherits(n, "sf"))
+  expect_s3_class(n, "sf")
   expect_identical(n$nuts_id, "ES11")
 
   # no geometry
@@ -164,8 +164,8 @@ test_that("gisco_id_api_lau online", {
   )
 
   expect_s3_class(n, "tbl_df")
-  expect_true(inherits(n, "sf"))
-  expect_true(any(grepl("lau", names(n), fixed = TRUE)))
+  expect_s3_class(n, "sf")
+  expect_gt(length(grep("lau", names(n), fixed = TRUE)), 0)
   # epsg
   expect_snapshot(gisco_id_api_lau(epsg = 222, x = 1, y = 1), error = TRUE)
 
@@ -179,7 +179,7 @@ test_that("gisco_id_api_lau online", {
     )
   )
   expect_s3_class(n, "tbl_df")
-  expect_true(any(grepl("lau", names(n), fixed = TRUE)))
+  expect_gt(length(grep("lau", names(n), fixed = TRUE)), 0)
   expect_false(inherits(n, "sf"))
 })
 
@@ -195,7 +195,7 @@ test_that("gisco_id_api_country online", {
   )
 
   expect_s3_class(n, "tbl_df")
-  expect_true(inherits(n, "sf"))
+  expect_s3_class(n, "sf")
   expect_identical(n$id, "CZ")
   # epsg
   expect_snapshot(gisco_id_api_country(epsg = 222, x = 1, y = 1), error = TRUE)
@@ -226,7 +226,7 @@ test_that("gisco_id_api_river_basin online", {
       verbose = TRUE
     )
   )
-  expect_true(any(grepl("sizevalue", names(n), fixed = TRUE)))
+  expect_gt(length(grep("sizevalue", names(n), fixed = TRUE)), 0)
 
   expect_s3_class(n, "tbl_df")
 
@@ -245,7 +245,7 @@ test_that("gisco_id_api_biogeo_region online", {
       verbose = TRUE
     )
   )
-  expect_true(any(grepl("biogeo", names(n), fixed = TRUE)))
+  expect_gt(length(grep("biogeo", names(n), fixed = TRUE)), 0)
 
   expect_s3_class(n, "tbl_df")
 
@@ -264,7 +264,7 @@ test_that("gisco_id_api_census_grid online", {
       verbose = TRUE
     )
   )
-  expect_true(any(grepl("grid", names(n), fixed = TRUE)))
+  expect_gt(length(grep("grid", names(n), fixed = TRUE)), 0)
 
   expect_s3_class(n, "tbl_df")
 
@@ -279,9 +279,9 @@ test_that("gisco_id_api_census_grid online", {
       verbose = FALSE
     )
   )
-  expect_true(any(grepl("grid", names(n), fixed = TRUE)))
+  expect_gt(length(grep("grid", names(n), fixed = TRUE)), 0)
 
   expect_s3_class(n, "tbl_df")
 
-  expect_true(inherits(n, "sf"))
+  expect_s3_class(n, "sf")
 })

@@ -446,27 +446,17 @@ test_that("Response body string wrapper delegates to httr2", {
   expect_identical(gisco_resp_body_string(resp), "abc")
 })
 
-test_that("Downloads retry successfully after a timeout", {
-  skip_on_cran()
-  skip_if_gisco_offline()
+test_that("HTTP error responses clean up failed downloads", {
+  file_local <- withr::local_tempfile(lines = "partial download")
+  resp <- httr2::response(404)
 
-  cdir <- local_test_cache_dir("testthat-timeout-")
-
-  url <- paste0(
-    "https://gisco-services.ec.europa.eu/distribution/v2/",
-    "countries/geojson/CNTR_BN_20M_2020_4326.geojson"
+  is_error <- gisco_response_is_error(
+    resp,
+    "https://example.com/missing.gpkg",
+    file_local = file_local,
+    verbose = FALSE
   )
 
-  withr::local_options(gisco_timeout = 0.01)
-  expect_error(
-    download_url(url = url, verbose = FALSE, cache_dir = cdir),
-    "Failed to perform HTTP request(.*)Timeout(.*)after(.*)milliseconds"
-  )
-
-  withr::local_options(gisco_timeout = 300L)
-  expect_silent(
-    ff <- download_url(url = url, verbose = FALSE, cache_dir = cdir)
-  )
-
-  expect_true(file.exists(ff))
+  expect_true(is_error)
+  expect_false(file.exists(file_local))
 })

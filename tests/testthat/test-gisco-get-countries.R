@@ -233,16 +233,19 @@ test_that("Countries support boundary, label and coastline spatial types", {
 
   # LB
   lb <- gisco_get_countries(spatialtype = "LB")
-  expect_true(unique(sf::st_geometry_type(lb)) == "POINT") # Can filter
-  expect_true("CNTR_ID" %in% names(lb))
+  expect_identical(unique(as.character(sf::st_geometry_type(lb))), "POINT")
+  expect_equal(setdiff("CNTR_ID", names(lb)), character(0))
   lb_filter <- gisco_get_countries(spatialtype = "LB", country = "ESP")
   expect_identical(lb_filter$CNTR_ID, "ES")
 
   # BN
   bn <- gisco_get_countries(spatialtype = "BN", resolution = "60")
-  expect_true(unique(sf::st_geometry_type(bn)) == "MULTILINESTRING")
+  expect_identical(
+    unique(as.character(sf::st_geometry_type(bn))),
+    "MULTILINESTRING"
+  )
   # No filter
-  expect_false("CNTR_ID" %in% names(bn))
+  expect_equal(intersect("CNTR_ID", names(bn)), character(0))
   expect_identical(
     bn,
     gisco_get_countries(spatialtype = "BN", resolution = "60", country = "ES")
@@ -250,9 +253,12 @@ test_that("Countries support boundary, label and coastline spatial types", {
 
   # COASTL
   bn <- gisco_get_countries(spatialtype = "COASTL", resolution = "60")
-  expect_true(unique(sf::st_geometry_type(bn)) == "MULTILINESTRING")
+  expect_identical(
+    unique(as.character(sf::st_geometry_type(bn))),
+    "MULTILINESTRING"
+  )
   # No filter
-  expect_false("CNTR_ID" %in% names(bn))
+  expect_equal(intersect("CNTR_ID", names(bn)), character(0))
   expect_identical(
     bn,
     gisco_get_countries(
@@ -263,9 +269,12 @@ test_that("Countries support boundary, label and coastline spatial types", {
   )
   # INLAND
   bn <- gisco_get_countries(spatialtype = "INLAND", resolution = "60")
-  expect_true(unique(sf::st_geometry_type(bn)) == "MULTILINESTRING")
+  expect_identical(
+    unique(as.character(sf::st_geometry_type(bn))),
+    "MULTILINESTRING"
+  )
   # No filter
-  expect_false("CNTR_ID" %in% names(bn))
+  expect_equal(intersect("CNTR_ID", names(bn)), character(0))
   expect_identical(
     bn,
     gisco_get_countries(

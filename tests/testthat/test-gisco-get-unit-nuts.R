@@ -133,8 +133,8 @@ test_that("NUTS unit supports multiple calls and units", {
     "Skipping"
   )
   expect_equal(nrow(g), 3)
-  expect_true(all(g$CNTR_CODE == c("ES", "DE", "CZ")))
-  expect_true(all(sf::st_geometry_type(g) == "POINT"))
+  expect_identical(g$CNTR_CODE, c("ES", "DE", "CZ"))
+  expect_identical(as.character(sf::st_geometry_type(g)), rep("POINT", 3))
 
   # Polygon
 
@@ -146,7 +146,7 @@ test_that("NUTS unit supports multiple calls and units", {
     cache_dir = cdir
   )
   expect_equal(nrow(pol), 3)
-  expect_true(all(sf::st_geometry_type(pol) == "POLYGON"))
+  expect_identical(as.character(sf::st_geometry_type(pol)), rep("POLYGON", 3))
 })
 
 test_that("NUTS unit validates year, EPSG, resolution and spatial type", {

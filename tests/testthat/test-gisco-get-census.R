@@ -70,7 +70,7 @@ test_that("Census reads point geometries", {
   all <- expect_silent(gisco_get_census(spatialtype = "PT"))
   expect_s3_class(all, "tbl_df")
   expect_s3_class(all, "sf")
-  expect_true(unique(sf::st_geometry_type(all)) == "POINT")
+  expect_identical(unique(as.character(sf::st_geometry_type(all))), "POINT")
   expect_identical(sf::st_crs(all), sf::st_crs(4326))
 })
 test_that("Census reads polygon geometries", {
@@ -102,6 +102,9 @@ test_that("Census reads polygon geometries", {
   expect_snapshot(all <- gisco_get_census(spatialtype = "RG"))
   expect_s3_class(all, "tbl_df")
   expect_s3_class(all, "sf")
-  expect_true(unique(sf::st_geometry_type(all)) == "MULTIPOLYGON")
+  expect_identical(
+    unique(as.character(sf::st_geometry_type(all))),
+    "MULTIPOLYGON"
+  )
   expect_identical(sf::st_crs(all), sf::st_crs(4326))
 })

@@ -9,14 +9,14 @@ test_that("#62 geo column to NUTS", {
   # https://github.com/rOpenGov/giscoR/issues/62
 
   # Shipped dataset
-  expect_true("geo" %in% names(giscoR::gisco_nuts_2024))
+  expect_equal(setdiff("geo", names(giscoR::gisco_nuts_2024)), character(0))
 
   skip_on_cran()
   skip_if_gisco_offline()
 
   # In default nuts call
   nuts2_data <- gisco_get_nuts()
-  expect_true("geo" %in% names(nuts2_data))
+  expect_equal(setdiff("geo", names(nuts2_data)), character(0))
 
   # In no cached data
   nuts0_nocache <- gisco_get_nuts(
@@ -29,7 +29,7 @@ test_that("#62 geo column to NUTS", {
     ext = "geojson"
   )
 
-  expect_true("geo" %in% names(nuts0_nocache))
+  expect_equal(setdiff("geo", names(nuts0_nocache)), character(0))
 
   # No cached LB
   nuts0_nocache_lb <- gisco_get_nuts(
@@ -42,7 +42,7 @@ test_that("#62 geo column to NUTS", {
     nuts_id = "LU"
   )
 
-  expect_true("geo" %in% names(nuts0_nocache_lb))
+  expect_equal(setdiff("geo", names(nuts0_nocache_lb)), character(0))
 
   # Cache
   nuts0_cache <- gisco_get_nuts(
@@ -53,7 +53,7 @@ test_that("#62 geo column to NUTS", {
     nuts_id = "LU"
   )
 
-  expect_true("geo" %in% names(nuts0_cache))
+  expect_equal(setdiff("geo", names(nuts0_cache)), character(0))
 
   nuts0_cache_lb <- gisco_get_nuts(
     nuts_level = 0,
@@ -64,7 +64,7 @@ test_that("#62 geo column to NUTS", {
     nuts_id = "LU"
   )
 
-  expect_true("geo" %in% names(nuts0_cache_lb))
+  expect_equal(setdiff("geo", names(nuts0_cache_lb)), character(0))
 
   # Units
 
@@ -76,7 +76,7 @@ test_that("#62 geo column to NUTS", {
     resolution = 60
   )
 
-  expect_true("geo" %in% names(u_nuts0_nocached))
+  expect_equal(setdiff("geo", names(u_nuts0_nocached)), character(0))
 
   u_nuts0_nocached_lb <- gisco_get_unit_nuts(
     year = 2021,
@@ -86,7 +86,7 @@ test_that("#62 geo column to NUTS", {
     resolution = 60
   )
 
-  expect_true("geo" %in% names(u_nuts0_nocached_lb))
+  expect_equal(setdiff("geo", names(u_nuts0_nocached_lb)), character(0))
 
   # Cached
   u_nuts0_cached <- gisco_get_unit_nuts(
@@ -96,7 +96,7 @@ test_that("#62 geo column to NUTS", {
     resolution = 60
   )
 
-  expect_true("geo" %in% names(u_nuts0_cached))
+  expect_equal(setdiff("geo", names(u_nuts0_cached)), character(0))
 
   u_nuts0_cached_lb <- gisco_get_unit_nuts(
     year = 2021,
@@ -106,5 +106,5 @@ test_that("#62 geo column to NUTS", {
     resolution = 60
   )
 
-  expect_true("geo" %in% names(u_nuts0_cached_lb))
+  expect_equal(setdiff("geo", names(u_nuts0_cached_lb)), character(0))
 })

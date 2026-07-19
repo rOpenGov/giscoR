@@ -138,7 +138,7 @@ gisco_set_cache_dir <- function(
     } else {
       cli::cli_abort(c(
         "A {.arg cache_dir} path already exists.",
-        "You can overwrite it with {.arg overwrite} = {.val {TRUE}}."
+        i = "Set {.arg overwrite} to {.val TRUE} to replace it."
       ))
     }
   } else {

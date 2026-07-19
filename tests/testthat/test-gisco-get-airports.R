@@ -56,7 +56,10 @@ test_that("Airports download current and legacy point data", {
 
   all <- expect_silent(gisco_get_airports())
   es <- expect_silent(gisco_get_airports(country = "ES"))
-  expect_true(all(sf::st_geometry_type(all) == "POINT"))
+  expect_identical(
+    as.character(sf::st_geometry_type(all)),
+    rep("POINT", nrow(all))
+  )
   expect_s3_class(es, "tbl_df")
   expect_s3_class(es, "sf")
   expect_lt(nrow(es), nrow(all))
@@ -70,7 +73,10 @@ test_that("Airports download current and legacy point data", {
   # 2006
 
   all <- expect_silent(gisco_get_airports(2006))
-  expect_true(all(sf::st_geometry_type(all) == "POINT"))
+  expect_identical(
+    as.character(sf::st_geometry_type(all)),
+    rep("POINT", nrow(all))
+  )
 
   es <- expect_silent(gisco_get_airports(2006, country = "ES"))
   expect_s3_class(es, "tbl_df")

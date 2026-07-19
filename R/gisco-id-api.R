@@ -272,15 +272,11 @@ prepare_id_query <- function(
   endpoint
 ) {
   if (length(nuts_id) > 1) {
-    msg <- paste0(
-      "{.arg nuts_id} should have length {.val {1}}, ",
-      "not {.val {",
-      length(nuts_id),
-      "}}."
-    )
-    make_msg("warning", TRUE, msg)
-    msg2 <- paste0("Using {.arg nuts_id} = {.str ", nuts_id[1], "}.")
-    make_msg("info", TRUE, msg2)
+    cli::cli_alert_warning(paste0(
+      "{.arg nuts_id} should have length 1, ",
+      "not {length(nuts_id)}."
+    ))
+    cli::cli_alert_info("Using {.arg nuts_id} = {.str {nuts_id[1]}}.")
 
     nuts_id <- nuts_id[1]
   }

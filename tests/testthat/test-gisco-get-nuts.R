@@ -104,10 +104,10 @@ test_that("NUTS can refresh an existing cached dataset", {
   db_cached_l1 <- gisco_get_nuts(nuts_level = 1)
   db_cached_l2 <- gisco_get_nuts(nuts_level = 2)
   db_cached_l3 <- gisco_get_nuts(nuts_level = 3)
-  expect_true(all(db_cached_l1$LEVL_CODE == 1))
-  expect_true(all(db_cached_l2$LEVL_CODE == 2))
+  expect_equal(unique(db_cached_l1$LEVL_CODE), 1)
+  expect_equal(unique(db_cached_l2$LEVL_CODE), 2)
 
-  expect_true(all(db_cached_l3$LEVL_CODE == 3))
+  expect_equal(unique(db_cached_l3$LEVL_CODE), 3)
   expect_identical(list.files(cdir, recursive = TRUE), character(0))
   # Force download
 
@@ -126,8 +126,8 @@ test_that("NUTS can refresh an existing cached dataset", {
   )
 
   expect_identical(db_cached$NUTS_ID, db_cached2$NUTS_ID)
-  expect_true("geo" %in% names(db_cached))
-  expect_true("geo" %in% names(db_cached2))
+  expect_equal(setdiff("geo", names(db_cached)), character(0))
+  expect_equal(setdiff("geo", names(db_cached2)), character(0))
 })
 
 test_that("NUTS return matching data with and without cache", {
@@ -251,16 +251,19 @@ test_that("NUTS support boundary and label spatial types", {
 
   # LB
   lb <- gisco_get_nuts(spatialtype = "LB")
-  expect_true(unique(sf::st_geometry_type(lb)) == "POINT") # Can filter
-  expect_true("CNTR_CODE" %in% names(lb))
+  expect_identical(unique(as.character(sf::st_geometry_type(lb))), "POINT")
+  expect_equal(setdiff("CNTR_CODE", names(lb)), character(0))
   lb_filter <- gisco_get_nuts(spatialtype = "LB", country = "ESP")
-  expect_true(all(lb_filter$CNTR_CODE == "ES"))
+  expect_identical(lb_filter$CNTR_CODE, rep("ES", nrow(lb_filter)))
 
   # BN
   bn <- gisco_get_nuts(spatialtype = "BN", resolution = "60")
-  expect_true(unique(sf::st_geometry_type(bn)) == "MULTILINESTRING")
+  expect_identical(
+    unique(as.character(sf::st_geometry_type(bn))),
+    "MULTILINESTRING"
+  )
   # No filter
-  expect_false("CNTR_CODE" %in% names(bn))
+  expect_equal(intersect("CNTR_CODE", names(bn)), character(0))
   expect_identical(
     bn,
     gisco_get_nuts(spatialtype = "BN", resolution = "60", country = "ES")

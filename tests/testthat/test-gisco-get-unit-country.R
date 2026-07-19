@@ -66,7 +66,7 @@ test_that("Country unit returns matching data with and without cache", {
 
   # Not caching
   expect_message(
-    g <- gisco_get_unit_country(
+    g_online <- gisco_get_unit_country(
       "ES",
       spatialtype = "LB",
       cache = FALSE,
@@ -81,7 +81,7 @@ test_that("Country unit returns matching data with and without cache", {
 
   # And now caching
   expect_message(
-    g <- gisco_get_unit_country(
+    g_cached <- gisco_get_unit_country(
       "ES",
       spatialtype = "LB",
       cache = TRUE,
@@ -91,9 +91,10 @@ test_that("Country unit returns matching data with and without cache", {
     )
   )
   expect_length(list.files(cdir, recursive = TRUE), 1)
+  expect_equal(g_cached, g_online)
 
   expect_message(
-    g <- gisco_get_unit_country(
+    g_reused <- gisco_get_unit_country(
       "ES",
       spatialtype = "LB",
       cache = TRUE,
@@ -103,6 +104,7 @@ test_that("Country unit returns matching data with and without cache", {
     ),
     "File already cached"
   )
+  expect_equal(g_reused, g_cached)
 })
 
 test_that("Country unit supports multiple calls and countries", {
@@ -138,8 +140,8 @@ test_that("Country unit supports multiple calls and countries", {
     "Skipping"
   )
   expect_equal(nrow(g), 2)
-  expect_true(all(g$ISO3_CODE == c("ESP", "DEU")))
-  expect_true(all(sf::st_geometry_type(g) == "POINT"))
+  expect_identical(g$ISO3_CODE, c("ESP", "DEU"))
+  expect_identical(as.character(sf::st_geometry_type(g)), rep("POINT", 2))
 
   # Polygon
 
@@ -151,7 +153,7 @@ test_that("Country unit supports multiple calls and countries", {
     cache_dir = cdir
   )
   expect_equal(nrow(pol), 3)
-  expect_true(all(sf::st_geometry_type(pol) == "POLYGON"))
+  expect_identical(as.character(sf::st_geometry_type(pol)), rep("POLYGON", 3))
 })
 
 test_that("Country unit validates year, EPSG, resolution and spatial type", {

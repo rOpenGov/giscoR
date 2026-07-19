@@ -119,23 +119,27 @@ test_that("Cached DB normalization adds derived columns", {
 
   out <- normalize_distribution_db(db)
   expect_s3_class(out, "tbl_df")
-  expect_true(all(
-    c(
-      "epsg",
-      "resolution",
-      "spatialtype",
-      "nuts_level",
-      "level",
-      "ext",
-      "last_updated"
-    ) %in%
+  expect_equal(
+    setdiff(
+      c(
+        "epsg",
+        "resolution",
+        "spatialtype",
+        "nuts_level",
+        "level",
+        "ext",
+        "last_updated"
+      ),
       names(out)
-  ))
-  expect_true("coastal_lines" %in% out$id_giscor)
-  expect_true("urban_audit" %in% out$id_giscor)
-  expect_true("postal_codes" %in% out$id_giscor)
-  expect_true("2" %in% out$nuts_level)
-  expect_true("CITIES" %in% out$level)
+    ),
+    character(0)
+  )
+  expect_equal(
+    setdiff(c("coastal_lines", "urban_audit", "postal_codes"), out$id_giscor),
+    character(0)
+  )
+  expect_equal(setdiff("2", out$nuts_level), character(0))
+  expect_equal(setdiff("CITIES", out$level), character(0))
 })
 
 test_that("Cached database refreshes from the remote metadata", {

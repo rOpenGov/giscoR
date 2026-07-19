@@ -19,8 +19,7 @@ test_that("Spatial reader imports downloaded shapefiles", {
   nm <- get_geo_file_colnames(fake_local)
   expect_identical(get_col_name(fake_local), "CNTR_ID")
   expect_null(get_col_name(fake_local, "A_FAKE_COL"))
-  expect_true("geometry" %in% nm)
-  expect_true("CNTR_ID" %in% nm)
+  expect_equal(setdiff(c("geometry", "CNTR_ID"), nm), character(0))
   s <- read_geo_file_sf(fake_local)
 
   expect_s3_class(s, "sf")
@@ -55,8 +54,7 @@ test_that("Spatial reader imports downloaded GeoPackages", {
   )
 
   nm <- get_geo_file_colnames(fake_local)
-  expect_true("geometry" %in% nm)
-  expect_true("CNTR_ID" %in% nm)
+  expect_equal(setdiff(c("geometry", "CNTR_ID"), nm), character(0))
   s <- read_geo_file_sf(fake_local)
 
   expect_s3_class(s, "sf")

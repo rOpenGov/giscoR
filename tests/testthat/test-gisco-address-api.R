@@ -97,7 +97,7 @@ test_that("gisco_address_api_reverse online", {
   )
   expect_s3_class(n, "sf")
   expect_s3_class(n, "tbl_df")
-  expect_true(all("X" %in% names(n), "Y" %in% names(n)))
+  expect_equal(setdiff(c("X", "Y"), names(n)), character(0))
 
   expect_shape(gisco_address_api_reverse(-10, -30), nrow = 0)
 })

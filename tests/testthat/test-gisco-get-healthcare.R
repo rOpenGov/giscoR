@@ -96,7 +96,7 @@ test_that("Healthcare reads, filters and caches mocked data", {
   )
   expect_s3_class(n, "sf")
   expect_s3_class(n, "tbl_df")
-  expect_true(all(n$cntr_id == "LU"))
+  expect_identical(n$cntr_id, "LU")
   expect_length(list.files(cdir, recursive = TRUE), 0)
 
   # Cache
@@ -105,7 +105,7 @@ test_that("Healthcare reads, filters and caches mocked data", {
   )
   expect_s3_class(n, "sf")
   expect_s3_class(n, "tbl_df")
-  expect_true(all(n$cntr_id == "LU"))
+  expect_identical(n$cntr_id, "LU")
   expect_length(list.files(cdir, recursive = TRUE), 1)
 
   expect_silent(n <- gisco_get_healthcare(cache_dir = cdir))

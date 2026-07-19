@@ -121,7 +121,7 @@ gisco_address_api_bbox <- function(
 
   res <- call_address_api(custom_query, apiurl, verbose)
 
-  if (any(nrow(res) == 0, is.na(res$bbox), is.null(res$bbox))) {
+  if (is.null(res) || nrow(res) == 0 || is.null(res$bbox) || anyNA(res$bbox)) {
     cli::cli_alert_warning("No results found. Returning {.val NULL}.")
 
     return(NULL)

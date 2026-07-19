@@ -99,38 +99,6 @@
       Error:
       ! `year` must be "2024", "2013", or "2006", not "2050".
 
-# Deprecated cache helper warns only when cache is supplied
-
-    Code
-      warn_deprecated_cache(TRUE, "x(cache)")
-    Condition
-      Warning:
-      The `cache` argument of `x()` is deprecated as of giscoR 1.0.0.
-      i Results are always cached. To avoid persistent cache files, use `cache_dir = tempdir()`.
-
-# cli_abort_if_not aborts when conditions fail
-
-    Code
-      cli_abort_if_not(`Message supports {.cls inline} {.str markup}.` = is.logical(1))
-    Condition
-      Error:
-      ! Message supports <inline> "markup".
-
----
-
-    Code
-      test_msg("Testing fun reference.", verbose = TRUE)
-    Message
-      x Testing fun reference.
-
----
-
-    Code
-      test_msg("Testing fun reference with error.", verbose = 1)
-    Condition
-      Error in `test_msg()`:
-      ! `verbose` must be a <logical>.
-
 # Argument matching reports invalid values
 
     Code
@@ -146,6 +114,15 @@
     Condition
       Error:
       ! `year` must be "2020" or "2024", not "2020" or "2030".
+
+# Deprecated cache helper warns only when cache is supplied
+
+    Code
+      warn_deprecated_cache(TRUE, "x(cache)")
+    Condition
+      Warning:
+      The `cache` argument of `x()` is deprecated as of giscoR 1.0.0.
+      i Results are always cached. To avoid persistent cache files, use `cache_dir = tempdir()`.
 
 # rbind_fill combines sf inputs with different schemas
 
@@ -178,4 +155,27 @@
     Condition
       Error in `rbind()`:
       ! numbers of columns of arguments do not match
+
+# cli_abort_if_not aborts when conditions fail
+
+    Code
+      cli_abort_if_not(`Message supports {.cls inline} {.str markup}.` = is.logical(1))
+    Condition
+      Error:
+      ! Message supports <inline> "markup".
+
+---
+
+    Code
+      test_msg("Testing fun reference.", verbose = TRUE)
+    Message
+      x Testing fun reference.
+
+---
+
+    Code
+      test_msg("Testing fun reference with error.", verbose = 1)
+    Condition
+      Error in `test_msg()`:
+      ! `verbose` must be a <logical>.
 
