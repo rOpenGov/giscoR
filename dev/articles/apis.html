@@ -272,14 +272,14 @@ NUTS 3 and LAU geometries returned by the GISCO ID service API
 <span><span class="co">#&gt; Bounding box:  xmin: 6.16786 ymin: 49.6315 xmax: 6.169307 ymax: 49.63328</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
 <span><span class="co">#&gt; # A tibble: 5 × 15</span></span>
-<span><span class="co">#&gt;   LD    TF     L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X</span></span>
-<span><span class="co">#&gt; * &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 4     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17</span></span>
-<span><span class="co">#&gt; 2 3     RUE J… LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17</span></span>
-<span><span class="co">#&gt; 3 41B   AVENU… LUXE… LUXE… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17</span></span>
-<span><span class="co">#&gt; 4 2     RUE J… LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17</span></span>
-<span><span class="co">#&gt; 5 5     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17</span></span>
-<span><span class="co">#&gt; # ℹ 2 more variables: Y &lt;dbl&gt;, geometry &lt;POINT [°]&gt;</span></span></code></pre></div>
+<span><span class="co">#&gt;   LD    TF                L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X     Y</span></span>
+<span><span class="co">#&gt; * &lt;chr&gt; &lt;chr&gt;             &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 4     RUE ALPHONSE WEI… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6</span></span>
+<span><span class="co">#&gt; 2 3     RUE JEAN MONNET   LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6</span></span>
+<span><span class="co">#&gt; 3 41B   AVENUE JOHN F. K… LUXE… LUXE… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17  49.6</span></span>
+<span><span class="co">#&gt; 4 2     RUE JEAN MONNET   LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6</span></span>
+<span><span class="co">#&gt; 5 5     RUE ALPHONSE WEI… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6</span></span>
+<span><span class="co">#&gt; # ℹ 1 more variable: geometry &lt;POINT [°]&gt;</span></span></code></pre></div>
 <p>Use the returned geometries directly with <strong>ggplot2</strong>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">bbox</span><span class="op">)</span> <span class="op">+</span></span>
