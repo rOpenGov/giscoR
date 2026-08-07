@@ -120,7 +120,7 @@ GISCO NUTS distribution API:
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - nuts_id:
 

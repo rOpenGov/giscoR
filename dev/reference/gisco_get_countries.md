@@ -109,7 +109,7 @@ GISCO countries distribution API:
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - region:
 
@@ -149,7 +149,7 @@ Check the download and usage provisions in
 [gisco_countrycode](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md),
 [gisco_countries_2024](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md),
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_metadata.md),
-[`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+[`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/dev/reference/gisco_bulk_download.md)
