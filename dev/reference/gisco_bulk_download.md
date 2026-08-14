@@ -182,8 +182,8 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache directory is /tmp/Rtmp8rPRso/testexample/countries.
-#> ✔ File already cached: /tmp/Rtmp8rPRso/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/RtmpzjNZAt/testexample/countries.
+#> ✔ File already cached: /tmp/RtmpzjNZAt/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }
