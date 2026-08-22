@@ -1,6 +1,8 @@
 # giscoR (development version)
 
-- Add an article showing GISCO ID service API and GISCO Address API workflows with **ggplot2** examples.
+- **cli** diagnostics now use catchable warning and error classes for programmatic handling.
+- Add an article showing GISCO ID service API and GISCO Address API workflows
+  with **ggplot2** examples.
 - Query timeout can now also be controlled with the `GISCO_TIMEOUT` environment
   variable when `options(gisco_timeout)` is not set.
 - Refactor tests to isolate cache state, use temporary cache directories and
@@ -13,14 +15,14 @@
 # giscoR 1.1.1
 
 - Refactor internal helpers, documentation and tests, including clearer
-  user-facing messages, more consistent roxygen2 documentation, reused
+  user-facing messages, more consistent **roxygen2** documentation, reused
   documentation blocks and faster mocked tests for selected download-heavy
   paths.
 
 # giscoR 1.1.0
 
-- Adapt vignettes to Quarto.
-- Bump the minimum **httr2** version to **1.2.0** (#126).
+- Adapt vignettes to **Quarto**.
+- Bump the minimum **httr2** version to 1.2.0 (#126).
 - Query timeout can now be controlled with `options(gisco_timeout)` using
   `httr2::req_timeout()`. The default value is
   `httr2::req_timeout(..., seconds = 300)` (5 minutes) (#123).
@@ -56,13 +58,13 @@ The package now uses `tools::R_user_dir()` instead of
 already have a cache directory in place, you will see a one-time message about
 this migration.
 
-The package now requires **R ≥ 4.1**, and dependency updates improve both
+The package now requires **R** ≥ 4.1, and dependency updates improve both
 performance and maintainability. All functions return tidy objects (tibbles or
-`sf` objects with tibble data).
+**sf** objects with tibble data).
 
-Dataset subsetting is now performed at read time with GDAL query capabilities
-(`sf::read_sf()`), improving performance and reducing file size. The
-**geojsonsf** dependency is no longer required.
+Dataset subsetting is now performed at read time with **GDAL** query
+capabilities (`sf::read_sf()`), improving performance and reducing file size.
+The **geojsonsf** dependency is no longer required.
 
 Several new functions and arguments have been added, some functions have been
 renamed and one function has been deprecated. All bundled datasets have been
@@ -83,10 +85,10 @@ We recommend reviewing the updated documentation at
 ## Compatibility and performance
 
 - Add **cli**, **httr2**, **lifecycle** and **tibble**.
-- Perform dataset subsetting at read time using GDAL queries via
+- Perform dataset subsetting at read time using **GDAL** queries via
   `sf::read_sf()`.
 - Remove **geojsonsf**.
-- Require **R ≥ 4.1**.
+- Require **R** ≥ 4.1.
 - Return tidy objects consistently.
 
 ## New functions
@@ -274,7 +276,7 @@ We recommend reviewing the updated documentation at
 
 - Add the `verbose` argument.
 - Remove **colorspace**.
-- Require **R ≥ 3.6.0**.
+- Require **R** ≥ 3.6.0.
 - Rewrite internal utilities.
 - Rewrite `?gisco_db`.
 - `gisco_bulk_download()` is added.

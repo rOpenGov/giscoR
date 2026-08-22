@@ -272,11 +272,17 @@ prepare_id_query <- function(
   endpoint
 ) {
   if (length(nuts_id) > 1) {
-    cli::cli_alert_warning(paste0(
-      "{.arg nuts_id} should have length 1, ",
-      "not {length(nuts_id)}."
-    ))
-    cli::cli_alert_info("Using {.arg nuts_id} = {.str {nuts_id[1]}}.")
+    cli::cli_warn(
+      c(
+        paste0(
+          "{.arg nuts_id} should have length 1, ",
+          "not {length(nuts_id)}."
+        ),
+        i = "Using {.arg nuts_id} = {.str {nuts_id[1]}}."
+      ),
+      class = c("giscoR_warning_truncated_input", "giscoR_warning"),
+      call = NULL
+    )
 
     nuts_id <- nuts_id[1]
   }
@@ -319,7 +325,7 @@ call_id_api <- function(
   .envir = parent.frame()
 ) {
   cli_abort_if_not(
-    "{.arg verbose} must be a {.cls logical}." = is.logical(verbose),
+    "{.arg verbose} must be a {.type logical}." = is.logical(verbose),
     .envir = .envir
   )
 

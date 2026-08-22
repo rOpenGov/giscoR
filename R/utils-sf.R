@@ -67,7 +67,8 @@ transform_to_wgs84 <- function(data_sf) {
 #'
 #' @noRd
 sanitize_sf <- function(data_sf) {
-  # From sf/read.R - https://github.com/r-spatial/sf/blob/master/R/read.R
+  # Adapted from sf/read.R:
+  # https://github.com/r-spatial/sf/blob/master/R/read.R
   set_utf8 <- function(x) {
     n <- names(x)
     Encoding(n) <- "UTF-8"

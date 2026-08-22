@@ -13,7 +13,7 @@
 #' @noRd
 make_msg <- function(type = "generic", verbose, ..., .envir = parent.frame()) {
   cli_abort_if_not(
-    "{.arg verbose} must be a {.cls logical}." = is.logical(verbose),
+    "{.arg verbose} must be a {.type logical}." = is.logical(verbose),
     .envir = .envir
   )
   if (!verbose) {
@@ -22,7 +22,8 @@ make_msg <- function(type = "generic", verbose, ..., .envir = parent.frame()) {
   dots <- list(...)
   msg <- paste(dots, collapse = " ")
 
-  alert <- switch(type,
+  alert <- switch(
+    type,
     generic = cli::cli_alert,
     success = cli::cli_alert_success,
     warning = cli::cli_alert_warning,
@@ -82,7 +83,7 @@ match_arg_pretty <- function(arg, choices) {
     }
   }
 
-  cli::cli_abort(c(msg, i = hint), call = NULL)
+  cli::cli_abort(c(msg, i = hint), class = "giscoR_error", call = NULL)
 }
 
 #' Warn for deprecated cache arguments on always-cached functions
@@ -203,6 +204,7 @@ cli_abort_if_not <- function(
     if (!all(...elt(i))) {
       cli::cli_abort(
         ...names()[i],
+        class = "giscoR_error",
         call = .call,
         .envir = .envir,
         .frame = .frame

@@ -4,7 +4,7 @@ API endpoint documentation](https://gisco-services.ec.europa.eu/addressapi/docs/
 | **Endpoint** | **Description** |
 |-----------------|--------------------------------------------------------------|
 | `/countries` | All country codes compatible with the GISCO Address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
-| `/provinces` | All provinces within the specified country. It can also retrieve the province for a specified city. |
+| `/provinces` | All provinces within the specified country. The endpoint can also retrieve the province for a specified city. |
 | `/cities` | All cities within a specified province or country. |
 | `/roads` | All roads or streets within a specified city. |
 | `/housenumbers` | All house numbers or names within the specified road. In some countries, an address may not have a road component. If a road is not specified, **the API returns at most 1,000 house numbers**. |

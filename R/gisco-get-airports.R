@@ -16,7 +16,7 @@
 #'
 #' # Copyright
 #'
-#' See the Eurostat general copyright and licence provisions:
+#' See the Eurostat general copyright and license provisions:
 #' <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 #'
 #' @source

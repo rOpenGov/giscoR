@@ -16,7 +16,7 @@
     Message
       i Requested file 'ES-region-01m-4326-2024.geojson'.
       x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/distribution/v2/countries/countries-2024-units.json>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 # Country unit validates year, EPSG, resolution and spatial type

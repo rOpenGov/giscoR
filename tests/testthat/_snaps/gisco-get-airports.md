@@ -4,7 +4,7 @@
       n <- gisco_get_airports(update_cache = TRUE)
     Message
       x Error 404 (Not Found): <https://ec.europa.eu/eurostat/documents/d/gisco/airp-pt-2024-sh>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 # Airports download current and legacy point data

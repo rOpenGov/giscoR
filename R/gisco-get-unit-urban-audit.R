@@ -54,7 +54,7 @@ gisco_get_unit_urban_audit <- function(
 
   spatialtype <- match_arg_pretty(spatialtype)
   type <- unit_spatialtype_to_file_type(spatialtype)
-  # Names have this structure:
+  # Use the following file-name structure:
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson
 

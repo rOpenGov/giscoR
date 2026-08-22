@@ -33,7 +33,7 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 Most **giscoR** workflows should start with the higher-level download functions,
 such as `gisco_get_countries()`, `gisco_get_nuts()` or
 `gisco_get_lau()`. These functions download complete GISCO datasets and return
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects that can be
+[**sf**](https://r-spatial.github.io/sf/reference/sf.html) objects that can be
 filtered, joined and mapped locally.
 
 The GISCO APIs are useful when a workflow starts from a coordinate, address or

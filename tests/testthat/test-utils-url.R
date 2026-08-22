@@ -19,6 +19,17 @@ test_that("GISCO URL helpers work", {
   )
 })
 
+test_that("URL lookup errors have a package condition class", {
+  expect_error(
+    get_url_db(
+      id = "postal_codes",
+      year = "1991",
+      fn = "gisco_get_postal_codes"
+    ),
+    class = "giscoR_error"
+  )
+})
+
 test_that("Packaged dataset helper returns matching data", {
   data <- data.frame(x = 1:2)
   expect_null(read_packaged_gisco_dataset(
@@ -67,10 +78,12 @@ test_that("Dataset reader delegates cache and non-cache paths", {
     download_url = function(...) {
       "cached.gpkg"
     },
-    read_geo_file_sf_filtered = function(file_local,
-                                         filters = NULL,
-                                         operator = "AND",
-                                         verbose = FALSE) {
+    read_geo_file_sf_filtered = function(
+      file_local,
+      filters = NULL,
+      operator = "AND",
+      verbose = FALSE
+    ) {
       data.frame(source = file_local, operator = operator)
     }
   )

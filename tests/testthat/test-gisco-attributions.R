@@ -4,7 +4,11 @@ test_that("Attribution text is exposed as package data", {
 
   expect_silent(gisco_attributions())
   expect_identical(class(gisco_attributions()), "character")
-  expect_identical(gisco_attributions("eN"), gisco_attributions("xxx"))
+  expect_warning(
+    fallback <- gisco_attributions("xxx"),
+    class = "giscoR_warning_unsupported_language"
+  )
+  expect_identical(gisco_attributions("eN"), fallback)
 
   expect_snapshot(gisco_attributions(copyright = TRUE))
   expect_snapshot(gisco_attributions("da"))
@@ -15,4 +19,13 @@ test_that("Attribution text is exposed as package data", {
   expect_snapshot(gisco_attributions("no"))
   expect_snapshot(gisco_attributions("sv"))
   expect_snapshot(gisco_attributions("xx"))
+})
+
+test_that("Unsupported attribution languages warn with a package class", {
+  expect_warning(
+    fallback <- gisco_attributions("xx"),
+    class = "giscoR_warning_unsupported_language"
+  )
+
+  expect_identical(fallback, gisco_attributions("en"))
 })

@@ -48,6 +48,16 @@ test_that("Country code conversion reports unresolved names", {
   expect_identical(convert_country_code("ES"), "ES")
 })
 
+test_that("Unresolved countries warn before they are dropped", {
+  expect_warning(
+    out <- convert_country_code(c("Spain", "Murcua")),
+    regexp = "1 country identifier was not matched",
+    class = "giscoR_warning_unmatched_country"
+  )
+
+  expect_identical(out, "ES")
+})
+
 test_that("Country filters accept mixed country identifiers", {
   skip_on_cran()
   skip_if_gisco_offline()

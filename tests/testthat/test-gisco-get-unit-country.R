@@ -114,7 +114,7 @@ test_that("Country unit supports multiple calls and countries", {
   cdir <- local_test_cache_dir("test-unit-")
 
   # Message even when verbose FALSE
-  expect_message(
+  expect_warning(
     g <- gisco_get_unit_country(
       "Kosovo",
       spatialtype = "LB",
@@ -123,12 +123,12 @@ test_that("Country unit supports multiple calls and countries", {
       year = "2016",
       verbose = FALSE
     ),
-    "Skipping"
+    class = "giscoR_warning_missing_unit"
   )
   expect_null(g)
 
   # Several
-  expect_message(
+  expect_warning(
     g <- gisco_get_unit_country(
       c("Kosovo", "Spain", "Germany"),
       spatialtype = "LB",
@@ -137,7 +137,7 @@ test_that("Country unit supports multiple calls and countries", {
       year = "2016",
       verbose = FALSE
     ),
-    "Skipping"
+    class = "giscoR_warning_missing_unit"
   )
   expect_equal(nrow(g), 2)
   expect_identical(g$ISO3_CODE, c("ESP", "DEU"))

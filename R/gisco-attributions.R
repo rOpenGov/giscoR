@@ -128,20 +128,26 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
   # Warn when the requested language is not supported.
   verbose <- !lang %in% c("en", "da", "de", "es", "fi", "fr", "no", "sv")
 
-  make_msg(
-    "warning",
-    verbose,
-    paste0("{.arg lang} = {.val ", lang, "} is not supported."),
-    "Switching to English."
-  )
-  make_msg(
-    "info",
-    verbose,
-    "Consider contributing a translation:",
-    "{.url https://github.com/rOpenGov/giscoR/issues}."
-  )
+  if (verbose) {
+    cli::cli_warn(
+      c(
+        paste0("{.arg lang} = {.val ", lang, "} is not supported."),
+        i = "Switching to English.",
+        i = paste0(
+          "Consider contributing a translation: ",
+          "{.url https://github.com/rOpenGov/giscoR/issues}."
+        )
+      ),
+      class = c(
+        "giscoR_warning_unsupported_language",
+        "giscoR_warning"
+      ),
+      call = NULL
+    )
+  }
 
-  attr <- switch(lang,
+  attr <- switch(
+    lang,
     "en" = "\u00a9 EuroGeographics for the administrative boundaries",
     "da" = "\u00a9 EuroGeographics for administrative gr\u00e6nser",
     "de" = "\u00a9 EuroGeographics bez\u00fcglich der Verwaltungsgrenzen",

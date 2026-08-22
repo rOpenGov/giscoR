@@ -96,7 +96,7 @@ gisco_response_is_error <- function(
   ))
   cli::cli_alert_warning(c(
     "If this looks like a bug, please open an issue at ",
-    "{.url https://github.com/ropengov/giscoR/issues}."
+    "{.url https://github.com/rOpenGov/giscoR/issues}."
   ))
   cli::cli_alert("Returning {.val NULL}.")
   TRUE

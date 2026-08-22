@@ -20,7 +20,7 @@
       n <- gisco_id_api_geonames(x = 4, y = 52)
     Message
       x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/id/geonames?x=4&y=52>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 ---
@@ -29,7 +29,7 @@
       n <- gisco_id_api_nuts(x = 4, y = 52, geometry = TRUE)
     Message
       x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/id/nuts?x=4&y=52&epsg=4326&year=2024&format=geojson&geometry=yes>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 ---
@@ -38,7 +38,7 @@
       n <- gisco_id_api_lau(x = 4, y = 52, geometry = TRUE)
     Message
       x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/id/lau?x=4&y=52&epsg=4326&year=2024&format=geojson&geometry=yes>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 ---
@@ -47,7 +47,7 @@
       n <- gisco_id_api_country(x = 4, y = 52, geometry = FALSE)
     Message
       x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/id/country?x=4&y=52&epsg=4326&year=2024&format=json&geometry=no>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 # gisco_id_api_nuts online
@@ -64,15 +64,16 @@
       n <- gisco_id_api_nuts(nuts_level = 2, epsg = 4258)
     Message
       x Error 500 (Internal Server Error): <https://gisco-services.ec.europa.eu/id/nuts?epsg=4258&year=2024&nuts_level=2&format=geojson&geometry=yes>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 ---
 
     Code
       n <- gisco_id_api_nuts(epsg = 3035, nuts_id = c("ES11", "ES12"))
-    Message
-      ! `nuts_id` should have length 1, not 2.
+    Condition
+      Warning:
+      `nuts_id` should have length 1, not 2.
       i Using `nuts_id` = "ES11".
 
 # gisco_id_api_lau online

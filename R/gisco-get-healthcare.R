@@ -3,12 +3,10 @@
 #' @description
 #' The dataset contains information on healthcare services considered
 #' hospitals by Member States. The definition varies slightly from country to
-#' country, but roughly includes the following:
-#'
-#' - Hospitals comprise licensed establishments primarily engaged in
-#' providing medical, diagnostic and treatment services that include
-#' physician, nursing and other health services to inpatients and the
-#' specialized accommodation services required by inpatients.
+#' country. Broadly, hospitals are licensed establishments primarily engaged in
+#' providing medical, diagnostic and treatment services, including physician,
+#' nursing and other health services to inpatients and the specialized
+#' accommodation services required by inpatients.
 #'
 #' @family services
 #' @inheritParams gisco_get_education

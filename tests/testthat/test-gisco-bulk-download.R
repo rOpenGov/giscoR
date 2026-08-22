@@ -93,12 +93,14 @@ test_that("Bulk download orchestrates download and extraction", {
         "countries/shp/CNTR_RG_60M_2024_4326.shp.zip"
       )
     },
-    download_url = function(url,
-                            name,
-                            cache_dir,
-                            subdir,
-                            update_cache = FALSE,
-                            verbose = FALSE) {
+    download_url = function(
+      url,
+      name,
+      cache_dir,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE
+    ) {
       expect_match(url, "countries/download/ref-countries-2024-60m.geojson.zip")
       expect_identical(name, "ref-countries-2024-60m.geojson.zip")
       expect_identical(cache_dir, cdir)
@@ -117,13 +119,17 @@ test_that("Bulk download orchestrates download and extraction", {
     }
   )
 
-  out <- gisco_bulk_download(
-    "countries",
-    year = 2024,
-    resolution = 60,
-    ext = "geojson",
-    cache_dir = cdir,
-    update_cache = TRUE
+  expect_message(
+    out <- gisco_bulk_download(
+      "countries",
+      year = 2024,
+      resolution = 60,
+      ext = "geojson",
+      cache_dir = cdir,
+      update_cache = TRUE,
+      verbose = TRUE
+    ),
+    "'country.geojson'"
   )
   expect_identical(basename(out), "country.geojson")
   expect_true(file.exists(out))

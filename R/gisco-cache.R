@@ -22,7 +22,7 @@
 #' to your `cache_dir`, but it is mainly called for its side effect.
 #'
 #' @details
-#' By default, when no cache `cache_dir` is set, the package uses a folder
+#' By default, when no `cache_dir` is set, the package uses a folder
 #' inside [base::tempdir()] (so files are temporary and are removed when the
 #' \R session ends). To persist a cache across \R sessions, use
 #' `gisco_set_cache_dir(cache_dir, install = TRUE)`, which writes the chosen
@@ -89,11 +89,11 @@ gisco_set_cache_dir <- function(
   verbose = TRUE
 ) {
   cache_dir <- ensure_null(cache_dir)
-  # Validate logical
+  # Validate logical arguments.
   cli_abort_if_not(
-    "{.arg verbose} must be a {.cls logical}." = is.logical(verbose),
-    "{.arg overwrite} must be a {.cls logical}." = is.logical(overwrite),
-    "{.arg install} must be a {.cls logical}." = is.logical(install)
+    "{.arg verbose} must be a {.type logical}." = is.logical(verbose),
+    "{.arg overwrite} must be a {.type logical}." = is.logical(overwrite),
+    "{.arg install} must be a {.type logical}." = is.logical(install)
   )
   # Use a temporary cache when no path is provided.
   if (is.null(cache_dir)) {
@@ -114,7 +114,7 @@ gisco_set_cache_dir <- function(
 
   # Validate inputs.
   cli_abort_if_not(
-    "{.arg cache_dir} must be a {.cls character}." = is.character(cache_dir)
+    "{.arg cache_dir} must be a {.type character}." = is.character(cache_dir)
   )
   # Create and expand the cache path.
   cache_dir <- create_cache_dir(cache_dir)
@@ -136,10 +136,13 @@ gisco_set_cache_dir <- function(
       # Create file if it does not exist.
       writeLines(cache_dir, con = giscor_file)
     } else {
-      cli::cli_abort(c(
-        "A {.arg cache_dir} path already exists.",
-        i = "Set {.arg overwrite} to {.val TRUE} to replace it."
-      ))
+      cli::cli_abort(
+        c(
+          "A {.arg cache_dir} path already exists.",
+          i = "Set {.arg overwrite} to {.val TRUE} to replace it."
+        ),
+        class = "giscoR_error"
+      )
     }
   } else {
     make_msg(
@@ -187,7 +190,7 @@ gisco_detect_cache_dir <- function() {
 #'
 #' @param config If `TRUE`, delete the configuration folder of
 #'   \CRANpkg{giscoR}.
-#' @param cached_data If `TRUE`, delete your `cache_dir` and all its content.
+#' @param cached_data If `TRUE`, delete your `cache_dir` and all its contents.
 #' @return Invisible. Called for its side effects.
 #'
 #' @details
@@ -241,7 +244,7 @@ gisco_clear_cache <- function(
     unlink(data_dir, recursive = TRUE, force = TRUE)
     if (verbose) {
       cli::cli_alert_warning(
-        "Deleted {.pkg giscoR} data: {.file {data_dir}} ({siz})."
+        "Deleted {.pkg giscoR} data: {.path {data_dir}} ({siz})."
       )
     }
   }

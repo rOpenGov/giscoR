@@ -60,7 +60,12 @@ get_url_db <- function(
   # Only report valid years.
   if (!make_params$year %in% db$year) {
     cli::cli_abort(
-      paste0("Years available for {.fn ", fn, "} are ", "{.val {years}}."),
+      paste0(
+        "{qty(length(years))}Year{?s} available for {.fn ",
+        fn,
+        "} {?is/are} {.val {years}}."
+      ),
+      class = "giscoR_error",
       call = NULL
     )
   }
@@ -86,6 +91,7 @@ get_url_db <- function(
         val,
         i = "Check available combinations in {.fn giscoR::gisco_get_cached_db}."
       ),
+      class = "giscoR_error",
       call = NULL
     )
   }

@@ -5,7 +5,7 @@
     Message
       ! The file to download is "61.9 Mb".
       x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/distribution/v2/lau/gpkg/LAU_RG_01M_2020_4326.gpkg>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 # LAU validates year and EPSG

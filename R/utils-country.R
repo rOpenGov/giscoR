@@ -20,10 +20,7 @@ convert_country_code <- function(names, out = "eurostat") {
         "xkx" == tolower(x)
       )
     ) {
-      code <- switch(out,
-        "eurostat" = "XK",
-        "iso3c" = "XKX"
-      )
+      code <- switch(out, "eurostat" = "XK", "iso3c" = "XKX")
       return(code)
     }
 
@@ -40,6 +37,7 @@ convert_country_code <- function(names, out = "eurostat") {
           "Invalid country name {.str {x}}. ",
           "Try a vector of names, ISO 3166-1 alpha-3 codes or Eurostat codes."
         ),
+        class = "giscoR_error",
         call = NULL
       )
     }
@@ -52,11 +50,18 @@ convert_country_code <- function(names, out = "eurostat") {
   lend <- length(outnames2)
   if (linit != lend) {
     ff <- names[is.na(outnames)] # nolint
-    cli::cli_alert_warning(
-      "Some country names or codes were not matched unambiguously: {.str {ff}}."
-    )
-    cli::cli_alert_info(
-      "Review the names or codes, or switch to ISO 3166-1 alpha-3 codes."
+    cli::cli_warn(
+      c(
+        paste0(
+          "{length(ff)} country identifier{?s} {?was/were} not matched ",
+          "unambiguously: {.str {ff}}."
+        ),
+        i = paste0(
+          "Review the identifiers, or switch to ISO 3166-1 alpha-3 codes."
+        )
+      ),
+      class = c("giscoR_warning_unmatched_country", "giscoR_warning"),
+      call = NULL
     )
   }
 
@@ -93,7 +98,7 @@ filter_by_country_col <- function(data, country = NULL, col = "CNTR_CODE") {
   data[data[[col]] %in% country, ]
 }
 
-#' Get country codes from country names and/or region names
+#' Get country codes from country or region names
 #'
 #' @param country A character vector of country codes or names.
 #' @param region A character vector of region codes or names.

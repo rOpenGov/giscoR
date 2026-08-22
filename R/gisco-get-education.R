@@ -20,7 +20,7 @@
 #'
 #' # Copyright
 #'
-#' The general Eurostat copyright and licence provisions apply. Detailed
+#' The general Eurostat copyright and license provisions apply. Detailed
 #' metadata also list source-specific licensing conditions by country and data
 #' provider. Review the conditions for the selected data before use.
 #'

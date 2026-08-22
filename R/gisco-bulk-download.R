@@ -37,8 +37,8 @@
 #' See **Examples**.
 #'
 #' @details
-#' Some arguments only apply to a specific value of `"id"`. For example
-#' `"resolution"` is ignored for values `"communes"`, `"lau"`,
+#' Some arguments only apply to a specific value of `id`. For example,
+#' `resolution` is ignored for values `"communes"`, `"lau"`,
 #' `"urban_audit"` and `"postal_codes"`.
 #'
 #' See available years in the corresponding functions:
@@ -178,7 +178,7 @@ gisco_bulk_download <- function(
   outfiles <- infiles[grep(ext, infiles$Name), ]$Name
 
   if (verbose) {
-    for_bullets <- outfiles
+    for_bullets <- paste0("{.file ", outfiles, "}")
     names(for_bullets) <- rep(">", length(for_bullets))
     cli::cli_alert_info("Extracting files:")
     cli::cli_bullets(for_bullets)
@@ -210,7 +210,8 @@ bulk_download_api_entry <- function(route) {
 #' @return A character string with the bulk-download alias.
 #' @noRd
 bulk_download_alias <- function(id) {
-  switch(id,
+  switch(
+    id,
     "coastal_lines" = "coastline",
     "urban_audit" = "urau",
     "postal_codes" = "pcode",
@@ -225,10 +226,7 @@ bulk_download_alias <- function(id) {
 #' @return A character string with the cache subdirectory.
 #' @noRd
 bulk_download_subdir <- function(id) {
-  switch(id,
-    "coastal_lines" = "coastal",
-    id
-  )
+  switch(id, "coastal_lines" = "coastal", id)
 }
 
 #' Build a bulk-download ZIP file name

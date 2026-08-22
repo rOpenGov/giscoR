@@ -54,7 +54,7 @@ gisco_get_cached_db <- function(update_cache = FALSE) {
     cli::cli_alert_warning(c(
       "Could not access {.url {url_api}}. ",
       "If this looks like a bug, please open an issue at ",
-      "{.url https://github.com/ropengov/giscoR/issues}."
+      "{.url https://github.com/rOpenGov/giscoR/issues}."
     ))
     cli::cli_alert("Returning {.val NULL}.")
     return(NULL)
@@ -297,20 +297,24 @@ get_db <- function() {
 
     # Warn that the static fallback is being used.
     url_api <- gisco_distribution_url() # nolint
-
-    cli::cli_alert_warning(c(
-      "Could not retrieve the latest database from {.url {url_api}}.\n",
-      "Try again later with {.fn giscoR::gisco_get_cached_db} ",
-      "and {.arg update_cache} = {.val {TRUE}}."
-    ))
-
     date <- unique(db$last_updated)
 
-    cli::cli_alert_info(c(
-      "Using cached ",
-      "{.help [{.val gisco_db}](giscoR::gisco_db)} ",
-      paste0("information as of {.val ", date, "}. It may be outdated.")
-    ))
+    cli::cli_warn(
+      c(
+        "Could not retrieve the latest database from {.url {url_api}}.",
+        i = paste0(
+          "Try again later with {.fn giscoR::gisco_get_cached_db} ",
+          "and {.arg update_cache} = {.val {TRUE}}."
+        ),
+        i = paste0(
+          "Using cached {.code giscoR::gisco_db} information as of {.val ",
+          date,
+          "}. It may be outdated."
+        )
+      ),
+      class = c("giscoR_warning_stale_cache", "giscoR_warning"),
+      call = NULL
+    )
   }
   db
 }

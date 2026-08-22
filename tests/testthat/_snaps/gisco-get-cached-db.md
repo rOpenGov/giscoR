@@ -3,7 +3,7 @@
     Code
       fend <- gisco_get_cached_db(update_cache = TRUE)
     Message
-      ! Could not access <https://gisco-services.ec.europa.eu/distribution/v2/>. If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! Could not access <https://gisco-services.ec.europa.eu/distribution/v2/>. If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 # Cached database returns NULL for 404 responses
@@ -11,7 +11,7 @@
     Code
       n <- gisco_get_cached_db(update_cache = TRUE)
     Message
-      ! Could not access <https://gisco-services.ec.europa.eu/distribution/v2/>. If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! Could not access <https://gisco-services.ec.europa.eu/distribution/v2/>. If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 # Cached database stores fallback data when remote access fails
@@ -19,11 +19,13 @@
     Code
       n <- get_db()
     Message
-      ! Could not access <https://gisco-services.ec.europa.eu/distribution/v2/>. If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! Could not access <https://gisco-services.ec.europa.eu/distribution/v2/>. If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
-      ! Could not retrieve the latest database from <https://gisco-services.ec.europa.eu/distribution/v2/>.
-      Try again later with `giscoR::gisco_get_cached_db()` and `update_cache` = TRUE.
-      i Using cached "gisco_db" (`?giscoR::gisco_db()`) information as of "2026-06-19". It may be outdated.
+    Condition
+      Warning:
+      Could not retrieve the latest database from <https://gisco-services.ec.europa.eu/distribution/v2/>.
+      i Try again later with `giscoR::gisco_get_cached_db()` and `update_cache` = TRUE.
+      i Using cached `giscoR::gisco_db` information as of "2026-06-19". It may be outdated.
 
 # Cached database refreshes from the remote metadata
 

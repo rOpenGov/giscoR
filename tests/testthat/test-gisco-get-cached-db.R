@@ -45,6 +45,19 @@ test_that("Cached database stores fallback data when remote access fails", {
   expect_silent(n2 <- get_db())
   expect_identical(n2, gisco_db)
 })
+
+test_that("Static database fallback warns with a package class", {
+  cdir <- local_test_cache_dir("cache-db-warning-")
+  withr::local_envvar(GISCO_CACHE_DIR = cdir)
+  local_mocked_bindings(gisco_get_cached_db = function(...) NULL)
+
+  expect_warning(
+    db <- get_db(),
+    class = "giscoR_warning_stale_cache"
+  )
+
+  expect_identical(db, gisco_db)
+})
 test_that("Cached database is still created under CRAN settings", {
   skip_on_cran()
   skip_if_gisco_offline()

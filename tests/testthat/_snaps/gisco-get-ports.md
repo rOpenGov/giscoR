@@ -4,7 +4,7 @@
       n <- gisco_get_ports(update_cache = TRUE)
     Message
       x Error 404 (Not Found): <https://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/PORT_2013_SH.zip>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 # Ports download current and legacy point data

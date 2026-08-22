@@ -4,7 +4,7 @@
       n <- gisco_get_coastal_lines(update_cache = TRUE, resolution = 60)
     Message
       x Error 404 (Not Found): <https://gisco-services.ec.europa.eu/distribution/v2/coas/gpkg/COAS_RG_60M_2016_4326.gpkg>.
-      ! If this looks like a bug, please open an issue at <https://github.com/ropengov/giscoR/issues>.
+      ! If this looks like a bug, please open an issue at <https://github.com/rOpenGov/giscoR/issues>.
       > Returning "NULL".
 
 # Coastal lines validate unsupported extensions

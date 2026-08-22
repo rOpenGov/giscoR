@@ -25,10 +25,7 @@ build_unit_filenames <- function(unit_code, type, epsg, year, res_txt = NULL) {
 #' @return A character string with GISCO's single-unit file type.
 #' @noRd
 unit_spatialtype_to_file_type <- function(spatialtype) {
-  switch(spatialtype,
-    "RG" = "region",
-    "LB" = "label"
-  )
+  switch(spatialtype, "RG" = "region", "LB" = "label")
 }
 
 #' Read one GISCO single-unit file
@@ -126,8 +123,13 @@ get_unit_files <- function(
     }
 
     if (!single_unit %in% units_db) {
-      cli::cli_alert_warning(
-        "Skipping {.arg unit} = {.str {unit_txt}} (not found online)."
+      cli::cli_warn(
+        paste0(
+          "Skipping {.arg unit} = {.str {unit_txt}} because it was not ",
+          "found online."
+        ),
+        class = c("giscoR_warning_missing_unit", "giscoR_warning"),
+        call = NULL
       )
       return(NULL)
     }
