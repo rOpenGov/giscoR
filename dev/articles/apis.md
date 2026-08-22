@@ -9,7 +9,7 @@ functions, such as
 or
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_lau.md).
 These functions download complete GISCO datasets and return
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects that
+[**sf**](https://r-spatial.github.io/sf/reference/sf.html) objects that
 can be filtered, joined and mapped locally.
 
 The GISCO APIs are useful when a workflow starts from a coordinate,

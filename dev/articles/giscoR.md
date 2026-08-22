@@ -194,7 +194,7 @@ ggplot(coast) +
 
 Political map of North Africa
 
-## Thematic maps with **giscoR**
+## Thematic maps with giscoR
 
 This example shows how **giscoR** can be used with Eurostat data. For
 plotting, we use the **ggplot2** package. Any package that supports

@@ -1,49 +1,41 @@
 # Getting help with giscoR
 
-Thanks for using giscoR! Before filing an issue, there are a few places
-to explore and details to prepare so the process goes smoothly.
+Before filing an issue, prepare a minimal reproducible example and check
+the available support channels.
 
 ## Make a reprex
 
-Start by making a minimal **repr**oducible **ex**ample using the
-[reprex](https://reprex.tidyverse.org/) package. If you have not used
-reprex before, it is worth learning because it makes R questions easier
-to answer. For additional reprex pointers, see the [Get
-help!](https://www.tidyverse.org/help/) section of the tidyverse site.
+Start by creating a minimal **repr**oducible **ex**ample with the
+[**reprex**](https://reprex.tidyverse.org/) package. For more guidance,
+see [Get help!](https://www.tidyverse.org/help/).
 
 ## Where to ask?
 
-Armed with your reprex, the next step is to figure out [where to
+With your **reprex** ready, decide [where to
 ask](https://www.tidyverse.org/help/#where-to-ask).
 
-- If it is a question, start with
-  [community.rstudio.com](https://community.rstudio.com/) or Stack
-  Overflow. There are more people there to answer questions.
-
-- If it is a bug, you are in the right place: [file an
+- For questions, start with [**Posit
+  Community**](https://community.rstudio.com/) or [**Stack
+  Overflow**](https://stackoverflow.com/), where more people can help.
+- For bugs, [file an
   issue](https://github.com/rOpenGov/giscoR/issues/new).
-
-- If you are not sure, let the community help you figure it out. If your
-  problem *is* a bug or a feature request, you can return here and
-  report it.
+- If you are unsure, ask the community. If your problem is a bug or
+  feature request, you can return here and report it.
 
 Before opening a new issue, [search issues and pull
 requests](https://github.com/rOpenGov/giscoR/issues) to make sure the
-bug has not been reported or already fixed in the development version.
-By default, the search will be pre-populated with `is:issue is:open`.
-You can [edit the
+bug has not already been reported or fixed in the development version.
+By default, the search is pre-populated with `is:issue is:open`. You can
+[edit the
 qualifiers](https://help.github.com/articles/searching-issues-and-pull-requests/)
-(e.g. `is:pr`, `is:closed`) as needed. For example, remove `is:open` to
-search *all* issues in the repo, open or closed.
+as needed, for example, `is:pr` or `is:closed`. Remove `is:open` to
+search all issues in the repository, whether open or closed.
 
 ## What happens next?
 
-To be as efficient as possible, development of rOpenGov packages often
-happens in focused bursts, so you should not worry if you do not get an
-immediate response. We typically review a repo after enough issues
-accumulate, then focus our efforts on that repo. That makes development
-more efficient because it avoids expensive context switching between
-problems, at the cost of taking longer to get back to you. This process
-makes a good reprex particularly important because it might be multiple
-months between your initial report and when we start working on it. If
-we cannot reproduce the bug, we cannot fix it.
+**rOpenGov** packages are maintained by volunteers and development often
+occurs in focused bursts, so a response may not be immediate.
+Maintainers may address issues in batches, which can delay responses. A
+good **reprex** is particularly important because it lets us investigate
+a problem when we have capacity. If we cannot reproduce a bug, we cannot
+fix it.

@@ -2,6 +2,8 @@
 
 ## giscoR (development version)
 
+- **cli** diagnostics now use catchable warning and error classes for
+  programmatic handling.
 - Add an article showing GISCO ID service API and GISCO Address API
   workflows with **ggplot2** examples.
 - Query timeout can now also be controlled with the `GISCO_TIMEOUT`
@@ -20,16 +22,16 @@
 CRAN release: 2026-06-17
 
 - Refactor internal helpers, documentation and tests, including clearer
-  user-facing messages, more consistent roxygen2 documentation, reused
-  documentation blocks and faster mocked tests for selected
+  user-facing messages, more consistent **roxygen2** documentation,
+  reused documentation blocks and faster mocked tests for selected
   download-heavy paths.
 
 ## giscoR 1.1.0
 
 CRAN release: 2026-03-28
 
-- Adapt vignettes to Quarto.
-- Bump the minimum **httr2** version to **1.2.0**
+- Adapt vignettes to **Quarto**.
+- Bump the minimum **httr2** version to 1.2.0
   ([\#126](https://github.com/rOpenGov/giscoR/issues/126)).
 - Query timeout can now be controlled with `options(gisco_timeout)`
   using
@@ -81,11 +83,11 @@ to manage the persistent cache directory. If you already have a cache
 directory in place, you will see a one-time message about this
 migration.
 
-The package now requires **R ≥ 4.1**, and dependency updates improve
+The package now requires **R** ≥ 4.1, and dependency updates improve
 both performance and maintainability. All functions return tidy objects
-(tibbles or `sf` objects with tibble data).
+(tibbles or **sf** objects with tibble data).
 
-Dataset subsetting is now performed at read time with GDAL query
+Dataset subsetting is now performed at read time with **GDAL** query
 capabilities
 ([`sf::read_sf()`](https://r-spatial.github.io/sf/reference/st_read.html)),
 improving performance and reducing file size. The **geojsonsf**
@@ -110,10 +112,10 @@ We recommend reviewing the updated documentation at
 ### Compatibility and performance
 
 - Add **cli**, **httr2**, **lifecycle** and **tibble**.
-- Perform dataset subsetting at read time using GDAL queries via
+- Perform dataset subsetting at read time using **GDAL** queries via
   [`sf::read_sf()`](https://r-spatial.github.io/sf/reference/st_read.html).
 - Remove **geojsonsf**.
-- Require **R ≥ 4.1**.
+- Require **R** ≥ 4.1.
 - Return tidy objects consistently.
 
 ### New functions
@@ -401,7 +403,7 @@ CRAN release: 2020-11-12
 
 - Add the `verbose` argument.
 - Remove **colorspace**.
-- Require **R ≥ 3.6.0**.
+- Require **R** ≥ 3.6.0.
 - Rewrite internal utilities.
 - Rewrite
   [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md).

@@ -133,8 +133,10 @@ gisco_attributions(lang = "es", copyright = TRUE)
 #> [1] "© Eurogeographics para los límites administrativos"
 
 gisco_attributions(lang = "XXX")
-#> ! `lang` = "xxx" is not supported. Switching to English.
-#> ℹ Consider contributing a translation: <https://github.com/rOpenGov/giscoR/issues>.
+#> Warning: `lang` = "xxx" is not supported.
+#> ℹ Switching to English.
+#> ℹ Consider contributing a translation:
+#>   <https://github.com/rOpenGov/giscoR/issues>.
 #> [1] "© EuroGeographics for the administrative boundaries"
 
 # Get the list of codes from countrycode.

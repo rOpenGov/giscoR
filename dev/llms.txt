@@ -48,7 +48,7 @@ pak::pak("rOpenGov/giscoR")
 ```
 
 Alternatively, you can install **giscoR** via
-[r-universe](https://ropengov.r-universe.dev/giscoR):
+[**r-universe**](https://ropengov.r-universe.dev/giscoR):
 
 ``` r
 
@@ -250,7 +250,7 @@ Files are stored in the local cache for faster repeated access.
 
 ## Contribute
 
-See the [GitHub repository](https://github.com/rOpenGov/giscoR/) for
+See the [**GitHub** repository](https://github.com/rOpenGov/giscoR/) for
 source code.
 
 Contributions are welcome.
@@ -258,7 +258,7 @@ Contributions are welcome.
 - Use the [issue tracker](https://github.com/rOpenGov/giscoR/issues) for
   feedback and bug reports.
 - Send [pull requests](https://github.com/rOpenGov/giscoR/).
-- Star [**giscoR** on GitHub](https://github.com/rOpenGov/giscoR).
+- Star [**giscoR** on **GitHub**](https://github.com/rOpenGov/giscoR).
 
 ## Citation
 
@@ -269,7 +269,7 @@ Hernangómez D (2026). *giscoR: Download Eurostat GISCO Spatial Data*.
 <https://doi.org/10.32614/CRAN.package.giscoR>.
 <https://ropengov.github.io/giscoR/>.
 
-A BibTeX entry for LaTeX users is:
+A **BibTeX** entry for **LaTeX** users is:
 
 ``` R
 @Manual{R-giscoR,

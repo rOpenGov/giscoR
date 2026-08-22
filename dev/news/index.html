@@ -52,7 +52,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="giscor-development-version">giscoR (development version)<a class="anchor" aria-label="anchor" href="#giscor-development-version"></a></h2>
-<ul><li>Add an article showing GISCO ID service API and GISCO Address API workflows with <strong>ggplot2</strong> examples.</li>
+<ul><li>
+<strong>cli</strong> diagnostics now use catchable warning and error classes for programmatic handling.</li>
+<li>Add an article showing GISCO ID service API and GISCO Address API workflows with <strong>ggplot2</strong> examples.</li>
 <li>Query timeout can now also be controlled with the <code>GISCO_TIMEOUT</code> environment variable when <code>options(gisco_timeout)</code> is not set.</li>
 <li>Refactor tests to isolate cache state, use temporary cache directories and improve mocked coverage of cache and request helpers.</li>
 <li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code>.</li>
@@ -63,12 +65,12 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.1" id="giscor-111">giscoR 1.1.1<a class="anchor" aria-label="anchor" href="#giscor-111"></a></h2><p class="text-muted">CRAN release: 2026-06-17</p>
-<ul><li>Refactor internal helpers, documentation and tests, including clearer user-facing messages, more consistent roxygen2 documentation, reused documentation blocks and faster mocked tests for selected download-heavy paths.</li>
+<ul><li>Refactor internal helpers, documentation and tests, including clearer user-facing messages, more consistent <strong>roxygen2</strong> documentation, reused documentation blocks and faster mocked tests for selected download-heavy paths.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="giscor-110">giscoR 1.1.0<a class="anchor" aria-label="anchor" href="#giscor-110"></a></h2><p class="text-muted">CRAN release: 2026-03-28</p>
-<ul><li>Adapt vignettes to Quarto.</li>
-<li>Bump the minimum <strong>httr2</strong> version to <strong>1.2.0</strong> (<a href="https://github.com/rOpenGov/giscoR/issues/126" class="external-link">#126</a>).</li>
+<ul><li>Adapt vignettes to <strong>Quarto</strong>.</li>
+<li>Bump the minimum <strong>httr2</strong> version to 1.2.0 (<a href="https://github.com/rOpenGov/giscoR/issues/126" class="external-link">#126</a>).</li>
 <li>Query timeout can now be controlled with <code>options(gisco_timeout)</code> using <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code>. The default value is <code>httr2::req_timeout(..., seconds = 300)</code> (5 minutes) (<a href="https://github.com/rOpenGov/giscoR/issues/123" class="external-link">#123</a>).</li>
 <li>Use <code><a href="https://testthat.r-lib.org/reference/local_mocked_bindings.html" class="external-link">testthat::local_mocked_bindings()</a></code> for API error testing.</li>
 </ul></div>
@@ -87,8 +89,8 @@
 </blockquote>
 <p>Database management has also been improved. Instead of relying on the static <code><a href="../reference/gisco_db.html">?gisco_db</a></code> dataset, the package now stores the GISCO database in the cache. This cached database is used for all API calls and can be updated via <code>gisco_get_cached_db(update_cache = TRUE)</code>. In practice, when GISCO publishes a new release, you can access updated data by refreshing the cached database without waiting for a new version of <strong>giscoR</strong>.</p>
 <p>The package now uses <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">tools::R_user_dir()</a></code> instead of <code><a href="https://rappdirs.r-lib.org/reference/user_data_dir.html" class="external-link">rappdirs::user_config_dir()</a></code> to manage the persistent cache directory. If you already have a cache directory in place, you will see a one-time message about this migration.</p>
-<p>The package now requires <strong>R ≥ 4.1</strong>, and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <code>sf</code> objects with tibble data).</p>
-<p>Dataset subsetting is now performed at read time with GDAL query capabilities (<code><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">sf::read_sf()</a></code>), improving performance and reducing file size. The <strong>geojsonsf</strong> dependency is no longer required.</p>
+<p>The package now requires <strong>R</strong> ≥ 4.1, and dependency updates improve both performance and maintainability. All functions return tidy objects (tibbles or <strong>sf</strong> objects with tibble data).</p>
+<p>Dataset subsetting is now performed at read time with <strong>GDAL</strong> query capabilities (<code><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">sf::read_sf()</a></code>), improving performance and reducing file size. The <strong>geojsonsf</strong> dependency is no longer required.</p>
 <p>Several new functions and arguments have been added, some functions have been renamed and one function has been deprecated. All bundled datasets have been updated to their latest versions.</p>
 <p>We recommend reviewing the updated documentation at <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a>.</p>
 <div class="section level3">
@@ -104,9 +106,9 @@
 <div class="section level3">
 <h3 id="compatibility-and-performance-1-0-0">Compatibility and performance<a class="anchor" aria-label="anchor" href="#compatibility-and-performance-1-0-0"></a></h3>
 <ul><li>Add <strong>cli</strong>, <strong>httr2</strong>, <strong>lifecycle</strong> and <strong>tibble</strong>.</li>
-<li>Perform dataset subsetting at read time using GDAL queries via <code><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">sf::read_sf()</a></code>.</li>
+<li>Perform dataset subsetting at read time using <strong>GDAL</strong> queries via <code><a href="https://r-spatial.github.io/sf/reference/st_read.html" class="external-link">sf::read_sf()</a></code>.</li>
 <li>Remove <strong>geojsonsf</strong>.</li>
-<li>Require <strong>R ≥ 4.1</strong>.</li>
+<li>Require <strong>R</strong> ≥ 4.1.</li>
 <li>Return tidy objects consistently.</li>
 </ul></div>
 <div class="section level3">
@@ -315,7 +317,7 @@
 <h2 class="pkg-version" data-toc-text="0.2.0" id="giscor-020">giscoR 0.2.0<a class="anchor" aria-label="anchor" href="#giscor-020"></a></h2><p class="text-muted">CRAN release: 2020-11-12</p>
 <ul><li>Add the <code>verbose</code> argument.</li>
 <li>Remove <strong>colorspace</strong>.</li>
-<li>Require <strong>R ≥ 3.6.0</strong>.</li>
+<li>Require <strong>R</strong> ≥ 3.6.0.</li>
 <li>Rewrite internal utilities.</li>
 <li>Rewrite <code><a href="../reference/gisco_db.html">?gisco_db</a></code>.</li>
 <li>
