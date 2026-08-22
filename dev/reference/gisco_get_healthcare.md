@@ -2,12 +2,10 @@
 
 The dataset contains information on healthcare services considered
 hospitals by Member States. The definition varies slightly from country
-to country, but roughly includes the following:
-
-- Hospitals comprise licensed establishments primarily engaged in
-  providing medical, diagnostic and treatment services that include
-  physician, nursing and other health services to inpatients and the
-  specialized accommodation services required by inpatients.
+to country. Broadly, hospitals are licensed establishments primarily
+engaged in providing medical, diagnostic and treatment services,
+including physician, nursing and other health services to inpatients and
+the specialized accommodation services required by inpatients.
 
 ## Usage
 
@@ -86,9 +84,9 @@ The following table describes the healthcare service attributes:
 | `city` | City name. In some sources, this refers to a region or municipality. |
 | `cntr_id` | Country code (2 letters, ISO 3166-1 alpha-2). |
 | `emergency` | `yes` or `no`, indicating whether the healthcare site provides emergency medical services. |
-| `cap_beds` | Measure of capacity by number of beds (most common). |
-| `cap_prac` | Measure of capacity by number of practitioners. |
-| `cap_rooms` | Measure of capacity by number of rooms. |
+| `cap_beds` | Number of beds, the most common capacity measure. |
+| `cap_prac` | Number of practitioners. |
+| `cap_rooms` | Number of rooms. |
 | `facility_type` | Type of healthcare service, such as psychiatric hospital, based on national classification. |
 | `public_private` | Public or private status of the healthcare service. |
 | `list_specs` | List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). |
@@ -102,7 +100,7 @@ The following table describes the healthcare service attributes:
 
 ## Copyright
 
-The general Eurostat copyright and licence provisions apply. Detailed
+The general Eurostat copyright and license provisions apply. Detailed
 metadata also list source-specific licensing conditions by country and
 data provider. Review the conditions for the selected data before use.
 

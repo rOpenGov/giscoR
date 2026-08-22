@@ -108,8 +108,8 @@ See **Examples**.
 
 ## Details
 
-Some arguments only apply to a specific value of `"id"`. For example
-`"resolution"` is ignored for values `"communes"`, `"lau"`,
+Some arguments only apply to a specific value of `id`. For example,
+`resolution` is ignored for values `"communes"`, `"lau"`,
 `"urban_audit"` and `"postal_codes"`.
 
 See available years in the corresponding functions:
@@ -182,8 +182,8 @@ connect <- gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 )
-#> ℹ Cache directory is /tmp/RtmpReUCBG/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpReUCBG/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/RtmpastHz1/testexample/countries.
+#> ✔ File already cached: /tmp/RtmpastHz1/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }

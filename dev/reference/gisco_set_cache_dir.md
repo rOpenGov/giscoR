@@ -50,12 +50,11 @@ this session.
 
 ## Details
 
-By default, when no cache `cache_dir` is set, the package uses a folder
-inside [`base::tempdir()`](https://rdrr.io/r/base/tempfile.html) (so
-files are temporary and are removed when the R session ends). To persist
-a cache across R sessions, use
-`gisco_set_cache_dir(cache_dir, install = TRUE)`, which writes the
-chosen path to a small configuration file under
+By default, when no `cache_dir` is set, the package uses a folder inside
+[`base::tempdir()`](https://rdrr.io/r/base/tempfile.html) (so files are
+temporary and are removed when the R session ends). To persist a cache
+across R sessions, use `gisco_set_cache_dir(cache_dir, install = TRUE)`,
+which writes the chosen path to a small configuration file under
 `tools::R_user_dir("giscoR", "config")`.
 
 ## Note
@@ -112,29 +111,29 @@ Cache management utilities:
 # Do not run this. It modifies your current state.
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpReUCBG/giscoR
+#> ℹ /tmp/RtmpastHz1/giscoR
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache directory is /tmp/RtmpReUCBG/example/cachenew.
+#> ℹ giscoR cache directory is /tmp/RtmpastHz1/example/cachenew.
 #> ℹ To install your `cache_dir` path for future sessions, run this function with `install` = TRUE.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpReUCBG/example/cachenew
-#> [1] "/tmp/RtmpReUCBG/example/cachenew"
+#> ℹ /tmp/RtmpastHz1/example/cachenew
+#> [1] "/tmp/RtmpastHz1/example/cachenew"
 
 # Restore the initial cache.
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache directory is /tmp/RtmpReUCBG/giscoR.
+#> ℹ giscoR cache directory is /tmp/RtmpastHz1/giscoR.
 #> ℹ To install your `cache_dir` path for future sessions, run this function with `install` = TRUE.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/RtmpReUCBG/giscoR
+#> ℹ /tmp/RtmpastHz1/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/RtmpReUCBG/giscoR
-#> [1] "/tmp/RtmpReUCBG/giscoR"
+#> ℹ /tmp/RtmpastHz1/giscoR
+#> [1] "/tmp/RtmpastHz1/giscoR"
 ```

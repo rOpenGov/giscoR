@@ -177,7 +177,7 @@ ggplot(cntries) +
   geom_sf()
 
 
-# Get a region
+# Get a region.
 
 africa <- gisco_get_countries(region = "Africa")
 ggplot(africa) +

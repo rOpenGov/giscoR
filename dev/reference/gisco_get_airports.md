@@ -59,7 +59,7 @@ The returned object is transformed to [EPSG:4326](https://epsg.io/4326).
 
 ## Copyright
 
-See the Eurostat general copyright and licence provisions:
+See the Eurostat general copyright and license provisions:
 <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 ## See also

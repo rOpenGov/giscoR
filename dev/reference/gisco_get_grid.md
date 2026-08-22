@@ -1,6 +1,6 @@
 # Grid dataset
 
-These datasets contain grid cells covering the EU and neighbouring
+These datasets contain grid cells covering the EU and neighboring
 countries at resolutions from 1 km to 100 km. Population figures are
 available for selected reference years.
 
@@ -53,7 +53,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 ## Details
 
 `gisco_get_grid()` downloads the GeoPackage representation of the grid
-as polygon cells (`spatialtype = "REGION"`) or cell-centre points
+as polygon cells (`spatialtype = "REGION"`) or cell-center points
 (`spatialtype = "POINT"`). The official distribution also provides
 tabular CSV and Parquet files, which this function does not download.
 

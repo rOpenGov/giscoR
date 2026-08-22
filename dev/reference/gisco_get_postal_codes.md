@@ -1,7 +1,7 @@
 # Postal codes dataset
 
 The postal code point dataset shows the location of postal codes, NUTS
-codes and the degree of urbanisation classification across the EU, EFTA
+codes and the degree of urbanization classification across the EU, EFTA
 and candidate countries. Its primary purpose is to create correspondence
 tables for the NUTS classification established by Regulation (EC) No
 1059/2003 as part of the Tercet Regulation (EU) 2017/2391.
