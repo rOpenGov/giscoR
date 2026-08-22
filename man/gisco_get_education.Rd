@@ -64,8 +64,8 @@ The following table describes the education service attributes:\tabular{ll}{
    \code{city} \tab City name. In some sources, this refers to a region or municipality. \cr
    \code{cntr_id} \tab Country code (2 letters, ISO 3166-1 alpha-2). \cr
    \code{levels} \tab Education levels represented by a single integer or range, using ISCED 2011. \cr
-   \code{max_students} \tab Measure of capacity by maximum number of students. \cr
-   \code{enrollment} \tab Measure of capacity by number of enrolled students. \cr
+   \code{max_students} \tab Maximum student capacity. \cr
+   \code{enrollment} \tab Number of enrolled students. \cr
    \code{fields} \tab Academic disciplines in which the institution specializes, using ISCED-F 2013. \cr
    \code{facility_type} \tab Type of institution by ownership and operation, such as Catholic or international. \cr
    \code{public_private} \tab Public or private status of the education service. \cr
@@ -79,7 +79,7 @@ The following table describes the education service attributes:\tabular{ll}{
 }
 }
 \section{Copyright}{
-The general Eurostat copyright and licence provisions apply. Detailed
+The general Eurostat copyright and license provisions apply. Detailed
 metadata also list source-specific licensing conditions by country and data
 provider. Review the conditions for the selected data before use.
 }

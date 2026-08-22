@@ -18,18 +18,16 @@ test_that("LAU use resolved GISCO files", {
         name = "LAU_RG_2024_4326.gpkg"
       )
     },
-    read_gisco_dataset = function(
-      url,
-      name,
-      cache = TRUE,
-      cache_dir = NULL,
-      subdir,
-      update_cache = FALSE,
-      verbose = FALSE,
-      filters = NULL,
-      operator = "AND",
-      ...
-    ) {
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  operator = "AND",
+                                  ...) {
       expect_match(url, "LAU_RG_2024_4326[.]gpkg$")
       expect_identical(name, "LAU_RG_2024_4326.gpkg")
       expect_true(cache)
@@ -73,11 +71,9 @@ test_that("LAU combines country and GISCO ID filters", {
     convert_country_code_or_null = function(country) {
       country
     },
-    make_sf_filter = function(
-      file_local,
-      values,
-      candidates = c("CNTR_ID", "CNTR_CODE")
-    ) {
+    make_sf_filter = function(file_local,
+                              values,
+                              candidates = c("CNTR_ID", "CNTR_CODE")) {
       filter_calls[[length(filter_calls) + 1L]] <<- list(
         file_local = file_local,
         values = values,
@@ -85,18 +81,16 @@ test_that("LAU combines country and GISCO ID filters", {
       )
       stats::setNames(list(values), paste(candidates, collapse = "|"))
     },
-    read_gisco_dataset = function(
-      url,
-      name,
-      cache = TRUE,
-      cache_dir = NULL,
-      subdir,
-      update_cache = FALSE,
-      verbose = FALSE,
-      filters = NULL,
-      operator = "AND",
-      ...
-    ) {
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  operator = "AND",
+                                  ...) {
       expect_identical(subdir, "lau")
       expect_identical(operator, "OR")
       expect_true(is.function(filters))

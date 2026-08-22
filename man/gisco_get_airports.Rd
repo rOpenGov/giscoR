@@ -46,7 +46,7 @@ codes.
 The returned object is transformed to \href{https://epsg.io/4326}{EPSG:4326}.
 }
 \section{Copyright}{
-See the Eurostat general copyright and licence provisions:
+See the Eurostat general copyright and license provisions:
 \url{https://ec.europa.eu/eurostat/web/gisco/geodata}.
 }
 

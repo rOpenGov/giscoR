@@ -81,8 +81,8 @@ Download zipped data from GISCO to the \code{\link[=gisco_set_cache_dir]{cache_d
 and extract the relevant files.
 }
 \details{
-Some arguments only apply to a specific value of \code{"id"}. For example
-\code{"resolution"} is ignored for values \code{"communes"}, \code{"lau"},
+Some arguments only apply to a specific value of \code{id}. For example,
+\code{resolution} is ignored for values \code{"communes"}, \code{"lau"},
 \code{"urban_audit"} and \code{"postal_codes"}.
 
 See available years in the corresponding functions:

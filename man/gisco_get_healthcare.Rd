@@ -45,13 +45,10 @@ A \code{\link[sf:st_sf]{sf}} object.
 \description{
 The dataset contains information on healthcare services considered
 hospitals by Member States. The definition varies slightly from country to
-country, but roughly includes the following:
-\itemize{
-\item Hospitals comprise licensed establishments primarily engaged in
-providing medical, diagnostic and treatment services that include
-physician, nursing and other health services to inpatients and the
-specialized accommodation services required by inpatients.
-}
+country. Broadly, hospitals are licensed establishments primarily engaged in
+providing medical, diagnostic and treatment services, including physician,
+nursing and other health services to inpatients and the specialized
+accommodation services required by inpatients.
 }
 \details{
 Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
@@ -70,9 +67,9 @@ The following table describes the healthcare service attributes:\tabular{ll}{
    \code{city} \tab City name. In some sources, this refers to a region or municipality. \cr
    \code{cntr_id} \tab Country code (2 letters, ISO 3166-1 alpha-2). \cr
    \code{emergency} \tab \code{yes} or \code{no}, indicating whether the healthcare site provides emergency medical services. \cr
-   \code{cap_beds} \tab Measure of capacity by number of beds (most common). \cr
-   \code{cap_prac} \tab Measure of capacity by number of practitioners. \cr
-   \code{cap_rooms} \tab Measure of capacity by number of rooms. \cr
+   \code{cap_beds} \tab Number of beds, the most common capacity measure. \cr
+   \code{cap_prac} \tab Number of practitioners. \cr
+   \code{cap_rooms} \tab Number of rooms. \cr
    \code{facility_type} \tab Type of healthcare service, such as psychiatric hospital, based on national classification. \cr
    \code{public_private} \tab Public or private status of the healthcare service. \cr
    \code{list_specs} \tab List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). \cr
@@ -86,7 +83,7 @@ The following table describes the healthcare service attributes:\tabular{ll}{
 }
 }
 \section{Copyright}{
-The general Eurostat copyright and licence provisions apply. Detailed
+The general Eurostat copyright and license provisions apply. Detailed
 metadata also list source-specific licensing conditions by country and data
 provider. Review the conditions for the selected data before use.
 }

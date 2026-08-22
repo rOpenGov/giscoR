@@ -11,7 +11,7 @@ gisco_clear_cache(config = FALSE, cached_data = TRUE, verbose = FALSE)
 \item{config}{If \code{TRUE}, delete the configuration folder of
 \CRANpkg{giscoR}.}
 
-\item{cached_data}{If \code{TRUE}, delete your \code{cache_dir} and all its content.}
+\item{cached_data}{If \code{TRUE}, delete your \code{cache_dir} and all its contents.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}

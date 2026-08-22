@@ -21,16 +21,14 @@ test_that("Coastal lines use resolved GISCO files", {
       )
     },
     read_packaged_gisco_dataset = function(...) NULL,
-    read_gisco_dataset = function(
-      url,
-      name,
-      cache = TRUE,
-      cache_dir = NULL,
-      subdir,
-      update_cache = FALSE,
-      verbose = FALSE,
-      ...
-    ) {
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  ...) {
       expect_match(url, "COAS_RG_20M_2016_4326[.]gpkg$")
       expect_identical(name, "COAS_RG_20M_2016_4326.gpkg")
       expect_false(cache)

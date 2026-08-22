@@ -42,7 +42,7 @@ sessions. Use \code{Sys.getenv("GISCO_CACHE_DIR")} or
 \code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to find your cached path.
 }
 \details{
-By default, when no cache \code{cache_dir} is set, the package uses a folder
+By default, when no \code{cache_dir} is set, the package uses a folder
 inside \code{\link[base:tempdir]{base::tempdir()}} (so files are temporary and are removed when the
 \R session ends). To persist a cache across \R sessions, use
 \code{gisco_set_cache_dir(cache_dir, install = TRUE)}, which writes the chosen

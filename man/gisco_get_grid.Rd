@@ -37,13 +37,13 @@ messages.}
 A \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-These datasets contain grid cells covering the EU and neighbouring countries
+These datasets contain grid cells covering the EU and neighboring countries
 at resolutions from 1 km to 100 km. Population figures are available for
 selected reference years.
 }
 \details{
 \code{\link[=gisco_get_grid]{gisco_get_grid()}} downloads the GeoPackage representation of the grid as
-polygon cells (\code{spatialtype = "REGION"}) or cell-centre points
+polygon cells (\code{spatialtype = "REGION"}) or cell-center points
 (\code{spatialtype = "POINT"}). The official distribution also provides tabular
 CSV and Parquet files, which this function does not download.
 
