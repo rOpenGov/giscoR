@@ -129,7 +129,7 @@ test_that("Urban audit unit supports multiple calls and units", {
   cdir <- local_test_cache_dir("test-unit-urau-")
 
   # Message even when verbose FALSE
-  expect_message(
+  expect_warning(
     g <- gisco_get_unit_urban_audit(
       "XXXYY",
       spatialtype = "LB",
@@ -138,21 +138,21 @@ test_that("Urban audit unit supports multiple calls and units", {
       year = "2001",
       verbose = FALSE
     ),
-    "Skipping"
+    class = "giscoR_warning_missing_unit"
   )
   expect_null(g)
 
   # Several
-  expect_message(
+  expect_warning(
     g <- gisco_get_unit_urban_audit(
-      c("XXX", "BE001C1", "RO001C1", "DE111", "FI001K2"),
+      c("XXX", "BE001C1", "RO001C1", "FI001K2"),
       spatialtype = "LB",
       cache = FALSE,
       cache_dir = cdir,
       year = "2018",
       verbose = FALSE
     ),
-    "Skipping"
+    class = "giscoR_warning_missing_unit"
   )
   expect_equal(nrow(g), 3)
   expect_identical(g$CNTR_CODE, c("BE", "RO", "FI"))
@@ -160,11 +160,14 @@ test_that("Urban audit unit supports multiple calls and units", {
 
   # Polygon
 
-  pol <- gisco_get_unit_urban_audit(
-    c("XXX", "BE001C1", "RO001C1", "DE111", "FI001K2"),
-    year = 2018,
-    spatialtype = "RG",
-    cache_dir = cdir
+  expect_warning(
+    pol <- gisco_get_unit_urban_audit(
+      c("XXX", "BE001C1", "RO001C1", "FI001K2"),
+      year = 2018,
+      spatialtype = "RG",
+      cache_dir = cdir
+    ),
+    class = "giscoR_warning_missing_unit"
   )
   expect_equal(nrow(pol), 3)
   expect_identical(

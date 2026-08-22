@@ -238,11 +238,14 @@ test_that("NUTS filters also work without cache", {
 
   # No filters
   bn <- gisco_get_nuts(spatialtype = "BN", resolution = "60")
-  bn_nocach <- gisco_get_nuts(
-    spatialtype = "BN",
-    cache = FALSE,
-    country = "AN ERROR",
-    resolution = "60"
+  expect_warning(
+    bn_nocach <- gisco_get_nuts(
+      spatialtype = "BN",
+      cache = FALSE,
+      country = "AN ERROR",
+      resolution = "60"
+    ),
+    class = "giscoR_warning_unmatched_country"
   )
 
   expect_identical(nrow(bn), nrow(bn_nocach))

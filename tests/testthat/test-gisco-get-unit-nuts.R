@@ -107,7 +107,7 @@ test_that("NUTS unit supports multiple calls and units", {
   cdir <- local_test_cache_dir("test-unit-nuts-")
 
   # Message even when verbose FALSE
-  expect_message(
+  expect_warning(
     g <- gisco_get_unit_nuts(
       "XXXYY",
       spatialtype = "LB",
@@ -116,12 +116,12 @@ test_that("NUTS unit supports multiple calls and units", {
       year = "2016",
       verbose = FALSE
     ),
-    "Skipping"
+    class = "giscoR_warning_missing_unit"
   )
   expect_null(g)
 
   # Several
-  expect_message(
+  expect_warning(
     g <- gisco_get_unit_nuts(
       c("XXX", "ES", "DE111", "CZ01"),
       spatialtype = "LB",
@@ -130,7 +130,7 @@ test_that("NUTS unit supports multiple calls and units", {
       year = "2016",
       verbose = FALSE
     ),
-    "Skipping"
+    class = "giscoR_warning_missing_unit"
   )
   expect_equal(nrow(g), 3)
   expect_identical(g$CNTR_CODE, c("ES", "DE", "CZ"))

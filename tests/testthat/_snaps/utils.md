@@ -177,5 +177,5 @@
       test_msg("Testing fun reference with error.", verbose = 1)
     Condition
       Error in `test_msg()`:
-      ! `verbose` must be a <logical>.
+      ! `verbose` must be logical.
 

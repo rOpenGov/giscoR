@@ -325,7 +325,7 @@ call_id_api <- function(
   .envir = parent.frame()
 ) {
   cli_abort_if_not(
-    "{.arg verbose} must be a {.type logical}." = is.logical(verbose),
+    "{.arg verbose} must be logical." = is.logical(verbose),
     .envir = .envir
   )
 
