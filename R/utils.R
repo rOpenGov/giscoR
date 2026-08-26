@@ -47,7 +47,8 @@ match_arg_pretty <- function(arg, choices) {
   arg_name <- as.character(substitute(arg)) # nolint
 
   if (missing(choices)) {
-    formal_args <- formals(sys.function(sys_par <- sys.parent()))
+    sys_par <- sys.parent()
+    formal_args <- formals(sys.function(sys_par))
     choices <- eval(
       formal_args[[as.character(substitute(arg))]],
       envir = sys.frame(sys_par)
@@ -70,7 +71,9 @@ match_arg_pretty <- function(arg, choices) {
   }
 
   msg <- paste0(
-    "{.arg {arg_name}} must be {.or {.str {choices}}}, not ",
+    "{.arg ",
+    arg_name,
+    "} must be {.or {.str {choices}}}, not ",
     "{.or {.str {arg}}}."
   )
 

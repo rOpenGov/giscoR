@@ -44,7 +44,7 @@ gisco_get_census <- function(
   verbose = FALSE,
   spatialtype = c("RG", "PT")
 ) {
-  year <- match_arg_pretty(year)
+  match_arg_pretty(year)
 
   spatialtype <- match_arg_pretty(spatialtype)
   files <- c(

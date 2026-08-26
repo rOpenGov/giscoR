@@ -312,9 +312,8 @@ for_import_jsonlite <- function() {
     return(invisible(NULL))
   }
   txt <- gisco_resp_body_string(resp)
-  local <- jsonlite::parse_json(txt)
-  local <- NULL
-  invisible(local)
+  jsonlite::parse_json(txt)
+  invisible(NULL)
 }
 
 #' Parse a response body as a string

@@ -76,11 +76,11 @@
 #'
 #' # Connect the function with the downloaded data.
 #'
-#' connect <- gisco_get_countries(
+#' invisible(gisco_get_countries(
 #'   resolution = 60,
 #'   year = 2024, ext = "geojson",
 #'   cache_dir = tmp, verbose = TRUE
-#' )
+#' ))
 #'
 #' # The message shows that the file is already cached.
 #' }
