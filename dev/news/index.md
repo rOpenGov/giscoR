@@ -16,6 +16,8 @@
   adds support for the Airports 2024 point dataset.
 - [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_postal_codes.md)
   now defaults to the 2025 release and adds an `epsg` argument.
+- [`giscoR::gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
+  has been updated.
 
 ## giscoR 1.1.1
 

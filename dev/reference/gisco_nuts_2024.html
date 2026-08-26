@@ -63,7 +63,7 @@ Nomenclature of Territorial Units for Statistics (NUTS) for 2024.</p>
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
     <p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object with <code>MULTIPOLYGON</code> geometries, resolution:
 1:20 million and <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>. It has
-1798 rows and 10 variables:</p><dl><dt><code>NUTS_ID</code></dt>
+1798 rows and 19 variables:</p><dl><dt><code>NUTS_ID</code></dt>
 <dd><p>NUTS identifier.</p></dd>
 
 <dt><code>LEVL_CODE</code></dt>
@@ -86,6 +86,34 @@ Nomenclature of Territorial Units for Statistics (NUTS) for 2024.</p>
 
 <dt><code>COAST_TYPE</code></dt>
 <dd><p>Coastal type, see <strong>Details</strong>.</p></dd>
+
+<dt><code>NAME_ENGL</code></dt>
+<dd><p>Country name in English.</p></dd>
+
+<dt><code>NAME_FREN</code></dt>
+<dd><p>Country name in French.</p></dd>
+
+<dt><code>ISO3_CODE</code></dt>
+<dd><p>ISO 3166-1 alpha-3 code of each country from
+GISCO.</p></dd>
+
+<dt><code>SVRG_UN</code></dt>
+<dd><p>Sovereign status according to the United Nations.</p></dd>
+
+<dt><code>CAPT</code></dt>
+<dd><p>Capital city.</p></dd>
+
+<dt><code>EU_STAT</code></dt>
+<dd><p>European Union member.</p></dd>
+
+<dt><code>EFTA_STAT</code></dt>
+<dd><p>EFTA member.</p></dd>
+
+<dt><code>CC_STAT</code></dt>
+<dd><p>EU candidate member.</p></dd>
+
+<dt><code>NAME_GERM</code></dt>
+<dd><p>Country name in German.</p></dd>
 
 <dt><code>geo</code></dt>
 <dd><p>Same value as <code>NUTS_ID</code>, provided for compatibility with
@@ -144,12 +172,12 @@ coastline).</p></li>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"gisco_nuts_2024"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">gisco_nuts_2024</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 6 features and 9 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 6 features and 18 fields</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: MULTIPOLYGON</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 19.30265 ymin: 40.72684 xmax: 20.59774 ymax: 42.63906</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 19</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN NUTS_NAME MOUNT_TYPE URBN_TYPE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> AL011           3 AL        Dibër     Dibër             <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span></span>
@@ -158,7 +186,9 @@ coastline).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> AL014           3 AL        Lezhë     Lezhë             <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> AL015           3 AL        Shkodër   Shkodër           <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> AL021           3 AL        Elbasan   Elbasan           <span style="color: #BB0000;">NA</span>        <span style="color: #BB0000;">NA</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 3 more variables: COAST_TYPE &lt;int&gt;, geo &lt;chr&gt;, geometry &lt;MULTIPOLYGON [°]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 12 more variables: COAST_TYPE &lt;int&gt;, NAME_ENGL &lt;chr&gt;, NAME_FREN &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ISO3_CODE &lt;chr&gt;, SVRG_UN &lt;chr&gt;, CAPT &lt;chr&gt;, EU_STAT &lt;chr&gt;, EFTA_STAT &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   CC_STAT &lt;chr&gt;, NAME_GERM &lt;chr&gt;, geo &lt;chr&gt;, geometry &lt;MULTIPOLYGON [°]&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
