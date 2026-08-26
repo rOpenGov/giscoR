@@ -22,11 +22,7 @@ test_that("HTTP setting environment variables are used in requests", {
   withr::local_options(gisco_timeout = NULL)
   withr::local_envvar(GISCO_TIMEOUT = "600")
 
-  req <- gisco_request(
-    "https://example.com",
-    cache = FALSE,
-    retry = FALSE
-  )
+  req <- gisco_request("https://example.com", cache = FALSE, retry = FALSE)
 
   expect_equal(req$options$timeout_ms, 600000)
 })

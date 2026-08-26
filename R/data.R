@@ -188,7 +188,7 @@ NULL
 #' @format
 #' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
-#' `r nrow(giscoR::gisco_nuts_2024)` rows and 10 variables:
+#' `r nrow(giscoR::gisco_nuts_2024)` rows and 19 variables:
 #' \describe{
 #'   \item{`NUTS_ID`}{NUTS identifier.}
 #'   \item{`LEVL_CODE`}{NUTS level code `(0,1,2,3)`.}
@@ -198,6 +198,16 @@ NULL
 #'   \item{`MOUNT_TYPE`}{Mountain type, see **Details**.}
 #'   \item{`URBN_TYPE`}{Urban type, see **Details**.}
 #'   \item{`COAST_TYPE`}{Coastal type, see **Details**.}
+#'    \item{`NAME_ENGL`}{Country name in English.}
+#'   \item{`NAME_FREN`}{Country name in French.}
+#'   \item{`ISO3_CODE`}{ISO 3166-1 alpha-3 code of each country from
+#'   GISCO.}
+#'   \item{`SVRG_UN`}{Sovereign status according to the United Nations.}
+#'   \item{`CAPT`}{Capital city.}
+#'   \item{`EU_STAT`}{European Union member.}
+#'   \item{`EFTA_STAT`}{EFTA member.}
+#'   \item{`CC_STAT`}{EU candidate member.}
+#'   \item{`NAME_GERM`}{Country name in German.}
 #'   \item{`geo`}{Same value as `NUTS_ID`, provided for compatibility with
 #'   \CRANpkg{eurostat}.}
 #'   \item{`geometry`}{Geometry field.}

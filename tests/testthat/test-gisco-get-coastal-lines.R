@@ -67,7 +67,7 @@ test_that("Coastal lines can refresh an existing cached dataset", {
 
   # Force download
 
-  db_cached2 <- gisco_get_coastal_lines(update_cache = TRUE, cache_dir = cdir)
+  invisible(gisco_get_coastal_lines(update_cache = TRUE, cache_dir = cdir))
 
   expect_s3_class(db_cached, "sf")
   expect_s3_class(db_cached, "tbl_df")
@@ -117,7 +117,7 @@ test_that("Coastal lines return matching data with and without cache", {
   # shp is always cached
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 0)
 
-  f <- gisco_get_coastal_lines(
+  gisco_get_coastal_lines(
     resolution = 60,
     cache_dir = cdir,
     ext = "shp",

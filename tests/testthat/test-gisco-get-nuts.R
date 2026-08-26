@@ -169,7 +169,7 @@ test_that("NUTS return matching data with and without cache", {
   # shp is always cached
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 0)
 
-  f <- gisco_get_nuts(
+  gisco_get_nuts(
     resolution = 60,
     cache_dir = cdir,
     ext = "shp",
@@ -183,11 +183,7 @@ test_that("NUTS can be filtered by country and level", {
   skip_if_gisco_offline()
 
   db_cached <- gisco_get_nuts(country = "Spain", nuts_level = 2)
-  db_cached2 <- gisco_get_nuts(
-    update_cache = TRUE,
-    country = "Spain",
-    nuts_level = 2
-  )
+
   expect_equal(nrow(db_cached), 19)
   expect_s3_class(db_cached, "sf")
   expect_s3_class(db_cached, "tbl_df")

@@ -290,10 +290,7 @@ test_that("ID queries warn before truncating NUTS identifiers", {
   local_mocked_bindings(call_id_api = function(custom_query, ...) custom_query)
 
   expect_warning(
-    query <- prepare_id_query(
-      nuts_id = c("ES11", "ES12"),
-      endpoint = "nuts"
-    ),
+    query <- prepare_id_query(nuts_id = c("ES11", "ES12"), endpoint = "nuts"),
     class = "giscoR_warning_truncated_input"
   )
 

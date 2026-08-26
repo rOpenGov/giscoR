@@ -2,7 +2,7 @@ test_that("Cached database returns NULL when offline", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  gb <- gisco_get_cached_db()
+  gisco_get_cached_db()
 
   local_mocked_bindings(is_online_fun = function(...) {
     FALSE
@@ -51,10 +51,7 @@ test_that("Static database fallback warns with a package class", {
   withr::local_envvar(GISCO_CACHE_DIR = cdir)
   local_mocked_bindings(gisco_get_cached_db = function(...) NULL)
 
-  expect_warning(
-    db <- get_db(),
-    class = "giscoR_warning_stale_cache"
-  )
+  expect_warning(db <- get_db(), class = "giscoR_warning_stale_cache")
 
   expect_identical(db, gisco_db)
 })
@@ -95,23 +92,19 @@ test_that("Cached DB helpers build cache paths and scrape entries", {
 
 test_that("API scraping skips child datasets that cannot be fetched", {
   calls <- 0L
-  master <- paste0(
-    '{"2024": {"files": "missing-child.json"}}'
-  )
+  master <- paste0('{"2024": {"files": "missing-child.json"}}')
 
-  local_mocked_bindings(
-    gisco_perform_request = function(...) {
-      calls <<- calls + 1L
-      if (calls == 1L) {
-        return(httr2::response(
-          200,
-          headers = list("content-type" = "application/json"),
-          body = charToRaw(master)
-        ))
-      }
-      NULL
+  local_mocked_bindings(gisco_perform_request = function(...) {
+    calls <<- calls + 1L
+    if (calls == 1L) {
+      return(httr2::response(
+        200,
+        headers = list("content-type" = "application/json"),
+        body = charToRaw(master)
+      ))
     }
-  )
+    NULL
+  })
 
   expect_null(scrap_api_data("nuts"))
   expect_identical(calls, 2L)

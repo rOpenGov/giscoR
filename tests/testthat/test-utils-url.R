@@ -298,11 +298,7 @@ test_that("URL database lookup validates and returns matching entries", {
   skip_if_gisco_offline()
 
   expect_snapshot(
-    get_url_db(
-      "postal_codes",
-      year = "1991",
-      fn = "gisco_get_postalcodes"
-    ),
+    get_url_db("postal_codes", year = "1991", fn = "gisco_get_postalcodes"),
     error = TRUE
   )
 

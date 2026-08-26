@@ -141,17 +141,17 @@ normalize_distribution_db <- function(db) {
 #' @noRd
 add_distribution_db_tags <- function(db) {
   db$epsg <- NA
-  db[grep("3857", db$api_file), ]$epsg <- 3857
-  db[grep("4326", db$api_file), ]$epsg <- 4326
-  db[grep("3035", db$api_file), ]$epsg <- 3035
+  db[grep("3857", db$api_file, fixed = TRUE), ]$epsg <- 3857
+  db[grep("4326", db$api_file, fixed = TRUE), ]$epsg <- 4326
+  db[grep("3035", db$api_file, fixed = TRUE), ]$epsg <- 3035
 
   db$resolution <- NA
-  db[grep("01M", db$api_file), ]$resolution <- 1
-  db[grep("03M", db$api_file), ]$resolution <- 3
-  db[grep("10M", db$api_file), ]$resolution <- 10
-  db[grep("20M", db$api_file), ]$resolution <- 20
-  db[grep("60M", db$api_file), ]$resolution <- 60
-  db[grep("100K", db$api_file), ]$resolution <- 100
+  db[grep("01M", db$api_file, fixed = TRUE), ]$resolution <- 1
+  db[grep("03M", db$api_file, fixed = TRUE), ]$resolution <- 3
+  db[grep("10M", db$api_file, fixed = TRUE), ]$resolution <- 10
+  db[grep("20M", db$api_file, fixed = TRUE), ]$resolution <- 20
+  db[grep("60M", db$api_file, fixed = TRUE), ]$resolution <- 60
+  db[grep("100K", db$api_file, fixed = TRUE), ]$resolution <- 100
 
   db$spatialtype <- NA
   avspatialtype <- c("BN", "RG", "LB", "COASTL", "INLAND")

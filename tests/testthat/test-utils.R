@@ -200,8 +200,5 @@ test_that("cli_abort_if_not aborts when conditions fail", {
 })
 
 test_that("Package input errors have a common condition class", {
-  expect_error(
-    cli_abort_if_not("No" = FALSE),
-    class = "giscoR_error"
-  )
+  expect_error(cli_abort_if_not("No" = FALSE), class = "giscoR_error")
 })

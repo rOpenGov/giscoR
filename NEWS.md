@@ -1,6 +1,7 @@
 # giscoR (development version)
 
-- **cli** diagnostics now use catchable warning and error classes for programmatic handling.
+- **cli** diagnostics now use catchable warning and error classes for
+  programmatic handling.
 - Add an article showing GISCO ID service API and GISCO Address API workflows
   with **ggplot2** examples.
 - Query timeout can now also be controlled with the `GISCO_TIMEOUT` environment
@@ -11,6 +12,7 @@
 - `gisco_get_airports()` adds support for the Airports 2024 point dataset.
 - `gisco_get_postal_codes()` now defaults to the 2025 release and adds an `epsg`
   argument.
+- `giscoR::gisco_nuts_2024` has been updated.
 
 # giscoR 1.1.1
 

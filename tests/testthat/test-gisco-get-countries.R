@@ -66,7 +66,7 @@ test_that("Countries can refresh an existing cached dataset", {
 
   # Force download
 
-  db_cached2 <- gisco_get_countries(update_cache = TRUE, cache_dir = cdir)
+  invisible(gisco_get_countries(update_cache = TRUE, cache_dir = cdir))
 
   expect_s3_class(db_cached, "sf")
   expect_s3_class(db_cached, "tbl_df")
@@ -116,7 +116,7 @@ test_that("Countries return matching data with and without cache", {
   # shp is always cached
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 0)
 
-  f <- gisco_get_countries(
+  gisco_get_countries(
     resolution = 60,
     cache_dir = cdir,
     ext = "shp",
@@ -129,7 +129,7 @@ test_that("Countries can be filtered by region or country", {
   skip_if_gisco_offline()
 
   db_cached <- gisco_get_countries(region = "Africa")
-  db_cached2 <- gisco_get_countries(update_cache = TRUE, region = "Africa")
+
   expect_lt(nrow(db_cached), 70)
   expect_s3_class(db_cached, "sf")
   expect_s3_class(db_cached, "tbl_df")
@@ -174,7 +174,7 @@ test_that("Countries filters also work without cache", {
   skip_if_gisco_offline()
 
   db_cached <- gisco_get_countries(region = "Africa")
-  db_no_cache <- gisco_get_countries(region = "Africa", cache = FALSE)
+
   expect_lt(nrow(db_cached), 70)
   expect_s3_class(db_cached, "sf")
   expect_s3_class(db_cached, "tbl_df")

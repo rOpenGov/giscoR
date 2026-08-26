@@ -5,10 +5,7 @@ test_that("Urban audit validates inputs before remote access", {
   expect_snapshot(gisco_get_urban_audit(year = "1999"), error = TRUE)
   expect_snapshot(gisco_get_urban_audit(epsg = "9999"), error = TRUE)
   expect_snapshot(gisco_get_urban_audit(level = "9999"), error = TRUE)
-  expect_snapshot(
-    gisco_get_urban_audit(spatialtype = "BN"),
-    error = TRUE
-  )
+  expect_snapshot(gisco_get_urban_audit(spatialtype = "BN"), error = TRUE)
   expect_snapshot(gisco_get_urban_audit(year = 2001), error = TRUE)
 })
 
@@ -201,12 +198,12 @@ test_that("Urban audit returns matching data with and without cache", {
   # shp is always cached
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 0)
 
-  f <- gisco_get_urban_audit(
+  invisible(gisco_get_urban_audit(
     cache_dir = cdir,
     ext = "shp",
     country = "LU",
     cache = FALSE
-  )
+  ))
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 1)
 })
 test_that("Urban audit supports GeoJSON and zipped shapefile downloads", {

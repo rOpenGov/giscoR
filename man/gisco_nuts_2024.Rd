@@ -8,7 +8,7 @@
 \format{
 A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. It has
-1798 rows and 10 variables:
+1798 rows and 19 variables:
 \describe{
 \item{\code{NUTS_ID}}{NUTS identifier.}
 \item{\code{LEVL_CODE}}{NUTS level code \verb{(0,1,2,3)}.}
@@ -18,6 +18,16 @@ A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolut
 \item{\code{MOUNT_TYPE}}{Mountain type, see \strong{Details}.}
 \item{\code{URBN_TYPE}}{Urban type, see \strong{Details}.}
 \item{\code{COAST_TYPE}}{Coastal type, see \strong{Details}.}
+\item{\code{NAME_ENGL}}{Country name in English.}
+\item{\code{NAME_FREN}}{Country name in French.}
+\item{\code{ISO3_CODE}}{ISO 3166-1 alpha-3 code of each country from
+GISCO.}
+\item{\code{SVRG_UN}}{Sovereign status according to the United Nations.}
+\item{\code{CAPT}}{Capital city.}
+\item{\code{EU_STAT}}{European Union member.}
+\item{\code{EFTA_STAT}}{EFTA member.}
+\item{\code{CC_STAT}}{EU candidate member.}
+\item{\code{NAME_GERM}}{Country name in German.}
 \item{\code{geo}}{Same value as \code{NUTS_ID}, provided for compatibility with
 \CRANpkg{eurostat}.}
 \item{\code{geometry}}{Geometry field.}

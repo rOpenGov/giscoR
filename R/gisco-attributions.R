@@ -138,10 +138,7 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
           "{.url https://github.com/rOpenGov/giscoR/issues}."
         )
       ),
-      class = c(
-        "giscoR_warning_unsupported_language",
-        "giscoR_warning"
-      ),
+      class = c("giscoR_warning_unsupported_language", "giscoR_warning"),
       call = NULL
     )
   }

@@ -170,7 +170,7 @@ test_that("Bulk download builds recursive downloads from mocked metadata", {
       sort() |>
       range()
 
-    aa <- lapply(y, function(x) {
+    invisible(lapply(y, function(x) {
       expect_message(
         s <- gisco_bulk_download(
           iii,
@@ -181,7 +181,7 @@ test_that("Bulk download builds recursive downloads from mocked metadata", {
         ),
         "shp.zip"
       )
-    })
+    }))
   }
 
   # Additional and extensions
