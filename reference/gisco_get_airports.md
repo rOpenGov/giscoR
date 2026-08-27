@@ -1,14 +1,14 @@
 # Airports dataset
 
-This dataset includes the location of over 11,800 pan-European airports
-and heliports. The airports are identified using the International Civil
-Aviation Organization (ICAO) airport codes.
+This function accesses the GISCO airport and heliport datasets. Airports
+are identified using International Civil Aviation Organization (ICAO)
+airport codes.
 
 ## Usage
 
 ``` r
 gisco_get_airports(
-  year = c(2013, 2006),
+  year = c(2024, 2013, 2006),
   country = NULL,
   cache_dir = NULL,
   update_cache = FALSE,
@@ -20,21 +20,19 @@ gisco_get_airports(
 
 <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
 
-Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
-
 ## Arguments
 
 - year:
 
   A character string or numeric value with the release year of the file.
-  One of `2013`, `2006`.
+  One of `2024`, `2013`, `2006`.
 
 - country:
 
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - cache_dir:
 
@@ -49,7 +47,7 @@ Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 
@@ -57,7 +55,12 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed in [EPSG:4326](https://epsg.io/4326).
+The returned object is transformed to [EPSG:4326](https://epsg.io/4326).
+
+## Copyright
+
+See the Eurostat general copyright and license provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 ## See also
 
@@ -67,10 +70,10 @@ Transport network datasets:
 ## Examples
 
 ``` r
-airp <- gisco_get_airports(year = 2013)
-coast <- giscoR::gisco_coastal_lines
+airp <- gisco_get_airports(year = 2024)
+coast <- giscoR::gisco_get_countries(year = 2024)
 
-if (!is.null(airp)) {
+if (!is.null(airp) && requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
 
   ggplot(coast) +
@@ -88,8 +91,8 @@ if (!is.null(airp)) {
       plot.subtitle = element_text(face = "italic", hjust = 0.5)
     ) +
     labs(
-      title = "Airports in Europe", subtitle = "Year 2013",
-      caption = "Source: Eurostat, Airports 2013 dataset."
+      title = "Airports in Europe", subtitle = "Year 2024",
+      caption = "Source: Eurostat, Airports 2024 dataset."
     ) +
     # Center on Europe with EPSG 3035.
     coord_sf(

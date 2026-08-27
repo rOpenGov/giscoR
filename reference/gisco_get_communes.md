@@ -1,8 +1,8 @@
 # Communes dataset
 
-This dataset shows pan-European administrative boundaries down to
-commune level. Communes are equivalent to Local Administrative Units.
-See
+This dataset provides pan-European administrative boundaries at commune
+level. Communes may correspond to municipalities represented in the
+separate Local Administrative Units dataset. See
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
 
 ## Usage
@@ -23,10 +23,8 @@ gisco_get_communes(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+GISCO communes distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/communes/>.
 
 ## Arguments
 
@@ -66,7 +64,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - spatialtype:
 
@@ -87,7 +85,7 @@ Copyright:
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - ext:
 
@@ -113,6 +111,11 @@ The scale of the dataset is 1:100 000.
 
 The LAU classification is not covered by any legislative act.
 
+## Copyright
+
+See the GISCO administrative unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+
 ## Note
 
 Check the download and usage provisions in
@@ -135,7 +138,7 @@ Administrative unit datasets:
 ``` r
 ire_comm <- gisco_get_communes(spatialtype = "LB", country = "Ireland")
 
-if (!is.null(ire_comm)) {
+if (!is.null(ire_comm) && requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
 
   ggplot(ire_comm) +

@@ -96,7 +96,7 @@ gisco_id_api_census_grid(
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - year:
 
@@ -172,7 +172,9 @@ The available endpoints are:
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md),
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md),
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
-[`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md).
+[`gisco_get_census()`](https://ropengov.github.io/giscoR/reference/gisco_get_census.md)
+and
+[gisco_address_api](https://ropengov.github.io/giscoR/reference/gisco_address_api.md).
 
 GISCO API tools:
 [`gisco_address_api`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
@@ -205,7 +207,10 @@ gisco_id_api_geonames(x = -2.5, y = 43.06)
 lau <- gisco_id_api_lau(x = -2.5, y = 43.06)
 nuts3 <- gisco_id_api_nuts(x = -2.5, y = 43.06, nuts_level = 3)
 
-if (all(!is.null(lau), !is.null(nuts3))) {
+if (
+  all(!is.null(lau), !is.null(nuts3)) &&
+    requireNamespace("ggplot2", quietly = TRUE)
+) {
   library(ggplot2)
 
   ggplot(nuts3) +

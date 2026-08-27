@@ -2,12 +2,10 @@
 
 The dataset contains information on healthcare services considered
 hospitals by Member States. The definition varies slightly from country
-to country, but roughly includes the following:
-
-- Hospitals comprise licensed establishments primarily engaged in
-  providing medical, diagnostic and treatment services that include
-  physician, nursing and other health services to inpatients and the
-  specialized accommodation services required by inpatients.
+to country. Broadly, hospitals are licensed establishments primarily
+engaged in providing medical, diagnostic and treatment services,
+including physician, nursing and other health services to inpatients and
+the specialized accommodation services required by inpatients.
 
 ## Usage
 
@@ -25,16 +23,6 @@ gisco_get_healthcare(
 ## Source
 
 <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>.
-
-There are no specific download rules for the datasets shown below.
-However, please refer to [the general copyright
-notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
-provisions, which apply to these datasets. Permission to download and
-use these data is subject to acceptance of those rules.
-
-The data are extracted from official national registers. They may
-contain inconsistencies, inaccuracies and gaps due to the heterogeneity
-of the national input data.
 
 ## Arguments
 
@@ -62,14 +50,14 @@ of the national input data.
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - country:
 
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 ## Value
 
@@ -96,9 +84,9 @@ The following table describes the healthcare service attributes:
 | `city` | City name. In some sources, this refers to a region or municipality. |
 | `cntr_id` | Country code (2 letters, ISO 3166-1 alpha-2). |
 | `emergency` | `yes` or `no`, indicating whether the healthcare site provides emergency medical services. |
-| `cap_beds` | Measure of capacity by number of beds (most common). |
-| `cap_prac` | Measure of capacity by number of practitioners. |
-| `cap_rooms` | Measure of capacity by number of rooms. |
+| `cap_beds` | Number of beds, the most common capacity measure. |
+| `cap_prac` | Number of practitioners. |
+| `cap_rooms` | Number of rooms. |
 | `facility_type` | Type of healthcare service, such as psychiatric hospital, based on national classification. |
 | `public_private` | Public or private status of the healthcare service. |
 | `list_specs` | List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). |
@@ -109,6 +97,18 @@ The following table describes the healthcare service attributes:
 | `pub_date` | The publication date of the dataset by Eurostat (`DD/MM/YYYY`). |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the healthcare service. |
+
+## Copyright
+
+The general Eurostat copyright and license provisions apply. Detailed
+metadata also list source-specific licensing conditions by country and
+data provider. Review the conditions for the selected data before use.
+
+## Data quality
+
+The data are extracted from official national registers. They may
+contain inconsistencies, inaccuracies and gaps due to the heterogeneity
+of the national input data.
 
 ## See also
 
@@ -124,7 +124,10 @@ health_benelux <- gisco_get_healthcare(
 )
 
 # Plot if downloaded.
-if (!is.null(health_benelux)) {
+if (
+  !is.null(health_benelux) &&
+    requireNamespace("ggplot2", quietly = TRUE)
+) {
   benelux <- gisco_get_countries(country = c("BE", "NL", "LU"))
 
   library(ggplot2)

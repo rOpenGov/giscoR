@@ -28,10 +28,8 @@ gisco_get_countries(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+GISCO countries distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/countries/>.
 
 ## Arguments
 
@@ -71,7 +69,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -111,14 +109,14 @@ Copyright:
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - region:
 
   An optional character vector of UN M49 region codes or European Union
   membership. Possible values are `"Africa"`, `"Americas"`, `"Asia"`,
   `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
-  European Union as of 2021. See **World Regions** and
+  European Union as of 2021. See **World regions** and
   [gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md).
 
 - ext:
@@ -130,11 +128,16 @@ Copyright:
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
-## World Regions
+## World regions
 
 Regions follow the UN geographic regions (see
 <https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
 Cyprus is assigned to Asia.
+
+## Copyright
+
+See the GISCO administrative unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
 
 ## Note
 
@@ -146,7 +149,7 @@ Check the download and usage provisions in
 [gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md),
 [gisco_countries_2024](https://ropengov.github.io/giscoR/reference/gisco_countries_2024.md),
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md),
-[`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+[`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 See
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
@@ -174,7 +177,7 @@ ggplot(cntries) +
   geom_sf()
 
 
-# Get a region
+# Get a region.
 
 africa <- gisco_get_countries(region = "Africa")
 ggplot(africa) +

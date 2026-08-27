@@ -1,8 +1,12 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://ropengov.github.io/giscoR/404.html</loc></url>
+<url><loc>https://ropengov.github.io/giscoR/AGENTS.html</loc></url>
+<url><loc>https://ropengov.github.io/giscoR/CODE_OF_CONDUCT.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/CONTRIBUTING.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/LICENSE-text.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/LICENSE.html</loc></url>
+<url><loc>https://ropengov.github.io/giscoR/SUPPORT.html</loc></url>
+<url><loc>https://ropengov.github.io/giscoR/articles/apis.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/articles/giscoR.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/articles/index.html</loc></url>
 <url><loc>https://ropengov.github.io/giscoR/authors.html</loc></url>

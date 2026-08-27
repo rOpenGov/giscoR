@@ -43,10 +43,8 @@ gisco_get_nuts(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+GISCO NUTS distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/nuts/>.
 
 ## Arguments
 
@@ -86,7 +84,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -122,7 +120,7 @@ Copyright:
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - nuts_id:
 
@@ -152,14 +150,19 @@ Additional country-level NUTS 0 data are also available for countries
 where the statistical national level does not coincide with the
 administrative boundaries.
 
-The NUTS classification has been officially established through
-Commission Delegated Regulation 2019/1755. A non-official NUTS-like
-classification has been defined for the EFTA countries, candidate
-countries and potential candidates based on a bilateral agreement
-between Eurostat and the respective statistical agencies.
+NUTS legislation is amended periodically, so GISCO provides multiple
+classification vintages. A non-official NUTS-like classification is
+defined for EFTA countries, candidate countries and potential candidates
+based on bilateral agreements between Eurostat and the respective
+statistical agencies.
 
 An introduction to the NUTS classification is available here:
 <https://ec.europa.eu/eurostat/web/nuts/overview>.
+
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
 
 ## Note
 

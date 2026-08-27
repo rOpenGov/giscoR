@@ -9,7 +9,7 @@
 - **[Eurostat](https://ec.europa.eu/eurostat)**. Copyright holder.
   [![ROR](https://raw.githubusercontent.com/ror-community/ror-logos/main/ror-icon-rgb.svg)](https://ror.org/033d3q980)
 
-- **[EuroGeographics](https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units)**.
+- **[EuroGeographics](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)**.
   Copyright holder.
 
 ## Citation
@@ -26,7 +26,7 @@ Hernangómez D (2026). *giscoR: Download Eurostat GISCO Spatial Data*.
       doi = {10.32614/CRAN.package.giscoR},
       author = {Diego Hernangómez},
       year = {2026},
-      version = {1.1.1},
+      version = {1.2.0},
       url = {https://ropengov.github.io/giscoR/},
       abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, NUTS regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
     }

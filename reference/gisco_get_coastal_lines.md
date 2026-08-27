@@ -19,10 +19,8 @@ gisco_get_coastal_lines(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+GISCO coastal lines distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/coas/>.
 
 ## Arguments
 
@@ -61,7 +59,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -87,6 +85,11 @@ Copyright:
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+
 ## Note
 
 Check the download and usage provisions in
@@ -111,18 +114,20 @@ Statistical unit datasets:
 ``` r
 coast <- gisco_get_coastal_lines()
 
-library(ggplot2)
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  library(ggplot2)
 
-ggplot(coast) +
-  geom_sf(color = "#1278AB", fill = "#FDFBEA") +
-  # Zoom on the Mediterranean Sea.
-  coord_sf(
-    xlim = c(-4, 35),
-    ylim = c(31, 45)
-  ) +
-  theme_minimal() +
-  theme(
-    panel.background = element_rect(fill = "#C7E7FB", color = NA),
-    panel.border = element_rect(colour = "black", fill = NA)
-  )
+  ggplot(coast) +
+    geom_sf(color = "#1278AB", fill = "#FDFBEA") +
+    # Zoom on the Mediterranean Sea.
+    coord_sf(
+      xlim = c(-4, 35),
+      ylim = c(31, 45)
+    ) +
+    theme_minimal() +
+    theme(
+      panel.background = element_rect(fill = "#C7E7FB", color = NA),
+      panel.border = element_rect(colour = "black", fill = NA)
+    )
+}
 ```

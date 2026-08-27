@@ -103,7 +103,7 @@ gisco_address_api_copyright(verbose = FALSE)
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - x, y:
 
@@ -127,8 +127,8 @@ documentation](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoi
 |  |  |
 |----|----|
 | **Endpoint** | **Description** |
-| `/countries` | All country codes compatible with the address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
-| `/provinces` | All provinces within the specified country. It can also retrieve the province for a specified city. |
+| `/countries` | All country codes compatible with the GISCO Address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
+| `/provinces` | All provinces within the specified country. The endpoint can also retrieve the province for a specified city. |
 | `/cities` | All cities within a specified province or country. |
 | `/roads` | All roads or streets within a specified city. |
 | `/housenumbers` | All house numbers or names within the specified road. In some countries, an address may not have a road component. If a road is not specified, **the API returns at most 1,000 house numbers**. |
@@ -158,6 +158,9 @@ The resulting object may include these variables:
 
 ## See also
 
+[gisco_id_api](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+for GISCO ID service API lookups.
+
 See the GISCO Address API documentation at
 <https://gisco-services.ec.europa.eu/addressapi/docs/screen/home>.
 
@@ -186,48 +189,41 @@ gisco_address_api_cities(country = "PT", province = "LISBOA")
 # Geocode and reverse geocode with `sf` objects.
 # Structured search.
 struct <- gisco_address_api_search(
-  country = "ES", city = "BARCELONA",
-  road = "GRACIA"
+  country = "LU", city = "Luxembourg",
+  road = "Rue Alphonse Weicker"
 )
 
 struct
-#> Simple feature collection with 80 features and 13 fields
+#> Simple feature collection with 4 features and 14 fields
 #> Geometry type: POINT
 #> Dimension:     XY
-#> Bounding box:  xmin: 2.145219 ymin: 41.39211 xmax: 2.16427 ymax: 41.39642
+#> Bounding box:  xmin: 6.168695 ymin: 49.63166 xmax: 6.169666 ymax: 49.63328
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 80 × 14
-#>    LD    TF    L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
-#>  * <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
-#>  1 1     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  2 3     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  3 7     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  4 8     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  5 9     CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  6 10    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  7 11    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  8 12    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#>  9 14    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 10 16    CL T… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> # ℹ 70 more rows
-#> # ℹ 1 more variable: geometry <POINT [°]>
+#> # A tibble: 4 × 15
+#>   LD    TF     L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X
+#> * <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl>
+#> 1 4     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 2 8B    RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 3 8A    RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 4 5     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> # ℹ 2 more variables: Y <dbl>, geometry <POINT [°]>
 
 # Reverse geocoding.
 reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 
 reverse
-#> Simple feature collection with 5 features and 13 fields
+#> Simple feature collection with 5 features and 14 fields
 #> Geometry type: POINT
 #> Dimension:     XY
-#> Bounding box:  xmin: 2.145121 ymin: 41.39326 xmax: 2.145538 ymax: 41.39367
+#> Bounding box:  xmin: 6.16786 ymin: 49.6315 xmax: 6.169307 ymax: 49.63328
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 5 × 14
-#>   LD    TF     L2    L1    L0    PC    N0    N1    N2    N3    OL        X     Y
-#> * <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
-#> 1 1     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 2 1     CL CA… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 3 3     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 4 2     CL CA… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> 5 7     CL TR… BARC… CATA… ES    8021  ES    ES5   ES51  ES511 8FH4…  2.15  41.4
-#> # ℹ 1 more variable: geometry <POINT [°]>
+#> # A tibble: 5 × 15
+#>   LD    TF     L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X
+#> * <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl>
+#> 1 4     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 2 3     RUE J… LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 3 41B   AVENU… LUXE… LUXE… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 4 2     RUE J… LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17
+#> 5 5     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#> # ℹ 2 more variables: Y <dbl>, geometry <POINT [°]>
 ```

@@ -1,4 +1,4 @@
-# NUTS 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+# NUTS 2024 [sf](https://CRAN.R-project.org/package=sf) object
 
 This dataset represents the regions for levels 0, 1, 2 and 3 of the
 Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
@@ -7,7 +7,7 @@ Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
 
 A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 `MULTIPOLYGON` geometries, resolution: 1:20 million and
-[EPSG:4326](https://epsg.io/4326). It has 1798 rows and 10 variables:
+[EPSG:4326](https://epsg.io/4326). It has 1798 rows and 19 variables:
 
 - `NUTS_ID`:
 
@@ -40,6 +40,42 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 - `COAST_TYPE`:
 
   Coastal type, see **Details**.
+
+- `NAME_ENGL`:
+
+  Country name in English.
+
+- `NAME_FREN`:
+
+  Country name in French.
+
+- `ISO3_CODE`:
+
+  ISO 3166-1 alpha-3 code of each country from GISCO.
+
+- `SVRG_UN`:
+
+  Sovereign status according to the United Nations.
+
+- `CAPT`:
+
+  Capital city.
+
+- `EU_STAT`:
+
+  European Union member.
+
+- `EFTA_STAT`:
+
+  EFTA member.
+
+- `CC_STAT`:
+
+  EU candidate member.
+
+- `NAME_GERM`:
+
+  Country name in German.
 
 - `geo`:
 
@@ -94,6 +130,16 @@ file.
 
 - `0`: No classification provided.
 
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+
+## Note
+
+Check the download and usage provisions in
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
+
 ## See also
 
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
@@ -109,12 +155,12 @@ Included datasets:
 ``` r
 data("gisco_nuts_2024")
 head(gisco_nuts_2024)
-#> Simple feature collection with 6 features and 9 fields
+#> Simple feature collection with 6 features and 18 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: 19.30265 ymin: 40.72684 xmax: 20.59774 ymax: 42.63906
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 6 × 10
+#> # A tibble: 6 × 19
 #>   NUTS_ID LEVL_CODE CNTR_CODE NAME_LATN NUTS_NAME MOUNT_TYPE URBN_TYPE
 #>   <chr>       <int> <chr>     <chr>     <chr>          <int>     <int>
 #> 1 AL011           3 AL        Dibër     Dibër             NA        NA
@@ -123,5 +169,7 @@ head(gisco_nuts_2024)
 #> 4 AL014           3 AL        Lezhë     Lezhë             NA        NA
 #> 5 AL015           3 AL        Shkodër   Shkodër           NA        NA
 #> 6 AL021           3 AL        Elbasan   Elbasan           NA        NA
-#> # ℹ 3 more variables: COAST_TYPE <int>, geo <chr>, geometry <MULTIPOLYGON [°]>
+#> # ℹ 12 more variables: COAST_TYPE <int>, NAME_ENGL <chr>, NAME_FREN <chr>,
+#> #   ISO3_CODE <chr>, SVRG_UN <chr>, CAPT <chr>, EU_STAT <chr>, EFTA_STAT <chr>,
+#> #   CC_STAT <chr>, NAME_GERM <chr>, geo <chr>, geometry <MULTIPOLYGON [°]>
 ```

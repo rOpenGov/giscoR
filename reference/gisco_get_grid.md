@@ -1,8 +1,8 @@
 # Grid dataset
 
-These datasets contain grid cells covering the European land territory
-at resolutions from 1 km to 100 km. Base statistics such as population
-figures are provided for these cells.
+These datasets contain grid cells covering the EU and neighboring
+countries at resolutions from 1 km to 100 km. Population figures are
+available for selected reference years.
 
 ## Usage
 
@@ -18,9 +18,6 @@ gisco_get_grid(
 
 ## Source
 
-<https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
-
-Specific download provisions apply. See
 <https://ec.europa.eu/eurostat/web/gisco/geodata/grids>.
 
 ## Arguments
@@ -47,7 +44,7 @@ Specific download provisions apply. See
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 
@@ -55,10 +52,25 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed in [`EPSG:3035`](https://epsg.io/3035).
+`gisco_get_grid()` downloads the GeoPackage representation of the grid
+as polygon cells (`spatialtype = "REGION"`) or cell-center points
+(`spatialtype = "POINT"`). The official distribution also provides
+tabular CSV and Parquet files, which this function does not download.
+
+All grid geometries use [`EPSG:3035`](https://epsg.io/3035). Population
+columns are named `TOT_P_YYYY`, where `YYYY` is the reference year. To
+calculate population density, divide a population value by the cell area
+in square kilometres (`resolution^2`).
 
 The file sizes range from 428 KB (`resolution = 100`) to 1.7 GB
 (`resolution = 1`).
+
+## Copyright
+
+Population variables (`TOT_P_*`) have year- and country-specific
+licensing conditions. Other grid elements are covered by the general
+Eurostat copyright provisions. Review the licensing table and metadata
+on the official grid page before redistributing or publishing the data.
 
 ## Examples
 
@@ -66,14 +78,17 @@ The file sizes range from 428 KB (`resolution = 100`) to 1.7 GB
 grid <- gisco_get_grid(resolution = 20)
 
 # Proceed if downloaded correctly.
-
-if (!is.null(grid)) {
+if (
+  !is.null(grid) &&
+    requireNamespace("dplyr", quietly = TRUE) &&
+    requireNamespace("ggplot2", quietly = TRUE)
+) {
   library(dplyr)
 
   grid <- grid |>
-    mutate(popdens = TOT_P_2021 / 20)
+    mutate(popdens = TOT_P_2021 / 20^2)
 
-  breaks <- c(0, 0.1, 100, 500, 1000, 5000, 10000, Inf)
+  breaks <- c(0, 1, 10, 25, 50, 100, 250, 500, 1000, Inf)
 
   # Cut groups.
   grid <- grid |>
@@ -84,12 +99,12 @@ if (!is.null(grid)) {
 
   cut_labs <- prettyNum(breaks, big.mark = " ")[-1]
   cut_labs[1] <- "0"
-  cut_labs[7] <- "> 10 000"
+  cut_labs[9] <- "> 1000"
 
-  pal <- c("black", hcl.colors(length(breaks) - 2,
-    palette = "Spectral",
-    alpha = 0.9
-  ))
+  pal <- c(
+    "black",
+    hcl.colors(length(breaks) - 2, palette = "Spectral", alpha = 0.9)
+  )
 
   library(ggplot2)
 
@@ -101,18 +116,17 @@ if (!is.null(grid)) {
     ) +
     scale_fill_manual(
       values = pal, na.value = "black",
-      name = "people per square kilometer",
-      labels = cut_labs,
-      guide = guide_legend(
-        direction = "horizontal",
-        nrow = 1
-      )
+      name = "",
+      labels = cut_labs
     ) +
     theme_void() +
     labs(
       title = "Population density in Europe (2021)",
-      subtitle = "Grid: 20 km.",
-      caption = gisco_attributions()
+      subtitle = "Grid: 20 km. People by square km.",
+      caption = paste(
+        "Source: Eurostat GISCO grid dataset.\n",
+        "Review the applicable population-data licence."
+      )
     ) +
     theme(
       text = element_text(colour = "white"),
@@ -123,9 +137,6 @@ if (!is.null(grid)) {
         color = "grey60", hjust = 0.5, vjust = 0,
         margin = margin(t = 5, b = 10)
       ),
-      legend.position = "bottom",
-      legend.title.position = "top",
-      legend.text.position = "bottom",
       legend.key.height = unit(0.5, "lines"),
       legend.key.width = unit(1, "lines")
     )

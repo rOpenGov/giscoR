@@ -1,4 +1,4 @@
-# Coastal lines 2016 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+# Coastal lines 2016 [sf](https://CRAN.R-project.org/package=sf) object
 
 This object contains the coastal lines of the world.
 
@@ -10,8 +10,18 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 ## Source
 
-[COAS_RG_20M_2016_4326.gpkg](https://gisco-services.ec.europa.eu/distribution/v2/coas/geojson/)
+[COAS_RG_20M_2016_4326.gpkg](https://gisco-services.ec.europa.eu/distribution/v2/coas/gpkg/)
 file.
+
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+
+## Note
+
+Check the download and usage provisions in
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
 
 ## See also
 

@@ -1,7 +1,7 @@
 # Ports dataset
 
-This dataset includes the location of over 2,440 pan-European ports. The
-ports are identified following the UN LOCODE list.
+This dataset includes port locations worldwide. The ports are identified
+following the UN LOCODE list.
 
 ## Usage
 
@@ -19,8 +19,6 @@ gisco_get_ports(
 
 <https://ec.europa.eu/eurostat/web/gisco/geodata/transport-networks>.
 
-Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
-
 ## Arguments
 
 - year:
@@ -33,7 +31,7 @@ Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - cache_dir:
 
@@ -48,7 +46,7 @@ Copyright: <https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 ## Value
 
@@ -56,10 +54,15 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
-Files are distributed in [EPSG:4326](https://epsg.io/4326).
+The returned object is transformed to [EPSG:4326](https://epsg.io/4326).
 
 `gisco_get_ports()` adds a new field, `CNTR_ISO2`, to identify the
 country of the port.
+
+## Copyright
+
+See the Eurostat general copyright and license provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata>.
 
 ## See also
 
@@ -74,7 +77,7 @@ library(sf)
 ports <- gisco_get_ports(2013)
 coast <- giscoR::gisco_coastal_lines
 
-if (!is.null(ports)) {
+if (!is.null(ports) && requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
 
   ggplot(coast) +

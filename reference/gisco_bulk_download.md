@@ -67,7 +67,7 @@ gisco_bulk_download(
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -108,8 +108,8 @@ See **Examples**.
 
 ## Details
 
-Some arguments only apply to a specific value of `"id"`. For example
-`"resolution"` is ignored for values `"communes"`, `"lau"`,
+Some arguments only apply to a specific value of `id`. For example,
+`resolution` is ignored for values `"communes"`, `"lau"`,
 `"urban_audit"` and `"postal_codes"`.
 
 See available years in the corresponding functions:
@@ -137,7 +137,11 @@ corresponding function to connect it with the downloaded files (see
 
 ## See also
 
-Single-unit and additional download utilities:
+[`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)
+to inspect available datasets, years and file formats before
+downloading.
+
+Bulk and single-unit downloads:
 [`gisco_get_unit`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
 
 ## Examples
@@ -173,13 +177,13 @@ read_sf(dest_files[1]) |> head()
 
 # Connect the function with the downloaded data.
 
-connect <- gisco_get_countries(
+invisible(gisco_get_countries(
   resolution = 60,
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
-)
-#> ℹ Cache directory is /tmp/RtmpoKLIXl/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpoKLIXl/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+))
+#> ℹ Cache directory is /tmp/Rtmplj2gyO/testexample/countries.
+#> ✔ File already cached: /tmp/Rtmplj2gyO/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }

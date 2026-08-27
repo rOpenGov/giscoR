@@ -1,7 +1,7 @@
 # Attribution for administrative and statistical GISCO data
 
 Get the legal text to use for administrative and statistical data
-downloaded from GISCO. See section **Copyright information**.
+downloaded from GISCO. See section **Copyright**.
 
 For other datasets you may follow the [Eurostat general copyright notice
 and license
@@ -18,7 +18,7 @@ gisco_attributions(lang = "en", copyright = FALSE)
 - lang:
 
   A character value with the language (two-letter ISO code). See
-  [countrycode::codelist](https://vincentarelbundock.github.io/countrycode/man/codelist.html)
+  [countrycode::codelist](https://rdrr.io/pkg/countrycode/man/codelist.html)
   and **Details**.
 
 - copyright:
@@ -54,7 +54,7 @@ Please consider
 [contributing](https://github.com/rOpenGov/giscoR/issues) if you spot a
 mistake or want to add a new language.
 
-## Copyright information
+## Copyright
 
 The provisions described in this section apply to administrative and
 statistical data provided by the following functions:
@@ -64,8 +64,6 @@ statistical data provided by the following functions:
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
 
 - [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md).
-
-- [`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postal_codes.md).
 
 **Statistical units**
 
@@ -78,6 +76,9 @@ statistical data provided by the following functions:
 - [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md).
 
 - [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md).
+
+Postal code data use a separate CC-BY-SA-4.0 attribution. See
+[`gisco_get_postal_codes()`](https://ropengov.github.io/giscoR/reference/gisco_get_postal_codes.md).
 
 ### Copyright notice
 
@@ -132,12 +133,19 @@ gisco_attributions(lang = "es", copyright = TRUE)
 #> [1] "© Eurogeographics para los límites administrativos"
 
 gisco_attributions(lang = "XXX")
-#> ! `lang` = "xxx" is not supported. Switching to English.
-#> ℹ Consider contributing a translation: <https://github.com/rOpenGov/giscoR/issues>.
+#> Warning: `lang` = "xxx" is not supported.
+#> ℹ Switching to English.
+#> ℹ Consider contributing a translation:
+#>   <https://github.com/rOpenGov/giscoR/issues>.
 #> [1] "© EuroGeographics for the administrative boundaries"
 
 # Get the list of codes from countrycode.
-library(dplyr)
+if (requireNamespace("dplyr", quietly = TRUE)) {
+  library(dplyr)
+
+  countrycode::codelist |>
+    select(country.name.en, iso2c)
+}
 #> 
 #> Attaching package: ‘dplyr’
 #> The following objects are masked from ‘package:stats’:
@@ -146,9 +154,6 @@ library(dplyr)
 #> The following objects are masked from ‘package:base’:
 #> 
 #>     intersect, setdiff, setequal, union
-
-countrycode::codelist |>
-  select(country.name.en, iso2c)
 #> # A tibble: 292 × 2
 #>    country.name.en   iso2c
 #>    <chr>             <chr>

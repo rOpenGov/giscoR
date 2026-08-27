@@ -1,4 +1,4 @@
-# Countries 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
+# Countries 2024 [sf](https://CRAN.R-project.org/package=sf) object
 
 This object contains world administrative boundaries at the country
 level.
@@ -61,6 +61,16 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 [CNTR_RG_20M_2024_4326.gpkg](https://gisco-services.ec.europa.eu/distribution/v2/countries/gpkg/)
 file.
+
+## Copyright
+
+See the GISCO administrative unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+
+## Note
+
+Check the download and usage provisions in
+[`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md).
 
 ## See also
 

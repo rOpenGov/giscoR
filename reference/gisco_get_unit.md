@@ -53,7 +53,14 @@ gisco_get_unit_urban_audit(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>
+GISCO countries distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/countries/>.
+
+GISCO NUTS distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/nuts/>.
+
+GISCO Urban Audit distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/urau/>.
 
 All source files are `.geojson` files.
 
@@ -97,7 +104,7 @@ All source files are `.geojson` files.
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - resolution:
 
@@ -133,6 +140,17 @@ Check the available `unit` IDs for the required argument combination
 with
 [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md).
 
+## Copyright
+
+See the GISCO copyright provisions for administrative and statistical
+units:
+
+- Administrative units:
+  <https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+
+- Statistical units:
+  <https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+
 ## Note
 
 Check the download and usage provisions in
@@ -146,10 +164,10 @@ Check the download and usage provisions in
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md).
 
 See
-[`gisco_id_api`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+[gisco_id_api](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
 to download via GISCO ID service API.
 
-Single-unit and additional download utilities:
+Bulk and single-unit downloads:
 [`gisco_bulk_download()`](https://ropengov.github.io/giscoR/reference/gisco_bulk_download.md)
 
 ## Examples
@@ -166,22 +184,27 @@ valencia
 #>   <chr>     <chr>     <chr>     <chr>     <chr>     <chr>       <dbl> <chr>     
 #> 1 ES003C    C         ES        Valencia  ""        "ES003F"     402. ES523     
 #> 2 ES003F    F         ES        Valencia  ""        ""          5430. ES523     
-library(dplyr)
-# Get `sf` objects and order by `AREA_SQM`.
-valencia_sf <- gisco_get_unit_urban_audit(
-  unit = valencia$URAU_CODE,
-  year = 2024
-) |>
-  arrange(desc(AREA_SQM))
-# Plot.
-library(ggplot2)
+if (
+  requireNamespace("dplyr", quietly = TRUE) &&
+    requireNamespace("ggplot2", quietly = TRUE)
+) {
+  library(dplyr)
+  # Get `sf` objects and order by `AREA_SQM`.
+  valencia_sf <- gisco_get_unit_urban_audit(
+    unit = valencia$URAU_CODE,
+    year = 2024
+  ) |>
+    arrange(desc(AREA_SQM))
+  # Plot.
+  library(ggplot2)
 
-ggplot(valencia_sf) +
-  geom_sf(aes(fill = URAU_CATG)) +
-  scale_fill_viridis_d() +
-  labs(
-    title = "Valencia",
-    subtitle = "Urban Audit 2020",
-    fill = "Category"
-  )
+  ggplot(valencia_sf) +
+    geom_sf(aes(fill = URAU_CATG)) +
+    scale_fill_viridis_d() +
+    labs(
+      title = "Valencia",
+      subtitle = "Urban Audit 2020",
+      fill = "Category"
+    )
+}
 ```

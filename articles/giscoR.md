@@ -14,11 +14,13 @@ and subnational regions. It supplies geospatial files in different
 formats, with a focus on Europe and global datasets such as country
 boundaries, labels and coastal lines.
 
-GISCO supplies data at multiple resolutions: high-resolution datasets
-for small areas (01M, 03M) and lighter datasets for larger areas (10M,
-20M, 60M). Datasets are available in three coordinate reference systems:
-[EPSG:4326](https://epsg.io/4326), [EPSG:3035](https://epsg.io/3035) and
-[EPSG:3857](https://epsg.io/3857).
+Compatible administrative and statistical datasets are available at
+multiple resolutions: high-resolution datasets for small areas (01M,
+03M) and lighter datasets for larger areas (10M, 20M, 60M). They can be
+available in [EPSG:4326](https://epsg.io/4326),
+[EPSG:3035](https://epsg.io/3035) and [EPSG:3857](https://epsg.io/3857).
+Grid, transport and basic service datasets use the formats and
+coordinate reference systems documented for each dataset.
 
 **giscoR** returns [**sf** package
 objects](https://r-spatial.github.io/sf/reference/sf.html). See
@@ -56,10 +58,25 @@ GISCO data:
 > provisions. See the [administrative
 > units](https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units)
 > and [statistical
-> units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units)
-> for more details.
+> units](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units),
+> [grids](https://ec.europa.eu/eurostat/web/gisco/geodata/grids) and
+> [basic
+> services](https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services)
+> for more details, including source-specific conditions.
 
 Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
+
+### Population grids
+
+[`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
+downloads polygon or cell-center point GeoPackages in **EPSG:3035** at
+resolutions from 1 km to 100 km. Population columns use names such as
+`TOT_P_2021`. Divide these values by `resolution^2`, not by
+`resolution`, to calculate people per square kilometer. Population
+variables have year- and country-specific licensing conditions. Consult
+the official [grid
+documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
+before publication or redistribution.
 
 The
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
@@ -177,14 +194,14 @@ ggplot(coast) +
 
 Political map of North Africa
 
-## Thematic maps with **giscoR**
+## Thematic maps with giscoR
 
 This example shows how **giscoR** can be used with Eurostat data. For
 plotting, we use the **ggplot2** package. Any package that supports
-**sf** package objects, such as **tmap**, **mapsf** or **leaflet**, can
-be used.
+**sf** objects, such as **tmap**, **mapsf** or **leaflet**, can be used.
 
 ``` r
+
 # Load EU member data.
 library(giscoR)
 library(dplyr)
@@ -204,10 +221,6 @@ eu_bord <- borders |>
 # Retrieve disposable income data from Eurostat.
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
-                                                                                          
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -235,7 +248,7 @@ ggplot(nuts2_sf) +
     values = hcl.colors(length(labs), "Geyser", rev = TRUE),
     # Label missing values.
     labels = function(x) {
-      ifelse(is.na(x), "No Data", x)
+      ifelse(is.na(x), "No data", x)
     },
     na.value = "#e1e1e1"
   ) +
@@ -278,3 +291,5 @@ ggplot(nuts2_sf) +
 (2022)](./fig-giscor-1.png)
 
 Disposable income of private households by NUTS 2 regions (2022)
+
+Use these examples as a starting point for your own maps.

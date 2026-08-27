@@ -28,10 +28,8 @@ gisco_get_urban_audit(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/administrative-units>.
+GISCO Urban Audit distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/urau/>.
 
 ## Arguments
 
@@ -71,7 +69,7 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - spatialtype:
 
@@ -87,7 +85,7 @@ Copyright:
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - level:
 
@@ -126,6 +124,11 @@ The `"URAU_CATG"` field defines the Urban Audit category:
 
 - `"F"` = Functional urban area service type.
 
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+
 ## Note
 
 Check the download and usage provisions in
@@ -154,7 +157,7 @@ Statistical unit datasets:
 
 cities <- gisco_get_urban_audit(year = 2024, level = "CITIES")
 
-if (!is.null(cities)) {
+if (!is.null(cities) && requireNamespace("ggplot2", quietly = TRUE)) {
   bcn <- cities[cities$URAU_NAME == "Barcelona", ]
 
   library(ggplot2)

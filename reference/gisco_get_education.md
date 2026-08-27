@@ -21,16 +21,6 @@ gisco_get_education(
 
 <https://ec.europa.eu/eurostat/web/gisco/geodata/basic-services>.
 
-There are no specific download rules for the datasets shown below.
-However, please refer to [the general copyright
-notice](https://ec.europa.eu/eurostat/web/gisco/geodata) and license
-provisions, which apply to these datasets. Permission to download and
-use these data is subject to acceptance of those rules.
-
-The data are extracted from official national registers. They may
-contain inconsistencies, inaccuracies and gaps due to the heterogeneity
-of the national input data.
-
 ## Arguments
 
 - year:
@@ -57,14 +47,14 @@ of the national input data.
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - country:
 
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 ## Value
 
@@ -91,8 +81,8 @@ The following table describes the education service attributes:
 | `city` | City name. In some sources, this refers to a region or municipality. |
 | `cntr_id` | Country code (2 letters, ISO 3166-1 alpha-2). |
 | `levels` | Education levels represented by a single integer or range, using ISCED 2011. |
-| `max_students` | Measure of capacity by maximum number of students. |
-| `enrollment` | Measure of capacity by number of enrolled students. |
+| `max_students` | Maximum student capacity. |
+| `enrollment` | Number of enrolled students. |
 | `fields` | Academic disciplines in which the institution specializes, using ISCED-F 2013. |
 | `facility_type` | Type of institution by ownership and operation, such as Catholic or international. |
 | `public_private` | Public or private status of the education service. |
@@ -100,8 +90,21 @@ The following table describes the education service attributes:
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
 | `ref_date` | The reference date (`DD/MM/YYYY`) for the data. The dataset represents the state on this date. |
+| `pub_date` | The publication date of the dataset by Eurostat (`DD/MM/YYYY`). |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the education service. |
+
+## Copyright
+
+The general Eurostat copyright and license provisions apply. Detailed
+metadata also list source-specific licensing conditions by country and
+data provider. Review the conditions for the selected data before use.
+
+## Data quality
+
+The data are extracted from official national registers. They may
+contain inconsistencies, inaccuracies and gaps due to the heterogeneity
+of the national input data.
 
 ## See also
 
@@ -115,7 +118,7 @@ Basic service datasets:
 edu_austria <- gisco_get_education(country = "Austria", year = 2023)
 
 # Plot if downloaded.
-if (!is.null(edu_austria)) {
+if (!is.null(edu_austria) && requireNamespace("ggplot2", quietly = TRUE)) {
   austria_nuts3 <- gisco_get_nuts(country = "Austria", nuts_level = 3)
 
   library(ggplot2)

@@ -1,9 +1,10 @@
 # Local Administrative Units (LAU) dataset
 
-This dataset shows pan-European administrative boundaries down to
-commune level. Local Administrative Units are equivalent to communes.
-See
-[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md).
+Local Administrative Units are the building blocks of NUTS and other
+statistical regions. They comprise municipalities and communes in the
+European Statistical System. See
+[`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
+for the separate commune dataset.
 
 ## Usage
 
@@ -23,10 +24,8 @@ gisco_get_lau(
 
 ## Source
 
-<https://gisco-services.ec.europa.eu/distribution/v2/>.
-
-Copyright:
-<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+GISCO Local Administrative Units distribution API:
+<https://gisco-services.ec.europa.eu/distribution/v2/lau/>.
 
 ## Arguments
 
@@ -67,14 +66,14 @@ Copyright:
 
 - verbose:
 
-  A logical value. If `TRUE` displays informational messages.
+  A logical value indicating whether to display informational messages.
 
 - country:
 
   A character vector of country codes. It can be either a vector of
   country names, a vector of ISO 3166-1 alpha-3 country codes or a
   vector of Eurostat country codes. See also
-  [`countrycode::countrycode()`](https://vincentarelbundock.github.io/countrycode/man/countrycode.html).
+  [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - gisco_id:
 
@@ -108,6 +107,11 @@ unique identifier consisting of the country code and LAU code.
 Total resident population figures (31 December) have also been added in
 some versions based on the associated LAU lists.
 
+## Copyright
+
+See the GISCO statistical unit copyright provisions:
+<https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units>.
+
 ## Note
 
 Check the download and usage provisions in
@@ -139,7 +143,7 @@ Statistical unit datasets:
 lu_lau <- gisco_get_lau(year = 2024, country = "Luxembourg")
 #> ! The file to download is "74.6 Mb".
 
-if (!is.null(lu_lau)) {
+if (!is.null(lu_lau) && requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
 
   ggplot(lu_lau) +
