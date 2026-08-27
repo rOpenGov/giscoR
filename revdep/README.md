@@ -10,9 +10,9 @@
 |collate  |C.UTF-8                                              |
 |ctype    |C.UTF-8                                              |
 |tz       |UTC                                                  |
-|date     |2026-07-08                                           |
+|date     |2026-08-27                                           |
 |pandoc   |3.8.3 @ /opt/hostedtoolcache/pandoc/3.8.3/x64/pandoc |
-|quarto   |1.9.38 @ /usr/local/bin/quarto                       |
+|quarto   |1.10.18 @ /usr/local/bin/quarto                      |
 
 # Dependencies
 
@@ -22,12 +22,12 @@
 |askpass     |1.2.1  |1.2.1      |   |
 |classInt    |0.4-11 |0.4-11     |   |
 |cli         |3.6.6  |3.6.6      |   |
-|countrycode |1.8.0  |1.8.0      |   |
-|curl        |7.1.0  |7.1.0      |   |
+|countrycode |1.9.0  |1.9.0      |   |
+|curl        |8.0.0  |8.0.0      |   |
 |DBI         |1.3.0  |1.3.0      |   |
 |e1071       |1.7-17 |1.7-17     |   |
 |glue        |1.8.1  |1.8.1      |   |
-|httr2       |1.2.3  |1.2.3      |   |
+|httr2       |1.3.0  |1.3.0      |   |
 |jsonlite    |2.0.0  |2.0.0      |   |
 |lifecycle   |1.0.5  |1.0.5      |   |
 |magrittr    |2.0.5  |2.0.5      |   |
@@ -40,7 +40,7 @@
 |Rcpp        |1.1.2  |1.1.2      |   |
 |rlang       |1.3.0  |1.3.0      |   |
 |s2          |1.1.11 |1.1.11     |   |
-|sf          |1.1-1  |1.1-1      |   |
+|sf          |1.1-2  |1.1-2      |   |
 |sys         |3.4.3  |3.4.3      |   |
 |tibble      |3.3.1  |3.3.1      |   |
 |units       |1.0-1  |1.0-1      |   |
@@ -50,10 +50,4 @@
 |wk          |0.9.5  |0.9.5      |   |
 
 # Revdeps
-
-## Failed to check (1)
-
-|package |version |error |warning |note |
-|:-------|:-------|:-----|:-------|:----|
-|MRG     |?       |      |        |     |
 
