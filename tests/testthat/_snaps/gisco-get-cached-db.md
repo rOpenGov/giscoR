@@ -25,7 +25,7 @@
       Warning:
       Could not retrieve the latest database from <https://gisco-services.ec.europa.eu/distribution/v2/>.
       i Try again later with `giscoR::gisco_get_cached_db()` and `update_cache` = TRUE.
-      i Using cached `giscoR::gisco_db` information as of "2026-06-19". It may be outdated.
+      i Using cached `giscoR::gisco_db` information as of "2026-08-26". It may be outdated.
 
 # Cached database refreshes from the remote metadata
 

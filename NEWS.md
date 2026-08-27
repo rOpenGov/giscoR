@@ -1,4 +1,4 @@
-# giscoR (development version)
+# giscoR 1.2.0
 
 - **cli** diagnostics now use catchable warning and error classes for
   programmatic handling.
