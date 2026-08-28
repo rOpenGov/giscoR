@@ -1,12 +1,12 @@
 # Cached GISCO database
 
 Database with the list of files in the GISCO geodata distribution as of
-2026-06-19.
+2026-08-26.
 
 ## Format
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with 10,987 rows.
+with 11,008 rows.
 
 ## Source
 
@@ -44,7 +44,7 @@ GISCO database and metadata:
 data("gisco_db")
 gisco_db |>
   dplyr::glimpse()
-#> Rows: 10,987
+#> Rows: 11,008
 #> Columns: 11
 #> $ id_giscor    <chr> "coastal_lines", "coastal_lines", "coastal_lines", "coast…
 #> $ year         <dbl> 2006, 2006, 2006, 2006, 2006, 2006, 2006, 2006, 2006, 200…
@@ -56,5 +56,5 @@ gisco_db |>
 #> $ ext          <chr> "csv", "geojson", "gpkg", "json", "pbf", "shp", "csv", "g…
 #> $ api_file     <chr> "csv/COAS_RG_01M_2006_3035.csv", "geojson/COAS_RG_01M_200…
 #> $ api_entry    <chr> "https://gisco-services.ec.europa.eu/distribution/v2/coas…
-#> $ last_updated <date> 2026-06-19, 2026-06-19, 2026-06-19, 2026-06-19, 2026-06-…
+#> $ last_updated <date> 2026-08-26, 2026-08-26, 2026-08-26, 2026-08-26, 2026-08-…
 ```

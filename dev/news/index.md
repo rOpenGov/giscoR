@@ -2,6 +2,14 @@
 
 ## giscoR (development version)
 
+- Downloads now attempt the requested GISCO resource directly instead of
+  relying on a generic connectivity check, improving support for proxied
+  connections ([\#139](https://github.com/rOpenGov/giscoR/issues/139)).
+
+## giscoR 1.2.0
+
+CRAN release: 2026-08-27
+
 - **cli** diagnostics now use catchable warning and error classes for
   programmatic handling.
 - Add an article showing GISCO ID service API and GISCO Address API
