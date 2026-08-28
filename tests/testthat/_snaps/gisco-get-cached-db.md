@@ -1,4 +1,4 @@
-# Cached database returns NULL when offline
+# Cached database returns NULL when connection fails
 
     Code
       fend <- gisco_get_cached_db(update_cache = TRUE)

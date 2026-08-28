@@ -1,3 +1,7 @@
+# giscoR (development version)
+
+- Downloads now attempt the requested GISCO resource directly instead of relying on a generic connectivity check, improving support for proxied connections (#139).
+
 # giscoR 1.2.0
 
 - **cli** diagnostics now use catchable warning and error classes for

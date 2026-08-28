@@ -59,15 +59,33 @@ test_that("GISCO file resolver returns URL and file name", {
   expect_identical(file$name, "file.gpkg")
 })
 
-test_that("Request helper handles offline before performing", {
-  local_mocked_bindings(is_online_fun = function(...) FALSE)
+test_that("Request helper handles connection failures", {
+  local_mocked_bindings(gisco_req_perform = mock_connection_failure)
 
   req <- gisco_request("https://example.com", cache = FALSE, retry = FALSE)
+  expect_snapshot(resp <- gisco_perform_request(req, "https://example.com"))
+  expect_null(resp)
+
+  path <- withr::local_tempfile(lines = "partial download")
   expect_null(gisco_perform_request(
     req,
     "https://example.com",
-    offline_verbose = FALSE
+    path = path,
+    failure_verbose = FALSE
   ))
+  expect_false(file.exists(path))
+})
+
+test_that("Request helper performs the requested resource directly", {
+  local_mocked_bindings(gisco_req_perform = function(req, path = NULL) {
+    expect_null(path)
+    httr2::response(200, url = httr2::req_get_url(req))
+  })
+
+  req <- gisco_request("https://example.com", cache = FALSE, retry = FALSE)
+  resp <- gisco_perform_request(req, "https://example.com")
+
+  expect_equal(httr2::resp_status(resp), 200)
 })
 
 test_that("Dataset reader delegates cache and non-cache paths", {
@@ -137,12 +155,8 @@ test_that("JSON API helper returns NULL for missing responses", {
   ))
 })
 
-test_that("Downloads return NULL when offline", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-  local_mocked_bindings(is_online_fun = function(...) {
-    FALSE
-  })
+test_that("Downloads return NULL when connection fails", {
+  local_mocked_bindings(gisco_req_perform = mock_connection_failure)
 
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/",
@@ -160,6 +174,30 @@ test_that("Downloads return NULL when offline", {
   )
   expect_null(fend)
   expect_length(list.files(cdir, recursive = TRUE), 0)
+})
+
+test_that("Downloads continue when the HEAD request fails", {
+  requests <- 0
+  local_mocked_bindings(gisco_req_perform = function(req, path = NULL) {
+    requests <<- requests + 1
+    if (requests == 1) {
+      expect_identical(req$method, "HEAD")
+      mock_connection_failure()
+    }
+
+    writeLines("mock download", path)
+    httr2::response(200, url = httr2::req_get_url(req))
+  })
+
+  cdir <- local_test_cache_dir("head-failure-")
+  path <- download_url(
+    "https://example.com/file.txt",
+    cache_dir = cdir,
+    verbose = FALSE
+  )
+
+  expect_identical(requests, 2)
+  expect_identical(readLines(path), "mock download")
 })
 
 test_that("Downloads return NULL for 404 responses", {
@@ -373,12 +411,8 @@ test_that("URL database lookup validates and returns matching entries", {
   expect_equal(httr2::resp_status(resp), 200)
 })
 
-test_that("Request body returns NULL when offline", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-  local_mocked_bindings(is_online_fun = function(...) {
-    FALSE
-  })
+test_that("Request body returns NULL when connection fails", {
+  local_mocked_bindings(gisco_req_perform = mock_connection_failure)
 
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/",

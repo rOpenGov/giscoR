@@ -1,10 +1,10 @@
-# NUTS unit returns NULL when offline
+# NUTS unit returns NULL when connection fails
 
     Code
       n <- gisco_get_unit_nuts(year = 2024, update_cache = TRUE, verbose = TRUE)
     Message
       i Requested file 'ES416-region-01m-4326-2024.geojson'.
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/distribution/v2/nuts/nuts-2024-units.json> failed.
       > Returning "NULL".
 
 # NUTS unit returns NULL for 404 responses

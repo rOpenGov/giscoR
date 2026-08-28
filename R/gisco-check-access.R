@@ -13,21 +13,18 @@
 #'
 #' gisco_check_access()
 gisco_check_access <- function() {
-  if (!is_online_fun()) {
-    return(FALSE)
-  }
   if (on_cran()) {
     return(FALSE)
   }
 
   req <- gisco_request(gisco_distribution_url(), cache = FALSE, retry = FALSE)
+  req <- httr2::req_timeout(req, min(gisco_timeout(), 10))
   req <- httr2::req_url_path_append(req, "themes.json")
   resp <- gisco_perform_request(
     req,
     httr2::req_get_url(req),
     error_verbose = FALSE,
-    offline_verbose = FALSE,
-    check_online = FALSE,
+    failure_verbose = FALSE,
     fake_404 = FALSE
   )
 

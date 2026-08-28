@@ -1,12 +1,8 @@
-test_that("Cached database returns NULL when offline", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-
+test_that("Cached database returns NULL when connection fails", {
+  local_test_cached_db("cached-db-")
   gisco_get_cached_db()
 
-  local_mocked_bindings(is_online_fun = function(...) {
-    FALSE
-  })
+  local_mocked_bindings(gisco_req_perform = mock_connection_failure)
 
   expect_snapshot(fend <- gisco_get_cached_db(update_cache = TRUE))
   expect_null(fend)

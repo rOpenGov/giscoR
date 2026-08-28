@@ -1,9 +1,9 @@
-# Address API returns NULL when offline
+# Address API returns NULL when connection fails
 
     Code
       fend <- gisco_address_api_bbox()
     Message
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/addressapi/bbox> failed.
       > Returning "NULL".
       ! No results found. Returning "NULL".
 

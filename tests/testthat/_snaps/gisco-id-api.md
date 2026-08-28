@@ -1,9 +1,9 @@
-# ID API returns NULL when offline
+# ID API returns NULL when connection fails
 
     Code
       fend <- gisco_id_api_geonames(x = 4, y = 52)
     Message
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/id/geonames?x=4&y=52> failed.
       > Returning "NULL".
 
 ---
@@ -11,7 +11,7 @@
     Code
       fend <- gisco_id_api_nuts(x = 4, y = 52, geometry = FALSE)
     Message
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/id/nuts?x=4&y=52&epsg=4326&year=2024&format=json&geometry=no> failed.
       > Returning "NULL".
 
 # ID API returns NULL for 404 responses

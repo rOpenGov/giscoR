@@ -8,6 +8,10 @@ skip_if_gisco_offline <- function() {
   invisible()
 }
 
+mock_connection_failure <- function(...) {
+  cli::cli_abort("Mock connection failure.", class = "httr2_failure")
+}
+
 local_test_cache_dir <- function(
   pattern = "gisco-test-",
   .local_envir = parent.frame()

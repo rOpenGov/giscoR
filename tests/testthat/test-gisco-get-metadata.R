@@ -1,11 +1,7 @@
-test_that("Metadata returns NULL when offline", {
-  skip_on_cran()
-  skip_if_gisco_offline()
+test_that("Metadata returns NULL when connection fails", {
   local_test_cached_db("metadata-db-")
 
-  local_mocked_bindings(is_online_fun = function(...) {
-    FALSE
-  })
+  local_mocked_bindings(gisco_req_perform = mock_connection_failure)
 
   expect_snapshot(fend <- gisco_get_metadata())
   expect_null(fend)

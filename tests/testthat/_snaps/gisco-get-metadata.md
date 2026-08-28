@@ -1,9 +1,9 @@
-# Metadata returns NULL when offline
+# Metadata returns NULL when connection fails
 
     Code
       fend <- gisco_get_metadata()
     Message
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/distribution/v2/nuts/csv/NUTS_AT_2024.csv> failed.
       > Returning "NULL".
 
 # Metadata returns NULL for 404 responses

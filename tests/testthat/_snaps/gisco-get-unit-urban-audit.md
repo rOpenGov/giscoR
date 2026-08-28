@@ -1,10 +1,10 @@
-# Urban audit unit returns NULL when offline
+# Urban audit unit returns NULL when connection fails
 
     Code
       n <- gisco_get_unit_urban_audit(year = 2024, update_cache = TRUE, verbose = TRUE)
     Message
       i Requested file 'ES001F-region-100k-4326-2024.geojson'.
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/distribution/v2/urau/urau-2024-units.json> failed.
       > Returning "NULL".
 
 # Urban audit unit returns NULL for 404 responses
