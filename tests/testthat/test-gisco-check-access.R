@@ -17,6 +17,10 @@ test_that("Access checks report GISCO connection failures", {
 })
 
 test_that("CRAN environment is detected from NOT_CRAN", {
+  withr::local_envvar(NOT_CRAN = NA)
+
+  expect_equal(on_cran(), !interactive())
+
   withr::local_envvar(NOT_CRAN = "false")
 
   expect_true(on_cran())
