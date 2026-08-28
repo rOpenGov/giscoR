@@ -110,10 +110,8 @@ gisco_response_is_error <- function(
 #' @param error_file Optional file path to remove after a failed download.
 #' @param error_verbose A logical value indicating whether to print HTTP error
 #'   messages.
-#' @param offline_verbose A logical value indicating whether to print offline
-#'   messages.
-#' @param check_online A logical value indicating whether to check network
-#'   availability before performing the request.
+#' @param failure_verbose A logical value indicating whether to print connection
+#'   failure messages.
 #' @param fake_404 A logical value indicating whether to apply the test 404
 #'   redirect.
 #' @param check_error A logical value indicating whether HTTP error responses
@@ -128,27 +126,29 @@ gisco_perform_request <- function(
   path = NULL,
   error_file = path,
   error_verbose = TRUE,
-  offline_verbose = TRUE,
-  check_online = TRUE,
+  failure_verbose = TRUE,
   fake_404 = TRUE,
   check_error = TRUE
 ) {
-  if (check_online && !is_online_fun()) {
-    if (offline_verbose) {
-      cli::cli_alert_danger("No internet connection available.")
-      cli::cli_alert("Returning {.val NULL}.")
-    }
-    return(NULL)
-  }
-
   if (fake_404) {
     req <- gisco_request_fake_404(req)
   }
 
-  if (is.null(path)) {
-    resp <- httr2::req_perform(req)
-  } else {
-    resp <- httr2::req_perform(req, path = path)
+  resp <- tryCatch(
+    gisco_req_perform(req, path),
+    httr2_failure = function(cnd) {
+      if (!is.null(error_file)) {
+        unlink(error_file, force = TRUE)
+      }
+      if (failure_verbose) {
+        cli::cli_alert_danger("Request to {.url {url}} failed.")
+        cli::cli_alert("Returning {.val NULL}.")
+      }
+      NULL
+    }
+  )
+  if (is.null(resp)) {
+    return(NULL)
   }
 
   if (
@@ -158,6 +158,20 @@ gisco_perform_request <- function(
     return(NULL)
   }
   resp
+}
+
+#' Perform an httr2 request
+#'
+#' @param req An `httr2_request` object.
+#' @param path Optional file path for downloads.
+#'
+#' @return An `httr2_response` object.
+#' @noRd
+gisco_req_perform <- function(req, path = NULL) {
+  if (is.null(path)) {
+    return(httr2::req_perform(req))
+  }
+  httr2::req_perform(req, path = path)
 }
 
 #' Call a GISCO JSON API endpoint

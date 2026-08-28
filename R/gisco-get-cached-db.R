@@ -235,7 +235,7 @@ scrap_api_data <- function(entry_point) {
     req,
     httr2::req_get_url(req),
     error_verbose = FALSE,
-    offline_verbose = FALSE
+    failure_verbose = FALSE
   )
   if (is.null(resp)) {
     return(NULL)
@@ -253,7 +253,7 @@ scrap_api_data <- function(entry_point) {
       req,
       httr2::req_get_url(req),
       error_verbose = FALSE,
-      offline_verbose = FALSE,
+      failure_verbose = FALSE,
       fake_404 = FALSE
     )
     if (is.null(resp)) {

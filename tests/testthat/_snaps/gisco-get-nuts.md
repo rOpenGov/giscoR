@@ -1,9 +1,9 @@
-# NUTS return NULL when offline
+# NUTS return NULL when connection fails
 
     Code
       n <- gisco_get_nuts(update_cache = TRUE, cache_dir = cdir, resolution = 60)
     Message
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/distribution/v2/nuts/gpkg/NUTS_RG_60M_2024_4326.gpkg> failed.
       > Returning "NULL".
 
 # NUTS return NULL for 404 responses

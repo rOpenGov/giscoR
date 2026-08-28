@@ -1,9 +1,5 @@
-test_that("ID API returns NULL when offline", {
-  skip_on_cran()
-  skip_if_gisco_offline()
-  local_mocked_bindings(is_online_fun = function(...) {
-    FALSE
-  })
+test_that("ID API returns NULL when connection fails", {
+  local_mocked_bindings(gisco_req_perform = mock_connection_failure)
 
   expect_snapshot(fend <- gisco_id_api_geonames(x = 4, y = 52))
   expect_null(fend)

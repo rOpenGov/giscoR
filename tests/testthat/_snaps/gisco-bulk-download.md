@@ -1,9 +1,9 @@
-# Bulk download returns NULL when offline
+# Bulk download returns NULL when connection fails
 
     Code
       n <- gisco_bulk_download(update_cache = TRUE)
     Message
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/distribution/v2/countries/download/ref-countries-2016-10m.shp.zip> failed.
       > Returning "NULL".
 
 # Bulk download returns NULL for 404 responses

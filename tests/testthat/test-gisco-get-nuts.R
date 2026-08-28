@@ -1,11 +1,7 @@
-test_that("NUTS return NULL when offline", {
-  skip_on_cran()
-  skip_if_gisco_offline()
+test_that("NUTS return NULL when connection fails", {
   local_test_cached_db("nuts-db-")
 
-  local_mocked_bindings(is_online_fun = function(...) {
-    FALSE
-  })
+  local_mocked_bindings(gisco_req_perform = mock_connection_failure)
   cdir <- local_test_cache_dir("testnuts-offline-")
   expect_snapshot(
     n <- gisco_get_nuts(update_cache = TRUE, cache_dir = cdir, resolution = 60)

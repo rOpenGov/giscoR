@@ -1,11 +1,11 @@
-# Country unit returns NULL when offline
+# Country unit returns NULL when connection fails
 
     Code
       n <- gisco_get_unit_country(year = 2024, unit = "ES", update_cache = TRUE,
         verbose = TRUE)
     Message
       i Requested file 'ES-region-01m-4326-2024.geojson'.
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/distribution/v2/countries/countries-2024-units.json> failed.
       > Returning "NULL".
 
 # Country unit returns NULL for 404 responses

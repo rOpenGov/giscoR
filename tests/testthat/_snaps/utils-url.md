@@ -1,10 +1,18 @@
-# Downloads return NULL when offline
+# Request helper handles connection failures
+
+    Code
+      resp <- gisco_perform_request(req, "https://example.com")
+    Message
+      x Request to <https://example.com> failed.
+      > Returning "NULL".
+
+# Downloads return NULL when connection fails
 
     Code
       fend <- download_url(url, cache_dir = cdir, subdir = "fixme", update_cache = FALSE,
         verbose = FALSE)
     Message
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/distribution/v2/nuts/geojson/NUTS_LB_2016_4326_LEVL_0.geojson> failed.
       > Returning "NULL".
 
 # URL database lookup validates and returns matching entries
@@ -35,12 +43,12 @@
       * `ext` = "csv"
       i Check available combinations in `giscoR::gisco_get_cached_db()`.
 
-# Request body returns NULL when offline
+# Request body returns NULL when connection fails
 
     Code
       fend <- get_request_body(url, verbose = FALSE)
     Message
-      x No internet connection available.
+      x Request to <https://gisco-services.ec.europa.eu/distribution/v2/themes.json> failed.
       > Returning "NULL".
 
 # Request body returns NULL for 404 responses

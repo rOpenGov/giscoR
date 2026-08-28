@@ -227,17 +227,21 @@ download_url <- function(
 
   req <- gisco_request(url, verbose = verbose)
 
-  if (!is_online_fun()) {
-    cli::cli_alert_danger("No internet connection available.")
-    cli::cli_alert("Returning {.val NULL}.")
-    return(NULL)
-  }
-
   # Check the size first to see if HEAD should report it.
   get_header <- httr2::req_method(req, "HEAD")
-  getsize <- httr2::req_perform(get_header)
+  getsize <- gisco_perform_request(
+    get_header,
+    url,
+    error_verbose = FALSE,
+    failure_verbose = FALSE,
+    fake_404 = FALSE
+  )
 
-  size_dwn <- as.numeric(httr2::resp_header(getsize, "content-length", 0))
+  size_dwn <- if (is.null(getsize)) {
+    0
+  } else {
+    as.numeric(httr2::resp_header(getsize, "content-length", 0))
+  }
   class(size_dwn) <- class(object.size("a"))
   thr <- 50 * (1024^2)
   if (size_dwn > thr) {
@@ -256,7 +260,6 @@ download_url <- function(
     req,
     url,
     path = file_local,
-    check_online = FALSE,
     fake_404 = FALSE
   )
   if (is.null(resp)) {
@@ -324,12 +327,6 @@ for_import_jsonlite <- function() {
 #' @noRd
 gisco_resp_body_string <- function(resp) {
   httr2::resp_body_string(resp)
-}
-
-#' Wrapper for `is_online()` in tests
-#' @noRd
-is_online_fun <- function(...) {
-  httr2::is_online()
 }
 
 #' Wrapper for `is_404()` in tests
