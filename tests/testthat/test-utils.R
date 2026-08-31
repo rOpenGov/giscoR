@@ -174,6 +174,15 @@ test_that("ensure_null handles empty-like and non-empty values", {
   expect_identical(letters, letters)
 })
 
+test_that("Logical scalar checker rejects missing and non-scalar values", {
+  expect_true(is_bool(TRUE))
+  expect_true(is_bool(FALSE))
+  expect_false(is_bool(NA))
+  expect_false(is_bool(logical()))
+  expect_false(is_bool(c(TRUE, FALSE)))
+  expect_false(is_bool(1))
+})
+
 test_that("cli_abort_if_not aborts when conditions fail", {
   skip_on_cran()
   skip_if_gisco_offline()
@@ -197,6 +206,17 @@ test_that("cli_abort_if_not aborts when conditions fail", {
     error = TRUE,
     test_msg("Testing fun reference with error.", verbose = 1)
   )
+
+  expect_error(cli_abort_if_not("No" = NA), class = "giscoR_error")
+  expect_error(cli_abort_if_not("No" = logical()), class = "giscoR_error")
+  expect_error(
+    cli_abort_if_not("No" = c(TRUE, TRUE)),
+    class = "giscoR_error"
+  )
+
+  expect_error(make_msg(verbose = NA), class = "giscoR_error")
+  expect_error(make_msg(verbose = logical()), class = "giscoR_error")
+  expect_error(make_msg(verbose = c(TRUE, FALSE)), class = "giscoR_error")
 })
 
 test_that("Package input errors have a common condition class", {

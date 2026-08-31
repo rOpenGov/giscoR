@@ -76,8 +76,8 @@ read_packaged_gisco_dataset <- function(
   .envir = parent.frame()
 ) {
   cli_abort_if_not(
-    "{.arg verbose} must be logical." = is.logical(verbose),
-    "{.arg update_cache} must be logical." = is.logical(update_cache),
+    "{.arg verbose} must be logical." = is_bool(verbose),
+    "{.arg update_cache} must be logical." = is_bool(update_cache),
     .envir = .envir
   )
 

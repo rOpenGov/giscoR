@@ -260,7 +260,7 @@ call_address_api <- function(
   .envir = parent.frame()
 ) {
   cli_abort_if_not(
-    "{.arg verbose} must be logical." = is.logical(verbose),
+    "{.arg verbose} must be logical." = is_bool(verbose),
     .envir = .envir
   )
 

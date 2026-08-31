@@ -73,6 +73,7 @@ gisco_get_units <- function(
     epsg = epsg,
     cache = cache,
     update_cache = update_cache,
+    cache_dir = cache_dir,
     verbose = verbose,
     spatialtype = spatialtype
   )

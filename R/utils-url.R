@@ -222,6 +222,12 @@ download_url <- function(
     make_msg("warning", verbose, "Updating cached file.")
   }
 
+  download_file <- tempfile(
+    pattern = paste0(".", basename(file_local), "-"),
+    tmpdir = dirname(file_local)
+  )
+  on.exit(unlink(download_file, force = TRUE), add = TRUE)
+
   msg <- paste0("Downloading {.url ", url, "}.")
   make_msg("info", verbose, msg)
 
@@ -253,22 +259,70 @@ download_url <- function(
   # Redirect to a fake URL during tests.
   if (is_404()) {
     req <- gisco_request_fake_404(req)
-    file_local <- tempfile(fileext = ".txt")
   }
 
   resp <- gisco_perform_request(
     req,
     url,
-    path = file_local,
+    path = download_file,
     fake_404 = FALSE
   )
   if (is.null(resp)) {
     return(NULL)
   }
+
+  replace_cached_file(download_file, file_local)
   msg <- paste0("Download completed: {.file ", file_local, "}.")
   make_msg("success", verbose, msg)
 
   file_local
+}
+
+#' Replace a cached file while preserving the previous version on failure
+#'
+#' @param source A temporary downloaded file.
+#' @param destination The final cache file.
+#'
+#' @return The destination path.
+#' @noRd
+replace_cached_file <- function(source, destination) {
+  if (suppressWarnings(file.rename(source, destination))) {
+    return(destination)
+  }
+
+  backup <- tempfile(
+    pattern = paste0(".", basename(destination), "-backup-"),
+    tmpdir = dirname(destination)
+  )
+  if (!file.rename(destination, backup)) {
+    cli::cli_abort(
+      "Could not preserve the previous cached file {.file {destination}}.",
+      class = "giscoR_error",
+      call = NULL
+    )
+  }
+
+  restore_backup <- TRUE
+  on.exit(
+    {
+      if (restore_backup && file.exists(backup)) {
+        file.rename(backup, destination)
+      }
+    },
+    add = TRUE
+  )
+
+  if (!file.rename(source, destination)) {
+    cli::cli_abort(
+      "Could not replace the cached file {.file {destination}}.",
+      class = "giscoR_error",
+      call = NULL
+    )
+  }
+
+  restore_backup <- FALSE
+  unlink(backup, force = TRUE)
+  destination
 }
 
 #' Internal function to get the response body from a URL

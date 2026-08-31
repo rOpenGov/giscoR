@@ -91,9 +91,9 @@ gisco_set_cache_dir <- function(
   cache_dir <- ensure_null(cache_dir)
   # Validate logical arguments.
   cli_abort_if_not(
-    "{.arg verbose} must be logical." = is.logical(verbose),
-    "{.arg overwrite} must be logical." = is.logical(overwrite),
-    "{.arg install} must be logical." = is.logical(install)
+    "{.arg verbose} must be logical." = is_bool(verbose),
+    "{.arg overwrite} must be logical." = is_bool(overwrite),
+    "{.arg install} must be logical." = is_bool(install)
   )
   # Use a temporary cache when no path is provided.
   if (is.null(cache_dir)) {

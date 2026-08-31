@@ -13,7 +13,7 @@
 #' @noRd
 make_msg <- function(type = "generic", verbose, ..., .envir = parent.frame()) {
   cli_abort_if_not(
-    "{.arg verbose} must be logical." = is.logical(verbose),
+    "{.arg verbose} must be logical." = is_bool(verbose),
     .envir = .envir
   )
   if (!verbose) {
@@ -153,6 +153,16 @@ ensure_null <- function(x) {
   x_init
 }
 
+#' Check whether an object is a non-missing logical scalar
+#'
+#' @param x An object to check.
+#'
+#' @return A logical scalar.
+#' @noRd
+is_bool <- function(x) {
+  is.logical(x) && length(x) == 1L && !is.na(x)
+}
+
 #' Format GISCO unit resolution text
 #'
 #' @param resolution A numeric or character resolution value.
@@ -203,7 +213,7 @@ cli_abort_if_not <- function(
   .frame = .envir
 ) {
   for (i in seq_len(...length())) {
-    if (!all(...elt(i))) {
+    if (!isTRUE(...elt(i))) {
       cli::cli_abort(
         ...names()[i],
         class = "giscoR_error",

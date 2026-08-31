@@ -200,6 +200,70 @@ test_that("Downloads continue when the HEAD request fails", {
   expect_identical(readLines(path), "mock download")
 })
 
+test_that("Failed updates preserve existing cached files", {
+  requests <- 0
+  local_mocked_bindings(gisco_req_perform = function(req, path = NULL) {
+    requests <<- requests + 1
+    if (requests == 1) {
+      return(httr2::response(200, url = httr2::req_get_url(req)))
+    }
+
+    writeLines("partial download", path)
+    mock_connection_failure()
+  })
+
+  cdir <- local_test_cache_dir("failed-update-")
+  target_dir <- create_cache_dir(file.path(cdir, "downloads"))
+  target <- file.path(target_dir, "file.txt")
+  writeLines("cached file", target)
+
+  expect_message(
+    result <- download_url(
+      "https://example.com/file.txt",
+      cache_dir = cdir,
+      update_cache = TRUE,
+      verbose = FALSE
+    ),
+    "Request to"
+  )
+
+  expect_null(result)
+  expect_identical(readLines(target), "cached file")
+  expect_identical(list.files(target_dir), "file.txt")
+})
+
+test_that("Successful updates replace existing cached files", {
+  requests <- 0
+  download_path <- NULL
+  local_mocked_bindings(gisco_req_perform = function(req, path = NULL) {
+    requests <<- requests + 1
+    if (requests == 1) {
+      return(httr2::response(200, url = httr2::req_get_url(req)))
+    }
+
+    download_path <<- path
+    writeLines("updated file", path)
+    httr2::response(200, url = httr2::req_get_url(req))
+  })
+
+  cdir <- local_test_cache_dir("successful-update-")
+  target_dir <- create_cache_dir(file.path(cdir, "downloads"))
+  target <- file.path(target_dir, "file.txt")
+  writeLines("cached file", target)
+
+  result <- download_url(
+    "https://example.com/file.txt",
+    cache_dir = cdir,
+    update_cache = TRUE,
+    verbose = FALSE
+  )
+
+  expect_identical(result, target)
+  expect_identical(readLines(target), "updated file")
+  expect_false(identical(download_path, target))
+  expect_identical(list.files(target_dir), "file.txt")
+})
+
 test_that("Downloads return NULL for 404 responses", {
   skip_on_cran()
   skip_if_gisco_offline()
