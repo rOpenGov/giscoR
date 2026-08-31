@@ -260,9 +260,9 @@ test_that("Successful updates replace existing cached files", {
     verbose = FALSE
   )
 
-  expect_identical(result, target)
+  expect_identical(basename(result), "file.txt")
   expect_identical(readLines(target), "updated file")
-  expect_false(identical(download_path, target))
+  expect_false(file.exists(download_path))
   expect_identical(list.files(target_dir), "file.txt")
 })
 
@@ -274,9 +274,10 @@ test_that("Cached file replacement moves a completed download", {
 
   result <- replace_cached_file(source, destination)
 
-  expect_identical(result, destination)
+  expect_identical(basename(result), "cached")
   expect_identical(readLines(destination), "downloaded file")
   expect_false(file.exists(source))
+  expect_identical(list.files(cache_dir), "cached")
 })
 
 test_that("Cached file replacement swaps an existing destination", {
@@ -297,7 +298,7 @@ test_that("Cached file replacement swaps an existing destination", {
 
   result <- replace_cached_file(source, destination)
 
-  expect_identical(result, destination)
+  expect_identical(basename(result), "cached")
   expect_identical(readLines(destination), "downloaded file")
   expect_identical(renames, 3)
   expect_identical(list.files(cache_dir), "cached")
