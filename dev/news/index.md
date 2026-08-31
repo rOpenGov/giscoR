@@ -2,9 +2,16 @@
 
 ## giscoR (development version)
 
+- Cached downloads now preserve the previous file when an update fails
+  and replace it only after the new download completes successfully.
+- Logical flags now reject missing and non-scalar values with a
+  `giscoR_error` condition.
 - Downloads now attempt the requested GISCO resource directly instead of
   relying on a generic connectivity check, improving support for proxied
   connections ([\#139](https://github.com/rOpenGov/giscoR/issues/139)).
+- [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
+  now forwards `cache_dir` to its replacement single-unit download
+  function.
 
 ## giscoR 1.2.0
 

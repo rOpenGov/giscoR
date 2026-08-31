@@ -229,13 +229,13 @@ gisco_address_api_reverse(
 #> Bounding box:  xmin: 6.16786 ymin: 49.6315 xmax: 6.169307 ymax: 49.63328
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 5 × 15
-#>   LD    TF                     L2         L1      L0    I3    PC    N0    N1    N2    N3    OL        X     Y
-#> * <chr> <chr>                  <chr>      <chr>   <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
-#> 1 4     RUE ALPHONSE WEICKER   LUXEMBOURG LUXEMB… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
-#> 2 3     RUE JEAN MONNET        LUXEMBOURG LUXEMB… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
-#> 3 41B   AVENUE JOHN F. KENNEDY LUXEMBOURG LUXEMB… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
-#> 4 2     RUE JEAN MONNET        LUXEMBOURG LUXEMB… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
-#> 5 5     RUE ALPHONSE WEICKER   LUXEMBOURG LUXEMB… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#>   LD    TF                  L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X     Y
+#> * <chr> <chr>               <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
+#> 1 4     RUE ALPHONSE WEICK… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 2 3     RUE JEAN MONNET     LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 3 41B   AVENUE JOHN F. KEN… LUXE… LUXE… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 4 2     RUE JEAN MONNET     LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 5 5     RUE ALPHONSE WEICK… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
 #> # ℹ 1 more variable: geometry <POINT [°]>
 ```
 
