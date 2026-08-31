@@ -88,11 +88,7 @@ gisco_get_unit_country <- function(
   # RG: AD-region-01m-3035-2024.geojson
   # LB: AD-label-3035-2024.geojson
 
-  use_code <- switch(year,
-    "2001" = "iso3c",
-    "2006" = "iso2c",
-    "eurostat"
-  )
+  use_code <- switch(year, "2001" = "iso3c", "2006" = "iso2c", "eurostat")
   unit_code <- convert_country_code(unit, use_code)
 
   unit_names <- build_unit_filenames(unit_code, type, epsg, year, res_txt)

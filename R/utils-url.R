@@ -286,15 +286,23 @@ download_url <- function(
 #' @return The destination path.
 #' @noRd
 replace_cached_file <- function(source, destination) {
-  if (suppressWarnings(file.rename(source, destination))) {
+  if (suppressWarnings(rename_cached_file(source, destination))) {
     return(destination)
+  }
+
+  if (!file.exists(destination)) {
+    cli::cli_abort(
+      "Could not move the downloaded file to {.file {destination}}.",
+      class = "giscoR_error",
+      call = NULL
+    )
   }
 
   backup <- tempfile(
     pattern = paste0(".", basename(destination), "-backup-"),
     tmpdir = dirname(destination)
   )
-  if (!file.rename(destination, backup)) {
+  if (!rename_cached_file(destination, backup)) {
     cli::cli_abort(
       "Could not preserve the previous cached file {.file {destination}}.",
       class = "giscoR_error",
@@ -306,13 +314,13 @@ replace_cached_file <- function(source, destination) {
   on.exit(
     {
       if (restore_backup && file.exists(backup)) {
-        file.rename(backup, destination)
+        rename_cached_file(backup, destination)
       }
     },
     add = TRUE
   )
 
-  if (!file.rename(source, destination)) {
+  if (!rename_cached_file(source, destination)) {
     cli::cli_abort(
       "Could not replace the cached file {.file {destination}}.",
       class = "giscoR_error",
@@ -324,6 +332,12 @@ replace_cached_file <- function(source, destination) {
   unlink(backup, force = TRUE)
   destination
 }
+
+# nocov start
+rename_cached_file <- function(source, destination) {
+  file.rename(source, destination)
+}
+# nocov end
 
 #' Internal function to get the response body from a URL
 #'

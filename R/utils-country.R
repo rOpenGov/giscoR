@@ -20,10 +20,7 @@ convert_country_code <- function(names, out = "eurostat") {
         "xkx" == tolower(x)
       )
     ) {
-      code <- switch(out,
-        "eurostat" = "XK",
-        "iso3c" = "XKX"
-      )
+      code <- switch(out, "eurostat" = "XK", "iso3c" = "XKX")
       return(code)
     }
 

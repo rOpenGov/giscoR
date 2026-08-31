@@ -210,7 +210,8 @@ bulk_download_api_entry <- function(route) {
 #' @return A character string with the bulk-download alias.
 #' @noRd
 bulk_download_alias <- function(id) {
-  switch(id,
+  switch(
+    id,
     "coastal_lines" = "coastline",
     "urban_audit" = "urau",
     "postal_codes" = "pcode",
@@ -225,10 +226,7 @@ bulk_download_alias <- function(id) {
 #' @return A character string with the cache subdirectory.
 #' @noRd
 bulk_download_subdir <- function(id) {
-  switch(id,
-    "coastal_lines" = "coastal",
-    id
-  )
+  switch(id, "coastal_lines" = "coastal", id)
 }
 
 #' Build a bulk-download ZIP file name

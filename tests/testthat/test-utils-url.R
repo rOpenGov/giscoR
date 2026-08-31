@@ -96,10 +96,12 @@ test_that("Dataset reader delegates cache and non-cache paths", {
     download_url = function(...) {
       "cached.gpkg"
     },
-    read_geo_file_sf_filtered = function(file_local,
-                                         filters = NULL,
-                                         operator = "AND",
-                                         verbose = FALSE) {
+    read_geo_file_sf_filtered = function(
+      file_local,
+      filters = NULL,
+      operator = "AND",
+      verbose = FALSE
+    ) {
       data.frame(source = file_local, operator = operator)
     }
   )
@@ -262,6 +264,103 @@ test_that("Successful updates replace existing cached files", {
   expect_identical(readLines(target), "updated file")
   expect_false(identical(download_path, target))
   expect_identical(list.files(target_dir), "file.txt")
+})
+
+test_that("Cached file replacement moves a completed download", {
+  cache_dir <- local_test_cache_dir("replace-cache-")
+  source <- file.path(cache_dir, "download")
+  destination <- file.path(cache_dir, "cached")
+  writeLines("downloaded file", source)
+
+  result <- replace_cached_file(source, destination)
+
+  expect_identical(result, destination)
+  expect_identical(readLines(destination), "downloaded file")
+  expect_false(file.exists(source))
+})
+
+test_that("Cached file replacement swaps an existing destination", {
+  cache_dir <- local_test_cache_dir("replace-existing-cache-")
+  source <- file.path(cache_dir, "download")
+  destination <- file.path(cache_dir, "cached")
+  writeLines("downloaded file", source)
+  writeLines("cached file", destination)
+
+  renames <- 0
+  local_mocked_bindings(rename_cached_file = function(source, destination) {
+    renames <<- renames + 1
+    if (renames == 1) {
+      return(FALSE)
+    }
+    file.rename(source, destination)
+  })
+
+  result <- replace_cached_file(source, destination)
+
+  expect_identical(result, destination)
+  expect_identical(readLines(destination), "downloaded file")
+  expect_identical(renames, 3)
+  expect_identical(list.files(cache_dir), "cached")
+})
+
+test_that("Cached file replacement reports an unavailable destination", {
+  cache_dir <- local_test_cache_dir("replace-missing-cache-")
+  source <- file.path(cache_dir, "download")
+  destination <- file.path(cache_dir, "cached")
+  writeLines("downloaded file", source)
+  local_mocked_bindings(rename_cached_file = function(...) FALSE)
+
+  expect_error(
+    replace_cached_file(source, destination),
+    class = "giscoR_error"
+  )
+
+  expect_identical(readLines(source), "downloaded file")
+  expect_false(file.exists(destination))
+})
+
+test_that("Cached file replacement preserves an immovable destination", {
+  cache_dir <- local_test_cache_dir("replace-immovable-cache-")
+  source <- file.path(cache_dir, "download")
+  destination <- file.path(cache_dir, "cached")
+  writeLines("downloaded file", source)
+  writeLines("cached file", destination)
+  local_mocked_bindings(rename_cached_file = function(...) FALSE)
+
+  expect_error(
+    replace_cached_file(source, destination),
+    class = "giscoR_error"
+  )
+
+  expect_identical(readLines(source), "downloaded file")
+  expect_identical(readLines(destination), "cached file")
+})
+
+test_that("Cached file replacement restores the previous file on failure", {
+  cache_dir <- local_test_cache_dir("replace-cache-failure-")
+  source <- file.path(cache_dir, "download")
+  destination <- file.path(cache_dir, "cached")
+  writeLines("downloaded file", source)
+  writeLines("cached file", destination)
+
+  renames <- 0
+  local_mocked_bindings(rename_cached_file = function(source, destination) {
+    renames <<- renames + 1
+    if (renames %in% c(1, 3)) {
+      return(FALSE)
+    }
+    file.rename(source, destination)
+  })
+
+  expect_error(
+    replace_cached_file(source, destination),
+    class = "giscoR_error"
+  )
+
+  expect_identical(readLines(destination), "cached file")
+  expect_identical(readLines(source), "downloaded file")
+  expect_identical(renames, 4)
+  expect_identical(sort(list.files(cache_dir)), c("cached", "download"))
 })
 
 test_that("Downloads return NULL for 404 responses", {

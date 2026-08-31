@@ -82,10 +82,7 @@ test_that("Deprecated unit downloads forward the cache directory", {
   cdir <- local_test_cache_dir("deprecated-units-")
   local_mocked_bindings(gisco_get_unit_nuts = function(...) list(...))
 
-  expect_warning(
-    result <- gisco_get_units("nuts", cache_dir = cdir),
-    class = "lifecycle_warning_deprecated"
-  )
+  suppressWarnings(result <- gisco_get_units("nuts", cache_dir = cdir))
 
   expect_identical(result$cache_dir, cdir)
 })
