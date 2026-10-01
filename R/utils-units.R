@@ -25,7 +25,10 @@ build_unit_filenames <- function(unit_code, type, epsg, year, res_txt = NULL) {
 #' @return A character string with GISCO's single-unit file type.
 #' @noRd
 unit_spatialtype_to_file_type <- function(spatialtype) {
-  switch(spatialtype, "RG" = "region", "LB" = "label")
+  switch(spatialtype,
+    "RG" = "region",
+    "LB" = "label"
+  )
 }
 
 #' Read one GISCO single-unit file
@@ -33,7 +36,7 @@ unit_spatialtype_to_file_type <- function(spatialtype) {
 #' @param file Local file path or URL to the geospatial file.
 #' @param post_process Optional function applied after reading the file.
 #'
-#' @return An `sf` object, or `NULL` when `file` is `NULL`.
+#' @return An [`sf`][sf::st_sf] object or `NULL` when `file` is `NULL`.
 #' @noRd
 read_unit_file_sf <- function(file, post_process = NULL) {
   if (is.null(file)) {
@@ -58,7 +61,8 @@ read_unit_file_sf <- function(file, post_process = NULL) {
 #' @param year A character string or numeric value with the release year.
 #' @param post_process Optional function applied after reading each file.
 #'
-#' @return A sanitized `sf` object, or `NULL` when no unit can be read.
+#' @return A sanitized [`sf`][sf::st_sf] object or `NULL` when no unit can be
+#' read.
 #' @noRd
 get_unit_files <- function(
   dataset,

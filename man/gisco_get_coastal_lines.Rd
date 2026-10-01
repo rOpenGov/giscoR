@@ -36,14 +36,15 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 }}
 
 \item{cache}{A logical value indicating whether to cache results. Defaults
-to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+to \code{TRUE}. See the \strong{Caching strategies} section in
+\code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
@@ -58,13 +59,13 @@ data resolution. One of:
 \item \code{"01"}: 1:1 million.
 }}
 
-\item{ext}{A character value with the extension of the file (default
+\item{ext}{A character string with the extension of the file (default
 \code{"gpkg"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("coastal_lines",
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Download global coastal lines.

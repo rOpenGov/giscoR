@@ -16,7 +16,7 @@
 #' This database is used to redirect the corresponding functions to the
 #' correct API endpoints.
 #'
-#' This version of the database is used if there is a problem during update.
+#' This version of the database is used if an update fails.
 #' Please use [gisco_get_cached_db()] with `update_cache = TRUE` to update the
 #' corresponding API endpoints.
 #'
@@ -31,7 +31,7 @@
 #'   dplyr::glimpse()
 NULL
 
-#' Countries 2024 \CRANpkg{sf} object
+#' Countries 2024 [`sf`][sf::st_sf] object
 #'
 #' @description
 #' This object contains world administrative boundaries at the country level.
@@ -41,12 +41,12 @@ NULL
 #' @family datasets
 #' @keywords datasets
 #' @format
-#' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
+#' An [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
 #' `r nrow(giscoR::gisco_countries_2024)` rows and 12 variables:
 #' \describe{
 #'   \item{`CNTR_ID`}{Country ID from Eurostat.}
-#'   \item{`CNTR_NAME`}{Official country name in local language.}
+#'   \item{`CNTR_NAME`}{Official country name in the local language.}
 #'   \item{`NAME_ENGL`}{Country name in English.}
 #'   \item{`NAME_FREN`}{Country name in French.}
 #'   \item{`ISO3_CODE`}{ISO 3166-1 alpha-3 code of each country from
@@ -100,19 +100,20 @@ NULL
 #' `r prettyNum(nrow(giscoR::gisco_countrycode), big.mark = ",")` rows and 13
 #' variables:
 #' \describe{
-#'   \item{`ISO3_CODE`}{Eurostat code of each country.}
-#'   \item{`CNTR_CODE`}{ISO 3166-1 alpha-2 code of each country.}
+#'   \item{`ISO3_CODE`}{ISO 3166-1 alpha-3 code of each country.}
+#'   \item{`CNTR_CODE`}{Eurostat country code.}
 #'   \item{`iso2c`}{ISO 3166-1 alpha-2 code of each country.}
 #'   \item{`iso.name.en`}{ISO English short name.}
 #'   \item{`cldr.short.en`}{English short name as provided by the Unicode
 #'     Common Locale Data Repository.}
 #'   \item{`continent`}{Continent from the World Bank.}
-#'   \item{`un.region.code`}{Numeric region code UN (M49).}
-#'   \item{`un.region.name`}{Region name UN (M49).}
-#'   \item{`un.regionintermediate.code`}{Numeric intermediate region.}
-#'   \item{`un.regionintermediate.name`}{Intermediate region name UN (M49).}
-#'   \item{`un.regionsub.code`}{Numeric sub-region code UN (M49).}
-#'   \item{`un.regionsub.name`}{Sub-region name UN (M49).}
+#'   \item{`un.region.code`}{UN M49 numeric region code.}
+#'   \item{`un.region.name`}{UN M49 region name.}
+#'   \item{`un.regionintermediate.code`}{UN M49 numeric intermediate region
+#'   code.}
+#'   \item{`un.regionintermediate.name`}{UN M49 intermediate region name.}
+#'   \item{`un.regionsub.code`}{UN M49 numeric subregion code.}
+#'   \item{`un.regionsub.name`}{UN M49 subregion name.}
 #'   \item{`eu`}{Logical value indicating whether the country belongs to the
 #'     European Union.}
 #' }
@@ -139,7 +140,7 @@ NULL
 #' dplyr::glimpse(gisco_countrycode)
 NULL
 
-#' Coastal lines 2016 \CRANpkg{sf} object
+#' Coastal lines 2016 [`sf`][sf::st_sf] object
 #'
 #' @description
 #' This object contains the coastal lines of the world.
@@ -149,7 +150,7 @@ NULL
 #' @family datasets
 #' @keywords datasets
 #' @format
-#' A [`sf`][sf::st_sf] object with `POLYGON` geometries, resolution:
+#' An [`sf`][sf::st_sf] object with `POLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326).
 #'
 #' @inheritSection gisco_get_coastal_lines Copyright
@@ -175,7 +176,7 @@ NULL
 #'
 NULL
 
-#' NUTS 2024 \CRANpkg{sf} object
+#' NUTS 2024 [`sf`][sf::st_sf] object
 #'
 #' @description
 #' This dataset represents the regions for levels 0, 1, 2 and 3 of the
@@ -186,7 +187,7 @@ NULL
 #' @family datasets
 #' @keywords datasets
 #' @format
-#' A [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
+#' An [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
 #' `r nrow(giscoR::gisco_nuts_2024)` rows and 19 variables:
 #' \describe{
@@ -198,7 +199,7 @@ NULL
 #'   \item{`MOUNT_TYPE`}{Mountain type, see **Details**.}
 #'   \item{`URBN_TYPE`}{Urban type, see **Details**.}
 #'   \item{`COAST_TYPE`}{Coastal type, see **Details**.}
-#'    \item{`NAME_ENGL`}{Country name in English.}
+#'   \item{`NAME_ENGL`}{Country name in English.}
 #'   \item{`NAME_FREN`}{Country name in French.}
 #'   \item{`ISO3_CODE`}{ISO 3166-1 alpha-3 code of each country from
 #'   GISCO.}
@@ -216,12 +217,12 @@ NULL
 #' @details
 #'
 #' `MOUNT_TYPE`: Mountain typology:
-#' - `1`: More than 50 % of the surface is covered by topographic mountain
+#' - `1`: More than 50% of the surface is covered by topographic mountain
 #'   areas.
-#' - `2`: More than 50 % of the regional population lives in topographic
+#' - `2`: More than 50% of the regional population lives in topographic
 #'   mountain areas.
-#' - `3`: More than 50 % of the surface is covered by topographic mountain
-#'   areas and where more than 50 % of the regional population lives in these
+#' - `3`: More than 50% of the surface is covered by topographic mountain
+#'   areas and more than 50% of the regional population lives in these
 #'   mountain areas.
 #' - `4`: Non-mountain region / other regions.
 #' - `0`: No classification provided.
@@ -234,7 +235,7 @@ NULL
 #'
 #' `COAST_TYPE`: Coastal typology:
 #' - `1`: Coastal (on coast).
-#' - `2`: Coastal (less than 50 % of population living within 50 km of the
+#' - `2`: Coastal (less than 50% of the population lives within 50 km of the
 #'   coastline).
 #' - `3`: Non-coastal region.
 #' - `0`: No classification provided.

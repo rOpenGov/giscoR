@@ -40,7 +40,7 @@ articles:
 - title: Get started
   desc: >
     Learn the main **giscoR** workflow for downloading GISCO geospatial data,
-    caching files and creating maps with `sf` objects.
+    caching files and creating maps with **sf** objects.
   navbar: ~
   contents:
   - giscoR
@@ -55,7 +55,7 @@ articles:
 reference:
 - title: GISCO geodata distribution
   desc: >
-    Download [`sf` objects](https://r-spatial.github.io/sf/reference/sf.html)
+    Download [**sf** objects](https://r-spatial.github.io/sf/reference/sf.html)
     from the [GISCO geodata
     distribution](https://ec.europa.eu/eurostat/web/gisco/geodata).
 - subtitle: Administrative units
@@ -77,7 +77,7 @@ reference:
 - contents: has_concept("stats")
 - subtitle: Grids
   desc: >
-    Download population grids covering the EU and neighbouring countries at
+    Download population grids covering the EU and neighboring countries at
     resolutions from 1 km to 100 km. Grid geometries use EPSG:3035 and
     population variables have year- and country-specific licensing conditions.
 - contents: has_concept("grids")

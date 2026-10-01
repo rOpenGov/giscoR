@@ -1,4 +1,5 @@
-The following table describes the API endpoints, based on the [GISCO Address
+The following table describes the endpoints supported by \CRANpkg{giscoR}, based on
+the [GISCO Address
 API endpoint documentation](https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints):
 
 | **Endpoint** | **Description** |
@@ -6,13 +7,19 @@ API endpoint documentation](https://gisco-services.ec.europa.eu/addressapi/docs/
 | `/countries` | All country codes compatible with the GISCO Address API. Check the coverage map for available countries and see the [list of official country codes](https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies). |
 | `/provinces` | All provinces within the specified country. The endpoint can also retrieve the province for a specified city. |
 | `/cities` | All cities within a specified province or country. |
-| `/roads` | All roads or streets within a specified city. |
-| `/housenumbers` | All house numbers or names within the specified road. In some countries, an address may not have a road component. If a road is not specified, **the API returns at most 1,000 house numbers**. |
-| `/postcodes` | All postcodes within the specified address component, such as country, province or city. |
-| `/search` | Structured queries to the address database. Various argument combinations can retrieve addresses that share an address component. **The API returns at most 100 addresses**. |
-| `/reverse` | A structured address for longitude and latitude coordinates. |
+| `/roads` | Roads or streets within a specified city, limited to 1,000 results. |
+| `/housenumbers` | House numbers or names within the specified road, limited to 1,000 results. In some countries, an address may not have a road component, so the road can be omitted. |
+| `/postcodes` | Postcodes within the specified address component, such as country, province or city, limited to 1,000 results. |
+| `/search` | Structured or freeform queries to the address database. Various argument combinations can retrieve addresses that share an address component. **The API returns at most 1,000 addresses**. |
+| `/reverse` | Structured addresses for longitude and latitude coordinates, limited to five results. |
 | `/bbox` | A [WKT](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) bounding box for an address component, depending on the specified arguments. |
-| `/copyright` | The copyright text for each available country in the Address API. |
+| `/most-populated-cell` | The most populated census grid cell for a province or city. If both are supplied, the search is restricted to the city within the province. |
+| `/copyright` | The copyright text for each available country in the GISCO Address API. |
+
+Use `q` in `gisco_address_api_search()` for a freeform search. Unlike
+structured searches, freeform queries do not support approximate matching.
+Autocomplete through `/search?suggest=` is not implemented in
+\CRANpkg{giscoR}.
 
 The resulting object may include these variables:
 
@@ -23,10 +30,11 @@ The resulting object may include these variables:
 | `L0` | Level 0 of the API administrative levels. Values are two-character country codes. |
 | `L1` | Level 1 of the API administrative levels. Values are province names. "Province" is a generic term that may vary by country. |
 | `L2` | Level 2 of the API administrative levels. Values are town or city names. "City" is a generic term that may vary by country. |
+| `I3` | ISO 3166-1 alpha-3 country code. |
 | `PC` | Postal code. |
 | `N0` | NUTS 0. |
 | `N1` | NUTS 1. |
 | `N2` | NUTS 2. |
 | `N3` | NUTS 3. |
-| `X` and `Y` | Longitude and latitude coordinates of the address point. |
+| `X` and `Y` | Numeric coordinates extracted from the API's `XY` pair. Search and reverse geocoding return longitude and latitude. The most-populated-cell function preserves the API coordinates, whose CRS is not specified in the API documentation. |
 | `OL` | The [Open Location Code](https://github.com/google/open-location-code) for the address. |

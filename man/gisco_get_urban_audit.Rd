@@ -37,20 +37,21 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 }}
 
 \item{cache}{A logical value indicating whether to cache results. Defaults
-to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+to \code{TRUE}. See the \strong{Caching strategies} section in
+\code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
 
 \item{spatialtype}{A character string with the type of geometry to return.
-Options available are:
+Available values are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
@@ -65,13 +66,13 @@ are \code{"all"} (the default), which downloads the full dataset, \code{"CITIES"
 \code{"FUA"} and, for versions prior to \code{year = 2020}, \code{"GREATER_CITIES"},
 \code{"CITY"}, \code{"KERN"} or \code{"LUZ"}.}
 
-\item{ext}{A character value with the extension of the file (default
+\item{ext}{A character string with the extension of the file (default
 \code{"gpkg"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset contains the boundaries of cities (\code{"CITIES"}), greater cities

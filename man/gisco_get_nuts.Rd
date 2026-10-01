@@ -39,14 +39,15 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 }}
 
 \item{cache}{A logical value indicating whether to cache results. Defaults
-to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+to \code{TRUE}. See the \strong{Caching strategies} section in
+\code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
@@ -62,7 +63,7 @@ data resolution. One of:
 }}
 
 \item{spatialtype}{A character string with the type of geometry to return.
-Options available are:
+Available values are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
@@ -81,17 +82,17 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 \item{nuts_level}{A character string with the NUTS level. One of \code{0},
 \code{1}, \code{2}, \code{3} or \code{all} for all levels.}
 
-\item{ext}{A character value with the extension of the file (default
+\item{ext}{A character string with the extension of the file (default
 \code{"gpkg"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
-The GISCO statistical unit dataset represents the NUTS (nomenclature of
-territorial units for statistics) and statistical regions by means of
+The GISCO statistical unit dataset represents the Nomenclature of
+Territorial Units for Statistics (NUTS) and statistical regions using
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
@@ -120,7 +121,7 @@ statistical national level does not coincide with the administrative
 boundaries.
 
 NUTS legislation is amended periodically, so GISCO provides multiple
-classification vintages. A non-official NUTS-like classification is defined
+classification vintages. An unofficial NUTS-like classification is defined
 for EFTA countries, candidate countries and potential candidates based on
 bilateral agreements between Eurostat and the respective statistical
 agencies.
@@ -177,7 +178,7 @@ See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk 
 
 See \code{\link[=gisco_get_unit_nuts]{gisco_get_unit_nuts()}} to download single-unit files.
 
-See \code{\link[=gisco_id_api_nuts]{gisco_id_api_nuts()}} to download via GISCO ID service API.
+See \code{\link[=gisco_id_api_nuts]{gisco_id_api_nuts()}} to download via the GISCO ID service API.
 
 Statistical unit datasets:
 \code{\link[=gisco_get_census]{gisco_get_census()}},

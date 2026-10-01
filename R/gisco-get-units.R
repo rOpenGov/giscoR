@@ -17,7 +17,7 @@
 #'   Possible values are `"sf"` or `"df"`. See **Value**.
 #'
 #' @return
-#' A [`sf`][sf::st_sf] object when `mode = "sf"` or a
+#' An [`sf`][sf::st_sf] object when `mode = "sf"` or a
 #' [tibble][tibble::tbl_df] when `mode = "df"`.
 #'
 #' @inheritSection gisco_get_unit Copyright

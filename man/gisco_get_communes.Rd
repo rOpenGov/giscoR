@@ -36,21 +36,21 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 }}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. These functions always
-cache the result because of its size. See \strong{Caching strategies} section
-in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+cache the result because of its size. See the \strong{Caching strategies}
+section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
 
 \item{spatialtype}{A character string with the type of geometry to return.
-Options available are:
+Available values are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
@@ -64,13 +64,13 @@ Argument \code{country} is only applied when \code{spatialtype} is \code{"RG"} o
 vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
 vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
-\item{ext}{A character value with the extension of the file (default
+\item{ext}{A character string with the extension of the file (default
 \code{"shp"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset provides pan-European administrative boundaries at commune
@@ -80,12 +80,12 @@ separate Local Administrative Units dataset. See \code{\link[=gisco_get_lau]{gis
 \details{
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions that
-together subdivide the EU economic territory into regions of five different
-levels, moving from larger to smaller territorial units: NUTS 1, 2 and 3
-and LAU.
+together subdivide the EU economic territory into statistical regions and
+local units, moving from larger to smaller territorial units: NUTS 1, 2 and
+3 and LAU.
 
 The dataset is based on EuroBoundaryMap from
-\href{https://eurogeographics.org/}{EuroGeographics}. Geographical extent covers
+\href{https://eurogeographics.org/}{EuroGeographics}. Geographic coverage includes
 the European Union 28, EFTA countries and candidate countries. The scale of
 the dataset is 1:100 000.
 

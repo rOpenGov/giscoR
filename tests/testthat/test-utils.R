@@ -36,15 +36,15 @@ test_that("Argument matcher reports exact and invalid values", {
   expect_identical(my_fun(NULL), "10")
   expect_identical(my_fun(), "10")
   # Some errors here
-  # Single value no match
+  # Check an unmatched single value.
   expect_snapshot(my_fun("error here"), error = TRUE)
 
-  # Several values no match
+  # Check several unmatched values.
   expect_snapshot(my_fun(c("an", "error")), error = TRUE)
 
-  # One value regex
+  # Match one value with a regular expression.
   expect_snapshot(my_fun("5"), error = TRUE)
-  # Several value regex
+  # Match several values with a regular expression.
   expect_snapshot(my_fun("00"), error = TRUE)
 
   my_fun2 <- function(year = 20) {

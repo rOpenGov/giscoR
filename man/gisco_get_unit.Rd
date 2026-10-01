@@ -71,14 +71,15 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 }}
 
 \item{cache}{A logical value indicating whether to cache results. Defaults
-to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+to \code{TRUE}. See the \strong{Caching strategies} section in
+\code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
@@ -94,14 +95,14 @@ data resolution. One of:
 }}
 
 \item{spatialtype}{A character string with the type of geometry to return.
-Options available are:
+Available values are:
 \itemize{
 \item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
 \item \code{"LB"}: Labels - \code{POINT} object.
 }}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Download datasets of single spatial units from GISCO to the
@@ -168,7 +169,7 @@ if (
 \code{\link[=gisco_get_metadata]{gisco_get_metadata()}}, \code{\link[=gisco_get_countries]{gisco_get_countries()}},
 \code{\link[=gisco_get_nuts]{gisco_get_nuts()}}, \code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}}.
 
-See \link{gisco_id_api} to download via GISCO ID service API.
+See \link{gisco_id_api} to download via the GISCO ID service API.
 
 Bulk and single-unit downloads:
 \code{\link[=gisco_bulk_download]{gisco_bulk_download()}}

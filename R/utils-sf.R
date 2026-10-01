@@ -1,10 +1,11 @@
-#' Read a geospatial file into an `sf` object with an optional query
+#' Read a geospatial file into an [`sf`][sf::st_sf] object with an optional
+#' query
 #'
 #' @param file_local Local file path or URL to the geospatial file.
 #' @param q Optional SQL query string to filter the data during reading.
 #' @param ... Additional arguments passed to `sf::read_sf()`.
 #'
-#' @return An `sf` object containing the geospatial data.
+#' @return An [`sf`][sf::st_sf] object containing the geospatial data.
 #'
 #' @noRd
 read_geo_file_sf <- function(file_local, q = NULL, ...) {
@@ -45,25 +46,25 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
   data_sf
 }
 
-#' Transform an `sf` object to longitude and latitude
+#' Transform an [`sf`][sf::st_sf] object to longitude and latitude
 #'
-#' @param data_sf An `sf` object.
+#' @param data_sf An [`sf`][sf::st_sf] object.
 #'
-#' @return An `sf` object in EPSG:4326.
+#' @return An [`sf`][sf::st_sf] object in EPSG:4326.
 #' @noRd
 transform_to_wgs84 <- function(data_sf) {
   sf::st_transform(data_sf, 4326)
 }
 
-#' Convert an `sf` object to UTF-8
+#' Convert an [`sf`][sf::st_sf] object to UTF-8
 #'
 #' Convert names and character columns to UTF-8.
 #'
-#' @param data_sf An `sf` object.
+#' @param data_sf An [`sf`][sf::st_sf] object.
 #'
-#' @return An `sf` object with UTF-8 encoding.
+#' @return An [`sf`][sf::st_sf] object with UTF-8 encoding.
 #'
-#' @source Extracted from [`sf`][sf::st_sf] package.
+#' @source Extracted from the \CRANpkg{sf} package.
 #'
 #' @noRd
 sanitize_sf <- function(data_sf) {
@@ -136,7 +137,8 @@ get_geo_file_colnames <- function(file_local) {
 #' @param candidates A character vector of candidate column names.
 #'
 #' @return
-#' A character vector with the matching column names, or `NULL` if none found.
+#' A character vector with the matching column names or `NULL` if none are
+#'   found.
 #'
 #' @noRd
 get_col_name <- function(file_local, candidates = c("CNTR_ID", "CNTR_CODE")) {
@@ -153,7 +155,7 @@ get_col_name <- function(file_local, candidates = c("CNTR_ID", "CNTR_CODE")) {
 #' @inheritParams get_col_name
 #' @param values Values to match.
 #'
-#' @return A named list suitable for `build_sf_filter_query()`, or an empty
+#' @return A named list suitable for `build_sf_filter_query()` or an empty
 #'   list when there are no values or no matching column.
 #' @noRd
 make_sf_filter <- function(
@@ -182,7 +184,7 @@ make_sf_filter <- function(
 #'   values to match.
 #' @param operator A character string used to combine filters.
 #'
-#' @return A SQL query string, or `NULL` if no filters are supplied.
+#' @return A SQL query string or `NULL` if no filters are supplied.
 #' @noRd
 build_sf_filter_query <- function(file_local, filters, operator = "AND") {
   filters <- filters[lengths(filters) != 0]
@@ -215,7 +217,7 @@ build_sf_filter_query <- function(file_local, filters, operator = "AND") {
 #' @param operator A character string used to combine filters.
 #' @param verbose A logical value indicating whether to print messages.
 #'
-#' @return An `sf` object.
+#' @return An [`sf`][sf::st_sf] object.
 #' @noRd
 read_geo_file_sf_filtered <- function(
   file_local,

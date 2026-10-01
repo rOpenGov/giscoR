@@ -20,7 +20,10 @@ convert_country_code <- function(names, out = "eurostat") {
         "xkx" == tolower(x)
       )
     ) {
-      code <- switch(out, "eurostat" = "XK", "iso3c" = "XKX")
+      code <- switch(out,
+        "eurostat" = "XK",
+        "iso3c" = "XKX"
+      )
       return(code)
     }
 
@@ -72,7 +75,7 @@ convert_country_code <- function(names, out = "eurostat") {
 #'
 #' @inheritParams convert_country_code
 #'
-#' @return A vector of names, or `NULL` when `names` is `NULL`.
+#' @return A vector of names or `NULL` when `names` is `NULL`.
 #' @noRd
 convert_country_code_or_null <- function(names, out = "eurostat") {
   if (is.null(names)) {
@@ -84,7 +87,7 @@ convert_country_code_or_null <- function(names, out = "eurostat") {
 
 #' Filter a data frame by country values in one column
 #'
-#' @param data A data frame or `sf` object.
+#' @param data A data frame or [`sf`][sf::st_sf] object.
 #' @param country A character vector of country codes.
 #' @param col A character string with the column to filter.
 #'

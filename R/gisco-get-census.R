@@ -24,7 +24,7 @@
 #'
 #' @seealso
 #'
-#' See [gisco_id_api_census_grid()] to download via GISCO ID service API.
+#' See [gisco_id_api_census_grid()] to download via the GISCO ID service API.
 #'
 #' @encoding UTF-8
 #' @export

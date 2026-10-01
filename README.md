@@ -29,8 +29,8 @@ that provides a simple interface to the Eurostat [GISCO geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco). It lets you
 download and work with global and European geospatial datasets directly
 in **R**, including country boundaries, NUTS regions, administrative
-units, statistical units, transport networks and basic service
-locations.
+units such as Local Administrative Units (LAU), statistical units,
+transport networks and basic service locations.
 
 ## Key features
 
@@ -38,7 +38,7 @@ locations.
   administrative units, statistical units, transport networks and basic
   service locations.
 - For compatible administrative and statistical datasets, select among
-  resolutions `60M`, `20M`, `10M`, `03M` and `01M` and coordinate
+  resolutions `60M`, `20M`, `10M`, `03M` and `01M`. Choose coordinate
   reference systems **EPSG:4326**, **EPSG:3035** and **EPSG:3857**.
 - Use each grid, transport or basic service dataset in its documented
   format and coordinate reference system.
@@ -96,7 +96,7 @@ install.packages(
 
 ## Quick example
 
-This script highlights selected **giscoR** features:
+This example compares country boundaries at different resolutions:
 
 ``` r
 library(giscoR)
@@ -115,7 +115,7 @@ glimpse(nl_all)
 #> Columns: 15
 #> $ CNTR_ID     <chr> "NL", "NL", "NL", "NL"
 #> $ COUNTRY_URI <chr> "NLD", NA, "NLD", "NLD"
-#> $ CNTR_NAME   <chr> "Nederland", "Nederland", "Nederland", "Nederland"
+#> $ CNTR_NAME   <chr> "Netherlands", "Nederland", "Netherlands", "Netherlands"
 #> $ NAME_ENGL   <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
 #> $ NAME_FREN   <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
 #> $ ISO3_CODE   <chr> "NLD", "NLD", "NLD", "NLD"
@@ -145,12 +145,13 @@ ggplot(nl_all) +
 ```
 
 <img src="man/figures/README-resolution-map-1.png" style="width:100.0%"
+data-fig-alt="Faceted map with four panels arranged in two columns, comparing Netherlands boundaries at 3M, 10M, 20M and 60M resolutions. Longitude and latitude locate the country. Coastlines and islands retain more detail at 3M and become increasingly simplified toward 60M."
 alt="Netherlands boundaries at different resolutions" />
 
 ## Advanced example: thematic maps
 
 This example shows a thematic map created with the **ggplot2** package.
-The statistical data are obtained with the **eurostat** package,
+The statistical data are retrieved with the **eurostat** package,
 following the work of [Milos Popovic](https://milospopovic.net/).
 
 Start by downloading the corresponding geospatial data:
@@ -186,10 +187,6 @@ Next, download the statistical data from Eurostat.
 # Retrieve Eurostat data.
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
-                                                                              
 ```
 
 Finally, merge and transform the datasets to create the plot.
@@ -270,6 +267,7 @@ ggplot(nuts3_sf) +
 ```
 
 <img src="man/figures/README-thematic-map-1.png" style="width:100.0%"
+data-fig-alt="Choropleth map of European NUTS 3 regions, colored by population density in people per square kilometer. Pale yellow indicates lower density and orange through dark purple indicates higher density. Gray marks missing data. Dense regions stand out around major cities and in the Netherlands and Belgium, while much of northern Scandinavia is sparsely populated."
 alt="Population density in 2021" />
 
 ## Caching
@@ -283,7 +281,7 @@ gisco_set_cache_dir("./path/to/location")
 
 Files are stored in the local cache for faster repeated access.
 
-## Contribute
+## Contributing
 
 See the [**GitHub** repository](https://github.com/rOpenGov/giscoR/) for
 source code.
@@ -313,7 +311,7 @@ A **BibTeX** entry for **LaTeX** users is:
       year = {2026},
       version = {1.2.0.9000},
       url = {https://ropengov.github.io/giscoR/},
-      abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, NUTS regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
+      abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, Nomenclature of Territorial Units for Statistics (NUTS) regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is neither affiliated with nor endorsed by Eurostat.},
     }
 
 ## General copyright

@@ -82,7 +82,7 @@ cached_db_file <- function(cache_dir = detect_cache_dir_muted()) {
 #'
 #' @param entry_points A character vector with distribution entry points.
 #'
-#' @return A data frame, or `NULL` when all requests fail.
+#' @return A data frame or `NULL` when all requests fail.
 #' @noRd
 scrape_distribution_db <- function(
   entry_points = c(
@@ -103,7 +103,7 @@ scrape_distribution_db <- function(
 #'
 #' @param db A scraped GISCO distribution database.
 #'
-#' @return A tibble ready to cache.
+#' @return A [tibble][tibble::tbl_df] ready to cache.
 #' @noRd
 normalize_distribution_db <- function(db) {
   db <- tibble::as_tibble(db)
@@ -218,9 +218,9 @@ recode_distribution_db_ids <- function(db) {
 
 #' Get data from a GISCO geodata distribution entry point
 #'
-#' @param entry_point A character value with the GISCO geodata distribution
+#' @param entry_point A character string with the GISCO geodata distribution
 #'   entry point.
-#' @return A tibble with the data from the API.
+#' @return A [tibble][tibble::tbl_df] with the data from the API.
 #' @noRd
 scrap_api_data <- function(entry_point) {
   url_api <- gisco_distribution_url()
@@ -275,7 +275,7 @@ scrap_api_data <- function(entry_point) {
 
 #' Internal function to get the GISCO database, with fallback to static
 #'
-#' @return A tibble with the GISCO database.
+#' @return A [tibble][tibble::tbl_df] with the GISCO database.
 #'
 #' @noRd
 get_db <- function() {

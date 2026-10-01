@@ -42,15 +42,16 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 provides a simple interface to the Eurostat [GISCO geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco). It lets you download and
 work with global and European geospatial datasets directly in **R**, including
-country boundaries, NUTS regions, administrative units, statistical units,
-transport networks and basic service locations.
+country boundaries, NUTS regions, administrative units such as Local
+Administrative Units (LAU), statistical units, transport networks and basic
+service locations.
 
 ## Key features
 
 - Retrieve GISCO datasets for country boundaries, NUTS regions, administrative
   units, statistical units, transport networks and basic service locations.
 - For compatible administrative and statistical datasets, select among
-  resolutions `60M`, `20M`, `10M`, `03M` and `01M` and coordinate reference
+  resolutions `60M`, `20M`, `10M`, `03M` and `01M`. Choose coordinate reference
   systems **EPSG:4326**, **EPSG:3035** and **EPSG:3857**.
 - Use each grid, transport or basic service dataset in its documented format and
   coordinate reference system.
@@ -105,11 +106,16 @@ install.packages(
 
 ## Quick example
 
-This script highlights selected **giscoR** features:
+This example compares country boundaries at different resolutions:
 
 ```{r}
 #| label: resolution-map
 #| fig-cap: Netherlands boundaries at different resolutions
+#| fig-alt: >
+#|   Faceted map with four panels arranged in two columns, comparing
+#|   Netherlands boundaries at 3M, 10M, 20M and 60M resolutions. Longitude and
+#|   latitude locate the country. Coastlines and islands retain more detail at
+#|   3M and become increasingly simplified toward 60M.
 library(giscoR)
 library(sf)
 library(dplyr)
@@ -141,7 +147,7 @@ ggplot(nl_all) +
 ## Advanced example: thematic maps
 
 This example shows a thematic map created with the **ggplot2** package. The
-statistical data are obtained with the **eurostat** package, following the work
+statistical data are retrieved with the **eurostat** package, following the work
 of [Milos Popovic](https://milospopovic.net/).
 
 Start by downloading the corresponding geospatial data:
@@ -187,6 +193,12 @@ Finally, merge and transform the datasets to create the plot.
 #| label: thematic-map
 #| fig-asp: 1.1
 #| fig-cap: Population density in 2021
+#| fig-alt: >
+#|   Choropleth map of European NUTS 3 regions, colored by population density
+#|   in people per square kilometer. Pale yellow indicates lower density and
+#|   orange through dark purple indicates higher density. Gray marks missing
+#|   data. Dense regions stand out around major cities and in the Netherlands
+#|   and Belgium, while much of northern Scandinavia is sparsely populated.
 # Merge data.
 nuts3_sf <- nuts3 |>
   left_join(popdens, by = "geo")
@@ -273,7 +285,7 @@ gisco_set_cache_dir("./path/to/location")
 
 Files are stored in the local cache for faster repeated access.
 
-## Contribute
+## Contributing
 
 See the [**GitHub** repository](https://github.com/rOpenGov/giscoR/) for source
 code.

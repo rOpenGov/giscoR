@@ -40,7 +40,7 @@ This argument replaces the previous (deprecated) argument \code{id_giscoR}.
 file, see \strong{Details}.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
@@ -73,7 +73,7 @@ which will not be unzipped.}
 to \code{id} with a \link[lifecycle:deprecate_warn]{warning}.}
 }
 \value{
-An invisible character vector with the full path of the files extracted.
+An invisible character vector with the full paths of the extracted files.
 See \strong{Examples}.
 }
 \description{

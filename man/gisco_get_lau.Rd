@@ -36,7 +36,7 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 }}
 
 \item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. Always caches the result
-due to its size. See \strong{Caching strategies} section in
+due to its size. See the \strong{Caching strategies} section in
 \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
@@ -44,7 +44,7 @@ cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
@@ -55,13 +55,13 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 
 \item{gisco_id}{An optional character vector of \code{GISCO_ID} LAU values.}
 
-\item{ext}{A character value with the extension of the file (default
+\item{ext}{A character string with the extension of the file (default
 \code{"gpkg"}). One of
 \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 "ext",TRUE)}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 Local Administrative Units are the building blocks of NUTS and other
@@ -72,9 +72,9 @@ commune dataset.
 \details{
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions that
-together subdivide the EU economic territory into regions of five different
-levels, moving from larger to smaller territorial units: NUTS 1, 2 and 3
-and LAU.
+together subdivide the EU economic territory into statistical regions and
+local units, moving from larger to smaller territorial units: NUTS 1, 2 and
+3 and LAU.
 
 The LAU classification is not covered by any legislative act. Geographical
 extent covers the European Union, EFTA countries and candidate countries.
@@ -127,7 +127,7 @@ if (!is.null(lu_lau) && requireNamespace("ggplot2", quietly = TRUE)) {
 
 See \code{\link[=gisco_bulk_download]{gisco_bulk_download()}} to perform a bulk download of datasets.
 
-See \code{\link[=gisco_id_api_lau]{gisco_id_api_lau()}} to download via GISCO ID service API.
+See \code{\link[=gisco_id_api_lau]{gisco_id_api_lau()}} to download via the GISCO ID service API.
 
 Statistical unit datasets:
 \code{\link[=gisco_get_census]{gisco_get_census()}},

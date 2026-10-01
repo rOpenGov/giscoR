@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{gisco_coastal_lines}
 \alias{gisco_coastal_lines}
-\title{Coastal lines 2016 \CRANpkg{sf} object}
+\title{Coastal lines 2016 \code{\link[sf:st_sf]{sf}} object}
 \format{
-A \code{\link[sf:st_sf]{sf}} object with \code{POLYGON} geometries, resolution:
+An \code{\link[sf:st_sf]{sf}} object with \code{POLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}.
 }
 \source{

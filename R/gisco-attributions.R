@@ -1,15 +1,15 @@
 #' Attribution for administrative and statistical GISCO data
 #'
 #' @description
-#' Get the legal text to use for administrative and statistical data
-#' downloaded from GISCO. See section **Copyright**.
+#' Get the attribution text to use for administrative and statistical data
+#' downloaded from GISCO. See the **Copyright** section.
 #'
 #' For other datasets you may follow the [Eurostat general copyright notice
 #' and license
 #' policy](https://ec.europa.eu/eurostat/web/main/help/copyright-notice).
 #'
 #' @family attribution
-#' @param lang A character value with the language (two-letter ISO code). See
+#' @param lang A character string with the language (two-letter ISO code). See
 #'   [countrycode::codelist] and **Details**.
 #' @param copyright A logical value indicating whether to display the
 #'   copyright notice on the console.
@@ -143,8 +143,7 @@ gisco_attributions <- function(lang = "en", copyright = FALSE) {
     )
   }
 
-  attr <- switch(
-    lang,
+  attr <- switch(lang,
     "en" = "\u00a9 EuroGeographics for the administrative boundaries",
     "da" = "\u00a9 EuroGeographics for administrative gr\u00e6nser",
     "de" = "\u00a9 EuroGeographics bez\u00fcglich der Verwaltungsgrenzen",

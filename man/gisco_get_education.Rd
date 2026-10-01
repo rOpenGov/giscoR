@@ -23,14 +23,15 @@ file. One of
 \code{2023}, \code{2020}.}
 
 \item{cache}{A logical value indicating whether to cache results. Defaults
-to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+to \code{TRUE}. See the \strong{Caching strategies} section in
+\code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
@@ -40,7 +41,7 @@ vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
 vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset integrates Member States' official data on the location of
@@ -53,14 +54,14 @@ Files are distributed in \href{https://epsg.io/4326}{EPSG:4326}.
 The following table describes the education service attributes:\tabular{ll}{
    \strong{Attribute} \tab \strong{Description} \cr
    \code{id} \tab The education service identifier, based on national identification codes when available. \cr
-   \code{name} \tab The name of the education institution. \cr
-   \code{site_name} \tab The name of a specific site or branch of the education institution. \cr
+   \code{name} \tab The name of the educational institution. \cr
+   \code{site_name} \tab The name of a specific site or branch of the educational institution. \cr
    \code{lat} \tab Latitude (WGS 84). \cr
    \code{lon} \tab Longitude (WGS 84). \cr
    \code{street} \tab Street name. \cr
    \code{house_number} \tab House number. \cr
    \code{postcode} \tab Postcode. \cr
-   \code{address} \tab Address information when the different components of the address are not separated in the source. \cr
+   \code{address} \tab Address information when the source does not separate address components. \cr
    \code{city} \tab City name. In some sources, this refers to a region or municipality. \cr
    \code{cntr_id} \tab Country code (2 letters, ISO 3166-1 alpha-2). \cr
    \code{levels} \tab Education levels represented by a single integer or range, using ISCED 2011. \cr
@@ -72,7 +73,7 @@ The following table describes the education service attributes:\tabular{ll}{
    \code{tel} \tab Telephone number. \cr
    \code{email} \tab Email address. \cr
    \code{url} \tab URL for the institution's website. \cr
-   \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) for the data. The dataset represents the state on this date. \cr
+   \code{ref_date} \tab The reference date (\code{DD/MM/YYYY}) for the data. \cr
    \code{pub_date} \tab The publication date of the dataset by Eurostat (\code{DD/MM/YYYY}). \cr
    \code{geo_qual} \tab Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. \cr
    \code{comments} \tab Additional information on the education service. \cr

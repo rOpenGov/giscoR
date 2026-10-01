@@ -7,20 +7,20 @@
 \title{Cached GISCO database}
 \format{
 A \link[tibble:tbl_df]{tibble} with
-11,008 rows.
+11,173 rows.
 }
 \source{
 GISCO geodata distribution \code{datasets.json}.
 }
 \description{
 Database with the list of files in the GISCO geodata distribution as of
-2026-08-26.
+2026-09-30.
 }
 \details{
 This database is used to redirect the corresponding functions to the
 correct API endpoints.
 
-This version of the database is used if there is a problem during update.
+This version of the database is used if an update fails.
 Please use \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}} with \code{update_cache = TRUE} to update the
 corresponding API endpoints.
 }

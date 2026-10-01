@@ -4,64 +4,82 @@
 #' Functions to interact with the [GISCO ID service
 #' API](https://gisco-services.ec.europa.eu/id/api-docs/), which returns
 #' attributes and, optionally, geometry for different datasets at specified
-#' longitude and latitude coordinates.
+#' coordinates in the selected coordinate reference system.
 #'
-#' Each available endpoint is implemented through a specific function. See
-#' **Details**.
+#' Each endpoint has a corresponding function in \CRANpkg{giscoR}. See
+#' **Details** for the lookup modes supported by these functions.
 #'
 #' @name gisco_id_api
 #' @rdname gisco_id_api
 #' @family api
 #' @inheritParams gisco_get_countries verbose
-#' @param x,y A character string or numeric value with the longitude and
-#'   latitude coordinates to identify.
+#' @param x,y A character string or numeric value with the coordinates to
+#'   identify, expressed in the CRS selected by `epsg`. For Geonames, use
+#'   longitude and latitude in EPSG:4326.
 #' @param xmin,ymin,xmax,ymax A character string or numeric value with bounding
-#'   box coordinates to identify all geonames within the box.
-#' @param nuts_id A character value with the NUTS ID code.
+#'   box coordinates in EPSG:4326 to identify geonames within the box. The
+#'   extent must not exceed five degrees in either dimension.
+#' @param nuts_id A character string with the NUTS ID code.
 #' @param epsg A character string or numeric value with the EPSG code for the
-#'   coordinate reference system.
+#'   coordinate reference system of the input coordinates and returned
+#'   geometry. One of `4326`, `4258` or `3035`. This argument is sent as the
+#'   API's `proj` parameter.
 #' @param geometry A logical value indicating whether to return geometry. If
-#'   `TRUE`, a [`sf`][sf::st_sf] object is returned. If `FALSE`, a
+#'   `TRUE`, an [`sf`][sf::st_sf] object is returned. If `FALSE`, a
 #'   [tibble][tibble::tbl_df] is returned.
 #' @param year A character string or numeric value with the dataset year, see
 #'   **Details**.
-#' @param nuts_level A character string with the NUTS level. One of `0`,
-#'   `1`, `2` or `3`.
+#' @param nuts_level A character string or numeric value with the NUTS level.
+#'   One of `0`, `1`, `2` or `3`. This argument is sent as the API's `level`
+#'   parameter. If `NULL`, the service uses level `3` for coordinate lookups.
 #'
 #' @return
-#' A [tibble][tibble::tbl_df] or a [`sf`][sf::st_sf] object.
+#' A [tibble][tibble::tbl_df] when `geometry = FALSE`, or an
+#' [`sf`][sf::st_sf] object when `geometry = TRUE`. Geonames always returns
+#' an [`sf`][sf::st_sf] object. Failed requests return `NULL`.
 #'
 #' @details
+#' The service also supports identifier lookups for other datasets and
+#' Geonames name searches. These lookup modes are not exposed by the
+#' corresponding functions in \CRANpkg{giscoR}. Only the NUTS function
+#' supports lookup by ID through `nuts_id`.
+#'
 #' The available endpoints are:
 #'
 #' - `gisco_id_api_geonames()`: Get geographic placenames from longitude and
 #'   latitude coordinates or a bounding box.
-#' - `gisco_id_api_nuts()`: Return NUTS regions from longitude and latitude
-#'   coordinates or an ID. Accepted values for `year` are
-#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("nuts")}.
+#' - `gisco_id_api_nuts()`: Return NUTS regions from coordinates or an ID.
+#'   Accepted values for `year`:
+#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+#'     giscoR:::docs_id_years("nuts"))}.
 #' - `gisco_id_api_lau()`: Return the ID and, optionally, geometry for Local
-#'   Administrative Units (LAU) at specified longitude and latitude coordinates.
-#'   Accepted values for `year` are
-#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("lau")}.
+#'   Administrative Units (LAU) at specified coordinates.
+#'   Accepted values for `year`:
+#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+#'     giscoR:::docs_id_years("lau"))}.
 #' - `gisco_id_api_country()`: Return the ID and, optionally, geometry for
-#'   countries at specified longitude and latitude coordinates. Accepted values
-#'   for `year` are
-#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("country")}.
+#'   countries at specified coordinates. Accepted values
+#'   for `year`:
+#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+#'     giscoR:::docs_id_years("country"))}.
 #' - `gisco_id_api_river_basin()`: Return the ID and, optionally, geometry
-#'   for river basins at specified longitude and latitude coordinates, based on
+#'   for river basins at specified coordinates, based on
 #'   the Water Framework Directive (WFD) reference spatial datasets. Accepted
-#'   values for `year` are
-#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("riverbasin")}.
+#'   values for `year`:
+#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+#'     giscoR:::docs_id_years("riverbasin"))}.
 #' - `gisco_id_api_biogeo_region()`: Return the ID and, optionally,
-#'   geometry for biogeographical regions at specified longitude and latitude
-#'   coordinates. The biogeographical regions dataset contains the official
+#'   geometry for biogeographical regions at specified coordinates. The
+#'   biogeographical regions dataset contains the official
 #'   delineations used in the Habitats Directive (92/43/EEC) and for the
-#'   EMERALD Network. Accepted values for `year` are
-#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("biogeoregion")}.
+#'   EMERALD Network. Accepted values for `year`:
+#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+#'     giscoR:::docs_id_years("biogeoregion"))}.
 #' - `gisco_id_api_census_grid()`: Return the ID and, optionally, geometry
-#'   for census grid cells at specified longitude and latitude coordinates.
-#'   Accepted values for `year` are
-#'   \Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("censusgrid")}.
+#'   for census grid cells at specified coordinates.
+#'   Accepted values for `year`:
+#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+#'     giscoR:::docs_id_years("censusgrid"))}.
 #' @source
 #' <https://gisco-services.ec.europa.eu/id/api-docs/>.
 #'
@@ -250,12 +268,12 @@ gisco_id_api_census_grid <- function(
 #' Prepare the ID API query
 #'
 #' @param nuts_id A NUTS ID code.
-#' @param x A longitude coordinate.
-#' @param y A latitude coordinate.
+#' @param x An x coordinate in the CRS selected by `epsg`.
+#' @param y A y coordinate in the CRS selected by `epsg`.
 #' @param epsg A numeric EPSG code for the coordinate reference system.
 #' @param geometry A logical value indicating whether to return geometry.
 #' @param year A character string or numeric value with the dataset year.
-#' @param nuts_level A character string with the NUTS level.
+#' @param nuts_level A character string or numeric value with the NUTS level.
 #' @param verbose A logical value indicating whether to print verbose output.
 #' @param endpoint The specific endpoint to query.
 #'
@@ -301,9 +319,9 @@ prepare_id_query <- function(
     id = nuts_id,
     x = x,
     y = y,
-    epsg = match_arg_pretty(epsg),
+    proj = match_arg_pretty(epsg),
     year = as.character(year),
-    nuts_level = nuts_level,
+    level = nuts_level,
     format = format,
     geometry = geom
   )
@@ -349,7 +367,8 @@ call_id_api <- function(
 #' @param url A GISCO ID service API URL.
 #' @param verbose A logical value indicating whether to print verbose output.
 #'
-#' @return An `sf` object, or `NULL` when the response cannot be downloaded.
+#' @return An [`sf`][sf::st_sf] object or `NULL` when the response cannot be
+#' downloaded.
 #' @noRd
 read_id_api_geojson <- function(url, verbose = FALSE) {
   tmp <- basename(tempfile(fileext = ".geojson"))
@@ -363,6 +382,15 @@ read_id_api_geojson <- function(url, verbose = FALSE) {
   )
   if (is.null(file_local)) {
     return(NULL)
+  }
+
+  epsg <- httr2::url_parse(url)$query$proj
+  if (!is.null(epsg)) {
+    # GISCO declares the CRS inside each geometry instead of the collection.
+    data_sf <- sf::read_sf(file_local) |>
+      sf::st_set_crs(NA) |>
+      sf::st_set_crs(as.integer(epsg))
+    return(sanitize_sf(data_sf))
   }
 
   read_geo_file_sf(file_local)

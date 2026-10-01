@@ -1,8 +1,8 @@
 #' NUTS statistical units dataset
 #'
 #' @description
-#' The GISCO statistical unit dataset represents the NUTS (nomenclature of
-#' territorial units for statistics) and statistical regions by means of
+#' The GISCO statistical unit dataset represents the Nomenclature of
+#' Territorial Units for Statistics (NUTS) and statistical regions using
 #' multipart polygon, polyline and point topology. The NUTS geographical
 #' information is completed by attribute tables and a set of cartographic
 #' help lines to better visualize multipart polygonal regions.
@@ -26,7 +26,7 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "year",TRUE)}.
 #' @param spatialtype A character string with the type of geometry to return.
-#'   Options available are:
+#'   Available values are:
 #' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #' - `"LB"`: Labels - `POINT` object.
 #' - `"BN"`: Boundaries - `LINESTRING` object.
@@ -36,7 +36,7 @@
 #' @param nuts_level A character string with the NUTS level. One of `0`,
 #'   `1`, `2`, `3` or `all` for all levels.
 #' @param nuts_id An optional character vector of NUTS IDs.
-#' @param ext A character value with the extension of the file (default
+#' @param ext A character string with the extension of the file (default
 #'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("nuts",
 #'   "ext",TRUE)}.
@@ -52,7 +52,7 @@
 #' boundaries.
 #'
 #' NUTS legislation is amended periodically, so GISCO provides multiple
-#' classification vintages. A non-official NUTS-like classification is defined
+#' classification vintages. An unofficial NUTS-like classification is defined
 #' for EFTA countries, candidate countries and potential candidates based on
 #' bilateral agreements between Eurostat and the respective statistical
 #' agencies.
@@ -76,7 +76,7 @@
 #'
 #' See [gisco_get_unit_nuts()] to download single-unit files.
 #'
-#' See [gisco_id_api_nuts()] to download via GISCO ID service API.
+#' See [gisco_id_api_nuts()] to download via the GISCO ID service API.
 #'
 #' @encoding UTF-8
 #' @export
@@ -184,13 +184,13 @@ gisco_get_nuts <- function(
 
 #' Filter NUTS `sf` data by country and/or NUTS ID
 #'
-#' @param data_sf An `sf` object.
+#' @param data_sf An [`sf`][sf::st_sf] object.
 #' @param country A character vector of country codes or names.
 #' @param nuts_id A character vector of NUTS IDs.
 #' @param nuts_level A character string with the NUTS level. One of `0`,
 #'   `1`, `2`, `3` or `all` for all levels.
 #'
-#' @return An `sf` object filtered by country and/or NUTS ID.
+#' @return An [`sf`][sf::st_sf] object filtered by country and/or NUTS ID.
 #' @noRd
 filter_country_nuts_level <- function(
   data_sf,

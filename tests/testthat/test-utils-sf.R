@@ -69,7 +69,7 @@ test_that("Spatial reader imports downloaded GeoPackages", {
   sq <- read_geo_file_sf(fake_local, q = qry)
   expect_equal(sq, s[1, ])
 
-  # Expect a message here with verbose being a large file > 20Mb
+  # Expect a message when reading a file larger than 20 MB.
   url <- paste0(
     "https://gisco-services.ec.europa.eu/distribution/v2/",
     "urau/gpkg/URAU_RG_100K_2021_4326.gpkg"
@@ -82,11 +82,11 @@ test_that("Spatial reader imports downloaded GeoPackages", {
     verbose = FALSE
   )
   expect_message(af <- read_geo_file_sf(file_local), "Reading a large file")
-  # With query doesn't warn
+  # Reading with a query does not warn.
   lay <- as.vector(sf::st_layers(file_local)[1, 1])[1]
   q <- paste0("SELECT * from \"", lay, "\" ", "WHERE CNTR_CODE IN ('LU')")
   expect_silent(af <- read_geo_file_sf(file_local, q = q))
 
-  # From url doesn't warn
+  # Reading from a URL does not warn.
   expect_silent(f2 <- read_geo_file_sf(url))
 })

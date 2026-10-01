@@ -24,7 +24,6 @@ knitr::opts_chunk$set(
 )
 
 knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
-
 ```
 
 # Introduction
@@ -48,7 +47,7 @@ datasets for larger areas (10M, 20M, 60M). They can be available in
 [EPSG:3857](https://epsg.io/3857). Grid, transport and basic service datasets
 use the formats and coordinate reference systems documented for each dataset.
 
-**giscoR** returns [**sf** package
+**giscoR** returns [**sf**
 objects](https://r-spatial.github.io/sf/reference/sf.html). See
 <https://r-spatial.github.io/sf/> for details.
 
@@ -134,6 +133,11 @@ The following example downloads EU member states and candidate countries for
 ```{r}
 #| label: fig-country
 #| fig-cap: EU member states and candidate countries (2024)
+#| fig-alt: >
+#|   Map of Europe with EU member states in dark blue, candidate countries in
+#|   light blue and other countries in gray. White outlines separate countries.
+#|   Candidate countries are concentrated along the eastern and southeastern
+#|   edges of the EU.
 library(dplyr)
 library(ggplot2)
 world <- gisco_get_countries(resolution = 3, epsg = 3035)
@@ -179,16 +183,22 @@ ggplot(world) +
   )
 ```
 
-You can select specific countries by name in any language, ISO 3166-1 alpha-3
-codes or Eurostat codes. However, you cannot mix these identifier types in a
-single call.
+You can select specific countries using names in any language, ISO 3166-1
+alpha-3 codes or Eurostat codes. However, you cannot mix these identifier types
+in a single call.
 
-You can also combine datasets by using the same `resolution`, `epsg` and
-(optionally) `year`:
+You can also combine datasets using the same `resolution` and `epsg`. Use the
+same `year` when it is available for both datasets:
 
 ```{r}
 #| label: fig-africa
 #| fig-cap: Political map of North Africa
+#| fig-alt: >
+#|   Faceted map with five panels arranged in two columns, highlighting
+#|   Morocco, Algeria, Tunisia, Libya and Egypt separately against the same
+#|   North African coastline. Longitude and latitude provide a shared
+#|   geographic reference. The panels show the countries in their west-to-east
+#|   order and allow their shapes and relative sizes to be compared.
 cntr <- c("Morocco", "Algeria", "Tunisia", "Libya", "Egypt")
 
 africa_north <- gisco_get_countries(
@@ -225,6 +235,13 @@ as **tmap**, **mapsf** or **leaflet**, can be used.
 ```{r}
 #| label: fig-giscor
 #| fig-cap: Disposable income of private households by NUTS 2 regions (2022)
+#| fig-alt: >
+#|   Choropleth map of European NUTS 2 regions, colored by household disposable
+#|   income in thousands of euros. Orange indicates lower income categories and
+#|   teal indicates higher categories. Gray marks missing data. The legend
+#|   ranges from below 15 thousand to above 120 thousand euros. Regional
+#|   differences are visible within countries, including France, Spain and
+#|   Germany.
 #| fig-dpi: 200
 # Load EU member data.
 library(giscoR)

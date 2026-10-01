@@ -102,7 +102,7 @@ test_that("NUTS unit supports multiple calls and units", {
 
   cdir <- local_test_cache_dir("test-unit-nuts-")
 
-  # Message even when verbose FALSE
+  # Emit a message even when verbose is FALSE.
   expect_warning(
     g <- gisco_get_unit_nuts(
       "XXXYY",

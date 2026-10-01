@@ -22,7 +22,7 @@ file.
 Currently only \code{"2011"} is provided.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
@@ -38,7 +38,7 @@ messages.}
 }}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 This dataset provides 2011 census units as region or point geometries.
@@ -64,7 +64,7 @@ pts
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-See \code{\link[=gisco_id_api_census_grid]{gisco_id_api_census_grid()}} to download via GISCO ID service API.
+See \code{\link[=gisco_id_api_census_grid]{gisco_id_api_census_grid()}} to download via the GISCO ID service API.
 
 Statistical unit datasets:
 \code{\link[=gisco_get_coastal_lines]{gisco_get_coastal_lines()}},
