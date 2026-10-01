@@ -27,7 +27,7 @@ gisco_get_census(
 
 - cache_dir:
 
-  A character string with a path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See the **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
@@ -50,7 +50,7 @@ gisco_get_census(
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Copyright
 
@@ -66,7 +66,7 @@ Check the download and usage provisions in
 
 See
 [`gisco_id_api_census_grid()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
-to download via GISCO ID service API.
+to download via the GISCO ID service API.
 
 Statistical unit datasets:
 [`gisco_get_coastal_lines()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_coastal_lines.md),

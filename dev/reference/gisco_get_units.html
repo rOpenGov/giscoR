@@ -127,7 +127,8 @@ reference system as a 4-digit <a href="https://epsg.io/" class="external-link">E
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
 <dd><p>A logical value indicating whether to cache results. Defaults
-to <code>TRUE</code>. See <strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
+to <code>TRUE</code>. See the <strong>Caching strategies</strong> section in
+<code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -138,7 +139,7 @@ download.</p></dd>
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
 <dd><p>A character string with a path to a cache directory. See
-<strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
+the <strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -158,14 +159,14 @@ data resolution. One of:</p><ul><li><p><code>"60"</code>: 1:60 million.</p></li>
 
 <dt id="arg-spatialtype">spatialtype<a class="anchor" aria-label="anchor" href="#arg-spatialtype"></a></dt>
 <dd><p>A character string with the type of geometry to return.
-Options available are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+Available values are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
 <li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
 </ul></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object when <code>mode = "sf"</code> or a
+    <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object when <code>mode = "sf"</code> or a
 <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> when <code>mode = "df"</code>.</p>
     </div>
     <div class="section level2">

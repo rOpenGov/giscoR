@@ -110,7 +110,8 @@ reference system as a 4-digit <a href="https://epsg.io/" class="external-link">E
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
 <dd><p>A logical value indicating whether to cache results. Defaults
-to <code>TRUE</code>. See <strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
+to <code>TRUE</code>. See the <strong>Caching strategies</strong> section in
+<code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -121,7 +122,7 @@ download.</p></dd>
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
 <dd><p>A character string with a path to a cache directory. See
-<strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
+the <strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -141,7 +142,7 @@ data resolution. One of:</p><ul><li><p><code>"60"</code>: 1:60 million.</p></li>
 
 <dt id="arg-spatialtype">spatialtype<a class="anchor" aria-label="anchor" href="#arg-spatialtype"></a></dt>
 <dd><p>A character string with the type of geometry to return.
-Options available are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+Available values are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
 <li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
 <li><p><code>"BN"</code>: Boundaries - <code>LINESTRING</code> object.</p></li>
 <li><p><code>"COASTL"</code>: Coastal lines - <code>LINESTRING</code> object.</p></li>
@@ -166,7 +167,7 @@ the European Union as of 2021. See <strong>World regions</strong> and
 
 
 <dt id="arg-ext">ext<a class="anchor" aria-label="anchor" href="#arg-ext"></a></dt>
-<dd><p>A character value with the extension of the file (default
+<dd><p>A character string with the extension of the file (default
 <code>"gpkg"</code>). One of
 <code>"shp"</code>, <code>"gpkg"</code>, <code>"geojson"</code>
 .</p></dd>
@@ -174,7 +175,7 @@ the European Union as of 2021. See <strong>World regions</strong> and
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
+    <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="world-regions">World regions<a class="anchor" aria-label="anchor" href="#world-regions"></a></h2>
@@ -197,7 +198,7 @@ Under this scheme Cyprus is assigned to Asia.</p>
 <code><a href="https://rdrr.io/pkg/countrycode/man/countrycode.html" class="external-link">countrycode::countrycode()</a></code>.</p>
 <p>See <code><a href="gisco_bulk_download.html">gisco_bulk_download()</a></code> to perform a bulk download of datasets.</p>
 <p>See <code><a href="gisco_get_unit.html">gisco_get_unit_country()</a></code> to download single-unit files.</p>
-<p>See <code><a href="gisco_id_api.html">gisco_id_api_country()</a></code> to download via GISCO ID service API.</p>
+<p>See <code><a href="gisco_id_api.html">gisco_id_api_country()</a></code> to download via the GISCO ID service API.</p>
 <p>Administrative unit datasets:
 <code><a href="gisco_get_communes.html">gisco_get_communes()</a></code>,
 <code><a href="gisco_get_postal_codes.html">gisco_get_postal_codes()</a></code></p></div>

@@ -1,11 +1,11 @@
-# Countries 2024 [sf](https://CRAN.R-project.org/package=sf) object
+# Countries 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
 This object contains world administrative boundaries at the country
 level.
 
 ## Format
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 `MULTIPOLYGON` geometries, resolution: 1:20 million and
 [EPSG:4326](https://epsg.io/4326). It has 263 rows and 12 variables:
 
@@ -15,7 +15,7 @@ A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 
 - `CNTR_NAME`:
 
-  Official country name in local language.
+  Official country name in the local language.
 
 - `NAME_ENGL`:
 

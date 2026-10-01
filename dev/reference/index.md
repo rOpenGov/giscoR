@@ -2,7 +2,7 @@
 
 ## GISCO geodata distribution
 
-Download [`sf`
+Download [**sf**
 objects](https://r-spatial.github.io/sf/reference/sf.html) from the
 [GISCO geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco/geodata).
@@ -41,7 +41,7 @@ information](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units).
 
 ### Grids
 
-Download population grids covering the EU and neighbouring countries at
+Download population grids covering the EU and neighboring countries at
 resolutions from 1 km to 100 km. Grid geometries use EPSG:3035 and
 population variables have year- and country-specific licensing
 conditions.
@@ -120,6 +120,7 @@ GISCO ID service API and GISCO Address API.
   [`gisco_address_api_housenumbers()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_postcodes()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   [`gisco_address_api_copyright()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
+  [`gisco_address_api_most_populated_cell()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
   : GISCO Address API
 - [`gisco_id_api_geonames()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
   [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
@@ -155,12 +156,14 @@ downloads.
 - [`gisco_coastal_lines`](https://ropengov.github.io/giscoR/dev/reference/gisco_coastal_lines.md)
   :
 
-  Coastal lines 2016 [sf](https://CRAN.R-project.org/package=sf) object
+  Coastal lines 2016
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
 - [`gisco_countries_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_countries_2024.md)
   :
 
-  Countries 2024 [sf](https://CRAN.R-project.org/package=sf) object
+  Countries 2024
+  [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
 - [`gisco_countrycode`](https://ropengov.github.io/giscoR/dev/reference/gisco_countrycode.md)
   : Database with different country code schemes and world regions
@@ -168,7 +171,8 @@ downloads.
 - [`gisco_nuts_2024`](https://ropengov.github.io/giscoR/dev/reference/gisco_nuts_2024.md)
   :
 
-  NUTS 2024 [sf](https://CRAN.R-project.org/package=sf) object
+  NUTS 2024 [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
+  object
 
 ## About the package
 

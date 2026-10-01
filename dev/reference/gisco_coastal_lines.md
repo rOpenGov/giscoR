@@ -1,10 +1,10 @@
-# Coastal lines 2016 [sf](https://CRAN.R-project.org/package=sf) object
+# Coastal lines 2016 [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object
 
 This object contains the coastal lines of the world.
 
 ## Format
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
 `POLYGON` geometries, resolution: 1:20 million and
 [EPSG:4326](https://epsg.io/4326).
 

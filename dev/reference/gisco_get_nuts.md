@@ -1,7 +1,7 @@
 # NUTS statistical units dataset
 
-The GISCO statistical unit dataset represents the NUTS (nomenclature of
-territorial units for statistics) and statistical regions by means of
+The GISCO statistical unit dataset represents the Nomenclature of
+Territorial Units for Statistics (NUTS) and statistical regions using
 multipart polygon, polyline and point topology. The NUTS geographical
 information is completed by attribute tables and a set of cartographic
 help lines to better visualize multipart polygonal regions.
@@ -68,7 +68,7 @@ GISCO NUTS distribution API:
 - cache:
 
   A logical value indicating whether to cache results. Defaults to
-  `TRUE`. See **Caching strategies** section in
+  `TRUE`. See the **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
@@ -78,7 +78,7 @@ GISCO NUTS distribution API:
 
 - cache_dir:
 
-  A character string with a path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See the **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
@@ -103,8 +103,8 @@ GISCO NUTS distribution API:
 
 - spatialtype:
 
-  A character string with the type of geometry to return. Options
-  available are:
+  A character string with the type of geometry to return. Available
+  values are:
 
   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
@@ -133,12 +133,12 @@ GISCO NUTS distribution API:
 
 - ext:
 
-  A character value with the extension of the file (default `"gpkg"`).
+  A character string with the extension of the file (default `"gpkg"`).
   One of `"shp"`, `"gpkg"`, `"geojson"` .
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
@@ -151,7 +151,7 @@ where the statistical national level does not coincide with the
 administrative boundaries.
 
 NUTS legislation is amended periodically, so GISCO provides multiple
-classification vintages. A non-official NUTS-like classification is
+classification vintages. An unofficial NUTS-like classification is
 defined for EFTA countries, candidate countries and potential candidates
 based on bilateral agreements between Eurostat and the respective
 statistical agencies.
@@ -184,7 +184,7 @@ to download single-unit files.
 
 See
 [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
-to download via GISCO ID service API.
+to download via the GISCO ID service API.
 
 Statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),

@@ -56,7 +56,7 @@ gisco_bulk_download(
 
 - cache_dir:
 
-  A character string with a path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See the **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
@@ -103,8 +103,8 @@ gisco_bulk_download(
 
 ## Value
 
-An invisible character vector with the full path of the files extracted.
-See **Examples**.
+An invisible character vector with the full paths of the extracted
+files. See **Examples**.
 
 ## Details
 
@@ -166,12 +166,12 @@ read_sf(dest_files[1]) |> head()
 #> # A tibble: 6 × 14
 #>   CNTR_ID COUNTRY_URI CNTR_NAME      NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT 
 #>   <chr>   <chr>       <chr>          <chr>     <chr>     <chr>     <chr>   <chr>
-#> 1 CC      CCK         Cocos Keeling… Cocos (K… Îles des… CCK       AU Ter… West…
-#> 2 CD      COD         République Dé… Democrat… Républiq… COD       UN Mem… Kins…
-#> 3 CF      CAF         République Ce… Central … Républiq… CAF       UN Mem… Bang…
-#> 4 CG      COG         Congo-Kongo-K… Congo     Congo     COG       UN Mem… Braz…
-#> 5 CH      CHE         Schweiz-Suiss… Switzerl… Suisse    CHE       UN Mem… Bern 
-#> 6 CI      CIV         Côte D’Ivoire  Côte D’I… Côte d’I… CIV       UN Mem… Yamo…
+#> 1 CC      CCK         Cocos (Keelin… Cocos (K… Îles des… CCK       AU Ter… West…
+#> 2 CD      COD         Democratic Re… Democrat… Républiq… COD       UN Mem… Kins…
+#> 3 CF      CAF         Central Afric… Central … Républiq… CAF       UN Mem… Bang…
+#> 4 CG      COG         Congo          Congo     Congo     COG       UN Mem… Braz…
+#> 5 CH      CHE         Switzerland    Switzerl… Suisse    CHE       UN Mem… Bern 
+#> 6 CI      CIV         Côte d’Ivoire  Côte D’I… Côte d’I… CIV       UN Mem… Yamo…
 #> # ℹ 6 more variables: STAT_CODE <chr>, EU_STAT <chr>, EFTA_STAT <chr>,
 #> #   CC_STAT <chr>, NAME_GERM <chr>, geometry <MULTIPOLYGON [m]>
 
@@ -182,8 +182,8 @@ invisible(gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 ))
-#> ℹ Cache directory is /tmp/Rtmpv3wISt/testexample/countries.
-#> ✔ File already cached: /tmp/Rtmpv3wISt/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/RtmpWa2B6f/testexample/countries.
+#> ✔ File already cached: /tmp/RtmpWa2B6f/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }

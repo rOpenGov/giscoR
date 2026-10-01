@@ -86,7 +86,7 @@ implements the following caching options:
   which keeps the path across R sessions.
 
 - For caching specific files, use the `cache_dir` argument in the
-  corresponding function. See example in
+  corresponding function. See the example in
   [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_nuts.md).
 
 Sometimes cached files may be corrupt. In that case, try downloading the
@@ -111,29 +111,29 @@ Cache management utilities:
 # Do not run this. It modifies your current state.
 # \dontrun{
 my_cache <- gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpv3wISt/giscoR
+#> ℹ /tmp/RtmpWa2B6f/giscoR
 
 # Set an example cache.
 ex <- file.path(tempdir(), "example", "cachenew")
 gisco_set_cache_dir(ex)
-#> ℹ giscoR cache directory is /tmp/Rtmpv3wISt/example/cachenew.
+#> ℹ giscoR cache directory is /tmp/RtmpWa2B6f/example/cachenew.
 #> ℹ To install your `cache_dir` path for future sessions, run this function with `install` = TRUE.
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpv3wISt/example/cachenew
-#> [1] "/tmp/Rtmpv3wISt/example/cachenew"
+#> ℹ /tmp/RtmpWa2B6f/example/cachenew
+#> [1] "/tmp/RtmpWa2B6f/example/cachenew"
 
 # Restore the initial cache.
 gisco_set_cache_dir(my_cache)
-#> ℹ giscoR cache directory is /tmp/Rtmpv3wISt/giscoR.
+#> ℹ giscoR cache directory is /tmp/RtmpWa2B6f/giscoR.
 #> ℹ To install your `cache_dir` path for future sessions, run this function with `install` = TRUE.
 identical(my_cache, gisco_detect_cache_dir())
-#> ℹ /tmp/Rtmpv3wISt/giscoR
+#> ℹ /tmp/RtmpWa2B6f/giscoR
 #> [1] TRUE
 # }
 
 
 gisco_detect_cache_dir()
-#> ℹ /tmp/Rtmpv3wISt/giscoR
-#> [1] "/tmp/Rtmpv3wISt/giscoR"
+#> ℹ /tmp/RtmpWa2B6f/giscoR
+#> [1] "/tmp/RtmpWa2B6f/giscoR"
 ```

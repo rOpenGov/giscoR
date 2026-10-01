@@ -49,7 +49,7 @@ GISCO Local Administrative Units distribution API:
 
 - cache:
 
-  **\[deprecated\]**. Always caches the result due to its size. See
+  **\[deprecated\]**. Always caches the result due to its size. See the
   **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
@@ -60,7 +60,7 @@ GISCO Local Administrative Units distribution API:
 
 - cache_dir:
 
-  A character string with a path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See the **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
@@ -81,20 +81,20 @@ GISCO Local Administrative Units distribution API:
 
 - ext:
 
-  A character value with the extension of the file (default `"gpkg"`).
+  A character string with the extension of the file (default `"gpkg"`).
   One of `"shp"`, `"gpkg"`, `"geojson"` .
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
 The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions
-that together subdivide the EU economic territory into regions of five
-different levels, moving from larger to smaller territorial units: NUTS
-1, 2 and 3 and LAU.
+that together subdivide the EU economic territory into statistical
+regions and local units, moving from larger to smaller territorial
+units: NUTS 1, 2 and 3 and LAU.
 
 The LAU classification is not covered by any legislative act.
 Geographical extent covers the European Union, EFTA countries and
@@ -127,7 +127,7 @@ to perform a bulk download of datasets.
 
 See
 [`gisco_id_api_lau()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
-to download via GISCO ID service API.
+to download via the GISCO ID service API.
 
 Statistical unit datasets:
 [`gisco_get_census()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_census.md),

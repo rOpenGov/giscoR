@@ -76,7 +76,7 @@ All source files are `.geojson` files.
 - cache:
 
   A logical value indicating whether to cache results. Defaults to
-  `TRUE`. See **Caching strategies** section in
+  `TRUE`. See the **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
 - update_cache:
@@ -86,7 +86,7 @@ All source files are `.geojson` files.
 
 - cache_dir:
 
-  A character string with a path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See the **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/dev/reference/gisco_set_cache_dir.md).
 
@@ -111,8 +111,8 @@ All source files are `.geojson` files.
 
 - spatialtype:
 
-  A character string with the type of geometry to return. Options
-  available are:
+  A character string with the type of geometry to return. Available
+  values are:
 
   - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 
@@ -120,7 +120,7 @@ All source files are `.geojson` files.
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object when
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object when
 `mode = "sf"` or a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) when
 `mode = "df"`.

@@ -1,12 +1,12 @@
 # Cached GISCO database
 
 Database with the list of files in the GISCO geodata distribution as of
-2026-08-26.
+2026-09-30.
 
 ## Format
 
 A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
-with 11,008 rows.
+with 11,173 rows.
 
 ## Source
 
@@ -17,8 +17,7 @@ GISCO geodata distribution `datasets.json`.
 This database is used to redirect the corresponding functions to the
 correct API endpoints.
 
-This version of the database is used if there is a problem during
-update. Please use
+This version of the database is used if an update fails. Please use
 [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_cached_db.md)
 with `update_cache = TRUE` to update the corresponding API endpoints.
 
@@ -44,7 +43,7 @@ GISCO database and metadata:
 data("gisco_db")
 gisco_db |>
   dplyr::glimpse()
-#> Rows: 11,008
+#> Rows: 11,173
 #> Columns: 11
 #> $ id_giscor    <chr> "coastal_lines", "coastal_lines", "coastal_lines", "coast…
 #> $ year         <dbl> 2006, 2006, 2006, 2006, 2006, 2006, 2006, 2006, 2006, 200…
@@ -56,5 +55,5 @@ gisco_db |>
 #> $ ext          <chr> "csv", "geojson", "gpkg", "json", "pbf", "shp", "csv", "g…
 #> $ api_file     <chr> "csv/COAS_RG_01M_2006_3035.csv", "geojson/COAS_RG_01M_200…
 #> $ api_entry    <chr> "https://gisco-services.ec.europa.eu/distribution/v2/coas…
-#> $ last_updated <date> 2026-08-26, 2026-08-26, 2026-08-26, 2026-08-26, 2026-08-…
+#> $ last_updated <date> 2026-09-30, 2026-09-30, 2026-09-30, 2026-09-30, 2026-09-…
 ```

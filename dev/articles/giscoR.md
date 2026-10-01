@@ -22,7 +22,7 @@ available in [EPSG:4326](https://epsg.io/4326),
 Grid, transport and basic service datasets use the formats and
 coordinate reference systems documented for each dataset.
 
-**giscoR** returns [**sf** package
+**giscoR** returns [**sf**
 objects](https://r-spatial.github.io/sf/reference/sf.html). See
 <https://r-spatial.github.io/sf/> for details.
 
@@ -150,16 +150,19 @@ ggplot(world) +
   )
 ```
 
-![EU member states and candidate countries (2024)](./fig-country-1.png)
+![Map of Europe with EU member states in dark blue, candidate countries
+in light blue and other countries in gray. White outlines separate
+countries. Candidate countries are concentrated along the eastern and
+southeastern edges of the EU.](./fig-country-1.png)
 
 EU member states and candidate countries (2024)
 
-You can select specific countries by name in any language, ISO 3166-1
-alpha-3 codes or Eurostat codes. However, you cannot mix these
+You can select specific countries using names in any language, ISO
+3166-1 alpha-3 codes or Eurostat codes. However, you cannot mix these
 identifier types in a single call.
 
-You can also combine datasets by using the same `resolution`, `epsg` and
-(optionally) `year`:
+You can also combine datasets using the same `resolution` and `epsg`.
+Use the same `year` when it is available for both datasets:
 
 ``` r
 
@@ -190,7 +193,12 @@ ggplot(coast) +
   labs(caption = gisco_attributions("fr"))
 ```
 
-![Political map of North Africa](./fig-africa-1.png)
+![Faceted map with five panels arranged in two columns, highlighting
+Morocco, Algeria, Tunisia, Libya and Egypt separately against the same
+North African coastline. Longitude and latitude provide a shared
+geographic reference. The panels show the countries in their
+west-to-east order and allow their shapes and relative sizes to be
+compared.](./fig-africa-1.png)
 
 Political map of North Africa
 
@@ -201,6 +209,7 @@ plotting, we use the **ggplot2** package. Any package that supports
 **sf** objects, such as **tmap**, **mapsf** or **leaflet**, can be used.
 
 ``` r
+
 # Load EU member data.
 library(giscoR)
 library(dplyr)
@@ -220,10 +229,6 @@ eu_bord <- borders |>
 # Retrieve disposable income data from Eurostat.
 pps <- get_eurostat("tgs00026") |>
   filter(TIME_PERIOD == "2022-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
-                                                                                                 
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
@@ -290,7 +295,13 @@ ggplot(nuts2_sf) +
   )
 ```
 
-![Disposable income of private households by NUTS 2 regions
-(2022)](./fig-giscor-1.png)
+![Choropleth map of European NUTS 2 regions, colored by household
+disposable income in thousands of euros. Orange indicates lower income
+categories and teal indicates higher categories. Gray marks missing
+data. The legend ranges from below 15 thousand to above 120 thousand
+euros. Regional differences are visible within countries, including
+France, Spain and Germany. ](./fig-giscor-1.png)
 
 Disposable income of private households by NUTS 2 regions (2022)
+
+Use these examples as a starting point for your own maps.

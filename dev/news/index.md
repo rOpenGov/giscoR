@@ -9,9 +9,21 @@
 - Downloads now attempt the requested GISCO resource directly instead of
   relying on a generic connectivity check, improving support for proxied
   connections ([\#139](https://github.com/rOpenGov/giscoR/issues/139)).
+- [`gisco_address_api_most_populated_cell()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
+  retrieves the most populated census grid cell for a province or city,
+  preserving the API coordinates in numeric `X` and `Y` columns of a
+  tibble.
+- [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/dev/reference/gisco_address_api.md)
+  now supports freeform address searches with the `q` argument.
+- [`?gisco_db`](https://ropengov.github.io/giscoR/dev/reference/gisco_db.md)
+  is updated.
 - [`gisco_get_units()`](https://ropengov.github.io/giscoR/dev/reference/gisco_get_units.md)
   now forwards `cache_dir` to its replacement single-unit download
   function.
+- `gisco_id_api_*()` functions with an `epsg` argument now send it as
+  `proj`, honoring the input and output CRS, and
+  [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/dev/reference/gisco_id_api.md)
+  sends `nuts_level` as `level`, honoring the requested NUTS level.
 
 ## giscoR 1.2.0
 

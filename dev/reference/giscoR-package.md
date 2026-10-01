@@ -3,10 +3,11 @@
 Tools to download global and European spatial data from the 'Eurostat'
 'GISCO' (Geographic Information System of the Commission) data
 distribution <https://ec.europa.eu/eurostat/web/gisco>. The package
-provides helpers for country boundaries, 'NUTS' regions, administrative
-units, statistical units, transport networks, basic service locations
-and other 'GISCO' datasets. This package is not officially related to or
-endorsed by 'Eurostat'.
+provides helpers for country boundaries, Nomenclature of Territorial
+Units for Statistics ('NUTS') regions, administrative units, statistical
+units, transport networks, basic service locations and other 'GISCO'
+datasets. This package is neither affiliated with nor endorsed by
+'Eurostat'.
 
 ## See also
 
