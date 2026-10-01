@@ -21,16 +21,14 @@ test_that("Coastal lines use resolved GISCO files", {
       )
     },
     read_packaged_gisco_dataset = function(...) NULL,
-    read_gisco_dataset = function(
-      url,
-      name,
-      cache = TRUE,
-      cache_dir = NULL,
-      subdir,
-      update_cache = FALSE,
-      verbose = FALSE,
-      ...
-    ) {
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  ...) {
       expect_match(url, "COAS_RG_20M_2016_4326[.]gpkg$")
       expect_identical(name, "COAS_RG_20M_2016_4326.gpkg")
       expect_false(cache)
@@ -116,7 +114,7 @@ test_that("Coastal lines return matching data with and without cache", {
     "coastal/COAS_RG_60M_2016_4326.gpkg"
   )
 
-  # shp is always cached
+  # Shapefiles are always cached.
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 0)
 
   gisco_get_coastal_lines(

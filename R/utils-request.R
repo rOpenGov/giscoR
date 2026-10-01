@@ -117,7 +117,7 @@ gisco_response_is_error <- function(
 #' @param check_error A logical value indicating whether HTTP error responses
 #'   should return `NULL`.
 #'
-#' @return An `httr2_response` object, or `NULL` for offline or error
+#' @return An `httr2_response` object or `NULL` for offline or error
 #'   responses.
 #' @noRd
 gisco_perform_request <- function(
@@ -181,7 +181,8 @@ gisco_req_perform <- function(req, path = NULL) {
 #' @param result_field A character string with the JSON field to extract.
 #' @param verbose A logical value indicating whether to print verbose output.
 #'
-#' @return A tibble, or `NULL` when the endpoint cannot be reached.
+#' @return A [tibble][tibble::tbl_df] or `NULL` when the endpoint cannot be
+#'   reached.
 #' @noRd
 call_gisco_json_api <- function(
   custom_query,

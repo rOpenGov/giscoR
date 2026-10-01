@@ -13,15 +13,15 @@ cols <- c(
 )
 df <- codelist[, cols]
 
-# Fix Namibia
+# Preserve Namibia's country code.
 df$eurostat <- ifelse(df$iso3c == "NAM", "NA", df$eurostat)
 
-# Delete records without id
+# Remove records without a country code.
 gisco_countrycode <- df[
   !(is.na(df$eurostat) & is.na(df$iso2c) & is.na(df$iso3c)),
 ]
 
-# Change names to Eurostat and ISO to ease joins on giscoR
+# Use Eurostat and ISO field names to simplify joins in giscoR.
 
 names(gisco_countrycode) <- c(
   "CNTR_CODE",
@@ -30,12 +30,12 @@ names(gisco_countrycode) <- c(
   names(gisco_countrycode)[4:length(names(gisco_countrycode))]
 )
 
-# Add EU col
+# Add European Union membership.
 EU <- igo_members("EU")["ccode"]
 EU$ISO3_CODE <- countrycode(EU$ccode, "cown", "iso3c")
 EU$eu <- TRUE
 EU <- EU[, c("ISO3_CODE", "eu")]
-# Brexit
+# Exclude the United Kingdom from European Union membership.
 EU <- EU[EU$ISO3_CODE != "GBR", ]
 
 gisco_countrycode <- merge(gisco_countrycode, EU, all.x = TRUE)

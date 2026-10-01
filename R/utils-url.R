@@ -149,9 +149,9 @@ gisco_id_url <- function() {
   paste0(gisco_services_url(), "/id/")
 }
 
-#' GISCO address API base URL
+#' GISCO Address API base URL
 #'
-#' @return A character string with the GISCO address API base URL.
+#' @return A character string with the GISCO Address API base URL.
 #' @noRd
 gisco_address_url <- function() {
   paste0(gisco_services_url(), "/addressapi/")

@@ -24,7 +24,7 @@ gisco_get_grid(
 \item{spatialtype}{A character string selecting \code{"REGION"} or \code{"POINT"}.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
@@ -34,7 +34,7 @@ download.}
 messages.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 These datasets contain grid cells covering the EU and neighboring countries
@@ -50,7 +50,7 @@ CSV and Parquet files, which this function does not download.
 All grid geometries use \href{https://epsg.io/3035}{\code{EPSG:3035}}. Population
 columns are named \code{TOT_P_YYYY}, where \code{YYYY} is the reference year. To
 calculate population density, divide a population value by the cell area in
-square kilometres (\code{resolution^2}).
+square kilometers (\code{resolution^2}).
 
 The file sizes range from 428 KB (\code{resolution = 100})
 to 1.7 GB (\code{resolution = 1}).

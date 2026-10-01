@@ -109,7 +109,7 @@ test_that("Country unit supports multiple calls and countries", {
 
   cdir <- local_test_cache_dir("test-unit-")
 
-  # Message even when verbose FALSE
+  # Emit a message even when verbose is FALSE.
   expect_warning(
     g <- gisco_get_unit_country(
       "Kosovo",

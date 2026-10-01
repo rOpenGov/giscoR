@@ -4,14 +4,14 @@
 \encoding{UTF-8}
 \name{gisco_countries_2024}
 \alias{gisco_countries_2024}
-\title{Countries 2024 \CRANpkg{sf} object}
+\title{Countries 2024 \code{\link[sf:st_sf]{sf}} object}
 \format{
-A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
+An \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. It has
 263 rows and 12 variables:
 \describe{
 \item{\code{CNTR_ID}}{Country ID from Eurostat.}
-\item{\code{CNTR_NAME}}{Official country name in local language.}
+\item{\code{CNTR_NAME}}{Official country name in the local language.}
 \item{\code{NAME_ENGL}}{Country name in English.}
 \item{\code{NAME_FREN}}{Country name in French.}
 \item{\code{ISO3_CODE}}{ISO 3166-1 alpha-3 code of each country from

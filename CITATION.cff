@@ -15,9 +15,10 @@ identifiers:
   value: 10.32614/CRAN.package.giscoR
 abstract: Tools to download global and European spatial data from the 'Eurostat' 'GISCO'
   (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>.
-  The package provides helpers for country boundaries, 'NUTS' regions, administrative
-  units, statistical units, transport networks, basic service locations and other
-  'GISCO' datasets. This package is not officially related to or endorsed by 'Eurostat'.
+  The package provides helpers for country boundaries, Nomenclature of Territorial
+  Units for Statistics ('NUTS') regions, administrative units, statistical units,
+  transport networks, basic service locations and other 'GISCO' datasets. This package
+  is neither affiliated with nor endorsed by 'Eurostat'.
 authors:
 - family-names: Hernangómez
   given-names: Diego
@@ -37,9 +38,10 @@ preferred-citation:
   url: https://ropengov.github.io/giscoR/
   abstract: Tools to download global and European spatial data from the Eurostat GISCO
     (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>.
-    The package provides helpers for country boundaries, NUTS regions, administrative
-    units, statistical units, transport networks, basic service locations and other
-    GISCO datasets. This package is not officially related to or endorsed by Eurostat.
+    The package provides helpers for country boundaries, Nomenclature of Territorial
+    Units for Statistics (NUTS) regions, administrative units, statistical units,
+    transport networks, basic service locations and other GISCO datasets. This package
+    is neither affiliated with nor endorsed by Eurostat.
 repository: https://CRAN.R-project.org/package=giscoR
 repository-code: https://github.com/rOpenGov/giscoR
 url: https://ropengov.github.io/giscoR/
@@ -79,8 +81,7 @@ references:
   doi: 10.32614/R.manuals
   version: '>= 4.1'
 - type: software
-  title: cli
-  abstract: 'cli: Helpers for Developing Command Line Interfaces'
+  title: 'cli: Helpers for Developing Command Line Interfaces'
   notes: Imports
   url: https://cli.r-lib.org
   repository: https://CRAN.R-project.org/package=cli
@@ -91,8 +92,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.cli
 - type: software
-  title: countrycode
-  abstract: 'countrycode: Convert Country Names and Country Codes'
+  title: 'countrycode: Convert Country Names and Country Codes'
   notes: Imports
   url: https://vincentarelbundock.github.io/countrycode/
   repository: https://CRAN.R-project.org/package=countrycode
@@ -105,8 +105,7 @@ references:
   doi: 10.32614/CRAN.package.countrycode
   version: '>= 1.2.0'
 - type: software
-  title: httr2
-  abstract: 'httr2: Perform HTTP Requests and Process the Responses'
+  title: 'httr2: Perform HTTP Requests and Process the Responses'
   notes: Imports
   url: https://httr2.r-lib.org
   repository: https://CRAN.R-project.org/package=httr2
@@ -118,8 +117,7 @@ references:
   doi: 10.32614/CRAN.package.httr2
   version: '>= 1.2.0'
 - type: software
-  title: jsonlite
-  abstract: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
+  title: 'jsonlite: A Simple and Robust JSON Parser and Generator for R'
   notes: Imports
   url: https://jeroen.r-universe.dev/jsonlite
   repository: https://CRAN.R-project.org/package=jsonlite
@@ -128,11 +126,10 @@ references:
     given-names: Jeroen
     email: jeroenooms@gmail.com
     orcid: https://orcid.org/0000-0002-4035-0289
-  year: '2026'
+  year: '2025'
   doi: 10.32614/CRAN.package.jsonlite
 - type: software
-  title: lifecycle
-  abstract: 'lifecycle: Manage the Life Cycle of your Package Functions'
+  title: 'lifecycle: Manage the Life Cycle of your Package Functions'
   notes: Imports
   url: https://lifecycle.r-lib.org/
   repository: https://CRAN.R-project.org/package=lifecycle
@@ -147,8 +144,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.lifecycle
 - type: software
-  title: rappdirs
-  abstract: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
+  title: 'rappdirs: Application Directories: Determine Where to Save Data, Caches,
     and Logs'
   notes: Imports
   url: https://rappdirs.r-lib.org
@@ -165,8 +161,7 @@ references:
   doi: 10.32614/CRAN.package.rappdirs
   version: '>= 0.3.0'
 - type: software
-  title: sf
-  abstract: 'sf: Simple Features for R'
+  title: 'sf: Simple Features for R'
   notes: Imports
   url: https://r-spatial.github.io/sf/
   repository: https://CRAN.R-project.org/package=sf
@@ -179,8 +174,7 @@ references:
   doi: 10.32614/CRAN.package.sf
   version: '>= 1.0.0'
 - type: software
-  title: tibble
-  abstract: 'tibble: Simple Data Frames'
+  title: 'tibble: Simple Data Frames'
   notes: Imports
   url: https://tibble.tidyverse.org/
   repository: https://CRAN.R-project.org/package=tibble
@@ -195,8 +189,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.tibble
 - type: software
-  title: tools
-  abstract: 'R: A Language and Environment for Statistical Computing'
+  title: 'R: A Language and Environment for Statistical Computing'
   notes: Imports
   authors:
   - name: R Core Team
@@ -208,21 +201,7 @@ references:
   year: '2026'
   doi: 10.32614/R.manuals
 - type: software
-  title: utils
-  abstract: 'R: A Language and Environment for Statistical Computing'
-  notes: Imports
-  authors:
-  - name: R Core Team
-    website: https://ror.org/02zz1nj61
-  institution:
-    name: R Foundation for Statistical Computing
-    website: https://ror.org/05qewa988
-    address: Vienna, Austria
-  year: '2026'
-  doi: 10.32614/R.manuals
-- type: software
-  title: dplyr
-  abstract: 'dplyr: A Grammar of Data Manipulation'
+  title: 'dplyr: A Grammar of Data Manipulation'
   notes: Suggests
   url: https://dplyr.tidyverse.org
   repository: https://CRAN.R-project.org/package=dplyr
@@ -246,8 +225,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.dplyr
 - type: software
-  title: eurostat
-  abstract: 'eurostat: Tools for Eurostat Open Data'
+  title: 'eurostat: Tools for Eurostat Open Data'
   notes: Suggests
   url: https://ropengov.github.io/eurostat/
   repository: https://CRAN.R-project.org/package=eurostat
@@ -262,11 +240,13 @@ references:
     given-names: Markus
   - family-names: Biecek
     given-names: Przemyslaw
+  - family-names: Kantanen
+    given-names: Pyry
+    orcid: https://orcid.org/0000-0003-2853-2765
   year: '2026'
   doi: 10.32614/CRAN.package.eurostat
 - type: software
-  title: ggplot2
-  abstract: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
+  title: 'ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics'
   notes: Suggests
   url: https://ggplot2.tidyverse.org
   repository: https://CRAN.R-project.org/package=ggplot2
@@ -306,8 +286,7 @@ references:
   doi: 10.32614/CRAN.package.ggplot2
   version: '>= 3.5.0'
 - type: software
-  title: knitr
-  abstract: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
+  title: 'knitr: A General-Purpose Package for Dynamic Report Generation in R'
   notes: Suggests
   url: https://yihui.org/knitr/
   repository: https://CRAN.R-project.org/package=knitr
@@ -319,8 +298,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.knitr
 - type: software
-  title: quarto
-  abstract: 'quarto: R Interface to ''Quarto'' Markdown Publishing System'
+  title: 'quarto: R Interface to ''Quarto'' Markdown Publishing System'
   notes: Suggests
   url: https://quarto-dev.github.io/quarto-r/
   repository: https://CRAN.R-project.org/package=quarto
@@ -336,8 +314,7 @@ references:
   year: '2026'
   doi: 10.32614/CRAN.package.quarto
 - type: software
-  title: stats
-  abstract: 'R: A Language and Environment for Statistical Computing'
+  title: 'R: A Language and Environment for Statistical Computing'
   notes: Suggests
   authors:
   - name: R Core Team
@@ -349,8 +326,7 @@ references:
   year: '2026'
   doi: 10.32614/R.manuals
 - type: software
-  title: testthat
-  abstract: 'testthat: Unit Testing for R'
+  title: 'testthat: Unit Testing for R'
   notes: Suggests
   url: https://testthat.r-lib.org
   repository: https://CRAN.R-project.org/package=testthat
@@ -362,8 +338,7 @@ references:
   doi: 10.32614/CRAN.package.testthat
   version: '>= 3.0.0'
 - type: software
-  title: withr
-  abstract: 'withr: Run Code ''With'' Temporarily Modified Global State'
+  title: 'withr: Run Code ''With'' Temporarily Modified Global State'
   notes: Suggests
   url: https://withr.r-lib.org
   repository: https://CRAN.R-project.org/package=withr

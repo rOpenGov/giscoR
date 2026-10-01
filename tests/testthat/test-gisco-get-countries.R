@@ -20,18 +20,16 @@ test_that("Countries use resolved GISCO files", {
         name = "CNTR_RG_60M_2024_4326.gpkg"
       )
     },
-    read_gisco_dataset = function(
-      url,
-      name,
-      cache = TRUE,
-      cache_dir = NULL,
-      subdir,
-      update_cache = FALSE,
-      verbose = FALSE,
-      filters = NULL,
-      post_process = NULL,
-      ...
-    ) {
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  post_process = NULL,
+                                  ...) {
       expect_match(url, "CNTR_RG_60M_2024_4326[.]gpkg$")
       expect_identical(name, "CNTR_RG_60M_2024_4326.gpkg")
       expect_false(cache)
@@ -115,7 +113,7 @@ test_that("Countries return matching data with and without cache", {
     "countries/CNTR_RG_60M_2024_4326.gpkg"
   )
 
-  # shp is always cached
+  # Shapefiles are always cached.
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 0)
 
   gisco_get_countries(

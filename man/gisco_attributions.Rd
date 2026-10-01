@@ -8,7 +8,7 @@
 gisco_attributions(lang = "en", copyright = FALSE)
 }
 \arguments{
-\item{lang}{A character value with the language (two-letter ISO code). See
+\item{lang}{A character string with the language (two-letter ISO code). See
 \link[countrycode:codelist]{countrycode::codelist} and \strong{Details}.}
 
 \item{copyright}{A logical value indicating whether to display the
@@ -18,8 +18,8 @@ copyright notice on the console.}
 A string with the attribution to be used.
 }
 \description{
-Get the legal text to use for administrative and statistical data
-downloaded from GISCO. See section \strong{Copyright}.
+Get the attribution text to use for administrative and statistical data
+downloaded from GISCO. See the \strong{Copyright} section.
 
 For other datasets you may follow the \href{https://ec.europa.eu/eurostat/web/main/help/copyright-notice}{Eurostat general copyright notice and license policy}.
 }

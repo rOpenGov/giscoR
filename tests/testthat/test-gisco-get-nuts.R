@@ -28,18 +28,16 @@ test_that("NUTS use resolved GISCO files", {
         name = "NUTS_RG_60M_2024_4326.gpkg"
       )
     },
-    read_gisco_dataset = function(
-      url,
-      name,
-      cache = TRUE,
-      cache_dir = NULL,
-      subdir,
-      update_cache = FALSE,
-      verbose = FALSE,
-      filters = NULL,
-      post_process = NULL,
-      ...
-    ) {
+    read_gisco_dataset = function(url,
+                                  name,
+                                  cache = TRUE,
+                                  cache_dir = NULL,
+                                  subdir,
+                                  update_cache = FALSE,
+                                  verbose = FALSE,
+                                  filters = NULL,
+                                  post_process = NULL,
+                                  ...) {
       expect_match(url, "NUTS_RG_60M_2024_4326[.]gpkg$")
       expect_identical(name, "NUTS_RG_60M_2024_4326.gpkg")
       expect_false(cache)
@@ -71,10 +69,10 @@ test_that("NUTS validate extensions and level inputs", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  # validate ext
+  # Validate the file extension.
   expect_snapshot(gisco_get_nuts(ext = "docx"), error = TRUE)
 
-  # validate level
+  # Validate the NUTS level.
   expect_snapshot(gisco_get_nuts(nuts_level = "docx"), error = TRUE)
 
   # But rest of levels should work
@@ -164,7 +162,7 @@ test_that("NUTS return matching data with and without cache", {
     "nuts/NUTS_RG_60M_2024_4326.gpkg"
   )
 
-  # shp is always cached
+  # Shapefiles are always cached.
   expect_length(list.files(cdir, recursive = TRUE, pattern = "shp"), 0)
 
   gisco_get_nuts(

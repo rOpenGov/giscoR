@@ -23,14 +23,15 @@ file. One of
 \code{2023}, \code{2020}.}
 
 \item{cache}{A logical value indicating whether to cache results. Defaults
-to \code{TRUE}. See \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+to \code{TRUE}. See the \strong{Caching strategies} section in
+\code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
 cached file. Defaults to \code{FALSE}. When set to \code{TRUE}, it forces a new
 download.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
-\strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
+the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
@@ -40,7 +41,7 @@ vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
 vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 }
 \value{
-A \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object.
 }
 \description{
 The dataset contains information on healthcare services considered
@@ -63,14 +64,14 @@ The following table describes the healthcare service attributes:\tabular{ll}{
    \code{street} \tab Street name. \cr
    \code{house_number} \tab House number. \cr
    \code{postcode} \tab Postcode. \cr
-   \code{address} \tab Address information when the different components of the address are not separated in the source. \cr
+   \code{address} \tab Address information when the source does not separate address components. \cr
    \code{city} \tab City name. In some sources, this refers to a region or municipality. \cr
    \code{cntr_id} \tab Country code (2 letters, ISO 3166-1 alpha-2). \cr
    \code{emergency} \tab \code{yes} or \code{no}, indicating whether the healthcare site provides emergency medical services. \cr
    \code{cap_beds} \tab Number of beds, the most common capacity measure. \cr
    \code{cap_prac} \tab Number of practitioners. \cr
    \code{cap_rooms} \tab Number of rooms. \cr
-   \code{facility_type} \tab Type of healthcare service, such as psychiatric hospital, based on national classification. \cr
+   \code{facility_type} \tab Type of healthcare service, such as a psychiatric hospital, based on national classification. \cr
    \code{public_private} \tab Public or private status of the healthcare service. \cr
    \code{list_specs} \tab List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). \cr
    \code{tel} \tab Telephone number. \cr

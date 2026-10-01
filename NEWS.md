@@ -3,47 +3,39 @@
 - Cached downloads now preserve the previous file when an update fails and replace it only after the new download completes successfully.
 - Logical flags now reject missing and non-scalar values with a `giscoR_error` condition.
 - Downloads now attempt the requested GISCO resource directly instead of relying on a generic connectivity check, improving support for proxied connections (#139).
+- `gisco_address_api_most_populated_cell()` retrieves the most populated census grid cell for a province or city, preserving the API coordinates in numeric `X` and `Y` columns of a tibble.
+- `gisco_address_api_search()` now supports freeform address searches with the `q` argument.
+- `?gisco_db` is updated.
 - `gisco_get_units()` now forwards `cache_dir` to its replacement single-unit download function.
+- `gisco_id_api_*()` functions with an `epsg` argument now send it as `proj`, honoring the input and output CRS, and `gisco_id_api_nuts()` sends `nuts_level` as `level`, honoring the requested NUTS level.
 
 # giscoR 1.2.0
 
-- **cli** diagnostics now use catchable warning and error classes for
-  programmatic handling.
-- Add an article showing GISCO ID service API and GISCO Address API workflows
-  with **ggplot2** examples.
-- Query timeout can now also be controlled with the `GISCO_TIMEOUT` environment
-  variable when `options(gisco_timeout)` is not set.
-- Refactor tests to isolate cache state, use temporary cache directories and
-  improve mocked coverage of cache and request helpers.
+- **cli** diagnostics now use catchable warning and error classes for programmatic handling.
+- Add an article showing GISCO ID service API and GISCO Address API workflows with **ggplot2** examples.
+- Query timeout can now also be controlled with the `GISCO_TIMEOUT` environment variable when `options(gisco_timeout)` is not set.
+- Refactor tests to isolate cache state, use temporary cache directories and improve mocked coverage of cache and request helpers.
 - Update `?gisco_db`.
 - `gisco_get_airports()` adds support for the Airports 2024 point dataset.
-- `gisco_get_postal_codes()` now defaults to the 2025 release and adds an `epsg`
-  argument.
+- `gisco_get_postal_codes()` now defaults to the 2025 release and adds an `epsg` argument.
 - `giscoR::gisco_nuts_2024` has been updated.
 
 # giscoR 1.1.1
 
-- Refactor internal helpers, documentation and tests, including clearer
-  user-facing messages, more consistent **roxygen2** documentation, reused
-  documentation blocks and faster mocked tests for selected download-heavy
-  paths.
+- Refactor internal helpers, documentation and tests, including clearer user-facing messages, more consistent **roxygen2** documentation, reused documentation blocks and faster mocked tests for selected download-heavy paths.
 
 # giscoR 1.1.0
 
 - Adapt vignettes to **Quarto**.
 - Bump the minimum **httr2** version to 1.2.0 (#126).
-- Query timeout can now be controlled with `options(gisco_timeout)` using
-  `httr2::req_timeout()`. The default value is
-  `httr2::req_timeout(..., seconds = 300)` (5 minutes) (#123).
+- Query timeout can now be controlled with `options(gisco_timeout)` using `httr2::req_timeout()`. The default value is `httr2::req_timeout(..., seconds = 300)` (5 minutes) (#123).
 - Use `testthat::local_mocked_bindings()` for API error testing.
 
 # giscoR 1.0.1
 
-- Fix a bug that overwrote the bundled GISCO database with the cached version in
-  a new session. The cache now persists.
+- Fix a bug that overwrote the bundled GISCO database with the cached version in a new session. The cache now persists.
 - Update `?gisco_db`.
-- `gisco_get_unit_urban_audit()` and `gisco_get_urban_audit()` now default to
-  the latest available year, 2024.
+- `gisco_get_unit_urban_audit()` and `gisco_get_urban_audit()` now default to the latest available year, 2024.
 
 # giscoR 1.0.0
 
@@ -94,8 +86,7 @@ We recommend reviewing the updated documentation at
 ## Compatibility and performance
 
 - Add **cli**, **httr2**, **lifecycle** and **tibble**.
-- Perform dataset subsetting at read time using **GDAL** queries via
-  `sf::read_sf()`.
+- Perform dataset subsetting at read time using **GDAL** queries via `sf::read_sf()`.
 - Remove **geojsonsf**.
 - Require **R** ≥ 4.1.
 - Return tidy objects consistently.
@@ -105,35 +96,22 @@ We recommend reviewing the updated documentation at
 - `gisco_get_cached_db()` provides access to the cached GISCO database.
 - `gisco_get_census()` provides access to census grid data.
 - `gisco_get_metadata()` provides access to GISCO metadata.
-- `gisco_get_unit_country()` provides access to country unit data and replaces
-  the corresponding `gisco_get_units()` workflow.
-- `gisco_get_unit_nuts()` provides access to NUTS unit data and replaces the
-  corresponding `gisco_get_units()` workflow.
-- `gisco_get_unit_urban_audit()` provides access to Urban Audit unit data and
-  replaces the corresponding `gisco_get_units()` workflow.
-- `gisco_id_api_biogeo_region()` provides access to the [GISCO ID service
-  API](https://gisco-services.ec.europa.eu/id/api-docs/).
-- `gisco_id_api_census_grid()` provides access to the [GISCO ID service
-  API](https://gisco-services.ec.europa.eu/id/api-docs/).
-- `gisco_id_api_country()` provides access to the [GISCO ID service
-  API](https://gisco-services.ec.europa.eu/id/api-docs/).
-- `gisco_id_api_geonames()` provides access to the [GISCO ID service
-  API](https://gisco-services.ec.europa.eu/id/api-docs/).
-- `gisco_id_api_lau()` provides access to the [GISCO ID service
-  API](https://gisco-services.ec.europa.eu/id/api-docs/).
-- `gisco_id_api_nuts()` provides access to the [GISCO ID service
-  API](https://gisco-services.ec.europa.eu/id/api-docs/).
-- `gisco_id_api_river_basin()` provides access to the [GISCO ID service
-  API](https://gisco-services.ec.europa.eu/id/api-docs/).
+- `gisco_get_unit_country()` provides access to country unit data and replaces the corresponding `gisco_get_units()` workflow.
+- `gisco_get_unit_nuts()` provides access to NUTS unit data and replaces the corresponding `gisco_get_units()` workflow.
+- `gisco_get_unit_urban_audit()` provides access to Urban Audit unit data and replaces the corresponding `gisco_get_units()` workflow.
+- `gisco_id_api_biogeo_region()` provides access to the [GISCO ID service API](https://gisco-services.ec.europa.eu/id/api-docs/).
+- `gisco_id_api_census_grid()` provides access to the [GISCO ID service API](https://gisco-services.ec.europa.eu/id/api-docs/).
+- `gisco_id_api_country()` provides access to the [GISCO ID service API](https://gisco-services.ec.europa.eu/id/api-docs/).
+- `gisco_id_api_geonames()` provides access to the [GISCO ID service API](https://gisco-services.ec.europa.eu/id/api-docs/).
+- `gisco_id_api_lau()` provides access to the [GISCO ID service API](https://gisco-services.ec.europa.eu/id/api-docs/).
+- `gisco_id_api_nuts()` provides access to the [GISCO ID service API](https://gisco-services.ec.europa.eu/id/api-docs/).
+- `gisco_id_api_river_basin()` provides access to the [GISCO ID service API](https://gisco-services.ec.europa.eu/id/api-docs/).
 
 ## Renamed functions
 
-- `gisco_address_api()` replaces `gisco_addressapi()`. The old name remains
-  available as an alias.
-- `gisco_get_coastal_lines()` replaces `gisco_get_coastallines()`. The old name
-  remains available as an alias.
-- `gisco_get_postal_codes()` replaces `gisco_get_postalcodes()`. The old name
-  remains available as an alias.
+- `gisco_address_api()` replaces `gisco_addressapi()`. The old name remains available as an alias.
+- `gisco_get_coastal_lines()` replaces `gisco_get_coastallines()`. The old name remains available as an alias.
+- `gisco_get_postal_codes()` replaces `gisco_get_postalcodes()`. The old name remains available as an alias.
 
 ## Argument updates
 
@@ -157,10 +135,8 @@ We recommend reviewing the updated documentation at
 ## Deprecations
 
 - `gisco_bulk_download()` renames the `id_giscoR` argument to `id`.
-- `gisco_get_communes()` and `gisco_get_lau()` deprecate the `cache` argument in
-  heavy-download functions.
-- `gisco_get_units()` is deprecated. Equivalent functionality is now available
-  through `gisco_get_metadata()` and the `?gisco_get_unit` family.
+- `gisco_get_communes()` and `gisco_get_lau()` deprecate the `cache` argument in heavy-download functions.
+- `gisco_get_units()` is deprecated. Equivalent functionality is now available through `gisco_get_metadata()` and the `?gisco_get_unit` family.
 
 ## Other updates
 
@@ -178,10 +154,8 @@ We recommend reviewing the updated documentation at
 
 ## Data updates
 
-- `gisco_get_countries()` and `gisco_get_nuts()` add support for 2024 datasets
-  (#93, @hannesaddec).
-- `gisco_get_education()` and `gisco_get_healthcare()` add the `year` argument
-  and support 2020 and 2023 data.
+- `gisco_get_countries()` and `gisco_get_nuts()` add support for 2024 datasets (#93, @hannesaddec).
+- `gisco_get_education()` and `gisco_get_healthcare()` add the `year` argument and support 2020 and 2023 data.
 
 # giscoR 0.5.1
 
@@ -241,16 +215,14 @@ We recommend reviewing the updated documentation at
 - Add **lwgeom** to Suggests.
 - Remove the `tgs00026` dataset.
 - Update `?gisco_db`.
-- `gisco_get_airports()` and `gisco_get_ports()` now always download fresh 2013
-  data.
+- `gisco_get_airports()` and `gisco_get_ports()` now always download fresh 2013 data.
 - `gisco_get_postalcodes()` is added.
 
 # giscoR 0.3.0
 
 - Add new tests.
 - Fix `cache = FALSE` behavior.
-- Improve caching with `gisco_set_cache_dir()`, persistent cache directories and
-  `gisco_clear_cache()`.
+- Improve caching with `gisco_set_cache_dir()`, persistent cache directories and `gisco_clear_cache()`.
 - Remove **lwgeom**.
 - Replace **tmap** with **ggplot2**.
 - Transfer the package to **rOpenGov**.

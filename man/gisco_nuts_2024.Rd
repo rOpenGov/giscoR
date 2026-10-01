@@ -4,9 +4,9 @@
 \encoding{UTF-8}
 \name{gisco_nuts_2024}
 \alias{gisco_nuts_2024}
-\title{NUTS 2024 \CRANpkg{sf} object}
+\title{NUTS 2024 \code{\link[sf:st_sf]{sf}} object}
 \format{
-A \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
+An \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. It has
 1798 rows and 19 variables:
 \describe{
@@ -43,12 +43,12 @@ Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
 \details{
 \code{MOUNT_TYPE}: Mountain typology:
 \itemize{
-\item \code{1}: More than 50 \% of the surface is covered by topographic mountain
+\item \code{1}: More than 50\% of the surface is covered by topographic mountain
 areas.
-\item \code{2}: More than 50 \% of the regional population lives in topographic
+\item \code{2}: More than 50\% of the regional population lives in topographic
 mountain areas.
-\item \code{3}: More than 50 \% of the surface is covered by topographic mountain
-areas and where more than 50 \% of the regional population lives in these
+\item \code{3}: More than 50\% of the surface is covered by topographic mountain
+areas and more than 50\% of the regional population lives in these
 mountain areas.
 \item \code{4}: Non-mountain region / other regions.
 \item \code{0}: No classification provided.
@@ -65,7 +65,7 @@ mountain areas.
 \code{COAST_TYPE}: Coastal typology:
 \itemize{
 \item \code{1}: Coastal (on coast).
-\item \code{2}: Coastal (less than 50 \% of population living within 50 km of the
+\item \code{2}: Coastal (less than 50\% of the population lives within 50 km of the
 coastline).
 \item \code{3}: Non-coastal region.
 \item \code{0}: No classification provided.

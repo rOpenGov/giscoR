@@ -14,10 +14,10 @@
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "year",TRUE)}.
 #' @param cache `r lifecycle::badge('deprecated')`. Always caches the result
-#'   due to its size. See **Caching strategies** section in
+#'   due to its size. See the **Caching strategies** section in
 #'   [gisco_set_cache_dir()].
 #' @param gisco_id An optional character vector of `GISCO_ID` LAU values.
-#' @param ext A character value with the extension of the file (default
+#' @param ext A character string with the extension of the file (default
 #'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "ext",TRUE)}.
@@ -26,9 +26,9 @@
 #' @details
 #' The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 #' nomenclature are hierarchical classifications of statistical regions that
-#' together subdivide the EU economic territory into regions of five different
-#' levels, moving from larger to smaller territorial units: NUTS 1, 2 and 3
-#' and LAU.
+#' together subdivide the EU economic territory into statistical regions and
+#' local units, moving from larger to smaller territorial units: NUTS 1, 2 and
+#' 3 and LAU.
 #'
 #' The LAU classification is not covered by any legislative act. Geographical
 #' extent covers the European Union, EFTA countries and candidate countries.
@@ -55,7 +55,7 @@
 #'
 #' See [gisco_bulk_download()] to perform a bulk download of datasets.
 #'
-#' See [gisco_id_api_lau()] to download via GISCO ID service API.
+#' See [gisco_id_api_lau()] to download via the GISCO ID service API.
 #'
 #' @encoding UTF-8
 #' @export

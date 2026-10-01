@@ -148,7 +148,7 @@ test_that("Cached database refreshes from the remote metadata", {
   skip_on_cran()
   skip_if_gisco_offline()
 
-  # Get db
+  # Get the database.
   new_db <- gisco_get_cached_db(update_cache = TRUE)
   expect_s3_class(new_db, "tbl_df")
   expect_snapshot(unique(new_db$id_giscor))
@@ -173,7 +173,7 @@ test_that("Cached database reuses the local RDS file", {
   cached_db <- file.path(cdir_db, "gisco_cached_db.rds")
   expect_false(file.exists(cached_db))
 
-  # Get db
+  # Get the database.
   new_db <- gisco_get_cached_db()
   expect_true(file.exists(cached_db))
   new_db_cached <- gisco_get_cached_db()

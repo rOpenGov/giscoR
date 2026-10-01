@@ -33,7 +33,7 @@
 #'   **Details**.
 #'
 #' @return
-#' An invisible character vector with the full path of the files extracted.
+#' An invisible character vector with the full paths of the extracted files.
 #' See **Examples**.
 #'
 #' @details
@@ -210,8 +210,7 @@ bulk_download_api_entry <- function(route) {
 #' @return A character string with the bulk-download alias.
 #' @noRd
 bulk_download_alias <- function(id) {
-  switch(
-    id,
+  switch(id,
     "coastal_lines" = "coastline",
     "urban_audit" = "urau",
     "postal_codes" = "pcode",
@@ -226,14 +225,17 @@ bulk_download_alias <- function(id) {
 #' @return A character string with the cache subdirectory.
 #' @noRd
 bulk_download_subdir <- function(id) {
-  switch(id, "coastal_lines" = "coastal", id)
+  switch(id,
+    "coastal_lines" = "coastal",
+    id
+  )
 }
 
 #' Build a bulk-download ZIP file name
 #'
 #' @param id A dataset ID.
 #' @param year A year.
-#' @param resolution A resolution, or `NULL`.
+#' @param resolution A resolution or `NULL`.
 #' @param ext A file extension.
 #'
 #' @return A character string with the ZIP file name.

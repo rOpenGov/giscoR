@@ -10,19 +10,20 @@ A data frame with
 249 rows and 13
 variables:
 \describe{
-\item{\code{ISO3_CODE}}{Eurostat code of each country.}
-\item{\code{CNTR_CODE}}{ISO 3166-1 alpha-2 code of each country.}
+\item{\code{ISO3_CODE}}{ISO 3166-1 alpha-3 code of each country.}
+\item{\code{CNTR_CODE}}{Eurostat country code.}
 \item{\code{iso2c}}{ISO 3166-1 alpha-2 code of each country.}
 \item{\code{iso.name.en}}{ISO English short name.}
 \item{\code{cldr.short.en}}{English short name as provided by the Unicode
 Common Locale Data Repository.}
 \item{\code{continent}}{Continent from the World Bank.}
-\item{\code{un.region.code}}{Numeric region code UN (M49).}
-\item{\code{un.region.name}}{Region name UN (M49).}
-\item{\code{un.regionintermediate.code}}{Numeric intermediate region.}
-\item{\code{un.regionintermediate.name}}{Intermediate region name UN (M49).}
-\item{\code{un.regionsub.code}}{Numeric sub-region code UN (M49).}
-\item{\code{un.regionsub.name}}{Sub-region name UN (M49).}
+\item{\code{un.region.code}}{UN M49 numeric region code.}
+\item{\code{un.region.name}}{UN M49 region name.}
+\item{\code{un.regionintermediate.code}}{UN M49 numeric intermediate region
+code.}
+\item{\code{un.regionintermediate.name}}{UN M49 intermediate region name.}
+\item{\code{un.regionsub.code}}{UN M49 numeric subregion code.}
+\item{\code{un.regionsub.name}}{UN M49 subregion name.}
 \item{\code{eu}}{Logical value indicating whether the country belongs to the
 European Union.}
 }

@@ -1,11 +1,11 @@
 test_that("Cache directory can be set and cleared", {
   skip_on_cran()
   skip_if_gisco_offline()
-  # Get current cache dir
+  # Get the current cache directory.
   current <- gisco_detect_cache_dir()
   expect_true(nzchar(current))
 
-  # Set a temp cache dir
+  # Set a temporary cache directory.
   expect_message(gisco_set_cache_dir(verbose = TRUE), "temporary cache")
   testdir <- expect_silent(gisco_set_cache_dir(
     file.path(current, "testthat"),
@@ -16,7 +16,7 @@ test_that("Cache directory can be set and cleared", {
 
   # Clean
   expect_silent(gisco_clear_cache(config = FALSE, verbose = FALSE))
-  # Cache dir should be deleted now
+  # Verify that the cache directory has been deleted.
   expect_false(dir.exists(testdir))
 
   # Reset just for testing all cases
@@ -27,7 +27,7 @@ test_that("Cache directory can be set and cleared", {
 
   expect_message(gisco_clear_cache(config = FALSE, verbose = TRUE), "Deleted")
 
-  # Cache dir should be deleted now
+  # Verify that the cache directory has been deleted.
   expect_false(dir.exists(testdir))
 
   # Restore cache

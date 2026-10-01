@@ -6,10 +6,13 @@
 #' supports geocoding and reverse geocoding with a pan-European address
 #' database.
 #'
-#' Each endpoint is implemented through a specific function. See **Details**.
+#' Each endpoint supported by \CRANpkg{giscoR} has a specific function. See
+#' **Details**. Search supports structured queries and freeform queries with
+#' `q`. Autocomplete through `/search?suggest=` is not implemented in
+#' \CRANpkg{giscoR}.
 #'
-#' The API supports fuzzy searching, also referred to as approximate string
-#' matching, for all arguments of each endpoint.
+#' Structured searches support approximate string matching. The API's
+#' freeform query parameter `q` does not support approximate string matching.
 #'
 #' @name gisco_address_api
 #' @rdname gisco_address_api
@@ -18,24 +21,42 @@
 #'
 #' @inheritParams gisco_get_countries verbose
 #' @param country A country code (`country = "LU"`).
-#' @param x,y Longitude and latitude coordinates to convert into a
-#'   human-readable address.
-#' @param province A province within a country. For a list of provinces within
-#'   a country, use the provinces endpoint
+#' @param x,y Longitude and latitude coordinates to convert into
+#'   human-readable addresses. Reverse geocoding returns at most five results.
+#' @param province A province within a country. This is a generic term whose
+#'   administrative level varies by country. For a list of provinces within a
+#'   country, use the provinces endpoint
 #'   (`gisco_address_api_provinces(country = "LU")`).
-#' @param city A city within a province. For a list of cities within a
+#' @param city A city within a province. This is a generic term whose
+#'   administrative level varies by country. For a list of cities within a
 #'   province, use the cities endpoint
 #'   (`gisco_address_api_cities(province = "capellen")`).
 #' @param road A road within a city.
 #' @param housenumber The house number or house name within a road or street.
 #' @param postcode A postcode to use with the previous arguments.
+#' @param q A single non-empty string for a freeform address search, or `NULL`
+#'   for a structured search. The string can contain a street, house number,
+#'   city or postcode. Freeform queries do not support approximate matching.
 #'
 #' @return
 #' A [tibble][tibble::tbl_df] in most cases, except
 #' `gisco_address_api_search()`, `gisco_address_api_reverse()` and
-#' `gisco_address_api_bbox()`, which return a [`sf`][sf::st_sf] object.
+#' `gisco_address_api_bbox()`, which return an [`sf`][sf::st_sf] object when
+#' geometry is available. Searches with no results return an empty
+#' [tibble][tibble::tbl_df]. `gisco_address_api_bbox()` returns `NULL` when
+#' no bounding box is found. Failed requests return `NULL`.
+#'
+#' `gisco_address_api_most_populated_cell()` returns a one-row
+#' [tibble][tibble::tbl_df] for the most populated census grid cell, or `NULL`
+#' when no cell is found or the request fails. Its numeric `X` and `Y` columns
+#' preserve the API coordinates, whose CRS is not specified in the API
+#' documentation.
 #'
 #' @details
+#'
+#' For `gisco_address_api_most_populated_cell()`, supply a non-empty string
+#' for `province` or `city`. If both are supplied, the search is restricted
+#' to the city within the province.
 #'
 #' ```{r child = "man/chunks/address_api.Rmd"}
 #' ```
@@ -65,10 +86,16 @@
 #'
 #' struct
 #'
+#' # Freeform search.
+#' gisco_address_api_search(q = "alphonse weicker luxembourg")
+#'
 #' # Reverse geocoding.
 #' reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 #'
 #' reverse
+#'
+#' # Most populated census grid cell in Madrid.
+#' gisco_address_api_most_populated_cell(city = "Madrid")
 gisco_address_api_search <- function(
   country = NULL,
   province = NULL,
@@ -76,8 +103,14 @@ gisco_address_api_search <- function(
   road = NULL,
   housenumber = NULL,
   postcode = NULL,
-  verbose = FALSE
+  verbose = FALSE,
+  q = NULL
 ) {
+  cli_abort_if_not(
+    "{.arg q} must be a non-empty string or NULL." = is.null(q) ||
+      is.character(q) && length(q) == 1L && !is.na(q) && nzchar(trimws(q))
+  )
+
   apiurl <- paste0(gisco_address_url(), "search?")
   custom_query <- list(
     country = country,
@@ -85,7 +118,8 @@ gisco_address_api_search <- function(
     city = city,
     road = road,
     housenumber = housenumber,
-    postcode = postcode
+    postcode = postcode,
+    q = q
   )
 
   call_address_api(custom_query, apiurl, verbose)
@@ -243,6 +277,55 @@ gisco_address_api_copyright <- function(verbose = FALSE) {
   call_address_api(custom_query = NULL, apiurl, verbose)
 }
 
+#' @rdname gisco_address_api
+#' @export
+# nolint start: object_length_linter.
+gisco_address_api_most_populated_cell <- function(
+  province = NULL,
+  city = NULL,
+  verbose = FALSE
+) {
+  # nolint end: object_length_linter.
+  cli_abort_if_not(
+    "{.arg province} must be a non-empty string or NULL." = is.null(province) ||
+      is.character(province) &&
+        length(province) == 1L &&
+        !is.na(province) &&
+        nzchar(trimws(province)),
+    "{.arg city} must be a non-empty string or NULL." = is.null(city) ||
+      is.character(city) &&
+        length(city) == 1L &&
+        !is.na(city) &&
+        nzchar(trimws(city)),
+    "Supply {.arg province} or {.arg city}." = !is.null(province) ||
+      !is.null(city),
+    "{.arg verbose} must be logical." = is_bool(verbose)
+  )
+
+  url <- httr2::url_modify(
+    paste0(gisco_address_url(), "most-populated-cell"),
+    query = as.list(unlist(list(province = province, city = city)))
+  )
+  resp <- get_request_body(url, verbose)
+  if (is.null(resp) || !httr2::resp_has_body(resp)) {
+    return(NULL)
+  }
+
+  cell <- gisco_resp_body_json(resp, simplifyVector = TRUE)
+  if (is.null(cell)) {
+    return(NULL)
+  }
+
+  cell <- lapply(cell, function(x) {
+    if (is.null(x)) NA else x
+  })
+  xy <- as.double(cell$XY)
+  cell$XY <- NULL
+  cell$X <- xy[1]
+  cell$Y <- xy[2]
+  tibble::as_tibble(cell)
+}
+
 #' Prepare and call the Address API
 #'
 #' @param custom_query A named list with the query arguments.
@@ -250,7 +333,8 @@ gisco_address_api_copyright <- function(verbose = FALSE) {
 #' @param verbose A logical value indicating whether to print verbose output.
 #'
 #' @return
-#' A `sf` object or tibble.
+#' An [`sf`][sf::st_sf] object or a [tibble][tibble::tbl_df]. Failed requests
+#' return `NULL`.
 #'
 #' @noRd
 call_address_api <- function(

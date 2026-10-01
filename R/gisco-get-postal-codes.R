@@ -15,7 +15,7 @@
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("postal_codes",
 #'   "year",TRUE)}.
-#' @param ext A character value with the extension of the file (default
+#' @param ext A character string with the extension of the file (default
 #'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("postal_codes",
 #'   "ext",TRUE)}.

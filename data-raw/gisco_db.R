@@ -6,3 +6,5 @@ gisco_db$last_updated <- gisco_db$last_updated - 1
 dplyr::glimpse(gisco_db)
 
 usethis::use_data(gisco_db, overwrite = TRUE, compress = "xz")
+
+pkgdev::update_docs()

@@ -20,14 +20,15 @@
 #' - `"3035"`: [ETRS89 / ETRS-LAEA](https://epsg.io/3035).
 #' - `"3857"`: [Pseudo-Mercator](https://epsg.io/3857).
 #' @param cache A logical value indicating whether to cache results. Defaults
-#'   to `TRUE`. See **Caching strategies** section in [gisco_set_cache_dir()].
+#'   to `TRUE`. See the **Caching strategies** section in
+#'   [gisco_set_cache_dir()].
 #' @param update_cache A logical value indicating whether to refresh the
 #'   cached file. Defaults to `FALSE`. When set to `TRUE`, it forces a new
 #'   download.
 #' @param cache_dir A character string with a path to a cache directory. See
-#'   **Caching strategies** section in [gisco_set_cache_dir()].
+#'   the **Caching strategies** section in [gisco_set_cache_dir()].
 #' @param spatialtype A character string with the type of geometry to return.
-#'   Options available are:
+#'   Available values are:
 #' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #' - `"LB"`: Labels - `POINT` object.
 #' - `"BN"`: Boundaries - `LINESTRING` object.
@@ -54,12 +55,12 @@
 #'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to
 #'   the European Union as of 2021. See **World regions** and
 #'   [gisco_countrycode].
-#' @param ext A character value with the extension of the file (default
+#' @param ext A character string with the extension of the file (default
 #'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 #'   "ext",TRUE)}.
 #'
-#' @return A [`sf`][sf::st_sf] object.
+#' @return An [`sf`][sf::st_sf] object.
 #'
 #' @details
 #'
@@ -89,7 +90,7 @@
 #'
 #' See [gisco_get_unit_country()] to download single-unit files.
 #'
-#' See [gisco_id_api_country()] to download via GISCO ID service API.
+#' See [gisco_id_api_country()] to download via the GISCO ID service API.
 #'
 #' @encoding UTF-8
 #' @export
@@ -169,11 +170,11 @@ gisco_get_countries <- function(
 
 #' Filter `sf` data by country and/or region
 #'
-#' @param data_sf An `sf` object.
+#' @param data_sf An [`sf`][sf::st_sf] object.
 #' @param country A character vector of country codes or names.
 #' @param region A character vector of region codes or names.
 #'
-#' @return An `sf` object filtered by country and/or region.
+#' @return An [`sf`][sf::st_sf] object filtered by country and/or region.
 #'
 #' @noRd
 filter_country_region <- function(data_sf, country = NULL, region = NULL) {

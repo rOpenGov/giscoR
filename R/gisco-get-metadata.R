@@ -77,7 +77,7 @@ metadata_url <- function(id, year, db = get_db()) {
 #'
 #' @param file_local Local CSV file path.
 #'
-#' @return A tibble.
+#' @return A [tibble][tibble::tbl_df].
 #' @noRd
 read_metadata_csv <- function(file_local) {
   meta_df <- read.csv(file_local, encoding = "UTF-8")

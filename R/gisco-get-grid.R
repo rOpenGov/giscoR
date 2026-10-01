@@ -22,7 +22,7 @@
 #' All grid geometries use [`EPSG:3035`](https://epsg.io/3035). Population
 #' columns are named `TOT_P_YYYY`, where `YYYY` is the reference year. To
 #' calculate population density, divide a population value by the cell area in
-#' square kilometres (`resolution^2`).
+#' square kilometers (`resolution^2`).
 #'
 #' The file sizes range from 428 KB (`resolution = 100`)
 #' to 1.7 GB (`resolution = 1`).

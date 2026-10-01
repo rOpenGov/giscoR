@@ -82,11 +82,13 @@ gisco_id_api_census_grid(
 )
 }
 \arguments{
-\item{x, y}{A character string or numeric value with the longitude and
-latitude coordinates to identify.}
+\item{x, y}{A character string or numeric value with the coordinates to
+identify, expressed in the CRS selected by \code{epsg}. For Geonames, use
+longitude and latitude in EPSG:4326.}
 
 \item{xmin, ymin, xmax, ymax}{A character string or numeric value with bounding
-box coordinates to identify all geonames within the box.}
+box coordinates in EPSG:4326 to identify geonames within the box. The
+extent must not exceed five degrees in either dimension.}
 
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
@@ -95,59 +97,75 @@ messages.}
 \strong{Details}.}
 
 \item{epsg}{A character string or numeric value with the EPSG code for the
-coordinate reference system.}
+coordinate reference system of the input coordinates and returned
+geometry. One of \code{4326}, \code{4258} or \code{3035}. This argument is sent as the
+API's \code{proj} parameter.}
 
-\item{nuts_id}{A character value with the NUTS ID code.}
+\item{nuts_id}{A character string with the NUTS ID code.}
 
-\item{nuts_level}{A character string with the NUTS level. One of \code{0},
-\code{1}, \code{2} or \code{3}.}
+\item{nuts_level}{A character string or numeric value with the NUTS level.
+One of \code{0}, \code{1}, \code{2} or \code{3}. This argument is sent as the API's \code{level}
+parameter. If \code{NULL}, the service uses level \code{3} for coordinate lookups.}
 
 \item{geometry}{A logical value indicating whether to return geometry. If
-\code{TRUE}, a \code{\link[sf:st_sf]{sf}} object is returned. If \code{FALSE}, a
+\code{TRUE}, an \code{\link[sf:st_sf]{sf}} object is returned. If \code{FALSE}, a
 \link[tibble:tbl_df]{tibble} is returned.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble} or a \code{\link[sf:st_sf]{sf}} object.
+A \link[tibble:tbl_df]{tibble} when \code{geometry = FALSE}, or an
+\code{\link[sf:st_sf]{sf}} object when \code{geometry = TRUE}. Geonames always returns
+an \code{\link[sf:st_sf]{sf}} object. Failed requests return \code{NULL}.
 }
 \description{
 Functions to interact with the \href{https://gisco-services.ec.europa.eu/id/api-docs/}{GISCO ID service API}, which returns
 attributes and, optionally, geometry for different datasets at specified
-longitude and latitude coordinates.
+coordinates in the selected coordinate reference system.
 
-Each available endpoint is implemented through a specific function. See
-\strong{Details}.
+Each endpoint has a corresponding function in \CRANpkg{giscoR}. See
+\strong{Details} for the lookup modes supported by these functions.
 }
 \details{
+The service also supports identifier lookups for other datasets and
+Geonames name searches. These lookup modes are not exposed by the
+corresponding functions in \CRANpkg{giscoR}. Only the NUTS function
+supports lookup by ID through \code{nuts_id}.
+
 The available endpoints are:
 \itemize{
 \item \code{gisco_id_api_geonames()}: Get geographic placenames from longitude and
 latitude coordinates or a bounding box.
-\item \code{gisco_id_api_nuts()}: Return NUTS regions from longitude and latitude
-coordinates or an ID. Accepted values for \code{year} are
-\Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("nuts")}.
+\item \code{gisco_id_api_nuts()}: Return NUTS regions from coordinates or an ID.
+Accepted values for \code{year}:
+\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+giscoR:::docs_id_years("nuts"))}.
 \item \code{gisco_id_api_lau()}: Return the ID and, optionally, geometry for Local
-Administrative Units (LAU) at specified longitude and latitude coordinates.
-Accepted values for \code{year} are
-\Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("lau")}.
+Administrative Units (LAU) at specified coordinates.
+Accepted values for \code{year}:
+\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+giscoR:::docs_id_years("lau"))}.
 \item \code{gisco_id_api_country()}: Return the ID and, optionally, geometry for
-countries at specified longitude and latitude coordinates. Accepted values
-for \code{year} are
-\Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("country")}.
+countries at specified coordinates. Accepted values
+for \code{year}:
+\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+giscoR:::docs_id_years("country"))}.
 \item \code{gisco_id_api_river_basin()}: Return the ID and, optionally, geometry
-for river basins at specified longitude and latitude coordinates, based on
+for river basins at specified coordinates, based on
 the Water Framework Directive (WFD) reference spatial datasets. Accepted
-values for \code{year} are
-\Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("riverbasin")}.
+values for \code{year}:
+\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+giscoR:::docs_id_years("riverbasin"))}.
 \item \code{gisco_id_api_biogeo_region()}: Return the ID and, optionally,
-geometry for biogeographical regions at specified longitude and latitude
-coordinates. The biogeographical regions dataset contains the official
+geometry for biogeographical regions at specified coordinates. The
+biogeographical regions dataset contains the official
 delineations used in the Habitats Directive (92/43/EEC) and for the
-EMERALD Network. Accepted values for \code{year} are
-\Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("biogeoregion")}.
+EMERALD Network. Accepted values for \code{year}:
+\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+giscoR:::docs_id_years("biogeoregion"))}.
 \item \code{gisco_id_api_census_grid()}: Return the ID and, optionally, geometry
-for census grid cells at specified longitude and latitude coordinates.
-Accepted values for \code{year} are
-\Sexpr[stage=render,results=rd]{giscoR:::docs_id_years("censusgrid")}.
+for census grid cells at specified coordinates.
+Accepted values for \code{year}:
+\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
+giscoR:::docs_id_years("censusgrid"))}.
 }
 }
 \examples{

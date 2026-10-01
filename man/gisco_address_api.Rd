@@ -14,6 +14,7 @@
 \alias{gisco_address_api_housenumbers}
 \alias{gisco_address_api_postcodes}
 \alias{gisco_address_api_copyright}
+\alias{gisco_address_api_most_populated_cell}
 \alias{gisco_addressapi_bbox}
 \alias{gisco_addressapi_cities}
 \alias{gisco_addressapi_copyright}
@@ -36,7 +37,8 @@ gisco_address_api_search(
   road = NULL,
   housenumber = NULL,
   postcode = NULL,
-  verbose = FALSE
+  verbose = FALSE,
+  q = NULL
 )
 
 gisco_address_api_reverse(x, y, country = NULL, verbose = FALSE)
@@ -80,15 +82,23 @@ gisco_address_api_postcodes(
 )
 
 gisco_address_api_copyright(verbose = FALSE)
+
+gisco_address_api_most_populated_cell(
+  province = NULL,
+  city = NULL,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{country}{A country code (\code{country = "LU"}).}
 
-\item{province}{A province within a country. For a list of provinces within
-a country, use the provinces endpoint
+\item{province}{A province within a country. This is a generic term whose
+administrative level varies by country. For a list of provinces within a
+country, use the provinces endpoint
 (\code{gisco_address_api_provinces(country = "LU")}).}
 
-\item{city}{A city within a province. For a list of cities within a
+\item{city}{A city within a province. This is a generic term whose
+administrative level varies by country. For a list of cities within a
 province, use the cities endpoint
 (\code{gisco_address_api_cities(province = "capellen")}).}
 
@@ -101,39 +111,66 @@ province, use the cities endpoint
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
 
-\item{x, y}{Longitude and latitude coordinates to convert into a
-human-readable address.}
+\item{q}{A single non-empty string for a freeform address search, or \code{NULL}
+for a structured search. The string can contain a street, house number,
+city or postcode. Freeform queries do not support approximate matching.}
+
+\item{x, y}{Longitude and latitude coordinates to convert into
+human-readable addresses. Reverse geocoding returns at most five results.}
 }
 \value{
 A \link[tibble:tbl_df]{tibble} in most cases, except
 \code{gisco_address_api_search()}, \code{gisco_address_api_reverse()} and
-\code{gisco_address_api_bbox()}, which return a \code{\link[sf:st_sf]{sf}} object.
+\code{gisco_address_api_bbox()}, which return an \code{\link[sf:st_sf]{sf}} object when
+geometry is available. Searches with no results return an empty
+\link[tibble:tbl_df]{tibble}. \code{gisco_address_api_bbox()} returns \code{NULL} when
+no bounding box is found. Failed requests return \code{NULL}.
+
+\code{gisco_address_api_most_populated_cell()} returns a one-row
+\link[tibble:tbl_df]{tibble} for the most populated census grid cell, or \code{NULL}
+when no cell is found or the request fails. Its numeric \code{X} and \code{Y} columns
+preserve the API coordinates, whose CRS is not specified in the API
+documentation.
 }
 \description{
 Functions to interact with the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}{GISCO Address API}, which
 supports geocoding and reverse geocoding with a pan-European address
 database.
 
-Each endpoint is implemented through a specific function. See \strong{Details}.
+Each endpoint supported by \CRANpkg{giscoR} has a specific function. See
+\strong{Details}. Search supports structured queries and freeform queries with
+\code{q}. Autocomplete through \verb{/search?suggest=} is not implemented in
+\CRANpkg{giscoR}.
 
-The API supports fuzzy searching, also referred to as approximate string
-matching, for all arguments of each endpoint.
+Structured searches support approximate string matching. The API's
+freeform query parameter \code{q} does not support approximate string matching.
 }
 \details{
-The following table describes the API endpoints, based on the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API endpoint documentation}:\tabular{ll}{
+For \code{gisco_address_api_most_populated_cell()}, supply a non-empty string
+for \code{province} or \code{city}. If both are supplied, the search is restricted
+to the city within the province.
+
+The following table describes the endpoints supported by \CRANpkg{giscoR}, based on
+the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/endpoints}{GISCO Address API endpoint documentation}:\tabular{ll}{
    \strong{Endpoint} \tab \strong{Description} \cr
    \verb{/countries} \tab All country codes compatible with the GISCO Address API. Check the coverage map for available countries and see the \href{https://style-guide.europa.eu/en/content/-/isg/topic?identifier=annex-a5-list-countries-territories-currencies}{list of official country codes}. \cr
    \verb{/provinces} \tab All provinces within the specified country. The endpoint can also retrieve the province for a specified city. \cr
    \verb{/cities} \tab All cities within a specified province or country. \cr
-   \verb{/roads} \tab All roads or streets within a specified city. \cr
-   \verb{/housenumbers} \tab All house numbers or names within the specified road. In some countries, an address may not have a road component. If a road is not specified, \strong{the API returns at most 1,000 house numbers}. \cr
-   \verb{/postcodes} \tab All postcodes within the specified address component, such as country, province or city. \cr
-   \verb{/search} \tab Structured queries to the address database. Various argument combinations can retrieve addresses that share an address component. \strong{The API returns at most 100 addresses}. \cr
-   \verb{/reverse} \tab A structured address for longitude and latitude coordinates. \cr
+   \verb{/roads} \tab Roads or streets within a specified city, limited to 1,000 results. \cr
+   \verb{/housenumbers} \tab House numbers or names within the specified road, limited to 1,000 results. In some countries, an address may not have a road component, so the road can be omitted. \cr
+   \verb{/postcodes} \tab Postcodes within the specified address component, such as country, province or city, limited to 1,000 results. \cr
+   \verb{/search} \tab Structured or freeform queries to the address database. Various argument combinations can retrieve addresses that share an address component. \strong{The API returns at most 1,000 addresses}. \cr
+   \verb{/reverse} \tab Structured addresses for longitude and latitude coordinates, limited to five results. \cr
    \verb{/bbox} \tab A \href{https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry}{WKT} bounding box for an address component, depending on the specified arguments. \cr
-   \verb{/copyright} \tab The copyright text for each available country in the Address API. \cr
+   \verb{/most-populated-cell} \tab The most populated census grid cell for a province or city. If both are supplied, the search is restricted to the city within the province. \cr
+   \verb{/copyright} \tab The copyright text for each available country in the GISCO Address API. \cr
 }
 
+
+Use \code{q} in \code{gisco_address_api_search()} for a freeform search. Unlike
+structured searches, freeform queries do not support approximate matching.
+Autocomplete through \verb{/search?suggest=} is not implemented in
+\CRANpkg{giscoR}.
 
 The resulting object may include these variables:\tabular{ll}{
    \strong{Property name} \tab \strong{Description} \cr
@@ -142,12 +179,13 @@ The resulting object may include these variables:\tabular{ll}{
    \code{L0} \tab Level 0 of the API administrative levels. Values are two-character country codes. \cr
    \code{L1} \tab Level 1 of the API administrative levels. Values are province names. "Province" is a generic term that may vary by country. \cr
    \code{L2} \tab Level 2 of the API administrative levels. Values are town or city names. "City" is a generic term that may vary by country. \cr
+   \code{I3} \tab ISO 3166-1 alpha-3 country code. \cr
    \code{PC} \tab Postal code. \cr
    \code{N0} \tab NUTS 0. \cr
    \code{N1} \tab NUTS 1. \cr
    \code{N2} \tab NUTS 2. \cr
    \code{N3} \tab NUTS 3. \cr
-   \code{X} and \code{Y} \tab Longitude and latitude coordinates of the address point. \cr
+   \code{X} and \code{Y} \tab Numeric coordinates extracted from the API's \code{XY} pair. Search and reverse geocoding return longitude and latitude. The most-populated-cell function preserves the API coordinates, whose CRS is not specified in the API documentation. \cr
    \code{OL} \tab The \href{https://github.com/google/open-location-code}{Open Location Code} for the address. \cr
 }
 }
@@ -166,10 +204,16 @@ struct <- gisco_address_api_search(
 
 struct
 
+# Freeform search.
+gisco_address_api_search(q = "alphonse weicker luxembourg")
+
 # Reverse geocoding.
 reverse <- gisco_address_api_reverse(x = struct$X[1], y = struct$Y[1])
 
 reverse
+
+# Most populated census grid cell in Madrid.
+gisco_address_api_most_populated_cell(city = "Madrid")
 \dontshow{\}) # examplesIf}
 }
 \seealso{

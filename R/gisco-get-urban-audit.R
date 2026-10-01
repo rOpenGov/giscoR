@@ -17,7 +17,7 @@
 #'   "year",TRUE)}.
 #'
 #' @param spatialtype A character string with the type of geometry to return.
-#'   Options available are:
+#'   Available values are:
 #' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
 #' - `"LB"`: Labels - `POINT` object.
 #'
@@ -25,7 +25,7 @@
 #'   are `"all"` (the default), which downloads the full dataset, `"CITIES"`,
 #'   `"FUA"` and, for versions prior to `year = 2020`, `"GREATER_CITIES"`,
 #'   `"CITY"`, `"KERN"` or `"LUZ"`.
-#' @param ext A character value with the extension of the file (default
+#' @param ext A character string with the extension of the file (default
 #'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("urban_audit",
 #'   "ext",TRUE)}.

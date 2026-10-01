@@ -7,7 +7,8 @@
 #' @param operator A character string used to combine filters.
 #' @param post_process Optional function applied after reading the file.
 #'
-#' @return An `sf` object, or `NULL` when the dataset cannot be read.
+#' @return An [`sf`][sf::st_sf] object or `NULL` when the dataset cannot be
+#' read.
 #' @noRd
 read_gisco_dataset <- function(
   url,
@@ -59,11 +60,12 @@ read_gisco_dataset <- function(
 #' @inheritParams download_url
 #' @param filename A character string with the requested file name.
 #' @param pattern A regular expression matching the packaged dataset file.
-#' @param data An `sf` object included in the package.
+#' @param data An [`sf`][sf::st_sf] object included in the package.
 #' @param data_name A character string with the packaged dataset object name.
 #' @param post_process Optional function applied before returning the data.
 #'
-#' @return An `sf` object, or `NULL` when the packaged dataset does not match.
+#' @return An [`sf`][sf::st_sf] object or `NULL` when the packaged dataset does
+#' not match.
 #' @noRd
 read_packaged_gisco_dataset <- function(
   filename,

@@ -43,7 +43,7 @@
 #'   `gisco_set_cache_dir(cache_dir = "a/path/here", install = TRUE)`, which
 #'   keeps the path across \R sessions.
 #' - For caching specific files, use the `cache_dir` argument in the
-#'   corresponding function. See example in [gisco_get_nuts()].
+#'   corresponding function. See the example in [gisco_get_nuts()].
 #'
 #' Sometimes cached files may be corrupt. In that case, try downloading the
 #' data by setting `update_cache = TRUE` in the corresponding function.
