@@ -23,7 +23,7 @@ accommodation services required by inpatients."><meta property="og:image" conten
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,7 +98,8 @@ file. One of
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
 <dd><p>A logical value indicating whether to cache results. Defaults
-to <code>TRUE</code>. See <strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
+to <code>TRUE</code>. See the <strong>Caching strategies</strong> section in
+<code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -109,7 +110,7 @@ download.</p></dd>
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
 <dd><p>A character string with a path to a cache directory. See
-<strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
+the <strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -125,12 +126,12 @@ vector of Eurostat country codes. See also <code><a href="https://rdrr.io/pkg/co
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
+    <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Files are distributed in <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>.</p>
-<p>The following table describes the healthcare service attributes:</p><table class="table table"><tr><td><strong>Attribute</strong></td><td><strong>Description</strong></td></tr><tr><td><code>id</code></td><td>The healthcare service identifier, based on national identification codes when available.</td></tr><tr><td><code>hospital_name</code></td><td>The name of the healthcare institution.</td></tr><tr><td><code>site_name</code></td><td>The name of a specific site or branch of the healthcare institution.</td></tr><tr><td><code>lat</code></td><td>Latitude (WGS 84).</td></tr><tr><td><code>lon</code></td><td>Longitude (WGS 84).</td></tr><tr><td><code>street</code></td><td>Street name.</td></tr><tr><td><code>house_number</code></td><td>House number.</td></tr><tr><td><code>postcode</code></td><td>Postcode.</td></tr><tr><td><code>address</code></td><td>Address information when the different components of the address are not separated in the source.</td></tr><tr><td><code>city</code></td><td>City name. In some sources, this refers to a region or municipality.</td></tr><tr><td><code>cntr_id</code></td><td>Country code (2 letters, ISO 3166-1 alpha-2).</td></tr><tr><td><code>emergency</code></td><td><code>yes</code> or <code>no</code>, indicating whether the healthcare site provides emergency medical services.</td></tr><tr><td><code>cap_beds</code></td><td>Number of beds, the most common capacity measure.</td></tr><tr><td><code>cap_prac</code></td><td>Number of practitioners.</td></tr><tr><td><code>cap_rooms</code></td><td>Number of rooms.</td></tr><tr><td><code>facility_type</code></td><td>Type of healthcare service, such as psychiatric hospital, based on national classification.</td></tr><tr><td><code>public_private</code></td><td>Public or private status of the healthcare service.</td></tr><tr><td><code>list_specs</code></td><td>List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V).</td></tr><tr><td><code>tel</code></td><td>Telephone number.</td></tr><tr><td><code>email</code></td><td>Email address.</td></tr><tr><td><code>url</code></td><td>URL for the institution's website.</td></tr><tr><td><code>ref_date</code></td><td>The reference date (<code>DD/MM/YYYY</code>) for the data.</td></tr><tr><td><code>pub_date</code></td><td>The publication date of the dataset by Eurostat (<code>DD/MM/YYYY</code>).</td></tr><tr><td><code>geo_qual</code></td><td>Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded.</td></tr><tr><td><code>comments</code></td><td>Additional information on the healthcare service.</td></tr></table></div>
+<p>The following table describes the healthcare service attributes:</p><table class="table table"><tr><td><strong>Attribute</strong></td><td><strong>Description</strong></td></tr><tr><td><code>id</code></td><td>The healthcare service identifier, based on national identification codes when available.</td></tr><tr><td><code>hospital_name</code></td><td>The name of the healthcare institution.</td></tr><tr><td><code>site_name</code></td><td>The name of a specific site or branch of the healthcare institution.</td></tr><tr><td><code>lat</code></td><td>Latitude (WGS 84).</td></tr><tr><td><code>lon</code></td><td>Longitude (WGS 84).</td></tr><tr><td><code>street</code></td><td>Street name.</td></tr><tr><td><code>house_number</code></td><td>House number.</td></tr><tr><td><code>postcode</code></td><td>Postcode.</td></tr><tr><td><code>address</code></td><td>Address information when the source does not separate address components.</td></tr><tr><td><code>city</code></td><td>City name. In some sources, this refers to a region or municipality.</td></tr><tr><td><code>cntr_id</code></td><td>Country code (2 letters, ISO 3166-1 alpha-2).</td></tr><tr><td><code>emergency</code></td><td><code>yes</code> or <code>no</code>, indicating whether the healthcare site provides emergency medical services.</td></tr><tr><td><code>cap_beds</code></td><td>Number of beds, the most common capacity measure.</td></tr><tr><td><code>cap_prac</code></td><td>Number of practitioners.</td></tr><tr><td><code>cap_rooms</code></td><td>Number of rooms.</td></tr><tr><td><code>facility_type</code></td><td>Type of healthcare service, such as a psychiatric hospital, based on national classification.</td></tr><tr><td><code>public_private</code></td><td>Public or private status of the healthcare service.</td></tr><tr><td><code>list_specs</code></td><td>List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V).</td></tr><tr><td><code>tel</code></td><td>Telephone number.</td></tr><tr><td><code>email</code></td><td>Email address.</td></tr><tr><td><code>url</code></td><td>URL for the institution's website.</td></tr><tr><td><code>ref_date</code></td><td>The reference date (<code>DD/MM/YYYY</code>) for the data.</td></tr><tr><td><code>pub_date</code></td><td>The publication date of the dataset by Eurostat (<code>DD/MM/YYYY</code>).</td></tr><tr><td><code>geo_qual</code></td><td>Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded.</td></tr><tr><td><code>comments</code></td><td>Additional information on the healthcare service.</td></tr></table></div>
     <div class="section level2">
     <h2 id="copyright">Copyright<a class="anchor" aria-label="anchor" href="#copyright"></a></h2>
     <p>The general Eurostat copyright and license provisions apply. Detailed

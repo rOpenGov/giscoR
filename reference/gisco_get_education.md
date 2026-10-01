@@ -31,7 +31,7 @@ gisco_get_education(
 - cache:
 
   A logical value indicating whether to cache results. Defaults to
-  `TRUE`. See **Caching strategies** section in
+  `TRUE`. See the **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
@@ -41,7 +41,7 @@ gisco_get_education(
 
 - cache_dir:
 
-  A character string with a path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See the **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
@@ -58,7 +58,7 @@ gisco_get_education(
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
@@ -70,14 +70,14 @@ The following table describes the education service attributes:
 |----|----|
 | **Attribute** | **Description** |
 | `id` | The education service identifier, based on national identification codes when available. |
-| `name` | The name of the education institution. |
-| `site_name` | The name of a specific site or branch of the education institution. |
+| `name` | The name of the educational institution. |
+| `site_name` | The name of a specific site or branch of the educational institution. |
 | `lat` | Latitude (WGS 84). |
 | `lon` | Longitude (WGS 84). |
 | `street` | Street name. |
 | `house_number` | House number. |
 | `postcode` | Postcode. |
-| `address` | Address information when the different components of the address are not separated in the source. |
+| `address` | Address information when the source does not separate address components. |
 | `city` | City name. In some sources, this refers to a region or municipality. |
 | `cntr_id` | Country code (2 letters, ISO 3166-1 alpha-2). |
 | `levels` | Education levels represented by a single integer or range, using ISCED 2011. |
@@ -89,7 +89,7 @@ The following table describes the education service attributes:
 | `tel` | Telephone number. |
 | `email` | Email address. |
 | `url` | URL for the institution's website. |
-| `ref_date` | The reference date (`DD/MM/YYYY`) for the data. The dataset represents the state on this date. |
+| `ref_date` | The reference date (`DD/MM/YYYY`) for the data. |
 | `pub_date` | The publication date of the dataset by Eurostat (`DD/MM/YYYY`). |
 | `geo_qual` | Geolocation quality indicator: 1 = Good, 2 = Medium, 3 = Low, 4 = From source, -1 = Unknown, -2 = Not geocoded. |
 | `comments` | Additional information on the education service. |

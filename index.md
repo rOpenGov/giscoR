@@ -5,8 +5,8 @@ that provides a simple interface to the Eurostat [GISCO geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco). It lets you
 download and work with global and European geospatial datasets directly
 in **R**, including country boundaries, NUTS regions, administrative
-units, statistical units, transport networks and basic service
-locations.
+units such as Local Administrative Units (LAU), statistical units,
+transport networks and basic service locations.
 
 ## Key features
 
@@ -14,7 +14,7 @@ locations.
   administrative units, statistical units, transport networks and basic
   service locations.
 - For compatible administrative and statistical datasets, select among
-  resolutions `60M`, `20M`, `10M`, `03M` and `01M` and coordinate
+  resolutions `60M`, `20M`, `10M`, `03M` and `01M`. Choose coordinate
   reference systems **EPSG:4326**, **EPSG:3035** and **EPSG:3857**.
 - Use each grid, transport or basic service dataset in its documented
   format and coordinate reference system.
@@ -45,7 +45,7 @@ install.packages("giscoR")
 
 ## Quick example
 
-This script highlights selected **giscoR** features:
+This example compares country boundaries at different resolutions:
 
 ``` r
 
@@ -100,7 +100,7 @@ resolutions](reference/figures/README-resolution-map-1.png)
 ## Advanced example: thematic maps
 
 This example shows a thematic map created with the **ggplot2** package.
-The statistical data are obtained with the **eurostat** package,
+The statistical data are retrieved with the **eurostat** package,
 following the work of [Milos Popovic](https://milospopovic.net/).
 
 Start by downloading the corresponding geospatial data:
@@ -233,7 +233,7 @@ gisco_set_cache_dir("./path/to/location")
 
 Files are stored in the local cache for faster repeated access.
 
-## Contribute
+## Contributing
 
 See the [**GitHub** repository](https://github.com/rOpenGov/giscoR/) for
 source code.
@@ -262,9 +262,9 @@ A **BibTeX** entry for **LaTeX** users is:
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2026},
-  version = {1.2.0},
+  version = {1.3.0},
   url = {https://ropengov.github.io/giscoR/},
-  abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, NUTS regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is not officially related to or endorsed by Eurostat.},
+  abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, Nomenclature of Territorial Units for Statistics (NUTS) regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is neither affiliated with nor endorsed by Eurostat.},
 }
 ```
 

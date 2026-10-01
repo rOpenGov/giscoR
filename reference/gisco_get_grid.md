@@ -33,7 +33,7 @@ gisco_get_grid(
 
 - cache_dir:
 
-  A character string with a path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See the **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
@@ -48,7 +48,7 @@ gisco_get_grid(
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
@@ -60,7 +60,7 @@ tabular CSV and Parquet files, which this function does not download.
 All grid geometries use [`EPSG:3035`](https://epsg.io/3035). Population
 columns are named `TOT_P_YYYY`, where `YYYY` is the reference year. To
 calculate population density, divide a population value by the cell area
-in square kilometres (`resolution^2`).
+in square kilometers (`resolution^2`).
 
 The file sizes range from 428 KB (`resolution = 100`) to 1.7 GB
 (`resolution = 1`).

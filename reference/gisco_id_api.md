@@ -3,10 +3,11 @@
 Functions to interact with the [GISCO ID service
 API](https://gisco-services.ec.europa.eu/id/api-docs/), which returns
 attributes and, optionally, geometry for different datasets at specified
-longitude and latitude coordinates.
+coordinates in the selected coordinate reference system.
 
-Each available endpoint is implemented through a specific function. See
-**Details**.
+Each endpoint has a corresponding function in
+[giscoR](https://CRAN.R-project.org/package=giscoR). See **Details** for
+the lookup modes supported by these functions.
 
 ## Usage
 
@@ -86,13 +87,15 @@ gisco_id_api_census_grid(
 
 - x, y:
 
-  A character string or numeric value with the longitude and latitude
-  coordinates to identify.
+  A character string or numeric value with the coordinates to identify,
+  expressed in the CRS selected by `epsg`. For Geonames, use longitude
+  and latitude in EPSG:4326.
 
 - xmin, ymin, xmax, ymax:
 
-  A character string or numeric value with bounding box coordinates to
-  identify all geonames within the box.
+  A character string or numeric value with bounding box coordinates in
+  EPSG:4326 to identify geonames within the box. The extent must not
+  exceed five degrees in either dimension.
 
 - verbose:
 
@@ -106,19 +109,23 @@ gisco_id_api_census_grid(
 - epsg:
 
   A character string or numeric value with the EPSG code for the
-  coordinate reference system.
+  coordinate reference system of the input coordinates and returned
+  geometry. One of `4326`, `4258` or `3035`. This argument is sent as
+  the API's `proj` parameter.
 
 - nuts_id:
 
-  A character value with the NUTS ID code.
+  A character string with the NUTS ID code.
 
 - nuts_level:
 
-  A character string with the NUTS level. One of `0`, `1`, `2` or `3`.
+  A character string or numeric value with the NUTS level. One of `0`,
+  `1`, `2` or `3`. This argument is sent as the API's `level` parameter.
+  If `NULL`, the service uses level `3` for coordinate lookups.
 
 - geometry:
 
-  A logical value indicating whether to return geometry. If `TRUE`, a
+  A logical value indicating whether to return geometry. If `TRUE`, an
   [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object is
   returned. If `FALSE`, a
   [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) is
@@ -126,46 +133,55 @@ gisco_id_api_census_grid(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
-a [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+when `geometry = FALSE`, or an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object when
+`geometry = TRUE`. Geonames always returns an
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) object. Failed
+requests return `NULL`.
 
 ## Details
+
+The service also supports identifier lookups for other datasets and
+Geonames name searches. These lookup modes are not exposed by the
+corresponding functions in
+[giscoR](https://CRAN.R-project.org/package=giscoR). Only the NUTS
+function supports lookup by ID through `nuts_id`.
 
 The available endpoints are:
 
 - `gisco_id_api_geonames()`: Get geographic placenames from longitude
   and latitude coordinates or a bounding box.
 
-- `gisco_id_api_nuts()`: Return NUTS regions from longitude and latitude
-  coordinates or an ID. Accepted values for `year` are are `"2024"`,
-  `"2021"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
-
-- `gisco_id_api_lau()`: Return the ID and, optionally, geometry for
-  Local Administrative Units (LAU) at specified longitude and latitude
-  coordinates. Accepted values for `year` are are `"2024"`, `"2023"`,
-  `"2022"`, `"2021"`, `"2020"`, `"2019"`, `"2018"`, `"2017"`, `"2016"`,
-  `"2015"`, `"2014"`, `"2013"`, `"2012"`, `"2011"` .
-
-- `gisco_id_api_country()`: Return the ID and, optionally, geometry for
-  countries at specified longitude and latitude coordinates. Accepted
-  values for `year` are are `"2024"`, `"2020"`, `"2016"`, `"2013"`,
+- `gisco_id_api_nuts()`: Return NUTS regions from coordinates or an ID.
+  Accepted values for `year`: `"2024"`, `"2021"`, `"2016"`, `"2013"`,
   `"2010"`, `"2006"` .
 
+- `gisco_id_api_lau()`: Return the ID and, optionally, geometry for
+  Local Administrative Units (LAU) at specified coordinates. Accepted
+  values for `year`: `"2024"`, `"2023"`, `"2022"`, `"2021"`, `"2020"`,
+  `"2019"`, `"2018"`, `"2017"`, `"2016"`, `"2015"`, `"2014"`, `"2013"`,
+  `"2012"`, `"2011"` .
+
+- `gisco_id_api_country()`: Return the ID and, optionally, geometry for
+  countries at specified coordinates. Accepted values for `year`:
+  `"2024"`, `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
+
 - `gisco_id_api_river_basin()`: Return the ID and, optionally, geometry
-  for river basins at specified longitude and latitude coordinates,
-  based on the Water Framework Directive (WFD) reference spatial
-  datasets. Accepted values for `year` are are `"2024"`, `"2023"`,
-  `"2022"`, `"2021"`, `"2020"`, `"2019"` .
+  for river basins at specified coordinates, based on the Water
+  Framework Directive (WFD) reference spatial datasets. Accepted values
+  for `year`: `"2024"`, `"2023"`, `"2022"`, `"2021"`, `"2020"`, `"2019"`
+  .
 
 - `gisco_id_api_biogeo_region()`: Return the ID and, optionally,
-  geometry for biogeographical regions at specified longitude and
-  latitude coordinates. The biogeographical regions dataset contains the
-  official delineations used in the Habitats Directive (92/43/EEC) and
-  for the EMERALD Network. Accepted values for `year` are is `"2016"` .
+  geometry for biogeographical regions at specified coordinates. The
+  biogeographical regions dataset contains the official delineations
+  used in the Habitats Directive (92/43/EEC) and for the EMERALD
+  Network. Accepted values for `year`: `"2016"` .
 
 - `gisco_id_api_census_grid()`: Return the ID and, optionally, geometry
-  for census grid cells at specified longitude and latitude coordinates.
-  Accepted values for `year` are is `"2021"` .
+  for census grid cells at specified coordinates. Accepted values for
+  `year`: `"2021"` .
 
 ## See also
 
@@ -187,21 +203,21 @@ gisco_id_api_geonames(x = -2.5, y = 43.06)
 #> Simple feature collection with 10 features and 8 fields
 #> Geometry type: POINT
 #> Dimension:     XY
-#> Bounding box:  xmin: -2.534611 ymin: 43.03257 xmax: -2.491494 ymax: 43.07773
+#> Bounding box:  xmin: -2.520847 ymin: 43.06455 xmax: -2.491494 ymax: 43.07037
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 10 × 9
 #>    name       type  country language localtype distanceMeters endlifespanversion
 #>  * <chr>      <chr> <chr>   <chr>    <chr>              <dbl> <chr>             
-#>  1 Mondragón  admi… ES      spa      Administ…           809. None              
-#>  2 Arrasate   admi… ES      baq      Administ…           809. None              
-#>  3 Arrasate/… popu… ES      spa      BUILTUPP            858. None              
-#>  4 Garagartza popu… ES      baq      BUILTUPP           2052. None              
-#>  5 Aretxabal… popu… ES      baq      BUILTUPP           3082. None              
-#>  6 Gesalibar  popu… ES      baq      BUILTUPP           2482. None              
-#>  7 Aramaio I… hydr… ES      baq      Watercou…          2822. None              
-#>  8 Rio Arama… hydr… ES      spa      Watercou…          2822. None              
-#>  9 Kobato Er… hydr… ES      baq      Watercou…          3339. None              
-#> 10 Arroyo Ko… hydr… ES      spa      Watercou…          3339. None              
+#>  1 Arrasate   admi… Spain   baq      Administ…           809. NA                
+#>  2 Mondragón  admi… Spain   spa      Administ…           809. NA                
+#>  3 Arrasate   admi… Spain   baq      Administ…           809. NA                
+#>  4 Arrasate   admi… Spain   baq      Administ…           809. NA                
+#>  5 Mondragón  admi… Spain   spa      Administ…           809. NA                
+#>  6 Mondragón  admi… Spain   spa      Administ…           809. NA                
+#>  7 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
+#>  8 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
+#>  9 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
+#> 10 Garagartza popu… Spain   baq      BUILTUPP           2052. NA                
 #> # ℹ 2 more variables: beginlifespanversion <date>, geometry <POINT [°]>
 
 lau <- gisco_id_api_lau(x = -2.5, y = 43.06)

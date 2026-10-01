@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +50,22 @@
       <small>Source: <a href="https://github.com/rOpenGov/giscoR/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.3.0" id="giscor-130">giscoR 1.3.0<a class="anchor" aria-label="anchor" href="#giscor-130"></a></h2>
+<ul><li>Cached downloads now preserve the previous file when an update fails and replace it only after the new download completes successfully.</li>
+<li>Logical flags now reject missing and non-scalar values with a <code>giscoR_error</code> condition.</li>
+<li>Downloads now attempt the requested GISCO resource directly instead of relying on a generic connectivity check, improving support for proxied connections (<a href="https://github.com/rOpenGov/giscoR/issues/139" class="external-link">#139</a>).</li>
+<li>
+<code><a href="../reference/gisco_address_api.html">gisco_address_api_most_populated_cell()</a></code> retrieves the most populated census grid cell for a province or city, preserving the API coordinates in numeric <code>X</code> and <code>Y</code> columns of a tibble.</li>
+<li>
+<code><a href="../reference/gisco_address_api.html">gisco_address_api_search()</a></code> now supports freeform address searches with the <code>q</code> argument.</li>
+<li>
+<code><a href="../reference/gisco_db.html">?gisco_db</a></code> is updated.</li>
+<li>
+<code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code> now forwards <code>cache_dir</code> to its replacement single-unit download function.</li>
+<li>
+<code>gisco_id_api_*()</code> functions with an <code>epsg</code> argument now send it as <code>proj</code>, honoring the input and output CRS, and <code><a href="../reference/gisco_id_api.html">gisco_id_api_nuts()</a></code> sends <code>nuts_level</code> as <code>level</code>, honoring the requested NUTS level.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.0" id="giscor-120">giscoR 1.2.0<a class="anchor" aria-label="anchor" href="#giscor-120"></a></h2><p class="text-muted">CRAN release: 2026-08-27</p>
 <ul><li>

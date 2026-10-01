@@ -3,7 +3,7 @@
 ### Get started
 
 Learn the main **giscoR** workflow for downloading GISCO geospatial
-data, caching files and creating maps with `sf` objects.
+data, caching files and creating maps with **sf** objects.
 
 - [Get started with
   giscoR](https://ropengov.github.io/giscoR/articles/giscoR.md):
@@ -18,5 +18,5 @@ functions.
 - [GISCO APIs with
   giscoR](https://ropengov.github.io/giscoR/articles/apis.md):
 
-  Use the GISCO ID service API and Address API from R when you need
+  Use the GISCO ID service API and GISCO Address API from R for
   geocoding, reverse geocoding or feature lookup from coordinates.

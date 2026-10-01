@@ -1,7 +1,7 @@
 # Attribution for administrative and statistical GISCO data
 
-Get the legal text to use for administrative and statistical data
-downloaded from GISCO. See section **Copyright**.
+Get the attribution text to use for administrative and statistical data
+downloaded from GISCO. See the **Copyright** section.
 
 For other datasets you may follow the [Eurostat general copyright notice
 and license
@@ -17,7 +17,7 @@ gisco_attributions(lang = "en", copyright = FALSE)
 
 - lang:
 
-  A character value with the language (two-letter ISO code). See
+  A character string with the language (two-letter ISO code). See
   [countrycode::codelist](https://rdrr.io/pkg/countrycode/man/codelist.html)
   and **Details**.
 

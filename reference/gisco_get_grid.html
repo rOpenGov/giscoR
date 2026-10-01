@@ -17,7 +17,7 @@ selected reference years."><meta property="og:image" content="https://ropengov.g
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@ selected reference years.</p>
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
 <dd><p>A character string with a path to a cache directory. See
-<strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
+the <strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -108,7 +108,7 @@ messages.</p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
+    <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -119,7 +119,7 @@ CSV and Parquet files, which this function does not download.</p>
 <p>All grid geometries use <a href="https://epsg.io/3035" class="external-link"><code>EPSG:3035</code></a>. Population
 columns are named <code>TOT_P_YYYY</code>, where <code>YYYY</code> is the reference year. To
 calculate population density, divide a population value by the cell area in
-square kilometres (<code>resolution^2</code>).</p>
+square kilometers (<code>resolution^2</code>).</p>
 <p>The file sizes range from 428 KB (<code>resolution = 100</code>)
 to 1.7 GB (<code>resolution = 1</code>).</p>
     </div>

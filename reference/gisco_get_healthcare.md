@@ -34,7 +34,7 @@ gisco_get_healthcare(
 - cache:
 
   A logical value indicating whether to cache results. Defaults to
-  `TRUE`. See **Caching strategies** section in
+  `TRUE`. See the **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
@@ -44,7 +44,7 @@ gisco_get_healthcare(
 
 - cache_dir:
 
-  A character string with a path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See the **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
@@ -61,7 +61,7 @@ gisco_get_healthcare(
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 
@@ -80,14 +80,14 @@ The following table describes the healthcare service attributes:
 | `street` | Street name. |
 | `house_number` | House number. |
 | `postcode` | Postcode. |
-| `address` | Address information when the different components of the address are not separated in the source. |
+| `address` | Address information when the source does not separate address components. |
 | `city` | City name. In some sources, this refers to a region or municipality. |
 | `cntr_id` | Country code (2 letters, ISO 3166-1 alpha-2). |
 | `emergency` | `yes` or `no`, indicating whether the healthcare site provides emergency medical services. |
 | `cap_beds` | Number of beds, the most common capacity measure. |
 | `cap_prac` | Number of practitioners. |
 | `cap_rooms` | Number of rooms. |
-| `facility_type` | Type of healthcare service, such as psychiatric hospital, based on national classification. |
+| `facility_type` | Type of healthcare service, such as a psychiatric hospital, based on national classification. |
 | `public_private` | Public or private status of the healthcare service. |
 | `list_specs` | List of specialties recognized in the EU and EEA according to the 2005 EU Directive (Annex V). |
 | `tel` | Telephone number. |

@@ -9,7 +9,7 @@ functions, such as
 or
 [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
 These functions download complete GISCO datasets and return
-[**sf**](https://r-spatial.github.io/sf/reference/sf.html) objects that
+[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects that
 can be filtered, joined and mapped locally.
 
 The GISCO APIs are useful when a workflow starts from a coordinate,
@@ -20,17 +20,21 @@ complete dataset. **giscoR** includes wrappers for two API families:
 - `gisco_address_api_*()` functions query the GISCO Address API.
 
 These functions use live GISCO services. Results can change as services
-and source datasets are updated, and unavailable services return `NULL`.
+and source datasets are updated. Calls to unavailable services return
+`NULL`.
 
 ## GISCO ID service API
 
 The GISCO ID service API identifies GISCO features from coordinates or
 IDs. It is useful when you have a point location and need to know which
-NUTS region, LAU, country, river basin, biogeographical region or census
-grid cell contains it.
+NUTS region, Local Administrative Unit (LAU), country, river basin,
+biogeographical region or census grid cell contains it. Coordinates must
+use the CRS selected by `epsg`, which defaults to EPSG:4326. Returned
+geometries also use this CRS. The package sends `epsg` as the API
+parameter `proj` and `nuts_level` as `level`.
 
 For example, the following code queries the Basque Country coordinates
-used in the package examples and compares the matching NUTS and LAU
+used in the package examples and compares the matching NUTS 3 and LAU
 geometries.
 
 ``` r
@@ -64,13 +68,15 @@ nuts <- gisco_id_api_nuts(
 
 nuts
 #> # A tibble: 1 × 3
-#>   id    stat_levl_code OBJECTID
-#>   <chr>          <int> <chr>   
-#> 1 ES212              3 ES212
+#>   nuts_id stat_levl_code OBJECTID
+#>   <chr>            <int> <chr>   
+#> 1 ES212                3 ES212
 ```
 
 Use `geometry = TRUE`, the default, when you want an `sf` object
-suitable for mapping.
+suitable for mapping. Successful Geonames queries return an `sf` object
+and use longitude and latitude in EPSG:4326. Its bounding-box queries
+must span no more than five degrees in either dimension.
 
 ``` r
 
@@ -93,25 +99,31 @@ ggplot(nuts3) +
   )
 ```
 
-![NUTS 3 and LAU geometries returned by the GISCO ID service
-API](./fig-api-id-1.png)
+![Map of the NUTS 3 region containing longitude -2.5 and latitude 43.06
+in the Basque Country. A light blue region surrounds the orange
+municipality, and a red point marks the queried coordinate inside that
+municipality. The nested boundaries show that the same coordinate
+identifies both a region and a local administrative
+unit.](./fig-api-id-1.png)
 
 NUTS 3 and LAU geometries returned by the GISCO ID service API
 
-You can also query NUTS regions by ID:
+You can also query NUTS regions by ID. The service supports identifier
+lookups for other datasets and Geonames name searches, but these lookup
+modes are not exposed by the corresponding **giscoR** functions:
 
 ``` r
 
 gisco_id_api_nuts(nuts_id = "ES21", nuts_level = 2)
 #> Simple feature collection with 1 feature and 1 field
-#> Geometry type: POINT
+#> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
-#> Bounding box:  xmin: -2.616427 ymin: 43.0433 xmax: -2.616427 ymax: 43.0433
+#> Bounding box:  xmin: -3.450329 ymin: 42.47236 xmax: -1.728903 ymax: 43.45712
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 1 × 2
-#>   nuts_id            geometry
-#> * <chr>           <POINT [°]>
-#> 1 ES21    (-2.616427 43.0433)
+#>   nuts_id                                                                              geometry
+#> * <chr>                                                                      <MULTIPOLYGON [°]>
+#> 1 ES21    (((-1.998404 43.32102, -1.997205 43.32199, -1.997596 43.32216, -1.998184 43.32241, -…
 ```
 
 ## GISCO Address API
@@ -121,7 +133,9 @@ lookup of available administrative address components. It can be useful
 when a workflow starts with a human-readable address rather than a GISCO
 feature ID.
 
-Use the lookup helpers to inspect available address components:
+`province` and `city` are generic terms whose administrative levels vary
+by country. Use the lookup helpers to inspect available address
+components:
 
 ``` r
 
@@ -195,9 +209,20 @@ gisco_address_api_roads(country = "LU", province = "Capellen", city = "Dippach")
 
 Use
 [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-for structured geocoding. Search endpoints support approximate string
-matching, so exact spelling is not always required. The bounding-box
-endpoint can provide context for the returned address points.
+for structured or freeform geocoding. Structured searches support
+approximate string matching, so exact spelling is not always required.
+Searches return at most 1,000 addresses. The bounding-box endpoint can
+provide context for the returned address points.
+
+Freeform queries use the `q` argument to search for an address in a
+single string and do not support approximate string matching.
+Autocomplete through `/search?suggest=` is not implemented in
+**giscoR**.
+
+``` r
+
+freeform <- gisco_address_api_search(q = "alphonse weicker luxembourg")
+```
 
 ``` r
 
@@ -213,8 +238,20 @@ bbox <- gisco_address_api_bbox(
 )
 ```
 
-Search, reverse and bounding-box calls return `sf` objects. If a search
-result contains coordinates, they can be passed to the reverse endpoint:
+Use `gisco_address_api_most_populated_cell(city = "Madrid")` to retrieve
+the most populated census grid cell. Supply `province` or `city`, or
+both to restrict the lookup to the city within the province. When a cell
+is found, the function returns a one-row
+[tibble](https://tibble.tidyverse.org/reference/tbl_df.html) with the
+API coordinates in numeric `X` and `Y` columns. The API documentation
+does not specify the CRS for these coordinates, so the function
+preserves them without creating a geometry.
+
+Search and reverse geocoding return `sf` objects when coordinates are
+available. Queries with no address results return an empty tibble.
+Bounding-box calls return an `sf` object when a bounding box is found,
+or `NULL` otherwise. If a search result contains coordinates, they can
+be passed to the reverse endpoint, which returns at most five addresses:
 
 ``` r
 
@@ -229,13 +266,13 @@ gisco_address_api_reverse(
 #> Bounding box:  xmin: 6.16786 ymin: 49.6315 xmax: 6.169307 ymax: 49.63328
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 5 × 15
-#>   LD    TF                L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X     Y
-#> * <chr> <chr>             <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
-#> 1 4     RUE ALPHONSE WEI… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
-#> 2 3     RUE JEAN MONNET   LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
-#> 3 41B   AVENUE JOHN F. K… LUXE… LUXE… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
-#> 4 2     RUE JEAN MONNET   LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
-#> 5 5     RUE ALPHONSE WEI… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#>   LD    TF              L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X     Y
+#> * <chr> <chr>           <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
+#> 1 4     RUE ALPHONSE W… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 2 3     RUE JEAN MONNET LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 3 41B   AVENUE JOHN F.… LUXE… LUXE… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 4 2     RUE JEAN MONNET LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 5 5     RUE ALPHONSE W… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
 #> # ℹ 1 more variable: geometry <POINT [°]>
 ```
 
@@ -261,8 +298,11 @@ ggplot(bbox) +
   )
 ```
 
-![Structured address search result and city bounding
-box](./fig-address-api-1.png)
+![Map of address search results for Rue Alphonse Weicker in Luxembourg
+city. Red points form a tight cluster in the northeastern part of the
+rectangular city bounding box, outlined in blue. The box provides
+geographic context for the locations returned by the address
+search.](./fig-address-api-1.png)
 
 Structured address search result and city bounding box
 
@@ -304,6 +344,9 @@ if (is.null(res)) {
   res
 }
 ```
+
+For address searches, also check for an empty result before accessing
+rows.
 
 In packages or tests, skip API-dependent checks when GISCO is not
 reachable. For reproducible workflows, keep API calls close to the point

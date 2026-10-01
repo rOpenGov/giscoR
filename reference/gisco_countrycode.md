@@ -14,11 +14,11 @@ A data frame with 249 rows and 13 variables:
 
 - `ISO3_CODE`:
 
-  Eurostat code of each country.
+  ISO 3166-1 alpha-3 code of each country.
 
 - `CNTR_CODE`:
 
-  ISO 3166-1 alpha-2 code of each country.
+  Eurostat country code.
 
 - `iso2c`:
 
@@ -39,27 +39,27 @@ A data frame with 249 rows and 13 variables:
 
 - `un.region.code`:
 
-  Numeric region code UN (M49).
+  UN M49 numeric region code.
 
 - `un.region.name`:
 
-  Region name UN (M49).
+  UN M49 region name.
 
 - `un.regionintermediate.code`:
 
-  Numeric intermediate region.
+  UN M49 numeric intermediate region code.
 
 - `un.regionintermediate.name`:
 
-  Intermediate region name UN (M49).
+  UN M49 intermediate region name.
 
 - `un.regionsub.code`:
 
-  Numeric sub-region code UN (M49).
+  UN M49 numeric subregion code.
 
 - `un.regionsub.name`:
 
-  Sub-region name UN (M49).
+  UN M49 subregion name.
 
 - `eu`:
 

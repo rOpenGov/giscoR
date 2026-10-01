@@ -55,7 +55,7 @@ GISCO postal code distribution API:
 
 - cache_dir:
 
-  A character string with a path to a cache directory. See **Caching
+  A character string with a path to a cache directory. See the **Caching
   strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
@@ -70,12 +70,12 @@ GISCO postal code distribution API:
 
 - ext:
 
-  A character value with the extension of the file (default `"gpkg"`).
+  A character string with the extension of the file (default `"gpkg"`).
   One of `"shp"`, `"gpkg"`, `"geojson"` .
 
 ## Value
 
-A [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
 
 ## Details
 

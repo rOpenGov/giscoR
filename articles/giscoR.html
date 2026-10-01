@@ -40,7 +40,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,7 +102,7 @@
 <p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is a package designed to provide a simple interface to the Eurostat <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO geodata distribution</a>.</p>
 <p>GISCO provides geospatial data for the European Union, its member states and subnational regions. It supplies geospatial files in different formats, with a focus on Europe and global datasets such as country boundaries, labels and coastal lines.</p>
 <p>Compatible administrative and statistical datasets are available at multiple resolutions: high-resolution datasets for small areas (01M, 03M) and lighter datasets for larger areas (10M, 20M, 60M). They can be available in <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>, <a href="https://epsg.io/3035" class="external-link">EPSG:3035</a> and <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a>. Grid, transport and basic service datasets use the formats and coordinate reference systems documented for each dataset.</p>
-<p><strong>giscoR</strong> returns <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><strong>sf</strong> package objects</a>. See <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a> for details.</p>
+<p><strong>giscoR</strong> returns <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><strong>sf</strong> objects</a>. See <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a> for details.</p>
 </section><section class="section level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
 <p><strong>giscoR</strong> supports caching downloaded datasets. Set the cache directory with:</p>
@@ -185,12 +185,12 @@
 <span>    fill <span class="op">=</span> <span class="st">""</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="./fig-country-1.png" alt="EU member states and candidate countries (2024)" width="100%"><p class="caption">
+<img src="./fig-country-1.png" alt="Map of Europe with EU member states in dark blue, candidate countries in light blue and other countries in gray. White outlines separate countries. Candidate countries are concentrated along the eastern and southeastern edges of the EU." width="100%"><p class="caption">
 EU member states and candidate countries (2024)
 </p>
 </div>
-<p>You can select specific countries by name in any language, ISO 3166-1 alpha-3 codes or Eurostat codes. However, you cannot mix these identifier types in a single call.</p>
-<p>You can also combine datasets by using the same <code>resolution</code>, <code>epsg</code> and (optionally) <code>year</code>:</p>
+<p>You can select specific countries using names in any language, ISO 3166-1 alpha-3 codes or Eurostat codes. However, you cannot mix these identifier types in a single call.</p>
+<p>You can also combine datasets using the same <code>resolution</code> and <code>epsg</code>. Use the same <code>year</code> when it is available for both datasets:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cntr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Morocco"</span>, <span class="st">"Algeria"</span>, <span class="st">"Tunisia"</span>, <span class="st">"Libya"</span>, <span class="st">"Egypt"</span><span class="op">)</span></span>
 <span></span>
@@ -218,7 +218,7 @@ EU member states and candidate countries (2024)
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">NAME_ENGL</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>caption <span class="op">=</span> <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="st">"fr"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="./fig-africa-1.png" alt="Political map of North Africa" width="100%"><p class="caption">
+<img src="./fig-africa-1.png" alt="Faceted map with five panels arranged in two columns, highlighting Morocco, Algeria, Tunisia, Libya and Egypt separately against the same North African coastline. Longitude and latitude provide a shared geographic reference. The panels show the countries in their west-to-east order and allow their shapes and relative sizes to be compared." width="100%"><p class="caption">
 Political map of North Africa
 </p>
 </div>
@@ -310,7 +310,8 @@ Political map of North Africa
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="./fig-giscor-1.png" alt="Disposable income of private households by NUTS 2 regions (2022)" width="100%"><p class="caption">
+<img src="./fig-giscor-1.png" alt="Choropleth map of European NUTS 2 regions, colored by household disposable income in thousands of euros. Orange indicates lower income categories and teal indicates higher categories. Gray marks missing data. The legend ranges from below 15 thousand to above 120 thousand euros. Regional differences are visible within countries, including France, Spain and Germany.
+" width="100%"><p class="caption">
 Disposable income of private households by NUTS 2 regions (2022)
 </p>
 </div>

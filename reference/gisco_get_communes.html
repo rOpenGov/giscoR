@@ -17,7 +17,7 @@ separate Local Administrative Units dataset. See gisco_get_lau()."><meta propert
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,8 +102,8 @@ reference system as a 4-digit <a href="https://epsg.io/" class="external-link">E
 
 <dt id="arg-cache">cache<a class="anchor" aria-label="anchor" href="#arg-cache"></a></dt>
 <dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a>. These functions always
-cache the result because of its size. See <strong>Caching strategies</strong> section
-in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
+cache the result because of its size. See the <strong>Caching strategies</strong>
+section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-update-cache">update_cache<a class="anchor" aria-label="anchor" href="#arg-update-cache"></a></dt>
@@ -114,7 +114,7 @@ download.</p></dd>
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
 <dd><p>A character string with a path to a cache directory. See
-<strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
+the <strong>Caching strategies</strong> section in <code><a href="gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code>.</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -124,7 +124,7 @@ messages.</p></dd>
 
 <dt id="arg-spatialtype">spatialtype<a class="anchor" aria-label="anchor" href="#arg-spatialtype"></a></dt>
 <dd><p>A character string with the type of geometry to return.
-Options available are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
+Available values are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
 <li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
 <li><p><code>"BN"</code>: Boundaries - <code>LINESTRING</code> object.</p>
 <p>Argument <code>country</code> is only applied when <code>spatialtype</code> is <code>"RG"</code> or
@@ -139,7 +139,7 @@ vector of Eurostat country codes. See also <code><a href="https://rdrr.io/pkg/co
 
 
 <dt id="arg-ext">ext<a class="anchor" aria-label="anchor" href="#arg-ext"></a></dt>
-<dd><p>A character value with the extension of the file (default
+<dd><p>A character string with the extension of the file (default
 <code>"shp"</code>). One of
 <code>"shp"</code>, <code>"gpkg"</code>, <code>"geojson"</code>
 .</p></dd>
@@ -147,17 +147,17 @@ vector of Eurostat country codes. See also <code><a href="https://rdrr.io/pkg/co
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
+    <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The Nomenclature of Territorial Units for Statistics (NUTS) and the LAU
 nomenclature are hierarchical classifications of statistical regions that
-together subdivide the EU economic territory into regions of five different
-levels, moving from larger to smaller territorial units: NUTS 1, 2 and 3
-and LAU.</p>
+together subdivide the EU economic territory into statistical regions and
+local units, moving from larger to smaller territorial units: NUTS 1, 2 and
+3 and LAU.</p>
 <p>The dataset is based on EuroBoundaryMap from
-<a href="https://eurogeographics.org/" class="external-link">EuroGeographics</a>. Geographical extent covers
+<a href="https://eurogeographics.org/" class="external-link">EuroGeographics</a>. Geographic coverage includes
 the European Union 28, EFTA countries and candidate countries. The scale of
 the dataset is 1:100 000.</p>
 <p>The LAU classification is not covered by any legislative act.</p>
