@@ -1,4 +1,4 @@
-# giscoR (development version)
+# giscoR 1.3.0
 
 - Cached downloads now preserve the previous file when an update fails and replace it only after the new download completes successfully.
 - Logical flags now reject missing and non-scalar values with a `giscoR_error` condition.

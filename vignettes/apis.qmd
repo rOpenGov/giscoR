@@ -76,7 +76,7 @@ nuts <- gisco_id_api_nuts(
 nuts
 #> # A tibble: 1 × 3
 #>   nuts_id stat_levl_code OBJECTID
-#>   <chr>            <int> <chr>
+#>   <chr>            <int> <chr>   
 #> 1 ES212                3 ES212
 ```
 
@@ -124,9 +124,9 @@ gisco_id_api_nuts(nuts_id = "ES21", nuts_level = 2)
 #> Bounding box:  xmin: -3.450329 ymin: 42.47236 xmax: -1.728903 ymax: 43.45712
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 1 × 2
-#>   nuts_id                                                               geometry
-#> * <chr>                                                       <MULTIPOLYGON [°]>
-#> 1 ES21    (((-1.998404 43.32102, -1.997205 43.32199, -1.997596 43.32216, -1.998…
+#>   nuts_id                                                                              geometry
+#> * <chr>                                                                      <MULTIPOLYGON [°]>
+#> 1 ES21    (((-1.998404 43.32102, -1.997205 43.32199, -1.997596 43.32216, -1.998184 43.32241, -…
 ```
 
 # GISCO Address API
@@ -142,69 +142,69 @@ country. Use the lookup helpers to inspect available address components:
 ``` r
 gisco_address_api_countries()
 #> # A tibble: 31 × 1
-#>    L0
+#>    L0   
 #>    <chr>
-#>  1 AT
-#>  2 BE
-#>  3 BG
-#>  4 CH
-#>  5 CY
-#>  6 CZ
-#>  7 DE
-#>  8 DK
-#>  9 EE
-#> 10 EL
+#>  1 AT   
+#>  2 BE   
+#>  3 BG   
+#>  4 CH   
+#>  5 CY   
+#>  6 CZ   
+#>  7 DE   
+#>  8 DK   
+#>  9 EE   
+#> 10 EL   
 #> # ℹ 21 more rows
 gisco_address_api_provinces(country = "LU")
 #> # A tibble: 12 × 1
-#>    L1
-#>    <chr>
-#>  1 CAPELLEN
-#>  2 CLERVAUX
-#>  3 DIEKIRCH
-#>  4 ECHTERNACH
+#>    L1              
+#>    <chr>           
+#>  1 CAPELLEN        
+#>  2 CLERVAUX        
+#>  3 DIEKIRCH        
+#>  4 ECHTERNACH      
 #>  5 ESCH-SUR-ALZETTE
-#>  6 GREVENMACHER
-#>  7 LUXEMBOURG
-#>  8 MERSCH
-#>  9 REDANGE
-#> 10 REMICH
-#> 11 VIANDEN
+#>  6 GREVENMACHER    
+#>  7 LUXEMBOURG      
+#>  8 MERSCH          
+#>  9 REDANGE         
+#> 10 REMICH          
+#> 11 VIANDEN         
 #> 12 WILTZ
 gisco_address_api_cities(country = "LU")
 #> # A tibble: 542 × 1
-#>    L2
-#>    <chr>
-#>  1 ABWEILER
-#>  2 AHN
-#>  3 ALLERBORN
-#>  4 ALSCHEID
+#>    L2        
+#>    <chr>     
+#>  1 ABWEILER  
+#>  2 AHN       
+#>  3 ALLERBORN 
+#>  4 ALSCHEID  
 #>  5 ALTLINSTER
-#>  6 ALTRIER
-#>  7 ALTWIES
-#>  8 ALZINGEN
+#>  6 ALTRIER   
+#>  7 ALTWIES   
+#>  8 ALZINGEN  
 #>  9 ANGELSBERG
 #> 10 ANSEMBOURG
 #> # ℹ 532 more rows
 gisco_address_api_roads(country = "LU", province = "Capellen", city = "Dippach")
 #> # A tibble: 16 × 2
-#>    TF                      PC
+#>    TF                      PC   
 #>    <chr>                   <chr>
-#>  1 BEIM WAASSERTUERM       4972
-#>  2 ECKERBIERG              4974
-#>  3 IM INBERG               4974
-#>  4 OP WAISSE MUOR          4974
-#>  5 ROUTE DE LUXEMBOURG     4972
-#>  6 ROUTE DE LUXEMBOURG     4973
-#>  7 ROUTE DES TROIS CANTONS 4972
-#>  8 RUE BELLE-VUE           4974
-#>  9 RUE CENTRALE            4974
-#> 10 RUE DE BETTANGE         4974
-#> 11 RUE DE HOLZEM           4974
-#> 12 RUE DE LA FONTAINE      4974
-#> 13 RUE DES ROMAINS         4974
-#> 14 RUE DU CIMETIÈRE        4974
-#> 15 RUE JEAN-PIERRE KIRSCH  4974
+#>  1 BEIM WAASSERTUERM       4972 
+#>  2 ECKERBIERG              4974 
+#>  3 IM INBERG               4974 
+#>  4 OP WAISSE MUOR          4974 
+#>  5 ROUTE DE LUXEMBOURG     4972 
+#>  6 ROUTE DE LUXEMBOURG     4973 
+#>  7 ROUTE DES TROIS CANTONS 4972 
+#>  8 RUE BELLE-VUE           4974 
+#>  9 RUE CENTRALE            4974 
+#> 10 RUE DE BETTANGE         4974 
+#> 11 RUE DE HOLZEM           4974 
+#> 12 RUE DE LA FONTAINE      4974 
+#> 13 RUE DES ROMAINS         4974 
+#> 14 RUE DU CIMETIÈRE        4974 
+#> 15 RUE JEAN-PIERRE KIRSCH  4974 
 #> 16 SAUER AARBECHT          4974
 ```
 
@@ -263,14 +263,14 @@ gisco_address_api_reverse(
 #> Bounding box:  xmin: 6.16786 ymin: 49.6315 xmax: 6.169307 ymax: 49.63328
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 5 × 15
-#>   LD    TF     L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X
-#> * <chr> <chr>  <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl>
-#> 1 4     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
-#> 2 3     RUE J… LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17
-#> 3 41B   AVENU… LUXE… LUXE… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17
-#> 4 2     RUE J… LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17
-#> 5 5     RUE A… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
-#> # ℹ 2 more variables: Y <dbl>, geometry <POINT [°]>
+#>   LD    TF              L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X     Y
+#> * <chr> <chr>           <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl> <dbl>
+#> 1 4     RUE ALPHONSE W… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 2 3     RUE JEAN MONNET LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 3 41B   AVENUE JOHN F.… LUXE… LUXE… LU    LUX   1855  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 4 2     RUE JEAN MONNET LUXE… LUXE… LU    LUX   2180  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> 5 5     RUE ALPHONSE W… LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17  49.6
+#> # ℹ 1 more variable: geometry <POINT [°]>
 ```
 
 Use the returned geometries directly with **ggplot2**:
