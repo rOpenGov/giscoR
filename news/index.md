@@ -2,6 +2,8 @@
 
 ## giscoR 1.3.0
 
+CRAN release: 2026-10-01
+
 - Cached downloads now preserve the previous file when an update fails
   and replace it only after the new download completes successfully.
 - Logical flags now reject missing and non-scalar values with a
