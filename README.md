@@ -115,7 +115,7 @@ glimpse(nl_all)
 #> Columns: 15
 #> $ CNTR_ID     <chr> "NL", "NL", "NL", "NL"
 #> $ COUNTRY_URI <chr> "NLD", NA, "NLD", "NLD"
-#> $ CNTR_NAME   <chr> "Nederland", "Nederland", "Nederland", "Nederland"
+#> $ CNTR_NAME   <chr> "Netherlands", "Nederland", "Netherlands", "Netherlands"
 #> $ NAME_ENGL   <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
 #> $ NAME_FREN   <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
 #> $ ISO3_CODE   <chr> "NLD", "NLD", "NLD", "NLD"
