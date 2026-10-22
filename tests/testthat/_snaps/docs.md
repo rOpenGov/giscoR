@@ -31,12 +31,12 @@
     Code
       docs_id_years("nuts")
     Output
-      [1] "are \\code{\"2024\"}, \\code{\"2021\"}, \\code{\"2016\"}, \\code{\"2013\"}, \\code{\"2010\"}, \\code{\"2006\"}"
+      [1] "are \\code{\"9999\"}, \\code{\"2024\"}, \\code{\"2021\"}, \\code{\"2016\"}, \\code{\"2013\"}, \\code{\"2010\"}, \\code{\"2006\"}"
 
 ---
 
     Code
       docs_id_years("riverbasin")
     Output
-      [1] "are \\code{\"2024\"}, \\code{\"2023\"}, \\code{\"2022\"}, \\code{\"2021\"}, \\code{\"2020\"}, \\code{\"2019\"}"
+      [1] "are \\code{\"9999\"}, \\code{\"2024\"}, \\code{\"2023\"}, \\code{\"2022\"}, \\code{\"2021\"}, \\code{\"2020\"}, \\code{\"2019\"}"
 
