@@ -16,14 +16,11 @@ convert_country_code <- function(names, out = "eurostat") {
     if (
       any(
         grepl("kosovo", tolower(x), fixed = TRUE),
-        "xk" == tolower(x),
-        "xkx" == tolower(x)
+        tolower(x) == "xk",
+        tolower(x) == "xkx"
       )
     ) {
-      code <- switch(out,
-        "eurostat" = "XK",
-        "iso3c" = "XKX"
-      )
+      code <- switch(out, "eurostat" = "XK", "iso3c" = "XKX")
       return(code)
     }
 

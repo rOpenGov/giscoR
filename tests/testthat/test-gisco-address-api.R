@@ -119,7 +119,7 @@ test_that("gisco_address_api_country online", {
   skip_if_gisco_offline()
   expect_silent(n <- gisco_address_api_countries())
   expect_s3_class(n, "tbl_df")
-  expect_identical("L0", names(n))
+  expect_named(n, "L0")
 })
 
 test_that("gisco_address_api_provinces online", {

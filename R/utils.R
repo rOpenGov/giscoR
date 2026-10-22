@@ -22,7 +22,8 @@ make_msg <- function(type = "generic", verbose, ..., .envir = parent.frame()) {
   dots <- list(...)
   msg <- paste(dots, collapse = " ")
 
-  alert <- switch(type,
+  alert <- switch(
+    type,
     generic = cli::cli_alert,
     success = cli::cli_alert_success,
     warning = cli::cli_alert_warning,
@@ -145,7 +146,7 @@ ensure_null <- function(x) {
   x <- as.vector(x)
   x[is.null(x)] <- NA
   x[is.na(x)] <- NA
-  x[nchar(as.character(x)) == 0] <- NA
+  x[!nzchar(as.character(x), keepNA = TRUE)] <- NA
   if (all(is.na(x))) {
     return(NULL)
   }
