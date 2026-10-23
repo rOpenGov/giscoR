@@ -87,12 +87,13 @@ test_that("Cached DB helpers build cache paths and scrape entries", {
 })
 
 test_that("API scraping skips child datasets that cannot be fetched", {
-  calls <- 0L
+  state <- new.env(parent = emptyenv())
+  state$calls <- 0L
   master <- paste0('{"2024": {"files": "missing-child.json"}}')
 
   local_mocked_bindings(gisco_perform_request = function(...) {
-    calls <<- calls + 1L
-    if (calls == 1L) {
+    state$calls <- state$calls + 1L
+    if (state$calls == 1L) {
       return(httr2::response(
         200,
         headers = list("content-type" = "application/json"),
@@ -103,7 +104,7 @@ test_that("API scraping skips child datasets that cannot be fetched", {
   })
 
   expect_null(scrap_api_data("nuts"))
-  expect_identical(calls, 2L)
+  expect_identical(state$calls, 2L)
 })
 
 test_that("Cached DB normalization adds derived columns", {

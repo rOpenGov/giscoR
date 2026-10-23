@@ -191,12 +191,13 @@ test_that("gisco_address_api_copyright online", {
 })
 
 test_that("most populated cell scopes queries and preserves API coordinates", {
-  queries <- list()
+  state <- new.env(parent = emptyenv())
+  state$queries <- list()
   local_mocked_bindings(
     get_request_body = function(url, verbose) {
       parsed <- httr2::url_parse(url)
       expect_match(parsed$path, "/most-populated-cell$")
-      queries[[length(queries) + 1L]] <<- parsed$query
+      state$queries[[length(state$queries) + 1L]] <- parsed$query
       httr2::response(
         headers = list(`content-type` = "application/json"),
         body = charToRaw(paste0(
@@ -212,7 +213,7 @@ test_that("most populated cell scopes queries and preserves API coordinates", {
   gisco_address_api_most_populated_cell(province = "Madrid", city = "Madrid")
 
   expect_identical(
-    queries,
+    state$queries,
     list(
       list(city = "Madrid"),
       list(province = "Castilla y Leon"),
@@ -307,10 +308,11 @@ test_that("most populated cell retains nullable metadata in one row", {
 })
 
 test_that("freeform searches encode query text and return address points", {
-  urls <- character()
+  state <- new.env(parent = emptyenv())
+  state$urls <- character()
   local_mocked_bindings(
     get_request_body = function(url, verbose) {
-      urls <<- c(urls, url)
+      state$urls <- c(state$urls, url)
       httr2::response(
         headers = list(`content-type` = "application/json"),
         body = charToRaw(paste0(
@@ -325,11 +327,11 @@ test_that("freeform searches encode query text and return address points", {
   gisco_address_api_search(q = "alphonse weicker", country = "LU")
 
   expect_identical(
-    httr2::url_parse(urls[1])$query,
+    httr2::url_parse(state$urls[1])$query,
     list(q = "Rue de l'Église & 6")
   )
   expect_identical(
-    httr2::url_parse(urls[2])$query,
+    httr2::url_parse(state$urls[2])$query,
     list(country = "LU", q = "alphonse weicker")
   )
   expect_s3_class(address, "sf")
@@ -345,10 +347,11 @@ test_that("freeform searches encode query text and return address points", {
 })
 
 test_that("search keeps its existing positional arguments", {
-  query <- NULL
+  state <- new.env(parent = emptyenv())
+  state$query <- NULL
   local_mocked_bindings(
     get_request_body = function(url, verbose) {
-      query <<- httr2::url_parse(url)$query
+      state$query <- httr2::url_parse(url)$query
       httr2::response(
         headers = list(`content-type` = "application/json"),
         body = charToRaw('{"results":[]}')
@@ -367,7 +370,7 @@ test_that("search keeps its existing positional arguments", {
   )
 
   expect_identical(
-    query,
+    state$query,
     list(
       country = "LU",
       province = "Luxembourg",

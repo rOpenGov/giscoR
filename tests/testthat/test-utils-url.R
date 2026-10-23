@@ -96,10 +96,12 @@ test_that("Dataset reader delegates cache and non-cache paths", {
     download_url = function(...) {
       "cached.gpkg"
     },
-    read_geo_file_sf_filtered = function(file_local,
-                                         filters = NULL,
-                                         operator = "AND",
-                                         verbose = FALSE) {
+    read_geo_file_sf_filtered = function(
+      file_local,
+      filters = NULL,
+      operator = "AND",
+      verbose = FALSE
+    ) {
       data.frame(source = file_local, operator = operator)
     }
   )
@@ -177,10 +179,11 @@ test_that("Downloads return NULL when connection fails", {
 })
 
 test_that("Downloads continue when the HEAD request fails", {
-  requests <- 0
+  state <- new.env(parent = emptyenv())
+  state$requests <- 0
   local_mocked_bindings(gisco_req_perform = function(req, path = NULL) {
-    requests <<- requests + 1
-    if (requests == 1) {
+    state$requests <- state$requests + 1
+    if (state$requests == 1) {
       expect_identical(req$method, "HEAD")
       mock_connection_failure()
     }
@@ -196,15 +199,16 @@ test_that("Downloads continue when the HEAD request fails", {
     verbose = FALSE
   )
 
-  expect_identical(requests, 2)
+  expect_identical(state$requests, 2)
   expect_identical(readLines(path), "mock download")
 })
 
 test_that("Failed updates preserve existing cached files", {
-  requests <- 0
+  state <- new.env(parent = emptyenv())
+  state$requests <- 0
   local_mocked_bindings(gisco_req_perform = function(req, path = NULL) {
-    requests <<- requests + 1
-    if (requests == 1) {
+    state$requests <- state$requests + 1
+    if (state$requests == 1) {
       return(httr2::response(200, url = httr2::req_get_url(req)))
     }
 
@@ -233,15 +237,16 @@ test_that("Failed updates preserve existing cached files", {
 })
 
 test_that("Successful updates replace existing cached files", {
-  requests <- 0
-  download_path <- NULL
+  state <- new.env(parent = emptyenv())
+  state$requests <- 0
+  state$download_path <- NULL
   local_mocked_bindings(gisco_req_perform = function(req, path = NULL) {
-    requests <<- requests + 1
-    if (requests == 1) {
+    state$requests <- state$requests + 1
+    if (state$requests == 1) {
       return(httr2::response(200, url = httr2::req_get_url(req)))
     }
 
-    download_path <<- path
+    state$download_path <- path
     writeLines("updated file", path)
     httr2::response(200, url = httr2::req_get_url(req))
   })
@@ -260,7 +265,7 @@ test_that("Successful updates replace existing cached files", {
 
   expect_identical(basename(result), "file.txt")
   expect_identical(readLines(target), "updated file")
-  expect_false(file.exists(download_path))
+  expect_false(file.exists(state$download_path))
   expect_identical(list.files(target_dir), "file.txt")
 })
 
@@ -279,16 +284,17 @@ test_that("Cached file replacement moves a completed download", {
 })
 
 test_that("Cached file replacement swaps an existing destination", {
+  state <- new.env(parent = emptyenv())
   cache_dir <- local_test_cache_dir("replace-existing-cache-")
   source <- file.path(cache_dir, "download")
   destination <- file.path(cache_dir, "cached")
   writeLines("downloaded file", source)
   writeLines("cached file", destination)
 
-  renames <- 0
+  state$renames <- 0
   local_mocked_bindings(rename_cached_file = function(source, destination) {
-    renames <<- renames + 1
-    if (renames == 1) {
+    state$renames <- state$renames + 1
+    if (state$renames == 1) {
       return(FALSE)
     }
     file.rename(source, destination)
@@ -298,7 +304,7 @@ test_that("Cached file replacement swaps an existing destination", {
 
   expect_identical(basename(result), "cached")
   expect_identical(readLines(destination), "downloaded file")
-  expect_identical(renames, 3)
+  expect_identical(state$renames, 3)
   expect_identical(list.files(cache_dir), "cached")
 })
 
@@ -336,16 +342,17 @@ test_that("Cached file replacement preserves an immovable destination", {
 })
 
 test_that("Cached file replacement restores the previous file on failure", {
+  state <- new.env(parent = emptyenv())
   cache_dir <- local_test_cache_dir("replace-cache-failure-")
   source <- file.path(cache_dir, "download")
   destination <- file.path(cache_dir, "cached")
   writeLines("downloaded file", source)
   writeLines("cached file", destination)
 
-  renames <- 0
+  state$renames <- 0
   local_mocked_bindings(rename_cached_file = function(source, destination) {
-    renames <<- renames + 1
-    if (renames %in% c(1, 3)) {
+    state$renames <- state$renames + 1
+    if (state$renames %in% c(1, 3)) {
       return(FALSE)
     }
     file.rename(source, destination)
@@ -358,7 +365,7 @@ test_that("Cached file replacement restores the previous file on failure", {
 
   expect_identical(readLines(destination), "cached file")
   expect_identical(readLines(source), "downloaded file")
-  expect_identical(renames, 4)
+  expect_identical(state$renames, 4)
   expect_identical(sort(list.files(cache_dir)), c("cached", "download"))
 })
 

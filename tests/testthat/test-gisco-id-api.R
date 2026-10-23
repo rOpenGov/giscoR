@@ -61,12 +61,14 @@ test_that("ID API delegates JSON responses to the JSON helper", {
 
 test_that("ID API spatial reader downloads and reads GeoJSON", {
   local_mocked_bindings(
-    download_url = function(url,
-                            name,
-                            cache_dir,
-                            subdir,
-                            update_cache = FALSE,
-                            verbose = FALSE) {
+    download_url = function(
+      url,
+      name,
+      cache_dir,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE
+    ) {
       expect_identical(url, "https://example.com/file.geojson")
       expect_match(name, "[.]geojson$")
       expect_identical(cache_dir, tempdir())
@@ -299,10 +301,11 @@ test_that("ID queries warn before truncating NUTS identifiers", {
 })
 
 test_that("ID queries send the input CRS and NUTS level using API names", {
-  query <- NULL
+  state <- new.env(parent = emptyenv())
+  state$query <- NULL
   local_mocked_bindings(
     get_request_body = function(url, verbose) {
-      query <<- httr2::url_parse(url)$query
+      state$query <- httr2::url_parse(url)$query
       httr2::response(
         headers = list(`content-type` = "application/json"),
         body = charToRaw(paste0(
@@ -321,7 +324,7 @@ test_that("ID queries send the input CRS and NUTS level using API names", {
   )
 
   expect_identical(
-    query,
+    state$query,
     list(
       x = "3305138",
       y = "2301725",
@@ -337,9 +340,10 @@ test_that("ID queries send the input CRS and NUTS level using API names", {
 })
 
 test_that("spatial ID queries also send the selected CRS and level", {
-  query <- NULL
+  state <- new.env(parent = emptyenv())
+  state$query <- NULL
   local_mocked_bindings(read_id_api_geojson = function(url, verbose) {
-    query <<- httr2::url_parse(url)$query
+    state$query <- httr2::url_parse(url)$query
     sf::st_as_sf(
       data.frame(x = -2.5, y = 43.06),
       coords = c("x", "y"),
@@ -350,7 +354,7 @@ test_that("spatial ID queries also send the selected CRS and level", {
   nuts <- gisco_id_api_nuts(nuts_id = "ES21", epsg = 3035, nuts_level = 2)
 
   expect_identical(
-    query,
+    state$query,
     list(
       id = "ES21",
       proj = "3035",

@@ -20,15 +20,17 @@ test_that("Communes use resolved GISCO files", {
         name = "COMM_RG_2016_4326.shp.zip"
       )
     },
-    read_gisco_dataset = function(url,
-                                  name,
-                                  cache = TRUE,
-                                  cache_dir = NULL,
-                                  subdir,
-                                  update_cache = FALSE,
-                                  verbose = FALSE,
-                                  filters = NULL,
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      cache = TRUE,
+      cache_dir = NULL,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE,
+      filters = NULL,
+      ...
+    ) {
       expect_match(url, "COMM_RG_2016_4326[.]shp[.]zip$")
       expect_identical(name, "COMM_RG_2016_4326.shp.zip")
       expect_true(cache)
@@ -68,7 +70,8 @@ test_that("Communes validate year, EPSG and spatial type", {
 })
 
 test_that("Communes pass country filters to the reader", {
-  filter_calls <- list()
+  state <- new.env(parent = emptyenv())
+  state$filter_calls <- list()
 
   local_mocked_bindings(
     resolve_gisco_file = function(...) {
@@ -80,21 +83,25 @@ test_that("Communes pass country filters to the reader", {
     convert_country_code_or_null = function(country) {
       country
     },
-    make_sf_filter = function(file_local,
-                              values,
-                              candidates = c("CNTR_ID", "CNTR_CODE")) {
-      filter_calls[[length(filter_calls) + 1L]] <<- list(
+    make_sf_filter = function(
+      file_local,
+      values,
+      candidates = c("CNTR_ID", "CNTR_CODE")
+    ) {
+      state$filter_calls[[length(state$filter_calls) + 1L]] <- list(
         file_local = file_local,
         values = values,
         candidates = candidates
       )
       stats::setNames(list(values), paste(candidates, collapse = "|"))
     },
-    read_gisco_dataset = function(url,
-                                  name,
-                                  filters = NULL,
-                                  verbose = FALSE,
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      filters = NULL,
+      verbose = FALSE,
+      ...
+    ) {
       expect_match(url, "COMM_LB_2016_4326[.]gpkg$")
       expect_true(is.function(filters))
       expect_true(verbose)
@@ -113,7 +120,7 @@ test_that("Communes pass country filters to the reader", {
   )
   expect_identical(communes$CNTR_CODE, "LU")
   expect_identical(
-    filter_calls,
+    state$filter_calls,
     list(list(
       file_local = "communes.gpkg",
       values = "LU",

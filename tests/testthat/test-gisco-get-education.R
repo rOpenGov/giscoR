@@ -13,7 +13,8 @@ test_that("Education returns NULL for 404 responses", {
 })
 
 test_that("Education uses basic service URLs", {
-  urls <- character()
+  state <- new.env(parent = emptyenv())
+  state$urls <- character()
   local_mocked_bindings(read_gisco_dataset = function(
     url,
     name,
@@ -24,7 +25,7 @@ test_that("Education uses basic service URLs", {
     verbose = FALSE,
     ...
   ) {
-    urls <<- c(urls, url)
+    state$urls <- c(state$urls, url)
     expect_match(name, "^edu_2023_")
     expect_false(cache)
     expect_identical(cache_dir, "cache")
@@ -41,7 +42,10 @@ test_that("Education uses basic service URLs", {
     update_cache = TRUE,
     verbose = TRUE
   )
-  expect_identical(urls, basic_service_url("education", "2023", c("LU", "BE")))
+  expect_identical(
+    state$urls,
+    basic_service_url("education", "2023", c("LU", "BE"))
+  )
   expect_identical(education$cntr_id, c("LU", "BE"))
 })
 

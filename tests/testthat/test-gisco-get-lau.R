@@ -18,16 +18,18 @@ test_that("LAU use resolved GISCO files", {
         name = "LAU_RG_2024_4326.gpkg"
       )
     },
-    read_gisco_dataset = function(url,
-                                  name,
-                                  cache = TRUE,
-                                  cache_dir = NULL,
-                                  subdir,
-                                  update_cache = FALSE,
-                                  verbose = FALSE,
-                                  filters = NULL,
-                                  operator = "AND",
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      cache = TRUE,
+      cache_dir = NULL,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE,
+      filters = NULL,
+      operator = "AND",
+      ...
+    ) {
       expect_match(url, "LAU_RG_2024_4326[.]gpkg$")
       expect_identical(name, "LAU_RG_2024_4326.gpkg")
       expect_true(cache)
@@ -59,7 +61,8 @@ test_that("LAU validates year and EPSG", {
 })
 
 test_that("LAU combines country and GISCO ID filters", {
-  filter_calls <- list()
+  state <- new.env(parent = emptyenv())
+  state$filter_calls <- list()
 
   local_mocked_bindings(
     resolve_gisco_file = function(...) {
@@ -71,26 +74,30 @@ test_that("LAU combines country and GISCO ID filters", {
     convert_country_code_or_null = function(country) {
       country
     },
-    make_sf_filter = function(file_local,
-                              values,
-                              candidates = c("CNTR_ID", "CNTR_CODE")) {
-      filter_calls[[length(filter_calls) + 1L]] <<- list(
+    make_sf_filter = function(
+      file_local,
+      values,
+      candidates = c("CNTR_ID", "CNTR_CODE")
+    ) {
+      state$filter_calls[[length(state$filter_calls) + 1L]] <- list(
         file_local = file_local,
         values = values,
         candidates = candidates
       )
       stats::setNames(list(values), paste(candidates, collapse = "|"))
     },
-    read_gisco_dataset = function(url,
-                                  name,
-                                  cache = TRUE,
-                                  cache_dir = NULL,
-                                  subdir,
-                                  update_cache = FALSE,
-                                  verbose = FALSE,
-                                  filters = NULL,
-                                  operator = "AND",
-                                  ...) {
+    read_gisco_dataset = function(
+      url,
+      name,
+      cache = TRUE,
+      cache_dir = NULL,
+      subdir,
+      update_cache = FALSE,
+      verbose = FALSE,
+      filters = NULL,
+      operator = "AND",
+      ...
+    ) {
       expect_identical(subdir, "lau")
       expect_identical(operator, "OR")
       expect_true(is.function(filters))
@@ -107,7 +114,7 @@ test_that("LAU combines country and GISCO ID filters", {
   expect_identical(lau$CNTR_CODE, c("LI", "ES"))
   expect_identical(lau$GISCO_ID, c("LI_0101", "ES_12016"))
   expect_identical(
-    filter_calls,
+    state$filter_calls,
     list(
       list(
         file_local = "lau.gpkg",
