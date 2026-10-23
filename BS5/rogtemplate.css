@@ -32,7 +32,7 @@ main img {
 .figcaption,
 figcaption,
 caption {
-  color: var(--bs-secondary);
+  color: var(--bs-secondary-color);
   margin-left: auto;
   margin-right: auto;
   margin-top: 1rem;
@@ -44,7 +44,7 @@ caption {
 /* Render author and date consistently between Rmd and Quarto files */
 .author,
 .date {
-  color: var(--bs-secondary);
+  color: var(--bs-secondary-color);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   margin-bottom: 0.5rem;
@@ -139,6 +139,17 @@ mark,
   color: var(--bs-body-color);
 }
 
+/* Keep the title, version, and menu toggle on one row on narrow phones. */
+@media (max-width: 375px) {
+  .navbar-brand {
+    font-size: 1.125rem;
+  }
+
+  .navbar .nav-text {
+    font-size: 0.65rem;
+  }
+}
+
 /* --- 4. Code blocks and syntax highlighting --- */
 
 .code-with-filename {
@@ -201,70 +212,105 @@ a > code {
   }
 }
 
-/* Highlighter based on Tango for dark theme */
+/* Keep long code scrollable inside columns, lists, and callouts. */
+main,
+main .sourceCode,
+main .cell,
+main .callout-body-container {
+  min-width: 0;
+}
+
+main pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+code {
+  word-wrap: break-word;
+}
+
+/* Tango syntax highlighting with accessible light token colors. */
 pre {
+  --rogtemplate-hl-attribute: #866d00;
+  --rogtemplate-hl-string: #397004;
+  --rogtemplate-hl-operator: #a64a00;
   border: none;
 }
+pre code :is(span, a).at {
+  color: var(--rogtemplate-hl-attribute);
+}
+
+pre code :is(span, a).ch,
+pre code :is(span, a).ss,
+pre code :is(span, a).st,
+pre code :is(span, a).vs {
+  color: var(--rogtemplate-hl-string);
+}
+
+pre code :is(span, a).op {
+  color: var(--rogtemplate-hl-operator);
+}
+
 [data-bs-theme="dark"] {
   pre {
     background-color: var(--brand-gray_dark);
     color: #fff;
   }
-  pre code span.al, /* Alert */
-  pre code span.er /* Error */ {
+  pre code :is(span, a).al, /* Alert */
+  pre code :is(span, a).er /* Error */ {
     color: var(--bs-danger-text-emphasis);
   }
-  pre code span.al /* Alert */ {
+  pre code :is(span, a).al /* Alert */ {
     background-color: transparent;
   }
-  pre code span.at /* Attribute */ {
+  pre code :is(span, a).at /* Attribute */ {
     color: var(--bs-form-valid-color);
   }
-  pre code span.bn, /* BaseN */
-  pre code span.dv, /* DecVal */
-  pre code span.fl /* Float */ {
+  pre code :is(span, a).bn, /* BaseN */
+  pre code :is(span, a).dv, /* DecVal */
+  pre code :is(span, a).fl /* Float */ {
     color: var(--bs-primary-text-emphasis);
   }
-  pre code span.cf, /* ControlFlow */
-  pre code span.dt, /* DataType */
-  pre code span.kw /* Keyword */ {
+  pre code :is(span, a).cf, /* ControlFlow */
+  pre code :is(span, a).dt, /* DataType */
+  pre code :is(span, a).kw /* Keyword */ {
     color: var(--bs-link-hover-color);
   }
-  pre code span.an, /* Annotation */
-  pre code span.cv, /* CommentVar */
-  pre code span.do, /* Documentation */
-  pre code span.in, /* Information */
-  pre code span.wa /* Warning */ {
+  pre code :is(span, a).an, /* Annotation */
+  pre code :is(span, a).cv, /* CommentVar */
+  pre code :is(span, a).do, /* Documentation */
+  pre code :is(span, a).in, /* Information */
+  pre code :is(span, a).wa /* Warning */ {
     color: var(--bs-warning-text-emphasis);
     font-weight: bold;
     font-style: italic;
   }
-  pre code span.cf, /* ControlFlow */
-  pre code span.er, /* Error */
-  pre code span.kw, /* Keyword */
-  pre code span.op /* Operator */ {
+  pre code :is(span, a).cf, /* ControlFlow */
+  pre code :is(span, a).er, /* Error */
+  pre code :is(span, a).kw, /* Keyword */
+  pre code :is(span, a).op /* Operator */ {
     font-weight: bold;
   }
-  pre code span.co, /* Comment */
-  pre code span.op, /* Operator */
-  pre code span.ot, /* Other */
-  pre code span.pp /* Preprocessor */ {
+  pre code :is(span, a).co, /* Comment */
+  pre code :is(span, a).op, /* Operator */
+  pre code :is(span, a).ot, /* Other */
+  pre code :is(span, a).pp /* Preprocessor */ {
     color: var(--bs-warning-text-emphasis);
   }
-  pre code span.co, /* Comment */
-  pre code span.pp /* Preprocessor */ {
+  pre code :is(span, a).co, /* Comment */
+  pre code :is(span, a).pp /* Preprocessor */ {
     font-style: italic;
   }
-  pre code span.cn, /* Constant */
-  pre code span.fu, /* Function */
-  pre code span.sc, /* SpecialChar */
-  pre code span.va /* Variable */ {
+  pre code :is(span, a).cn, /* Constant */
+  pre code :is(span, a).fu, /* Function */
+  pre code :is(span, a).sc, /* SpecialChar */
+  pre code :is(span, a).va /* Variable */ {
     color: #fff;
   }
-  pre code span.ch, /* Char */
-  pre code span.ss, /* SpecialString */
-  pre code span.st, /* String */
-  pre code span.vs /* VerbatimString */ {
+  pre code :is(span, a).ch, /* Char */
+  pre code :is(span, a).ss, /* SpecialString */
+  pre code :is(span, a).st, /* String */
+  pre code :is(span, a).vs /* VerbatimString */ {
     color: var(--bs-success-text-emphasis);
   }
 }
@@ -427,7 +473,7 @@ pre {
 }
 
 .callout .callout-btn-toggle .callout-toggle::before {
-  transition: transform 0.2s linear;
+  transition: none;
 }
 
 .callout .callout-header[aria-expanded="false"] .callout-toggle::before {
@@ -684,12 +730,15 @@ div.callout-body-container.callout-body .btn-copy-ex {
 /* --- 8. Footer --- */
 
 footer {
-  width: 100vw;
+  --rogtemplate-footer-bg: var(--brand-gray_dark);
+  background-color: var(--rogtemplate-footer-bg);
+  width: auto;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  /* Paint the full viewport width without expanding the layout box. */
+  box-shadow: 0 0 0 100vmax var(--rogtemplate-footer-bg);
+  clip-path: inset(0 -100vmax);
   margin-bottom: 0;
 }
 
@@ -699,7 +748,7 @@ footer a {
 
 footer a:hover,
 footer a:focus {
-  color: var(--bs-warning);
+  color: color-mix(in srgb, var(--bs-warning) 75%, var(--bs-white));
 }
 
 footer .pkgdown-footer-right {
@@ -755,6 +804,13 @@ footer .pkgdown-footer-left {
   }
 }
 
+/* Account for pkgdown's mobile sidebar margins. */
+@media (max-width: 767.98px) {
+  .row > aside {
+    width: calc(100% - 1rem);
+  }
+}
+
 /* --- 9. Accessibility and motion --- */
 
 .screen-reader-only {
@@ -766,4 +822,44 @@ footer .pkgdown-footer-left {
   overflow: hidden;
   padding: 0;
   width: 1px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .callout .callout-btn-toggle .callout-toggle::before {
+    transition: transform 0.2s linear;
+  }
+}
+
+/* Keep inline links identifiable without relying on color. */
+main a:not(.anchor, .nav-link, .btn),
+footer a,
+#footer a,
+#copyright a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+:is(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.navbar-toggler:focus-visible {
+  box-shadow: none;
+}
+
+/* diffviewer supplies its own light surfaces in either site theme. */
+:is(.visual_diff, .diffviewer) .d2h-tag {
+  color: #6b5700;
+}
+
+:is(.visual_diff, .diffviewer) .d2h-code-linenumber,
+:is(.visual_diff, .diffviewer) .d2h-code-side-linenumber,
+:is(.visual_diff, .diffviewer) .d2h-info {
+  color: #595959;
+}
+
+/* Override the inline color emitted by diffviewer. */
+:is(.visual_diff, .diffviewer) .link {
+  color: #595959 !important;
 }
