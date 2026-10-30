@@ -33,39 +33,3 @@ db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
   ftext <- paste0("\\code{", x, "}")
   paste0(ftext, collapse = ", ")
 }
-
-#' Get available years for GISCO ID endpoints
-#'
-#' @param endpoint A character string with the GISCO ID endpoint to query.
-#' @return
-#' A character string with the available years for the specified endpoint.
-#' @noRd
-docs_id_years <- function(endpoint) {
-  apiurl <- paste0(gisco_id_url(), endpoint, "?year=9999")
-
-  req <- gisco_request(apiurl, cache = FALSE, retry = FALSE)
-  resp <- gisco_perform_request(
-    req,
-    apiurl,
-    fake_404 = FALSE,
-    check_error = FALSE
-  )
-  if (is.null(resp)) {
-    return("are unavailable")
-  }
-  get_years <- gisco_resp_body_json(resp, simplifyVector = TRUE)
-  get_years <- get_years$details
-  available_years <- gsub("[^0-9]", " ", get_years)
-  available_years <- unique(unlist(strsplit(available_years, " ")))
-  available_years <- sort(as.numeric(available_years), decreasing = TRUE)
-
-  x <- paste0('"', available_years, '"')
-  ftext <- paste0("\\code{", x, "}")
-  ftext <- paste0(ftext, collapse = ", ")
-  if (length(available_years) == 1) {
-    ftext <- paste0("is ", ftext)
-  } else {
-    ftext <- paste0("are ", ftext)
-  }
-  ftext
-}

@@ -28,7 +28,8 @@
 #'   `TRUE`, an [`sf`][sf::st_sf] object is returned. If `FALSE`, a
 #'   [tibble][tibble::tbl_df] is returned.
 #' @param year A character string or numeric value with the dataset year, see
-#'   **Details**.
+#'   [GISCO ID service
+#'   API](https://gisco-services.ec.europa.eu/id/api-docs/) for details.
 #' @param nuts_level A character string or numeric value with the NUTS level.
 #'   One of `0`, `1`, `2` or `3`. This argument is sent as the API's `level`
 #'   parameter. If `NULL`, the service uses level `3` for coordinate lookups.
@@ -49,37 +50,21 @@
 #' - `gisco_id_api_geonames()`: Get geographic placenames from longitude and
 #'   latitude coordinates or a bounding box.
 #' - `gisco_id_api_nuts()`: Return NUTS regions from coordinates or an ID.
-#'   Accepted values for `year`:
-#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-#'     giscoR:::docs_id_years("nuts"))}.
 #' - `gisco_id_api_lau()`: Return the ID and, optionally, geometry for Local
 #'   Administrative Units (LAU) at specified coordinates.
-#'   Accepted values for `year`:
-#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-#'     giscoR:::docs_id_years("lau"))}.
 #' - `gisco_id_api_country()`: Return the ID and, optionally, geometry for
-#'   countries at specified coordinates. Accepted values
-#'   for `year`:
-#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-#'     giscoR:::docs_id_years("country"))}.
+#'   countries at specified coordinates.
 #' - `gisco_id_api_river_basin()`: Return the ID and, optionally, geometry
 #'   for river basins at specified coordinates, based on
-#'   the Water Framework Directive (WFD) reference spatial datasets. Accepted
-#'   values for `year`:
-#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-#'     giscoR:::docs_id_years("riverbasin"))}.
+#'   the Water Framework Directive (WFD) reference spatial datasets.
 #' - `gisco_id_api_biogeo_region()`: Return the ID and, optionally,
 #'   geometry for biogeographical regions at specified coordinates. The
 #'   biogeographical regions dataset contains the official
 #'   delineations used in the Habitats Directive (92/43/EEC) and for the
-#'   EMERALD Network. Accepted values for `year`:
-#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-#'     giscoR:::docs_id_years("biogeoregion"))}.
+#'   EMERALD Network.
 #' - `gisco_id_api_census_grid()`: Return the ID and, optionally, geometry
 #'   for census grid cells at specified coordinates.
-#'   Accepted values for `year`:
-#'   \Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-#'     giscoR:::docs_id_years("censusgrid"))}.
+#'
 #' @source
 #' <https://gisco-services.ec.europa.eu/id/api-docs/>.
 #'

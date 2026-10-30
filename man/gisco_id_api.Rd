@@ -94,7 +94,7 @@ extent must not exceed five degrees in either dimension.}
 messages.}
 
 \item{year}{A character string or numeric value with the dataset year, see
-\strong{Details}.}
+\href{https://gisco-services.ec.europa.eu/id/api-docs/}{GISCO ID service API} for details.}
 
 \item{epsg}{A character string or numeric value with the EPSG code for the
 coordinate reference system of the input coordinates and returned
@@ -135,37 +135,20 @@ The available endpoints are:
 \item \code{gisco_id_api_geonames()}: Get geographic placenames from longitude and
 latitude coordinates or a bounding box.
 \item \code{gisco_id_api_nuts()}: Return NUTS regions from coordinates or an ID.
-Accepted values for \code{year}:
-\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-giscoR:::docs_id_years("nuts"))}.
 \item \code{gisco_id_api_lau()}: Return the ID and, optionally, geometry for Local
 Administrative Units (LAU) at specified coordinates.
-Accepted values for \code{year}:
-\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-giscoR:::docs_id_years("lau"))}.
 \item \code{gisco_id_api_country()}: Return the ID and, optionally, geometry for
-countries at specified coordinates. Accepted values
-for \code{year}:
-\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-giscoR:::docs_id_years("country"))}.
+countries at specified coordinates.
 \item \code{gisco_id_api_river_basin()}: Return the ID and, optionally, geometry
 for river basins at specified coordinates, based on
-the Water Framework Directive (WFD) reference spatial datasets. Accepted
-values for \code{year}:
-\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-giscoR:::docs_id_years("riverbasin"))}.
+the Water Framework Directive (WFD) reference spatial datasets.
 \item \code{gisco_id_api_biogeo_region()}: Return the ID and, optionally,
 geometry for biogeographical regions at specified coordinates. The
 biogeographical regions dataset contains the official
 delineations used in the Habitats Directive (92/43/EEC) and for the
-EMERALD Network. Accepted values for \code{year}:
-\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-giscoR:::docs_id_years("biogeoregion"))}.
+EMERALD Network.
 \item \code{gisco_id_api_census_grid()}: Return the ID and, optionally, geometry
 for census grid cells at specified coordinates.
-Accepted values for \code{year}:
-\Sexpr[stage=render,results=rd]{sub("^(is|are) ", "",
-giscoR:::docs_id_years("censusgrid"))}.
 }
 }
 \examples{
