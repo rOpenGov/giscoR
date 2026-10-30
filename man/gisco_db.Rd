@@ -14,7 +14,7 @@ GISCO geodata distribution \code{datasets.json}.
 }
 \description{
 Database with the list of files in the GISCO geodata distribution as of
-2026-09-30.
+2026-10-29.
 }
 \details{
 This database is used to redirect the corresponding functions to the

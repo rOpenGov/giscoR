@@ -1,6 +1,7 @@
 # giscoR (development version)
 
 - Review documentation.
+- Updated datasets.
 
 # giscoR 1.3.0
 
