@@ -103,8 +103,9 @@ gisco_id_api_census_grid(
 
 - year:
 
-  A character string or numeric value with the dataset year, see
-  **Details**.
+  A character string or numeric value with the dataset year, see [GISCO
+  ID service API](https://gisco-services.ec.europa.eu/id/api-docs/) for
+  details.
 
 - epsg:
 
@@ -154,34 +155,25 @@ The available endpoints are:
   and latitude coordinates or a bounding box.
 
 - `gisco_id_api_nuts()`: Return NUTS regions from coordinates or an ID.
-  Accepted values for `year`: `"2024"`, `"2021"`, `"2016"`, `"2013"`,
-  `"2010"`, `"2006"` .
 
 - `gisco_id_api_lau()`: Return the ID and, optionally, geometry for
-  Local Administrative Units (LAU) at specified coordinates. Accepted
-  values for `year`: `"2024"`, `"2023"`, `"2022"`, `"2021"`, `"2020"`,
-  `"2019"`, `"2018"`, `"2017"`, `"2016"`, `"2015"`, `"2014"`, `"2013"`,
-  `"2012"`, `"2011"` .
+  Local Administrative Units (LAU) at specified coordinates.
 
 - `gisco_id_api_country()`: Return the ID and, optionally, geometry for
-  countries at specified coordinates. Accepted values for `year`:
-  `"2024"`, `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
+  countries at specified coordinates.
 
 - `gisco_id_api_river_basin()`: Return the ID and, optionally, geometry
   for river basins at specified coordinates, based on the Water
-  Framework Directive (WFD) reference spatial datasets. Accepted values
-  for `year`: `"2024"`, `"2023"`, `"2022"`, `"2021"`, `"2020"`, `"2019"`
-  .
+  Framework Directive (WFD) reference spatial datasets.
 
 - `gisco_id_api_biogeo_region()`: Return the ID and, optionally,
   geometry for biogeographical regions at specified coordinates. The
   biogeographical regions dataset contains the official delineations
   used in the Habitats Directive (92/43/EEC) and for the EMERALD
-  Network. Accepted values for `year`: `"2016"` .
+  Network.
 
 - `gisco_id_api_census_grid()`: Return the ID and, optionally, geometry
-  for census grid cells at specified coordinates. Accepted values for
-  `year`: `"2021"` .
+  for census grid cells at specified coordinates.
 
 ## See also
 

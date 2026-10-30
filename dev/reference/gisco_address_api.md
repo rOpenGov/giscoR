@@ -260,16 +260,16 @@ gisco_address_api_search(q = "alphonse weicker luxembourg")
 #> # A tibble: 40 × 15
 #>    LD    TF    L2    L1    L0    I3    PC    N0    N1    N2    N3    OL        X
 #>  * <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl>
-#>  1 8B    RUE … LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
-#>  2 8A    RUE … LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
-#>  3 4     RUE … LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
-#>  4 5     RUE … LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
-#>  5 2     RUE … VILL… PROV… BE    BEL   6740  BE    BE3   BE34  BE345 8FX7…  5.55
-#>  6 40A   RUE … VILL… PROV… BE    BEL   6740  BE    BE3   BE34  BE345 8FX7…  5.56
-#>  7 2     RUE … SAND… LUXE… LU    LUX   5255  LU    LU0   LU00  LU000 8FX8…  6.22
-#>  8 1     RUE … SAND… LUXE… LU    LUX   5255  LU    LU0   LU00  LU000 8FX8…  6.22
-#>  9 7     RUE … SAND… LUXE… LU    LUX   5255  LU    LU0   LU00  LU000 8FX8…  6.22
-#> 10 3     RUE … SAND… LUXE… LU    LUX   5255  LU    LU0   LU00  LU000 8FX8…  6.22
+#>  1 4     RUE … LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#>  2 8B    RUE … LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#>  3 5     RUE … LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#>  4 8A    RUE … LUXE… LUXE… LU    LUX   2721  LU    LU0   LU00  LU000 8FX8…  6.17
+#>  5 7     RUE … SAND… LUXE… LU    LUX   5255  LU    LU0   LU00  LU000 8FX8…  6.22
+#>  6 4     RUE … SAND… LUXE… LU    LUX   5255  LU    LU0   LU00  LU000 8FX8…  6.22
+#>  7 9     RUE … VILL… PROV… BE    BEL   6740  BE    BE3   BE34  BE345 8FX7…  5.56
+#>  8 3D    RUE … VILL… PROV… BE    BEL   6740  BE    BE3   BE34  BE345 8FX7…  5.56
+#>  9 3     RUE … VILL… PROV… BE    BEL   6740  BE    BE3   BE34  BE345 8FX7…  5.56
+#> 10 4B    RUE … VILL… PROV… BE    BEL   6740  BE    BE3   BE34  BE345 8FX7…  5.56
 #> # ℹ 30 more rows
 #> # ℹ 2 more variables: Y <dbl>, geometry <POINT [°]>
 

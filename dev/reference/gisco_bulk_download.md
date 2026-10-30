@@ -182,8 +182,8 @@ invisible(gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 ))
-#> ℹ Cache directory is /tmp/RtmpWa2B6f/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpWa2B6f/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/Rtmpb1cLhW/testexample/countries.
+#> ✔ File already cached: /tmp/Rtmpb1cLhW/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }

@@ -21,7 +21,7 @@ Details for the lookup modes supported by these functions."><meta property="og:i
 
     <a class="navbar-brand me-2" href="../index.html">giscoR</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9000</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -163,7 +163,7 @@ messages.</p></dd>
 
 <dt id="arg-year">year<a class="anchor" aria-label="anchor" href="#arg-year"></a></dt>
 <dd><p>A character string or numeric value with the dataset year, see
-<strong>Details</strong>.</p></dd>
+<a href="https://gisco-services.ec.europa.eu/id/api-docs/" class="external-link">GISCO ID service API</a> for details.</p></dd>
 
 
 <dt id="arg-epsg">epsg<a class="anchor" aria-label="anchor" href="#arg-epsg"></a></dt>
@@ -203,38 +203,21 @@ corresponding functions in <a href="https://CRAN.R-project.org/package=giscoR" c
 supports lookup by ID through <code>nuts_id</code>.</p>
 <p>The available endpoints are:</p><ul><li><p><code>gisco_id_api_geonames()</code>: Get geographic placenames from longitude and
 latitude coordinates or a bounding box.</p></li>
-<li><p><code>gisco_id_api_nuts()</code>: Return NUTS regions from coordinates or an ID.
-Accepted values for <code>year</code>:
-<code>"2024"</code>, <code>"2021"</code>, <code>"2016"</code>, <code>"2013"</code>, <code>"2010"</code>, <code>"2006"</code>
-.</p></li>
+<li><p><code>gisco_id_api_nuts()</code>: Return NUTS regions from coordinates or an ID.</p></li>
 <li><p><code>gisco_id_api_lau()</code>: Return the ID and, optionally, geometry for Local
-Administrative Units (LAU) at specified coordinates.
-Accepted values for <code>year</code>:
-<code>"2024"</code>, <code>"2023"</code>, <code>"2022"</code>, <code>"2021"</code>, <code>"2020"</code>, <code>"2019"</code>, <code>"2018"</code>, <code>"2017"</code>, <code>"2016"</code>, <code>"2015"</code>, <code>"2014"</code>, <code>"2013"</code>, <code>"2012"</code>, <code>"2011"</code>
-.</p></li>
+Administrative Units (LAU) at specified coordinates.</p></li>
 <li><p><code>gisco_id_api_country()</code>: Return the ID and, optionally, geometry for
-countries at specified coordinates. Accepted values
-for <code>year</code>:
-<code>"2024"</code>, <code>"2020"</code>, <code>"2016"</code>, <code>"2013"</code>, <code>"2010"</code>, <code>"2006"</code>
-.</p></li>
+countries at specified coordinates.</p></li>
 <li><p><code>gisco_id_api_river_basin()</code>: Return the ID and, optionally, geometry
 for river basins at specified coordinates, based on
-the Water Framework Directive (WFD) reference spatial datasets. Accepted
-values for <code>year</code>:
-<code>"2024"</code>, <code>"2023"</code>, <code>"2022"</code>, <code>"2021"</code>, <code>"2020"</code>, <code>"2019"</code>
-.</p></li>
+the Water Framework Directive (WFD) reference spatial datasets.</p></li>
 <li><p><code>gisco_id_api_biogeo_region()</code>: Return the ID and, optionally,
 geometry for biogeographical regions at specified coordinates. The
 biogeographical regions dataset contains the official
 delineations used in the Habitats Directive (92/43/EEC) and for the
-EMERALD Network. Accepted values for <code>year</code>:
-<code>"2016"</code>
-.</p></li>
+EMERALD Network.</p></li>
 <li><p><code>gisco_id_api_census_grid()</code>: Return the ID and, optionally, geometry
-for census grid cells at specified coordinates.
-Accepted values for <code>year</code>:
-<code>"2021"</code>
-.</p></li>
+for census grid cells at specified coordinates.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
