@@ -336,7 +336,7 @@ for more details, including source-specific conditions.
 </blockquote>
 
 <figcaption class="blockquote-footer">Source:
-<cite title="GISCO"><https://ec.europa.eu/eurostat/web/gisco/geodata></cite>
+<cite title="GISCO"><a href="https://ec.europa.eu/eurostat/web/gisco/geodata">https://ec.europa.eu/eurostat/web/gisco/geodata</a></cite>
 </figcaption>
 
 </figure>
