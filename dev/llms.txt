@@ -79,14 +79,14 @@ glimpse(nl_all)
 #> Rows: 4
 #> Columns: 15
 #> $ CNTR_ID     <chr> "NL", "NL", "NL", "NL"
-#> $ COUNTRY_URI <chr> "NLD", NA, "NLD", "NLD"
-#> $ CNTR_NAME   <chr> "Netherlands", "Nederland", "Netherlands", "Netherlands"
+#> $ COUNTRY_URI <chr> "NLD", "NLD", "NLD", "NLD"
+#> $ CNTR_NAME   <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
 #> $ NAME_ENGL   <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
 #> $ NAME_FREN   <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
 #> $ ISO3_CODE   <chr> "NLD", "NLD", "NLD", "NLD"
 #> $ SVRG_UN     <chr> "UN Member State", "UN Member State", "UN Member State", "…
 #> $ CAPT        <chr> "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"
-#> $ STAT_CODE   <chr> "OA", NA, "OA", "OA"
+#> $ STAT_CODE   <chr> "OA", "OA", "OA", "OA"
 #> $ EU_STAT     <chr> "T", "T", "T", "T"
 #> $ EFTA_STAT   <chr> "F", "F", "F", "F"
 #> $ CC_STAT     <chr> "F", "F", "F", "F"
@@ -149,13 +149,10 @@ country_lines <- gisco_get_nuts(
 Next, download the statistical data from Eurostat.
 
 ``` r
+
 # Retrieve Eurostat data.
 popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
-#> 
-indexed 0B in  0s, 0B/s
-indexed 2.15GB in  0s, 2.15GB/s
-                                                                              
 ```
 
 Finally, merge and transform the datasets to create the plot.

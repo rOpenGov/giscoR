@@ -88,20 +88,20 @@ Included datasets:
 
 data("gisco_countries_2024")
 head(gisco_countries_2024)
-#> Simple feature collection with 6 features and 11 fields
+#> Simple feature collection with 6 features and 13 fields
 #> Geometry type: MULTIPOLYGON
 #> Dimension:     XY
 #> Bounding box:  xmin: 1.442566 ymin: -13.43119 xmax: 74.88986 ymax: 42.6412
 #> Geodetic CRS:  WGS 84
-#> # A tibble: 6 × 12
-#>   CNTR_ID CNTR_NAME          NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT  EU_STAT
-#>   <chr>   <chr>              <chr>     <chr>     <chr>     <chr>   <chr> <chr>  
-#> 1 CD      République Démocr… Democrat… Républiq… COD       UN Mem… Kins… F      
-#> 2 CF      République Centra… Central … Républiq… CAF       UN Mem… Bang… F      
-#> 3 CG      Congo-Kongo-Kongó  Congo     Congo     COG       UN Mem… Braz… F      
-#> 4 AD      Andorra            Andorra   Andorre   AND       UN Mem… Ando… F      
-#> 5 AE      الإمارات العربية … United A… Émirats … ARE       UN Mem… Abu … F      
-#> 6 AF      افغانستان-افغانست… Afghanis… Afghanis… AFG       UN Mem… Kabul F      
-#> # ℹ 4 more variables: EFTA_STAT <chr>, CC_STAT <chr>, NAME_GERM <chr>,
-#> #   geometry <MULTIPOLYGON [°]>
+#> # A tibble: 6 × 14
+#>   CNTR_ID COUNTRY_URI CNTR_NAME      NAME_ENGL NAME_FREN ISO3_CODE SVRG_UN CAPT 
+#>   <chr>   <chr>       <chr>          <chr>     <chr>     <chr>     <chr>   <chr>
+#> 1 CD      COD         Democratic Re… Democrat… Républiq… COD       UN Mem… Kins…
+#> 2 CF      CAF         Central Afric… Central … Républiq… CAF       UN Mem… Bang…
+#> 3 CG      COG         Congo          Congo     Congo     COG       UN Mem… Braz…
+#> 4 AD      AND         Andorra        Andorra   Andorre   AND       UN Mem… Ando…
+#> 5 AE      ARE         United Arab E… United A… Émirats … ARE       UN Mem… Abu …
+#> 6 AF      AFG         Afghanistan    Afghanis… Afghanis… AFG       UN Mem… Kabul
+#> # ℹ 6 more variables: STAT_CODE <chr>, EU_STAT <chr>, EFTA_STAT <chr>,
+#> #   CC_STAT <chr>, NAME_GERM <chr>, geometry <MULTIPOLYGON [°]>
 ```
