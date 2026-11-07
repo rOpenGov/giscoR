@@ -156,7 +156,7 @@ dest_files <- gisco_bulk_download(
 )
 # Read one file.
 library(sf)
-#> Linking to GEOS 3.12.1, GDAL 3.8.4, PROJ 9.4.0; sf_use_s2() is TRUE
+#> Linking to GEOS 3.14.1, GDAL 3.12.2, PROJ 9.7.1; sf_use_s2() is TRUE
 read_sf(dest_files[1]) |> head()
 #> Simple feature collection with 6 features and 13 fields
 #> Geometry type: MULTIPOLYGON
@@ -182,8 +182,8 @@ invisible(gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 ))
-#> ℹ Cache directory is /tmp/Rtmpn67bWJ/testexample/countries.
-#> ✔ File already cached: /tmp/Rtmpn67bWJ/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/Rtmpt5yn7X/testexample/countries.
+#> ✔ File already cached: /tmp/Rtmpt5yn7X/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }

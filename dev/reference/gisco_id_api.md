@@ -195,21 +195,21 @@ gisco_id_api_geonames(x = -2.5, y = 43.06)
 #> Simple feature collection with 10 features and 8 fields
 #> Geometry type: POINT
 #> Dimension:     XY
-#> Bounding box:  xmin: -2.520847 ymin: 43.06455 xmax: -2.491494 ymax: 43.07037
+#> Bounding box:  xmin: -2.534611 ymin: 43.03257 xmax: -2.491494 ymax: 43.07773
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 10 × 9
 #>    name       type  country language localtype distanceMeters endlifespanversion
 #>  * <chr>      <chr> <chr>   <chr>    <chr>              <dbl> <chr>             
 #>  1 Arrasate   admi… Spain   baq      Administ…           809. NA                
 #>  2 Mondragón  admi… Spain   spa      Administ…           809. NA                
-#>  3 Arrasate   admi… Spain   baq      Administ…           809. NA                
-#>  4 Arrasate   admi… Spain   baq      Administ…           809. NA                
-#>  5 Mondragón  admi… Spain   spa      Administ…           809. NA                
-#>  6 Mondragón  admi… Spain   spa      Administ…           809. NA                
-#>  7 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
-#>  8 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
-#>  9 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
-#> 10 Garagartza popu… Spain   baq      BUILTUPP           2052. NA                
+#>  3 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
+#>  4 Garagartza popu… Spain   baq      BUILTUPP           2052. NA                
+#>  5 Gesalibar  popu… Spain   baq      BUILTUPP           2482. NA                
+#>  6 Rio Arama… hydr… Spain   spa      Watercou…          2822. NA                
+#>  7 Aramaio I… hydr… Spain   baq      Watercou…          2822. NA                
+#>  8 Aretxabal… popu… Spain   baq      BUILTUPP           3082. NA                
+#>  9 Arroyo Ko… hydr… Spain   spa      Watercou…          3339. NA                
+#> 10 Kobato Er… hydr… Spain   baq      Watercou…          3339. NA                
 #> # ℹ 2 more variables: beginlifespanversion <date>, geometry <POINT [°]>
 
 lau <- gisco_id_api_lau(x = -2.5, y = 43.06)
