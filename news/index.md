@@ -1,5 +1,20 @@
 # Changelog
 
+## giscoR 1.3.1
+
+- giscoR now requires R 4.2 or later.
+- `gisco_countries_2024` has refreshed country names and geometries,
+  adds the `COUNTRY_URI` and `STAT_CODE` columns and changes the row
+  order.
+- `gisco_countrycode` updates United Nations intermediate region codes
+  and names.
+- `gisco_db` includes GISCO catalog metadata as of October 29, 2026.
+- `gisco_id_api_*()` help lists the supported dataset years by endpoint
+  without querying the live service when the help is rendered.
+- `gisco_nuts_2024` updates the mountain, urban-rural and coastal
+  typologies. Many previously missing values now have a classification
+  or use `0` for regions without a classification.
+
 ## giscoR 1.3.0
 
 CRAN release: 2026-10-01

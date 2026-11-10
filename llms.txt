@@ -64,14 +64,14 @@ glimpse(nl_all)
 #> Rows: 4
 #> Columns: 15
 #> $ CNTR_ID     <chr> "NL", "NL", "NL", "NL"
-#> $ COUNTRY_URI <chr> "NLD", NA, "NLD", "NLD"
-#> $ CNTR_NAME   <chr> "Netherlands", "Nederland", "Netherlands", "Netherlands"
+#> $ COUNTRY_URI <chr> "NLD", "NLD", "NLD", "NLD"
+#> $ CNTR_NAME   <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
 #> $ NAME_ENGL   <chr> "Netherlands", "Netherlands", "Netherlands", "Netherlands"
 #> $ NAME_FREN   <chr> "Pays-Bas", "Pays-Bas", "Pays-Bas", "Pays-Bas"
 #> $ ISO3_CODE   <chr> "NLD", "NLD", "NLD", "NLD"
 #> $ SVRG_UN     <chr> "UN Member State", "UN Member State", "UN Member State", "…
 #> $ CAPT        <chr> "Amsterdam", "Amsterdam", "Amsterdam", "Amsterdam"
-#> $ STAT_CODE   <chr> "OA", NA, "OA", "OA"
+#> $ STAT_CODE   <chr> "OA", "OA", "OA", "OA"
 #> $ EU_STAT     <chr> "T", "T", "T", "T"
 #> $ EFTA_STAT   <chr> "F", "F", "F", "F"
 #> $ CC_STAT     <chr> "F", "F", "F", "F"
@@ -262,7 +262,7 @@ A **BibTeX** entry for **LaTeX** users is:
   doi = {10.32614/CRAN.package.giscoR},
   author = {Diego Hernangómez},
   year = {2026},
-  version = {1.3.0},
+  version = {1.3.1},
   url = {https://ropengov.github.io/giscoR/},
   abstract = {Tools to download global and European spatial data from the Eurostat GISCO (Geographic Information System of the Commission) data distribution <https://ec.europa.eu/eurostat/web/gisco>. The package provides helpers for country boundaries, Nomenclature of Territorial Units for Statistics (NUTS) regions, administrative units, statistical units, transport networks, basic service locations and other GISCO datasets. This package is neither affiliated with nor endorsed by Eurostat.},
 }

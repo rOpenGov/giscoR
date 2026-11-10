@@ -103,8 +103,8 @@ gisco_id_api_census_grid(
 
 - year:
 
-  A character string or numeric value with the dataset year, see
-  **Details**.
+  A character string or numeric value with the dataset year. See
+  **Supported dataset years** for the values accepted by each endpoint.
 
 - epsg:
 
@@ -154,34 +154,42 @@ The available endpoints are:
   and latitude coordinates or a bounding box.
 
 - `gisco_id_api_nuts()`: Return NUTS regions from coordinates or an ID.
-  Accepted values for `year`: `"9999"`, `"2024"`, `"2021"`, `"2016"`,
-  `"2013"`, `"2010"`, `"2006"` .
 
 - `gisco_id_api_lau()`: Return the ID and, optionally, geometry for
-  Local Administrative Units (LAU) at specified coordinates. Accepted
-  values for `year`: `"9999"`, `"2024"`, `"2023"`, `"2022"`, `"2021"`,
-  `"2020"`, `"2019"`, `"2018"`, `"2017"`, `"2016"`, `"2015"`, `"2014"`,
-  `"2013"`, `"2012"`, `"2011"` .
+  Local Administrative Units (LAU) at specified coordinates.
 
 - `gisco_id_api_country()`: Return the ID and, optionally, geometry for
-  countries at specified coordinates. Accepted values for `year`:
-  `"9999"`, `"2024"`, `"2020"`, `"2016"`, `"2013"`, `"2010"`, `"2006"` .
+  countries at specified coordinates.
 
 - `gisco_id_api_river_basin()`: Return the ID and, optionally, geometry
   for river basins at specified coordinates, based on the Water
-  Framework Directive (WFD) reference spatial datasets. Accepted values
-  for `year`: `"9999"`, `"2024"`, `"2023"`, `"2022"`, `"2021"`,
-  `"2020"`, `"2019"` .
+  Framework Directive (WFD) reference spatial datasets.
 
 - `gisco_id_api_biogeo_region()`: Return the ID and, optionally,
   geometry for biogeographical regions at specified coordinates. The
   biogeographical regions dataset contains the official delineations
   used in the Habitats Directive (92/43/EEC) and for the EMERALD
-  Network. Accepted values for `year`: `"9999"`, `"2016"` .
+  Network.
 
 - `gisco_id_api_census_grid()`: Return the ID and, optionally, geometry
-  for census grid cells at specified coordinates. Accepted values for
-  `year`: `"9999"`, `"2021"` .
+  for census grid cells at specified coordinates.
+
+## Supported dataset years
+
+The GISCO ID service reported these years when the documentation was
+last updated. Available years may change as GISCO updates the service.
+
+- `gisco_id_api_nuts()`: 2024, 2021, 2016, 2013, 2010 and 2006.
+
+- `gisco_id_api_lau()`: 2011 to 2024, inclusive.
+
+- `gisco_id_api_country()`: 2024, 2020, 2016, 2013, 2010 and 2006.
+
+- `gisco_id_api_river_basin()`: 2019 to 2024, inclusive.
+
+- `gisco_id_api_biogeo_region()`: 2016.
+
+- `gisco_id_api_census_grid()`: 2021.
 
 ## See also
 
@@ -203,21 +211,21 @@ gisco_id_api_geonames(x = -2.5, y = 43.06)
 #> Simple feature collection with 10 features and 8 fields
 #> Geometry type: POINT
 #> Dimension:     XY
-#> Bounding box:  xmin: -2.520847 ymin: 43.06455 xmax: -2.491494 ymax: 43.07037
+#> Bounding box:  xmin: -2.534611 ymin: 43.03257 xmax: -2.491494 ymax: 43.07773
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 10 × 9
 #>    name       type  country language localtype distanceMeters endlifespanversion
 #>  * <chr>      <chr> <chr>   <chr>    <chr>              <dbl> <chr>             
 #>  1 Arrasate   admi… Spain   baq      Administ…           809. NA                
 #>  2 Mondragón  admi… Spain   spa      Administ…           809. NA                
-#>  3 Arrasate   admi… Spain   baq      Administ…           809. NA                
-#>  4 Arrasate   admi… Spain   baq      Administ…           809. NA                
-#>  5 Mondragón  admi… Spain   spa      Administ…           809. NA                
-#>  6 Mondragón  admi… Spain   spa      Administ…           809. NA                
-#>  7 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
-#>  8 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
-#>  9 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
-#> 10 Garagartza popu… Spain   baq      BUILTUPP           2052. NA                
+#>  3 Arrasate/… popu… Spain   spa      BUILTUPP            858. NA                
+#>  4 Garagartza popu… Spain   baq      BUILTUPP           2052. NA                
+#>  5 Gesalibar  popu… Spain   baq      BUILTUPP           2482. NA                
+#>  6 Rio Arama… hydr… Spain   spa      Watercou…          2822. NA                
+#>  7 Aramaio I… hydr… Spain   baq      Watercou…          2822. NA                
+#>  8 Aretxabal… popu… Spain   baq      BUILTUPP           3082. NA                
+#>  9 Arroyo Ko… hydr… Spain   spa      Watercou…          3339. NA                
+#> 10 Kobato Er… hydr… Spain   baq      Watercou…          3339. NA                
 #> # ℹ 2 more variables: beginlifespanversion <date>, geometry <POINT [°]>
 
 lau <- gisco_id_api_lau(x = -2.5, y = 43.06)
