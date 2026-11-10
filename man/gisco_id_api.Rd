@@ -93,8 +93,8 @@ extent must not exceed five degrees in either dimension.}
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
 
-\item{year}{A character string or numeric value with the dataset year, see
-\href{https://gisco-services.ec.europa.eu/id/api-docs/}{GISCO ID service API} for details.}
+\item{year}{A character string or numeric value with the dataset year.
+See \strong{Supported dataset years} for the values accepted by each endpoint.}
 
 \item{epsg}{A character string or numeric value with the EPSG code for the
 coordinate reference system of the input coordinates and returned
@@ -151,6 +151,20 @@ EMERALD Network.
 for census grid cells at specified coordinates.
 }
 }
+\section{Supported dataset years}{
+
+The GISCO ID service reported these years when the documentation was last
+updated. Available years may change as GISCO updates the service.
+\itemize{
+\item \code{gisco_id_api_nuts()}: 2024, 2021, 2016, 2013, 2010 and 2006.
+\item \code{gisco_id_api_lau()}: 2011 to 2024, inclusive.
+\item \code{gisco_id_api_country()}: 2024, 2020, 2016, 2013, 2010 and 2006.
+\item \code{gisco_id_api_river_basin()}: 2019 to 2024, inclusive.
+\item \code{gisco_id_api_biogeo_region()}: 2016.
+\item \code{gisco_id_api_census_grid()}: 2021.
+}
+}
+
 \examples{
 \dontshow{if (gisco_check_access()) withAutoprint(\{ # examplesIf}
 \donttest{

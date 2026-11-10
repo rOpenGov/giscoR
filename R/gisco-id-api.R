@@ -27,9 +27,8 @@
 #' @param geometry A logical value indicating whether to return geometry. If
 #'   `TRUE`, an [`sf`][sf::st_sf] object is returned. If `FALSE`, a
 #'   [tibble][tibble::tbl_df] is returned.
-#' @param year A character string or numeric value with the dataset year, see
-#'   [GISCO ID service
-#'   API](https://gisco-services.ec.europa.eu/id/api-docs/) for details.
+#' @param year A character string or numeric value with the dataset year.
+#'   See **Supported dataset years** for the values accepted by each endpoint.
 #' @param nuts_level A character string or numeric value with the NUTS level.
 #'   One of `0`, `1`, `2` or `3`. This argument is sent as the API's `level`
 #'   parameter. If `NULL`, the service uses level `3` for coordinate lookups.
@@ -64,6 +63,17 @@
 #'   EMERALD Network.
 #' - `gisco_id_api_census_grid()`: Return the ID and, optionally, geometry
 #'   for census grid cells at specified coordinates.
+#'
+#' @section Supported dataset years:
+#' The GISCO ID service reported these years when the documentation was last
+#' updated. Available years may change as GISCO updates the service.
+#'
+#' - `gisco_id_api_nuts()`: 2024, 2021, 2016, 2013, 2010 and 2006.
+#' - `gisco_id_api_lau()`: 2011 to 2024, inclusive.
+#' - `gisco_id_api_country()`: 2024, 2020, 2016, 2013, 2010 and 2006.
+#' - `gisco_id_api_river_basin()`: 2019 to 2024, inclusive.
+#' - `gisco_id_api_biogeo_region()`: 2016.
+#' - `gisco_id_api_census_grid()`: 2021.
 #'
 #' @source
 #' <https://gisco-services.ec.europa.eu/id/api-docs/>.

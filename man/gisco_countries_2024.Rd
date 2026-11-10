@@ -8,9 +8,11 @@
 \format{
 An \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
 1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. It has
-263 rows and 12 variables:
+263 rows and
+14 variables:
 \describe{
 \item{\code{CNTR_ID}}{Country ID from Eurostat.}
+\item{\code{COUNTRY_URI}}{GISCO country URI identifier.}
 \item{\code{CNTR_NAME}}{Official country name in the local language.}
 \item{\code{NAME_ENGL}}{Country name in English.}
 \item{\code{NAME_FREN}}{Country name in French.}
@@ -18,6 +20,7 @@ An \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolu
 GISCO.}
 \item{\code{SVRG_UN}}{Sovereign status according to the United Nations.}
 \item{\code{CAPT}}{Capital city.}
+\item{\code{STAT_CODE}}{GISCO statistical status code.}
 \item{\code{EU_STAT}}{European Union member.}
 \item{\code{EFTA_STAT}}{EFTA member.}
 \item{\code{CC_STAT}}{EU candidate member.}

@@ -43,9 +43,11 @@ NULL
 #' @format
 #' An [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
 #' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
-#' `r nrow(giscoR::gisco_countries_2024)` rows and 12 variables:
+#' `r nrow(giscoR::gisco_countries_2024)` rows and
+#' `r ncol(giscoR::gisco_countries_2024)` variables:
 #' \describe{
 #'   \item{`CNTR_ID`}{Country ID from Eurostat.}
+#'   \item{`COUNTRY_URI`}{GISCO country URI identifier.}
 #'   \item{`CNTR_NAME`}{Official country name in the local language.}
 #'   \item{`NAME_ENGL`}{Country name in English.}
 #'   \item{`NAME_FREN`}{Country name in French.}
@@ -53,6 +55,7 @@ NULL
 #'   GISCO.}
 #'   \item{`SVRG_UN`}{Sovereign status according to the United Nations.}
 #'   \item{`CAPT`}{Capital city.}
+#'   \item{`STAT_CODE`}{GISCO statistical status code.}
 #'   \item{`EU_STAT`}{European Union member.}
 #'   \item{`EFTA_STAT`}{EFTA member.}
 #'   \item{`CC_STAT`}{EU candidate member.}
