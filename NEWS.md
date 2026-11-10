@@ -1,6 +1,6 @@
 # giscoR 1.3.1
 
-- giscoR now requires R 4.2 or later.
+- **giscoR** now requires **R** ≥ 4.2.
 - `gisco_countries_2024` has refreshed country names and geometries, adds the `COUNTRY_URI` and `STAT_CODE` columns and changes the row order.
 - `gisco_countrycode` updates United Nations intermediate region codes and names.
 - `gisco_db` includes GISCO catalog metadata as of October 29, 2026.
