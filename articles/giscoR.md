@@ -201,8 +201,8 @@ Political map of North Africa
 
 ## Thematic maps with giscoR
 
-This example joins 2022 household disposable income data from Eurostat
-to NUTS 2 regions and maps the results with **ggplot2**. You can also
+This example maps 2021 net disposable household income per inhabitant
+using Eurostat data, 2021 NUTS 2 regions and **ggplot2**. You can also
 use **tmap**, **mapsf**, **leaflet** or other packages that support
 **sf** objects.
 
@@ -218,28 +218,39 @@ nuts2 <- gisco_get_nuts(
   year = "2021", epsg = "3035", resolution = "10",
   nuts_level = "2"
 )
-# Get country borders.
-borders <- gisco_get_countries(epsg = "3035", year = "2020", resolution = "3")
+# Get country borders from the same NUTS release.
+borders <- gisco_get_nuts(
+  year = "2021", epsg = "3035", resolution = "10",
+  nuts_level = "0"
+)
 
 eu_bord <- borders |>
-  filter(CNTR_ID %in% nuts2$CNTR_CODE)
+  filter(CNTR_CODE %in% nuts2$CNTR_CODE)
 
-# Retrieve disposable income data from Eurostat.
-pps <- get_eurostat("tgs00026") |>
-  filter(TIME_PERIOD == "2022-01-01")
+# Retrieve net disposable income per inhabitant from Eurostat.
+pps <- get_eurostat(
+  "nama_10r_2hhinc",
+  filters = list(
+    time = "2021",
+    na_item = "B6N",
+    direct = "BAL",
+    unit = "PPS_EU27_2020_HAB"
+  ),
+  verbose = FALSE
+) |>
+  select(geo, values)
 
 nuts2_sf <- nuts2 |>
   left_join(pps, by = "geo") |>
   mutate(
-    values_th = values / 1000,
-    categ = cut(values_th, c(0, 15, 30, 60, 90, 120, Inf))
+    pps_thousands = values / 1000,
+    categ = cut(
+      pps_thousands,
+      breaks = c(-Inf, 10, 15, 20, 25, Inf),
+      labels = c("< 10", "10–<15", "15–<20", "20–<25", "≥ 25"),
+      right = FALSE
+    )
   )
-
-# Adjust labels.
-labs <- levels(nuts2_sf$categ)
-labs[1] <- "< 15"
-labs[6] <- "> 120"
-levels(nuts2_sf$categ) <- labs
 
 # Create the plot.
 ggplot(nuts2_sf) +
@@ -251,7 +262,7 @@ ggplot(nuts2_sf) +
   coord_sf(xlim = c(2377294, 6500000), ylim = c(1413597, 5228510)) +
   # Configure legends and color.
   scale_fill_manual(
-    values = hcl.colors(length(labs), "Geyser", rev = TRUE),
+    values = hcl.colors(nlevels(nuts2_sf$categ), "Geyser", rev = TRUE),
     # Label missing values.
     labels = function(x) {
       ifelse(is.na(x), "No data", x)
@@ -284,9 +295,9 @@ ggplot(nuts2_sf) +
   ) +
   # Add labels.
   labs(
-    title = "Disposable income of private households (2022)",
+    title = "Net disposable household income per inhabitant (2021)",
     subtitle = "NUTS 2 level",
-    fill = "euros (thousands)",
+    fill = "PPS per inhabitant (thousands)",
     caption = paste0(
       "Source: Eurostat, ", gisco_attributions()
     )
@@ -294,12 +305,11 @@ ggplot(nuts2_sf) +
 ```
 
 ![Choropleth map of European NUTS 2 regions, colored by household
-disposable income in thousands of euros. Orange indicates lower income
-categories and teal indicates higher categories. Gray marks missing
-data. The legend ranges from below 15 thousand to above 120 thousand
-euros. Regional differences are visible within countries, including
-France, Spain and Germany. ](./fig-giscor-1.png)
+disposable income per inhabitant in thousands of purchasing power
+standards (PPS). Orange indicates lower income categories and teal
+indicates higher categories. Gray marks missing data.
+](./fig-giscor-1.png)
 
-Disposable income of private households by NUTS 2 regions (2022)
+Net disposable household income per inhabitant by NUTS 2 region (2021)
 
 Use these examples as a starting point for your own maps.

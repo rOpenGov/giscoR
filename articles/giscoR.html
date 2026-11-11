@@ -223,7 +223,7 @@ Political map of North Africa
 </div>
 </section><section class="section level2"><h2 id="thematic-maps-with-giscor">Thematic maps with giscoR<a class="anchor" aria-label="anchor" href="#thematic-maps-with-giscor"></a>
 </h2>
-<p>This example joins 2022 household disposable income data from Eurostat to NUTS 2 regions and maps the results with <strong>ggplot2</strong>. You can also use <strong>tmap</strong>, <strong>mapsf</strong>, <strong>leaflet</strong> or other packages that support <strong>sf</strong> objects.</p>
+<p>This example maps 2021 net disposable household income per inhabitant using Eurostat data, 2021 NUTS 2 regions and <strong>ggplot2</strong>. You can also use <strong>tmap</strong>, <strong>mapsf</strong>, <strong>leaflet</strong> or other packages that support <strong>sf</strong> objects.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load EU member data.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
@@ -235,28 +235,39 @@ Political map of North Africa
 <span>  year <span class="op">=</span> <span class="st">"2021"</span>, epsg <span class="op">=</span> <span class="st">"3035"</span>, resolution <span class="op">=</span> <span class="st">"10"</span>,</span>
 <span>  nuts_level <span class="op">=</span> <span class="st">"2"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="co"># Get country borders.</span></span>
-<span><span class="va">borders</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get_countries.html">gisco_get_countries</a></span><span class="op">(</span>epsg <span class="op">=</span> <span class="st">"3035"</span>, year <span class="op">=</span> <span class="st">"2020"</span>, resolution <span class="op">=</span> <span class="st">"3"</span><span class="op">)</span></span>
+<span><span class="co"># Get country borders from the same NUTS release.</span></span>
+<span><span class="va">borders</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gisco_get_nuts.html">gisco_get_nuts</a></span><span class="op">(</span></span>
+<span>  year <span class="op">=</span> <span class="st">"2021"</span>, epsg <span class="op">=</span> <span class="st">"3035"</span>, resolution <span class="op">=</span> <span class="st">"10"</span>,</span>
+<span>  nuts_level <span class="op">=</span> <span class="st">"0"</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">eu_bord</span> <span class="op">&lt;-</span> <span class="va">borders</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">CNTR_ID</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">nuts2</span><span class="op">$</span><span class="va">CNTR_CODE</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">CNTR_CODE</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="va">nuts2</span><span class="op">$</span><span class="va">CNTR_CODE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Retrieve disposable income data from Eurostat.</span></span>
-<span><span class="va">pps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span><span class="st">"tgs00026"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TIME_PERIOD</span> <span class="op">==</span> <span class="st">"2022-01-01"</span><span class="op">)</span></span>
+<span><span class="co"># Retrieve net disposable income per inhabitant from Eurostat.</span></span>
+<span><span class="va">pps</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span></span>
+<span>  <span class="st">"nama_10r_2hhinc"</span>,</span>
+<span>  filters <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    time <span class="op">=</span> <span class="st">"2021"</span>,</span>
+<span>    na_item <span class="op">=</span> <span class="st">"B6N"</span>,</span>
+<span>    direct <span class="op">=</span> <span class="st">"BAL"</span>,</span>
+<span>    unit <span class="op">=</span> <span class="st">"PPS_EU27_2020_HAB"</span></span>
+<span>  <span class="op">)</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">geo</span>, <span class="va">values</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">nuts2_sf</span> <span class="op">&lt;-</span> <span class="va">nuts2</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">pps</span>, by <span class="op">=</span> <span class="st">"geo"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
-<span>    values_th <span class="op">=</span> <span class="va">values</span> <span class="op">/</span> <span class="fl">1000</span>,</span>
-<span>    categ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">values_th</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">15</span>, <span class="fl">30</span>, <span class="fl">60</span>, <span class="fl">90</span>, <span class="fl">120</span>, <span class="cn">Inf</span><span class="op">)</span><span class="op">)</span></span>
+<span>    pps_thousands <span class="op">=</span> <span class="va">values</span> <span class="op">/</span> <span class="fl">1000</span>,</span>
+<span>    categ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span></span>
+<span>      <span class="va">pps_thousands</span>,</span>
+<span>      breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">25</span>, <span class="cn">Inf</span><span class="op">)</span>,</span>
+<span>      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"&lt; 10"</span>, <span class="st">"10–&lt;15"</span>, <span class="st">"15–&lt;20"</span>, <span class="st">"20–&lt;25"</span>, <span class="st">"≥ 25"</span><span class="op">)</span>,</span>
+<span>      right <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Adjust labels.</span></span>
-<span><span class="va">labs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">nuts2_sf</span><span class="op">$</span><span class="va">categ</span><span class="op">)</span></span>
-<span><span class="va">labs</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"&lt; 15"</span></span>
-<span><span class="va">labs</span><span class="op">[</span><span class="fl">6</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">"&gt; 120"</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html" class="external-link">levels</a></span><span class="op">(</span><span class="va">nuts2_sf</span><span class="op">$</span><span class="va">categ</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">labs</span></span>
 <span></span>
 <span><span class="co"># Create the plot.</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">nuts2_sf</span><span class="op">)</span> <span class="op">+</span></span>
@@ -268,7 +279,7 @@ Political map of North Africa
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2377294</span>, <span class="fl">6500000</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1413597</span>, <span class="fl">5228510</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># Configure legends and color.</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html" class="external-link">scale_fill_manual</a></span><span class="op">(</span></span>
-<span>    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">labs</span><span class="op">)</span>, <span class="st">"Geyser"</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>    values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/palettes.html" class="external-link">hcl.colors</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nlevels.html" class="external-link">nlevels</a></span><span class="op">(</span><span class="va">nuts2_sf</span><span class="op">$</span><span class="va">categ</span><span class="op">)</span>, <span class="st">"Geyser"</span>, rev <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>    <span class="co"># Label missing values.</span></span>
 <span>    labels <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="st">"No data"</span>, <span class="va">x</span><span class="op">)</span></span>
@@ -301,17 +312,17 @@ Political map of North Africa
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># Add labels.</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Disposable income of private households (2022)"</span>,</span>
+<span>    title <span class="op">=</span> <span class="st">"Net disposable household income per inhabitant (2021)"</span>,</span>
 <span>    subtitle <span class="op">=</span> <span class="st">"NUTS 2 level"</span>,</span>
-<span>    fill <span class="op">=</span> <span class="st">"euros (thousands)"</span>,</span>
+<span>    fill <span class="op">=</span> <span class="st">"PPS per inhabitant (thousands)"</span>,</span>
 <span>    caption <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span></span>
 <span>      <span class="st">"Source: Eurostat, "</span>, <span class="fu"><a href="../reference/gisco_attributions.html">gisco_attributions</a></span><span class="op">(</span><span class="op">)</span></span>
 <span>    <span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
 <div class="figure">
-<img src="./fig-giscor-1.png" alt="Choropleth map of European NUTS 2 regions, colored by household disposable income in thousands of euros. Orange indicates lower income categories and teal indicates higher categories. Gray marks missing data. The legend ranges from below 15 thousand to above 120 thousand euros. Regional differences are visible within countries, including France, Spain and Germany.
+<img src="./fig-giscor-1.png" alt="Choropleth map of European NUTS 2 regions, colored by household disposable income per inhabitant in thousands of purchasing power standards (PPS). Orange indicates lower income categories and teal indicates higher categories. Gray marks missing data.
 " width="100%"><p class="caption">
-Disposable income of private households by NUTS 2 regions (2022)
+Net disposable household income per inhabitant by NUTS 2 region (2021)
 </p>
 </div>
 <p>Use these examples as a starting point for your own maps.</p>

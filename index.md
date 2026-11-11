@@ -96,11 +96,11 @@ resolutions](reference/figures/README-resolution-map-1.png)
 
 ## Advanced example: thematic maps
 
-This example uses **ggplot2** to map 2021 population density across NUTS
+This example uses **ggplot2** to map 2024 population density across NUTS
 3 regions. The workflow follows the work of [Milos
 Popovic](https://milospopovic.net/).
 
-Download NUTS 3 regions and country boundaries for 2021.
+Download NUTS 3 regions and country boundaries for 2024.
 
 ``` r
 
@@ -111,7 +111,7 @@ library(ggplot2)
 
 # Retrieve sf objects.
 nuts3 <- gisco_get_nuts(
-  year = 2021,
+  year = 2024,
   epsg = 3035,
   resolution = 10,
   nuts_level = 3
@@ -120,7 +120,7 @@ nuts3 <- gisco_get_nuts(
 # Get country boundaries at NUTS 0 level.
 
 country_lines <- gisco_get_nuts(
-  year = 2021,
+  year = 2024,
   epsg = 3035,
   resolution = 10,
   spatialtype = "BN",
@@ -129,13 +129,13 @@ country_lines <- gisco_get_nuts(
 ```
 
 Use **eurostat** to download the population density data and select
-2021.
+2024.
 
 ``` r
 
 # Retrieve Eurostat data.
-popdens <- get_eurostat("demo_r_d3dens") |>
-  filter(TIME_PERIOD == "2021-01-01")
+popdens <- get_eurostat("demo_r_d3dens", verbose = FALSE) |>
+  filter(TIME_PERIOD == "2024-01-01")
 ```
 
 Join the population density data to the NUTS 3 geometries, then group
@@ -206,7 +206,7 @@ ggplot(nuts3_sf) +
   ) +
   # Add labels.
   labs(
-    title = "Population density in 2021",
+    title = "Population density in 2024",
     subtitle = "NUTS 3 level",
     fill = "people per square kilometer",
     caption = paste0(
@@ -218,7 +218,7 @@ ggplot(nuts3_sf) +
 ```
 
 ![Population density in
-2021](reference/figures/README-thematic-map-1.png)
+2024](reference/figures/README-thematic-map-1.png)
 
 ## Caching
 

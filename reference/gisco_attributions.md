@@ -88,12 +88,11 @@ Eurostat website, the data source must be acknowledged in the legend of
 the map and on the introductory page of the publication with the
 following copyright notice:
 
-- EN: \<U+00A9\> EuroGeographics for the administrative boundaries.
+- EN: © EuroGeographics for the administrative boundaries.
 
-- FR: \<U+00A9\> EuroGeographics pour les limites administratives.
+- FR: © EuroGeographics pour les limites administratives.
 
-- DE: \<U+00A9\> EuroGeographics bez\<U+00FC\>glich der
-  Verwaltungsgrenzen.
+- DE: © EuroGeographics bezüglich der Verwaltungsgrenzen.
 
 For publications in languages other than English, French or German, the
 translation of the copyright notice in the language of the publication

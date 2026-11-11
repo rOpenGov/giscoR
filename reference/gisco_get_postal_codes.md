@@ -86,8 +86,8 @@ and 2020. The 2025 release has a reference date of 1 January 2025.
 
 The dataset is released under the CC-BY-SA-4.0 license. Although the
 distribution API provides a 2025 release, the official GISCO licensing
-page currently requires the following attribution: \<U+00A9\> European
-Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
+page currently requires the following attribution: © European Union -
+GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
 
 ## Note
 
