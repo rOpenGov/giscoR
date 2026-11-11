@@ -73,7 +73,7 @@ The GISCO distribution API provides postal code releases for 2025, 2024 and
 The dataset is released under the CC-BY-SA-4.0 license. Although the
 distribution API provides a 2025 release, the official GISCO licensing page
 currently requires the following attribution:
-<U+00A9> European Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
+© European Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
 }
 
 \section{Note}{

@@ -62,8 +62,9 @@ distribution](https://ec.europa.eu/eurostat/web/gisco) for use in **R**.
 such as `TOT_P_2021`. To calculate people per square kilometer, divide the
 population count by the cell area in square kilometers (`resolution^2`).
 Population variables have year- and country-specific licensing conditions.
-Consult the official [grid documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
-before publication or redistribution.
+Consult the official [grid
+documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids) before
+publication or redistribution.
 
 ## Installation
 
@@ -143,10 +144,11 @@ ggplot(nl_all) +
 
 ## Advanced example: thematic maps
 
-This example uses **ggplot2** to map 2021 population density across NUTS 3
-regions. The workflow follows the work of [Milos Popovic](https://milospopovic.net/).
+This example uses **ggplot2** to map 2024 population density across NUTS 3
+regions. The workflow follows the work of [Milos
+Popovic](https://milospopovic.net/).
 
-Download NUTS 3 regions and country boundaries for 2021.
+Download NUTS 3 regions and country boundaries for 2024.
 
 ```{r}
 #| label: euroex
@@ -158,7 +160,7 @@ library(ggplot2)
 
 # Retrieve sf objects.
 nuts3 <- gisco_get_nuts(
-  year = 2021,
+  year = 2024,
   epsg = 3035,
   resolution = 10,
   nuts_level = 3
@@ -167,7 +169,7 @@ nuts3 <- gisco_get_nuts(
 # Get country boundaries at NUTS 0 level.
 
 country_lines <- gisco_get_nuts(
-  year = 2021,
+  year = 2024,
   epsg = 3035,
   resolution = 10,
   spatialtype = "BN",
@@ -175,21 +177,21 @@ country_lines <- gisco_get_nuts(
 )
 ```
 
-Use **eurostat** to download the population density data and select 2021.
+Use **eurostat** to download the population density data and select 2024.
 
 ```{r}
 # Retrieve Eurostat data.
-popdens <- get_eurostat("demo_r_d3dens") |>
-  filter(TIME_PERIOD == "2021-01-01")
+popdens <- get_eurostat("demo_r_d3dens", verbose = FALSE) |>
+  filter(TIME_PERIOD == "2024-01-01")
 ```
 
-Join the population density data to the NUTS 3 geometries, then group the
-values into intervals for the map.
+Join the population density data to the NUTS 3 geometries, then group the values
+into intervals for the map.
 
 ```{r}
 #| label: thematic-map
 #| fig-asp: 1.1
-#| fig-cap: Population density in 2021
+#| fig-cap: Population density in 2024
 #| fig-alt: >
 #|   Choropleth map of European NUTS 3 regions, colored by population density
 #|   in people per square kilometer. Pale yellow indicates lower density and
@@ -259,7 +261,7 @@ ggplot(nuts3_sf) +
   ) +
   # Add labels.
   labs(
-    title = "Population density in 2021",
+    title = "Population density in 2024",
     subtitle = "NUTS 3 level",
     fill = "people per square kilometer",
     caption = paste0(

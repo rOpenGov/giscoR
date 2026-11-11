@@ -24,15 +24,15 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 
 <!-- badges: end -->
 
-[**giscoR**](https://ropengov.github.io/giscoR/) downloads global and European
-geospatial data from Eurostat's [GISCO geodata
+[**giscoR**](https://ropengov.github.io/giscoR/) downloads global and
+European geospatial data from Eurostat’s [GISCO geodata
 distribution](https://ec.europa.eu/eurostat/web/gisco) for use in **R**.
 
 ## Key features
 
-- Retrieve GISCO datasets for country boundaries, NUTS regions, administrative
-  units such as Local Administrative Units (LAU), statistical units, transport
-  networks and basic service locations.
+- Retrieve GISCO datasets for country boundaries, NUTS regions,
+  administrative units such as Local Administrative Units (LAU),
+  statistical units, transport networks and basic service locations.
 - For compatible administrative and statistical datasets, select among
   resolutions `60M`, `20M`, `10M`, `03M` and `01M`. Choose coordinate
   reference systems **EPSG:4326**, **EPSG:3035** and **EPSG:3857**.
@@ -44,11 +44,12 @@ distribution](https://ec.europa.eu/eurostat/web/gisco) for use in **R**.
 ### Population grids
 
 `gisco_get_grid()` downloads polygon or cell-center point GeoPackages in
-**EPSG:3035** at resolutions from 1 km to 100 km. Population columns use names
-such as `TOT_P_2021`. To calculate people per square kilometer, divide the
-population count by the cell area in square kilometers (`resolution^2`).
-Population variables have year- and country-specific licensing conditions.
-Consult the official [grid documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
+**EPSG:3035** at resolutions from 1 km to 100 km. Population columns use
+names such as `TOT_P_2021`. To calculate people per square kilometer,
+divide the population count by the cell area in square kilometers
+(`resolution^2`). Population variables have year- and country-specific
+licensing conditions. Consult the official [grid
+documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
 before publication or redistribution.
 
 ## Installation
@@ -91,7 +92,8 @@ install.packages(
 
 ## Quick example
 
-This example compares the boundaries of the Netherlands at four resolutions.
+This example compares the boundaries of the Netherlands at four
+resolutions.
 
 ``` r
 library(giscoR)
@@ -145,10 +147,11 @@ alt="Netherlands boundaries at different resolutions" />
 
 ## Advanced example: thematic maps
 
-This example uses **ggplot2** to map 2021 population density across NUTS 3
-regions. The workflow follows the work of [Milos Popovic](https://milospopovic.net/).
+This example uses **ggplot2** to map 2024 population density across NUTS
+3 regions. The workflow follows the work of [Milos
+Popovic](https://milospopovic.net/).
 
-Download NUTS 3 regions and country boundaries for 2021.
+Download NUTS 3 regions and country boundaries for 2024.
 
 ``` r
 library(giscoR)
@@ -158,7 +161,7 @@ library(ggplot2)
 
 # Retrieve sf objects.
 nuts3 <- gisco_get_nuts(
-  year = 2021,
+  year = 2024,
   epsg = 3035,
   resolution = 10,
   nuts_level = 3
@@ -167,7 +170,7 @@ nuts3 <- gisco_get_nuts(
 # Get country boundaries at NUTS 0 level.
 
 country_lines <- gisco_get_nuts(
-  year = 2021,
+  year = 2024,
   epsg = 3035,
   resolution = 10,
   spatialtype = "BN",
@@ -175,16 +178,17 @@ country_lines <- gisco_get_nuts(
 )
 ```
 
-Use **eurostat** to download the population density data and select 2021.
+Use **eurostat** to download the population density data and select
+2024.
 
 ``` r
 # Retrieve Eurostat data.
-popdens <- get_eurostat("demo_r_d3dens") |>
-  filter(TIME_PERIOD == "2021-01-01")
+popdens <- get_eurostat("demo_r_d3dens", verbose = FALSE) |>
+  filter(TIME_PERIOD == "2024-01-01")
 ```
 
-Join the population density data to the NUTS 3 geometries, then group the
-values into intervals for the map.
+Join the population density data to the NUTS 3 geometries, then group
+the values into intervals for the map.
 
 ``` r
 # Merge data.
@@ -250,7 +254,7 @@ ggplot(nuts3_sf) +
   ) +
   # Add labels.
   labs(
-    title = "Population density in 2021",
+    title = "Population density in 2024",
     subtitle = "NUTS 3 level",
     fill = "people per square kilometer",
     caption = paste0(
@@ -263,12 +267,13 @@ ggplot(nuts3_sf) +
 
 <img src="man/figures/README-thematic-map-1.png" style="width:100.0%"
 data-fig-alt="Choropleth map of European NUTS 3 regions, colored by population density in people per square kilometer. Pale yellow indicates lower density and orange through dark purple indicates higher density. Gray marks missing data. Dense regions stand out around major cities and in the Netherlands and Belgium, while much of northern Scandinavia is sparsely populated."
-alt="Population density in 2021" />
+alt="Population density in 2024" />
 
 ## Caching
 
-LAU and other large datasets can exceed 50 MB. Set a cache directory with
-`gisco_set_cache_dir()` to reuse downloaded files on subsequent requests.
+LAU and other large datasets can exceed 50 MB. Set a cache directory
+with `gisco_set_cache_dir()` to reuse downloaded files on subsequent
+requests.
 
 ``` r
 gisco_set_cache_dir("./path/to/location")

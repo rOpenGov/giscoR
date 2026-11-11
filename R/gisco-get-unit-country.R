@@ -83,7 +83,11 @@ gisco_get_unit_country <- function(
   spatialtype <- match_arg_pretty(spatialtype)
 
   type <- unit_spatialtype_to_file_type(spatialtype)
-  use_code <- switch(year, "2001" = "iso3c", "2006" = "iso2c", "eurostat")
+  use_code <- switch(year,
+    "2001" = "iso3c",
+    "2006" = "iso2c",
+    "eurostat"
+  )
   unit_code <- convert_country_code(unit, use_code)
 
   unit_names <- build_unit_filenames(unit_code, type, epsg, year, res_txt)
