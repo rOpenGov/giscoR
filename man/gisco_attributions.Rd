@@ -69,9 +69,9 @@ Eurostat website, the data source must be acknowledged in the legend of
 the map and on the introductory page of the publication with the following
 copyright notice:
 \itemize{
-\item EN: © EuroGeographics for the administrative boundaries.
-\item FR: © EuroGeographics pour les limites administratives.
-\item DE: © EuroGeographics bezüglich der Verwaltungsgrenzen.
+\item EN: <U+00A9> EuroGeographics for the administrative boundaries.
+\item FR: <U+00A9> EuroGeographics pour les limites administratives.
+\item DE: <U+00A9> EuroGeographics bez<U+00FC>glich der Verwaltungsgrenzen.
 }
 
 For publications in languages other than English, French or German,

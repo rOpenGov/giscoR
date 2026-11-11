@@ -11,8 +11,8 @@
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("communes",
 #'   "year",TRUE)}.
-#' @param cache `r lifecycle::badge('deprecated')`. These functions always
-#'   cache the result because of its size. See the **Caching strategies**
+#' @param cache `r lifecycle::badge('deprecated')`. This function always
+#'   caches the source file because of its size. See the **Caching strategies**
 #'   section in [gisco_set_cache_dir()].
 #'
 #' @param spatialtype A character string with the type of geometry to return.
@@ -38,8 +38,8 @@
 #'
 #' The dataset is based on EuroBoundaryMap from
 #' [EuroGeographics](https://eurogeographics.org/). Geographic coverage includes
-#' the European Union 28, EFTA countries and candidate countries. The scale of
-#' the dataset is 1:100 000.
+#' the EU-28, EFTA countries and candidate countries. The dataset scale is
+#' 1:100,000.
 #'
 #' The LAU classification is not covered by any legislative act.
 #'

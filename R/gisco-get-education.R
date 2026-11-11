@@ -7,9 +7,8 @@
 #'
 #' @family services
 #' @inheritParams gisco_get_countries
-#' @param year A character string or numeric value with the release year of the
-#'   file. One of
-#'   `2023`, `2020`.
+#' @param year The release year as a character string or numeric value. Choose
+#'   2023 or 2020.
 #'
 #' @inherit gisco_get_countries return
 #' @details

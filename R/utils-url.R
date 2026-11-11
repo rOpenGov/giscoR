@@ -6,7 +6,8 @@
 #'   database.
 #' @param year A character string or numeric value with the release year.
 #' @param epsg A numeric EPSG code.
-#' @param resolution A numeric value with the resolution in meters.
+#' @param resolution A numeric value or character string with the map scale
+#'   denominator in millions.
 #' @param spatialtype A character string with the spatial type.
 #' @param nuts_level A character string with the NUTS level.
 #' @param level A character string with the level for Urban Audit datasets.
@@ -233,7 +234,7 @@ download_url <- function(
 
   req <- gisco_request(url, verbose = verbose)
 
-  # Check the size first to see if HEAD should report it.
+  # Use a HEAD request to determine whether to show download progress.
   get_header <- httr2::req_method(req, "HEAD")
   getsize <- gisco_perform_request(
     get_header,

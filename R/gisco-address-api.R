@@ -36,21 +36,20 @@
 #' @param postcode A postcode to use with the previous arguments.
 #' @param q A single non-empty string for a freeform address search, or `NULL`
 #'   for a structured search. The string can contain a street, house number,
-#'   city or postcode. Freeform queries do not support approximate matching.
+#'   city or postcode.
 #'
 #' @return
 #' A [tibble][tibble::tbl_df] in most cases, except
 #' `gisco_address_api_search()`, `gisco_address_api_reverse()` and
 #' `gisco_address_api_bbox()`, which return an [`sf`][sf::st_sf] object when
-#' geometry is available. Searches with no results return an empty
-#' [tibble][tibble::tbl_df]. `gisco_address_api_bbox()` returns `NULL` when
-#' no bounding box is found. Failed requests return `NULL`.
+#' geometry is available. Searches with no results return an empty tibble.
+#' `gisco_address_api_bbox()` returns `NULL` when no bounding box is found.
+#' Failed requests return `NULL`.
 #'
-#' `gisco_address_api_most_populated_cell()` returns a one-row
-#' [tibble][tibble::tbl_df] for the most populated census grid cell, or `NULL`
-#' when no cell is found or the request fails. Its numeric `X` and `Y` columns
-#' preserve the API coordinates, whose CRS is not specified in the API
-#' documentation.
+#' `gisco_address_api_most_populated_cell()` returns a one-row tibble for the
+#' most populated census grid cell, or `NULL` when no cell is found or the
+#' request fails. Its numeric `X` and `Y` columns preserve the API coordinates,
+#' whose CRS is not specified in the API documentation.
 #'
 #' @details
 #'
@@ -161,17 +160,16 @@ gisco_address_api_bbox <- function(
     return(NULL)
   }
 
-  # Create polygon from WKT.
+  # Extract the bounding box coordinates from the WKT string.
   wkt_str <- res$bbox
 
   wkt_str <- gsub("[A-Za-z]|\\(|\\)", "", wkt_str)
 
   bbox <- as.double(unlist(strsplit(wkt_str, " |,")))
 
-  # Create a template bounding box class.
+  # Use a WGS 84 point to give the bounding box its CRS.
   mock <- sf::st_as_sfc("POINT (10 10)", crs = 4326)
   bboxclass <- sf::st_bbox(mock)
-  # Add the input values.
   bboxclass[1:4] <- bbox
 
   bbox <- sf::st_as_sfc(bboxclass)
@@ -357,7 +355,7 @@ call_address_api <- function(
     return(resp_df)
   }
 
-  # Convert responses with XY coordinates to sf.
+  # Convert responses with x and y coordinates to `sf` objects.
   xy_coords <- as.data.frame(matrix(unlist(resp_df$XY), ncol = 2, byrow = TRUE))
   names(xy_coords) <- c("X", "Y")
   resp_df <- cbind(resp_df, xy_coords)

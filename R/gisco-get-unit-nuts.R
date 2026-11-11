@@ -20,9 +20,6 @@ gisco_get_unit_nuts <- function(
   res_txt <- format_unit_resolution(resolution)
   spatialtype <- match_arg_pretty(spatialtype)
   type <- unit_spatialtype_to_file_type(spatialtype)
-  # Use the following file-name structure:
-  # RG: AD-region-01m-3035-2024.geojson
-  # LB: AD-label-3035-2024.geojson
 
   unit_code <- unique(unit)
 

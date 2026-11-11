@@ -17,9 +17,8 @@ gisco_get_census(
 )
 }
 \arguments{
-\item{year}{A character string or numeric value with the release year of the
-file.
-Currently only \code{"2011"} is provided.}
+\item{year}{The release year as a character string or numeric value. The
+available year is 2011.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
 the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
@@ -31,14 +30,11 @@ download.}
 \item{verbose}{A logical value indicating whether to display informational
 messages.}
 
-\item{spatialtype}{The type of geometry to return:
-\itemize{
-\item \code{"PT"}: Points - \code{POINT} object.
-\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-}}
+\item{spatialtype}{The type of geometry to return. Use \code{"PT"} for points or
+\code{"RG"} for regions (polygons or multipolygons).}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object or \code{NULL} if the download fails.
 }
 \description{
 This dataset provides 2011 census units as region or point geometries.

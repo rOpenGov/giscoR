@@ -13,12 +13,10 @@
 #' `r prettyNum(nrow(giscoR::gisco_db), big.mark = ",")` rows.
 #'
 #' @details
-#' This database is used to redirect the corresponding functions to the
-#' correct API endpoints.
-#'
-#' This version of the database is used if an update fails.
-#' Please use [gisco_get_cached_db()] with `update_cache = TRUE` to update the
-#' corresponding API endpoints.
+#' Package functions use this database to find the URLs for GISCO files.
+#' They use the bundled copy if no cached copy is available and the API
+#' cannot be reached. Use [gisco_get_cached_db()] with `update_cache = TRUE`
+#' to refresh the cached database.
 #'
 #' @source GISCO geodata distribution `datasets.json`.
 #'
@@ -41,8 +39,8 @@ NULL
 #' @family datasets
 #' @keywords datasets
 #' @format
-#' An [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
-#' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
+#' An [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries at 1:20 million
+#' scale in [EPSG:4326](https://epsg.io/4326). It has
 #' `r nrow(giscoR::gisco_countries_2024)` rows and
 #' `r ncol(giscoR::gisco_countries_2024)` variables:
 #' \describe{
@@ -99,7 +97,7 @@ NULL
 #' @family datasets
 #' @keywords datasets
 #' @format
-#' A data frame with
+#' A [tibble][tibble::tbl_df] with
 #' `r prettyNum(nrow(giscoR::gisco_countrycode), big.mark = ",")` rows and 13
 #' variables:
 #' \describe{
@@ -153,8 +151,8 @@ NULL
 #' @family datasets
 #' @keywords datasets
 #' @format
-#' An [`sf`][sf::st_sf] object with `POLYGON` geometries, resolution:
-#' 1:20 million and [EPSG:4326](https://epsg.io/4326).
+#' An [`sf`][sf::st_sf] object with `POLYGON` geometries at 1:20 million
+#' scale in [EPSG:4326](https://epsg.io/4326).
 #'
 #' @inheritSection gisco_get_coastal_lines Copyright
 #' @inheritSection gisco_get_coastal_lines Note
@@ -190,8 +188,8 @@ NULL
 #' @family datasets
 #' @keywords datasets
 #' @format
-#' An [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries, resolution:
-#' 1:20 million and [EPSG:4326](https://epsg.io/4326). It has
+#' An [`sf`][sf::st_sf] object with `MULTIPOLYGON` geometries at 1:20 million
+#' scale in [EPSG:4326](https://epsg.io/4326). It has
 #' `r nrow(giscoR::gisco_nuts_2024)` rows and 19 variables:
 #' \describe{
 #'   \item{`NUTS_ID`}{NUTS identifier.}

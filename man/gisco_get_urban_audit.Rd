@@ -57,9 +57,8 @@ Available values are:
 \item \code{"LB"}: Labels - \code{POINT} object.
 }}
 
-\item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{A character vector of country names, ISO 3166-1 alpha-3
+codes or Eurostat country codes. See \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{level}{A character string with the Urban Audit level. Possible values
 are \code{"all"} (the default), which downloads the full dataset, \code{"CITIES"},
@@ -72,7 +71,7 @@ are \code{"all"} (the default), which downloads the full dataset, \code{"CITIES"
 "ext",TRUE)}.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object or \code{NULL} if the download fails.
 }
 \description{
 This dataset contains the boundaries of cities (\code{"CITIES"}), greater cities

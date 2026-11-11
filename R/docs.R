@@ -5,15 +5,15 @@
 #'
 #' @param id A character string with the `id_giscor` value to filter the
 #'   database.
-#' @param field A character string with the field/column name from which to
-#'   extract values.
+#' @param field A character string giving the database column name.
 #' @param decreasing A logical value indicating whether to sort the values in
 #'   decreasing order. Defaults to `FALSE`.
 #' @param formatted A logical value indicating whether to format the output
 #'   values for documentation. Defaults to `TRUE`.
 #'
 #' @return
-#' A character string with the possible values for the specified field.
+#' A formatted character string or, if `formatted` is `FALSE`, a character
+#' vector of available values.
 #' @noRd
 db_values <- function(id, field, decreasing = FALSE, formatted = TRUE) {
   db <- as.data.frame(get_db())

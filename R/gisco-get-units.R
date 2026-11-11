@@ -10,15 +10,16 @@
 #'
 #' @keywords internal
 #' @inheritParams gisco_get_unit
-#' @param id_giscoR A character string with the `unit` type to download.
-#'   Accepted values are `"nuts"`, `"countries"` or `"urban_audit"`.
+#' @param id_giscoR A character string giving the dataset type. Choose
+#'   `"nuts"`, `"countries"` or `"urban_audit"`.
 #' @param unit A unit ID to download.
 #' @param mode A character string controlling the output of the function.
 #'   Possible values are `"sf"` or `"df"`. See **Value**.
 #'
 #' @return
 #' An [`sf`][sf::st_sf] object when `mode = "sf"` or a
-#' [tibble][tibble::tbl_df] when `mode = "df"`.
+#' [tibble][tibble::tbl_df] when `mode = "df"`. Returns `NULL` if no data
+#' could be retrieved.
 #'
 #' @inheritSection gisco_get_unit Copyright
 #' @inheritSection gisco_get_unit Note

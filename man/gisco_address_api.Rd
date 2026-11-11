@@ -113,7 +113,7 @@ messages.}
 
 \item{q}{A single non-empty string for a freeform address search, or \code{NULL}
 for a structured search. The string can contain a street, house number,
-city or postcode. Freeform queries do not support approximate matching.}
+city or postcode.}
 
 \item{x, y}{Longitude and latitude coordinates to convert into
 human-readable addresses. Reverse geocoding returns at most five results.}
@@ -122,15 +122,14 @@ human-readable addresses. Reverse geocoding returns at most five results.}
 A \link[tibble:tbl_df]{tibble} in most cases, except
 \code{gisco_address_api_search()}, \code{gisco_address_api_reverse()} and
 \code{gisco_address_api_bbox()}, which return an \code{\link[sf:st_sf]{sf}} object when
-geometry is available. Searches with no results return an empty
-\link[tibble:tbl_df]{tibble}. \code{gisco_address_api_bbox()} returns \code{NULL} when
-no bounding box is found. Failed requests return \code{NULL}.
+geometry is available. Searches with no results return an empty tibble.
+\code{gisco_address_api_bbox()} returns \code{NULL} when no bounding box is found.
+Failed requests return \code{NULL}.
 
-\code{gisco_address_api_most_populated_cell()} returns a one-row
-\link[tibble:tbl_df]{tibble} for the most populated census grid cell, or \code{NULL}
-when no cell is found or the request fails. Its numeric \code{X} and \code{Y} columns
-preserve the API coordinates, whose CRS is not specified in the API
-documentation.
+\code{gisco_address_api_most_populated_cell()} returns a one-row tibble for the
+most populated census grid cell, or \code{NULL} when no cell is found or the
+request fails. Its numeric \code{X} and \code{Y} columns preserve the API coordinates,
+whose CRS is not specified in the API documentation.
 }
 \description{
 Functions to interact with the \href{https://gisco-services.ec.europa.eu/addressapi/docs/screen/home}{GISCO Address API}, which

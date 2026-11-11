@@ -17,12 +17,10 @@ Database with the list of files in the GISCO geodata distribution as of
 2026-10-29.
 }
 \details{
-This database is used to redirect the corresponding functions to the
-correct API endpoints.
-
-This version of the database is used if an update fails.
-Please use \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}} with \code{update_cache = TRUE} to update the
-corresponding API endpoints.
+Package functions use this database to find the URLs for GISCO files.
+They use the bundled copy if no cached copy is available and the API
+cannot be reached. Use \code{\link[=gisco_get_cached_db]{gisco_get_cached_db()}} with \code{update_cache = TRUE}
+to refresh the cached database.
 }
 \examples{
 \dontshow{if (requireNamespace("dplyr", quietly = TRUE)) withAutoprint(\{ # examplesIf}

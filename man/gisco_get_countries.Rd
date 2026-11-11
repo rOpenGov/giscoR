@@ -75,14 +75,12 @@ Arguments \code{country} and \code{region} are only applied when \code{spatialty
 \code{"RG"} or \code{"LB"}.
 }}
 
-\item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{A character vector of country names, ISO 3166-1 alpha-3
+codes or Eurostat country codes. See \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
-\item{region}{An optional character vector of UN M49 region codes or
-European Union membership. Possible values are \code{"Africa"}, \code{"Americas"},
-\code{"Asia"}, \code{"Europe"}, \code{"Oceania"} or \code{"EU"} for countries belonging to
-the European Union as of 2021. See \strong{World regions} and
+\item{region}{An optional character vector of UN M49 region names
+(\code{"Africa"}, \code{"Americas"}, \code{"Asia"}, \code{"Europe"} or \code{"Oceania"}) or
+\code{"EU"} for EU member countries as of 2021. See \strong{World regions} and
 \link{gisco_countrycode}.}
 
 \item{ext}{A character string with the extension of the file (default
@@ -91,20 +89,20 @@ the European Union as of 2021. See \strong{World regions} and
 "ext",TRUE)}.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object or \code{NULL} if the download fails.
 }
 \description{
 This dataset contains world administrative boundaries at the country level.
-It provides two feature classes, regions and boundaries, at five scale
-levels: 1M, 3M, 10M, 20M and 60M.
+It includes regions, labels, boundaries, coastal lines and inland
+boundaries. Available scales depend on the geometry type and release year.
 
-Downloads data from the aggregated GISCO country file. To download
-single-unit country files, use \code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}}.
+This function reads the aggregated GISCO country dataset. Use
+\code{\link[=gisco_get_unit_country]{gisco_get_unit_country()}} to download individual country files.
 }
 \section{World regions}{
 Regions follow the UN geographic regions
 (see \url{https://unstats.un.org/unsd/methodology/m49/}).
-Under this scheme Cyprus is assigned to Asia.
+Under this scheme, Cyprus is assigned to Asia.
 }
 
 \section{Copyright}{

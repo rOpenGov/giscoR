@@ -37,9 +37,8 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{A character vector of country names, ISO 3166-1 alpha-3
+codes or Eurostat country codes. See \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
 the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
@@ -57,7 +56,7 @@ messages.}
 "ext",TRUE)}.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object or \code{NULL} if the download fails.
 }
 \description{
 The postal code point dataset shows the location of postal codes, NUTS codes
@@ -74,7 +73,7 @@ The GISCO distribution API provides postal code releases for 2025, 2024 and
 The dataset is released under the CC-BY-SA-4.0 license. Although the
 distribution API provides a 2025 release, the official GISCO licensing page
 currently requires the following attribution:
-© European Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
+<U+00A9> European Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
 }
 
 \section{Note}{

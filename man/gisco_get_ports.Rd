@@ -17,13 +17,11 @@ gisco_get_ports(
 )
 }
 \arguments{
-\item{year}{A character string or numeric value with the release year of the
-file. One of
-\code{2013}, \code{2009}.}
+\item{year}{The release year as a character string or numeric value. Choose
+2013 or 2009.}
 
-\item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{A character vector of country names, ISO 3166-1 alpha-3
+codes or Eurostat country codes. See \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
 the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
@@ -36,7 +34,7 @@ download.}
 messages.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object or \code{NULL} if the download fails.
 }
 \description{
 This dataset includes port locations worldwide. The ports are identified

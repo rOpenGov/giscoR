@@ -73,9 +73,8 @@ Arguments \code{country}, \code{nuts_level} and \code{nuts_id} are only applied 
 \code{spatialtype} is \code{"RG"} or \code{"LB"}.
 }}
 
-\item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{A character vector of country names, ISO 3166-1 alpha-3
+codes or Eurostat country codes. See \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{nuts_id}{An optional character vector of NUTS IDs.}
 
@@ -88,7 +87,7 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 "ext",TRUE)}.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object or \code{NULL} if the download fails.
 }
 \description{
 The GISCO statistical unit dataset represents the Nomenclature of

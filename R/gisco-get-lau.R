@@ -13,10 +13,12 @@
 #'   file. One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",
 #'   "year",TRUE)}.
-#' @param cache `r lifecycle::badge('deprecated')`. Always caches the result
-#'   due to its size. See the **Caching strategies** section in
+#' @param cache `r lifecycle::badge('deprecated')`. This function always
+#'   caches the source file because of its size. See **Caching strategies** in
 #'   [gisco_set_cache_dir()].
-#' @param gisco_id An optional character vector of `GISCO_ID` LAU values.
+#' @param gisco_id An optional character vector of LAU identifiers from the
+#'   `GISCO_ID` column. If you also supply `country`, the result includes
+#'   rows matching either filter.
 #' @param ext A character string with the extension of the file (default
 #'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("lau",

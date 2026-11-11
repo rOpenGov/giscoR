@@ -4,12 +4,10 @@
 #'
 #' @family stats
 #' @inheritParams gisco_get_countries
-#' @param year A character string or numeric value with the release year of the
-#'   file.
-#'   Currently only `"2011"` is provided.
-#' @param spatialtype The type of geometry to return:
-#' - `"PT"`: Points - `POINT` object.
-#' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+#' @param year The release year as a character string or numeric value. The
+#'   available year is 2011.
+#' @param spatialtype The type of geometry to return. Use `"PT"` for points or
+#'   `"RG"` for regions (polygons or multipolygons).
 #'
 #' @inherit gisco_get_countries return
 #' @details

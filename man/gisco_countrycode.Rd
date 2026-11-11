@@ -6,7 +6,7 @@
 \alias{gisco_countrycode}
 \title{Database with different country code schemes and world regions}
 \format{
-A data frame with
+A \link[tibble:tbl_df]{tibble} with
 249 rows and 13
 variables:
 \describe{
@@ -41,7 +41,7 @@ database was extracted from the \CRANpkg{countrycode} package.
 \section{World regions}{
 Regions follow the UN geographic regions
 (see \url{https://unstats.un.org/unsd/methodology/m49/}).
-Under this scheme Cyprus is assigned to Asia.
+Under this scheme, Cyprus is assigned to Asia.
 }
 
 \examples{

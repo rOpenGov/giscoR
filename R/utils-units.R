@@ -1,4 +1,4 @@
-#' Build a GISCO single-unit file name
+#' Build GISCO single-unit file names
 #'
 #' @param unit_code Unit codes used by GISCO.
 #' @param type GISCO geometry type, either `"region"` or `"label"`.
@@ -10,6 +10,8 @@
 #' @noRd
 build_unit_filenames <- function(unit_code, type, epsg, year, res_txt = NULL) {
   unit_names <- paste0(unit_code, "-", type)
+
+  # GISCO includes the resolution in region file names only.
   if (type == "region") {
     unit_names <- paste0(unit_names, "-", res_txt)
   }
@@ -25,10 +27,7 @@ build_unit_filenames <- function(unit_code, type, epsg, year, res_txt = NULL) {
 #' @return A character string with GISCO's single-unit file type.
 #' @noRd
 unit_spatialtype_to_file_type <- function(spatialtype) {
-  switch(spatialtype,
-    "RG" = "region",
-    "LB" = "label"
-  )
+  switch(spatialtype, "RG" = "region", "LB" = "label")
 }
 
 #' Read one GISCO single-unit file

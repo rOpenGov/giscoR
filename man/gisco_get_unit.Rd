@@ -94,24 +94,21 @@ data resolution. One of:
 \item \code{"01"}: 1:1 million.
 }}
 
-\item{spatialtype}{A character string with the type of geometry to return.
-Available values are:
-\itemize{
-\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-\item \code{"LB"}: Labels - \code{POINT} object.
-}}
+\item{spatialtype}{A character string giving the geometry type. Use \code{"RG"}
+for regions (polygons or multipolygons) or \code{"LB"} for labels (points).}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object with the units that could be read, or
+\code{NULL} if none could be read.
 }
 \description{
-Download datasets of single spatial units from GISCO to the
-\code{\link[=gisco_set_cache_dir]{cache_dir}}.
+Download individual files for the requested countries, NUTS regions or
+Urban Audit areas. By default, files are saved to the
+\link[=gisco_set_cache_dir]{cache directory}.
 
-Unlike \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \code{\link[=gisco_get_nuts]{gisco_get_nuts()}} or
-\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}} (which download full datasets and apply filters),
-these functions download a single-unit file, reducing the time
-needed to download and read data into your \R session.
+Downloading individual units can be faster than downloading the
+aggregated datasets with \code{\link[=gisco_get_countries]{gisco_get_countries()}}, \code{\link[=gisco_get_nuts]{gisco_get_nuts()}} or
+\code{\link[=gisco_get_urban_audit]{gisco_get_urban_audit()}} and filtering the results.
 }
 \details{
 Check the available \code{unit} IDs for the required argument combination with

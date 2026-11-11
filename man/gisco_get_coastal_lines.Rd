@@ -65,7 +65,7 @@ data resolution. One of:
 "ext",TRUE)}.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object or \code{NULL} if the download fails.
 }
 \description{
 Download global coastal lines.

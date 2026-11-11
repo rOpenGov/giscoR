@@ -25,7 +25,7 @@ metadata.}
 messages.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}.
+A \link[tibble:tbl_df]{tibble} or \code{NULL} if the download fails.
 }
 \description{
 Get a table with names and IDs of administrative and statistical units.

@@ -6,9 +6,8 @@
 #'
 #' @family transport
 #' @inheritParams gisco_get_countries
-#' @param year A character string or numeric value with the release year of the
-#'   file. One of
-#'   `2013`, `2009`.
+#' @param year The release year as a character string or numeric value. Choose
+#'   2013 or 2009.
 #'
 #' @inherit gisco_get_airports return
 #' @details

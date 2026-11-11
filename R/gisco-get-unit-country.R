@@ -1,13 +1,13 @@
 #' GISCO geodata single-unit download
 #'
 #' @description
-#' Download datasets of single spatial units from GISCO to the
-#' [`cache_dir`][gisco_set_cache_dir()].
+#' Download individual files for the requested countries, NUTS regions or
+#' Urban Audit areas. By default, files are saved to the
+#' [cache directory][gisco_set_cache_dir()].
 #'
-#' Unlike [gisco_get_countries()], [gisco_get_nuts()] or
-#' [gisco_get_urban_audit()] (which download full datasets and apply filters),
-#' these functions download a single-unit file, reducing the time
-#' needed to download and read data into your \R session.
+#' Downloading individual units can be faster than downloading the
+#' aggregated datasets with [gisco_get_countries()], [gisco_get_nuts()] or
+#' [gisco_get_urban_audit()] and filtering the results.
 #'
 #' @name gisco_get_unit
 #' @rdname gisco_get_unit
@@ -16,12 +16,11 @@
 #' @param unit A character vector of unit IDs to download. See **Details**.
 #' @param year A character string or numeric value with the release year of the
 #'   file.
-#' @param spatialtype A character string with the type of geometry to return.
-#'   Available values are:
-#' - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-#' - `"LB"`: Labels - `POINT` object.
+#' @param spatialtype A character string giving the geometry type. Use `"RG"`
+#'   for regions (polygons or multipolygons) or `"LB"` for labels (points).
 #'
-#' @inherit gisco_get_countries return
+#' @return An [`sf`][sf::st_sf] object with the units that could be read, or
+#'   `NULL` if none could be read.
 #' @details
 #' Check the available `unit` IDs for the required argument combination with
 #' [gisco_get_metadata()].
@@ -84,15 +83,7 @@ gisco_get_unit_country <- function(
   spatialtype <- match_arg_pretty(spatialtype)
 
   type <- unit_spatialtype_to_file_type(spatialtype)
-  # Use the following file-name structure:
-  # RG: AD-region-01m-3035-2024.geojson
-  # LB: AD-label-3035-2024.geojson
-
-  use_code <- switch(year,
-    "2001" = "iso3c",
-    "2006" = "iso2c",
-    "eurostat"
-  )
+  use_code <- switch(year, "2001" = "iso3c", "2006" = "iso2c", "eurostat")
   unit_code <- convert_country_code(unit, use_code)
 
   unit_names <- build_unit_filenames(unit_code, type, epsg, year, res_txt)

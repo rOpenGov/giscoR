@@ -6,8 +6,8 @@
 \alias{gisco_countries_2024}
 \title{Countries 2024 \code{\link[sf:st_sf]{sf}} object}
 \format{
-An \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries, resolution:
-1:20 million and \href{https://epsg.io/4326}{EPSG:4326}. It has
+An \code{\link[sf:st_sf]{sf}} object with \code{MULTIPOLYGON} geometries at 1:20 million
+scale in \href{https://epsg.io/4326}{EPSG:4326}. It has
 263 rows and
 14 variables:
 \describe{

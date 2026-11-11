@@ -17,7 +17,7 @@ gisco_get_grid(
 )
 }
 \arguments{
-\item{resolution}{The grid cell resolution in km. Available values are
+\item{resolution}{The grid cell width in kilometers. Available values are
 \code{"1"}, \code{"2"}, \code{"5"}, \code{"10"}, \code{"20"}, \code{"50"} and \code{"100"}. See
 \strong{Details}.}
 
@@ -34,7 +34,7 @@ download.}
 messages.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object or \code{NULL} if the download fails.
 }
 \description{
 These datasets contain grid cells covering the EU and neighboring countries

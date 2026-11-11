@@ -12,7 +12,7 @@
 #'   metadata.
 #'
 #' @return
-#' A [tibble][tibble::tbl_df].
+#' A [tibble][tibble::tbl_df] or `NULL` if the download fails.
 #'
 #' @source
 #' <https://gisco-services.ec.europa.eu/distribution/v2/>.

@@ -7,7 +7,7 @@
 #'
 #' @family grids
 #' @inheritParams gisco_get_countries
-#' @param resolution The grid cell resolution in km. Available values are
+#' @param resolution The grid cell width in kilometers. Available values are
 #'   `"1"`, `"2"`, `"5"`, `"10"`, `"20"`, `"50"` and `"100"`. See
 #'   **Details**.
 #' @param spatialtype A character string selecting `"REGION"` or `"POINT"`.

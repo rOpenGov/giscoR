@@ -22,22 +22,14 @@ gisco_bulk_download(
 )
 }
 \arguments{
-\item{id}{A character string or numeric value with the dataset type to
-download, see \strong{Details}. Supported values are:
-\itemize{
-\item \code{"countries"}.
-\item \code{"coastal_lines"}.
-\item \code{"communes"}.
-\item \code{"lau"}.
-\item \code{"nuts"}.
-\item \code{"urban_audit"}.
-\item \code{"postal_codes"}.
+\item{id}{A character string identifying the dataset to download. Supported
+values are \code{"countries"}, \code{"coastal_lines"}, \code{"communes"}, \code{"lau"},
+\code{"nuts"}, \code{"urban_audit"} and \code{"postal_codes"}.
 
-This argument replaces the previous (deprecated) argument \code{id_giscoR}.
-}}
+This argument replaces the previous (deprecated) argument \code{id_giscoR}.}
 
-\item{year}{A character string or numeric value with the release year of the
-file, see \strong{Details}.}
+\item{year}{The release year as a character string or numeric value. See
+\strong{Details}.}
 
 \item{cache_dir}{A character string with a path to a cache directory. See
 the \strong{Caching strategies} section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
@@ -63,18 +55,16 @@ data resolution. One of:
 formats are \code{"shp"}, \code{"geojson"}, \code{"svg"}, \code{"json"} and \code{"gdb"}. See
 \strong{Details}.}
 
-\item{recursive}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} \code{recursive} is no
-longer supported. It will never perform recursive extraction of child
-\code{.zip} files. This is the case for \code{shp.zip} inside the top-level \code{.zip},
-which will not be unzipped.}
+\item{recursive}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. ZIP files within the
+downloaded archive, such as \code{shp.zip}, are extracted as ZIP files.}
 
-\item{...}{Ignored. The argument \code{id_giscoR}
-(\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}) is captured via \code{...} and redirected
-to \code{id} with a \link[lifecycle:deprecate_warn]{warning}.}
+\item{...}{Additional arguments. The deprecated argument \code{id_giscoR} is
+passed to \code{id} with a \link[lifecycle:deprecate_warn]{warning}. Other
+arguments are ignored.}
 }
 \value{
-An invisible character vector with the full paths of the extracted files.
-See \strong{Examples}.
+A character vector of the extracted file paths, returned invisibly. If the
+download fails, returns \code{NULL}.
 }
 \description{
 Download zipped data from GISCO to the \code{\link[=gisco_set_cache_dir]{cache_dir}}

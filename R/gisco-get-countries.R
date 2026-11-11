@@ -2,11 +2,11 @@
 #'
 #' @description
 #' This dataset contains world administrative boundaries at the country level.
-#' It provides two feature classes, regions and boundaries, at five scale
-#' levels: 1M, 3M, 10M, 20M and 60M.
+#' It includes regions, labels, boundaries, coastal lines and inland
+#' boundaries. Available scales depend on the geometry type and release year.
 #'
-#' Downloads data from the aggregated GISCO country file. To download
-#' single-unit country files, use [gisco_get_unit_country()].
+#' This function reads the aggregated GISCO country dataset. Use
+#' [gisco_get_unit_country()] to download individual country files.
 #'
 #' @aliases gisco_get
 #' @family admin
@@ -38,9 +38,8 @@
 #'   Arguments `country` and `region` are only applied when `spatialtype` is
 #'   `"RG"` or `"LB"`.
 #'
-#' @param country A character vector of country codes. It can be either a
-#'   vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
-#'   vector of Eurostat country codes. See also [countrycode::countrycode()].
+#' @param country A character vector of country names, ISO 3166-1 alpha-3
+#'   codes or Eurostat country codes. See [countrycode::countrycode()].
 #' @param verbose A logical value indicating whether to display informational
 #'   messages.
 #' @param resolution A character string or numeric value with the geospatial
@@ -50,17 +49,16 @@
 #' - `"10"`: 1:10 million.
 #' - `"03"`: 1:3 million.
 #' - `"01"`: 1:1 million.
-#' @param region An optional character vector of UN M49 region codes or
-#'   European Union membership. Possible values are `"Africa"`, `"Americas"`,
-#'   `"Asia"`, `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to
-#'   the European Union as of 2021. See **World regions** and
+#' @param region An optional character vector of UN M49 region names
+#'   (`"Africa"`, `"Americas"`, `"Asia"`, `"Europe"` or `"Oceania"`) or
+#'   `"EU"` for EU member countries as of 2021. See **World regions** and
 #'   [gisco_countrycode].
 #' @param ext A character string with the extension of the file (default
 #'   `"gpkg"`). One of
 #'   \Sexpr[stage=render,results=rd]{giscoR:::db_values("countries",
 #'   "ext",TRUE)}.
 #'
-#' @return An [`sf`][sf::st_sf] object.
+#' @return An [`sf`][sf::st_sf] object or `NULL` if the download fails.
 #'
 #' @details
 #'
@@ -68,7 +66,7 @@
 #'
 #' Regions follow the UN geographic regions
 #' (see <https://unstats.un.org/unsd/methodology/m49/>).
-#' Under this scheme Cyprus is assigned to Asia.
+#' Under this scheme, Cyprus is assigned to Asia.
 #'
 #' # Copyright
 #'
@@ -168,13 +166,13 @@ gisco_get_countries <- function(
   )
 }
 
-#' Filter `sf` data by country and/or region
+#' Filter spatial data by country, region or both
 #'
 #' @param data_sf An [`sf`][sf::st_sf] object.
 #' @param country A character vector of country codes or names.
 #' @param region A character vector of region codes or names.
 #'
-#' @return An [`sf`][sf::st_sf] object filtered by country and/or region.
+#' @return An [`sf`][sf::st_sf] object filtered by country, region or both.
 #'
 #' @noRd
 filter_country_region <- function(data_sf, country = NULL, region = NULL) {

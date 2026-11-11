@@ -15,11 +15,10 @@ gisco_get_cached_db(update_cache = FALSE)
 with the most recent information from the GISCO geodata distribution.}
 }
 \value{
-A \link[tibble:tbl_df]{tibble}.
+A \link[tibble:tbl_df]{tibble} or \code{NULL} if a refresh fails.
 }
 \description{
-Returns or optionally updates the cached database with endpoints from the
-GISCO geodata distribution.
+Read or update the cached index of files in the GISCO geodata distribution.
 }
 \details{
 The cached database is stored in the \CRANpkg{giscoR} cache path. See
@@ -30,8 +29,8 @@ On new GISCO data releases, you can access the updated data by refreshing
 the cached database without waiting for a new version of
 \CRANpkg{giscoR}.
 
-A static database \link{gisco_db} is shipped with the package. This database is
-used if there is any problem during the update.
+Package functions that use the index fall back to the bundled \link{gisco_db}
+if they cannot retrieve it and no cached copy is available.
 }
 \examples{
 \dontshow{if (gisco_check_access() && requireNamespace("dplyr", quietly = TRUE)) withAutoprint(\{ # examplesIf}

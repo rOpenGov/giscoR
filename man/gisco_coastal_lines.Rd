@@ -6,8 +6,8 @@
 \alias{gisco_coastal_lines}
 \title{Coastal lines 2016 \code{\link[sf:st_sf]{sf}} object}
 \format{
-An \code{\link[sf:st_sf]{sf}} object with \code{POLYGON} geometries, resolution:
-1:20 million and \href{https://epsg.io/4326}{EPSG:4326}.
+An \code{\link[sf:st_sf]{sf}} object with \code{POLYGON} geometries at 1:20 million
+scale in \href{https://epsg.io/4326}{EPSG:4326}.
 }
 \source{
 \href{https://gisco-services.ec.europa.eu/distribution/v2/coas/gpkg/}{COAS_RG_20M_2016_4326.gpkg} file.

@@ -37,9 +37,9 @@ to your \code{cache_dir}, but it is mainly called for its side effect.
 session.
 }
 \description{
-Stores your \code{cache_dir} path on your local machine and loads it in future
-sessions. Use \code{Sys.getenv("GISCO_CACHE_DIR")} or
-\code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to find your cached path.
+Set the cache directory for the current session. Use \code{install = TRUE} with
+an explicit path to reuse it in future sessions. Use
+\code{\link[=gisco_detect_cache_dir]{gisco_detect_cache_dir()}} to find the active cache directory.
 }
 \details{
 By default, when no \code{cache_dir} is set, the package uses a folder

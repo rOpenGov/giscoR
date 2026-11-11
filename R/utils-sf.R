@@ -23,14 +23,13 @@ read_geo_file_sf <- function(file_local, q = NULL, ...) {
     }
   }
 
-  # Create and read a 'vsizip' path for shp.zip files.
+  # Use GDAL's `/vsizip/` path to read the shapefile inside the archive.
   if (grepl(".zip$", file_local, ignore.case = TRUE)) {
     shp_zip <- unzip(file_local, list = TRUE)
     shp_zip <- shp_zip$Name
     shp_zip <- shp_zip[grepl("shp$", shp_zip)]
     shp_end <- shp_zip[1]
 
-    # Read with vsizip.
     file_local <- file.path("/vsizip/", file_local, shp_end)
     file_local <- gsub("//", "/", file_local, fixed = TRUE)
   }

@@ -24,36 +24,31 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 
 <!-- badges: end -->
 
-[**giscoR**](https://ropengov.github.io/giscoR/) is an **R** package
-that provides a simple interface to the Eurostat [GISCO geodata
-distribution](https://ec.europa.eu/eurostat/web/gisco). It lets you
-download and work with global and European geospatial datasets directly
-in **R**, including country boundaries, NUTS regions, administrative
-units such as Local Administrative Units (LAU), statistical units,
-transport networks and basic service locations.
+[**giscoR**](https://ropengov.github.io/giscoR/) downloads global and European
+geospatial data from Eurostat's [GISCO geodata
+distribution](https://ec.europa.eu/eurostat/web/gisco) for use in **R**.
 
 ## Key features
 
-- Retrieve GISCO datasets for country boundaries, NUTS regions,
-  administrative units, statistical units, transport networks and basic
-  service locations.
+- Retrieve GISCO datasets for country boundaries, NUTS regions, administrative
+  units such as Local Administrative Units (LAU), statistical units, transport
+  networks and basic service locations.
 - For compatible administrative and statistical datasets, select among
   resolutions `60M`, `20M`, `10M`, `03M` and `01M`. Choose coordinate
   reference systems **EPSG:4326**, **EPSG:3035** and **EPSG:3857**.
 - Use each grid, transport or basic service dataset in its documented
   format and coordinate reference system.
-- Return **sf** objects for spatial analysis.
+- Work with **sf** objects for spatial analysis.
 - Cache downloaded files for faster repeated access.
 
 ### Population grids
 
 `gisco_get_grid()` downloads polygon or cell-center point GeoPackages in
-**EPSG:3035** at resolutions from 1 km to 100 km. Population columns use
-names such as `TOT_P_2021`. Divide these values by `resolution^2`, not
-by `resolution`, to calculate people per square kilometer. Population
-variables have year- and country-specific licensing conditions. Consult
-the official [grid
-documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
+**EPSG:3035** at resolutions from 1 km to 100 km. Population columns use names
+such as `TOT_P_2021`. To calculate people per square kilometer, divide the
+population count by the cell area in square kilometers (`resolution^2`).
+Population variables have year- and country-specific licensing conditions.
+Consult the official [grid documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
 before publication or redistribution.
 
 ## Installation
@@ -96,7 +91,7 @@ install.packages(
 
 ## Quick example
 
-This example compares country boundaries at different resolutions:
+This example compares the boundaries of the Netherlands at four resolutions.
 
 ``` r
 library(giscoR)
@@ -150,11 +145,10 @@ alt="Netherlands boundaries at different resolutions" />
 
 ## Advanced example: thematic maps
 
-This example shows a thematic map created with the **ggplot2** package.
-The statistical data are retrieved with the **eurostat** package,
-following the work of [Milos Popovic](https://milospopovic.net/).
+This example uses **ggplot2** to map 2021 population density across NUTS 3
+regions. The workflow follows the work of [Milos Popovic](https://milospopovic.net/).
 
-Start by downloading the corresponding geospatial data:
+Download NUTS 3 regions and country boundaries for 2021.
 
 ``` r
 library(giscoR)
@@ -181,7 +175,7 @@ country_lines <- gisco_get_nuts(
 )
 ```
 
-Next, download the statistical data from Eurostat.
+Use **eurostat** to download the population density data and select 2021.
 
 ``` r
 # Retrieve Eurostat data.
@@ -189,7 +183,8 @@ popdens <- get_eurostat("demo_r_d3dens") |>
   filter(TIME_PERIOD == "2021-01-01")
 ```
 
-Finally, merge and transform the datasets to create the plot.
+Join the population density data to the NUTS 3 geometries, then group the
+values into intervals for the map.
 
 ``` r
 # Merge data.
@@ -272,14 +267,12 @@ alt="Population density in 2021" />
 
 ## Caching
 
-Large datasets, such as LAU or high-resolution files, can exceed 50 MB.
-Set a cache directory with:
+LAU and other large datasets can exceed 50 MB. Set a cache directory with
+`gisco_set_cache_dir()` to reuse downloaded files on subsequent requests.
 
 ``` r
 gisco_set_cache_dir("./path/to/location")
 ```
-
-Files are stored in the local cache for faster repeated access.
 
 ## Contributing
 

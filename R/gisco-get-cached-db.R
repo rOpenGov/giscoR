@@ -1,13 +1,12 @@
 #' Retrieve and update the GISCO database used by \CRANpkg{giscoR}
 #'
-#' Returns or optionally updates the cached database with endpoints from the
-#' GISCO geodata distribution.
+#' Read or update the cached index of files in the GISCO geodata distribution.
 #'
 #' @family database
 #' @param update_cache A logical value. If `TRUE`, rebuild the cached database
 #'   with the most recent information from the GISCO geodata distribution.
 #'
-#' @inherit gisco_get_metadata return
+#' @return A [tibble][tibble::tbl_df] or `NULL` if a refresh fails.
 #'
 #' @details
 #' The cached database is stored in the \CRANpkg{giscoR} cache path. See
@@ -18,8 +17,8 @@
 #' the cached database without waiting for a new version of
 #' \CRANpkg{giscoR}.
 #'
-#' A static database [gisco_db] is shipped with the package. This database is
-#' used if there is any problem during the update.
+#' Package functions that use the index fall back to the bundled [gisco_db]
+#' if they cannot retrieve it and no cached copy is available.
 #'
 #' @inherit gisco_get_metadata source
 #' @encoding UTF-8

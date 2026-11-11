@@ -32,8 +32,8 @@ gisco_get_units(
 )
 }
 \arguments{
-\item{id_giscoR}{A character string with the \code{unit} type to download.
-Accepted values are \code{"nuts"}, \code{"countries"} or \code{"urban_audit"}.}
+\item{id_giscoR}{A character string giving the dataset type. Choose
+\code{"nuts"}, \code{"countries"} or \code{"urban_audit"}.}
 
 \item{unit}{A unit ID to download.}
 
@@ -75,16 +75,13 @@ data resolution. One of:
 \item \code{"01"}: 1:1 million.
 }}
 
-\item{spatialtype}{A character string with the type of geometry to return.
-Available values are:
-\itemize{
-\item \code{"RG"}: Regions - \code{MULTIPOLYGON/POLYGON} object.
-\item \code{"LB"}: Labels - \code{POINT} object.
-}}
+\item{spatialtype}{A character string giving the geometry type. Use \code{"RG"}
+for regions (polygons or multipolygons) or \code{"LB"} for labels (points).}
 }
 \value{
 An \code{\link[sf:st_sf]{sf}} object when \code{mode = "sf"} or a
-\link[tibble:tbl_df]{tibble} when \code{mode = "df"}.
+\link[tibble:tbl_df]{tibble} when \code{mode = "df"}. Returns \code{NULL} if no data
+could be retrieved.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}

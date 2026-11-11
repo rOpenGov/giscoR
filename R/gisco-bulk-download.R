@@ -6,35 +6,27 @@
 #'
 #' @family downloads
 #' @inheritParams gisco_get_countries
-#' @param year A character string or numeric value with the release year of the
-#'   file, see **Details**.
+#' @param year The release year as a character string or numeric value. See
+#'   **Details**.
 #'
-#' @param id A character string or numeric value with the dataset type to
-#'   download, see **Details**. Supported values are:
-#' - `"countries"`.
-#' - `"coastal_lines"`.
-#' - `"communes"`.
-#' - `"lau"`.
-#' - `"nuts"`.
-#' - `"urban_audit"`.
-#' - `"postal_codes"`.
+#' @param id A character string identifying the dataset to download. Supported
+#'   values are `"countries"`, `"coastal_lines"`, `"communes"`, `"lau"`,
+#'   `"nuts"`, `"urban_audit"` and `"postal_codes"`.
 #'
 #'   This argument replaces the previous (deprecated) argument `id_giscoR`.
-#' @param recursive `r lifecycle::badge("deprecated")` `recursive` is no
-#'   longer supported. It will never perform recursive extraction of child
-#'   `.zip` files. This is the case for `shp.zip` inside the top-level `.zip`,
-#'   which will not be unzipped.
-#' @param ... Ignored. The argument `id_giscoR`
-#'   (`r lifecycle::badge("deprecated")`) is captured via `...` and redirected
-#'   to `id` with a [warning][lifecycle::deprecate_warn].
+#' @param recursive `r lifecycle::badge("deprecated")`. ZIP files within the
+#'   downloaded archive, such as `shp.zip`, are extracted as ZIP files.
+#' @param ... Additional arguments. The deprecated argument `id_giscoR` is
+#'   passed to `id` with a [warning][lifecycle::deprecate_warn]. Other
+#'   arguments are ignored.
 #'
 #' @param ext The extension of the file or files to download. Available
 #'   formats are `"shp"`, `"geojson"`, `"svg"`, `"json"` and `"gdb"`. See
 #'   **Details**.
 #'
 #' @return
-#' An invisible character vector with the full paths of the extracted files.
-#' See **Examples**.
+#' A character vector of the extracted file paths, returned invisibly. If the
+#' download fails, returns `NULL`.
 #'
 #' @details
 #' Some arguments only apply to a specific value of `id`. For example,
@@ -130,7 +122,6 @@ gisco_bulk_download <- function(
   id <- match_arg_pretty(id)
   ext <- match_arg_pretty(ext)
 
-  # Set standard arguments for the call.
   year <- as.character(year)
 
   make_params <- make_bulk_params(id = id, year = year, resolution = resolution)
@@ -170,11 +161,11 @@ gisco_bulk_download <- function(
     return(NULL)
   }
 
-  # Clean the cache directory name before extracting.
+  # Extract into the directory containing the cached archive.
   unzip_dir <- gsub(paste0("/", zipname), "", destfile)
 
   infiles <- list_bulk_zip_files(destfile)
-  # Extract files.
+  # Select archive entries for the requested file format.
   outfiles <- infiles[grep(ext, infiles$Name), ]$Name
 
   if (verbose) {
@@ -210,7 +201,8 @@ bulk_download_api_entry <- function(route) {
 #' @return A character string with the bulk-download alias.
 #' @noRd
 bulk_download_alias <- function(id) {
-  switch(id,
+  switch(
+    id,
     "coastal_lines" = "coastline",
     "urban_audit" = "urau",
     "postal_codes" = "pcode",
@@ -225,10 +217,7 @@ bulk_download_alias <- function(id) {
 #' @return A character string with the cache subdirectory.
 #' @noRd
 bulk_download_subdir <- function(id) {
-  switch(id,
-    "coastal_lines" = "coastal",
-    id
-  )
+  switch(id, "coastal_lines" = "coastal", id)
 }
 
 #' Build a bulk-download ZIP file name

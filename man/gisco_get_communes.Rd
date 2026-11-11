@@ -35,8 +35,8 @@ reference system as a 4-digit \href{https://epsg.io/}{EPSG code}. One of:
 \item \code{"3857"}: \href{https://epsg.io/3857}{Pseudo-Mercator}.
 }}
 
-\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. These functions always
-cache the result because of its size. See the \strong{Caching strategies}
+\item{cache}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}. This function always
+caches the source file because of its size. See the \strong{Caching strategies}
 section in \code{\link[=gisco_set_cache_dir]{gisco_set_cache_dir()}}.}
 
 \item{update_cache}{A logical value indicating whether to refresh the
@@ -60,9 +60,8 @@ Argument \code{country} is only applied when \code{spatialtype} is \code{"RG"} o
 \code{"LB"}.
 }}
 
-\item{country}{A character vector of country codes. It can be either a
-vector of country names, a vector of ISO 3166-1 alpha-3 country codes or a
-vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
+\item{country}{A character vector of country names, ISO 3166-1 alpha-3
+codes or Eurostat country codes. See \code{\link[countrycode:countrycode]{countrycode::countrycode()}}.}
 
 \item{ext}{A character string with the extension of the file (default
 \code{"shp"}). One of
@@ -70,7 +69,7 @@ vector of Eurostat country codes. See also \code{\link[countrycode:countrycode]{
 "ext",TRUE)}.}
 }
 \value{
-An \code{\link[sf:st_sf]{sf}} object.
+An \code{\link[sf:st_sf]{sf}} object or \code{NULL} if the download fails.
 }
 \description{
 This dataset provides pan-European administrative boundaries at commune
@@ -86,8 +85,8 @@ local units, moving from larger to smaller territorial units: NUTS 1, 2 and
 
 The dataset is based on EuroBoundaryMap from
 \href{https://eurogeographics.org/}{EuroGeographics}. Geographic coverage includes
-the European Union 28, EFTA countries and candidate countries. The scale of
-the dataset is 1:100 000.
+the EU-28, EFTA countries and candidate countries. The dataset scale is
+1:100,000.
 
 The LAU classification is not covered by any legislative act.
 }

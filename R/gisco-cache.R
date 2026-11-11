@@ -1,9 +1,9 @@
 #' Set your \CRANpkg{giscoR} cache directory
 #'
 #' @description
-#' Stores your `cache_dir` path on your local machine and loads it in future
-#' sessions. Use `Sys.getenv("GISCO_CACHE_DIR")` or
-#' [gisco_detect_cache_dir()] to find your cached path.
+#' Set the cache directory for the current session. Use `install = TRUE` with
+#' an explicit path to reuse it in future sessions. Use
+#' [gisco_detect_cache_dir()] to find the active cache directory.
 #'
 #' @rdname gisco_set_cache_dir
 #'
@@ -100,8 +100,8 @@ gisco_set_cache_dir <- function(
     make_msg(
       "info",
       verbose,
-      "Using a temporary cache directory, see {.fn base::tempdir}.",
-      "Set {.arg cache_dir} to a value to store permanently."
+      "Using a temporary cache directory. See {.fn base::tempdir}.",
+      "Supply a {.arg cache_dir} path to keep files after this session."
     )
 
     # Create a folder in the session temporary directory.
@@ -121,7 +121,7 @@ gisco_set_cache_dir <- function(
   msg <- paste0("{.pkg giscoR} cache directory is {.path ", cache_dir, "}.")
   make_msg("info", verbose, msg)
 
-  # Install the cache path in the environment variable.
+  # Save the cache path for future sessions when requested.
   if (install) {
     config_dir <- gisco_user_dir("config")
     # Create cache directory if not present.
@@ -133,7 +133,7 @@ gisco_set_cache_dir <- function(
     giscor_file <- file.path(config_dir, "gisco_cache_dir")
 
     if (!file.exists(giscor_file) || overwrite) {
-      # Create file if it does not exist.
+      # Write the new path to the configuration file.
       writeLines(cache_dir, con = giscor_file)
     } else {
       cli::cli_abort(
