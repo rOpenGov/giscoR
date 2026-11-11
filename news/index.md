@@ -2,15 +2,16 @@
 
 ## giscoR 1.3.1
 
+CRAN release: 2026-11-10
+
 - **giscoR** now requires **R** ≥ 4.2.
-- `gisco_countries_2024` has refreshed country names and geometries,
-  adds the `COUNTRY_URI` and `STAT_CODE` columns and changes the row
-  order.
+- `gisco_countries_2024` updates country names and geometries, adds the
+  `COUNTRY_URI` and `STAT_CODE` columns and changes the row order.
 - `gisco_countrycode` updates United Nations intermediate region codes
   and names.
 - `gisco_db` includes GISCO catalog metadata as of October 29, 2026.
-- `gisco_id_api_*()` help lists the supported dataset years by endpoint
-  without querying the live service when the help is rendered.
+- `gisco_id_api_*()` help lists the supported dataset years for each
+  endpoint without a live API query.
 - `gisco_nuts_2024` updates the mountain, urban-rural and coastal
   typologies. Many previously missing values now have a classification
   or use `0` for regions without a classification.
@@ -21,11 +22,11 @@ CRAN release: 2026-10-01
 
 - Cached downloads now preserve the previous file when an update fails
   and replace it only after the new download completes successfully.
+- Downloads now request the GISCO resource directly, improving support
+  for proxied connections
+  ([\#139](https://github.com/rOpenGov/giscoR/issues/139)).
 - Logical flags now reject missing and non-scalar values with a
   `giscoR_error` condition.
-- Downloads now attempt the requested GISCO resource directly instead of
-  relying on a generic connectivity check, improving support for proxied
-  connections ([\#139](https://github.com/rOpenGov/giscoR/issues/139)).
 - [`gisco_address_api_most_populated_cell()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
   retrieves the most populated census grid cell for a province or city,
   preserving the API coordinates in numeric `X` and `Y` columns of a
@@ -37,10 +38,10 @@ CRAN release: 2026-10-01
 - [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
   now forwards `cache_dir` to its replacement single-unit download
   function.
-- `gisco_id_api_*()` functions with an `epsg` argument now send it as
-  `proj`, honoring the input and output CRS, and
+- `gisco_id_api_*()` functions now honor `epsg` for input coordinates
+  and output geometries where supported.
   [`gisco_id_api_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
-  sends `nuts_level` as `level`, honoring the requested NUTS level.
+  now honors the requested `nuts_level`.
 
 ## giscoR 1.2.0
 
@@ -50,8 +51,8 @@ CRAN release: 2026-08-27
   programmatic handling.
 - Add an article showing GISCO ID service API and GISCO Address API
   workflows with **ggplot2** examples.
-- Query timeout can now also be controlled with the `GISCO_TIMEOUT`
-  environment variable when `options(gisco_timeout)` is not set.
+- Set the query timeout with the `GISCO_TIMEOUT` environment variable
+  when the `gisco_timeout` option is unset.
 - Refactor tests to isolate cache state, use temporary cache directories
   and improve mocked coverage of cache and request helpers.
 - Update
@@ -79,11 +80,9 @@ CRAN release: 2026-03-28
 - Adapt vignettes to **Quarto**.
 - Bump the minimum **httr2** version to 1.2.0
   ([\#126](https://github.com/rOpenGov/giscoR/issues/126)).
-- Query timeout can now be controlled with `options(gisco_timeout)`
-  using
-  [`httr2::req_timeout()`](https://httr2.r-lib.org/reference/req_timeout.html).
-  The default value is `httr2::req_timeout(..., seconds = 300)` (5
-  minutes) ([\#123](https://github.com/rOpenGov/giscoR/issues/123)).
+- Set the query timeout in seconds with the `gisco_timeout` option. The
+  default is 300 seconds (5 minutes)
+  ([\#123](https://github.com/rOpenGov/giscoR/issues/123)).
 - Use
   [`testthat::local_mocked_bindings()`](https://testthat.r-lib.org/reference/local_mocked_bindings.html)
   for API error testing.
@@ -105,10 +104,10 @@ CRAN release: 2026-01-23
 
 CRAN release: 2025-12-10
 
-This major release introduces a full overhaul of the codebase and test
-suite. Requests now use **httr2**, and GeoPackage (`"gpkg"`) is the
-preferred download format when available. Cached files are reorganized
-into topic-based subfolders for easier management.
+This release overhauls the codebase and test suite. Requests now use
+**httr2**, and GeoPackage (`"gpkg"`) is the preferred download format
+when available. Cached files are reorganized into topic-based subfolders
+for easier management.
 
 > Because of internal changes, **existing caches are not compatible**
 > with this release and must be rebuilt.
@@ -256,7 +255,7 @@ We recommend reviewing the updated documentation at
 - [`gisco_get_communes()`](https://ropengov.github.io/giscoR/reference/gisco_get_communes.md)
   and
   [`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
-  deprecate the `cache` argument in heavy-download functions.
+  deprecate the `cache` argument.
 - [`gisco_get_units()`](https://ropengov.github.io/giscoR/reference/gisco_get_units.md)
   is deprecated. Equivalent functionality is now available through
   [`gisco_get_metadata()`](https://ropengov.github.io/giscoR/reference/gisco_get_metadata.md)

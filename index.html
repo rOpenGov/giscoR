@@ -91,21 +91,21 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is an <strong>R</strong> package that provides a simple interface to the Eurostat <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO geodata distribution</a>. It lets you download and work with global and European geospatial datasets directly in <strong>R</strong>, including country boundaries, NUTS regions, administrative units such as Local Administrative Units (LAU), statistical units, transport networks and basic service locations.</p>
+<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> downloads global and European geospatial data from Eurostat’s <a href="https://ec.europa.eu/eurostat/web/gisco" class="external-link">GISCO geodata distribution</a> for use in <strong>R</strong>.</p>
 <div class="section level2">
 <h2 id="key-features">Key features<a class="anchor" aria-label="anchor" href="#key-features"></a>
 </h2>
 <ul>
-<li>Retrieve GISCO datasets for country boundaries, NUTS regions, administrative units, statistical units, transport networks and basic service locations.</li>
+<li>Retrieve GISCO datasets for country boundaries, NUTS regions, administrative units such as Local Administrative Units (LAU), statistical units, transport networks and basic service locations.</li>
 <li>For compatible administrative and statistical datasets, select among resolutions <code>60M</code>, <code>20M</code>, <code>10M</code>, <code>03M</code> and <code>01M</code>. Choose coordinate reference systems <strong>EPSG:4326</strong>, <strong>EPSG:3035</strong> and <strong>EPSG:3857</strong>.</li>
 <li>Use each grid, transport or basic service dataset in its documented format and coordinate reference system.</li>
-<li>Return <strong>sf</strong> objects for spatial analysis.</li>
+<li>Work with <strong>sf</strong> objects for spatial analysis.</li>
 <li>Cache downloaded files for faster repeated access.</li>
 </ul>
 <div class="section level3">
 <h3 id="population-grids">Population grids<a class="anchor" aria-label="anchor" href="#population-grids"></a>
 </h3>
-<p><code><a href="reference/gisco_get_grid.html">gisco_get_grid()</a></code> downloads polygon or cell-center point GeoPackages in <strong>EPSG:3035</strong> at resolutions from 1 km to 100 km. Population columns use names such as <code>TOT_P_2021</code>. Divide these values by <code>resolution^2</code>, not by <code>resolution</code>, to calculate people per square kilometer. Population variables have year- and country-specific licensing conditions. Consult the official <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/grids" class="external-link">grid documentation</a> before publication or redistribution.</p>
+<p><code><a href="reference/gisco_get_grid.html">gisco_get_grid()</a></code> downloads polygon or cell-center point GeoPackages in <strong>EPSG:3035</strong> at resolutions from 1 km to 100 km. Population columns use names such as <code>TOT_P_2021</code>. To calculate people per square kilometer, divide the population count by the cell area in square kilometers (<code>resolution^2</code>). Population variables have year- and country-specific licensing conditions. Consult the official <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/grids" class="external-link">grid documentation</a> before publication or redistribution.</p>
 </div>
 </div>
 <div class="section level2">
@@ -121,7 +121,7 @@
 <div class="section level2">
 <h2 id="quick-example">Quick example<a class="anchor" aria-label="anchor" href="#quick-example"></a>
 </h2>
-<p>This example compares country boundaries at different resolutions:</p>
+<p>This example compares the boundaries of the Netherlands at four resolutions.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/" class="external-link">sf</a></span><span class="op">)</span></span>
@@ -171,8 +171,8 @@
 <div class="section level2">
 <h2 id="advanced-example-thematic-maps">Advanced example: thematic maps<a class="anchor" aria-label="anchor" href="#advanced-example-thematic-maps"></a>
 </h2>
-<p>This example shows a thematic map created with the <strong>ggplot2</strong> package. The statistical data are retrieved with the <strong>eurostat</strong> package, following the work of <a href="https://milospopovic.net/" class="external-link">Milos Popovic</a>.</p>
-<p>Start by downloading the corresponding geospatial data:</p>
+<p>This example uses <strong>ggplot2</strong> to map 2021 population density across NUTS 3 regions. The workflow follows the work of <a href="https://milospopovic.net/" class="external-link">Milos Popovic</a>.</p>
+<p>Download NUTS 3 regions and country boundaries for 2021.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
@@ -196,12 +196,12 @@
 <span>  spatialtype <span class="op">=</span> <span class="st">"BN"</span>,</span>
 <span>  nuts_level <span class="op">=</span> <span class="fl">0</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p>Next, download the statistical data from Eurostat.</p>
+<p>Use <strong>eurostat</strong> to download the population density data and select 2021.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Retrieve Eurostat data.</span></span>
 <span><span class="va">popdens</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ropengov.github.io/eurostat/reference/get_eurostat.html" class="external-link">get_eurostat</a></span><span class="op">(</span><span class="st">"demo_r_d3dens"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">TIME_PERIOD</span> <span class="op">==</span> <span class="st">"2021-01-01"</span><span class="op">)</span></span></code></pre></div>
-<p>Finally, merge and transform the datasets to create the plot.</p>
+<p>Join the population density data to the NUTS 3 geometries, then group the values into intervals for the map.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Merge data.</span></span>
 <span><span class="va">nuts3_sf</span> <span class="op">&lt;-</span> <span class="va">nuts3</span> <span class="op">|&gt;</span></span>
@@ -280,10 +280,9 @@
 <div class="section level2">
 <h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
-<p>Large datasets, such as LAU or high-resolution files, can exceed 50 MB. Set a cache directory with:</p>
+<p>LAU and other large datasets can exceed 50 MB. Set a cache directory with <code><a href="reference/gisco_set_cache_dir.html">gisco_set_cache_dir()</a></code> to reuse downloaded files on subsequent requests.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/gisco_set_cache_dir.html">gisco_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>Files are stored in the local cache for faster repeated access.</p>
 </div>
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>

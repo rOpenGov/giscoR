@@ -1,16 +1,16 @@
 # GISCO geodata single-unit download
 
-Download datasets of single spatial units from GISCO to the
-[`cache_dir`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
+Download individual files for the requested countries, NUTS regions or
+Urban Audit areas. By default, files are saved to the [cache
+directory](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
-Unlike
+Downloading individual units can be faster than downloading the
+aggregated datasets with
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
 or
 [`gisco_get_urban_audit()`](https://ropengov.github.io/giscoR/reference/gisco_get_urban_audit.md)
-(which download full datasets and apply filters), these functions
-download a single-unit file, reducing the time needed to download and
-read data into your R session.
+and filtering the results.
 
 ## Usage
 
@@ -123,16 +123,13 @@ All source files are `.geojson` files.
 
 - spatialtype:
 
-  A character string with the type of geometry to return. Available
-  values are:
-
-  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-
-  - `"LB"`: Labels - `POINT` object.
+  A character string giving the geometry type. Use `"RG"` for regions
+  (polygons or multipolygons) or `"LB"` for labels (points).
 
 ## Value
 
-An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
+the units that could be read, or `NULL` if none could be read.
 
 ## Details
 

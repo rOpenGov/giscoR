@@ -99,8 +99,8 @@ Single-unit download functions for mode = &quot;sf&quot;.
 
 
 <dl><dt id="arg-id-giscor">id_giscoR<a class="anchor" aria-label="anchor" href="#arg-id-giscor"></a></dt>
-<dd><p>A character string with the <code>unit</code> type to download.
-Accepted values are <code>"nuts"</code>, <code>"countries"</code> or <code>"urban_audit"</code>.</p></dd>
+<dd><p>A character string giving the dataset type. Choose
+<code>"nuts"</code>, <code>"countries"</code> or <code>"urban_audit"</code>.</p></dd>
 
 
 <dt id="arg-unit">unit<a class="anchor" aria-label="anchor" href="#arg-unit"></a></dt>
@@ -158,16 +158,15 @@ data resolution. One of:</p><ul><li><p><code>"60"</code>: 1:60 million.</p></li>
 
 
 <dt id="arg-spatialtype">spatialtype<a class="anchor" aria-label="anchor" href="#arg-spatialtype"></a></dt>
-<dd><p>A character string with the type of geometry to return.
-Available values are:</p><ul><li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
-<li><p><code>"LB"</code>: Labels - <code>POINT</code> object.</p></li>
-</ul></dd>
+<dd><p>A character string giving the geometry type. Use <code>"RG"</code>
+for regions (polygons or multipolygons) or <code>"LB"</code> for labels (points).</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object when <code>mode = "sf"</code> or a
-<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> when <code>mode = "df"</code>.</p>
+<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> when <code>mode = "df"</code>. Returns <code>NULL</code> if no data
+could be retrieved.</p>
     </div>
     <div class="section level2">
     <h2 id="copyright">Copyright<a class="anchor" aria-label="anchor" href="#copyright"></a></h2>

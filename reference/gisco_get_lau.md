@@ -49,8 +49,8 @@ GISCO Local Administrative Units distribution API:
 
 - cache:
 
-  **\[deprecated\]**. Always caches the result due to its size. See the
-  **Caching strategies** section in
+  **\[deprecated\]**. This function always caches the source file
+  because of its size. See **Caching strategies** in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
@@ -70,14 +70,15 @@ GISCO Local Administrative Units distribution API:
 
 - country:
 
-  A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO 3166-1 alpha-3 country codes or a
-  vector of Eurostat country codes. See also
+  A character vector of country names, ISO 3166-1 alpha-3 codes or
+  Eurostat country codes. See
   [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - gisco_id:
 
-  An optional character vector of `GISCO_ID` LAU values.
+  An optional character vector of LAU identifiers from the `GISCO_ID`
+  column. If you also supply `country`, the result includes rows
+  matching either filter.
 
 - ext:
 
@@ -86,7 +87,8 @@ GISCO Local Administrative Units distribution API:
 
 ## Value
 
-An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or
+`NULL` if the download fails.
 
 ## Details
 

@@ -48,9 +48,8 @@ GISCO postal code distribution API:
 
 - country:
 
-  A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO 3166-1 alpha-3 country codes or a
-  vector of Eurostat country codes. See also
+  A character vector of country names, ISO 3166-1 alpha-3 codes or
+  Eurostat country codes. See
   [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - cache_dir:
@@ -75,7 +74,8 @@ GISCO postal code distribution API:
 
 ## Value
 
-An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or
+`NULL` if the download fails.
 
 ## Details
 
@@ -86,8 +86,8 @@ and 2020. The 2025 release has a reference date of 1 January 2025.
 
 The dataset is released under the CC-BY-SA-4.0 license. Although the
 distribution API provides a 2025 release, the official GISCO licensing
-page currently requires the following attribution: © European Union -
-GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
+page currently requires the following attribution: \<U+00A9\> European
+Union - GISCO, 2024, postal code point dataset, Licence CC-BY-SA 4.0.
 
 ## Note
 

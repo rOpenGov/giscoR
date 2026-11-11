@@ -82,9 +82,8 @@ GISCO Urban Audit distribution API:
 
 - country:
 
-  A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO 3166-1 alpha-3 country codes or a
-  vector of Eurostat country codes. See also
+  A character vector of country names, ISO 3166-1 alpha-3 codes or
+  Eurostat country codes. See
   [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - level:
@@ -101,7 +100,8 @@ GISCO Urban Audit distribution API:
 
 ## Value
 
-An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or
+`NULL` if the download fails.
 
 ## Details
 

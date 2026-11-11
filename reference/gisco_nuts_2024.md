@@ -6,7 +6,7 @@ Nomenclature of Territorial Units for Statistics (NUTS) for 2024.
 ## Format
 
 An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-`MULTIPOLYGON` geometries, resolution: 1:20 million and
+`MULTIPOLYGON` geometries at 1:20 million scale in
 [EPSG:4326](https://epsg.io/4326). It has 1798 rows and 19 variables:
 
 - `NUTS_ID`:

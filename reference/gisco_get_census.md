@@ -22,8 +22,8 @@ gisco_get_census(
 
 - year:
 
-  A character string or numeric value with the release year of the file.
-  Currently only `"2011"` is provided.
+  The release year as a character string or numeric value. The available
+  year is 2011.
 
 - cache_dir:
 
@@ -42,15 +42,13 @@ gisco_get_census(
 
 - spatialtype:
 
-  The type of geometry to return:
-
-  - `"PT"`: Points - `POINT` object.
-
-  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
+  The type of geometry to return. Use `"PT"` for points or `"RG"` for
+  regions (polygons or multipolygons).
 
 ## Value
 
-An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or
+`NULL` if the download fails.
 
 ## Copyright
 

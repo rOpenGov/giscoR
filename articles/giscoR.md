@@ -5,19 +5,17 @@
 *The full site with more examples and vignettes is available at
 <https://ropengov.github.io/giscoR/>.*
 
-[**giscoR**](https://ropengov.github.io/giscoR/) is a package designed
-to provide a simple interface to the Eurostat [GISCO geodata
+[**giscoR**](https://ropengov.github.io/giscoR/) downloads geospatial
+datasets from Eurostat’s [GISCO geodata
 distribution](https://gisco-services.ec.europa.eu/distribution/v2/).
 
 GISCO provides geospatial data for the European Union, its member states
-and subnational regions. It supplies geospatial files in different
-formats, with a focus on Europe and global datasets such as country
-boundaries, labels and coastal lines.
+and subnational regions. Its global datasets include country boundaries,
+labels and coastal lines.
 
-Compatible administrative and statistical datasets are available at
-multiple resolutions: high-resolution datasets for small areas (01M,
-03M) and lighter datasets for larger areas (10M, 20M, 60M). They can be
-available in [EPSG:4326](https://epsg.io/4326),
+For compatible administrative and statistical datasets, use 01M or 03M
+for more detail and 10M, 20M or 60M for broader views. Available
+coordinate reference systems include [EPSG:4326](https://epsg.io/4326),
 [EPSG:3035](https://epsg.io/3035) and [EPSG:3857](https://epsg.io/3857).
 Grid, transport and basic service datasets use the formats and
 coordinate reference systems documented for each dataset.
@@ -36,8 +34,8 @@ with:
 gisco_set_cache_dir("./path/to/location")
 ```
 
-If a file is not available locally, it is downloaded to that directory
-so subsequent requests for the same data can read from the local cache.
+With caching enabled, **giscoR** downloads files missing from the cache
+and reuses them on subsequent requests.
 
 If downloading fails, you can manually download the file from the [GISCO
 geodata
@@ -71,17 +69,16 @@ Source: <https://ec.europa.eu/eurostat/web/gisco/geodata>
 [`gisco_get_grid()`](https://ropengov.github.io/giscoR/reference/gisco_get_grid.md)
 downloads polygon or cell-center point GeoPackages in **EPSG:3035** at
 resolutions from 1 km to 100 km. Population columns use names such as
-`TOT_P_2021`. Divide these values by `resolution^2`, not by
-`resolution`, to calculate people per square kilometer. Population
-variables have year- and country-specific licensing conditions. Consult
-the official [grid
+`TOT_P_2021`. To calculate people per square kilometer, divide the
+population count by the cell area in square kilometers (`resolution^2`).
+Population variables have year- and country-specific licensing
+conditions. Consult the official [grid
 documentation](https://ec.europa.eu/eurostat/web/gisco/geodata/grids)
 before publication or redistribution.
 
-The
 [`gisco_attributions()`](https://ropengov.github.io/giscoR/reference/gisco_attributions.md)
-function provides guidance on this topic and returns attribution text in
-several languages.
+returns attribution text for administrative boundaries in several
+languages.
 
 ``` r
 
@@ -100,8 +97,8 @@ c(
 
 ## Basic example
 
-The following example downloads EU member states and candidate countries
-for 2024.
+This example downloads the 2024 world country dataset and highlights EU
+member states and candidate countries.
 
 ``` r
 
@@ -157,12 +154,12 @@ southeastern edges of the EU.](./fig-country-1.png)
 
 EU member states and candidate countries (2024)
 
-You can select specific countries using names in any language, ISO
-3166-1 alpha-3 codes or Eurostat codes. However, you cannot mix these
-identifier types in a single call.
+Use `country` to select specific countries by name, ISO 3166-1 alpha-3
+code or Eurostat code.
 
-You can also combine datasets using the same `resolution` and `epsg`.
-Use the same `year` when it is available for both datasets:
+This example overlays North African countries and coastal lines using
+the same `resolution` and `epsg`. To compare datasets for a particular
+year, use the same `year` when it is available for both.
 
 ``` r
 
@@ -204,9 +201,10 @@ Political map of North Africa
 
 ## Thematic maps with giscoR
 
-This example shows how **giscoR** can be used with Eurostat data. For
-plotting, we use the **ggplot2** package. Any package that supports
-**sf** objects, such as **tmap**, **mapsf** or **leaflet**, can be used.
+This example joins 2022 household disposable income data from Eurostat
+to NUTS 2 regions and maps the results with **ggplot2**. You can also
+use **tmap**, **mapsf**, **leaflet** or other packages that support
+**sf** objects.
 
 ``` r
 

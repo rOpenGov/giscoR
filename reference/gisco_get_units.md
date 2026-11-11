@@ -46,8 +46,8 @@ All source files are `.geojson` files.
 
 - id_giscoR:
 
-  A character string with the `unit` type to download. Accepted values
-  are `"nuts"`, `"countries"` or `"urban_audit"`.
+  A character string giving the dataset type. Choose `"nuts"`,
+  `"countries"` or `"urban_audit"`.
 
 - unit:
 
@@ -111,19 +111,15 @@ All source files are `.geojson` files.
 
 - spatialtype:
 
-  A character string with the type of geometry to return. Available
-  values are:
-
-  - `"RG"`: Regions - `MULTIPOLYGON/POLYGON` object.
-
-  - `"LB"`: Labels - `POINT` object.
+  A character string giving the geometry type. Use `"RG"` for regions
+  (polygons or multipolygons) or `"LB"` for labels (points).
 
 ## Value
 
 An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object when
 `mode = "sf"` or a
 [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) when
-`mode = "df"`.
+`mode = "df"`. Returns `NULL` if no data could be retrieved.
 
 ## Copyright
 

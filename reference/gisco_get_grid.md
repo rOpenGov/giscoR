@@ -24,7 +24,7 @@ gisco_get_grid(
 
 - resolution:
 
-  The grid cell resolution in km. Available values are `"1"`, `"2"`,
+  The grid cell width in kilometers. Available values are `"1"`, `"2"`,
   `"5"`, `"10"`, `"20"`, `"50"` and `"100"`. See **Details**.
 
 - spatialtype:
@@ -48,7 +48,8 @@ gisco_get_grid(
 
 ## Value
 
-An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or
+`NULL` if the download fails.
 
 ## Details
 

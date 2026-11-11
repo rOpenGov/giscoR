@@ -75,9 +75,8 @@
 
 
 <dl><dt id="arg-year">year<a class="anchor" aria-label="anchor" href="#arg-year"></a></dt>
-<dd><p>A character string or numeric value with the release year of the
-file.
-Currently only <code>"2011"</code> is provided.</p></dd>
+<dd><p>The release year as a character string or numeric value. The
+available year is 2011.</p></dd>
 
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
@@ -97,14 +96,13 @@ messages.</p></dd>
 
 
 <dt id="arg-spatialtype">spatialtype<a class="anchor" aria-label="anchor" href="#arg-spatialtype"></a></dt>
-<dd><p>The type of geometry to return:</p><ul><li><p><code>"PT"</code>: Points - <code>POINT</code> object.</p></li>
-<li><p><code>"RG"</code>: Regions - <code>MULTIPOLYGON/POLYGON</code> object.</p></li>
-</ul></dd>
+<dd><p>The type of geometry to return. Use <code>"PT"</code> for points or
+<code>"RG"</code> for regions (polygons or multipolygons).</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object.</p>
+    <p>An <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object or <code>NULL</code> if the download fails.</p>
     </div>
     <div class="section level2">
     <h2 id="copyright">Copyright<a class="anchor" aria-label="anchor" href="#copyright"></a></h2>

@@ -14,12 +14,11 @@ GISCO geodata distribution `datasets.json`.
 
 ## Details
 
-This database is used to redirect the corresponding functions to the
-correct API endpoints.
-
-This version of the database is used if an update fails. Please use
+Package functions use this database to find the URLs for GISCO files.
+They use the bundled copy if no cached copy is available and the API
+cannot be reached. Use
 [`gisco_get_cached_db()`](https://ropengov.github.io/giscoR/reference/gisco_get_cached_db.md)
-with `update_cache = TRUE` to update the corresponding API endpoints.
+with `update_cache = TRUE` to refresh the cached database.
 
 ## See also
 

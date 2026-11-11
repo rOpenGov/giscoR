@@ -1,7 +1,7 @@
 # Retrieve and update the GISCO database used by [giscoR](https://CRAN.R-project.org/package=giscoR)
 
-Returns or optionally updates the cached database with endpoints from
-the GISCO geodata distribution.
+Read or update the cached index of files in the GISCO geodata
+distribution.
 
 ## Usage
 
@@ -22,7 +22,8 @@ gisco_get_cached_db(update_cache = FALSE)
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
+`NULL` if a refresh fails.
 
 ## Details
 
@@ -35,10 +36,9 @@ On new GISCO data releases, you can access the updated data by
 refreshing the cached database without waiting for a new version of
 [giscoR](https://CRAN.R-project.org/package=giscoR).
 
-A static database
-[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md) is
-shipped with the package. This database is used if there is any problem
-during the update.
+Package functions that use the index fall back to the bundled
+[gisco_db](https://ropengov.github.io/giscoR/reference/gisco_db.md) if
+they cannot retrieve it and no cached copy is available.
 
 ## See also
 
@@ -64,5 +64,5 @@ gisco_get_cached_db() |>
 #> $ ext          <chr> "csv", "geojson", "gpkg", "json", "pbf", "shp", "csv", "g…
 #> $ api_file     <chr> "csv/COAS_RG_01M_2006_3035.csv", "geojson/COAS_RG_01M_200…
 #> $ api_entry    <chr> "https://gisco-services.ec.europa.eu/distribution/v2/coas…
-#> $ last_updated <date> 2026-11-10, 2026-11-10, 2026-11-10, 2026-11-10, 2026-11-…
+#> $ last_updated <date> 2026-11-11, 2026-11-11, 2026-11-11, 2026-11-11, 2026-11-…
 ```

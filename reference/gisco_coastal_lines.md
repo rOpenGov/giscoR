@@ -5,7 +5,7 @@ This object contains the coastal lines of the world.
 ## Format
 
 An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-`POLYGON` geometries, resolution: 1:20 million and
+`POLYGON` geometries at 1:20 million scale in
 [EPSG:4326](https://epsg.io/4326).
 
 ## Source

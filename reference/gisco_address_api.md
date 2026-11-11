@@ -122,8 +122,7 @@ gisco_address_api_most_populated_cell(
 
   A single non-empty string for a freeform address search, or `NULL` for
   a structured search. The string can contain a street, house number,
-  city or postcode. Freeform queries do not support approximate
-  matching.
+  city or postcode.
 
 - x, y:
 
@@ -137,13 +136,10 @@ most cases, except `gisco_address_api_search()`,
 `gisco_address_api_reverse()` and `gisco_address_api_bbox()`, which
 return an [`sf`](https://r-spatial.github.io/sf/reference/sf.html)
 object when geometry is available. Searches with no results return an
-empty
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
-`gisco_address_api_bbox()` returns `NULL` when no bounding box is found.
-Failed requests return `NULL`.
+empty tibble. `gisco_address_api_bbox()` returns `NULL` when no bounding
+box is found. Failed requests return `NULL`.
 
-`gisco_address_api_most_populated_cell()` returns a one-row
-[tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) for
+`gisco_address_api_most_populated_cell()` returns a one-row tibble for
 the most populated census grid cell, or `NULL` when no cell is found or
 the request fails. Its numeric `X` and `Y` columns preserve the API
 coordinates, whose CRS is not specified in the API documentation.

@@ -187,7 +187,7 @@ messages.</p></dd>
 <dt id="arg-q">q<a class="anchor" aria-label="anchor" href="#arg-q"></a></dt>
 <dd><p>A single non-empty string for a freeform address search, or <code>NULL</code>
 for a structured search. The string can contain a street, house number,
-city or postcode. Freeform queries do not support approximate matching.</p></dd>
+city or postcode.</p></dd>
 
 
 <dt id="arg-x-y">x, y<a class="anchor" aria-label="anchor" href="#arg-x-y"></a></dt>
@@ -200,14 +200,13 @@ human-readable addresses. Reverse geocoding returns at most five results.</p></d
     <p>A <a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> in most cases, except
 <code>gisco_address_api_search()</code>, <code>gisco_address_api_reverse()</code> and
 <code>gisco_address_api_bbox()</code>, which return an <code><a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link">sf</a></code> object when
-geometry is available. Searches with no results return an empty
-<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a>. <code>gisco_address_api_bbox()</code> returns <code>NULL</code> when
-no bounding box is found. Failed requests return <code>NULL</code>.</p>
-<p><code>gisco_address_api_most_populated_cell()</code> returns a one-row
-<a href="https://tibble.tidyverse.org/reference/tbl_df-class.html" class="external-link">tibble</a> for the most populated census grid cell, or <code>NULL</code>
-when no cell is found or the request fails. Its numeric <code>X</code> and <code>Y</code> columns
-preserve the API coordinates, whose CRS is not specified in the API
-documentation.</p>
+geometry is available. Searches with no results return an empty tibble.
+<code>gisco_address_api_bbox()</code> returns <code>NULL</code> when no bounding box is found.
+Failed requests return <code>NULL</code>.</p>
+<p><code>gisco_address_api_most_populated_cell()</code> returns a one-row tibble for the
+most populated census grid cell, or <code>NULL</code> when no cell is found or the
+request fails. Its numeric <code>X</code> and <code>Y</code> columns preserve the API coordinates,
+whose CRS is not specified in the API documentation.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>

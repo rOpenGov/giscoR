@@ -47,8 +47,8 @@ GISCO communes distribution API:
 
 - cache:
 
-  **\[deprecated\]**. These functions always cache the result because of
-  its size. See the **Caching strategies** section in
+  **\[deprecated\]**. This function always caches the source file
+  because of its size. See the **Caching strategies** section in
   [`gisco_set_cache_dir()`](https://ropengov.github.io/giscoR/reference/gisco_set_cache_dir.md).
 
 - update_cache:
@@ -82,9 +82,8 @@ GISCO communes distribution API:
 
 - country:
 
-  A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO 3166-1 alpha-3 country codes or a
-  vector of Eurostat country codes. See also
+  A character vector of country names, ISO 3166-1 alpha-3 codes or
+  Eurostat country codes. See
   [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - ext:
@@ -94,7 +93,8 @@ GISCO communes distribution API:
 
 ## Value
 
-An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or
+`NULL` if the download fails.
 
 ## Details
 
@@ -106,8 +106,8 @@ units: NUTS 1, 2 and 3 and LAU.
 
 The dataset is based on EuroBoundaryMap from
 [EuroGeographics](https://eurogeographics.org/). Geographic coverage
-includes the European Union 28, EFTA countries and candidate countries.
-The scale of the dataset is 1:100 000.
+includes the EU-28, EFTA countries and candidate countries. The dataset
+scale is 1:100,000.
 
 The LAU classification is not covered by any legislative act.
 

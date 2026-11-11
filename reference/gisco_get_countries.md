@@ -1,12 +1,13 @@
 # Countries dataset
 
 This dataset contains world administrative boundaries at the country
-level. It provides two feature classes, regions and boundaries, at five
-scale levels: 1M, 3M, 10M, 20M and 60M.
+level. It includes regions, labels, boundaries, coastal lines and inland
+boundaries. Available scales depend on the geometry type and release
+year.
 
-Downloads data from the aggregated GISCO country file. To download
-single-unit country files, use
-[`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md).
+This function reads the aggregated GISCO country dataset. Use
+[`gisco_get_unit_country()`](https://ropengov.github.io/giscoR/reference/gisco_get_unit.md)
+to download individual country files.
 
 ## Usage
 
@@ -106,17 +107,15 @@ GISCO countries distribution API:
 
 - country:
 
-  A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO 3166-1 alpha-3 country codes or a
-  vector of Eurostat country codes. See also
+  A character vector of country names, ISO 3166-1 alpha-3 codes or
+  Eurostat country codes. See
   [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 - region:
 
-  An optional character vector of UN M49 region codes or European Union
-  membership. Possible values are `"Africa"`, `"Americas"`, `"Asia"`,
-  `"Europe"`, `"Oceania"` or `"EU"` for countries belonging to the
-  European Union as of 2021. See **World regions** and
+  An optional character vector of UN M49 region names (`"Africa"`,
+  `"Americas"`, `"Asia"`, `"Europe"` or `"Oceania"`) or `"EU"` for EU
+  member countries as of 2021. See **World regions** and
   [gisco_countrycode](https://ropengov.github.io/giscoR/reference/gisco_countrycode.md).
 
 - ext:
@@ -126,12 +125,13 @@ GISCO countries distribution API:
 
 ## Value
 
-An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or
+`NULL` if the download fails.
 
 ## World regions
 
 Regions follow the UN geographic regions (see
-<https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
+<https://unstats.un.org/unsd/methodology/m49/>). Under this scheme,
 Cyprus is assigned to Asia.
 
 ## Copyright

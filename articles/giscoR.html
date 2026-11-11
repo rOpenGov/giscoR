@@ -98,16 +98,16 @@
     <!-- giscoR.qmd is generated from giscoR.qmd.orig. Please edit that file --><section class="section level2"><h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <p><em>The full site with more examples and vignettes is available at <a href="https://ropengov.github.io/giscoR/" class="uri">https://ropengov.github.io/giscoR/</a>.</em></p>
-<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> is a package designed to provide a simple interface to the Eurostat <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO geodata distribution</a>.</p>
-<p>GISCO provides geospatial data for the European Union, its member states and subnational regions. It supplies geospatial files in different formats, with a focus on Europe and global datasets such as country boundaries, labels and coastal lines.</p>
-<p>Compatible administrative and statistical datasets are available at multiple resolutions: high-resolution datasets for small areas (01M, 03M) and lighter datasets for larger areas (10M, 20M, 60M). They can be available in <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>, <a href="https://epsg.io/3035" class="external-link">EPSG:3035</a> and <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a>. Grid, transport and basic service datasets use the formats and coordinate reference systems documented for each dataset.</p>
+<p><a href="https://ropengov.github.io/giscoR/"><strong>giscoR</strong></a> downloads geospatial datasets from Eurostat’s <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO geodata distribution</a>.</p>
+<p>GISCO provides geospatial data for the European Union, its member states and subnational regions. Its global datasets include country boundaries, labels and coastal lines.</p>
+<p>For compatible administrative and statistical datasets, use 01M or 03M for more detail and 10M, 20M or 60M for broader views. Available coordinate reference systems include <a href="https://epsg.io/4326" class="external-link">EPSG:4326</a>, <a href="https://epsg.io/3035" class="external-link">EPSG:3035</a> and <a href="https://epsg.io/3857" class="external-link">EPSG:3857</a>. Grid, transport and basic service datasets use the formats and coordinate reference systems documented for each dataset.</p>
 <p><strong>giscoR</strong> returns <a href="https://r-spatial.github.io/sf/reference/sf.html" class="external-link"><strong>sf</strong> objects</a>. See <a href="https://r-spatial.github.io/sf/" class="external-link uri">https://r-spatial.github.io/sf/</a> for details.</p>
 </section><section class="section level2"><h2 id="caching">Caching<a class="anchor" aria-label="anchor" href="#caching"></a>
 </h2>
 <p><strong>giscoR</strong> supports caching downloaded datasets. Set the cache directory with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/gisco_set_cache_dir.html">gisco_set_cache_dir</a></span><span class="op">(</span><span class="st">"./path/to/location"</span><span class="op">)</span></span></code></pre></div>
-<p>If a file is not available locally, it is downloaded to that directory so subsequent requests for the same data can read from the local cache.</p>
+<p>With caching enabled, <strong>giscoR</strong> downloads files missing from the cache and reuses them on subsequent requests.</p>
 <p>If downloading fails, you can manually download the file from the <a href="https://gisco-services.ec.europa.eu/distribution/v2/" class="external-link">GISCO geodata distribution</a> and place it in your local cache directory.</p>
 </section><section class="section level2"><h2 id="downloading-data">Downloading data<a class="anchor" aria-label="anchor" href="#downloading-data"></a>
 </h2>
@@ -122,8 +122,8 @@
 </cite>
 </figcaption></figure></section><section class="level2"><h3 id="population-grids">Population grids<a class="anchor" aria-label="anchor" href="#population-grids"></a>
 </h3>
-<p><code><a href="../reference/gisco_get_grid.html">gisco_get_grid()</a></code> downloads polygon or cell-center point GeoPackages in <strong>EPSG:3035</strong> at resolutions from 1 km to 100 km. Population columns use names such as <code>TOT_P_2021</code>. Divide these values by <code>resolution^2</code>, not by <code>resolution</code>, to calculate people per square kilometer. Population variables have year- and country-specific licensing conditions. Consult the official <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/grids" class="external-link">grid documentation</a> before publication or redistribution.</p>
-<p>The <code><a href="../reference/gisco_attributions.html">gisco_attributions()</a></code> function provides guidance on this topic and returns attribution text in several languages.</p>
+<p><code><a href="../reference/gisco_get_grid.html">gisco_get_grid()</a></code> downloads polygon or cell-center point GeoPackages in <strong>EPSG:3035</strong> at resolutions from 1 km to 100 km. Population columns use names such as <code>TOT_P_2021</code>. To calculate people per square kilometer, divide the population count by the cell area in square kilometers (<code>resolution^2</code>). Population variables have year- and country-specific licensing conditions. Consult the official <a href="https://ec.europa.eu/eurostat/web/gisco/geodata/grids" class="external-link">grid documentation</a> before publication or redistribution.</p>
+<p><code><a href="../reference/gisco_attributions.html">gisco_attributions()</a></code> returns attribution text for administrative boundaries in several languages.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -138,7 +138,7 @@
 <span><span class="co">#&gt; © EuroGeographics bezüglich der Verwaltungsgrenzen</span></span></code></pre></div>
 </section></section><section class="section level2"><h2 id="basic-example">Basic example<a class="anchor" aria-label="anchor" href="#basic-example"></a>
 </h2>
-<p>The following example downloads EU member states and candidate countries for 2024.</p>
+<p>This example downloads the 2024 world country dataset and highlights EU member states and candidate countries.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -188,8 +188,8 @@
 EU member states and candidate countries (2024)
 </p>
 </div>
-<p>You can select specific countries using names in any language, ISO 3166-1 alpha-3 codes or Eurostat codes. However, you cannot mix these identifier types in a single call.</p>
-<p>You can also combine datasets using the same <code>resolution</code> and <code>epsg</code>. Use the same <code>year</code> when it is available for both datasets:</p>
+<p>Use <code>country</code> to select specific countries by name, ISO 3166-1 alpha-3 code or Eurostat code.</p>
+<p>This example overlays North African countries and coastal lines using the same <code>resolution</code> and <code>epsg</code>. To compare datasets for a particular year, use the same <code>year</code> when it is available for both.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cntr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Morocco"</span>, <span class="st">"Algeria"</span>, <span class="st">"Tunisia"</span>, <span class="st">"Libya"</span>, <span class="st">"Egypt"</span><span class="op">)</span></span>
 <span></span>
@@ -223,7 +223,7 @@ Political map of North Africa
 </div>
 </section><section class="section level2"><h2 id="thematic-maps-with-giscor">Thematic maps with giscoR<a class="anchor" aria-label="anchor" href="#thematic-maps-with-giscor"></a>
 </h2>
-<p>This example shows how <strong>giscoR</strong> can be used with Eurostat data. For plotting, we use the <strong>ggplot2</strong> package. Any package that supports <strong>sf</strong> objects, such as <strong>tmap</strong>, <strong>mapsf</strong> or <strong>leaflet</strong>, can be used.</p>
+<p>This example joins 2022 household disposable income data from Eurostat to NUTS 2 regions and maps the results with <strong>ggplot2</strong>. You can also use <strong>tmap</strong>, <strong>mapsf</strong>, <strong>leaflet</strong> or other packages that support <strong>sf</strong> objects.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load EU member data.</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ropengov.github.io/giscoR/">giscoR</a></span><span class="op">)</span></span>

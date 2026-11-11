@@ -29,30 +29,16 @@ gisco_bulk_download(
 
 - id:
 
-  A character string or numeric value with the dataset type to download,
-  see **Details**. Supported values are:
+  A character string identifying the dataset to download. Supported
+  values are `"countries"`, `"coastal_lines"`, `"communes"`, `"lau"`,
+  `"nuts"`, `"urban_audit"` and `"postal_codes"`.
 
-  - `"countries"`.
-
-  - `"coastal_lines"`.
-
-  - `"communes"`.
-
-  - `"lau"`.
-
-  - `"nuts"`.
-
-  - `"urban_audit"`.
-
-  - `"postal_codes"`.
-
-    This argument replaces the previous (deprecated) argument
-    `id_giscoR`.
+  This argument replaces the previous (deprecated) argument `id_giscoR`.
 
 - year:
 
-  A character string or numeric value with the release year of the file,
-  see **Details**.
+  The release year as a character string or numeric value. See
+  **Details**.
 
 - cache_dir:
 
@@ -91,20 +77,20 @@ gisco_bulk_download(
 
 - recursive:
 
-  **\[deprecated\]** `recursive` is no longer supported. It will never
-  perform recursive extraction of child `.zip` files. This is the case
-  for `shp.zip` inside the top-level `.zip`, which will not be unzipped.
+  **\[deprecated\]**. ZIP files within the downloaded archive, such as
+  `shp.zip`, are extracted as ZIP files.
 
 - ...:
 
-  Ignored. The argument `id_giscoR` (**\[deprecated\]**) is captured via
-  `...` and redirected to `id` with a
+  Additional arguments. The deprecated argument `id_giscoR` is passed to
+  `id` with a
   [warning](https://lifecycle.r-lib.org/reference/deprecate_soft.html).
+  Other arguments are ignored.
 
 ## Value
 
-An invisible character vector with the full paths of the extracted
-files. See **Examples**.
+A character vector of the extracted file paths, returned invisibly. If
+the download fails, returns `NULL`.
 
 ## Details
 
@@ -182,8 +168,8 @@ invisible(gisco_get_countries(
   year = 2024, ext = "geojson",
   cache_dir = tmp, verbose = TRUE
 ))
-#> ℹ Cache directory is /tmp/RtmpEKHWU1/testexample/countries.
-#> ✔ File already cached: /tmp/RtmpEKHWU1/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
+#> ℹ Cache directory is /tmp/RtmpXHkNTc/testexample/countries.
+#> ✔ File already cached: /tmp/RtmpXHkNTc/testexample/countries/CNTR_RG_60M_2024_4326.geojson.
 
 # The message shows that the file is already cached.
 # }

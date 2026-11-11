@@ -51,25 +51,25 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.3.1" id="giscor-131">giscoR 1.3.1<a class="anchor" aria-label="anchor" href="#giscor-131"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.3.1" id="giscor-131">giscoR 1.3.1<a class="anchor" aria-label="anchor" href="#giscor-131"></a></h2><p class="text-muted">CRAN release: 2026-11-10</p>
 <ul><li>
 <strong>giscoR</strong> now requires <strong>R</strong> ≥ 4.2.</li>
 <li>
-<code>gisco_countries_2024</code> has refreshed country names and geometries, adds the <code>COUNTRY_URI</code> and <code>STAT_CODE</code> columns and changes the row order.</li>
+<code>gisco_countries_2024</code> updates country names and geometries, adds the <code>COUNTRY_URI</code> and <code>STAT_CODE</code> columns and changes the row order.</li>
 <li>
 <code>gisco_countrycode</code> updates United Nations intermediate region codes and names.</li>
 <li>
 <code>gisco_db</code> includes GISCO catalog metadata as of October 29, 2026.</li>
 <li>
-<code>gisco_id_api_*()</code> help lists the supported dataset years by endpoint without querying the live service when the help is rendered.</li>
+<code>gisco_id_api_*()</code> help lists the supported dataset years for each endpoint without a live API query.</li>
 <li>
 <code>gisco_nuts_2024</code> updates the mountain, urban-rural and coastal typologies. Many previously missing values now have a classification or use <code>0</code> for regions without a classification.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.0" id="giscor-130">giscoR 1.3.0<a class="anchor" aria-label="anchor" href="#giscor-130"></a></h2><p class="text-muted">CRAN release: 2026-10-01</p>
 <ul><li>Cached downloads now preserve the previous file when an update fails and replace it only after the new download completes successfully.</li>
+<li>Downloads now request the GISCO resource directly, improving support for proxied connections (<a href="https://github.com/rOpenGov/giscoR/issues/139" class="external-link">#139</a>).</li>
 <li>Logical flags now reject missing and non-scalar values with a <code>giscoR_error</code> condition.</li>
-<li>Downloads now attempt the requested GISCO resource directly instead of relying on a generic connectivity check, improving support for proxied connections (<a href="https://github.com/rOpenGov/giscoR/issues/139" class="external-link">#139</a>).</li>
 <li>
 <code><a href="../reference/gisco_address_api.html">gisco_address_api_most_populated_cell()</a></code> retrieves the most populated census grid cell for a province or city, preserving the API coordinates in numeric <code>X</code> and <code>Y</code> columns of a tibble.</li>
 <li>
@@ -79,14 +79,14 @@
 <li>
 <code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code> now forwards <code>cache_dir</code> to its replacement single-unit download function.</li>
 <li>
-<code>gisco_id_api_*()</code> functions with an <code>epsg</code> argument now send it as <code>proj</code>, honoring the input and output CRS, and <code><a href="../reference/gisco_id_api.html">gisco_id_api_nuts()</a></code> sends <code>nuts_level</code> as <code>level</code>, honoring the requested NUTS level.</li>
+<code>gisco_id_api_*()</code> functions now honor <code>epsg</code> for input coordinates and output geometries where supported. <code><a href="../reference/gisco_id_api.html">gisco_id_api_nuts()</a></code> now honors the requested <code>nuts_level</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.0" id="giscor-120">giscoR 1.2.0<a class="anchor" aria-label="anchor" href="#giscor-120"></a></h2><p class="text-muted">CRAN release: 2026-08-27</p>
 <ul><li>
 <strong>cli</strong> diagnostics now use catchable warning and error classes for programmatic handling.</li>
 <li>Add an article showing GISCO ID service API and GISCO Address API workflows with <strong>ggplot2</strong> examples.</li>
-<li>Query timeout can now also be controlled with the <code>GISCO_TIMEOUT</code> environment variable when <code>options(gisco_timeout)</code> is not set.</li>
+<li>Set the query timeout with the <code>GISCO_TIMEOUT</code> environment variable when the <code>gisco_timeout</code> option is unset.</li>
 <li>Refactor tests to isolate cache state, use temporary cache directories and improve mocked coverage of cache and request helpers.</li>
 <li>Update <code><a href="../reference/gisco_db.html">?gisco_db</a></code>.</li>
 <li>
@@ -104,7 +104,7 @@
 <h2 class="pkg-version" data-toc-text="1.1.0" id="giscor-110">giscoR 1.1.0<a class="anchor" aria-label="anchor" href="#giscor-110"></a></h2><p class="text-muted">CRAN release: 2026-03-28</p>
 <ul><li>Adapt vignettes to <strong>Quarto</strong>.</li>
 <li>Bump the minimum <strong>httr2</strong> version to 1.2.0 (<a href="https://github.com/rOpenGov/giscoR/issues/126" class="external-link">#126</a>).</li>
-<li>Query timeout can now be controlled with <code>options(gisco_timeout)</code> using <code><a href="https://httr2.r-lib.org/reference/req_timeout.html" class="external-link">httr2::req_timeout()</a></code>. The default value is <code>httr2::req_timeout(..., seconds = 300)</code> (5 minutes) (<a href="https://github.com/rOpenGov/giscoR/issues/123" class="external-link">#123</a>).</li>
+<li>Set the query timeout in seconds with the <code>gisco_timeout</code> option. The default is 300 seconds (5 minutes) (<a href="https://github.com/rOpenGov/giscoR/issues/123" class="external-link">#123</a>).</li>
 <li>Use <code><a href="https://testthat.r-lib.org/reference/local_mocked_bindings.html" class="external-link">testthat::local_mocked_bindings()</a></code> for API error testing.</li>
 </ul></div>
     <div class="section level2">
@@ -116,7 +116,7 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.0" id="giscor-100">giscoR 1.0.0<a class="anchor" aria-label="anchor" href="#giscor-100"></a></h2><p class="text-muted">CRAN release: 2025-12-10</p>
-<p>This major release introduces a full overhaul of the codebase and test suite. Requests now use <strong>httr2</strong>, and GeoPackage (<code>"gpkg"</code>) is the preferred download format when available. Cached files are reorganized into topic-based subfolders for easier management.</p>
+<p>This release overhauls the codebase and test suite. Requests now use <strong>httr2</strong>, and GeoPackage (<code>"gpkg"</code>) is the preferred download format when available. Cached files are reorganized into topic-based subfolders for easier management.</p>
 <blockquote>
 <p>Because of internal changes, <strong>existing caches are not compatible</strong> with this release and must be rebuilt.</p>
 </blockquote>
@@ -209,7 +209,7 @@
 <ul><li>
 <code><a href="../reference/gisco_bulk_download.html">gisco_bulk_download()</a></code> renames the <code>id_giscoR</code> argument to <code>id</code>.</li>
 <li>
-<code><a href="../reference/gisco_get_communes.html">gisco_get_communes()</a></code> and <code><a href="../reference/gisco_get_lau.html">gisco_get_lau()</a></code> deprecate the <code>cache</code> argument in heavy-download functions.</li>
+<code><a href="../reference/gisco_get_communes.html">gisco_get_communes()</a></code> and <code><a href="../reference/gisco_get_lau.html">gisco_get_lau()</a></code> deprecate the <code>cache</code> argument.</li>
 <li>
 <code><a href="../reference/gisco_get_units.html">gisco_get_units()</a></code> is deprecated. Equivalent functionality is now available through <code><a href="../reference/gisco_get_metadata.html">gisco_get_metadata()</a></code> and the <code><a href="../reference/gisco_get_unit.html">?gisco_get_unit</a></code> family.</li>
 </ul></div>

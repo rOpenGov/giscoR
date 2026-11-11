@@ -25,8 +25,8 @@ gisco_get_education(
 
 - year:
 
-  A character string or numeric value with the release year of the file.
-  One of `2023`, `2020`.
+  The release year as a character string or numeric value. Choose 2023
+  or 2020.
 
 - cache:
 
@@ -51,14 +51,14 @@ gisco_get_education(
 
 - country:
 
-  A character vector of country codes. It can be either a vector of
-  country names, a vector of ISO 3166-1 alpha-3 country codes or a
-  vector of Eurostat country codes. See also
+  A character vector of country names, ISO 3166-1 alpha-3 codes or
+  Eurostat country codes. See
   [`countrycode::countrycode()`](https://rdrr.io/pkg/countrycode/man/countrycode.html).
 
 ## Value
 
-An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object.
+An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object or
+`NULL` if the download fails.
 
 ## Details
 

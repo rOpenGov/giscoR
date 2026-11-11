@@ -6,7 +6,7 @@ level.
 ## Format
 
 An [`sf`](https://r-spatial.github.io/sf/reference/sf.html) object with
-`MULTIPOLYGON` geometries, resolution: 1:20 million and
+`MULTIPOLYGON` geometries at 1:20 million scale in
 [EPSG:4326](https://epsg.io/4326). It has 263 rows and 14 variables:
 
 - `CNTR_ID`:

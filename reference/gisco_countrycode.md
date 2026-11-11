@@ -10,7 +10,8 @@ was extracted from the
 
 ## Format
 
-A data frame with 249 rows and 13 variables:
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html)
+with 249 rows and 13 variables:
 
 - `ISO3_CODE`:
 
@@ -74,7 +75,7 @@ A data frame with 249 rows and 13 variables:
 ## World regions
 
 Regions follow the UN geographic regions (see
-<https://unstats.un.org/unsd/methodology/m49/>). Under this scheme
+<https://unstats.un.org/unsd/methodology/m49/>). Under this scheme,
 Cyprus is assigned to Asia.
 
 ## See also

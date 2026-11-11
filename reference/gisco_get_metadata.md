@@ -34,7 +34,8 @@ gisco_get_metadata(
 
 ## Value
 
-A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html).
+A [tibble](https://tibble.tidyverse.org/reference/tbl_df-class.html) or
+`NULL` if the download fails.
 
 ## See also
 

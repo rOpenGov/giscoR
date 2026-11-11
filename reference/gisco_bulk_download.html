@@ -83,21 +83,15 @@ and extract the relevant files.</p>
 
 
 <dl><dt id="arg-id">id<a class="anchor" aria-label="anchor" href="#arg-id"></a></dt>
-<dd><p>A character string or numeric value with the dataset type to
-download, see <strong>Details</strong>. Supported values are:</p><ul><li><p><code>"countries"</code>.</p></li>
-<li><p><code>"coastal_lines"</code>.</p></li>
-<li><p><code>"communes"</code>.</p></li>
-<li><p><code>"lau"</code>.</p></li>
-<li><p><code>"nuts"</code>.</p></li>
-<li><p><code>"urban_audit"</code>.</p></li>
-<li><p><code>"postal_codes"</code>.</p>
-<p>This argument replaces the previous (deprecated) argument <code>id_giscoR</code>.</p></li>
-</ul></dd>
+<dd><p>A character string identifying the dataset to download. Supported
+values are <code>"countries"</code>, <code>"coastal_lines"</code>, <code>"communes"</code>, <code>"lau"</code>,
+<code>"nuts"</code>, <code>"urban_audit"</code> and <code>"postal_codes"</code>.</p>
+<p>This argument replaces the previous (deprecated) argument <code>id_giscoR</code>.</p></dd>
 
 
 <dt id="arg-year">year<a class="anchor" aria-label="anchor" href="#arg-year"></a></dt>
-<dd><p>A character string or numeric value with the release year of the
-file, see <strong>Details</strong>.</p></dd>
+<dd><p>The release year as a character string or numeric value. See
+<strong>Details</strong>.</p></dd>
 
 
 <dt id="arg-cache-dir">cache_dir<a class="anchor" aria-label="anchor" href="#arg-cache-dir"></a></dt>
@@ -133,22 +127,20 @@ formats are <code>"shp"</code>, <code>"geojson"</code>, <code>"svg"</code>, <cod
 
 
 <dt id="arg-recursive">recursive<a class="anchor" aria-label="anchor" href="#arg-recursive"></a></dt>
-<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a> <code>recursive</code> is no
-longer supported. It will never perform recursive extraction of child
-<code>.zip</code> files. This is the case for <code>shp.zip</code> inside the top-level <code>.zip</code>,
-which will not be unzipped.</p></dd>
+<dd><p><a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a>. ZIP files within the
+downloaded archive, such as <code>shp.zip</code>, are extracted as ZIP files.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
-<dd><p>Ignored. The argument <code>id_giscoR</code>
-(<a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="figures/lifecycle-deprecated.svg" alt="[Deprecated]"></a>) is captured via <code>...</code> and redirected
-to <code>id</code> with a <a href="https://lifecycle.r-lib.org/reference/deprecate_soft.html" class="external-link">warning</a>.</p></dd>
+<dd><p>Additional arguments. The deprecated argument <code>id_giscoR</code> is
+passed to <code>id</code> with a <a href="https://lifecycle.r-lib.org/reference/deprecate_soft.html" class="external-link">warning</a>. Other
+arguments are ignored.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>An invisible character vector with the full paths of the extracted files.
-See <strong>Examples</strong>.</p>
+    <p>A character vector of the extracted file paths, returned invisibly. If the
+download fails, returns <code>NULL</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -212,8 +204,8 @@ file formats before downloading.</p>
 <span class="r-in"><span>  year <span class="op">=</span> <span class="fl">2024</span>, ext <span class="op">=</span> <span class="st">"geojson"</span>,</span></span>
 <span class="r-in"><span>  cache_dir <span class="op">=</span> <span class="va">tmp</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Cache directory is <span style="color: #0000BB;">/tmp/RtmpEKHWU1/testexample/countries</span>.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> File already cached: <span style="color: #0000BB;">/tmp/RtmpEKHWU1/testexample/countries/CNTR_RG_60M_2024_4326.geojson</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Cache directory is <span style="color: #0000BB;">/tmp/RtmpXHkNTc/testexample/countries</span>.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> File already cached: <span style="color: #0000BB;">/tmp/RtmpXHkNTc/testexample/countries/CNTR_RG_60M_2024_4326.geojson</span>.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># The message shows that the file is already cached.</span></span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>

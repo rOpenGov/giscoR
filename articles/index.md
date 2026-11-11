@@ -18,5 +18,5 @@ functions.
 - [GISCO APIs with
   giscoR](https://ropengov.github.io/giscoR/articles/apis.md):
 
-  Use the GISCO ID service API and GISCO Address API from R for
+  Use the GISCO ID service API and GISCO Address API from **R** for
   geocoding, reverse geocoding or feature lookup from coordinates.

@@ -2,19 +2,18 @@
 
 ## Overview
 
-Most **giscoR** workflows should start with the higher-level download
-functions, such as
+Download functions such as
 [`gisco_get_countries()`](https://ropengov.github.io/giscoR/reference/gisco_get_countries.md),
 [`gisco_get_nuts()`](https://ropengov.github.io/giscoR/reference/gisco_get_nuts.md)
-or
-[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md).
-These functions download complete GISCO datasets and return
-[`sf`](https://r-spatial.github.io/sf/reference/sf.html) objects that
-can be filtered, joined and mapped locally.
+and
+[`gisco_get_lau()`](https://ropengov.github.io/giscoR/reference/gisco_get_lau.md)
+retrieve GISCO datasets for local analysis. They return
+[**sf**](https://r-spatial.github.io/sf/reference/sf.html) objects that
+you can filter, join and map.
 
-The GISCO APIs are useful when a workflow starts from a coordinate,
-address or identifier and you need a targeted lookup instead of a
-complete dataset. **giscoR** includes wrappers for two API families:
+Use the GISCO APIs to look up features or addresses using coordinates,
+an address or an identifier. **giscoR** provides two sets of API
+functions.
 
 - `gisco_id_api_*()` functions query the GISCO ID service API.
 - `gisco_address_api_*()` functions query the GISCO Address API.
@@ -33,9 +32,8 @@ use the CRS selected by `epsg`, which defaults to EPSG:4326. Returned
 geometries also use this CRS. The package sends `epsg` as the API
 parameter `proj` and `nuts_level` as `level`.
 
-For example, the following code queries the Basque Country coordinates
-used in the package examples and compares the matching NUTS 3 and LAU
-geometries.
+The following example looks up a point in the Basque Country and maps
+the NUTS 3 region and LAU that contain it.
 
 ``` r
 
@@ -73,10 +71,12 @@ nuts
 #> 1 ES212                3 ES212
 ```
 
-Use `geometry = TRUE`, the default, when you want an `sf` object
-suitable for mapping. Successful Geonames queries return an `sf` object
-and use longitude and latitude in EPSG:4326. Its bounding-box queries
-must span no more than five degrees in either dimension.
+Use `geometry = TRUE`, the default, to return an **sf** object for
+mapping.
+[`gisco_id_api_geonames()`](https://ropengov.github.io/giscoR/reference/gisco_id_api.md)
+uses longitude and latitude in EPSG:4326 and returns an **sf** object on
+success. Limit bounding boxes to five degrees of longitude and five
+degrees of latitude.
 
 ``` r
 
@@ -128,10 +128,8 @@ gisco_id_api_nuts(nuts_id = "ES21", nuts_level = 2)
 
 ## GISCO Address API
 
-The GISCO Address API supports address search, reverse geocoding and
-lookup of available administrative address components. It can be useful
-when a workflow starts with a human-readable address rather than a GISCO
-feature ID.
+Use the GISCO Address API to geocode addresses, find addresses near a
+point and list available administrative address components.
 
 `province` and `city` are generic terms whose administrative levels vary
 by country. Use the lookup helpers to inspect available address
@@ -209,10 +207,10 @@ gisco_address_api_roads(country = "LU", province = "Capellen", city = "Dippach")
 
 Use
 [`gisco_address_api_search()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
-for structured or freeform geocoding. Structured searches support
-approximate string matching, so exact spelling is not always required.
-Searches return at most 1,000 addresses. The bounding-box endpoint can
-provide context for the returned address points.
+for structured or freeform geocoding. Structured searches can match
+approximate spellings. Searches return at most 1,000 addresses. Use
+[`gisco_address_api_bbox()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+to get a bounding box for the returned address points.
 
 Freeform queries use the `q` argument to search for an address in a
 single string and do not support approximate string matching.
@@ -239,19 +237,21 @@ bbox <- gisco_address_api_bbox(
 ```
 
 Use `gisco_address_api_most_populated_cell(city = "Madrid")` to retrieve
-the most populated census grid cell. Supply `province` or `city`, or
-both to restrict the lookup to the city within the province. When a cell
-is found, the function returns a one-row
+the most populated census grid cell. Supply `province`, `city` or both.
+When you supply both, the function searches within the city in the
+specified province. When a cell is found, the function returns a one-row
 [tibble](https://tibble.tidyverse.org/reference/tbl_df.html) with the
 API coordinates in numeric `X` and `Y` columns. The API documentation
 does not specify the CRS for these coordinates, so the function
 preserves them without creating a geometry.
 
-Search and reverse geocoding return `sf` objects when coordinates are
+Search and reverse geocoding return **sf** objects when coordinates are
 available. Queries with no address results return an empty tibble.
-Bounding-box calls return an `sf` object when a bounding box is found,
-or `NULL` otherwise. If a search result contains coordinates, they can
-be passed to the reverse endpoint, which returns at most five addresses:
+[`gisco_address_api_bbox()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+returns an **sf** object when it finds a bounding box and `NULL`
+otherwise. Pass the coordinates from a search result to
+[`gisco_address_api_reverse()`](https://ropengov.github.io/giscoR/reference/gisco_address_api.md)
+to retrieve up to five nearby addresses.
 
 ``` r
 
@@ -331,8 +331,7 @@ validation and small batches.
 
 ## Defensive use
 
-API services are remote dependencies. In scripts, check for `NULL`
-before using the result:
+In scripts, check for `NULL` before using the result of an API call.
 
 ``` r
 
